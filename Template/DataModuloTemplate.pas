@@ -242,8 +242,8 @@ const
     end;
 
 begin
-      {AutoRecOK := False;  #ver
-      MapFileAddress := GetMapAddressFromAddress(DWORD(ExceptAddr));
+      {AutoRecOK := False;
+      MapFileAddress := GetMapAddressFromAddress(DWORD(ExceptAddr));  #ver todo esse metodo
       UnitName := GetModuleNameFromAddress(MapFileAddress);
       ProcedureName := GetProcNameFromAddress(MapFileAddress);
       LineNumber := GetLineNumberFromAddress(MapFileAddress);
@@ -268,9 +268,9 @@ begin
 
      //AutoRecuperação : O Sistema tenta consertar o Erro.
 
-     if (E.ClassType = EDatabaseError) or (E.ClassType = EDBEngineError) then
+     {if (E.ClassType = EDatabaseError) or (E.ClassType = EDBEngineError) then
         begin
-           if DM.PegaDadosTabela(E) and (UltUnitErro <> UnitName) then
+           if PegaDadosTabela(E) and (UltUnitErro <> UnitName) then
               begin
                  Application.Minimize;
                  Application.Restore;
@@ -293,7 +293,7 @@ begin
 
       if Application.MessageBox(PChar(Email + Crlf + Crlf + ' Deseja reportar o erro?'), 'Erro', MB_YESNO + MB_ICONERROR + MB_SETFOREGROUND + MB_SYSTEMMODAL) = idYes  then
          begin
-            ImagemArquivo := DM.PathAplicacao + 'Erro ' + UnitName + ' ' + FormatDateTime('ddmmyy hhmm', Now) + '.jpg';
+            ImagemArquivo := self.PathAplicacao + 'Erro ' + UnitName + ' ' + FormatDateTime('ddmmyy hhmm', Now) + '.jpg';
             CaptureScreenRect(Screen.DesktopRect, ImagemArquivo);
             if VerConexaoInterNet then
                begin
@@ -307,7 +307,7 @@ begin
                   ShellExecute(0, 'open', PChar('mailto:suporte@multistorers.com.br ?Subject=Relatorio de erros &Body=' + Email),'','', SW_SHOWNORMAL);
                   Informa('O Sistema criou um e-mail de erro para você, por favor anexe o arquivo "' + ImagemArquivo + '" ao e-mail e envie-o assim que puder.');
                end;
-         end;  }
+         end; } 
 end;
 
 //
@@ -913,30 +913,7 @@ begin
 
       {Tradução de mensagens e labels cxGrid}
       cxSetResourceString(@ScxGridGroupByBoxCaption, 'Arraste aqui as colunas para agrupar');
-      cxSetResourceString(@ScxGridNoDataInfoText, 'Sem dados para serem exibidos.');
-
-      {Conectando com o DBExpress, utilizando dados do BDE TDataBase}
-      {stlAlias := TStringList.Create;  #ver
-      try
-        DB.Session.GetAliasParams('Easy_Gestao',stlAlias);
-
-        try
-          Zdb.Connected := False;
-          Zdb.Database  := stlAlias.Values['SERVER NAME'];
-          if Zdb.Database = '' then
-            Zdb.Database := 'D:\Automafour\Easy2Solutions\Gestao\Dados\Dados.FDB';
-            
-          Zdb.Connected := True;
-        except
-          on e: Exception do
-            begin
-              MessageDlg('Falha na conexão com o Zeus DBExpress!'+#13 + e.Message, mtError,[mbOK],0);
-              showmessage(Zdb.Database);
-            end;
-        end;
-      finally
-        stlAlias.free;
-      end;}
+      cxSetResourceString(@ScxGridNoDataInfoText, 'Sem dados para serem exibidos.'); 
     end;
 end;
 

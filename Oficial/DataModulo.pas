@@ -55,21 +55,6 @@ type
     SQLUsuarioUSUAA5SENHA: TStringField;
     SQLUsuarioUSUACUSERMASTER: TStringField;
     SQLTerminalAtivo: TRxQuery;
-    SQLTerminalAtivoTERMICOD: TIntegerField;
-    SQLTerminalAtivoTERMA60DESCR: TStringField;
-    SQLTerminalAtivoTERMCINFDADOSCLICP: TStringField;
-    SQLTerminalAtivoTERMA60IMPAUTORIZCOM: TStringField;
-    SQLTerminalAtivoTERMA60IMPFICHACLI: TStringField;
-    SQLTerminalAtivoECFA13ID: TStringField;
-    SQLTerminalAtivoTERMCSQLORDENADO: TStringField;
-    SQLTerminalAtivoEMPRICOD: TIntegerField;
-    SQLTerminalAtivoTERMA60IMPPEDIDO: TStringField;
-    SQLTerminalAtivoTERMINRODECQUANT: TIntegerField;
-    SQLTerminalAtivoTERMA255MSGCARNE: TStringField;
-    SQLTerminalAtivoTERMCMOVESTOQUE: TStringField;
-    SQLTerminalAtivoTERMCIMPPREVENDA: TStringField;
-    SQLTerminalAtivoTERMCMOVTRANSF: TStringField;
-    SQLTerminalAtivoTERMA254PATHTERM: TStringField;
     SQLConfigVenda: TRxQuery;
     SQLUsuarioUSUACPERMITEFAT: TStringField;
     SQLUsuarioUSUACPERMITEFIN: TStringField;
@@ -79,6 +64,7 @@ type
     { Private declarations }
   public
     { Public declarations }
+    CodTarefa:String;
   end;
 
 var
@@ -92,7 +78,7 @@ uses TelaSplash;
 
 procedure TDM.DataModuleCreate(Sender: TObject);
 begin
-  inherited;   
+  inherited;
   FormSplash.lbDados.Caption := 'Abrindo Tabela de Usuarios...'; FormSplash.lbDados.Update;
   SQLUsuario.Open ;
 

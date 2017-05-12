@@ -10,7 +10,7 @@ Var
   UsuarioCorrente,
   EmpresaCorrente,
   TerminalCorrente, TimeOutIntegrador, TimeOutIntegradorInicial : Integer;
-  Retaguarda,
+  bRetaguarda,
   Exporta,
   UsuarioMaster, TranspVeiculo, EsperaParaPerguntar : Boolean;
   FieldLookup      : TField;

@@ -228,7 +228,8 @@ var
 
 implementation
 
-uses DataModulo,  UnitLibrary, WaitWindow;
+uses DataModulo,  UnitLibrary, WaitWindow, TelaConsultaPagamento,
+  TelaAssistenteLancamentoContasPagar, TelaBaixaContasPagarAVista;
 
   //CadastroPortador, CadastroTipoDocumento, CadastroFornecedor,  CadastroPlanodeContas, TelaConsultaEmpresa,
   //TelaConsultaPlanoContas, CadastroHistoricoPadrao, TelaConsultaPagamento,
@@ -576,7 +577,7 @@ begin
       SQLTemplate.Open;
     end
   else
-    Informa('Pesquisa incomleta, verifique!');    
+    Informa('Pesquisa incompleta, verifique!');    
 end;
 
 procedure TFormCadastroContasPagar.ComboFornecedorKeyDown(Sender: TObject;
@@ -640,7 +641,7 @@ begin
   FieldLookup := DsTemplate.DataSet.FieldByName('HTPDICOD');
   FieldOrigem := 'HTPDICOD';
   TipoHistoricoPadrao := 'D';
-  //CriaFormulario(TFormCadastroHistoricoPadrao, 'FormCadastroHistoricoPadrao', False, True,True, 'Contas à Receber');
+  //CriaFormulario(TFormCadastroHistoricoPadrao, 'FormCadastroHistoricoPadrao', False, True,True, 'Contas ï¿½ Receber');
 end;
 
 procedure TFormCadastroContasPagar.DBEditHistoricoPadraoKeyDown(
@@ -666,7 +667,7 @@ begin
   FieldLookup := DsTemplate.DataSet.FieldByName('PLCTA15COD');
   FieldOrigem := 'PLCTA15COD';
   TipoPlanoContas := 'D';
-  //CriaFormulario(TFormTelaConsultaPlanoContas, 'FormTelaConsultaPlanoContas', False,True,True, 'Contas à Pagar');
+  //CriaFormulario(TFormTelaConsultaPlanoContas, 'FormTelaConsultaPlanoContas', False,True,True, 'Contas ï¿½ Pagar');
 end;
 
 procedure TFormCadastroContasPagar.DBGrid1DblClick(Sender: TObject);
@@ -674,7 +675,7 @@ var
   RetornoUsuario : TInfoRetornoUser;
 begin
   inherited;
-  {if not UsuarioMaster then  #ver
+  if not UsuarioMaster then  
     begin
       if AutenticaUsuario(UsuarioAtualNome,'USUACUSERMASTER',RetornoUsuario) = 'S' then
         begin
@@ -686,7 +687,7 @@ begin
           SQLPagamento.Open;
         end
       else
-        Informa('Você não tem permissão para acessar essa tela, somente um usuário master do sistema terá acesso!');
+        Informa('Vocï¿½ nï¿½o tem permissï¿½o para acessar essa tela, somente um usuï¿½rio master do sistema terï¿½ acesso!');
     end
   else
     begin
@@ -696,7 +697,7 @@ begin
       DSMasterSys := Nil;
       SQLPagamento.Close;
       SQLPagamento.Open;
-    end; }
+    end; 
 end;
 
 procedure TFormCadastroContasPagar.DBGrid1KeyDown(Sender: TObject;
@@ -714,7 +715,7 @@ var
  DocumentoSTR : String;
 begin
   inherited;
-  {Application.CreateForm(TFormTelaAssistenteLancamentoContasPagar,FormTelaAssistenteLancamentoContasPagar);  #ver
+  Application.CreateForm(TFormTelaAssistenteLancamentoContasPagar,FormTelaAssistenteLancamentoContasPagar);
   FormTelaAssistenteLancamentoContasPagar.edtEmissao.Date := Date;
   FormTelaAssistenteLancamentoContasPagar.ShowModal;
   if FormTelaAssistenteLancamentoContasPagar.ModalResult = MrOk then
@@ -783,7 +784,7 @@ begin
           FormTelaAssistenteLancamentoContasPagar.Close;
           FormTelaAssistenteLancamentoContasPagar.Free;
         end;
-    end; }
+    end; 
 end;
 
 procedure TFormCadastroContasPagar.SQLTemplateBeforeDelete(
@@ -791,13 +792,13 @@ procedure TFormCadastroContasPagar.SQLTemplateBeforeDelete(
 begin
  if (SQLTemplateEMPRICOD.AsString <> EmpresaPadrao) and (MatrizFilial='F') then
     begin
-      Informa('Esta Conta a Pagar foi criada em outra Filial, portanto, não pode ser excluida !');
+      Informa('Esta Conta a Pagar foi criada em outra Filial, portanto, nï¿½o pode ser excluida !');
       Abort;
     end;
 
   if SQLTemplate.FieldByName('CTPGN2TOTPAG').AsFloat > 0 then
     begin
-     if Pergunta('NAO','Você não pode excluir esta parcela, existem pagamentos referentes à ela, Deseja estornar o último pagamento?') then
+     if Pergunta('NAO','Vocï¿½ nï¿½o pode excluir esta parcela, existem pagamentos referentes ï¿½ ela, Deseja estornar o ï¿½ltimo pagamento?') then
        begin
          SQLTemplate.DisableControls;
          SQLPagamento.Last;
@@ -808,7 +809,7 @@ begin
          DM.SQLTemplate.SQL.ADD(' AND PAGAICOD = ' + SQLPagamentoPAGAICOD.AsString);
          try
            DM.SQLTemplate.ExecSQL;
-           //AtualizaTotaisCabecalhoContasPagar(SQLPagamentoCTPGA13ID.AsString); #ver
+           AtualizaTotaisCabecalhoContasPagar(SQLPagamentoCTPGA13ID.AsString);
            DM.SQLTemplate.Close;
          except
            on E:Exception do
@@ -847,7 +848,7 @@ Var StID: String;
           SQLPagamento.Bookmark := StID;
           if not SQLPagamento.IsEmpty then
             SQLPagamento.Delete;
-          //AtualizaTotaisCabecalhoContasPagar(SQLTemplateCTPGA13ID.AsString); #ver
+          AtualizaTotaisCabecalhoContasPagar(SQLTemplateCTPGA13ID.AsString); 
         except
         end;
       SQLCount.RequestLive := False;
@@ -867,21 +868,19 @@ begin
      if SQLCount.RecordCount > 0 then
        begin
          if ExecSql(' select OPBCICODESTORNODEB from CONFIGFINANCEIRO ').FieldByName('OPBCICODESTORNODEB').IsNull then
-           InformaErro('É necessário Configurar uma Operação Bancária de Estorno "Débito" para o Contas A PAGAR no Configurador', True, Nil);
+           InformaErro('ï¿½ necessï¿½rio Configurar uma Operaï¿½ï¿½o Bancï¿½ria de Estorno "Dï¿½bito" para o Contas A PAGAR no Configurador', True, Nil);
 
-         if not Pergunta('Sim', 'Deseja Criar um Lançamento de Crédito no "MOVIMENTO BANCÁRIO" Valor de R$ ' +
+         if not Pergunta('Sim', 'Deseja Criar um Lanï¿½amento de Crï¿½dito no "MOVIMENTO BANCï¿½RIO" Valor de R$ ' +
                      FormatFloat('#,##0.00', SQLCount.FieldByName('MVBCN2VLRCRED').AsFloat) + ' referente Estorno do Pagamento de ID : "' + SQLPagamentoCTPGA13ID.AsString + '"?' + #13 +
-                     'Clique "SIM" para Continuar e "NÃO" para Cancelar o Estorno.') then
+                     'Clique "SIM" para Continuar e "Nï¿½O" para Cancelar o Estorno.') then
             Abort;
 
-         {LancaMovimentacaoBanco(SQLTemplateEMPRICOD.AsInteger, SQLCount.FieldByName('CTCRICOD').AsInteger,
-                              DM.SQLConfigFinanceiroOPBCICODESTORNOCRD.AsInteger, 0,
+         LancaMovimentacaoBanco(SQLTemplateEMPRICOD.AsInteger, SQLCount.FieldByName('CTCRICOD').AsInteger,
+                              ExecSql(' select OPBCICODESTORNOCRD from CONFIGFINANCEIRO ').FieldByName('OPBCICODESTORNOCRD').AsInteger, 0,
                               SQLCount.FieldByName('MVBCN2VLRCRED').AsFloat, SQLCount.FieldByName('MVBCDCHQBOMPARA').AsDateTime,
-                              SQLCount.FieldByName('MVBCDCHQBAIXA').AsDateTime, Date, 'Estorno de Débito Referente Pagamento: ' + SQLTemplateCTPGA20DOCORIG.AsString + '-' + SQLTemplateCTPGINROPARC.AsString,
+                              SQLCount.FieldByName('MVBCDCHQBAIXA').AsDateTime, Date, 'Estorno de Dï¿½bito Referente Pagamento: ' + SQLTemplateCTPGA20DOCORIG.AsString + '-' + SQLTemplateCTPGINROPARC.AsString,
                               '', '', SQLTemplateCTPGA13ID.AsString, SQLCount.FieldByName('CQEMA13ID').AsString,
-                              SQLCount.FieldByName('PLCTA15COD').AsString);
-                               #ver
-                              }
+                              SQLCount.FieldByName('PLCTA15COD').AsString);                                
 
          SQLCount.Edit;
          SQLCount.FieldByName('MVBCCSTATUS').AsString := 'E';
@@ -894,7 +893,7 @@ begin
          FimEstorno;
          Exit;
        end;
-     //Fim Estorno Lançamentos Banco
+     //Fim Estorno Lanï¿½amentos Banco
 
      //Verifica e Estorna Recebimentos feitos com CAIXA;
      SQLCount.Close;
@@ -906,28 +905,29 @@ begin
      if SQLCount.RecordCount > 0 then
        begin
          if ExecSql(' select OPTEICODESTORNODEB from CONFIGFINANCEIRO ').FieldByName('OPBCICODESTORNODEB').IsNull then
-           InformaErro('É necessário Configurar uma Operação Tesouraria para Estorno "Débito" para o Contas A PAGAR no Configurador', True, Nil);
+           InformaErro('ï¿½ necessï¿½rio Configurar uma Operaï¿½ï¿½o Tesouraria para Estorno "Dï¿½bito" para o Contas A PAGAR no Configurador', True, Nil);
 
-         if not Pergunta('Sim', 'Deseja Criar um Lançamento de Crédito na "TESOURARIA/CAIXA" no valor de R$ ' +
+         if not Pergunta('Sim', 'Deseja Criar um Lanï¿½amento de Crï¿½dito na "TESOURARIA/CAIXA" no valor de R$ ' +
                          FormatFloat('#,##0.00', SQLCount.FieldByName('TESON2VLRDEBITO').AsFloat) + ' Referente Estorno do Pagamento de ID: "' + SQLPagamentoCTPGA13ID.AsString + '"?' + #13 +
-                         'Clique "SIM" para Continuar e "NÃO" para Cancelar o Estorno.') then
+                         'Clique "SIM" para Continuar e "Nï¿½O" para Cancelar o Estorno.') then
             Abort;
 
-         {LancaMovimentacaoTesouraria(SQLTemplateEMPRICOD.AsInteger, SQLCount.FieldByName('TERMICOD').AsInteger,
-                                     SQLCount.FieldByName('NUMEICOD').AsInteger, DM.SQLConfigFinanceiroOPTEICODESTORNOCRD.AsInteger,
+
+         LancaMovimentacaoTesouraria(SQLTemplateEMPRICOD.AsInteger, SQLCount.FieldByName('TERMICOD').AsInteger,
+                                     SQLCount.FieldByName('NUMEICOD').AsInteger, 
+                                     ExecSql(' select OPTEICODESTORNOCRD from CONFIGFINANCEIRO ').FieldByName('OPTEICODESTORNOCRD').AsInteger,
                                      SQLCount.FieldByName('TESON2VLRCREDITO').AsFloat,
-                                     'Estorno de Débito Referente Pagamento: ' + SQLTemplateCTPGINROPARC.AsString + '-' + SQLPagamentoPAGAICOD.AsString,
+                                     'Estorno de Dï¿½bito Referente Pagamento: ' + SQLTemplateCTPGINROPARC.AsString + '-' + SQLPagamentoPAGAICOD.AsString,
                                      SQLTemplateCTPGA13ID.AsString,'', '', SQLCount.FieldByName('CQEMA13ID').AsString,
                                      Date,SQLTemplateCTPGA13ID.AsString,'');
-                                      #ver
-                                     }
+
 
          SQLCount.Edit;
          SQLCount.FieldByName('TESOCSTATUS').AsString := 'E';
          SQLCount.Post;
 
          SQLPagamento.Delete;
-         //AtualizaTotaisCabecalhoContasPagar(SQLTemplateCTPGA13ID.AsString); #ver
+         AtualizaTotaisCabecalhoContasPagar(SQLTemplateCTPGA13ID.AsString); 
 
          Result := True;
 
@@ -944,8 +944,8 @@ begin
 
        if not SQLTemplateCQEMA13ID.IsNull then
         begin
-          if not Pergunta('Sim', 'O CHQ "' + SQLTemplateCQEMA13ID.AsString + '" será desvinculado do Recebimento Atual.' + #13 +
-             'Você deverá Excluir ou Cancelar o Cheque no Controle de Cheques.' + #13 +
+          if not Pergunta('Sim', 'O CHQ "' + SQLTemplateCQEMA13ID.AsString + '" serï¿½ desvinculado do Recebimento Atual.' + #13 +
+             'Vocï¿½ deverï¿½ Excluir ou Cancelar o Cheque no Controle de Cheques.' + #13 +
              'Deseja Continuar?') then
              Exit;
 
@@ -989,7 +989,7 @@ begin
   if (Column.Field = Nil) and not SQLPagamento.IsEmpty then
     if Pergunta('Sim', 'Deseja Realmente ESTORNAR este Pagamento.') then
       if not Estorna then
-         InformaErro('Não foi Possivel Estornar o Lançamento Atual.', True, Nil);
+         InformaErro('Nï¿½o foi Possivel Estornar o Lanï¿½amento Atual.', True, Nil);
 end;
 
 procedure TFormCadastroContasPagar.DBGrid1DrawColumnCell(Sender: TObject;
@@ -1094,6 +1094,7 @@ begin
     end
   else
     ShowMessage('Não foi encontrado nenhum registro a ser Corrigido!');
+    
   SQLTemplate.OnCalcFields := SQLTemplateCalcFields;
   SQLTemplate.AfterScroll  := SQLTemplateAfterScroll;
   SQLTemplate.AfterPost    := SQLTemplateAfterPost;
@@ -1107,7 +1108,7 @@ begin
   inherited;
   if SQLTemplateCTPGDVENC.Value < SQLTemplateCTPGDTEMIS.Value then
     begin
-      ShowMessage('Atenção! A data de vencimento está menor que a data de emissão!');
+      ShowMessage('Atenï¿½ï¿½o! A data de vencimento estï¿½ menor que a data de emissï¿½o!');
       DBEdit4.SetFocus;
     end;
 end;
@@ -1117,19 +1118,19 @@ procedure TFormCadastroContasPagar.SQLTemplateBeforePost(
 begin
   if SQLTemplateFORNICOD.AsString = '' then
     begin
-      Showmessage('Atenção! É preciso escolher um Fornecedor!');
+      Showmessage('Atenï¿½ï¿½o! ï¿½ preciso escolher um Fornecedor!');
       DBEdit2.SetFocus;
       Abort;
     end;
   if SQLTemplateCTPGDVENC.Value < SQLTemplateCTPGDTEMIS.Value then
     begin
-      Showmessage('Atenção! Data de Vencimento menor que a Data de Emissão!');
+      Showmessage('Atenï¿½ï¿½o! Data de Vencimento menor que a Data de Emissï¿½o!');
       DBEdit4.SetFocus;
       Abort;
     end;
   if SQLTemplateCTPGN3VLR.Value = 0 then
     begin
-      Showmessage('Atenção! O Valor não foi informado!');
+      Showmessage('Atenï¿½ï¿½o! O Valor nï¿½o foi informado!');
       EvDBNumEdit1.SetFocus;
       Abort;
     end;
@@ -1140,7 +1141,7 @@ procedure TFormCadastroContasPagar.SQLTemplateAfterPost(DataSet: TDataSet);
 begin
   inherited;
   // Quita Parcela a vista automaticamente
-  {if (SQLTemplateCTPGDTEMIS.Value = SQLTemplateCTPGDVENC.Value) and (SQLTemplateCTPGN2TOTPAG.Value < SQLTemplateCTPGN3VLR.Value) then
+  if (SQLTemplateCTPGDTEMIS.Value = SQLTemplateCTPGDVENC.Value) and (SQLTemplateCTPGN2TOTPAG.Value < SQLTemplateCTPGN3VLR.Value) then
     begin
       Application.CreateForm(TFormTelaBaixaContasPagarAVista,FormTelaBaixaContasPagarAVista);
       FormTelaBaixaContasPagarAVista.ValorAteVencimento.Value   := SQLTemplateCTPGN3VLR.Value;
@@ -1170,7 +1171,7 @@ begin
         end;
       FormTelaBaixaContasPagarAVista.Close;
       FormTelaBaixaContasPagarAVista.Free;
-    end; #ver}
+    end;
 end;
 
 procedure TFormCadastroContasPagar.FormActivate(Sender: TObject);

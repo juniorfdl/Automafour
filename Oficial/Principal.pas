@@ -114,7 +114,8 @@ var
 
 implementation
 
-uses DataModulo, UnSoundPlay, UnitLibrary, CadastroContasPagar;
+uses DataModulo, UnSoundPlay, UnitLibrary, CadastroContasPagar,
+  TelaLembreteTarefa;
 
 {uses CadastroCliente, CadastroTemplate, CadastroTipoCliente, CadastroBanco,
   CadastroTipoDocumento, CadastroPortador, CadastroClasse, CadastroPedidoVenda,
@@ -714,8 +715,8 @@ begin
         begin
           if Application.FindComponent('FormTelaLembreteTarefa') = nil then
             begin
-              //Application.CreateForm(TFormTelaLembreteTarefa,FormTelaLembreteTarefa);
-              //FormTelaLembreteTarefa.Show;     #ver
+              Application.CreateForm(TFormTelaLembreteTarefa,FormTelaLembreteTarefa);
+              FormTelaLembreteTarefa.Show;     
             end;
         end;
     end;
@@ -858,10 +859,10 @@ end;
 procedure TFormPrincipal.FormCreate(Sender: TObject);
 begin
   inherited;
-  {if dm.SQLTerminalAtivo.FieldByName('USATABLET').Value = 'S' then  #ver
+  if dm.SQLTerminalAtivo.FieldByName('USATABLET').Value = 'S' then
     TimerImpressaoTablets.Enabled := True
   else
-    TimerImpressaoTablets.Enabled := False;}
+    TimerImpressaoTablets.Enabled := False;
 end;
 
 procedure TFormPrincipal.MnRelMovimentoCaixaFaturamentoClick(

@@ -79,6 +79,7 @@ type
     { Private declarations }
   public
     { Public declarations }
+    CodTarefa:String;
   end;
 
 var

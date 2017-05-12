@@ -160,10 +160,502 @@ function AutenticaUsuario(UserNameDefault, CAMPO : String; var InfoRetorno:TInfo
 function ExecSql(xsql: string; Tipo: Integer = 0): TQuery;
 function Pergunta(BotaoDefault, Texto:string) : boolean ;
 procedure InformaErro(Texto:string; Abortar: Boolean; SetarFoco: TWinControl) ;
+procedure AtualizaTotaisCabecalhoContasPagar(NroDocumento : string) ;
+function TiraPontoMilhar(Numero : Double) : Double ;
+function ConvFloatToStr(Numero : Double) : string ;
+procedure LancaMovimentacaoBanco(Empresa,ContaCorrente,Operacao,NroCheque : integer;ValorMov:Double; BomPara, DtBaixa, DtMovimento:TDateTime; Historico,Favorecido, IDContasReceber, IDContasPagar, IDChqEmitido, IDPlanoContas : String);
+Function DigitVerifEAN(Cod:string) : string ;
+procedure AtualizaSaldoContaCorrente(ContaCorrente : Integer; ValorDebito,ValorCredito : Double);
+procedure LancaMovimentacaoTesouraria(Empresa,Terminal,Numerario,OperacaoTes : Integer;Valor : Double;Historico, IDContaPagar, IDContaReceber, IDCheque, IDFechaCaixa : String; DataMovimento : TDateTime; DocOrigem: String ; PlanoContas : String);
 
 implementation
 
 uses DataModulo, TelaAutenticaUsuario;
+
+procedure LancaMovimentacaoTesouraria(Empresa,Terminal,Numerario,OperacaoTes : Integer;Valor : Double;Historico, IDContaPagar, IDContaReceber, IDCheque, IDFechaCaixa : String; DataMovimento : TDateTime; DocOrigem: String ; PlanoContas : String);
+var
+  Tesouraria,Operacao,SQLGeral : TRxQuery;
+  ProximoCodigo : Double;
+  IDTesouraria : String;
+begin
+  Tesouraria := TRxQuery.Create(DM);
+  Tesouraria.DatabaseName := 'DB';
+  SQLGeral   := TRxQuery.Create(DM);
+  SQLGeral.DatabaseName := 'DB';
+  Operacao   := TRxQuery.Create(DM);
+  Operacao.DatabaseName := 'DB';
+  Operacao.Close;
+  Operacao.SQL.Clear;
+  Operacao.SQL.Add('SELECT OPTECDEBCRED FROM OPERACAOTESOURARIA WHERE OPTEICOD = ' + IntToStr(OperacaoTes));
+  Operacao.Open;
+  if not Operacao.IsEmpty then
+    begin
+      if Operacao.FindField('OPTECDEBCRED').AsString <> '' then
+        begin
+          Dm.DB.StartTransaction;
+          Tesouraria.Close;
+          Tesouraria.SQL.Clear;
+          //Campos da tabela
+          Tesouraria.SQL.Add('INSERT INTO TESOURARIA (');
+          Tesouraria.SQL.Add('TESOA13ID , ');
+          Tesouraria.SQL.Add('EMPRICOD , ');
+          Tesouraria.SQL.Add('TERMICOD , ');
+          Tesouraria.SQL.Add('TESOICOD , ');
+          Tesouraria.SQL.Add('TESODMOV , ');
+          Tesouraria.SQL.Add('TESON2VLRDEBITO , ');
+          Tesouraria.SQL.Add('TESON2VLRCREDITO , ');
+          Tesouraria.SQL.Add('NUMEICOD , ');
+          Tesouraria.SQL.Add('OPTEICOD , ');
+          Tesouraria.SQL.Add('TESOA255HIST , ');
+          Tesouraria.SQL.Add('CTRCA13ID , ');
+          Tesouraria.SQL.Add('CTPGA13ID , ');
+          Tesouraria.SQL.Add('CQEMA13ID , ');
+          Tesouraria.SQL.Add('FECXA13ID , ');
+          Tesouraria.SQL.Add('USUAICOD , ');
+          Tesouraria.SQL.Add('PENDENTE , ');
+          Tesouraria.SQL.Add('REGISTRO , ');
+          Tesouraria.SQL.Add('TESOA20DOCORIGEM');
+          if PlanoContas <> '' then
+            Tesouraria.SQL.Add(', PLCTA15COD');
+          Tesouraria.SQL.Add(') Values (');
+          //Valores dos campos
+          SQLGeral.Close;
+          SQLGeral.SQL.Add('SELECT MAX(TESOICOD) FROM TESOURARIA WHERE EMPRICOD = ' + IntToStr(Empresa) + ' AND TERMICOD = ' + IntToStr(Terminal));
+          SQLGeral.Open;
+          if SQLGeral.IsEmpty then
+             ProximoCodigo := 1
+          else
+             ProximoCodigo := SQLGeral.FindField('MAX').AsFloat + 1;
+          IDTesouraria := FormatFloat('000',Empresa) + FormatFloat('000',Terminal) + FormatFloat('000000',ProximoCodigo);
+          IDTesouraria := IDTesouraria + DigitVerifEAN(IDTesouraria);
+          Tesouraria.SQL.Add('"' + IDTesouraria + '"' + ', '); //ID
+          Tesouraria.SQL.Add(IntToStr(Empresa)+ ', ');//EMPRESA
+          Tesouraria.SQL.Add(IntToStr(Terminal)+ ', ');//TERMINAL
+          Tesouraria.SQL.Add(FloatToStr(ProximoCodigo) + ', ');//CODIGO
+          Tesouraria.SQL.Add('"' + FormatDateTime('mm/dd/yyyy',DataMovimento)+ '"' + ' , ');//DATA MOV
+          Case Operacao.FindField('OPTECDEBCRED').AsString[1] of
+            'D' : begin
+                    Tesouraria.SQL.Add(ConvFloatToStr(Valor) + ', '); //DEBITO
+                    Tesouraria.SQL.Add('0, ');//CREDITO
+                  end;
+            'C' : begin
+                    Tesouraria.SQL.Add('0, ');//DEBITO
+                    Tesouraria.SQL.Add(ConvFloatToStr(Valor) + ', ');//CREDITO
+                  end;
+          end;
+          Tesouraria.SQL.Add(IntToStr(Numerario)+ ', ');//NUMERARIO
+          Tesouraria.SQL.Add(IntToStr(OperacaoTes)+ ', ');//OPERACAO
+          Tesouraria.SQL.Add('"' + Historico + '"' + ', ');//HISTORICO
+
+          if IDContaReceber <> '' then
+            Tesouraria.SQL.Add('"' + IDContaReceber + '"' + ', ')
+          else
+            Tesouraria.SQL.Add('Null, ');
+
+          if IDContaPagar <> '' then
+            Tesouraria.SQL.Add('"' + IDContaPagar + '"' + ', ')
+          else
+            Tesouraria.SQL.Add('Null, ');
+
+          if IDCheque <> '' then
+            Tesouraria.SQL.Add('"' + IDCheque + '"' + ', ')
+          else
+            Tesouraria.SQL.Add('Null, ');
+
+          if IDFechaCaixa <> '' then
+            Tesouraria.SQL.Add('"' + IDFechaCaixa + '"' + ', ')
+          else
+            Tesouraria.SQL.Add('Null, ');
+
+          Tesouraria.SQL.Add(IntToStr(DM.UsuarioAtual) +', ');
+
+          Tesouraria.SQL.Add('"S" , '); // Pendente
+          Tesouraria.SQL.Add('"' + FormatDateTime('mm/dd/yyyy hh:mm:ss', Now) + '"  ,'); // Registro
+
+          Tesouraria.SQL.Add('"' + DocOrigem + '"'); //DOCUMENTO ORIGEM
+          if PlanoContas <> '' then
+            Tesouraria.SQL.Add(', "'+ PlanoContas + '")') //PLANO DE CONTAS
+          else
+            Tesouraria.SQL.Add(')');
+          Tesouraria.ExecSQL;
+          Dm.DB.Commit;
+        end
+      else
+        begin
+          Informa('A operação de tesouraria escolhida não tem tipo definido, verifique o cadastro !');
+          Exit;
+        end;
+    end
+  else
+    begin
+      Informa('Operação de tesouraria não foi encontrada ! Impossível continuar.');
+    end;
+end;
+
+procedure AtualizaSaldoContaCorrente(ContaCorrente : Integer; ValorDebito,ValorCredito : Double);
+var
+  SqlConta : TRxQuery;
+  SaldoAtual, NovoSaldo : Double;
+begin
+  SaldoAtual := 0;
+  NovoSaldo  := 0;
+  SqlConta := TRxQuery.Create(DM);
+  SqlConta.DatabaseName := 'DB';
+  SqlConta.Close;
+  SqlConta.SQL.Clear;
+  SqlConta.SQL.Add('SELECT CTCRN2SALDOATUAL FROM CONTACORRENTE where CTCRICOD = '+ IntToStr(ContaCorrente));
+  SqlConta.Open;
+  if not SqlConta.IsEmpty then
+    begin
+      SaldoAtual := SqlConta.FindField('CTCRN2SALDOATUAL').AsFloat;
+      if ValorDebito > 0 then
+        begin
+          NovoSaldo := SaldoAtual - ValorDebito;
+          SqlConta.Close;
+          SqlConta.SQL.Clear;
+          SqlConta.SQL.Add('UPDATE CONTACORRENTE SET CTCRN2SALDOATUAL = ' + ConvFloatToStr(NovoSaldo) + ' , CTCRDULTALTSALDO = "' + FormatDateTime('mm/dd/yyyy',Now) + '" , Pendente="S"');
+          SqlConta.SQL.Add('WHERE CTCRICOD = ' + IntToStr(ContaCorrente));
+          SqlConta.ExecSQL;
+        end
+      else
+        begin
+          NovoSaldo := SaldoAtual + ValorCredito;
+          SqlConta.Close;
+          SqlConta.SQL.Clear;
+          SqlConta.SQL.Add('UPDATE CONTACORRENTE SET CTCRN2SALDOATUAL = ' + ConvFloatToStr(NovoSaldo) + ' , CTCRDULTALTSALDO = "' + FormatDateTime('mm/dd/yyyy',Now) + '", Pendente="S"');
+          SqlConta.SQL.Add('WHERE CTCRICOD = ' + IntToStr(ContaCorrente));
+          SqlConta.ExecSQL;
+        end;
+    end
+  else
+    begin
+      Informa('Conta Corrente não encontrada !');
+      Exit;
+    end;
+end;
+
+Function DigitVerifEAN(Cod:string) : string ;
+Var Digito     : string[1] ;
+    DAux       : Double ;
+    Par,
+    Impar : Integer ;
+    Str_Aux : string ;
+begin
+  DigitVerifEAN := '' ;
+
+  {***********  CODIGO REDUZIDO DE PRODUTOS ***********}
+  if Length(Cod) = 3 Then
+  begin
+    Impar := StrtoInt(Copy(Cod,1,1)) +
+             StrtoInt(Copy(Cod,3,1)) ;
+
+    Par := StrtoInt(Copy(Cod,2,1)) ;
+
+    DAux := (Par*3) + Impar ;
+    DAux := DAux / 10 ;
+    Str_Aux := FloatToStr(DAux) ;
+    if Pos(',', Str_Aux) > 0 then
+    begin
+      Digito := Copy(Str_Aux, Pos(',', Str_Aux)+1,1) ;
+      Digito := floattostr(10 - strtofloat(Digito)) ;
+    end
+    else
+      Digito := '0' ;
+
+    DigitVerifEAN := Digito ;
+  end ;
+
+  {***********  EAN8 ***********}
+  if Length(Cod) = 7 Then
+  begin
+    Impar := StrtoInt(Copy(Cod,01,1)) +
+             StrtoInt(Copy(Cod,03,1)) +
+             StrtoInt(Copy(Cod,05,1)) +
+             StrtoInt(Copy(Cod,07,1)) ;
+
+    Par := StrtoInt(Copy(Cod,02,1)) +
+           StrtoInt(Copy(Cod,04,1)) +
+           StrtoInt(Copy(Cod,06,1)) ;
+
+    DAux := (Par*3)+Impar ;
+    DAux := DAux / 10 ;
+    Str_Aux := FloatToStr(DAux) ;
+    if Pos(',', Str_Aux) > 0 then
+    begin
+      Digito := Copy(Str_Aux, Pos(',', Str_Aux)+1,1) ;
+      Digito := floattostr(10 - strtofloat(Digito)) ;
+    end
+    else
+      Digito := '0' ;
+
+    DigitVerifEAN := Digito ;
+  end ;
+
+  {***********  EAN13 ***********}
+  if Length(Cod) = 12 Then
+  begin
+    Impar := StrtoInt(Copy(Cod,01,1)) +
+             StrtoInt(Copy(Cod,03,1)) +
+             StrtoInt(Copy(Cod,05,1)) +
+             StrtoInt(Copy(Cod,07,1)) +
+             StrtoInt(Copy(Cod,09,1)) +
+             StrtoInt(Copy(Cod,11,1)) ;
+
+    Par := StrtoInt(Copy(Cod,02,1)) +
+           StrtoInt(Copy(Cod,04,1)) +
+           StrtoInt(Copy(Cod,06,1)) +
+           StrtoInt(Copy(Cod,08,1)) +
+           StrtoInt(Copy(Cod,10,1))+
+           StrtoInt(Copy(Cod,12,1)) ;
+
+    DAux := (Par*3)+Impar ;
+    DAux := DAux / 10 ;
+    Str_Aux := FloatToStr(DAux) ;
+    if Pos(',', Str_Aux) > 0 then
+    begin
+      Digito := Copy(Str_Aux, Pos(',', Str_Aux)+1,1) ;
+      Digito := floattostr(10 - strtofloat(Digito)) ;
+    end
+    else
+      Digito := '0' ;
+
+    DigitVerifEAN := Digito ;
+  end ;
+
+  {***********  DUN14 ***********}
+  if Length(Cod) = 13 Then
+  begin
+    Impar := StrtoInt(Copy(Cod,01,1)) +
+             StrtoInt(Copy(Cod,03,1)) +
+             StrtoInt(Copy(Cod,05,1)) +
+             StrtoInt(Copy(Cod,07,1)) +
+             StrtoInt(Copy(Cod,09,1)) +
+             StrtoInt(Copy(Cod,11,1)) +
+             StrtoInt(Copy(Cod,13,1)) ;
+
+    Par := StrtoInt(Copy(Cod,02,1)) +
+           StrtoInt(Copy(Cod,04,1)) +
+           StrtoInt(Copy(Cod,06,1)) +
+           StrtoInt(Copy(Cod,08,1)) +
+           StrtoInt(Copy(Cod,10,1))+
+           StrtoInt(Copy(Cod,12,1)) ;
+
+    DAux := (Impar*3)+Par ;
+    DAux := DAux / 10 ;
+    Str_Aux := FloatToStr(DAux) ;
+    if Pos(',', Str_Aux) > 0 then
+    begin
+      Digito := Copy(Str_Aux, Pos(',', Str_Aux)+1,1) ;
+      Digito := floattostr(10 - strtofloat(Digito)) ;
+    end
+    else
+      Digito := '0' ;
+
+    DigitVerifEAN := Digito ;
+  end ;
+end ;
+
+
+procedure LancaMovimentacaoBanco(Empresa,ContaCorrente,Operacao,NroCheque : integer;ValorMov:Double; BomPara, DtBaixa, DtMovimento:TDateTime; Historico,Favorecido, IDContasReceber, IDContasPagar, IDChqEmitido, IDPlanoContas : String);
+var
+  SQLConta,SQLOperacao,SQLLancamento,SQLGeral : TRxQuery;
+  ProximoCodigo : Double;
+  IDMovBanco : String;
+begin
+  SQLConta := TRxQuery.Create(DM);
+  SQLConta.DatabaseName := 'DB';
+  SQLConta.Close;
+  SQLConta.SQL.Clear;
+  SQLConta.SQL.Add('SELECT * FROM CONTACORRENTE WHERE CTCRICOD = ' + IntToStr(ContaCorrente));
+  SQLConta.Open;
+  if SQLConta.IsEmpty then
+    begin
+      Informa('Conta Corrente não encontrada !');
+      Exit;
+    end;
+  SQLOperacao := TRxQuery.Create(DM);
+  SQLOperacao.DatabaseName := 'DB';
+  SQLOperacao.Close;
+  SQLOperacao.SQL.Clear;
+  SQLOperacao.SQL.Add('SELECT * FROM OPERACAOBANCO WHERE OPBCICOD = ' + IntToStr(Operacao));
+  SQLOperacao.Open;
+  if SQLOperacao.IsEmpty then
+    begin
+      Informa('Operação Bancária não encontrada !');
+      Exit;
+    end;
+  SQLLancamento := TRxQuery.Create(DM);
+  SQLLancamento.DatabaseName := 'DB';
+  SQLGeral := TRxQuery.Create(DM);
+  SQLGeral.DatabaseName := 'DB';
+  // Inicia Transação
+//  Dm.DB.StartTransaction;
+  if SQLOperacao.FindField('OPBCCALTSALDO').AsVariant <> Null then
+    begin
+      if SQLOperacao.FindField('OPBCCALTSALDO').AsString[1] = 'S' then
+        begin
+          SQLLancamento.Close;
+          // CAMPOS
+          SQLLancamento.SQL.Add('INSERT INTO MOVIMENTOBANCO (');
+          SQLLancamento.SQL.Add('MVBCA13ID, ');
+          SQLLancamento.SQL.Add('EMPRICOD, ');
+          SQLLancamento.SQL.Add('MVBCICOD, ');
+          SQLLancamento.SQL.Add('MVBCDLANC, ');
+          SQLLancamento.SQL.Add('BANCA5COD, ');
+          SQLLancamento.SQL.Add('CTCRICOD, ');
+          SQLLancamento.SQL.Add('MVBCA6NROCHQ, ');
+          SQLLancamento.SQL.Add('MVBCN2VLRDEB, ');
+          SQLLancamento.SQL.Add('MVBCN2VLRCRED, ');
+          SQLLancamento.SQL.Add('MVBCDCHQBOMPARA, ');
+          SQLLancamento.SQL.Add('MVBCDCHQBAIXA, ');
+          SQLLancamento.SQL.Add('MVBCA254HIST, ');
+          SQLLancamento.SQL.Add('MVBCA60FAVORECIDO, ');
+          SQLLancamento.SQL.Add('OPBCICOD, ');
+          SQLLancamento.SQL.Add('CTRCA13ID, ');
+          SQLLancamento.SQL.Add('CTPGA13ID, ');
+          SQLLancamento.SQL.Add('CQEMA13ID, ');
+          SQLLancamento.SQL.Add('PENDENTE, ');
+          SQLLancamento.SQL.Add('REGISTRO, ');
+          SQLLancamento.SQL.Add('PLCTA15COD)');
+          SQLLancamento.SQL.Add('VALUES (');
+          // VALORES
+          {Capturando o próximo código}
+          SQLGeral.Close;
+          SQLGeral.SQL.Add('SELECT MAX(MVBCICOD) FROM MOVIMENTOBANCO');
+          SQLGeral.Open;
+          if SQLGeral.IsEmpty then
+             ProximoCodigo := 1
+          else
+             ProximoCodigo := SQLGeral.FindField('MAX').AsFloat + 1;
+          IDMovBanco := FormatFloat('000',Empresa) ;
+          IDMovBanco := IDMovBanco + FormatFloat('000000000',ProximoCodigo);
+          IDMovBanco := IDMovBanco + DigitVerifEAN(IDMovBanco);
+          SQLLancamento.SQL.Add('"' + IDMovBanco + '"'+',');
+          SQLLancamento.SQL.Add(IntToStr(Empresa)+', ');
+          SQLLancamento.SQL.Add(FloatToStr(ProximoCodigo)+', ');
+          SQLLancamento.SQL.Add('"' + FormatDateTime('mm/dd/yyyy',DtMovimento)+'"'+ ', '); // Lancamento
+          SQLLancamento.SQL.Add(SQLConta.FindField('BANCA5COD').AsString + ', ');
+          SQLLancamento.SQL.Add(IntToStr(ContaCorrente) + ', ');
+          if NroCheque > 0 then
+            SQLLancamento.SQL.Add('"' + IntToStr(NroCheque)+'"'+', ')
+          else
+            SQLLancamento.SQL.Add('Null, ');
+          Case SQLOperacao.FindField('OPBCCTIPO').AsString[1] of
+            'D' : begin
+                    SQLLancamento.SQL.Add(ConvFloatToStr(ValorMov) + ', ');//ValorDebito
+                    SQLLancamento.SQL.Add('0, ');//ValorCredito
+                  end;
+            'C' : begin
+                    SQLLancamento.SQL.Add('0, ');//ValorDebito
+                    SQLLancamento.SQL.Add(ConvFloatToStr(ValorMov)+', ');//ValorCredito
+                  end;
+          end;
+
+          if BomPara > 0 then
+            SQLLancamento.SQL.Add('"' + FormatDateTime('mm/dd/yyyy',BomPara)+'"'+ ', ')
+          else
+            SQLLancamento.SQL.Add('Null, ');
+
+          if DtBaixa > 0 then
+            SQLLancamento.SQL.Add('"' + FormatDateTime('mm/dd/yyyy',DtBaixa)+'"'+ ', ')
+          else
+            SQLLancamento.SQL.Add('Null, ');
+
+          if Historico <> '' then
+            SQLLancamento.SQL.Add('"'+Historico +'"'+', ')
+          else
+            SQLLancamento.SQL.Add('Null, ');
+
+          if Favorecido <> '' then
+            SQLLancamento.SQL.Add('"'+Favorecido +'"'+', ')
+          else
+            SQLLancamento.SQL.Add('Null, ');
+
+          SQLLancamento.SQL.Add(IntToStr(Operacao)+ ', ');
+
+          if IDContasReceber <> '' then
+            SQLLancamento.SQL.Add('"' + IDContasReceber + '" ,')
+          else
+            SQLLancamento.SQL.Add('Null ,');
+
+          if IDContasPagar <> '' then
+            SQLLancamento.SQL.Add('"' + IDContasPagar + '" ,')
+          else
+            SQLLancamento.SQL.Add('Null ,');
+
+          if IDChqEmitido <> '' then
+            SQLLancamento.SQL.Add('"' + IDChqEmitido + '" ,')
+          else
+            SQLLancamento.SQL.Add('Null ,');
+
+          SQLLancamento.SQL.Add('"S", ');
+          SQLLancamento.SQL.Add('"' + FormatDateTime('mm/dd/yyyy hh:nn:ss',Now)+'" ,');
+
+          if IDPlanoContas <> '' then
+            SQLLancamento.SQL.Add('"' + IDPlanoContas + '"' + ' )')
+          else
+            SQLLancamento.SQL.Add('NULL )');
+
+          SQLLancamento.ExecSQL;
+//          Dm.DB.Commit;
+          Case SQLOperacao.FindField('OPBCCTIPO').AsString[1] of
+            'D' : begin
+                    AtualizaSaldoContaCorrente(ContaCorrente,ValorMov,0);
+                  end;
+            'C' : begin
+                    AtualizaSaldoContaCorrente(ContaCorrente,0,ValorMov);
+                  end;
+          end;
+        end
+      else
+        begin
+          Informa('Esta operação bancária não pode alterar o saldo da conta corrente. A Operação será cancelada !');
+//          Dm.DB.Rollback;
+          Exit;
+        end;
+    end
+  else
+    begin
+      Informa('A operação bancária não foi configurada corretamente. Verifique !');
+//      Dm.DB.Rollback;
+      Exit;
+    end;
+  SQLConta.Destroy;
+  SQLGeral.Destroy;
+  SQLOperacao.Destroy;
+  SQLLancamento.Destroy;
+
+end;
+
+function ConvFloatToStr(Numero : Double) : string ;
+var
+  Wstr : string ;
+begin
+  ConvFloatToStr := '0.00' ;
+  if Numero <> null then
+  begin
+    Wstr := FloatToStr(Numero) ;
+    ConvFloatToStr := Wstr ;
+    if Pos(',', Wstr) > 0 then
+      ConvFloatToStr := Copy(Wstr, 1, Pos(',', Wstr)-1) + '.' + Copy(Wstr, Pos(',', Wstr)+1, 3)
+  end
+  else ConvFloatToStr := '0.00' ;
+end ;
+
+function TiraPontoMilhar(Numero : Double) : Double ;
+var
+  Wstr : string ;
+  WNum : Double ;
+begin
+  TiraPontoMilhar := 0.00 ;
+  if Numero <> null then
+  begin
+    {Wstr := FloatToStr(Numero) ;
+    Delete(WStr, 1,Pos('.', Wstr)) ;}
+    WNum := StrToFloat(FloatToStr(Numero)) ;
+    TiraPontoMilhar := WNum ;
+  end ;
+end ;
 
 procedure InformaErro(Texto:string; Abortar: Boolean; SetarFoco: TWinControl) ;
 begin
@@ -209,6 +701,64 @@ begin
       ShowMessage('Erro sql: ' + xsql + ' - ' + e.Message);
   end;
 end;
+
+procedure AtualizaTotaisCabecalhoContasPagar(NroDocumento : string) ;
+var
+  PAGAN2VLRRECTO,
+  PAGAN2VLRJURO,
+  PAGAN2DESC,
+  PAGAN2VLRMULTA : double ;
+  DATAULTPAG     : TDateTime ;
+begin
+  PAGAN2VLRRECTO := 0 ;
+  PAGAN2VLRJURO  := 0 ;
+  PAGAN2DESC     := 0 ;
+  PAGAN2VLRMULTA := 0 ;
+  DATAULTPAG     := 0 ;
+
+  DM.SQLTemplate.Close ;
+  DM.SQLTemplate.SQL.Clear ;
+  DM.SQLTemplate.SQL.Add('select sum(PAGAN3VLRPAGTO) AS RECTO,') ;
+  DM.SQLTemplate.SQL.Add('sum(PAGAN3VLRJURO) AS JURO,') ;
+  DM.SQLTemplate.SQL.Add('sum(PAGAN3VLRDESC) AS DESCO,') ;
+  DM.SQLTemplate.SQL.Add('sum(PAGAN3VLRMULTA) AS MULTA from PAGAMENTO') ;
+  DM.SQLTemplate.SQL.Add('where CTPGA13ID = "' + NroDocumento + '"') ;
+  DM.SQLTemplate.SQL.Add('group by CTPGA13ID') ;
+  DM.SQLTemplate.Open ;
+  if not DM.SQLTemplate.EOF then
+  begin
+    PAGAN2VLRRECTO := DM.SQLTemplate.FieldByName('RECTO').Value ;
+    PAGAN2VLRJURO  := DM.SQLTemplate.FieldByName('JURO').Value ;
+    PAGAN2DESC     := DM.SQLTemplate.FieldByName('DESCO').Value ;
+    PAGAN2VLRMULTA := DM.SQLTemplate.FieldByName('MULTA').Value ;
+
+    DM.SQLTemplate.Close ;
+    DM.SQLTemplate.SQL.Clear ;
+    DM.SQLTemplate.SQL.Add('select PAGADPAGTO from PAGAMENTO') ;
+    DM.SQLTemplate.SQL.Add('where CTPGA13ID = "' + NroDocumento + '"') ;
+    DM.SQLTemplate.SQL.Add('order by PAGADPAGTO') ;
+    DM.SQLTemplate.Open ;
+    DM.SQLTemplate.Last ;
+    DATAULTPAG := DM.SQLTemplate.FieldByName('PAGADPAGTO').Value ;
+  end ;
+
+  DM.SQLTemplate.Close ;
+  DM.SQLTemplate.SQL.Clear ;
+  DM.SQLTemplate.SQL.Add('update CONTASPAGAR') ;
+  DM.SQLTemplate.SQL.Add('set') ;
+  if DATAULTPAG > 0 then
+    DM.SQLTemplate.SQL.Add('CTPGDULTPAGTO = "'  + FormatDateTime('mm/dd/yyyy', DATAULTPAG) + '", ')
+  else
+    DM.SQLTemplate.SQL.Add('CTPGDULTPAGTO = Null, ') ;
+  DM.SQLTemplate.SQL.Add('CTPGN2TOTPAG = ' + ConvFloatToStr(PAGAN2VLRRECTO) + ', ') ;
+  DM.SQLTemplate.SQL.Add('CTPGN3JUROPAGTO = ' + ConvFloatToStr(PAGAN2VLRJURO)  + ', ') ;
+  DM.SQLTemplate.SQL.Add('CTPGN3MULTAPAGTO = ' + ConvFloatToStr(PAGAN2VLRMULTA) + ', ') ;
+  DM.SQLTemplate.SQL.Add('CTPGN3DESCPAGTO = ' + ConvFloatToStr(PAGAN2DESC) + ', ') ;
+  DM.SQLTemplate.SQL.Add('REGISTRO = "' + FormatDateTime('mm/dd/yyyy hh:mm:ss', Now) + '", ') ;
+  DM.SQLTemplate.SQL.Add('PENDENTE = "S"') ;
+  DM.SQLTemplate.SQL.Add('where CTPGA13ID = "' + NroDocumento + '"') ;
+  DM.SQLTemplate.ExecSQL ;
+end ;
 
 function AutenticaUsuario(UserNameDefault, CAMPO : String; var InfoRetorno:TInfoRetornoUser) : String;
 var

@@ -15,7 +15,7 @@ procedure AtualizaTabelaLookup(DataSet : TDataSet);
 
 implementation
 
-uses UnitLibrary, UnSoundPlay;
+uses UnitLibrary;//, UnSoundPlay;
 
 function ExisteFormulario(NomeFormulario:String):Boolean;
 var

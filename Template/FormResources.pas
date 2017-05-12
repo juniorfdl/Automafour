@@ -80,7 +80,7 @@ begin
         Formulario.Create(Application);
         Form := Application.FindComponent(NomeFormulario);
         (Form as TForm).Name := NomeFormulario;
-        if Retaguarda Then
+        if bRetaguarda Then
           begin
             (Form as TForm).FormStyle   := FsMDIChild;
             (Form as TForm).WindowState := wsMaximized;

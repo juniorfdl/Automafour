@@ -2,7 +2,6 @@ inherited DM: TDM
   OldCreateOrder = True
   inherited DB: TDatabase
     AliasName = 'Easy_Gestao'
-    Connected = False
   end
   object SQLConfigGeral: TRxQuery
     DatabaseName = 'DB'
