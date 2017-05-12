@@ -11,3 +11,6 @@ vendor/
 *.so
 # Para todos os arquivos e sub-pastas localizados na pasta bower_components/
 bower_components/
+*.~pas
+Oficial/ArquivosComuns/WaitWindow.dcu
+*.dcu

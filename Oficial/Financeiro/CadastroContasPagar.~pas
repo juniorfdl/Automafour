@@ -674,6 +674,7 @@ var
   RetornoUsuario : TInfoRetornoUser;
 begin
   inherited;
+  
   {if not UsuarioMaster then  #ver
     begin
       if AutenticaUsuario(UsuarioAtualNome,'USUACUSERMASTER',RetornoUsuario) = 'S' then
