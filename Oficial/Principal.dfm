@@ -9,7 +9,7 @@ inherited FormPrincipal: TFormPrincipal
   PixelsPerInch = 96
   TextHeight = 13
   inherited RodapePrincipal: TStatusBar
-    Top = 450
+    Top = 449
     Width = 1256
   end
   inherited ptopo: TAdvOfficeStatusBar
@@ -20,8 +20,8 @@ inherited FormPrincipal: TFormPrincipal
     object RxLabel5: TRxLabel
       Left = 11
       Top = 10
-      Width = 259
-      Height = 40
+      Width = 258
+      Height = 39
       Caption = 'M'#243'dulo Retaguarda'
       Font.Charset = ANSI_CHARSET
       Font.Color = clBlack
@@ -2309,8 +2309,9 @@ inherited FormPrincipal: TFormPrincipal
     Top = 56
     object Cadastros1: TMenuItem [0]
       Caption = 'Cadastros'#9
-      object Produtos1: TMenuItem
+      object MnADMCadastroProduto: TMenuItem
         Caption = 'Produtos'
+        OnClick = MnADMCadastroProdutoClick
       end
       object Clientes1: TMenuItem
         Caption = 'Clientes'

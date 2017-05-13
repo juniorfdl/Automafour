@@ -49,7 +49,7 @@ type
     Contabil1: TMenuItem;
     SPEDFiscal1: TMenuItem;
     Cadastros1: TMenuItem;
-    Produtos1: TMenuItem;
+    MnADMCadastroProduto: TMenuItem;
     Clientes1: TMenuItem;
     Fornecedores1: TMenuItem;
     Vendedores1: TMenuItem;
@@ -313,6 +313,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure MnRelMovimentoCaixaFaturamentoClick(Sender: TObject);
     procedure MnFINPagarLancamentosClick(Sender: TObject);
+    procedure MnADMCadastroProdutoClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -325,7 +326,7 @@ var
 implementation
 
 uses DataModulo, UnSoundPlay, UnitLibrary, CadastroContasPagar,
-  TelaLembreteTarefa;
+  TelaLembreteTarefa, CadastroProdutos;
 
 {uses CadastroCliente, CadastroTemplate, CadastroTipoCliente, CadastroBanco,
   CadastroTipoDocumento, CadastroPortador, CadastroClasse, CadastroPedidoVenda,
@@ -1090,6 +1091,15 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     CriaFormulario(TFormCadastroContasPagar, 'FormCadastroContasPagar',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnADMCadastroProdutoClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroProduto,'FormCadastroProduto',False,False,False,'')
   else
     SoundPlay('Acesso Negado.wav',Sender);
 end;

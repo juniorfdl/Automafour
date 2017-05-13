@@ -91,7 +91,7 @@ begin
   end;
  }
 
-  if DM.SQLUsuarioUSUAA5SENHA.Value = EditSenha.Text then
+  if DM.SQLUsuario.FieldByName('USUAA5SENHA').Value = EditSenha.Text then
   begin
     ModalResult := mrOk ;
   end
@@ -105,21 +105,21 @@ begin
   end ;
 
   UsuarioMaster := False;
-  if DM.SQLUsuarioUSUACUSERMASTER.AsString = 'S' then
+  if DM.SQLUsuario.FieldByName('USUACUSERMASTER').AsString = 'S' then
     UsuarioMaster := True
   else
     UsuarioMaster := False;
 
-  if dm.SQLUsuarioUSUACPERMITEFAT.Value <> 'S' then
+  if dm.SQLUsuario.FieldByName('USUACPERMITEFAT').Value <> 'S' then
     begin
       //SoundPlay('Acesso Negado.wav',Sender);
       ShowMessage('Atenção! Usuário não possui permissão para entrar no módulo Faturamento!');
       Application.Terminate;
     end;
 
-  DM.UsuarioAtual   := DM.SQLUsuarioUSUAICOD.Value;
-  UsuarioAtualNome  := DM.SQLUsuarioUSUAA60LOGIN.Value;
-  UsuarioCorrente   := DM.SQLUsuarioUSUAICOD.Value;
+  DM.UsuarioAtual   := DM.SQLUsuario.FieldByName('USUAICOD').Value;
+  UsuarioAtualNome  := DM.SQLUsuario.FieldByName('USUAA60LOGIN').Value;
+  UsuarioCorrente   := DM.SQLUsuario.FieldByName('USUAICOD').Value;
   TerminalCorrente  := SQLTerminalTermICod.Value;
   TerminalAtual     := TerminalCorrente;
   EmpresaPadrao     := SQLTerminalEMPRICOD.AsString;

@@ -8,6 +8,7 @@ uses
 
 function  ExisteFormulario(NomeFormulario : String) : Boolean;
 function  CriaFormulario(Formulario : TFormClass; NomeFormulario : String; Detail, Retorno, AbreTabela : Boolean;Titulo:String):Integer;
+
 procedure PreencherLookup(DataSet: TDataSet;
   Tabela: string; CampoChave, Valores: array of string; NumCampos: Integer;
   CampoLookup, CampoResultado: string);

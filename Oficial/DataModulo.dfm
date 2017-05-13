@@ -246,46 +246,6 @@ inherited DM: TDM
       'select * from USUARIO')
     Left = 296
     Top = 24
-    object SQLUsuarioUSUAICOD: TIntegerField
-      FieldName = 'USUAICOD'
-      Origin = 'DB.USUARIO.USUAICOD'
-    end
-    object SQLUsuarioUSUAA60LOGIN: TStringField
-      FieldName = 'USUAA60LOGIN'
-      Origin = 'DB.USUARIO.USUAA60LOGIN'
-      FixedChar = True
-      Size = 60
-    end
-    object SQLUsuarioUSUAA5SENHA: TStringField
-      FieldName = 'USUAA5SENHA'
-      Origin = 'DB.USUARIO.USUAA5SENHA'
-      FixedChar = True
-      Size = 60
-    end
-    object SQLUsuarioUSUACUSERMASTER: TStringField
-      FieldName = 'USUACUSERMASTER'
-      Origin = 'DB.USUARIO.USUACUSERMASTER'
-      FixedChar = True
-      Size = 1
-    end
-    object SQLUsuarioUSUACPERMITEFAT: TStringField
-      FieldName = 'USUACPERMITEFAT'
-      Origin = 'DB.USUARIO.USUACPERMITEFAT'
-      FixedChar = True
-      Size = 1
-    end
-    object SQLUsuarioUSUACPERMITEFIN: TStringField
-      FieldName = 'USUACPERMITEFIN'
-      Origin = 'DB.USUARIO.USUACPERMITEFIN'
-      FixedChar = True
-      Size = 1
-    end
-    object SQLUsuarioUSUACPERMITECASH: TStringField
-      FieldName = 'USUACPERMITECASH'
-      Origin = 'DB.USUARIO.USUACPERMITECASH'
-      FixedChar = True
-      Size = 1
-    end
   end
   object SQLTerminalAtivo: TRxQuery
     DatabaseName = 'DB'
@@ -309,7 +269,253 @@ inherited DM: TDM
     SQL.Strings = (
       'select * from CONFIGVENDA')
     Macros = <>
-    Left = 424
-    Top = 88
+    Left = 432
+    Top = 80
+  end
+  object SQLEmpresa: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'select * from EMPRESA')
+    Macros = <>
+    Left = 221
+    Top = 8
+    object SQLEmpresaEMPRICOD: TIntegerField
+      FieldName = 'EMPRICOD'
+      Origin = 'DB.EMPRESA.EMPRICOD'
+    end
+    object SQLEmpresaEMPRA60RAZAOSOC: TStringField
+      FieldName = 'EMPRA60RAZAOSOC'
+      Origin = 'DB.EMPRESA.EMPRA60RAZAOSOC'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLEmpresaEMPRA60NOMEFANT: TStringField
+      FieldName = 'EMPRA60NOMEFANT'
+      Origin = 'DB.EMPRESA.EMPRA60NOMEFANT'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLEmpresaEMPRCMATRIZFILIAL: TStringField
+      FieldName = 'EMPRCMATRIZFILIAL'
+      Origin = 'DB.EMPRESA.EMPRCMATRIZFILIAL'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLEmpresaEMPRA20FONE: TStringField
+      FieldName = 'EMPRA20FONE'
+      Origin = 'DB.EMPRESA.EMPRA20FONE'
+      FixedChar = True
+    end
+    object SQLEmpresaEMPRA20FAX: TStringField
+      FieldName = 'EMPRA20FAX'
+      Origin = 'DB.EMPRESA.EMPRA20FAX'
+      FixedChar = True
+    end
+    object SQLEmpresaEMPRA60END: TStringField
+      FieldName = 'EMPRA60END'
+      Origin = 'DB.EMPRESA.EMPRA60END'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLEmpresaEMPRA60BAI: TStringField
+      FieldName = 'EMPRA60BAI'
+      Origin = 'DB.EMPRESA.EMPRA60BAI'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLEmpresaEMPRA60CID: TStringField
+      FieldName = 'EMPRA60CID'
+      Origin = 'DB.EMPRESA.EMPRA60CID'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLEmpresaEMPRA2UF: TStringField
+      FieldName = 'EMPRA2UF'
+      Origin = 'DB.EMPRESA.EMPRA2UF'
+      FixedChar = True
+      Size = 2
+    end
+    object SQLEmpresaEMPRA8CEP: TStringField
+      FieldName = 'EMPRA8CEP'
+      Origin = 'DB.EMPRESA.EMPRA8CEP'
+      FixedChar = True
+      Size = 8
+    end
+    object SQLEmpresaEMPRCFISJURID: TStringField
+      FieldName = 'EMPRCFISJURID'
+      Origin = 'DB.EMPRESA.EMPRCFISJURID'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLEmpresaEMPRA14CGC: TStringField
+      FieldName = 'EMPRA14CGC'
+      Origin = 'DB.EMPRESA.EMPRA14CGC'
+      FixedChar = True
+      Size = 14
+    end
+    object SQLEmpresaEMPRA20IE: TStringField
+      FieldName = 'EMPRA20IE'
+      Origin = 'DB.EMPRESA.EMPRA20IE'
+      FixedChar = True
+    end
+    object SQLEmpresaEMPRA11CPF: TStringField
+      FieldName = 'EMPRA11CPF'
+      Origin = 'DB.EMPRESA.EMPRA11CPF'
+      FixedChar = True
+      Size = 11
+    end
+    object SQLEmpresaEMPRA10RG: TStringField
+      FieldName = 'EMPRA10RG'
+      Origin = 'DB.EMPRESA.EMPRA10RG'
+      FixedChar = True
+      Size = 10
+    end
+    object SQLEmpresaEMPRA60EMAIL: TStringField
+      FieldName = 'EMPRA60EMAIL'
+      Origin = 'DB.EMPRESA.EMPRA60EMAIL'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLEmpresaEMPRA60URL: TStringField
+      FieldName = 'EMPRA60URL'
+      Origin = 'DB.EMPRESA.EMPRA60URL'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLEmpresaPENDENTE: TStringField
+      FieldName = 'PENDENTE'
+      Origin = 'DB.EMPRESA.PENDENTE'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLEmpresaREGISTRO: TDateTimeField
+      FieldName = 'REGISTRO'
+      Origin = 'DB.EMPRESA.REGISTRO'
+    end
+    object SQLEmpresaEMPRA100INFSPC: TStringField
+      FieldName = 'EMPRA100INFSPC'
+      Origin = 'DB.EMPRESA.EMPRA100INFSPC'
+      FixedChar = True
+      Size = 100
+    end
+    object SQLEmpresaEMPRBLOGOTIPO: TBlobField
+      FieldName = 'EMPRBLOGOTIPO'
+      Origin = 'DB.EMPRESA.EMPRBLOGOTIPO'
+      Size = 1
+    end
+    object SQLEmpresaEMPRA15CODEAN: TStringField
+      FieldName = 'EMPRA15CODEAN'
+      Origin = 'DB.EMPRESA.EMPRA15CODEAN'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLEmpresaEMPRA60CONTATO: TStringField
+      FieldName = 'EMPRA60CONTATO'
+      Origin = 'DB.EMPRESA.EMPRA60CONTATO'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLEmpresaEMPRCLUCROREAL: TStringField
+      FieldName = 'EMPRCLUCROREAL'
+      Origin = 'DB.EMPRESA.EMPRCLUCROREAL'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLEmpresaEMPRN2VLRFUNDOPROMO: TBCDField
+      FieldName = 'EMPRN2VLRFUNDOPROMO'
+      Origin = 'DB.EMPRESA.EMPRN2VLRFUNDOPROMO'
+      Precision = 15
+      Size = 2
+    end
+    object SQLEmpresaEMPRA3CRT: TStringField
+      FieldName = 'EMPRA3CRT'
+      Origin = 'DB.EMPRESA.EMPRA3CRT'
+      Size = 3
+    end
+    object SQLEmpresaEMPRIENDNRO: TIntegerField
+      FieldName = 'EMPRIENDNRO'
+      Origin = 'DB.EMPRESA.EMPRIENDNRO'
+    end
+    object SQLEmpresaEMPRA75EMAILUSUARIO: TStringField
+      FieldName = 'EMPRA75EMAILUSUARIO'
+      Origin = 'DB.EMPRESA.EMPRA75EMAILUSUARIO'
+      Size = 75
+    end
+    object SQLEmpresaEMPRA50EMAILHOST: TStringField
+      FieldName = 'EMPRA50EMAILHOST'
+      Origin = 'DB.EMPRESA.EMPRA50EMAILHOST'
+      Size = 50
+    end
+    object SQLEmpresaEMPRIEMAILPORTA: TIntegerField
+      FieldName = 'EMPRIEMAILPORTA'
+      Origin = 'DB.EMPRESA.EMPRIEMAILPORTA'
+    end
+    object SQLEmpresaEMPRA50EMAILSENHA: TStringField
+      FieldName = 'EMPRA50EMAILSENHA'
+      Origin = 'DB.EMPRESA.EMPRA50EMAILSENHA'
+      Size = 50
+    end
+    object SQLEmpresaEMPRA1SSL: TStringField
+      FieldName = 'EMPRA1SSL'
+      Origin = 'DB.EMPRESA.EMPRA1SSL'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLEmpresaEMPRA60EMAILCOPIA: TStringField
+      FieldName = 'EMPRA60EMAILCOPIA'
+      Origin = 'DB.EMPRESA.EMPRA60EMAILCOPIA'
+      Size = 60
+    end
+    object SQLEmpresaEMPRA1TSL: TStringField
+      FieldName = 'EMPRA1TSL'
+      Origin = 'DB.EMPRESA.EMPRA1TSL'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLEmpresaEMPRA100CERTIFSERIE: TStringField
+      FieldName = 'EMPRA100CERTIFSERIE'
+      Origin = 'DB.EMPRESA.EMPRA100CERTIFSERIE'
+      Size = 100
+    end
+    object SQLEmpresaEMPRA35CERTIFSENHA: TStringField
+      FieldName = 'EMPRA35CERTIFSENHA'
+      Origin = 'DB.EMPRESA.EMPRA35CERTIFSENHA'
+      Size = 35
+    end
+    object SQLEmpresaEMPRIMUNICODFED: TIntegerField
+      FieldName = 'EMPRIMUNICODFED'
+      Origin = 'DB.EMPRESA.EMPRIMUNICODFED'
+    end
+    object SQLEmpresaEMPRIUFCODFED: TIntegerField
+      FieldName = 'EMPRIUFCODFED'
+      Origin = 'DB.EMPRESA.EMPRIUFCODFED'
+    end
+  end
+  object SqlConsulta: TQuery
+    Left = 352
+    Top = 152
+  end
+  object SQLConfigCompra: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'select * from CONFIGCOMPRAS')
+    Macros = <>
+    Left = 432
+    Top = 136
+  end
+  object SQLConfigInventario: TQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'SELECT * From CONFIGINVENTARIO')
+    Left = 432
+    Top = 184
+    object SQLConfigInventarioOPESICODENTRADA: TIntegerField
+      FieldName = 'OPESICODENTRADA'
+      Origin = 'DB.CONFIGINVENTARIO.OPESICODENTRADA'
+    end
+    object SQLConfigInventarioOPESICODSAIDA: TIntegerField
+      FieldName = 'OPESICODSAIDA'
+      Origin = 'DB.CONFIGINVENTARIO.OPESICODSAIDA'
+    end
   end
 end

@@ -232,7 +232,7 @@ uses DataModulo,  UnitLibrary, WaitWindow, TelaConsultaPagamento,
   TelaAssistenteLancamentoContasPagar, TelaBaixaContasPagarAVista;
 
   //CadastroPortador, CadastroTipoDocumento, CadastroFornecedor,  CadastroPlanodeContas, TelaConsultaEmpresa,
-  //TelaConsultaPlanoContas, CadastroHistoricoPadrao, TelaConsultaPagamento,
+  //TelaConsultaPlanoContas, CadastroHistoricoPadrao, TelaConsultaPagamento,   #ver
   //TelaAssistenteLancamentoContasPagar, TelaBaixaContasPagarAVista
 
 {$R *.dfm}

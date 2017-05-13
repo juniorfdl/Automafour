@@ -9,7 +9,7 @@ inherited FormPrincipal: TFormPrincipal
   PixelsPerInch = 96
   TextHeight = 13
   inherited RodapePrincipal: TStatusBar
-    Top = 450
+    Top = 449
     Width = 1256
   end
   inherited ptopo: TAdvOfficeStatusBar
@@ -20,8 +20,8 @@ inherited FormPrincipal: TFormPrincipal
     object RxLabel5: TRxLabel
       Left = 11
       Top = 10
-      Width = 259
-      Height = 40
+      Width = 258
+      Height = 39
       Caption = 'M'#243'dulo Retaguarda'
       Font.Charset = ANSI_CHARSET
       Font.Color = clBlack
@@ -2309,8 +2309,9 @@ inherited FormPrincipal: TFormPrincipal
     Top = 56
     object Cadastros1: TMenuItem [0]
       Caption = 'Cadastros'#9
-      object Produtos1: TMenuItem
+      object MnADMCadastroProduto: TMenuItem
         Caption = 'Produtos'
+        OnClick = MnADMCadastroProdutoClick
       end
       object Clientes1: TMenuItem
         Caption = 'Clientes'
@@ -2504,7 +2505,7 @@ inherited FormPrincipal: TFormPrincipal
       object PrVenda1: TMenuItem
         Caption = 'Pr'#233'-Venda'
         object ApagarPrevenda7Dias1: TMenuItem
-          Caption = 'Apagar Prevenda 7 Dias'
+          Caption = 'Apagar Pr'#233'-venda 7 Dias'
         end
         object ApagarOramento30Dias1: TMenuItem
           Caption = 'Apagar Or'#231'amento 30 Dias'
@@ -2580,7 +2581,7 @@ inherited FormPrincipal: TFormPrincipal
     object Servio1: TMenuItem [6]
       Caption = 'Servi'#231'o'
       object OrdemdeServioMecanica1: TMenuItem
-        Caption = 'Ordem de Servi'#231'o - Mecanica'
+        Caption = 'Ordem de Servi'#231'o - Mec'#226'nica'
       end
       object GrupodeServio1: TMenuItem
         Caption = 'Grupo de Servi'#231'o'
@@ -2689,7 +2690,7 @@ inherited FormPrincipal: TFormPrincipal
             Caption = 'Movimenta'#231#227'o de Caixa'
           end
           object otaisporNumerario1: TMenuItem
-            Caption = 'Totais por Numerario'
+            Caption = 'Totais por Numer'#225'rio'
           end
           object otalizadoresdeCaixa1: TMenuItem
             Caption = 'Totalizadores de Caixa'
@@ -2737,10 +2738,10 @@ inherited FormPrincipal: TFormPrincipal
             Caption = 'Por Marca e Refer'#234'ncia'
           end
           object PosioDiariadeEstoque1: TMenuItem
-            Caption = 'Posi'#231#227'o Diaria de Estoque'
+            Caption = 'Posi'#231#227'o Di'#225'ria de Estoque'
           end
           object ransferenciadeProdutos1: TMenuItem
-            Caption = 'Transferencia de Produtos'
+            Caption = 'Transfer'#234'ncia de Produtos'
           end
           object SaldoporLote1: TMenuItem
             Caption = 'Saldo por Lote'
@@ -2776,10 +2777,10 @@ inherited FormPrincipal: TFormPrincipal
             Caption = 'Curva ABC de Venda (Clientes)'
           end
           object ndicedeInadimplenciaPeriodo1: TMenuItem
-            Caption = #205'ndice de Inadimplencia Periodo'
+            Caption = #205'ndice de Inadimpl'#234'ncia Per'#237'odo'
           end
           object ndicedeInadimplenciaUltimos6Anos1: TMenuItem
-            Caption = #205'ndice de Inadimplencia Ultimos 6 Anos'
+            Caption = #205'ndice de Inadimpl'#234'ncia '#218'ltimos 6 Anos'
           end
           object ResumodeOperaes1: TMenuItem
             Caption = 'Resumo de Opera'#231#245'es'

@@ -167,10 +167,834 @@ procedure LancaMovimentacaoBanco(Empresa,ContaCorrente,Operacao,NroCheque : inte
 Function DigitVerifEAN(Cod:string) : string ;
 procedure AtualizaSaldoContaCorrente(ContaCorrente : Integer; ValorDebito,ValorCredito : Double);
 procedure LancaMovimentacaoTesouraria(Empresa,Terminal,Numerario,OperacaoTes : Integer;Valor : Double;Historico, IDContaPagar, IDContaReceber, IDCheque, IDFechaCaixa : String; DataMovimento : TDateTime; DocOrigem: String ; PlanoContas : String);
+function ValidaCPF(CPF: string): boolean;
+function ValidaCGC(CGC: string): boolean;
+function GeraCodigoBarras(CodigoBase:String):String;
+function IsNumeric(Valor, Tipo : String) : boolean ;
+function TrocaVirgulaPorPonto(Numero : String) : string ;
+function TrocaPontoPorVirgula(Numero : String) : string ;
+function  RetornaUltimaCotacaoMoeda(Dia : TDateTime; Moeda : String): Double;
+function ArredondaValor1(Valor : Double;NroCasasDec:Integer) : Double;
+procedure LancaReajustePreco(ValorVenda,ValorCompra,ValorCompraMedio,ValorCusto,ValorCustoMedio,Margem:Double; Produto:Integer);
+function CalculaMargemLucro(Produto:Integer;ValorBase,ValorVenda:Double):Double;
+function CalculaPrecoVenda(Produto:Integer;ValorBase,MargemLucro:Double):Double;
+function ArredondaValor(Valor : Double;NroCasasDec:Integer) : Double;
+function EncontrouProduto(Codigo:string;Tabela:TObject):Boolean;
+Function PosicaoGrade(Grade,Tamanho:Integer):Integer;
+procedure GravaMovimentoEstoque(SqlProd,
+                                SQLProdFilho,
+                                SQLProdSald : TQuery;
+                                EmprCod,
+                                ProdCod,
+                                Operacao:integer;
+                                Quant:double;
+                                EntrSai,
+                                DataHora,
+                                Valor,
+                                TipoMov,
+                                NumDocOrig,
+                                Lote : String) ;
 
 implementation
 
 uses DataModulo, TelaAutenticaUsuario;
+
+procedure GravaMovimentoEstoque(SqlProd,
+                                SQLProdFilho,
+                                SQLProdSald : TQuery;
+                                EmprCod,
+                                ProdCod,
+                                Operacao:integer;
+                                Quant:double;
+                                EntrSai,
+                                DataHora,
+                                Valor,
+                                TipoMov,
+                                NumDocOrig,
+                                Lote : String) ;
+procedure GravaMovimento(Produto,ProdutoFilho : Integer);
+var
+  ProxCod : integer ;
+  SairMov : Boolean;
+  QueryProduto : TQuery;
+  CodProduto : Integer;
+  QuantOrigem : Double;
+  TipoBaixa : String;
+begin
+  TipoBaixa := dm.SQLLocate('PRODUTO','PRODICOD','PRODCTIPOBAIXA', IntToStr(Produto));
+  if (TipoBaixa = 'N') or (TipoBaixa = 'F') then
+    exit;
+
+  SairMov := False ;
+  while not SairMov do
+  begin
+    //TENTA CRIAR REGISTRO INICIAL NA TABELA PRODUTOSALDO
+    DM.SQLTemplate.Close ;
+    DM.SQLTemplate.SQL.Clear ;
+    DM.SQLTemplate.SQL.Add('select PRODICOD from PRODUTOSALDO where EMPRICOD='+IntToStr(EmprCod)+' and PRODICOD='+IntToStr(Produto)) ;
+    DM.SQLTemplate.open;
+    if DM.SQLTemplate.IsEmpty then
+      begin
+        DM.SQLTemplate.Close ;
+        DM.SQLTemplate.SQL.Clear ;
+        DM.SQLTemplate.SQL.Add('Insert Into PRODUTOSALDO') ;
+        DM.SQLTemplate.SQL.Add('(EMPRICOD,') ;
+        DM.SQLTemplate.SQL.Add('PRODICOD,') ;
+        DM.SQLTemplate.SQL.Add('PSLDN3QTDE,') ;
+        DM.SQLTemplate.SQL.Add('PSLDN3QTDMIN,') ;
+        DM.SQLTemplate.SQL.Add('PSLDN3QTDMAX)') ;
+        DM.SQLTemplate.SQL.Add('values(') ;
+        DM.SQLTemplate.SQL.Add(IntToStr(EmprCod) + ', ')  ; //EMPRICOD
+        DM.SQLTemplate.SQL.Add(IntToStr(Produto) + ', ')  ; //PRODICOD
+        DM.SQLTemplate.SQL.Add('0, ') ;//PSLDN3QTDE
+        DM.SQLTemplate.SQL.Add('0, ') ;//PSLDN3QTDMIN
+        DM.SQLTemplate.SQL.Add('0) ') ;//PSLDN3QTDMAX
+        try
+          DM.SQLTemplate.ExecSQL;
+          Application.ProcessMessages;
+        except
+          Application.ProcessMessages;
+        end;
+      end;
+    //PEGAR PROXIMO CODIGO MOVIMENTO DE ESTOQUE
+    DM.SQLTemplate.Close ;
+    DM.SQLTemplate.SQL.Clear ;
+    DM.SQLTemplate.SQL.Add('select Max(MVESICOD) as CONTADOR from MOVIMENTOESTOQUE') ;
+    DM.SQLTemplate.SQL.Add('where EMPRICOD = ' + IntToStr(EmprCod)) ;
+    DM.SQLTemplate.SQL.Add('and   MVESDMOV = "' + DataHora + '"') ;
+    DM.SQLTemplate.Open ;
+    if (DM.SQLTemplate.FieldByName('CONTADOR').AsFloat <= 0) or not(DM.SQLTemplate.FieldByName('CONTADOR').IsNull) then
+      ProxCod := DM.SQLTemplate.FieldByName('CONTADOR').AsInteger + 1
+    else
+      ProxCod := 1 ;
+
+    //ROTINA PARA GRAVAR MOVIMENTO DO ESTOQUE(EXTRATO DE ESTOQUE)
+    DM.SQLTemplate.Close ;
+    DM.SQLTemplate.SQL.Clear ;
+    DM.SQLTemplate.SQL.Add('Insert Into MOVIMENTOESTOQUE') ;
+    DM.SQLTemplate.SQL.Add('(EMPRICOD, ') ;
+    DM.SQLTemplate.SQL.Add('MVESDMOV, ') ;
+    DM.SQLTemplate.SQL.Add('MVESICOD, ') ;
+    DM.SQLTemplate.SQL.Add('PRODICOD, ') ;
+    DM.SQLTemplate.SQL.Add('OPESICOD, ') ;
+    DM.SQLTemplate.SQL.Add('MVESN3QTDENTRADA, ') ;
+    DM.SQLTemplate.SQL.Add('MVESN3QTDSAIDA, ') ;
+
+    if AnsiUpperCase(TipoMov) = 'CUPOM' then
+      DM.SQLTemplate.SQL.Add('CUPOA13ID, ') ;
+
+    if AnsiUpperCase(TipoMov) = 'NOTACOMPRA' then
+      DM.SQLTemplate.SQL.Add('NOCPA13ID, ') ;
+
+    if AnsiUpperCase(TipoMov) = 'NOTAFISCAL' then
+      DM.SQLTemplate.SQL.Add('NOFIA13ID, ') ;
+
+    if AnsiUpperCase(TipoMov) = 'PEDIDOVENDA' then
+      DM.SQLTemplate.SQL.Add('PDVDA13ID, ') ;
+
+    if AnsiUpperCase(TipoMov) = 'MOVIMENTOSDIVERSOS' then
+      DM.SQLTemplate.SQL.Add('MOVDA13ID, ') ;
+
+    DM.SQLTemplate.SQL.Add('LOTEA30NRO, ') ;
+    DM.SQLTemplate.SQL.Add('MVESCESTOQUEOK, ') ;
+    DM.SQLTemplate.SQL.Add('PENDENTE, ') ;
+    DM.SQLTemplate.SQL.Add('REGISTRO)') ;
+    DM.SQLTemplate.SQL.Add('values(') ;
+    DM.SQLTemplate.SQL.Add(IntToStr(EmprCod) + ', ')  ; //EMPRICOD
+    DM.SQLTemplate.SQL.Add('"' + DataHora + '", ')    ; //MVESDMOV
+    DM.SQLTemplate.SQL.Add(IntToStr(ProxCod) +', ')   ; //MVESICOD
+    DM.SQLTemplate.SQL.Add(IntToStr(Produto) + ', ')  ; //PRODICOD
+    DM.SQLTemplate.SQL.Add(IntToStr(Operacao) + ', ') ; //OPESICOD
+
+    // Retorna Capacidade de Embalagem do Produto Filho;
+    try
+      if ProdutoFilho > 0 then
+        begin
+          CodProduto := ProdutoFilho;
+          QueryProduto := TQuery.Create(DM);
+          QueryProduto.DatabaseName := 'DB';
+          QueryProduto.Close;
+          QueryProduto.SQL.Clear;
+          QueryProduto.SQL.Add('SELECT PRODN3CAPACEMBAL FROM PRODUTO WHERE PRODICOD = ' + IntToStr(CodProduto));
+          QueryProduto.Open;
+          QuantOrigem := 0;
+          if not QueryProduto.IsEmpty then
+            begin
+              QuantOrigem := Quant;
+              if QueryProduto.FieldByName('PRODN3CAPACEMBAL').AsFloat > 1 then
+                Quant := Quant * QueryProduto.FieldByName('PRODN3CAPACEMBAL').AsInteger;
+            end;
+        end;
+    except
+      Application.ProcessMessages;
+    end;
+    if (EntrSai = 'E') or (EntrSai = 'D') then
+      begin
+        DM.SQLTemplate.SQL.Add(ConvFloatToStr(Quant) + ', ') ;//MVESN3QTDENTRADA
+        DM.SQLTemplate.SQL.Add('0, ') ;//MVESN3QTDSAIDA
+      end ;
+    if EntrSai = 'S' then
+      begin
+        DM.SQLTemplate.SQL.Add('0, ') ;//MVESN3QTDENTRADA
+        DM.SQLTemplate.SQL.Add(ConvFloatToStr(Quant) + ', ') ;//MVESN3QTDSAIDA
+      end ;
+
+    DM.SQLTemplate.SQL.Add('"'+ NumDocOrig + '", ') ;
+
+    if Lote <> '' then
+      DM.SQLTemplate.SQL.Add('"'+ LOTE + '", ')
+    else
+      DM.SQLTemplate.SQL.Add('null, ') ; //LOTE
+
+    DM.SQLTemplate.SQL.Add('"N", ') ; //STATUS DO MOVIMENTO PARA IMPORTACAO DE LOG
+    DM.SQLTemplate.SQL.Add('"S", ') ; //PENDENTE
+    DM.SQLTemplate.SQL.Add('"' + FormatDateTime('mm/dd/yyyy hh:mm:ss', Now) + '")') ; //REGISTRO
+    try
+      DM.SQLTemplate.ExecSQL;
+      SairMov := True;
+      Application.ProcessMessages;
+      if QuantOrigem > 0 then
+        Quant := QuantOrigem;
+    except
+      SairMov := False;
+      Application.ProcessMessages;
+      Sleep(1);
+    end;
+  end;
+end;
+var
+  Sair    : boolean;
+  ProdutoComp : TQuery;
+begin
+  if ProdCod = 0 then
+    exit;
+
+  SqlProd.Close;
+  SqlProd.SQL.Clear;
+  SqlProd.SQL.Add('Select * from PRODUTO');
+  SqlProd.SQL.Add('Where PRODICOD = ' + IntToStr(ProdCod));
+  SqlProd.Open;
+
+  SQLProdFilho.Close;
+  SQLProdFilho.SQL.Clear;
+  SQLProdFilho.SQL.Add('SELECT * FROM PRODUTOCOMPOSICAO WHERE PRODICOD = ' + IntToStr(ProdCod));
+  SQLProdFilho.Open;
+
+  SQLProdSald.Close;
+  SQLProdSald.Open;
+
+  if not SqlProd.EOF then
+    Begin
+      // EFETUA A BAIXA DOS PRODUTOS QUE FAZEM PARTE DA COMPOSICAO
+      if (SqlProd.FieldByName('PRODCTIPOBAIXA').Value = 'F') then
+        begin
+          SQLProdFilho.First;
+          while not SQLProdFilho.EOF do
+            begin
+              Sair := False ;
+              while not Sair do
+                begin
+                  try
+                    GravaMovimento(SQLProdFilho.FindField('PRODICODFILHO').AsInteger,0);
+                    Sair := true;
+                    Application.ProcessMessages;
+                  except
+                    Sair := False;
+                    Application.ProcessMessages;
+                    Sleep(1);
+                  end;
+                end;
+              SQLProdFilho.Next;
+            end;
+        end;
+      // EFETUA A MOV DE ESTOQUE DO PRODUTO QUE � PAI DA COMPOSICAO
+      // SE O PRODUTO NAO FOR ENCONTRADO NA COMPOSICAO ENTAO
+      // MOVIMENTA O ESTOQUE DELE MESMO
+      if (SqlProd.FieldByName('PRODCTIPOBAIXA').Value = 'P') or
+         (SqlProd.FieldByName('PRODCTIPOBAIXA').Value = 'A') then
+        begin
+          SQLProdFilho.Close;
+          SQLProdFilho.SQL.Clear;
+          SQLProdFilho.SQL.Add('SELECT * FROM PRODUTOCOMPOSICAO WHERE PRODICODFILHO = ' + IntToStr(ProdCod));
+          SQLProdFilho.Open;
+          SQLProdFilho.First;
+          if (not SQLProdFilho.IsEmpty) then
+            begin
+              while not SQLProdFilho.Eof do
+                begin
+                  Sair := False ;
+                  while not Sair do
+                  begin
+                    try
+                      GravaMovimento(SQLProdFilho.FieldByName('PRODICOD').AsInteger,SQLProdFilho.FieldByName('PRODICODFILHO').AsInteger);
+                      Sair := True ;
+                      Application.ProcessMessages ;
+                    except
+                      Sair := False;
+                      Application.ProcessMessages;
+                      Sleep(1);
+                    end;
+                  end;
+                  if (SqlProd.FieldByName('PRODCTIPOBAIXA').Value = 'A') and not (SQLProdFilho.IsEmpty) then
+                    begin
+                      Sair := False ;
+                      while not Sair do
+                      begin
+                        try
+                          GravaMovimento(SQLProdFilho.FieldByName('PRODICODFILHO').AsInteger,0);
+                          Sair := True ;
+                          Application.ProcessMessages ;
+                        except
+                          Sair := False;
+                          Application.ProcessMessages;
+                          Sleep(1);
+                        end;
+                      end;
+                    end;
+                  SQLProdFilho.Next;
+                end;
+            end;
+            if (SqlProd.FieldByName('PRODCTIPOBAIXA').Value = 'P') and (SQLProdFilho.IsEmpty) then
+              begin
+                Sair := False ;
+                while not Sair do
+                begin
+                  try
+                    GravaMovimento(ProdCod,0);
+                    Sair := True ;
+                    Application.ProcessMessages ;
+                  except
+                    Sair := False ;
+                    Application.ProcessMessages ;
+                  end;
+                end;
+              end;
+        end;
+    end;
+end ;
+
+Function PosicaoGrade(Grade,Tamanho:Integer):Integer;
+Var
+  Posicao:Integer;
+Begin
+  Result:=1;
+  DM.SQLTemplate.Close;
+  DM.SQLTemplate.SQL.Text:= 'Select * From GRADETAMANHO Where GRADICOD='+IntToStr(Grade)+' Order By GRTMICOD';
+  DM.SQLTemplate.Open;
+  DM.SQLTemplate.First;Posicao:=0;
+  While Not DM.SQLTemplate.Eof Do
+    Begin
+      Inc(Posicao);
+      If DM.SQLTemplate.FindField('GRTMICOD').asInteger = Tamanho Then
+        Begin
+          Result := Posicao;
+          Break;
+        End;
+      DM.SQLTemplate.Next;
+    End;
+  DM.SQLTemplate.Close;
+End;
+
+function EncontrouProduto(Codigo:string;Tabela:TObject):Boolean;
+var Cod : double ;
+var PrimeiroChar, SegundoChar : string;
+begin
+  EncontrouProduto := false ;
+  PrimeiroChar := copy(Codigo,1,1);
+  SegundoChar  := copy(Codigo,2,1);
+  if (PrimeiroChar = 'F') and ((SegundoChar='0') or (SegundoChar='1') or (SegundoChar='2') or (SegundoChar='3') or (SegundoChar='4')
+      or (SegundoChar='5') or (SegundoChar='6') or (SegundoChar='7') or (SegundoChar='8') or (SegundoChar='9')) then
+      Codigo := Copy(Codigo,2,length(Codigo));
+
+  try
+    // PROCURAR NO CODIGO BARRAS PRINCIPAL
+    (Tabela as TQuery).Close ;
+    (Tabela as TQuery).SQL.Clear ;
+    (Tabela as TQuery).SQL.Add('Select * from PRODUTO') ;
+    if ProcuraProdutoPelaRef08Char then
+      (Tabela as TQuery).SQL.Add('where PRODCATIVO = "S" and PRODA60CODBAR = "' + Copy(Codigo,1,8) + '"')
+     else
+      (Tabela as TQuery).SQL.Add('where PRODCATIVO = "S" and PRODA60CODBAR = "' + Codigo + '"') ;
+    (Tabela as TQuery).Open ;
+    (Tabela as TQuery).First ;
+    if not (Tabela as TQuery).IsEmpty then
+      begin
+        EncontrouProduto    := True;
+        CodigoBarrasProduto := (Tabela as TQuery).FieldbyName('PRODA60CODBAR').Value;
+        Exit;
+      end
+    else
+      begin
+        // PROCURAR NA TAB.CD BARRAS AUX
+        dm.SQLTemplate.Close ;
+        dm.SQLTemplate.SQL.Clear ;
+        dm.SQLTemplate.SQL.Add('select PRODICOD, PRBAA15BARRAS from PRODUTOBARRAS') ;
+        dm.SQLTemplate.SQL.Add('where PRBAA15BARRAS = "' + Codigo + '"') ;
+        dm.SQLTemplate.Open ;
+        dm.SQLTemplate.First ;
+        if not dm.SQLTemplate.IsEmpty then
+          begin
+            Codigo := dm.SQLTemplate.FieldbyName('PRODICOD').AsString;
+            CodigoBarrasProduto := dm.SQLTemplate.FieldbyName('PRBAA15BARRAS').Value;
+            // PROCURAR PELO CD.INTERNO DO PRODUTO
+            (Tabela as TQuery).Close ;
+            (Tabela as TQuery).SQL.Clear ;
+            (Tabela as TQuery).SQL.Add('select * from PRODUTO') ;
+            (Tabela as TQuery).SQL.Add('where PRODCATIVO = "S" and PRODICOD = ' + Codigo) ;
+            (Tabela as TQuery).Open ;
+            (Tabela as TQuery).First ;
+            if not (Tabela as TQuery).IsEmpty then
+              begin
+                EncontrouProduto := True ;
+                Exit;
+              end;
+          end;
+        if not FileExists('ProcuraApenasCdBarras.txt') then
+          begin
+            // PROCURAR PELO CD.INTERNO DO PRODUTO
+            (Tabela as TQuery).Close ;
+            (Tabela as TQuery).SQL.Clear ;
+            (Tabela as TQuery).SQL.Add('select * from PRODUTO') ;
+            if pos('*',Codigo) > 0 then
+              (Tabela as TQuery).SQL.Add('where PRODCATIVO = "S" and PRODICOD = 0')
+            else
+              begin
+                if IsNumeric(Codigo, 'INTEGER') then
+                  (Tabela as TQuery).SQL.Add('where PRODCATIVO = "S" and PRODICOD = ' + Codigo)
+                 else
+                  (Tabela as TQuery).SQL.Add('where PRODCATIVO = "S" and PRODICOD = 0');
+              end;
+            (Tabela as TQuery).Open ;
+            (Tabela as TQuery).First ;
+            if not (Tabela as TQuery).IsEmpty then
+              begin
+                EncontrouProduto := True ;
+                Exit;
+              end
+            else
+              begin
+                // Testar PRODA60REFER
+                (Tabela as TQuery).Close ;
+                (Tabela as TQuery).SQL.Clear ;
+                (Tabela as TQuery).SQL.Add('select * from PRODUTO') ;
+                if ProcuraProdutoPelaRef08Char then
+                  (Tabela as TQuery).SQL.Add('where PRODCATIVO = "S" and PRODA60REFER = "' + Copy(Codigo,1,8) + '"')
+                 else
+                  (Tabela as TQuery).SQL.Add('where PRODCATIVO = "S" and PRODA60REFER = "' + Codigo + '"') ;
+                (Tabela as TQuery).Open ;
+                (Tabela as TQuery).First ;
+                if not (Tabela as TQuery).EOF then
+                  begin
+                    CodigoBarrasProduto := (Tabela as TQuery).FieldbyName('PRODA60CODBAR').Value;
+                    EncontrouProduto := True;
+                    Exit;
+                  end;
+              end;
+          end;
+      end;
+  except
+    EncontrouProduto := False;
+  end;
+end ;
+
+
+function ArredondaValor(Valor : Double;NroCasasDec:Integer) : Double;
+var
+  ValorFrac : Double;
+begin
+ ValorFrac := Frac(Valor);
+ if ValorFrac <> 0.5 then
+   case NroCasasDec of
+     2 : Result    := RoundTo(Valor,0);
+     3 : Result    := RoundTo(Valor,-1);
+     4 : Result    := RoundTo(Valor,-2);
+     5 : Result    := RoundTo(Valor,-3);
+    end
+ else
+   Result := Valor;
+end;
+
+
+function CalculaPrecoVenda(Produto:Integer;ValorBase,MargemLucro:Double):Double;
+var
+  QueryProduto,QuerySql : TQuery;
+  ICMS,Denominador : Double;
+begin
+  QueryProduto := TRxQuery.Create(DM);
+  QueryProduto.DatabaseName := 'DB';
+  QueryProduto.Close;
+  QueryProduto.SQL.Clear;
+  QueryProduto.SQL.Add('SELECT PRODICOD,ICMSICOD,PRODN3VLRVENDA,PRODN3VLRCUSTO,PRODN3VLRCUSTOMED,PRODN3PERCMARGLUCR');
+  QueryProduto.SQL.Add('FROM PRODUTO WHERE PRODICOD = ' + IntToStr(Produto));
+  QueryProduto.Open;
+  QuerySql := TRxQuery.Create(DM);
+  QuerySql.DatabaseName := 'DB';
+  QuerySql.Close;
+  QuerySql.SQL.Clear;
+  QuerySql.SQL.Add('SELECT CFGECTIPOMARGLUCRO FROM CONFIGGERAL');
+  QuerySql.Open;
+  if not QueryProduto.IsEmpty then
+    begin
+      if QuerySql.FieldByName('CFGECTIPOMARGLUCRO').AsString = 'L' then
+        begin
+          if QueryProduto.FindField('ICMSICOD').IsNull then
+            ICMS := 0
+          else
+            ICMS := StrToFloat(SQLLocate('ICMS','ICMSICOD','ICMSN2ALIQUOTA',QueryProduto.FindField('ICMSICOD').AsString));
+
+          if MargemLucro <=  0 then
+            MargemLucro := QueryProduto.FindField('PRODN3PERCMARGLUCR').AsFloat;
+
+          Denominador := MargemLucro     +
+                         ICMS                                                       +
+                         Dm.SQLConfigVenda.FieldByName('CFVEN2PERCCOFINS').AsFloat  +
+                         Dm.SQLConfigVenda.FieldByName('CFVEN2PERCPIS').AsFloat     +
+                         Dm.SQLConfigVenda.FieldByName('CFVEN2PERCENCARG').AsFloat;
+
+          Result := ValorBase /
+                    (1 - (MargemLucro +
+                    ICMS +
+                    Dm.SQLConfigVenda.FieldByName('CFVEN2PERCCOFINS').AsFloat  +
+                    Dm.SQLConfigVenda.FieldByName('CFVEN2PERCPIS').AsFloat     +
+                    Dm.SQLConfigVenda.FieldByName('CFVEN2PERCENCARG').AsFloat)/100);
+        end
+      else
+        begin
+          Result := ValorBase * (1+(MargemLucro/100));
+        end;
+    end;
+  //arredonda valor de venda
+  if Dm.SQLConfigVenda.FieldByName('CFVEINROCASASDEC').AsInteger > 1 then
+    if (Dm.SQLConfigVenda.FieldByName('CFVECFARREDVLRVEND').AsString = 'S') then
+      Result := ArredondaValor(Result,Dm.SQLConfigVenda.FieldByName('CFVEINROCASASDEC').AsInteger);
+  QuerySql.Close;
+  QuerySql.Free;
+  QueryProduto.Close;
+  QueryProduto.Free;
+end;
+
+function CalculaMargemLucro(Produto:Integer;ValorBase,ValorVenda:Double):Double;
+var
+  QueryProduto,QuerySql : TQuery;
+  ICMS,LucroBruto : Double;
+begin
+  QueryProduto := TRxQuery.Create(DM);
+  QueryProduto.DatabaseName := 'DB';
+  QueryProduto.Close;
+  QueryProduto.SQL.Clear;
+  QueryProduto.SQL.Add('SELECT * FROM PRODUTO');
+  QueryProduto.SQL.Add(' WHERE PRODICOD = ' + IntToStr(Produto));
+  QueryProduto.Open;
+  QuerySql := TRxQuery.Create(DM);
+  QuerySql.DatabaseName := 'DB';
+  QuerySql.Close;
+  QuerySql.SQL.Clear;
+  QuerySql.SQL.Add('SELECT CFGECTIPOMARGLUCRO FROM CONFIGGERAL');
+  QuerySql.Open;
+  if not QueryProduto.IsEmpty then
+    begin
+      if QuerySql.FieldByName('CFGECTIPOMARGLUCRO').AsString = 'L' then
+        begin
+          { if QueryProduto.FindField('ICMSICOD').IsNull then
+            ICMS := 0
+          else
+            ICMS := StrToFloat(SQLLocate('ICMS','ICMSICOD','ICMSN2ALIQUOTA',QueryProduto.FindField('ICMSICOD').AsString));
+
+          if ValorVenda <= 0 then
+            ValorVenda := QueryProduto.FindField('PRODN3VLRVENDA').AsFloat;
+          LucroBruto := ValorVenda - ValorBase -
+          (ValorVenda * (ICMS  +
+          Dm.SQLConfigVenda.FieldByName('CFVEN2PERCCOFINS').AsFloat  +
+          Dm.SQLConfigVenda.FieldByName('CFVEN2PERCPIS').AsFloat     +
+          Dm.SQLConfigVenda.FieldByName('CFVEN2PERCENCARG').AsFloat)/100);
+          if ValorVenda <= 0 then
+            Result := 0
+          else
+            Result := (LucroBruto / ValorVenda)*100; }
+
+          // Coloquei as linhas abaixo apenas calcular da mesma forma q esta calculando no cad.produtos
+          if ValorBase > 0 then
+            Result := ((ValorVenda / ValorBase)- 1) * 100
+          else
+            Result := 0;
+          //-------------------------------------------------------------------------------------------
+        end
+      else
+        begin
+          if ValorBase > 0 then
+            Result := ((ValorVenda / ValorBase)- 1) * 100
+          else
+            Result := 0;
+        end;
+    end;
+  QuerySql.Close;
+  QuerySql.Free;
+  QueryProduto.Close;
+  QueryProduto.Free;
+end;
+
+procedure LancaReajustePreco(ValorVenda,ValorCompra,ValorCompraMedio,ValorCusto,ValorCustoMedio,Margem:Double; Produto:Integer);
+var
+  QueryProduto,QueryProdutoReajuste, QueryMax : TQuery;
+  Erro : Boolean;
+begin
+  if Produto > 0 then
+    begin
+      QueryProduto := TRxQuery.Create(DM);
+      QueryProduto.DatabaseName := 'DB';
+      //SELECIONA PRODUTO
+      QueryProduto.Close;
+      QueryProduto.SQL.Clear;
+      QueryProduto.SQL.Add('SELECT PRODN3VLRCOMPRA, PRODN3VLRCUSTO, PRODN3PERCMARGLUCR, PRODN3VLRVENDA, PRODN3VLRCOMPRAMED, PRODN3VLRCUSTOMED FROM PRODUTO');
+      QueryProduto.SQL.Add('WHERE PRODICOD = ' + IntToStr(Produto));
+      QueryProduto.Open;
+      if (not QueryProduto.EOF) then
+        begin
+          if((ValorVenda        <> QueryProduto.FieldByName('PRODN3VLRVENDA').AsFloat)     and (ValorVenda > 0))   or
+            ((ValorCompra       <> QueryProduto.FieldByName('PRODN3VLRCOMPRA').AsFloat)    and (ValorCompra > 0))  or
+            ((ValorCusto        <> QueryProduto.FieldByName('PRODN3VLRCUSTO').AsFloat)     and (ValorCusto > 0))   or
+            ((Margem            <> QueryProduto.FieldByName('PRODN3PERCMARGLUCR').AsFloat) and (Margem > 0))       or
+            ((ValorCustoMedio   <> QueryProduto.FieldByName('PRODN3VLRCUSTOMED').AsFloat)  and (ValorCustoMedio > 0))   or
+            ((ValorCompraMedio  <> QueryProduto.FieldByName('PRODN3VLRCOMPRAMED').AsFloat) and (ValorCompraMedio > 0))  then
+            begin
+              QueryProdutoReajuste := TRxQuery.Create(DM);
+              QueryProdutoReajuste.DatabaseName := 'DB';
+              QueryMax := TRxQuery.Create(DM);
+              QueryMax.DatabaseName := 'DB';
+              while Erro do
+                begin
+                  try
+                    QueryProdutoReajuste.Close;
+                    QueryProdutoReajuste.SQL.Clear;
+                    QueryProdutoReajuste.SQL.Add('Insert Into PRODUTOREAJUSTE');
+                    QueryProdutoReajuste.SQL.Add('( ');
+                    QueryProdutoReajuste.SQL.Add('PRRJICOD,PRODICOD,PRRJDREAJUSTE,PRRJVLRVENDA,PRRJN2VLRCOMPRA,PRRJN3ULTCOMPRAMED,PRRJN3VLRCUSTO,PRRJN3ULTCUSTOMED,PRRJN2MARGEM,PENDENTE,REGISTRO');
+                    QueryProdutoReajuste.SQL.Add(' )');
+                    QueryProdutoReajuste.SQL.Add(' Values ');
+                    QueryProdutoReajuste.SQL.Add(' ( ');
+                    //RETORNA ULTIMO NUMERO
+                    QueryMax.Close;
+                    QueryMax.SQL.Clear;
+                    QueryMax.SQL.Add('Select MAX(PRRJICOD) from PRODUTOREAJUSTE where PRODICOD = ' + IntToStr(PRODUTO));
+                    QueryMax.SQL.Add(' AND PRRJDREAJUSTE >= ' + '"' + FormatDateTime('mm/dd/yyyy hh:nn:ss',Now) + '"');
+                    QueryMax.SQL.Add(' AND PRRJDREAJUSTE <= ' + '"' + FormatDateTime('mm/dd/yyyy hh:nn:ss',Now) + '"');
+                    QueryMax.Open;
+                    //CODIGO
+                    if QueryMax.FieldByName('MAX').AsFloat > 0 then
+                      QueryProdutoReajuste.SQL.Add(ConvFloatToStr(QueryMax.FieldByName('MAX').AsFloat + 1) + ',')
+                    else
+                      QueryProdutoReajuste.SQL.Add('1,');
+                    //PRODUTO
+                    QueryProdutoReajuste.SQL.Add(IntToStr(Produto) + ',');
+                    //DATA DO REAJUSTE
+                    QueryProdutoReajuste.SQL.Add('"' + FormatDateTime('mm/dd/yyyy hh:nn:ss', Now)+'"'+ ',');
+                    //VALOR DE VENDA
+                    QueryProdutoReajuste.SQL.Add(ConvFloatToStr(ValorVenda) + ',');
+                    //VALOR DE COMPRA
+                    QueryProdutoReajuste.SQL.Add(ConvFloatToStr(ValorCompra) + ',');
+                    //VALOR DE COMPRA MEDIO
+                    QueryProdutoReajuste.SQL.Add(ConvFloatToStr(ValorCompraMedio) + ',');
+                    //VALOR DE CUSTO
+                    QueryProdutoReajuste.SQL.Add(ConvFloatToStr(ValorCusto) + ',');
+                    //VALOR DE CUSTO MEDIO
+                    QueryProdutoReajuste.SQL.Add(ConvFloatToStr(ValorCustoMedio) + ',');
+                    //MARGEM DE LUCRO
+                    QueryProdutoReajuste.SQL.Add(ConvFloatToStr(Margem) + ',');
+                    QueryProdutoReajuste.SQL.Add('"S",');
+                    QueryProdutoReajuste.SQL.Add('"' + FormatDateTime('mm/dd/yyyy hh:nn:ss',Now) + '"');
+                    QueryProdutoReajuste.SQL.Add(' ) ');
+                    QueryProdutoReajuste.ExecSQL;
+                    Erro := False;
+                  except
+                    Erro := True;
+                    Application.ProcessMessages;
+                  end;
+                end;
+              QueryProdutoReajuste.Close;
+              QueryProdutoReajuste.Destroy;
+              QueryMax.Close;
+              QueryMax.Destroy;
+            end;
+        end;
+      QueryProduto.Close;
+      QueryProduto.Destroy;
+    end;
+end;
+
+function ArredondaValor1(Valor : Double;NroCasasDec:Integer) : Double;
+var
+  ValorFrac : Double;
+begin
+ ValorFrac := Frac(Valor);
+ if ValorFrac <> 0.5 then
+   Result    := RoundTo(Valor, -NroCasasDec)
+ else
+   Result := Valor;
+end;
+
+
+function  RetornaUltimaCotacaoMoeda(Dia : TDateTime; Moeda : String): Double;
+var
+  Query : Tquery;
+begin
+  Query := Tquery.Create(DM);
+  Query.DatabaseName := 'DB';
+  Query.Close;
+  Query.SQL.Clear;
+  Query.SQL.Add('SELECT * FROM COTACAOMOEDA WHERE CTMODDIA <= "' + FormatDateTime('mm/dd/yyyy',Dia) + '" AND ');
+  Query.SQL.Add('CTMOA5MOEDA = "' + MOEDA + '"');
+  Query.SQL.Add('ORDER BY REGISTRO DESC');
+  Query.Open;
+  if not Query.IsEmpty then
+    RetornaUltimaCotacaoMoeda := Query.FieldByName('CTMON3VLRDIA').AsFloat
+  else
+    RetornaUltimaCotacaoMoeda := 0;
+
+  Query.Close;
+  Query.Free;
+end;
+
+
+function TrocaPontoPorVirgula(Numero : String) : string ;
+var Wstr : string ;
+begin
+  if Numero <> '' then
+  begin
+    Wstr := Numero;
+    if Pos('.', Wstr) > 0 then
+      TrocaPontoPorVirgula := Copy(Wstr, 1, Pos('.', Wstr)-1) + ',' + Copy(Wstr, Pos('.', Wstr)+1, 3)
+    else
+      TrocaPontoPorVirgula := Numero ;
+  end
+  else TrocaPontoPorVirgula := '0,00' ;
+end ;
+
+function TrocaVirgulaPorPonto(Numero : String) : string ;
+var Wstr : string ;
+begin
+  if Numero <> '' then
+  begin
+    Wstr := Numero;
+    if Pos(',', Wstr) > 0 then
+      TrocaVirgulaPorPonto := Copy(Wstr, 1, Pos(',', Wstr)-1) + '.' + Copy(Wstr, Pos(',', Wstr)+1, 3)
+    else
+      TrocaVirgulaPorPonto := Numero ;
+  end
+  else TrocaVirgulaPorPonto := '0.00' ;
+end ;
+
+
+function IsNumeric(Valor, Tipo : String) : boolean ;
+var
+  NumDbl : double ;
+  NumInt : integer ;
+begin
+  Result := true ;
+  if AnsiUpperCase(Tipo) = 'FLOAT' then
+    begin
+      try
+        NumDbl := StrToFloat(Valor) ;
+      except
+        Result := false ;
+      end ;
+    end ;
+
+  if AnsiUpperCase(Tipo) = 'INTEGER' then
+    begin
+      try
+        NumDbl := StrToInt(Valor) ;
+      except
+        Result := false ;
+      end ;
+    end ;
+end ;
+
+
+function GeraCodigoBarras(CodigoBase:String):String;
+var
+  CodigoBarra : String;
+begin
+    if Length(CodigoBase) < 13 then
+    begin
+      case Length(CodigoBase) of
+        01 : CodigoBarra := '99900000000' + CodigoBase;
+        02 : CodigoBarra := '9990000000'  + CodigoBase;
+        03 : CodigoBarra := '999000000'   + CodigoBase;
+        04 : CodigoBarra := '99900000'    + CodigoBase;
+        05 : CodigoBarra := '9990000'     + CodigoBase;
+        06 : CodigoBarra := '999000'      + CodigoBase;
+        07 : CodigoBarra := '99900'       + CodigoBase;
+        08 : CodigoBarra := '9990'        + CodigoBase;
+        09 : CodigoBarra := '999'         + CodigoBase;
+        10 : CodigoBarra := '00'          + CodigoBase;
+        11 : CodigoBarra := '0'           + CodigoBase;
+        12 : CodigoBarra := CodigoBase;
+      end;
+    end;
+    Result := CodigoBarra;
+end;
+
+
+function ValidaCGC(CGC: string): boolean;
+var
+ n1,n2,n3,n4,n5,n6,n7,n8,n9,n10,n11,n12: integer;
+ d1,d2: integer;
+ digitado, calculado: string;
+begin
+ n1:=StrToInt(CGC[1]);
+ n2:=StrToInt(CGC[2]);
+ n3:=StrToInt(CGC[3]);
+ n4:=StrToInt(CGC[4]);  // Retira cada numero do Edit, e joda p/ variavel
+ n5:=StrToInt(CGC[5]);
+ n6:=StrToInt(CGC[6]);
+ n7:=StrToInt(CGC[7]);
+ n8:=StrToInt(CGC[8]);
+ n9:=StrToInt(CGC[9]);
+ n10:=StrToInt(CGC[10]);
+ n11:=StrToInt(CGC[11]);
+ n12:=StrToInt(CGC[12]);
+ d1:=n12*2+n11*3+n10*4+n9*5+n8*6+n7*7+n6*8+n5*9+n4*2+n3*3+n2*4+n1*5;
+ d1:=11-(d1 mod 11);
+ if d1>=10 then d1:=0;
+ d2:=d1*2+n12*3+n11*4+n10*5+n9*6+n8*7+n7*8+n6*9+n5*2+n4*3+n3*4+n2*5+n1*6;
+ d2:=11-(d2 mod 11);
+ if d2>=10 then d2:=0;
+ calculado:=inttostr(d1)+inttostr(d2);
+ digitado:=CGC[13]+CGC[14];
+ if calculado=digitado then
+   ValidaCGC:=true
+  else
+   ValidaCGC:=false;
+end;
+
+function ValidaCPF(CPF: string): boolean;
+var
+ n1,n2,n3,n4,n5,n6,n7,n8,n9: integer;
+ d1,d2: integer;
+ digitado, calculado: string;
+begin
+ n1:=StrToInt(CPF[1]);
+ n2:=StrToInt(CPF[2]);
+ n3:=StrToInt(CPF[3]);
+ n4:=StrToInt(CPF[4]);
+ n5:=StrToInt(CPF[5]);
+ n6:=StrToInt(CPF[6]);
+ n7:=StrToInt(CPF[7]);
+ n8:=StrToInt(CPF[8]);
+ n9:=StrToInt(CPF[9]);
+ d1:=n9*2+n8*3+n7*4+n6*5+n5*6+n4*7+n3*8+n2*9+n1*10;
+ d1:=11-(d1 mod 11);
+ if d1>=10 then d1:=0;
+ d2:=d1*2+n9*3+n8*4+n7*5+n6*6+n5*7+n4*8+n3*9+n2*10+n1*11;
+ d2:=11-(d2 mod 11);
+ if d2>=10 then d2:=0;
+ calculado:=InTtoStr(d1)+InTtoStr(d2);
+ digitado:=CPF[10]+CPF[11];
+ if calculado=digitado then
+   ValidaCPF:=true
+  else
+   ValidaCPF:=false;
+end;
 
 procedure LancaMovimentacaoTesouraria(Empresa,Terminal,Numerario,OperacaoTes : Integer;Valor : Double;Historico, IDContaPagar, IDContaReceber, IDCheque, IDFechaCaixa : String; DataMovimento : TDateTime; DocOrigem: String ; PlanoContas : String);
 var
