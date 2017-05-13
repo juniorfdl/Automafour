@@ -9,7 +9,7 @@ inherited FormPrincipal: TFormPrincipal
   PixelsPerInch = 96
   TextHeight = 13
   inherited RodapePrincipal: TStatusBar
-    Top = 449
+    Top = 450
     Width = 1256
   end
   inherited ptopo: TAdvOfficeStatusBar
@@ -2307,7 +2307,211 @@ inherited FormPrincipal: TFormPrincipal
   inherited MainMenu: TMainMenu
     Left = 16
     Top = 56
-    object mmFinanceiro: TMenuItem [0]
+    object Cadastros1: TMenuItem [0]
+      Caption = 'Cadastros'#9
+      object Produtos1: TMenuItem
+        Caption = 'Produtos'
+      end
+      object Clientes1: TMenuItem
+        Caption = 'Clientes'
+      end
+      object Fornecedores1: TMenuItem
+        Caption = 'Fornecedores'
+      end
+      object Vendedores1: TMenuItem
+        Caption = 'Vendedores'
+      end
+      object ransportadoras1: TMenuItem
+        Caption = 'Transportadoras'
+      end
+      object Representantes1: TMenuItem
+        Caption = 'Representantes'
+      end
+      object Convnio1: TMenuItem
+        Caption = 'Conv'#234'nio'
+      end
+      object Controle1: TMenuItem
+        Caption = 'Controle'
+        object Grupo1: TMenuItem
+          Caption = 'Grupo'
+        end
+        object Marca1: TMenuItem
+          Caption = 'Marca'
+        end
+        object Grade1: TMenuItem
+          Caption = 'Grade'
+        end
+        object Cor1: TMenuItem
+          Caption = 'Cor'
+        end
+        object Coleo1: TMenuItem
+          Caption = 'Cole'#231#227'o'
+        end
+        object Unidade1: TMenuItem
+          Caption = 'Unidade'
+        end
+        object ICMS1: TMenuItem
+          Caption = 'ICMS'
+        end
+        object ICMSporUF1: TMenuItem
+          Caption = 'ICMS por UF'
+        end
+        object abelaNCM1: TMenuItem
+          Caption = 'Tabela NCM'
+        end
+        object ConveroCSTporICMS1: TMenuItem
+          Caption = 'Conver'#231#227'o CST por ICMS'
+        end
+        object ConveroCSTporPISCofins1: TMenuItem
+          Caption = 'Conver'#231#227'o CST por PIS/Cofins'
+        end
+        object Cidade1: TMenuItem
+          Caption = 'Cidade'
+        end
+      end
+      object arefas1: TMenuItem
+        Caption = 'Tarefas'
+        object AcompanharTarefa1: TMenuItem
+          Caption = 'Acompanhar Tarefa'
+        end
+        object GerenciarTarefa1: TMenuItem
+          Caption = 'Gerenciar Tarefa'
+        end
+        object CadastrarTarefas1: TMenuItem
+          Caption = 'Cadastrar Tarefas'
+        end
+        object ConfigurarTempodeTarefa1: TMenuItem
+          Caption = 'Configurar Tempo de Tarefa'
+        end
+      end
+      object Financeiro1: TMenuItem
+        Caption = 'Financeiro'
+        object ipodeDocumento1: TMenuItem
+          Caption = 'Tipo de Documento'
+        end
+        object Portador1: TMenuItem
+          Caption = 'Portador'
+        end
+        object ipodeLiquidao1: TMenuItem
+          Caption = 'Tipo de Liquida'#231#227'o'
+        end
+        object HistricoPadro1: TMenuItem
+          Caption = 'Hist'#243'rico Padr'#227'o'
+        end
+        object Bancos1: TMenuItem
+          Caption = 'Bancos'
+        end
+        object ContaCorrente1: TMenuItem
+          Caption = 'Conta Corrente'
+        end
+        object OperaesdeConta1: TMenuItem
+          Caption = 'Opera'#231#245'es de Conta'
+        end
+        object SituaodeCheque1: TMenuItem
+          Caption = 'Situa'#231#227'o de Cheque'
+        end
+        object ProtocolodeCheque1: TMenuItem
+          Caption = 'Protocolo de Cheque'
+        end
+        object OperaesTesouraria1: TMenuItem
+          Caption = 'Opera'#231#245'es Tesouraria'
+        end
+        object PlanodeContas1: TMenuItem
+          Caption = 'Plano de Contas'
+        end
+      end
+      object Faturamento2: TMenuItem
+        Caption = 'Faturamento'
+        object OperaesdeEstoque1: TMenuItem
+          Caption = 'Opera'#231#245'es de Estoque'
+        end
+        object OBSdeNota1: TMenuItem
+          Caption = 'OBS de Nota'
+        end
+        object Srie1: TMenuItem
+          Caption = 'S'#233'rie'
+        end
+      end
+    end
+    object Compras1: TMenuItem [1]
+      Caption = 'Compras'
+      object PedidodeCompra1: TMenuItem
+        Caption = 'Pedido de Compra'
+      end
+      object NotadeEntrada1: TMenuItem
+        Caption = 'Nota de Entrada'
+      end
+      object ImportarXML1: TMenuItem
+        Caption = 'Importar XML'
+      end
+      object ManutenodePreo1: TMenuItem
+        Caption = 'Manuten'#231#227'o de Pre'#231'o'
+      end
+    end
+    object Estoque1: TMenuItem [2]
+      Caption = 'Estoque'
+      object MovimentaoDiversas1: TMenuItem
+        Caption = 'Movimenta'#231#227'o Diversas'
+      end
+      object EmissodeEtiquetas1: TMenuItem
+        Caption = 'Emiss'#227'o de Etiquetas'
+      end
+      object ReajustedePreos1: TMenuItem
+        Caption = 'Reajuste de Pre'#231'os'
+      end
+      object rocadeMercadoria1: TMenuItem
+        Caption = 'Troca de Mercadoria'
+      end
+      object ransferenciadeLojas1: TMenuItem
+        Caption = 'Transfer'#234'ncia de Lojas'
+      end
+      object Inventrio1: TMenuItem
+        Caption = 'Invent'#225'rio'
+        object DigitarInventario1: TMenuItem
+          Caption = 'Digitar Invent'#225'rio'
+        end
+        object RelatoriodeDivergncia1: TMenuItem
+          Caption = 'Relatorio de Diverg'#234'ncia'
+        end
+        object ZerarSaldodeEstoque1: TMenuItem
+          Caption = 'Zerar Saldo de Estoque'
+        end
+      end
+      object ProdutosSemMovimento1: TMenuItem
+        Caption = 'Produtos Sem Movimento'
+      end
+    end
+    object Utilitrios1: TMenuItem [3]
+      Caption = 'Utilit'#225'rios'
+      object ManutenodeProdutos1: TMenuItem
+        Caption = 'Manuten'#231#227'o de Produtos'
+      end
+      object ManutenodeCupom1: TMenuItem
+        Caption = 'Manuten'#231#227'o de Cupom'
+      end
+      object Comisso1: TMenuItem
+        Caption = 'Comiss'#227'o'
+        object CalculodeComisso1: TMenuItem
+          Caption = 'C'#225'lculo de Comiss'#227'o'
+        end
+        object CadastrodeComisso1: TMenuItem
+          Caption = 'Cadastro de Comiss'#227'o'
+        end
+        object QuitaodeComisso1: TMenuItem
+          Caption = 'Quita'#231#227'o de Comiss'#227'o'
+        end
+      end
+      object PrVenda1: TMenuItem
+        Caption = 'Pr'#233'-Venda'
+        object ApagarPrevenda7Dias1: TMenuItem
+          Caption = 'Apagar Prevenda 7 Dias'
+        end
+        object ApagarOramento30Dias1: TMenuItem
+          Caption = 'Apagar Or'#231'amento 30 Dias'
+        end
+      end
+    end
+    object mmFinanceiro: TMenuItem [4]
       Caption = '&Financeiro'
       object ResumoFinanceiro1: TMenuItem
         Caption = 'Resumo Financeiro'
@@ -2322,6 +2526,39 @@ inherited FormPrincipal: TFormPrincipal
           Caption = 'Baixa de Contas a Pagar'
         end
       end
+      object Receber1: TMenuItem
+        Caption = 'Receber'
+        object LanamentosdeContasaReceber1: TMenuItem
+          Caption = 'Lan'#231'amentos de Contas a Receber'
+        end
+        object BaixadeContasaReceber1: TMenuItem
+          Caption = 'Baixa de Contas a Receber'
+        end
+        object LanamentodeCartesCrediario1: TMenuItem
+          Caption = 'Lan'#231'amento de Cart'#245'es/Credi'#225'rio'
+        end
+        object EmissodeBoletos1: TMenuItem
+          Caption = 'Emiss'#227'o de Boletos'
+        end
+      end
+      object ContaCorrent1: TMenuItem
+        Caption = 'Conta Corrente'
+        object LanamentodeMovimentao1: TMenuItem
+          Caption = 'Lan'#231'amento de Movimenta'#231#227'o'
+        end
+        object RemessadeArquivo1: TMenuItem
+          Caption = 'Remessa de Arquivo'
+        end
+      end
+      object esouraria1: TMenuItem
+        Caption = 'Tesouraria'#9
+        object LanamentodeCaixa1: TMenuItem
+          Caption = 'Lan'#231'amento de Caixa'#13#10
+        end
+        object EmissodeRecibo1: TMenuItem
+          Caption = 'Emiss'#227'o de Recibo'
+        end
+      end
       object N3: TMenuItem
         Tag = 1
         Caption = '-'
@@ -2329,6 +2566,399 @@ inherited FormPrincipal: TFormPrincipal
       object FATUMnSairdoSistema: TMenuItem
         Caption = '&Sair do Sistema'
         OnClick = FATUMnSairdoSistemaClick
+      end
+    end
+    object Faturamento1: TMenuItem [5]
+      Caption = 'Faturamento'
+      object PedidodeVenda1: TMenuItem
+        Caption = 'Pedido de Venda'
+      end
+      object NotaFiscal1: TMenuItem
+        Caption = 'Nota Fiscal'
+      end
+    end
+    object Servio1: TMenuItem [6]
+      Caption = 'Servi'#231'o'
+      object OrdemdeServioMecanica1: TMenuItem
+        Caption = 'Ordem de Servi'#231'o - Mecanica'
+      end
+      object GrupodeServio1: TMenuItem
+        Caption = 'Grupo de Servi'#231'o'
+      end
+      object ipodeServio1: TMenuItem
+        Caption = 'Tipo de Servi'#231'o'
+      end
+    end
+    object Integrador1: TMenuItem [7]
+      Caption = 'Integrador'
+      object Exportao1: TMenuItem
+        Caption = 'Exporta'#231#227'o'
+        object Balanas1: TMenuItem
+          Caption = 'Balan'#231'as'
+        end
+        object erminaldeConsulta1: TMenuItem
+          Caption = 'Terminal de Consulta'
+        end
+      end
+      object Contabil1: TMenuItem
+        Caption = 'Cont'#225'bil'
+        object SPEDFiscal1: TMenuItem
+          Caption = 'SPED Fiscal'
+        end
+      end
+    end
+    object Relatrios1: TMenuItem [8]
+      Caption = 'Relat'#243'rios'
+      object Administrativo1: TMenuItem
+        Caption = 'Administrativo'
+        object Vendas1: TMenuItem
+          Caption = 'Vendas'
+          object PorPerodo1: TMenuItem
+            Caption = 'Por Per'#237'odo'
+          end
+          object PorPerodocomMargemdeVendedor1: TMenuItem
+            Caption = 'Por Per'#237'odo com Margem de Vendedor'
+          end
+          object PorPerodocomMargemdeProduto1: TMenuItem
+            Caption = 'Por Per'#237'odo com Margem de Produto'
+          end
+          object PorPeriododeEmpresa1: TMenuItem
+            Caption = 'Por Per'#237'odo de Empresa'
+          end
+          object ProdutosVendidos1: TMenuItem
+            Caption = 'Produtos Vendidos'
+          end
+          object PorPlano1: TMenuItem
+            Caption = 'Por Plano'
+          end
+          object PorGrade1: TMenuItem
+            Caption = 'Por Grade'
+          end
+          object PorGrupo1: TMenuItem
+            Caption = 'Por Grupo'
+          end
+          object PorMarca1: TMenuItem
+            Caption = 'Por Marca'
+          end
+          object PorColeo1: TMenuItem
+            Caption = 'Por Cole'#231#227'o'
+          end
+          object ComissoSinttico1: TMenuItem
+            Caption = 'Comiss'#227'o - Sint'#233'tico'
+          end
+          object ComissoDetalhado1: TMenuItem
+            Caption = 'Comiss'#227'o - Detalhado'
+          end
+          object PrVendaporPerodo1: TMenuItem
+            Caption = 'Pr'#233'-Venda por Per'#237'odo'
+          end
+        end
+        object Compras2: TMenuItem
+          Caption = 'Compras'
+          object NotadeEntrada2: TMenuItem
+            Caption = 'Nota de Entrada'
+          end
+          object ProdutosComprados1: TMenuItem
+            Caption = 'Produtos Comprados'
+          end
+          object ComprasporGrupo1: TMenuItem
+            Caption = 'Compras por Grupo'
+          end
+          object ComprasporMarca1: TMenuItem
+            Caption = 'Compras por Marca'
+          end
+          object ComprasporColeo1: TMenuItem
+            Caption = 'Compras por Cole'#231#227'o'
+          end
+          object CompraxVendaporGrupo1: TMenuItem
+            Caption = 'Compra x Venda por Grupo'
+          end
+          object ProdutossemPedidodeCompra1: TMenuItem
+            Caption = 'Produtos sem Pedido de Compra'
+          end
+          object ProdutosAbaixodoMnimo1: TMenuItem
+            Caption = 'Produtos Abaixo do M'#237'nimo'
+          end
+        end
+        object Caixa1: TMenuItem
+          Caption = 'Caixa'
+          object ResumodeCaixa1: TMenuItem
+            Caption = 'Resumo de Caixa'
+          end
+          object MovimentaodeCaixa1: TMenuItem
+            Caption = 'Movimenta'#231#227'o de Caixa'
+          end
+          object otaisporNumerario1: TMenuItem
+            Caption = 'Totais por Numerario'
+          end
+          object otalizadoresdeCaixa1: TMenuItem
+            Caption = 'Totalizadores de Caixa'
+          end
+          object BoletimdeCaixa1: TMenuItem
+            Caption = 'Boletim de Caixa'
+          end
+        end
+        object Produtos2: TMenuItem
+          Caption = 'Produtos'
+          object ListagemdeProdutos1: TMenuItem
+            Caption = 'Listagem de Produtos'
+          end
+          object PorFornecedor1: TMenuItem
+            Caption = 'Por Fornecedor'
+          end
+          object Cadastrados1: TMenuItem
+            Caption = 'Cadastrados'
+          end
+          object EmPromoo1: TMenuItem
+            Caption = 'Em Promo'#231#227'o'
+          end
+          object LotesdeProdutos1: TMenuItem
+            Caption = 'Lotes de Produtos'
+          end
+        end
+        object Estoque2: TMenuItem
+          Caption = 'Estoque'
+          object MovimentaodeEstoque1: TMenuItem
+            Caption = 'Movimenta'#231#227'o de Estoque'
+          end
+          object PorGrade2: TMenuItem
+            Caption = 'Por Grade'
+          end
+          object PorGradedeProdutos1: TMenuItem
+            Caption = 'Por Grade de Produtos'
+          end
+          object PorMarca2: TMenuItem
+            Caption = 'Por Marca'
+          end
+          object PorMarcaeGrupo1: TMenuItem
+            Caption = 'Por Marca e Grupo'
+          end
+          object PorMarcaeReferncia1: TMenuItem
+            Caption = 'Por Marca e Refer'#234'ncia'
+          end
+          object PosioDiariadeEstoque1: TMenuItem
+            Caption = 'Posi'#231#227'o Diaria de Estoque'
+          end
+          object ransferenciadeProdutos1: TMenuItem
+            Caption = 'Transferencia de Produtos'
+          end
+          object SaldoporLote1: TMenuItem
+            Caption = 'Saldo por Lote'
+          end
+          object PosioFsicaFinanceira1: TMenuItem
+            Caption = 'Posi'#231#227'o F'#237'sica Financeira'
+          end
+          object MovimentaoDiversas2: TMenuItem
+            Caption = 'Movimenta'#231#227'o Diversas'
+          end
+        end
+        object Invetrio1: TMenuItem
+          Caption = 'Invet'#225'rio'
+          object RegistrodeInventario1: TMenuItem
+            Caption = 'Registro de Invent'#225'rio'
+          end
+          object PorestoqueporGrupodeProduto1: TMenuItem
+            Caption = 'Por estoque por Grupo de Produto'
+          end
+          object ListagemPorGradedeProdutos1: TMenuItem
+            Caption = 'Listagem Por Grade de Produtos'
+          end
+        end
+        object Gerenciais1: TMenuItem
+          Caption = 'Gerenciais'
+          object CurvaABCdeVendaProdutos1: TMenuItem
+            Caption = 'Curva ABC de Venda (Produtos)'
+          end
+          object CurvaABCdeEstoque1: TMenuItem
+            Caption = 'Curva ABC de Estoque'
+          end
+          object CurvaABCdeVendaClientes1: TMenuItem
+            Caption = 'Curva ABC de Venda (Clientes)'
+          end
+          object ndicedeInadimplenciaPeriodo1: TMenuItem
+            Caption = #205'ndice de Inadimplencia Periodo'
+          end
+          object ndicedeInadimplenciaUltimos6Anos1: TMenuItem
+            Caption = #205'ndice de Inadimplencia Ultimos 6 Anos'
+          end
+          object ResumodeOperaes1: TMenuItem
+            Caption = 'Resumo de Opera'#231#245'es'
+          end
+          object PontodeEquilbrio1: TMenuItem
+            Caption = 'Ponto de Equil'#237'brio'
+          end
+          object ProdutossemMovimentao1: TMenuItem
+            Caption = 'Produtos sem Movimenta'#231#227'o'
+          end
+        end
+        object Clientes2: TMenuItem
+          Caption = 'Clientes'
+          object ListagemdeClientes1: TMenuItem
+            Caption = 'Listagem de Clientes'
+          end
+          object Bloqueados1: TMenuItem
+            Caption = 'Bloqueados'
+          end
+          object PorCidades1: TMenuItem
+            Caption = 'Por Cidades'
+          end
+          object LimitedeCompra1: TMenuItem
+            Caption = 'Limite de Compra'
+          end
+        end
+      end
+      object Fiscais1: TMenuItem
+        Caption = 'Fiscais'#9#9
+        object CuponsEmitidos1: TMenuItem
+          Caption = 'Cupons Emitidos'
+        end
+        object CuponsQuitados1: TMenuItem
+          Caption = 'Cupons Quitados'
+        end
+        object ApuraodePisCofins1: TMenuItem
+          Caption = 'Apura'#231#227'o de Pis/Cofins'
+        end
+        object ApuraodeICMS1: TMenuItem
+          Caption = 'Apura'#231#227'o de ICMS'
+        end
+        object VendasporCFOP1: TMenuItem
+          Caption = 'Vendas por CFOP'
+        end
+        object VendasporTipo1: TMenuItem
+          Caption = 'Vendas por Tipo'
+        end
+        object VendasporAlquota1: TMenuItem
+          Caption = 'Vendas por Al'#237'quota'
+        end
+        object ContasRecebidas1: TMenuItem
+          Caption = 'Contas Recebidas'
+        end
+      end
+      object Financeiro2: TMenuItem
+        Caption = 'Financeiro'
+        object ContasaPagar1: TMenuItem
+          Caption = 'Contas a Pagar'
+          object Emitidas1: TMenuItem
+            Caption = 'Emitidas'
+          end
+          object Vencidas1: TMenuItem
+            Caption = 'Vencidas'
+          end
+          object Pagas1: TMenuItem
+            Caption = 'Pagas'
+          end
+          object PagasporOrigem1: TMenuItem
+            Caption = 'Pagas por Origem'
+          end
+          object PagasporTipodeLiquidao1: TMenuItem
+            Caption = 'Pagas por Tipo de Liquida'#231#227'o'
+          end
+          object APagar1: TMenuItem
+            Caption = 'A Pagar'
+          end
+        end
+        object ContasaReceber1: TMenuItem
+          Caption = 'Contas a Receber'
+          object Emitidas2: TMenuItem
+            Caption = 'Emitidas'
+          end
+          object Recebidas1: TMenuItem
+            Caption = 'Recebidas'
+          end
+          object RecebidasporOrigem1: TMenuItem
+            Caption = 'Recebidas por Origem'
+          end
+          object RecebidasporTipodeLiquidao1: TMenuItem
+            Caption = 'Recebidas por Tipo de Liquida'#231#227'o'
+          end
+          object RecebidasporEmpresa1: TMenuItem
+            Caption = 'Recebidas por Empresa'
+          end
+          object Vencidas2: TMenuItem
+            Caption = 'Vencidas'
+          end
+          object AReceber1: TMenuItem
+            Caption = 'A Receber'
+          end
+        end
+        object Cheque1: TMenuItem
+          Caption = 'Cheque'
+          object Emitidos1: TMenuItem
+            Caption = 'Emitidos'
+          end
+          object Recebidos1: TMenuItem
+            Caption = 'Recebidos'
+          end
+        end
+        object ContaCorrenteMovimentao1: TMenuItem
+          Caption = 'Conta Corrente - Movimenta'#231#227'o'
+        end
+        object Caixa2: TMenuItem
+          Caption = 'Caixa'
+          object BoletimdeCaixa2: TMenuItem
+            Caption = 'Boletim de Caixa'
+          end
+          object MovimentaodeCaixa2: TMenuItem
+            Caption = 'Movimenta'#231#227'o de Caixa'
+          end
+        end
+        object esourariaSaldo1: TMenuItem
+          Caption = 'Tesouraria - Saldo'
+        end
+        object ClientesExtrato1: TMenuItem
+          Caption = 'Clientes - Extrato'
+        end
+        object Contabilidade1: TMenuItem
+          Caption = 'Contabilidade'
+          object SaldoContasaReceber1: TMenuItem
+            Caption = 'Saldo Contas a Receber'
+          end
+          object SaldoContasaPagar1: TMenuItem
+            Caption = 'Saldo Contas a Pagar'
+          end
+          object LivroCaixa1: TMenuItem
+            Caption = 'Livro Caixa'
+          end
+        end
+        object PlanodeContasReceitaxDespesas1: TMenuItem
+          Caption = 'Plano de Contas - (Receita x Despesas)'#9
+        end
+        object FluxodeCaixaDiario1: TMenuItem
+          Caption = 'Fluxo de Caixa Di'#225'rio'
+        end
+        object PosioFinanceira1: TMenuItem
+          Caption = 'Posi'#231#227'o Financeira'
+        end
+      end
+      object Faturamento3: TMenuItem
+        Caption = 'Faturamento'
+        object Pedidos1: TMenuItem
+          Caption = 'Pedidos'
+          object Listagem1: TMenuItem
+            Caption = 'Listagem'
+          end
+          object ListagemporItem1: TMenuItem
+            Caption = 'Listagem por Item'
+          end
+        end
+        object NotaFiscal2: TMenuItem
+          Caption = 'Nota Fiscal'
+          object Emitidas3: TMenuItem
+            Caption = 'Emitidas'
+          end
+          object EmitidasporCFOP1: TMenuItem
+            Caption = 'Emitidas por CFOP'
+          end
+          object EmitidasporClienteeICMS1: TMenuItem
+            Caption = 'Emitidas por Cliente e ICMS'
+          end
+          object ListagemdeItens1: TMenuItem
+            Caption = 'Listagem de Itens'
+          end
+          object CobranadeFrete1: TMenuItem
+            Caption = 'Cobran'#231'a de Frete'
+          end
+        end
       end
     end
   end
