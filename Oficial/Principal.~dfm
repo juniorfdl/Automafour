@@ -1,10 +1,10 @@
 inherited FormPrincipal: TFormPrincipal
   Tag = 4
-  Left = 38
-  Top = 131
+  Left = 48
+  Top = 124
   Width = 1272
   Height = 527
-  Caption = 'Advanced Control Faturamento'
+  Caption = 'Advanced Control'
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
@@ -20,9 +20,9 @@ inherited FormPrincipal: TFormPrincipal
     object RxLabel5: TRxLabel
       Left = 11
       Top = 10
-      Width = 272
-      Height = 39
-      Caption = 'M'#243'dulo Faturamento'
+      Width = 259
+      Height = 40
+      Caption = 'M'#243'dulo Retaguarda'
       Font.Charset = ANSI_CHARSET
       Font.Color = clBlack
       Font.Height = -32
@@ -2945,6 +2945,18 @@ inherited FormPrincipal: TFormPrincipal
           Caption = 'Nota Fiscal'
           object Emitidas3: TMenuItem
             Caption = 'Emitidas'
+          end
+          object EmitidasporCFOP1: TMenuItem
+            Caption = 'Emitidas por CFOP'
+          end
+          object EmitidasporClienteeICMS1: TMenuItem
+            Caption = 'Emitidas por Cliente e ICMS'
+          end
+          object ListagemdeItens1: TMenuItem
+            Caption = 'Listagem de Itens'
+          end
+          object CobranadeFrete1: TMenuItem
+            Caption = 'Cobran'#231'a de Frete'
           end
         end
       end

@@ -230,6 +230,10 @@ type
     ListagemporItem1: TMenuItem;
     NotaFiscal2: TMenuItem;
     Emitidas3: TMenuItem;
+    EmitidasporCFOP1: TMenuItem;
+    EmitidasporClienteeICMS1: TMenuItem;
+    ListagemdeItens1: TMenuItem;
+    CobranadeFrete1: TMenuItem;
     procedure FATUMnCadastroClientesCadastroClick(Sender: TObject);
     procedure FATUMnCadastroClientesTipodeClienteClick(Sender: TObject);
     procedure FATUMnCadastroBancosClick(Sender: TObject);
