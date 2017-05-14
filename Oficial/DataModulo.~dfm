@@ -503,4 +503,31 @@ inherited DM: TDM
     Left = 432
     Top = 136
   end
+  object SQLConfigInventario: TQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'SELECT * From CONFIGINVENTARIO')
+    Left = 432
+    Top = 184
+    object SQLConfigInventarioOPESICODENTRADA: TIntegerField
+      FieldName = 'OPESICODENTRADA'
+      Origin = 'DB.CONFIGINVENTARIO.OPESICODENTRADA'
+    end
+    object SQLConfigInventarioOPESICODSAIDA: TIntegerField
+      FieldName = 'OPESICODSAIDA'
+      Origin = 'DB.CONFIGINVENTARIO.OPESICODSAIDA'
+    end
+  end
+  object SQLConfigCrediario: TQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'select * from CONFIGCREDIARIO')
+    Left = 432
+    Top = 232
+  end
+  object zConsulta: TQuery
+    DatabaseName = 'DB'
+    Left = 512
+    Top = 48
+  end
 end

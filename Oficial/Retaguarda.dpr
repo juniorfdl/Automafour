@@ -76,7 +76,31 @@ uses
   CadastroTabCest in 'ArquivosComuns\CadastroTabCest.pas' {FormCadastroTabCEST},
   CadastroSerie in 'Cadastros\CadastroSerie.pas' {FormCadastroSerie},
   CadastroCodigoFiscalOperacao in 'Cadastros\CadastroCodigoFiscalOperacao.pas' {FormCadastroCodigoFiscalOperacao},
-  CadastroEmpresa in 'Cadastros\CadastroEmpresa.pas' {FormCadastroEmpresa};
+  CadastroEmpresa in 'Cadastros\CadastroEmpresa.pas' {FormCadastroEmpresa},
+  CadastroVendedor in 'Cadastros\CadastroVendedor.pas' {FormCadastroVendedor},
+  CadastroClienteContato in 'Cadastros\CadastroClienteContato.pas' {FormCadastroClienteContato},
+  TelaConsultaTabelaPreco in 'Cadastros\TelaConsultaTabelaPreco.pas' {FormTelaConsultaTabelaPreco},
+  CadastroConsulta in 'Cadastros\CadastroConsulta.pas' {FormCadastroConsulta},
+  TelaEnvioEmailGeral in 'Cadastros\TelaEnvioEmailGeral.pas' {FormTelaEnvioEmailGeral},
+  CadastroClienteHistorico in 'Cadastros\CadastroClienteHistorico.pas' {FormCadastroClienteHistorico},
+  CadastroCliente in 'Cadastros\CadastroCliente.pas' {FormCadastroCliente},
+  TelaConsultaPlanoRecebimento in 'ArquivosComuns\TelaConsultaPlanoRecebimento.pas' {FormTelaConsultaPlanoRecebimento},
+  TelaNegociacaoDivida in 'ArquivosComuns\TelaNegociacaoDivida.pas' {FormTelaNegociacaoDivida},
+  ExtensoLib in 'ArquivosComuns\ExtensoLib.pas',
+  TelaDadosTeleEntrega in 'ArquivosComuns\TelaDadosTeleEntrega.pas' {FormTelaDadosTeleEntrega},
+  CadastroTipoCliente in 'ArquivosComuns\CadastroTipoCliente.pas' {FormCadastroTipoCliente},
+  TelaGeracaoMalaDireta in 'ArquivosComuns\TelaGeracaoMalaDireta.pas' {FormTelaGeracaoMalaDireta},
+  CadastroClienteProduto in 'ArquivosComuns\CadastroClienteProduto.pas' {FormCadastroClienteProduto},
+  CadastroProfissional in 'Cadastros\CadastroProfissional.pas' {FormCadastroProfissional},
+  CadastroClienteVeiculos in 'Cadastros\CadastroClienteVeiculos.pas' {FormCadastroClienteVeiculos},
+  CadastroAnimaisRaca in 'Cadastros\CadastroAnimaisRaca.pas' {FormCadastroAnimaisRaca},
+  CadastroAnimaisEspecie in 'Cadastros\CadastroAnimaisEspecie.pas' {FormCadastroAnimais_especie},
+  CadastroAnimaisAgenda in 'Cadastros\CadastroAnimaisAgenda.pas' {FormCadastroAnimaisAgenda},
+  CadastroClienteExtintor in 'Cadastros\CadastroClienteExtintor.pas' {FormCadastroClienteExtintor},
+  TelaDetalheRecebimento in 'Cadastros\TelaDetalheRecebimento.pas' {FormTelaDetalheRecebimento},
+  CadastroClienteReferencia in 'Cadastros\CadastroClienteReferencia.pas' {FormCadastroClienteReferencia},
+  CadastroClienteDependente in 'Cadastros\CadastroClienteDependente.pas' {FormCadastroClienteDependente},
+  TelaClienteHistorico in 'Cadastros\TelaClienteHistorico.pas' {FormTelaClienteHistorico};
 
 {$R *.res}
 

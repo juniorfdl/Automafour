@@ -15,3 +15,4 @@ bower_components/
 Oficial/ArquivosComuns/WaitWindow.dcu
 *.dcu
 *.~pas
+*.exe

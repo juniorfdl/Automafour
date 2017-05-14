@@ -195,9 +195,151 @@ procedure GravaMovimentoEstoque(SqlProd,
                                 NumDocOrig,
                                 Lote : String) ;
 
+Function CalculaJuroMultaDesc(VlrVenc, TxJuroMultaDescCobr : double; DVenc, DPag, DVencOrig : TDateTime; Toler : integer; Tipo, Cupom, Parc : string) : Double;
+function SQLRecCount(Tabela, ClausulaWhere : string) : integer ;                                
+Function CalculaLimiteCredito(Cliente : String;ValorCompra : Double;SQLParcelas, SQLCliente : TQuery) : Double;
+
 implementation
 
 uses DataModulo, TelaAutenticaUsuario;
+
+Function CalculaLimiteCredito(Cliente : String;ValorCompra : Double;SQLParcelas, SQLCliente : TQuery) : Double;
+var
+  Debito, Limite, LimiteOrigem : Double;
+begin
+  SQLCliente.Close;
+  SQLCliente.SQL.Clear;
+  SQLCliente.SQL.Add('Select CLIEN2RENDA, CLIEN2CONJUGERENDA, CLIEN2LIMITECRED from CLIENTE where CLIEA13ID = ' + '"' + Cliente + '"');
+  SQLCliente.Open;
+  if not SQLCliente.IsEmpty then
+    begin
+      if (DM.SQLConfigVenda.FieldByName('CFVEN2PERCLIMCRED').Value > 0) then
+        begin
+          if DM.SQLConfigVenda.FieldByName('CFVECRENDCONJNOLIM').Value = 'S' then
+            Limite := (SQLCliente.FieldByName('CLIEN2RENDA').Value +
+                       SQLCliente.FieldByName('CLIEN2CONJUGERENDA').Value) *
+                      (DM.SQLConfigVenda.FieldByName('CFVEN2PERCLIMCRED').Value/100)
+          else
+            Limite := (SQLCliente.FieldByName('CLIEN2RENDA').Value) *
+                      (DM.SQLConfigVenda.FieldByName('CFVEN2PERCLIMCRED').Value/100) ;
+        end
+      else
+        begin
+          Application.MessageBox('O sistema está configurado para testar o limite de crédito, mas a operação não foi realizada porque não existe nenhum percentual configurado para o cálculo do limite ! ','Chekout Informa', MB_OK + MB_ICONWARNING + MB_SYSTEMMODAL);
+          Exit;
+        end;
+
+      if DM.SQLConfigVenda.FieldByName('CFVECSUBDEBNOLIMITE').AsString = 'S' then
+        begin
+          SQLParcelas.Close;
+          SQLParcelas.SQL.Clear;
+          SQLParcelas.SQL.Add('Select sum(CTRCN2VLR-CTRCN2TOTREC) from CONTASRECEBER where CLIEA13ID = '+ '"' + Cliente + '"' +  ' AND CTRCN2VLR > CTRCN2TOTREC');
+          SQLParcelas.SQL.Add('AND (CTRCA5TIPOPADRAO NOT IN ("CRT","CONV") or CTRCA5TIPOPADRAO is null) ');
+          SQLParcelas.SQL.Add(' And (CTRCCSTATUS = "A" OR CTRCCSTATUS = "N")') ;
+          SQLParcelas.SQL.Add(' And (CTRCCTIPOREGISTRO = "N" OR CTRCCTIPOREGISTRO is Null) And (PDVDA13ID = "" OR PDVDA13ID is Null)') ;
+          SQLParcelas.Open;
+          if not SQLParcelas.IsEmpty then
+            Debito := SQLParcelas.FieldByName('SUM').AsFloat;
+          LimiteOrigem := Limite;
+          Limite := Limite - Debito;
+        end
+      else
+        LimiteOrigem := Limite;
+
+ //     if Limite > 0 then
+ //       begin
+          if DM.SQLConfigVenda.FieldByName('CFVECSUBDEBNOLIMITE').AsString <> 'S' then
+            begin
+              Result := LimiteOrigem;
+            end;
+          if DM.SQLConfigVenda.FieldByName('CFVECSUBDEBNOLIMITE').AsString = 'S' then
+            begin
+              Result := LimiteOrigem - Debito;
+            end;
+//        end;
+    end;
+end;
+
+function SQLRecCount(Tabela, ClausulaWhere : string) : integer ;
+var
+  MyQuery : TQuery ;
+begin
+  MyQuery := TQuery.Create(DM);
+  MyQuery.DatabaseName := 'DB' ;
+  MyQuery.Close ;
+  MyQuery.SQL.Clear ;
+  MyQuery.SQL.Add('select Count(*) as Contador from ' + Tabela) ;
+  if ClausulaWhere <> '' then
+    MyQuery.SQL.Add(ClausulaWhere) ;
+  MyQuery.Open ;
+  SQLRecCount := MyQuery.FieldByName('Contador').Value ;
+  MyQuery.Destroy ;
+end ;
+
+
+Function CalculaJuroMultaDesc(VlrVenc, TxJuroMultaDescCobr : double; DVenc, DPag, DVencOrig : TDateTime; Toler : integer; Tipo, Cupom, Parc : string) : Double;
+var
+  PerDia     : double ;
+  DiasAdiant : integer ;
+  SQLocal    : TQuery ;
+begin
+  CalculaJuroMultaDesc := 0 ;
+  if UpperCase(Tipo) = UpperCase('Juro') then
+    begin
+      if ((DPag - DVenc) > Toler) and (DPag > DVencOrig) then
+        begin
+          PerDia               := (TxJuroMultaDescCobr/30)/100 ;
+          PerDia               := PerDia * (DPag - DVenc) ;
+          CalculaJuroMultaDesc := VlrVenc * PerDia ;
+        end ;
+    end ;
+  if UpperCase(Tipo) = UpperCase('Multa') then
+    begin
+      if ((DPag - DVenc) > Toler) and (DPag > DVencOrig) then
+        CalculaJuroMultaDesc := VlrVenc * (TxJuroMultaDescCobr/100) ;
+    end ;
+  if UpperCase(Tipo) = UpperCase('Desconto') then
+    begin
+      if (DPag - DVenc) >= 0 then
+        exit ;
+
+      DiasAdiant           := StrToInt(FormatFloat('#', DPag - DVenc)) ;
+      DiasAdiant           := StrToInt(Copy(IntToStr(DiasAdiant), 2, 20)) ;
+      PerDia               := (TxJuroMultaDescCobr/30)/100 ;
+      PerDia               := PerDia * DiasAdiant ;
+      if DiasAdiant >= Toler then
+        begin
+          CalculaJuroMultaDesc := VlrVenc * PerDia ;
+        end ;
+    end ;
+  if UpperCase(Tipo) = UpperCase('TaxaCobranca') then
+    begin
+      SQLocal := TQuery.Create(nil);
+      SQLocal.DatabaseName := 'DB';
+
+      SQLocal.Close;
+      SQLocal.SQL.Clear;
+      SQLocal.SQL.Add('select AVCOCENVIADO from CARTAAVISOCOBRANCA');
+      SQLocal.SQL.Add('where CUPOA13ID = "' + Cupom + '"');
+      SQLocal.SQL.Add('and   CTRCINROPARC = ' + Parc);
+      try
+        SQLocal.Open;
+      except
+        SQLocal.Close;
+        SQLocal.Destroy;
+        CalculaJuroMultaDesc := 0;
+        Exit;
+      end;
+      if (TxJuroMultaDescCobr > 0) and
+         (not SQLocal.EOF) and
+         (UpperCase(SQLocal.FieldByName('AVCOCENVIADO').AsString) = 'S') then
+      begin
+        CalculaJuroMultaDesc := VlrVenc * (TxJuroMultaDescCobr/100);
+      end;
+      SQLocal.Close;
+      SQLocal.Destroy;
+    end;
+end;
 
 procedure GravaMovimentoEstoque(SqlProd,
                                 SQLProdFilho,

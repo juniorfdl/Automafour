@@ -50,7 +50,7 @@ type
     SPEDFiscal1: TMenuItem;
     Cadastros1: TMenuItem;
     MnADMCadastroProduto: TMenuItem;
-    Clientes1: TMenuItem;
+    MnADMCadastroClientesCadastro: TMenuItem;
     Fornecedores1: TMenuItem;
     Vendedores1: TMenuItem;
     ransportadoras1: TMenuItem;
@@ -314,6 +314,9 @@ type
     procedure MnRelMovimentoCaixaFaturamentoClick(Sender: TObject);
     procedure MnFINPagarLancamentosClick(Sender: TObject);
     procedure MnADMCadastroProdutoClick(Sender: TObject);
+    procedure MnADMCadastroClientesCadastroClick(Sender: TObject);
+    procedure Grupo1Click(Sender: TObject);
+    procedure Marca1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -326,7 +329,8 @@ var
 implementation
 
 uses DataModulo, UnSoundPlay, UnitLibrary, CadastroContasPagar,
-  TelaLembreteTarefa, CadastroProdutos;
+  TelaLembreteTarefa, CadastroProdutos, CadastroCliente, CadastroGrupo,
+  CadastroMarca;
 
 {uses CadastroCliente, CadastroTemplate, CadastroTipoCliente, CadastroBanco,
   CadastroTipoDocumento, CadastroPortador, CadastroClasse, CadastroPedidoVenda,
@@ -1100,6 +1104,33 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     CriaFormulario(TFormCadastroProduto,'FormCadastroProduto',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnADMCadastroClientesCadastroClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroCliente,'FormCadastroCliente',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.Grupo1Click(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroGrupo,'FormCadastroGrupo',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.Marca1Click(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroMarca,'FormCadastroMarca',False,False,True,'')
   else
     SoundPlay('Acesso Negado.wav',Sender);
 end;

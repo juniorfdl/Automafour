@@ -8,7 +8,7 @@ uses
   Grids, DBGrids, ComCtrls, ExtCtrls, Buttons, jpeg, DBCtrls, RxDBComb,
   ToolEdit, RXDBCtrl, FormResources, VarSys, CurrEdit, DBActns, ActnList,
   ImgList, Variants, EDBNum, RxLookup, MemTable, ExtDlgs, Math, QDialogs,
-  Serial, AdvOfficeStatusBar, AdvOfficeStatusBarStylers, AdvPanel;
+  Serial, AdvOfficeStatusBar, AdvOfficeStatusBarStylers, AdvPanel, UCrpe32;
 
 type
   TFormCadastroProduto = class(TFormCadastroTEMPLATE)
@@ -976,6 +976,7 @@ type
     RxDBComboBox14: TRxDBComboBox;
     btCorrigeProdutossemoCodigoCEST: TMenuItem;
     AcessaCEST: TSpeedButton;
+    Report: TCrpe;
     procedure FormCreate(Sender: TObject);
     procedure RxComboComissaoChange(Sender: TObject);
     procedure AcessaMarcaClick(Sender: TObject);

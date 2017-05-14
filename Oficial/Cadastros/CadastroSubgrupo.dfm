@@ -166,7 +166,7 @@ inherited FormCadastroSubgrupo: TFormCadastroSubgrupo
   inherited SQLTemplate: TRxQuery
     Tag = 1
     SQL.Strings = (
-      'Select * From Subgrupo Where '
+      'Select * From SUBGRUPO Where '
       'GrupICod= :GrupICod and '
       '(%MFiltro)')
     ParamData = <
@@ -209,8 +209,6 @@ inherited FormCadastroSubgrupo: TFormCadastroSubgrupo
       Origin = 'DB.SUBGRUPO.SUBGN3MARGEM'
       DisplayFormat = '##0.00'
       EditFormat = '##0.00'
-      Precision = 15
-      Size = 3
     end
   end
   inherited UpdateSQLTemplate: TUpdateSQL

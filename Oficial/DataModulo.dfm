@@ -2,6 +2,7 @@ inherited DM: TDM
   OldCreateOrder = True
   inherited DB: TDatabase
     AliasName = 'Easy_Gestao'
+    Connected = False
   end
   object SQLConfigGeral: TRxQuery
     DatabaseName = 'DB'
@@ -517,5 +518,17 @@ inherited DM: TDM
       FieldName = 'OPESICODSAIDA'
       Origin = 'DB.CONFIGINVENTARIO.OPESICODSAIDA'
     end
+  end
+  object SQLConfigCrediario: TQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'select * from CONFIGCREDIARIO')
+    Left = 432
+    Top = 232
+  end
+  object zConsulta: TQuery
+    DatabaseName = 'DB'
+    Left = 512
+    Top = 48
   end
 end

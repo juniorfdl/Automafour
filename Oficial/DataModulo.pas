@@ -97,6 +97,8 @@ type
     SQLConfigInventario: TQuery;
     SQLConfigInventarioOPESICODENTRADA: TIntegerField;
     SQLConfigInventarioOPESICODSAIDA: TIntegerField;
+    SQLConfigCrediario: TQuery;
+    zConsulta: TQuery;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
