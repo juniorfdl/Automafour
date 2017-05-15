@@ -337,7 +337,7 @@ begin
         StrToInt(CodEan);
         EanOK := True;
       except
-        Informa('O Campo cï¿½d. EAN no cadastro de empresa estï¿½ incorreto, por favor verifique!');
+        Informa('O Campo cód. EAN no cadastro de empresa está incorreto, por favor verifique!');
         EanOK := False;
       end;
     end;
@@ -378,7 +378,7 @@ begin
         StrToInt(CodEan);
         EanOK := True;
       except
-        Informa('O Campo cï¿½d. EAN no cadastro de empresa estï¿½ incorreto, por favor verifique!');
+        Informa('O Campo cód. EAN no cadastro de empresa está incorreto, por favor verifique!');
         EanOK := False;
       end;
     end;

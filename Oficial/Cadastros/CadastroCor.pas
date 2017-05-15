@@ -51,7 +51,7 @@ begin
   if SQLTemplateCORA30DESCR.Value = '' Then
     begin
       Beep ;
-      Informa('O campo Descriï¿½ï¿½o deve ser preenchido!') ;
+      Informa('O campo Descrição deve ser preenchido!') ;
       Abort ;
     end;
   // Testar se a Cor ja existe!!!
@@ -61,7 +61,7 @@ begin
   If not SQLCorAux.IsEmpty Then
     Begin
       Beep ;
-      ShowMessage('Esta Cor jï¿½ estï¿½ cadastrada!');
+      ShowMessage('Esta Cor já está cadastrada!');
       Abort;
     End;
 end;

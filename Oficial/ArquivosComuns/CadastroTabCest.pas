@@ -53,7 +53,7 @@ begin
   inherited;
   if not FileExists('Cest.csv') then
     begin
-      ShowMessage('ERRO: Nï¿½o foi localizado a arquivo Cest.csv, na Gestao');
+      ShowMessage('ERRO: Não foi localizado a arquivo Cest.csv, na Gestao');
       Abort;
       Exit;
     end
@@ -62,7 +62,7 @@ begin
       try
         AssignFile(Texto,'Cest.csv');
       except
-        ShowMessage('ERRO: Nï¿½o foi possï¿½vel abrir o arquivo Cest.csv, na Gestao');
+        ShowMessage('ERRO: Não foi possível abrir o arquivo Cest.csv, na Gestao');
         Abort;
         Exit;
       end;

@@ -1596,7 +1596,7 @@ begin
     begin
       if SQLLocate('USUARIO', 'USUAICOD', 'USUACVERDADCOMPRCLI', IntToStr(DM.UsuarioAtual)) <> 'S' then
         begin
-          Informa('Vocï¿½ nï¿½o tem permissï¿½o para ver os dados de compra!') ;
+          Informa('Você não tem permissão para ver os dados de compra!') ;
           exit ;
         end ;
 
@@ -1730,19 +1730,19 @@ begin
         begin
           if not ValidaCPF(SqlTemplate.FieldByName('CLIEA11CPF').AsString) then
             begin
-               Informa('O CPF digitado ï¿½ invï¿½lido !');
+               Informa('O CPF digitado é inválido !');
               Abort;
             end;
         end
       else
         begin
-          Informa('O CPF digitado estï¿½ incompleto !') ;
+          Informa('O CPF digitado está incompleto !') ;
           Abort;
         end;
     end
   else
     if SqlTemplate.FieldByName('CLIEA5FISJURID').AsString = 'F' then
-      Informa('O CPF nï¿½o foi informado !') ;
+      Informa('O CPF não foi informado !') ;
 
   if SqlTemplate.FieldByName('CLIEA14CGC').AsString <> '' then
     begin
@@ -1750,19 +1750,19 @@ begin
         begin
           if not ValidaCGC(SqlTemplate.FieldByName('CLIEA14CGC').AsString) then
             begin
-              Informa('O CNPJ digitado ï¿½ invï¿½lido !');
+              Informa('O CNPJ digitado é inválido !');
               Abort;
             end;
         end
       else
         begin
-          Informa('O CCG digitado estï¿½ incompleto !');
+          Informa('O CCG digitado está incompleto !');
           Abort;
         end;
     end
   else
     if SqlTemplate.FieldByName('CLIEA5FISJURID').AsString = 'J' then
-      Informa('O CCG nï¿½o foi informado !');
+      Informa('O CCG não foi informado !');
 
   if CPFAlterado then
     if SQLLocate('CLIENTE', 'CLIEA11CPF', 'CLIEA11CPF', '"' + DataSet.FieldByName('CLIEA11CPF').AsString + '"') <> '' then
@@ -1798,7 +1798,7 @@ begin
     begin
       if SQLTemplate.FieldByName('CLIECENQUADRAMENTO').AsString = '' then
       begin
-        Informa('Informe o Regime Tributï¿½rio !');
+        Informa('Informe o Regime Tributário !');
         DataSet.FieldByName('CLIECENQUADRAMENTO').FocusControl ;
         Abort;
       end
@@ -1864,7 +1864,6 @@ begin
       try
         FotoCliente.Picture.LoadFromFile(SQLTemplateCLIEA254PATHFOTO.AsString);
       except
-   //     Informa('Nï¿½o foi possï¿½vel localizar a foto deste cliente -> ' + SQLTemplateCLIEA254PATHFOTO.AsString);
         FotoCliente.Picture := Nil;
       end;
       FotoCliente.Refresh;
@@ -2028,7 +2027,7 @@ begin
           WinExec(Pchar(DM.PathAplicacao + 'CARNESITEM.EXE ' + IntToStr(TerminalAtual) + ' PRN ' + '0'),sw_Show);
       end
     else
-      Informa('O programa de impressï¿½o de carnï¿½ nï¿½o foi encontrado !') ;
+      Informa('O programa de impressão de carnê não foi encontrado !') ;
   end ;
 end;
 
@@ -2044,11 +2043,11 @@ begin
 
   if SQLDadosCompraCTRCN2TOTREC.Value = SQLDadosCompraCTRCN2VLR.Value then
   begin
-    Informa('Esta parcela jï¿½ estï¿½ quitada !') ;
+    Informa('Esta parcela já está quitada !') ;
     exit ;
   end ;
 
-  if Pergunta('SIM','* * * CONFIRMA A IMPRESSï¿½O DO CARNï¿½ AVULSO PARA O DOCUMENTO ' +
+  if Pergunta('SIM','* * * CONFIRMA A IMPRESSÃO DO CARNÊ AVULSO PARA O DOCUMENTO ' +
                     SQLDadosCompraCUPOA13ID.AsString + '/' +
                     SQLDadosCompraCTRCINROPARC.AsString + ' ? * * *') then
   begin
@@ -2117,7 +2116,7 @@ begin
               WinExec(Pchar(DM.PathAplicacao + 'CARNESITEM.EXE ' + IntToStr(TerminalAtual) + ' PRN ' + '0'),sw_Show);
           end
         else
-          Informa('O programa de impressï¿½o de carnï¿½ nï¿½o foi encontrado !') ;
+          Informa('O programa de impressão de carnê não foi encontrado !') ;
       end;
   end ;
 end;
@@ -2129,17 +2128,17 @@ begin
   DM.SQLTemplate.Open;
   If DM.SQLTemplate.FindField('USUACEXCLCLI').asString <> 'S' Then
     Begin
-      Informa('Vocï¿½ nï¿½o tem poder para excluir clientes!') ;
+      Informa('Você não tem poder para excluir clientes!') ;
       Sysutils.Abort ;
     End;
   if SQLLocate('CUPOM', 'CLIEA13ID', 'CLIEA13ID', '"' + SQLTemplateCLIEA13ID.Value + '"') <> '' then
   begin
-    Informa('Este cliente nï¿½o pode ser excluï¿½do pois possui compras !') ;
+    Informa('Este cliente não pode ser excluído pois possui compras !') ;
     Sysutils.Abort ;
   end ;
   if SQLLocate('NOTAFISCAL', 'CLIEA13ID', 'CLIEA13ID', '"' + SQLTemplateCLIEA13ID.Value + '"') <> '' then
   begin
-    Informa('Este cliente nï¿½o pode ser excluï¿½do pois possui compras !') ;
+    Informa('Este cliente não pode ser excluído pois possui compras !') ;
     Sysutils.Abort ;
   end ;
 
@@ -2257,7 +2256,7 @@ begin
     DataBase := StrToDate(InputBox('Alterar Data Base Dados Compra', 'Informa a nova data base', DateToStr(DataBase)));
     MontaDadosCompra ;
   except
-    Informa('Data invï¿½lida') ;
+    Informa('Data inválida') ;
   end ;
 end;
 
@@ -2517,7 +2516,7 @@ begin
         end;
     end
   else
-    Informa('Vocï¿½ deve alterar ou incluir para capturar uma foto !');  
+    Informa('Você deve alterar ou incluir para capturar uma foto !');  
 end;
 
 procedure TFormCadastroCliente.MnOcultaObservacaoClick(Sender: TObject);
@@ -3022,7 +3021,7 @@ begin
   if (SQLTemplate.State = dsEdit) and
      (SQLLocate('USUARIO', 'USUAICOD', 'USUACDESBLOQCLI', IntToStr(DM.UsuarioAtual)) <> 'S') then
     begin
-      Informa('Vocï¿½ nï¿½o tem permissï¿½o para desbloquear clientes !') ;
+      Informa('Você não tem permissão para desbloquear clientes !') ;
       TField(Sender).Value := TField(Sender).OldValue;
     end ;
 end;
@@ -3164,7 +3163,7 @@ begin
             end;
           SQLTemplate.Next;
         end;
-      ShowMessage('Concluï¿½do com Sucesso!');  
+      ShowMessage('Concluído com Sucesso!');  
     end;
 end;
 
@@ -3343,7 +3342,7 @@ begin
   inherited;
   if PagePrincipal.ActivePage <> TabSheetItens then
     begin
-      Informa('Por favor selecione a pï¿½gina "Itens Comprados" antes de executar esta funï¿½ï¿½o!');
+      Informa('Por favor selecione a página "Itens Comprados" antes de executar esta função!');
       Exit;
     end;
   try
@@ -3400,7 +3399,7 @@ begin
   inherited;
   if PagePrincipal.ActivePage <> TabSheetItens then
     begin
-      Informa('Por favor selecione a pï¿½gina "Itens Comprados" antes de executar esta funï¿½ï¿½o!');
+      Informa('Por favor selecione a página "Itens Comprados" antes de executar esta função!');
       Exit;
     end;
   try
@@ -3628,7 +3627,7 @@ begin
 
       // Fechar Arquivo
       CloseFile(Arquivo);
-      ShowMessage('Concluï¿½do com Sucesso!');
+      ShowMessage('Concluído com Sucesso!');
     end;
   DM.zConsulta.Close;
 end;

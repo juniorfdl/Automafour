@@ -60,7 +60,7 @@ begin
   inherited;
   if SQLTemplateUNIDA5DESCR.AsString = SQLTemplateUNIDA15DESCR.AsString Then
     begin
-      Informa('O campo Descriï¿½ï¿½o deve ser DIFERENTE da SIGLA!') ;
+      Informa('O campo Descrição deve ser DIFERENTE da SIGLA!') ;
       Abort ;
     end;
 
@@ -77,7 +77,7 @@ begin
   If (not SQLUnidadeAux.IsEmpty) and (dstemplate.State = dsinsert) Then
     Begin
       Beep ;
-      ShowMessage('Esta Unidade jï¿½ estï¿½ cadastrada!');
+      ShowMessage('Esta Unidade já está cadastrada!');
       Abort;
     End;
 end;

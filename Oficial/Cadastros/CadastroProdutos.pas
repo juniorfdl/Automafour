@@ -1436,7 +1436,7 @@ begin
 
  if Faltas <> '' then
  begin
-    Showmessage('Inconsistï¿½ncia de Dados Verificada:'+#13+#10+#13#10+Faltas);
+    Showmessage('Inconsistência de Dados Verificada:'+#13+#10+#13#10+Faltas);
     Abort;
  end;
 
@@ -3629,7 +3629,7 @@ begin
           dm.SQLTemplate.Next;
           Application.ProcessMessages;
         end;
-      ShowMessage('Atualizaï¿½ï¿½o das Margens de Lucro com Sucesso!');
+      ShowMessage('Atualização das Margens de Lucro com Sucesso!');
       dm.SQLTemplate.Close;
       dm.SQLTemplate.RequestLive := False;
    end;
@@ -3650,7 +3650,7 @@ begin
       SQLTemplate.next;
     end;
   SQLTemplate.First;
-  ShowMessage('Correï¿½ï¿½o Concluida com Sucesso!');
+  ShowMessage('Correção Concluida com Sucesso!');
 end;
 
 procedure TFormCadastroProduto.SQLTemplateBeforeOpen(DataSet: TDataSet);
@@ -3682,7 +3682,7 @@ begin
   inherited;
   if not SQLTemplate.Active then
     begin
-      ShowMessage('ï¿½ necessï¿½rio primeiro realizar o filtro nos produtos...');
+      ShowMessage('É necessário primeiro realizar o filtro nos produtos...');
       Exit;
     end;
   if SQLTemplate.IsEmpty then
@@ -3889,7 +3889,7 @@ begin
                                                   SQLLocate('NOTAFISCAL','NOFIA13ID','CLIEA13ID','"'+SQLMovimentoEstoqueNOFIA13ID.AsString+'"') +'"');
           except on e:exception do
           begin
-            Showmessage('Falha ao gerar informaï¿½ï¿½es: '+e.message);
+            Showmessage('Falha ao gerar informações: '+e.message);
           end;end;
         end;
 
@@ -4041,7 +4041,7 @@ begin
       SQLTemplate.next;
     end;
   SQLTemplate.First;
-  ShowMessage('Correï¿½ï¿½o Concluida com Sucesso!');
+  ShowMessage('Correção Concluida com Sucesso!');
 end;
 
 procedure TFormCadastroProduto.AcessaNCMClick(Sender: TObject);
@@ -4075,7 +4075,7 @@ begin
   inherited;
   if (RxDBComboBox5.ItemIndex <> 0) and (RxDBComboBox5.ItemIndex <> 4) then // produtos e combustiveis
   begin
-    ShowMessage('Desculpe... Este programa nï¿½o estï¿½ preparado para vender este tipo de produto via NF-e');
+    ShowMessage('Desculpe... Este programa não está preparado para vender este tipo de produto via NF-e');
     RxDBComboBox5.ItemIndex := 0;
     RxDBComboBox5.SetFocus;
   end;
@@ -4092,7 +4092,7 @@ begin
   inherited;
 
   if (Length(trim(SQLTemplatePRODA60CODBAR.AsString)) > 14) then
-    Showmessage('Atenï¿½ï¿½o... codigo de barras tem mais que 14 digitos');
+    Showmessage('Atenção... codigo de barras tem mais que 14 digitos');
 
   if (SQLTemplate.State in ([dsInsert, dsEdit])) and (SQLTemplatePRODA20BARRAUNIDADE.AsString = '') then
     SQLTemplatePRODA20BARRAUNIDADE.AsString := SQLTemplatePRODA60CODBAR.AsString;
@@ -4278,7 +4278,7 @@ begin
     end;
   SQLTemplate.First;
 
-  ShowMessage('Correï¿½ï¿½o Concluida com Sucesso!');
+  ShowMessage('Correção Concluida com Sucesso!');
 
   { Baino ncm corrigido, pois larguei o ncm na coluna errada!
   SQLTemplate.First;
@@ -4687,7 +4687,7 @@ begin
     end;
   SQLTemplate.First;
 
-  ShowMessage('Correï¿½ï¿½o Concluida com Sucesso!');
+  ShowMessage('Correção Concluida com Sucesso!');
 end;
 
 procedure TFormCadastroProduto.btCorrigeProdutossemoCodigoCESTClick(
@@ -4718,7 +4718,7 @@ begin
           SQLTemplate.next;
         end;
     end;
-  ShowMessage('Correï¿½ï¿½o Concluida com Sucesso!');
+  ShowMessage('Correção Concluida com Sucesso!');
 end;
 
 procedure TFormCadastroProduto.AcessaCESTClick(Sender: TObject);

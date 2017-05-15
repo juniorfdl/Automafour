@@ -164,7 +164,7 @@ begin
   inherited;
   if not FileExists('TabelaIbptaxRS16.2.A.csv') then
     begin
-      ShowMessage('ERRO: Nï¿½o foi localizado a arquivo TabelaIbptaxRS16.2.A.csv, na Gestao');
+      ShowMessage('ERRO: Não foi localizado a arquivo TabelaIbptaxRS16.2.A.csv, na Gestao');
       Abort;
       Exit;
     end
@@ -173,7 +173,7 @@ begin
       try
         AssignFile(Texto,'TabelaIbptaxRS16.2.A.csv');
       except
-        ShowMessage('ERRO: Nï¿½o foi possï¿½vel abrir o arquivo TabelaIbptaxRS16.2.A.csv, na Gestao');
+        ShowMessage('ERRO: Não foi possível abrir o arquivo TabelaIbptaxRS16.2.A.csv, na Gestao');
         Abort;
         Exit;
       end;
@@ -292,7 +292,7 @@ begin
   inherited;
   if not FileExists('..\Super Tributario.csv') then
     begin
-      ShowMessage('ERRO: Nï¿½o foi localizado a arquivo Super Tributario.csv, na Gestao');
+      ShowMessage('ERRO: Não foi localizado a arquivo Super Tributario.csv, na Gestao');
       Abort;
       Exit;
     end;

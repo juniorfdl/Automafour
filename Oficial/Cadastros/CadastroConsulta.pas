@@ -220,14 +220,14 @@ Begin
     SQLConsulta.MacroByName('MCampos').asString  := SQLTemplateCONSA255CAMPOS.asString
   Else
     Begin
-      ShowMessage('Vocï¿½ nï¿½o adicionou campos ao resultado!');
+      ShowMessage('Você não adicionou campos ao resultado!');
       Exit;
     End;
   If Trim(SQLTemplateCONSA255TABELAS.asString)<>'' Then
     SQLConsulta.MacroByName('MTabelas').asString := SQLTemplateCONSA255TABELAS.asString
   Else
     Begin
-      ShowMessage('Vocï¿½ nï¿½o adicionou Tabelas ï¿½ consulta!');
+      ShowMessage('Você não adicionou Tabelas á consulta!');
       Exit;
     End;
   If (POS(',',SQLTemplateCONSA255TABELAS.asString)<>0) AND (Trim(SQLTemplateCONSA255JOINS.asString)<>'') Then
@@ -236,7 +236,7 @@ Begin
     Begin
       If (POS(',',SQLTemplateCONSA255TABELAS.asString)<>0) Then
         Begin
-          ShowMessage('Vocï¿½ tem mais de uma tabela e nï¿½o fez joins!');
+          ShowMessage('Você tem mais de uma tabela e não fez joins!');
           Exit;
         End
       Else
@@ -726,37 +726,37 @@ begin
   //INICIO MALA DIRETA
   if Pos('CLIEA13ID', SQLTemplateCONSA255CAMPOS.Value) = 0 then
   begin
-    ShowMessage('ï¿½ necessï¿½rio incluir o Campo CLIENTE.CLIEA13ID(Cï¿½digo Cliente) !') ;
+    ShowMessage('É necessário incluir o Campo CLIENTE.CLIEA13ID(Cï¿½digo Cliente) !') ;
     exit ;
   end ;
   if Pos('CLIEA60RAZAOSOC', SQLTemplateCONSA255CAMPOS.Value) = 0 then
   begin
-    ShowMessage('ï¿½ necessï¿½rio incluir o Campo CLIENTE.CLIEA60RAZAOSOC(Nome Cliente) !') ;
+    ShowMessage('É necessário incluir o Campo CLIENTE.CLIEA60RAZAOSOC(Nome Cliente) !') ;
     exit ;
   end ;
   if Pos('CLIEA60ENDRES', SQLTemplateCONSA255CAMPOS.Value) = 0 then
   begin
-    ShowMessage('ï¿½ necessï¿½rio incluir o Campo CLIENTE.CLIEA60ENDRES(Endereï¿½o Cliente) !') ;
+    ShowMessage('É necessário incluir o Campo CLIENTE.CLIEA60ENDRES(Endereï¿½o Cliente) !') ;
     exit ;
   end ;
   if Pos('CLIEA60BAIRES', SQLTemplateCONSA255CAMPOS.Value) = 0 then
   begin
-    ShowMessage('ï¿½ necessï¿½rio incluir o Campo CLIENTE.CLIEA60BAIRES(Bairro Cliente) !') ;
+    ShowMessage('É necessário incluir o Campo CLIENTE.CLIEA60BAIRES(Bairro Cliente) !') ;
     exit ;
   end ;
   if Pos('CLIEA60CIDRES', SQLTemplateCONSA255CAMPOS.Value) = 0 then
   begin
-    ShowMessage('ï¿½ necessï¿½rio incluir o Campo CLIENTE.CLIEA60CIDRES(Cidade Cliente) !') ;
+    ShowMessage('É necessário incluir o Campo CLIENTE.CLIEA60CIDRES(Cidade Cliente) !') ;
     exit ;
   end ;
   if Pos('CLIEA2UFRES', SQLTemplateCONSA255CAMPOS.Value) = 0 then
   begin
-    ShowMessage('ï¿½ necessï¿½rio incluir o Campo CLIENTE.CLIEA2UFRES(UF Cliente) !') ;
+    ShowMessage('É necessário incluir o Campo CLIENTE.CLIEA2UFRES(UF Cliente) !') ;
     exit ;
   end ;
   if Pos('CLIEA8CEPRES', SQLTemplateCONSA255CAMPOS.Value) = 0 then
   begin
-    ShowMessage('ï¿½ necessï¿½rio incluir o Campo CLIENTE.CLIEA8CEPRES(Cep Cliente) !') ;
+    ShowMessage('É necessário incluir o Campo CLIENTE.CLIEA8CEPRES(Cep Cliente) !') ;
     exit ;
   end ;
   if PagePrincipal.ActivePage <> PagePrincipal.Pages[6] then
@@ -770,7 +770,7 @@ begin
   if FileExists('EtiquetasMalaDireta.exe') then
     WinExec(Pchar(DM.PathAplicacao + 'EtiquetasMalaDireta.exe ETQ'),sw_Show)
   else
-    Informa('Programa para impressï¿½o de etiquetas nï¿½o encontrado !') ;
+    Informa('Programa para impressão de etiquetas não encontrado !') ;
 end;
 
 procedure TFormCadastroConsulta.ComboTabelaChange(Sender: TObject);
@@ -818,47 +818,47 @@ begin
   //INICIO MALA DIRETA
   if Pos('CLIEA13ID', SQLTemplateCONSA255CAMPOS.Value) = 0 then
   begin
-    ShowMessage('ï¿½ necessï¿½rio incluir o Campo CLIENTE.CLIEA13ID(Cï¿½digo Cliente) !') ;
+    ShowMessage('É necessário incluir o Campo CLIENTE.CLIEA13ID(Cï¿½digo Cliente) !') ;
     exit ;
   end ;
   if Pos('CLIEA60RAZAOSOC', SQLTemplateCONSA255CAMPOS.Value) = 0 then
   begin
-    ShowMessage('ï¿½ necessï¿½rio incluir o Campo CLIENTE.CLIEA60RAZAOSOC(Nome Cliente) !') ;
+    ShowMessage('É necessário incluir o Campo CLIENTE.CLIEA60RAZAOSOC(Nome Cliente) !') ;
     exit ;
   end ;
   if Pos('CLIEA60ENDRES', SQLTemplateCONSA255CAMPOS.Value) = 0 then
   begin
-    ShowMessage('ï¿½ necessï¿½rio incluir o Campo CLIENTE.CLIEA60ENDRES(Endereï¿½o Cliente) !') ;
+    ShowMessage('É necessário incluir o Campo CLIENTE.CLIEA60ENDRES(Endereï¿½o Cliente) !') ;
     exit ;
   end ;
   if Pos('CLIEA60BAIRES', SQLTemplateCONSA255CAMPOS.Value) = 0 then
   begin
-    ShowMessage('ï¿½ necessï¿½rio incluir o Campo CLIENTE.CLIEA60BAIRES(Bairro Cliente) !') ;
+    ShowMessage('É necessário incluir o Campo CLIENTE.CLIEA60BAIRES(Bairro Cliente) !') ;
     exit ;
   end ;
   if Pos('CLIEA60CIDRES', SQLTemplateCONSA255CAMPOS.Value) = 0 then
   begin
-    ShowMessage('ï¿½ necessï¿½rio incluir o Campo CLIENTE.CLIEA60CIDRES(Cidade Cliente) !') ;
+    ShowMessage('É necessário incluir o Campo CLIENTE.CLIEA60CIDRES(Cidade Cliente) !') ;
     exit ;
   end ;
   if Pos('CLIEA2UFRES', SQLTemplateCONSA255CAMPOS.Value) = 0 then
   begin
-    ShowMessage('ï¿½ necessï¿½rio incluir o Campo CLIENTE.CLIEA2UFRES(UF Cliente) !') ;
+    ShowMessage('É necessário incluir o Campo CLIENTE.CLIEA2UFRES(UF Cliente) !') ;
     exit ;
   end ;
   if Pos('CLIEA8CEPRES', SQLTemplateCONSA255CAMPOS.Value) = 0 then
   begin
-    ShowMessage('ï¿½ necessï¿½rio incluir o Campo CLIENTE.CLIEA8CEPRES(Cep Cliente) !') ;
+    ShowMessage('É necessário incluir o Campo CLIENTE.CLIEA8CEPRES(Cep Cliente) !') ;
     exit ;
   end ;
   if Pos('CLIEA15FONE1', SQLTemplateCONSA255CAMPOS.Value) = 0 then
   begin
-    ShowMessage('ï¿½ necessï¿½rio incluir o Campo CLIENTE.CLIEA15FONE1(Fone1 Cliente) !') ;
+    ShowMessage('É necessário incluir o Campo CLIENTE.CLIEA15FONE1(Fone1 Cliente) !') ;
     exit ;
   end ;
   if Pos('CLIEDNASC', SQLTemplateCONSA255CAMPOS.Value) = 0 then
   begin
-    ShowMessage('ï¿½ necessï¿½rio incluir o Campo CLIENTE.CLIEDNASC(Nascimento Cliente) !') ;
+    ShowMessage('É necessário incluir o Campo CLIENTE.CLIEDNASC(Nascimento Cliente) !') ;
     exit ;
   end ;
 
@@ -873,7 +873,7 @@ begin
   if FileExists('EtiquetasMalaDireta.exe') then
     WinExec(Pchar(DM.PathAplicacao + 'EtiquetasMalaDireta.exe REL'),sw_Show)
   else
-    Informa('Programa para impressï¿½o de listagem nï¿½o foi encontrada !') ;
+    Informa('Programa para impressão de listagem não foi encontrada !') ;
 end;
 
 procedure TFormCadastroConsulta.MnEnviarEmailClick(Sender: TObject);
@@ -886,7 +886,7 @@ begin
     end
   else
     begin
-      Application.MessageBox('O Campo CLIENTE.CLIEA60EMAIL nï¿½o foi selecionado ou nï¿½o possui dados, Impossï¿½vel continuar !','Informaï¿½ï¿½o',MB_OK + MB_ICONINFORMATION + MB_SYSTEMMODAL);
+      Application.MessageBox('O Campo CLIENTE.CLIEA60EMAIL não foi selecionado ou não possui dados, Impossível continuar !','Informaï¿½ï¿½o',MB_OK + MB_ICONINFORMATION + MB_SYSTEMMODAL);
       Abort;
     end;
 end;
@@ -897,37 +897,37 @@ begin
   //INICIO MALA DIRETA
   if Pos('CLIEA13ID', SQLTemplateCONSA255CAMPOS.Value) = 0 then
   begin
-    ShowMessage('ï¿½ necessï¿½rio incluir o Campo CLIENTE.CLIEA13ID(Cï¿½digo Cliente) !') ;
+    ShowMessage('É necessário incluir o Campo CLIENTE.CLIEA13ID(Código Cliente) !') ;
     exit ;
   end ;
   if Pos('CLIEA60RAZAOSOC', SQLTemplateCONSA255CAMPOS.Value) = 0 then
   begin
-    ShowMessage('ï¿½ necessï¿½rio incluir o Campo CLIENTE.CLIEA60RAZAOSOC(Nome Cliente) !') ;
+    ShowMessage('É necessário incluir o Campo CLIENTE.CLIEA60RAZAOSOC(Nome Cliente) !') ;
     exit ;
   end ;
   if Pos('CLIEA60ENDRES', SQLTemplateCONSA255CAMPOS.Value) = 0 then
   begin
-    ShowMessage('ï¿½ necessï¿½rio incluir o Campo CLIENTE.CLIEA60ENDRES(Endereï¿½o Cliente) !') ;
+    ShowMessage('É necessário incluir o Campo CLIENTE.CLIEA60ENDRES(Endereço Cliente) !') ;
     exit ;
   end ;
   if Pos('CLIEA60BAIRES', SQLTemplateCONSA255CAMPOS.Value) = 0 then
   begin
-    ShowMessage('ï¿½ necessï¿½rio incluir o Campo CLIENTE.CLIEA60BAIRES(Bairro Cliente) !') ;
+    ShowMessage('É necessário incluir o Campo CLIENTE.CLIEA60BAIRES(Bairro Cliente) !') ;
     exit ;
   end ;
   if Pos('CLIEA60CIDRES', SQLTemplateCONSA255CAMPOS.Value) = 0 then
   begin
-    ShowMessage('ï¿½ necessï¿½rio incluir o Campo CLIENTE.CLIEA60CIDRES(Cidade Cliente) !') ;
+    ShowMessage('É necessário incluir o Campo CLIENTE.CLIEA60CIDRES(Cidade Cliente) !') ;
     exit ;
   end ;
   if Pos('CLIEA2UFRES', SQLTemplateCONSA255CAMPOS.Value) = 0 then
   begin
-    ShowMessage('ï¿½ necessï¿½rio incluir o Campo CLIENTE.CLIEA2UFRES(UF Cliente) !') ;
+    ShowMessage('É necessário incluir o Campo CLIENTE.CLIEA2UFRES(UF Cliente) !') ;
     exit ;
   end ;
   if Pos('CLIEA8CEPRES', SQLTemplateCONSA255CAMPOS.Value) = 0 then
   begin
-    ShowMessage('ï¿½ necessï¿½rio incluir o Campo CLIENTE.CLIEA8CEPRES(Cep Cliente) !') ;
+    ShowMessage('É necessário incluir o Campo CLIENTE.CLIEA8CEPRES(Cep Cliente) !') ;
     exit ;
   end ;
   if PagePrincipal.ActivePage <> PagePrincipal.Pages[6] then

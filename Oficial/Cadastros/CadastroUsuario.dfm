@@ -1172,8 +1172,6 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
     object SQLTemplateUSUAN2PERCDESC: TFloatField
       FieldName = 'USUAN2PERCDESC'
       Origin = 'DB.USUARIO.USUAN2PERCDESC'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplateUSUACVENDCLIBLOQ: TStringField
       FieldName = 'USUACVENDCLIBLOQ'
@@ -1489,25 +1487,25 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
     AutoStop = False
     Columns = 3
     ColumnPositions.Strings = (
-      '11000'
-      '80000'
-      '151000')
+      '11000000'
+      '80000000'
+      '151000000')
     DataPipeline = Pipe
+    PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Etiquetas de C'#243'digo de Barras'
-    PrinterSetup.PaperName = 'Letter'
+    PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 7000
     PrinterSetup.mmMarginLeft = 2000
     PrinterSetup.mmMarginRight = 2000
     PrinterSetup.mmMarginTop = 14000
-    PrinterSetup.mmPaperHeight = 279000
-    PrinterSetup.mmPaperWidth = 216000
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.mmPaperHeight = 0
+    PrinterSetup.mmPaperWidth = 0
+    PrinterSetup.PaperSize = 139
     Template.FileName = 'C:\TiagoAllfaro\Moreleh\EtiquetasMalaDireta\EtiquetaMoreleh.rtm'
     Units = utMillimeters
     DeviceType = 'Screen'
-    EmailSettings.ReportFormat = 'PDF'
     OutlineSettings.CreateNode = True
     OutlineSettings.CreatePageNodes = True
     OutlineSettings.Enabled = False
@@ -1516,8 +1514,8 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
     TextSearchSettings.Enabled = False
     Left = 700
     Top = 1
-    Version = '10.06'
-    mmColumnWidth = 67666
+    Version = '7.04'
+    mmColumnWidth = 0
     DataPipelineName = 'Pipe'
     object ppColumnHeaderBand3: TppColumnHeaderBand
       mmBottomOffset = 0
@@ -1527,15 +1525,10 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
     object ppDetailBand4: TppDetailBand
       ColumnTraversal = ctLeftToRight
       mmBottomOffset = 0
-      mmHeight = 25500
+      mmHeight = 6746888
       mmPrintPosition = 0
       object ppDBText20: TppDBText
-        UserName = 'DescricaoProduto1'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        DataField = 'USUAA60LOGIN'
+        UserName = 'ppDBText20'
         DataPipeline = Pipe
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1545,19 +1538,15 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
         ParentDataPipeline = False
         Transparent = True
         DataPipelineName = 'Pipe'
-        mmHeight = 3969
-        mmLeft = 20902
-        mmTop = 6085
-        mmWidth = 40746
+        mmHeight = 1050133
+        mmLeft = 5530332
+        mmTop = 1609993
+        mmWidth = 10780734
         BandType = 4
       end
       object ppLabel1: TppLabel
-        UserName = 'Label1'
+        UserName = 'ppLabel1'
         AutoSize = False
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
         Caption = 'Funcion'#225'rio:'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1565,21 +1554,16 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
         Font.Size = 8
         Font.Style = [fsBold]
         Transparent = True
-        mmHeight = 3969
-        mmLeft = 1588
-        mmTop = 6085
-        mmWidth = 16933
+        mmHeight = 1050133
+        mmLeft = 420159
+        mmTop = 1609993
+        mmWidth = 4480199
         BandType = 4
       end
       object ppDBBarCode1: TppDBBarCode
-        UserName = 'DBBarCode1'
+        UserName = 'ppDBBarCode1'
         BarCodeType = bcCode39
         BarColor = clWindowText
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        DataField = 'USUAA5SENHA'
         DataPipeline = Pipe
         PrintHumanReadable = False
         Font.Charset = DEFAULT_CHARSET
@@ -1589,10 +1573,10 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
         Font.Style = []
         Transparent = True
         DataPipelineName = 'Pipe'
-        mmHeight = 11853
-        mmLeft = 2117
-        mmTop = 11377
-        mmWidth = 47498
+        mmHeight = 3136112
+        mmLeft = 560124
+        mmTop = 3010171
+        mmWidth = 12567204
         BandType = 4
         mmBarWidth = 254
         mmWideBarRatio = 76200

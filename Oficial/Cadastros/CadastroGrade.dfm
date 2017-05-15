@@ -251,7 +251,7 @@ inherited FormCadastroGrade: TFormCadastroGrade
     DataSource = DSTemplate
     RequestLive = True
     SQL.Strings = (
-      'select * from GradeTamanho where gradicod = :gradicod'
+      'select * from GRADETAMANHO where GRADICOD = :gradicod'
       'order by'
       'GRTMICOD')
     Macros = <>

@@ -170,19 +170,19 @@ begin
   // GRAVA MOVIMENTO NA TESOURARIA E BAIXA CONTA RECEBER;
   if ComboOperacaoTesouraria.Value = '' then
     begin
-      ShowMessage('Vocï¿½ deve selecionar uma operaï¿½ï¿½o de tesouraria !');
+      ShowMessage('Você deve selecionar uma operação de tesouraria !');
       ComboOperacaoTesouraria.SetFocus;
       Exit;
     end;
   if ComboNumerario.Value = '' then
     begin
-      ShowMessage('Vocï¿½ deve selecionar um numerï¿½rio !');
+      ShowMessage('Você deve selecionar um numerï¿½rio !');
       ComboOperacaoTesouraria.SetFocus;
       Exit;
     end;
   if (DataMovTesouraria.Text = '  /  /    ')then
     begin
-      Informa('Vocï¿½ deve informar a data do movimento !');
+      Informa('Você deve informar a data do movimento !');
       Exit;
     end;
 
@@ -205,7 +205,7 @@ begin
        try
          StrToInt(EditNroChqBanco.Text);
        except
-         ShowMessage('O nï¿½mero do cheque dever ser um nï¿½mero inteiro, nï¿½o pode conter caracteres alfa numï¿½ricos !');
+         ShowMessage('O número do cheque dever ser um número inteiro, não pode conter caracteres alfa numéricos !');
          EditNroChqBanco.SetFocus;
          Abort;
        end;
@@ -215,29 +215,29 @@ begin
 
    if (ComboContaCorrenteBanco.Value = '')then
      begin
-       Informa('Vocï¿½ deve informar a conta corrente !');
+       Informa('Você deve informar a conta corrente !');
        Exit;
      end;
    if ComboOperacaoBanco.Value = '' then
      begin
-       Informa('Vocï¿½ deve informar a operaï¿½ï¿½o bancï¿½ria !');
+       Informa('Você deve informar a operação bancária !');
        Exit;
      end
    else
      begin
        if SQLOperacaoBancoOPBCCALTSALDO.AsString <> 'S' then
          begin
-           Informa('A operaï¿½ï¿½o bancï¿½ria selecionada nï¿½o pode alterar o saldo da conta corrente, a operaï¿½ï¿½o serï¿½ cancelada !');
+           Informa('A operação bancúria selecionada núo pode alterar o saldo da conta corrente, a operação será cancelada !');
            Exit;
          end;
      end;
    if (DateEditMovBanco.Text = '  /  /    ')then
      begin
-       Informa('Vocï¿½ deve informar a data do movimento !');
+       Informa('Você deve informar a data do movimento !');
        Exit;
      end;
 
-   // LANï¿½A MOVIMENTAï¿½ï¿½O BANCARIA E ATUALIZA SALDO DA CONTACORRENTE;
+   // LANúA MOVIMENTAúúO BANCARIA E ATUALIZA SALDO DA CONTACORRENTE;
    LancaMovimentacaoBanco(StrToInt(EmpresaPadrao),
                           StrToInt(ComboContaCorrenteBanco.Value),
                           StrToInt(ComboOperacaoBanco.Value),

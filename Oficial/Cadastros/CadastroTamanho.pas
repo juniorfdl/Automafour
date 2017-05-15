@@ -63,8 +63,8 @@ begin
   SQLCount.Open;
   if SQLCount.FieldByName('COUNT').AsFloat = 15 then
     begin
-      Informa('O nï¿½mero mï¿½ximo de tamanhos para uma grade ï¿½ 15, e este nï¿½mero jï¿½ foi alcanï¿½ado...' + #13 +
-              'A operaï¿½ï¿½o nï¿½o serï¿½ concluï¿½da, se desejar inicie uma nova grade!');
+      Informa('O número máximo de tamanhos para uma grade é 15, e este número já foi alcançado...' + #13 +
+              'A operação não será concluída, se desejar inicie uma nova grade!');
       Abort;        
     end;
 end;

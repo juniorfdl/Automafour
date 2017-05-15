@@ -2338,12 +2338,13 @@ inherited FormPrincipal: TFormPrincipal
           Caption = 'Grupo'
           OnClick = Grupo1Click
         end
-        object Marca1: TMenuItem
+        object MnADMCadastroProdutosGrades: TMenuItem
           Caption = 'Marca'
-          OnClick = Marca1Click
+          OnClick = MnADMCadastroProdutosGradesClick
         end
         object Grade1: TMenuItem
           Caption = 'Grade'
+          OnClick = Grade1Click
         end
         object Cor1: TMenuItem
           Caption = 'Cor'

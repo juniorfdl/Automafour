@@ -58,7 +58,7 @@ type
     Convnio1: TMenuItem;
     Controle1: TMenuItem;
     Grupo1: TMenuItem;
-    Marca1: TMenuItem;
+    MnADMCadastroProdutosGrades: TMenuItem;
     Grade1: TMenuItem;
     Cor1: TMenuItem;
     Coleo1: TMenuItem;
@@ -316,7 +316,8 @@ type
     procedure MnADMCadastroProdutoClick(Sender: TObject);
     procedure MnADMCadastroClientesCadastroClick(Sender: TObject);
     procedure Grupo1Click(Sender: TObject);
-    procedure Marca1Click(Sender: TObject);
+    procedure MnADMCadastroProdutosGradesClick(Sender: TObject);
+    procedure Grade1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -330,7 +331,7 @@ implementation
 
 uses DataModulo, UnSoundPlay, UnitLibrary, CadastroContasPagar,
   TelaLembreteTarefa, CadastroProdutos, CadastroCliente, CadastroGrupo,
-  CadastroMarca;
+  CadastroMarca, CadastroGrade;
 
 {uses CadastroCliente, CadastroTemplate, CadastroTipoCliente, CadastroBanco,
   CadastroTipoDocumento, CadastroPortador, CadastroClasse, CadastroPedidoVenda,
@@ -1126,11 +1127,20 @@ begin
     SoundPlay('Acesso Negado.wav',Sender);
 end;
 
-procedure TFormPrincipal.Marca1Click(Sender: TObject);
+procedure TFormPrincipal.MnADMCadastroProdutosGradesClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     CriaFormulario(TFormCadastroMarca,'FormCadastroMarca',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.Grade1Click(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroGrade,'FormCadastroGrade',False,False,True,'')
   else
     SoundPlay('Acesso Negado.wav',Sender);
 end;

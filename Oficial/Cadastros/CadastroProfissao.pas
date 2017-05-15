@@ -49,7 +49,7 @@ begin
   if SQLTemplatePROFA60DESCR.Value = '' Then
     begin
       Beep ;
-      ShowMessage('O campo Descriï¿½ï¿½o deve ser preenchido!') ;
+      ShowMessage('O campo Descrição deve ser preenchido!') ;
       Abort ;
     end;
   // Testar se a Profissao ja existe!!!
@@ -59,7 +59,7 @@ begin
   If not SQLProfissaoAux.IsEmpty Then
     Begin
       Beep ;
-      ShowMessage('Esta Profissao jï¿½ estï¿½ cadastrada!');
+      ShowMessage('Esta Profissao já está cadastrada!');
       Abort;
     End;
 end;

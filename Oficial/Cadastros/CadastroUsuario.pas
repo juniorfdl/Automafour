@@ -174,7 +174,7 @@ begin
   IF SQLTemplateUSUAA60LOGIN.Value = '' Then
     begin
       beep;
-      ShowMessage('O campo Nome ï¿½ obrigatï¿½rio!');
+      ShowMessage('O campo Nome é obrigatório!');
       Abort;
     end;
 end;

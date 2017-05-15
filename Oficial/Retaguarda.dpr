@@ -1,6 +1,4 @@
-program Retaguarda;
-
-
+program Retaguarda; 
 
 uses
   Forms,

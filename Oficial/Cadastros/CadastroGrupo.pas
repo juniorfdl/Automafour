@@ -79,7 +79,7 @@ begin
   if SQLTemplateGRUPA60DESCR.Value = '' Then
     begin
       Beep ;
-      ShowMessage('O campo Descriï¿½ï¿½o deve ser preenchido!') ;
+      ShowMessage('O campo Descrição deve ser preenchido!') ;
       Abort ;
     end;
   // Testar se a Grupo ja existe!!!
@@ -89,7 +89,7 @@ begin
   If not SQLGrupoAux.IsEmpty Then
     Begin
       Beep ;
-      ShowMessage('Este Grupo jï¿½ estï¿½ cadastrado!');
+      ShowMessage('Este Grupo já está cadastrado!');
       Abort;
     End; }
 end;

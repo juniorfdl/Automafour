@@ -687,7 +687,7 @@ begin
           SQLPagamento.Open;
         end
       else
-        Informa('Vocï¿½ nï¿½o tem permissï¿½o para acessar essa tela, somente um usuï¿½rio master do sistema terï¿½ acesso!');
+        Informa('Você não tem permissão para acessar essa tela, somente um usuï¿½rio master do sistema terá acesso!');
     end
   else
     begin
@@ -792,13 +792,13 @@ procedure TFormCadastroContasPagar.SQLTemplateBeforeDelete(
 begin
  if (SQLTemplateEMPRICOD.AsString <> EmpresaPadrao) and (MatrizFilial='F') then
     begin
-      Informa('Esta Conta a Pagar foi criada em outra Filial, portanto, nï¿½o pode ser excluida !');
+      Informa('Esta Conta a Pagar foi criada em outra Filial, portanto, não pode ser excluida !');
       Abort;
     end;
 
   if SQLTemplate.FieldByName('CTPGN2TOTPAG').AsFloat > 0 then
     begin
-     if Pergunta('NAO','Vocï¿½ nï¿½o pode excluir esta parcela, existem pagamentos referentes ï¿½ ela, Deseja estornar o ï¿½ltimo pagamento?') then
+     if Pergunta('NAO','Você não pode excluir esta parcela, existem pagamentos referentes á ela, Deseja estornar o último pagamento?') then
        begin
          SQLTemplate.DisableControls;
          SQLPagamento.Last;
@@ -1108,7 +1108,7 @@ begin
   inherited;
   if SQLTemplateCTPGDVENC.Value < SQLTemplateCTPGDTEMIS.Value then
     begin
-      ShowMessage('Atenï¿½ï¿½o! A data de vencimento estï¿½ menor que a data de emissï¿½o!');
+      ShowMessage('Atenção! A data de vencimento está menor que a data de emissão!');
       DBEdit4.SetFocus;
     end;
 end;
@@ -1118,19 +1118,19 @@ procedure TFormCadastroContasPagar.SQLTemplateBeforePost(
 begin
   if SQLTemplateFORNICOD.AsString = '' then
     begin
-      Showmessage('Atenï¿½ï¿½o! ï¿½ preciso escolher um Fornecedor!');
+      Showmessage('Atenção! é preciso escolher um Fornecedor!');
       DBEdit2.SetFocus;
       Abort;
     end;
   if SQLTemplateCTPGDVENC.Value < SQLTemplateCTPGDTEMIS.Value then
     begin
-      Showmessage('Atenï¿½ï¿½o! Data de Vencimento menor que a Data de Emissï¿½o!');
+      Showmessage('Atenção! Data de Vencimento menor que a Data de Emissão!');
       DBEdit4.SetFocus;
       Abort;
     end;
   if SQLTemplateCTPGN3VLR.Value = 0 then
     begin
-      Showmessage('Atenï¿½ï¿½o! O Valor nï¿½o foi informado!');
+      Showmessage('Atenção! O Valor não foi informado!');
       EvDBNumEdit1.SetFocus;
       Abort;
     end;

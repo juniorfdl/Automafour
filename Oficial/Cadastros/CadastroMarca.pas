@@ -53,7 +53,7 @@ begin
   if SQLTemplateMARCA60DESCR.Value = '' Then
     begin
       Beep ;
-      Informa('O campo Descriï¿½ï¿½o deve ser preenchido!') ;
+      Informa('O campo Descrição deve ser preenchido!') ;
       Abort ;
     end;
   // Testar se a Marca ja existe!!!
@@ -63,7 +63,7 @@ begin
   If not SQLMarcaAux.IsEmpty Then
     Begin
       Beep ;
-      ShowMessage('Esta Marca jï¿½ estï¿½ cadastrada!');
+      ShowMessage('Esta Marca já está cadastrada!');
       Abort;
     End;
 end;

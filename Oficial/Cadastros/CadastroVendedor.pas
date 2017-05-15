@@ -192,7 +192,7 @@ procedure TFormCadastroVendedor.SQLTemplateBeforePost(DataSet: TDataSet);
 begin
   if SQLTemplateVENDICOD.AsString = '' then
     begin
-      ShowMessage('Vendedor sem Cï¿½digo! Verifique!');
+      ShowMessage('Vendedor sem Código! Verifique!');
       dbedit1.SetFocus;
       Abort;
     end;
@@ -204,7 +204,7 @@ begin
       SQLVendedorAux.Open;
       if not SQLVendedorAux.IsEmpty then
         begin
-          ShowMessage('Jï¿½ existe um Vendedor com este Cï¿½digo! Verifique!');
+          ShowMessage('Já existe um Vendedor com este Código! Verifique!');
           Abort;
         end;
     end;

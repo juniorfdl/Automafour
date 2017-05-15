@@ -62,7 +62,7 @@ begin
   if SQLTemplateVARIA60DESCR.Value = '' Then
     begin
       Beep ;
-      Informa('O campo Descriï¿½ï¿½o deve ser preenchido!') ;
+      Informa('O campo Descrição deve ser preenchido!') ;
       Abort ;
     end;
 end;

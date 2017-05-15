@@ -62,7 +62,7 @@ begin
   if SQLTemplateRAMOA30DESCR.Value = '' Then
     begin
       Beep ;
-      ShowMessage('O campo Descriï¿½ï¿½o deve ser preenchido!') ;
+      ShowMessage('O campo Descrição deve ser preenchido!') ;
       Abort ;
     end;
   // Testar se o Ramo ja existe!!!
@@ -72,7 +72,7 @@ begin
   If not SQLRamoAux.IsEmpty Then
     Begin
       Beep ;
-      ShowMessage('Este Ramo jï¿½ estï¿½ Cadastrado!');
+      ShowMessage('Este Ramo já está Cadastrado!');
       Abort;
     End;
 end;

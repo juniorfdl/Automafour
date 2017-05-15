@@ -131,13 +131,13 @@ begin
   if SQLTemplateICMSA60DESCR.Value = '' Then
     begin
       Beep ;
-      Informa('O campo Descriï¿½ï¿½o deve ser preenchido!') ;
+      Informa('O campo Descrição deve ser preenchido!') ;
       Abort ;
     end;
   if SQLTemplateICMSN2ALIQUOTA.AsString = '' Then
     begin
       Beep ;
-      Informa('O campo Alï¿½quota deve ser preenchido!') ;
+      Informa('O campo Alíquota deve ser preenchido!') ;
       Abort ;
     end;
     
@@ -151,7 +151,7 @@ begin
   DM.zConsulta.Open;
   if not DM.zConsulta.IsEmpty then
     begin
-      ShowMessage('Existem Produtos usando a Aliquota Atual! Exclusï¿½o Cancelada!');
+      ShowMessage('Existem Produtos usando a Aliquota Atual! Exclusão Cancelada!');
       abort;
     end; }
   inherited;

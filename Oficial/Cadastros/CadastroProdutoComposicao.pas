@@ -194,7 +194,7 @@ procedure TFormCadastroProdutoComposicao.SQLTemplateBeforeDelete(
 begin
   if MatrizFilial <> 'M' then
     begin
-      Informa('Uma filial nï¿½o pode alterar composiï¿½ï¿½o!');
+      Informa('Uma filial não pode alterar composição!');
       Abort;
     end;
 
@@ -206,7 +206,7 @@ procedure TFormCadastroProdutoComposicao.SQLTemplateBeforeInsert(
 begin
   if MatrizFilial <> 'M' then
     begin
-      Informa('Uma filial nï¿½o pode alterar composiï¿½ï¿½o!');
+      Informa('Uma filial não pode alterar composição!');
       Abort;
     end;
 
@@ -220,7 +220,7 @@ begin
   inherited;
   if MatrizFilial <> 'M' then
     begin
-      Informa('Uma filial nï¿½o pode alterar composiï¿½ï¿½o!');
+      Informa('Uma filial não pode alterar composição!');
       Abort;
     end;
   if SQLTemplatePRODN3QTDE.AsFloat <= 0 then

@@ -274,8 +274,6 @@ inherited FormCadastroUnidade: TFormCadastroUnidade
       ConstraintErrorMessage = '1'
       FieldName = 'UNIDN3FATORCONV'
       Origin = 'DB.UNIDADE.UNIDN3FATORCONV'
-      Precision = 15
-      Size = 3
     end
   end
   inherited UpdateSQLTemplate: TUpdateSQL

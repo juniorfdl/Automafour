@@ -183,7 +183,7 @@ begin
   inherited;
    if edtdias.value < StrToInt(ulvct.caption) then
    begin
-      ShowMessage('Nï¿½ de Dias Deve Ser Maior que Anterior');
+      ShowMessage('Não de Dias Deve Ser Maior que Anterior');
       EdtDias.Setfocus;
       Exit;
    end else
@@ -643,27 +643,27 @@ begin
 
   if ComboEmpresa.KeyValue = null then
     begin
-      ShowMessage('ï¿½ necessï¿½rio informar uma empresa');
+      ShowMessage('é necessário informar uma empresa');
       ComboEmpresa.SetFocus;
     end;
   if ComboFornecedor.KeyValue = null then
     begin
-      ShowMessage('ï¿½ necessï¿½rio informar um Fornecedor');
+      ShowMessage('é necessário informar um Fornecedor');
       ComboFornecedor.SetFocus;
     end;
   if ComboTipoDoc.KeyValue = null then
     begin
-      ShowMessage('ï¿½ necessï¿½rio informar um Tipo de Documento');
+      ShowMessage('é necessário informar um Tipo de Documento');
       ComboTipoDoc.SetFocus;
     end;
   if ComboPortador.KeyValue = null then
     begin
-      ShowMessage('ï¿½ necessï¿½rio informar um Portador');
+      ShowMessage('é necessário informar um Portador');
       ComboPortador.SetFocus;
     end;
   if EditNFNro.Text = '' then
     begin
-      ShowMessage('ï¿½ necessï¿½rio informar o Nï¿½mero da Nota');
+      ShowMessage('é necessário informar o Nï¿½mero da Nota');
       EditNFNro.SetFocus;
     end;
   RxTable.First;
@@ -695,7 +695,7 @@ begin
   inherited;
   if ComboEmpresa.KeyValue = null then
     begin
-      ShowMessage('ï¿½ necessï¿½rio informar uma empresa');
+      ShowMessage('é necessário informar uma empresa');
       ComboEmpresa.SetFocus;
     end;
 end;
@@ -706,7 +706,7 @@ begin
   inherited;
   if ComboTipoDoc.KeyValue = null then
     begin
-      ShowMessage('ï¿½ necessï¿½rio informar um Tipo de Documento');
+      ShowMessage('é necessário informar um Tipo de Documento');
       ComboTipoDoc.SetFocus;
     end;
 end;
@@ -717,7 +717,7 @@ begin
   inherited;
   if ComboFornecedor.KeyValue = null then
     begin
-      ShowMessage('ï¿½ necessï¿½rio informar um Fornecedor');
+      ShowMessage('é necessário informar um Fornecedor');
       ComboFornecedor.SetFocus;
     end;
 end;
@@ -728,7 +728,7 @@ begin
   inherited;
   if ComboPortador.KeyValue = null then
     begin
-      ShowMessage('ï¿½ necessï¿½rio informar um Portador');
+      ShowMessage('é necessário informar um Portador');
       ComboPortador.SetFocus;
     end;
 end;
@@ -739,7 +739,7 @@ begin
   inherited;
   if EditNFNro.Text = '' then
     begin
-      ShowMessage('ï¿½ necessï¿½rio informar o Nï¿½mero da Nota');
+      ShowMessage('é necessário informar o Nï¿½mero da Nota');
       EditNFNro.SetFocus;
     end;
 end;

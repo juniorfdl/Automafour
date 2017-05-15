@@ -598,7 +598,7 @@ begin
         begin
           if not ValidaCPF(SqlTemplate.FieldByName('FORNA11CPF').AsString) then
             begin
-              Informa('O CPF digitado ï¿½ invï¿½lido !');
+              Informa('O CPF digitado é inválido !');
               Abort;
             end
           else
@@ -608,16 +608,16 @@ begin
                   begin
                     if SQLLocate('FORNECEDOR','FORNA11CPF','FORNA20IE','"' + SqlTemplate.FieldByName('FORNA11CPF').AsString + '"') = SQLTemplateFORNA20IE.AsString then
                     Begin
-                        Informa('Este CPF jï¿½ foi cadastrado!');
+                        Informa('Este CPF já foi cadastrado!');
                         Abort;
                     end else
-                        Informa('Atenï¿½ï¿½o... Este CPF jï¿½ consta no cadastro com outra Inscriï¿½ï¿½o Estadual');
+                        Informa('Atenção... Este CPF já consta no cadastro com outra Inscrição Estadual');
                   end;
             end;
         end
       else
         begin
-          Informa('O CPF digitado estï¿½ incompleto !');
+          Informa('O CPF digitado está incompleto !');
           Abort;
         end;
   if SqlTemplate.FieldByName('FORNCFISJURID').AsString = 'J' then
@@ -627,7 +627,7 @@ begin
         begin
           if not ValidaCGC(SqlTemplate.FieldByName('FORNA14CGC').AsString) then
             begin
-              Informa('O CNPJ digitado ï¿½ invï¿½lido !');
+              Informa('O CNPJ digitado é inválido !');
               Abort;
             end
           else
@@ -635,21 +635,21 @@ begin
               if (SQLTemplate.State in [DSInsert]) or (CGCAlterado) then
                 if SQLLocate('FORNECEDOR','FORNA14CGC','FORNA14CGC','"' + SqlTemplate.FieldByName('FORNA14CGC').AsString + '"') <> '' then
                   begin
-                    Informa('Este CNPJ jï¿½ foi cadastrado!');
+                    Informa('Este CNPJ já foi cadastrado!');
                     Abort;
                   end;
             end;
         end
       else
         begin
-          Informa('O CNPJ digitado estï¿½ incompleto !');
+          Informa('O CNPJ digitado está incompleto !');
           Abort;
         end;
 
       if SQLTemplateFORNCSIMPLES.Value = '' Then
       begin
         Beep ;
-        Informa('O campo Regime Tributï¿½rio deve ser preenchido!');
+        Informa('O campo Regime Tributário deve ser preenchido!');
         SQLTemplateFORNCSIMPLES.FocusControl;
         Abort;
       end;
@@ -658,7 +658,7 @@ begin
   if SQLTemplateFORNA60RAZAOSOC.Value = '' Then
     begin
       Beep;
-      Informa('O campo Razï¿½o Social deve ser preenchido!');
+      Informa('O campo Razão Social deve ser preenchido!');
       SQLTemplateFORNA60RAZAOSOC.FocusControl;
       Abort;
     end;
@@ -757,7 +757,7 @@ begin
         end
       else
         begin
-          ShowMessage('Atenï¿½ï¿½o! Usuï¿½rio sem permissï¿½o para ver o resumo financeiro!');
+          ShowMessage('Atenção! Usuário sem permissão para ver o resumo financeiro!');
           Exit;
         end;
     end;
@@ -854,7 +854,7 @@ procedure TFormCadastroFornecedor.SQLTemplateBeforeDelete(
 begin
   if SQLLocate('CONTASPAGAR','FORNICOD','CTPGA13ID',SQLTemplateFORNICOD.AsString) <> '' then
     begin
-      Informa('Este fornecedor possui histï¿½rico financeiro, nï¿½o poderï¿½ ser excluï¿½do!');
+      Informa('Este fornecedor possui histórico financeiro, não poderá ser excluído!');
       Abort;
       Exit;
     end;
@@ -963,7 +963,7 @@ begin
   inherited;
   if SQLTrocas.IsEmpty then
     begin
-      ShowMessage('Nï¿½o existem trocas a ser impressas!');
+      ShowMessage('Não existem trocas a ser impressas!');
       Abort;
       Exit;
     end;
@@ -1006,7 +1006,7 @@ begin
   inherited;
   if not SQLTemplate.Active then
     begin
-      ShowMessage('ï¿½ necessï¿½rio primeiro realizar o filtro nos Fornecedores...');
+      ShowMessage('É necessário primeiro realizar o filtro nos Fornecedores...');
       Exit;
     end;
   if SQLTemplate.IsEmpty then
