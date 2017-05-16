@@ -101,7 +101,8 @@ uses
   TelaClienteHistorico in 'Cadastros\TelaClienteHistorico.pas' {FormTelaClienteHistorico},
   CadastroTesouraria in 'Cadastros\CadastroTesouraria.pas' {FormCadastroTesouraria},
   CadastroOperacaoTesouraria in 'Cadastros\CadastroOperacaoTesouraria.pas' {FormCadastroOperacaoTesouraria},
-  CadastroHistoricoPadrao in 'Cadastros\CadastroHistoricoPadrao.pas';
+  CadastroHistoricoPadrao in 'Cadastros\CadastroHistoricoPadrao.pas',
+  CadastroIcmsUf in 'Cadastros\CadastroIcmsUf.pas' {FormCadastroIcmsUF};
 
 {$R *.res}
 
@@ -112,7 +113,6 @@ begin
   Application.Title := 'Gestão Empresarial - Módulo Faturamento';
 
   Application.CreateForm(TDM, DM);
-  
   if dm.SQLConfigGeralCFGECBLOQ.AsString = 'S' then
     begin
       ShowMessage('Sistema Bloqueado!!! Ligue para a Suporte');

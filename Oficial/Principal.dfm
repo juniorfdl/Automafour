@@ -2358,14 +2358,17 @@ inherited FormPrincipal: TFormPrincipal
           Caption = 'Unidade'
           OnClick = MnADMCadastroProdutosUnidadesClick
         end
-        object ICMS1: TMenuItem
+        object MnADMCadastroProdutosIcms: TMenuItem
           Caption = 'ICMS'
+          OnClick = MnADMCadastroProdutosIcmsClick
         end
-        object ICMSporUF1: TMenuItem
+        object MnADMCadastroProdutosIcmsUF: TMenuItem
           Caption = 'ICMS por UF'
+          OnClick = MnADMCadastroProdutosIcmsUFClick
         end
-        object abelaNCM1: TMenuItem
+        object MNADMCadastroNCM: TMenuItem
           Caption = 'Tabela NCM'
+          OnClick = MNADMCadastroNCMClick
         end
         object ConveroCSTporICMS1: TMenuItem
           Caption = 'Conver'#231#227'o CST por ICMS'

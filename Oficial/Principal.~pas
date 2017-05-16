@@ -63,9 +63,9 @@ type
     MnADMCadastroProdutosCores: TMenuItem;
     MnColecao: TMenuItem;
     MnADMCadastroProdutosUnidades: TMenuItem;
-    ICMS1: TMenuItem;
-    ICMSporUF1: TMenuItem;
-    abelaNCM1: TMenuItem;
+    MnADMCadastroProdutosIcms: TMenuItem;
+    MnADMCadastroProdutosIcmsUF: TMenuItem;
+    MNADMCadastroNCM: TMenuItem;
     ConveroCSTporICMS1: TMenuItem;
     ConveroCSTporPISCofins1: TMenuItem;
     Cidade1: TMenuItem;
@@ -322,6 +322,9 @@ type
     procedure MnColecaoClick(Sender: TObject);
     procedure MnADMCadastroProdutosUnidadesClick(Sender: TObject);
     procedure MnFINTesLancamentosClick(Sender: TObject);
+    procedure MnADMCadastroProdutosIcmsClick(Sender: TObject);
+    procedure MnADMCadastroProdutosIcmsUFClick(Sender: TObject);
+    procedure MNADMCadastroNCMClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -336,7 +339,8 @@ implementation
 uses DataModulo, UnSoundPlay, UnitLibrary, CadastroContasPagar,
   TelaLembreteTarefa, CadastroProdutos, CadastroCliente, CadastroGrupo,
   CadastroMarca, CadastroGrade, CadastroCor, CadastroColecao,
-  CadastroUnidade, CadastroTesouraria;
+  CadastroUnidade, CadastroTesouraria, CadastroICMS, CadastroIcmsUf,
+  CadastroNCM;
 
 {uses CadastroCliente, CadastroTemplate, CadastroTipoCliente, CadastroBanco,
   CadastroTipoDocumento, CadastroPortador, CadastroClasse, CadastroPedidoVenda,
@@ -1184,6 +1188,34 @@ begin
     CriaFormulario(TFormCadastroTesouraria,'FormCadastroTesouraria',False,False,False,'')
   else
     SoundPlay('Acesso Negado.wav',Sender); 
+end;
+
+procedure TFormPrincipal.MnADMCadastroProdutosIcmsClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroICMS,'FormCadastroICMS',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnADMCadastroProdutosIcmsUFClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroIcmsUf,'FormCadastroIcmsUf',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);  
+end;
+
+procedure TFormPrincipal.MNADMCadastroNCMClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroNCM,'FormCadastroNCM',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+
 end;
 
 end.

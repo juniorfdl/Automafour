@@ -74,15 +74,15 @@ begin
   begin
     ComboSitTrib.Items.Clear;
     ComboSitTrib.Values.Clear;
-    ComboSitTrib.Items.Add('101 - Tributada pelo Simples Nacional com permissï¿½o de crï¿½dito. (v.2.0)');
-    ComboSitTrib.Items.Add('102 - Tributada pelo Simples Nacional sem permissï¿½o de crï¿½dito.');
-    ComboSitTrib.Items.Add('103 - Isenï¿½ï¿½o do ICMS no Simples Nacional para faixa de receita bruta.');
+    ComboSitTrib.Items.Add('101 - Tributada pelo Simples Nacional com permissão de crédito. (v.2.0)');
+    ComboSitTrib.Items.Add('102 - Tributada pelo Simples Nacional sem permissão de crédito.');
+    ComboSitTrib.Items.Add('103 - Isenção do ICMS no Simples Nacional para faixa de receita bruta.');
     ComboSitTrib.Items.Add('300 - Imune.');
-    ComboSitTrib.Items.Add('400 - Nï¿½o tributada pelo Simples Nacional (v.2.0)');
-    ComboSitTrib.Items.Add('201 - Tributada pelo Simples Nacional com permissï¿½o de crï¿½dito e com cobranï¿½a do ICMS por Substituiï¿½ï¿½o Tributï¿½ria');
-    ComboSitTrib.Items.Add('202 - Tributada pelo Simples Nacional sem permissï¿½o de crï¿½dito e com cobranï¿½a do ICMS por Substituiï¿½ï¿½o Tributï¿½ria');
-    ComboSitTrib.Items.Add('203 - Isenï¿½ï¿½o do ICMS nos Simples Nacional para faixa de receita bruta e com cobranï¿½a do ICMS por Substituiï¿½ï¿½o Tributï¿½ria');
-    ComboSitTrib.Items.Add('500 - ICMS cobrado anteriormente por substituiï¿½ï¿½o tributï¿½ria (substituï¿½do) ou por antecipaï¿½ï¿½o');
+    ComboSitTrib.Items.Add('400 - Não tributada pelo Simples Nacional (v.2.0)');
+    ComboSitTrib.Items.Add('201 - Tributada pelo Simples Nacional com permissão de crédito e com cobrança do ICMS por Substituição Tributária');
+    ComboSitTrib.Items.Add('202 - Tributada pelo Simples Nacional sem permissão de crédito e com cobrança do ICMS por Substituição Tributária');
+    ComboSitTrib.Items.Add('203 - Isenção do ICMS nos Simples Nacional para faixa de receita bruta e com cobrança do ICMS por Substituição Tributária');
+    ComboSitTrib.Items.Add('500 - ICMS cobrado anteriormente por substituição tributária (substituído) ou por antecipação');
     ComboSitTrib.Items.Add('900 - Outros');
 
     ComboSitTrib.Values.Add('101');
@@ -100,15 +100,15 @@ begin
     ComboSitTrib.Items.Clear;
     ComboSitTrib.Values.Clear;
     ComboSitTrib.Items.Add('00   - Tributada integralmente');
-    ComboSitTrib.Items.Add('10   - Tributada e com cobranï¿½a do ICMS por substituiï¿½ï¿½o tributï¿½ria');
-    ComboSitTrib.Items.Add('20   - Com reduï¿½ï¿½o de base de cï¿½lculo');
-    ComboSitTrib.Items.Add('30   - Isenta ou nï¿½o tributada e com cobranï¿½a do ICMS por substituiï¿½ï¿½o tributï¿½ria');
+    ComboSitTrib.Items.Add('10   - Tributada e com cobrança do ICMS por substituição tributária');
+    ComboSitTrib.Items.Add('20   - Com redução de base de cálculo');
+    ComboSitTrib.Items.Add('30   - Isenta ou não tributada e com cobrança do ICMS por substituição tributária');
     ComboSitTrib.Items.Add('40   - Isenta');
-    ComboSitTrib.Items.Add('41   - Nï¿½o tributada');
-    ComboSitTrib.Items.Add('50   - Suspensï¿½o');
+    ComboSitTrib.Items.Add('41   - Não tributada');
+    ComboSitTrib.Items.Add('50   - Suspensão');
     ComboSitTrib.Items.Add('51   - Diferimento');
-    ComboSitTrib.Items.Add('60   - ICMS cobrado anteriormente por substituiï¿½ï¿½o tributï¿½ria');
-    ComboSitTrib.Items.Add('70   - Com reduï¿½ï¿½o de base de cï¿½lculo e cobranï¿½a do ICMS por substituiï¿½ï¿½o tributï¿½ria');
+    ComboSitTrib.Items.Add('60   - ICMS cobrado anteriormente por substituição tributária');
+    ComboSitTrib.Items.Add('70   - Com redução de base de cálculo e cobrança do ICMS por substituição tributária');
     ComboSitTrib.Items.Add('90   - Outros');
 
     ComboSitTrib.Values.Add('0');
@@ -145,7 +145,7 @@ end;
 
 procedure TFormCadastroICMS.SQLTemplateBeforeDelete(DataSet: TDataSet);
 begin
- { DM.zConsulta.Close;   #ver
+  DM.zConsulta.Close;
   DM.zConsulta.SQL.Clear;
   DM.zConsulta.SQL.ADD('select prodicod from produto where icmsicod = '+SQLTemplateICMSICOD.AsString);
   DM.zConsulta.Open;
@@ -153,7 +153,7 @@ begin
     begin
       ShowMessage('Existem Produtos usando a Aliquota Atual! Exclusão Cancelada!');
       abort;
-    end; }
+    end;
   inherited;
 end;
 

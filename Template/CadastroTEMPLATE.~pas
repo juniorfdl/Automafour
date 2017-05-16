@@ -369,7 +369,7 @@ var
 begin
   BotaoAnterior := Button1;
 
-  if not Retaguarda then
+  if not bRetaguarda then
     begin
       Width  := 760 ;
       Height := 505 ;
@@ -1150,7 +1150,7 @@ begin
       DataSetLookup.Close;
       DataSetLookup.Open;
     end;
-  if Retaguarda then
+  if bRetaguarda then
     WindowState := wsMaximized ;
 end;
 
