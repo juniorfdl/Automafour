@@ -6,8 +6,7 @@ uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   DataModuloTemplate, Db, DBTables, RxQuery, DBLists, VarSys, MemTable,
   UCrpe32, IdComponent, IdTCPConnection, IdTCPClient, IdMessageClient,
-  IdSMTP, IdBaseComponent, IdMessage, DBXpress, SqlExpr, ZConnection,
-  ZAbstractRODataset, ZAbstractDataset, ZDataset;
+  IdSMTP, IdBaseComponent, IdMessage, DBXpress, SqlExpr;
 
 type
   TDMFaturamento = class(TDMTemplate)

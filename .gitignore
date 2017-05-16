@@ -17,3 +17,5 @@ Oficial/ArquivosComuns/WaitWindow.dcu
 *.~pas
 *.exe
 *.dcu
+*.dcu
+*.~dfm
