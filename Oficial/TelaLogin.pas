@@ -294,7 +294,6 @@ begin
     if EditTerminal.Text <> '' then
       ComboPDV.KeyValue := EditTerminal.Text ;
   except
-    Application.ProcessMessages ;
   end ;
 end;
 

@@ -506,6 +506,7 @@ type
     SQLTerminalAtivoUSATABLET: TStringField;
     sqlImportarPrevenda: TRxQuery;
     SQLEmpresaEMPRA75EMAILUSUARIO: TStringField;
+    procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -531,5 +532,14 @@ implementation
 uses UnitLibrary, TelaSplash;
 
 {$R *.DFM}
+
+procedure TDMFaturamento.DataModuleCreate(Sender: TObject);
+begin
+  inherited;
+  FormSplash .lbDados.Caption := 'Abrindo Tabela de Parametros...'; FormSplash.lbDados.Update;
+  SQLConfigGeral.Open ;
+  SQLConfigVenda.Open ;
+  SQLConfigCrediario.Open ;
+end;
 
 end.

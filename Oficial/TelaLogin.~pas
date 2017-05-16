@@ -294,7 +294,6 @@ begin
     if EditTerminal.Text <> '' then
       ComboPDV.KeyValue := EditTerminal.Text ;
   except
-    Application.ProcessMessages ;
   end ;
 end;
 
@@ -320,7 +319,7 @@ begin
         end
       else
         begin
-          EditUsuario.Text := dm.SQLUsuarioUSUAA60LOGIN.Value;
+          EditUsuario.Text := dm.SQLUsuario.FieldByName('USUAA60LOGIN').Value;
           EditUsuario.Update;
         end;
     end;
