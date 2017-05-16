@@ -1,4 +1,4 @@
-program Retaguarda; 
+program Retaguarda;
 
 uses
   Forms,
@@ -98,7 +98,10 @@ uses
   TelaDetalheRecebimento in 'Cadastros\TelaDetalheRecebimento.pas' {FormTelaDetalheRecebimento},
   CadastroClienteReferencia in 'Cadastros\CadastroClienteReferencia.pas' {FormCadastroClienteReferencia},
   CadastroClienteDependente in 'Cadastros\CadastroClienteDependente.pas' {FormCadastroClienteDependente},
-  TelaClienteHistorico in 'Cadastros\TelaClienteHistorico.pas' {FormTelaClienteHistorico};
+  TelaClienteHistorico in 'Cadastros\TelaClienteHistorico.pas' {FormTelaClienteHistorico},
+  CadastroTesouraria in 'Cadastros\CadastroTesouraria.pas' {FormCadastroTesouraria},
+  CadastroOperacaoTesouraria in 'Cadastros\CadastroOperacaoTesouraria.pas' {FormCadastroOperacaoTesouraria},
+  CadastroHistoricoPadrao in 'Cadastros\CadastroHistoricoPadrao.pas';
 
 {$R *.res}
 
@@ -109,7 +112,7 @@ begin
   Application.Title := 'Gestão Empresarial - Módulo Faturamento';
 
   Application.CreateForm(TDM, DM);
-
+  
   if dm.SQLConfigGeralCFGECBLOQ.AsString = 'S' then
     begin
       ShowMessage('Sistema Bloqueado!!! Ligue para a Suporte');

@@ -2346,14 +2346,17 @@ inherited FormPrincipal: TFormPrincipal
           Caption = 'Grade'
           OnClick = Grade1Click
         end
-        object Cor1: TMenuItem
+        object MnADMCadastroProdutosCores: TMenuItem
           Caption = 'Cor'
+          OnClick = MnADMCadastroProdutosCoresClick
         end
-        object Coleo1: TMenuItem
+        object MnColecao: TMenuItem
           Caption = 'Cole'#231#227'o'
+          OnClick = MnColecaoClick
         end
-        object Unidade1: TMenuItem
+        object MnADMCadastroProdutosUnidades: TMenuItem
           Caption = 'Unidade'
+          OnClick = MnADMCadastroProdutosUnidadesClick
         end
         object ICMS1: TMenuItem
           Caption = 'ICMS'
@@ -2418,8 +2421,9 @@ inherited FormPrincipal: TFormPrincipal
         object ProtocolodeCheque1: TMenuItem
           Caption = 'Protocolo de Cheque'
         end
-        object OperaesTesouraria1: TMenuItem
+        object MnFINTesLancamentos: TMenuItem
           Caption = 'Opera'#231#245'es Tesouraria'
+          OnClick = MnFINTesLancamentosClick
         end
         object PlanodeContas1: TMenuItem
           Caption = 'Plano de Contas'

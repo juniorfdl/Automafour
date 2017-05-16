@@ -60,9 +60,9 @@ type
     Grupo1: TMenuItem;
     MnADMCadastroProdutosGrades: TMenuItem;
     Grade1: TMenuItem;
-    Cor1: TMenuItem;
-    Coleo1: TMenuItem;
-    Unidade1: TMenuItem;
+    MnADMCadastroProdutosCores: TMenuItem;
+    MnColecao: TMenuItem;
+    MnADMCadastroProdutosUnidades: TMenuItem;
     ICMS1: TMenuItem;
     ICMSporUF1: TMenuItem;
     abelaNCM1: TMenuItem;
@@ -84,7 +84,7 @@ type
     OperaesdeConta1: TMenuItem;
     SituaodeCheque1: TMenuItem;
     ProtocolodeCheque1: TMenuItem;
-    OperaesTesouraria1: TMenuItem;
+    MnFINTesLancamentos: TMenuItem;
     PlanodeContas1: TMenuItem;
     Faturamento2: TMenuItem;
     OperaesdeEstoque1: TMenuItem;
@@ -318,6 +318,10 @@ type
     procedure Grupo1Click(Sender: TObject);
     procedure MnADMCadastroProdutosGradesClick(Sender: TObject);
     procedure Grade1Click(Sender: TObject);
+    procedure MnADMCadastroProdutosCoresClick(Sender: TObject);
+    procedure MnColecaoClick(Sender: TObject);
+    procedure MnADMCadastroProdutosUnidadesClick(Sender: TObject);
+    procedure MnFINTesLancamentosClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -331,7 +335,8 @@ implementation
 
 uses DataModulo, UnSoundPlay, UnitLibrary, CadastroContasPagar,
   TelaLembreteTarefa, CadastroProdutos, CadastroCliente, CadastroGrupo,
-  CadastroMarca, CadastroGrade;
+  CadastroMarca, CadastroGrade, CadastroCor, CadastroColecao,
+  CadastroUnidade, CadastroTesouraria;
 
 {uses CadastroCliente, CadastroTemplate, CadastroTipoCliente, CadastroBanco,
   CadastroTipoDocumento, CadastroPortador, CadastroClasse, CadastroPedidoVenda,
@@ -1143,6 +1148,42 @@ begin
     CriaFormulario(TFormCadastroGrade,'FormCadastroGrade',False,False,True,'')
   else
     SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnADMCadastroProdutosCoresClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroCor,'FormCadastroCor',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnColecaoClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroColecao, 'FormCadastroColecao',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnADMCadastroProdutosUnidadesClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroUnidade,'FormCadastroUnidade',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender); 
+end;
+
+procedure TFormPrincipal.MnFINTesLancamentosClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroTesouraria,'FormCadastroTesouraria',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender); 
 end;
 
 end.
