@@ -9,7 +9,7 @@ inherited FormPrincipal: TFormPrincipal
   PixelsPerInch = 96
   TextHeight = 13
   inherited RodapePrincipal: TStatusBar
-    Top = 449
+    Top = 450
     Width = 1256
   end
   inherited ptopo: TAdvOfficeStatusBar
@@ -2438,8 +2438,9 @@ inherited FormPrincipal: TFormPrincipal
         object MnOperacaoTesouraria: TMenuItem
           Caption = 'Opera'#231#245'es Tesouraria'
         end
-        object PlanodeContas1: TMenuItem
+        object MnFINCadastroPlanoContas: TMenuItem
           Caption = 'Plano de Contas'
+          OnClick = MnFINCadastroPlanoContasClick
         end
       end
       object Faturamento2: TMenuItem

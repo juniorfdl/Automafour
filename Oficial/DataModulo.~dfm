@@ -269,8 +269,8 @@ inherited DM: TDM
     SQL.Strings = (
       'select * from CONFIGVENDA')
     Macros = <>
-    Left = 432
-    Top = 80
+    Left = 440
+    Top = 56
   end
   object SQLEmpresa: TRxQuery
     DatabaseName = 'DB'
@@ -500,8 +500,8 @@ inherited DM: TDM
     SQL.Strings = (
       'select * from CONFIGCOMPRAS')
     Macros = <>
-    Left = 432
-    Top = 136
+    Left = 440
+    Top = 96
   end
   object SQLConfigInventario: TQuery
     DatabaseName = 'DB'
@@ -529,5 +529,13 @@ inherited DM: TDM
     DatabaseName = 'DB'
     Left = 512
     Top = 48
+  end
+  object SQLConfigConta: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'select * from CONFIGCONTA')
+    Macros = <>
+    Left = 440
+    Top = 144
   end
 end

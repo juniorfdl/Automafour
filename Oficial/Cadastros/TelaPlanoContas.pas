@@ -116,7 +116,7 @@ var
 begin
   for I:=1 To 10 do
     begin
-      Hab:=(I<=DM.SQLConfigContaCFGCNIVEIS.AsInteger);
+      Hab:=(I<=DM.SQLConfigConta.FieldByName('CFGNIVEIS').AsInteger);
       (FindComponent('ComboNivel'+IntToStr(I)) as TRXDBComboBox).Enabled:=Hab;
       (FindComponent('LNivel'+IntToStr(I)) as TLabel).Enabled:=Hab;
     end;
@@ -140,7 +140,7 @@ begin
   Cont1:=1;Cont:=1;Resposta:='';
   While Codigo[Cont]<>'' Do
     Begin
-      If DM.SQLConfigContaCFGCA30MASCARA.asString[Cont1]='_' Then
+      If DM.SQLConfigConta.FieldByName('CFGCA30MASCARA').asString[Cont1]='_' Then
         Begin Resposta:=Resposta+Codigo[Cont];Inc(Cont);End
       Else
         Resposta:=Resposta+'.';
@@ -154,7 +154,7 @@ Var
 Begin
   ContaGrau:=0;
   Grau:=1;
-  Tamanho:=DM.SQLConfigContaCFGCINIVEL1.asInteger;
+  Tamanho:=DM.SQLConfigConta.FieldByName('CFGCINIVEL1').asInteger;
   While Copy(Codigo,Grau,Tamanho)<>'' Do
     Begin
       Inc(ContaGrau);
@@ -181,7 +181,7 @@ Begin
   MemPos:=0;MemTam:=0;
   ContaGrau:=0;
   Grau:=1;
-  Tamanho:=DM.SQLConfigContaCFGCINIVEL1.asInteger;
+  Tamanho:=DM.SQLConfigConta.FieldByName('CFGCINIVEL1').asInteger;
   While Copy(Codigo,Grau,Tamanho)<>'' Do
     Begin
       Inc(ContaGrau);
@@ -194,7 +194,7 @@ Begin
   DM.SQLPlanodeContas.Close;
   DM.SQLPlanodeContas.Open;
   DM.SQLPlanodeContas.First;
-  If (ContaGrau=DM.SQLConfigContaCFGCNIVEIS.AsInteger) AND (DM.SQLPlanodeContas.Eof) Then
+  If (ContaGrau=DM.SQLConfigConta.FieldByName('CFGCNIVEIS').AsInteger) AND (DM.SQLPlanodeContas.Eof) Then
     Incremento:=5
   Else
     Incremento:=1;
@@ -255,7 +255,7 @@ Var
   Aux,Incremento:Integer;
   Sair : Boolean;
 Begin
-  If Testa_Grau(Codigo)+1=DM.SQLConfigContaCFGCNIVEIS.asInteger Then
+  If Testa_Grau(Codigo)+1=DM.SQLConfigConta.FieldByName('CFGCNIVEIS').asInteger Then
     Incremento:=5
   Else
     Incremento:=1;
@@ -314,7 +314,7 @@ Var
   NovoNodo:NodoArvore;
   Nome:String;
 Begin
-  NovoNodo:=New(NodoArvore);
+{  NovoNodo:=New(NodoArvore); #ver
   NovoNodo.Codigo:=Codigo;
   Nome:=DM.SQLContaPLCTA60DESCR.asString;
   If Not Procura_Mae(DM.SQLContaPLCTA15CODPAI.asString) Then
@@ -327,7 +327,7 @@ Begin
     Begin
       Arvore.Selected:=Arvore.Items.AddChildObject(Arvore.Selected,Nome,NovoNodo);
       ListaConta.Items.Add(NovoNodo.Codigo);
-    End;
+    End;}
 End;
 procedure TFormTelaPlanoContas.ComboNiveisChange(Sender: TObject);
 begin
@@ -369,7 +369,7 @@ begin
           DM.SQLPlanodeContas.MacroByName('MFiltro').asString:='PLCTA15COD='''+Nodo.Codigo+'''';
           DM.SQLPlanodeContas.Open;
         end;
-      If (Arvore.Selected.Level+1=DM.SQLConfigContaCFGCNIVEIS.asInteger) OR (Arvore.Selected.HasChildren) Then
+      If (Arvore.Selected.Level+1=DM.SQLConfigConta.FieldByName('CFGCNIVEIS').asInteger) OR (Arvore.Selected.HasChildren) Then
         DBRadioGroup1.Enabled:=False
       Else
         DBRadioGroup1.Enabled:=True;
@@ -427,7 +427,7 @@ begin
         Excluir.Visible:=False
       Else
         Excluir.Visible:=True;
-      If (Arvore.Selected.Level+1=DM.SQLConfigContaCFGCNIVEIS.AsInteger) OR (DM.SQLPlanodeContasPLCTCANALSINT.asString='A') Then
+      If (Arvore.Selected.Level+1=DM.SQLConfigConta.FieldByName('CFGCNIVEIS').AsInteger) OR (DM.SQLPlanodeContasPLCTCANALSINT.asString='A') Then
         SubConta.Visible:=False
       Else
         SubConta.Visible:=True;
@@ -444,7 +444,7 @@ Var
   Nodo,NovoNodo:NodoArvore;
 begin
   inherited;
-  if DM.SQLPlanodeContas.State in DSEditModes then
+{  if DM.SQLPlanodeContas.State in DSEditModes then #ver
     DM.SQLPlanodeContas.Post ;
 
   NovoNodo:=New(NodoArvore);
@@ -466,7 +466,7 @@ begin
   DM.SQLPlanodeContasPLCTA30CODEDIT.asString:=Converte_Codigo(NovoNodo.Codigo);
   DM.SQLPlanodeContasPLCTINIVEL.asInteger:=Testa_Grau(NovoNodo.Codigo);
   DM.SQLPlanodeContasPLCTA15CODPAI.asString:=Captura_Mae(Arvore.Selected);
-  If (Arvore.Selected.Level+1=DM.SQLConfigContaCFGCNIVEIS.asInteger) OR (Arvore.Selected.HasChildren) Then
+  If (Arvore.Selected.Level+1=DM.SQLConfigConta.FieldByName('CFGCNIVEIS').asInteger) OR (Arvore.Selected.HasChildren) Then
     Begin
       DBRadioGroup1.Enabled:=False;
       DM.SQLPlanodeContasPLCTCANALSINT.asString:='A';
@@ -477,7 +477,7 @@ begin
   Panel_Reg.Enabled:=True;
   NomeEdit.SetFocus;
   Arvore.AlphaSort;
-  PanelArvore.Enabled:=True;
+  PanelArvore.Enabled:=True;}
 end;
 
 procedure TFormTelaPlanoContas.SubContaClick(Sender: TObject);
@@ -485,7 +485,7 @@ Var
   Nodo,NovoNodo:NodoArvore;
 begin
   inherited;
-  if DM.SQLPlanodeContas.State in DSEditModes then
+{  if DM.SQLPlanodeContas.State in DSEditModes then #ver
     DM.SQLPlanodeContas.Post ;
 
   NovoNodo:=New(NodoArvore);
@@ -507,7 +507,7 @@ begin
   DM.SQLPlanodeContasPLCTA30CODEDIT.asString:=Converte_Codigo(NovoNodo.Codigo);
   DM.SQLPlanodeContasPLCTINIVEL.asInteger:=Testa_Grau(NovoNodo.Codigo);
   DM.SQLPlanodeContasPLCTA15CODPAI.asString:=Captura_Mae(Arvore.Selected);
-  If (Arvore.Selected.Level+1=DM.SQLConfigContaCFGCNIVEIS.asInteger) OR (Arvore.Selected.HasChildren) Then
+  If (Arvore.Selected.Level+1=DM.SQLConfigConta.FieldByName('CFGCNIVEIS').asInteger) OR (Arvore.Selected.HasChildren) Then
     Begin
       DBRadioGroup1.Enabled:=False;
       DM.SQLPlanodeContasPLCTCANALSINT.asString:='A';
@@ -516,7 +516,7 @@ begin
     DBRadioGroup1.Enabled:=True;
   DM.SQLPlanodeContas.Post;
   Arvore.Selected.Expand(True);
-  NomeEdit.SetFocus;
+  NomeEdit.SetFocus;}
 end;
 
 procedure TFormTelaPlanoContas.ExcluirClick(Sender: TObject);
@@ -561,7 +561,7 @@ end;
 procedure TFormTelaPlanoContas.FormCreate(Sender: TObject);
 begin
   inherited;
-  If (Arvore.Items.Count = 0) then
+{  If (Arvore.Items.Count = 0) then #ver
     Begin
       DM.SQLConfigConta.Open;
       DM.SQLPlanodeContas.Open;
@@ -589,7 +589,7 @@ begin
       ProgressBar.Update;
       ProgressBar.Visible:=False;
       Arvore.Visible:=True;
-    End;
+    End;}
 end;
 
 procedure TFormTelaPlanoContas.FormClose(Sender: TObject;

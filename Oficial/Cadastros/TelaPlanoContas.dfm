@@ -1,6 +1,6 @@
 inherited FormTelaPlanoContas: TFormTelaPlanoContas
-  Left = 296
-  Top = 60
+  Left = 310
+  Top = 78
   Width = 808
   Height = 608
   Caption = 'Plano de Contas'

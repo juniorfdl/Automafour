@@ -99,6 +99,7 @@ type
     SQLConfigInventarioOPESICODSAIDA: TIntegerField;
     SQLConfigCrediario: TQuery;
     zConsulta: TQuery;
+    SQLConfigConta: TRxQuery;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

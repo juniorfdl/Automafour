@@ -85,7 +85,7 @@ type
     MnFINCadastroSituacoesCheques: TMenuItem;
     MnFINCadastroProtocoloCheque: TMenuItem;
     MnOperacaoTesouraria: TMenuItem;
-    PlanodeContas1: TMenuItem;
+    MnFINCadastroPlanoContas: TMenuItem;
     Faturamento2: TMenuItem;
     mniMnOperacaoEstoque: TMenuItem;
     MnObsNotaFiscal: TMenuItem;
@@ -334,6 +334,7 @@ type
     procedure mniMnOperacaoEstoqueClick(Sender: TObject);
     procedure MnObsNotaFiscalClick(Sender: TObject);
     procedure ConveroCSTporPISCofins1Click(Sender: TObject);
+    procedure MnFINCadastroPlanoContasClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -354,7 +355,8 @@ uses
   CadastroBanco, CadastroContaCorrente, CadastroOperacaoBanco,
   CadastroSituacaoCheque, CadastroProtocoloChequeRecebido,
   CadastroOperacaoTesouraria, CadastroOperacoesEstoque, CadastroObsNotaFiscal,
-  CadastroSerie, CadastroCSTConverte, CadastroCSTPisCofinsConverter;
+  CadastroSerie, CadastroCSTConverte, CadastroCSTPisCofinsConverter,
+  TelaPlanoContas;
 
 
 {uses CadastroCliente, CadastroTemplate, CadastroTipoCliente, CadastroBanco,
@@ -1334,6 +1336,15 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     CriaFormulario(TCadastroCSTPisCofinsConverte, 'CadastroCSTPisCofinsConverte',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnFINCadastroPlanoContasClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormTelaPlanoContas, 'FormTelaPlanoContas',False,False,True,'')
   else
     SoundPlay('Acesso Negado.wav',Sender);
 end;

@@ -99,6 +99,18 @@ type
     SQLConfigInventarioOPESICODSAIDA: TIntegerField;
     SQLConfigCrediario: TQuery;
     zConsulta: TQuery;
+    SQLConfigConta: TRxQuery;
+    SQLPlanodeContas: TRxQuery;
+    SQLPlanodeContasPLCTA15COD: TStringField;
+    intgrfldSQLPlanodeContasPLCTICODREDUZ: TIntegerField;
+    intgrfldSQLPlanodeContasPLCTINIVEL: TIntegerField;
+    SQLPlanodeContasPLCTA15CODPAI: TStringField;
+    SQLPlanodeContasPLCTA30CODEDIT: TStringField;
+    SQLPlanodeContasPLCTA60DESCR: TStringField;
+    SQLPlanodeContasPLCTCANALSINT: TStringField;
+    SQLPlanodeContasPLCTCTIPOSALDO: TStringField;
+    SQLPlanodeContasPENDENTE: TStringField;
+    SQLPlanodeContasREGISTRO: TDateTimeField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

@@ -2,7 +2,6 @@ inherited DM: TDM
   OldCreateOrder = True
   inherited DB: TDatabase
     AliasName = 'Easy_Gestao'
-    Connected = False
   end
   object SQLConfigGeral: TRxQuery
     DatabaseName = 'DB'
@@ -270,8 +269,8 @@ inherited DM: TDM
     SQL.Strings = (
       'select * from CONFIGVENDA')
     Macros = <>
-    Left = 432
-    Top = 80
+    Left = 440
+    Top = 56
   end
   object SQLEmpresa: TRxQuery
     DatabaseName = 'DB'
@@ -501,8 +500,8 @@ inherited DM: TDM
     SQL.Strings = (
       'select * from CONFIGCOMPRAS')
     Macros = <>
-    Left = 432
-    Top = 136
+    Left = 440
+    Top = 96
   end
   object SQLConfigInventario: TQuery
     DatabaseName = 'DB'
@@ -530,5 +529,83 @@ inherited DM: TDM
     DatabaseName = 'DB'
     Left = 512
     Top = 48
+  end
+  object SQLConfigConta: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'select * from CONFIGCONTA')
+    Macros = <>
+    Left = 440
+    Top = 144
+  end
+  object SQLPlanodeContas: TRxQuery
+    DatabaseName = 'DB'
+    RequestLive = True
+    SQL.Strings = (
+      'select * from PLANODECONTAS'
+      'Where (%MFiltro)')
+    Macros = <
+      item
+        DataType = ftString
+        Name = 'MFiltro'
+        ParamType = ptInput
+        Value = '0=0'
+      end>
+    Left = 284
+    Top = 140
+    object SQLPlanodeContasPLCTA15COD: TStringField
+      FieldName = 'PLCTA15COD'
+      Origin = 'DB.PLANODECONTAS.PLCTA15COD'
+      FixedChar = True
+      Size = 15
+    end
+    object intgrfldSQLPlanodeContasPLCTICODREDUZ: TIntegerField
+      FieldName = 'PLCTICODREDUZ'
+      Origin = 'DB.PLANODECONTAS.PLCTICODREDUZ'
+    end
+    object intgrfldSQLPlanodeContasPLCTINIVEL: TIntegerField
+      FieldName = 'PLCTINIVEL'
+      Origin = 'DB.PLANODECONTAS.PLCTINIVEL'
+    end
+    object SQLPlanodeContasPLCTA15CODPAI: TStringField
+      FieldName = 'PLCTA15CODPAI'
+      Origin = 'DB.PLANODECONTAS.PLCTA15CODPAI'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLPlanodeContasPLCTA30CODEDIT: TStringField
+      FieldName = 'PLCTA30CODEDIT'
+      Origin = 'DB.PLANODECONTAS.PLCTA30CODEDIT'
+      FixedChar = True
+      Size = 30
+    end
+    object SQLPlanodeContasPLCTA60DESCR: TStringField
+      FieldName = 'PLCTA60DESCR'
+      Origin = 'DB.PLANODECONTAS.PLCTA60DESCR'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLPlanodeContasPLCTCANALSINT: TStringField
+      FieldName = 'PLCTCANALSINT'
+      Origin = 'DB.PLANODECONTAS.PLCTCANALSINT'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLPlanodeContasPLCTCTIPOSALDO: TStringField
+      FieldName = 'PLCTCTIPOSALDO'
+      Origin = 'DB.PLANODECONTAS.PLCTCTIPOSALDO'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLPlanodeContasPENDENTE: TStringField
+      FieldName = 'PENDENTE'
+      Origin = 'DB.PLANODECONTAS.PENDENTE'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLPlanodeContasREGISTRO: TDateTimeField
+      FieldName = 'REGISTRO'
+      Origin = 'DB.PLANODECONTAS.REGISTRO'
+    end
   end
 end
