@@ -2370,11 +2370,13 @@ inherited FormPrincipal: TFormPrincipal
           Caption = 'Tabela NCM'
           OnClick = MNADMCadastroNCMClick
         end
-        object ConveroCSTporICMS1: TMenuItem
+        object abeladeConversodeCSTdoICMS1: TMenuItem
           Caption = 'Conver'#231#227'o CST por ICMS'
+          OnClick = abeladeConversodeCSTdoICMS1Click
         end
-        object ConveroCSTporPISCofins1: TMenuItem
+        object abeladeConversodeCSTPISeCOFINS1: TMenuItem
           Caption = 'Conver'#231#227'o CST por PIS/Cofins'
+          OnClick = ConveroCSTporPISCofins1Click
         end
         object Cidade1: TMenuItem
           Caption = 'Cidade'
