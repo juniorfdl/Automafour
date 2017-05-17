@@ -110,7 +110,9 @@ uses
   CadastroOperacaoBanco in 'Cadastros\CadastroOperacaoBanco.pas' {FormCadastroOperacaoBanco},
   CadastroSituacaoCheque in 'Cadastros\CadastroSituacaoCheque.pas' {FormCadastroSituacaoCheque},
   CadastroProtocoloChequeRecebido in 'Cadastros\CadastroProtocoloChequeRecebido.pas' {FormCadastroProtocoloChequeRecebido},
-  CadastroObsNotaFiscal in 'Cadastros\CadastroObsNotaFiscal.pas' {FormCadastroObsNotaFiscal};
+  CadastroObsNotaFiscal in 'Cadastros\CadastroObsNotaFiscal.pas' {FormCadastroObsNotaFiscal},
+  CadastroCSTConverte in 'Cadastros\CadastroCSTConverte.pas' {CadastroCSTConverter},
+  CadastroCSTPisCofinsConverter in 'Cadastros\CadastroCSTPisCofinsConverter.pas' {CadastroCSTPisCofinsConverte};
 
 {$R *.res}
 
@@ -121,6 +123,7 @@ begin
   Application.Title := 'Gestão Empresarial - Módulo Faturamento';
 
   Application.CreateForm(TDM, DM);
+
   if dm.SQLConfigGeralCFGECBLOQ.AsString = 'S' then
     begin
       ShowMessage('Sistema Bloqueado!!! Ligue para a Suporte');

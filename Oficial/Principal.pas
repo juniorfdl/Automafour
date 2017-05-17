@@ -354,7 +354,7 @@ uses
   CadastroBanco, CadastroContaCorrente, CadastroOperacaoBanco,
   CadastroSituacaoCheque, CadastroProtocoloChequeRecebido,
   CadastroOperacaoTesouraria, CadastroOperacoesEstoque, CadastroObsNotaFiscal,
-  CadastroSerie, CadastroCSTConverte, CadastroCSTPisCofinsConverter;;
+  CadastroSerie, CadastroCSTConverte, CadastroCSTPisCofinsConverter;
 
 
 {uses CadastroCliente, CadastroTemplate, CadastroTipoCliente, CadastroBanco,
@@ -989,16 +989,6 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormCadastroGraficaOrdem, 'FormCadastroGraficaOrdem',False,False,False,'')
-
-  else
-    SoundPlay('Acesso Negado.wav', Sender);
-end;
-
-procedure TFormPrincipal.abeladeConversodeCSTdoICMS1Click(Sender: TObject);
-begin
-  inherited;
-  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
-    //CriaFormulario(TCadastroCSTConverter, 'CadastroCSTConverter',False,False,True,'')
 
   else
     SoundPlay('Acesso Negado.wav', Sender);
