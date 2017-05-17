@@ -102,7 +102,15 @@ uses
   CadastroTesouraria in 'Cadastros\CadastroTesouraria.pas' {FormCadastroTesouraria},
   CadastroOperacaoTesouraria in 'Cadastros\CadastroOperacaoTesouraria.pas' {FormCadastroOperacaoTesouraria},
   CadastroHistoricoPadrao in 'Cadastros\CadastroHistoricoPadrao.pas',
-  CadastroIcmsUf in 'Cadastros\CadastroIcmsUf.pas' {FormCadastroIcmsUF};
+  CadastroIcmsUf in 'Cadastros\CadastroIcmsUf.pas' {FormCadastroIcmsUF},
+  CadastroTipoDocumento in 'Cadastros\CadastroTipoDocumento.pas' {FormCadastroTipoDocumento},
+  CadastroPortador in 'Cadastros\CadastroPortador.pas' {FormCadastroPortador},
+  CadastroTipoLiquidacao in 'Cadastros\CadastroTipoLiquidacao.pas' {FormCadastroTipoLiquidacao},
+  CadastroContaCorrente in 'Cadastros\CadastroContaCorrente.pas' {FormCadastroContaCorrente},
+  CadastroOperacaoBanco in 'Cadastros\CadastroOperacaoBanco.pas' {FormCadastroOperacaoBanco},
+  CadastroSituacaoCheque in 'Cadastros\CadastroSituacaoCheque.pas' {FormCadastroSituacaoCheque},
+  CadastroProtocoloChequeRecebido in 'Cadastros\CadastroProtocoloChequeRecebido.pas' {FormCadastroProtocoloChequeRecebido},
+  CadastroObsNotaFiscal in 'Cadastros\CadastroObsNotaFiscal.pas' {FormCadastroObsNotaFiscal};
 
 {$R *.res}
 

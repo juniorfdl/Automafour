@@ -9,7 +9,7 @@ inherited FormPrincipal: TFormPrincipal
   PixelsPerInch = 96
   TextHeight = 13
   inherited RodapePrincipal: TStatusBar
-    Top = 449
+    Top = 450
     Width = 1256
   end
   inherited ptopo: TAdvOfficeStatusBar
@@ -2397,36 +2397,44 @@ inherited FormPrincipal: TFormPrincipal
       end
       object Financeiro1: TMenuItem
         Caption = 'Financeiro'
-        object ipodeDocumento1: TMenuItem
+        object MnFINCadastroTiposDocumentos: TMenuItem
           Caption = 'Tipo de Documento'
+          OnClick = MnFINCadastroTiposDocumentosClick
         end
-        object Portador1: TMenuItem
+        object FINAMnCadastroPortadores: TMenuItem
           Caption = 'Portador'
+          OnClick = FINAMnCadastroPortadoresClick
         end
-        object ipodeLiquidao1: TMenuItem
+        object MnFINCadTipoLiquidacao: TMenuItem
           Caption = 'Tipo de Liquida'#231#227'o'
+          OnClick = MnFINCadTipoLiquidacaoClick
         end
-        object HistricoPadro1: TMenuItem
+        object MnFINCadHistoricoPadrao: TMenuItem
           Caption = 'Hist'#243'rico Padr'#227'o'
+          OnClick = MnFINCadHistoricoPadraoClick
         end
-        object Bancos1: TMenuItem
+        object MnFINCadastroBancos: TMenuItem
           Caption = 'Bancos'
+          OnClick = MnFINCadastroBancosClick
         end
-        object ContaCorrente1: TMenuItem
+        object MnFINBancosContaCorrente: TMenuItem
           Caption = 'Conta Corrente'
+          OnClick = MnFINBancosContaCorrenteClick
         end
-        object OperaesdeConta1: TMenuItem
+        object MnFINCadastroOperacoesBancarias: TMenuItem
           Caption = 'Opera'#231#245'es de Conta'
+          OnClick = MnFINCadastroOperacoesBancariasClick
         end
-        object SituaodeCheque1: TMenuItem
+        object MnFINCadastroSituacoesCheques: TMenuItem
           Caption = 'Situa'#231#227'o de Cheque'
+          OnClick = MnFINCadastroSituacoesChequesClick
         end
-        object ProtocolodeCheque1: TMenuItem
+        object MnFINCadastroProtocoloCheque: TMenuItem
           Caption = 'Protocolo de Cheque'
+          OnClick = MnFINCadastroProtocoloChequeClick
         end
-        object MnFINTesLancamentos: TMenuItem
+        object MnOperacaoTesouraria: TMenuItem
           Caption = 'Opera'#231#245'es Tesouraria'
-          OnClick = MnFINTesLancamentosClick
         end
         object PlanodeContas1: TMenuItem
           Caption = 'Plano de Contas'
@@ -2434,14 +2442,17 @@ inherited FormPrincipal: TFormPrincipal
       end
       object Faturamento2: TMenuItem
         Caption = 'Faturamento'
-        object OperaesdeEstoque1: TMenuItem
+        object mniMnOperacaoEstoque: TMenuItem
           Caption = 'Opera'#231#245'es de Estoque'
+          OnClick = mniMnOperacaoEstoqueClick
         end
-        object OBSdeNota1: TMenuItem
+        object MnObsNotaFiscal: TMenuItem
           Caption = 'OBS de Nota'
+          OnClick = MnObsNotaFiscalClick
         end
-        object Srie1: TMenuItem
+        object FATUMnCadastroSerie: TMenuItem
           Caption = 'S'#233'rie'
+          OnClick = FATUMnCadastroSerieClick
         end
       end
     end

@@ -4,9 +4,9 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  PrincipalTemplate, Menus, ExtCtrls, jpeg, ComCtrls, ToolWin, 
-  VarSys, EWall, DB, ImgList, StdCtrls, DBTables, AdvGlowButton, XPMan,
-  AdvOfficeStatusBar, AdvOfficeStatusBarStylers, dxGDIPlusClasses, RXCtrls,FormResources;
+  PrincipalTemplate, Menus, ExtCtrls, jpeg, ComCtrls, ToolWin, VarSys, EWall, DB,
+  ImgList, StdCtrls, DBTables, AdvGlowButton, XPMan, AdvOfficeStatusBar,
+  AdvOfficeStatusBarStylers, dxGDIPlusClasses, RXCtrls, FormResources;
 
 type
   TFormPrincipal = class(TFormPrincipalTemplate)
@@ -75,21 +75,21 @@ type
     CadastrarTarefas1: TMenuItem;
     ConfigurarTempodeTarefa1: TMenuItem;
     Financeiro1: TMenuItem;
-    ipodeDocumento1: TMenuItem;
-    Portador1: TMenuItem;
-    ipodeLiquidao1: TMenuItem;
-    HistricoPadro1: TMenuItem;
-    Bancos1: TMenuItem;
-    ContaCorrente1: TMenuItem;
-    OperaesdeConta1: TMenuItem;
-    SituaodeCheque1: TMenuItem;
-    ProtocolodeCheque1: TMenuItem;
-    MnFINTesLancamentos: TMenuItem;
+    MnFINCadastroTiposDocumentos: TMenuItem;
+    FINAMnCadastroPortadores: TMenuItem;
+    MnFINCadTipoLiquidacao: TMenuItem;
+    MnFINCadHistoricoPadrao: TMenuItem;
+    MnFINCadastroBancos: TMenuItem;
+    MnFINBancosContaCorrente: TMenuItem;
+    MnFINCadastroOperacoesBancarias: TMenuItem;
+    MnFINCadastroSituacoesCheques: TMenuItem;
+    MnFINCadastroProtocoloCheque: TMenuItem;
+    MnOperacaoTesouraria: TMenuItem;
     PlanodeContas1: TMenuItem;
     Faturamento2: TMenuItem;
-    OperaesdeEstoque1: TMenuItem;
-    OBSdeNota1: TMenuItem;
-    Srie1: TMenuItem;
+    mniMnOperacaoEstoque: TMenuItem;
+    MnObsNotaFiscal: TMenuItem;
+    FATUMnCadastroSerie: TMenuItem;
     Compras1: TMenuItem;
     PedidodeCompra1: TMenuItem;
     NotadeEntrada1: TMenuItem;
@@ -275,7 +275,6 @@ type
     procedure MnCadastroVisitaClick(Sender: TObject);
     procedure MnCadastroRoteiroClick(Sender: TObject);
     procedure MnGeracaoRoteiroPalmClick(Sender: TObject);
-    procedure MnObsNotaFiscalClick(Sender: TObject);
     procedure Decretos1Click(Sender: TObject);
     procedure MnConfigurarLayoutNotasparaModoDOSClick(Sender: TObject);
     procedure MnCobrancaFreteClick(Sender: TObject);
@@ -289,8 +288,7 @@ type
     procedure GruposdeExecuodeServio1Click(Sender: TObject);
     procedure Mecnicos1Click(Sender: TObject);
     procedure ipodeServio1Click(Sender: TObject);
-    procedure MnAcompanharTarefascriadaspeloUsuarioAtualClick(
-      Sender: TObject);
+    procedure MnAcompanharTarefascriadaspeloUsuarioAtualClick(Sender: TObject);
     procedure MnGerenciarTarefasClick(Sender: TObject);
     procedure MnAdicionarTarefasClick(Sender: TObject);
     procedure MnConfigPopLembreteTarefaClick(Sender: TObject);
@@ -321,10 +319,21 @@ type
     procedure MnADMCadastroProdutosCoresClick(Sender: TObject);
     procedure MnColecaoClick(Sender: TObject);
     procedure MnADMCadastroProdutosUnidadesClick(Sender: TObject);
-    procedure MnFINTesLancamentosClick(Sender: TObject);
     procedure MnADMCadastroProdutosIcmsClick(Sender: TObject);
     procedure MnADMCadastroProdutosIcmsUFClick(Sender: TObject);
     procedure MNADMCadastroNCMClick(Sender: TObject);
+    procedure MnFINCadastroTiposDocumentosClick(Sender: TObject);
+    procedure FINAMnCadastroPortadoresClick(Sender: TObject);
+    procedure MnFINCadTipoLiquidacaoClick(Sender: TObject);
+    procedure MnFINCadHistoricoPadraoClick(Sender: TObject);
+    procedure MnFINCadastroBancosClick(Sender: TObject);
+    procedure MnFINBancosContaCorrenteClick(Sender: TObject);
+    procedure MnFINCadastroOperacoesBancariasClick(Sender: TObject);
+    procedure MnFINCadastroSituacoesChequesClick(Sender: TObject);
+    procedure MnFINCadastroProtocoloChequeClick(Sender: TObject);
+    procedure mniMnOperacaoEstoqueClick(Sender: TObject);
+    procedure MnObsNotaFiscalClick(Sender: TObject);
+
   private
     { Private declarations }
   public
@@ -336,11 +345,15 @@ var
 
 implementation
 
-uses DataModulo, UnSoundPlay, UnitLibrary, CadastroContasPagar,
-  TelaLembreteTarefa, CadastroProdutos, CadastroCliente, CadastroGrupo,
-  CadastroMarca, CadastroGrade, CadastroCor, CadastroColecao,
-  CadastroUnidade, CadastroTesouraria, CadastroICMS, CadastroIcmsUf,
-  CadastroNCM;
+uses
+  DataModulo, UnSoundPlay, UnitLibrary, CadastroContasPagar, TelaLembreteTarefa,
+  CadastroProdutos, CadastroCliente, CadastroGrupo, CadastroMarca, CadastroGrade,
+  CadastroCor, CadastroColecao, CadastroUnidade, CadastroTesouraria,
+  CadastroICMS, CadastroIcmsUf, CadastroNCM, CadastroTipoDocumento,
+  CadastroPortador, CadastroTipoLiquidacao, CadastroHistoricoPadrao,
+  CadastroBanco, CadastroContaCorrente, CadastroOperacaoBanco,
+  CadastroSituacaoCheque, CadastroProtocoloChequeRecebido,
+  CadastroOperacaoTesouraria, CadastroOperacoesEstoque, CadastroObsNotaFiscal;
 
 {uses CadastroCliente, CadastroTemplate, CadastroTipoCliente, CadastroBanco,
   CadastroTipoDocumento, CadastroPortador, CadastroClasse, CadastroPedidoVenda,
@@ -393,16 +406,16 @@ begin
     CriaFormulario(TFormCadastroBanco, 'FormCadastroBanco',False,False,True,'')
   else
     SoundPlay('Acesso Negado.wav',Sender);}
-end ;
+end;
 
 procedure TFormPrincipal.FATUMnCadastroTiposDocumentosClick(Sender: TObject);
 begin
-  inherited ;
+  inherited;
   {if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     CriaFormulario(TFormCadastroTipoDocumento, 'FormCadastroTipoDocumento',False,False,True,'')
   else
     SoundPlay('Acesso Negado.wav',Sender); }
-end ;
+end;
 
 procedure TFormPrincipal.FATUMnCadastroPortadoresClick(Sender: TObject);
 begin
@@ -413,8 +426,7 @@ begin
     SoundPlay('Acesso Negado.wav',Sender); }
 end;
 
-procedure TFormPrincipal.FATUMnUtilitariosControledeAcessoClick(
-  Sender: TObject);
+procedure TFormPrincipal.FATUMnUtilitariosControledeAcessoClick(Sender: TObject);
 begin
   inherited;
   {if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -446,10 +458,10 @@ end;
 procedure TFormPrincipal.FATUMnCadastroSerieClick(Sender: TObject);
 begin
   inherited;
- { if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     CriaFormulario(TFormCadastroSerie, 'FormCadastroSerie',False,False,True,'')
   else
-    SoundPlay('Acesso Negado.wav',Sender);  }
+    SoundPlay('Acesso Negado.wav',Sender);
 end;
 
 procedure TFormPrincipal.FATUMnSairdoSistemaClick(Sender: TObject);
@@ -459,8 +471,7 @@ begin
   Destroy;
 end;
 
-procedure TFormPrincipal.FATUMnRelatoriosPedidosListagemClick(
-  Sender: TObject);
+procedure TFormPrincipal.FATUMnRelatoriosPedidosListagemClick(Sender: TObject);
 begin
   inherited;
   {if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -469,8 +480,7 @@ begin
     SoundPlay('Acesso Negado.wav',Sender);  }
 end;
 
-procedure TFormPrincipal.FATUMnRelatoriosPedidosListagemdeItensClick(
-  Sender: TObject);
+procedure TFormPrincipal.FATUMnRelatoriosPedidosListagemdeItensClick(Sender: TObject);
 begin
   inherited;
  { if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -479,8 +489,7 @@ begin
     SoundPlay('Acesso Negado.wav',Sender); }
 end;
 
-procedure TFormPrincipal.FATUMnRelatoriosNotasFiscaisEmitidasClick(
-  Sender: TObject);
+procedure TFormPrincipal.FATUMnRelatoriosNotasFiscaisEmitidasClick(Sender: TObject);
 begin
   inherited;
  { if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -583,8 +592,7 @@ begin
     SoundPlay('Acesso Negado.wav',Sender);}
 end;
 
-procedure TFormPrincipal.FATUMnCadastroClientesMotivoBloqueioClick(
-  Sender: TObject);
+procedure TFormPrincipal.FATUMnCadastroClientesMotivoBloqueioClick(Sender: TObject);
 begin
   inherited;
   {if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -593,8 +601,7 @@ begin
     SoundPlay('Acesso Negado.wav',Sender); }
 end;
 
-procedure TFormPrincipal.FATUMnCadastroClientesProfissoesClick(
-  Sender: TObject);
+procedure TFormPrincipal.FATUMnCadastroClientesProfissoesClick(Sender: TObject);
 begin
   inherited;
   {if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -603,8 +610,7 @@ begin
     SoundPlay('Acesso Negado.wav',Sender); }
 end;
 
-procedure TFormPrincipal.MnFATCadastroProdutoCadastroClick(
-  Sender: TObject);
+procedure TFormPrincipal.MnFATCadastroProdutoCadastroClick(Sender: TObject);
 begin
   inherited;
   {if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -622,8 +628,7 @@ begin
     SoundPlay('Acesso Negado.wav',Sender); }
 end;
 
-procedure TFormPrincipal.MnFATCadastroProdutoICMSporUFClick(
-  Sender: TObject);
+procedure TFormPrincipal.MnFATCadastroProdutoICMSporUFClick(Sender: TObject);
 begin
   inherited;
   {if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -686,14 +691,14 @@ begin
     SoundPlay('Acesso Negado.wav',Sender);}
 end;
 
-procedure TFormPrincipal.MnListagemAcompanhamentoEntregadorClick(
-  Sender: TObject);
+procedure TFormPrincipal.MnListagemAcompanhamentoEntregadorClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormRelatorioPedidoVendaEntrega, 'FormRelatorioPedidoVendaEntrega',False,False,True,'')
+
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
 procedure TFormPrincipal.MnTransportadorasClick(Sender: TObject);
@@ -701,8 +706,9 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormCadastroTransportadora, 'FormCadastroTransportadora',False,False,True,'')
+
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
 procedure TFormPrincipal.MnVeiculosClick(Sender: TObject);
@@ -710,8 +716,9 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormCadastroVeiculo, 'FormCadastroVeiculo',False,False,True,'')
+
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
 procedure TFormPrincipal.MnGeracaoNotasClick(Sender: TObject);
@@ -719,8 +726,9 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormTelaGeracaoNotasFiscais, 'FormTelaGeracaoNotasFiscais',False,False,True,'')
+
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
 procedure TFormPrincipal.MnCadastroVisitaClick(Sender: TObject);
@@ -728,8 +736,9 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormCadastroVisita, 'FormCadastroVisita',False,False,False,'')
+
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
 procedure TFormPrincipal.MnCadastroRoteiroClick(Sender: TObject);
@@ -737,8 +746,9 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormCadastroRoteiro, 'FormCadastroRoteiro',False,False,True,'')
+
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
 procedure TFormPrincipal.MnGeracaoRoteiroPalmClick(Sender: TObject);
@@ -746,36 +756,30 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormTelaGeracaoRoteiro, 'FormTelaGeracaoRoteiro',False,False,True,'')
+
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnObsNotaFiscalClick(Sender: TObject);
-begin
-  inherited;
-  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
-    //CriaFormulario(TFormCadastroObsNotaFiscal, 'FormCadastroObsNotaFiscal',False,False,True,'')
-  else
-    SoundPlay('Acesso Negado.wav',Sender);
-end;
 
 procedure TFormPrincipal.Decretos1Click(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormCadastroDecreto, 'FormCadastroDecreto',False,False,True,'')
+
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnConfigurarLayoutNotasparaModoDOSClick(
-  Sender: TObject);
+procedure TFormPrincipal.MnConfigurarLayoutNotasparaModoDOSClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormTelaConfiguracaoLayOutNF, 'FormTelaConfiguracaoLayOutNF',False,False,True,'')
+
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
 procedure TFormPrincipal.MnCobrancaFreteClick(Sender: TObject);
@@ -783,8 +787,9 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormRelatorioNotaFiscalItensCobrancaFrete, 'FormRelatorioNotaFiscalItensCobrancaFrete',False,False,True,'')
+
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
 procedure TFormPrincipal.MnOperacaoEstoqueClick(Sender: TObject);
@@ -792,8 +797,9 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormCadastroOperacoesEstoque, 'FormCadastroOperacoesEstoque',False,False,True,'')
+
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
 procedure TFormPrincipal.MnPedidoVendaComGradeClick(Sender: TObject);
@@ -801,8 +807,9 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormCadastroPedidoVendaComGrade, 'FormCadastroPedidoVendaComGrade',False,False,False,'')
+
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
 procedure TFormPrincipal.MnAgendaTelefonicaClick(Sender: TObject);
@@ -810,8 +817,9 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormCadastroAgendaTelefonica,'FormCadastroAgendaTelefonica',False,False,False,'')
+
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
 procedure TFormPrincipal.MnFornecedoresClick(Sender: TObject);
@@ -819,8 +827,9 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormCadastroFornecedor,'FormCadastroFornecedor',False,False,False,'')
+
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
 procedure TFormPrincipal.MNRepresentanteClick(Sender: TObject);
@@ -828,8 +837,9 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormCadastroRepresentante,'FormCadastroRepresentante',False,False,False,'')
+
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
 procedure TFormPrincipal.Mecanica1Click(Sender: TObject);
@@ -837,8 +847,9 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormCadastroMecOrdem,'FormCadastroMecOrdem',False,False,False,'')
+
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
 procedure TFormPrincipal.OrdensdeServiosMecnicas1Click(Sender: TObject);
@@ -846,8 +857,9 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormCadastroMecOrdem,'FormCadastroMecOrdem',False,False,False,'')
+
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
 procedure TFormPrincipal.GruposdeExecuodeServio1Click(Sender: TObject);
@@ -855,8 +867,9 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormCadastroMecExecutaEm,'FormCadastroMecExecutaEm',False,False,False,'')
+
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
 procedure TFormPrincipal.Mecnicos1Click(Sender: TObject);
@@ -864,8 +877,9 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormCadastroMecanicos,'FormCadastroMecanicos',False,False,False,'')
+
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
 procedure TFormPrincipal.ipodeServio1Click(Sender: TObject);
@@ -873,12 +887,12 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormCadastroMecTipoServico,'FormCadastroMecTipoServico',False,False,False,'')
+
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnAcompanharTarefascriadaspeloUsuarioAtualClick(
-  Sender: TObject);
+procedure TFormPrincipal.MnAcompanharTarefascriadaspeloUsuarioAtualClick(Sender: TObject);
 begin
   inherited;
   {if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -927,34 +941,35 @@ begin
 end;
 
 procedure TFormPrincipal.TimeLembreteTimer(Sender: TObject);
-var AMANHA : STRING;
-    Year1, Month1, Day1: Word;
+var
+  AMANHA: string;
+  Year1, Month1, Day1: Word;
 begin
   inherited;
   if ExecSql('select CFGCCEXIBIRPOPTARE from CFGCALLCENTER').fieldbyname('CFGCCEXIBIRPOPTARE').AsString = 'S' then
+  begin
+    SQLAgendaVer.Close;
+    SQLAgendaVer.SQL.Text := 'Select Count(*) From TAREFA Where  USUAICODDEST = ' + IntToStr(UsuarioCorrente) + ' and TARECSTATUS <> "T"';
+    SQLAgendaVer.Open;
+    if (SQLAgendaVer.FieldByName('Count').AsInteger > 0) then
     begin
-      SQLAgendaVer.Close;
-      SQLAgendaVer.SQL.Text := 'Select Count(*) From TAREFA Where  USUAICODDEST = ' + IntToStr(UsuarioCorrente) + ' and TARECSTATUS <> "T"';
-      SQLAgendaVer.Open;
-      if (SQLAgendaVer.FieldByName('Count').AsInteger > 0) then
-        begin
-          if Application.FindComponent('FormTelaLembreteTarefa') = nil then
-            begin
-              Application.CreateForm(TFormTelaLembreteTarefa,FormTelaLembreteTarefa);
-              FormTelaLembreteTarefa.Show;     
-            end;
-        end;
+      if Application.FindComponent('FormTelaLembreteTarefa') = nil then
+      begin
+        Application.CreateForm(TFormTelaLembreteTarefa, FormTelaLembreteTarefa);
+        FormTelaLembreteTarefa.Show;
+      end;
     end;
+  end;
 end;
 
-procedure TFormPrincipal.MnFATEmitidasporClienteeporIcmsClick(
-  Sender: TObject);
+procedure TFormPrincipal.MnFATEmitidasporClienteeporIcmsClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormRelatorioNotaEmitidaPorICMS,'FormRelatorioNotaEmitidaPorICMS',False,False,False,'')
+
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
 procedure TFormPrincipal.Cidades1Click(Sender: TObject);
@@ -962,8 +977,9 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormCadastroCidade,'FormCadastroCidade',False,False,False,'')
+
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
 procedure TFormPrincipal.OrdensdeSer1Click(Sender: TObject);
@@ -971,8 +987,9 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormCadastroGraficaOrdem, 'FormCadastroGraficaOrdem',False,False,False,'')
+
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
 procedure TFormPrincipal.abeladeConversodeCSTdoICMS1Click(Sender: TObject);
@@ -980,28 +997,29 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TCadastroCSTConverter, 'CadastroCSTConverter',False,False,True,'')
+
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.abeladeConversodeCSTPISeCOFINS1Click(
-  Sender: TObject);
+procedure TFormPrincipal.abeladeConversodeCSTPISeCOFINS1Click(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TCadastroCSTPisCofinsConverte, 'CadastroCSTPisCofinsConverte',False,False,True,'')
+
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.DigitaoConhecimentosdeFrete1Click(
-  Sender: TObject);
+procedure TFormPrincipal.DigitaoConhecimentosdeFrete1Click(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TCadastroConhecimentos, 'CadastroConhecimentos',False,False,False,'')
+
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
 procedure TFormPrincipal.abeladeConversodeCSTdeIPI1Click(Sender: TObject);
@@ -1009,18 +1027,19 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TCadastroCSTConverterIPI, 'CadastroCSTConverterIPI',False,False,True,'')
+
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.EmissodeConhecimentoEletrnicodeFrete1Click(
-  Sender: TObject);
+procedure TFormPrincipal.EmissodeConhecimentoEletrnicodeFrete1Click(Sender: TObject);
 begin
   inherited;
-    if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormCadastroFreteCTE, 'FormCadastroFreteCTE',False,False,True,'')
+
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
 procedure TFormPrincipal.btn1Click(Sender: TObject);
@@ -1065,19 +1084,19 @@ begin
   TimerImpressaoTablets.Enabled := False;
   {fitlra pedidos a serem impressos}
   dm.sqltemplate.Close;
-  dm.sqltemplate.sql.Text := 'Select * from Prevenda where PRVDN2TOTITENS>0 and PRVDCIMPORT="N" and PDVCPRECONCLU="S" and PRVDCIMPRESSO<>"S" and EMPRICOD='+EmpresaPadrao+' order by PRVDICOD asc';
+  dm.sqltemplate.sql.Text := 'Select * from Prevenda where PRVDN2TOTITENS>0 and PRVDCIMPORT="N" and PDVCPRECONCLU="S" and PRVDCIMPRESSO<>"S" and EMPRICOD=' + EmpresaPadrao + ' order by PRVDICOD asc';
   dm.sqltemplate.open;
   if not dm.sqltemplate.IsEmpty then
+  begin
+    while not dm.sqltemplate.eof do
     begin
-      while not dm.sqltemplate.eof do
-        begin
-          if FileExists('C:\Easy2Solutions\Gestao\ImpressaoViaParametro.EXE') then
-            begin
-              WinExec(Pchar('C:\Easy2Solutions\Gestao\ImpressaoViaParametro.EXE ' + dm.sqltemplate.FieldByName('termicod').AsString +' '+dm.sqltemplate.FieldByName('prvdicod').AsString),sw_Show);
-            end;
-          dm.sqltemplate.next;
-        end;
+      if FileExists('C:\Easy2Solutions\Gestao\ImpressaoViaParametro.EXE') then
+      begin
+        WinExec(Pchar('C:\Easy2Solutions\Gestao\ImpressaoViaParametro.EXE ' + dm.sqltemplate.FieldByName('termicod').AsString + ' ' + dm.sqltemplate.FieldByName('prvdicod').AsString), sw_Show);
+      end;
+      dm.sqltemplate.next;
     end;
+  end;
   TimerImpressaoTablets.Enabled := True;
 end;
 
@@ -1090,132 +1109,224 @@ begin
     TimerImpressaoTablets.Enabled := False;
 end;
 
-procedure TFormPrincipal.MnRelMovimentoCaixaFaturamentoClick(
-  Sender: TObject);
+procedure TFormPrincipal.MnRelMovimentoCaixaFaturamentoClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormRelatorioMovimentoCaixaFaturamento, 'RelatorioMovimentoCaixaFaturamento',False,False,False,'')
+
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
 procedure TFormPrincipal.MnFINPagarLancamentosClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
-    CriaFormulario(TFormCadastroContasPagar, 'FormCadastroContasPagar',False,False,False,'')
+    CriaFormulario(TFormCadastroContasPagar, 'FormCadastroContasPagar', False, False, False, '')
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
 procedure TFormPrincipal.MnADMCadastroProdutoClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
-    CriaFormulario(TFormCadastroProduto,'FormCadastroProduto',False,False,False,'')
+    CriaFormulario(TFormCadastroProduto, 'FormCadastroProduto', False, False, False, '')
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
 procedure TFormPrincipal.MnADMCadastroClientesCadastroClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
-    CriaFormulario(TFormCadastroCliente,'FormCadastroCliente',False,False,False,'')
+    CriaFormulario(TFormCadastroCliente, 'FormCadastroCliente', False, False, False, '')
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
 procedure TFormPrincipal.Grupo1Click(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
-    CriaFormulario(TFormCadastroGrupo,'FormCadastroGrupo',False,False,True,'')
+    CriaFormulario(TFormCadastroGrupo, 'FormCadastroGrupo', False, False, True, '')
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
 procedure TFormPrincipal.MnADMCadastroProdutosGradesClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
-    CriaFormulario(TFormCadastroMarca,'FormCadastroMarca',False,False,True,'')
+    CriaFormulario(TFormCadastroMarca, 'FormCadastroMarca', False, False, True, '')
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
 procedure TFormPrincipal.Grade1Click(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
-    CriaFormulario(TFormCadastroGrade,'FormCadastroGrade',False,False,True,'')
+    CriaFormulario(TFormCadastroGrade, 'FormCadastroGrade', False, False, True, '')
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
 procedure TFormPrincipal.MnADMCadastroProdutosCoresClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
-    CriaFormulario(TFormCadastroCor,'FormCadastroCor',False,False,True,'')
+    CriaFormulario(TFormCadastroCor, 'FormCadastroCor', False, False, True, '')
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
 procedure TFormPrincipal.MnColecaoClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
-    CriaFormulario(TFormCadastroColecao, 'FormCadastroColecao',False,False,True,'')
+    CriaFormulario(TFormCadastroColecao, 'FormCadastroColecao', False, False, True, '')
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
 procedure TFormPrincipal.MnADMCadastroProdutosUnidadesClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
-    CriaFormulario(TFormCadastroUnidade,'FormCadastroUnidade',False,False,True,'')
+    CriaFormulario(TFormCadastroUnidade, 'FormCadastroUnidade', False, False, True, '')
   else
-    SoundPlay('Acesso Negado.wav',Sender); 
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnFINTesLancamentosClick(Sender: TObject);
-begin
-  inherited;
-  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
-    CriaFormulario(TFormCadastroTesouraria,'FormCadastroTesouraria',False,False,False,'')
-  else
-    SoundPlay('Acesso Negado.wav',Sender); 
-end;
 
 procedure TFormPrincipal.MnADMCadastroProdutosIcmsClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
-    CriaFormulario(TFormCadastroICMS,'FormCadastroICMS',False,False,True,'')
+    CriaFormulario(TFormCadastroICMS, 'FormCadastroICMS', False, False, True, '')
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
 procedure TFormPrincipal.MnADMCadastroProdutosIcmsUFClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
-    CriaFormulario(TFormCadastroIcmsUf,'FormCadastroIcmsUf',False,False,True,'')
+    CriaFormulario(TFormCadastroIcmsUf, 'FormCadastroIcmsUf', False, False, True, '')
   else
-    SoundPlay('Acesso Negado.wav',Sender);  
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
 procedure TFormPrincipal.MNADMCadastroNCMClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
-    CriaFormulario(TFormCadastroNCM,'FormCadastroNCM',False,False,True,'')
+    CriaFormulario(TFormCadastroNCM, 'FormCadastroNCM', False, False, True, '')
   else
-    SoundPlay('Acesso Negado.wav',Sender);
+    SoundPlay('Acesso Negado.wav', Sender);
 
 end;
 
+procedure TFormPrincipal.MnFINCadastroTiposDocumentosClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroTipoDocumento, 'FormCadastroTipoDocumento', False, False, True, '')
+  else
+    SoundPlay('Acesso Negado.wav', Sender);
+end;
+
+procedure TFormPrincipal.FINAMnCadastroPortadoresClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroPortador, 'FormCadastroPortador', False, False, True, '')
+  else
+    SoundPlay('Acesso Negado.wav', Sender);
+end;
+
+procedure TFormPrincipal.MnFINCadTipoLiquidacaoClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroTipoLiquidacao, 'FormCadastroTipoLiquidacao', False, False, True, '')
+  else
+    SoundPlay('Acesso Negado.wav', Sender);
+end;
+
+procedure TFormPrincipal.MnFINCadHistoricoPadraoClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroHistoricoPadrao, 'FormCadastroHistoricoPadrao', False, False, True, '')
+  else
+    SoundPlay('Acesso Negado.wav', Sender);
+end;
+
+procedure TFormPrincipal.MnFINCadastroBancosClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroBanco, 'FormCadastroBanco', False, False, True, '')
+  else
+    SoundPlay('Acesso Negado.wav', Sender);
+end;
+
+procedure TFormPrincipal.MnFINBancosContaCorrenteClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroContaCorrente, 'FormCadastroContaCorrente', False, False, True, '')
+  else
+    SoundPlay('Acesso Negado.wav', Sender);
+end;
+
+procedure TFormPrincipal.MnFINCadastroOperacoesBancariasClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroOperacaoBanco, 'FormCadastroOperacaoBanco', False, False, True, '')
+  else
+    SoundPlay('Acesso Negado.wav', Sender);
+end;
+
+procedure TFormPrincipal.MnFINCadastroSituacoesChequesClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroSituacaoCheque, 'FormCadastroSituacaoCheque', False, False, True, '')
+  else
+    SoundPlay('Acesso Negado.wav', Sender);
+end;
+
+procedure TFormPrincipal.MnFINCadastroProtocoloChequeClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroProtocoloChequeRecebido, 'FormCadastroProtocoloChequeRecebido', False, False, True, '')
+  else
+    SoundPlay('Acesso Negado.wav', Sender);
+end;
+
+procedure TFormPrincipal.mniMnOperacaoEstoqueClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroOperacoesEstoque, 'FormCadastroOperacoesEstoque',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnObsNotaFiscalClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroObsNotaFiscal, 'FormCadastroObsNotaFiscal',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
 end.
+
