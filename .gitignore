@@ -1,22 +1,10 @@
-# Para todos os arquivos e sub-pastas localizados na pasta vendor/
-vendor/
-# arquivos bkp
 *.~ddp
 *.~dfm
 *.~dpr
 *.~pas
 *.dcu
 *.ddp
-# Para código C
-*.so
-# Para todos os arquivos e sub-pastas localizados na pasta bower_components/
-bower_components/
-*.~pas
-Oficial/ArquivosComuns/WaitWindow.dcu
 *.dcu
-*.~pas
 *.exe
-*.dcu
-*.dcu
-*.~dfm
-*.~pas
+*.fdb
+*.dpr

@@ -66,8 +66,8 @@ type
     MnADMCadastroProdutosIcms: TMenuItem;
     MnADMCadastroProdutosIcmsUF: TMenuItem;
     MNADMCadastroNCM: TMenuItem;
-    ConveroCSTporICMS1: TMenuItem;
-    ConveroCSTporPISCofins1: TMenuItem;
+    abeladeConversodeCSTdoICMS1: TMenuItem;
+    abeladeConversodeCSTPISeCOFINS1: TMenuItem;
     Cidade1: TMenuItem;
     arefas1: TMenuItem;
     AcompanharTarefa1: TMenuItem;
@@ -322,6 +322,7 @@ type
     procedure MnADMCadastroProdutosIcmsClick(Sender: TObject);
     procedure MnADMCadastroProdutosIcmsUFClick(Sender: TObject);
     procedure MNADMCadastroNCMClick(Sender: TObject);
+<<<<<<< HEAD
     procedure MnFINCadastroTiposDocumentosClick(Sender: TObject);
     procedure FINAMnCadastroPortadoresClick(Sender: TObject);
     procedure MnFINCadTipoLiquidacaoClick(Sender: TObject);
@@ -334,6 +335,9 @@ type
     procedure mniMnOperacaoEstoqueClick(Sender: TObject);
     procedure MnObsNotaFiscalClick(Sender: TObject);
 
+=======
+    procedure ConveroCSTporPISCofins1Click(Sender: TObject);
+>>>>>>> origin/master
   private
     { Private declarations }
   public
@@ -345,6 +349,7 @@ var
 
 implementation
 
+<<<<<<< HEAD
 uses
   DataModulo, UnSoundPlay, UnitLibrary, CadastroContasPagar, TelaLembreteTarefa,
   CadastroProdutos, CadastroCliente, CadastroGrupo, CadastroMarca, CadastroGrade,
@@ -355,6 +360,13 @@ uses
   CadastroSituacaoCheque, CadastroProtocoloChequeRecebido,
   CadastroOperacaoTesouraria, CadastroOperacoesEstoque, CadastroObsNotaFiscal,
   CadastroSerie;
+=======
+uses DataModulo, UnSoundPlay, UnitLibrary, CadastroContasPagar,
+  TelaLembreteTarefa, CadastroProdutos, CadastroCliente, CadastroGrupo,
+  CadastroMarca, CadastroGrade, CadastroCor, CadastroColecao,
+  CadastroUnidade, CadastroTesouraria, CadastroICMS, CadastroIcmsUf,
+  CadastroNCM, CadastroCSTConverte, CadastroCSTPisCofinsConverter;
+>>>>>>> origin/master
 
 {uses CadastroCliente, CadastroTemplate, CadastroTipoCliente, CadastroBanco,
   CadastroTipoDocumento, CadastroPortador, CadastroClasse, CadastroPedidoVenda,
@@ -993,6 +1005,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
+<<<<<<< HEAD
 procedure TFormPrincipal.abeladeConversodeCSTdoICMS1Click(Sender: TObject);
 begin
   inherited;
@@ -1002,6 +1015,8 @@ begin
   else
     SoundPlay('Acesso Negado.wav', Sender);
 end;
+=======
+>>>>>>> origin/master
 
 procedure TFormPrincipal.abeladeConversodeCSTPISeCOFINS1Click(Sender: TObject);
 begin
@@ -1325,6 +1340,24 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     CriaFormulario(TFormCadastroObsNotaFiscal, 'FormCadastroObsNotaFiscal',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.abeladeConversodeCSTdoICMS1Click(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TCadastroCSTConverter, 'CadastroCSTConverter',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.ConveroCSTporPISCofins1Click(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TCadastroCSTPisCofinsConverte, 'CadastroCSTPisCofinsConverte',False,False,True,'')
   else
     SoundPlay('Acesso Negado.wav',Sender);
 end;
