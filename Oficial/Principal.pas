@@ -66,8 +66,8 @@ type
     MnADMCadastroProdutosIcms: TMenuItem;
     MnADMCadastroProdutosIcmsUF: TMenuItem;
     MNADMCadastroNCM: TMenuItem;
-    ConveroCSTporICMS1: TMenuItem;
-    ConveroCSTporPISCofins1: TMenuItem;
+    abeladeConversodeCSTdoICMS1: TMenuItem;
+    abeladeConversodeCSTPISeCOFINS1: TMenuItem;
     Cidade1: TMenuItem;
     arefas1: TMenuItem;
     AcompanharTarefa1: TMenuItem;
@@ -325,6 +325,7 @@ type
     procedure MnADMCadastroProdutosIcmsClick(Sender: TObject);
     procedure MnADMCadastroProdutosIcmsUFClick(Sender: TObject);
     procedure MNADMCadastroNCMClick(Sender: TObject);
+    procedure ConveroCSTporPISCofins1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -340,7 +341,7 @@ uses DataModulo, UnSoundPlay, UnitLibrary, CadastroContasPagar,
   TelaLembreteTarefa, CadastroProdutos, CadastroCliente, CadastroGrupo,
   CadastroMarca, CadastroGrade, CadastroCor, CadastroColecao,
   CadastroUnidade, CadastroTesouraria, CadastroICMS, CadastroIcmsUf,
-  CadastroNCM;
+  CadastroNCM, CadastroCSTConverte, CadastroCSTPisCofinsConverter;
 
 {uses CadastroCliente, CadastroTemplate, CadastroTipoCliente, CadastroBanco,
   CadastroTipoDocumento, CadastroPortador, CadastroClasse, CadastroPedidoVenda,
@@ -975,14 +976,6 @@ begin
     SoundPlay('Acesso Negado.wav',Sender);
 end;
 
-procedure TFormPrincipal.abeladeConversodeCSTdoICMS1Click(Sender: TObject);
-begin
-  inherited;
-  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
-    //CriaFormulario(TCadastroCSTConverter, 'CadastroCSTConverter',False,False,True,'')
-  else
-    SoundPlay('Acesso Negado.wav',Sender);
-end;
 
 procedure TFormPrincipal.abeladeConversodeCSTPISeCOFINS1Click(
   Sender: TObject);
@@ -1216,6 +1209,24 @@ begin
   else
     SoundPlay('Acesso Negado.wav',Sender);
 
+end;
+
+procedure TFormPrincipal.abeladeConversodeCSTdoICMS1Click(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TCadastroCSTConverter, 'CadastroCSTConverter',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.ConveroCSTporPISCofins1Click(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TCadastroCSTPisCofinsConverte, 'CadastroCSTPisCofinsConverte',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
 end;
 
 end.
