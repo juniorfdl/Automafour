@@ -102,8 +102,6 @@ type
     SQLConfigConta: TRxQuery;
     SQLPlanodeContas: TRxQuery;
     SQLPlanodeContasPLCTA15COD: TStringField;
-    intgrfldSQLPlanodeContasPLCTICODREDUZ: TIntegerField;
-    intgrfldSQLPlanodeContasPLCTINIVEL: TIntegerField;
     SQLPlanodeContasPLCTA15CODPAI: TStringField;
     SQLPlanodeContasPLCTA30CODEDIT: TStringField;
     SQLPlanodeContasPLCTA60DESCR: TStringField;
@@ -111,6 +109,7 @@ type
     SQLPlanodeContasPLCTCTIPOSALDO: TStringField;
     SQLPlanodeContasPENDENTE: TStringField;
     SQLPlanodeContasREGISTRO: TDateTimeField;
+    SQLPlanodeContasPLCTINIVEL: TIntegerField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

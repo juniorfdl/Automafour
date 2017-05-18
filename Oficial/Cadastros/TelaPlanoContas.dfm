@@ -9,14 +9,14 @@ inherited FormTelaPlanoContas: TFormTelaPlanoContas
   TextHeight = 13
   inherited ScrollBoxFundo: TScrollBox
     Width = 792
-    Height = 570
+    Height = 569
     inherited PanelCentral: TPanel
       Width = 788
-      Height = 486
+      Height = 485
       inherited PanelBarra: TPanel
         Top = 153
         Width = 0
-        Height = 333
+        Height = 332
       end
       object Panel4: TPanel
         Left = 0
@@ -32,6 +32,19 @@ inherited FormTelaPlanoContas: TFormTelaPlanoContas
           Width = 143
           Height = 13
           Caption = 'N'#237'veis do Plano de Contas'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = 8404992
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label1: TLabel
+          Left = 533
+          Top = 44
+          Width = 176
+          Height = 13
+          Caption = 'M'#225'scara do C'#243'digo Estruturado'
           Font.Charset = ANSI_CHARSET
           Font.Color = 8404992
           Font.Height = -11
@@ -244,6 +257,7 @@ inherited FormTelaPlanoContas: TFormTelaPlanoContas
             Height = 21
             Style = csDropDownList
             DataField = 'CFGCINIVEL4'
+            DataSource = DSSQLConfigConta
             Enabled = False
             EnableValues = True
             ItemHeight = 13
@@ -489,6 +503,7 @@ inherited FormTelaPlanoContas: TFormTelaPlanoContas
           Height = 21
           Style = csDropDownList
           DataField = 'CFGCNIVEIS'
+          DataSource = DSSQLConfigConta
           EnableValues = True
           ItemHeight = 13
           Items.Strings = (
@@ -515,6 +530,19 @@ inherited FormTelaPlanoContas: TFormTelaPlanoContas
             '9'
             '10')
           OnChange = ComboNiveisChange
+          OnExit = ComboNiveisExit
+        end
+        object DBEdit1: TDBEdit
+          Left = 530
+          Top = 58
+          Width = 223
+          Height = 21
+          CharCase = ecUpperCase
+          DataField = 'CFGCA30MASCARA'
+          DataSource = DSSQLConfigConta
+          TabOrder = 2
+          OnChange = NomeEditChange
+          OnExit = NomeEditExit
         end
       end
       object Panel_Reg: TPanel
@@ -578,7 +606,7 @@ inherited FormTelaPlanoContas: TFormTelaPlanoContas
           OnEnter = CodReduzidoEnter
           OnExit = CodReduzidoExit
         end
-        object DBRadioGroup1: TDBRadioGroup
+        object RadioConta: TDBRadioGroup
           Left = 639
           Top = 0
           Width = 146
@@ -601,7 +629,7 @@ inherited FormTelaPlanoContas: TFormTelaPlanoContas
             'A')
           OnExit = CodReduzidoExit
         end
-        object DBRadioGroup2: TDBRadioGroup
+        object RadioSaldo: TDBRadioGroup
           Left = 450
           Top = 0
           Width = 187
@@ -668,7 +696,7 @@ inherited FormTelaPlanoContas: TFormTelaPlanoContas
         Left = 0
         Top = 153
         Width = 788
-        Height = 333
+        Height = 332
         Align = alClient
         Caption = 'PanelArvore'
         TabOrder = 4
@@ -676,7 +704,7 @@ inherited FormTelaPlanoContas: TFormTelaPlanoContas
           Left = 1
           Top = 1
           Width = 786
-          Height = 315
+          Height = 314
           Hint = 'Bot'#227'o Direito do Mouse'
           Align = alClient
           Font.Charset = DEFAULT_CHARSET
@@ -698,7 +726,7 @@ inherited FormTelaPlanoContas: TFormTelaPlanoContas
         end
         object ProgressBar: TProgressBar
           Left = 1
-          Top = 316
+          Top = 315
           Width = 786
           Height = 16
           Align = alBottom
@@ -792,6 +820,7 @@ inherited FormTelaPlanoContas: TFormTelaPlanoContas
     end
   end
   object DSSQLConfigConta: TDataSource
+    DataSet = DM.SQLConfigConta
     OnStateChange = DSSQLConfigContaStateChange
     Left = 107
     Top = 19
@@ -834,5 +863,113 @@ inherited FormTelaPlanoContas: TFormTelaPlanoContas
       Caption = 'Fechar Tudo'
       OnClick = Mn_Cnt_TudoClick
     end
+  end
+  object SQLConta: TRxQuery
+    OnNewRecord = SQLContaNewRecord
+    DatabaseName = 'DB'
+    RequestLive = True
+    SQL.Strings = (
+      'select * from PLANODECONTAS')
+    UpdateObject = UpDateSQLPlanodeContas
+    Macros = <>
+    Left = 269
+    Top = 316
+    object SQLContaPLCTA15COD: TStringField
+      FieldName = 'PLCTA15COD'
+      Origin = 'DB.PLANODECONTAS.PLCTA15COD'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLContaPLCTICODREDUZ: TIntegerField
+      FieldName = 'PLCTICODREDUZ'
+      Origin = 'DB.PLANODECONTAS.PLCTICODREDUZ'
+    end
+    object SQLContaPLCTINIVEL: TIntegerField
+      FieldName = 'PLCTINIVEL'
+      Origin = 'DB.PLANODECONTAS.PLCTINIVEL'
+    end
+    object SQLContaPLCTA15CODPAI: TStringField
+      FieldName = 'PLCTA15CODPAI'
+      Origin = 'DB.PLANODECONTAS.PLCTA15CODPAI'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLContaPLCTA30CODEDIT: TStringField
+      FieldName = 'PLCTA30CODEDIT'
+      Origin = 'DB.PLANODECONTAS.PLCTA30CODEDIT'
+      FixedChar = True
+      Size = 30
+    end
+    object SQLContaPLCTA60DESCR: TStringField
+      FieldName = 'PLCTA60DESCR'
+      Origin = 'DB.PLANODECONTAS.PLCTA60DESCR'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLContaPLCTCANALSINT: TStringField
+      FieldName = 'PLCTCANALSINT'
+      Origin = 'DB.PLANODECONTAS.PLCTCANALSINT'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLContaPLCTCTIPOSALDO: TStringField
+      FieldName = 'PLCTCTIPOSALDO'
+      Origin = 'DB.PLANODECONTAS.PLCTCTIPOSALDO'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLContaPENDENTE: TStringField
+      FieldName = 'PENDENTE'
+      Origin = 'DB.PLANODECONTAS.PENDENTE'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLContaREGISTRO: TDateTimeField
+      FieldName = 'REGISTRO'
+      Origin = 'DB.PLANODECONTAS.REGISTRO'
+    end
+  end
+  object UpDateSQLPlanodeContas: TUpdateSQL
+    ModifySQL.Strings = (
+      'update PLANODECONTAS'
+      'set'
+      '  PLCTA15COD = :PLCTA15COD,'
+      '  PLCTICODREDUZ = :PLCTICODREDUZ,'
+      '  PLCTINIVEL = :PLCTINIVEL,'
+      '  PLCTA15CODPAI = :PLCTA15CODPAI,'
+      '  PLCTA30CODEDIT = :PLCTA30CODEDIT,'
+      '  PLCTA60DESCR = :PLCTA60DESCR,'
+      '  PLCTCANALSINT = :PLCTCANALSINT,'
+      '  PLCTCTIPOSALDO = :PLCTCTIPOSALDO,'
+      '  PENDENTE = :PENDENTE,'
+      '  REGISTRO = :REGISTRO'
+      'where'
+      '  PLCTA15COD = :OLD_PLCTA15COD')
+    InsertSQL.Strings = (
+      'insert into PLANODECONTAS'
+      
+        '  (PLCTA15COD, PLCTICODREDUZ, PLCTINIVEL, PLCTA15CODPAI, PLCTA30' +
+        'CODEDIT, '
+      
+        '   PLCTA60DESCR, PLCTCANALSINT, PLCTCTIPOSALDO, PENDENTE, REGIST' +
+        'RO)'
+      'values'
+      
+        '  (:PLCTA15COD, :PLCTICODREDUZ, :PLCTINIVEL, :PLCTA15CODPAI, :PL' +
+        'CTA30CODEDIT, '
+      
+        '   :PLCTA60DESCR, :PLCTCANALSINT, :PLCTCTIPOSALDO, :PENDENTE, :R' +
+        'EGISTRO)')
+    DeleteSQL.Strings = (
+      'delete from PLANODECONTAS'
+      'where'
+      '  PLCTA15COD = :OLD_PLCTA15COD')
+    Left = 314
+    Top = 316
+  end
+  object DSSQLPlanodeContas: TDataSource
+    DataSet = DM.SQLPlanodeContas
+    Left = 541
+    Top = 276
   end
 end

@@ -1,5 +1,9 @@
 inherited DM: TDM
   OldCreateOrder = True
+  Left = 596
+  Top = 104
+  Height = 348
+  Width = 748
   inherited DB: TDatabase
     AliasName = 'Easy_Gestao'
   end
@@ -563,7 +567,7 @@ inherited DM: TDM
       FieldName = 'PLCTICODREDUZ'
       Origin = 'DB.PLANODECONTAS.PLCTICODREDUZ'
     end
-    object intgrfldSQLPlanodeContasPLCTINIVEL: TIntegerField
+    object SQLPlanodeContasPLCTINIVEL: TIntegerField
       FieldName = 'PLCTINIVEL'
       Origin = 'DB.PLANODECONTAS.PLCTINIVEL'
     end

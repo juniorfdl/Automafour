@@ -90,8 +90,8 @@ MaxStackSize=1048576
 ImageBase=4194304
 ExeDescription=
 [Directories]
-OutputDir=C:\projetos\Automafour\Exec
-UnitOutputDir=
+OutputDir=C:\projetos\Automafour_Exec
+UnitOutputDir=C:\projetos\Automafour_Exec\dcu
 PackageDLLOutputDir=
 PackageDCPOutputDir=
 SearchPath=
@@ -139,6 +139,11 @@ c:\program files (x86)\borland\delphi7\Bin\dclindy70.bpl=(Untitled)
 [HistoryLists\hlUnitAliases]
 Count=1
 Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
-[HistoryLists\hlOutputDirectorry]
+[HistoryLists\hlUnitOutputDirectory]
 Count=1
-Item0=C:\projetos\Automafour\Exec
+Item0=C:\projetos\Automafour_Exec\dcu
+[HistoryLists\hlOutputDirectorry]
+Count=3
+Item0=C:\projetos\Automafour_Exec
+Item1=..\Exec
+Item2=C:\projetos\Automafour\Exec
