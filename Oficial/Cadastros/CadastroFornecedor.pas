@@ -7,7 +7,7 @@ uses
   CadastroTemplate, Db, DBTables, RxQuery, Menus, StdCtrls, Mask, Grids,
   DBGrids, ComCtrls, ExtCtrls, RXCtrls, Buttons, jpeg, DBCtrls, RxDBComb,
   FormResources, VarSys, DBActns, ActnList, ImgList, ToolEdit, CurrEdit,
-  RxLookup, RXDBCtrl, UCrpe32, ExtDlgs, AdvOfficeStatusBar,
+  RxLookup, RXDBCtrl, {UCrpe32,} ExtDlgs, AdvOfficeStatusBar,
   AdvOfficeStatusBarStylers, AdvPanel;
 
 type
@@ -417,7 +417,7 @@ type
     TblImpressaoPlanoPgtoDescricao: TStringField;
     TblImpressaoUnidade: TStringField;
     TblImpressaoEmailFornecedor: TStringField;
-    ImpTroca: TCrpe;
+    //ImpTroca: TCrpe; #ver
     SQLTrocasMOVDCTROCASTAT: TStringField;
     MnGerarListaEmail: TMenuItem;
     Label120: TLabel;
@@ -996,8 +996,8 @@ begin
       TblImpressao.Post ;
       SQLTrocas.Next ;
     end ;
-  ImpTroca.ReportName := DM.PathAplicacao + '\Troca\Troca.rpt' ;
-  ImpTroca.Execute;
+  //ImpTroca.ReportName := DM.PathAplicacao + '\Troca\Troca.rpt' ; #ver
+  //ImpTroca.Execute;
 end;
 
 procedure TFormCadastroFornecedor.MnGerarListaEmailClick(Sender: TObject);

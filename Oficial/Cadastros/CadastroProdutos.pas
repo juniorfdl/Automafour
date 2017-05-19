@@ -976,7 +976,6 @@ type
     RxDBComboBox14: TRxDBComboBox;
     btCorrigeProdutossemoCodigoCEST: TMenuItem;
     AcessaCEST: TSpeedButton;
-    Report: TCrpe;
     procedure FormCreate(Sender: TObject);
     procedure RxComboComissaoChange(Sender: TObject);
     procedure AcessaMarcaClick(Sender: TObject);
@@ -2930,7 +2929,7 @@ begin
   Progresso.Position := 0;
   Progresso.Update;
   TblTemporaria.Close;
-  {Report.ReportName        := DM.SQLConfigGeralCFGEA255PATHREPORT.AsString + '\Historico por Produto.rpt';
+  {eport.ReportName        := DM.SQLConfigGeralCFGEA255PATHREPORT.AsString + '\Historico por Produto.rpt';
   Report.ReportTitle       := 'Relatï¿½rio de Histï¿½rico por Produto';
   Report.WindowStyle.Title := 'Relatï¿½rio de Histï¿½rico por Produto';
   Report.Formulas.Retrieve ;
@@ -3939,7 +3938,7 @@ begin
   Progresso.Position := 0;
   Progresso.Update;
   TblTemporaria2.Close;
-  {Report.ReportName        := DM.SQLConfigGeralCFGEA255PATHREPORT.AsString + '\Movimentacao Produto.rpt';
+  {eport.ReportName        := DM.SQLConfigGeralCFGEA255PATHREPORT.AsString + '\Movimentacao Produto.rpt';
   Report.ReportTitle       := 'Relatório de Movimentacão de Produto';
   Report.WindowStyle.Title := 'Relatório de Movimentacão de Produto';
   Report.Formulas.Retrieve ;
@@ -3967,7 +3966,7 @@ begin
 //--------------------------------------------------------------------------\\
   Report.Formulas.Send;
   Report.Execute;
-   }
+}
 end;
 
 procedure TFormCadastroProduto.DBEdit2Exit(Sender: TObject);
