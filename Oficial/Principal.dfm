@@ -2386,9 +2386,11 @@ inherited FormPrincipal: TFormPrincipal
         Caption = 'Tarefas'
         object AcompanharTarefa1: TMenuItem
           Caption = 'Acompanhar Tarefa'
+          OnClick = MnAcompanharTarefascriadaspeloUsuarioAtualClick
         end
         object GerenciarTarefa1: TMenuItem
           Caption = 'Gerenciar Tarefa'
+          OnClick = MnGerenciarTarefasClick
         end
         object CadastrarTarefas1: TMenuItem
           Caption = 'Cadastrar Tarefas'

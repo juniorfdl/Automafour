@@ -25,7 +25,6 @@ uses
   TelaAssistenteLancamentoContasPagar in 'Financeiro\TelaAssistenteLancamentoContasPagar.pas',
   TelaGeralModalTemplate in '..\Template\TelaGeralModalTemplate.pas' {FormTelaGeralModalTemplate},
   TelaBaixaContasPagarAVista in 'Financeiro\TelaBaixaContasPagarAVista.pas' {FormTelaBaixaContasPagarAVista},
-  TelaLembreteTarefa in 'TelaLembreteTarefa.pas' {FormTelaLembreteTarefa},
   TelaConsultaTarefa in 'TelaConsultaTarefa.pas' {FormTelaConsultaTarefa},
   CadastroProdutos in 'Cadastros\CadastroProdutos.pas' {FormCadastroProduto},
   CadastroVariacao in 'Cadastros\CadastroVariacao.pas' {FormCadastroVariacao},
@@ -113,7 +112,9 @@ uses
   CadastroObsNotaFiscal in 'Cadastros\CadastroObsNotaFiscal.pas' {FormCadastroObsNotaFiscal},
   CadastroCSTConverte in 'Cadastros\CadastroCSTConverte.pas' {CadastroCSTConverter},
   CadastroCSTPisCofinsConverter in 'Cadastros\CadastroCSTPisCofinsConverter.pas' {CadastroCSTPisCofinsConverte},
-  TelaPlanoContas in 'Cadastros\TelaPlanoContas.pas' {FormTelaPlanoContas};
+  TelaPlanoContas in 'Cadastros\TelaPlanoContas.pas' {FormTelaPlanoContas},
+  TelaLembreteTarefa2 in 'Cadastros\TelaLembreteTarefa2.pas' {FormTelaLembreteTarefa2},
+  TelaLembreteTarefa in 'Cadastros\TelaLembreteTarefa.pas' {FormTelaLembreteTarefa};
 
 {$R *.res}
 

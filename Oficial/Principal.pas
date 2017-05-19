@@ -347,7 +347,7 @@ var
 implementation
 
 uses
-  DataModulo, UnSoundPlay, UnitLibrary, CadastroContasPagar, TelaLembreteTarefa,
+  DataModulo, UnSoundPlay, UnitLibrary, CadastroContasPagar,
   CadastroProdutos, CadastroCliente, CadastroGrupo, CadastroMarca, CadastroGrade,
   CadastroCor, CadastroColecao, CadastroUnidade, CadastroTesouraria,
   CadastroICMS, CadastroIcmsUf, CadastroNCM, CadastroTipoDocumento,
@@ -356,7 +356,8 @@ uses
   CadastroSituacaoCheque, CadastroProtocoloChequeRecebido,
   CadastroOperacaoTesouraria, CadastroOperacoesEstoque, CadastroObsNotaFiscal,
   CadastroSerie, CadastroCSTConverte, CadastroCSTPisCofinsConverter,
-  TelaPlanoContas;
+  TelaPlanoContas, TelaLembreteTarefa2, TelaConsultaTarefa,
+  TelaLembreteTarefa;
 
 
 {uses CadastroCliente, CadastroTemplate, CadastroTipoCliente, CadastroBanco,
@@ -899,25 +900,25 @@ end;
 procedure TFormPrincipal.MnAcompanharTarefascriadaspeloUsuarioAtualClick(Sender: TObject);
 begin
   inherited;
-  {if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     begin
       Application.CreateForm(TFormTelaLembreteTarefa2,FormTelaLembreteTarefa2);
       FormTelaLembreteTarefa2.ShowModal;
     end
   else
-    SoundPlay('Acesso Negado.wav',Sender);  }
+    SoundPlay('Acesso Negado.wav',Sender);
 end;
 
 procedure TFormPrincipal.MnGerenciarTarefasClick(Sender: TObject);
 begin
   inherited;
-  {if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     begin
       Application.CreateForm(TFormTelaLembreteTarefa,FormTelaLembreteTarefa);
       FormTelaLembreteTarefa.ShowModal;
     end
   else
-    SoundPlay('Acesso Negado.wav',Sender); }
+    SoundPlay('Acesso Negado.wav',Sender);
 end;
 
 procedure TFormPrincipal.MnAdicionarTarefasClick(Sender: TObject);

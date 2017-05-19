@@ -1,6 +1,6 @@
 object FormTelaLembreteTarefa: TFormTelaLembreteTarefa
-  Left = -754
-  Top = 80
+  Left = 373
+  Top = 124
   AutoSize = True
   BorderIcons = []
   BorderStyle = bsToolWindow
