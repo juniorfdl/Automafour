@@ -114,7 +114,10 @@ uses
   CadastroCSTPisCofinsConverter in 'Cadastros\CadastroCSTPisCofinsConverter.pas' {CadastroCSTPisCofinsConverte},
   TelaPlanoContas in 'Cadastros\TelaPlanoContas.pas' {FormTelaPlanoContas},
   TelaLembreteTarefa2 in 'Cadastros\TelaLembreteTarefa2.pas' {FormTelaLembreteTarefa2},
-  TelaLembreteTarefa in 'Cadastros\TelaLembreteTarefa.pas' {FormTelaLembreteTarefa};
+  TelaLembreteTarefa in 'Cadastros\TelaLembreteTarefa.pas' {FormTelaLembreteTarefa},
+  CadastroTransportadora in 'Cadastros\CadastroTransportadora.pas' {FormCadastroTransportadora},
+  CadastroRepresentante in 'Cadastros\CadastroRepresentante.pas' {FormCadastroRepresentante},
+  CadastroConvenio in 'Cadastros\CadastroConvenio.pas' {FormCadastroConvenio};
 
 {$R *.res}
 

@@ -9,7 +9,7 @@ inherited FormPrincipal: TFormPrincipal
   PixelsPerInch = 96
   TextHeight = 13
   inherited RodapePrincipal: TStatusBar
-    Top = 450
+    Top = 449
     Width = 1256
   end
   inherited ptopo: TAdvOfficeStatusBar
@@ -2317,20 +2317,25 @@ inherited FormPrincipal: TFormPrincipal
         Caption = 'Clientes'
         OnClick = MnADMCadastroClientesCadastroClick
       end
-      object Fornecedores1: TMenuItem
+      object MnFornecedores: TMenuItem
         Caption = 'Fornecedores'
+        OnClick = MnFornecedoresClick
       end
-      object Vendedores1: TMenuItem
+      object MnVendedores: TMenuItem
         Caption = 'Vendedores'
+        OnClick = MnVendedoresClick
       end
-      object ransportadoras1: TMenuItem
+      object MnTransportadoras: TMenuItem
         Caption = 'Transportadoras'
+        OnClick = MnTransportadorasClick
       end
-      object Representantes1: TMenuItem
+      object MNRepresentante: TMenuItem
         Caption = 'Representantes'
+        OnClick = MNRepresentanteClick
       end
-      object Convnio1: TMenuItem
+      object MNADMConvenios: TMenuItem
         Caption = 'Conv'#234'nio'
+        OnClick = MNADMConveniosClick
       end
       object Controle1: TMenuItem
         Caption = 'Controle'
