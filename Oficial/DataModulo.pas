@@ -116,6 +116,8 @@ type
   public
     { Public declarations }
     CodTarefa:String;
+    GerandoPedidoCompra, InserindoItemPC:Boolean;
+    ConfigEtiqueta:Integer;
   end;
 
 var

@@ -1,0 +1,1470 @@
+inherited FormCadastroPedidoCompraItem: TFormCadastroPedidoCompraItem
+  Left = 451
+  Top = 119
+  Caption = 'Itens'
+  ClientHeight = 530
+  ClientWidth = 790
+  OldCreateOrder = True
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited ScrollBoxFundo: TScrollBox
+    Width = 790
+    Height = 530
+    inherited PanelCabecalho: TPanel
+      Width = 788
+      inherited ScrollBoxPanelCabecalho: TScrollBox
+        Width = 788
+        inherited Panel1: TPanel
+          Width = 786
+          inherited PanelNavigator: TPanel
+            Width = 786
+            inherited AdvPanelNavigator: TAdvOfficeStatusBar
+              Width = 786
+            end
+          end
+          inherited PanelLeft: TPanel
+            Left = 329
+          end
+        end
+      end
+    end
+    inherited PanelCentral: TPanel
+      Width = 788
+      Height = 456
+      inherited PanelBarra: TPanel
+        Height = 456
+        inherited Button3: TRxSpeedButton
+          Caption = '&3 Filtrar Produtos'
+          Visible = True
+          OnClick = Button3Click
+        end
+        object RadioPesquisa: TRadioGroup
+          Left = 2
+          Top = 85
+          Width = 124
+          Height = 83
+          Caption = 'Tipo de &Pesquisa'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ItemIndex = 0
+          Items.Strings = (
+            'Padr'#227'o'
+            'C'#243'd. Antigo'
+            'Refer'#234'ncia')
+          ParentFont = False
+          TabOrder = 0
+        end
+      end
+      inherited PanelFundoDados: TPanel
+        Width = 658
+        Height = 456
+        inherited Panel5: TPanel
+          Width = 658
+          Height = 456
+          inherited PagePrincipal: TPageControl
+            Top = 123
+            Width = 658
+            Height = 333
+            inherited TabSheetConsulta: TTabSheet
+              inherited DBGridLista: TDBGrid
+                Top = 42
+                Width = 650
+                Height = 265
+                Columns = <
+                  item
+                    Expanded = False
+                    FieldName = 'ProdutoLookUp'
+                    Title.Caption = 'Produto'
+                    Width = 252
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'ReferenciaLookUp'
+                    Title.Caption = 'Refer'#234'ncia'
+                    Width = 80
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'PCITN3QTDEMBAL'
+                    Title.Caption = 'Qtde.Embal'
+                    Width = 56
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'PCITN3VLRUNIT'
+                    Title.Caption = 'Valor Unit'
+                    Width = 57
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'PCITN3VLREMBAL'
+                    Title.Caption = 'Valor Embal'
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'PCITN3CAPEMBAL'
+                    Title.Caption = 'Cap.Embal'
+                    Width = 50
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'TotalItemCalc'
+                    Title.Caption = 'Vlr.Tot.Item'
+                    Visible = True
+                  end>
+              end
+              inherited PanelProcura: TPanel
+                Width = 650
+                Height = 42
+                inherited PanelBetween: TPanel
+                  Width = 256
+                  Height = 42
+                  inherited AdvPanel1: TAdvPanel
+                    Width = 256
+                    Height = 42
+                    FullHeight = 0
+                  end
+                end
+                inherited PanelEditProcura: TPanel
+                  Width = 256
+                  Height = 42
+                  inherited AdvPanelEditProcura: TAdvPanel
+                    Width = 256
+                    Height = 42
+                    FullHeight = 0
+                    inherited EditProcura: TMaskEdit
+                      Width = 250
+                    end
+                  end
+                end
+                inherited PanelIndice: TPanel
+                  Height = 42
+                  inherited AdvPanelIndice: TAdvPanel
+                    Height = 42
+                    FullHeight = 0
+                  end
+                end
+              end
+              inherited MemoDetalhes: TMemo
+                Top = 99
+              end
+            end
+            inherited TabSheetDadosPrincipais: TTabSheet
+              object Label4: TLabel
+                Left = 6
+                Top = 4
+                Width = 96
+                Height = 13
+                Caption = 'Qtde.Embalagem'
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = 8404992
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = [fsBold]
+                ParentFont = False
+              end
+              object Label5: TLabel
+                Left = 427
+                Top = 44
+                Width = 74
+                Height = 13
+                Caption = 'Qtde.Entrada'
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = 8404992
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = [fsBold]
+                ParentFont = False
+              end
+              object Label6: TLabel
+                Left = 216
+                Top = 4
+                Width = 98
+                Height = 13
+                Caption = 'Valor Embalagem'
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = 8404992
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = [fsBold]
+                ParentFont = False
+              end
+              object Label7: TLabel
+                Left = 320
+                Top = 4
+                Width = 77
+                Height = 13
+                Caption = 'Valor Unit'#225'rio'
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = 8404992
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = [fsBold]
+                ParentFont = False
+              end
+              object Label8: TLabel
+                Left = 425
+                Top = 4
+                Width = 69
+                Height = 13
+                Caption = '% Desconto'
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = 8404992
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = [fsBold]
+                ParentFont = False
+              end
+              object Label9: TLabel
+                Left = 532
+                Top = 4
+                Width = 85
+                Height = 13
+                Caption = 'Valor Desconto'
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = 8404992
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = [fsBold]
+                ParentFont = False
+              end
+              object Label10: TLabel
+                Left = 214
+                Top = 43
+                Width = 33
+                Height = 13
+                Caption = '% IPI'
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = 8404992
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = [fsBold]
+                ParentFont = False
+              end
+              object Label11: TLabel
+                Left = 317
+                Top = 43
+                Width = 49
+                Height = 13
+                Caption = 'Valor IPI'
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = 8404992
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = [fsBold]
+                ParentFont = False
+              end
+              object Label12: TLabel
+                Left = 110
+                Top = 43
+                Width = 54
+                Height = 13
+                Caption = 'Valor ICM'
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = 8404992
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = [fsBold]
+                ParentFont = False
+              end
+              object Label13: TLabel
+                Left = 5
+                Top = 43
+                Width = 38
+                Height = 13
+                Caption = '% ICM'
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = 8404992
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = [fsBold]
+                ParentFont = False
+              end
+              object Label23: TLabel
+                Left = 531
+                Top = 43
+                Width = 60
+                Height = 13
+                Caption = 'Total Item'
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = 8404992
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = [fsBold]
+                ParentFont = False
+              end
+              object Label44: TLabel
+                Left = 109
+                Top = 4
+                Width = 58
+                Height = 13
+                Caption = 'Cap.Embal'
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = 8404992
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = [fsBold]
+                ParentFont = False
+              end
+              object DBEdit4: TEvDBNumEdit
+                Left = 3
+                Top = 17
+                Width = 101
+                Height = 21
+                AutoHideCalculator = False
+                DataField = 'PCITN3QTDEMBAL'
+                DataSource = DSTemplate
+                Glyph.Data = {
+                  E6020000424DE60200000000000042000000280000001A0000000D0000000100
+                  100003000000A402000000000000000000000000000000000000007C0000E003
+                  00001F000000FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF1CEF1C
+                  EF1CEF1CEF1CEF1CEF1CEF1CEF1CEF1CFF5EFF5EFF5EFF7FEF3DEF3DEF3DEF3D
+                  EF3DEF3DEF3DEF3DEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                  FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                  FF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1CFF5EFF5EFF5EFF7F
+                  FF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2C
+                  FF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EEF3DFF5EFF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1C
+                  FF5EFF5EFF5EFF7FFF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5E
+                  FF02FF2CFF2CFF2CFF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5EFF5EFF5EFF02FF2C0700FF5EFF5EFF5E
+                  FF5EFF5EFF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DFF7FFF7FFF7FFF7FFF7FFF5E
+                  EF3DFF5EFF5EFF5EFF02FF2C0700FF7FFF7FFF7FFF7FFF5EFF2CEF1CFF5EFF5E
+                  FF5EFF7FFF5EEF3DFF5EFF5EFF5EFF5EFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2C
+                  070007000700070007000700FF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DEF3DEF3D
+                  EF3DEF3DEF3DFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                  FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                  FF5EFF5EFF02FF02FF02FF02FF02FF02FF02FF02FF02EF1CFF5EFF5EFF5EFF7F
+                  FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5E}
+                TabOrder = 0
+              end
+              object DBEdit5: TEvDBNumEdit
+                Left = 424
+                Top = 57
+                Width = 101
+                Height = 21
+                TabStop = False
+                AutoHideCalculator = False
+                Color = 16249066
+                DataField = 'PCITN3QTDENTR'
+                DataSource = DSTemplate
+                Glyph.Data = {
+                  E6020000424DE60200000000000042000000280000001A0000000D0000000100
+                  100003000000A402000000000000000000000000000000000000007C0000E003
+                  00001F000000FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF1CEF1C
+                  EF1CEF1CEF1CEF1CEF1CEF1CEF1CEF1CFF5EFF5EFF5EFF7FEF3DEF3DEF3DEF3D
+                  EF3DEF3DEF3DEF3DEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                  FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                  FF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1CFF5EFF5EFF5EFF7F
+                  FF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2C
+                  FF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EEF3DFF5EFF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1C
+                  FF5EFF5EFF5EFF7FFF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5E
+                  FF02FF2CFF2CFF2CFF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5EFF5EFF5EFF02FF2C0700FF5EFF5EFF5E
+                  FF5EFF5EFF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DFF7FFF7FFF7FFF7FFF7FFF5E
+                  EF3DFF5EFF5EFF5EFF02FF2C0700FF7FFF7FFF7FFF7FFF5EFF2CEF1CFF5EFF5E
+                  FF5EFF7FFF5EEF3DFF5EFF5EFF5EFF5EFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2C
+                  070007000700070007000700FF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DEF3DEF3D
+                  EF3DEF3DEF3DFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                  FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                  FF5EFF5EFF02FF02FF02FF02FF02FF02FF02FF02FF02EF1CFF5EFF5EFF5EFF7F
+                  FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5E}
+                ReadOnly = True
+                TabOrder = 2
+              end
+              object DBEdit6: TEvDBNumEdit
+                Left = 213
+                Top = 17
+                Width = 101
+                Height = 21
+                AutoHideCalculator = False
+                DataField = 'PCITN3VLREMBAL'
+                DataSource = DSTemplate
+                Glyph.Data = {
+                  E6020000424DE60200000000000042000000280000001A0000000D0000000100
+                  100003000000A402000000000000000000000000000000000000007C0000E003
+                  00001F000000FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF1CEF1C
+                  EF1CEF1CEF1CEF1CEF1CEF1CEF1CEF1CFF5EFF5EFF5EFF7FEF3DEF3DEF3DEF3D
+                  EF3DEF3DEF3DEF3DEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                  FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                  FF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1CFF5EFF5EFF5EFF7F
+                  FF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2C
+                  FF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EEF3DFF5EFF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1C
+                  FF5EFF5EFF5EFF7FFF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5E
+                  FF02FF2CFF2CFF2CFF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5EFF5EFF5EFF02FF2C0700FF5EFF5EFF5E
+                  FF5EFF5EFF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DFF7FFF7FFF7FFF7FFF7FFF5E
+                  EF3DFF5EFF5EFF5EFF02FF2C0700FF7FFF7FFF7FFF7FFF5EFF2CEF1CFF5EFF5E
+                  FF5EFF7FFF5EEF3DFF5EFF5EFF5EFF5EFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2C
+                  070007000700070007000700FF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DEF3DEF3D
+                  EF3DEF3DEF3DFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                  FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                  FF5EFF5EFF02FF02FF02FF02FF02FF02FF02FF02FF02EF1CFF5EFF5EFF5EFF7F
+                  FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5E}
+                TabOrder = 3
+              end
+              object DBEdit7: TEvDBNumEdit
+                Left = 317
+                Top = 17
+                Width = 101
+                Height = 21
+                AutoHideCalculator = False
+                DataField = 'PCITN3VLRUNIT'
+                DataSource = DSTemplate
+                Glyph.Data = {
+                  E6020000424DE60200000000000042000000280000001A0000000D0000000100
+                  100003000000A402000000000000000000000000000000000000007C0000E003
+                  00001F000000FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF1CEF1C
+                  EF1CEF1CEF1CEF1CEF1CEF1CEF1CEF1CFF5EFF5EFF5EFF7FEF3DEF3DEF3DEF3D
+                  EF3DEF3DEF3DEF3DEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                  FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                  FF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1CFF5EFF5EFF5EFF7F
+                  FF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2C
+                  FF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EEF3DFF5EFF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1C
+                  FF5EFF5EFF5EFF7FFF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5E
+                  FF02FF2CFF2CFF2CFF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5EFF5EFF5EFF02FF2C0700FF5EFF5EFF5E
+                  FF5EFF5EFF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DFF7FFF7FFF7FFF7FFF7FFF5E
+                  EF3DFF5EFF5EFF5EFF02FF2C0700FF7FFF7FFF7FFF7FFF5EFF2CEF1CFF5EFF5E
+                  FF5EFF7FFF5EEF3DFF5EFF5EFF5EFF5EFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2C
+                  070007000700070007000700FF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DEF3DEF3D
+                  EF3DEF3DEF3DFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                  FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                  FF5EFF5EFF02FF02FF02FF02FF02FF02FF02FF02FF02EF1CFF5EFF5EFF5EFF7F
+                  FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5E}
+                TabOrder = 4
+              end
+              object DBEdit8: TEvDBNumEdit
+                Left = 422
+                Top = 17
+                Width = 101
+                Height = 21
+                AutoHideCalculator = False
+                DataField = 'PCITN3PERCDESC'
+                DataSource = DSTemplate
+                Glyph.Data = {
+                  E6020000424DE60200000000000042000000280000001A0000000D0000000100
+                  100003000000A402000000000000000000000000000000000000007C0000E003
+                  00001F000000FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF1CEF1C
+                  EF1CEF1CEF1CEF1CEF1CEF1CEF1CEF1CFF5EFF5EFF5EFF7FEF3DEF3DEF3DEF3D
+                  EF3DEF3DEF3DEF3DEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                  FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                  FF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1CFF5EFF5EFF5EFF7F
+                  FF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2C
+                  FF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EEF3DFF5EFF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1C
+                  FF5EFF5EFF5EFF7FFF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5E
+                  FF02FF2CFF2CFF2CFF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5EFF5EFF5EFF02FF2C0700FF5EFF5EFF5E
+                  FF5EFF5EFF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DFF7FFF7FFF7FFF7FFF7FFF5E
+                  EF3DFF5EFF5EFF5EFF02FF2C0700FF7FFF7FFF7FFF7FFF5EFF2CEF1CFF5EFF5E
+                  FF5EFF7FFF5EEF3DFF5EFF5EFF5EFF5EFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2C
+                  070007000700070007000700FF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DEF3DEF3D
+                  EF3DEF3DEF3DFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                  FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                  FF5EFF5EFF02FF02FF02FF02FF02FF02FF02FF02FF02EF1CFF5EFF5EFF5EFF7F
+                  FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5E}
+                TabOrder = 5
+              end
+              object DBEdit9: TEvDBNumEdit
+                Left = 528
+                Top = 17
+                Width = 101
+                Height = 21
+                AutoHideCalculator = False
+                DataField = 'PCITN3VLRDESC'
+                DataSource = DSTemplate
+                Glyph.Data = {
+                  E6020000424DE60200000000000042000000280000001A0000000D0000000100
+                  100003000000A402000000000000000000000000000000000000007C0000E003
+                  00001F000000FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF1CEF1C
+                  EF1CEF1CEF1CEF1CEF1CEF1CEF1CEF1CFF5EFF5EFF5EFF7FEF3DEF3DEF3DEF3D
+                  EF3DEF3DEF3DEF3DEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                  FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                  FF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1CFF5EFF5EFF5EFF7F
+                  FF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2C
+                  FF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EEF3DFF5EFF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1C
+                  FF5EFF5EFF5EFF7FFF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5E
+                  FF02FF2CFF2CFF2CFF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5EFF5EFF5EFF02FF2C0700FF5EFF5EFF5E
+                  FF5EFF5EFF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DFF7FFF7FFF7FFF7FFF7FFF5E
+                  EF3DFF5EFF5EFF5EFF02FF2C0700FF7FFF7FFF7FFF7FFF5EFF2CEF1CFF5EFF5E
+                  FF5EFF7FFF5EEF3DFF5EFF5EFF5EFF5EFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2C
+                  070007000700070007000700FF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DEF3DEF3D
+                  EF3DEF3DEF3DFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                  FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                  FF5EFF5EFF02FF02FF02FF02FF02FF02FF02FF02FF02EF1CFF5EFF5EFF5EFF7F
+                  FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5E}
+                TabOrder = 6
+              end
+              object DBEdit10: TEvDBNumEdit
+                Left = 213
+                Top = 56
+                Width = 101
+                Height = 21
+                AutoHideCalculator = False
+                DataField = 'PCITN3PERVIPI'
+                DataSource = DSTemplate
+                Glyph.Data = {
+                  E6020000424DE60200000000000042000000280000001A0000000D0000000100
+                  100003000000A402000000000000000000000000000000000000007C0000E003
+                  00001F000000FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF1CEF1C
+                  EF1CEF1CEF1CEF1CEF1CEF1CEF1CEF1CFF5EFF5EFF5EFF7FEF3DEF3DEF3DEF3D
+                  EF3DEF3DEF3DEF3DEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                  FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                  FF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1CFF5EFF5EFF5EFF7F
+                  FF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2C
+                  FF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EEF3DFF5EFF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1C
+                  FF5EFF5EFF5EFF7FFF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5E
+                  FF02FF2CFF2CFF2CFF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5EFF5EFF5EFF02FF2C0700FF5EFF5EFF5E
+                  FF5EFF5EFF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DFF7FFF7FFF7FFF7FFF7FFF5E
+                  EF3DFF5EFF5EFF5EFF02FF2C0700FF7FFF7FFF7FFF7FFF5EFF2CEF1CFF5EFF5E
+                  FF5EFF7FFF5EEF3DFF5EFF5EFF5EFF5EFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2C
+                  070007000700070007000700FF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DEF3DEF3D
+                  EF3DEF3DEF3DFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                  FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                  FF5EFF5EFF02FF02FF02FF02FF02FF02FF02FF02FF02EF1CFF5EFF5EFF5EFF7F
+                  FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5E}
+                TabOrder = 9
+              end
+              object DBEdit12: TEvDBNumEdit
+                Left = 317
+                Top = 56
+                Width = 101
+                Height = 21
+                AutoHideCalculator = False
+                DataField = 'PCITN3VLRIPI'
+                DataSource = DSTemplate
+                Glyph.Data = {
+                  E6020000424DE60200000000000042000000280000001A0000000D0000000100
+                  100003000000A402000000000000000000000000000000000000007C0000E003
+                  00001F000000FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF1CEF1C
+                  EF1CEF1CEF1CEF1CEF1CEF1CEF1CEF1CFF5EFF5EFF5EFF7FEF3DEF3DEF3DEF3D
+                  EF3DEF3DEF3DEF3DEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                  FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                  FF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1CFF5EFF5EFF5EFF7F
+                  FF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2C
+                  FF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EEF3DFF5EFF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1C
+                  FF5EFF5EFF5EFF7FFF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5E
+                  FF02FF2CFF2CFF2CFF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5EFF5EFF5EFF02FF2C0700FF5EFF5EFF5E
+                  FF5EFF5EFF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DFF7FFF7FFF7FFF7FFF7FFF5E
+                  EF3DFF5EFF5EFF5EFF02FF2C0700FF7FFF7FFF7FFF7FFF5EFF2CEF1CFF5EFF5E
+                  FF5EFF7FFF5EEF3DFF5EFF5EFF5EFF5EFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2C
+                  070007000700070007000700FF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DEF3DEF3D
+                  EF3DEF3DEF3DFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                  FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                  FF5EFF5EFF02FF02FF02FF02FF02FF02FF02FF02FF02EF1CFF5EFF5EFF5EFF7F
+                  FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5E}
+                TabOrder = 10
+              end
+              object DBEdit13: TEvDBNumEdit
+                Left = 108
+                Top = 56
+                Width = 101
+                Height = 21
+                TabStop = False
+                AutoHideCalculator = False
+                Color = 16249066
+                DataField = 'PCITN3VLRICM'
+                DataSource = DSTemplate
+                Glyph.Data = {
+                  E6020000424DE60200000000000042000000280000001A0000000D0000000100
+                  100003000000A402000000000000000000000000000000000000007C0000E003
+                  00001F000000FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF1CEF1C
+                  EF1CEF1CEF1CEF1CEF1CEF1CEF1CEF1CFF5EFF5EFF5EFF7FEF3DEF3DEF3DEF3D
+                  EF3DEF3DEF3DEF3DEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                  FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                  FF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1CFF5EFF5EFF5EFF7F
+                  FF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2C
+                  FF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EEF3DFF5EFF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1C
+                  FF5EFF5EFF5EFF7FFF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5E
+                  FF02FF2CFF2CFF2CFF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5EFF5EFF5EFF02FF2C0700FF5EFF5EFF5E
+                  FF5EFF5EFF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DFF7FFF7FFF7FFF7FFF7FFF5E
+                  EF3DFF5EFF5EFF5EFF02FF2C0700FF7FFF7FFF7FFF7FFF5EFF2CEF1CFF5EFF5E
+                  FF5EFF7FFF5EEF3DFF5EFF5EFF5EFF5EFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2C
+                  070007000700070007000700FF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DEF3DEF3D
+                  EF3DEF3DEF3DFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                  FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                  FF5EFF5EFF02FF02FF02FF02FF02FF02FF02FF02FF02EF1CFF5EFF5EFF5EFF7F
+                  FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5E}
+                ReadOnly = True
+                TabOrder = 8
+              end
+              object DBEdit14: TEvDBNumEdit
+                Left = 3
+                Top = 56
+                Width = 100
+                Height = 21
+                TabStop = False
+                AutoHideCalculator = False
+                Color = 16249066
+                DataField = 'PCITN3PERICM'
+                DataSource = DSTemplate
+                Glyph.Data = {
+                  E6020000424DE60200000000000042000000280000001A0000000D0000000100
+                  100003000000A402000000000000000000000000000000000000007C0000E003
+                  00001F000000FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF1CEF1C
+                  EF1CEF1CEF1CEF1CEF1CEF1CEF1CEF1CFF5EFF5EFF5EFF7FEF3DEF3DEF3DEF3D
+                  EF3DEF3DEF3DEF3DEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                  FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                  FF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1CFF5EFF5EFF5EFF7F
+                  FF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2C
+                  FF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EEF3DFF5EFF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1C
+                  FF5EFF5EFF5EFF7FFF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5E
+                  FF02FF2CFF2CFF2CFF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5EFF5EFF5EFF02FF2C0700FF5EFF5EFF5E
+                  FF5EFF5EFF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DFF7FFF7FFF7FFF7FFF7FFF5E
+                  EF3DFF5EFF5EFF5EFF02FF2C0700FF7FFF7FFF7FFF7FFF5EFF2CEF1CFF5EFF5E
+                  FF5EFF7FFF5EEF3DFF5EFF5EFF5EFF5EFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2C
+                  070007000700070007000700FF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DEF3DEF3D
+                  EF3DEF3DEF3DFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                  FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                  FF5EFF5EFF02FF02FF02FF02FF02FF02FF02FF02FF02EF1CFF5EFF5EFF5EFF7F
+                  FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5E}
+                ReadOnly = True
+                TabOrder = 7
+              end
+              object EvDBNumEdit5: TEvDBNumEdit
+                Left = 529
+                Top = 56
+                Width = 101
+                Height = 21
+                TabStop = False
+                AutoHideCalculator = False
+                Color = 16249066
+                DataField = 'TotalItemCalc'
+                DataSource = DSTemplate
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = [fsBold]
+                Glyph.Data = {
+                  E6020000424DE60200000000000042000000280000001A0000000D0000000100
+                  100003000000A402000000000000000000000000000000000000007C0000E003
+                  00001F000000FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF1CEF1C
+                  EF1CEF1CEF1CEF1CEF1CEF1CEF1CEF1CFF5EFF5EFF5EFF7FEF3DEF3DEF3DEF3D
+                  EF3DEF3DEF3DEF3DEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                  FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                  FF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1CFF5EFF5EFF5EFF7F
+                  FF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2C
+                  FF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EEF3DFF5EFF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1C
+                  FF5EFF5EFF5EFF7FFF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5E
+                  FF02FF2CFF2CFF2CFF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5EFF5EFF5EFF02FF2C0700FF5EFF5EFF5E
+                  FF5EFF5EFF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DFF7FFF7FFF7FFF7FFF7FFF5E
+                  EF3DFF5EFF5EFF5EFF02FF2C0700FF7FFF7FFF7FFF7FFF5EFF2CEF1CFF5EFF5E
+                  FF5EFF7FFF5EEF3DFF5EFF5EFF5EFF5EFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2C
+                  070007000700070007000700FF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DEF3DEF3D
+                  EF3DEF3DEF3DFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                  FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                  FF5EFF5EFF02FF02FF02FF02FF02FF02FF02FF02FF02EF1CFF5EFF5EFF5EFF7F
+                  FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5E}
+                ParentFont = False
+                ReadOnly = True
+                TabOrder = 11
+              end
+              object DBEditCapEmbal: TEvDBNumEdit
+                Left = 107
+                Top = 17
+                Width = 102
+                Height = 21
+                AutoHideCalculator = False
+                DataField = 'PCITN3CAPEMBAL'
+                DataSource = DSTemplate
+                Decimals = 3
+                Glyph.Data = {
+                  E6020000424DE60200000000000042000000280000001A0000000D0000000100
+                  100003000000A402000000000000000000000000000000000000007C0000E003
+                  00001F000000FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF1CEF1C
+                  EF1CEF1CEF1CEF1CEF1CEF1CEF1CEF1CFF5EFF5EFF5EFF7FEF3DEF3DEF3DEF3D
+                  EF3DEF3DEF3DEF3DEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                  FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                  FF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1CFF5EFF5EFF5EFF7F
+                  FF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2C
+                  FF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EEF3DFF5EFF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1C
+                  FF5EFF5EFF5EFF7FFF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5E
+                  FF02FF2CFF2CFF2CFF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5EFF5EFF5EFF02FF2C0700FF5EFF5EFF5E
+                  FF5EFF5EFF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DFF7FFF7FFF7FFF7FFF7FFF5E
+                  EF3DFF5EFF5EFF5EFF02FF2C0700FF7FFF7FFF7FFF7FFF5EFF2CEF1CFF5EFF5E
+                  FF5EFF7FFF5EEF3DFF5EFF5EFF5EFF5EFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2C
+                  070007000700070007000700FF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DEF3DEF3D
+                  EF3DEF3DEF3DFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                  FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                  FF5EFF5EFF02FF02FF02FF02FF02FF02FF02FF02FF02EF1CFF5EFF5EFF5EFF7F
+                  FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                  FF5EFF5EFF5EFF5EFF5E}
+                TabOrder = 1
+              end
+            end
+          end
+          inherited PanelMaster: TPanel
+            Top = 0
+            Width = 658
+            Height = 45
+            object LBCodPedido: TLabel
+              Left = 7
+              Top = 1
+              Width = 62
+              Height = 13
+              Caption = 'C'#243'd.Pedido'
+              FocusControl = DbCodIntegrado
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = 8404992
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
+            object Label14: TLabel
+              Left = 422
+              Top = 1
+              Width = 83
+              Height = 13
+              Caption = 'Total Produtos'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = 8404992
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
+            object Label15: TLabel
+              Left = 95
+              Top = 1
+              Width = 46
+              Height = 13
+              Caption = 'Emiss'#227'o'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = 8404992
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
+            object Label16: TLabel
+              Left = 203
+              Top = 1
+              Width = 37
+              Height = 13
+              Caption = 'Status'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = 8404992
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
+            object Label25: TLabel
+              Left = 329
+              Top = 1
+              Width = 85
+              Height = 13
+              Caption = 'Total Desconto'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = 8404992
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
+            object Label24: TLabel
+              Left = 512
+              Top = 1
+              Width = 122
+              Height = 13
+              Caption = 'Total-Desc.Prom+Enc'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = 8404992
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
+            object DbCodIntegrado: TDBEdit
+              Left = 5
+              Top = 16
+              Width = 84
+              Height = 21
+              TabStop = False
+              Color = 16249066
+              DataField = 'PDCPA13ID'
+              DataSource = DSMasterTemplate
+              ReadOnly = True
+              TabOrder = 0
+            end
+            object DBDateEdit3: TDBDateEdit
+              Left = 93
+              Top = 16
+              Width = 106
+              Height = 21
+              TabStop = False
+              DataField = 'PDCPDEMIS'
+              DataSource = DSMasterTemplate
+              ReadOnly = True
+              Color = 16249066
+              DefaultToday = True
+              DialogTitle = 'Selecione a Data'
+              NumGlyphs = 2
+              TabOrder = 1
+            end
+            object RxDBComboBox1: TRxDBComboBox
+              Left = 201
+              Top = 15
+              Width = 125
+              Height = 21
+              Style = csDropDownList
+              Color = 16249066
+              DataField = 'PDCPCSTATUS'
+              DataSource = DSMasterTemplate
+              Enabled = False
+              EnableValues = True
+              ItemHeight = 13
+              Items.Strings = (
+                'Aberto'
+                'Encerrado'
+                'Cancelado')
+              ReadOnly = True
+              TabOrder = 2
+              TabStop = False
+              Values.Strings = (
+                'A'
+                'E'
+                'C')
+            end
+            object EvDBNumEdit1: TEvDBNumEdit
+              Left = 421
+              Top = 15
+              Width = 88
+              Height = 21
+              TabStop = False
+              AutoHideCalculator = False
+              Color = 16249066
+              DataField = 'PDCPN2TOTITENS'
+              DataSource = DSMasterTemplate
+              Glyph.Data = {
+                E6020000424DE60200000000000042000000280000001A0000000D0000000100
+                100003000000A402000000000000000000000000000000000000007C0000E003
+                00001F000000FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF1CEF1C
+                EF1CEF1CEF1CEF1CEF1CEF1CEF1CEF1CFF5EFF5EFF5EFF7FEF3DEF3DEF3DEF3D
+                EF3DEF3DEF3DEF3DEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                FF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1CFF5EFF5EFF5EFF7F
+                FF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2C
+                FF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5E
+                FF5EFF5EEF3DFF5EFF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1C
+                FF5EFF5EFF5EFF7FFF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5E
+                FF02FF2CFF2CFF2CFF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5E
+                FF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5EFF5EFF5EFF02FF2C0700FF5EFF5EFF5E
+                FF5EFF5EFF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DFF7FFF7FFF7FFF7FFF7FFF5E
+                EF3DFF5EFF5EFF5EFF02FF2C0700FF7FFF7FFF7FFF7FFF5EFF2CEF1CFF5EFF5E
+                FF5EFF7FFF5EEF3DFF5EFF5EFF5EFF5EFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2C
+                070007000700070007000700FF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DEF3DEF3D
+                EF3DEF3DEF3DFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                FF5EFF5EFF02FF02FF02FF02FF02FF02FF02FF02FF02EF1CFF5EFF5EFF5EFF7F
+                FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                FF5EFF5EFF5EFF5EFF5E}
+              ReadOnly = True
+              TabOrder = 4
+            end
+            object EvDBNumEdit6: TEvDBNumEdit
+              Left = 513
+              Top = 15
+              Width = 132
+              Height = 21
+              TabStop = False
+              AutoHideCalculator = False
+              Color = 16249066
+              DataField = 'TotalCalc'
+              DataSource = DSMasterTemplate
+              Glyph.Data = {
+                E6020000424DE60200000000000042000000280000001A0000000D0000000100
+                100003000000A402000000000000000000000000000000000000007C0000E003
+                00001F000000FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF1CEF1C
+                EF1CEF1CEF1CEF1CEF1CEF1CEF1CEF1CFF5EFF5EFF5EFF7FEF3DEF3DEF3DEF3D
+                EF3DEF3DEF3DEF3DEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                FF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1CFF5EFF5EFF5EFF7F
+                FF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2C
+                FF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5E
+                FF5EFF5EEF3DFF5EFF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1C
+                FF5EFF5EFF5EFF7FFF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5E
+                FF02FF2CFF2CFF2CFF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5E
+                FF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5EFF5EFF5EFF02FF2C0700FF5EFF5EFF5E
+                FF5EFF5EFF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DFF7FFF7FFF7FFF7FFF7FFF5E
+                EF3DFF5EFF5EFF5EFF02FF2C0700FF7FFF7FFF7FFF7FFF5EFF2CEF1CFF5EFF5E
+                FF5EFF7FFF5EEF3DFF5EFF5EFF5EFF5EFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2C
+                070007000700070007000700FF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DEF3DEF3D
+                EF3DEF3DEF3DFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                FF5EFF5EFF02FF02FF02FF02FF02FF02FF02FF02FF02EF1CFF5EFF5EFF5EFF7F
+                FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                FF5EFF5EFF5EFF5EFF5E}
+              ReadOnly = True
+              TabOrder = 5
+            end
+            object EvDBNumEdit7: TEvDBNumEdit
+              Left = 329
+              Top = 15
+              Width = 88
+              Height = 21
+              TabStop = False
+              AutoHideCalculator = False
+              Color = 16249066
+              DataField = 'PDCPN3TOTDESC'
+              DataSource = DSMasterTemplate
+              Glyph.Data = {
+                E6020000424DE60200000000000042000000280000001A0000000D0000000100
+                100003000000A402000000000000000000000000000000000000007C0000E003
+                00001F000000FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF1CEF1C
+                EF1CEF1CEF1CEF1CEF1CEF1CEF1CEF1CFF5EFF5EFF5EFF7FEF3DEF3DEF3DEF3D
+                EF3DEF3DEF3DEF3DEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                FF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1CFF5EFF5EFF5EFF7F
+                FF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2C
+                FF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5E
+                FF5EFF5EEF3DFF5EFF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1C
+                FF5EFF5EFF5EFF7FFF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5E
+                FF02FF2CFF2CFF2CFF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5E
+                FF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5EFF5EFF5EFF02FF2C0700FF5EFF5EFF5E
+                FF5EFF5EFF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DFF7FFF7FFF7FFF7FFF7FFF5E
+                EF3DFF5EFF5EFF5EFF02FF2C0700FF7FFF7FFF7FFF7FFF5EFF2CEF1CFF5EFF5E
+                FF5EFF7FFF5EEF3DFF5EFF5EFF5EFF5EFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2C
+                070007000700070007000700FF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DEF3DEF3D
+                EF3DEF3DEF3DFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                FF5EFF5EFF02FF02FF02FF02FF02FF02FF02FF02FF02EF1CFF5EFF5EFF5EFF7F
+                FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                FF5EFF5EFF5EFF5EFF5E}
+              ReadOnly = True
+              TabOrder = 3
+            end
+          end
+          inherited PanelCodigoDescricao: TPanel
+            Top = 45
+            Width = 658
+            Height = 78
+            object BtnProduto: TSpeedButton
+              Left = 289
+              Top = 15
+              Width = 24
+              Height = 22
+              Hint = 'Acessa Produtos'
+              Flat = True
+              Glyph.Data = {
+                E6000000424DE60000000000000076000000280000000E0000000E0000000100
+                0400000000007000000000000000000000001000000000000000000000000000
+                80000080000000808000800000008000800080800000C0C0C000808080000000
+                FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00DDDDDDDDDDDD
+                DD00DDDDDDDDDDD00D00DDDDDDDDDD000D00DDDDDDDDD000DD00DDDDDDDD000D
+                DD00DD73000800DDDD00D70888800DDDDD00D38788888DDDDD00D07778880DDD
+                DD00D07F77880DDDDD00D387F7783DDDDD00D70877807DDDDD00DD730037DDDD
+                DD00DDDDDDDDDDDDDD00}
+              OnClick = BtnProdutoClick
+            end
+            object Label27: TLabel
+              Left = 8
+              Top = 41
+              Width = 45
+              Height = 13
+              Caption = 'Produto'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = 8404992
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
+            object Label30: TLabel
+              Left = 402
+              Top = 41
+              Width = 64
+              Height = 13
+              Caption = 'C'#243'd. Antigo'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = 8404992
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
+            object Label31: TLabel
+              Left = 474
+              Top = 41
+              Width = 61
+              Height = 13
+              Caption = 'Refer'#234'ncia'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = 8404992
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
+            object Label1: TLabel
+              Left = 5
+              Top = 0
+              Width = 397
+              Height = 13
+              Caption = 
+                'Digite o C'#243'digo ou a Descri'#231#227'o do Produto desejado ou [F2 - Cada' +
+                'stro] '
+              FocusControl = EditProduto
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clRed
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
+            object LSaldo: TLabel
+              Left = 576
+              Top = 41
+              Width = 64
+              Height = 13
+              Caption = 'Saldo Atual'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = 8404992
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
+            object DBEdit11: TDBEdit
+              Left = 5
+              Top = 54
+              Width = 390
+              Height = 21
+              TabStop = False
+              Color = 16249066
+              DataField = 'ProdutoLookUp'
+              DataSource = DSTemplate
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+              ReadOnly = True
+              TabOrder = 1
+            end
+            object EditProduto: TEdit
+              Left = 5
+              Top = 16
+              Width = 284
+              Height = 21
+              CharCase = ecUpperCase
+              TabOrder = 0
+              OnEnter = EditProdutoEnter
+              OnExit = EditProdutoExit
+              OnKeyDown = EditProdutoKeyDown
+            end
+            object DBEdit1: TDBEdit
+              Left = 399
+              Top = 54
+              Width = 69
+              Height = 21
+              TabStop = False
+              Color = 16249066
+              DataField = 'CodAntigoLookup'
+              DataSource = DSTemplate
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+              ReadOnly = True
+              TabOrder = 2
+            end
+            object DBEdit23: TDBEdit
+              Left = 470
+              Top = 54
+              Width = 99
+              Height = 21
+              TabStop = False
+              Color = 16249066
+              DataField = 'ReferenciaLookUp'
+              DataSource = DSTemplate
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+              ReadOnly = True
+              TabOrder = 3
+            end
+            object SaldoAtual: TCurrencyEdit
+              Left = 572
+              Top = 54
+              Width = 77
+              Height = 20
+              TabStop = False
+              AutoSize = False
+              Color = 16249066
+              Ctl3D = True
+              DisplayFormat = '0.00'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentCtl3D = False
+              ParentFont = False
+              ReadOnly = True
+              TabOrder = 4
+            end
+          end
+        end
+      end
+    end
+  end
+  inherited PopupMenuDiversos: TPopupMenu
+    object FiltrarProdutoscomNecessidadedeCompra1: TMenuItem
+      Caption = 'Filtrar Produtos com Necessidade de Compra'
+      OnClick = FiltrarProdutoscomNecessidadedeCompra1Click
+    end
+  end
+  inherited SQLTemplate: TRxQuery
+    Tag = 1
+    AfterDelete = SQLTemplateAfterDelete
+    OnCalcFields = SQLTemplateCalcFields
+    SQL.Strings = (
+      'Select '
+      '    * '
+      'From '
+      '    PedidoCompraItem '
+      'Where '
+      '    PDCPA13ID=:PDCPA13ID and '
+      '    (%MFiltro)')
+    ParamData = <
+      item
+        DataType = ftString
+        Name = 'PDCPA13ID'
+        ParamType = ptUnknown
+      end>
+    object SQLTemplatePDCPA13ID: TStringField
+      Tag = 1
+      DisplayLabel = 'C'#243'd.Pedido'
+      FieldName = 'PDCPA13ID'
+      Origin = 'DB.PEDIDOCOMPRAITEM.PDCPA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLTemplatePCITIPOS: TIntegerField
+      Tag = 1
+      DisplayLabel = 'Posi'#231#227'o'
+      FieldName = 'PCITIPOS'
+      Origin = 'DB.PEDIDOCOMPRAITEM.PCITIPOS'
+    end
+    object SQLTemplatePRODICOD: TIntegerField
+      DisplayLabel = 'C'#243'd.Produto'
+      FieldName = 'PRODICOD'
+      Origin = 'DB.PEDIDOCOMPRAITEM.PRODICOD'
+      OnChange = SQLTemplatePRODICODChange
+    end
+    object SQLTemplatePCITN3QTDBONIF: TFloatField
+      DisplayLabel = 'Qtde.Bonifica'#231#227'o'
+      FieldName = 'PCITN3QTDBONIF'
+      Origin = 'DB.PEDIDOCOMPRAITEM.PCITN3QTDBONIF'
+    end
+    object SQLTemplatePCITN3CAPEMBAL: TFloatField
+      DisplayLabel = 'Cap.Embalagem'
+      FieldName = 'PCITN3CAPEMBAL'
+      Origin = 'DB.PEDIDOCOMPRAITEM.PCITN3CAPEMBAL'
+      OnChange = SQLTemplatePCITN3CAPEMBALChange
+    end
+    object SQLTemplatePCITN3QTDEMBAL: TFloatField
+      DisplayLabel = 'Qtde.Embalagem'
+      FieldName = 'PCITN3QTDEMBAL'
+      Origin = 'DB.PEDIDOCOMPRAITEM.PCITN3QTDEMBAL'
+      OnChange = SQLTemplatePCITN3QTDEMBALChange
+    end
+    object SQLTemplatePCITN3QTDENTR: TFloatField
+      DisplayLabel = 'Qtde.Entrada'
+      FieldName = 'PCITN3QTDENTR'
+      Origin = 'DB.PEDIDOCOMPRAITEM.PCITN3QTDENTR'
+    end
+    object SQLTemplatePCITN3VLREMBAL: TFloatField
+      DisplayLabel = 'Valor Embalagem'
+      FieldName = 'PCITN3VLREMBAL'
+      Origin = 'DB.PEDIDOCOMPRAITEM.PCITN3VLREMBAL'
+      OnChange = SQLTemplatePCITN3VLREMBALChange
+    end
+    object SQLTemplatePCITN3VLRUNIT: TFloatField
+      DisplayLabel = 'Valor Unit'#225'rio'
+      FieldName = 'PCITN3VLRUNIT'
+      Origin = 'DB.PEDIDOCOMPRAITEM.PCITN3VLRUNIT'
+      OnChange = SQLTemplatePCITN3VLRUNITChange
+    end
+    object SQLTemplatePCITN3PERVIPI: TFloatField
+      DisplayLabel = '% IPI'
+      FieldName = 'PCITN3PERVIPI'
+      Origin = 'DB.PEDIDOCOMPRAITEM.PCITN3PERVIPI'
+      OnChange = SQLTemplatePCITN3PERVIPIChange
+    end
+    object SQLTemplatePCITN3VLRIPI: TFloatField
+      DisplayLabel = 'Valor IPI'
+      FieldName = 'PCITN3VLRIPI'
+      Origin = 'DB.PEDIDOCOMPRAITEM.PCITN3VLRIPI'
+      OnChange = SQLTemplatePCITN3VLRIPIChange
+    end
+    object SQLTemplatePCITN3VLRICM: TFloatField
+      DisplayLabel = 'Valor ICM'
+      FieldName = 'PCITN3VLRICM'
+      Origin = 'DB.PEDIDOCOMPRAITEM.PCITN3VLRICM'
+      Visible = False
+    end
+    object SQLTemplatePCITN3PERICM: TFloatField
+      DisplayLabel = '% ICM'
+      FieldName = 'PCITN3PERICM'
+      Origin = 'DB.PEDIDOCOMPRAITEM.PCITN3PERICM'
+      Visible = False
+    end
+    object SQLTemplatePCITN3PERCDESC: TFloatField
+      FieldName = 'PCITN3PERCDESC'
+      Origin = 'DB.PEDIDOCOMPRAITEM.PCITN3PERCDESC'
+      OnChange = SQLTemplatePCITN3PERCDESCChange
+    end
+    object SQLTemplatePCITN3VLRDESC: TFloatField
+      FieldName = 'PCITN3VLRDESC'
+      Origin = 'DB.PEDIDOCOMPRAITEM.PCITN3VLRDESC'
+      OnChange = SQLTemplatePCITN3VLRDESCChange
+    end
+    object SQLTemplatePENDENTE: TStringField
+      DisplayLabel = 'Pendente'
+      FieldName = 'PENDENTE'
+      Origin = 'DB.PEDIDOCOMPRAITEM.PENDENTE'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLTemplateREGISTRO: TDateTimeField
+      DisplayLabel = 'Registro'
+      FieldName = 'REGISTRO'
+      Origin = 'DB.PEDIDOCOMPRAITEM.REGISTRO'
+    end
+    object SQLTemplateProdutoLookUp: TStringField
+      DisplayLabel = ' '
+      FieldKind = fkCalculated
+      FieldName = 'ProdutoLookUp'
+      Visible = False
+      Size = 60
+      Calculated = True
+    end
+    object SQLTemplateGradeCodLookUp: TIntegerField
+      FieldKind = fkCalculated
+      FieldName = 'GradeCodLookUp'
+      Visible = False
+      Calculated = True
+    end
+    object SQLTemplateAgrupGradeLookUp: TIntegerField
+      FieldKind = fkCalculated
+      FieldName = 'AgrupGradeLookUp'
+      Visible = False
+      Calculated = True
+    end
+    object SQLTemplateTotalItemCalc: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'TotalItemCalc'
+      Calculated = True
+    end
+    object SQLTemplateReferenciaLookUp: TStringField
+      DisplayWidth = 60
+      FieldKind = fkCalculated
+      FieldName = 'ReferenciaLookUp'
+      Size = 60
+      Calculated = True
+    end
+    object SQLTemplateCodAntigoLookup: TStringField
+      FieldKind = fkCalculated
+      FieldName = 'CodAntigoLookup'
+      Visible = False
+      Size = 15
+      Calculated = True
+    end
+  end
+  inherited UpdateSQLTemplate: TUpdateSQL
+    ModifySQL.Strings = (
+      'update PedidoCompraItem'
+      'set'
+      '  PDCPA13ID = :PDCPA13ID,'
+      '  PCITIPOS = :PCITIPOS,'
+      '  PRODICOD = :PRODICOD,'
+      '  PCITN3QTDBONIF = :PCITN3QTDBONIF,'
+      '  PCITN3CAPEMBAL = :PCITN3CAPEMBAL,'
+      '  PCITN3QTDEMBAL = :PCITN3QTDEMBAL,'
+      '  PCITN3QTDENTR = :PCITN3QTDENTR,'
+      '  PCITN3VLREMBAL = :PCITN3VLREMBAL,'
+      '  PCITN3VLRUNIT = :PCITN3VLRUNIT,'
+      '  PCITN3VLRDESC = :PCITN3VLRDESC,'
+      '  PCITN3PERVIPI = :PCITN3PERVIPI,'
+      '  PCITN3VLRIPI = :PCITN3VLRIPI,'
+      '  PCITN3PERICM = :PCITN3PERICM,'
+      '  PCITN3VLRICM = :PCITN3VLRICM,'
+      '  PENDENTE = :PENDENTE,'
+      '  REGISTRO = :REGISTRO,'
+      '  PCITN3PERCDESC = :PCITN3PERCDESC'
+      'where'
+      '  PDCPA13ID = :OLD_PDCPA13ID and'
+      '  PCITIPOS = :OLD_PCITIPOS')
+    InsertSQL.Strings = (
+      'insert into PedidoCompraItem'
+      
+        '  (PDCPA13ID, PCITIPOS, PRODICOD, PCITN3QTDBONIF, PCITN3CAPEMBAL' +
+        ', PCITN3QTDEMBAL, '
+      
+        '   PCITN3QTDENTR, PCITN3VLREMBAL, PCITN3VLRUNIT, PCITN3VLRDESC, ' +
+        'PCITN3PERVIPI, '
+      
+        '   PCITN3VLRIPI, PCITN3PERICM, PCITN3VLRICM, PENDENTE, REGISTRO,' +
+        ' PCITN3PERCDESC)'
+      'values'
+      
+        '  (:PDCPA13ID, :PCITIPOS, :PRODICOD, :PCITN3QTDBONIF, :PCITN3CAP' +
+        'EMBAL, '
+      
+        '   :PCITN3QTDEMBAL, :PCITN3QTDENTR, :PCITN3VLREMBAL, :PCITN3VLRU' +
+        'NIT, :PCITN3VLRDESC, '
+      
+        '   :PCITN3PERVIPI, :PCITN3VLRIPI, :PCITN3PERICM, :PCITN3VLRICM, ' +
+        ':PENDENTE, '
+      '   :REGISTRO, :PCITN3PERCDESC)')
+    DeleteSQL.Strings = (
+      'delete from PedidoCompraItem'
+      'where'
+      '  PDCPA13ID = :OLD_PDCPA13ID and'
+      '  PCITIPOS = :OLD_PCITIPOS')
+  end
+  object SQLIcms: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'Select * From ICMS'
+      'Where ICMSICOD=:ICMSICOD')
+    Macros = <>
+    Left = 8
+    Top = 160
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'ICMSICOD'
+        ParamType = ptUnknown
+      end>
+  end
+  object SQLIcmsUF: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'Select * From ICMSUF'
+      'Where '
+      '   ICMSICOD=:ICMSICOD and'
+      '   ICMUA2UF=:ICMUA2UF')
+    Macros = <>
+    Left = 8
+    Top = 190
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'ICMSICOD'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftString
+        Name = 'ICMUA2UF'
+        ParamType = ptUnknown
+      end>
+  end
+  object SQLProdutoFornecedor: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'Select * From PRODUTOFORNECEDOR'
+      'Where '
+      'PRODICOD=:PRODICOD and'
+      'FORNICOD=:FORNICOD'
+      '')
+    Macros = <>
+    Left = 8
+    Top = 258
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'PRODICOD'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftInteger
+        Name = 'FORNICOD'
+        ParamType = ptUnknown
+      end>
+  end
+  object SQLGeral: TRxQuery
+    DatabaseName = 'DB'
+    Macros = <>
+    Left = 8
+    Top = 288
+  end
+end

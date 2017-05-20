@@ -198,10 +198,118 @@ procedure GravaMovimentoEstoque(SqlProd,
 Function CalculaJuroMultaDesc(VlrVenc, TxJuroMultaDescCobr : double; DVenc, DPag, DVencOrig : TDateTime; Toler : integer; Tipo, Cupom, Parc : string) : Double;
 function SQLRecCount(Tabela, ClausulaWhere : string) : integer ;                                
 Function CalculaLimiteCredito(Cliente : String;ValorCompra : Double;SQLParcelas, SQLCliente : TQuery) : Double;
+function  RetornaTamanhoProduto(Grade, Tamanho : String ) : String;
+function RetornaCorProduto(Cor : String) : String;
+function RetornaPreco(QueryProduto : TQuery; TabelaPrecoEmpresa:String; TabelaPrecoCliente:String) : double ;
 
 implementation
 
 uses DataModulo, TelaAutenticaUsuario;
+
+function RetornaPreco(QueryProduto : TQuery; TabelaPrecoEmpresa:String; TabelaPrecoCliente:String) : double ;
+Var
+  DataIni,
+  DataFim : TDateTime ;
+  PrecoOk : Boolean;
+  SQLPreco:TQuery;
+begin
+  PrecoOk := False;
+
+  SQLPreco := ExecSql(' select * from TABELAPRECOPRODUTO Where PRODICOD= '
+    +IntToStr(QueryProduto.FindField('PRODICOD').asInteger)+' AND TPRCICOD = '+ TabelaPrecoCliente);
+
+  If (Not PrecoOk) AND (TabelaPrecoCliente <> '') Then
+    if (TabelaPrecoCliente <> 'V') and (copy(TabelaPrecoCliente,1,1) <> 'A') then
+      Begin
+        SQLPreco.ParamByName('TPRCICOD').asString  := TabelaPrecoCliente;
+        SQLPreco.ParamByName('PRODICOD').asInteger := QueryProduto.FindField('PRODICOD').asInteger;
+        SQLPreco.Open;
+        If Not SQLPreco.Eof Then
+          Begin
+            if (SQLPreco.FieldByName('TPCPDINIPROMO').Value <> null) and
+               (SQLPreco.FieldByName('TPCPDFIMPROMO').Value <> null) and
+               (Date >= SQLPreco.FieldByName('TPCPDINIPROMO').asDateTime) and
+               (Date <= SQLPreco.FieldByName('TPCPDFIMPROMO').asDateTime) then
+              RetornaPreco := SQLPreco.FieldByName('TPCPN3VLRVENDAPROM').Value
+            else
+              RetornaPreco := SQLPreco.FieldByName('TPCPN3VLRVENDA').Value;
+            PrecoOk := True;
+          End;
+        SQLPreco.Close;
+      End;
+
+  If (Not PrecoOk) AND (TabelaPrecoEmpresa<>'') Then
+    Begin
+      SQLPreco.ParamByName('TPRCICOD').asString  := TabelaPrecoEmpresa;
+      SQLPreco.ParamByName('PRODICOD').asInteger := QueryProduto.FindField('PRODICOD').asInteger;
+      SQLPreco.Open;
+      If Not SQLPreco.Eof Then
+        Begin
+          if (SQLPreco.FieldByName('TPCPDINIPROMO').Value <> null) and
+             (SQLPreco.FieldByName('TPCPDFIMPROMO').Value <> null) and
+             (Date >= SQLPreco.FieldByName('TPCPDINIPROMO').asDateTime) and
+             (Date <= SQLPreco.FieldByName('TPCPDFIMPROMO').asDateTime) then
+            RetornaPreco := SQLPreco.FieldByName('TPCPN3VLRVENDAPROM').Value
+          else
+            RetornaPreco := SQLPreco.FieldByName('TPCPN3VLRVENDA').Value;
+          PrecoOk := True;
+        End;
+      SQLPreco.Close;
+    End;
+
+  If (Not PrecoOk) Then
+      if ((QueryProduto.FieldByName('PRODDINIPROMO').AsDateTime <= Now) and (QueryProduto.FieldByName('PRODDFIMPROMO').AsDateTime >= Now) and (QueryProduto.FieldByName('PRODN3VLRVENDAPROM').AsFloat>0)) or
+         ((QueryProduto.FieldByName('PRODDINIPROMO').AsDateTime <= Now) and (QueryProduto.FieldByName('PRODDFIMPROMO').AsString = '')     and (QueryProduto.FieldByName('PRODN3VLRVENDAPROM').AsFloat>0)) then
+        RetornaPreco := QueryProduto.FieldByName('PRODN3VLRVENDAPROM').Value
+      else
+        begin
+          if (TabelaPrecoCliente = 'V') or (TabelaPrecoCliente = '') then
+            RetornaPreco := QueryProduto.FieldByName('PRODN3VLRVENDA').AsFloat;
+          if (TabelaPrecoCliente = 'A1') then
+            RetornaPreco := QueryProduto.FieldByName('PRODN3VLRVENDA2').AsFloat;
+          if (TabelaPrecoCliente = 'A2') then
+            RetornaPreco := QueryProduto.FieldByName('PRODN2VLRVENDA2835D').AsFloat;
+          if (TabelaPrecoCliente = 'A3') then
+            RetornaPreco := QueryProduto.FieldByName('PRODN2VLRVENDA283542D').AsFloat;
+        end;
+end ;
+
+function RetornaCorProduto(Cor : String) : String;
+var
+ SQLCor : TQuery;
+begin
+  SQLCor := TRxQuery.Create(DM);
+  SQLCor.DatabaseName := 'DB';
+  SQLCor.SQL.Add('SELECT CORA30DESCR FROM COR WHERE CORICOD = ' + Cor);
+  SQLCor.Open;
+  if not SQLCor.IsEmpty then
+    Result := SQLCor.FindField('CORA30DESCR').AsString
+  else
+    Result := '';
+  SQLCor.Close;
+  SQLCor.Destroy;
+end;
+
+function  RetornaTamanhoProduto(Grade, Tamanho : String ) : String;
+var
+ SQLTamanho : TQuery;
+begin
+  if (Grade <> '') and (Tamanho <> '') then
+    begin
+      SQLTamanho := TRxQuery.Create(DM);
+      SQLTamanho.DatabaseName := 'DB';
+      SQLTamanho.SQL.Add('SELECT GRTMA5DESCR FROM GRADETAMANHO WHERE GRADICOD = ' + Grade + ' AND GRTMICOD = ' + Tamanho);
+      SQLTamanho.Open;
+      if not SQLTamanho.IsEmpty then
+        Result := SQLTamanho.FindField('GRTMA5DESCR').AsString
+      else
+        Result := '';
+      SQLTamanho.Close;
+      SQLTamanho.Destroy;
+    end
+  else
+    Result := '';
+end;
 
 Function CalculaLimiteCredito(Cliente : String;ValorCompra : Double;SQLParcelas, SQLCliente : TQuery) : Double;
 var

@@ -91,7 +91,7 @@ type
     MnObsNotaFiscal: TMenuItem;
     FATUMnCadastroSerie: TMenuItem;
     Compras1: TMenuItem;
-    PedidodeCompra1: TMenuItem;
+    MNPedidoCompra: TMenuItem;
     NotadeEntrada1: TMenuItem;
     ImportarXML1: TMenuItem;
     ManutenodePreo1: TMenuItem;
@@ -336,6 +336,7 @@ type
     procedure ConveroCSTporPISCofins1Click(Sender: TObject);
     procedure MnFINCadastroPlanoContasClick(Sender: TObject);
     procedure MNADMConveniosClick(Sender: TObject);
+    procedure MNPedidoCompraClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -360,7 +361,7 @@ uses
   TelaPlanoContas, TelaLembreteTarefa2, TelaConsultaTarefa,
   TelaLembreteTarefa, CadastroFornecedor, CadastroVendedor,
   CadastroTransportadora, CadastroRepresentante, CadastroConvenio,
-  CadastroCidade;
+  CadastroCidade, CadastroPedidoCompra;
 
 
 {uses CadastroCliente, CadastroTemplate, CadastroTipoCliente, CadastroBanco,
@@ -1357,6 +1358,15 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     CriaFormulario(TFormCadastroConvenio,'FormCadastroConvenio',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MNPedidoCompraClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroPedidoCompra, 'FormCadastroPedidoCompra',False,False,False,'')
   else
     SoundPlay('Acesso Negado.wav',Sender);
 end;

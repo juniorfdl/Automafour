@@ -118,7 +118,22 @@ uses
   CadastroTransportadora in 'Cadastros\CadastroTransportadora.pas' {FormCadastroTransportadora},
   CadastroRepresentante in 'Cadastros\CadastroRepresentante.pas' {FormCadastroRepresentante},
   CadastroConvenio in 'Cadastros\CadastroConvenio.pas' {FormCadastroConvenio},
-  CadastroCidade in 'Cadastros\CadastroCidade.pas' {FormCadastroCidade};
+  CadastroCidade in 'Cadastros\CadastroCidade.pas' {FormCadastroCidade},
+  CadastroPedidoCompra in 'Compras\CadastroPedidoCompra.pas' {FormCadastroPedidoCompra},
+  CadastroPedidoCompraItem in 'Compras\CadastroPedidoCompraItem.pas' {FormCadastroPedidoCompraItem},
+  TelaLancamentoGrade in 'Compras\TelaLancamentoGrade.pas' {FormTelaLancamentoGrade},
+  SearchLibrary in 'ArquivosComuns\SearchLibrary.pas',
+  TelaConsultaProdutoGeral in 'ArquivosComuns\TelaConsultaProdutoGeral.pas' {FormTelaConsultaProdutoGeral},
+  TelaRetornoPesquisaProduto in 'ArquivosComuns\TelaRetornoPesquisaProduto.pas' {FormTelaRetornoPesquisaProduto},
+  TelaPedidoCompraItemFiltro in 'Compras\TelaPedidoCompraItemFiltro.pas' {FormTelaPedidoCompraItemFiltro},
+  TelaPedidoCompraHistoricoComprasVendasProduto in 'Compras\TelaPedidoCompraHistoricoComprasVendasProduto.pas' {FormTelaPedidoCompraHistoricoComprasVendasProduto},
+  CadastroPlanoPagamento in 'Cadastros\CadastroPlanoPagamento.pas' {FormCadastroPlanoPagamento},
+  CadastroPlanoPagamentoParcela in 'Cadastros\CadastroPlanoPagamentoParcela.pas' {FormCadastroPlanoPagamentoParcela},
+  TelaConsultaPedidoCompra in 'Cadastros\TelaConsultaPedidoCompra.pas' {FormTelaConsultaPedidoCompra},
+  TelaConsultaNotaCompra in 'Cadastros\TelaConsultaNotaCompra.pas' {FormTelaConsultaNotaCompra},
+  TelaConsultaPedidoVenda in 'ArquivosComuns\TelaConsultaPedidoVenda.pas' {FormTelaConsultaPedidoVenda},
+  TelaConsultaNotaFiscal in 'ArquivosComuns\TelaConsultaNotaFiscal.pas' {FormTelaConsultaNotaFiscal},
+  CadastroPedidoCompraFinanceiro in 'Compras\CadastroPedidoCompraFinanceiro.pas' {FormCadastroPedidoCompraFinanceiro};
 
 {$R *.res}
 
@@ -129,7 +144,6 @@ begin
   Application.Title := 'Gestão Empresarial - Módulo Faturamento';
 
   Application.CreateForm(TDM, DM);
-
   if dm.SQLConfigGeralCFGECBLOQ.AsString = 'S' then
     begin
       ShowMessage('Sistema Bloqueado!!! Ligue para a Suporte');
