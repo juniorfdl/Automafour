@@ -1,6 +1,4 @@
 inherited FormCadastroCidade: TFormCadastroCidade
-  Left = -941
-  Top = -19
   Caption = 'Cadastro de Cidades'
   OldCreateOrder = True
   PixelsPerInch = 96

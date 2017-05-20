@@ -2383,8 +2383,9 @@ inherited FormPrincipal: TFormPrincipal
           Caption = 'Conver'#231#227'o CST por PIS/Cofins'
           OnClick = ConveroCSTporPISCofins1Click
         end
-        object Cidade1: TMenuItem
+        object Cidades1: TMenuItem
           Caption = 'Cidade'
+          OnClick = Cidades1Click
         end
       end
       object arefas1: TMenuItem

@@ -117,7 +117,8 @@ uses
   TelaLembreteTarefa in 'Cadastros\TelaLembreteTarefa.pas' {FormTelaLembreteTarefa},
   CadastroTransportadora in 'Cadastros\CadastroTransportadora.pas' {FormCadastroTransportadora},
   CadastroRepresentante in 'Cadastros\CadastroRepresentante.pas' {FormCadastroRepresentante},
-  CadastroConvenio in 'Cadastros\CadastroConvenio.pas' {FormCadastroConvenio};
+  CadastroConvenio in 'Cadastros\CadastroConvenio.pas' {FormCadastroConvenio},
+  CadastroCidade in 'Cadastros\CadastroCidade.pas' {FormCadastroCidade};
 
 {$R *.res}
 
@@ -128,6 +129,7 @@ begin
   Application.Title := 'Gestão Empresarial - Módulo Faturamento';
 
   Application.CreateForm(TDM, DM);
+
   if dm.SQLConfigGeralCFGECBLOQ.AsString = 'S' then
     begin
       ShowMessage('Sistema Bloqueado!!! Ligue para a Suporte');

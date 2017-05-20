@@ -173,6 +173,8 @@ end;
 procedure TFormTelaLembreteTarefa2.BtOKClick(Sender: TObject);
 begin
   Close;
+
+  
 end;
 
 end.

@@ -68,7 +68,7 @@ type
     MNADMCadastroNCM: TMenuItem;
     abeladeConversodeCSTdoICMS1: TMenuItem;
     abeladeConversodeCSTPISeCOFINS1: TMenuItem;
-    Cidade1: TMenuItem;
+    Cidades1: TMenuItem;
     arefas1: TMenuItem;
     AcompanharTarefa1: TMenuItem;
     GerenciarTarefa1: TMenuItem;
@@ -359,7 +359,8 @@ uses
   CadastroSerie, CadastroCSTConverte, CadastroCSTPisCofinsConverter,
   TelaPlanoContas, TelaLembreteTarefa2, TelaConsultaTarefa,
   TelaLembreteTarefa, CadastroFornecedor, CadastroVendedor,
-  CadastroTransportadora, CadastroRepresentante, CadastroConvenio;
+  CadastroTransportadora, CadastroRepresentante, CadastroConvenio,
+  CadastroCidade;
 
 
 {uses CadastroCliente, CadastroTemplate, CadastroTipoCliente, CadastroBanco,
@@ -980,8 +981,7 @@ procedure TFormPrincipal.Cidades1Click(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
-    //CriaFormulario(TFormCadastroCidade,'FormCadastroCidade',False,False,False,'')
-
+    CriaFormulario(TFormCadastroCidade,'FormCadastroCidade',False,False,False,'')
   else
     SoundPlay('Acesso Negado.wav', Sender);
 end;
