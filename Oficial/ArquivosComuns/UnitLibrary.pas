@@ -203,9 +203,210 @@ function RetornaCorProduto(Cor : String) : String;
 function RetornaPreco(QueryProduto : TQuery; TabelaPrecoEmpresa:String; TabelaPrecoCliente:String) : double ;
 function TestaNotaCompraMovimentoEstoque(IDNotaCompra, IDMovDiv, IDNotaVenda, Produto: string; quantidade: double) : boolean;
 
+function DiaSemana(aData: TDateTime): String;
+function  SQLMax(Tabela,CampoMax,ClausulaSQL : String) : Integer;
+function VerificaNumeroSerie(NroSerie, CodProduto : String) : String;
+procedure GravaSaidaNroSerieProduto(NroSERIE, Produto, Status, EMPRICOD, CLIEA13ID, CUPOA13ID, PDVDA13ID, NOFIA13ID, MOVDA13ID : String);
+procedure DeletaNumeroSerie(PRODICOD, NOFIA13ID, PDVDA13ID, MOVDA13ID : String);
+
 implementation
 
 uses DataModulo, TelaAutenticaUsuario;
+
+procedure DeletaNumeroSerie(PRODICOD, NOFIA13ID, PDVDA13ID, MOVDA13ID : String);
+var
+ SQLConsulta : TQuery;
+begin
+  SQLConsulta := TQuery.Create(DM);
+  SQLConsulta.DatabaseName := 'DB';
+  SQLConsulta.Close;
+  SQLConsulta.SQL.Clear;
+  SQLConsulta.SQL.Add('DELETE FROM PRODUTOSERIETEMP WHERE PRODICOD = ' + PRODICOD);
+
+  if NOFIA13ID <> '' then
+    SQLConsulta.SQL.Add(' AND NOFIA13ID = "'    + NOFIA13ID + '"')
+  else
+    if PDVDA13ID <> '' then
+      SQLConsulta.SQL.Add(' AND PDVDA13ID = "'  + PDVDA13ID + '"')
+    else
+      if MOVDA13ID <> '' then
+        SQLConsulta.SQL.Add(' AND MOVDA13ID= "' + MOVDA13ID + '"');
+  try
+    SQLConsulta.Prepare;
+    SQLConsulta.ExecSQL;
+  except
+    on E:Exception do
+      begin
+        Informa('Problemas ao deletar número de série, ANOTE O ERRO: ' + #13 + E.Message);
+        Abort;
+      end;
+  end;
+
+  SQLConsulta.Close;
+  SQLConsulta.SQL.Clear;
+  SQLConsulta.SQL.Add('UPDATE PRODUTOSERIE SET Pendente="S", ');
+
+  if NOFIA13ID <> '' then
+    SQLConsulta.SQL.Add('NOFIA13ID = NULL')
+  else
+    if PDVDA13ID <> '' then
+      SQLConsulta.SQL.Add('PDVDA13ID = NULL')
+    else
+      if MOVDA13ID <> '' then
+        SQLConsulta.SQL.Add('MOVDA13ID= NULL');
+
+  SQLConsulta.SQL.Add(' WHERE PRODICOD = ' + PRODICOD);
+
+  if NOFIA13ID <> '' then
+    SQLConsulta.SQL.Add(' AND NOFIA13ID = "'    + NOFIA13ID + '"')
+  else
+    if PDVDA13ID <> '' then
+      SQLConsulta.SQL.Add(' AND PDVDA13ID = "'  + PDVDA13ID + '"')
+    else
+      if MOVDA13ID <> '' then
+        SQLConsulta.SQL.Add(' AND MOVDA13ID= "' + MOVDA13ID + '"');
+  try
+    SQLConsulta.Prepare;
+    SQLConsulta.ExecSQL;
+  except
+    on E:Exception do
+      begin
+        Informa('Problemas ao limpar vínculo do número de série, ANOTE O ERRO: ' + #13 + E.Message);
+        SQLConsulta.Close;
+        SQLConsulta.Destroy;
+        Abort;
+      end;
+  end;
+
+  SQLConsulta.Close;
+  SQLConsulta.Destroy;
+end;
+
+
+procedure GravaSaidaNroSerieProduto(NroSERIE, Produto, Status, EMPRICOD, CLIEA13ID, CUPOA13ID, PDVDA13ID, NOFIA13ID, MOVDA13ID : String);
+var
+  SQLProdutoSerie : TQuery;
+begin
+  if (Produto = '') or (Produto = '') then
+    Exit;
+
+  SQLProdutoSerie := TQuery.Create(SQLProdutoSerie);
+  SQLProdutoSerie.DatabaseName := 'DB';
+  SQLProdutoSerie.Close;
+  SQLProdutoSerie.SQL.Clear;
+  SQLProdutoSerie.SQL.ADD('UPDATE PRODUTOSERIE SET ');
+  if Status <> '' then
+    SQLProdutoSerie.SQL.ADD('PRSECSTATUS = "' + Status + '" , ') // Status I = Indisponivel / D = Disponivel
+  else
+    SQLProdutoSerie.SQL.ADD('PRSECSTATUS = Null , ');
+  // Empresa Destino
+  if EMPRICOD <> '' then
+    SQLProdutoSerie.SQL.ADD('EMPRICOD = ' + EMPRICOD + ' , ');
+  // Cliente
+  if CLIEA13ID <> '' then
+    SQLProdutoSerie.SQL.ADD('CLIEA13ID = "' + CLIEA13ID + '" , ');
+  // Nota Fiscal
+  if NOFIA13ID <> '' then
+    SQLProdutoSerie.SQL.ADD('NOFIA13ID = "' + NOFIA13ID + '" , ');
+  // Cupom
+  if CUPOA13ID <> '' then
+    SQLProdutoSerie.SQL.ADD('CUPOA13ID = "' + CUPOA13ID + '" , ');
+  // Pedido de Venda
+  if PDVDA13ID <> '' then
+    SQLProdutoSerie.SQL.ADD('PDVDA13ID = "' + PDVDA13ID + '" , ');
+  // Movimento Diverso
+  if MOVDA13ID <> '' then
+    SQLProdutoSerie.SQL.ADD('MOVDA13ID = "' + MOVDA13ID + '" , ');
+  // Pendente
+  SQLProdutoSerie.SQL.ADD('PENDENTE = "S" , ');
+  // Registro
+  SQLProdutoSerie.SQL.ADD('REGISTRO = "' + FormatDateTime('mm/dd/yyyy hh:nn:ss',Now) + '"');
+  // FILTRO
+  SQLProdutoSerie.SQL.ADD(' WHERE ');
+  SQLProdutoSerie.SQL.ADD('PRODICOD = ' + Produto + ' AND ');
+  SQLProdutoSerie.SQL.ADD('PRSEA60NROSERIE = "' + NroSERIE + '"');
+  try
+    SQLProdutoSerie.Prepare;
+    SQLProdutoSerie.ExecSQL;
+  except
+    on E:Exception do
+      begin
+        Informa('Problemaos ao gravar SAÍDA do número de série, ANOTE O ERRO : ' + E.Message);
+        SQLProdutoSerie.Cancel;
+        SQLProdutoSerie.Close;
+        SQLProdutoSerie.Destroy;
+      end;
+  end;
+  SQLProdutoSerie.Close;
+  SQLProdutoSerie.Destroy;
+end;
+
+
+function VerificaNumeroSerie(NroSerie, CodProduto : String) : String;
+var
+ SQLConsulta : TQuery;
+begin
+  SQLConsulta := TQuery.Create(DM);
+  SQLConsulta.DatabaseName := 'DB';
+  SQLConsulta.Close;
+  SQLConsulta.SQL.Clear;
+  SQLConsulta.SQL.Add('SELECT * FROM PRODUTOSERIE WHERE PRSEA60NROSERIE = "' + NroSerie + '"');
+  SQLConsulta.SQL.Add(' AND PRODICOD = ' + CodProduto);
+  SQLConsulta.Open;
+  if not SQLConsulta.IsEmpty then
+    Result := SQLConsulta.FieldByName('PRSECSTATUS').AsString
+  else
+    Result := 'N';
+
+  SQLConsulta.Close;
+  SQLConsulta.Destroy;
+end;
+
+
+
+function  SQLMax(Tabela,CampoMax,ClausulaSQL : String) : Integer;
+var
+  MyQuery : TQuery ;
+begin
+  if CampoMax <> '' then
+  begin
+    MyQuery := TQuery.Create(DM);
+    if DM.DataBaseName = '' then
+      MyQuery.DatabaseName := 'DB'
+    else
+      MyQuery.DatabaseName := DM.DataBaseName;
+    MyQuery.Close;
+    MyQuery.SQL.Clear;
+    MyQuery.SQL.Add('select MAX(' + CampoMax + ') from ' + Tabela);
+    MyQuery.SQL.Add('where  ' + ClausulaSQL);
+    MyQuery.Open;
+    if not MyQuery.EOF then
+      SQLMax := MyQuery.FieldByName('MAX').AsInteger + 1
+    else
+      SQLMax := 1;
+    MyQuery.Destroy;
+  end
+  else
+    Informa('Parametros incorretos na função SelectMax()');
+end;
+
+
+function DiaSemana(aData: TDateTime): String;
+var
+  aDia: Integer;
+  aDiaSemana: array[1..7] of string[13];
+begin
+  aDiaSemana[1] := 'Domingo';
+  aDiaSemana[2] := 'Segunda-Feira';
+  aDiaSemana[3] := 'Terça-Feira';
+  aDiaSemana[4] := 'Quarta-Feira';
+  aDiaSemana[5] := 'Quinta-Feira';
+  aDiaSemana[6] := 'Sexta-Feira';
+  aDiaSemana[7] := 'Sábado';
+  aDia := DayOfWeek(aData);
+  result := aDiaSemana[aDia];
+end;
+
 
 function TestaNotaCompraMovimentoEstoque(IDNotaCompra, IDMovDiv, IDNotaVenda, Produto: string; quantidade: double) : boolean;
 var

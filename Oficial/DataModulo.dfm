@@ -1,9 +1,9 @@
 inherited DM: TDM
   OldCreateOrder = True
-  Left = 65528
-  Top = 65528
-  Height = 744
-  Width = 1382
+  Left = 64
+  Top = 63
+  Height = 522
+  Width = 760
   inherited DB: TDatabase
     AliasName = 'Easy_Gestao'
   end
@@ -669,5 +669,10 @@ inherited DM: TDM
     DataSet = SQLProduto
     Left = 33
     Top = 348
+  end
+  object SQLUpdate: TQuery
+    DatabaseName = 'DB'
+    Left = 440
+    Top = 304
   end
 end

@@ -145,7 +145,16 @@ uses
   TelaConsultaPlanoContasDebitos in 'ArquivosComuns\TelaConsultaPlanoContasDebitos.pas' {FormTelaConsultaPlanoContasDebitos},
   TelaConsultaCliente in 'ArquivosComuns\TelaConsultaCliente.pas' {FormTelaConsultaCliente},
   RelatorioMediaComprasPeriodo in 'Compras\RelatorioMediaComprasPeriodo.pas',
-  RelatorioTemplate in '..\Template\RelatorioTemplate.pas' {FormRelatorioTEMPLATE};
+  RelatorioTemplate in '..\Template\RelatorioTemplate.pas' {FormRelatorioTEMPLATE},
+  TelaImportadorXML in 'Compras\TelaImportadorXML.pas' {FormTelaImportadorXML},
+  VinculoCfopOperacaoEstoque in 'Compras\VinculoCfopOperacaoEstoque.pas' {FormVinculoCfopOperacaoEstoque},
+  TelaLancamentoGradeXML in 'Compras\TelaLancamentoGradeXML.pas' {FormTelaLancamentoGradeXML},
+  CadastroProdutoRapido in 'Cadastros\CadastroProdutoRapido.pas' {FormCadastroProdutoRapido},
+  CadastroMovimentosDiversosEstoqueItem in 'Cadastros\CadastroMovimentosDiversosEstoqueItem.pas' {FormCadastroMovimentosDiversosEstoqueItem},
+  TelaImportaItens in 'Compras\TelaImportaItens.pas' {FormTelaImportaItens},
+  TelaLancamentoGradeMovto in 'Compras\TelaLancamentoGradeMovto.pas' {FormTelaLancamentoGradeMovto},
+  TelaProdutoNumeroSerieTEMP in 'Compras\TelaProdutoNumeroSerieTEMP.pas' {FormTelaGeralModalCadastroProdutoNumeroSerieTEMP},
+  TelaListaPreco in 'Compras\TelaListaPreco.pas' {FormTelaListaPreco};
 
 {$R *.res}
 
@@ -156,6 +165,7 @@ begin
   Application.Title := 'Gestão Empresarial - Módulo Faturamento';
 
   Application.CreateForm(TDM, DM);
+  
   if dm.SQLConfigGeralCFGECBLOQ.AsString = 'S' then
     begin
       ShowMessage('Sistema Bloqueado!!! Ligue para a Suporte');

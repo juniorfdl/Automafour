@@ -119,14 +119,15 @@ type
     SQLProdutoSaldoPSLDN3QTDMIN: TFloatField;
     SQLProdutoSaldoPSLDN3QTDMAX: TFloatField;
     DSSQLProduto: TDataSource;
+    SQLUpdate: TQuery;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
     CodTarefa:String;
-    GerandoPedidoCompra, InserindoItemPC, GerandoNotaCompra, IncluindoGrade, ImportandoPedidoCompra, InserindoItemNC, ProcurandoProduto:Boolean;
-    ConfigEtiqueta:Integer;
+    GerandoPedidoCompra, InserindoItemPC, GerandoNotaCompra, IncluindoGrade, ImportandoPedidoCompra, InserindoItemNC, ProcurandoProduto, GerandoMovtoDiverso:Boolean;
+    ConfigEtiqueta, SeqItemCompra, CodigoProdutoCompra:Integer;
   end;
 
 var

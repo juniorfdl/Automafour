@@ -2477,11 +2477,13 @@ inherited FormPrincipal: TFormPrincipal
         Caption = 'Nota de Entrada'
         OnClick = MnNotadeEntradaClick
       end
-      object ImportarXML1: TMenuItem
+      object ImportaXMLDelphi: TMenuItem
         Caption = 'Importar XML'
+        OnClick = ImportaXMLDelphiClick
       end
-      object ManutenodePreo1: TMenuItem
+      object MnADMListaPreco: TMenuItem
         Caption = 'Manuten'#231#227'o de Pre'#231'o'
+        OnClick = MnADMListaPrecoClick
       end
     end
     object Estoque1: TMenuItem [2]

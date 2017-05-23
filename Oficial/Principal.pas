@@ -93,8 +93,8 @@ type
     Compras1: TMenuItem;
     MNPedidoCompra: TMenuItem;
     MnNotadeEntrada: TMenuItem;
-    ImportarXML1: TMenuItem;
-    ManutenodePreo1: TMenuItem;
+    ImportaXMLDelphi: TMenuItem;
+    MnADMListaPreco: TMenuItem;
     Estoque1: TMenuItem;
     MovimentaoDiversas1: TMenuItem;
     EmissodeEtiquetas1: TMenuItem;
@@ -338,6 +338,8 @@ type
     procedure MNADMConveniosClick(Sender: TObject);
     procedure MNPedidoCompraClick(Sender: TObject);
     procedure MnNotadeEntradaClick(Sender: TObject);
+    procedure ImportaXMLDelphiClick(Sender: TObject);
+    procedure MnADMListaPrecoClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -362,7 +364,8 @@ uses
   TelaPlanoContas, TelaLembreteTarefa2, TelaConsultaTarefa,
   TelaLembreteTarefa, CadastroFornecedor, CadastroVendedor,
   CadastroTransportadora, CadastroRepresentante, CadastroConvenio,
-  CadastroCidade, CadastroPedidoCompra, CadastroNotaCompra;
+  CadastroCidade, CadastroPedidoCompra, CadastroNotaCompra,
+  TelaImportadorXML, TelaListaPreco;
 
 
 {uses CadastroCliente, CadastroTemplate, CadastroTipoCliente, CadastroBanco,
@@ -1379,6 +1382,24 @@ begin
     CriaFormulario(TFormCadastroNotaCompra, 'FormCadastroNotaCompra',False,False,False,'')
   else
     SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.ImportaXMLDelphiClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormTelaImportadorXML,'FormTelaImportadorXML',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnADMListaPrecoClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormTelaListaPreco, 'FormTelaListaPreco',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);  
 end;
 
 end.
