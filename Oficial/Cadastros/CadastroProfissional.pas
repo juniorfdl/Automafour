@@ -17,8 +17,8 @@ type
     DBEdit2: TDBEdit;
     SQLTemplateVENDICOD: TIntegerField;
     SQLTemplateVENDA60NOME: TStringField;
-    SQLTemplateVENDN2COMISV: TBCDField;
-    SQLTemplateVENDN2COMISP: TBCDField;
+    SQLTemplateVENDN2COMISV: TFloatField;
+    SQLTemplateVENDN2COMISP: TFloatField;
     SQLTemplateVENDCTIPCOMIS: TStringField;
     SQLTemplateVENDCCOMISACRESC: TStringField;
     SQLTemplatePENDENTE: TStringField;
@@ -90,9 +90,9 @@ type
     TblBanco: TTable;
     TblBancoBANCA5COD: TStringField;
     TblBancoBANCA60NOME: TStringField;
-    SQLTemplateVENDN2PERCFIDEL: TBCDField;
+    SQLTemplateVENDN2PERCFIDEL: TFloatField;
     SQLTemplateVENDIDIASVALFIDEL: TIntegerField;
-    SQLTemplateVENDN2PERCIRRF: TBCDField;
+    SQLTemplateVENDN2PERCIRRF: TFloatField;
     Label17: TLabel;
     DBEditComissao: TDBEdit;
     ComboUF: TRxDBComboBox;
@@ -100,7 +100,7 @@ type
     SQLEspecialidade: TRxQuery;
     SQLEspecialidadeESPEICOD: TIntegerField;
     SQLEspecialidadeESPEA60DESCR: TStringField;
-    SQLEspecialidadeESPEN3VLRCONSULTA: TBCDField;
+    SQLEspecialidadeESPEN3VLRCONSULTA: TFloatField;
     ComboEspecialidade: TRxDBLookupCombo;
     Label8: TLabel;
     DSSQLEspecialidade: TDataSource;

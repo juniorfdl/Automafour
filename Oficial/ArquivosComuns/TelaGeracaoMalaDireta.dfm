@@ -3,7 +3,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
   Top = 136
   Width = 1019
   Height = 552
-  Caption = 'Gera'#231#227'o de Mala Direta'
+  Caption = 'Geração de Mala Direta'
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
@@ -37,7 +37,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
           Top = 229
           Width = 162
           Height = 13
-          Caption = 'Sele'#231#227'o de Cliente espec'#237'fico'
+          Caption = 'Seleção de Cliente específico'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clNavy
           Font.Height = -11
@@ -187,12 +187,12 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
           ItemIndex = 0
           Items.Strings = (
             '&A - Todos os clientes'
-            '&B - Para o titular e conjug'#234' em data de casamento'
-            '&C - Para o titular em data de anivers'#225'rio do conjug'#234
-            '&D - Para o titular em data de anivers'#225'rio dos dependentes'
-            '&E - Para o titular em seu anivers'#225'rio'
-            '&F - Para o conjug'#234' em data de anivers'#225'rio do titular'
-            '&G - Para os dependentes em data de anivers'#225'rio do titular')
+            '&B - Para o titular e conjugê em data de casamento'
+            '&C - Para o titular em data de aniversário do conjugê'
+            '&D - Para o titular em data de aniversário dos dependentes'
+            '&E - Para o titular em seu aniversário'
+            '&F - Para o conjugê em data de aniversário do titular'
+            '&G - Para os dependentes em data de aniversário do titular')
           ParentFont = False
           TabOrder = 0
         end
@@ -237,7 +237,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
           Top = 95
           Width = 352
           Height = 100
-          Caption = ' &Tipo de Impress'#227'o '
+          Caption = ' &Tipo de Impressão '
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
@@ -247,7 +247,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
           Items.Strings = (
             '&A - Etiq 2 Col Pimaco Carta'
             '&B - Etiq 3 Col Pimaco Carta'
-            '&C - Listagem Padr'#227'o Carta'
+            '&C - Listagem Padrão Carta'
             '&D - Etiq 3 Col Pimaco Carta com Cd Barras Cliente'
             '&E - Envelope Remetente'
             '&F - Envelope Destinatario'
@@ -261,7 +261,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
           Top = 30
           Width = 238
           Height = 64
-          Caption = ' Per'#237'odo Anivers'#225'rio '
+          Caption = ' Período Aniversário '
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -274,7 +274,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
             Top = 15
             Width = 110
             Height = 45
-            Caption = ' Dia / M'#234's Inicial '
+            Caption = ' Dia / Mês Inicial '
             Font.Charset = ANSI_CHARSET
             Font.Color = clWindowText
             Font.Height = -11
@@ -345,7 +345,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
               ItemHeight = 13
               MaxLength = 2
               TabOrder = 1
-              Text = 'M'#202'S'
+              Text = 'MÊS'
               Items.Strings = (
                 '01'
                 '02'
@@ -366,7 +366,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
             Top = 15
             Width = 109
             Height = 45
-            Caption = ' Dia / M'#234's Final '
+            Caption = ' Dia / Mês Final '
             Font.Charset = ANSI_CHARSET
             Font.Color = clWindowText
             Font.Height = -11
@@ -437,7 +437,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
               ItemHeight = 13
               MaxLength = 2
               TabOrder = 1
-              Text = 'M'#202'S'
+              Text = 'MÊS'
               Items.Strings = (
                 '01'
                 '02'
@@ -744,7 +744,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
           Width = 301
           Height = 26
           Align = alLeft
-          Caption = '  Lista Tempor'#225'ria de Cliente'
+          Caption = '  Lista Temporária de Cliente'
           Color = 16249066
           Font.Charset = ANSI_CHARSET
           Font.Color = 10053171
@@ -771,7 +771,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
           Height = 20
           Align = alClient
           Alignment = taCenter
-          Caption = 'Escolha os Filtros Desejados e ap'#243's clique no bot'#227'o Gerar Lista'
+          Caption = 'Escolha os Filtros Desejados e após clique no botão Gerar Lista'
           Color = 16249066
           Font.Charset = ANSI_CHARSET
           Font.Color = 10053171
@@ -989,13 +989,13 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       Size = 13
     end
     object TblMalaDiretaCliCLIEA60RAZAOSOC: TStringField
-      DisplayLabel = 'Raz'#227'o Social/Nome do Cliente'
+      DisplayLabel = 'Razão Social/Nome do Cliente'
       FieldName = 'CLIEA60RAZAOSOC'
       Origin = 'Easy_TEMP."EtiquetaEndereco.DB".CLIEA60RAZAOSOC'
       Size = 60
     end
     object TblMalaDiretaCliCLIEA60ENDRES: TStringField
-      DisplayLabel = 'Endere'#231'o'
+      DisplayLabel = 'Endereço'
       FieldName = 'CLIEA60ENDRES'
       Origin = 'Easy_TEMP."EtiquetaEndereco.DB".CLIEA60ENDRES'
       Size = 60
@@ -1317,13 +1317,13 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       FixedChar = True
       Size = 60
     end
-    object SQLClienteCLIEN2RENDA: TBCDField
+    object SQLClienteCLIEN2RENDA: TFloatField
       FieldName = 'CLIEN2RENDA'
       Origin = 'DB.CLIENTE.CLIEN2RENDA'
       Precision = 15
       Size = 3
     end
-    object SQLClienteCLIEN2LIMITECRED: TBCDField
+    object SQLClienteCLIEN2LIMITECRED: TFloatField
       FieldName = 'CLIEN2LIMITECRED'
       Origin = 'DB.CLIENTE.CLIEN2LIMITECRED'
       Precision = 15
@@ -1363,7 +1363,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       FixedChar = True
       Size = 60
     end
-    object SQLClienteCLIEN2CONJUGERENDA: TBCDField
+    object SQLClienteCLIEN2CONJUGERENDA: TFloatField
       FieldName = 'CLIEN2CONJUGERENDA'
       Origin = 'DB.CLIENTE.CLIEN2CONJUGERENDA'
       Precision = 15
@@ -1767,13 +1767,13 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       FixedChar = True
       Size = 60
     end
-    object BCDField1: TBCDField
+    object BCDField1: TFloatField
       FieldName = 'CLIEN2RENDA'
       Origin = 'DB.CLIENTE.CLIEN2RENDA'
       Precision = 15
       Size = 3
     end
-    object BCDField2: TBCDField
+    object BCDField2: TFloatField
       FieldName = 'CLIEN2LIMITECRED'
       Origin = 'DB.CLIENTE.CLIEN2LIMITECRED'
       Precision = 15
@@ -1813,7 +1813,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       FixedChar = True
       Size = 60
     end
-    object BCDField3: TBCDField
+    object BCDField3: TFloatField
       FieldName = 'CLIEN2CONJUGERENDA'
       Origin = 'DB.CLIENTE.CLIEN2CONJUGERENDA'
       Precision = 15
@@ -2168,7 +2168,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       Size = 10
     end
     object SQLClienteDependenteCLIEA60RAZAOSOC: TStringField
-      DisplayLabel = 'Nome / Raz'#227'o Social'
+      DisplayLabel = 'Nome / Razão Social'
       FieldName = 'CLIEA60RAZAOSOC'
       Origin = 'DB.CLIENTE.CLIEA60RAZAOSOC'
       FixedChar = True
@@ -2226,7 +2226,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       Size = 60
     end
     object SQLClienteDependenteCLIEA60ENDRES: TStringField
-      DisplayLabel = 'Endere'#231'o'
+      DisplayLabel = 'Endereço'
       FieldName = 'CLIEA60ENDRES'
       Origin = 'DB.CLIENTE.CLIEA60ENDRES'
       FixedChar = True
@@ -2273,13 +2273,13 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       FixedChar = True
       Size = 60
     end
-    object SQLClienteDependenteCLIEN2RENDA: TBCDField
+    object SQLClienteDependenteCLIEN2RENDA: TFloatField
       FieldName = 'CLIEN2RENDA'
       Origin = 'DB.CLIENTE.CLIEN2RENDA'
       Precision = 15
       Size = 3
     end
-    object SQLClienteDependenteCLIEN2LIMITECRED: TBCDField
+    object SQLClienteDependenteCLIEN2LIMITECRED: TFloatField
       FieldName = 'CLIEN2LIMITECRED'
       Origin = 'DB.CLIENTE.CLIEN2LIMITECRED'
       Precision = 15
@@ -2319,7 +2319,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       FixedChar = True
       Size = 60
     end
-    object SQLClienteDependenteCLIEN2CONJUGERENDA: TBCDField
+    object SQLClienteDependenteCLIEN2CONJUGERENDA: TFloatField
       FieldName = 'CLIEN2CONJUGERENDA'
       Origin = 'DB.CLIENTE.CLIEN2CONJUGERENDA'
       Precision = 15
@@ -2564,7 +2564,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       FieldName = 'CLIEIDIAVCTOCARTAO'
       Origin = 'DB.CLIENTE.CLIEIDIAVCTOCARTAO'
     end
-    object SQLClienteDependenteCLIEN2VLRALUGUEL: TBCDField
+    object SQLClienteDependenteCLIEN2VLRALUGUEL: TFloatField
       FieldName = 'CLIEN2VLRALUGUEL'
       Origin = 'DB.CLIENTE.CLIEN2VLRALUGUEL'
       Precision = 15
@@ -2829,8 +2829,8 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     DataPipeline = ppBDEPipeline
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
-    PrinterSetup.DocumentName = 'Etiquetas de C'#243'digo de Barras'
-    PrinterSetup.PaperName = 'Letter'
+    PrinterSetup.DocumentName = 'Etiquetas de Código de Barras'
+    PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 5000
     PrinterSetup.mmMarginLeft = 2000
@@ -2982,8 +2982,8 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     DataPipeline = ppBDEPipeline
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
-    PrinterSetup.DocumentName = 'Etiquetas de C'#243'digo de Barras'
-    PrinterSetup.PaperName = 'Letter'
+    PrinterSetup.DocumentName = 'Etiquetas de Código de Barras'
+    PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 7000
     PrinterSetup.mmMarginLeft = 2000
@@ -3245,7 +3245,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppLabel4: TppLabel
         UserName = 'ppLabel4'
-        Caption = 'C'#243'digo'
+        Caption = 'Código'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Name = 'MS Sans Serif'
@@ -3290,7 +3290,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppLabel6: TppLabel
         UserName = 'ppLabel6'
-        Caption = 'Endere'#231'o'
+        Caption = 'Endereço'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Name = 'MS Sans Serif'
@@ -3335,7 +3335,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppLabel10: TppLabel
         UserName = 'ppLabel10'
-        Caption = 'Observa'#231#227'o'
+        Caption = 'Observação'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Name = 'MS Sans Serif'
@@ -3528,7 +3528,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       object ppSystemVariable4: TppSystemVariable
         UserName = 'ppSystemVariable4'
         VarType = vtPageNo
-        DisplayFormat = 'P'#225'gina #'
+        DisplayFormat = 'Página #'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Name = 'MS Sans Serif'
@@ -3553,8 +3553,8 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     DataPipeline = ppBDEPipeline
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
-    PrinterSetup.DocumentName = 'Etiquetas de C'#243'digo de Barras'
-    PrinterSetup.PaperName = 'Letter'
+    PrinterSetup.DocumentName = 'Etiquetas de Código de Barras'
+    PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 7000
     PrinterSetup.mmMarginLeft = 2000
@@ -3638,8 +3638,8 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     AutoStop = False
     DataPipeline = ppBDEPipeline
     PassSetting = psTwoPass
-    PrinterSetup.BinName = 'Sele'#231#227'o autom'#225'tica'
-    PrinterSetup.DocumentName = 'Etiquetas de C'#243'digo de Barras'
+    PrinterSetup.BinName = 'Seleção automática'
+    PrinterSetup.DocumentName = 'Etiquetas de Código de Barras'
     PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 7000
@@ -3786,8 +3786,8 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     AutoStop = False
     DataPipeline = ppBDEPipeline
     PassSetting = psTwoPass
-    PrinterSetup.BinName = 'Sele'#231#227'o autom'#225'tica'
-    PrinterSetup.DocumentName = 'Etiquetas de C'#243'digo de Barras'
+    PrinterSetup.BinName = 'Seleção automática'
+    PrinterSetup.DocumentName = 'Etiquetas de Código de Barras'
     PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 7000
@@ -3913,7 +3913,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     DataPipeline = ppBDEPipeline
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
-    PrinterSetup.DocumentName = 'Etiquetas de C'#243'digo de Barras'
+    PrinterSetup.DocumentName = 'Etiquetas de Código de Barras'
     PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 0
@@ -7436,7 +7436,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Letter'
+    PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350

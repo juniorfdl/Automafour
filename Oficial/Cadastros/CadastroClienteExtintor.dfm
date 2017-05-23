@@ -1,6 +1,6 @@
 inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
   Left = 412
-  Caption = 'Rela'#231#227'o de Extintores'
+  Caption = 'Relação de Extintores'
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
@@ -21,7 +21,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
                   item
                     Expanded = False
                     FieldName = 'ProdutoLookup'
-                    Title.Caption = 'Descri'#231#227'o do Produto'
+                    Title.Caption = 'Descrição do Produto'
                     Width = 252
                     Visible = True
                   end
@@ -46,7 +46,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
                   item
                     Expanded = False
                     FieldName = 'CLEXA30LOCALIZACAO'
-                    Title.Caption = 'Localiza'#231#227'o'
+                    Title.Caption = 'Localização'
                     Visible = True
                   end
                   item
@@ -58,7 +58,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
                   item
                     Expanded = False
                     FieldName = 'CLEXA30OBS'
-                    Title.Caption = 'Observa'#231#245'es'
+                    Title.Caption = 'Observações'
                     Visible = True
                   end
                   item
@@ -100,7 +100,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
                   item
                     Expanded = False
                     FieldName = 'CLEXIEX_CARROCAVEL'
-                    Title.Caption = 'Carro'#231'avel'
+                    Title.Caption = 'Carroçavel'
                     Visible = True
                   end
                   item
@@ -124,7 +124,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
                   item
                     Expanded = False
                     FieldName = 'CLEXDINSPECAO'
-                    Title.Caption = 'Dt.Inspe'#231#227'o'
+                    Title.Caption = 'Dt.Inspeção'
                     Visible = True
                   end
                   item
@@ -136,7 +136,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
                   item
                     Expanded = False
                     FieldName = 'CLEXDREVISAO'
-                    Title.Caption = 'Dt.Revis'#227'o'
+                    Title.Caption = 'Dt.Revisão'
                     Visible = True
                   end
                   item
@@ -214,7 +214,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
                 Top = 109
                 Width = 71
                 Height = 13
-                Caption = 'Dt. Inspe'#231#227'o'
+                Caption = 'Dt. Inspeção'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clBlack
                 Font.Height = -11
@@ -240,7 +240,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
                 Top = 109
                 Width = 64
                 Height = 13
-                Caption = 'Dt. Revis'#227'o'
+                Caption = 'Dt. Revisão'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clBlack
                 Font.Height = -11
@@ -337,7 +337,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
                 Top = 263
                 Width = 124
                 Height = 13
-                Caption = 'e) Extintor Carro'#231#225'vel'
+                Caption = 'e) Extintor Carroçável'
                 FocusControl = DBEdit9
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clBlack
@@ -351,7 +351,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
                 Top = 18
                 Width = 130
                 Height = 13
-                Caption = 'Localiza'#231#227'o do Extintor'
+                Caption = 'Localização do Extintor'
                 FocusControl = DBEdit10
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clBlack
@@ -407,7 +407,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
                 Top = 53
                 Width = 154
                 Height = 13
-                Caption = 'Observa'#231#227'o Complementar'
+                Caption = 'Observação Complementar'
                 FocusControl = DBEdit14
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clBlack
@@ -536,7 +536,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
                 Top = 148
                 Width = 545
                 Height = 16
-                Caption = '------ N'#250'mero de Extintores ------'
+                Caption = '------ Número de Extintores ------'
                 Color = 10053171
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWhite
@@ -683,7 +683,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
               Top = 4
               Width = 38
               Height = 13
-              Caption = 'C'#243'digo'
+              Caption = 'Código'
               FocusControl = DBEdit2
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
@@ -697,7 +697,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
               Top = 4
               Width = 120
               Height = 13
-              Caption = 'Descri'#231#227'o do Produto'
+              Caption = 'Descrição do Produto'
               FocusControl = DBEdit2
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
@@ -711,7 +711,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
               Top = 4
               Width = 72
               Height = 13
-              Caption = 'Respons'#225'vel'
+              Caption = 'Responsável'
               FocusControl = DBEdit2
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
@@ -766,7 +766,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
   end
   inherited PopupMenuImpressao: TPopupMenu
     object ImpressodeLaudoTcnico1: TMenuItem
-      Caption = 'Impress'#227'o de Laudo T'#233'cnico'
+      Caption = 'Impressão de Laudo Técnico'
       OnClick = ImpressodeLaudoTcnico1Click
     end
   end
@@ -931,7 +931,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
     DatabaseName = 'DB'
     SQL.Strings = (
       'Select * from PRODUTO'
-      'where PRODCATIVO = '#39'S'#39
+      'where PRODCATIVO = ''S'''
       'Order by PRODA60DESCR')
     Macros = <>
     Left = 44
@@ -946,13 +946,13 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       FixedChar = True
       Size = 60
     end
-    object SQLProdutosPRODN3VLRVENDA: TBCDField
+    object SQLProdutosPRODN3VLRVENDA: TFloatField
       FieldName = 'PRODN3VLRVENDA'
       Origin = 'DB.PRODUTO.PRODN3VLRVENDA'
       Precision = 15
       Size = 3
     end
-    object SQLProdutosPRODN3VLRVENDAPROM: TBCDField
+    object SQLProdutosPRODN3VLRVENDAPROM: TFloatField
       FieldName = 'PRODN3VLRVENDAPROM'
       Origin = 'DB.PRODUTO.PRODN3VLRVENDAPROM'
       Precision = 15
@@ -966,7 +966,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       FieldName = 'PRODDFIMPROMO'
       Origin = 'DB.PRODUTO.PRODDFIMPROMO'
     end
-    object SQLProdutosPRODN3VLRVENDA2: TBCDField
+    object SQLProdutosPRODN3VLRVENDA2: TFloatField
       FieldName = 'PRODN3VLRVENDA2'
       Origin = 'DB.PRODUTO.PRODN3VLRVENDA2'
       Precision = 15
@@ -981,127 +981,105 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
   object ppReport1: TppReport
     AutoStop = False
     DataPipeline = PipeItens
+    PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.Orientation = poLandscape
     PrinterSetup.PaperName = 'A4'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350
     PrinterSetup.mmMarginRight = 6350
     PrinterSetup.mmMarginTop = 6350
-    PrinterSetup.mmPaperHeight = 210000
-    PrinterSetup.mmPaperWidth = 297000
+    PrinterSetup.mmPaperHeight = 0
+    PrinterSetup.mmPaperWidth = 0
     PrinterSetup.PaperSize = 9
     DeviceType = 'Screen'
-    EmailSettings.ReportFormat = 'PDF'
     OutlineSettings.CreateNode = True
     OutlineSettings.CreatePageNodes = True
-    OutlineSettings.Enabled = True
-    OutlineSettings.Visible = True
+    OutlineSettings.Enabled = False
+    OutlineSettings.Visible = False
     TextSearchSettings.DefaultString = '<FindText>'
-    TextSearchSettings.Enabled = True
+    TextSearchSettings.Enabled = False
     Left = 584
     Top = 1
-    Version = '10.06'
+    Version = '7.04'
     mmColumnWidth = 0
     DataPipelineName = 'PipeItens'
     object ppHeaderBand1: TppHeaderBand
-      BeforePrint = ppHeaderBand1BeforePrint
       mmBottomOffset = 0
-      mmHeight = 43921
+      mmHeight = 11620788
       mmPrintPosition = 0
       object ppShape1: TppShape
-        UserName = 'Shape1'
+        UserName = 'ppShape1'
         Shape = stRoundRect
-        mmHeight = 19050
-        mmLeft = 8202
-        mmTop = 7673
-        mmWidth = 264055
+        mmHeight = 5040323
+        mmLeft = 2170117
+        mmTop = 2030152
+        mmWidth = 69864691
         BandType = 0
       end
       object ppLabel1: TppLabel
-        UserName = 'Label1'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        Caption = '1. DADOS DO PR'#201'DIO'
+        UserName = 'ppLabel1'
+        Caption = '1. DADOS DO PRÉDIO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
         Font.Size = 8
         Font.Style = [fsBold]
         Transparent = True
-        mmHeight = 3429
-        mmLeft = 13758
-        mmTop = 3969
-        mmWidth = 31242
+        mmHeight = 907258
+        mmLeft = 3640145
+        mmTop = 1050133
+        mmWidth = 8266129
         BandType = 0
       end
       object ppLabel2: TppLabel
-        UserName = 'Label2'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        Caption = '1.1 Propriet'#225'rio: '
+        UserName = 'ppLabel2'
+        Caption = '1.1 Proprietário: '
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
         Font.Size = 8
         Font.Style = []
         Transparent = True
-        mmHeight = 3429
-        mmLeft = 13758
-        mmTop = 10054
-        mmWidth = 21167
+        mmHeight = 907258
+        mmLeft = 3640145
+        mmTop = 2660126
+        mmWidth = 5600447
         BandType = 0
       end
       object ppLabel3: TppLabel
-        UserName = 'Label3'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        Caption = '1.2 Endere'#231'o: '
+        UserName = 'ppLabel3'
+        Caption = '1.2 Endereço: '
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
         Font.Size = 8
         Font.Style = []
         Transparent = True
-        mmHeight = 3429
-        mmLeft = 13758
-        mmTop = 15346
-        mmWidth = 18330
+        mmHeight = 907258
+        mmLeft = 3640145
+        mmTop = 4060304
+        mmWidth = 4849822
         BandType = 0
       end
       object ppLabel4: TppLabel
-        UserName = 'Label4'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        Caption = '1.4 Respons'#225'vel T'#233'cnico: '
+        UserName = 'ppLabel4'
+        Caption = '1.4 Responsável Técnico: '
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
         Font.Size = 8
         Font.Style = []
         Transparent = True
-        mmHeight = 3429
-        mmLeft = 13758
-        mmTop = 20638
-        mmWidth = 32597
+        mmHeight = 907258
+        mmLeft = 3640145
+        mmTop = 5460482
+        mmWidth = 8624640
         BandType = 0
       end
       object ppLabel5: TppLabel
-        UserName = 'Label5'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLabel5'
         Caption = '2. EXTINTORES'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1109,18 +1087,14 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         Font.Size = 8
         Font.Style = [fsBold]
         Transparent = True
-        mmHeight = 3429
-        mmLeft = 13758
-        mmTop = 29369
-        mmWidth = 22056
+        mmHeight = 907258
+        mmLeft = 3640145
+        mmTop = 7770563
+        mmWidth = 5835662
         BandType = 0
       end
       object ppLabel6: TppLabel
-        UserName = 'Label6'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLabel6'
         Caption = '1.3 Bairro: '
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1128,18 +1102,14 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         Font.Size = 8
         Font.Style = []
         Transparent = True
-        mmHeight = 3429
-        mmLeft = 125942
-        mmTop = 15346
-        mmWidth = 14097
+        mmHeight = 907258
+        mmLeft = 33322221
+        mmTop = 4060304
+        mmWidth = 3729839
         BandType = 0
       end
       object ppLabel7: TppLabel
-        UserName = 'Label7'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLabel7'
         Caption = '1.5 Municipio:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1147,28 +1117,24 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         Font.Size = 8
         Font.Style = []
         Transparent = True
-        mmHeight = 3440
-        mmLeft = 201613
-        mmTop = 15346
-        mmWidth = 17463
+        mmHeight = 910168
+        mmLeft = 53343546
+        mmTop = 4060304
+        mmWidth = 4620428
         BandType = 0
       end
       object ppShape2: TppShape
-        UserName = 'Shape2'
+        UserName = 'ppShape2'
         Shape = stRoundRect
-        mmHeight = 9525
-        mmLeft = 8202
-        mmTop = 33073
-        mmWidth = 264055
+        mmHeight = 2520161
+        mmLeft = 2170117
+        mmTop = 8750582
+        mmWidth = 69864691
         BandType = 0
       end
       object ppLabel8: TppLabel
-        UserName = 'Label8'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        Caption = 'N'#186' de Ordem'
+        UserName = 'ppLabel8'
+        Caption = 'Nº de Ordem'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
@@ -1177,32 +1143,24 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
-        mmHeight = 6858
-        mmLeft = 9790
-        mmTop = 34396
-        mmWidth = 8424
+        mmHeight = 1814516
+        mmLeft = 2590276
+        mmTop = 9100626
+        mmWidth = 2228854
         BandType = 0
       end
       object ppLine1: TppLine
-        UserName = 'Line1'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLine1'
         Position = lpLeft
         Weight = 0.750000000000000000
-        mmHeight = 7408
-        mmLeft = 18785
-        mmTop = 33867
-        mmWidth = 265
+        mmHeight = 1960037
+        mmLeft = 4970208
+        mmTop = 8960662
+        mmWidth = 70115
         BandType = 0
       end
       object ppLabel9: TppLabel
-        UserName = 'Label9'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLabel9'
         Caption = 'CAPACIDADE'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1210,80 +1168,60 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         Font.Size = 8
         Font.Style = []
         Transparent = True
-        mmHeight = 3429
-        mmLeft = 48683
-        mmTop = 35719
-        mmWidth = 16510
+        mmHeight = 907258
+        mmLeft = 12880736
+        mmTop = 9450671
+        mmWidth = 4368280
         BandType = 0
       end
       object ppLine2: TppLine
-        UserName = 'Line2'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLine2'
         Position = lpLeft
         Weight = 0.750000000000000000
-        mmHeight = 7408
-        mmLeft = 65352
-        mmTop = 33867
-        mmWidth = 265
+        mmHeight = 1960037
+        mmLeft = 17291084
+        mmTop = 8960662
+        mmWidth = 70115
         BandType = 0
       end
       object ppLabel10: TppLabel
-        UserName = 'Label10'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        Caption = 'LOCALIZA'#199#195'O'
+        UserName = 'ppLabel10'
+        Caption = 'LOCALIZAÇÃO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
         Font.Size = 8
         Font.Style = []
         Transparent = True
-        mmHeight = 3429
-        mmLeft = 73819
-        mmTop = 35983
-        mmWidth = 17865
+        mmHeight = 907258
+        mmLeft = 19531316
+        mmTop = 9520521
+        mmWidth = 4726791
         BandType = 0
       end
       object ppLine3: TppLine
-        UserName = 'Line3'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLine3'
         Position = lpLeft
         Weight = 0.750000000000000000
-        mmHeight = 7408
-        mmLeft = 108744
-        mmTop = 33867
-        mmWidth = 265
+        mmHeight = 1960037
+        mmLeft = 28771907
+        mmTop = 8960662
+        mmWidth = 70115
         BandType = 0
       end
       object ppLine4: TppLine
-        UserName = 'Line4'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLine4'
         Position = lpLeft
         Weight = 0.750000000000000000
-        mmHeight = 7408
-        mmLeft = 126471
-        mmTop = 33867
-        mmWidth = 265
+        mmHeight = 1960037
+        mmLeft = 33462185
+        mmTop = 8960662
+        mmWidth = 70115
         BandType = 0
       end
       object ppLabel11: TppLabel
-        UserName = 'Label11'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        Caption = 'N'#186' do RECIPIENTE'
+        UserName = 'ppLabel11'
+        Caption = 'Nº do RECIPIENTE'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
@@ -1292,33 +1230,25 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
-        mmHeight = 6858
-        mmLeft = 109802
-        mmTop = 34396
-        mmWidth = 15536
+        mmHeight = 1814516
+        mmLeft = 29051837
+        mmTop = 9100626
+        mmWidth = 4110575
         BandType = 0
       end
       object ppLine5: TppLine
-        UserName = 'Line5'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLine5'
         Position = lpLeft
         Weight = 0.750000000000000000
-        mmHeight = 7408
-        mmLeft = 148167
-        mmTop = 33867
-        mmWidth = 265
+        mmHeight = 1960037
+        mmLeft = 39202597
+        mmTop = 8960662
+        mmWidth = 70115
         BandType = 0
       end
       object ppLabel12: TppLabel
-        UserName = 'Label12'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        Caption = 'N'#186' SELO IMETRO'
+        UserName = 'ppLabel12'
+        Caption = 'Nº SELO IMETRO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
@@ -1327,18 +1257,14 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
-        mmHeight = 6858
-        mmLeft = 129911
-        mmTop = 34396
-        mmWidth = 10753
+        mmHeight = 1814516
+        mmLeft = 34372354
+        mmTop = 9100626
+        mmWidth = 2845070
         BandType = 0
       end
       object ppLabel13: TppLabel
-        UserName = 'Label13'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLabel13'
         Caption = 'VALIDADE SELO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1348,32 +1274,24 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
-        mmHeight = 6858
-        mmLeft = 150019
-        mmTop = 34396
-        mmWidth = 12954
+        mmHeight = 1814516
+        mmLeft = 39692606
+        mmTop = 9100626
+        mmWidth = 3427419
         BandType = 0
       end
       object ppLine6: TppLine
-        UserName = 'Line6'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLine6'
         Position = lpLeft
         Weight = 0.750000000000000000
-        mmHeight = 7408
-        mmLeft = 165629
-        mmTop = 33867
-        mmWidth = 265
+        mmHeight = 1960037
+        mmLeft = 43822760
+        mmTop = 8960662
+        mmWidth = 70115
         BandType = 0
       end
       object ppLabel14: TppLabel
-        UserName = 'Label14'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLabel14'
         Caption = 'DATA DA CARGA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1383,33 +1301,25 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
-        mmHeight = 6879
-        mmLeft = 166952
-        mmTop = 34396
-        mmWidth = 13494
+        mmHeight = 1820072
+        mmLeft = 44172805
+        mmTop = 9100626
+        mmWidth = 3570295
         BandType = 0
       end
       object ppLine7: TppLine
-        UserName = 'Line7'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLine7'
         Position = lpLeft
         Weight = 0.750000000000000000
-        mmHeight = 7408
-        mmLeft = 181505
-        mmTop = 33867
-        mmWidth = 265
+        mmHeight = 1960037
+        mmLeft = 48023294
+        mmTop = 8960662
+        mmWidth = 70115
         BandType = 0
       end
       object ppLabel15: TppLabel
-        UserName = 'Label15'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        Caption = 'DATA DA INSPE'#199#195'O'
+        UserName = 'ppLabel15'
+        Caption = 'DATA DA INSPEÇÃO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
@@ -1418,32 +1328,24 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
-        mmHeight = 6858
-        mmLeft = 184415
-        mmTop = 34396
-        mmWidth = 13081
+        mmHeight = 1814516
+        mmLeft = 48793233
+        mmTop = 9100626
+        mmWidth = 3461021
         BandType = 0
       end
       object ppLine8: TppLine
-        UserName = 'Line8'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLine8'
         Position = lpLeft
         Weight = 0.750000000000000000
-        mmHeight = 7408
-        mmLeft = 201084
-        mmTop = 33867
-        mmWidth = 265
+        mmHeight = 1960037
+        mmLeft = 53203581
+        mmTop = 8960662
+        mmWidth = 70115
         BandType = 0
       end
       object ppLabel16: TppLabel
-        UserName = 'Label16'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLabel16'
         Caption = 'DATA DO RETESTE'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1453,32 +1355,24 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
-        mmHeight = 7144
-        mmLeft = 202142
-        mmTop = 34396
-        mmWidth = 14288
+        mmHeight = 1890187
+        mmLeft = 53483511
+        mmTop = 9100626
+        mmWidth = 3780374
         BandType = 0
       end
       object ppLine9: TppLine
-        UserName = 'Line9'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLine9'
         Position = lpLeft
         Weight = 0.750000000000000000
-        mmHeight = 7408
-        mmLeft = 216959
-        mmTop = 33867
-        mmWidth = 265
+        mmHeight = 1960037
+        mmLeft = 57403850
+        mmTop = 8960662
+        mmWidth = 70115
         BandType = 0
       end
       object ppLabel17: TppLabel
-        UserName = 'Label17'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLabel17'
         Caption = 'VISTORIADOR'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1487,33 +1381,25 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         Font.Style = []
         TextAlignment = taCentered
         Transparent = True
-        mmHeight = 3429
-        mmLeft = 218282
-        mmTop = 35719
-        mmWidth = 18161
+        mmHeight = 907258
+        mmLeft = 57753894
+        mmTop = 9450671
+        mmWidth = 4805107
         BandType = 0
       end
       object ppLine10: TppLine
-        UserName = 'Line10'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLine10'
         Position = lpLeft
         Weight = 0.750000000000000000
-        mmHeight = 7408
-        mmLeft = 237596
-        mmTop = 33867
-        mmWidth = 265
+        mmHeight = 1960037
+        mmLeft = 62864067
+        mmTop = 8960662
+        mmWidth = 70115
         BandType = 0
       end
       object ppLabel18: TppLabel
-        UserName = 'Label18'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        Caption = 'OBSERVA'#199#213'ES'
+        UserName = 'ppLabel18'
+        Caption = 'OBSERVAÇÕES'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
@@ -1521,19 +1407,15 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         Font.Style = []
         TextAlignment = taCentered
         Transparent = True
-        mmHeight = 3429
-        mmLeft = 243417
-        mmTop = 35719
-        mmWidth = 18838
+        mmHeight = 907258
+        mmLeft = 64404209
+        mmTop = 9450671
+        mmWidth = 4984231
         BandType = 0
       end
       object ppRazao: TppLabel
-        UserName = 'Razao'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        Caption = 'Razao'
+        UserName = 'ppRazao'
+        Caption = 'ppRazao'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
@@ -1541,17 +1423,13 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         Font.Style = []
         Transparent = True
         mmHeight = 3429
-        mmLeft = 37571
-        mmTop = 10054
-        mmWidth = 7535
+        mmLeft = 9940680
+        mmTop = 2660126
+        mmWidth = 10668
         BandType = 0
       end
       object ppEnd: TppLabel
-        UserName = 'Razao1'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppEnd'
         Caption = 'Endereco'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1559,19 +1437,15 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         Font.Size = 8
         Font.Style = []
         Transparent = True
-        mmHeight = 3429
-        mmLeft = 37571
-        mmTop = 15346
-        mmWidth = 11557
+        mmHeight = 907258
+        mmLeft = 9940680
+        mmTop = 4060304
+        mmWidth = 3057796
         BandType = 0
       end
       object ppBairro: TppLabel
-        UserName = 'Bairro'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        Caption = 'Bairro'
+        UserName = 'ppBairro'
+        Caption = 'ppBairro'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
@@ -1579,17 +1453,13 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         Font.Style = []
         Transparent = True
         mmHeight = 3429
-        mmLeft = 142082
-        mmTop = 15346
-        mmWidth = 7324
+        mmLeft = 37592604
+        mmTop = 4060304
+        mmWidth = 10456
         BandType = 0
       end
       object ppCidade: TppLabel
-        UserName = 'Bairro1'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppCidade'
         Caption = 'Cidade'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1597,33 +1467,25 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         Font.Size = 8
         Font.Style = []
         Transparent = True
-        mmHeight = 3429
-        mmLeft = 221192
-        mmTop = 15346
-        mmWidth = 8424
+        mmHeight = 907258
+        mmLeft = 58523833
+        mmTop = 4060304
+        mmWidth = 2228854
         BandType = 0
       end
       object ppLine27: TppLine
-        UserName = 'Line27'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLine27'
         Position = lpLeft
         Weight = 0.750000000000000000
-        mmHeight = 7408
-        mmLeft = 48154
-        mmTop = 34131
-        mmWidth = 265
+        mmHeight = 1960037
+        mmLeft = 12740771
+        mmTop = 9030512
+        mmWidth = 70115
         BandType = 0
       end
       object ppLabel30: TppLabel
-        UserName = 'Label30'
+        UserName = 'ppLabel30'
         AutoSize = False
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
         Caption = 'TIPO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1631,25 +1493,19 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         Font.Size = 8
         Font.Style = []
         Transparent = True
-        mmHeight = 3429
-        mmLeft = 22490
-        mmTop = 35719
-        mmWidth = 17198
+        mmHeight = 907258
+        mmLeft = 5950491
+        mmTop = 9450671
+        mmWidth = 4550313
         BandType = 0
       end
     end
     object ppDetailBand1: TppDetailBand
-      BeforePrint = ppDetailBand1BeforePrint
       mmBottomOffset = 0
-      mmHeight = 5292
+      mmHeight = 1400178
       mmPrintPosition = 0
       object ppDBText1: TppDBText
-        UserName = 'DBText1'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        DataField = 'CLEXINRORDEM'
+        UserName = 'ppDBText1'
         DataPipeline = PipeItens
         DisplayFormat = '###000'
         Font.Charset = DEFAULT_CHARSET
@@ -1660,19 +1516,14 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'PipeItens'
-        mmHeight = 3429
-        mmLeft = 10583
-        mmTop = 265
-        mmWidth = 7144
+        mmHeight = 907258
+        mmLeft = 2800091
+        mmTop = 70115
+        mmWidth = 1890187
         BandType = 4
       end
       object ppDBText2: TppDBText
-        UserName = 'DBText2'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        DataField = 'CLEXA05CAPACIDADE'
+        UserName = 'ppDBText2'
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1682,19 +1533,14 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         TextAlignment = taCentered
         Transparent = True
         DataPipelineName = 'PipeItens'
-        mmHeight = 3429
-        mmLeft = 49477
-        mmTop = 264
-        mmWidth = 11642
+        mmHeight = 907258
+        mmLeft = 13090816
+        mmTop = 69850
+        mmWidth = 3080285
         BandType = 4
       end
       object ppDBText3: TppDBText
-        UserName = 'DBText3'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        DataField = 'CLEXA30LOCALIZACAO'
+        UserName = 'ppDBText3'
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1703,19 +1549,14 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         Font.Style = []
         Transparent = True
         DataPipelineName = 'PipeItens'
-        mmHeight = 3440
-        mmLeft = 66146
-        mmTop = 264
-        mmWidth = 41804
+        mmHeight = 910168
+        mmLeft = 17501164
+        mmTop = 69850
+        mmWidth = 11060664
         BandType = 4
       end
       object ppDBText4: TppDBText
-        UserName = 'DBText4'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        DataField = 'CLEXA15RECIPIENTE'
+        UserName = 'ppDBText4'
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1724,19 +1565,14 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         Font.Style = []
         Transparent = True
         DataPipelineName = 'PipeItens'
-        mmHeight = 3429
-        mmLeft = 110067
-        mmTop = 265
-        mmWidth = 15081
+        mmHeight = 907258
+        mmLeft = 29121952
+        mmTop = 70115
+        mmWidth = 3990189
         BandType = 4
       end
       object ppDBText5: TppDBText
-        UserName = 'DBText5'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        DataField = 'CLEXA15SELOIMETRO'
+        UserName = 'ppDBText5'
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1745,19 +1581,14 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         Font.Style = []
         Transparent = True
         DataPipelineName = 'PipeItens'
-        mmHeight = 3429
-        mmLeft = 127529
-        mmTop = 265
-        mmWidth = 15875
+        mmHeight = 907258
+        mmLeft = 33742115
+        mmTop = 70115
+        mmWidth = 4200269
         BandType = 4
       end
       object ppDBText6: TppDBText
-        UserName = 'DBText6'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        DataField = 'CLEXDSELOVALIDADE'
+        UserName = 'ppDBText6'
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1766,19 +1597,14 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         Font.Style = []
         Transparent = True
         DataPipelineName = 'PipeItens'
-        mmHeight = 3429
-        mmLeft = 149754
-        mmTop = 265
-        mmWidth = 14552
+        mmHeight = 907258
+        mmLeft = 39622491
+        mmTop = 70115
+        mmWidth = 3850224
         BandType = 4
       end
       object ppDBText7: TppDBText
-        UserName = 'DBText7'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        DataField = 'CLEXDCARGA'
+        UserName = 'ppDBText7'
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1787,19 +1613,14 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         Font.Style = []
         Transparent = True
         DataPipelineName = 'PipeItens'
-        mmHeight = 3429
-        mmLeft = 167217
-        mmTop = 265
-        mmWidth = 13229
+        mmHeight = 907258
+        mmLeft = 44242919
+        mmTop = 70115
+        mmWidth = 3500180
         BandType = 4
       end
       object ppDBText8: TppDBText
-        UserName = 'DBText8'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        DataField = 'CLEXDINSPECAO'
+        UserName = 'ppDBText8'
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1808,19 +1629,14 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         Font.Style = []
         Transparent = True
         DataPipelineName = 'PipeItens'
-        mmHeight = 3429
-        mmLeft = 183092
-        mmTop = 265
-        mmWidth = 15610
+        mmHeight = 907258
+        mmLeft = 48443188
+        mmTop = 70115
+        mmWidth = 4130154
         BandType = 4
       end
       object ppDBText9: TppDBText
-        UserName = 'DBText9'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        DataField = 'CLEXDRETESTE'
+        UserName = 'ppDBText9'
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1829,19 +1645,14 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         Font.Style = []
         Transparent = True
         DataPipelineName = 'PipeItens'
-        mmHeight = 3429
-        mmLeft = 202407
-        mmTop = 265
-        mmWidth = 13758
+        mmHeight = 907258
+        mmLeft = 53553625
+        mmTop = 70115
+        mmWidth = 3640145
         BandType = 4
       end
       object ppDBText10: TppDBText
-        UserName = 'DBText10'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        DataField = 'CLEXA30VISTORIADOR'
+        UserName = 'ppDBText10'
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1850,19 +1661,14 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         Font.Style = []
         Transparent = True
         DataPipelineName = 'PipeItens'
-        mmHeight = 3429
-        mmLeft = 217753
-        mmTop = 265
-        mmWidth = 19579
+        mmHeight = 907258
+        mmLeft = 57613929
+        mmTop = 70115
+        mmWidth = 5180287
         BandType = 4
       end
       object ppDBText11: TppDBText
-        UserName = 'DBText101'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        DataField = 'CLEXA30OBS'
+        UserName = 'ppDBText11'
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1871,214 +1677,154 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         Font.Style = []
         Transparent = True
         DataPipelineName = 'PipeItens'
-        mmHeight = 3429
-        mmLeft = 238919
-        mmTop = 265
-        mmWidth = 31750
+        mmHeight = 907258
+        mmLeft = 63214111
+        mmTop = 70115
+        mmWidth = 8400538
         BandType = 4
       end
       object ppLine13: TppLine
-        UserName = 'Line13'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLine13'
         Weight = 0.750000000000000000
-        mmHeight = 265
-        mmLeft = 9525
-        mmTop = 4233
-        mmWidth = 262203
+        mmHeight = 70115
+        mmLeft = 2520161
+        mmTop = 1119983
+        mmWidth = 69374682
         BandType = 4
       end
       object ppLine14: TppLine
-        UserName = 'Line14'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLine14'
         Position = lpLeft
         Weight = 0.750000000000000000
-        mmHeight = 3440
-        mmLeft = 9525
-        mmTop = 529
-        mmWidth = 265
+        mmHeight = 910168
+        mmLeft = 2520161
+        mmTop = 139965
+        mmWidth = 70115
         BandType = 4
       end
       object ppLine15: TppLine
-        UserName = 'Line15'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLine15'
         Position = lpLeft
         Weight = 0.750000000000000000
-        mmHeight = 3440
-        mmLeft = 18785
-        mmTop = 794
-        mmWidth = 265
+        mmHeight = 910168
+        mmLeft = 4970208
+        mmTop = 210080
+        mmWidth = 70115
         BandType = 4
       end
       object ppLine16: TppLine
-        UserName = 'Line16'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLine16'
         Position = lpLeft
         Weight = 0.750000000000000000
-        mmHeight = 3440
-        mmLeft = 65352
-        mmTop = 1058
-        mmWidth = 265
+        mmHeight = 910168
+        mmLeft = 17291084
+        mmTop = 279930
+        mmWidth = 70115
         BandType = 4
       end
       object ppLine17: TppLine
-        UserName = 'Line17'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLine17'
         Position = lpLeft
         Weight = 0.750000000000000000
-        mmHeight = 3440
-        mmLeft = 108744
-        mmTop = 794
-        mmWidth = 265
+        mmHeight = 910168
+        mmLeft = 28771907
+        mmTop = 210080
+        mmWidth = 70115
         BandType = 4
       end
       object ppLine18: TppLine
-        UserName = 'Line18'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLine18'
         Position = lpLeft
         Weight = 0.750000000000000000
-        mmHeight = 3440
-        mmLeft = 126471
-        mmTop = 1058
-        mmWidth = 265
+        mmHeight = 910168
+        mmLeft = 33462185
+        mmTop = 279930
+        mmWidth = 70115
         BandType = 4
       end
       object ppLine19: TppLine
-        UserName = 'Line19'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLine19'
         Position = lpLeft
         Weight = 0.750000000000000000
-        mmHeight = 3440
-        mmLeft = 148432
-        mmTop = 1058
-        mmWidth = 265
+        mmHeight = 910168
+        mmLeft = 39272712
+        mmTop = 279930
+        mmWidth = 70115
         BandType = 4
       end
       object ppLine20: TppLine
-        UserName = 'Line20'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLine20'
         Position = lpLeft
         Weight = 0.750000000000000000
-        mmHeight = 3440
-        mmLeft = 165629
-        mmTop = 794
-        mmWidth = 265
+        mmHeight = 910168
+        mmLeft = 43822760
+        mmTop = 210080
+        mmWidth = 70115
         BandType = 4
       end
       object ppLine21: TppLine
-        UserName = 'Line201'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLine21'
         Position = lpLeft
         Weight = 0.750000000000000000
-        mmHeight = 3440
-        mmLeft = 181769
-        mmTop = 794
-        mmWidth = 265
+        mmHeight = 910168
+        mmLeft = 48093144
+        mmTop = 210080
+        mmWidth = 70115
         BandType = 4
       end
       object ppLine22: TppLine
-        UserName = 'Line22'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLine22'
         Position = lpLeft
         Weight = 0.750000000000000000
-        mmHeight = 3440
-        mmLeft = 201084
-        mmTop = 794
-        mmWidth = 265
+        mmHeight = 910168
+        mmLeft = 53203581
+        mmTop = 210080
+        mmWidth = 70115
         BandType = 4
       end
       object ppLine23: TppLine
-        UserName = 'Line23'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLine23'
         Position = lpLeft
         Weight = 0.750000000000000000
-        mmHeight = 3440
-        mmLeft = 216959
-        mmTop = 794
-        mmWidth = 265
+        mmHeight = 910168
+        mmLeft = 57403850
+        mmTop = 210080
+        mmWidth = 70115
         BandType = 4
       end
       object ppLine24: TppLine
-        UserName = 'Line24'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLine24'
         Position = lpLeft
         Weight = 0.750000000000000000
-        mmHeight = 3440
-        mmLeft = 237861
-        mmTop = 794
-        mmWidth = 265
+        mmHeight = 910168
+        mmLeft = 62934182
+        mmTop = 210080
+        mmWidth = 70115
         BandType = 4
       end
       object ppLine25: TppLine
-        UserName = 'Line25'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLine25'
         Position = lpLeft
         Weight = 0.750000000000000000
-        mmHeight = 3440
-        mmLeft = 271728
-        mmTop = 794
-        mmWidth = 265
+        mmHeight = 910168
+        mmLeft = 71894843
+        mmTop = 210080
+        mmWidth = 70115
         BandType = 4
       end
       object ppLine26: TppLine
-        UserName = 'Line26'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLine26'
         Position = lpLeft
         Weight = 0.750000000000000000
-        mmHeight = 3440
-        mmLeft = 48419
-        mmTop = 1058
-        mmWidth = 265
+        mmHeight = 910168
+        mmLeft = 12810886
+        mmTop = 279930
+        mmWidth = 70115
         BandType = 4
       end
       object pplbTipo: TppLabel
-        UserName = 'Label301'
+        UserName = 'pplbTipo'
         AutoSize = False
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
         Caption = 'TIPO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2086,32 +1832,28 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         Font.Size = 6
         Font.Style = []
         Transparent = True
-        mmHeight = 2540
-        mmLeft = 19579
-        mmTop = 794
-        mmWidth = 28310
+        mmHeight = 672043
+        mmLeft = 5180287
+        mmTop = 210080
+        mmWidth = 7490369
         BandType = 4
       end
     end
     object ppFooterBand1: TppFooterBand
       mmBottomOffset = 0
-      mmHeight = 55033
+      mmHeight = 14560844
       mmPrintPosition = 0
       object ppShape3: TppShape
-        UserName = 'Shape3'
+        UserName = 'ppShape3'
         Shape = stRoundRect
-        mmHeight = 22490
-        mmLeft = 8467
-        mmTop = 1588
-        mmWidth = 264055
+        mmHeight = 5950491
+        mmLeft = 2240232
+        mmTop = 420159
+        mmWidth = 69864691
         BandType = 8
       end
       object ppLabel19: TppLabel
-        UserName = 'Label19'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLabel19'
         Caption = '3. UNIDADES EXTINTORAS EXIGIDAS:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2119,18 +1861,14 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         Font.Size = 8
         Font.Style = [fsBold]
         Transparent = True
-        mmHeight = 3429
-        mmLeft = 14288
-        mmTop = 3440
-        mmWidth = 54822
+        mmHeight = 907258
+        mmLeft = 3780374
+        mmTop = 910168
+        mmWidth = 14505016
         BandType = 8
       end
       object ppLabel20: TppLabel
-        UserName = 'Label20'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLabel20'
         Caption = '4. UNIDADES EXISTENTES:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2138,56 +1876,44 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         Font.Size = 8
         Font.Style = [fsBold]
         Transparent = True
-        mmHeight = 3429
-        mmLeft = 84931
-        mmTop = 3440
-        mmWidth = 38608
+        mmHeight = 907258
+        mmLeft = 22471372
+        mmTop = 910168
+        mmWidth = 10215054
         BandType = 8
       end
       object ppLabel21: TppLabel
-        UserName = 'Label201'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        Caption = '5. REVIS'#195'O EM:'
+        UserName = 'ppLabel21'
+        Caption = '5. REVISÃO EM:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
         Font.Size = 8
         Font.Style = [fsBold]
         Transparent = True
-        mmHeight = 3429
-        mmLeft = 152400
-        mmTop = 3440
-        mmWidth = 22691
+        mmHeight = 907258
+        mmLeft = 40322580
+        mmTop = 910168
+        mmWidth = 6003672
         BandType = 8
       end
       object ppLabel22: TppLabel
-        UserName = 'Label22'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        Caption = 'a. Extintor de '#193'gua Pressurizada/G'#225's (AP - AG):'
+        UserName = 'ppLabel22'
+        Caption = 'a. Extintor de Água Pressurizada/Gás (AP - AG):'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
         Font.Size = 8
         Font.Style = []
         Transparent = True
-        mmHeight = 3429
-        mmLeft = 21167
-        mmTop = 9790
-        mmWidth = 59986
+        mmHeight = 907258
+        mmLeft = 5600447
+        mmTop = 2590276
+        mmWidth = 15871327
         BandType = 8
       end
       object ppLabel23: TppLabel
-        UserName = 'Label23'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLabel23'
         Caption = 'b. Extintor de Espuma (ES):'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2195,75 +1921,59 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         Font.Size = 8
         Font.Style = []
         Transparent = True
-        mmHeight = 3429
-        mmLeft = 127529
-        mmTop = 9790
-        mmWidth = 34883
+        mmHeight = 907258
+        mmLeft = 33742115
+        mmTop = 2590276
+        mmWidth = 9229479
         BandType = 8
       end
       object ppLabel24: TppLabel
-        UserName = 'Label24'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        Caption = 'c. Extintor de P'#243' Quimico Seco (PQS):'
+        UserName = 'ppLabel24'
+        Caption = 'c. Extintor de Pó Quimico Seco (PQS):'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
         Font.Size = 8
         Font.Style = []
         Transparent = True
-        mmHeight = 3429
-        mmLeft = 21167
-        mmTop = 13758
-        mmWidth = 47498
+        mmHeight = 907258
+        mmLeft = 5600447
+        mmTop = 3640145
+        mmWidth = 12567204
         BandType = 8
       end
       object ppLabel25: TppLabel
-        UserName = 'Label25'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        Caption = 'd. Extintor de G'#225's Carb'#244'nico:'
+        UserName = 'ppLabel25'
+        Caption = 'd. Extintor de Gás Carbônico:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
         Font.Size = 8
         Font.Style = []
         Transparent = True
-        mmHeight = 3429
-        mmLeft = 127529
-        mmTop = 13758
-        mmWidth = 36618
+        mmHeight = 907258
+        mmLeft = 33742115
+        mmTop = 3640145
+        mmWidth = 9688532
         BandType = 8
       end
       object ppLabel26: TppLabel
-        UserName = 'Label26'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        Caption = 'e. Extintor sobre rodas (carro'#231#225'vel):'
+        UserName = 'ppLabel26'
+        Caption = 'e. Extintor sobre rodas (carroçável):'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
         Font.Size = 8
         Font.Style = []
         Transparent = True
-        mmHeight = 3429
-        mmLeft = 21431
-        mmTop = 17727
-        mmWidth = 45085
+        mmHeight = 907258
+        mmLeft = 5670297
+        mmTop = 4690278
+        mmWidth = 11928763
         BandType = 8
       end
       object ppLabel27: TppLabel
-        UserName = 'Label27'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLabel27'
         Caption = 'TRAMANDAI, '
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2271,19 +1981,14 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         Font.Size = 8
         Font.Style = []
         Transparent = True
-        mmHeight = 3429
-        mmLeft = 14552
-        mmTop = 30956
-        mmWidth = 17314
+        mmHeight = 907258
+        mmLeft = 3850224
+        mmTop = 8190458
+        mmWidth = 4581005
         BandType = 8
       end
       object ppVariable1: TppVariable
-        UserName = 'Variable1'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        BlankWhenZero = False
+        UserName = 'ppVariable1'
         CalcOrder = 0
         DataType = dtDate
         Font.Charset = DEFAULT_CHARSET
@@ -2293,30 +1998,22 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         Font.Style = []
         Transparent = True
         mmHeight = 3429
-        mmLeft = 35719
-        mmTop = 30956
-        mmWidth = 11557
+        mmLeft = 9450671
+        mmTop = 8190458
+        mmWidth = 14690
         BandType = 8
       end
       object ppLine11: TppLine
-        UserName = 'Line11'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLine11'
         Weight = 0.750000000000000000
-        mmHeight = 265
-        mmLeft = 71173
-        mmTop = 42598
-        mmWidth = 76200
+        mmHeight = 70115
+        mmLeft = 18831227
+        mmTop = 11270743
+        mmWidth = 20161290
         BandType = 8
       end
       object ppLabel28: TppLabel
-        UserName = 'Label28'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLabel28'
         Caption = 'PROPRIETARIO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2324,51 +2021,38 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         Font.Size = 8
         Font.Style = [fsBold]
         Transparent = True
-        mmHeight = 3429
-        mmLeft = 96309
-        mmTop = 43656
-        mmWidth = 22479
+        mmHeight = 907258
+        mmLeft = 25481807
+        mmTop = 11550673
+        mmWidth = 5947581
         BandType = 8
       end
       object ppLine12: TppLine
-        UserName = 'Line12'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
+        UserName = 'ppLine12'
         Weight = 0.750000000000000000
-        mmHeight = 265
-        mmLeft = 180446
-        mmTop = 42598
-        mmWidth = 76200
+        mmHeight = 70115
+        mmLeft = 47743099
+        mmTop = 11270743
+        mmWidth = 20161290
         BandType = 8
       end
       object ppLabel29: TppLabel
-        UserName = 'Label29'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        Caption = 'RESPONS'#193'VEL T'#201'CNICO'
+        UserName = 'ppLabel29'
+        Caption = 'RESPONSÁVEL TÉCNICO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
         Font.Size = 8
         Font.Style = [fsBold]
         Transparent = True
-        mmHeight = 3429
-        mmLeft = 202407
-        mmTop = 43656
-        mmWidth = 34713
+        mmHeight = 907258
+        mmLeft = 53553625
+        mmTop = 11550673
+        mmWidth = 9184500
         BandType = 8
       end
       object ppDBText12: TppDBText
-        UserName = 'DBText12'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        DataField = 'CLEXDREVISAO'
+        UserName = 'ppDBText12'
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2377,19 +2061,14 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         Font.Style = []
         Transparent = True
         DataPipelineName = 'PipeItens'
-        mmHeight = 3440
-        mmLeft = 177536
-        mmTop = 3440
-        mmWidth = 26988
+        mmHeight = 910168
+        mmLeft = 46973160
+        mmTop = 910168
+        mmWidth = 7140589
         BandType = 8
       end
       object ppDBText13: TppDBText
-        UserName = 'DBText13'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        DataField = 'CLEXIEEXISTENTE'
+        UserName = 'ppDBText13'
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2398,19 +2077,14 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         Font.Style = []
         Transparent = True
         DataPipelineName = 'PipeItens'
-        mmHeight = 3440
-        mmLeft = 125148
-        mmTop = 3440
-        mmWidth = 23283
+        mmHeight = 910168
+        mmLeft = 33112141
+        mmTop = 910168
+        mmWidth = 6160306
         BandType = 8
       end
       object ppDBText14: TppDBText
-        UserName = 'DBText14'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        DataField = 'CLEXIEXIGIDO'
+        UserName = 'ppDBText14'
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2419,19 +2093,14 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         Font.Style = []
         Transparent = True
         DataPipelineName = 'PipeItens'
-        mmHeight = 3440
-        mmLeft = 70644
-        mmTop = 3440
-        mmWidth = 12435
+        mmHeight = 910168
+        mmLeft = 18691262
+        mmTop = 910168
+        mmWidth = 3290100
         BandType = 8
       end
       object ppDBText15: TppDBText
-        UserName = 'DBText15'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        DataField = 'CLEXIEX_AP_AG'
+        UserName = 'ppDBText15'
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2440,19 +2109,14 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         Font.Style = []
         Transparent = True
         DataPipelineName = 'PipeItens'
-        mmHeight = 3440
-        mmLeft = 83344
-        mmTop = 9790
-        mmWidth = 12435
+        mmHeight = 910168
+        mmLeft = 22051477
+        mmTop = 2590276
+        mmWidth = 3290100
         BandType = 8
       end
       object ppDBText16: TppDBText
-        UserName = 'DBText16'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        DataField = 'CLEXIEX_ES'
+        UserName = 'ppDBText16'
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2461,19 +2125,14 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         Font.Style = []
         Transparent = True
         DataPipelineName = 'PipeItens'
-        mmHeight = 3440
-        mmLeft = 167482
-        mmTop = 9790
-        mmWidth = 12435
+        mmHeight = 910168
+        mmLeft = 44313034
+        mmTop = 2590276
+        mmWidth = 3290100
         BandType = 8
       end
       object ppDBText17: TppDBText
-        UserName = 'DBText17'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        DataField = 'CLEXIEX_PQS'
+        UserName = 'ppDBText17'
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2482,19 +2141,14 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         Font.Style = []
         Transparent = True
         DataPipelineName = 'PipeItens'
-        mmHeight = 3440
-        mmLeft = 83344
-        mmTop = 13758
-        mmWidth = 12435
+        mmHeight = 910168
+        mmLeft = 22051477
+        mmTop = 3640145
+        mmWidth = 3290100
         BandType = 8
       end
       object ppDBText18: TppDBText
-        UserName = 'DBText18'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        DataField = 'CLEXIEX_CARROCAVEL'
+        UserName = 'ppDBText18'
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2503,19 +2157,14 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         Font.Style = []
         Transparent = True
         DataPipelineName = 'PipeItens'
-        mmHeight = 3440
-        mmLeft = 83344
-        mmTop = 17463
-        mmWidth = 12435
+        mmHeight = 910168
+        mmLeft = 22051477
+        mmTop = 4620428
+        mmWidth = 3290100
         BandType = 8
       end
       object ppDBText19: TppDBText
-        UserName = 'DBText19'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        DataField = 'CLEXIEX_CO2'
+        UserName = 'ppDBText19'
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2524,19 +2173,14 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         Font.Style = []
         Transparent = True
         DataPipelineName = 'PipeItens'
-        mmHeight = 3440
-        mmLeft = 167746
-        mmTop = 14023
-        mmWidth = 12435
+        mmHeight = 910168
+        mmLeft = 44382884
+        mmTop = 3710259
+        mmWidth = 3290100
         BandType = 8
       end
       object ppDBText20: TppDBText
-        UserName = 'DBText20'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        DataField = 'CLEXA60RESPONSAVEL'
+        UserName = 'ppDBText20'
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2546,10 +2190,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
         TextAlignment = taCentered
         Transparent = True
         DataPipelineName = 'PipeItens'
-        mmHeight = 3429
-        mmLeft = 184944
-        mmTop = 38629
-        mmWidth = 67998
+        mmHeight = 907258
+        mmLeft = 48933197
+        mmTop = 10220610
+        mmWidth = 17991173
         BandType = 8
       end
     end

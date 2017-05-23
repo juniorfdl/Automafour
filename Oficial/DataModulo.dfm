@@ -1,9 +1,9 @@
 inherited DM: TDM
   OldCreateOrder = True
-  Left = 596
-  Top = 104
-  Height = 348
-  Width = 748
+  Left = 65528
+  Top = 65528
+  Height = 744
+  Width = 1382
   inherited DB: TDatabase
     AliasName = 'Easy_Gestao'
   end
@@ -425,11 +425,9 @@ inherited DM: TDM
       FixedChar = True
       Size = 1
     end
-    object SQLEmpresaEMPRN2VLRFUNDOPROMO: TBCDField
+    object SQLEmpresaEMPRN2VLRFUNDOPROMO: TFloatField
       FieldName = 'EMPRN2VLRFUNDOPROMO'
       Origin = 'DB.EMPRESA.EMPRN2VLRFUNDOPROMO'
-      Precision = 15
-      Size = 2
     end
     object SQLEmpresaEMPRA3CRT: TStringField
       FieldName = 'EMPRA3CRT'
@@ -611,5 +609,65 @@ inherited DM: TDM
       FieldName = 'REGISTRO'
       Origin = 'DB.PLANODECONTAS.REGISTRO'
     end
+  end
+  object SQLProduto: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'select * from PRODUTO')
+    Macros = <>
+    Left = 33
+    Top = 294
+  end
+  object SQLProdutoFilho: TRxQuery
+    DatabaseName = 'DB'
+    DataSource = DSSQLProduto
+    SQL.Strings = (
+      'select * from PRODUTO'
+      'where PRODICODPAI = :PRODICODPAI')
+    Macros = <>
+    Left = 153
+    Top = 294
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'PRODICODPAI'
+        ParamType = ptUnknown
+      end>
+  end
+  object SQLProdutoSaldo: TRxQuery
+    DatabaseName = 'DB'
+    RequestLive = True
+    SQL.Strings = (
+      'select * from PRODUTOSALDO'
+      'where '
+      '  EMPRICOD is null')
+    Macros = <>
+    Left = 153
+    Top = 347
+    object SQLProdutoSaldoEMPRICOD: TIntegerField
+      FieldName = 'EMPRICOD'
+      Origin = 'DB.PRODUTOSALDO.EMPRICOD'
+    end
+    object SQLProdutoSaldoPRODICOD: TIntegerField
+      FieldName = 'PRODICOD'
+      Origin = 'DB.PRODUTOSALDO.PRODICOD'
+    end
+    object SQLProdutoSaldoPSLDN3QTDE: TFloatField
+      FieldName = 'PSLDN3QTDE'
+      Origin = 'DB.PRODUTOSALDO.PSLDN3QTDE'
+    end
+    object SQLProdutoSaldoPSLDN3QTDMIN: TFloatField
+      FieldName = 'PSLDN3QTDMIN'
+      Origin = 'DB.PRODUTOSALDO.PSLDN3QTDMIN'
+    end
+    object SQLProdutoSaldoPSLDN3QTDMAX: TFloatField
+      FieldName = 'PSLDN3QTDMAX'
+      Origin = 'DB.PRODUTOSALDO.PSLDN3QTDMAX'
+    end
+  end
+  object DSSQLProduto: TDataSource
+    DataSet = SQLProduto
+    Left = 33
+    Top = 348
   end
 end

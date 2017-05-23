@@ -471,7 +471,7 @@ begin
   SQLUnidade.Open;
 
   if not DM.SQLConfigCompra.Active then DM.SQLConfigCompra.Active := true;
-  vEncargos := DM.SQLConfigVendaCFVEN2PERCENCARG.Value;
+  vEncargos := DM.SQLConfigVenda.fieldbyname('CFVEN2PERCENCARG').Value;
  { vPis      := DM.SQLConfigVendaCFVEN2PERCPIS.Value;
   vCofins   := DM.SQLConfigVendaCFVEN2PERCCOFINS.Value; }
 end;
@@ -482,7 +482,7 @@ begin
   inherited;
   If DM.GerandoNotaCompra Then Exit;
   If Ocupado Then Exit;
-  DataSet.FieldByName('EncargosCalc').AsVariant := DM.SQLConfigVendaCFVEN2PERCENCARG.Value;
+  DataSet.FieldByName('EncargosCalc').AsVariant := DM.SQLConfigVenda.fieldbyname('CFVEN2PERCENCARG').Value;
   If (DataSet.FieldByName('PRODICOD').AsVariant <> null) then
     Begin
       If DM.ProcuraRegistro('PRODUTO',['PRODICOD'],[DataSet.FieldByName('PRODICOD').AsString],1) Then
@@ -575,7 +575,7 @@ begin
   EditCdProduto.Text := (Sender as TField).AsString;
   If (SQLTemplate.FieldByName('PRODICOD').AsVariant <> null) and (SQLTemplate.State = dsInsert) and (DM.ProcuraRegistro('PRODUTO',['PRODICOD'],[SQLTemplate.FieldByName('PRODICOD').AsString],1)) Then
     Begin
-       if DM.SQLConfigCompraCFCOCTESTPRODFORN.Value = 'S' then
+       if DM.SQLConfigCompra.fieldbyname('CFCOCTESTPRODFORN').Value = 'S' then
          begin
            SQLProdutoFornecedor.Close;
            SQLProdutoFornecedor.MacroByName('PRODICOD').AsString := 'PRODICOD = ' + SQLTemplate.FieldByName('PRODICOD').AsString;
@@ -972,7 +972,7 @@ begin
   CodigoPedido  := DataSet.FindField('PDCPA13ID').asString;
   PosicaoItem   := DataSet.FindField('PCITIPOS').asInteger;
 
-  if DM.SQLConfigCompraCFCOCINFDADOSFRETE.AsString = 'S' then
+  if DM.SQLConfigCompra.fieldbyname('CFCOCINFDADOSFRETE').AsString = 'S' then
      if SQLTemplateNOCIN2VLRCOMISSAO.IsNull then
         if Application.MessageBox('O campo Valor da Tarifa Comissão não foi preenchido.'+
                                   char(#13)+'Caso o campo permaneça nulo não sera efetuado o cálculo de comissão para o funcionário.'+

@@ -78,7 +78,7 @@ type
     SQLEmpresaEMPRA15CODEAN: TStringField;
     SQLEmpresaEMPRA60CONTATO: TStringField;
     SQLEmpresaEMPRCLUCROREAL: TStringField;
-    SQLEmpresaEMPRN2VLRFUNDOPROMO: TBCDField;
+    SQLEmpresaEMPRN2VLRFUNDOPROMO: TFloatField;
     SQLEmpresaEMPRA3CRT: TStringField;
     SQLEmpresaEMPRIENDNRO: TIntegerField;
     SQLEmpresaEMPRA75EMAILUSUARIO: TStringField;
@@ -110,13 +110,22 @@ type
     SQLPlanodeContasPENDENTE: TStringField;
     SQLPlanodeContasREGISTRO: TDateTimeField;
     SQLPlanodeContasPLCTINIVEL: TIntegerField;
+    SQLProduto: TRxQuery;
+    SQLProdutoFilho: TRxQuery;
+    SQLProdutoSaldo: TRxQuery;
+    SQLProdutoSaldoEMPRICOD: TIntegerField;
+    SQLProdutoSaldoPRODICOD: TIntegerField;
+    SQLProdutoSaldoPSLDN3QTDE: TFloatField;
+    SQLProdutoSaldoPSLDN3QTDMIN: TFloatField;
+    SQLProdutoSaldoPSLDN3QTDMAX: TFloatField;
+    DSSQLProduto: TDataSource;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
     CodTarefa:String;
-    GerandoPedidoCompra, InserindoItemPC:Boolean;
+    GerandoPedidoCompra, InserindoItemPC, GerandoNotaCompra, IncluindoGrade, ImportandoPedidoCompra, InserindoItemNC, ProcurandoProduto:Boolean;
     ConfigEtiqueta:Integer;
   end;
 

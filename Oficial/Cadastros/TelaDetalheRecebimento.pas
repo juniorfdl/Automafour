@@ -15,10 +15,10 @@ type
     SQLRecebimentoCTRCA13ID: TStringField;
     SQLRecebimentoRECEICOD: TIntegerField;
     SQLRecebimentoRECEDRECTO: TDateTimeField;
-    SQLRecebimentoRECEN2VLRRECTO: TBCDField;
-    SQLRecebimentoRECEN2VLRJURO: TBCDField;
-    SQLRecebimentoRECEN2VLRMULTA: TBCDField;
-    SQLRecebimentoRECEN2DESC: TBCDField;
+    SQLRecebimentoRECEN2VLRRECTO: TFloatField;
+    SQLRecebimentoRECEN2VLRJURO: TFloatField;
+    SQLRecebimentoRECEN2VLRMULTA: TFloatField;
+    SQLRecebimentoRECEN2DESC: TFloatField;
     SQLRecebimentoEMPRICODREC: TIntegerField;
     SQLRecebimentoEmpresaLookup: TStringField;
     SQLRecebimentoRECEDDATAMOV: TDateTimeField;

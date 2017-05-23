@@ -445,7 +445,7 @@ object FormTelaSaidaRapidaEstoque: TFormTelaSaidaRapidaEstoque
   object PanelCabecalho: TPanel
     Left = 0
     Top = 0
-    Width = 625
+    Width = 617
     Height = 80
     Align = alTop
     BevelOuter = bvNone
@@ -473,7 +473,7 @@ object FormTelaSaidaRapidaEstoque: TFormTelaSaidaRapidaEstoque
     object PanelNavigator: TPanel
       Left = 0
       Top = 48
-      Width = 625
+      Width = 617
       Height = 32
       Align = alBottom
       BevelOuter = bvNone
@@ -482,7 +482,7 @@ object FormTelaSaidaRapidaEstoque: TFormTelaSaidaRapidaEstoque
       object Image1: TImage
         Left = 0
         Top = 0
-        Width = 625
+        Width = 617
         Height = 32
         Align = alTop
         Picture.Data = {

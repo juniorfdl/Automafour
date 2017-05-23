@@ -133,7 +133,19 @@ uses
   TelaConsultaNotaCompra in 'Cadastros\TelaConsultaNotaCompra.pas' {FormTelaConsultaNotaCompra},
   TelaConsultaPedidoVenda in 'ArquivosComuns\TelaConsultaPedidoVenda.pas' {FormTelaConsultaPedidoVenda},
   TelaConsultaNotaFiscal in 'ArquivosComuns\TelaConsultaNotaFiscal.pas' {FormTelaConsultaNotaFiscal},
-  CadastroPedidoCompraFinanceiro in 'Compras\CadastroPedidoCompraFinanceiro.pas' {FormCadastroPedidoCompraFinanceiro};
+  CadastroPedidoCompraFinanceiro in 'Compras\CadastroPedidoCompraFinanceiro.pas' {FormCadastroPedidoCompraFinanceiro},
+  CadastroNotaCompra in 'Compras\CadastroNotaCompra.pas' {FormCadastroNotaCompra},
+  CadastroNotaCompraFinanceiro in 'Compras\CadastroNotaCompraFinanceiro.pas' {FormCadastroNotaCompraFinanceiro},
+  CadastroNotaCompraItem in 'Compras\CadastroNotaCompraItem.pas' {FormCadastroNotaCompraItem},
+  TelaLancamentoGradeNota in 'Compras\TelaLancamentoGradeNota.pas' {FormTelaLancamentoGradeNota},
+  CadastroLote in 'Cadastros\CadastroLote.pas' {FormCadastroLote},
+  TelaProdutoNumeroSerie in 'ArquivosComuns\TelaProdutoNumeroSerie.pas' {FormTelaGeralModalCadastroProdutoNumeroSerie},
+  TelaImportacaoPedidoCompra in 'Compras\TelaImportacaoPedidoCompra.pas' {FormTelaImportacaoPedidoCompra},
+  TelaEmissaoEtiquetasCodigoBarras in 'Compras\TelaEmissaoEtiquetasCodigoBarras.pas' {FormTelaEmissaoEtiquetasCodigoBarras},
+  TelaConsultaPlanoContasDebitos in 'ArquivosComuns\TelaConsultaPlanoContasDebitos.pas' {FormTelaConsultaPlanoContasDebitos},
+  TelaConsultaCliente in 'ArquivosComuns\TelaConsultaCliente.pas' {FormTelaConsultaCliente},
+  RelatorioMediaComprasPeriodo in 'Compras\RelatorioMediaComprasPeriodo.pas',
+  RelatorioTemplate in '..\Template\RelatorioTemplate.pas' {FormRelatorioTEMPLATE};
 
 {$R *.res}
 

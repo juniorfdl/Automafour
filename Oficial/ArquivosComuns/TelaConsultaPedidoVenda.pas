@@ -18,24 +18,24 @@ type
     SQLTemplateTRANICOD: TIntegerField;
     SQLTemplatePLRCICOD: TIntegerField;
     SQLTemplatePDVDDEMISSAO: TDateTimeField;
-    SQLTemplatePDVDN2VLRFRETE: TBCDField;
+    SQLTemplatePDVDN2VLRFRETE: TFloatField;
     SQLTemplatePDVDA30NROPEDCOMP: TStringField;
     SQLTemplatePDVDA30COMPRADOR: TStringField;
     SQLTemplatePDVDCTIPO: TStringField;
     SQLTemplatePDVDCSTATUS: TStringField;
-    SQLTemplatePDVDN2VLRDESC: TBCDField;
-    SQLTemplatePDVDN2TOTPROD: TBCDField;
-    SQLTemplatePDVDN2TOTPED: TBCDField;
+    SQLTemplatePDVDN2VLRDESC: TFloatField;
+    SQLTemplatePDVDN2TOTPROD: TFloatField;
+    SQLTemplatePDVDN2TOTPED: TFloatField;
     SQLTemplatePDVDTOBS: TStringField;
     SQLTemplateREGISTRO: TDateTimeField;
     SQLTemplatePENDENTE: TStringField;
-    SQLTemplatePDVDN2VLRDESCPROM: TBCDField;
+    SQLTemplatePDVDN2VLRDESCPROM: TFloatField;
     SQLTemplatePDVDCTIPOFRETE: TStringField;
     SQLTemplatePDVDDENTREGA: TDateTimeField;
     SQLTemplatePDVDINROTALAO: TIntegerField;
     SQLTemplatePDVDCIMPORTADO: TStringField;
-    SQLTemplatePDVDN2PERCFAT: TBCDField;
-    SQLTemplatePDVDN2PERCOMIS: TBCDField;
+    SQLTemplatePDVDN2PERCFAT: TFloatField;
+    SQLTemplatePDVDN2PERCOMIS: TFloatField;
     SQLTemplateUSUAA60LOGIN: TStringField;
     SQLTemplateOPESICOD: TIntegerField;
     SQLTemplateROTAICOD: TIntegerField;
@@ -44,7 +44,7 @@ type
     SQLTemplatePDVDA15NROPEDPALM: TStringField;
     SQLTemplateSERIA5COD: TStringField;
     SQLTemplateVEICA13ID: TStringField;
-    SQLTemplatePDVDN2VLROUTRASDESP: TBCDField;
+    SQLTemplatePDVDN2VLROUTRASDESP: TFloatField;
   private
     { Private declarations }
   public

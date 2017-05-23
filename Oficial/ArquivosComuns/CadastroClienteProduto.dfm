@@ -14,7 +14,7 @@ inherited FormCadastroClienteProduto: TFormCadastroClienteProduto
                   item
                     Expanded = False
                     FieldName = 'PRODICOD'
-                    Title.Caption = 'C'#243'digo'
+                    Title.Caption = 'Código'
                     Visible = True
                   end
                   item
@@ -78,7 +78,7 @@ inherited FormCadastroClienteProduto: TFormCadastroClienteProduto
               Top = 4
               Width = 69
               Height = 13
-              Caption = 'C'#243'd.Produto'
+              Caption = 'Cód.Produto'
               FocusControl = DBEdit2
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
@@ -311,7 +311,7 @@ inherited FormCadastroClienteProduto: TFormCadastroClienteProduto
       FixedChar = True
       Size = 1
     end
-    object SQLTemplateCLPRN3PERCDESC: TBCDField
+    object SQLTemplateCLPRN3PERCDESC: TFloatField
       FieldName = 'CLPRN3PERCDESC'
       Origin = 'DB.CLIENTEPRODUTO.CLPRN3PERCDESC'
       Precision = 15

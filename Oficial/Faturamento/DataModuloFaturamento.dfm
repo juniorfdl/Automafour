@@ -26,17 +26,13 @@ inherited DMFaturamento: TDMFaturamento
       'select * from CONFIGCREDIARIO ')
     Left = 193
     Top = 8
-    object SQLConfigCrediarioCFCRN2PERCJURATRAS: TBCDField
+    object SQLConfigCrediarioCFCRN2PERCJURATRAS: TFloatField
       FieldName = 'CFCRN2PERCJURATRAS'
       Origin = 'DB.CONFIGCREDIARIO.CFCRN2PERCJURATRAS'
-      Precision = 15
-      Size = 3
     end
-    object SQLConfigCrediarioCFCRN2PERCMULATRAS: TBCDField
+    object SQLConfigCrediarioCFCRN2PERCMULATRAS: TFloatField
       FieldName = 'CFCRN2PERCMULATRAS'
       Origin = 'DB.CONFIGCREDIARIO.CFCRN2PERCMULATRAS'
-      Precision = 15
-      Size = 3
     end
     object SQLConfigCrediarioCFCRINRODIASTOLJUR: TIntegerField
       FieldName = 'CFCRINRODIASTOLJUR'
@@ -46,11 +42,9 @@ inherited DMFaturamento: TDMFaturamento
       FieldName = 'CFCRINRODIASTOLMUL'
       Origin = 'DB.CONFIGCREDIARIO.CFCRINRODIASTOLMUL'
     end
-    object SQLConfigCrediarioCFCRN2PERCADIANT: TBCDField
+    object SQLConfigCrediarioCFCRN2PERCADIANT: TFloatField
       FieldName = 'CFCRN2PERCADIANT'
       Origin = 'DB.CONFIGCREDIARIO.CFCRN2PERCADIANT'
-      Precision = 15
-      Size = 3
     end
     object SQLConfigCrediarioCFCRINRODIASADIANT: TIntegerField
       FieldName = 'CFCRINRODIASADIANT'
@@ -105,11 +99,9 @@ inherited DMFaturamento: TDMFaturamento
       Origin = 'DB.CONFIGCREDIARIO.CFCRA255PATHAUTDEP'
       Size = 255
     end
-    object SQLConfigCrediarioCFCRN2PERCTAXACOBR: TBCDField
+    object SQLConfigCrediarioCFCRN2PERCTAXACOBR: TFloatField
       FieldName = 'CFCRN2PERCTAXACOBR'
       Origin = 'DB.CONFIGCREDIARIO.CFCRN2PERCTAXACOBR'
-      Precision = 15
-      Size = 3
     end
     object SQLConfigCrediarioCFCRINRODIACARTA4A: TIntegerField
       FieldName = 'CFCRINRODIACARTA4A'
@@ -522,11 +514,9 @@ inherited DMFaturamento: TDMFaturamento
       FixedChar = True
       Size = 1
     end
-    object SQLEmpresaEMPRN2VLRFUNDOPROMO: TBCDField
+    object SQLEmpresaEMPRN2VLRFUNDOPROMO: TFloatField
       FieldName = 'EMPRN2VLRFUNDOPROMO'
       Origin = 'DB.EMPRESA.EMPRN2VLRFUNDOPROMO'
-      Precision = 15
-      Size = 2
     end
     object SQLEmpresaEMPRA15REGJUNTA: TStringField
       FieldName = 'EMPRA15REGJUNTA'
@@ -658,17 +648,13 @@ inherited DMFaturamento: TDMFaturamento
     Macros = <>
     Left = 488
     Top = 8
-    object SQLConfigVendaCFVEN3MAXLIMCRED: TBCDField
+    object SQLConfigVendaCFVEN3MAXLIMCRED: TFloatField
       FieldName = 'CFVEN3MAXLIMCRED'
       Origin = 'DB.CONFIGVENDA.CFVEN3MAXLIMCRED'
-      Precision = 15
-      Size = 3
     end
-    object SQLConfigVendaCFVEN2PERCLIMCRED: TBCDField
+    object SQLConfigVendaCFVEN2PERCLIMCRED: TFloatField
       FieldName = 'CFVEN2PERCLIMCRED'
       Origin = 'DB.CONFIGVENDA.CFVEN2PERCLIMCRED'
-      Precision = 15
-      Size = 3
     end
     object SQLConfigVendaCFVECTIPOLIMCRED: TStringField
       FieldName = 'CFVECTIPOLIMCRED'
@@ -706,11 +692,9 @@ inherited DMFaturamento: TDMFaturamento
       FixedChar = True
       Size = 1
     end
-    object SQLConfigVendaCFVEN3ALIQISSQN: TBCDField
+    object SQLConfigVendaCFVEN3ALIQISSQN: TFloatField
       FieldName = 'CFVEN3ALIQISSQN'
       Origin = 'DB.CONFIGVENDA.CFVEN3ALIQISSQN'
-      Precision = 15
-      Size = 3
     end
     object SQLConfigVendaCFVECIMPLEGPEDVENF: TStringField
       FieldName = 'CFVECIMPLEGPEDVENF'
@@ -718,11 +702,9 @@ inherited DMFaturamento: TDMFaturamento
       FixedChar = True
       Size = 1
     end
-    object SQLConfigVendaCFVEN3PERCICMFRETE: TBCDField
+    object SQLConfigVendaCFVEN3PERCICMFRETE: TFloatField
       FieldName = 'CFVEN3PERCICMFRETE'
       Origin = 'DB.CONFIGVENDA.CFVEN3PERCICMFRETE'
-      Precision = 15
-      Size = 3
     end
     object SQLConfigVendaCFVEA255OBSPADNF: TStringField
       FieldName = 'CFVEA255OBSPADNF'
@@ -935,29 +917,21 @@ inherited DMFaturamento: TDMFaturamento
       FieldName = 'CFVEIOPTESVENDNFNA'
       Origin = 'DB.CONFIGVENDA.CFVEIOPTESVENDNFNA'
     end
-    object SQLConfigVendaCFVEN2PERCCOFINS: TBCDField
+    object SQLConfigVendaCFVEN2PERCCOFINS: TFloatField
       FieldName = 'CFVEN2PERCCOFINS'
       Origin = 'DB.CONFIGVENDA.CFVEN2PERCCOFINS'
-      Precision = 15
-      Size = 3
     end
-    object SQLConfigVendaCFVEN2PERCENCARG: TBCDField
+    object SQLConfigVendaCFVEN2PERCENCARG: TFloatField
       FieldName = 'CFVEN2PERCENCARG'
       Origin = 'DB.CONFIGVENDA.CFVEN2PERCENCARG'
-      Precision = 15
-      Size = 3
     end
-    object SQLConfigVendaCFVEN2PERCPIS: TBCDField
+    object SQLConfigVendaCFVEN2PERCPIS: TFloatField
       FieldName = 'CFVEN2PERCPIS'
       Origin = 'DB.CONFIGVENDA.CFVEN2PERCPIS'
-      Precision = 15
-      Size = 3
     end
-    object SQLConfigVendaCFVEN2PERCICMS: TBCDField
+    object SQLConfigVendaCFVEN2PERCICMS: TFloatField
       FieldName = 'CFVEN2PERCICMS'
       Origin = 'DB.CONFIGVENDA.CFVEN2PERCICMS'
-      Precision = 15
-      Size = 3
     end
     object SQLConfigVendaCFVECVENDEDOREXIGE: TStringField
       FieldName = 'CFVECVENDEDOREXIGE'
@@ -1089,23 +1063,17 @@ inherited DMFaturamento: TDMFaturamento
       FieldName = 'ICMSICOD'
       Origin = 'DB.PRODUTO.ICMSICOD'
     end
-    object SQLProdutoPRODN3PESOBRUTO: TBCDField
+    object SQLProdutoPRODN3PESOBRUTO: TFloatField
       FieldName = 'PRODN3PESOBRUTO'
       Origin = 'DB.PRODUTO.PRODN3PESOBRUTO'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoPRODN3PESOLIQ: TBCDField
+    object SQLProdutoPRODN3PESOLIQ: TFloatField
       FieldName = 'PRODN3PESOLIQ'
       Origin = 'DB.PRODUTO.PRODN3PESOLIQ'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoPRODN3CAPACEMBAL: TBCDField
+    object SQLProdutoPRODN3CAPACEMBAL: TFloatField
       FieldName = 'PRODN3CAPACEMBAL'
       Origin = 'DB.PRODUTO.PRODN3CAPACEMBAL'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoPRODDCAD: TDateTimeField
       FieldName = 'PRODDCAD'
@@ -1115,17 +1083,13 @@ inherited DMFaturamento: TDMFaturamento
       FieldName = 'PRODDULTALTER'
       Origin = 'DB.PRODUTO.PRODDULTALTER'
     end
-    object SQLProdutoPRODN3VLRVENDA: TBCDField
+    object SQLProdutoPRODN3VLRVENDA: TFloatField
       FieldName = 'PRODN3VLRVENDA'
       Origin = 'DB.PRODUTO.PRODN3VLRVENDA'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoPRODN3VLRVENDAPROM: TBCDField
+    object SQLProdutoPRODN3VLRVENDAPROM: TFloatField
       FieldName = 'PRODN3VLRVENDAPROM'
       Origin = 'DB.PRODUTO.PRODN3VLRVENDAPROM'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoPRODDINIPROMO: TDateTimeField
       FieldName = 'PRODDINIPROMO'
@@ -1135,35 +1099,25 @@ inherited DMFaturamento: TDMFaturamento
       FieldName = 'PRODDFIMPROMO'
       Origin = 'DB.PRODUTO.PRODDFIMPROMO'
     end
-    object SQLProdutoPRODN3VLRCOMPRA: TBCDField
+    object SQLProdutoPRODN3VLRCOMPRA: TFloatField
       FieldName = 'PRODN3VLRCOMPRA'
       Origin = 'DB.PRODUTO.PRODN3VLRCOMPRA'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoPRODN3VLRCUSTO: TBCDField
+    object SQLProdutoPRODN3VLRCUSTO: TFloatField
       FieldName = 'PRODN3VLRCUSTO'
       Origin = 'DB.PRODUTO.PRODN3VLRCUSTO'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoPRODN3VLRCUSTOMED: TBCDField
+    object SQLProdutoPRODN3VLRCUSTOMED: TFloatField
       FieldName = 'PRODN3VLRCUSTOMED'
       Origin = 'DB.PRODUTO.PRODN3VLRCUSTOMED'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoPRODN3PERCIPI: TBCDField
+    object SQLProdutoPRODN3PERCIPI: TFloatField
       FieldName = 'PRODN3PERCIPI'
       Origin = 'DB.PRODUTO.PRODN3PERCIPI'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoPRODN3PERCMARGLUCR: TBCDField
+    object SQLProdutoPRODN3PERCMARGLUCR: TFloatField
       FieldName = 'PRODN3PERCMARGLUCR'
       Origin = 'DB.PRODUTO.PRODN3PERCMARGLUCR'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoPRODCATIVO: TStringField
       FieldName = 'PRODCATIVO'
@@ -1183,17 +1137,13 @@ inherited DMFaturamento: TDMFaturamento
       FixedChar = True
       Size = 1
     end
-    object SQLProdutoPRODN2COMISVISTA: TBCDField
+    object SQLProdutoPRODN2COMISVISTA: TFloatField
       FieldName = 'PRODN2COMISVISTA'
       Origin = 'DB.PRODUTO.PRODN2COMISVISTA'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoPRODN2COMISPRAZO: TBCDField
+    object SQLProdutoPRODN2COMISPRAZO: TFloatField
       FieldName = 'PRODN2COMISPRAZO'
       Origin = 'DB.PRODUTO.PRODN2COMISPRAZO'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoPRODDIMOBOLIZ: TDateTimeField
       FieldName = 'PRODDIMOBOLIZ'
@@ -1209,11 +1159,9 @@ inherited DMFaturamento: TDMFaturamento
       FixedChar = True
       Size = 5
     end
-    object SQLProdutoPRODN3QTDEBAIXA: TBCDField
+    object SQLProdutoPRODN3QTDEBAIXA: TFloatField
       FieldName = 'PRODN3QTDEBAIXA'
       Origin = 'DB.PRODUTO.PRODN3QTDEBAIXA'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoCORICOD: TIntegerField
       FieldName = 'CORICOD'
@@ -1283,22 +1231,17 @@ inherited DMFaturamento: TDMFaturamento
       FieldName = 'PRODICOD'
       Origin = 'DB.PRODUTOSALDO.PRODICOD'
     end
-    object SQLProdutoSaldoPSLDN3QTDE: TBCDField
+    object SQLProdutoSaldoPSLDN3QTDE: TFloatField
       FieldName = 'PSLDN3QTDE'
       Origin = 'DB.PRODUTOSALDO.PSLDQTDE'
-      Size = 3
     end
-    object SQLProdutoSaldoPSLDN3QTDMIN: TBCDField
+    object SQLProdutoSaldoPSLDN3QTDMIN: TFloatField
       FieldName = 'PSLDN3QTDMIN'
       Origin = 'DB.PRODUTOSALDO.PSLDN3QTDMIN'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoSaldoPSLDN3QTDMAX: TBCDField
+    object SQLProdutoSaldoPSLDN3QTDMAX: TFloatField
       FieldName = 'PSLDN3QTDMAX'
       Origin = 'DB.PRODUTOSALDO.PSLDN3QTDMAX'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoSaldoPENDENTE: TStringField
       FieldName = 'PENDENTE'

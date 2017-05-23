@@ -173,37 +173,29 @@ object FormTelaDetalheRecebimento: TFormTelaDetalheRecebimento
       Origin = 'DB.RECEBIMENTO.RECEDRECTO'
       DisplayFormat = 'dd/mm/yyyy'
     end
-    object SQLRecebimentoRECEN2VLRRECTO: TBCDField
+    object SQLRecebimentoRECEN2VLRRECTO: TFloatField
       DisplayLabel = 'Valor'
       FieldName = 'RECEN2VLRRECTO'
       Origin = 'DB.RECEBIMENTO.RECEN2VLRRECTO'
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
-    object SQLRecebimentoRECEN2VLRJURO: TBCDField
+    object SQLRecebimentoRECEN2VLRJURO: TFloatField
       DisplayLabel = 'Juros'
       FieldName = 'RECEN2VLRJURO'
       Origin = 'DB.RECEBIMENTO.RECEN2VLRJURO'
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
-    object SQLRecebimentoRECEN2VLRMULTA: TBCDField
+    object SQLRecebimentoRECEN2VLRMULTA: TFloatField
       DisplayLabel = 'Multa'
       FieldName = 'RECEN2VLRMULTA'
       Origin = 'DB.RECEBIMENTO.RECEN2VLRMULTA'
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
-    object SQLRecebimentoRECEN2DESC: TBCDField
+    object SQLRecebimentoRECEN2DESC: TFloatField
       DisplayLabel = 'Desconto'
       FieldName = 'RECEN2DESC'
       Origin = 'DB.RECEBIMENTO.RECEN2DESC'
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
     object SQLRecebimentoEMPRICODREC: TIntegerField
       DisplayLabel = 'Empresa Recto.'

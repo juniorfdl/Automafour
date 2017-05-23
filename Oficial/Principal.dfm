@@ -2473,8 +2473,9 @@ inherited FormPrincipal: TFormPrincipal
         Caption = 'Pedido de Compra'
         OnClick = MNPedidoCompraClick
       end
-      object NotadeEntrada1: TMenuItem
+      object MnNotadeEntrada: TMenuItem
         Caption = 'Nota de Entrada'
+        OnClick = MnNotadeEntradaClick
       end
       object ImportarXML1: TMenuItem
         Caption = 'Importar XML'

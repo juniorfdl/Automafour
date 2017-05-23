@@ -29,7 +29,7 @@ type
     SQLTemplateCLPRA1DESCTOPOR: TStringField;
     ComboAtivo: TRxDBComboBox;
     SQLTemplateCLIEA13ID: TStringField;
-    SQLTemplateCLPRN3PERCDESC: TBCDField;
+    SQLTemplateCLPRN3PERCDESC: TFloatField;
     procedure AcessaProdutosClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure SQLTemplateNewRecord(DataSet: TDataSet);

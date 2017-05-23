@@ -12,15 +12,15 @@ type
   TFormTelaConsultaPlanoRecebimento = class(TFormTelaConsultaTemplate)
     SQLTemplatePLRCICOD: TIntegerField;
     SQLTemplatePLRCA60DESCR: TStringField;
-    SQLTemplatePLRCN2TXJURO: TBCDField;
-    SQLTemplatePLRCN2TXMULTA: TBCDField;
-    SQLTemplatePLRCN2TXCRED: TBCDField;
-    SQLTemplatePLRCN2PERCDESC: TBCDField;
+    SQLTemplatePLRCN2TXJURO: TFloatField;
+    SQLTemplatePLRCN2TXMULTA: TFloatField;
+    SQLTemplatePLRCN2TXCRED: TFloatField;
+    SQLTemplatePLRCN2PERCDESC: TFloatField;
     SQLTemplatePLRCCDFIX: TStringField;
     SQLTemplatePLRCIDFIXNROPARC: TIntegerField;
     SQLTemplatePLRCDFIXDVENC: TIntegerField;
     SQLTemplatePLRCCDFIXENTR: TStringField;
-    SQLTemplatePLRCN2DESC: TBCDField;
+    SQLTemplatePLRCN2DESC: TFloatField;
     SQLTemplatePLRCCATIVO: TStringField;
   private
     { Private declarations }

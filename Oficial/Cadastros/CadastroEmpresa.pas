@@ -65,9 +65,9 @@ type
     SQLProdutoSaldo: TRxQuery;
     SQLProdutoSaldoEMPRICOD: TIntegerField;
     SQLProdutoSaldoPRODICOD: TIntegerField;
-    SQLProdutoSaldoPSLDN3QTDE: TBCDField;
-    SQLProdutoSaldoPSLDN3QTDMIN: TBCDField;
-    SQLProdutoSaldoPSLDN3QTDMAX: TBCDField;
+    SQLProdutoSaldoPSLDN3QTDE: TFloatField;
+    SQLProdutoSaldoPSLDN3QTDMIN: TFloatField;
+    SQLProdutoSaldoPSLDN3QTDMAX: TFloatField;
     SQLProdutoSaldoPENDENTE: TStringField;
     SQLProdutoSaldoREGISTRO: TDateTimeField;
     UpdateSQLProdutoSaldo: TUpdateSQL;
@@ -92,7 +92,7 @@ type
     ImpPreVenda: TDBCheckBox;
     Label19: TLabel;
     DBEdit16: TDBEdit;
-    SQLTemplateEMPRN2VLRFUNDOPROMO: TBCDField;
+    SQLTemplateEMPRN2VLRFUNDOPROMO: TFloatField;
     SQLTemplateEMPRA15REGJUNTA: TStringField;
     SQLTemplateEMPRA20IMUNIC: TStringField;
     DBEdit17: TDBEdit;
@@ -128,7 +128,7 @@ type
     Label41: TLabel;
     DBEdit35: TDBEdit;
     SQLTemplateEMPRA30CRC: TStringField;
-    SQLTemplateEMPRN2CREDICMS: TBCDField;
+    SQLTemplateEMPRN2CREDICMS: TFloatField;
     SQLTemplateEMPRA15CRCCONTADOR: TStringField;
     SQLTemplateEMPRA14CNPJCONTADOR: TStringField;
     SQLTemplateEMPRA8CEPCONTADOR: TStringField;

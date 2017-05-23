@@ -78,7 +78,7 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
     Top = 304
     Width = 52
     Height = 13
-    Caption = 'Endere'#231'o'
+    Caption = 'Endereço'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 8404992
     Font.Height = -11
@@ -218,7 +218,7 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
     Top = 199
     Width = 44
     Height = 13
-    Caption = 'Ocasi'#227'o'
+    Caption = 'Ocasião'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 8404992
     Font.Height = -11
@@ -1156,7 +1156,7 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
       FixedChar = True
       Size = 1
     end
-    object SQLVistaCPNMN2VLR: TBCDField
+    object SQLVistaCPNMN2VLR: TFloatField
       FieldName = 'CPNMN2VLR'
       Origin = 'DB.CUPOMNUMERARIO.CPNMN2VLR'
       Precision = 15
@@ -1269,13 +1269,13 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
       FieldName = 'CTRCDVENC'
       Origin = 'DB.CONTASRECEBER.CTRCDVENC'
     end
-    object SQLPrazoCTRCN2VLR: TBCDField
+    object SQLPrazoCTRCN2VLR: TFloatField
       FieldName = 'CTRCN2VLR'
       Origin = 'DB.CONTASRECEBER.CTRCN2VLR'
       Precision = 15
       Size = 3
     end
-    object SQLPrazoCTRCN2DESCFIN: TBCDField
+    object SQLPrazoCTRCN2DESCFIN: TFloatField
       FieldName = 'CTRCN2DESCFIN'
       Origin = 'DB.CONTASRECEBER.CTRCN2DESCFIN'
       Precision = 15
@@ -1289,13 +1289,13 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
       FieldName = 'PORTICOD'
       Origin = 'DB.CONTASRECEBER.PORTICOD'
     end
-    object SQLPrazoCTRCN2TXJURO: TBCDField
+    object SQLPrazoCTRCN2TXJURO: TFloatField
       FieldName = 'CTRCN2TXJURO'
       Origin = 'DB.CONTASRECEBER.CTRCN2TXJURO'
       Precision = 15
       Size = 3
     end
-    object SQLPrazoCTRCN2TXMULTA: TBCDField
+    object SQLPrazoCTRCN2TXMULTA: TFloatField
       FieldName = 'CTRCN2TXMULTA'
       Origin = 'DB.CONTASRECEBER.CTRCN2TXMULTA'
       Precision = 15
@@ -1311,31 +1311,31 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
       FieldName = 'CTRCDULTREC'
       Origin = 'DB.CONTASRECEBER.CTRCDULTREC'
     end
-    object SQLPrazoCTRCN2TOTREC: TBCDField
+    object SQLPrazoCTRCN2TOTREC: TFloatField
       FieldName = 'CTRCN2TOTREC'
       Origin = 'DB.CONTASRECEBER.CTRCN2TOTREC'
       Precision = 15
       Size = 3
     end
-    object SQLPrazoCTRCN2TOTJUROREC: TBCDField
+    object SQLPrazoCTRCN2TOTJUROREC: TFloatField
       FieldName = 'CTRCN2TOTJUROREC'
       Origin = 'DB.CONTASRECEBER.CTRCN2TOTJUROREC'
       Precision = 15
       Size = 3
     end
-    object SQLPrazoCTRCN2TOTMULTAREC: TBCDField
+    object SQLPrazoCTRCN2TOTMULTAREC: TFloatField
       FieldName = 'CTRCN2TOTMULTAREC'
       Origin = 'DB.CONTASRECEBER.CTRCN2TOTMULTAREC'
       Precision = 15
       Size = 3
     end
-    object SQLPrazoCTRCN2TOTDESCREC: TBCDField
+    object SQLPrazoCTRCN2TOTDESCREC: TFloatField
       FieldName = 'CTRCN2TOTDESCREC'
       Origin = 'DB.CONTASRECEBER.CTRCN2TOTDESCREC'
       Precision = 15
       Size = 3
     end
-    object SQLPrazoCTRCN2TOTMULTACOBR: TBCDField
+    object SQLPrazoCTRCN2TOTMULTACOBR: TFloatField
       FieldName = 'CTRCN2TOTMULTACOBR'
       Origin = 'DB.CONTASRECEBER.CTRCN2TOTMULTACOBR'
       Precision = 15
@@ -1504,7 +1504,7 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Letter'
+    PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 0
     PrinterSetup.mmMarginLeft = 6350
@@ -1576,7 +1576,7 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
           PassSetting = psTwoPass
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'Letter'
+          PrinterSetup.PaperName = 'Custom'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 0
           PrinterSetup.mmMarginLeft = 6350
@@ -1648,7 +1648,7 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel16: TppLabel
               UserName = 'ppLabel16'
               AutoSize = False
-              Caption = 'C'#243'digo'
+              Caption = 'Código'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
               Font.Name = 'Sans Serif 17cpi'
@@ -1664,7 +1664,7 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel19: TppLabel
               UserName = 'ppLabel19'
               AutoSize = False
-              Caption = 'Descri'#231#227'o'
+              Caption = 'Descrição'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
               Font.Name = 'Sans Serif 17cpi'
@@ -1695,7 +1695,7 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppLabel22: TppLabel
               UserName = 'ppLabel22'
-              Caption = 'Pre'#231'o'
+              Caption = 'Preço'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
               Font.Name = 'Sans Serif 17cpi'
@@ -2682,7 +2682,7 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
           PassSetting = psTwoPass
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'Letter'
+          PrinterSetup.PaperName = 'Custom'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 0
           PrinterSetup.mmMarginLeft = 6350
@@ -2789,7 +2789,7 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel26: TppLabel
               UserName = 'ppLabel26'
               AutoSize = False
-              Caption = 'C'#243'digo'
+              Caption = 'Código'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
               Font.Name = 'Sans Serif 17cpi'
@@ -2805,7 +2805,7 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel27: TppLabel
               UserName = 'ppLabel27'
               AutoSize = False
-              Caption = 'Descri'#231#227'o'
+              Caption = 'Descrição'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
               Font.Name = 'Sans Serif 17cpi'
@@ -2836,7 +2836,7 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppLabel29: TppLabel
               UserName = 'ppLabel29'
-              Caption = 'Pre'#231'o'
+              Caption = 'Preço'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
               Font.Name = 'Sans Serif 17cpi'
@@ -3294,7 +3294,7 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
           PassSetting = psTwoPass
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'Letter'
+          PrinterSetup.PaperName = 'Custom'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 0
           PrinterSetup.mmMarginLeft = 6350
@@ -3400,7 +3400,7 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel40: TppLabel
               UserName = 'ppLabel40'
               AutoSize = False
-              Caption = 'C'#243'digo'
+              Caption = 'Código'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
               Font.Name = 'Sans Serif 17cpi'
@@ -3416,7 +3416,7 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel41: TppLabel
               UserName = 'ppLabel41'
               AutoSize = False
-              Caption = 'Descri'#231#227'o'
+              Caption = 'Descrição'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
               Font.Name = 'Sans Serif 17cpi'
@@ -3447,7 +3447,7 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppLabel43: TppLabel
               UserName = 'ppLabel43'
-              Caption = 'Pre'#231'o'
+              Caption = 'Preço'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
               Font.Name = 'Sans Serif 17cpi'

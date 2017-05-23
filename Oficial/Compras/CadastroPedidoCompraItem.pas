@@ -143,6 +143,9 @@ procedure TFormCadastroPedidoCompraItem.FormCreate(Sender: TObject);
 begin
   inherited;
   TABELA:='PedidoCompraItem';
+
+  if dm.SQLConfigCompra.Active then
+    dm.SQLConfigCompra.Open;
 end;
 
 procedure TFormCadastroPedidoCompraItem.SQLTemplateNewRecord(

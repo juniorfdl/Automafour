@@ -78,7 +78,7 @@ inherited FormTelaConsultaPedidoVenda: TFormTelaConsultaPedidoVenda
       Origin = 'DB.PEDIDOVENDA.PDVDICOD'
     end
     object SQLTemplateVENDICOD: TIntegerField
-      DisplayLabel = 'C'#243'd.Vendedor'
+      DisplayLabel = 'Cód.Vendedor'
       FieldName = 'VENDICOD'
       Origin = 'DB.PEDIDOVENDA.VENDICOD'
     end
@@ -98,13 +98,13 @@ inherited FormTelaConsultaPedidoVenda: TFormTelaConsultaPedidoVenda
       Origin = 'DB.PEDIDOVENDA.PLRCICOD'
     end
     object SQLTemplatePDVDDEMISSAO: TDateTimeField
-      DisplayLabel = 'Dt.Emiss'#227'o'
+      DisplayLabel = 'Dt.Emissão'
       FieldName = 'PDVDDEMISSAO'
       Origin = 'DB.PEDIDOVENDA.PDVDDEMISSAO'
       DisplayFormat = 'dd/mm/yyyy'
       EditMask = '!99/99/0000;1;_'
     end
-    object SQLTemplatePDVDN2VLRFRETE: TBCDField
+    object SQLTemplatePDVDN2VLRFRETE: TFloatField
       FieldName = 'PDVDN2VLRFRETE'
       Origin = 'DB.PEDIDOVENDA.PDVDN2VLRFRETE'
       Precision = 15
@@ -135,19 +135,19 @@ inherited FormTelaConsultaPedidoVenda: TFormTelaConsultaPedidoVenda
       FixedChar = True
       Size = 1
     end
-    object SQLTemplatePDVDN2VLRDESC: TBCDField
+    object SQLTemplatePDVDN2VLRDESC: TFloatField
       FieldName = 'PDVDN2VLRDESC'
       Origin = 'DB.PEDIDOVENDA.PDVDN2VLRDESC'
       Precision = 15
       Size = 3
     end
-    object SQLTemplatePDVDN2TOTPROD: TBCDField
+    object SQLTemplatePDVDN2TOTPROD: TFloatField
       FieldName = 'PDVDN2TOTPROD'
       Origin = 'DB.PEDIDOVENDA.PDVDN2TOTPROD'
       Precision = 15
       Size = 3
     end
-    object SQLTemplatePDVDN2TOTPED: TBCDField
+    object SQLTemplatePDVDN2TOTPED: TFloatField
       FieldName = 'PDVDN2TOTPED'
       Origin = 'DB.PEDIDOVENDA.PDVDN2TOTPED'
       Precision = 15
@@ -169,7 +169,7 @@ inherited FormTelaConsultaPedidoVenda: TFormTelaConsultaPedidoVenda
       FixedChar = True
       Size = 1
     end
-    object SQLTemplatePDVDN2VLRDESCPROM: TBCDField
+    object SQLTemplatePDVDN2VLRDESCPROM: TFloatField
       FieldName = 'PDVDN2VLRDESCPROM'
       Origin = 'DB.PEDIDOVENDA.PDVDN2VLRDESCPROM'
       Precision = 15
@@ -189,7 +189,7 @@ inherited FormTelaConsultaPedidoVenda: TFormTelaConsultaPedidoVenda
       EditMask = '!99/99/0000;1;_'
     end
     object SQLTemplatePDVDINROTALAO: TIntegerField
-      DisplayLabel = 'Nro.Tal'#227'o'
+      DisplayLabel = 'Nro.Talão'
       FieldName = 'PDVDINROTALAO'
       Origin = 'DB.PEDIDOVENDA.PDVDINROTALAO'
     end
@@ -199,13 +199,13 @@ inherited FormTelaConsultaPedidoVenda: TFormTelaConsultaPedidoVenda
       FixedChar = True
       Size = 1
     end
-    object SQLTemplatePDVDN2PERCFAT: TBCDField
+    object SQLTemplatePDVDN2PERCFAT: TFloatField
       FieldName = 'PDVDN2PERCFAT'
       Origin = 'DB.PEDIDOVENDA.PDVDN2PERCFAT'
       Precision = 15
       Size = 2
     end
-    object SQLTemplatePDVDN2PERCOMIS: TBCDField
+    object SQLTemplatePDVDN2PERCOMIS: TFloatField
       FieldName = 'PDVDN2PERCOMIS'
       Origin = 'DB.PEDIDOVENDA.PDVDN2PERCOMIS'
       Precision = 15
@@ -222,7 +222,7 @@ inherited FormTelaConsultaPedidoVenda: TFormTelaConsultaPedidoVenda
       Origin = 'DB.PEDIDOVENDA.OPESICOD'
     end
     object SQLTemplateROTAICOD: TIntegerField
-      DisplayLabel = 'C'#243'd.Rota'
+      DisplayLabel = 'Cód.Rota'
       FieldName = 'ROTAICOD'
       Origin = 'DB.PEDIDOVENDA.ROTAICOD'
     end
@@ -256,7 +256,7 @@ inherited FormTelaConsultaPedidoVenda: TFormTelaConsultaPedidoVenda
       FixedChar = True
       Size = 13
     end
-    object SQLTemplatePDVDN2VLROUTRASDESP: TBCDField
+    object SQLTemplatePDVDN2VLROUTRASDESP: TFloatField
       FieldName = 'PDVDN2VLROUTRASDESP'
       Origin = 'DB.PEDIDOVENDA.PDVDN2VLROUTRASDESP'
       Precision = 15

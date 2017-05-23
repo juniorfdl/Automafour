@@ -196,15 +196,41 @@ procedure GravaMovimentoEstoque(SqlProd,
                                 Lote : String) ;
 
 Function CalculaJuroMultaDesc(VlrVenc, TxJuroMultaDescCobr : double; DVenc, DPag, DVencOrig : TDateTime; Toler : integer; Tipo, Cupom, Parc : string) : Double;
-function SQLRecCount(Tabela, ClausulaWhere : string) : integer ;                                
+function SQLRecCount(Tabela, ClausulaWhere : string) : integer ;
 Function CalculaLimiteCredito(Cliente : String;ValorCompra : Double;SQLParcelas, SQLCliente : TQuery) : Double;
 function  RetornaTamanhoProduto(Grade, Tamanho : String ) : String;
 function RetornaCorProduto(Cor : String) : String;
 function RetornaPreco(QueryProduto : TQuery; TabelaPrecoEmpresa:String; TabelaPrecoCliente:String) : double ;
+function TestaNotaCompraMovimentoEstoque(IDNotaCompra, IDMovDiv, IDNotaVenda, Produto: string; quantidade: double) : boolean;
 
 implementation
 
 uses DataModulo, TelaAutenticaUsuario;
+
+function TestaNotaCompraMovimentoEstoque(IDNotaCompra, IDMovDiv, IDNotaVenda, Produto: string; quantidade: double) : boolean;
+var
+  MyQuery : TQuery ;
+begin
+  MyQuery := TQuery.Create(DM);
+  MyQuery.DatabaseName := 'DB' ;
+  MyQuery.Close ;
+  MyQuery.SQL.Clear ;
+  if IDNotaCompra <> '' then
+    MyQuery.SQL.Add('Select Count(NOCPA13ID) as Contador from MovimentoEstoque Where NOCPA13ID="'+IDNotaCompra+'" and PRODICOD='+Produto + ' and MVESN3QTDENTRADA='+ConvFloatToStr(quantidade)) ;
+  if IDMovDiv <> '' then
+    MyQuery.SQL.Add('Select Count(MOVDA13ID) as Contador from MovimentoEstoque Where MOVDA13ID = "'+IDMovDiv+'" and PRODICOD = '+Produto) ;
+  if IDNotaVenda <> '' then
+    MyQuery.SQL.Add('Select Count(NOFIA13ID) as Contador from MovimentoEstoque Where NOFIA13ID = "'+IDNotaVenda+'" and PRODICOD = '+Produto) ;
+  MyQuery.Open ;
+  if MyQuery.FieldByName('Contador').Value > 0 then
+    Result := True
+  else
+    Result := False;
+
+  MyQuery.Close;
+end ;
+
+
 
 function RetornaPreco(QueryProduto : TQuery; TabelaPrecoEmpresa:String; TabelaPrecoCliente:String) : double ;
 Var

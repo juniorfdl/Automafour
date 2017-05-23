@@ -189,11 +189,9 @@ object DMTemplate: TDMTemplate
       FieldName = 'PSDIDDATA'
       Origin = 'DB.PRODUTOSALDODIA.PSDIDDATA'
     end
-    object SQLProdutoSaldoDiaPSDIN3QTDE: TBCDField
+    object SQLProdutoSaldoDiaPSDIN3QTDE: TFloatField
       FieldName = 'PSDIN3QTDE'
       Origin = 'DB.PRODUTOSALDODIA.PSDIN3QTDE'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoSaldoDiaPENDENTE: TStringField
       FieldName = 'PENDENTE'
@@ -221,23 +219,17 @@ object DMTemplate: TDMTemplate
       FieldName = 'PRODICOD'
       Origin = 'DB.PRODUTOSALDO.PRODICOD'
     end
-    object SQLProdutoSaldoAuxPSLDN3QTDE: TBCDField
+    object SQLProdutoSaldoAuxPSLDN3QTDE: TFloatField
       FieldName = 'PSLDN3QTDE'
       Origin = 'DB.PRODUTOSALDO.PSLDN3QTDE'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoSaldoAuxPSLDN3QTDMIN: TBCDField
+    object SQLProdutoSaldoAuxPSLDN3QTDMIN: TFloatField
       FieldName = 'PSLDN3QTDMIN'
       Origin = 'DB.PRODUTOSALDO.PSLDN3QTDMIN'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoSaldoAuxPSLDN3QTDMAX: TBCDField
+    object SQLProdutoSaldoAuxPSLDN3QTDMAX: TFloatField
       FieldName = 'PSLDN3QTDMAX'
       Origin = 'DB.PRODUTOSALDO.PSLDN3QTDMAX'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoSaldoAuxPENDENTE: TStringField
       FieldName = 'PENDENTE'

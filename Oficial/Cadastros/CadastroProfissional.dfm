@@ -79,7 +79,7 @@ inherited FormCadastroProfissional: TFormCadastroProfissional
                 Top = 116
                 Width = 101
                 Height = 13
-                Caption = '% Comiss'#227'o Vista'
+                Caption = '% Comissão Vista'
                 FocusControl = DBEdit3
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = 8404992
@@ -93,7 +93,7 @@ inherited FormCadastroProfissional: TFormCadastroProfissional
                 Top = 116
                 Width = 105
                 Height = 13
-                Caption = '% Comiss'#227'o Prazo'
+                Caption = '% Comissão Prazo'
                 FocusControl = DBEdit4
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = 8404992
@@ -107,7 +107,7 @@ inherited FormCadastroProfissional: TFormCadastroProfissional
                 Top = 116
                 Width = 81
                 Height = 13
-                Caption = 'Tipo Comiss'#227'o'
+                Caption = 'Tipo Comissão'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = 8404992
                 Font.Height = -11
@@ -120,7 +120,7 @@ inherited FormCadastroProfissional: TFormCadastroProfissional
                 Top = 116
                 Width = 152
                 Height = 13
-                Caption = 'Comiss'#227'o Sobre Acr'#233'scimo'
+                Caption = 'Comissão Sobre Acréscimo'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = 8404992
                 Font.Height = -11
@@ -147,7 +147,7 @@ inherited FormCadastroProfissional: TFormCadastroProfissional
                 Top = 1
                 Width = 52
                 Height = 13
-                Caption = 'Endere'#231'o'
+                Caption = 'Endereço'
                 FocusControl = DBEdit19
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = 8404992
@@ -258,7 +258,7 @@ inherited FormCadastroProfissional: TFormCadastroProfissional
                 Top = 257
                 Width = 73
                 Height = 13
-                Caption = 'Observa'#231#245'es'
+                Caption = 'Observações'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = 8404992
                 Font.Height = -11
@@ -328,7 +328,7 @@ inherited FormCadastroProfissional: TFormCadastroProfissional
                 ItemHeight = 13
                 Items.Strings = (
                   'Sim'
-                  'N'#227'o')
+                  'Não')
                 TabOrder = 12
                 Values.Strings = (
                   'S'
@@ -411,7 +411,7 @@ inherited FormCadastroProfissional: TFormCadastroProfissional
                 Top = 157
                 Width = 641
                 Height = 96
-                Caption = ' Dados Banc'#225'rios '
+                Caption = ' Dados Bancários '
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
                 Font.Height = -11
@@ -437,7 +437,7 @@ inherited FormCadastroProfissional: TFormCadastroProfissional
                   Top = 30
                   Width = 21
                   Height = 21
-                  Hint = 'Acessa Profiss'#227'o'
+                  Hint = 'Acessa Profissão'
                   Flat = True
                   Glyph.Data = {
                     9E020000424D9E0200000000000036000000280000000E0000000E0000000100
@@ -469,7 +469,7 @@ inherited FormCadastroProfissional: TFormCadastroProfissional
                   Top = 16
                   Width = 45
                   Height = 13
-                  Caption = 'Ag'#234'ncia'
+                  Caption = 'Agência'
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = 8404992
                   Font.Height = -11
@@ -714,7 +714,7 @@ inherited FormCadastroProfissional: TFormCadastroProfissional
               Top = 3
               Width = 38
               Height = 13
-              Caption = 'C'#243'digo'
+              Caption = 'Código'
               FocusControl = DBEdit1
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 8404992
@@ -793,7 +793,7 @@ inherited FormCadastroProfissional: TFormCadastroProfissional
       'Select * From VENDEDOR Where (%MFiltro)')
     object SQLTemplateVENDICOD: TIntegerField
       Tag = 1
-      DisplayLabel = 'C'#243'digo'
+      DisplayLabel = 'Código'
       FieldName = 'VENDICOD'
       Origin = 'DB.VENDEDOR.VENDICOD'
       Visible = False
@@ -805,15 +805,15 @@ inherited FormCadastroProfissional: TFormCadastroProfissional
       FixedChar = True
       Size = 60
     end
-    object SQLTemplateVENDN2COMISV: TBCDField
-      DisplayLabel = '% Comiss'#227'o a Vista'
+    object SQLTemplateVENDN2COMISV: TFloatField
+      DisplayLabel = '% Comissão a Vista'
       FieldName = 'VENDN2COMISV'
       Origin = 'DB.VENDEDOR.VENDN2COMISV'
       Precision = 15
       Size = 3
     end
-    object SQLTemplateVENDN2COMISP: TBCDField
-      DisplayLabel = '% Comiss'#227'o a Prazo'
+    object SQLTemplateVENDN2COMISP: TFloatField
+      DisplayLabel = '% Comissão a Prazo'
       FieldName = 'VENDN2COMISP'
       Origin = 'DB.VENDEDOR.VENDN2COMISP'
       Precision = 15
@@ -827,7 +827,7 @@ inherited FormCadastroProfissional: TFormCadastroProfissional
       Size = 1
     end
     object SQLTemplateVENDCCOMISACRESC: TStringField
-      DisplayLabel = 'Comiss'#227'o Sobre Acr'#233'scimo'
+      DisplayLabel = 'Comissão Sobre Acréscimo'
       FieldName = 'VENDCCOMISACRESC'
       Origin = 'DB.VENDEDOR.VENDCCOMISACRESC'
       FixedChar = True
@@ -917,7 +917,7 @@ inherited FormCadastroProfissional: TFormCadastroProfissional
       Size = 15
     end
     object SQLTemplateVENDA60END: TStringField
-      DisplayLabel = 'Endere'#231'o'
+      DisplayLabel = 'Endereço'
       FieldName = 'VENDA60END'
       Origin = 'DB.VENDEDOR.VENDA60END'
       FixedChar = True
@@ -953,14 +953,14 @@ inherited FormCadastroProfissional: TFormCadastroProfissional
       Size = 8
     end
     object SQLTemplateBANCA5COD: TStringField
-      DisplayLabel = 'C'#243'd. Banco'
+      DisplayLabel = 'Cód. Banco'
       FieldName = 'BANCA5COD'
       Origin = 'DB.VENDEDOR.BANCA5COD'
       FixedChar = True
       Size = 5
     end
     object SQLTemplateVENDA5AGENCIA: TStringField
-      DisplayLabel = 'Ag'#234'ncia'
+      DisplayLabel = 'Agência'
       FieldName = 'VENDA5AGENCIA'
       Origin = 'DB.VENDEDOR.VENDA5AGENCIA'
       FixedChar = True
@@ -1003,7 +1003,7 @@ inherited FormCadastroProfissional: TFormCadastroProfissional
       Size = 30
     end
     object SQLTemplateVENDA60RAZAOSOCIAL: TStringField
-      DisplayLabel = 'Raz'#227'o Social'
+      DisplayLabel = 'Razão Social'
       FieldName = 'VENDA60RAZAOSOCIAL'
       Origin = 'DB.VENDEDOR.VENDA60RAZAOSOCIAL'
       FixedChar = True
@@ -1016,19 +1016,19 @@ inherited FormCadastroProfissional: TFormCadastroProfissional
       FixedChar = True
       Size = 254
     end
-    object SQLTemplateVENDN2PERCFIDEL: TBCDField
-      DisplayLabel = '% Comiss'#227'o por Fideliza'#231#227'o'
+    object SQLTemplateVENDN2PERCFIDEL: TFloatField
+      DisplayLabel = '% Comissão por Fidelização'
       FieldName = 'VENDN2PERCFIDEL'
       Origin = 'DB.VENDEDOR.VENDN2PERCFIDEL'
       Precision = 15
       Size = 2
     end
     object SQLTemplateVENDIDIASVALFIDEL: TIntegerField
-      DisplayLabel = 'Dias de Validade Fideliza'#231#227'o'
+      DisplayLabel = 'Dias de Validade Fidelização'
       FieldName = 'VENDIDIASVALFIDEL'
       Origin = 'DB.VENDEDOR.VENDIDIASVALFIDEL'
     end
-    object SQLTemplateVENDN2PERCIRRF: TBCDField
+    object SQLTemplateVENDN2PERCIRRF: TFloatField
       DisplayLabel = '% IRRF'
       FieldName = 'VENDN2PERCIRRF'
       Origin = 'DB.VENDEDOR.VENDN2PERCIRRF'
@@ -1075,7 +1075,7 @@ inherited FormCadastroProfissional: TFormCadastroProfissional
       FixedChar = True
       Size = 60
     end
-    object SQLEspecialidadeESPEN3VLRCONSULTA: TBCDField
+    object SQLEspecialidadeESPEN3VLRCONSULTA: TFloatField
       FieldName = 'ESPEN3VLRCONSULTA'
       Origin = 'DB.ESPECIALIDADE.ESPEN3VLRCONSULTA'
       Precision = 15
