@@ -1159,8 +1159,6 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
     object SQLVistaCPNMN2VLR: TFloatField
       FieldName = 'CPNMN2VLR'
       Origin = 'DB.CUPOMNUMERARIO.CPNMN2VLR'
-      Precision = 15
-      Size = 3
     end
     object SQLVistaCPNMCAUTENT: TStringField
       FieldName = 'CPNMCAUTENT'
@@ -1272,14 +1270,11 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
     object SQLPrazoCTRCN2VLR: TFloatField
       FieldName = 'CTRCN2VLR'
       Origin = 'DB.CONTASRECEBER.CTRCN2VLR'
-      Precision = 15
       Size = 3
     end
     object SQLPrazoCTRCN2DESCFIN: TFloatField
       FieldName = 'CTRCN2DESCFIN'
       Origin = 'DB.CONTASRECEBER.CTRCN2DESCFIN'
-      Precision = 15
-      Size = 3
     end
     object SQLPrazoNUMEICOD: TIntegerField
       FieldName = 'NUMEICOD'
@@ -1292,14 +1287,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
     object SQLPrazoCTRCN2TXJURO: TFloatField
       FieldName = 'CTRCN2TXJURO'
       Origin = 'DB.CONTASRECEBER.CTRCN2TXJURO'
-      Precision = 15
-      Size = 3
     end
     object SQLPrazoCTRCN2TXMULTA: TFloatField
       FieldName = 'CTRCN2TXMULTA'
       Origin = 'DB.CONTASRECEBER.CTRCN2TXMULTA'
-      Precision = 15
-      Size = 3
     end
     object SQLPrazoCTRCA5TIPOPADRAO: TStringField
       FieldName = 'CTRCA5TIPOPADRAO'
@@ -1314,32 +1305,22 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
     object SQLPrazoCTRCN2TOTREC: TFloatField
       FieldName = 'CTRCN2TOTREC'
       Origin = 'DB.CONTASRECEBER.CTRCN2TOTREC'
-      Precision = 15
-      Size = 3
     end
     object SQLPrazoCTRCN2TOTJUROREC: TFloatField
       FieldName = 'CTRCN2TOTJUROREC'
       Origin = 'DB.CONTASRECEBER.CTRCN2TOTJUROREC'
-      Precision = 15
-      Size = 3
     end
     object SQLPrazoCTRCN2TOTMULTAREC: TFloatField
       FieldName = 'CTRCN2TOTMULTAREC'
       Origin = 'DB.CONTASRECEBER.CTRCN2TOTMULTAREC'
-      Precision = 15
-      Size = 3
     end
     object SQLPrazoCTRCN2TOTDESCREC: TFloatField
       FieldName = 'CTRCN2TOTDESCREC'
       Origin = 'DB.CONTASRECEBER.CTRCN2TOTDESCREC'
-      Precision = 15
-      Size = 3
     end
     object SQLPrazoCTRCN2TOTMULTACOBR: TFloatField
       FieldName = 'CTRCN2TOTMULTACOBR'
       Origin = 'DB.CONTASRECEBER.CTRCN2TOTMULTACOBR'
-      Precision = 15
-      Size = 3
     end
     object SQLPrazoEMPRICODULTREC: TIntegerField
       FieldName = 'EMPRICODULTREC'

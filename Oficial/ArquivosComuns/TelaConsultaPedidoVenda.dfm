@@ -107,8 +107,6 @@ inherited FormTelaConsultaPedidoVenda: TFormTelaConsultaPedidoVenda
     object SQLTemplatePDVDN2VLRFRETE: TFloatField
       FieldName = 'PDVDN2VLRFRETE'
       Origin = 'DB.PEDIDOVENDA.PDVDN2VLRFRETE'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplatePDVDA30NROPEDCOMP: TStringField
       FieldName = 'PDVDA30NROPEDCOMP'
@@ -138,20 +136,14 @@ inherited FormTelaConsultaPedidoVenda: TFormTelaConsultaPedidoVenda
     object SQLTemplatePDVDN2VLRDESC: TFloatField
       FieldName = 'PDVDN2VLRDESC'
       Origin = 'DB.PEDIDOVENDA.PDVDN2VLRDESC'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplatePDVDN2TOTPROD: TFloatField
       FieldName = 'PDVDN2TOTPROD'
       Origin = 'DB.PEDIDOVENDA.PDVDN2TOTPROD'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplatePDVDN2TOTPED: TFloatField
       FieldName = 'PDVDN2TOTPED'
       Origin = 'DB.PEDIDOVENDA.PDVDN2TOTPED'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplatePDVDTOBS: TStringField
       FieldName = 'PDVDTOBS'
@@ -172,8 +164,6 @@ inherited FormTelaConsultaPedidoVenda: TFormTelaConsultaPedidoVenda
     object SQLTemplatePDVDN2VLRDESCPROM: TFloatField
       FieldName = 'PDVDN2VLRDESCPROM'
       Origin = 'DB.PEDIDOVENDA.PDVDN2VLRDESCPROM'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplatePDVDCTIPOFRETE: TStringField
       FieldName = 'PDVDCTIPOFRETE'
@@ -202,14 +192,10 @@ inherited FormTelaConsultaPedidoVenda: TFormTelaConsultaPedidoVenda
     object SQLTemplatePDVDN2PERCFAT: TFloatField
       FieldName = 'PDVDN2PERCFAT'
       Origin = 'DB.PEDIDOVENDA.PDVDN2PERCFAT'
-      Precision = 15
-      Size = 2
     end
     object SQLTemplatePDVDN2PERCOMIS: TFloatField
       FieldName = 'PDVDN2PERCOMIS'
       Origin = 'DB.PEDIDOVENDA.PDVDN2PERCOMIS'
-      Precision = 15
-      Size = 2
     end
     object SQLTemplateUSUAA60LOGIN: TStringField
       FieldName = 'USUAA60LOGIN'
@@ -259,8 +245,6 @@ inherited FormTelaConsultaPedidoVenda: TFormTelaConsultaPedidoVenda
     object SQLTemplatePDVDN2VLROUTRASDESP: TFloatField
       FieldName = 'PDVDN2VLROUTRASDESP'
       Origin = 'DB.PEDIDOVENDA.PDVDN2VLROUTRASDESP'
-      Precision = 15
-      Size = 3
     end
   end
 end

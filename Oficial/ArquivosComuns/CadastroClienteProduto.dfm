@@ -314,8 +314,6 @@ inherited FormCadastroClienteProduto: TFormCadastroClienteProduto
     object SQLTemplateCLPRN3PERCDESC: TFloatField
       FieldName = 'CLPRN3PERCDESC'
       Origin = 'DB.CLIENTEPRODUTO.CLPRN3PERCDESC'
-      Precision = 15
-      Size = 3
     end
   end
   object TblProduto: TTable

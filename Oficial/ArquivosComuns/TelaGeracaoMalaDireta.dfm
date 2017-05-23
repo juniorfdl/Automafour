@@ -1320,14 +1320,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     object SQLClienteCLIEN2RENDA: TFloatField
       FieldName = 'CLIEN2RENDA'
       Origin = 'DB.CLIENTE.CLIEN2RENDA'
-      Precision = 15
-      Size = 3
     end
     object SQLClienteCLIEN2LIMITECRED: TFloatField
       FieldName = 'CLIEN2LIMITECRED'
       Origin = 'DB.CLIENTE.CLIEN2LIMITECRED'
-      Precision = 15
-      Size = 3
     end
     object SQLClienteCLIEA60NOMEPAI: TStringField
       FieldName = 'CLIEA60NOMEPAI'
@@ -1366,8 +1362,6 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     object SQLClienteCLIEN2CONJUGERENDA: TFloatField
       FieldName = 'CLIEN2CONJUGERENDA'
       Origin = 'DB.CLIENTE.CLIEN2CONJUGERENDA'
-      Precision = 15
-      Size = 3
     end
     object SQLClienteCLIEDNASCCONJUGE: TDateTimeField
       FieldName = 'CLIEDNASCCONJUGE'
@@ -1770,14 +1764,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     object BCDField1: TFloatField
       FieldName = 'CLIEN2RENDA'
       Origin = 'DB.CLIENTE.CLIEN2RENDA'
-      Precision = 15
-      Size = 3
     end
     object BCDField2: TFloatField
       FieldName = 'CLIEN2LIMITECRED'
       Origin = 'DB.CLIENTE.CLIEN2LIMITECRED'
-      Precision = 15
-      Size = 3
     end
     object StringField23: TStringField
       FieldName = 'CLIEA60NOMEPAI'
@@ -1816,8 +1806,6 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     object BCDField3: TFloatField
       FieldName = 'CLIEN2CONJUGERENDA'
       Origin = 'DB.CLIENTE.CLIEN2CONJUGERENDA'
-      Precision = 15
-      Size = 3
     end
     object DateTimeField2: TDateTimeField
       FieldName = 'CLIEDNASCCONJUGE'
@@ -2276,14 +2264,11 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     object SQLClienteDependenteCLIEN2RENDA: TFloatField
       FieldName = 'CLIEN2RENDA'
       Origin = 'DB.CLIENTE.CLIEN2RENDA'
-      Precision = 15
       Size = 3
     end
     object SQLClienteDependenteCLIEN2LIMITECRED: TFloatField
       FieldName = 'CLIEN2LIMITECRED'
       Origin = 'DB.CLIENTE.CLIEN2LIMITECRED'
-      Precision = 15
-      Size = 3
     end
     object SQLClienteDependenteCLIEA60NOMEPAI: TStringField
       FieldName = 'CLIEA60NOMEPAI'
@@ -2322,8 +2307,6 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     object SQLClienteDependenteCLIEN2CONJUGERENDA: TFloatField
       FieldName = 'CLIEN2CONJUGERENDA'
       Origin = 'DB.CLIENTE.CLIEN2CONJUGERENDA'
-      Precision = 15
-      Size = 3
     end
     object SQLClienteDependenteCLIEDNASCCONJUGE: TDateTimeField
       FieldName = 'CLIEDNASCCONJUGE'
@@ -2567,8 +2550,6 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     object SQLClienteDependenteCLIEN2VLRALUGUEL: TFloatField
       FieldName = 'CLIEN2VLRALUGUEL'
       Origin = 'DB.CLIENTE.CLIEN2VLRALUGUEL'
-      Precision = 15
-      Size = 2
     end
     object SQLClienteDependenteCLDPICOD: TIntegerField
       FieldName = 'CLDPICOD'
