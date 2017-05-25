@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DataModuloTemplate, DB, DBTables, DBLists, RxQuery;
+  Dialogs, DataModuloTemplate, DB, DBTables, DBLists, RxQuery, UCrpe32;
 
 type
   TDM = class(TDMTemplate)
@@ -119,14 +119,92 @@ type
     SQLProdutoSaldoPSLDN3QTDMIN: TFloatField;
     SQLProdutoSaldoPSLDN3QTDMAX: TFloatField;
     DSSQLProduto: TDataSource;
+    Report: TCrpe;
+    TblPedidoCab: TTable;
+    TblPedidoCabPedICod: TStringField;
+    TblPedidoCabEmitente_Nome: TStringField;
+    TblPedidoCabEmitente_Ender: TStringField;
+    TblPedidoCabEmitente_Bairro: TStringField;
+    TblPedidoCabEmitente_Cidade: TStringField;
+    TblPedidoCabEmitente_UF: TStringField;
+    TblPedidoCabEmitente_CGC: TStringField;
+    TblPedidoCabEmitente_IE: TStringField;
+    TblPedidoCabEmitente_Fone: TStringField;
+    TblPedidoCabDtEmissao: TDateField;
+    TblPedidoCabDestinatario_Nome: TStringField;
+    TblPedidoCabDestinatario_Endereco: TStringField;
+    TblPedidoCabDestinatario_Bairro: TStringField;
+    TblPedidoCabDestinatario_Cep: TStringField;
+    TblPedidoCabDestinatario_Cidade: TStringField;
+    TblPedidoCabDestinatario_UF: TStringField;
+    TblPedidoCabDestinatario_CpfCgc: TStringField;
+    TblPedidoCabDestinatario_IE: TStringField;
+    TblPedidoCabDestinatario_Fone: TStringField;
+    TblPedidoCabDestinatario_Fone2: TStringField;
+    TblPedidoCabDestinatario_Fax: TStringField;
+    TblPedidoCabTransp: TStringField;
+    TblPedidoCabDtaEntrega: TDateField;
+    TblPedidoCabComprador: TStringField;
+    TblPedidoCabOrdemCompra: TStringField;
+    TblPedidoCabPlano: TStringField;
+    TblPedidoCabTipoFrete: TStringField;
+    TblPedidoCabValorFrete: TFloatField;
+    TblPedidoCabTotalDesconto: TFloatField;
+    TblPedidoCabTotal: TFloatField;
+    TblPedidoCabObservacoes: TMemoField;
+    TblPedidoCabVendedor: TStringField;
+    TblPedidoCabEmail: TStringField;
+    TblPedidoCabPEDIDOORCAMENTO: TStringField;
+    TblPedidoCabTotalGeral: TFloatField;
+    TblPedidoCabEmitente_Email: TStringField;
+    TblPedidoCabEmitente_URL: TStringField;
+    TblPedidoCabEmitenteLogo: TBlobField;
+    TblPedidoCabRota: TStringField;
+    DSTblPedidoCab: TDataSource;
+    TblPedidoItens: TTable;
+    TblPedidoItensPedICod: TStringField;
+    TblPedidoItensCodigo: TIntegerField;
+    TblPedidoItensDescricao: TStringField;
+    TblPedidoItensUn: TStringField;
+    TblPedidoItensQtd1: TFloatField;
+    TblPedidoItensVlrUnitario: TFloatField;
+    TblPedidoItensVlrTotal: TFloatField;
+    TblPedidoItensCor: TStringField;
+    TblPedidoItensTecido: TStringField;
+    TblPedidoItensLegenda: TIntegerField;
+    TblPedidoItensQtd2: TFloatField;
+    TblPedidoItensQtd3: TFloatField;
+    TblPedidoItensQtd4: TFloatField;
+    TblPedidoItensQtd5: TFloatField;
+    TblPedidoItensQtd6: TFloatField;
+    TblPedidoItensQtd7: TFloatField;
+    TblPedidoItensQtd8: TFloatField;
+    TblPedidoItensQtd9: TFloatField;
+    TblPedidoItensQtd10: TFloatField;
+    TblPedidoItensQtd11: TFloatField;
+    TblPedidoItensQtd12: TFloatField;
+    TblPedidoItensQtd13: TFloatField;
+    TblPedidoItensQtd14: TFloatField;
+    TblPedidoItensQtd15: TFloatField;
+    TblPedidoItensReferencia: TStringField;
+    TblPedidoItensCodItem: TIntegerField;
+    DSTblPedidoItens: TDataSource;
+    TblPedidoFinan: TTable;
+    TblPedidoFinanPedICod: TStringField;
+    TblPedidoFinanVencimento: TDateField;
+    TblPedidoFinanValor: TFloatField;
+    DSTblPedidoFinan: TDataSource;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
-    CodTarefa:String;
-    GerandoPedidoCompra, InserindoItemPC, GerandoNotaCompra, IncluindoGrade, ImportandoPedidoCompra, InserindoItemNC, ProcurandoProduto:Boolean;
-    ConfigEtiqueta:Integer;
+    CodTarefa, SerieAtualPedidos, VeiculoAtualPedidos, FretePorConta, PedidoVolume, PedidoEspecie,
+    PedidoMarca, PedidoPesoB, PedidoPesoL, PedidoObs : String;
+    GerandoPedidoVenda, InserindoItemPV, GerandoPedidoCompra, InserindoItemPC, GerandoNotaCompra, IncluindoGrade,ImportandoColetor,
+    ImportandoPedidoCompra, InserindoItemNC, ProcurandoProduto, TrocarStatusPedidoParaFaturado : Boolean;
+    ConfigEtiqueta, VendedorAtualPedidos, RotaAtualPedidos, TranspAtualPedidos :Integer;
+    DataEntregaPedidos, DataEmissaoPedidos : TDate;
   end;
 
 var

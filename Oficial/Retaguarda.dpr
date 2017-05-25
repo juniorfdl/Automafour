@@ -145,7 +145,24 @@ uses
   TelaConsultaPlanoContasDebitos in 'ArquivosComuns\TelaConsultaPlanoContasDebitos.pas' {FormTelaConsultaPlanoContasDebitos},
   TelaConsultaCliente in 'ArquivosComuns\TelaConsultaCliente.pas' {FormTelaConsultaCliente},
   RelatorioMediaComprasPeriodo in 'Compras\RelatorioMediaComprasPeriodo.pas',
-  RelatorioTemplate in '..\Template\RelatorioTemplate.pas' {FormRelatorioTEMPLATE};
+  RelatorioTemplate in '..\Template\RelatorioTemplate.pas' {FormRelatorioTEMPLATE},
+  TelaCadastroTarefa in 'Cadastros\TelaCadastroTarefa.pas' {FormTelaCadastroTarefa},
+  ConfigPopUp in 'Cadastros\ConfigPopUp.pas' {FormConfigPopUp},
+  CadastroPedidoVenda in 'Vendas\CadastroPedidoVenda.pas',
+  CadastroPedidoVendaItem in 'Vendas\CadastroPedidoVendaItem.pas' {FormCadastroPedidoVendaItem},
+  TelaLancamentoGradePedido in 'Vendas\TelaLancamentoGradePedido.pas' {FormTelaLancamentoGradePedido},
+  TelaSaldoPorLote in 'Vendas\TelaSaldoPorLote.pas' {FormTelaSaldoPorLote},
+  TelaImportaItens in 'Vendas\TelaImportaItens.pas' {FormTelaImportaItens},
+  TelaProdVendItemComp in 'Vendas\TelaProdVendItemComp.pas' {FormTelaProdVendItemComp},
+  CadastroPedidoVendaFinanceiro in 'Vendas\CadastroPedidoVendaFinanceiro.pas' {FormCadastroPedidoVendaFinanceiro},
+  TelaConsultaPortador in 'Vendas\TelaConsultaPortador.pas' {FormTelaConsultaPortador},
+  TelaConsultaNumerario in 'Vendas\TelaConsultaNumerario.pas' {FormTelaConsultaNumerario},
+  TelaConsultaTipoDocumento in 'Vendas\TelaConsultaTipoDocumento.pas' {FormTelaConsultaTipoDocumento},
+  TelaConsultaEmpresa in 'Vendas\TelaConsultaEmpresa.pas' {FormTelaConsultaEmpresa},
+  TelaDadosOSPedidoVenda in 'Vendas\TelaDadosOSPedidoVenda.pas' {FormTelaDadosOSPedidoVenda},
+  TelaConfigPedidos in 'Vendas\TelaConfigPedidos.pas' {FormTelaConfigPedidos},
+  TelaAssistenteLancamentoContasReceber in 'Vendas\TelaAssistenteLancamentoContasReceber.pas' {FormTelaAssistenteLancamentoContasReceber},
+  TelaGeracaoPedidoParcial in 'Vendas\TelaGeracaoPedidoParcial.pas' {FormTelaPedidoParcial};
 
 {$R *.res}
 

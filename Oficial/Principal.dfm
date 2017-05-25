@@ -1,7 +1,7 @@
 inherited FormPrincipal: TFormPrincipal
   Tag = 4
-  Left = 48
-  Top = 124
+  Left = 146
+  Top = 150
   Width = 1272
   Height = 527
   Caption = 'Advanced Control'
@@ -9,7 +9,7 @@ inherited FormPrincipal: TFormPrincipal
   PixelsPerInch = 96
   TextHeight = 13
   inherited RodapePrincipal: TStatusBar
-    Top = 449
+    Top = 450
     Width = 1256
   end
   inherited ptopo: TAdvOfficeStatusBar
@@ -2400,9 +2400,11 @@ inherited FormPrincipal: TFormPrincipal
         end
         object CadastrarTarefas1: TMenuItem
           Caption = 'Cadastrar Tarefas'
+          OnClick = MnAdicionarTarefasClick
         end
         object ConfigurarTempodeTarefa1: TMenuItem
           Caption = 'Configurar Tempo de Tarefa'
+          OnClick = MnConfigPopLembreteTarefaClick
         end
       end
       object Financeiro1: TMenuItem
@@ -2608,6 +2610,7 @@ inherited FormPrincipal: TFormPrincipal
       Caption = 'Faturamento'
       object PedidodeVenda1: TMenuItem
         Caption = 'Pedido de Venda'
+        OnClick = FATUMnVendasPedidosVendaClick
       end
       object NotaFiscal1: TMenuItem
         Caption = 'Nota Fiscal'
