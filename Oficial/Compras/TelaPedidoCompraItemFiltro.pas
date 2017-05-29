@@ -7,7 +7,7 @@ uses
   Dialogs, TelaGeralModalTemplate, Grids, DBGrids, StdCtrls, ToolEdit,
   RxLookup, Buttons, Mask, DBCtrls, Placemnt, DB, DBTables, RxQuery, jpeg,
   ExtCtrls, FMTBcd, SqlExpr, IBCustomDataSet, IBQuery, MemTable, RxMemDS,
-  ZAbstractRODataset, ZDataset, ZAbstractDataset, ppCtrls, ppPrnabl, ppViewr,
+  {AbstractRODataset, ZDataset, ZAbstractDataset,}ppCtrls, ppPrnabl, ppViewr,
   ppClass, ppBands, ppCache, ppDB, ppProd, ppReport, ppComm, ppRelatv,
   ppDBPipe, AdvOfficeStatusBar, AdvOfficeStatusBarStylers;
 

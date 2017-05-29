@@ -675,4 +675,1305 @@ inherited DM: TDM
     Left = 440
     Top = 304
   end
+  object Report: TCrpe
+    About = 'Version and Credits...'
+    DesignControls = 'Design-Time Window Controls'
+    Version.Major = 0
+    Version.Minor = 0
+    Output = toPrinter
+    Margins.Left = -1
+    Margins.Right = -1
+    Margins.Top = -1
+    Margins.Bottom = -1
+    DiscardSavedData = True
+    LoadEngineOnUse = True
+    PrintDate.Day = 0
+    PrintDate.Month = 0
+    PrintDate.Year = 0
+    Subreports.NLinks = 0
+    Subreports.OnDemand = False
+    Tables.Number = -1
+    SortFields.Number = -1
+    GroupSortFields.Number = -1
+    GroupCondition.Number = -1
+    GroupCondition.GroupType = gtOther
+    GroupOptions.Number = -1
+    GroupOptions.GroupType = gtOther
+    GroupOptions.RepeatGH = cDefault
+    GroupOptions.KeepTogether = cDefault
+    GroupOptions.TopNOptions = tnDefault
+    GroupOptions.TopNGroups = -1
+    GroupOptions.TopNDiscardOthers = cDefault
+    ParamFields.ParamType = pfString
+    ParamFields.ParamSource = psReport
+    ParamFields.Info.AllowNull = cDefault
+    ParamFields.Info.AllowEditing = cDefault
+    ParamFields.Info.AllowMultipleValues = cDefault
+    ParamFields.Info.ValueType = vtDiscrete
+    ParamFields.Info.PartOfGroup = cDefault
+    ParamFields.Info.MutuallyExclusiveGroup = cDefault
+    ParamFields.Info.GroupNum = -1
+    ParamFields.ValueLimit = cDefault
+    ParamFields.Ranges.Number = -1
+    ParamFields.Ranges.RangeBounds = IncludeStartAndEnd
+    ParamFields.PLDescriptionOnly = cDefault
+    ParamFields.PLSortMethod = psmDefaultSort
+    ParamFields.PLSortByDescription = cDefault
+    SectionFormat.BackgroundColor = clNone
+    SectionHeight.Height = 0
+    SQL.Params.ParamType = spChar
+    LogOnInfo.Table = -1
+    SessionInfo.Table = -1
+    SessionInfo.Propagate = True
+    Export.Excel.Constant = 9.000000000000000000
+    Export.Excel.Area = 'D'
+    Export.CharSepQuote = ' '
+    WindowZoom.Magnification = -1
+    WindowState = wsMaximized
+    WindowButtonBar.CloseBtn = True
+    WindowButtonBar.PrintSetupBtn = True
+    WindowButtonBar.SearchBtn = True
+    WindowCursor.GroupArea = wcDefault
+    WindowCursor.GroupAreaField = wcDefault
+    WindowCursor.DetailArea = wcDefault
+    WindowCursor.DetailAreaField = wcDefault
+    WindowCursor.Graph = wcDefault
+    GraphType.Number = -1
+    GraphType.Style = barSideBySide
+    GraphText.Number = -1
+    GraphText.TitleFont.Charset = DEFAULT_CHARSET
+    GraphText.TitleFont.Color = clWindowText
+    GraphText.TitleFont.Height = -11
+    GraphText.TitleFont.Name = 'MS Sans Serif'
+    GraphText.TitleFont.Style = []
+    GraphText.SubTitleFont.Charset = DEFAULT_CHARSET
+    GraphText.SubTitleFont.Color = clWindowText
+    GraphText.SubTitleFont.Height = -11
+    GraphText.SubTitleFont.Name = 'MS Sans Serif'
+    GraphText.SubTitleFont.Style = []
+    GraphText.FootNoteFont.Charset = DEFAULT_CHARSET
+    GraphText.FootNoteFont.Color = clWindowText
+    GraphText.FootNoteFont.Height = -11
+    GraphText.FootNoteFont.Name = 'MS Sans Serif'
+    GraphText.FootNoteFont.Style = []
+    GraphText.GroupsTitleFont.Charset = DEFAULT_CHARSET
+    GraphText.GroupsTitleFont.Color = clWindowText
+    GraphText.GroupsTitleFont.Height = -11
+    GraphText.GroupsTitleFont.Name = 'MS Sans Serif'
+    GraphText.GroupsTitleFont.Style = []
+    GraphText.DataTitleFont.Charset = DEFAULT_CHARSET
+    GraphText.DataTitleFont.Color = clWindowText
+    GraphText.DataTitleFont.Height = -11
+    GraphText.DataTitleFont.Name = 'MS Sans Serif'
+    GraphText.DataTitleFont.Style = []
+    GraphText.LegendFont.Charset = DEFAULT_CHARSET
+    GraphText.LegendFont.Color = clWindowText
+    GraphText.LegendFont.Height = -11
+    GraphText.LegendFont.Name = 'MS Sans Serif'
+    GraphText.LegendFont.Style = []
+    GraphText.GroupLabelsFont.Charset = DEFAULT_CHARSET
+    GraphText.GroupLabelsFont.Color = clWindowText
+    GraphText.GroupLabelsFont.Height = -11
+    GraphText.GroupLabelsFont.Name = 'MS Sans Serif'
+    GraphText.GroupLabelsFont.Style = []
+    GraphText.DataLabelsFont.Charset = DEFAULT_CHARSET
+    GraphText.DataLabelsFont.Color = clWindowText
+    GraphText.DataLabelsFont.Height = -11
+    GraphText.DataLabelsFont.Name = 'MS Sans Serif'
+    GraphText.DataLabelsFont.Style = []
+    GraphOptions.Number = -1
+    GraphOptions.Max = -1.000000000000000000
+    GraphOptions.Min = -1.000000000000000000
+    GraphOptions.DataValues = cDefault
+    GraphOptions.GridLines = cDefault
+    GraphOptions.Legend = cDefault
+    GraphOptions.BarDirection = bdDefault
+    GraphOptionInfo.Number = -1
+    GraphOptionInfo.Color = gcDefault
+    GraphOptionInfo.Legend = glDefault
+    GraphOptionInfo.PieSize = gpsDefault
+    GraphOptionInfo.PieSlice = gslDefault
+    GraphOptionInfo.BarSize = gbsDefault
+    GraphOptionInfo.BarDirection = bdDefault
+    GraphOptionInfo.MarkerSize = gmsDefault
+    GraphOptionInfo.MarkerShape = gshDefault
+    GraphOptionInfo.DataPoints = gdpDefault
+    GraphOptionInfo.NumberFormat = gnfDefault
+    GraphOptionInfo.ViewingAngle = gvaDefault
+    GraphData.Number = -1
+    GraphData.RowGroupN = -1
+    GraphData.ColGroupN = -1
+    GraphData.SummarizedFieldN = -1
+    GraphData.Direction = Unknown
+    GraphAxis.Number = -1
+    GraphAxis.GridLineX = gglDefault
+    GraphAxis.GridLineY = gglDefault
+    GraphAxis.GridLineY2 = gglDefault
+    GraphAxis.GridLineZ = gglDefault
+    GraphAxis.DataValuesY = gdvDefault
+    GraphAxis.DataValuesY2 = gdvDefault
+    GraphAxis.DataValuesZ = gdvDefault
+    GraphAxis.NumberFormatY = gnfDefault
+    GraphAxis.NumberFormatY2 = gnfDefault
+    GraphAxis.NumberFormatZ = gnfDefault
+    GraphAxis.DivisionTypeY = gdvDefault
+    GraphAxis.DivisionTypeY2 = gdvDefault
+    GraphAxis.DivisionTypeZ = gdvDefault
+    GraphAxis.DivisionsY = 0
+    GraphAxis.DivisionsY2 = 0
+    GraphAxis.DivisionsZ = 0
+    Left = 545
+    Top = 57
+  end
+  object DSTblPedidoItens: TDataSource
+    DataSet = TblPedidoItens
+    Left = 341
+    Top = 405
+  end
+  object PipePedVd: TppBDEPipeline
+    DataSource = DSTblPedidoCab
+    CloseDataSource = True
+    UserName = 'PipePedVd'
+    Left = 370
+    Top = 360
+  end
+  object PipePedVdIt: TppBDEPipeline
+    DataSource = DSTblPedidoItens
+    CloseDataSource = True
+    UserName = 'PipePedVdIt'
+    Left = 370
+    Top = 405
+  end
+  object TblPedidoCab: TTable
+    DatabaseName = 'Easy_Temp'
+    TableName = 'PedidoCab.DB'
+    Left = 312
+    Top = 360
+    object TblPedidoCabPedICod: TStringField
+      FieldName = 'PedICod'
+      Size = 13
+    end
+    object TblPedidoCabEmitente_Nome: TStringField
+      FieldName = 'Emitente_Nome'
+      Size = 60
+    end
+    object TblPedidoCabEmitente_Ender: TStringField
+      FieldName = 'Emitente_Ender'
+      Size = 60
+    end
+    object TblPedidoCabEmitente_Bairro: TStringField
+      FieldName = 'Emitente_Bairro'
+      Size = 60
+    end
+    object TblPedidoCabEmitente_Cidade: TStringField
+      FieldName = 'Emitente_Cidade'
+      Size = 60
+    end
+    object TblPedidoCabEmitente_UF: TStringField
+      FieldName = 'Emitente_UF'
+      Size = 2
+    end
+    object TblPedidoCabEmitente_CGC: TStringField
+      FieldName = 'Emitente_CGC'
+    end
+    object TblPedidoCabEmitente_IE: TStringField
+      FieldName = 'Emitente_IE'
+    end
+    object TblPedidoCabEmitente_Fone: TStringField
+      FieldName = 'Emitente_Fone'
+      Size = 15
+    end
+    object TblPedidoCabDtEmissao: TDateField
+      FieldName = 'DtEmissao'
+    end
+    object TblPedidoCabDestinatario_Nome: TStringField
+      FieldName = 'Destinatario_Nome'
+      Size = 60
+    end
+    object TblPedidoCabDestinatario_Endereco: TStringField
+      FieldName = 'Destinatario_Endereco'
+      Size = 60
+    end
+    object TblPedidoCabDestinatario_Bairro: TStringField
+      FieldName = 'Destinatario_Bairro'
+      Size = 60
+    end
+    object TblPedidoCabDestinatario_Cep: TStringField
+      FieldName = 'Destinatario_Cep'
+      Size = 15
+    end
+    object TblPedidoCabDestinatario_Cidade: TStringField
+      FieldName = 'Destinatario_Cidade'
+      Size = 60
+    end
+    object TblPedidoCabDestinatario_UF: TStringField
+      FieldName = 'Destinatario_UF'
+      Size = 2
+    end
+    object TblPedidoCabDestinatario_CpfCgc: TStringField
+      FieldName = 'Destinatario_CpfCgc'
+    end
+    object TblPedidoCabDestinatario_IE: TStringField
+      FieldName = 'Destinatario_IE'
+    end
+    object TblPedidoCabDestinatario_Fone: TStringField
+      FieldName = 'Destinatario_Fone'
+    end
+    object TblPedidoCabDestinatario_Fone2: TStringField
+      FieldName = 'Destinatario_Fone2'
+      Size = 15
+    end
+    object TblPedidoCabDestinatario_Fax: TStringField
+      FieldName = 'Destinatario_Fax'
+    end
+    object TblPedidoCabTransp: TStringField
+      FieldName = 'Transp'
+      Size = 60
+    end
+    object TblPedidoCabDtaEntrega: TDateField
+      FieldName = 'DtaEntrega'
+    end
+    object TblPedidoCabComprador: TStringField
+      FieldName = 'Comprador'
+      Size = 60
+    end
+    object TblPedidoCabOrdemCompra: TStringField
+      FieldName = 'OrdemCompra'
+      Size = 60
+    end
+    object TblPedidoCabPlano: TStringField
+      FieldName = 'Plano'
+      Size = 60
+    end
+    object TblPedidoCabTipoFrete: TStringField
+      FieldName = 'TipoFrete'
+      Size = 15
+    end
+    object TblPedidoCabValorFrete: TFloatField
+      FieldName = 'ValorFrete'
+    end
+    object TblPedidoCabTotalDesconto: TFloatField
+      FieldName = 'TotalDesconto'
+    end
+    object TblPedidoCabTotal: TFloatField
+      FieldName = 'Total'
+    end
+    object TblPedidoCabObservacoes: TMemoField
+      FieldName = 'Observacoes'
+      BlobType = ftMemo
+      Size = 10
+    end
+    object TblPedidoCabVendedor: TStringField
+      FieldName = 'Vendedor'
+      Size = 60
+    end
+    object TblPedidoCabEmail: TStringField
+      FieldName = 'Email'
+      Size = 60
+    end
+    object TblPedidoCabTotalGeral: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'TotalGeral'
+      Calculated = True
+    end
+    object TblPedidoCabEmitente_Email: TStringField
+      FieldName = 'Emitente_Email'
+      Size = 100
+    end
+    object TblPedidoCabEmitente_URL: TStringField
+      FieldName = 'Emitente_URL'
+      Size = 254
+    end
+    object TblPedidoCabEmitenteLogo: TBlobField
+      FieldName = 'EmitenteLogo'
+    end
+    object TblPedidoCabValorEntrada: TFloatField
+      FieldName = 'ValorEntrada'
+    end
+    object TblPedidoCabRota: TStringField
+      FieldName = 'Rota'
+      Size = 60
+    end
+    object TblPedidoCabPlacaVeiculo: TStringField
+      FieldName = 'PlacaVeiculo'
+      Size = 10
+    end
+    object TblPedidoCabTroco: TFloatField
+      FieldName = 'Troco'
+    end
+    object TblPedidoCabPEDIDOORCAMENTO: TStringField
+      FieldName = 'PEDIDOORCAMENTO'
+    end
+  end
+  object TblPedidoItens: TTable
+    DatabaseName = 'Easy_Temp'
+    TableName = 'PedidoItens.DB'
+    Left = 312
+    Top = 405
+    object TblPedidoItensPedICod: TStringField
+      FieldName = 'PedICod'
+      Size = 13
+    end
+    object TblPedidoItensCodigo: TIntegerField
+      FieldName = 'Codigo'
+    end
+    object TblPedidoItensDescricao: TStringField
+      FieldName = 'Descricao'
+      Size = 60
+    end
+    object TblPedidoItensUn: TStringField
+      FieldName = 'Un'
+      Size = 2
+    end
+    object TblPedidoItensQtd1: TFloatField
+      FieldName = 'Qtd1'
+    end
+    object TblPedidoItensVlrUnitario: TFloatField
+      FieldName = 'VlrUnitario'
+    end
+    object TblPedidoItensVlrTotal: TFloatField
+      FieldName = 'VlrTotal'
+    end
+    object TblPedidoItensCor: TStringField
+      FieldName = 'Cor'
+      Size = 60
+    end
+    object TblPedidoItensTecido: TStringField
+      FieldName = 'Tecido'
+      Size = 60
+    end
+    object TblPedidoItensLegenda: TIntegerField
+      FieldName = 'Legenda'
+    end
+    object TblPedidoItensQtd2: TFloatField
+      FieldName = 'Qtd2'
+    end
+    object TblPedidoItensQtd3: TFloatField
+      FieldName = 'Qtd3'
+    end
+    object TblPedidoItensQtd4: TFloatField
+      FieldName = 'Qtd4'
+    end
+    object TblPedidoItensQtd5: TFloatField
+      FieldName = 'Qtd5'
+    end
+    object TblPedidoItensQtd6: TFloatField
+      FieldName = 'Qtd6'
+    end
+    object TblPedidoItensQtd7: TFloatField
+      FieldName = 'Qtd7'
+    end
+    object TblPedidoItensQtd8: TFloatField
+      FieldName = 'Qtd8'
+    end
+    object TblPedidoItensQtd9: TFloatField
+      FieldName = 'Qtd9'
+    end
+    object TblPedidoItensQtd10: TFloatField
+      FieldName = 'Qtd10'
+    end
+    object TblPedidoItensQtd11: TFloatField
+      FieldName = 'Qtd11'
+    end
+    object TblPedidoItensQtd12: TFloatField
+      FieldName = 'Qtd12'
+    end
+    object TblPedidoItensQtd13: TFloatField
+      FieldName = 'Qtd13'
+    end
+    object TblPedidoItensQtd14: TFloatField
+      FieldName = 'Qtd14'
+    end
+    object TblPedidoItensQtd15: TFloatField
+      FieldName = 'Qtd15'
+    end
+    object TblPedidoItensReferencia: TStringField
+      FieldName = 'Referencia'
+      Size = 60
+    end
+    object TblPedidoItensCodItem: TIntegerField
+      FieldName = 'CodItem'
+    end
+  end
+  object TblPedidoFinan: TTable
+    DatabaseName = 'Easy_Temp'
+    TableName = 'PedidoFinan.DB'
+    Left = 441
+    Top = 405
+    object TblPedidoFinanPedICod: TStringField
+      FieldName = 'PedICod'
+      Size = 13
+    end
+    object TblPedidoFinanParcela: TStringField
+      FieldName = 'Parcela'
+      Size = 3
+    end
+    object TblPedidoFinanVencimento: TDateField
+      FieldName = 'Vencimento'
+    end
+    object TblPedidoFinanValor: TFloatField
+      FieldName = 'Valor'
+    end
+    object TblPedidoFinanPortador: TStringField
+      FieldName = 'Portador'
+      Size = 60
+    end
+    object TblPedidoFinanNumerario: TStringField
+      FieldName = 'Numerario'
+      Size = 15
+    end
+  end
+  object DSTblPedidoFinan: TDataSource
+    DataSet = TblPedidoFinan
+    Left = 470
+    Top = 405
+  end
+  object PipePedFin: TppBDEPipeline
+    DataSource = DSTblPedidoFinan
+    CloseDataSource = True
+    UserName = 'PipePedFin'
+    Left = 499
+    Top = 405
+  end
+  object ReportOrc: TppReport
+    AutoStop = False
+    DataPipeline = PipePedVdIt
+    PassSetting = psTwoPass
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'A4'
+    PrinterSetup.PrinterName = 'Default'
+    PrinterSetup.mmMarginBottom = 6350
+    PrinterSetup.mmMarginLeft = 6350
+    PrinterSetup.mmMarginRight = 6350
+    PrinterSetup.mmMarginTop = 6350
+    PrinterSetup.mmPaperHeight = 0
+    PrinterSetup.mmPaperWidth = 0
+    PrinterSetup.PaperSize = 9
+    DeviceType = 'Screen'
+    OutlineSettings.CreateNode = True
+    OutlineSettings.CreatePageNodes = True
+    OutlineSettings.Enabled = False
+    OutlineSettings.Visible = False
+    TextSearchSettings.DefaultString = '<FindText>'
+    TextSearchSettings.Enabled = False
+    Left = 399
+    Top = 360
+    Version = '7.04'
+    mmColumnWidth = 0
+    DataPipelineName = 'PipePedVdIt'
+    object ppHeaderBand1: TppHeaderBand
+      mmBottomOffset = 0
+      mmHeight = 18551297
+      mmPrintPosition = 0
+      object ppDBText6: TppDBText
+        UserName = 'ppDBText6'
+        AutoSize = True
+        DataPipeline = PipePedVd
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Roman 5cpi'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'PipePedVd'
+        mmHeight = 4022
+        mmLeft = 0
+        mmTop = 420159
+        mmWidth = 17230
+        BandType = 0
+      end
+      object ppDBText7: TppDBText
+        UserName = 'ppDBText7'
+        DataPipeline = PipePedVd
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'PipePedVd'
+        mmHeight = 1119983
+        mmLeft = 0
+        mmTop = 3430330
+        mmWidth = 23871814
+        BandType = 0
+      end
+      object ppDBText8: TppDBText
+        UserName = 'ppDBText8'
+        DataPipeline = PipePedVd
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'PipePedVd'
+        mmHeight = 1119983
+        mmLeft = 0
+        mmTop = 4620428
+        mmWidth = 23871814
+        BandType = 0
+      end
+      object ppDBText9: TppDBText
+        UserName = 'ppDBText9'
+        DataPipeline = PipePedVd
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'PipePedVd'
+        mmHeight = 1119983
+        mmLeft = 0
+        mmTop = 5810262
+        mmWidth = 23871550
+        BandType = 0
+      end
+      object ppDBText10: TppDBText
+        UserName = 'ppDBText10'
+        DataPipeline = PipePedVd
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'PipePedVd'
+        mmHeight = 1119983
+        mmLeft = 0
+        mmTop = 7000360
+        mmWidth = 23871550
+        BandType = 0
+      end
+      object ppLabel1: TppLabel
+        UserName = 'ppLabel1'
+        AutoSize = False
+        Caption = 'NOME.....:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 1119983
+        mmLeft = 0
+        mmTop = 8820697
+        mmWidth = 6090456
+        BandType = 0
+      end
+      object ppLabel2: TppLabel
+        UserName = 'ppLabel2'
+        AutoSize = False
+        Caption = 'ENDERE'#199'O.:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 1119983
+        mmLeft = 0
+        mmTop = 10010530
+        mmWidth = 6090456
+        BandType = 0
+      end
+      object ppLabel3: TppLabel
+        UserName = 'ppLabel3'
+        AutoSize = False
+        Caption = 'BAIRRO...:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 1119983
+        mmLeft = 0
+        mmTop = 11200629
+        mmWidth = 6090456
+        BandType = 0
+      end
+      object ppLabel4: TppLabel
+        UserName = 'ppLabel4'
+        AutoSize = False
+        Caption = 'CIDADE...:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 1119983
+        mmLeft = 0
+        mmTop = 12390727
+        mmWidth = 6090456
+        BandType = 0
+      end
+      object ppLabel5: TppLabel
+        UserName = 'ppLabel5'
+        AutoSize = False
+        Caption = 'CPF/C.G.C:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 1119983
+        mmLeft = 0
+        mmTop = 13580825
+        mmWidth = 6090456
+        BandType = 0
+      end
+      object ppLabel6: TppLabel
+        UserName = 'ppLabel6'
+        Caption = 'Codigo'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 1119983
+        mmLeft = 0
+        mmTop = 16871190
+        mmWidth = 3360215
+        BandType = 0
+      end
+      object ppDBText12: TppDBText
+        UserName = 'ppDBText12'
+        DataPipeline = PipePedVd
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'PipePedVd'
+        mmHeight = 1119983
+        mmLeft = 6090456
+        mmTop = 8820697
+        mmWidth = 23871550
+        BandType = 0
+      end
+      object ppDBText13: TppDBText
+        UserName = 'ppDBText13'
+        DataPipeline = PipePedVd
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'PipePedVd'
+        mmHeight = 1119983
+        mmLeft = 6090456
+        mmTop = 10010530
+        mmWidth = 23871550
+        BandType = 0
+      end
+      object ppDBText14: TppDBText
+        UserName = 'ppDBText14'
+        DataPipeline = PipePedVd
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'PipePedVd'
+        mmHeight = 1119983
+        mmLeft = 6090456
+        mmTop = 11200629
+        mmWidth = 23871550
+        BandType = 0
+      end
+      object ppDBText15: TppDBText
+        UserName = 'ppDBText15'
+        DataPipeline = PipePedVd
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'PipePedVd'
+        mmHeight = 1119983
+        mmLeft = 6090456
+        mmTop = 13580825
+        mmWidth = 23871550
+        BandType = 0
+      end
+      object ppDBText16: TppDBText
+        UserName = 'ppDBText16'
+        DataPipeline = PipePedVd
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'PipePedVd'
+        mmHeight = 1119983
+        mmLeft = 6090456
+        mmTop = 14770923
+        mmWidth = 23871550
+        BandType = 0
+      end
+      object ppDBText17: TppDBText
+        UserName = 'ppDBText17'
+        DataPipeline = PipePedVd
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'PipePedVd'
+        mmHeight = 1119983
+        mmLeft = 6090456
+        mmTop = 12390727
+        mmWidth = 23871550
+        BandType = 0
+      end
+      object ppLabel13: TppLabel
+        UserName = 'ppLabel13'
+        AutoSize = False
+        Caption = 'FONE.....:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 1119983
+        mmLeft = 0
+        mmTop = 14770923
+        mmWidth = 6090720
+        BandType = 0
+      end
+      object ppLabel14: TppLabel
+        UserName = 'ppLabel14'
+        AutoSize = False
+        Caption = 'Descri'#231#227'o'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 1119983
+        mmLeft = 5880376
+        mmTop = 16871190
+        mmWidth = 28491978
+        BandType = 0
+      end
+      object ppLabel25: TppLabel
+        UserName = 'ppLabel25'
+        AutoSize = False
+        Caption = 'Quant.'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 1119983
+        mmLeft = 35352372
+        mmTop = 16941040
+        mmWidth = 4830243
+        BandType = 0
+      end
+      object ppLabel26: TppLabel
+        UserName = 'ppLabel26'
+        AutoSize = False
+        Caption = 'Unit'#225'rio'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 1119983
+        mmLeft = 41302599
+        mmTop = 16941040
+        mmWidth = 4830243
+        BandType = 0
+      end
+      object ppLabel27: TppLabel
+        UserName = 'ppLabel27'
+        AutoSize = False
+        Caption = 'Total'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 1119983
+        mmLeft = 46903045
+        mmTop = 16941040
+        mmWidth = 4830243
+        BandType = 0
+      end
+      object ppLine1: TppLine
+        UserName = 'ppLine1'
+        Pen.Style = psDot
+        ParentWidth = True
+        Weight = 0.750000000000000000
+        mmHeight = 70115
+        mmLeft = 0
+        mmTop = 18271103
+        mmWidth = 52202396
+        BandType = 0
+      end
+      object ppLine3: TppLine
+        UserName = 'ppLine3'
+        Pen.Style = psDot
+        ParentWidth = True
+        Weight = 0.750000000000000000
+        mmHeight = 70115
+        mmLeft = 0
+        mmTop = 8400538
+        mmWidth = 52202396
+        BandType = 0
+      end
+      object ppLabel28: TppLabel
+        UserName = 'ppLabel28'
+        AutoSize = False
+        Caption = 'OR'#199'AMENTO NRO:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 1119983
+        mmLeft = 0
+        mmTop = 1750222
+        mmWidth = 8610617
+        BandType = 0
+      end
+      object ppDBText24: TppDBText
+        UserName = 'ppDBText24'
+        AutoSize = True
+        DataPipeline = PipePedVd
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'PipePedVd'
+        mmHeight = 4022
+        mmLeft = 8960662
+        mmTop = 1750222
+        mmWidth = 19177
+        BandType = 0
+      end
+    end
+    object ppDetailBand1: TppDetailBand
+      mmBottomOffset = 0
+      mmHeight = 1119983
+      mmPrintPosition = 0
+      object ppDBText1: TppDBText
+        UserName = 'ppDBText1'
+        DataPipeline = PipePedVdIt
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'PipePedVdIt'
+        mmHeight = 1119983
+        mmLeft = 139965
+        mmTop = 0
+        mmWidth = 4690278
+        BandType = 4
+      end
+      object ppDBText2: TppDBText
+        UserName = 'ppDBText2'
+        AutoSize = True
+        DataPipeline = PipePedVdIt
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'PipePedVdIt'
+        mmHeight = 4022
+        mmLeft = 5880376
+        mmTop = 0
+        mmWidth = 17230
+        BandType = 4
+      end
+      object ppDBText3: TppDBText
+        UserName = 'ppDBText3'
+        DataPipeline = PipePedVdIt
+        DisplayFormat = '#,##0.00'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'PipePedVdIt'
+        mmHeight = 1119983
+        mmLeft = 35352372
+        mmTop = 0
+        mmWidth = 4829978
+        BandType = 4
+      end
+      object ppDBText4: TppDBText
+        UserName = 'ppDBText4'
+        DataPipeline = PipePedVdIt
+        DisplayFormat = '#,##0.00'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'PipePedVdIt'
+        mmHeight = 1119983
+        mmLeft = 41302599
+        mmTop = 0
+        mmWidth = 4829978
+        BandType = 4
+      end
+      object ppDBText5: TppDBText
+        UserName = 'ppDBText5'
+        DataPipeline = PipePedVdIt
+        DisplayFormat = '#,##0.00'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'PipePedVdIt'
+        mmHeight = 1119983
+        mmLeft = 46903045
+        mmTop = 0
+        mmWidth = 4829978
+        BandType = 4
+      end
+    end
+    object ppFooterBand1: TppFooterBand
+      mmBottomOffset = 0
+      mmHeight = 1330063
+      mmPrintPosition = 0
+    end
+    object ppSummaryBand1: TppSummaryBand
+      mmBottomOffset = 0
+      mmHeight = 13300895
+      mmPrintPosition = 0
+      object ppDBText18: TppDBText
+        UserName = 'ppDBText18'
+        DataPipeline = PipePedVd
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'PipePedVd'
+        mmHeight = 1119983
+        mmLeft = 6090456
+        mmTop = 420159
+        mmWidth = 23871550
+        BandType = 7
+      end
+      object ppLabel16: TppLabel
+        UserName = 'ppLabel16'
+        AutoSize = False
+        Caption = 'PLANO....:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 1119983
+        mmLeft = 0
+        mmTop = 420159
+        mmWidth = 6090720
+        BandType = 7
+      end
+      object ppLabel17: TppLabel
+        UserName = 'ppLabel17'
+        AutoSize = False
+        Caption = 'P A R C E L A S '
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 1119983
+        mmLeft = 69850
+        mmTop = 3920339
+        mmWidth = 29569892
+        BandType = 7
+      end
+      object ppLabel18: TppLabel
+        UserName = 'ppLabel18'
+        AutoSize = False
+        Caption = 'O B S E R V A '#199' '#213' E S'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 1119983
+        mmLeft = 69850
+        mmTop = 9030512
+        mmWidth = 29569892
+        BandType = 7
+      end
+      object ppLabel19: TppLabel
+        UserName = 'ppLabel19'
+        AutoSize = False
+        Caption = 'VENDEDOR.:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 1119983
+        mmLeft = 0
+        mmTop = 1609993
+        mmWidth = 6090720
+        BandType = 7
+      end
+      object ppDBText19: TppDBText
+        UserName = 'ppDBText19'
+        DataPipeline = PipePedVd
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'PipePedVd'
+        mmHeight = 1119983
+        mmLeft = 6090456
+        mmTop = 1609993
+        mmWidth = 23871550
+        BandType = 7
+      end
+      object ppLabel21: TppLabel
+        UserName = 'ppLabel21'
+        AutoSize = False
+        Caption = 'TOTAL ITENS'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 1119983
+        mmLeft = 35352372
+        mmTop = 420159
+        mmWidth = 7280554
+        BandType = 7
+      end
+      object ppDBText20: TppDBText
+        UserName = 'ppDBText20'
+        DataPipeline = PipePedVd
+        DisplayFormat = '#,##0.00'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'PipePedVd'
+        mmHeight = 1119983
+        mmLeft = 46903045
+        mmTop = 420159
+        mmWidth = 4830243
+        BandType = 7
+      end
+      object ppLabel22: TppLabel
+        UserName = 'ppLabel22'
+        AutoSize = False
+        Caption = 'TOTAL FRETE'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 1119983
+        mmLeft = 35352372
+        mmTop = 1609993
+        mmWidth = 7280554
+        BandType = 7
+      end
+      object ppDBText21: TppDBText
+        UserName = 'ppDBText21'
+        DataPipeline = PipePedVd
+        DisplayFormat = '#,##0.00'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'PipePedVd'
+        mmHeight = 1119983
+        mmLeft = 46903045
+        mmTop = 1609993
+        mmWidth = 4830243
+        BandType = 7
+      end
+      object ppDBText22: TppDBText
+        UserName = 'ppDBText22'
+        DataPipeline = PipePedVd
+        DisplayFormat = '#,##0.00'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'PipePedVd'
+        mmHeight = 1119983
+        mmLeft = 46903045
+        mmTop = 2800091
+        mmWidth = 4829978
+        BandType = 7
+      end
+      object ppLabel23: TppLabel
+        UserName = 'ppLabel23'
+        AutoSize = False
+        Caption = 'TOTAL DESC.'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 1119983
+        mmLeft = 35352372
+        mmTop = 2800091
+        mmWidth = 7280554
+        BandType = 7
+      end
+      object ppLabel24: TppLabel
+        UserName = 'ppLabel24'
+        AutoSize = False
+        Caption = 'TOTAL GERAL'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 1119983
+        mmLeft = 35352372
+        mmTop = 3990189
+        mmWidth = 7280554
+        BandType = 7
+      end
+      object ppDBMemo1: TppDBMemo
+        UserName = 'ppDBMemo1'
+        CharWrap = False
+        DataPipeline = PipePedVd
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'PipePedVd'
+        mmHeight = 2520161
+        mmLeft = 69850
+        mmTop = 10220610
+        mmWidth = 29569892
+        BandType = 7
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        mmLeading = 0
+      end
+      object ppLine2: TppLine
+        UserName = 'ppLine2'
+        Pen.Style = psDot
+        ParentWidth = True
+        Weight = 0.750000000000000000
+        mmHeight = 70115
+        mmLeft = 0
+        mmTop = 0
+        mmWidth = 52202396
+        BandType = 7
+      end
+      object ppDBText23: TppDBText
+        UserName = 'ppDBText23'
+        DataPipeline = PipePedVd
+        DisplayFormat = '#,##0.00'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 12cpi'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'PipePedVd'
+        mmHeight = 1119983
+        mmLeft = 46903045
+        mmTop = 3990189
+        mmWidth = 4830243
+        BandType = 7
+      end
+    end
+  end
+  object DSTblPedidoCab: TDataSource
+    DataSet = TblPedidoCab
+    Left = 341
+    Top = 360
+  end
+  object SQLProvedorCartao: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'SELECT * FROM PROVEDORCARTAO')
+    Macros = <>
+    Left = 536
+    Top = 361
+  end
 end

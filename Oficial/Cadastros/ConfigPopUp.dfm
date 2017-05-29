@@ -1,10 +1,10 @@
 object FormConfigPopUp: TFormConfigPopUp
-  Left = 349
-  Top = 278
+  Left = 475
+  Top = 202
   BorderIcons = []
   BorderStyle = bsToolWindow
   Caption = 'Configura'#231#227'o PopUp Agenda'
-  ClientHeight = 154
+  ClientHeight = 163
   ClientWidth = 258
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -21,7 +21,7 @@ object FormConfigPopUp: TFormConfigPopUp
     Left = 0
     Top = 0
     Width = 258
-    Height = 154
+    Height = 163
     Align = alClient
     Color = 12572888
     TabOrder = 0
@@ -121,7 +121,7 @@ object FormConfigPopUp: TFormConfigPopUp
     RequestLive = True
     SQL.Strings = (
       'SELECT * FROM CFGCALLCENTER')
-    Left = 208
+    Left = 176
     Top = 8
   end
 end

@@ -365,7 +365,9 @@ uses
   TelaLembreteTarefa, CadastroFornecedor, CadastroVendedor,
   CadastroTransportadora, CadastroRepresentante, CadastroConvenio,
   CadastroCidade, CadastroPedidoCompra, CadastroNotaCompra,
-  TelaImportadorXML, TelaListaPreco;
+  TelaImportadorXML, TelaListaPreco,           
+  TelaCadastroTarefa, ConfigPopUp, CadastroPedidoVenda;
+
 
 
 {uses CadastroCliente, CadastroTemplate, CadastroTipoCliente, CadastroBanco,
@@ -451,12 +453,12 @@ end;
 procedure TFormPrincipal.FATUMnVendasPedidosVendaClick(Sender: TObject);
 begin
   inherited;
-  {dm.VendedorAtualPedidos := 0;
+  dm.VendedorAtualPedidos := 0;
   dm.RotaAtualPedidos     := 0;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     CriaFormulario(TFormCadastroPedidoVenda, 'FormCadastroPedidoVenda',False,False,False,'')
   else
-    SoundPlay('Acesso Negado.wav',Sender); }
+    SoundPlay('Acesso Negado.wav',Sender);
 end;
 
 procedure TFormPrincipal.FATUMnVendasNotasFiscaisClick(Sender: TObject);
@@ -929,25 +931,25 @@ end;
 procedure TFormPrincipal.MnAdicionarTarefasClick(Sender: TObject);
 begin
   inherited;
-  {if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     begin
       Application.CreateForm(TFormTelaCadastroTarefa,FormTelaCadastroTarefa);
       FormTelaCadastroTarefa.ShowModal;
     end
   else
-    SoundPlay('Acesso Negado.wav',Sender);}
+    SoundPlay('Acesso Negado.wav',Sender);
 end;
 
 procedure TFormPrincipal.MnConfigPopLembreteTarefaClick(Sender: TObject);
 begin
   inherited;
-  {if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     begin
       Application.CreateForm(TFormConfigPopUp,FormConfigPopUp);
       FormConfigPopUp.ShowModal;
     end
   else
-    SoundPlay('Acesso Negado.wav',Sender);}
+    SoundPlay('Acesso Negado.wav',Sender);
 end;
 
 procedure TFormPrincipal.TimeLembreteTimer(Sender: TObject);

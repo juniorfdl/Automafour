@@ -1031,7 +1031,6 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
             item
               Expanded = False
               FieldName = 'NOCPA30NRO'
-              Width = 64
               Visible = True
             end>
         end
