@@ -168,8 +168,8 @@ begin
   DataSet.FindField('CTRCN2TOTMULTACOBR').Value := 0;
   DataSet.FindField('CTRCN2TOTMULTACOBR').Value := 0;
   DataSet.FindField('CTRCN2DESCFIN').Value      := 0;
-  DataSet.FindField('TPDCICOD').Value           := DM.SQLConfigVenda.ParamByName('TPDCICOD').AsInteger; //#ver estava .asvariant
-  DataSet.FindField('PORTICOD').Value           := DM.SQLConfigVenda.ParamByName('PORTICOD').AsInteger; //#ver estava .asvariant
+  DataSet.FindField('TPDCICOD').Value           := DM.SQLConfigVenda.Fieldbyname('TPDCICOD').AsInteger; //#ver estava .asvariant
+  DataSet.FindField('PORTICOD').Value           := DM.SQLConfigVenda.Fieldbyname('PORTICOD').AsInteger; //#ver estava .asvariant
 
 end;
 

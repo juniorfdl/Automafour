@@ -292,7 +292,7 @@ begin
       If (SQLTemplate.State in DsEditModes) Then
         Begin
           Ocupado:=True;
-          SQLTemplatePVITN2VLRUNIT.asFloat := RetornaPreco(DM.SQLTemplate,DM.SQLConfigVenda.ParamByName('TPRCICOD').asString,SQLTemplate.DataSource.DataSet.FieldByName('ClienteTabelaPrecoLookUp').asString);
+          SQLTemplatePVITN2VLRUNIT.asFloat := RetornaPreco(DM.SQLTemplate,DM.SQLConfigVenda.Fieldbyname('TPRCICOD').asString,SQLTemplate.DataSource.DataSet.FieldByName('ClienteTabelaPrecoLookUp').asString);
           Ocupado:=False;
         End;
       If (SQLTemplate.FindField('GradeCodLookUp').asVariant<>Null) and
@@ -362,7 +362,7 @@ begin
   if not UsuarioMaster then
     if not Autenticado then
       begin
-        if (DM.SQLConfigVenda.ParamByName('CFVECSOLSENHAALTVLR').AsString = 'S') and not PermiteAlterarValorVenda then
+        if (DM.SQLConfigVenda.Fieldbyname('CFVECSOLSENHAALTVLR').AsString = 'S') and not PermiteAlterarValorVenda then
           if AutenticaUsuario(UsuarioAtualNome,'USUAA60LOGIN',RetornoUser) <> 'S' then
             begin
               Autenticado := True;
@@ -655,7 +655,7 @@ begin
 
 //Permite alterar ou não
   if not UsuarioMaster then
-     if (DM.SQLConfigVenda.ParamByName('CFVECCONTPEDVDAUSU').AsString = 'S') and
+     if (DM.SQLConfigVenda.Fieldbyname('CFVECCONTPEDVDAUSU').AsString = 'S') and
         (DSMasterTemplate.DataSet.FieldByName('USUAA60LOGIN').AsString <> UsuarioAtualNome) and
         ((DSMasterTemplate.DataSet.FieldByName('USUAA60LOGIN').IsNull) or (DSMasterTemplate.DataSet.FieldByName('USUAA60LOGIN').AsString <> '')) then
         DesabilitarBotoes(True,True,True,True,True)

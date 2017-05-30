@@ -287,7 +287,7 @@ begin
   if not UsuarioMaster then
       if not PermiteAlterarValorVenda then
           if not Autenticado then
-            if (DM.SQLConfigVenda.ParamByName('CFVECSOLSENHAALTVLR').AsString = 'S') and not PermiteAlterarValorVenda then
+            if (DM.SQLConfigVenda.Fieldbyname('CFVECSOLSENHAALTVLR').AsString = 'S') and not PermiteAlterarValorVenda then
               if AutenticaUsuario(UsuarioAtualNome,'USUAA60LOGIN',RetornoUser) <> 'S' then
                 begin
                   Autenticado := True;

@@ -520,10 +520,10 @@ begin
   SQLTemplatePDVDCSTATUS.Value        := 'A';
   SQLTemplatePDVDCIMPORTADO.Value     := 'N';
   SQLTemplatePDVDN2PERCMIX.Value      := 0;
-  if DM.SQLConfigVenda.ParamByName('OPESICODNF').AsString <> Null then //#ver estava asvariant
+  if DM.SQLConfigVenda.Fieldbyname('OPESICODNF').AsString <> Null then //#ver estava asvariant
     begin
-      DataSet.FindField('OPESICOD').Value   := DM.SQLConfigVenda.ParamByName('OPESICODNF').Value;
-      DataSet.FindField('SERIA5COD').Value  := SQLLocate('OPERACAOESTOQUE','OPESICOD','SERIA5COD',DM.SQLConfigVenda.ParamByName('OPESICODNF').AsString);
+      DataSet.FindField('OPESICOD').Value   := DM.SQLConfigVenda.Fieldbyname('OPESICODNF').Value;
+      DataSet.FindField('SERIA5COD').Value  := SQLLocate('OPERACAOESTOQUE','OPESICOD','SERIA5COD',DM.SQLConfigVenda.Fieldbyname('OPESICODNF').AsString);
     end;
   if dm.DataEmissaoPedidos > 0 then
     SQLTemplatePDVDDEMISSAO.AsString  := FormatDateTime('dd/mm/yyyy',dm.DataEmissaoPedidos)
@@ -548,10 +548,10 @@ begin
     SQLTemplatePDVDCTIPOFRETE.Value   := 'C';
   SQLTemplatePDVDN2PERCFAT.Value    := 0;
   SQLTemplatePDVDN2PERCOMIS.Value   := 0;
-  if DM.SQLConfigVenda.ParamByName('CFVETOBSPADRAOPED').AsString <> '' then
-    SQLTemplatePDVDTOBS.AsString := DM.SQLConfigVenda.ParamByName('CFVETOBSPADRAOPED').AsString;
+  if DM.SQLConfigVenda.Fieldbyname('CFVETOBSPADRAOPED').AsString <> '' then
+    SQLTemplatePDVDTOBS.AsString := DM.SQLConfigVenda.Fieldbyname('CFVETOBSPADRAOPED').AsString;
   if DM.SQLTerminalAtivo.ParamByName('VENDICOD').AsInteger > 0 then
-    SQLTemplateVENDICOD.AsInteger := DM.SQLTerminalAtivo.ParamByName('VENDICOD').AsInteger;
+    SQLTemplateVENDICOD.AsInteger := DM.SQLTerminalAtivo.Fieldbyname('VENDICOD').AsInteger;
   if dm.RotaAtualPedidos > 0 then
     SQLTemplateRotaIcod.Value := dm.RotaAtualPedidos;
   if dm.VendedorAtualPedidos > 0 then
@@ -1220,7 +1220,7 @@ begin
   if SQLPedidoItens.Active then SQLPedidoItens.Close;
   SQLPedidoItens.SQL.Text := 'Select Max(PVITIITEM) From PEDIDOVENDAITEM Where PDVDA13ID = "' + SQLTemplatePDVDA13ID.AsString + '"' ;
   SQLPedidoItens.Open;
-  if SQLPedidoItens.FieldByName('MAX').AsInteger = dm.SQLConfigVenda.ParamByName('CFVEINROITENSNF').Value then
+  if SQLPedidoItens.FieldByName('MAX').AsInteger = dm.SQLConfigVenda.Fieldbyname('CFVEINROITENSNF').Value then
     ShowMessage('Aviso!'+chr(13)+chr(13)+'Ultrapassou o número máximo de itens que a sua Nota Fiscal permite!');
 
   SQLPedidoVendaItemPVITIITEM.Value := SQLPedidoItens.FieldByName('MAX').AsInteger+1;
@@ -1291,7 +1291,7 @@ begin
       Exit;
     end;
 
-  if DM.SQLConfigVenda.ParamByName('CFVECVENDEDOREXIGE').Value = 'S' then
+  if DM.SQLConfigVenda.Fieldbyname('CFVECVENDEDOREXIGE').Value = 'S' then
     if SQLTemplateVENDICOD.AsString = '' then
       begin
         ComboVendedor.SetFocus;

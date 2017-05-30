@@ -44,10 +44,10 @@ begin
   Min := Min + ComboTimePopUp.text[2];
   FormPrincipal.TimeLembrete.Interval := StrToInt(Min) * 60000;
   if ExibirPopTarefa.Checked then
-    SQLPopUP.ParamByName('CFGCCEXIBIRPOPTARE').AsString := 'S'
+    SQLPopUP.Fieldbyname('CFGCCEXIBIRPOPTARE').AsString := 'S'
   else
-    SQLPopUP.ParamByName('CFGCCEXIBIRPOPTARE').AsString := 'N';
-  SQLPopUP.ParamByName('POPTEMPO').AsString := Min;
+    SQLPopUP.Fieldbyname('CFGCCEXIBIRPOPTARE').AsString := 'N';
+  SQLPopUP.Fieldbyname('POPTEMPO').AsString := Min;
   SQLPopUP.Post;
   Close;
 end;
@@ -56,18 +56,18 @@ procedure TFormConfigPopUp.FormCreate(Sender: TObject);
 begin
    if not SQLPopUP.Active then SQLPopUP.Open;
 
-   if SQLPopUP.ParamByName('CFGCCEXIBIRPOPTARE').AsString = 'S' then
+   if SQLPopUP.Fieldbyname('CFGCCEXIBIRPOPTARE').AsString = 'S' then
      ExibirPopTarefa.checked := true
    else
      ExibirPopTarefa.checked := false;
-   ComboTimePopUp.text := SQLPopUp.ParamByName('POPTEMPO').AsString + ' Minutos';
+   ComboTimePopUp.text := SQLPopUp.Fieldbyname('POPTEMPO').AsString + ' Minutos';
 end;
 
 procedure TFormConfigPopUp.ComboTimePopUpKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
     informa('Escolha uma opção na lista.');
-    ComboTimePopUp.text := SQLPopUP.ParamByName('POPTEMPO').asstring+' Minutos';
+    ComboTimePopUp.text := SQLPopUP.Fieldbyname('POPTEMPO').asstring+' Minutos';
 end;
 
 end.
