@@ -208,10 +208,59 @@ function  SQLMax(Tabela,CampoMax,ClausulaSQL : String) : Integer;
 function VerificaNumeroSerie(NroSerie, CodProduto : String) : String;
 procedure GravaSaidaNroSerieProduto(NroSERIE, Produto, Status, EMPRICOD, CLIEA13ID, CUPOA13ID, PDVDA13ID, NOFIA13ID, MOVDA13ID : String);
 procedure DeletaNumeroSerie(PRODICOD, NOFIA13ID, PDVDA13ID, MOVDA13ID : String);
+procedure GravaEntradaNroSerieProduto(NOCPA13ID, MOVDA13ID, NOFIA13ID, PDVDA13ID : String);
+
 
 implementation
 
 uses DataModulo, TelaAutenticaUsuario;
+
+procedure GravaEntradaNroSerieProduto(NOCPA13ID, MOVDA13ID, NOFIA13ID, PDVDA13ID : String);
+var
+  SQLProdutoSerie : TQuery;
+begin
+  if (NOCPA13ID = '') and (MOVDA13ID = '') and (NOFIA13ID = '') and (PDVDA13ID = '') then
+    Exit;
+
+  SQLProdutoSerie := TQuery.Create(SQLProdutoSerie);
+  SQLProdutoSerie.DatabaseName := 'DB';
+  SQLProdutoSerie.Close;
+  SQLProdutoSerie.SQL.Clear;
+  SQLProdutoSerie.SQL.ADD('UPDATE PRODUTOSERIE SET ');
+  SQLProdutoSerie.SQL.ADD('PRSECSTATUS = "D" , '); // Status I = Indisponivel / D = Disponivel
+  // Pendente
+  SQLProdutoSerie.SQL.ADD('PENDENTE = "S" , ');
+  // Registro
+  SQLProdutoSerie.SQL.ADD('REGISTRO = "' + FormatDateTime('mm/dd/yyyy hh:nn:ss',Now) + '"');
+  // FILTRO
+  SQLProdutoSerie.SQL.ADD(' WHERE ');
+  if NOCPA13ID <> '' then
+    SQLProdutoSerie.SQL.ADD('NOCPA13ID = "' + NOCPA13ID + '"')
+  else
+    if MOVDA13ID <> '' then
+      SQLProdutoSerie.SQL.ADD('MOVDA13ID = "' + MOVDA13ID + '"')
+    else
+      if NOFIA13ID <> '' then
+        SQLProdutoSerie.SQL.ADD('NOFIA13ID = "' + NOFIA13ID + '"')
+      else
+        if PDVDA13ID <> '' then
+          SQLProdutoSerie.SQL.ADD('PDVDA13ID = "' + PDVDA13ID + '"');
+  try
+    SQLProdutoSerie.Prepare;
+    SQLProdutoSerie.ExecSQL;
+  except
+    on E:Exception do
+      begin
+        Informa('Problemaos ao gravar ENTRADA do número de série, ANOTE O ERRO : ' + E.Message);
+        SQLProdutoSerie.Cancel;
+        SQLProdutoSerie.Close;
+        SQLProdutoSerie.Destroy;
+      end;
+  end;
+  SQLProdutoSerie.Close;
+  SQLProdutoSerie.Destroy;
+end;
+
 
 procedure DeletaNumeroSerie(PRODICOD, NOFIA13ID, PDVDA13ID, MOVDA13ID : String);
 var

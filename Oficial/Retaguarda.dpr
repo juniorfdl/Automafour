@@ -154,7 +154,7 @@ uses
   TelaImportaItens in 'Compras\TelaImportaItens.pas' {FormTelaImportaItens},
   TelaLancamentoGradeMovto in 'Compras\TelaLancamentoGradeMovto.pas' {FormTelaLancamentoGradeMovto},
   TelaProdutoNumeroSerieTEMP in 'Compras\TelaProdutoNumeroSerieTEMP.pas' {FormTelaGeralModalCadastroProdutoNumeroSerieTEMP},
-  TelaListaPreco in 'Compras\TelaListaPreco.pas' {FormTelaListaPreco},    
+  TelaListaPreco in 'Compras\TelaListaPreco.pas' {FormTelaListaPreco},
   TelaCadastroTarefa in 'Cadastros\TelaCadastroTarefa.pas' {FormTelaCadastroTarefa},
   ConfigPopUp in 'Cadastros\ConfigPopUp.pas' {FormConfigPopUp},
   CadastroPedidoVenda in 'Vendas\CadastroPedidoVenda.pas',
@@ -170,8 +170,9 @@ uses
   TelaDadosOSPedidoVenda in 'Vendas\TelaDadosOSPedidoVenda.pas' {FormTelaDadosOSPedidoVenda},
   TelaConfigPedidos in 'Vendas\TelaConfigPedidos.pas' {FormTelaConfigPedidos},
   TelaAssistenteLancamentoContasReceber in 'Vendas\TelaAssistenteLancamentoContasReceber.pas' {FormTelaAssistenteLancamentoContasReceber},
-  TelaGeracaoPedidoParcial in 'Vendas\TelaGeracaoPedidoParcial.pas' {FormTelaPedidoParcial};
-
+  TelaGeracaoPedidoParcial in 'Vendas\TelaGeracaoPedidoParcial.pas' {FormTelaPedidoParcial},
+  CadastroMovimentosDiversosEstoque in 'Estoque\CadastroMovimentosDiversosEstoque.pas' {FormCadastroMovimentosDiversosEstoque},
+  RelatorioMovtoDiversos in 'Estoque\RelatorioMovtoDiversos.pas' {FormRelatorioMotvoDiversos};
 
 {$R *.res}
 

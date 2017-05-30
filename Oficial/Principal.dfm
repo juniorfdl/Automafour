@@ -2490,8 +2490,9 @@ inherited FormPrincipal: TFormPrincipal
     end
     object Estoque1: TMenuItem [2]
       Caption = 'Estoque'
-      object MovimentaoDiversas1: TMenuItem
+      object MnADMEstoqueMovimentosDiversos: TMenuItem
         Caption = 'Movimenta'#231#227'o Diversas'
+        OnClick = MnADMEstoqueMovimentosDiversosClick
       end
       object EmissodeEtiquetas1: TMenuItem
         Caption = 'Emiss'#227'o de Etiquetas'

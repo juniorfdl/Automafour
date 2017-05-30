@@ -96,7 +96,7 @@ type
     ImportaXMLDelphi: TMenuItem;
     MnADMListaPreco: TMenuItem;
     Estoque1: TMenuItem;
-    MovimentaoDiversas1: TMenuItem;
+    MnADMEstoqueMovimentosDiversos: TMenuItem;
     EmissodeEtiquetas1: TMenuItem;
     ReajustedePreos1: TMenuItem;
     rocadeMercadoria1: TMenuItem;
@@ -340,6 +340,7 @@ type
     procedure MnNotadeEntradaClick(Sender: TObject);
     procedure ImportaXMLDelphiClick(Sender: TObject);
     procedure MnADMListaPrecoClick(Sender: TObject);
+    procedure MnADMEstoqueMovimentosDiversosClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -366,7 +367,8 @@ uses
   CadastroTransportadora, CadastroRepresentante, CadastroConvenio,
   CadastroCidade, CadastroPedidoCompra, CadastroNotaCompra,
   TelaImportadorXML, TelaListaPreco,           
-  TelaCadastroTarefa, ConfigPopUp, CadastroPedidoVenda;
+  TelaCadastroTarefa, ConfigPopUp, CadastroPedidoVenda,
+  CadastroMovimentosDiversosEstoque;
 
 
 
@@ -1402,6 +1404,16 @@ begin
     CriaFormulario(TFormTelaListaPreco, 'FormTelaListaPreco',False,False,False,'')
   else
     SoundPlay('Acesso Negado.wav',Sender);  
+end;
+
+procedure TFormPrincipal.MnADMEstoqueMovimentosDiversosClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroMovimentosDiversosEstoque,'FormCadastroMovimentosDiversosEstoque',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+
 end;
 
 end.
