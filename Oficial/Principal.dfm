@@ -1,7 +1,7 @@
 inherited FormPrincipal: TFormPrincipal
   Tag = 4
-  Left = 146
-  Top = 150
+  Left = 77
+  Top = 146
   Width = 1272
   Height = 527
   Caption = 'Advanced Control'
@@ -2494,28 +2494,35 @@ inherited FormPrincipal: TFormPrincipal
         Caption = 'Movimenta'#231#227'o Diversas'
         OnClick = MnADMEstoqueMovimentosDiversosClick
       end
-      object EmissodeEtiquetas1: TMenuItem
+      object MnADMEmissaoEtiquetas: TMenuItem
         Caption = 'Emiss'#227'o de Etiquetas'
+        OnClick = MnADMEmissaoEtiquetasClick
       end
-      object ReajustedePreos1: TMenuItem
+      object MnADMReajustePreco: TMenuItem
         Caption = 'Reajuste de Pre'#231'os'
+        OnClick = MnADMReajustePrecoClick
       end
-      object rocadeMercadoria1: TMenuItem
+      object MnTrocasMercadoria: TMenuItem
         Caption = 'Troca de Mercadoria'
+        OnClick = MnTrocasMercadoriaClick
       end
-      object ransferenciadeLojas1: TMenuItem
+      object MnADMEstTransfernciadeMercadoria: TMenuItem
         Caption = 'Transfer'#234'ncia de Lojas'
+        OnClick = MnADMEstTransfernciadeMercadoriaClick
       end
       object Inventrio1: TMenuItem
         Caption = 'Invent'#225'rio'
-        object DigitarInventario1: TMenuItem
+        object MnADMInvGerarInventario: TMenuItem
           Caption = 'Digitar Invent'#225'rio'
+          OnClick = MnADMInvGerarInventarioClick
         end
-        object RelatoriodeDivergncia1: TMenuItem
+        object MnADMInvRelDivergenciasInventario: TMenuItem
           Caption = 'Relatorio de Diverg'#234'ncia'
+          OnClick = MnADMInvRelDivergenciasInventarioClick
         end
-        object ZerarSaldodeEstoque1: TMenuItem
+        object MnADMInvZerarSaldoEstoque: TMenuItem
           Caption = 'Zerar Saldo de Estoque'
+          OnClick = MnADMInvZerarSaldoEstoqueClick
         end
       end
       object ProdutosSemMovimento1: TMenuItem

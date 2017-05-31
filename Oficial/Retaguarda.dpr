@@ -172,7 +172,15 @@ uses
   TelaAssistenteLancamentoContasReceber in 'Vendas\TelaAssistenteLancamentoContasReceber.pas' {FormTelaAssistenteLancamentoContasReceber},
   TelaGeracaoPedidoParcial in 'Vendas\TelaGeracaoPedidoParcial.pas' {FormTelaPedidoParcial},
   CadastroMovimentosDiversosEstoque in 'Estoque\CadastroMovimentosDiversosEstoque.pas' {FormCadastroMovimentosDiversosEstoque},
-  RelatorioMovtoDiversos in 'Estoque\RelatorioMovtoDiversos.pas' {FormRelatorioMotvoDiversos};
+  RelatorioMovtoDiversos in 'Estoque\RelatorioMovtoDiversos.pas' {FormRelatorioMotvoDiversos},
+  TelaReajustePreco in 'Estoque\TelaReajustePreco.pas' {FormTelaReajustePreco},
+  CadastroTrocas in 'Estoque\CadastroTrocas.pas' {FormCadastroTrocas},
+  CadastroTrocasItem in 'Estoque\CadastroTrocasItem.pas' {FormCadastroTrocasItem},
+  TelaTransferenciaGrade in 'Estoque\TelaTransferenciaGrade.pas' {FormTelaTransferenciaGrade},
+  TelaTransferenciaMercadoria in 'Estoque\TelaTransferenciaMercadoria.pas' {FormTelaTransferencia},
+  TelaContagemManual in 'Estoque\TelaContagemManual.pas' {FormTelaContagemManual},
+  RelatorioDivergenciaInventario in 'Estoque\RelatorioDivergenciaInventario.pas' {FormRelatorioDivergenciaInventario},
+  TelaZerarSaldoEstoque in 'Estoque\TelaZerarSaldoEstoque.pas' {FormTelaZeraSaldoEstoque};
 
 {$R *.res}
 

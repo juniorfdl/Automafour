@@ -210,10 +210,220 @@ procedure GravaSaidaNroSerieProduto(NroSERIE, Produto, Status, EMPRICOD, CLIEA13
 procedure DeletaNumeroSerie(PRODICOD, NOFIA13ID, PDVDA13ID, MOVDA13ID : String);
 procedure GravaEntradaNroSerieProduto(NOCPA13ID, MOVDA13ID, NOFIA13ID, PDVDA13ID : String);
 
+procedure GravaMovimentoEstoqueSimples(SqlProd,
+                                       SQLProdFilho,
+                                       SQLProdSald : TQuery;
+                                       EmprCod,
+                                       ProdCod,
+                                       Operacao:integer;
+                                       Quant:double;
+                                       EntrSai,
+                                       DataHora,
+                                       Valor,
+                                       TipoMov,
+                                       NumDocOrig,
+                                       Lote : String) ;
+
 
 implementation
 
 uses DataModulo, TelaAutenticaUsuario;
+
+procedure GravaMovimentoEstoqueSimples(SqlProd,
+                                       SQLProdFilho,
+                                       SQLProdSald : TQuery;
+                                       EmprCod,
+                                       ProdCod,
+                                       Operacao:integer;
+                                       Quant:double;
+                                       EntrSai,
+                                       DataHora,
+                                       Valor,
+                                       TipoMov,
+                                       NumDocOrig,
+                                       Lote : String) ;
+procedure GravaMovimento(Produto,ProdutoFilho : Integer);
+var
+  ProxCod : integer ;
+  SairMov : Boolean;
+  QueryProduto : TQuery;
+  CodProduto : Integer;
+  QuantOrigem : Double;
+begin
+  SairMov := False ;
+  while not SairMov do
+  begin
+    //TENTA CRIAR REGISTRO INICIAL NA TABELA PRODUTOSALDO
+    DM.SQLTemplate.Close ;
+    DM.SQLTemplate.SQL.Clear ;
+    DM.SQLTemplate.SQL.Add('Insert Into PRODUTOSALDO') ;
+    DM.SQLTemplate.SQL.Add('(EMPRICOD,') ;
+    DM.SQLTemplate.SQL.Add('PRODICOD,') ;
+    DM.SQLTemplate.SQL.Add('PSLDN3QTDE,') ;
+    DM.SQLTemplate.SQL.Add('PSLDN3QTDMIN,') ;
+    DM.SQLTemplate.SQL.Add('PSLDN3QTDMAX)') ;
+    DM.SQLTemplate.SQL.Add('values(') ;
+    DM.SQLTemplate.SQL.Add(IntToStr(EmprCod) + ', ')  ; //EMPRICOD
+    DM.SQLTemplate.SQL.Add(IntToStr(Produto) + ', ')  ; //PRODICOD
+    DM.SQLTemplate.SQL.Add('0, ') ;//PSLDN3QTDE
+    DM.SQLTemplate.SQL.Add('0, ') ;//PSLDN3QTDMIN
+    DM.SQLTemplate.SQL.Add('0) ') ;//PSLDN3QTDMAX
+    try
+      DM.SQLTemplate.ExecSQL;
+      Application.ProcessMessages;
+    except
+      Application.ProcessMessages;
+    end;
+
+    //PEGAR PROXIMO CODIGO MOVIMENTO DE ESTOQUE
+    DM.SQLTemplate.Close ;
+    DM.SQLTemplate.SQL.Clear ;
+    DM.SQLTemplate.SQL.Add('select Max(MVESICOD) as CONTADOR from MOVIMENTOESTOQUE') ;
+    DM.SQLTemplate.SQL.Add('where EMPRICOD = ' + IntToStr(EmprCod)) ;
+    DM.SQLTemplate.SQL.Add('and   MVESDMOV = "' + DataHora + '"') ;
+    DM.SQLTemplate.Open ;
+    if (DM.SQLTemplate.FieldByName('CONTADOR').AsFloat <= 0) or not(DM.SQLTemplate.FieldByName('CONTADOR').IsNull) then
+      ProxCod := DM.SQLTemplate.FieldByName('CONTADOR').AsInteger + 1
+    else
+      ProxCod := 1 ;
+
+    //ROTINA PARA GRAVAR MOVIMENTO DO ESTOQUE(EXTRATO DE ESTOQUE)
+    DM.SQLTemplate.Close ;
+    DM.SQLTemplate.SQL.Clear ;
+    DM.SQLTemplate.SQL.Add('insert into MOVIMENTOESTOQUE') ;
+    DM.SQLTemplate.SQL.Add('(EMPRICOD, ') ;
+    DM.SQLTemplate.SQL.Add('MVESDMOV, ') ;
+    DM.SQLTemplate.SQL.Add('MVESICOD, ') ;
+    DM.SQLTemplate.SQL.Add('PRODICOD, ') ;
+    DM.SQLTemplate.SQL.Add('OPESICOD, ') ;
+    DM.SQLTemplate.SQL.Add('MVESN3QTDENTRADA, ') ;
+    DM.SQLTemplate.SQL.Add('MVESN3QTDSAIDA, ') ;
+
+    if AnsiUpperCase(TipoMov) = 'CUPOM' then
+      DM.SQLTemplate.SQL.Add('CUPOA13ID, ') ;
+
+    if AnsiUpperCase(TipoMov) = 'NOTACOMPRA' then
+      DM.SQLTemplate.SQL.Add('NOCPA13ID, ') ;
+
+    if AnsiUpperCase(TipoMov) = 'NOTAFISCAL' then
+      DM.SQLTemplate.SQL.Add('NOFIA13ID, ') ;
+
+    if AnsiUpperCase(TipoMov) = 'PEDIDOVENDA' then
+      DM.SQLTemplate.SQL.Add('PDVDA13ID, ') ;
+
+    if AnsiUpperCase(TipoMov) = 'MOVIMENTOSDIVERSOS' then
+      DM.SQLTemplate.SQL.Add('MOVDA13ID, ') ;
+
+    if AnsiUpperCase(TipoMov) = 'MOVIMENTOSDIVERSOS' then
+      DM.SQLTemplate.SQL.Add('MOVDA13ID, ') ;
+
+    if AnsiUpperCase(TipoMov) = 'ORDEMPRODUCAO' then
+      DM.SQLTemplate.SQL.Add('ORPRA13ID, ') ;
+
+    if AnsiUpperCase(TipoMov) = 'TRANSFERENCIA' then
+      DM.SQLTemplate.SQL.Add('TRFEA13ID, ') ;
+
+    DM.SQLTemplate.SQL.Add('LOTEA30NRO, ') ;
+    DM.SQLTemplate.SQL.Add('MVESCESTOQUEOK, ') ;
+    DM.SQLTemplate.SQL.Add('PENDENTE, ') ;
+    DM.SQLTemplate.SQL.Add('REGISTRO)') ;
+    DM.SQLTemplate.SQL.Add('values(') ;
+    DM.SQLTemplate.SQL.Add(IntToStr(EmprCod) + ', ') ;//EMPRICOD
+    DM.SQLTemplate.SQL.Add('"' + DataHora + '", ') ;//MVESDMOV
+    DM.SQLTemplate.SQL.Add(IntToStr(ProxCod) +', ') ;//MVESICOD
+    DM.SQLTemplate.SQL.Add(IntToStr(Produto) + ', ') ;//PRODICOD
+    DM.SQLTemplate.SQL.Add(IntToStr(Operacao) + ', ') ;//OPESICOD
+
+    // Retorna Capacidade de Embalagem do Produto Filho;
+    try
+      if ProdutoFilho > 0 then
+        begin
+          CodProduto := ProdutoFilho;
+          QueryProduto := TQuery.Create(DM);
+          QueryProduto.DatabaseName := 'DB';
+          QueryProduto.Close;
+          QueryProduto.SQL.Clear;
+          QueryProduto.SQL.Add('SELECT PRODN3CAPACEMBAL FROM PRODUTO WHERE PRODICOD = ' + IntToStr(CodProduto));
+          QueryProduto.Open;
+          QuantOrigem := 0;
+          if not QueryProduto.IsEmpty then
+            begin
+              QuantOrigem := Quant;
+              if QueryProduto.FieldByName('PRODN3CAPACEMBAL').AsFloat > 1 then
+                Quant := Quant * QueryProduto.FieldByName('PRODN3CAPACEMBAL').AsInteger;
+            end;
+        end;
+    except
+      Application.ProcessMessages;
+    end;
+    if EntrSai = 'E' then
+      begin
+        DM.SQLTemplate.SQL.Add(ConvFloatToStr(Quant) + ', ') ;//MVESN3QTDENTRADA
+        DM.SQLTemplate.SQL.Add('0, ') ;//MVESN3QTDSAIDA
+      end ;
+    if EntrSai = 'S' then
+      begin
+        DM.SQLTemplate.SQL.Add('0, ') ; //MVESN3QTDENTRADA
+        DM.SQLTemplate.SQL.Add(ConvFloatToStr(Quant) + ', ') ; //MVESN3QTDSAIDA
+      end ;
+
+    DM.SQLTemplate.SQL.Add('"'+ NumDocOrig + '", ') ;
+
+    if Lote <> '' then
+      DM.SQLTemplate.SQL.Add('"'+ LOTE + '", ')
+    else
+      DM.SQLTemplate.SQL.Add('null, ') ; //LOTE
+
+    DM.SQLTemplate.SQL.Add('"N", ') ; //STATUS DO MOVIMENTO PARA IMPORTACAO DE LOG
+    DM.SQLTemplate.SQL.Add('"S", ') ; //PENDENTE
+    DM.SQLTemplate.SQL.Add('"' + FormatDateTime('mm/dd/yyyy hh:mm:ss', Now) + '")') ; //REGISTRO
+    try
+      DM.SQLTemplate.ExecSQL;
+      SairMov := True;
+      if QuantOrigem > 0 then
+        Quant := QuantOrigem;
+      Application.ProcessMessages;
+    except
+      SairMov := False;
+      Application.ProcessMessages;
+      Sleep(1);
+    end;
+  end;
+end;
+var
+  Sair    : boolean;
+  ProdutoComp : TQuery;
+begin
+  if ProdCod = 0 then
+    exit;
+
+  SqlProd.Close;
+  SqlProd.SQL.Clear;
+  SqlProd.SQL.Add('Select * from PRODUTO');
+  SqlProd.SQL.Add('Where PRODICOD = ' + IntToStr(ProdCod));
+  SqlProd.Open;
+
+  SQLProdSald.Close;
+  SQLProdSald.Open;
+
+  if not SqlProd.IsEmpty then
+    begin
+      Sair := False ;
+      while not Sair do
+      begin
+        try
+          GravaMovimento(ProdCod,0);
+          Sair := True ;
+          Application.ProcessMessages ;
+        except
+          Sair := False ;
+          Application.ProcessMessages ;
+          Sleep(1);
+        end;
+      end;
+    end;
+end ;
+
 
 procedure GravaEntradaNroSerieProduto(NOCPA13ID, MOVDA13ID, NOFIA13ID, PDVDA13ID : String);
 var

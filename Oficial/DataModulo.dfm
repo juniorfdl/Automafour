@@ -6,6 +6,7 @@ inherited DM: TDM
   Width = 760
   inherited DB: TDatabase
     AliasName = 'Easy_Gestao'
+    Connected = False
   end
   object SQLConfigGeral: TRxQuery
     DatabaseName = 'DB'
@@ -836,6 +837,426 @@ inherited DM: TDM
     UserName = 'PipePedVd'
     Left = 370
     Top = 360
+    object PipePedVdppField1: TppField
+      FieldAlias = 'PedICod'
+      FieldName = 'PedICod'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 0
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField2: TppField
+      FieldAlias = 'Emitente_Nome'
+      FieldName = 'Emitente_Nome'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 1
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField3: TppField
+      FieldAlias = 'Emitente_Ender'
+      FieldName = 'Emitente_Ender'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 2
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField4: TppField
+      FieldAlias = 'Emitente_Bairro'
+      FieldName = 'Emitente_Bairro'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 3
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField5: TppField
+      FieldAlias = 'Emitente_Cidade'
+      FieldName = 'Emitente_Cidade'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 4
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField6: TppField
+      FieldAlias = 'Emitente_UF'
+      FieldName = 'Emitente_UF'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 5
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField7: TppField
+      FieldAlias = 'Emitente_CGC'
+      FieldName = 'Emitente_CGC'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 6
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField8: TppField
+      FieldAlias = 'Emitente_IE'
+      FieldName = 'Emitente_IE'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 7
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField9: TppField
+      FieldAlias = 'Emitente_Fone'
+      FieldName = 'Emitente_Fone'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 8
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField10: TppField
+      FieldAlias = 'DtEmissao'
+      FieldName = 'DtEmissao'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 9
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField11: TppField
+      FieldAlias = 'Destinatario_Nome'
+      FieldName = 'Destinatario_Nome'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 10
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField12: TppField
+      FieldAlias = 'Destinatario_Endereco'
+      FieldName = 'Destinatario_Endereco'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 11
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField13: TppField
+      FieldAlias = 'Destinatario_Bairro'
+      FieldName = 'Destinatario_Bairro'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 12
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField14: TppField
+      FieldAlias = 'Destinatario_Cep'
+      FieldName = 'Destinatario_Cep'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 13
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField15: TppField
+      FieldAlias = 'Destinatario_Cidade'
+      FieldName = 'Destinatario_Cidade'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 14
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField16: TppField
+      FieldAlias = 'Destinatario_UF'
+      FieldName = 'Destinatario_UF'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 15
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField17: TppField
+      FieldAlias = 'Destinatario_CpfCgc'
+      FieldName = 'Destinatario_CpfCgc'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 16
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField18: TppField
+      FieldAlias = 'Destinatario_IE'
+      FieldName = 'Destinatario_IE'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 17
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField19: TppField
+      FieldAlias = 'Destinatario_Fone'
+      FieldName = 'Destinatario_Fone'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 18
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField20: TppField
+      FieldAlias = 'Destinatario_Fone2'
+      FieldName = 'Destinatario_Fone2'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 19
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField21: TppField
+      FieldAlias = 'Destinatario_Fax'
+      FieldName = 'Destinatario_Fax'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 20
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField22: TppField
+      FieldAlias = 'Transp'
+      FieldName = 'Transp'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 21
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField23: TppField
+      FieldAlias = 'DtaEntrega'
+      FieldName = 'DtaEntrega'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 22
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField24: TppField
+      FieldAlias = 'Comprador'
+      FieldName = 'Comprador'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 23
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField25: TppField
+      FieldAlias = 'OrdemCompra'
+      FieldName = 'OrdemCompra'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 24
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField26: TppField
+      FieldAlias = 'Plano'
+      FieldName = 'Plano'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 25
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField27: TppField
+      FieldAlias = 'TipoFrete'
+      FieldName = 'TipoFrete'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 26
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField28: TppField
+      FieldAlias = 'ValorFrete'
+      FieldName = 'ValorFrete'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 27
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField29: TppField
+      FieldAlias = 'TotalDesconto'
+      FieldName = 'TotalDesconto'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 28
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField30: TppField
+      FieldAlias = 'Total'
+      FieldName = 'Total'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 29
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField31: TppField
+      FieldAlias = 'Observacoes'
+      FieldName = 'Observacoes'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 30
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField32: TppField
+      FieldAlias = 'Vendedor'
+      FieldName = 'Vendedor'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 31
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField33: TppField
+      FieldAlias = 'Email'
+      FieldName = 'Email'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 32
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField34: TppField
+      FieldAlias = 'TotalGeral'
+      FieldName = 'TotalGeral'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 33
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField35: TppField
+      FieldAlias = 'Emitente_Email'
+      FieldName = 'Emitente_Email'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 34
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField36: TppField
+      FieldAlias = 'Emitente_URL'
+      FieldName = 'Emitente_URL'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 35
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField37: TppField
+      FieldAlias = 'EmitenteLogo'
+      FieldName = 'EmitenteLogo'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 36
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField38: TppField
+      FieldAlias = 'ValorEntrada'
+      FieldName = 'ValorEntrada'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 37
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField39: TppField
+      FieldAlias = 'Rota'
+      FieldName = 'Rota'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 38
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField40: TppField
+      FieldAlias = 'PlacaVeiculo'
+      FieldName = 'PlacaVeiculo'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 39
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField41: TppField
+      FieldAlias = 'Troco'
+      FieldName = 'Troco'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 40
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdppField42: TppField
+      FieldAlias = 'PEDIDOORCAMENTO'
+      FieldName = 'PEDIDOORCAMENTO'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 41
+      Searchable = False
+      Sortable = False
+    end
   end
   object PipePedVdIt: TppBDEPipeline
     DataSource = DSTblPedidoItens
@@ -843,6 +1264,266 @@ inherited DM: TDM
     UserName = 'PipePedVdIt'
     Left = 370
     Top = 405
+    object PipePedVdItppField1: TppField
+      FieldAlias = 'PedICod'
+      FieldName = 'PedICod'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 0
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdItppField2: TppField
+      FieldAlias = 'Codigo'
+      FieldName = 'Codigo'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 1
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdItppField3: TppField
+      FieldAlias = 'Descricao'
+      FieldName = 'Descricao'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 2
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdItppField4: TppField
+      FieldAlias = 'Un'
+      FieldName = 'Un'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 3
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdItppField5: TppField
+      FieldAlias = 'Qtd1'
+      FieldName = 'Qtd1'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 4
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdItppField6: TppField
+      FieldAlias = 'VlrUnitario'
+      FieldName = 'VlrUnitario'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 5
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdItppField7: TppField
+      FieldAlias = 'VlrTotal'
+      FieldName = 'VlrTotal'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 6
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdItppField8: TppField
+      FieldAlias = 'Cor'
+      FieldName = 'Cor'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 7
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdItppField9: TppField
+      FieldAlias = 'Tecido'
+      FieldName = 'Tecido'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 8
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdItppField10: TppField
+      FieldAlias = 'Legenda'
+      FieldName = 'Legenda'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 9
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdItppField11: TppField
+      FieldAlias = 'Qtd2'
+      FieldName = 'Qtd2'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 10
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdItppField12: TppField
+      FieldAlias = 'Qtd3'
+      FieldName = 'Qtd3'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 11
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdItppField13: TppField
+      FieldAlias = 'Qtd4'
+      FieldName = 'Qtd4'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 12
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdItppField14: TppField
+      FieldAlias = 'Qtd5'
+      FieldName = 'Qtd5'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 13
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdItppField15: TppField
+      FieldAlias = 'Qtd6'
+      FieldName = 'Qtd6'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 14
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdItppField16: TppField
+      FieldAlias = 'Qtd7'
+      FieldName = 'Qtd7'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 15
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdItppField17: TppField
+      FieldAlias = 'Qtd8'
+      FieldName = 'Qtd8'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 16
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdItppField18: TppField
+      FieldAlias = 'Qtd9'
+      FieldName = 'Qtd9'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 17
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdItppField19: TppField
+      FieldAlias = 'Qtd10'
+      FieldName = 'Qtd10'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 18
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdItppField20: TppField
+      FieldAlias = 'Qtd11'
+      FieldName = 'Qtd11'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 19
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdItppField21: TppField
+      FieldAlias = 'Qtd12'
+      FieldName = 'Qtd12'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 20
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdItppField22: TppField
+      FieldAlias = 'Qtd13'
+      FieldName = 'Qtd13'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 21
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdItppField23: TppField
+      FieldAlias = 'Qtd14'
+      FieldName = 'Qtd14'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 22
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdItppField24: TppField
+      FieldAlias = 'Qtd15'
+      FieldName = 'Qtd15'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 23
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdItppField25: TppField
+      FieldAlias = 'Referencia'
+      FieldName = 'Referencia'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 24
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedVdItppField26: TppField
+      FieldAlias = 'CodItem'
+      FieldName = 'CodItem'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 25
+      Searchable = False
+      Sortable = False
+    end
   end
   object TblPedidoCab: TTable
     DatabaseName = 'Easy_Temp'
@@ -1134,6 +1815,66 @@ inherited DM: TDM
     UserName = 'PipePedFin'
     Left = 499
     Top = 405
+    object PipePedFinppField1: TppField
+      FieldAlias = 'PedICod'
+      FieldName = 'PedICod'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 0
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedFinppField2: TppField
+      FieldAlias = 'Parcela'
+      FieldName = 'Parcela'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 1
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedFinppField3: TppField
+      FieldAlias = 'Vencimento'
+      FieldName = 'Vencimento'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 2
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedFinppField4: TppField
+      FieldAlias = 'Valor'
+      FieldName = 'Valor'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 3
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedFinppField5: TppField
+      FieldAlias = 'Portador'
+      FieldName = 'Portador'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 4
+      Searchable = False
+      Sortable = False
+    end
+    object PipePedFinppField6: TppField
+      FieldAlias = 'Numerario'
+      FieldName = 'Numerario'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 5
+      Searchable = False
+      Sortable = False
+    end
   end
   object ReportOrc: TppReport
     AutoStop = False
@@ -1151,6 +1892,7 @@ inherited DM: TDM
     PrinterSetup.mmPaperWidth = 0
     PrinterSetup.PaperSize = 9
     DeviceType = 'Screen'
+    EmailSettings.ReportFormat = 'PDF'
     OutlineSettings.CreateNode = True
     OutlineSettings.CreatePageNodes = True
     OutlineSettings.Enabled = False
@@ -1159,7 +1901,7 @@ inherited DM: TDM
     TextSearchSettings.Enabled = False
     Left = 399
     Top = 360
-    Version = '7.04'
+    Version = '10.06'
     mmColumnWidth = 0
     DataPipelineName = 'PipePedVdIt'
     object ppHeaderBand1: TppHeaderBand
@@ -1169,6 +1911,10 @@ inherited DM: TDM
       object ppDBText6: TppDBText
         UserName = 'ppDBText6'
         AutoSize = True
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1179,13 +1925,17 @@ inherited DM: TDM
         Transparent = True
         DataPipelineName = 'PipePedVd'
         mmHeight = 4022
-        mmLeft = 0
+        mmLeft = -12700
         mmTop = 420159
         mmWidth = 17230
         BandType = 0
       end
       object ppDBText7: TppDBText
         UserName = 'ppDBText7'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1203,6 +1953,10 @@ inherited DM: TDM
       end
       object ppDBText8: TppDBText
         UserName = 'ppDBText8'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1220,6 +1974,10 @@ inherited DM: TDM
       end
       object ppDBText9: TppDBText
         UserName = 'ppDBText9'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1237,6 +1995,10 @@ inherited DM: TDM
       end
       object ppDBText10: TppDBText
         UserName = 'ppDBText10'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1255,6 +2017,10 @@ inherited DM: TDM
       object ppLabel1: TppLabel
         UserName = 'ppLabel1'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'NOME.....:'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1271,6 +2037,10 @@ inherited DM: TDM
       object ppLabel2: TppLabel
         UserName = 'ppLabel2'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'ENDERE'#199'O.:'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1287,6 +2057,10 @@ inherited DM: TDM
       object ppLabel3: TppLabel
         UserName = 'ppLabel3'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'BAIRRO...:'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1303,6 +2077,10 @@ inherited DM: TDM
       object ppLabel4: TppLabel
         UserName = 'ppLabel4'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'CIDADE...:'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1319,6 +2097,10 @@ inherited DM: TDM
       object ppLabel5: TppLabel
         UserName = 'ppLabel5'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'CPF/C.G.C:'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1334,6 +2116,10 @@ inherited DM: TDM
       end
       object ppLabel6: TppLabel
         UserName = 'ppLabel6'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Codigo'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1349,6 +2135,10 @@ inherited DM: TDM
       end
       object ppDBText12: TppDBText
         UserName = 'ppDBText12'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1366,6 +2156,10 @@ inherited DM: TDM
       end
       object ppDBText13: TppDBText
         UserName = 'ppDBText13'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1383,6 +2177,10 @@ inherited DM: TDM
       end
       object ppDBText14: TppDBText
         UserName = 'ppDBText14'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1400,6 +2198,10 @@ inherited DM: TDM
       end
       object ppDBText15: TppDBText
         UserName = 'ppDBText15'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1417,6 +2219,10 @@ inherited DM: TDM
       end
       object ppDBText16: TppDBText
         UserName = 'ppDBText16'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1434,6 +2240,10 @@ inherited DM: TDM
       end
       object ppDBText17: TppDBText
         UserName = 'ppDBText17'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1452,6 +2262,10 @@ inherited DM: TDM
       object ppLabel13: TppLabel
         UserName = 'ppLabel13'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'FONE.....:'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1468,6 +2282,10 @@ inherited DM: TDM
       object ppLabel14: TppLabel
         UserName = 'ppLabel14'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Descri'#231#227'o'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1484,6 +2302,10 @@ inherited DM: TDM
       object ppLabel25: TppLabel
         UserName = 'ppLabel25'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Quant.'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1500,6 +2322,10 @@ inherited DM: TDM
       object ppLabel26: TppLabel
         UserName = 'ppLabel26'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Unit'#225'rio'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1517,6 +2343,10 @@ inherited DM: TDM
       object ppLabel27: TppLabel
         UserName = 'ppLabel27'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Total'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1533,29 +2363,41 @@ inherited DM: TDM
       end
       object ppLine1: TppLine
         UserName = 'ppLine1'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Pen.Style = psDot
         ParentWidth = True
         Weight = 0.750000000000000000
         mmHeight = 70115
-        mmLeft = 0
+        mmLeft = -12700
         mmTop = 18271103
-        mmWidth = 52202396
+        mmWidth = -12700
         BandType = 0
       end
       object ppLine3: TppLine
         UserName = 'ppLine3'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Pen.Style = psDot
         ParentWidth = True
         Weight = 0.750000000000000000
         mmHeight = 70115
-        mmLeft = 0
+        mmLeft = -12700
         mmTop = 8400538
-        mmWidth = 52202396
+        mmWidth = -12700
         BandType = 0
       end
       object ppLabel28: TppLabel
         UserName = 'ppLabel28'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'OR'#199'AMENTO NRO:'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1572,6 +2414,10 @@ inherited DM: TDM
       object ppDBText24: TppDBText
         UserName = 'ppDBText24'
         AutoSize = True
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1582,7 +2428,7 @@ inherited DM: TDM
         Transparent = True
         DataPipelineName = 'PipePedVd'
         mmHeight = 4022
-        mmLeft = 8960662
+        mmLeft = -12700
         mmTop = 1750222
         mmWidth = 19177
         BandType = 0
@@ -1594,6 +2440,10 @@ inherited DM: TDM
       mmPrintPosition = 0
       object ppDBText1: TppDBText
         UserName = 'ppDBText1'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVdIt
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1611,6 +2461,10 @@ inherited DM: TDM
       object ppDBText2: TppDBText
         UserName = 'ppDBText2'
         AutoSize = True
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVdIt
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1620,13 +2474,17 @@ inherited DM: TDM
         Transparent = True
         DataPipelineName = 'PipePedVdIt'
         mmHeight = 4022
-        mmLeft = 5880376
+        mmLeft = -12700
         mmTop = 0
         mmWidth = 17230
         BandType = 4
       end
       object ppDBText3: TppDBText
         UserName = 'ppDBText3'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVdIt
         DisplayFormat = '#,##0.00'
         Font.Charset = ANSI_CHARSET
@@ -1644,6 +2502,10 @@ inherited DM: TDM
       end
       object ppDBText4: TppDBText
         UserName = 'ppDBText4'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVdIt
         DisplayFormat = '#,##0.00'
         Font.Charset = ANSI_CHARSET
@@ -1662,6 +2524,10 @@ inherited DM: TDM
       end
       object ppDBText5: TppDBText
         UserName = 'ppDBText5'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVdIt
         DisplayFormat = '#,##0.00'
         Font.Charset = ANSI_CHARSET
@@ -1690,6 +2556,10 @@ inherited DM: TDM
       mmPrintPosition = 0
       object ppDBText18: TppDBText
         UserName = 'ppDBText18'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1708,6 +2578,10 @@ inherited DM: TDM
       object ppLabel16: TppLabel
         UserName = 'ppLabel16'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'PLANO....:'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1724,6 +2598,10 @@ inherited DM: TDM
       object ppLabel17: TppLabel
         UserName = 'ppLabel17'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'P A R C E L A S '
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1741,6 +2619,10 @@ inherited DM: TDM
       object ppLabel18: TppLabel
         UserName = 'ppLabel18'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'O B S E R V A '#199' '#213' E S'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1758,6 +2640,10 @@ inherited DM: TDM
       object ppLabel19: TppLabel
         UserName = 'ppLabel19'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'VENDEDOR.:'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1773,6 +2659,10 @@ inherited DM: TDM
       end
       object ppDBText19: TppDBText
         UserName = 'ppDBText19'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1791,6 +2681,10 @@ inherited DM: TDM
       object ppLabel21: TppLabel
         UserName = 'ppLabel21'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'TOTAL ITENS'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1806,6 +2700,10 @@ inherited DM: TDM
       end
       object ppDBText20: TppDBText
         UserName = 'ppDBText20'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         DisplayFormat = '#,##0.00'
         Font.Charset = ANSI_CHARSET
@@ -1826,6 +2724,10 @@ inherited DM: TDM
       object ppLabel22: TppLabel
         UserName = 'ppLabel22'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'TOTAL FRETE'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1841,6 +2743,10 @@ inherited DM: TDM
       end
       object ppDBText21: TppDBText
         UserName = 'ppDBText21'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         DisplayFormat = '#,##0.00'
         Font.Charset = ANSI_CHARSET
@@ -1860,6 +2766,10 @@ inherited DM: TDM
       end
       object ppDBText22: TppDBText
         UserName = 'ppDBText22'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         DisplayFormat = '#,##0.00'
         Font.Charset = ANSI_CHARSET
@@ -1880,6 +2790,10 @@ inherited DM: TDM
       object ppLabel23: TppLabel
         UserName = 'ppLabel23'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'TOTAL DESC.'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1896,6 +2810,10 @@ inherited DM: TDM
       object ppLabel24: TppLabel
         UserName = 'ppLabel24'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'TOTAL GERAL'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1911,6 +2829,10 @@ inherited DM: TDM
       end
       object ppDBMemo1: TppDBMemo
         UserName = 'ppDBMemo1'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         CharWrap = False
         DataPipeline = PipePedVd
         Font.Charset = ANSI_CHARSET
@@ -1933,17 +2855,25 @@ inherited DM: TDM
       end
       object ppLine2: TppLine
         UserName = 'ppLine2'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Pen.Style = psDot
         ParentWidth = True
         Weight = 0.750000000000000000
         mmHeight = 70115
-        mmLeft = 0
+        mmLeft = -12700
         mmTop = 0
-        mmWidth = 52202396
+        mmWidth = -12700
         BandType = 7
       end
       object ppDBText23: TppDBText
         UserName = 'ppDBText23'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         DisplayFormat = '#,##0.00'
         Font.Charset = ANSI_CHARSET

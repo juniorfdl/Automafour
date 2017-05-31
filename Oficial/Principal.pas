@@ -97,14 +97,14 @@ type
     MnADMListaPreco: TMenuItem;
     Estoque1: TMenuItem;
     MnADMEstoqueMovimentosDiversos: TMenuItem;
-    EmissodeEtiquetas1: TMenuItem;
-    ReajustedePreos1: TMenuItem;
-    rocadeMercadoria1: TMenuItem;
-    ransferenciadeLojas1: TMenuItem;
+    MnADMEmissaoEtiquetas: TMenuItem;
+    MnADMReajustePreco: TMenuItem;
+    MnTrocasMercadoria: TMenuItem;
+    MnADMEstTransfernciadeMercadoria: TMenuItem;
     Inventrio1: TMenuItem;
-    DigitarInventario1: TMenuItem;
-    RelatoriodeDivergncia1: TMenuItem;
-    ZerarSaldodeEstoque1: TMenuItem;
+    MnADMInvGerarInventario: TMenuItem;
+    MnADMInvRelDivergenciasInventario: TMenuItem;
+    MnADMInvZerarSaldoEstoque: TMenuItem;
     ProdutosSemMovimento1: TMenuItem;
     Utilitrios1: TMenuItem;
     ManutenodeProdutos1: TMenuItem;
@@ -341,6 +341,13 @@ type
     procedure ImportaXMLDelphiClick(Sender: TObject);
     procedure MnADMListaPrecoClick(Sender: TObject);
     procedure MnADMEstoqueMovimentosDiversosClick(Sender: TObject);
+    procedure MnADMEmissaoEtiquetasClick(Sender: TObject);
+    procedure MnADMReajustePrecoClick(Sender: TObject);
+    procedure MnTrocasMercadoriaClick(Sender: TObject);
+    procedure MnADMEstTransfernciadeMercadoriaClick(Sender: TObject);
+    procedure MnADMInvGerarInventarioClick(Sender: TObject);
+    procedure MnADMInvRelDivergenciasInventarioClick(Sender: TObject);
+    procedure MnADMInvZerarSaldoEstoqueClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -368,7 +375,10 @@ uses
   CadastroCidade, CadastroPedidoCompra, CadastroNotaCompra,
   TelaImportadorXML, TelaListaPreco,           
   TelaCadastroTarefa, ConfigPopUp, CadastroPedidoVenda,
-  CadastroMovimentosDiversosEstoque;
+  CadastroMovimentosDiversosEstoque, TelaEmissaoEtiquetasCodigoBarras,
+  TelaReajustePreco, CadastroTrocas, TelaTransferenciaGrade,
+  TelaTransferenciaMercadoria, TelaContagemManual,
+  RelatorioDivergenciaInventario, TelaZerarSaldoEstoque;
 
 
 
@@ -1414,6 +1424,78 @@ begin
   else
     SoundPlay('Acesso Negado.wav',Sender);
 
+end;
+
+procedure TFormPrincipal.MnADMEmissaoEtiquetasClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormTelaEmissaoEtiquetasCodigoBarras,'FormTelaEmissaoEtiquetasCodigoBarras',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnADMReajustePrecoClick(Sender: TObject);
+begin
+  inherited;
+  
+  if SQLLocate('EMPRESA','EMPRICOD','EMPRCMATRIZFILIAL',EmpresaPadrao) <> 'M'  then
+    begin
+      Application.MessageBox('Você não pode reajustar preços em uma filial !','Informação',MB_OK + MB_SYSTEMMODAL + MB_SETFOREGROUND + MB_ICONINFORMATION);
+      Exit;
+    end
+  else
+    if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+      CriaFormulario(TFormTelaReajustePreco,'FormTelaReajustePreco',False,False,False,'')
+    else
+       SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnTrocasMercadoriaClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroTrocas,'FormCadastroTrocas',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnADMEstTransfernciadeMercadoriaClick(Sender: TObject);
+begin
+  inherited;
+  
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormTelaTransferencia, 'FormTelaTransferencia',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnADMInvGerarInventarioClick(Sender: TObject);
+begin
+  inherited; 
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormTelaContagemManual,'FormTelaContagemManual',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnADMInvRelDivergenciasInventarioClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioDivergenciaInventario,'FormRelatorioDivergenciaInventario',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnADMInvZerarSaldoEstoqueClick(Sender: TObject);
+begin
+  inherited;
+  
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormTelaZeraSaldoEstoque,'FormTelaZeraSaldoEstoque',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
 end;
 
 end.
