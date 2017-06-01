@@ -790,6 +790,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
             Top = 52
             Width = 1027
             Height = 556
+            ActivePage = TabSheetDadosPrincipais
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Top = 83
@@ -8184,7 +8185,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
               object DBGridCompras: TDBGrid
                 Left = 0
                 Top = 0
-                Width = 762
+                Width = 1019
                 Height = 530
                 Align = alClient
                 BorderStyle = bsNone
@@ -12085,14 +12086,14 @@ inherited FormCadastroProduto: TFormCadastroProduto
     DataSource = DSTemplate
     SQL.Strings = (
       'SELECT'
-      'PRODICOD'
+      ' distinct PRODUTO.PRODICOD'
       'FROM'
       'PRODUTO'
       
         'INNER JOIN MOVIMENTOESTOQUE ON PRODUTO.PRODICOD = MOVIMENTOESTOQ' +
         'UE.PRODICOD'
       'WHERE'
-      'PRODIAGRUPGRADE = :PRODIAGRUPGRADE')
+      '  PRODUTO.PRODIAGRUPGRADE = :PRODIAGRUPGRADE')
     Macros = <>
     Left = 478
     Top = 29
@@ -13014,7 +13015,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
       FieldName = 'PSLDN3QTDMAX'
       Origin = 'DB.PRODUTOSALDO.PSLDN3QTDMAX'
     end
-    object StringField1: TStringField
+    object SQLSaldoEmpresaAtualEmpresaLookup: TStringField
       DisplayLabel = 'Empresa'
       FieldKind = fkLookup
       FieldName = 'EmpresaLookup'

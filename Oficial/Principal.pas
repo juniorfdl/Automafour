@@ -348,6 +348,7 @@ type
     procedure MnADMInvGerarInventarioClick(Sender: TObject);
     procedure MnADMInvRelDivergenciasInventarioClick(Sender: TObject);
     procedure MnADMInvZerarSaldoEstoqueClick(Sender: TObject);
+    procedure ProdutosSemMovimento1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -378,7 +379,8 @@ uses
   CadastroMovimentosDiversosEstoque, TelaEmissaoEtiquetasCodigoBarras,
   TelaReajustePreco, CadastroTrocas, TelaTransferenciaGrade,
   TelaTransferenciaMercadoria, TelaContagemManual,
-  RelatorioDivergenciaInventario, TelaZerarSaldoEstoque;
+  RelatorioDivergenciaInventario, TelaZerarSaldoEstoque,
+  TelaProdutosSemMovimento;
 
 
 
@@ -1496,6 +1498,12 @@ begin
     CriaFormulario(TFormTelaZeraSaldoEstoque,'FormTelaZeraSaldoEstoque',False,False,False,'')
   else
     SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.ProdutosSemMovimento1Click(Sender: TObject);
+begin
+  inherited;
+  CriaFormulario(TFormTelaProdutosSemMov,'FormTelaProdutosSemMov',False,False,False,'');
 end;
 
 end.

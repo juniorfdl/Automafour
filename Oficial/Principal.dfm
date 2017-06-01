@@ -2527,6 +2527,7 @@ inherited FormPrincipal: TFormPrincipal
       end
       object ProdutosSemMovimento1: TMenuItem
         Caption = 'Produtos Sem Movimento'
+        OnClick = ProdutosSemMovimento1Click
       end
     end
     object Utilitrios1: TMenuItem [3]

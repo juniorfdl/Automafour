@@ -28,7 +28,6 @@ type
     SQLConfigGeralCFGECVALREFPROD: TStringField;
     SQLConfigGeralCFGECBASEPRCVENDA: TStringField;
     SQLConfigGeralCFGEIEMPPADRAO: TIntegerField;
-    SQLConfigGeralEmpresaPadraoCalcField: TStringField;
     SQLConfigGeralCFGEA60HOSTSMTP: TStringField;
     SQLConfigGeralCFGEA60ENDRETSMTP: TStringField;
     SQLConfigGeralCFGEA60ENDHOSTPOP: TStringField;
@@ -259,6 +258,7 @@ type
     ppDBText23: TppDBText;
     DSTblPedidoCab: TDataSource;
     SQLProvedorCartao: TRxQuery;
+    SQLConfigGeralEmpresaPadraoCalcField: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

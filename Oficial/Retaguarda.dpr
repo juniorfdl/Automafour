@@ -180,7 +180,8 @@ uses
   TelaTransferenciaMercadoria in 'Estoque\TelaTransferenciaMercadoria.pas' {FormTelaTransferencia},
   TelaContagemManual in 'Estoque\TelaContagemManual.pas' {FormTelaContagemManual},
   RelatorioDivergenciaInventario in 'Estoque\RelatorioDivergenciaInventario.pas' {FormRelatorioDivergenciaInventario},
-  TelaZerarSaldoEstoque in 'Estoque\TelaZerarSaldoEstoque.pas' {FormTelaZeraSaldoEstoque};
+  TelaZerarSaldoEstoque in 'Estoque\TelaZerarSaldoEstoque.pas' {FormTelaZeraSaldoEstoque},
+  TelaProdutosSemMovimento in 'Estoque\TelaProdutosSemMovimento.pas' {FormTelaProdutosSemMov};
 
 {$R *.res}
 
@@ -191,7 +192,6 @@ begin
   Application.Title := 'Gestão Empresarial - Módulo Faturamento';
 
   Application.CreateForm(TDM, DM);
-  
   if dm.SQLConfigGeralCFGECBLOQ.AsString = 'S' then
     begin
       ShowMessage('Sistema Bloqueado!!! Ligue para a Suporte');

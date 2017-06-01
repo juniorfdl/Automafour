@@ -216,7 +216,7 @@ inherited FormCadastroProdutoTabelaPreco: TFormCadastroProdutoTabelaPreco
       'Select '
       '    * '
       'From '
-      '    TabelaPrecoProduto '
+      '    TABELAPRECOPRODUTO'
       'Where '
       '    PRODICOD=:PRODICOD AND'
       '    (%MFiltro)')

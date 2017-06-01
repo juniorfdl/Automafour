@@ -6,7 +6,6 @@ inherited DM: TDM
   Width = 760
   inherited DB: TDatabase
     AliasName = 'Easy_Gestao'
-    Connected = False
   end
   object SQLConfigGeral: TRxQuery
     DatabaseName = 'DB'
@@ -111,6 +110,7 @@ inherited DM: TDM
     object SQLConfigGeralEmpresaPadraoCalcField: TStringField
       FieldKind = fkLookup
       FieldName = 'EmpresaPadraoCalcField'
+      LookupDataSet = SQLEmpresa
       LookupKeyFields = 'EMPRICOD'
       LookupResultField = 'EMPRA60NOMEFANT'
       KeyFields = 'CFGEIEMPPADRAO'
@@ -166,6 +166,7 @@ inherited DM: TDM
     object SQLConfigGeralEmpresaMatrizFilialLookUp: TStringField
       FieldKind = fkLookup
       FieldName = 'EmpresaMatrizFilialLookUp'
+      LookupDataSet = SQLEmpresa
       LookupKeyFields = 'EMPRICOD'
       LookupResultField = 'EMPRCMATRIZFILIAL'
       KeyFields = 'CFGEIEMPPADRAO'

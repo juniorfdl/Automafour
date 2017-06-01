@@ -544,7 +544,6 @@ type
     BCDField1: TFloatField;
     BCDField2: TFloatField;
     BCDField3: TFloatField;
-    StringField1: TStringField;
     DSSQLSaldoEmpresaAtual: TDataSource;
     SQLTemplatePRODN2PERCFRETE: TFloatField;
     GroupBoxFOTO: TGroupBox;
@@ -976,6 +975,7 @@ type
     RxDBComboBox14: TRxDBComboBox;
     btCorrigeProdutossemoCodigoCEST: TMenuItem;
     AcessaCEST: TSpeedButton;
+    SQLSaldoEmpresaAtualEmpresaLookup: TStringField;
     procedure FormCreate(Sender: TObject);
     procedure RxComboComissaoChange(Sender: TObject);
     procedure AcessaMarcaClick(Sender: TObject);
@@ -1382,7 +1382,7 @@ begin
           DBGridLista.Columns[4].Title.caption := 'Posiï¿½ï¿½o';
           DBGridLista.Columns[4].FieldName     := 'PRODA15APAVIM';
           DBGridLista.Columns[5].FieldName     := 'PRODA60REFER';
-          DBGridLista.Columns[5].Title.caption := 'Referï¿½ncia';
+          DBGridLista.Columns[5].Title.caption := 'referência';
           DBGridLista.Columns[6].Visible       := False;
         end;
     end;
@@ -1400,38 +1400,38 @@ begin
  // consistencia de dados para emissï¿½o de NFe
  Faltas:= '';
  if SQLTemplateICMSICOD.IsNull then
-    Faltas := Faltas + 'Cï¿½digo de ICMS Invï¿½lido'+#13#10;
+    Faltas := Faltas + 'Código de ICMS Inválido'+#13#10;
  if SQLtemplatePRODIORIGEM.IsNull then
-    Faltas := Faltas + 'Origem da Mercadoria Nï¿½o Especificada'+#13#10;
+    Faltas := Faltas + 'Origem da Mercadoria Não Especificada'+#13#10;
  if SQLtemplatePRODISITTRIB.IsNull then
-    Faltas := Faltas + 'Situaï¿½ï¿½o Tributï¿½ria Nï¿½o Especificada'+#13#10;
+    Faltas := Faltas + 'Situação Tributária Não Especificada'+#13#10;
  if SQLtemplatePRODA1MODBC.IsNull then
-    Faltas := Faltas + 'Determinaï¿½ï¿½o da Base de Cï¿½lculo Nï¿½o Especificada'+#13#10;
+    Faltas := Faltas + 'Determinação da Base de Cálculo Não Especificada'+#13#10;
  if SQLtemplatePRODA1MODBCST.IsNull then
-    Faltas := Faltas + 'Determinaï¿½ï¿½o da Base de Cï¿½lculo do ICMS ST Nï¿½o Especificada'+#13#10;
+    Faltas := Faltas + 'Determinação da Base de Cálculo do ICMS ST Não Especificada'+#13#10;
  if SQLtemplatePRODA2CSTIPI.IsNull then
-    Faltas := Faltas + 'CST do IPI Nï¿½o Especificada'+#13#10;
+    Faltas := Faltas + 'CST do IPI Não Especificada'+#13#10;
  if SQLtemplatePRODA2CSTCOFINS.IsNull then
-    Faltas := Faltas + 'CST COFINS Nï¿½o Especificada'+#13#10;
+    Faltas := Faltas + 'CST COFINS Não Especificada'+#13#10;
  if SQLtemplatePRODA2CSTPIS.IsNull then
-    Faltas := Faltas + 'CST PIS Nï¿½o Especificada'+#13#10;
+    Faltas := Faltas + 'CST PIS Não Especificada'+#13#10;
  if SQLTemplatePRODA3CSTPISENTRADA.IsNull then
-    Faltas := Faltas + 'CST PIS de ENTRADA Nï¿½o Especificada'+#13#10;
+    Faltas := Faltas + 'CST PIS de ENTRADA Não Especificada'+#13#10;
  if SQLTemplatePRODA3CSTCOFINSENTRADA.IsNull then
-    Faltas := Faltas + 'CST COFINS de ENTRADA Nï¿½o Especificada'+#13#10;
+    Faltas := Faltas + 'CST COFINS de ENTRADA Não Especificada'+#13#10;
  if SQLTemplatePRODA3CSTIPIENTRADA.IsNull then
-    Faltas := Faltas + 'CST IPI de ENTRADA Nï¿½o Especificada'+#13#10;
+    Faltas := Faltas + 'CST IPI de ENTRADA Não Especificada'+#13#10;
  if (SQLtemplatePRODN2ALIQPIS.IsNull) or (SQLtemplatePRODN2ALIQPIS.value < 0)  then
-    Faltas := Faltas + 'Percentual PIS Invï¿½lido'+#13#10;
+    Faltas := Faltas + 'Percentual PIS Inválido'+#13#10;
  if (SQLtemplatePRODN2ALIQCOFINS.IsNull) or (SQLtemplatePRODN2ALIQCOFINS.value < 0) then
-    Faltas := Faltas + 'Percentual COFINS Invï¿½lido'+#13#10;
+    Faltas := Faltas + 'Percentual COFINS Inválido'+#13#10;
  if SQLtemplatePRODA1TIPO.IsNull then
-    Faltas := Faltas + 'Tipo de Produto Nï¿½o Especificado'+#13#10;
+    Faltas := Faltas + 'Tipo de Produto Não Especificado'+#13#10;
  if SQLtemplatePRODA2TIPOITEM.IsNull then
-    Faltas := Faltas + 'Identificaï¿½ï¿½o do Produto (SPED PIS/COFINS) Nï¿½o Especificado'+#13#10;
+    Faltas := Faltas + 'Identificação do Produto (SPED PIS/COFINS) Não Especificado'+#13#10;
 
 { if SQLtemplateNCMICOD.IsNull then
-    Faltas := Faltas + 'Codigo NCM Nï¿½o Especificado'+#13#10; }
+    Faltas := Faltas + 'Codigo NCM Não Especificado'+#13#10; }
 
  if Faltas <> '' then
  begin
@@ -1471,7 +1471,7 @@ begin
             StrToInt(CodEan);
             EanOK := True;
           except
-            Informa('O Campo cï¿½d. EAN no cadastro de empresa estï¿½ incorreto, por favor verifique!');
+            Informa('O Campo cód. EAN no cadastro de empresa estï¿½ incorreto, por favor verifique!');
             EanOK := False;
           end;
         end;
@@ -1493,11 +1493,12 @@ begin
     begin
        DM.SQLTemplate.Close;
        DM.SQLTemplate.SQL.Clear;
-       DM.SQLTemplate.SQl.Add('SELECT PRODICOD, PRODA60CODBAR FROM PRODUTO WHERE PRODA60CODBAR = ' + '"' + SQLTemplate.FieldByName('PRODA60CODBAR').AsString + '" AND PRODICOD <>'+SQLTemplate.FieldByName('PRODICOD').asString);
+       DM.SQLTemplate.SQl.Add('SELECT PRODICOD, PRODA60CODBAR FROM PRODUTO WHERE PRODA60CODBAR = ' + QuotedStr(SQLTemplate.FieldByName('PRODA60CODBAR').AsString)
+          + ' AND PRODICOD <> '+SQLTemplate.FieldByName('PRODICOD').asString);
        DM.SQLTemplate.Open;
        if DM.SQLTemplate.RecordCount > 0 then
          begin
-          if not Pergunta('NAO','Atenï¿½ï¿½o! Este cï¿½digo de barras jï¿½ foi cadastrado para o produto '+DM.SQLTemplate.Fieldbyname('PRODICOD').AsString +chr(13)+
+          if not Pergunta('NAO','Atenção! Este código de barras já foi cadastrado para o produto '+DM.SQLTemplate.Fieldbyname('PRODICOD').AsString +chr(13)+
                           'Deseja Prosseguir?') then
             begin
               SQLTemplate.FieldByName('PRODA60CODBAR').FocusControl;
@@ -1508,11 +1509,12 @@ begin
          begin
            DM.SQLTemplate.Close;
            DM.SQLTemplate.SQL.Clear;
-           DM.SQLTemplate.SQl.Add('SELECT PRODICOD, PRBAA15BARRAS FROM PRODUTOBARRAS WHERE PRBAA15BARRAS = ' + '"' + SQLTemplate.FieldByName('PRODA60CODBAR').AsString + '" AND PRODICOD <>'+SQLTemplate.FieldByName('PRODICOD').asString);
+           DM.SQLTemplate.SQl.Add('SELECT PRODICOD, PRBAA15BARRAS FROM PRODUTOBARRAS WHERE PRBAA15BARRAS = '
+             + QuotedStr(SQLTemplate.FieldByName('PRODA60CODBAR').AsString) + ' AND PRODICOD <>'+SQLTemplate.FieldByName('PRODICOD').asString);
            DM.SQLTemplate.Open;
            if DM.SQLTemplate.RecordCount > 0 then
              begin
-               if not Pergunta('NAO','Atenï¿½ï¿½o! Este cï¿½digo de barras jï¿½ foi cadastrado para o produto '+DM.SQLTemplate.Fieldbyname('PRODICOD').AsString +chr(13)+
+               if not Pergunta('NAO','Atenção! Este código de barras já foi cadastrado para o produto '+DM.SQLTemplate.Fieldbyname('PRODICOD').AsString +chr(13)+
                                'Deseja Prosseguir?') then
                  begin
                    SQLTemplate.FieldByName('PRODA60CODBAR').FocusControl;
@@ -1528,11 +1530,12 @@ begin
     begin
        DM.SQLTemplate.Close;
        DM.SQLTemplate.SQL.Clear;
-       DM.SQLTemplate.SQl.Add('SELECT (PRODA60REFER) FROM PRODUTO WHERE PRODA60REFER = ' + '"' +SQLTemplate.FieldByName('PRODA60REFER').AsString + '" AND PRODICOD <>'+SQLTemplate.FieldByName('PRODICOD').asString);
+       DM.SQLTemplate.SQl.Add('SELECT (PRODA60REFER) FROM PRODUTO WHERE PRODA60REFER = ' +
+        QuotedStr(SQLTemplate.FieldByName('PRODA60REFER').AsString) + ' AND PRODICOD <>'+SQLTemplate.FieldByName('PRODICOD').asString);
        DM.SQLTemplate.Open;
        if DM.SQLTemplate.RecordCount > 0 then
          begin
-          if not Pergunta('NAO','Esta referï¿½ncia jï¿½ foi cadastrada para outro produto, deseja continuar ?') then
+          if not Pergunta('NAO','Esta referência já foi cadastrada para outro produto, deseja continuar ?') then
             begin
               SQLTemplate.FieldByName('PRODA60REFER').FocusControl;
               Abort;
@@ -1546,11 +1549,12 @@ begin
     begin
        DM.SQLTemplate.Close;
        DM.SQLTemplate.SQL.Clear;
-       DM.SQLTemplate.SQl.Add('SELECT (PRODA15CODANT) FROM PRODUTO WHERE PRODA15CODANT = ' + '"' +SQLTemplate.FieldByName('PRODA15CODANT').AsString + '" AND PRODICOD <>'+SQLTemplate.FieldByName('PRODICOD').asString);
+       DM.SQLTemplate.SQl.Add('SELECT (PRODA15CODANT) FROM PRODUTO WHERE PRODA15CODANT = ' +
+         QuotedStr(SQLTemplate.FieldByName('PRODA15CODANT').AsString) + ' AND PRODICOD <>'+SQLTemplate.FieldByName('PRODICOD').asString);
        DM.SQLTemplate.Open;
        if DM.SQLTemplate.RecordCount > 0 then
          begin
-          if not Pergunta('NAO','Este Cï¿½digo Antigo jï¿½ foi cadastrado para outro produto, deseja continuar ?') then
+          if not Pergunta('NAO','Este código Antigo já foi cadastrado para outro produto, deseja continuar ?') then
             begin
               SQLTemplate.FieldByName('PRODA15CODANT').FocusControl;
               Abort;
@@ -1564,19 +1568,19 @@ begin
   // CONSISTENCIAS DE GRADE
   if (SQLTemplateGRADICOD.AsVariant <> Null)  and (SQLTemplateGRTMICOD.AsVariant = Null) then
     begin
-      Informa('Vocï¿½ informou uma GRADE mas nï¿½o selecionou nenhum TAMANHO, por favor verifique!');
+      Informa('Vocï¿½ informou uma GRADE mas Não selecionou nenhum TAMANHO, por favor verifique!');
       ComboTamanho.SetFocus;
       Abort;
     end;
   if (SQLTemplateGRTMICOD.AsVariant <> Null) and (SQLTemplateGRADICOD.AsVariant = Null) then
     begin
-      Informa('Vocï¿½ informou um TAMANHO mas nï¿½o selecionou nenhuma GRADE, por favor verifique!');
+      Informa('Vocï¿½ informou um TAMANHO mas Não selecionou nenhuma GRADE, por favor verifique!');
       ComboGrade.SetFocus;
       Abort;
     end;
   if (SQLTemplateGRTMICOD.AsVariant <> Null) and (SQLTemplateCORICOD.AsVariant = Null) then
     begin
-      Informa('Vocï¿½ informou uma GRADE mas nï¿½o selecionou nenhuma COR, por favor verifique!');
+      Informa('Vocï¿½ informou uma GRADE mas Não selecionou nenhuma COR, por favor verifique!');
       ComboGrade.SetFocus;
       Abort;
     end;
@@ -1859,7 +1863,7 @@ begin
       try
         dm.SQLTemplate.Close;
         dm.SQLTemplate.sql.Clear;
-        dm.SQLTemplate.sql.Add('Update PRODUTO Set Pendente="S", PRODN3PERCMARGLUCR = '+ ConvFloatToStr(SQLTemplate.FindField('PRODN3PERCMARGLUCR').Value));
+        dm.SQLTemplate.sql.Add('Update PRODUTO Set Pendente= ''S'', PRODN3PERCMARGLUCR = '+ ConvFloatToStr(SQLTemplate.FindField('PRODN3PERCMARGLUCR').Value));
         if (SQLTemplate.FindField('PRODN3VLRVENDA').Value > 0) and (not FileExists('NaoAlteraPrecoVendaNaGrade.txt')) then
           dm.SQLTemplate.sql.Add(', PRODN3VLRVENDA = '+ ConvFloatToStr(SQLTemplate.FindField('PRODN3VLRVENDA').Value));
         if (SQLTemplate.FindField('PRODN3PERCMARGLUC2').Value > 0) and (not FileExists('NaoAlteraPrecoVendaNaGrade.txt')) then
@@ -1878,25 +1882,25 @@ begin
         if SQLTemplate.FindField('PRODISITTRIB').AsString <> '' then
           dm.SQLTemplate.sql.Add(', PRODISITTRIB = '+ SQLTemplate.FindField('PRODISITTRIB').AsString);
         if SQLTemplate.FindField('PRODA1MODBC').AsString <> '' then
-          dm.SQLTemplate.sql.Add(', PRODA1MODBC = "'+ SQLTemplate.FindField('PRODA1MODBC').AsString+'"');
+          dm.SQLTemplate.sql.Add(', PRODA1MODBC = '+ QuotedStr(SQLTemplate.FindField('PRODA1MODBC').AsString));
         if SQLTemplate.FindField('PRODA1MODBCST').AsString <> '' then
-          dm.SQLTemplate.sql.Add(', PRODA1MODBCST = "'+ SQLTemplate.FindField('PRODA1MODBCST').AsString+'"');
+          dm.SQLTemplate.sql.Add(', PRODA1MODBCST = '+ QuotedStr(SQLTemplate.FindField('PRODA1MODBCST').AsString));
         if SQLTemplate.FindField('PRODA2CSTIPI').AsString <> '' then
-          dm.SQLTemplate.sql.Add(', PRODA2CSTIPI = "'+ SQLTemplate.FindField('PRODA2CSTIPI').AsString+'"');
+          dm.SQLTemplate.sql.Add(', PRODA2CSTIPI = '+ QuotedStr(SQLTemplate.FindField('PRODA2CSTIPI').AsString));
         if SQLTemplate.FindField('PRODA3CSTIPIENTRADA').AsString <> '' then
-          dm.SQLTemplate.sql.Add(', PRODA3CSTIPIENTRADA = "'+ SQLTemplate.FindField('PRODA3CSTIPIENTRADA').AsString+'"');
+          dm.SQLTemplate.sql.Add(', PRODA3CSTIPIENTRADA = '+ QuotedStr(SQLTemplate.FindField('PRODA3CSTIPIENTRADA').AsString));
         if SQLTemplate.FindField('PRODA2CSTPIS').AsString <> '' then
-          dm.SQLTemplate.sql.Add(', PRODA2CSTPIS = "'+ SQLTemplate.FindField('PRODA2CSTPIS').AsString+'"');
+          dm.SQLTemplate.sql.Add(', PRODA2CSTPIS = '+ QuotedStr(SQLTemplate.FindField('PRODA2CSTPIS').AsString));
         if SQLTemplate.FindField('PRODA3CSTPISENTRADA').AsString <> '' then
-          dm.SQLTemplate.sql.Add(', PRODA3CSTPISENTRADA = "'+ SQLTemplate.FindField('PRODA3CSTPISENTRADA').AsString+'"');
+          dm.SQLTemplate.sql.Add(', PRODA3CSTPISENTRADA = '''+ SQLTemplate.FindField('PRODA3CSTPISENTRADA').AsString+'''');
         if SQLTemplate.FindField('PRODA2CSTCOFINS').AsString <> '' then
-          dm.SQLTemplate.sql.Add(', PRODA2CSTCOFINS = "'+ SQLTemplate.FindField('PRODA2CSTCOFINS').AsString+'"');
+          dm.SQLTemplate.sql.Add(', PRODA2CSTCOFINS = '''+ SQLTemplate.FindField('PRODA2CSTCOFINS').AsString+''' ');
         if SQLTemplate.FindField('PRODA3CSTCOFINSENTRADA').AsString <> '' then
-          dm.SQLTemplate.sql.Add(', PRODA3CSTCOFINSENTRADA = "'+ SQLTemplate.FindField('PRODA3CSTCOFINSENTRADA').AsString+'"');
+          dm.SQLTemplate.sql.Add(', PRODA3CSTCOFINSENTRADA = '''+ SQLTemplate.FindField('PRODA3CSTCOFINSENTRADA').AsString+'''');
         if SQLTemplate.FindField('PRODA1TIPO').AsString <> '' then
-          dm.SQLTemplate.sql.Add(', PRODA1TIPO = "'+ SQLTemplate.FindField('PRODA1TIPO').AsString+'"');
+          dm.SQLTemplate.sql.Add(', PRODA1TIPO = '''+ SQLTemplate.FindField('PRODA1TIPO').AsString+'''');
         if SQLTemplate.FindField('PRODA2TIPOITEM').AsString <> '' then
-          dm.SQLTemplate.sql.Add(', PRODA2TIPOITEM = "'+ SQLTemplate.FindField('PRODA2TIPOITEM').AsString+'"');
+          dm.SQLTemplate.sql.Add(', PRODA2TIPOITEM = '''+ SQLTemplate.FindField('PRODA2TIPOITEM').AsString+'''');
         if SQLTemplate.FindField('NCMICOD').AsString <> '' then
           dm.SQLTemplate.sql.Add(', NCMICOD = '+ SQLTemplate.FindField('NCMICOD').AsString);
 
@@ -1926,11 +1930,11 @@ begin
         dm.SQLTemplate.Close;
         dm.SQLTemplate.sql.Clear;
         dm.SQLTemplate.sql.Add('Update PRODUTO Set');
-        dm.SQLTemplate.sql.Add('  PRODA60DESCR  = "'+ SQLTemplatePRODA60DESCR.AsString+'"');
-        dm.SQLTemplate.sql.Add(', PRODA30ADESCRREDUZ  = "'+ SQLTemplatePRODA30ADESCRREDUZ.AsString+'"');
-        dm.SQLTemplate.sql.Add(', PRODA60REFER  = "'+ SQLTemplatePRODA60REFER.AsString+'"');
-        dm.SQLTemplate.sql.Add(', PRODA15CODANT  = "'+ SQLTemplatePRODA15CODANT.AsString+'"');
-        dm.SQLTemplate.sql.Add(', PRODCATIVO  = "'+ SQLTemplatePRODCATIVO.AsString+'"');
+        dm.SQLTemplate.sql.Add('  PRODA60DESCR  = '''+ SQLTemplatePRODA60DESCR.AsString+'''');
+        dm.SQLTemplate.sql.Add(', PRODA30ADESCRREDUZ  = '''+ SQLTemplatePRODA30ADESCRREDUZ.AsString+'''');
+        dm.SQLTemplate.sql.Add(', PRODA60REFER  = '''+ SQLTemplatePRODA60REFER.AsString+'''');
+        dm.SQLTemplate.sql.Add(', PRODA15CODANT  = '''+ SQLTemplatePRODA15CODANT.AsString+'''');
+        dm.SQLTemplate.sql.Add(', PRODCATIVO  = '''+ SQLTemplatePRODCATIVO.AsString+'''');
         if SQLTemplateMARCICOD.AsString <> '' then
           dm.SQLTemplate.sql.Add(', MARCICOD  = '+ SQLTemplateMARCICOD.AsString);
         if SQLTemplateGRUPICOD.AsString <> '' then
@@ -1956,11 +1960,11 @@ begin
           dm.SQLTemplate.sql.Add(', PRODN3VLRCUSTO  = '+ ConvFloatToStr(ValorCusto));
 
         if SQLTemplatePRODDINIPROMO.AsString <> '' then
-          dm.SQLTemplate.sql.Add(', PRODDINIPROMO  = "'+ FormatDateTime('mm/dd/yyyy',SQLTemplatePRODDINIPROMO.Value)+'"')
+          dm.SQLTemplate.sql.Add(', PRODDINIPROMO  = '''+ FormatDateTime('mm/dd/yyyy',SQLTemplatePRODDINIPROMO.Value)+'''')
         else
           dm.SQLTemplate.sql.Add(', PRODDINIPROMO  = Null');
         if SQLTemplatePRODDFIMPROMO.AsString <> '' then
-          dm.SQLTemplate.sql.Add(', PRODDFIMPROMO  = "'+ FormatDateTime('mm/dd/yyyy',SQLTemplatePRODDFIMPROMO.Value)+'"')
+          dm.SQLTemplate.sql.Add(', PRODDFIMPROMO  = '''+ FormatDateTime('mm/dd/yyyy',SQLTemplatePRODDFIMPROMO.Value)+'''')
         else
           dm.SQLTemplate.sql.Add(', PRODDFIMPROMO  = Null');
 
@@ -1969,12 +1973,12 @@ begin
         else
           dm.SQLTemplate.sql.Add(', PRODN3VLRVENDAPROM  = 0');
 
-        dm.SQLTemplate.sql.Add(', PRODA30INF01ETQBARRAS  = "'+ SQLTemplatePRODA30INF01ETQBARRAS.AsString+'"');
-        dm.SQLTemplate.sql.Add(', PRODA30INF02ETQBARRAS  = "'+ SQLTemplatePRODA30INF02ETQBARRAS.AsString+'"');
+        dm.SQLTemplate.sql.Add(', PRODA30INF01ETQBARRAS  = '''+ SQLTemplatePRODA30INF01ETQBARRAS.AsString+'''');
+        dm.SQLTemplate.sql.Add(', PRODA30INF02ETQBARRAS  = '''+ SQLTemplatePRODA30INF02ETQBARRAS.AsString+'''');
 
-        dm.SQLTemplate.sql.Add(', PRODDULTALTER  = "'+ FormatDateTime('mm/dd/yyyy',SQLTemplatePRODDULTALTER.Value)+'"');
-        dm.SQLTemplate.sql.Add(', REGISTRO  = "'+ FormatDateTime('mm/dd/yyyy hh:mm:ss',Now)+'"');
-        dm.SQLTemplate.sql.Add(', PENDENTE  = "S"');
+        dm.SQLTemplate.sql.Add(', PRODDULTALTER  = '''+ FormatDateTime('mm/dd/yyyy',SQLTemplatePRODDULTALTER.Value)+'''');
+        dm.SQLTemplate.sql.Add(', REGISTRO  = '''+ FormatDateTime('mm/dd/yyyy hh:mm:ss',Now)+'''');
+        dm.SQLTemplate.sql.Add(', PENDENTE  = ''S''');
 
         if SQLTemplate.FindField('PRODIORIGEM').AsString <> '' then
           dm.SQLTemplate.sql.Add(', PRODIORIGEM = '+ SQLTemplate.FindField('PRODIORIGEM').AsString);
@@ -1983,25 +1987,25 @@ begin
         if SQLTemplate.FindField('PRODISITTRIB').AsString <> '' then
           dm.SQLTemplate.sql.Add(', PRODISITTRIB = '+ SQLTemplate.FindField('PRODISITTRIB').AsString);
         if SQLTemplate.FindField('PRODA1MODBC').AsString <> '' then
-          dm.SQLTemplate.sql.Add(', PRODA1MODBC = "'+ SQLTemplate.FindField('PRODA1MODBC').AsString+'"');
+          dm.SQLTemplate.sql.Add(', PRODA1MODBC = '''+ SQLTemplate.FindField('PRODA1MODBC').AsString+'''');
         if SQLTemplate.FindField('PRODA1MODBCST').AsString <> '' then
-          dm.SQLTemplate.sql.Add(', PRODA1MODBCST = "'+ SQLTemplate.FindField('PRODA1MODBCST').AsString+'"');
+          dm.SQLTemplate.sql.Add(', PRODA1MODBCST = '''+ SQLTemplate.FindField('PRODA1MODBCST').AsString+'''');
         if SQLTemplate.FindField('PRODA2CSTIPI').AsString <> '' then
-          dm.SQLTemplate.sql.Add(', PRODA2CSTIPI = "'+ SQLTemplate.FindField('PRODA2CSTIPI').AsString+'"');
+          dm.SQLTemplate.sql.Add(', PRODA2CSTIPI = '''+ SQLTemplate.FindField('PRODA2CSTIPI').AsString+'''');
         if SQLTemplate.FindField('PRODA3CSTIPIENTRADA').AsString <> '' then
-          dm.SQLTemplate.sql.Add(', PRODA3CSTIPIENTRADA = "'+ SQLTemplate.FindField('PRODA3CSTIPIENTRADA').AsString+'"');
+          dm.SQLTemplate.sql.Add(', PRODA3CSTIPIENTRADA = '''+ SQLTemplate.FindField('PRODA3CSTIPIENTRADA').AsString+'''');
         if SQLTemplate.FindField('PRODA2CSTPIS').AsString <> '' then
-          dm.SQLTemplate.sql.Add(', PRODA2CSTPIS = "'+ SQLTemplate.FindField('PRODA2CSTPIS').AsString+'"');
+          dm.SQLTemplate.sql.Add(', PRODA2CSTPIS = '''+ SQLTemplate.FindField('PRODA2CSTPIS').AsString+'''');
         if SQLTemplate.FindField('PRODA3CSTPISENTRADA').AsString <> '' then
-          dm.SQLTemplate.sql.Add(', PRODA3CSTPISENTRADA = "'+ SQLTemplate.FindField('PRODA3CSTPISENTRADA').AsString+'"');
+          dm.SQLTemplate.sql.Add(', PRODA3CSTPISENTRADA = '''+ SQLTemplate.FindField('PRODA3CSTPISENTRADA').AsString+'''');
         if SQLTemplate.FindField('PRODA2CSTCOFINS').AsString <> '' then
-          dm.SQLTemplate.sql.Add(', PRODA2CSTCOFINS = "'+ SQLTemplate.FindField('PRODA2CSTCOFINS').AsString+'"');
+          dm.SQLTemplate.sql.Add(', PRODA2CSTCOFINS = '''+ SQLTemplate.FindField('PRODA2CSTCOFINS').AsString+'''');
         if SQLTemplate.FindField('PRODA3CSTCOFINSENTRADA').AsString <> '' then
-          dm.SQLTemplate.sql.Add(', PRODA3CSTCOFINSENTRADA = "'+ SQLTemplate.FindField('PRODA3CSTCOFINSENTRADA').AsString+'"');
+          dm.SQLTemplate.sql.Add(', PRODA3CSTCOFINSENTRADA = '''+ SQLTemplate.FindField('PRODA3CSTCOFINSENTRADA').AsString+'''');
         if SQLTemplate.FindField('PRODA1TIPO').AsString <> '' then
-          dm.SQLTemplate.sql.Add(', PRODA1TIPO = "'+ SQLTemplate.FindField('PRODA1TIPO').AsString+'"');
+          dm.SQLTemplate.sql.Add(', PRODA1TIPO = '''+ SQLTemplate.FindField('PRODA1TIPO').AsString+'''');
         if SQLTemplate.FindField('PRODA2TIPOITEM').AsString <> '' then
-          dm.SQLTemplate.sql.Add(', PRODA2TIPOITEM = "'+ SQLTemplate.FindField('PRODA2TIPOITEM').AsString+'"');
+          dm.SQLTemplate.sql.Add(', PRODA2TIPOITEM = '''+ SQLTemplate.FindField('PRODA2TIPOITEM').AsString+'''');
         if SQLTemplate.FindField('NCMICOD').AsString <> '' then
           dm.SQLTemplate.sql.Add(', NCMICOD = '+ SQLTemplate.FindField('NCMICOD').AsString);
 
@@ -2174,12 +2178,12 @@ begin
   SQLMovimentoEstoqueGrade.Open;
   if not SQLMovimentoEstoqueGrade.IsEmpty then
     begin
-      Informa('A grade deste produto possui movimento de estoque, nï¿½o poderï¿½ ser excluido !');
+      Informa('A grade deste produto possui movimento de estoque, Não poderá ser excluido !');
       Abort;
     end;
   if (MatrizFilial='F') and (not FileExists('AlteraProdutoFilial.txt')) then
     begin
-      Application.MessageBox('Uma filial nï¿½o pode excluir estas informaï¿½ï¿½es !','Advanced Control Informa...',MB_OK + MB_ICONEXCLAMATION + MB_SETFOREGROUND + MB_SYSTEMMODAL) ;
+      Application.MessageBox('Uma filial Não pode excluir estas informações !','Advanced Control Informa...',MB_OK + MB_ICONEXCLAMATION + MB_SETFOREGROUND + MB_SYSTEMMODAL) ;
       Abort ;
     end ;
 
@@ -2494,7 +2498,7 @@ begin
         Qtd[I]  := 0;
       if SQLProduto.IsEmpty then
         begin
-          Informa('A grade para este produto nï¿½o foi gerada!');
+          Informa('A grade para este produto Não foi gerada!');
           Exit;
         end;
       while not SQLProduto.Eof do
@@ -2610,7 +2614,7 @@ begin
       SQLGradeProduto.First;
       if SQLGradeProduto.IsEmpty then
         begin
-          Informa('A grade para este produto nï¿½o foi gerada!');
+          Informa('A grade para este produto Não foi gerada!');
           Exit;
         end;
       while not SQLGradeProduto.Eof do
@@ -2817,23 +2821,23 @@ begin
 
 {  SQLCupom.ParamByName('Empresa').AsString      := EmpresaPadrao;
   SQLCupom.MacroByName('Produto').AsString      := 'PRODUTO.PRODIAGRUPGRADE = '  + SQLTemplatePRODIAGRUPGRADE.AsString;
-  SQLCupom.MacroByName('Data').AsString         := 'CUPOM.CUPODEMIS >= "' + FormatDateTime('mm/dd/yyyy',De.Date) + '" AND ' +
-                                                   'CUPOM.CUPODEMIS <= "' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '"';
+  SQLCupom.MacroByName('Data').AsString         := 'CUPOM.CUPODEMIS >= ''' + FormatDateTime('mm/dd/yyyy',De.Date) + ''' AND ' +
+                                                   'CUPOM.CUPODEMIS <= ''' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '''';
 
   SQLNotaFiscal.ParamByName('Empresa').AsString := EmpresaPadrao;
   SQLNotaFiscal.MacroByName('Produto').AsString := 'PRODUTO.PRODIAGRUPGRADE = '  + SQLTemplatePRODIAGRUPGRADE.AsString;
-  SQLNotaFiscal.MacroByName('Data').AsString    := 'NOTAFISCAL.NOFIDEMIS >= "' + FormatDateTime('mm/dd/yyyy',De.Date) + '" AND ' +
-                                                   'NOTAFISCAL.NOFIDEMIS <= "' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '"';
+  SQLNotaFiscal.MacroByName('Data').AsString    := 'NOTAFISCAL.NOFIDEMIS >= ''' + FormatDateTime('mm/dd/yyyy',De.Date) + ''' AND ' +
+                                                   'NOTAFISCAL.NOFIDEMIS <= ''' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '''';
 
   SQLNotaCompra.ParamByName('Empresa').AsString := EmpresaPadrao;
   SQLNotaCompra.MacroByName('Produto').AsString := 'PRODUTO.PRODIAGRUPGRADE = '  + SQLTemplatePRODIAGRUPGRADE.AsString;
-  SQLNotaCompra.MacroByName('Data').AsString    := 'NOTACOMPRA.NOCPDRECEBIMENTO >= "' + FormatDateTime('mm/dd/yyyy',De.Date) + '" AND ' +
-                                                   'NOTACOMPRA.NOCPDRECEBIMENTO <= "' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '"';
+  SQLNotaCompra.MacroByName('Data').AsString    := 'NOTACOMPRA.NOCPDRECEBIMENTO >= ''' + FormatDateTime('mm/dd/yyyy',De.Date) + ''' AND ' +
+                                                   'NOTACOMPRA.NOCPDRECEBIMENTO <= ''' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '''';
 
   SQLMovimentoDiverso.ParamByName('Empresa').AsString := EmpresaPadrao;
   SQLMovimentoDiverso.MacroByName('Produto').AsString := 'PRODUTO.PRODIAGRUPGRADE = '  + SQLTemplatePRODIAGRUPGRADE.AsString;
-  SQLMovimentoDiverso.MacroByName('Data').AsString    := 'MOVIMENTODIVERSO.MOVDDMOVIMENTO >= "' + FormatDateTime('mm/dd/yyyy',De.Date) + '" AND ' +
-                                                         'MOVIMENTODIVERSO.MOVDDMOVIMENTO <= "' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '"'; }
+  SQLMovimentoDiverso.MacroByName('Data').AsString    := 'MOVIMENTODIVERSO.MOVDDMOVIMENTO >= ''' + FormatDateTime('mm/dd/yyyy',De.Date) + ''' AND ' +
+                                                         'MOVIMENTODIVERSO.MOVDDMOVIMENTO <= ''' + FormatDateTime('mm/dd/yyyy',Ate.Date) + ''''; }
 
   if ComboEmpresa.Value <> '' then
     SQLMovimentoEstoque.ParamByName('Empresa').AsString := ComboEmpresa.Value
@@ -2845,17 +2849,17 @@ begin
   if (De.Text = '  /  /    ') and (Ate.Text = '  /  /    ') then
     SQLMovimentoEstoque.MacroByName('Data').AsString    := '0=0'
   else
-    SQLMovimentoEstoque.MacroByName('Data').AsString    := 'MOVIMENTOESTOQUE.MVESDMOV >= "' + FormatDateTime('mm/dd/yyyy',De.Date) + '" AND ' +
-                                                           'MOVIMENTOESTOQUE.MVESDMOV <= "' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '"';
+    SQLMovimentoEstoque.MacroByName('Data').AsString    := 'MOVIMENTOESTOQUE.MVESDMOV >= ''' + FormatDateTime('mm/dd/yyyy',De.Date) + ''' AND ' +
+                                                           'MOVIMENTOESTOQUE.MVESDMOV <= ''' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '''';
 
   SQLMovimentoEstoque.Open;
   SQLMovimentoEstoque.First;
   // RETORNA SALDO DE ESTOQUE;
   SQLSaldo.Close;
   if (De.Text = '  /  /    ') and (Ate.Text = '  /  /    ') then
-    SQLSaldo.MacroByName('DataInicial').Value   := 'MVESDMOV < "01/01/2000"'
+    SQLSaldo.MacroByName('DataInicial').Value   := 'MVESDMOV < ''01/01/2000'''
   else
-    SQLSaldo.MacroByName('DataInicial').AsString := 'MVESDMOV < "' + FormatDateTime('mm/dd/yyyy',De.Date) + '"';
+    SQLSaldo.MacroByName('DataInicial').AsString := 'MVESDMOV < ''' + FormatDateTime('mm/dd/yyyy',De.Date) + '''';
   SQLSaldo.ParamByName('PRODUTO').AsString := SQLTemplatePRODIAGRUPGRADE.AsString;
   if ComboEmpresa.Value <> '' then
     SQLSaldo.ParamByName('EMPRESA').AsString := ComboEmpresa.Value
@@ -2935,20 +2939,20 @@ begin
   Report.Formulas.Retrieve ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Empresa' ;
-  Report.Formulas.Formula.Text := '"' + ComboEmpresa.Text + '"' ;
+  Report.Formulas.Formula.Text := '''' + ComboEmpresa.Text + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Emissao' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'PeriodoEmissao' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy', De.Date) + ' atï¿½ ' +
-                                  FormatDateTime('dd/mm/yyyy', Ate.Date) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy', De.Date) + ' atï¿½ ' +
+                                  FormatDateTime('dd/mm/yyyy', Ate.Date) + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Produto' ;
-  Report.Formulas.Formula.Text := '"'+ SQLTemplatePRODA60DESCR.AsString + '"' ;
+  Report.Formulas.Formula.Text := ''''+ SQLTemplatePRODA60DESCR.AsString + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Referencia' ;
-  Report.Formulas.Formula.Text := '"'+ SQLTemplatePRODA60REFER.AsString + '"' ;
+  Report.Formulas.Formula.Text := ''''+ SQLTemplatePRODA60REFER.AsString + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Send;
   Report.Execute;}
@@ -3012,7 +3016,7 @@ begin
   inherited;
   if (MatrizFilial='F') and (not FileExists('AlteraProdutoFilial.txt')) then
   begin
-    Application.MessageBox('Uma filial nï¿½o pode alterar estas informaï¿½ï¿½es !','Advanced Control Informa...',MB_OK + MB_ICONINFORMATION + MB_SETFOREGROUND + MB_SYSTEMMODAL) ;
+    Application.MessageBox('Uma filial Não pode alterar estas informações !','Advanced Control Informa...',MB_OK + MB_ICONINFORMATION + MB_SETFOREGROUND + MB_SYSTEMMODAL) ;
     Abort ;
   end ;
   inherited;
@@ -3388,9 +3392,9 @@ begin
   CampoOrdem := SQLTemplate.FindField(DM.LocateByDisplayLabel(SQLTemplate,ComboOrder.Text));
 
   if RadioAtivo.Checked then
-    sqltemplate.MacroByName('MSituacao').Value := 'PRODCATIVO = "S"'
+    sqltemplate.MacroByName('MSituacao').Value := 'PRODCATIVO = ''S'''
   else
-    sqltemplate.MacroByName('MSituacao').Value := 'PRODCATIVO = "N"';
+    sqltemplate.MacroByName('MSituacao').Value := 'PRODCATIVO = ''N''';
 
   if Clausula <> '' then
     begin
@@ -3656,9 +3660,9 @@ procedure TFormCadastroProduto.SQLTemplateBeforeOpen(DataSet: TDataSet);
 begin
   inherited;
   if RadioAtivo.Checked then
-    sqltemplate.MacroByName('MSituacao').Value := 'PRODCATIVO = "S"'
+    sqltemplate.MacroByName('MSituacao').Value := 'PRODCATIVO = ''S'''
   else
-    sqltemplate.MacroByName('MSituacao').Value := 'PRODCATIVO = "N"';
+    sqltemplate.MacroByName('MSituacao').Value := 'PRODCATIVO = ''N''';
 end;
 
 procedure TFormCadastroProduto.MnEnviarProdCadMatClick(Sender: TObject);
@@ -3801,17 +3805,17 @@ begin
   if (De.Text = '  /  /    ') and (Ate.Text = '  /  /    ') then
     SQLMovimentoEstoque.MacroByName('Data').AsString    := '0=0'
   else
-    SQLMovimentoEstoque.MacroByName('Data').AsString    := 'MOVIMENTOESTOQUE.MVESDMOV >= "' + FormatDateTime('mm/dd/yyyy',De.Date) + '" AND ' +
-                                                           'MOVIMENTOESTOQUE.MVESDMOV <= "' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '"';
+    SQLMovimentoEstoque.MacroByName('Data').AsString    := 'MOVIMENTOESTOQUE.MVESDMOV >= ''' + FormatDateTime('mm/dd/yyyy',De.Date) + ''' AND ' +
+                                                           'MOVIMENTOESTOQUE.MVESDMOV <= ''' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '''';
 
   SQLMovimentoEstoque.Open;
   SQLMovimentoEstoque.First;
   // RETORNA SALDO DE ESTOQUE;
   SQLSaldo.Close;
   if (De.Text = '  /  /    ') and (Ate.Text = '  /  /    ') then
-    SQLSaldo.MacroByName('DataInicial').Value   := 'MVESDMOV < "01/01/2000"'
+    SQLSaldo.MacroByName('DataInicial').Value   := 'MVESDMOV < ''01/01/2000'''
   else
-    SQLSaldo.MacroByName('DataInicial').AsString := 'MVESDMOV < "' + FormatDateTime('mm/dd/yyyy',De.Date) + '"';
+    SQLSaldo.MacroByName('DataInicial').AsString := 'MVESDMOV < ''' + FormatDateTime('mm/dd/yyyy',De.Date) + '''';
   SQLSaldo.ParamByName('PRODUTO').AsString := SQLTemplatePRODIAGRUPGRADE.AsString;
   if ComboEmpresa.Value <> '' then
     SQLSaldo.ParamByName('EMPRESA').AsString := ComboEmpresa.Value
@@ -3857,35 +3861,35 @@ begin
 
       if SQLMovimentoEstoqueCUPOA13ID.AsString <> '' then
         begin
-          TblTemporaria2DOCUMENTO.AsString := 'CP.' + SQLLocate('CUPOM','CUPOA13ID','CUPOINRO','"'+SQLMovimentoEstoqueCUPOA13ID.AsString+'"');
-          TblTemporaria2CLIENTE.AsString   := SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC','"'+SQLLocate('CUPOM','CUPOA13ID','CLIEA13ID','"'+SQLMovimentoEstoqueCUPOA13ID.AsString+'"')+'"');
-          TblTemporaria2MUNICIPIO.AsString := SQLLocate('CLIENTE','CLIEA13ID','CLIEA60CIDRES','"'+SQLLocate('CUPOM','CUPOA13ID','CLIEA13ID','"'+SQLMovimentoEstoqueCUPOA13ID.AsString+'"')+'"');
-          TblTemporaria2UF.AsString        := SQLLocate('CLIENTE','CLIEA13ID','CLIEA2UFRES','"'+SQLLocate('CUPOM','CUPOA13ID','CLIEA13ID','"'+SQLMovimentoEstoqueCUPOA13ID.AsString+'"')+'"');
+          TblTemporaria2DOCUMENTO.AsString := 'CP.' + SQLLocate('CUPOM','CUPOA13ID','CUPOINRO',''''+SQLMovimentoEstoqueCUPOA13ID.AsString+'''');
+          TblTemporaria2CLIENTE.AsString   := SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC',''''+SQLLocate('CUPOM','CUPOA13ID','CLIEA13ID',''''+SQLMovimentoEstoqueCUPOA13ID.AsString+'''')+'''');
+          TblTemporaria2MUNICIPIO.AsString := SQLLocate('CLIENTE','CLIEA13ID','CLIEA60CIDRES',''''+SQLLocate('CUPOM','CUPOA13ID','CLIEA13ID',''''+SQLMovimentoEstoqueCUPOA13ID.AsString+'''')+'''');
+          TblTemporaria2UF.AsString        := SQLLocate('CLIENTE','CLIEA13ID','CLIEA2UFRES',''''+SQLLocate('CUPOM','CUPOA13ID','CLIEA13ID',''''+SQLMovimentoEstoqueCUPOA13ID.AsString+'''')+'''');
           // alterado pelo judi
-          TblTemporaria2VALORUNITARIO.asstring:=SQLLocate('CUPOMITEM','0','CPITN3VLRUNIT','0 AND CUPOA13ID = "'+ SQLMovimentoEstoqueCUPOA13ID.AsString +'" AND PRODICOD = "'+ SQLMovimentoEstoquePRODICOD.AsString+'"');
+          TblTemporaria2VALORUNITARIO.asstring:=SQLLocate('CUPOMITEM','0','CPITN3VLRUNIT','0 AND CUPOA13ID = '''+ SQLMovimentoEstoqueCUPOA13ID.AsString +''' AND PRODICOD = '''+ SQLMovimentoEstoquePRODICOD.AsString+'''');
         end;
       if SQLMovimentoEstoqueNOFIA13ID.AsString <> '' then
         begin
-          TblTemporaria2DOCUMENTO.AsString   := 'NF.' + SQLLocate('NOTAFISCAL','NOFIA13ID','NOFIINUMERO','"'+SQLMovimentoEstoqueNOFIA13ID.AsString+'"');
+          TblTemporaria2DOCUMENTO.AsString   := 'NF.' + SQLLocate('NOTAFISCAL','NOFIA13ID','NOFIINUMERO',''''+SQLMovimentoEstoqueNOFIA13ID.AsString+'''');
           // se o retorno for diferente de '' ï¿½ cliente caso contrario ï¿½ fornecedor
           Try
           
-          if SQLLocate('NOTAFISCAL','NOFIA13ID','CLIEA13ID','"'+SQLMovimentoEstoqueNOFIA13ID.AsString+'"') <> '' Then
+          if SQLLocate('NOTAFISCAL','NOFIA13ID','CLIEA13ID',''''+SQLMovimentoEstoqueNOFIA13ID.AsString+'''') <> '' Then
             begin
-              TblTemporaria2CLIENTE.AsString   := SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC','"'+SQLLocate('NOTAFISCAL','NOFIA13ID','CLIEA13ID','"'+SQLMovimentoEstoqueNOFIA13ID.AsString+'"')+'"');
-              TblTemporaria2MUNICIPIO.AsString := SQLLocate('CLIENTE','CLIEA13ID','CLIEA60CIDRES','"'+SQLLocate('NOTAFISCAL','NOFIA13ID','CLIEA13ID','"'+SQLMovimentoEstoqueNOFIA13ID.AsString+'"')+'"');
-              TblTemporaria2UF.AsString        := SQLLocate('CLIENTE','CLIEA13ID','CLIEA2UFRES','"'+SQLLocate('NOTAFISCAL','NOFIA13ID','CLIEA13ID','"'+SQLMovimentoEstoqueNOFIA13ID.AsString+'"')+'"');
+              TblTemporaria2CLIENTE.AsString   := SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC',''''+SQLLocate('NOTAFISCAL','NOFIA13ID','CLIEA13ID',''''+SQLMovimentoEstoqueNOFIA13ID.AsString+'''')+'''');
+              TblTemporaria2MUNICIPIO.AsString := SQLLocate('CLIENTE','CLIEA13ID','CLIEA60CIDRES',''''+SQLLocate('NOTAFISCAL','NOFIA13ID','CLIEA13ID',''''+SQLMovimentoEstoqueNOFIA13ID.AsString+'''')+'''');
+              TblTemporaria2UF.AsString        := SQLLocate('CLIENTE','CLIEA13ID','CLIEA2UFRES',''''+SQLLocate('NOTAFISCAL','NOFIA13ID','CLIEA13ID',''''+SQLMovimentoEstoqueNOFIA13ID.AsString+'''')+'''');
             end
           else
             begin
-              TblTemporaria2CLIENTE.AsString   := SQLLocate('FORNECEDOR','FORNICOD','FORNA60RAZAOSOC','"'+SQLLocate('NOTAFISCAL','NOFIA13ID','FORNICOD','"'+SQLMovimentoEstoqueNOFIA13ID.AsString+'"')+'"');
-              TblTemporaria2MUNICIPIO.AsString := SQLLocate('FORNECEDOR','FORNICOD','FORNA60CID','"'+SQLLocate('NOTAFISCAL','NOFIA13ID','FORNICOD','"'+SQLMovimentoEstoqueNOFIA13ID.AsString+'"')+'"');
-              TblTemporaria2UF.AsString        := SQLLocate('FORNECEDOR','FORNICOD','FORNA2UF','"'+SQLLocate('NOTAFISCAL','NOFIA13ID','FORNICOD','"'+SQLMovimentoEstoqueNOFIA13ID.AsString+'"')+'"');
+              TblTemporaria2CLIENTE.AsString   := SQLLocate('FORNECEDOR','FORNICOD','FORNA60RAZAOSOC',''''+SQLLocate('NOTAFISCAL','NOFIA13ID','FORNICOD',''''+SQLMovimentoEstoqueNOFIA13ID.AsString+'''')+'''');
+              TblTemporaria2MUNICIPIO.AsString := SQLLocate('FORNECEDOR','FORNICOD','FORNA60CID',''''+SQLLocate('NOTAFISCAL','NOFIA13ID','FORNICOD',''''+SQLMovimentoEstoqueNOFIA13ID.AsString+'''')+'''');
+              TblTemporaria2UF.AsString        := SQLLocate('FORNECEDOR','FORNICOD','FORNA2UF',''''+SQLLocate('NOTAFISCAL','NOFIA13ID','FORNICOD',''''+SQLMovimentoEstoqueNOFIA13ID.AsString+'''')+'''');
             end;
-          TblTemporaria2VALORUNITARIO.asstring := SQLLocate('NOTAFISCALITEM','"0"','NFITN2VLRUNIT','"0" AND NOFIA13ID = "'+ SQLMovimentoEstoqueNOFIA13ID.AsString +'" AND PRODICOD = "'+ SQLMovimentoEstoquePRODICOD.AsString+'"');
+          TblTemporaria2VALORUNITARIO.asstring := SQLLocate('NOTAFISCALITEM','''0''','NFITN2VLRUNIT','''0'' AND NOFIA13ID = '''+ SQLMovimentoEstoqueNOFIA13ID.AsString +''' AND PRODICOD = '''+ SQLMovimentoEstoquePRODICOD.AsString+'''');
 
-            TblTemporaria2VENCIMENTO.asstring    := SQLLocate('CONTASRECEBER','"0"','CTRCDVENC','"0" AND NOFIA13ID = "'+ SQLMovimentoEstoqueNOFIA13ID.AsString +'" AND CLIEA13ID = "'+
-                                                  SQLLocate('NOTAFISCAL','NOFIA13ID','CLIEA13ID','"'+SQLMovimentoEstoqueNOFIA13ID.AsString+'"') +'"');
+            TblTemporaria2VENCIMENTO.asstring    := SQLLocate('CONTASRECEBER','''0''','CTRCDVENC','''0'' AND NOFIA13ID = '''+ SQLMovimentoEstoqueNOFIA13ID.AsString +''' AND CLIEA13ID = '''+
+                                                  SQLLocate('NOTAFISCAL','NOFIA13ID','CLIEA13ID',''''+SQLMovimentoEstoqueNOFIA13ID.AsString+'''') +'''');
           except on e:exception do
           begin
             Showmessage('Falha ao gerar informações: '+e.message);
@@ -3894,12 +3898,12 @@ begin
 
       if SQLMovimentoEstoqueNOCPA13ID.AsString <> '' then
         begin
-          TblTemporaria2DOCUMENTO.AsString := 'NC.' + SQLLocate('NOTACOMPRA','NOCPA13ID','NOCPA30NRO','"'+SQLMovimentoEstoqueNOCPA13ID.AsString+'"');
+          TblTemporaria2DOCUMENTO.AsString := 'NC.' + SQLLocate('NOTACOMPRA','NOCPA13ID','NOCPA30NRO',''''+SQLMovimentoEstoqueNOCPA13ID.AsString+'''');
           // se o retorno for diferente de '' ï¿½ cliente caso contrario ï¿½ fornecedor
-          TblTemporaria2CLIENTE.AsString   := SQLLocate('FORNECEDOR','FORNICOD','FORNA60RAZAOSOC','"'+SQLLocate('NOTACOMPRA','NOCPA13ID','FORNICOD','"'+SQLMovimentoEstoqueNOCPA13ID.AsString+'"')+'"');
-          TblTemporaria2MUNICIPIO.AsString := SQLLocate('FORNECEDOR','FORNICOD','FORNA60CID','"'+SQLLocate('NOTACOMPRA','NOCPA13ID','FORNICOD','"'+SQLMovimentoEstoqueNOCPA13ID.AsString+'"')+'"');
-          TblTemporaria2UF.AsString        := SQLLocate('FORNECEDOR','FORNICOD','FORNA2UF','"'+SQLLocate('NOTACOMPRA','NOCPA13ID','FORNICOD','"'+SQLMovimentoEstoqueNOCPA13ID.AsString+'"')+'"');
-          TblTemporaria2VALORUNITARIO.asstring := SQLLocate('NOTACOMPRAITEM','0','NOCIN3VLRUNIT','0 AND NOCPA13ID = "'+ SQLMovimentoEstoqueNOCPA13ID.AsString +'" AND PRODICOD = "'+ SQLMovimentoEstoquePRODICOD.AsString+'"');
+          TblTemporaria2CLIENTE.AsString   := SQLLocate('FORNECEDOR','FORNICOD','FORNA60RAZAOSOC',''''+SQLLocate('NOTACOMPRA','NOCPA13ID','FORNICOD',''''+SQLMovimentoEstoqueNOCPA13ID.AsString+'''')+'''');
+          TblTemporaria2MUNICIPIO.AsString := SQLLocate('FORNECEDOR','FORNICOD','FORNA60CID',''''+SQLLocate('NOTACOMPRA','NOCPA13ID','FORNICOD',''''+SQLMovimentoEstoqueNOCPA13ID.AsString+'''')+'''');
+          TblTemporaria2UF.AsString        := SQLLocate('FORNECEDOR','FORNICOD','FORNA2UF',''''+SQLLocate('NOTACOMPRA','NOCPA13ID','FORNICOD',''''+SQLMovimentoEstoqueNOCPA13ID.AsString+'''')+'''');
+          TblTemporaria2VALORUNITARIO.asstring := SQLLocate('NOTACOMPRAITEM','0','NOCIN3VLRUNIT','0 AND NOCPA13ID = '''+ SQLMovimentoEstoqueNOCPA13ID.AsString +''' AND PRODICOD = '''+ SQLMovimentoEstoquePRODICOD.AsString+'''');
         end;
 
       if SQLMovimentoEstoqueMOVDA13ID.AsString <> '' then
@@ -3908,11 +3912,11 @@ begin
         begin
            TblTemporaria2DOCUMENTO.AsString   := 'OS.' + Copy(SQLMovimentoEstoqueMOVDA13ID.AsString,4,10);
           // Prcura pelo cliente
-          if SQLLocate('ORD_MECANICA','ORDID','CLIEA13ID','"'+Trim(Copy(SQLMovimentoEstoqueMOVDA13ID.AsString,4,10))+'"') <> '' Then
+          if SQLLocate('ORD_MECANICA','ORDID','CLIEA13ID',''''+Trim(Copy(SQLMovimentoEstoqueMOVDA13ID.AsString,4,10))+'''') <> '' Then
             begin
-              TblTemporaria2CLIENTE.AsString   := SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC','"'+SQLLocate('ORD_MECANICA','ORDID','CLIEA13ID','"'+Trim(Copy(SQLMovimentoEstoqueMOVDA13ID.AsString,4,10))+'"')+'"');
-              TblTemporaria2MUNICIPIO.AsString := SQLLocate('CLIENTE','CLIEA13ID','CLIEA60CIDRES','"'+SQLLocate('ORD_MECANICA','ORDID','CLIEA13ID','"'+Trim(Copy(SQLMovimentoEstoqueMOVDA13ID.AsString,4,10))+'"')+'"');
-              TblTemporaria2UF.AsString        := SQLLocate('CLIENTE','CLIEA13ID','CLIEA2UFRES','"'+SQLLocate('ORD_MECANICA','ORDID','CLIEA13ID','"'+Trim(Copy(SQLMovimentoEstoqueMOVDA13ID.AsString,4,10))+'"')+'"');
+              TblTemporaria2CLIENTE.AsString   := SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC',''''+SQLLocate('ORD_MECANICA','ORDID','CLIEA13ID',''''+Trim(Copy(SQLMovimentoEstoqueMOVDA13ID.AsString,4,10))+'''')+'''');
+              TblTemporaria2MUNICIPIO.AsString := SQLLocate('CLIENTE','CLIEA13ID','CLIEA60CIDRES',''''+SQLLocate('ORD_MECANICA','ORDID','CLIEA13ID',''''+Trim(Copy(SQLMovimentoEstoqueMOVDA13ID.AsString,4,10))+'''')+'''');
+              TblTemporaria2UF.AsString        := SQLLocate('CLIENTE','CLIEA13ID','CLIEA2UFRES',''''+SQLLocate('ORD_MECANICA','ORDID','CLIEA13ID',''''+Trim(Copy(SQLMovimentoEstoqueMOVDA13ID.AsString,4,10))+'''')+'''');
             end
         end Else
           TblTemporaria2DOCUMENTO.AsString := 'MD.' + SQLMovimentoEstoqueMOVDA13ID.AsString;
@@ -3945,23 +3949,23 @@ begin
 
 //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Empresa' ;
-  Report.Formulas.Formula.Text := '"' + ComboEmpresa.Text + '"' ;
+  Report.Formulas.Formula.Text := '''' + ComboEmpresa.Text + '''' ;
 
 //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Emissao' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''' ;
 
 //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'PeriodoEmissao' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy',De.Date) + ' atï¿½ ' + FormatDateTime('dd/mm/yyyy', Ate.Date) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy',De.Date) + ' atï¿½ ' + FormatDateTime('dd/mm/yyyy', Ate.Date) + '''' ;
 
 //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Produto' ;
-  Report.Formulas.Formula.Text := '"'+ SQLTemplatePRODA60DESCR.AsString + '"' ;
+  Report.Formulas.Formula.Text := ''''+ SQLTemplatePRODA60DESCR.AsString + '''' ;
 
 //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Referencia' ;
-  Report.Formulas.Formula.Text := '"'+ SQLTemplatePRODA60REFER.AsString + '"' ;
+  Report.Formulas.Formula.Text := ''''+ SQLTemplatePRODA60REFER.AsString + '''' ;
 
 //--------------------------------------------------------------------------\\
   Report.Formulas.Send;
@@ -4153,7 +4157,7 @@ begin
 
   //COUNT
   DM.SQLTemplate.Close;
-  DM.SQLTemplate.sql.Text := 'Select count(prodicod) from produto where NCMICOD is Null and PRODCATIVO = "'+xAtivo+'"';
+  DM.SQLTemplate.sql.Text := 'Select count(prodicod) from produto where NCMICOD is Null and PRODCATIVO = '''+xAtivo+'''';
   DM.SQLTemplate.Open;
   LabelRegistros.Caption := 'Total de Registros Encontrados: '+ IntToSTR(DM.SQLTemplate.fieldbyname('COUNT').asInteger);
   LabelRegistros.Update;
@@ -4175,7 +4179,7 @@ begin
 
   //COUNT
   DM.SQLTemplate.Close;
-  DM.SQLTemplate.sql.Text := 'Select count(prodicod) from produto where PRODISITTRIB is Null and PRODCATIVO = "'+xAtivo+'"';
+  DM.SQLTemplate.sql.Text := 'Select count(prodicod) from produto where PRODISITTRIB is Null and PRODCATIVO = '''+xAtivo+'''';
   DM.SQLTemplate.Open;
   LabelRegistros.Caption := 'Total de Registros Encontrados: '+ IntToSTR(DM.SQLTemplate.fieldbyname('COUNT').asInteger);
   LabelRegistros.Update;
@@ -4285,7 +4289,7 @@ begin
     begin
       if (SQLTemplateNCMICOD.AsString <> '') then
         begin
-          NcmCod := SQLLocate('NCM','NCMA30CODIGO','NCMICOD','"'+SQLTemplateNCMICOD.AsString+'"');
+          NcmCod := SQLLocate('NCM','NCMA30CODIGO','NCMICOD',''''+SQLTemplateNCMICOD.AsString+'''');
           if NcmCod <> '' then
             begin
               SQLTemplate.edit;
@@ -4321,7 +4325,7 @@ begin
   {Tenta Pegar Codigo Cest}
   dm.SQLTemplate.Close;
   dm.SQLTemplate.sql.clear;
-  dm.SQLTemplate.sql.Text := 'Select CEST From CESTNCM Where NCM = "' + ComboNCM1.DisplayValue + '"';
+  dm.SQLTemplate.sql.Text := 'Select CEST From CESTNCM Where NCM = ' + QuotedStr(ComboNCM1.DisplayValue);
   dm.SQLTemplate.Open;
   if not dm.SQLTemplate.IsEmpty then
     SQLTemplateTABCEST.Value := dm.sqltemplate.fieldbyname('CEST').AsString;
@@ -4330,7 +4334,7 @@ begin
   if DM.SQLEmpresa.fieldbyname('EMPRA3CRT').value <> '3' then
     exit;
 
-  if Pergunta('NAO','Atenï¿½ï¿½o! Buscar as informaï¿½ï¿½es de ICMS, PIS/COFINS na tabela de NCMs Automaticamente?') then
+  if Pergunta('NAO','Atenção! Buscar as informações de ICMS, PIS/COFINS na tabela de NCMs Automaticamente?') then
     begin
       SQLTemplateICMSICOD.OnChange := nil;
       dm.SQLTemplate.Close;
@@ -4407,7 +4411,7 @@ procedure TFormCadastroProduto.MnCorrigirProdutospelatabeladoSuperTributarioClic
 var AliqIcms, CSTIcms : string;
 begin
   inherited;
-  if not Pergunta('NAO','Atenï¿½ï¿½o! Buscar as informaï¿½ï¿½es de ICMS, PIS/COFINS na tabela de NCMs Automaticamente?') then
+  if not Pergunta('NAO','Atenção! Buscar as informações de ICMS, PIS/COFINS na tabela de NCMs Automaticamente?') then
     Exit;
 
   {Limpar Metodo para nao ficar chamando enquanto o loop esta executando!}
@@ -4555,7 +4559,7 @@ begin
   {Filtra Terminais que devem receber carga}
   dm.sqlconsulta.Close;
   dm.sqlconsulta.sql.clear;
-  dm.sqlconsulta.sql.Text := 'Select Termicod from Terminal where TERMCTIPO = "C"';
+  dm.sqlconsulta.sql.Text := 'Select Termicod from Terminal where TERMCTIPO = ''C''';
   dm.sqlconsulta.Open;
   if not dm.sqlconsulta.IsEmpty then
     begin
@@ -4627,7 +4631,7 @@ begin
   inherited;
   sqltemplate.DisableControls;
   sqltemplate.Close;
-  sqltemplate.macrobyname('MFiltro').value   := 'pendente="S"' ;
+  sqltemplate.macrobyname('MFiltro').value   := 'pendente=''S''' ;
   sqltemplate.macrobyname('MSituacao').value := '0=0';
   sqltemplate.Open;
   while not sqltemplate.eof do
@@ -4704,7 +4708,7 @@ begin
           if (SQLTemplateNCMICOD.Value>0) and ((SQLTemplatePRODISITTRIB.Value=60) or (SQLTemplatePRODISITTRIB.Value=500)) then
             begin
               dm.SQLConsulta.close;
-              dm.SQLConsulta.sql.Text := 'select cest from cestncm where ncm="'+dm.SQLLocate('ncm','ncmicod','NCMA30CODIGO',SQLTemplateNCMICOD.AsString)+'"';
+              dm.SQLConsulta.sql.Text := 'select cest from cestncm where ncm='''+dm.SQLLocate('ncm','ncmicod','NCMA30CODIGO',SQLTemplateNCMICOD.AsString)+'''';
               dm.SQLConsulta.open;
               if not dm.SQLConsulta.IsEmpty then
                 begin
@@ -4731,4 +4735,4 @@ begin
 end;
 
 end.
-
+										
