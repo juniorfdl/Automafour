@@ -1387,79 +1387,65 @@ inherited FormTelaImportacaoPedidoCompra: TFormTelaImportacaoPedidoCompra
       FieldName = 'PRODICOD'
       Origin = 'DB.PEDIDOCOMPRAITEM.PRODICOD'
     end
-    object SQLTemplatePCITN3QTDBONIF: TBCDField
+    object SQLTemplatePCITN3QTDBONIF: TFloatField
       DisplayLabel = 'Qtde.Bonifica'#231#227'o'
       FieldName = 'PCITN3QTDBONIF'
       Origin = 'DB.PEDIDOCOMPRAITEM.PCITN3QTDBONIF'
-      Size = 3
     end
-    object SQLTemplatePCITN3CAPEMBAL: TBCDField
+    object SQLTemplatePCITN3CAPEMBAL: TFloatField
       DisplayLabel = 'Cap.Embalagem'
       FieldName = 'PCITN3CAPEMBAL'
       Origin = 'DB.PEDIDOCOMPRAITEM.PCITN3CAPEMBAL'
-      Size = 3
     end
-    object SQLTemplatePCITN3QTDEMBAL: TBCDField
+    object SQLTemplatePCITN3QTDEMBAL: TFloatField
       DisplayLabel = 'Qtde.Embalagem'
       FieldName = 'PCITN3QTDEMBAL'
       Origin = 'DB.PEDIDOCOMPRAITEM.PCITN3QTDEMBAL'
-      Size = 3
     end
-    object SQLTemplatePCITN3QTDENTR: TBCDField
+    object SQLTemplatePCITN3QTDENTR: TFloatField
       DisplayLabel = 'Qtde.Entrada'
       FieldName = 'PCITN3QTDENTR'
       Origin = 'DB.PEDIDOCOMPRAITEM.PCITN3QTDENTR'
-      Size = 3
     end
-    object SQLTemplatePCITN3VLREMBAL: TBCDField
+    object SQLTemplatePCITN3VLREMBAL: TFloatField
       DisplayLabel = 'Valor Embalagem'
       FieldName = 'PCITN3VLREMBAL'
       Origin = 'DB.PEDIDOCOMPRAITEM.PCITN3VLREMBAL'
-      Size = 3
     end
-    object SQLTemplatePCITN3VLRUNIT: TBCDField
+    object SQLTemplatePCITN3VLRUNIT: TFloatField
       DisplayLabel = 'Valor Unit'#225'rio'
       FieldName = 'PCITN3VLRUNIT'
       Origin = 'DB.PEDIDOCOMPRAITEM.PCITN3VLRUNIT'
-      Size = 3
     end
-    object SQLTemplatePCITN3PERVIPI: TBCDField
+    object SQLTemplatePCITN3PERVIPI: TFloatField
       DisplayLabel = '% IPI'
       FieldName = 'PCITN3PERVIPI'
       Origin = 'DB.PEDIDOCOMPRAITEM.PCITN3PERVIPI'
-      Size = 3
     end
-    object SQLTemplatePCITN3VLRIPI: TBCDField
+    object SQLTemplatePCITN3VLRIPI: TFloatField
       DisplayLabel = 'Valor IPI'
       FieldName = 'PCITN3VLRIPI'
       Origin = 'DB.PEDIDOCOMPRAITEM.PCITN3VLRIPI'
-      Size = 3
     end
-    object SQLTemplatePCITN3VLRICM: TBCDField
+    object SQLTemplatePCITN3VLRICM: TFloatField
       DisplayLabel = 'Valor ICM'
       FieldName = 'PCITN3VLRICM'
       Origin = 'DB.PEDIDOCOMPRAITEM.PCITN3VLRICM'
       Visible = False
-      Size = 3
     end
-    object SQLTemplatePCITN3PERICM: TBCDField
+    object SQLTemplatePCITN3PERICM: TFloatField
       DisplayLabel = '% ICM'
       FieldName = 'PCITN3PERICM'
       Origin = 'DB.PEDIDOCOMPRAITEM.PCITN3PERICM'
       Visible = False
-      Size = 3
     end
-    object SQLTemplatePCITN3PERCDESC: TBCDField
+    object SQLTemplatePCITN3PERCDESC: TFloatField
       FieldName = 'PCITN3PERCDESC'
       Origin = 'DB.PEDIDOCOMPRAITEM.PCITN3PERCDESC'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplatePCITN3VLRDESC: TBCDField
+    object SQLTemplatePCITN3VLRDESC: TFloatField
       FieldName = 'PCITN3VLRDESC'
       Origin = 'DB.PEDIDOCOMPRAITEM.PCITN3VLRDESC'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplatePENDENTE: TStringField
       DisplayLabel = 'Pendente'
@@ -1538,255 +1524,221 @@ inherited FormTelaImportacaoPedidoCompra: TFormTelaImportacaoPedidoCompra
       FieldName = 'PRODA60DESCR'
       Size = 60
     end
-    object TblQtdePCITN3QTDBONIF: TBCDField
+    object TblQtdePCITN3QTDBONIF: TFloatField
       DisplayLabel = 'Qtde.Bonifica'#231#227'o'
       FieldName = 'PCITN3QTDBONIF'
       Visible = False
-      Size = 3
     end
-    object TblQtdePCITN3PERICM: TBCDField
+    object TblQtdePCITN3PERICM: TFloatField
       DisplayLabel = '% ICM'
       FieldName = 'PCITN3PERICM'
       Visible = False
-      Size = 3
     end
-    object TblQtdeBCDField1: TBCDField
+    object TblQtdeBCDField1: TFloatField
       FieldName = '1'
       Visible = False
       OnChange = TblQtdeBCDField1Change
       DisplayFormat = '#,###'
       EditFormat = '#,###'
-      Size = 3
     end
-    object TblQtdeBCDField2: TBCDField
+    object TblQtdeBCDField2: TFloatField
       FieldName = '2'
       Visible = False
       OnChange = TblQtdeBCDField1Change
       DisplayFormat = '#,###'
       EditFormat = '#,###'
-      Size = 3
     end
-    object TblQtdeBCDField3: TBCDField
+    object TblQtdeBCDField3: TFloatField
       FieldName = '3'
       Visible = False
       OnChange = TblQtdeBCDField1Change
       DisplayFormat = '#,###'
       EditFormat = '#,###'
-      Size = 3
     end
-    object TblQtdeBCDField4: TBCDField
+    object TblQtdeBCDField4: TFloatField
       FieldName = '4'
       Visible = False
       OnChange = TblQtdeBCDField1Change
       DisplayFormat = '#,###'
       EditFormat = '#,###'
-      Size = 3
     end
-    object TblQtdeBCDField5: TBCDField
+    object TblQtdeBCDField5: TFloatField
       FieldName = '5'
       Visible = False
       OnChange = TblQtdeBCDField1Change
       DisplayFormat = '#,###'
       EditFormat = '#,###'
-      Size = 3
     end
-    object TblQtdeBCDField6: TBCDField
+    object TblQtdeBCDField6: TFloatField
       FieldName = '6'
       Visible = False
       OnChange = TblQtdeBCDField1Change
       DisplayFormat = '#,###'
       EditFormat = '#,###'
-      Size = 3
     end
-    object TblQtdeBCDField7: TBCDField
+    object TblQtdeBCDField7: TFloatField
       FieldName = '7'
       Visible = False
       OnChange = TblQtdeBCDField1Change
       DisplayFormat = '#,###'
       EditFormat = '#,###'
-      Size = 3
     end
-    object TblQtdeBCDField8: TBCDField
+    object TblQtdeBCDField8: TFloatField
       FieldName = '8'
       Visible = False
       OnChange = TblQtdeBCDField1Change
       DisplayFormat = '#,###'
       EditFormat = '#,###'
-      Size = 3
     end
-    object TblQtdeBCDField9: TBCDField
+    object TblQtdeBCDField9: TFloatField
       FieldName = '9'
       Visible = False
       OnChange = TblQtdeBCDField1Change
       DisplayFormat = '#,###'
       EditFormat = '#,###'
-      Size = 3
     end
-    object TblQtdeBCDField10: TBCDField
+    object TblQtdeBCDField10: TFloatField
       FieldName = '10'
       Visible = False
       OnChange = TblQtdeBCDField1Change
       DisplayFormat = '#,###'
       EditFormat = '#,###'
-      Size = 3
     end
-    object TblQtdeBCDField11: TBCDField
+    object TblQtdeBCDField11: TFloatField
       FieldName = '11'
       Visible = False
       OnChange = TblQtdeBCDField1Change
       DisplayFormat = '#,###'
       EditFormat = '#,###'
-      Size = 3
     end
-    object TblQtdeBCDField12: TBCDField
+    object TblQtdeBCDField12: TFloatField
       FieldName = '12'
       Visible = False
       OnChange = TblQtdeBCDField1Change
       DisplayFormat = '#,###'
       EditFormat = '#,###'
-      Size = 3
     end
-    object TblQtdeBCDField13: TBCDField
+    object TblQtdeBCDField13: TFloatField
       FieldName = '13'
       Visible = False
       OnChange = TblQtdeBCDField1Change
       DisplayFormat = '#,###'
       EditFormat = '#,###'
-      Size = 3
     end
-    object TblQtdeBCDField14: TBCDField
+    object TblQtdeBCDField14: TFloatField
       FieldName = '14'
       Visible = False
       OnChange = TblQtdeBCDField1Change
       DisplayFormat = '#,###'
       EditFormat = '#,###'
-      Size = 3
     end
-    object TblQtdeBCDField15: TBCDField
+    object TblQtdeBCDField15: TFloatField
       FieldName = '15'
       Visible = False
       OnChange = TblQtdeBCDField1Change
       DisplayFormat = '#,###'
       EditFormat = '#,###'
-      Size = 3
     end
-    object TblQtdeTotal: TBCDField
+    object TblQtdeTotal: TFloatField
       FieldName = 'Total'
       OnChange = TblQtdeTotalChange
       DisplayFormat = '#,##0'
       EditFormat = '#,##0'
-      Size = 3
     end
-    object TblQtdeQ1: TBCDField
+    object TblQtdeQ1: TFloatField
       FieldName = 'Q1'
       Visible = False
       DisplayFormat = '#,###'
       EditFormat = '#,###'
-      Size = 3
     end
-    object TblQtdeQ2: TBCDField
+    object TblQtdeQ2: TFloatField
       FieldName = 'Q2'
       Visible = False
       DisplayFormat = '#,###'
       EditFormat = '#,###'
-      Size = 3
     end
-    object TblQtdeQ3: TBCDField
+    object TblQtdeQ3: TFloatField
       FieldName = 'Q3'
       Visible = False
       DisplayFormat = '#,###'
       EditFormat = '#,###'
-      Size = 3
     end
-    object TblQtdeQ4: TBCDField
+    object TblQtdeQ4: TFloatField
       FieldName = 'Q4'
       Visible = False
       DisplayFormat = '#,###'
       EditFormat = '#,###'
-      Size = 3
     end
-    object TblQtdeQ5: TBCDField
+    object TblQtdeQ5: TFloatField
       FieldName = 'Q5'
       Visible = False
       DisplayFormat = '#,###'
       EditFormat = '#,###'
-      Size = 3
     end
-    object TblQtdeQ6: TBCDField
+    object TblQtdeQ6: TFloatField
       FieldName = 'Q6'
       Visible = False
       DisplayFormat = '#,###'
       EditFormat = '#,###'
-      Size = 3
     end
-    object TblQtdeQ7: TBCDField
+    object TblQtdeQ7: TFloatField
       FieldName = 'Q7'
       Visible = False
       DisplayFormat = '#,###'
       EditFormat = '#,###'
-      Size = 3
     end
-    object TblQtdeQ8: TBCDField
+    object TblQtdeQ8: TFloatField
       FieldName = 'Q8'
       Visible = False
       DisplayFormat = '#,###'
       EditFormat = '#,###'
-      Size = 3
     end
-    object TblQtdeQ9: TBCDField
+    object TblQtdeQ9: TFloatField
       FieldName = 'Q9'
       Visible = False
       DisplayFormat = '#,###'
       EditFormat = '#,###'
-      Size = 3
     end
-    object TblQtdeQ10: TBCDField
+    object TblQtdeQ10: TFloatField
       FieldName = 'Q10'
       Visible = False
       DisplayFormat = '#,###'
       EditFormat = '#,###'
-      Size = 3
     end
-    object TblQtdeQ11: TBCDField
+    object TblQtdeQ11: TFloatField
       FieldName = 'Q11'
       Visible = False
       DisplayFormat = '#,###'
       EditFormat = '#,###'
-      Size = 3
     end
-    object TblQtdeQ12: TBCDField
+    object TblQtdeQ12: TFloatField
       FieldName = 'Q12'
       Visible = False
       DisplayFormat = '#,###'
       EditFormat = '#,###'
-      Size = 3
     end
-    object TblQtdeQ13: TBCDField
+    object TblQtdeQ13: TFloatField
       FieldName = 'Q13'
       Visible = False
       DisplayFormat = '#,###'
       EditFormat = '#,###'
-      Size = 3
     end
-    object TblQtdeQ14: TBCDField
+    object TblQtdeQ14: TFloatField
       FieldName = 'Q14'
       Visible = False
       DisplayFormat = '#,###'
       EditFormat = '#,###'
-      Size = 3
     end
-    object TblQtdeQ15: TBCDField
+    object TblQtdeQ15: TFloatField
       FieldName = 'Q15'
       Visible = False
       DisplayFormat = '#,###'
       EditFormat = '#,###'
-      Size = 3
     end
-    object TblQtdeQTotal: TBCDField
+    object TblQtdeQTotal: TFloatField
       FieldName = 'QTotal'
       DisplayFormat = '#,##0'
       EditFormat = '#,##0'
-      Size = 3
     end
     object TblQtdeCod1: TIntegerField
       FieldName = 'Cod1'
@@ -1936,13 +1888,11 @@ inherited FormTelaImportacaoPedidoCompra: TFormTelaImportacaoPedidoCompra
       FieldName = 'LegDesc'
       Size = 5
     end
-    object TblQtdePCITN3PERCDESC: TBCDField
+    object TblQtdePCITN3PERCDESC: TFloatField
       DisplayLabel = 'Perc. Desc.'
       FieldName = 'PCITN3PERCDESC'
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
     object TblQtdePCITN3CAPEMBAL: TFloatField
       FieldName = 'PCITN3CAPEMBAL'

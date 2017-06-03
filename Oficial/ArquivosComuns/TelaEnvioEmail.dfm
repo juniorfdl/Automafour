@@ -1,0 +1,3059 @@
+inherited FormTelaEnvioGeracaoEmail: TFormTelaEnvioGeracaoEmail
+  Left = 166
+  Top = 120
+  Width = 902
+  Height = 526
+  Caption = 'Envio e Gera'#231#227'o de E-mail'
+  OldCreateOrder = True
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited ScrollBoxFundo: TScrollBox
+    Width = 886
+    Height = 487
+    inherited PanelCentral: TPanel
+      Width = 882
+      Height = 403
+      inherited PanelBarra: TPanel
+        Height = 403
+        object Button1: TRxSpeedButton
+          Left = 1
+          Top = 2
+          Width = 127
+          Height = 23
+          Cursor = crHandPoint
+          BiDiMode = bdRightToLeftNoAlign
+          ParentBiDiMode = False
+          GroupIndex = 1
+          Caption = '&1 Filtro'
+          Flat = True
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Glyph.Data = {
+            6E040000424D6E04000000000000360000002800000014000000120000000100
+            18000000000038040000CE0E0000C40E00000000000000000000FFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFF000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFF000000000000FFBFBF000000000000FFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            000000000000FFBFBFFFBFBFFFBFBF000000000000FFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFBFBF00
+            0000FFBFBFFFBFBFFFBFBFFFBFBFFFBFBF000000FFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFBFBF000000FFBF
+            BFFFBFBFFFBFBFFFBFBFFFBFBFFFBFBF000000000000FFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFBFBFFFBFBF000000FFBFBFFFBFBF
+            FFBFBFFFBFBFFFBFBFFFBFBFFFBFBFFFBFBF000000000000FFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFF000000FFBFBFF7FEFF000000FFBFBFFFBFBFFFBFBFFF
+            BFBFFFBFBFFFBFBFFFBFBFFFBFBFFFBFBFFFBFBF000000FFFFFFFFFFFFFFFFFF
+            FFFFFF000000FFBFBFFFBFBFF7FEFF000000FFBFBFFFBFBFFFBFBFFFBFBFFFBF
+            BFFFBFBFFFBFBFFFBFBFFFBFBFFFBFBF000000FFFFFFFFFFFFFFFFFFFFFFFF00
+            0000FFBFBFF7FEFFF7FEFF000000FFBFBFFFBFBFFFBFBFFFBFBFFFBFBFFFBFBF
+            FFBFBFFFBFBFFFBFBFFFBFBF000000FFFFFFFFFFFFFFFFFF000000FFBFBFFFBF
+            BFF7FEFFF7FEFFF7FEFF000000000000FFBFBFFFBFBFFFBFBFFFBFBFFFBFBFFF
+            BFBFFFBFBFFFBFBF000000FFFFFFFFFFFFFFFFFF000000FFBFBFFFBFBFF7FEFF
+            F7FEFFF7FEFFF7FEFFF7FEFF000000000000FFBFBFFFBFBFFFBFBFFFBFBFFFBF
+            BFFFBFBF000000FFFFFFFFFFFF000000FFBFBFFFBFBFFFBFBFFFBFBFFFBFBFF7
+            FEFFF7FEFFF7FEFFF7FEFFF7FEFF000000000000FFBFBFFFBFBFFFBFBFFFBFBF
+            000000FFFFFFFFFFFF000000FFBFBFFFBFBF000000000000FFBFBFFFBFBFFFBF
+            BFFFBFBFF7FEFFF7FEFFF7FEFFF7FEFF000000000000FFBFBFFFBFBF000000FF
+            FFFFFFFFFFFFFFFF000000000000FFFFFFFFFFFF000000000000000000FFBFBF
+            FFBFBFFFBFBFFFBFBFF7FEFFF7FEFFFFFFFF000000000000000000FFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000000000000
+            0000FFBFBFFFBFBF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000
+            00000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+          GrayedInactive = False
+          Layout = blGlyphLeft
+          Margin = 1
+          ParentFont = False
+          Transparent = True
+          OnClick = Button1Click
+        end
+        object Button2: TRxSpeedButton
+          Tag = 1
+          Left = 1
+          Top = 26
+          Width = 127
+          Height = 23
+          Cursor = crHandPoint
+          BiDiMode = bdRightToLeftNoAlign
+          ParentBiDiMode = False
+          GroupIndex = 1
+          Caption = '&2 Gerar E-mail'
+          Flat = True
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Glyph.Data = {
+            6E040000424D6E04000000000000360000002800000014000000120000000100
+            18000000000038040000CE0E0000C40E00000000000000000000FFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFF000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFF000000000000FFBFBF000000000000FFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            000000000000FFBFBFFFBFBFFFBFBF000000000000FFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFBFBF00
+            0000FFBFBFFFBFBFFFBFBFFFBFBFFFBFBF000000FFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFBFBF000000FFBF
+            BFFFBFBFFFBFBFFFBFBFFFBFBFFFBFBF000000000000FFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFBFBFFFBFBF000000FFBFBFFFBFBF
+            FFBFBFFFBFBFFFBFBFFFBFBFFFBFBFFFBFBF000000000000FFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFF000000FFBFBFF7FEFF000000FFBFBFFFBFBFFFBFBFFF
+            BFBFFFBFBFFFBFBFFFBFBFFFBFBFFFBFBFFFBFBF000000FFFFFFFFFFFFFFFFFF
+            FFFFFF000000FFBFBFFFBFBFF7FEFF000000FFBFBFFFBFBFFFBFBFFFBFBFFFBF
+            BFFFBFBFFFBFBFFFBFBFFFBFBFFFBFBF000000FFFFFFFFFFFFFFFFFFFFFFFF00
+            0000FFBFBFF7FEFFF7FEFF000000FFBFBFFFBFBFFFBFBFFFBFBFFFBFBFFFBFBF
+            FFBFBFFFBFBFFFBFBFFFBFBF000000FFFFFFFFFFFFFFFFFF000000FFBFBFFFBF
+            BFF7FEFFF7FEFFF7FEFF000000000000FFBFBFFFBFBFFFBFBFFFBFBFFFBFBFFF
+            BFBFFFBFBFFFBFBF000000FFFFFFFFFFFFFFFFFF000000FFBFBFFFBFBFF7FEFF
+            F7FEFFF7FEFFF7FEFFF7FEFF000000000000FFBFBFFFBFBFFFBFBFFFBFBFFFBF
+            BFFFBFBF000000FFFFFFFFFFFF000000FFBFBFFFBFBFFFBFBFFFBFBFFFBFBFF7
+            FEFFF7FEFFF7FEFFF7FEFFF7FEFF000000000000FFBFBFFFBFBFFFBFBFFFBFBF
+            000000FFFFFFFFFFFF000000FFBFBFFFBFBF000000000000FFBFBFFFBFBFFFBF
+            BFFFBFBFF7FEFFF7FEFFF7FEFFF7FEFF000000000000FFBFBFFFBFBF000000FF
+            FFFFFFFFFFFFFFFF000000000000FFFFFFFFFFFF000000000000000000FFBFBF
+            FFBFBFFFBFBFFFBFBFF7FEFFF7FEFFFFFFFF000000000000000000FFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000000000000
+            0000FFBFBFFFBFBF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000
+            00000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+          GrayedInactive = False
+          Layout = blGlyphLeft
+          Margin = 1
+          ParentFont = False
+          Transparent = True
+          OnClick = Button2Click
+        end
+        object Button3: TRxSpeedButton
+          Tag = 2
+          Left = 1
+          Top = 50
+          Width = 127
+          Height = 23
+          Cursor = crHandPoint
+          BiDiMode = bdRightToLeftNoAlign
+          ParentBiDiMode = False
+          GroupIndex = 1
+          Caption = '&3 Enviados'
+          Flat = True
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Glyph.Data = {
+            6E040000424D6E04000000000000360000002800000014000000120000000100
+            18000000000038040000CE0E0000C40E00000000000000000000FFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFF000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFF000000000000FFBFBF000000000000FFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            000000000000FFBFBFFFBFBFFFBFBF000000000000FFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFBFBF00
+            0000FFBFBFFFBFBFFFBFBFFFBFBFFFBFBF000000FFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFBFBF000000FFBF
+            BFFFBFBFFFBFBFFFBFBFFFBFBFFFBFBF000000000000FFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFBFBFFFBFBF000000FFBFBFFFBFBF
+            FFBFBFFFBFBFFFBFBFFFBFBFFFBFBFFFBFBF000000000000FFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFF000000FFBFBFF7FEFF000000FFBFBFFFBFBFFFBFBFFF
+            BFBFFFBFBFFFBFBFFFBFBFFFBFBFFFBFBFFFBFBF000000FFFFFFFFFFFFFFFFFF
+            FFFFFF000000FFBFBFFFBFBFF7FEFF000000FFBFBFFFBFBFFFBFBFFFBFBFFFBF
+            BFFFBFBFFFBFBFFFBFBFFFBFBFFFBFBF000000FFFFFFFFFFFFFFFFFFFFFFFF00
+            0000FFBFBFF7FEFFF7FEFF000000FFBFBFFFBFBFFFBFBFFFBFBFFFBFBFFFBFBF
+            FFBFBFFFBFBFFFBFBFFFBFBF000000FFFFFFFFFFFFFFFFFF000000FFBFBFFFBF
+            BFF7FEFFF7FEFFF7FEFF000000000000FFBFBFFFBFBFFFBFBFFFBFBFFFBFBFFF
+            BFBFFFBFBFFFBFBF000000FFFFFFFFFFFFFFFFFF000000FFBFBFFFBFBFF7FEFF
+            F7FEFFF7FEFFF7FEFFF7FEFF000000000000FFBFBFFFBFBFFFBFBFFFBFBFFFBF
+            BFFFBFBF000000FFFFFFFFFFFF000000FFBFBFFFBFBFFFBFBFFFBFBFFFBFBFF7
+            FEFFF7FEFFF7FEFFF7FEFFF7FEFF000000000000FFBFBFFFBFBFFFBFBFFFBFBF
+            000000FFFFFFFFFFFF000000FFBFBFFFBFBF000000000000FFBFBFFFBFBFFFBF
+            BFFFBFBFF7FEFFF7FEFFF7FEFFF7FEFF000000000000FFBFBFFFBFBF000000FF
+            FFFFFFFFFFFFFFFF000000000000FFFFFFFFFFFF000000000000000000FFBFBF
+            FFBFBFFFBFBFFFBFBFF7FEFFF7FEFFFFFFFF000000000000000000FFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000000000000
+            0000FFBFBFFFBFBF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000
+            00000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+          GrayedInactive = False
+          Layout = blGlyphLeft
+          Margin = 1
+          ParentFont = False
+          Transparent = True
+          OnClick = Button3Click
+        end
+      end
+      object PageControl: TPageControl
+        Left = 130
+        Top = 0
+        Width = 752
+        Height = 403
+        ActivePage = Filtro
+        Align = alClient
+        TabOrder = 1
+        TabPosition = tpBottom
+        object Filtro: TTabSheet
+          Caption = 'Filtro'
+          object DBGridLista: TDBGrid
+            Left = 0
+            Top = 163
+            Width = 744
+            Height = 214
+            Align = alClient
+            BorderStyle = bsNone
+            Color = clWhite
+            DataSource = DSSQLCliente
+            FixedColor = 10053171
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+            ParentFont = False
+            TabOrder = 0
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWhite
+            TitleFont.Height = -11
+            TitleFont.Name = 'Tahoma'
+            TitleFont.Style = [fsBold]
+            Columns = <
+              item
+                Expanded = False
+                FieldName = 'CLIEA60RAZAOSOC'
+                Width = 310
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'CLIEA60EMAIL'
+                Width = 290
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'CLIEA15FONE1'
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'CLIEA15FONE2'
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'CLIEA15FAX'
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'CLIEA60ENDRES'
+                Width = 309
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'CLIEA60BAIRES'
+                Width = 171
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'CLIEA60CIDRES'
+                Width = 208
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'CLIEA2UFRES'
+                Width = 24
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'CLIEA8CEPRES'
+                Width = 84
+                Visible = True
+              end>
+          end
+          object Panel3: TPanel
+            Left = 0
+            Top = 0
+            Width = 744
+            Height = 163
+            Align = alTop
+            BevelOuter = bvSpace
+            Caption = 'Panel3'
+            Color = 16249066
+            TabOrder = 1
+            object SpeedButton1: TSpeedButton
+              Left = 55
+              Top = 54
+              Width = 137
+              Height = 27
+              Caption = '&Gerar Lista'
+              Flat = True
+              Glyph.Data = {
+                46050000424D460500000000000036040000280000000D000000110000000100
+                08000000000010010000C30E0000C30E00000001000000000000000000008080
+                8000000080000080800000800000808000008000000080008000408080004040
+                0000FF80000080400000FF00400000408000FFFFFF00C0C0C0000000FF0000FF
+                FF0000FF0000FFFF0000FF000000FF00FF0080FFFF0080FF0000FFFF8000FF80
+                80008000FF004080FF00C0DCC000F0CAA60060208000C0FFFF00E0E0A0008000
+                60008080FF00C0800000FFC0C000FFCF0000FFFF6900E0FFE000B39CDD00EE8F
+                B300F96F2A00CDB83F0036844800418C9500425E8E007A62A000AC4F6200BE2F
+                1D007666280000450000013E450013286A006A39850085324A00040404000808
+                08000C0C0C0011111100161616001C1C1C002222220029292900303030005F5F
+                5F00555555004D4D4D0042424200393939000007000000000D008199B700B499
+                840090BDBD00607F7F007F606000000E000000001B00000028002B090800001D
+                0000000039009B00000000250000000049003B111100002F000000005D004517
+                1700003A000011114900531C1C00FF160000FF002B006C212100141459000051
+                00006A1A47006732190000610000FF310000FF0061007B20530067431600E22E
+                2E001659260004465100492E68008F520700B8186A0015239000FF530000FF00
+                A300124A6A006C3375009A414A000B653700152CA400B11F8300FF2C4E00B651
+                2000926408000B566F00AD435900127236001733B00000A100001F5F77007147
+                89001C43B0007D2DB70095860000236E7A00009F260001A9730000CA0000015B
+                AC00C21D2000705294004CAA240089940A007B6E360090754400A800FF00FF71
+                0000FF00DF004A915600F84834008232CC007041E40001CA680042BC3600FF9A
+                0000B7229600337D85008CB72500ED5A360000FF5C000048FF00A29B22004DCF
+                42005258C20095D32000E024A500B556730000A9A9003C6FD000589F67000BCF
+                890000ACFF00FE2EA7007F59E20067DC4C00FF18FF00FF7D3A0018D0B10000FF
+                C70000E2FF003D9ADF009F815600BA43C6008B71AF00C9A23800CE53D100659A
+                FF00DBCA4600FF4DFF006AE9C800E0DE4C00FF98FF0082C0DF00A5ECE900CDF6
+                F500FFD0FF005AACB100AE916300654C22003F4E8D0070705000FFFFD000FFE7
+                FF00696969007777770086868600969696009D9D9D00A4A4A400B2B2B200CBCB
+                CB00D7D7D700DDDDDD00E3E3E300EAEAEA00F1F1F100F8F8F80066C1B20078BF
+                8000F0F0C600FFA4B200FFB3FF00A38ED10037DCC300549EA00070AE7600C19E
+                7800BF648300D383A400323FD100007DFF0023784400605F24002C0E0E000000
+                BE00001FFF00003931003E85D9008577020081D8B0001D21560030000000B3C8
+                88000079A0008170EA0069F15100CD749100FF7CFF00FFFFA200F0FBFF00A4A0
+                A000537F200029798A00326932007F05EC00AC112F00423FEE000F0F0F0F0001
+                0F0F0F0F0F0F0F0000000F0F0F0F0000010F0F0F0F0F0F0000000F0F0F0F0F00
+                00010F0F0F0F0F0000000F0F0F0F0F001100010F0F0F0F0000000F0F0F000000
+                001100010F0F0F0000000F0F0F0011110E111100010F0F0000000F0F0F0F000E
+                11000000000F0F0000000F0F0F0F00110E1100010F0F0F0000000F0000000000
+                110E1100010F0F0000000F000E110E110E110E1100010F0000000F0F000E110E
+                11000000000F0F0000000F0F00110E110E1100010F0F0F0000000F0F0F00110E
+                110E1100010F0F0000000F0F0F000E0E0E110E0E00010F0000000F0F0F0F000E
+                110E0E110E00010000000F0F0F0F0000000000000000000000000F0F0F0F0F0F
+                0F0F0F0F0F0F0F000000}
+              OnClick = SpeedButton1Click
+            end
+            object BtExecutar: TSpeedButton
+              Tag = 3
+              Left = 57
+              Top = 127
+              Width = 147
+              Height = 33
+              Cursor = crHandPoint
+              Hint = 'Fechar Tela'
+              Caption = '&Exportar'
+              Flat = True
+              Font.Charset = ANSI_CHARSET
+              Font.Color = 8404992
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              Glyph.Data = {
+                360C0000424D360C000000000000360000002800000020000000200000000100
+                180000000000000C0000CE0E0000C40E00000000000000000000FFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FF000000000000000000000000000000000000000000FFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFF000000000000000000FFFFFFFFFFFFFFFFFF0000000000
+                00CF3000CF3000CF3000CF3000CF3000CF3000CF3000000000000000FFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFF0097CF0000000097CF0097FF006790000000006700006700003000FF30
+                2FFF302FFF302FFF302FFF302FFF302FCF3000FF302FCF300000300000000000
+                0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                0097CF00C8FF0000000097FF00679000000000670000972F00972F00972F0030
+                00FF302FFF302FFF672FFF672FFF302FFF302FFF302F00300000672F003000CF
+                3000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                0097CF00C8FF0000000067900000000067002FC82F00972F2FC82F00972F0097
+                2F003000FF302FFF672FFF302FFF672FFF302FFF302F00300060C82F003000CF
+                3000CF3000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                0097CF00C8FF0097CF00000000670060FF2F2FC82F2FC82F2FC82F00972F2FC8
+                2F00972F003000FF672FFF672FFF672FFF672FFF672FFF672FFF302FFF302F00
+                300000672F00672F000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                0097CF00C8FF0097FF0097CF0000002FC82F60FF2F2FC82F2FC82F2FC82F0097
+                2F00972F003000FF672FFF672FFF672FFF672FFF672FFF302FFF302F00300000
+                7F00007F00003000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFF0097CF00C8FF0097FF0097CF0000002FC82F2FC82F60FF2F2FC82F2FC8
+                2F00972F00972F003000FF672FFF672FFF672FFF672FFF302F00300000972F00
+                7F00007F00007F0000672F000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFF0097CFCFFFFF00C8FF0097FF0097CF00000060FF2F2FC82F2FC82F2FC8
+                2F00972F00972F003000FF672F00000000000000000000000000000000000000
+                0000000000007F00003000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFF0097CF90FFFF00C8FF0097FF0097CF0000002FC82F00972F7F7F
+                00000000FF9700FF672FFF672F0097CF00C8FF00C8FF0097FF0097FF0097FF00
+                000000972F007F00007F00003000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFF0097CFCFFFFF90FFFF00C8FF0097FF0097CF0000000067000000
+                00000000FF9700FF9700FF97000097CF90FFFF00C8FF00C8FF0097FF00000000
+                7F00007F0000972F007F0000672F000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFF2FC82F0097CFCFFFFF90FFFF00C8FF0097FF0097CF0000000097
+                FF000000FF9700FF9700FF97000097CF90FFFF90FFFF00C8FF0097FF0097CF00
+                000000972F007F00007F00003000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFEFC8A02FC82F0097CFCFFFFF90FFFF00C8FF0097FF0097FF0097
+                FF000000FF9700FFC82FFF97000097CF90FFFF90FFFF90FFFF00C8FF0097FF00
+                97CF00000000972F007F0000672F000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFEFC8A0FFFFCF2FC82F0097CFCFFFFF90FFFF00C8FF00C8FF0097
+                FF000000FF9700FFC82FFFC82F0097CF90FFFF0097CFCFFFFF90FFFF00C8FF00
+                97FF0097CF00000000972F00672F000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFEFC8A0FFFFFFFFFFCFFFFFCF2F676090FFFF90FFFF00C8FF00C8
+                FF000000FFC82FFF9700FF97000097CF0097CF00672F0097CFCFFFFF90FFFF00
+                C8FF0097FF0097CF00000000672F000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFEFC8A0FFFFCFFFFFCF2F676090FFFF90FFFF90FFFF90FFFF00C8
+                FF000000FFC82FFFC82FFFC82F0097CFFF9700FF9700FF672F0097CFCFFFFF90
+                FFFF00C8FF0097FF00000000672F000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFEFC8A00097CF0097CF0097CF0097CF0097CF0097CF0097
+                CF000000FFC82FFFC82FFFFF2F007F00FFC82F007F0000672F0030000097CFCF
+                FFFF90FFFF00C8FF0097FF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFEFC8A0FFFFFFFFFFCFFFFF2F00672F2FC82F00972F0067
+                2FFFC82FFFC82FFFC82FFF9700FFC82FFF9700FFC82F2FC82F00672F00300000
+                97CFCFFFFF90FFFF00C8FF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFEFC8A0FFFFFF00672F2FC82F2FC82F00972F0097
+                2FFF9700FFC82FFFC82FFFC82FFF9700FFC82FFF9700007F002FC82F007F00FF
+                672F0097CFCFFFFF90FFFF0097CF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00672F60FF2F60FF2F2FC82F00972F0097
+                2F00672FFF9700FFC82FFFC82FFFC82FFF9700FFC82FFFC82F007F00FF672FFF
+                672FFF672F0097CFCFFFFF0097FF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2FC82FCFFFCFCFFFCF60FF2F2FC82F2FC8
+                2F00972F00972F00672FFFC82F00672F00672FFF672FFF9700FF9700FF9700FF
+                672F2F67600067900097CF00C8FF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2FC82FFFFFFFCFFFCF60FF2F60FF
+                2F2FC82F00972F00972F00672F00972F00972F00672FFF672FFF9700FF9700FF
+                672F00C8FF0097FF00679000C8FF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2FC82F2FC82FCFFFCF60FF
+                2F60FF2F2FC82F2FC82F2FC82F00972F00972F00972F00672FFF672FFF672F00
+                C8FF0097FF0097FF006790006790FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2FC82F2FC8
+                2FCFFFCFFFFFFFCFFFCF60FF2F60FF2F2FC82F2FC82F00972F00672FFFFFFF00
+                97CF0097CF0097CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FF2FC82F2FC82F2FC82F2FC82F2FC82F2FC82F2FC82FFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+              ParentFont = False
+              OnClick = SpeedButton3Click
+            end
+            object GroupPeriodoIni: TGroupBox
+              Left = 5
+              Top = 2
+              Width = 129
+              Height = 48
+              Caption = 'Per'#237'odo &Inicial'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+              TabOrder = 0
+              object Label2: TLabel
+                Left = 57
+                Top = 22
+                Width = 8
+                Height = 16
+                Caption = '/'
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -13
+                Font.Name = 'Tahoma'
+                Font.Style = [fsBold]
+                ParentFont = False
+              end
+              object ComboDiaIni: TComboBox
+                Left = 6
+                Top = 20
+                Width = 47
+                Height = 21
+                ItemHeight = 13
+                MaxLength = 2
+                TabOrder = 0
+                Text = 'DIA'
+                Items.Strings = (
+                  '01'
+                  '02'
+                  '03'
+                  '04'
+                  '05'
+                  '06'
+                  '07'
+                  '08'
+                  '09'
+                  '10'
+                  '11'
+                  '12'
+                  '13'
+                  '14'
+                  '15'
+                  '16'
+                  '17'
+                  '18'
+                  '19'
+                  '20'
+                  '21'
+                  '22'
+                  '23'
+                  '24'
+                  '25'
+                  '26'
+                  '27'
+                  '28'
+                  '29'
+                  '30'
+                  '31')
+              end
+              object ComboMesIni: TComboBox
+                Left = 69
+                Top = 20
+                Width = 54
+                Height = 21
+                ItemHeight = 13
+                MaxLength = 2
+                TabOrder = 1
+                Text = 'M'#202'S'
+                Items.Strings = (
+                  '01'
+                  '02'
+                  '03'
+                  '04'
+                  '05'
+                  '06'
+                  '07'
+                  '08'
+                  '09'
+                  '10'
+                  '11'
+                  '12')
+              end
+            end
+            object GroupPeriodoFin: TGroupBox
+              Left = 135
+              Top = 2
+              Width = 129
+              Height = 48
+              Caption = 'Per'#237'odo &Final'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+              TabOrder = 1
+              object Label1: TLabel
+                Left = 57
+                Top = 22
+                Width = 8
+                Height = 16
+                Caption = '/'
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -13
+                Font.Name = 'Tahoma'
+                Font.Style = [fsBold]
+                ParentFont = False
+              end
+              object ComboDiaFin: TComboBox
+                Left = 6
+                Top = 20
+                Width = 47
+                Height = 21
+                ItemHeight = 13
+                MaxLength = 2
+                TabOrder = 0
+                Text = 'DIA'
+                Items.Strings = (
+                  '01'
+                  '02'
+                  '03'
+                  '04'
+                  '05'
+                  '06'
+                  '07'
+                  '08'
+                  '09'
+                  '10'
+                  '11'
+                  '12'
+                  '13'
+                  '14'
+                  '15'
+                  '16'
+                  '17'
+                  '18'
+                  '19'
+                  '20'
+                  '21'
+                  '22'
+                  '23'
+                  '24'
+                  '25'
+                  '26'
+                  '27'
+                  '28'
+                  '29'
+                  '30'
+                  '31')
+              end
+              object ComboMesFin: TComboBox
+                Left = 69
+                Top = 20
+                Width = 54
+                Height = 21
+                ItemHeight = 13
+                MaxLength = 2
+                TabOrder = 1
+                Text = 'M'#202'S'
+                Items.Strings = (
+                  '01'
+                  '02'
+                  '03'
+                  '04'
+                  '05'
+                  '06'
+                  '07'
+                  '08'
+                  '09'
+                  '10'
+                  '11'
+                  '12')
+              end
+            end
+            object RadioEmail: TRadioGroup
+              Left = 296
+              Top = 2
+              Width = 359
+              Height = 157
+              Caption = ' &Tipo de E-mail '
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ItemIndex = 6
+              Items.Strings = (
+                '&A - Para o titular e conjug'#234' em data de casamento'
+                '&B - Para o titular em data de anivers'#225'rio do conjug'#234
+                '&C - Para o titular em data de anivers'#225'rio dos dependentes'
+                '&D - Para o titular em seu anivers'#225'rio'
+                '&E - Para o conjug'#234' em data de anivers'#225'rio do titular'
+                '&F - Para os dependentes em data de anivers'#225'rio do titular'
+                '&G - Para todos os clientes que possuam email')
+              ParentFont = False
+              TabOrder = 2
+            end
+            object GroupBox2: TGroupBox
+              Left = 5
+              Top = 85
+              Width = 284
+              Height = 41
+              Caption = ' Informe o caminho do arquivo a ser gerado '
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = -11
+              Font.Name = 'MS Sans Serif'
+              Font.Style = [fsBold]
+              ParentFont = False
+              TabOrder = 3
+              object Label5: TLabel
+                Left = 20
+                Top = 14
+                Width = 5
+                Height = 13
+              end
+              object EditDiretorio: TDirectoryEdit
+                Left = 6
+                Top = 15
+                Width = 271
+                Height = 21
+                ButtonHint = 'Selecione o Diret'#243'rio'
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clBlack
+                Font.Height = -11
+                Font.Name = 'MS Sans Serif'
+                Font.Style = []
+                NumGlyphs = 1
+                ParentFont = False
+                TabOrder = 0
+                Text = 'C:\Easy2Solutions'
+              end
+            end
+          end
+        end
+        object Email: TTabSheet
+          Caption = 'Email'
+          ImageIndex = 1
+          object DBGrid2: TDBGrid
+            Left = 0
+            Top = 249
+            Width = 744
+            Height = 128
+            Align = alClient
+            BorderStyle = bsNone
+            Color = clWhite
+            DataSource = DSSQLGeraMail
+            FixedColor = 10053171
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+            ParentFont = False
+            TabOrder = 0
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWhite
+            TitleFont.Height = -11
+            TitleFont.Name = 'Tahoma'
+            TitleFont.Style = [fsBold]
+            Columns = <
+              item
+                Expanded = False
+                FieldName = 'MAILTDESTINO'
+                Width = 275
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'MAILTASSUNTO'
+                Width = 266
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'MAILDDATA'
+                Width = 74
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'MAILCSTATUS'
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'MAILTPATHANEXO'
+                Visible = True
+              end>
+          end
+          object Panel4: TPanel
+            Left = 0
+            Top = 217
+            Width = 744
+            Height = 32
+            Align = alTop
+            BevelOuter = bvLowered
+            ParentColor = True
+            TabOrder = 1
+            object LabelEnviar: TLabel
+              Left = 647
+              Top = 1
+              Width = 96
+              Height = 23
+              Align = alRight
+              Caption = 'LabelEnviar'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -19
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+            end
+            object LabelEnviado: TLabel
+              Left = 1
+              Top = 1
+              Width = 202
+              Height = 23
+              Align = alLeft
+              Caption = 'Mensagen(s) Enviada(s)'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -19
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+            end
+          end
+          object Panel5: TPanel
+            Left = 0
+            Top = 185
+            Width = 744
+            Height = 32
+            Align = alTop
+            BevelOuter = bvLowered
+            ParentColor = True
+            TabOrder = 2
+            object ButtonAnexar: TSpeedButton
+              Left = 575
+              Top = 1
+              Width = 29
+              Height = 32
+              Cursor = crHandPoint
+              Hint = 'Anexar Arquivo'
+              Flat = True
+              Glyph.Data = {
+                1E060000424D1E06000000000000360000002800000018000000150000000100
+                180000000000E8050000CA0E0000C30E00000000000000000000BFBFBFBFBFBF
+                BFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBF7F7F7F60302F60302F7F7F
+                7FCF6760BFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBF
+                BFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBF7F7F7F60302FFF9790
+                FF979000FFFF60302F60302FCF67607F7F7FBFBFBFBFBFBFBFBFBFBFBFBFBFBF
+                BFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBF7F7F7F60302FFF
+                9790FFC8CFFFC8CFFFC8CF00FFFFFFC8CF60302FCF6760CF6760CF67607F7F7F
+                BFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBF7F7F7F6030
+                2FFF9790FFC8CF00FFFFCFFFFFFFC8CFFFC8CFCFFFFFFFC8CFCF676060302FCF
+                6760CF6760CF67607F7F7FBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBF
+                7F7F7FCF6760FFC8CF00FFFFFFC8CFFFC8CF7F7F7F7F7F7FCFFFFFFFC8CFCFFF
+                FFFFC8CF60302FFF0000CF6760CF6760CF67607F7F7F7F7F7FBFBFBFBFBFBFBF
+                BFBFBFBFBF7F7F7FFF9790FFC8CF00FFFFCFFFFF7F7F7F7F7F7FFFC8CF00FFFF
+                FFC8CF00FFFFFFC8CFCFFFFFCF67600000FFFF0000FF00007F7F7F7F7F7F7F7F
+                7F7F7F7FBFBFBFBFBFBFBFBFBFBFBFBF00FFFFFFC8CFFFC8CF7F7F7FFFC8CFCF
+                FFFFFFC8CF7F7F7F7F7F7FCFFFFFCFFFFFFFC8CFCFFFFF60302F0000FFFF0000
+                CF67607F7F7F7F7F7F7F7F7FBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFFFFFFFFFFF
+                FFFFFFFF00FFFF7F7F7F7F7F7FCFFFFFCFFFFFCFFFFFFFC8CFCFFFFFFFC8CFCF
+                6760FF97900000FFFF0000BFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBF
+                BFBFBFFFC8CFFFFFFFFFFFFF1F201F7F7F7FCFFFFFCFFFFF7F7F7F7F7F7FCFFF
+                FFFFC8CFCFFFFFFFC8CF60302FFFC8CF0000FFFF0000BFBFBFBFBFBFBFBFBFBF
+                BFBFBFBFBFBFBFBFBFBFBFBFBFBFFFC8CFCF6760CF67601F201F7F7F7F7F7F7F
+                CFFFFFCFFFFFFFC8CFCFFFFFFFC8CFCFFFFFCF6760CFFFFFFF97900000FFFF00
+                00BFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFCF6760FFC8CFFF9790CF
+                67601F201F7F7F7F7F7F7F7F7F7F7F7F7FFFFFFFFFFFFFFFC8CFFFFFFF60302F
+                CFFFFFFF97900000FFCF6760BFBFBFBFBFBFBFBFBFBFBFBFBFBFBFCF6760FFC8
+                CFFFC8CFFF9790FF9790CF67601F201F7F7F7FCFFFFFFFFFFFCFFFFFFFFFFFCF
+                FFFFFFC8CFCF6760FFFFFFFFFFFFFF00000000FFCF6760BFBFBFBFBFBFBFBFBF
+                CF6760FFC8CFFFC8CFFFC8CFFF9790FF9790FF9790CF67601F201F7F7F7FFFFF
+                FFFFFFFFFFFFFFFFC8CFCFFFFFFFC8CFFFFFFFFFFFFFFFFFFFCF6760CF6760BF
+                BFBFBFBFBFCF6760FFC8CFFFFFFFFFC8CFFFC8CFFF9790CF6760CF6760CF6760
+                CF67601F201F7F7F7FFFFFFF3F3700CFFFFFCF6760FFFFFF0000FF0000FF0000
+                FFCF6760BFBFBFBFBFBFBFBFBF60302F60302F60302FFFC8CFFFC8CFFF9790CF
+                67601F201F1F201F1F201F1F201F1F201FFFFFFFFFFFFFFFC8CFFFFFFFFFFFFF
+                FFFFFFFFC8CFCF6760BFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFFFC8
+                CFFFC8CFFF9790CF67601F201F60302F60302F60302F60302FFFC8CFFFC8CFFF
+                FFFFFF0000FF0000CF6760BFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBF
+                FF9790FFC8CFFFC8CFFFFFFFFF9790CF67601F201F60302F0000FF0000FFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBF
+                BFBFBFBFBFBFBFBFCF6760FFFFFFFFFFFFFFC8CFFF9790CF67601F201F60302F
+                BFBFBFFFFFFFFFFFFFFFFFFF0000FF0000FF0000FFBFBFBFBFBFBFBFBFBFBFBF
+                BFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFCF6760FF9790FF9790FF9790FF9790CF
+                67601F201F60302FBFBFBFBFBFBFFF0000FF0000BFBFBFBFBFBFBFBFBFBFBFBF
+                BFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFCF6760CF6760CF67
+                60CF6760CF67601F201F60302F7F7F7FFFC8CFBFBFBFBFBFBFBFBFBFBFBFBFBF
+                BFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBF
+                BFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBF
+                BFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBF
+                BFBF}
+              ParentShowHint = False
+              ShowHint = True
+              OnClick = ButtonAnexarClick
+            end
+            object LabelAnexo: TLabel
+              Left = 1
+              Top = 1
+              Width = 298
+              Height = 23
+              Align = alLeft
+              Caption = 'Caminho/Nome do arquivo anexo...'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -19
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+            end
+            object ButtonLimparAnexo: TSpeedButton
+              Left = 604
+              Top = 1
+              Width = 29
+              Height = 32
+              Cursor = crHandPoint
+              Hint = 'Limpar Anexo'
+              Flat = True
+              Glyph.Data = {
+                36080000424D3608000000000000360400002800000020000000200000000100
+                08000000000000040000C30E0000C30E00000001000000000000000000004000
+                00006000000080000000A0000000C0000000E0000000FF000000008000004080
+                00006080000080800000A0800000C0800000E0800000FF80000000C0000040C0
+                000060C0000080C00000A0C00000C0C00000E0C00000FFC0000000FF000040FF
+                000060FF000080FF0000A0FF0000C0FF0000E0FF0000FFFF0000000040004000
+                40006000400080004000A0004000C0004000E0004000FF004000008040004080
+                40006080400080804000A0804000C0804000E0804000FF80400000C0400040C0
+                400060C0400080C04000A0C04000C0C04000E0C04000FFC0400000FF400040FF
+                400060FF400080FF4000A0FF4000C0FF4000E0FF4000FFFF4000000060004000
+                60006000600080006000A0006000C0006000E0006000FF006000008060004080
+                60006080600080806000A0806000C0806000E0806000FF80600000C0600040C0
+                600060C0600080C06000A0C06000C0C06000E0C06000FFC0600000FF600040FF
+                600060FF600080FF6000A0FF6000C0FF6000E0FF6000FFFF6000000080004000
+                80006000800080008000A0008000C0008000E0008000FF008000008080004080
+                80006080800080808000A0808000C0808000E0808000FF80800000C0800040C0
+                800060C0800080C08000A0C08000C0C08000E0C08000FFC0800000FF800040FF
+                800060FF800080FF8000A0FF8000C0FF8000E0FF8000FFFF80000000A0004000
+                A0006000A0008000A000A000A000C000A000E000A000FF00A0000080A0004080
+                A0006080A0008080A000A080A000C080A000E080A000FF80A00000C0A00040C0
+                A00060C0A00080C0A000A0C0A000C0C0A000E0C0A000FFC0A00000FFA00040FF
+                A00060FFA00080FFA000A0FFA000C0FFA000E0FFA000FFFFA0000000C0004000
+                C0006000C0008000C000A000C000C000C000E000C000FF00C0000080C0004080
+                C0006080C0008080C000A080C000C080C000E080C000FF80C00000C0C00040C0
+                C00060C0C00080C0C000A0C0C000C0C0C000E0C0C000FFC0C00000FFC00040FF
+                C00060FFC00080FFC000A0FFC000C0FFC000E0FFC000FFFFC0000000E0004000
+                E0006000E0008000E000A000E000C000E000E000E000FF00E0000080E0004080
+                E0006080E0008080E000A080E000C080E000E080E000FF80E00000C0E00040C0
+                E00060C0E00080C0E000A0C0E000C0C0E000E0C0E000FFC0E00000FFE00040FF
+                E00060FFE00080FFE000A0FFE000C0FFE000E0FFE000FFFFE0000000FF004000
+                FF006000FF008000FF00A000FF00C000FF00E000FF00FF00FF000080FF004080
+                FF006080FF008080FF00A080FF00C080FF00E080FF00FF80FF0000C0FF0040C0
+                FF0060C0FF0080C0FF00A0C0FF00C0C0FF00E0C0FF00FFC0FF0000FFFF0040FF
+                FF0060FFFF0080FFFF00A0FFFF00C0FFFF00E0FFFF00FFFFFF00B5B5B5B5B5B5
+                B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5
+                B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5
+                B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5
+                B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5
+                B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5
+                B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5
+                B5B5B5B5B5B5949494949494949494949494B5B5B5B5B5B5B5B5B5B5B5B5B5B5
+                B5B5B5B5B50000000000000000000000949494B5B5B5B5B5B5B5B5B5B5B5B5B5
+                B5B5B5B500808080808080808080008400949494B5B5B5B5B5B5B5B5B5B5B5B5
+                B5B5B5B50080808080808080808000840094949494B5B5B5B5B5B5B5B5B5B5B5
+                B5B5B5008080808080808080800000848400949494B5B5B5B5B5B5B5B5B5B5B5
+                B5B5B5008080808080808080800084848400B5B5B5B5B5B5B5B5B5B5B5B5B5B5
+                B5B50080808080808080808000000000848400B5B5B5B5B5B5B5B5B5B5B5B5B5
+                B5B50080808080808080808000F8F80084848400B5B5B5B5B5B5B5B5B5B5B5B5
+                B50080808080808080808000F8F8F80000000000B5B5B5B5B5B5B5B5B5B5B5B5
+                B500000000000000000000000707F800B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5
+                B5B500F8F8F8F8F8F8F8F8F8F8F8F800B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5
+                B5B500F807070707070707070707F800B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5
+                B5B500F8F8F8F8F8F8F8F8F8F8F8F800B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5
+                B5B500F8070707F80000000000000000B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5
+                B5B5B500F8F8F800B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5
+                B5B5B5B5000000B5B51F04040494B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5
+                B5B5B5B5B5B5B5B5B51F04040494B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5
+                B5B5B5B5B5B5B51F1F1F04040494949494B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5
+                B5B5B5B5B5B5B504040404040404040494B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5
+                B5B5B5B5B5B5B5B50404040404040494B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5
+                B5B5B5B5B5B5B5B5B5040404040494B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5
+                B5B5B5B5B5B5B5B5B5B504040494B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5
+                B5B5B5B5B5B5B5B5B5B5B504B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5
+                B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5
+                B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5
+                B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5}
+              ParentShowHint = False
+              ShowHint = True
+              OnClick = ButtonLimparAnexoClick
+            end
+          end
+          object Panel2: TPanel
+            Left = 0
+            Top = 0
+            Width = 744
+            Height = 185
+            Align = alTop
+            BevelOuter = bvNone
+            Color = 16249066
+            TabOrder = 3
+            object SpeedButton2: TSpeedButton
+              Left = 531
+              Top = 117
+              Width = 115
+              Height = 34
+              Caption = '&Apagar Lista'
+              Flat = True
+              Glyph.Data = {
+                26080000424D26080000000000003604000028000000210000001C0000000100
+                080000000000F0030000C30E0000C30E00000001000000000000000000000000
+                8000008000000080800080000000800080008080000080808000C0C0C0000000
+                FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF000F0F0F000F0F
+                0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F
+                0F000F0F00000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F
+                0F000F0F0F000F0F0F000F0F0F000F0F0000000F0F000F0F0000000F0F000000
+                0F00000F0F0000000F00000000000F0000000F0F00000F0F0000000F0000000F
+                0F000F000F000F000F0000000F00000F00000F000F000F0F0000000F0F000F00
+                0F000F0F0F000F000000000F0F000F000F000F000F000F0F0000000F00000F00
+                0F0000000000000F0F000F000000000F0F00000F0000000F0F000F000F000F00
+                0F000F0F0000000F00000F000F000F0F0000000F0F000F000F00000F00000F0F
+                0000000000000F0F0000000F0F000F0F0000000F0F0000000F0000000F000F00
+                00000F0F00000F0F0F00000000000F0F0F000F0F0F000F0F0F000F0F0F000F0F
+                0F000F000F000F0F0F000F0F0F000F0F0F000F0F0F000F0F00000F0F0F000F0F
+                0F000F0F0F000F0F0F00000F0F000F000F000F0F0F000F0F0F000F0F0F000F0F
+                0F000F0F00000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F
+                0F000F0F0F000F0F0F000F0F0F000F0F00000F0F0F000F0F0F000F0F0F000F0F
+                0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F00000F0F
+                0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F
+                0F000F0F0F000F0F00000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F
+                0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F00000F0F0F000F0F0F000F0F
+                0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F
+                00000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F
+                0F000F0F0F000F0F0F000F0F00000F0F0F000F0F0F000F0F0F000F0F0F000F0F
+                0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F00000F0F0F000F0F
+                0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F
+                0F000F0F00000F0F0F000F0F0F000F0F0F000F0F0F000F00000000000000000F
+                0F000F0F0F000F0F0F000F0F0F000F0F00000F0F0F000F0F0F000F0F0F000F0F
+                0000000C0C000C0C0C000C0000000F0F0F000F0F0F000F0F0F000F0F00000F0F
+                0F000F0F0F000F0F0F000F000C000C0C0C000C0C0C000C0C0C0000000F000F0F
+                0F000F0F0F000F0F00000F0F0F000F0F0F000F0F0F00000C0C000C0C0C000C0C
+                0C000C0C0C000C0C00000F0F0F000F0F0F000F0F00000F0F0F000F0F0F000F0F
+                00000C0C0C000C0C0C000C0C0C000C0C0C000C0C0C000F0F0F00080808080808
+                0808080808080800000000000000000808080808080808080808080000000808
+                08080808080808080000000C0C0C0C0C0C0C0C00000008080808080808080800
+                0000080808080808080808000C0C0C0C0C0C0C0C0C0C0C0C0C0C000008080808
+                0808080000000808080808080800000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C
+                00080808080808000000080808080808000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C
+                0C0C0C0C0C000808080804000000080808080800040C0C0C0C0C0C0C0C0C0C0C
+                0C0C0C0C0C0C0C0C0C0C000804040C0000000808080800040C040C0C0C0C0C0C
+                0C0C0C0C0C0C0C0C0C0C0C0C0C0C0404040C0800000008080808000C040C040C
+                0C0C0C0C0000000000000C0C0C0C0C0C0C0C0C040C0C08000000080808000C04
+                0C040C040C04000008080808080800000C0C0C0C0C0C0C0C0C08080000000808
+                08040404040C040C040008080808080808080404040C0C0C0C0C0C0C0C080800
+                0000080800040404040404040C0008080808080804040C0C0C0C0C0C0C0C0C0C
+                0800080000000808000404040404040400080808080808080E0C0C0C0C0C0C0C
+                0C0C0C0C08000800000008080004040808040404080808080808080808080808
+                0C0C0C0C0C0C0C080500080000000808000404080D0808040008080808080808
+                080808080808080C0C0C0C0805000800000008080004080D0D0D0D0808080808
+                080808080808080808000508080C080505000800000008080004080D0D0D0D0D
+                0D0D080808080808080808080800050505080805050008000000080800080D0D
+                0D0D0D0D0D0D0D0D0D0808080808080808000505050505050500080000000808
+                00080D0D0D0D0D0D0D0D0D0D0505080808080808000D050D0505050505000800
+                00000808080D0D0D0D0D0D0D0D050505080808080808080800050D050D050D05
+                0008080000000808080D0D0D0D0D0D0D0D0D000008080808080800000D0D050D
+                050D050D00080800000008080D0D0D0D0D0D0D0D0D0D0D0D0000000000000D0D
+                0D0D0D050D050D0008080800000008080D0D050D0D0D0D0D0D0D0D0D0D0D0D0D
+                0D0D0D0D0D0D0D0D050D0500080808000000080D050505000D0D0D0D0D0D0D0D
+                0D0D0D0D0D0D0D0D0D0D0D0D0D050008080808000000080508080808000D0D0D
+                0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D000808080808000000080808080808
+                0800000D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D00000808080808080000000808
+                08080808080808000D0D0D0D0D0D0D0D0D0D0D0D0D0D00080808080808080800
+                0000080808080808080808080000000D0D0D0D0D0D0D0D000000080808080808
+                0808080000000808080808080808080808080800000000000000000808080808
+                08080808080808000000}
+              OnClick = SpeedButton2Click
+            end
+            object ButtonEnviarEmail: TSpeedButton
+              Left = 531
+              Top = 83
+              Width = 115
+              Height = 34
+              Caption = '&Enviar Email'
+              Flat = True
+              Glyph.Data = {
+                F6020000424DF602000000000000760000002800000020000000140000000100
+                0800000000008002000000000000000000001000000000000000000000000000
+                8000008000000080800080000000800080008080000080808000C0C0C0000000
+                FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00080808080808
+                0808080808080808080808080008080800080808080808080808080808080808
+                0808080808080808080808000F0008000F000808080808080808080808080808
+                08080808080808080808000F0F08000F0F0F0008080808080808080808080808
+                080808080808080808000F0F08000F0F0F0F0F00080808080808080808080808
+                0808080808080808000F0F04000F0F0C0F0F0F0F000808080808080808080808
+                08080808080808000F0F04000F0F0C0F0F0F0F0F0F0008080808080808080808
+                080808080808000F0F04000F0F0C0F0F0C0F0F0F0F0F00080808080808080808
+                0808080808000F0F04000F0F0C0F0F0C0F0F0C0F080908000808080808080808
+                08080808000F0F08000F0F0F0F0F0C0F0F0C0F0F0901090F00080F0000000000
+                000000000F0F08000F0F0F0F0F0C0F0F0C0F0F0F080908000008000F03030303
+                0303000F0F08000F0F0F0F0F0F0F0F0C0F0F0F0F0F0F00030300000B00000000
+                0000080808000F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0000000300000F00080008
+                00080808000808080808080808080C0808080808000003000300000B000B0800
+                070008080800080808080808080C08080C080800000307000300000F00080B08
+                0000000000000000000000000000000000000000030703000300000B000B080B
+                0F0B0F0B0F0B0F0B0F0B0F0B0F0B0F0B0F0B0F0B030307000300000F00080B0F
+                0B0F0B0F0B0F0B0F0B0F0B0F0B0F0B0F0B0F0B0F0B0303000300000B00000000
+                0000000000000000000000000000000000000000000000000300000F0B0F0B0F
+                0B0F0B0F0B0F0B0F0B0F0B0F0B0F0B0F0B0F0B0F0B0F0B0F0B000F0000000000
+                000000000000000000000000000000000000000000000000000F}
+              OnClick = ButtonEnviarEmailClick
+            end
+            object ButtonGeraEmail: TSpeedButton
+              Left = 531
+              Top = 49
+              Width = 115
+              Height = 34
+              Caption = '&Gerar Email'
+              Flat = True
+              Glyph.Data = {
+                66010000424D6601000000000000760000002800000014000000140000000100
+                040000000000F000000000000000000000001000000010000000000000000000
+                8000008000000080800080000000800080008080000080808000C0C0C0000000
+                FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00888888888888
+                8888888800008888888888888888888800008880000000000000000800008880
+                FFFFFFFFFFFFFF0800008880FFFFF4444444FF0800008800FFFFFFFFFFFFFF08
+                00008800FFFFF4444444FF0800008800FFFFFFFFFFFFFF0800008000FFFFFFFF
+                FFF99F0800008000F4444FFFFFF99F0800008000FFFFFFFFFFFFFF0800008000
+                00000000000000080000800F4444FFFFFF99F0880000800FFFFFFFFFFFFFF088
+                000080000000000000000088000080F4444FFFFFF99F0888000080FFFFFFFFFF
+                FFFF088800008000000000000000088800008888888888888888888800008888
+                88888888888888880000}
+              OnClick = ButtonGeraEmailClick
+            end
+            object SpeedButton4: TSpeedButton
+              Left = 531
+              Top = 15
+              Width = 115
+              Height = 34
+              Caption = '&Limpar Textos'
+              Flat = True
+              Glyph.Data = {
+                42010000424D4201000000000000760000002800000011000000110000000100
+                040000000000CC00000000000000000000001000000010000000000000000000
+                BF0000BF000000BFBF00BF000000BF00BF00BFBF0000C0C0C000808080000000
+                FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00777777777777
+                7777700000007777777777777777700000007777777777777777700000007700
+                0000000000007000000077777777777777777000000077000000000000007000
+                0000777777777777777770000000770000000000000070000000777777777777
+                7777700000007700000000000000700000007777777777777777700000007700
+                0000000000007000000077777777777777777000000077000000000000007000
+                0000777777777777777770000000777777777777777770000000777777777777
+                777770000000}
+              OnClick = SpeedButton4Click
+            end
+            object Label4: TLabel
+              Left = 3
+              Top = 38
+              Width = 58
+              Height = 13
+              Caption = 'Mensagem :'
+            end
+            object Label3: TLabel
+              Left = 2
+              Top = 1
+              Width = 46
+              Height = 13
+              Caption = 'Assunto :'
+            end
+            object EditAssunto: TEdit
+              Left = 1
+              Top = 16
+              Width = 315
+              Height = 21
+              Hint = 'Escvreva aqui o assunto'
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 0
+            end
+            object GroupBox1: TGroupBox
+              Left = 319
+              Top = 11
+              Width = 211
+              Height = 168
+              Caption = 'Campos de Mesclagem Dispon'#237'veis'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+              TabOrder = 1
+              object MemoTags: TMemo
+                Left = 2
+                Top = 15
+                Width = 207
+                Height = 151
+                TabStop = False
+                Align = alClient
+                BevelInner = bvNone
+                BorderStyle = bsNone
+                Lines.Strings = (
+                  'Nome do Titular - <NomeTitular>'
+                  'Dt Nasc Titular - <NascTitular>'
+                  'Nome do Conjuge - '
+                  '<NomeConjuge>'
+                  'Dt Nasc Conjuge - <NascConjuge>'
+                  'Data Atual - <Hoje>'
+                  'Dt Casamento - <DataCasamento>'
+                  ''
+                  'Coloque estas Tags no texto onde '
+                  'deseja que o sistema substitua por '
+                  'informa'#231#245'es do banco de dados...')
+                ParentColor = True
+                ReadOnly = True
+                TabOrder = 0
+              end
+            end
+            object EditMensagem: TRxRichEdit
+              Left = 1
+              Top = 53
+              Width = 314
+              Height = 126
+              Hint = 'Digite aqui seu texto'
+              HideSelection = False
+              HideScrollBars = False
+              Title = 'Texto'
+              LangOptions = [rlAutoKeyboard, rlAutoFont]
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 2
+            end
+          end
+        end
+        object EnviaEmail: TTabSheet
+          Caption = 'EnviaEmail'
+          ImageIndex = 4
+          OnEnter = EnviaEmailEnter
+          object DBGrid1: TDBGrid
+            Left = 0
+            Top = 0
+            Width = 744
+            Height = 378
+            Align = alClient
+            BorderStyle = bsNone
+            Color = clWhite
+            DataSource = DSSQLGeraMail
+            FixedColor = 10053171
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+            ParentFont = False
+            TabOrder = 0
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWhite
+            TitleFont.Height = -11
+            TitleFont.Name = 'Tahoma'
+            TitleFont.Style = [fsBold]
+            Columns = <
+              item
+                Expanded = False
+                FieldName = 'MAILICOD'
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'MAILTREMETENTE'
+                Width = 179
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'MAILTDESTINO'
+                Width = 192
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'MAILTASSUNTO'
+                Width = 154
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'MAILDDATA'
+                Width = 71
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'MAILTMENSAGEM'
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'MAILTPATHANEXO'
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'MAILCSTATUS'
+                Visible = True
+              end>
+          end
+        end
+      end
+    end
+    inherited ScrollBoxTopo: TScrollBox
+      Width = 882
+      inherited PanelCabecalho: TPanel
+        Width = 882
+        inherited PanelNavigator: TPanel
+          Width = 882
+          inherited AdvPanelNavigator: TAdvOfficeStatusBar
+            Width = 882
+          end
+          object Panel1: TPanel
+            Left = 704
+            Top = 32
+            Width = 185
+            Height = 41
+            Caption = 'Panel1'
+            TabOrder = 0
+          end
+        end
+      end
+    end
+  end
+  object SQLCliente: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'Select * from CLIENTE'
+      'Where '
+      '%MFiltroMes '
+      'Between %MesInicial and %MesFinal'
+      'and '
+      '%MFiltroDia'
+      'Between %DiaInicial and %DiaFinal'
+      'and'
+      '(%MFiltroEmail)')
+    Macros = <
+      item
+        DataType = ftString
+        Name = 'MFiltroMes'
+        ParamType = ptInput
+        Value = '0=0'
+      end
+      item
+        DataType = ftString
+        Name = 'MesInicial'
+        ParamType = ptInput
+        Value = '0=0'
+      end
+      item
+        DataType = ftString
+        Name = 'MesFinal'
+        ParamType = ptInput
+        Value = '0=0'
+      end
+      item
+        DataType = ftString
+        Name = 'MFiltroDia'
+        ParamType = ptInput
+        Value = '0=0'
+      end
+      item
+        DataType = ftString
+        Name = 'DiaInicial'
+        ParamType = ptInput
+        Value = '0=0'
+      end
+      item
+        DataType = ftString
+        Name = 'DiaFinal'
+        ParamType = ptInput
+        Value = '0=0'
+      end
+      item
+        DataType = ftString
+        Name = 'MFiltroEmail'
+        ParamType = ptInput
+        Value = '0=0'
+      end>
+    Left = 204
+    Top = 2
+    object SQLClienteCLIEA13ID: TStringField
+      FieldName = 'CLIEA13ID'
+      Origin = 'DB.CLIENTE.CLIEA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLClienteEMPRICOD: TIntegerField
+      FieldName = 'EMPRICOD'
+      Origin = 'DB.CLIENTE.EMPRICOD'
+    end
+    object SQLClienteCLIEICOD: TIntegerField
+      FieldName = 'CLIEICOD'
+      Origin = 'DB.CLIENTE.CLIEICOD'
+    end
+    object SQLClienteCLIEA5FISJURID: TStringField
+      FieldName = 'CLIEA5FISJURID'
+      Origin = 'DB.CLIENTE.CLIEA5FISJURID'
+      FixedChar = True
+      Size = 5
+    end
+    object SQLClienteCLIEA14CGC: TStringField
+      FieldName = 'CLIEA14CGC'
+      Origin = 'DB.CLIENTE.CLIEA14CGC'
+      FixedChar = True
+      Size = 14
+    end
+    object SQLClienteCLIEA20IE: TStringField
+      FieldName = 'CLIEA20IE'
+      Origin = 'DB.CLIENTE.CLIEA20IE'
+      FixedChar = True
+    end
+    object SQLClienteCLIEA11CPF: TStringField
+      FieldName = 'CLIEA11CPF'
+      Origin = 'DB.CLIENTE.CLIEA11CPF'
+      FixedChar = True
+      Size = 11
+    end
+    object SQLClienteCLIEA10RG: TStringField
+      FieldName = 'CLIEA10RG'
+      Origin = 'DB.CLIENTE.CLIEA10RG'
+      FixedChar = True
+      Size = 10
+    end
+    object SQLClienteCLIEA60RAZAOSOC: TStringField
+      DisplayLabel = 'Nome / Raz'#227'o Social'
+      FieldName = 'CLIEA60RAZAOSOC'
+      Origin = 'DB.CLIENTE.CLIEA60RAZAOSOC'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteCLIEA60NOMEFANT: TStringField
+      FieldName = 'CLIEA60NOMEFANT'
+      Origin = 'DB.CLIENTE.CLIEA60NOMEFANT'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteCLIEA60CONTATO: TStringField
+      FieldName = 'CLIEA60CONTATO'
+      Origin = 'DB.CLIENTE.CLIEA60CONTATO'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteCLIEA15FONE1: TStringField
+      DisplayLabel = 'Fone1'
+      FieldName = 'CLIEA15FONE1'
+      Origin = 'DB.CLIENTE.CLIEA15FONE1'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLClienteCLIEA15FONE2: TStringField
+      DisplayLabel = 'Fone2'
+      FieldName = 'CLIEA15FONE2'
+      Origin = 'DB.CLIENTE.CLIEA15FONE2'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLClienteCLIEA15FAX: TStringField
+      DisplayLabel = 'Fax'
+      FieldName = 'CLIEA15FAX'
+      Origin = 'DB.CLIENTE.CLIEA15FAX'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLClienteCLIEA30OUTROSDOC: TStringField
+      FieldName = 'CLIEA30OUTROSDOC'
+      Origin = 'DB.CLIENTE.CLIEA30OUTROSDOC'
+      FixedChar = True
+      Size = 30
+    end
+    object SQLClienteCLIECSEXO: TStringField
+      FieldName = 'CLIECSEXO'
+      Origin = 'DB.CLIENTE.CLIECSEXO'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLClienteCLIEA60PROFISSAO: TStringField
+      FieldName = 'CLIEA60PROFISSAO'
+      Origin = 'DB.CLIENTE.CLIEA60PROFISSAO'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteCLIEA60ENDRES: TStringField
+      DisplayLabel = 'Endere'#231'o'
+      FieldName = 'CLIEA60ENDRES'
+      Origin = 'DB.CLIENTE.CLIEA60ENDRES'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteCLIEA60BAIRES: TStringField
+      DisplayLabel = 'Bairro'
+      FieldName = 'CLIEA60BAIRES'
+      Origin = 'DB.CLIENTE.CLIEA60BAIRES'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteCLIEA60CIDRES: TStringField
+      DisplayLabel = 'Cidade'
+      FieldName = 'CLIEA60CIDRES'
+      Origin = 'DB.CLIENTE.CLIEA60CIDRES'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteCLIEA2UFRES: TStringField
+      DisplayLabel = 'UF'
+      FieldName = 'CLIEA2UFRES'
+      Origin = 'DB.CLIENTE.CLIEA2UFRES'
+      FixedChar = True
+      Size = 2
+    end
+    object SQLClienteCLIEA8CEPRES: TStringField
+      DisplayLabel = 'CEP'
+      FieldName = 'CLIEA8CEPRES'
+      Origin = 'DB.CLIENTE.CLIEA8CEPRES'
+      FixedChar = True
+      Size = 8
+    end
+    object SQLClienteCLIEA60EMAIL: TStringField
+      DisplayLabel = 'Email'
+      FieldName = 'CLIEA60EMAIL'
+      Origin = 'DB.CLIENTE.CLIEA60EMAIL'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteCLIEA60URL: TStringField
+      FieldName = 'CLIEA60URL'
+      Origin = 'DB.CLIENTE.CLIEA60URL'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteCLIEN2RENDA: TFloatField
+      FieldName = 'CLIEN2RENDA'
+      Origin = 'DB.CLIENTE.CLIEN2RENDA'
+    end
+    object SQLClienteCLIEN2LIMITECRED: TFloatField
+      FieldName = 'CLIEN2LIMITECRED'
+      Origin = 'DB.CLIENTE.CLIEN2LIMITECRED'
+    end
+    object SQLClienteCLIEA60NOMEPAI: TStringField
+      FieldName = 'CLIEA60NOMEPAI'
+      Origin = 'DB.CLIENTE.CLIEA60NOMEPAI'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteCLIEA60NOMEMAE: TStringField
+      FieldName = 'CLIEA60NOMEMAE'
+      Origin = 'DB.CLIENTE.CLIEA60NOMEMAE'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteCLIEDNASC: TDateTimeField
+      FieldName = 'CLIEDNASC'
+      Origin = 'DB.CLIENTE.CLIEDNASC'
+    end
+    object SQLClienteCLIECESTADOCIVIL: TStringField
+      FieldName = 'CLIECESTADOCIVIL'
+      Origin = 'DB.CLIENTE.CLIECESTADOCIVIL'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLClienteTPCLICOD: TIntegerField
+      FieldName = 'TPCLICOD'
+      Origin = 'DB.CLIENTE.TPCLICOD'
+    end
+    object SQLClienteMTBLICOD: TIntegerField
+      FieldName = 'MTBLICOD'
+      Origin = 'DB.CLIENTE.MTBLICOD'
+    end
+    object SQLClientePROFICOD: TIntegerField
+      FieldName = 'PROFICOD'
+      Origin = 'DB.CLIENTE.PROFICOD'
+    end
+    object SQLClienteVENDICOD: TIntegerField
+      FieldName = 'VENDICOD'
+      Origin = 'DB.CLIENTE.VENDICOD'
+    end
+    object SQLClienteCLIEDCAD: TDateTimeField
+      FieldName = 'CLIEDCAD'
+      Origin = 'DB.CLIENTE.CLIEDCAD'
+    end
+    object SQLClienteCLIEDPRICOMPRA: TDateTimeField
+      FieldName = 'CLIEDPRICOMPRA'
+      Origin = 'DB.CLIENTE.CLIEDPRICOMPRA'
+    end
+    object SQLClienteCLIEDULTCOMPRA: TDateTimeField
+      FieldName = 'CLIEDULTCOMPRA'
+      Origin = 'DB.CLIENTE.CLIEDULTCOMPRA'
+    end
+    object SQLClienteTPRCICOD: TIntegerField
+      FieldName = 'TPRCICOD'
+      Origin = 'DB.CLIENTE.TPRCICOD'
+    end
+    object SQLClientePLRCICOD: TIntegerField
+      FieldName = 'PLRCICOD'
+      Origin = 'DB.CLIENTE.PLRCICOD'
+    end
+    object SQLClienteCLIEA60CONJUGE: TStringField
+      FieldName = 'CLIEA60CONJUGE'
+      Origin = 'DB.CLIENTE.CLIEA60CONJUGE'
+      Size = 60
+    end
+    object SQLClienteCLIEDNASCCONJUGE: TDateField
+      FieldName = 'CLIEDNASCCONJUGE'
+      Origin = 'DB.CLIENTE.CLIEDNASCCONJUGE'
+    end
+    object SQLClienteCLIEDCASAMENTO: TDateField
+      FieldName = 'CLIEDCASAMENTO'
+      Origin = 'DB.CLIENTE.CLIEDCASAMENTO'
+    end
+  end
+  object DSSQLCliente: TDataSource
+    DataSet = SQLCliente
+    Left = 176
+    Top = 2
+  end
+  object SQLClienteDependente: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'Select * from  Cliente , ClienteDependente  where'
+      '%MFiltroMes'
+      'Between %MesInicial and %MesFinal'
+      'and '
+      '%MFiltroDia'
+      'Between %DiaInicial and %DiaFinal'
+      'and'
+      'Cliente.CLIEA13ID = ClienteDependente.CLIEA13ID'
+      'and'
+      '(%MFiltroEmail)')
+    Macros = <
+      item
+        DataType = ftString
+        Name = 'MFiltroMes'
+        ParamType = ptInput
+        Value = '0=0'
+      end
+      item
+        DataType = ftString
+        Name = 'MesInicial'
+        ParamType = ptInput
+        Value = '0=0'
+      end
+      item
+        DataType = ftString
+        Name = 'MesFinal'
+        ParamType = ptInput
+        Value = '0=0'
+      end
+      item
+        DataType = ftString
+        Name = 'MFiltroDia'
+        ParamType = ptInput
+        Value = '0=0'
+      end
+      item
+        DataType = ftString
+        Name = 'DiaInicial'
+        ParamType = ptInput
+        Value = '0=0'
+      end
+      item
+        DataType = ftString
+        Name = 'DiaFinal'
+        ParamType = ptInput
+        Value = '0=0'
+      end
+      item
+        DataType = ftString
+        Name = 'MFiltroEmail'
+        ParamType = ptInput
+        Value = '0=0'
+      end>
+    Left = 260
+    Top = 2
+    object SQLClienteDependenteCLIEA13ID: TStringField
+      FieldName = 'CLIEA13ID'
+      Origin = 'DB.CLIENTE.CLIEA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLClienteDependenteEMPRICOD: TIntegerField
+      FieldName = 'EMPRICOD'
+      Origin = 'DB.CLIENTE.EMPRICOD'
+    end
+    object SQLClienteDependenteCLIEICOD: TIntegerField
+      FieldName = 'CLIEICOD'
+      Origin = 'DB.CLIENTE.CLIEICOD'
+    end
+    object SQLClienteDependenteCLIEA5FISJURID: TStringField
+      FieldName = 'CLIEA5FISJURID'
+      Origin = 'DB.CLIENTE.CLIEA5FISJURID'
+      FixedChar = True
+      Size = 5
+    end
+    object SQLClienteDependenteCLIEA14CGC: TStringField
+      FieldName = 'CLIEA14CGC'
+      Origin = 'DB.CLIENTE.CLIEA14CGC'
+      FixedChar = True
+      Size = 14
+    end
+    object SQLClienteDependenteCLIEA20IE: TStringField
+      FieldName = 'CLIEA20IE'
+      Origin = 'DB.CLIENTE.CLIEA20IE'
+      FixedChar = True
+    end
+    object SQLClienteDependenteCLIEA11CPF: TStringField
+      FieldName = 'CLIEA11CPF'
+      Origin = 'DB.CLIENTE.CLIEA11CPF'
+      FixedChar = True
+      Size = 11
+    end
+    object SQLClienteDependenteCLIEA10RG: TStringField
+      FieldName = 'CLIEA10RG'
+      Origin = 'DB.CLIENTE.CLIEA10RG'
+      FixedChar = True
+      Size = 10
+    end
+    object SQLClienteDependenteCLIEA60RAZAOSOC: TStringField
+      DisplayLabel = 'Nome / Raz'#227'o Social'
+      FieldName = 'CLIEA60RAZAOSOC'
+      Origin = 'DB.CLIENTE.CLIEA60RAZAOSOC'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteDependenteCLIEA60NOMEFANT: TStringField
+      FieldName = 'CLIEA60NOMEFANT'
+      Origin = 'DB.CLIENTE.CLIEA60NOMEFANT'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteDependenteCLIEA60CONTATO: TStringField
+      FieldName = 'CLIEA60CONTATO'
+      Origin = 'DB.CLIENTE.CLIEA60CONTATO'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteDependenteCLIEA15FONE1: TStringField
+      DisplayLabel = 'Fone1'
+      FieldName = 'CLIEA15FONE1'
+      Origin = 'DB.CLIENTE.CLIEA15FONE1'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLClienteDependenteCLIEA15FONE2: TStringField
+      DisplayLabel = 'Fone2'
+      FieldName = 'CLIEA15FONE2'
+      Origin = 'DB.CLIENTE.CLIEA15FONE2'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLClienteDependenteCLIEA15FAX: TStringField
+      DisplayLabel = 'Fax'
+      FieldName = 'CLIEA15FAX'
+      Origin = 'DB.CLIENTE.CLIEA15FAX'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLClienteDependenteCLIEA30OUTROSDOC: TStringField
+      FieldName = 'CLIEA30OUTROSDOC'
+      Origin = 'DB.CLIENTE.CLIEA30OUTROSDOC'
+      FixedChar = True
+      Size = 30
+    end
+    object SQLClienteDependenteCLIECSEXO: TStringField
+      FieldName = 'CLIECSEXO'
+      Origin = 'DB.CLIENTE.CLIECSEXO'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLClienteDependenteCLIEA60PROFISSAO: TStringField
+      FieldName = 'CLIEA60PROFISSAO'
+      Origin = 'DB.CLIENTE.CLIEA60PROFISSAO'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteDependenteCLIEA60ENDRES: TStringField
+      DisplayLabel = 'Endere'#231'o'
+      FieldName = 'CLIEA60ENDRES'
+      Origin = 'DB.CLIENTE.CLIEA60ENDRES'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteDependenteCLIEA60BAIRES: TStringField
+      DisplayLabel = 'Bairro'
+      FieldName = 'CLIEA60BAIRES'
+      Origin = 'DB.CLIENTE.CLIEA60BAIRES'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteDependenteCLIEA60CIDRES: TStringField
+      DisplayLabel = 'Cidade'
+      FieldName = 'CLIEA60CIDRES'
+      Origin = 'DB.CLIENTE.CLIEA60CIDRES'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteDependenteCLIEA2UFRES: TStringField
+      DisplayLabel = 'UF'
+      FieldName = 'CLIEA2UFRES'
+      Origin = 'DB.CLIENTE.CLIEA2UFRES'
+      FixedChar = True
+      Size = 2
+    end
+    object SQLClienteDependenteCLIEA8CEPRES: TStringField
+      DisplayLabel = 'CEP'
+      FieldName = 'CLIEA8CEPRES'
+      Origin = 'DB.CLIENTE.CLIEA8CEPRES'
+      FixedChar = True
+      Size = 8
+    end
+    object SQLClienteDependenteCLIEA60EMAIL: TStringField
+      DisplayLabel = 'Email'
+      FieldName = 'CLIEA60EMAIL'
+      Origin = 'DB.CLIENTE.CLIEA60EMAIL'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteDependenteCLIEA60URL: TStringField
+      FieldName = 'CLIEA60URL'
+      Origin = 'DB.CLIENTE.CLIEA60URL'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteDependenteCLIEN2RENDA: TFloatField
+      FieldName = 'CLIEN2RENDA'
+      Origin = 'DB.CLIENTE.CLIEN2RENDA'
+    end
+    object SQLClienteDependenteCLIEN2LIMITECRED: TFloatField
+      FieldName = 'CLIEN2LIMITECRED'
+      Origin = 'DB.CLIENTE.CLIEN2LIMITECRED'
+    end
+    object SQLClienteDependenteCLIEA60NOMEPAI: TStringField
+      FieldName = 'CLIEA60NOMEPAI'
+      Origin = 'DB.CLIENTE.CLIEA60NOMEPAI'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteDependenteCLIEA60NOMEMAE: TStringField
+      FieldName = 'CLIEA60NOMEMAE'
+      Origin = 'DB.CLIENTE.CLIEA60NOMEMAE'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteDependenteCLIEDNASC: TDateTimeField
+      FieldName = 'CLIEDNASC'
+      Origin = 'DB.CLIENTE.CLIEDNASC'
+    end
+    object SQLClienteDependenteCLIECESTADOCIVIL: TStringField
+      FieldName = 'CLIECESTADOCIVIL'
+      Origin = 'DB.CLIENTE.CLIECESTADOCIVIL'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLClienteDependenteCLIEA60CONJUGE: TStringField
+      FieldName = 'CLIEA60CONJUGE'
+      Origin = 'DB.CLIENTE.CLIEA60CONJUGE'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteDependenteCLIEA60CONJUGEMAE: TStringField
+      FieldName = 'CLIEA60CONJUGEMAE'
+      Origin = 'DB.CLIENTE.CLIEA60CONJUGEMAE'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteDependenteCLIEN2CONJUGERENDA: TFloatField
+      FieldName = 'CLIEN2CONJUGERENDA'
+      Origin = 'DB.CLIENTE.CLIEN2CONJUGERENDA'
+    end
+    object SQLClienteDependenteCLIEDNASCCONJUGE: TDateTimeField
+      FieldName = 'CLIEDNASCCONJUGE'
+      Origin = 'DB.CLIENTE.CLIEDNASCCONJUGE'
+    end
+    object SQLClienteDependenteCLIEA60CONJUGEEMPR: TStringField
+      FieldName = 'CLIEA60CONJUGEEMPR'
+      Origin = 'DB.CLIENTE.CLIEA60CONJUGEEMPR'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteDependenteCLIEA15CONJFONEMPR: TStringField
+      FieldName = 'CLIEA15CONJFONEMPR'
+      Origin = 'DB.CLIENTE.CLIEA15CONJFONEMPR'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLClienteDependenteCLIEA60EMPRESA: TStringField
+      FieldName = 'CLIEA60EMPRESA'
+      Origin = 'DB.CLIENTE.CLIEA60EMPRESA'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteDependenteCLIEA60ENDEMPRESA: TStringField
+      FieldName = 'CLIEA60ENDEMPRESA'
+      Origin = 'DB.CLIENTE.CLIEA60ENDEMPRESA'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteDependenteCLIEA60BAIEMPRESA: TStringField
+      FieldName = 'CLIEA60BAIEMPRESA'
+      Origin = 'DB.CLIENTE.CLIEA60BAIEMPRESA'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteDependenteCLIEA60CIDEMPRESA: TStringField
+      FieldName = 'CLIEA60CIDEMPRESA'
+      Origin = 'DB.CLIENTE.CLIEA60CIDEMPRESA'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteDependenteCLIEA2UFEMPRESA: TStringField
+      FieldName = 'CLIEA2UFEMPRESA'
+      Origin = 'DB.CLIENTE.CLIEA2UFEMPRESA'
+      FixedChar = True
+      Size = 2
+    end
+    object SQLClienteDependenteCLIEA8CEPEMPRESA: TStringField
+      FieldName = 'CLIEA8CEPEMPRESA'
+      Origin = 'DB.CLIENTE.CLIEA8CEPEMPRESA'
+      FixedChar = True
+      Size = 8
+    end
+    object SQLClienteDependenteCLIEDAMISEMPRESA: TDateTimeField
+      FieldName = 'CLIEDAMISEMPRESA'
+      Origin = 'DB.CLIENTE.CLIEDAMISEMPRESA'
+    end
+    object SQLClienteDependenteCLIEA15FONEEMPRESA: TStringField
+      FieldName = 'CLIEA15FONEEMPRESA'
+      Origin = 'DB.CLIENTE.CLIEA15FONEEMPRESA'
+      FixedChar = True
+      Size = 30
+    end
+    object SQLClienteDependenteBANCA5COD: TStringField
+      FieldName = 'BANCA5COD'
+      Origin = 'DB.CLIENTE.BANCA5COD'
+      FixedChar = True
+      Size = 5
+    end
+    object SQLClienteDependenteCLIEA5AGENCIA: TStringField
+      FieldName = 'CLIEA5AGENCIA'
+      Origin = 'DB.CLIENTE.CLIEA5AGENCIA'
+      FixedChar = True
+      Size = 5
+    end
+    object SQLClienteDependenteCLIEA10CONTA: TStringField
+      FieldName = 'CLIEA10CONTA'
+      Origin = 'DB.CLIENTE.CLIEA10CONTA'
+      FixedChar = True
+      Size = 10
+    end
+    object SQLClienteDependenteCLIEA60TITULAR: TStringField
+      FieldName = 'CLIEA60TITULAR'
+      Origin = 'DB.CLIENTE.CLIEA60TITULAR'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteDependenteCLIEDABERTCONTA: TDateTimeField
+      FieldName = 'CLIEDABERTCONTA'
+      Origin = 'DB.CLIENTE.CLIEDABERTCONTA'
+    end
+    object SQLClienteDependenteCLIETOBS: TStringField
+      FieldName = 'CLIETOBS'
+      Origin = 'DB.CLIENTE.CLIETOBS'
+      FixedChar = True
+      Size = 254
+    end
+    object SQLClienteDependenteTPCLICOD: TIntegerField
+      FieldName = 'TPCLICOD'
+      Origin = 'DB.CLIENTE.TPCLICOD'
+    end
+    object SQLClienteDependenteMTBLICOD: TIntegerField
+      FieldName = 'MTBLICOD'
+      Origin = 'DB.CLIENTE.MTBLICOD'
+    end
+    object SQLClienteDependentePROFICOD: TIntegerField
+      FieldName = 'PROFICOD'
+      Origin = 'DB.CLIENTE.PROFICOD'
+    end
+    object SQLClienteDependenteVENDICOD: TIntegerField
+      FieldName = 'VENDICOD'
+      Origin = 'DB.CLIENTE.VENDICOD'
+    end
+    object SQLClienteDependenteCLIEDCAD: TDateTimeField
+      FieldName = 'CLIEDCAD'
+      Origin = 'DB.CLIENTE.CLIEDCAD'
+    end
+    object SQLClienteDependenteCLIEDPRICOMPRA: TDateTimeField
+      FieldName = 'CLIEDPRICOMPRA'
+      Origin = 'DB.CLIENTE.CLIEDPRICOMPRA'
+    end
+    object SQLClienteDependenteCLIEDULTCOMPRA: TDateTimeField
+      FieldName = 'CLIEDULTCOMPRA'
+      Origin = 'DB.CLIENTE.CLIEDULTCOMPRA'
+    end
+    object SQLClienteDependenteCLIEA254PATHFOTO: TStringField
+      FieldName = 'CLIEA254PATHFOTO'
+      Origin = 'DB.CLIENTE.CLIEA254PATHFOTO'
+      FixedChar = True
+      Size = 254
+    end
+    object SQLClienteDependenteCLIECRECAVISATRASO: TStringField
+      FieldName = 'CLIECRECAVISATRASO'
+      Origin = 'DB.CLIENTE.CLIECRECAVISATRASO'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLClienteDependenteCLIEA30NATURALIDADE: TStringField
+      FieldName = 'CLIEA30NATURALIDADE'
+      Origin = 'DB.CLIENTE.CLIEA30NATURALIDADE'
+      FixedChar = True
+      Size = 30
+    end
+    object SQLClienteDependenteCLIECRECEBECARTAO: TStringField
+      FieldName = 'CLIECRECEBECARTAO'
+      Origin = 'DB.CLIENTE.CLIECRECEBECARTAO'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLClienteDependenteCLIEDENVCARTIMP: TDateTimeField
+      FieldName = 'CLIEDENVCARTIMP'
+      Origin = 'DB.CLIENTE.CLIEDENVCARTIMP'
+    end
+    object SQLClienteDependenteCLIEDRETCARTIMP: TDateTimeField
+      FieldName = 'CLIEDRETCARTIMP'
+      Origin = 'DB.CLIENTE.CLIEDRETCARTIMP'
+    end
+    object SQLClienteDependenteCLIEDENVCARTCLI: TDateTimeField
+      FieldName = 'CLIEDENVCARTCLI'
+      Origin = 'DB.CLIENTE.CLIEDENVCARTCLI'
+    end
+    object SQLClienteDependenteCLIEA10CODCONV: TStringField
+      FieldName = 'CLIEA10CODCONV'
+      Origin = 'DB.CLIENTE.CLIEA10CODCONV'
+      FixedChar = True
+      Size = 10
+    end
+    object SQLClienteDependenteCLIEA10CODANT: TStringField
+      FieldName = 'CLIEA10CODANT'
+      Origin = 'DB.CLIENTE.CLIEA10CODANT'
+      FixedChar = True
+      Size = 10
+    end
+    object SQLClienteDependenteCLIEA20NROCARTCRED: TStringField
+      FieldName = 'CLIEA20NROCARTCRED'
+      Origin = 'DB.CLIENTE.CLIEA20NROCARTCRED'
+      FixedChar = True
+    end
+    object SQLClienteDependentePENDENTE: TStringField
+      FieldName = 'PENDENTE'
+      Origin = 'DB.CLIENTE.PENDENTE'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLClienteDependenteREGISTRO: TDateTimeField
+      FieldName = 'REGISTRO'
+      Origin = 'DB.CLIENTE.REGISTRO'
+    end
+    object SQLClienteDependenteCLIEA35NROCARTCRED: TStringField
+      FieldName = 'CLIEA35NROCARTCRED'
+      Origin = 'DB.CLIENTE.CLIEA35NROCARTCRED'
+      FixedChar = True
+      Size = 35
+    end
+    object SQLClienteDependenteCLIEA60EMAILCONJUG: TStringField
+      FieldName = 'CLIEA60EMAILCONJUG'
+      Origin = 'DB.CLIENTE.CLIEA60EMAILCONJUG'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteDependenteCLIEDCASAMENTO: TDateTimeField
+      FieldName = 'CLIEDCASAMENTO'
+      Origin = 'DB.CLIENTE.CLIEDCASAMENTO'
+    end
+    object SQLClienteDependenteTPRCICOD: TIntegerField
+      FieldName = 'TPRCICOD'
+      Origin = 'DB.CLIENTE.TPRCICOD'
+    end
+    object SQLClienteDependenteCLIEA60ENDCOB: TStringField
+      FieldName = 'CLIEA60ENDCOB'
+      Origin = 'DB.CLIENTE.CLIEA60ENDCOB'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteDependenteCLIEA60BAICOB: TStringField
+      FieldName = 'CLIEA60BAICOB'
+      Origin = 'DB.CLIENTE.CLIEA60BAICOB'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteDependenteCLIEA60CIDCOB: TStringField
+      FieldName = 'CLIEA60CIDCOB'
+      Origin = 'DB.CLIENTE.CLIEA60CIDCOB'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteDependenteCLIEA2UFCOB: TStringField
+      FieldName = 'CLIEA2UFCOB'
+      Origin = 'DB.CLIENTE.CLIEA2UFCOB'
+      FixedChar = True
+      Size = 2
+    end
+    object SQLClienteDependenteCLIEA8CEPCOB: TStringField
+      FieldName = 'CLIEA8CEPCOB'
+      Origin = 'DB.CLIENTE.CLIEA8CEPCOB'
+      FixedChar = True
+      Size = 8
+    end
+    object SQLClienteDependentePLRCICOD: TIntegerField
+      FieldName = 'PLRCICOD'
+      Origin = 'DB.CLIENTE.PLRCICOD'
+    end
+    object SQLClienteDependenteCLIEA30TEMPOMORADIA: TStringField
+      FieldName = 'CLIEA30TEMPOMORADIA'
+      Origin = 'DB.CLIENTE.CLIEA30TEMPOMORADIA'
+      FixedChar = True
+      Size = 30
+    end
+    object SQLClienteDependenteCLIECCASAPROPRIA: TStringField
+      FieldName = 'CLIECCASAPROPRIA'
+      Origin = 'DB.CLIENTE.CLIECCASAPROPRIA'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLClienteDependenteCLIEA30LOCALIMOV1: TStringField
+      FieldName = 'CLIEA30LOCALIMOV1'
+      Origin = 'DB.CLIENTE.CLIEA30LOCALIMOV1'
+      FixedChar = True
+      Size = 30
+    end
+    object SQLClienteDependenteCLIEA30LOCALIMOV2: TStringField
+      FieldName = 'CLIEA30LOCALIMOV2'
+      Origin = 'DB.CLIENTE.CLIEA30LOCALIMOV2'
+      FixedChar = True
+      Size = 30
+    end
+    object SQLClienteDependenteCLIEA30MODVEICULO: TStringField
+      FieldName = 'CLIEA30MODVEICULO'
+      Origin = 'DB.CLIENTE.CLIEA30MODVEICULO'
+      FixedChar = True
+      Size = 30
+    end
+    object SQLClienteDependenteCLIEA30TIPOIMOV1: TStringField
+      FieldName = 'CLIEA30TIPOIMOV1'
+      Origin = 'DB.CLIENTE.CLIEA30TIPOIMOV1'
+      FixedChar = True
+      Size = 30
+    end
+    object SQLClienteDependenteCLIEA30TIPOIMOV2: TStringField
+      FieldName = 'CLIEA30TIPOIMOV2'
+      Origin = 'DB.CLIENTE.CLIEA30TIPOIMOV2'
+      FixedChar = True
+      Size = 30
+    end
+    object SQLClienteDependenteCLIEA4ANOVEICULO: TStringField
+      FieldName = 'CLIEA4ANOVEICULO'
+      Origin = 'DB.CLIENTE.CLIEA4ANOVEICULO'
+      FixedChar = True
+      Size = 4
+    end
+    object SQLClienteDependenteCLIEA60IMOB: TStringField
+      FieldName = 'CLIEA60IMOB'
+      Origin = 'DB.CLIENTE.CLIEA60IMOB'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteDependenteCLIEA8PLACAVEICULO: TStringField
+      FieldName = 'CLIEA8PLACAVEICULO'
+      Origin = 'DB.CLIENTE.CLIEA8PLACAVEICULO'
+      FixedChar = True
+      Size = 8
+    end
+    object SQLClienteDependenteCLIECSTATUSIMOV1: TStringField
+      FieldName = 'CLIECSTATUSIMOV1'
+      Origin = 'DB.CLIENTE.CLIECSTATUSIMOV1'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLClienteDependenteCLIECSTATUSIMOV2: TStringField
+      FieldName = 'CLIECSTATUSIMOV2'
+      Origin = 'DB.CLIENTE.CLIECSTATUSIMOV2'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLClienteDependenteCLIEIDIAVCTOCARTAO: TIntegerField
+      FieldName = 'CLIEIDIAVCTOCARTAO'
+      Origin = 'DB.CLIENTE.CLIEIDIAVCTOCARTAO'
+    end
+    object SQLClienteDependenteCLIEN2VLRALUGUEL: TFloatField
+      FieldName = 'CLIEN2VLRALUGUEL'
+      Origin = 'DB.CLIENTE.CLIEN2VLRALUGUEL'
+    end
+    object SQLClienteDependenteCLDPICOD: TIntegerField
+      FieldName = 'CLDPICOD'
+      Origin = 'DB.CLIENTE.CLIEA13ID'
+    end
+    object SQLClienteDependenteCLDPA60NOME: TStringField
+      FieldName = 'CLDPA60NOME'
+      Origin = 'DB.CLIENTE.CLIEA13ID'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLClienteDependenteCLDPA15PARENTESCO: TStringField
+      FieldName = 'CLDPA15PARENTESCO'
+      Origin = 'DB.CLIENTE.CLIEA13ID'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLClienteDependenteCLDPCAUTORIZADO: TStringField
+      FieldName = 'CLDPCAUTORIZADO'
+      Origin = 'DB.CLIENTE.CLIEA13ID'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLClienteDependenteCLDPDNASC: TDateTimeField
+      FieldName = 'CLDPDNASC'
+      Origin = 'DB.CLIENTE.CLIEA13ID'
+    end
+    object SQLClienteDependenteCLDPA10RG: TStringField
+      FieldName = 'CLDPA10RG'
+      Origin = 'DB.CLIENTE.CLIEA13ID'
+      FixedChar = True
+      Size = 10
+    end
+    object SQLClienteDependenteCLDPA11CPF: TStringField
+      FieldName = 'CLDPA11CPF'
+      Origin = 'DB.CLIENTE.CLIEA13ID'
+      FixedChar = True
+      Size = 11
+    end
+    object SQLClienteDependenteCLDPA15FONE: TStringField
+      FieldName = 'CLDPA15FONE'
+      Origin = 'DB.CLIENTE.CLIEA13ID'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLClienteDependenteCLDPA60EMAIL: TStringField
+      FieldName = 'CLDPA60EMAIL'
+      Origin = 'DB.CLIENTE.CLIEA13ID'
+      FixedChar = True
+      Size = 60
+    end
+  end
+  object DSSQLClienteDependente: TDataSource
+    DataSet = SQLClienteDependente
+    Left = 232
+    Top = 2
+  end
+  object ImageList1: TImageList
+    Left = 92
+    Top = 2
+    Bitmap = {
+      494C010112001300040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      0000000000003600000028000000400000005000000001002000000000000050
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00008CBD94007BAD840073A5840063947300396B420000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000848400FF000000848484000000000000FFFF0000FFFF00008484000084
+      8400000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00008CBD9C007BAD84007BAD84007BAD7B0073A57B0073A584004A7B52003152
+      3100000000000000000000000000000000000000000000000000000000000000
+      00000084840000FFFF00000000000000000000FFFF0000FFFF00008484000084
+      8400000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000FFFFFF00EFF7EF00EFF7EF00E7EFE700DEE7DE00D6E7D600EFF7EF00ADC6
+      AD00000000000000000000000000000000000000000000000000000000000000
+      0000008484000000000000000000000000000000000000000000000000000084
+      8400000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000FFFFFF00F7F7F700EFF7EF00E7EFE700C6D6C60000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000084840000000000000000000000000000000000000000000084
+      8400000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000FFFFFF00EFF7EF00EFF7EF00C6DECE000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000848400000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000848484000000000000000000000000000000000000000000000000008484
+      8400000000000000000000000000000000000000000000000000000000000000
+      0000848484000000000000000000000000000000000000000000000000008484
+      8400000000000000000000000000000000000000000000000000000000000000
+      0000DEEFDE000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000848484000000000000000000000000000000000084848400000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000084848400000000000000000000000000000000008484
+      8400000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000848484000000000000000000848484000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000008484840000000000000000008484
+      8400000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000848484008484840000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000848484008484
+      8400000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000848484000000000000000000848484000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000008484840000000000000000008484
+      8400000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000848484000000000000000000000000000000000084848400000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000084848400000000000000000000000000000000008484
+      8400000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000848484000000000000000000000000000000000000000000000000008484
+      8400000000000000000000000000000000000000000000000000000000000000
+      0000848484000000000000000000000000000000000000000000000000008484
+      8400000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000094A5A500000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000A5BDB500D6F7EF00B5CECE000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000CEEFE700D6EFEF00D6EFEF00D6EFEF00D6F7EF00BDDED600000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000316339000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000DEE7E7000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000CEE7E7008C9C9C00D6EFEF00D6EFEF00D6F7EF00D6F7F70073847B000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000084B58C0073A57B00427B4A00295A31000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000008CA5AD008CA5AD00000000007BA59400000000006B7B
+      7300000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000DEE7E700DEE7E700DEE7E700DEE7E7000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000C6DEDE00C6E7DE00CEE7E70000000000849C94008C9C9C008C9C9C008C9C
+      9C00000000000000000000000000000000000000000000000000000000000000
+      00008CBD94007BAD840073A5840063947300396B420000000000000000000000
+      00000000000000000000000000000000000000000000000000008CA5AD00B5CE
+      DE0073848C005A636B008CA5AD00B5CEDE000000000094BDA500000000007B9C
+      8C00000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000DEE7E700DEE7E700DEE7E700DEE7E7000000
+      0000000000000000000000000000000000000000000000000000000000008C94
+      9400C6DEDE00C6DEDE00CEE7E700298CAD0000000000000000008C9C9C008C9C
+      9C008C9C9C00737B7B0000000000000000000000000000000000000000000000
+      00008CBD9C007BAD84007BAD84007BAD7B0073A57B0073A584004A7B52003152
+      31000000000000000000000000000000000000000000000000008CA5AD00B5CE
+      DE008CA5AD005A636B008CA5AD00B5CEDE0000000000A5C6B500000000006B9C
+      8C000000000000000000000000000000000000000000000000004A4A84005252
+      9C006363AD006B6BB5007B7BC6008484CE00DEE7E700DEE7E700DEE7E7000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000BDD6CE00C6DED600C6E7DE00CEE7E7000000000063BDD60000000000DEF7
+      F700DEE7DE000000000000000000000000000000000000000000000000000000
+      0000FFFFFF00EFF7EF00EFF7EF00E7EFE700DEE7DE00D6E7D600EFF7EF00ADC6
+      AD00000000000000000000000000000000000000000000000000000000000000
+      000000000000000000008CA5AD00B5CEDE006B9C8C006B9C8C00000000000000
+      00000000000000000000000000000000000000000000000000004A4A84005252
+      9C006363AD006B6BB5007B7BC6008484CE00DEE7E70000000000DEE7E7000000
+      000000000000000000000000000000000000000000000000000000000000E7EF
+      EF007B948C00B5CECE0084949400CEE7E700D6EFEF0000000000427B8C000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000FFFFFF00F7F7F700EFF7EF00E7EFE700C6D6C60000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000B5CEDE0000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000DEE7E700DEE7E700DEE7E700DEE7E7000000
+      000000000000000000000000000000000000000000000000000000000000EFEF
+      EF0031393900738C8400C6DED600C6DEDE00849C9400CEEFE7000000000063BD
+      D600000000000000000000000000000000000000000000000000000000000000
+      0000FFFFFF00EFF7EF00EFF7EF00C6DECE000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000B5CEDE008CA5AD0000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000DEE7E700DEE7E700DEE7E700DEE7E7000000
+      000000000000000000000000000000000000000000000000000000000000E7E7
+      E700A5B5B500BDD6CE008C9C9C00C6DEDE00CEE7E7008CA59C00D6EFEF000000
+      0000427B8C000000000000000000000000000000000000000000000000000000
+      0000DEEFDE000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000B5CEDE0073848C0000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000DEE7E700DEE7E700DEE7E700DEE7E7000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000094A5A500BDD6D600BDD6D600BDD6D6008CA59C00C6E7DE00000000000000
+      00000000000063BDD60000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000BDD6D600BDD6D600C6DEDE00C6DEDE00000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000009CADAD0000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000D6F7EF0094A5A50000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000094A5A500000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000004A4221005A523100DEE7DE000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000000000000000000000D6EF
+      EF00D6EFEF00D6EFEF00D6F7EF00CEE7E70094A5A50000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000A5BDB500D6F7EF00B5CECE000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000BDB58C00A59C5A00EFF7EF0029291800DEDEDE00E7E7E7005A5A42000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000003939390052525200636363006B6B6B0039393900313131000000
+      000000000000000000000000000000000000000000000000000000000000D6EF
+      EF00D6EFEF00D6EFEF00D6EFEF00D6F7EF00D6F7EF00BDDED600000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000CEEFE700D6EFEF00D6EFEF00D6EFEF00D6F7EF00BDDED600000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000B5AD7300A59C5A00F7F7F700524A3100E7E7E700DEE7DE008C8C7B00A59C
+      5A00000000000000000000000000000000000000000000000000000000004A4A
+      4A00525252004A4A4A00424242004A4A4A00737B730031313100292929003131
+      31000000000000000000000000000000000000000000000000004A4A4A00CEE7
+      E700CEEFE700A5BDBD00394A42000000000000000000393939006B6B6B000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000CEE7E700CEE7E700D6EFEF00D6EFEF00D6F7EF00D6F7F70073847B000000
+      0000000000000000000000000000000000000000000000000000000000006B63
+      4200EFEFE700EFEFE700A59C5A0042422100EFEFEF00E7E7E700A59C5A005A52
+      3100393929000000000000000000000000000000000000000000424242005A63
+      5A00ADADAD00A5ADA500A5A5A500A5A5A500737B730029312900313931003939
+      3900313931003131310000000000000000000000000000000000C6DEDE00C6E7
+      DE00394242007B948C00A5BDB50094ADAD008C9C9C007B8C8C0063736B00DEF7
+      F700DEF7F7000000000000000000000000000000000000000000000000000000
+      0000C6DEDE00C6E7DE00CEE7E700CEEFEF00D6F7EF00D6F7F700DEF7F700DEF7
+      F70000000000000000000000000000000000000000000000000000000000C6C6
+      9C00F7F7F700848C9400EFEFE700A59C5A004242210039392900A59C5A005A52
+      31000000000000000000000000000000000000000000000000009C9C9C00B5B5
+      B500ADB5AD00A5ADA5009C9C9C0094949400DEDEDE00BDC6BD00292929003131
+      310039393900313931000000000000000000000000008C949400C6DED600C6DE
+      DE0000000000B5CEC600CEDEDE00A5B5B50094ADA500849C94007B8C8C00DEF7
+      F700DEF7F700DEF7F700737B7B00000000000000000000000000000000008C94
+      9400C6DEDE00C6DEDE00CEE7E700CEEFE700D6EFEF00D6F7EF00DEF7F700DEF7
+      F700DEF7F700737B7B0000000000000000000000000000000000C6C6A500EFEF
+      E700848C9400F7F7F700185A730000000000DEE7DE00EFEFE700A59C5A00A59C
+      5A00000000000000000000000000000000000000000000000000A5ADA500A5A5
+      A500DEDEDE00EFF7EF00EFF7EF00EFEFEF00E7EFE700E7E7E700D6D6D6003939
+      390031313100313931000000000000000000000000006B737300BDD6D600C6DE
+      DE0000000000BDD6D600F7FFF700ADC6BD009CB5B50094A5A50084949400DEF7
+      F700DEF7F700DEF7F700BDD6D600000000000000000000000000000000000000
+      0000BDD6CE00C6DED600C6E7DE00CEE7E700D6EFEF00D6F7EF00D6F7F700DEF7
+      F700A5BDBD000000000000000000000000000000000000000000BDB58C00EFF7
+      EF00848C9400F7F7F7000000000063BDD60000000000F7F7F700A59C5A003939
+      2900000000000000000000000000000000000000000000000000B5B5B500E7EF
+      E700F7F7F700F7F7F700EFEFEF00EFEFEF008C948C005A6363005A6363003942
+      42004242420029292900000000000000000000000000E7EFEF004A4A4A00B5CE
+      CE009CADAD00293129008C9C9C00B5CECE00ADC6C6007B8C8C0029313100D6F7
+      F700DEF7F700000000000000000000000000000000000000000000000000E7EF
+      EF007B948C00B5CECE00C6DEDE00CEE7E700D6EFEF00D6EFEF00D6F7EF00D6F7
+      F70000000000000000000000000000000000000000000000000000000000B5AD
+      7300DED6C600F7F7F700F7F7F700F7F7F70063BDD600427B8C00292918000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000CECECE00B5B5B500737B7B00E7EFEF00DEE7E700DEE7E700D6DEDE00B5BD
+      BD000000000000000000000000000000000000000000E7EFEF00E7EFEF007B8C
+      8C00B5CECE009CB5B500394242000000000000000000394A4200ADBDBD00D6F7
+      EF0000000000000000000000000000000000000000000000000000000000EFEF
+      EF0031393900B5CECE00C6DED600C6DEDE00CEE7E700CEEFE700D6EFEF0094A5
+      A500000000000000000000000000000000000000000000000000000000000000
+      0000DED6C600C6C6A500F7F7F700F7F7F7000000000063BDD600000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000EFF7EF00EFEFEF00E7E7E700DEE7E700DEDEDE00D6DE
+      DE000000000000000000000000000000000000000000EFEFEF00EFEFEF00B5CE
+      CE00BDD6D600C6DED600C6DEDE00CEE7E700CEE7E700CEEFE700D6EFEF0094A5
+      A50000000000000000000000000000000000000000000000000000000000E7E7
+      E700A5B5B500BDD6CE00BDD6D600C6DEDE00CEE7E700CEE7E700D6EFEF000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000DED6C600EFEFE700A59C5A0063BDD600427B
+      8C00000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000C6C6C600F7F7F700EFEFEF00EFEFEF00E7E7E700DEE7
+      E7009CA5A50000000000000000000000000000000000E7E7E70031313100BDD6
+      CE00BDD6D600BDD6D600C6DEDE00C6DEDE00CEE7E700CEE7E700D6EFEF000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000094A5A500BDD6D600BDD6D600BDD6D600C6DEDE00C6E7DE00000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000A59C5A00393929000000000063BD
+      D600000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000F7FFF700EFF7F700EFF7EF00BDC6C6004242
+      420000000000000000000000000000000000000000000000000000000000BDD6
+      D600BDD6D600BDD6D600BDD6D600C6DED600C6DEDE00C6E7DE009CB5AD000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000BDD6D600BDD6D600C6DEDE00C6DEDE00000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000063BDD6000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000094A5A500BDD6D600BDD6D600C6DEDE00C6DEDE00C6DEDE00000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000009CADAD0000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000084949400C6DEDE00C6DEDE0021212100000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000008484840084848400848484000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000CEFFFF00CEFFFF0000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000084848400FFFF0000FFFF0000FFFF00000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000CEFFFF00CEFFFF00CEFFFF00CEFFFF00000000000000
+      000029529C000000000000000000000000000000000000000000000000000000
+      0000000000008484840084000000FFFF0000FFFF0000FFFF0000FFFF00000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000039423900313131001818
+      1800000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000CEFFFF00CEFFFF0000000000CEFFFF00CEFFFF00CEFFFF008C7B
+      6B00BDBDBD000000000000000000000000000000000000000000000000000000
+      0000848484008400000084848400FFFF0000FFFF0000FFFF0000FFFF00008484
+      0000000000000000000000000000000000000000000000000000000000000000
+      000073947B006B9473005A735A00638C6B0063846B00637B6300000000000000
+      000000000000000000000000000000000000182118004A4A4A00212121000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000CEFFFF00CEFFFF0000000000CEFFFF0000000000CEFFFF008C7B6B00BDBD
+      BD00000000000000000000000000000000000000000084848400840000000000
+      000084000000840000008484840000000000FFFF0000FFFF0000FFFF00008484
+      8400848400008484000000000000000000000000000000000000000000000000
+      0000A5BDAD004A6352004A5A4A007B9C84007B947B0042524200000000000000
+      0000000000000000000000000000000000000000000031313100313131000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000000000000000000000CEFF
+      FF00CEFFFF00CEFFFF00CEFFFF0000000000CEFFFF008C7B6B00BDBDBD00CEFF
+      FF00CEFFFF000000000000000000000000000000000084000000840000008400
+      0000FF0000008400000084848400000000008484000000000000FFFFFF008484
+      8400848484008484000000000000000000000000000000000000000000000000
+      0000BDCEBD004A635200394A42007B9C84007B948400394A3900000000000000
+      0000000000000000000000000000000000000000000000000000080808006363
+      6300000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000CEFFFF000000
+      0000000000000000000000000000000000008C7B6B00BDBDBD00CEFFFF00CEFF
+      FF00CEFFFF00CEFFFF0000000000000000000000000000000000840000008484
+      840084000000FF00000084848400000000000000000084840000000000000000
+      0000848484008484840000000000000000000000000000000000000000000000
+      0000BDCEBD004A635200394A42007B9C84007B948400394A3900000000000000
+      0000000000000000000000000000000000006300000063312900181818000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000CEFFFF00000000000000
+      00008C7B6B00CEFFFF00BDBDBD008C7B6B000000000000000000CEFFFF000000
+      0000CEFFFF00CEFFFF00CEFFFF00000000000000000000000000000000008484
+      8400FF000000840000008484840000000000008484000000000084840000FFFF
+      FF00000000008484840000000000000000000000000000000000000000000000
+      0000BDCEBD004A635200394A42007B9C84007B948400394A3900000000000000
+      0000000000000000000000000000000000000000000031313100181818005252
+      5200000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000CEFFFF00CEFFFF0000000000FFFF
+      0000BDBDBD00BDBDBD008C7B6B008C7B6B00BDBDBD000000000000000000CEFF
+      FF0000000000CEFFFF00CEFFFF0000000000000000000000000000000000FF00
+      0000FF000000FF000000848484000000000000FFFF0000FFFF00008484008484
+      0000848484000000000000000000000000000000000000000000000000000000
+      0000212121002121210021212100212121002121210021212100000000000000
+      0000000000000000000000000000000000000000000000000000000000003131
+      3100000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000CEFFFF00FFFF0000BDBD
+      BD00BDBDBD00BDBDBD00BDBDBD008C7B6B008C7B6B008C7B6B00CEFFFF000000
+      0000CEFFFF00CEFFFF0000000000000000000000000000000000000000000000
+      0000FF000000FF000000848484000000000000FFFF0000FFFF00008484000084
+      8400848484000000000000000000000000000000000000000000000000005273
+      5A008CAD940084A58C0073947B0073947B005A736300526B5A00425242000000
+      00000000000000000000000000000000000000000000313131004A4A4A009463
+      6300000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000FFFF0000BDBD
+      BD00CEFFFF00BDBDBD00BDBDBD00BDBDBD00CEFFFF008C7B6B00CEFFFF00CEFF
+      FF00CEFFFF000000000000000000000000000000000000000000000000000000
+      000000848400FF000000848484000000000000FFFF0000FFFF00008484000084
+      8400000000000000000000000000000000000000000000000000000000007394
+      7B00C6D6CE00D6DED60094AD9C008CAD9C008CA594008CA59400526B52000000
+      0000000000000000000000000000000000000000000021212100000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000FFFF0000BDBD
+      BD00FFFF0000FFFF0000CEFFFF00BDBDBD00BDBDBD0000000000CEFFFF00CEFF
+      FF00000000000000000000000000000000000000000000000000000000000000
+      00000084840000FFFF00000000000000000000FFFF0000FFFF00008484000084
+      840000000000000000000000000000000000000000000000000000000000ADC6
+      B50094B5A500B5C6BD0021292100293131008CAD9C008CAD94008CA594000000
+      0000000000000000000000000000000000000808080094949400848484000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000000000000000000000FFFF
+      0000BDBDBD00BDBDBD00CEFFFF00BDBDBD00FFFF0000CEFFFF00CEFFFF000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000008484000000000000000000000000000000000000000000000000000084
+      8400000000000000000000000000000000000000000000000000000000002121
+      21009CBDA500A5BDB5007B8C7B00849C8C0094AD9C008CAD9C00000000000000
+      0000000000000000000000000000000000007373730084848400000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00008C7B6B008C7B6B008C7B6B0000000000CEFFFF00CEFFFF00000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000084840000000000000000000000000000000000000000000084
+      8400000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000003942390000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000CEFFFF00CEFFFF00CEFFFF0000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000848400000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000CEFFFF000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000089C080018AD180021AD210029B5
+      290029B5290029B5290029B5290029BD290021C6210018C6180018CE180010D6
+      100010D6100000D6000000CE000000CE00000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000008A5080029AD290029B5290039BD
+      390039BD390039BD390031C6310031C6310031C6310029D6290021D6210010DE
+      100010DE100008DE080000D6000000CE00000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000007B000000FFFF0000FF00
+      00000000000000000000000000000000000018AD180031B5310039BD390042BD
+      420042BD420042BD420042C6420094CE9400DEEFDE0094D6940039DE390021E7
+      210018E7180010E7100008DE080000D600000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000007B000000FFFF0000FF000000FF00
+      00000000000000000000000000000000000021AD210039BD390042BD42004ABD
+      4A004ABD4A004ABD4A0042C6420094CE9400FFFFFF00F7FFF700C6E7C60063E7
+      630018E7180010E7100008DE080000D600000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000042399C00000000000000
+      00000000000000000000000000000000000000000000000000007B7B7B000000
+      00000000000000000000000000007B000000FFFF0000FF000000FF0000000000
+      00000000000000000000000000000000000029AD290042BD42004ABD4A0052C6
+      520052C6520052BD52004AC64A004ACE4A00A5D6A500FFFFFF00FFFFFF00DEEF
+      DE0063E7630018E7180010DE100010D610000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00004A42B50039318C000000000000000000000000004A42B500000000000000
+      00000000000000000000000000000000000000000000000000007B7B7B00FFFF
+      FF00FFFFFF00FFFFFF007B000000FFFF0000FF000000FF00000000000000FFFF
+      FF000000000000000000000000000000000029B529004ABD4A004ABD4A0052C6
+      52004AC64A004AC64A004AC64A0042C642004ACE4A00CEE7CE00FFFFFF00FFFF
+      FF00BDE7BD0029DE290010D6100018CE18000000000000000000000000000000
+      00000000000000000000000000000000000000000000396B42004A8452000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000005A5ABD0039318C00000000004A42B50039318C00000000000000
+      00000000000000000000000000000000000000000000000000007B7B7B000000
+      0000000000007B7B7B0000000000FF000000FF00000000000000FFFFFF00FFFF
+      FF000000000000000000000000000000000031B5310052C652006BC66B006BC6
+      6B006BC66B006BC66B006BC66B005AC65A005AC65A0094CE9400F7FFF700FFFF
+      FF00F7FFF7008CD68C0021CE210018C618000000000000000000000000000000
+      000000000000000000000000000000000000427B4A00639C6B00528C5A000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000004A42B5004A42B5004A42B50000000000000000000000
+      000000000000000000000000000000000000000000007B7B7B0000000000FFFF
+      000000000000000000007B7B7B007B7B7B0000000000FFFFFF00FFFFFF00FFFF
+      FF000000000000000000000000000000000039BD39005AC65A00CEE7CE00F7FF
+      F700F7FFF700F7FFF700F7FFF700F7FFF700F7FFF700F7FFF700FFFFFF00FFFF
+      FF00FFFFFF00F7FFF7008CCE8C0029C629000000000000000000000000000000
+      000000000000426B4A00639C6B0073A5840073A57B007BAD84005A9463000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000004A42B5004A42B5004A42B500000000000000
+      0000000000000000000000000000000000007B7B7B00FFFFFF00FFFF00000000
+      0000FFFF0000000000000000000000000000FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF000000000000000000000000000000000042BD42005AC65A00C6DEC600EFF7
+      EF00DEEFDE00DEEFDE00DEEFDE00DEEFDE00DEEFDE00DEEFDE00FFFFFF00FFFF
+      FF00FFFFFF00EFF7EF007BC67B0029BD29000000000000000000000000000000
+      0000FFFFFF00E7EFE700DEE7DE00DEEFE700EFF7EF00EFF7EF00BDD6C6001831
+      2100000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000004A42B5004A42B5004A42B500000000000000
+      0000000000000000000000000000000000007B7B7B00FFFF0000FFFFFF00FFFF
+      000000000000FFFF000000000000FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF000000000000000000000000000000000052BD52006BCE6B006BCE6B006BC6
+      6B005AC65A005AC65A0052C652004ABD4A0042BD420094C69400F7FFF700FFFF
+      FF00EFF7EF007BBD7B0029BD290029B529000000000000000000000000000000
+      000008180800DEE7DE00EFF7EF00E7EFE700EFF7EF00EFF7EF00BDD6C6000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000004A42B50042399C0000000000000000004A42B5003129
+      7300000000000000000000000000000000007B7B7B00FFFFFF00FFFF0000FFFF
+      FF00FFFF00000000000000000000FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF000000000000000000000000000000000052C6520073CE73006BCE6B0063CE
+      63005AC65A0052C652004AC64A0042BD420052BD5200D6EFD600FFFFFF00FFFF
+      FF00B5D6B50031B5310029B5290029B529000000000000000000000000000000
+      000000000000000000000000000000000000FFFFFF00EFF7EF00BDD6C6000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000004A42B5000000000000000000000000005A5ABD004A42
+      B50000000000000000000000000000000000000000007B7B7B00FFFFFF00FFFF
+      0000FFFFFF0000000000FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00000000000000000000000000000000005AC65A0084D6840073CE73006BCE
+      6B0063CE63005AC65A0052C652005ABD5A00B5D6B500FFFFFF00FFFFFF00CEE7
+      CE005AB55A0029B5290029B5290029B529000000000000000000000000000000
+      00000000000000000000000000000000000000000000DEEFE700BDD6C6000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000000000007B7B7B007B7B
+      7B0000000000FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00000000000000000000000000000000006BC66B008CD68C0084CE840073CE
+      73006BCE6B0063CE63005AC65A0094C69400FFFFFF00EFF7EF00B5D6B50063BD
+      630039BD390039BD390031B5310029B529000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000000000007B7B7B00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00000000000000
+      00000000000000000000000000000000000073CE73009CDE9C0094D694007BCE
+      7B0073CE73006BCE6B0063CE630084C68400CEE7CE009CCE9C005AC65A0052BD
+      52004ABD4A0042BD420039BD390029B529000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000000000007B7B7B00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0000000000FFFF
+      FF007B7B7B000000000000000000000000007BCE8400BDE7BD009CDE9C008CD6
+      8C0084D6840073CE730073CE73006BCE6B006BCE6B0063CE630063CE63005AC6
+      5A005AC65A004AC64A0039BD390029B529000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000000000007B7B7B00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00000000007B7B
+      7B00000000000000000000000000000000000000000084CE84007BCE7B006BC6
+      6B005AC663005AC65A005ABD5A0052BD52004ABD4A004ABD4A004ABD4A0042BD
+      420042B5420031B5310029AD290018A518000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000000000007B7B7B007B7B
+      7B007B7B7B007B7B7B007B7B7B007B7B7B007B7B7B007B7B7B007B7B7B000000
+      000000000000000000000000000000000000424D3E000000000000003E000000
+      2800000040000000500000000100010000000000800200000000000000000000
+      000000000000000000000000FFFFFF00FFFFFFFFFFFFFFFFFFFFFFFFEF7BEF7B
+      FFFFFFFF00000000FFFFFFFF00000000FFFFFFFF00000000E7E7E7E700000000
+      E787E1E700000000E607E067B7C60000E007E00700000000E607E06700000000
+      E787E1E7852D852DE7E7E7E7DFFF19CFFFFFFFFF0A56CB5DFFFFFFFF4E764D6E
+      FFFFFFFF00000000FFFFFFFF00000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFF8FF
+      FFFFFFFFFFFFF07FF7FFFFFFFC0FF03FF3FFC03FFC0FF00FF07FC007F80FE003
+      F03FC007F80FC003F007C007C00FC003F007C00FC00FC007F03FF3FFF80FC007
+      F07FF3FFF80FC003F3FFF3FFFC0FE011F7FFF3FFFC0FF039FFFFFFFFFFFFFE3F
+      FFFFFFFFFFFFFF7FFFFFFFFFFFFFFFFFFFFFFFFFF3FFFFFFF8FFFFFFE1F9F8FF
+      F03FFE3FE023F07FF00FE00FC007F03FE003C007C00FF00FC00380038001E003
+      C00780030000C003C00F80030000C003800F80030003C007C00FE0070007C00F
+      E01FF00F0007C00FFC0FFC03000FE01FFE07FC03801FF03FFFF3FF7FE01FFE3F
+      FFF7FFFFF03FFF7FFFFFFFFFFF7FFFFFFFFFFF1FFFFFEBFFFE7FFE1FFFFF2953
+      FC33F80FFFFF81ECF807F007F00F113FF00F9001E0071BF3E0078041E003CAD7
+      C003C0B1E0031FAD8001E009E01F8D2C0001E003E01FE6DF8003F007C00F8EF3
+      C007F007C00F9F2CC00FF207C00F0D2DC01FF7E7E01F1EF3E03FFBE7FFFF53DF
+      FC7FFC07FFFF2D2DFEFFFFFFFFFFAD2C0000FFFFFFFFFFCF0000FFFFFFFFFF87
+      0000FFFFFFFFC0030000FFFFF31FDE1B0000FFCFF31FC02B0000FF0FF03FC24B
+      0000FC0FF83FA88B0000F00FFC3F150B0000C00FFC1F080B0000F00FFC8F040B
+      0000FC0FF8CF800B0000FF0FFDEFC00B0000FFCFFFFFC0030000FFFFFFFFC007
+      0000FFFFFFFFC00F8000FFFFFFFFC01F00000000000000000000000000000000
+      000000000000}
+  end
+  object SQLGeraMail: TRxQuery
+    DatabaseName = 'DB'
+    RequestLive = True
+    SQL.Strings = (
+      'Select * from EMAIL')
+    Macros = <>
+    Left = 148
+    Top = 2
+    object SQLGeraMailMAILICOD: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'MAILICOD'
+      Origin = 'DB.EMAIL.MAILICOD'
+    end
+    object SQLGeraMailMAILTREMETENTE: TStringField
+      DisplayLabel = 'Remetente'
+      FieldName = 'MAILTREMETENTE'
+      Origin = 'DB.MAIL.MAILTREMETENTE'
+      FixedChar = True
+      Size = 255
+    end
+    object SQLGeraMailMAILTDESTINO: TStringField
+      DisplayLabel = 'Destinat'#225'rio'
+      FieldName = 'MAILTDESTINO'
+      Origin = 'DB.MAIL.MAILTDESTINO'
+      FixedChar = True
+      Size = 255
+    end
+    object SQLGeraMailMAILTASSUNTO: TStringField
+      DisplayLabel = 'Assunto'
+      FieldName = 'MAILTASSUNTO'
+      Origin = 'DB.MAIL.MAILTASSUNTO'
+      FixedChar = True
+      Size = 255
+    end
+    object SQLGeraMailMAILTMENSAGEM: TMemoField
+      DisplayLabel = 'Mensagem'
+      FieldName = 'MAILTMENSAGEM'
+      Origin = 'DB.MAIL.MAILTMENSAGEM'
+      BlobType = ftMemo
+      Size = 10000
+    end
+    object SQLGeraMailMAILDDATA: TDateTimeField
+      DisplayLabel = 'Data'
+      FieldName = 'MAILDDATA'
+      Origin = 'DB.MAIL.MAILDDATA'
+    end
+    object SQLGeraMailMAILTPATHANEXO: TStringField
+      DisplayLabel = 'Anexo'
+      FieldName = 'MAILTPATHANEXO'
+      Origin = 'DB.MAIL.MAILTPATHANEXO'
+      FixedChar = True
+      Size = 255
+    end
+    object SQLGeraMailMAILCSTATUS: TStringField
+      DisplayLabel = 'Enviado'
+      FieldName = 'MAILCSTATUS'
+      Origin = 'DB.MAIL.MAILCSTATUS'
+      FixedChar = True
+      Size = 1
+    end
+  end
+  object DSSQLGeraMail: TDataSource
+    AutoEdit = False
+    DataSet = SQLGeraMail
+    Left = 120
+    Top = 2
+  end
+  object SQLTemp: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'Select MAX(MAILICOD) from Email')
+    Macros = <>
+    Left = 288
+    Top = 2
+  end
+  object OpenDialog: TOpenDialog
+    Filter = 'Todos Arquivos *.*|*.*'
+    InitialDir = 'C:\'
+    Options = [ofHideReadOnly, ofShowHelp, ofFileMustExist, ofShareAware, ofNoNetworkButton, ofEnableSizing]
+    Title = 'Anexar Arquivo'
+    Left = 344
+    Top = 2
+  end
+  object SQLConfigEmail: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'Select * from Empresa where %MFiltro')
+    Macros = <
+      item
+        DataType = ftString
+        Name = 'MFiltro'
+        ParamType = ptInput
+        Value = '0=0'
+      end>
+    Left = 372
+    Top = 2
+    object SQLConfigEmailEMPRA60NOMEFANT: TStringField
+      FieldName = 'EMPRA60NOMEFANT'
+      Origin = 'DB.EMPRESA.EMPRA60NOMEFANT'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLConfigEmailEMPRA50EMAILHOST: TStringField
+      FieldName = 'EMPRA50EMAILHOST'
+      Origin = 'DB.EMPRESA.EMPRA50EMAILHOST'
+      Size = 50
+    end
+    object SQLConfigEmailEMPRIEMAILPORTA: TIntegerField
+      FieldName = 'EMPRIEMAILPORTA'
+      Origin = 'DB.EMPRESA.EMPRIEMAILPORTA'
+    end
+    object SQLConfigEmailEMPRA75EMAILUSUARIO: TStringField
+      FieldName = 'EMPRA75EMAILUSUARIO'
+      Origin = 'DB.EMPRESA.EMPRA75EMAILUSUARIO'
+      Size = 75
+    end
+    object SQLConfigEmailEMPRA50EMAILSENHA: TStringField
+      FieldName = 'EMPRA50EMAILSENHA'
+      Origin = 'DB.EMPRESA.EMPRA50EMAILSENHA'
+      Size = 50
+    end
+    object SQLConfigEmailEMPRA1SSL: TStringField
+      FieldName = 'EMPRA1SSL'
+      Origin = 'DB.EMPRESA.EMPRA1SSL'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLConfigEmailEMPRA1TSL: TStringField
+      FieldName = 'EMPRA1TSL'
+      Origin = 'DB.EMPRESA.EMPRA1TSL'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLConfigEmailEMPRA60EMAILCOPIA: TStringField
+      FieldName = 'EMPRA60EMAILCOPIA'
+      Origin = 'DB.EMPRESA.EMPRA60EMAILCOPIA'
+      Size = 60
+    end
+  end
+  object ACBrMail: TACBrMail
+    Host = '127.0.0.1'
+    Port = '25'
+    SetSSL = False
+    SetTLS = False
+    Attempts = 3
+    DefaultCharset = UTF_8
+    IDECharset = CP1252
+    Left = 509
+    Top = 4
+  end
+end

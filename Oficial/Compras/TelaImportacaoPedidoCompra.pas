@@ -36,10 +36,10 @@ type
     TblQtdeBCDField1: TFloatField;
     TblQtdeBCDField2: TFloatField;
     TblQtdeBCDField3: TFloatField;
-    TblQtdeBCDField4: TBCDField;
+    TblQtdeBCDField4: TFloatField;
     TblQtdeBCDField5: TFloatField;
     TblQtdeBCDField6: TFloatField;
-    TblQtdeBCDField7: TBCDField;
+    TblQtdeBCDField7: TFloatField;
     TblQtdeBCDField8: TFloatField;
     TblQtdeBCDField9: TFloatField;
     TblQtdeBCDField10: TFloatField;
@@ -81,7 +81,7 @@ type
     TblQtdeQ13: TFloatField;
     TblQtdeQ14: TFloatField;
     TblQtdeQ15: TFloatField;
-    TblQtdeQTotal: TBCDField;
+    TblQtdeQTotal: TFloatField;
     SQLTemplatePRODA60DESCR: TStringField;
     SQLTemplatePRODIAGRUPGRADE: TIntegerField;
     SQLTemplateCORICOD: TIntegerField;
@@ -134,7 +134,7 @@ type
     TblQtdeP15: TIntegerField;
     TblQtdePTotal: TIntegerField;
     TblQtdePCITN3QTDBONIF: TFloatField;
-    TblQtdePCITN3PERICM: TBCDField;
+    TblQtdePCITN3PERICM: TFloatField;
     TblQtdePCITN3PERCDESC: TFloatField;
     TblQtdePDCPA13ID: TStringField;
     TblQtdePCITIPOS: TIntegerField;

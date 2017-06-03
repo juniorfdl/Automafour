@@ -252,25 +252,21 @@ inherited FormTelaPedidoParcial: TFormTelaPedidoParcial
       FieldName = 'PRODA60DESCR'
       Size = 60
     end
-    object TblQtdePVITN3QUANT: TBCDField
+    object TblQtdePVITN3QUANT: TFloatField
       FieldName = 'PVITN3QUANT'
-      Size = 3
     end
-    object TblQtdePVITN3VLRUNIT: TBCDField
+    object TblQtdePVITN3VLRUNIT: TFloatField
       DisplayLabel = 'Valor Unit'#225'rio'
       FieldName = 'PVITN3VLRUNIT'
       Origin = 'DB.PEDIDOCOMPRAITEM.PVITN3VLRUNIT'
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
-      Size = 3
     end
-    object TblQtdeVlrTotalItem: TBCDField
+    object TblQtdeVlrTotalItem: TFloatField
       FieldName = 'VlrTotalItem'
-      Size = 3
     end
-    object TblQtdeQTDEATENDIDO: TBCDField
+    object TblQtdeQTDEATENDIDO: TFloatField
       FieldName = 'QTDEATENDIDO'
-      Size = 3
     end
     object TblQtdeCLIEA13ID: TStringField
       FieldName = 'CLIEA13ID'

@@ -25,9 +25,9 @@ type
     SQLConsultaInventarioINVDDATA: TDateTimeField;
     SQLConsultaInventarioINVIPRODPOS: TIntegerField;
     SQLConsultaInventarioPRODICOD: TIntegerField;
-    SQLConsultaInventarioINVICONTAGEM1: TBCDField;
-    SQLConsultaInventarioINVICONTAGEM2: TBCDField;
-    SQLConsultaInventarioINVICONTAGEM3: TBCDField;
+    SQLConsultaInventarioINVICONTAGEM1: TFloatField;
+    SQLConsultaInventarioINVICONTAGEM2: TFloatField;
+    SQLConsultaInventarioINVICONTAGEM3: TFloatField;
     SQLConsultaInventarioPENDENTE: TStringField;
     SQLConsultaInventarioREGISTRO: TDateTimeField;
     SQLConsultaInventarioINVDFECHAMENTO: TDateTimeField;

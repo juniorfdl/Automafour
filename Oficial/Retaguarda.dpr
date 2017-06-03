@@ -181,7 +181,8 @@ uses
   TelaContagemManual in 'Estoque\TelaContagemManual.pas' {FormTelaContagemManual},
   RelatorioDivergenciaInventario in 'Estoque\RelatorioDivergenciaInventario.pas' {FormRelatorioDivergenciaInventario},
   TelaZerarSaldoEstoque in 'Estoque\TelaZerarSaldoEstoque.pas' {FormTelaZeraSaldoEstoque},
-  TelaProdutosSemMovimento in 'Estoque\TelaProdutosSemMovimento.pas' {FormTelaProdutosSemMov};
+  TelaProdutosSemMovimento in 'Estoque\TelaProdutosSemMovimento.pas' {FormTelaProdutosSemMov},
+  TelaConsultaOperacaoEstoque in 'ArquivosComuns\TelaConsultaOperacaoEstoque.pas' {FormTelaConsultaOperacaoEstoque};
 
 {$R *.res}
 

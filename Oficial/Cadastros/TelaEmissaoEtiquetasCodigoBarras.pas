@@ -80,7 +80,7 @@ type
     SQLProdutoPRODA60REFER: TStringField;
     SQLProdutoPRODICODBALANCA: TIntegerField;
     SQLProdutoPRODA60DESCR: TStringField;
-    SQLProdutoPRODN3VLRVENDA: TBCDField;
+    SQLProdutoPRODN3VLRVENDA: TFloatField;
     SQLProdutoGRADICOD: TIntegerField;
     PopupMenuDiversos: TPopupMenu;
     PularnEtiquetas1: TMenuItem;
@@ -93,7 +93,7 @@ type
     BtnIncProdNota: TButton;
     SQLPedidoCompraItem: TRxQuery;
     SQLNotaCompraItem: TRxQuery;
-    SQLProdutoPRODN3VLRVENDAPROM: TBCDField;
+    SQLProdutoPRODN3VLRVENDAPROM: TFloatField;
     SQLProdutoPRODDINIPROMO: TDateTimeField;
     SQLProdutoPRODDFIMPROMO: TDateTimeField;
     TabSheetPedidoVenda: TTabSheet;
@@ -128,7 +128,7 @@ type
     SQLProdutoPRODA15RUA: TStringField;
     SQLProdutoPRODA15PRATEL: TStringField;
     SQLProdutoPRODA60DIMENSAO: TStringField;
-    SQLProdutoPRODN3DIMENTOTAL: TBCDField;
+    SQLProdutoPRODN3DIMENTOTAL: TFloatField;
     TblEtiquetasInfo01EtqBarras: TStringField;
     TblEtiquetasInfo02EtqBarras: TStringField;
     SQLProdutoPRODA30INF01ETQBARRAS: TStringField;

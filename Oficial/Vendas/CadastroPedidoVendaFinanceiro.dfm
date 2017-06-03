@@ -811,18 +811,14 @@ inherited FormCadastroPedidoVendaFinanceiro: TFormCadastroPedidoVendaFinanceiro
       Origin = 'DB.CONTASRECEBER.CTRCDVENC'
       DisplayFormat = 'dd/mm/yyyy'
     end
-    object SQLTemplateCTRCN2VLR: TBCDField
+    object SQLTemplateCTRCN2VLR: TFloatField
       DisplayLabel = 'Valor'
       FieldName = 'CTRCN2VLR'
       Origin = 'DB.CONTASRECEBER.CTRCN2VLR'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplateCTRCN2DESCFIN: TBCDField
+    object SQLTemplateCTRCN2DESCFIN: TFloatField
       FieldName = 'CTRCN2DESCFIN'
       Origin = 'DB.CONTASRECEBER.CTRCN2DESCFIN'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplateNUMEICOD: TIntegerField
       DisplayLabel = 'Numer'#225'rio'
@@ -835,17 +831,13 @@ inherited FormCadastroPedidoVendaFinanceiro: TFormCadastroPedidoVendaFinanceiro
       FieldName = 'PORTICOD'
       Origin = 'DB.CONTASRECEBER.PORTICOD'
     end
-    object SQLTemplateCTRCN2TXJURO: TBCDField
+    object SQLTemplateCTRCN2TXJURO: TFloatField
       FieldName = 'CTRCN2TXJURO'
       Origin = 'DB.CONTASRECEBER.CTRCN2TXJURO'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplateCTRCN2TXMULTA: TBCDField
+    object SQLTemplateCTRCN2TXMULTA: TFloatField
       FieldName = 'CTRCN2TXMULTA'
       Origin = 'DB.CONTASRECEBER.CTRCN2TXMULTA'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplateCTRCA5TIPOPADRAO: TStringField
       FieldName = 'CTRCA5TIPOPADRAO'
@@ -857,29 +849,21 @@ inherited FormCadastroPedidoVendaFinanceiro: TFormCadastroPedidoVendaFinanceiro
       FieldName = 'CTRCDULTREC'
       Origin = 'DB.CONTASRECEBER.CTRCDULTREC'
     end
-    object SQLTemplateCTRCN2TOTREC: TBCDField
+    object SQLTemplateCTRCN2TOTREC: TFloatField
       FieldName = 'CTRCN2TOTREC'
       Origin = 'DB.CONTASRECEBER.CTRCN2TOTREC'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplateCTRCN2TOTJUROREC: TBCDField
+    object SQLTemplateCTRCN2TOTJUROREC: TFloatField
       FieldName = 'CTRCN2TOTJUROREC'
       Origin = 'DB.CONTASRECEBER.CTRCN2TOTJUROREC'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplateCTRCN2TOTMULTAREC: TBCDField
+    object SQLTemplateCTRCN2TOTMULTAREC: TFloatField
       FieldName = 'CTRCN2TOTMULTAREC'
       Origin = 'DB.CONTASRECEBER.CTRCN2TOTMULTAREC'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplateCTRCN2TOTDESCREC: TBCDField
+    object SQLTemplateCTRCN2TOTDESCREC: TFloatField
       FieldName = 'CTRCN2TOTDESCREC'
       Origin = 'DB.CONTASRECEBER.CTRCN2TOTDESCREC'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplateEMPRICODULTREC: TIntegerField
       FieldName = 'EMPRICODULTREC'
@@ -932,11 +916,9 @@ inherited FormCadastroPedidoVendaFinanceiro: TFormCadastroPedidoVendaFinanceiro
       FieldName = 'CTRCDREABILSPC'
       Origin = 'DB.CONTASRECEBER.CTRCDREABILSPC'
     end
-    object SQLTemplateCTRCN2TOTMULTACOBR: TBCDField
+    object SQLTemplateCTRCN2TOTMULTACOBR: TFloatField
       FieldName = 'CTRCN2TOTMULTACOBR'
       Origin = 'DB.CONTASRECEBER.CTRCN2TOTMULTACOBR'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplateBANCA5CODCHQ: TStringField
       FieldName = 'BANCA5CODCHQ'
@@ -1116,25 +1098,17 @@ inherited FormCadastroPedidoVendaFinanceiro: TFormCadastroPedidoVendaFinanceiro
       FixedChar = True
       Size = 1
     end
-    object TblPedidoVendaPDVDN2VLRDESC: TBCDField
+    object TblPedidoVendaPDVDN2VLRDESC: TFloatField
       FieldName = 'PDVDN2VLRDESC'
-      Precision = 15
-      Size = 3
     end
-    object TblPedidoVendaPDVDN2TOTPROD: TBCDField
+    object TblPedidoVendaPDVDN2TOTPROD: TFloatField
       FieldName = 'PDVDN2TOTPROD'
-      Precision = 15
-      Size = 3
     end
-    object TblPedidoVendaPDVDN2TOTPED: TBCDField
+    object TblPedidoVendaPDVDN2TOTPED: TFloatField
       FieldName = 'PDVDN2TOTPED'
-      Precision = 15
-      Size = 3
     end
-    object TblPedidoVendaPDVDN2VLRDESCPROM: TBCDField
+    object TblPedidoVendaPDVDN2VLRDESCPROM: TFloatField
       FieldName = 'PDVDN2VLRDESCPROM'
-      Precision = 15
-      Size = 3
     end
   end
   object DSTblPedidoVenda: TDataSource

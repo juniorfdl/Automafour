@@ -1252,21 +1252,17 @@ inherited FormTelaEmissaoEtiquetasCodigoBarras: TFormTelaEmissaoEtiquetasCodigoB
       FieldName = 'PRODICODBALANCA'
       Origin = 'DB.PRODUTO.PRODICODBALANCA'
     end
-    object SQLProdutoPRODN3VLRVENDA: TBCDField
+    object SQLProdutoPRODN3VLRVENDA: TFloatField
       FieldName = 'PRODN3VLRVENDA'
       Origin = 'DB.PRODUTO.PRODN3VLRVENDA'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoGRADICOD: TIntegerField
       FieldName = 'GRADICOD'
       Origin = 'DB.PRODUTO.GRADICOD'
     end
-    object SQLProdutoPRODN3VLRVENDAPROM: TBCDField
+    object SQLProdutoPRODN3VLRVENDAPROM: TFloatField
       FieldName = 'PRODN3VLRVENDAPROM'
       Origin = 'DB.PRODUTO.PRODN3VLRVENDAPROM'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoPRODDINIPROMO: TDateTimeField
       FieldName = 'PRODDINIPROMO'
@@ -1300,11 +1296,9 @@ inherited FormTelaEmissaoEtiquetasCodigoBarras: TFormTelaEmissaoEtiquetasCodigoB
       FixedChar = True
       Size = 60
     end
-    object SQLProdutoPRODN3DIMENTOTAL: TBCDField
+    object SQLProdutoPRODN3DIMENTOTAL: TFloatField
       FieldName = 'PRODN3DIMENTOTAL'
       Origin = 'DB.PRODUTO.PRODN3DIMENTOTAL'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoPRODA30INF01ETQBARRAS: TStringField
       FieldName = 'PRODA30INF01ETQBARRAS'

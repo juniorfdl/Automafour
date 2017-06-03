@@ -773,7 +773,6 @@ object FormTelaContagemManual: TFormTelaContagemManual
           Color = clWhite
           Expanded = False
           FieldName = 'INVICONTAGEM1'
-          Width = 72
           Visible = True
         end
         item
@@ -1873,29 +1872,23 @@ object FormTelaContagemManual: TFormTelaContagemManual
       FieldName = 'INVIPRODPOS'
       Origin = 'DB.INVENTARIOESTOQUE.INVIPRODPOS'
     end
-    object SQLInventarioINVICONTAGEM1: TBCDField
+    object SQLInventarioINVICONTAGEM1: TFloatField
       DisplayLabel = 'Contagem 1'
       FieldName = 'INVICONTAGEM1'
       Origin = 'DB.INVENTARIOESTOQUE.INVICONTAGEM1'
       DisplayFormat = '###0.000'
-      Precision = 15
-      Size = 3
     end
-    object SQLInventarioINVICONTAGEM2: TBCDField
+    object SQLInventarioINVICONTAGEM2: TFloatField
       DisplayLabel = 'Contagem 2'
       FieldName = 'INVICONTAGEM2'
       Origin = 'DB.INVENTARIOESTOQUE.INVICONTAGEM2'
       DisplayFormat = '###0.000'
-      Precision = 15
-      Size = 3
     end
-    object SQLInventarioINVICONTAGEM3: TBCDField
+    object SQLInventarioINVICONTAGEM3: TFloatField
       DisplayLabel = 'Contagem 3'
       FieldName = 'INVICONTAGEM3'
       Origin = 'DB.INVENTARIOESTOQUE.INVICONTAGEM3'
       DisplayFormat = '###0.000'
-      Precision = 15
-      Size = 3
     end
     object SQLInventarioPENDENTE: TStringField
       FieldName = 'PENDENTE'
@@ -1990,25 +1983,19 @@ object FormTelaContagemManual: TFormTelaContagemManual
       FieldName = 'PRODICOD'
       Origin = 'DB.INVENTARIOESTOQUE.PRODICOD'
     end
-    object SQLConsultaInventarioINVICONTAGEM1: TBCDField
+    object SQLConsultaInventarioINVICONTAGEM1: TFloatField
       FieldName = 'INVICONTAGEM1'
       Origin = 'DB.INVENTARIOESTOQUE.INVICONTAGEM1'
-      Precision = 15
-      Size = 3
     end
-    object SQLConsultaInventarioINVICONTAGEM2: TBCDField
+    object SQLConsultaInventarioINVICONTAGEM2: TFloatField
       FieldName = 'INVICONTAGEM2'
       Origin = 'DB.INVENTARIOESTOQUE.INVICONTAGEM2'
       OnChange = SQLConsultaInventarioINVICONTAGEM2Change
-      Precision = 15
-      Size = 3
     end
-    object SQLConsultaInventarioINVICONTAGEM3: TBCDField
+    object SQLConsultaInventarioINVICONTAGEM3: TFloatField
       FieldName = 'INVICONTAGEM3'
       Origin = 'DB.INVENTARIOESTOQUE.INVICONTAGEM3'
       OnChange = SQLConsultaInventarioINVICONTAGEM3Change
-      Precision = 15
-      Size = 3
     end
     object SQLConsultaInventarioPENDENTE: TStringField
       FieldName = 'PENDENTE'
@@ -2082,23 +2069,17 @@ object FormTelaContagemManual: TFormTelaContagemManual
       FieldName = 'INVIPRODPOS'
       Origin = 'DB.INVENTARIOESTOQUE.INVIPRODPOS'
     end
-    object SQLExcluirInventarioINVICONTAGEM1: TBCDField
+    object SQLExcluirInventarioINVICONTAGEM1: TFloatField
       FieldName = 'INVICONTAGEM1'
       Origin = 'DB.INVENTARIOESTOQUE.INVICONTAGEM1'
-      Precision = 15
-      Size = 3
     end
-    object SQLExcluirInventarioINVICONTAGEM2: TBCDField
+    object SQLExcluirInventarioINVICONTAGEM2: TFloatField
       FieldName = 'INVICONTAGEM2'
       Origin = 'DB.INVENTARIOESTOQUE.INVICONTAGEM2'
-      Precision = 15
-      Size = 3
     end
-    object SQLExcluirInventarioINVICONTAGEM3: TBCDField
+    object SQLExcluirInventarioINVICONTAGEM3: TFloatField
       FieldName = 'INVICONTAGEM3'
       Origin = 'DB.INVENTARIOESTOQUE.INVICONTAGEM3'
-      Precision = 15
-      Size = 3
     end
     object SQLExcluirInventarioPENDENTE: TStringField
       FieldName = 'PENDENTE'
@@ -2144,23 +2125,17 @@ object FormTelaContagemManual: TFormTelaContagemManual
       FieldName = 'PRODICOD'
       Origin = 'DB.PRODUTOSALDO.PRODICOD'
     end
-    object SQLProdutoSaldoPSLDN3QTDE: TBCDField
+    object SQLProdutoSaldoPSLDN3QTDE: TFloatField
       FieldName = 'PSLDN3QTDE'
       Origin = 'DB.PRODUTOSALDO.PSLDN3QTDE'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoSaldoPSLDN3QTDMIN: TBCDField
+    object SQLProdutoSaldoPSLDN3QTDMIN: TFloatField
       FieldName = 'PSLDN3QTDMIN'
       Origin = 'DB.PRODUTOSALDO.PSLDN3QTDMIN'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoSaldoPSLDN3QTDMAX: TBCDField
+    object SQLProdutoSaldoPSLDN3QTDMAX: TFloatField
       FieldName = 'PSLDN3QTDMAX'
       Origin = 'DB.PRODUTOSALDO.PSLDN3QTDMAX'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoSaldoPENDENTE: TStringField
       FieldName = 'PENDENTE'
@@ -2216,11 +2191,9 @@ object FormTelaContagemManual: TFormTelaContagemManual
       FixedChar = True
       Size = 1
     end
-    object SQLUsuarioUSUAN2PERCDESC: TBCDField
+    object SQLUsuarioUSUAN2PERCDESC: TFloatField
       FieldName = 'USUAN2PERCDESC'
       Origin = 'DB.USUARIO.USUAN2PERCDESC'
-      Precision = 15
-      Size = 3
     end
     object SQLUsuarioUSUACVENDCLIBLOQ: TStringField
       FieldName = 'USUACVENDCLIBLOQ'
@@ -2372,29 +2345,23 @@ object FormTelaContagemManual: TFormTelaContagemManual
       FieldName = 'INVIPRODPOS'
       Origin = 'DB.INVENTARIOESTOQUE.INVIPRODPOS'
     end
-    object BCDField1: TBCDField
+    object BCDField1: TFloatField
       DisplayLabel = 'Contagem 1'
       FieldName = 'INVICONTAGEM1'
       Origin = 'DB.INVENTARIOESTOQUE.INVICONTAGEM1'
       DisplayFormat = '###0.00'
-      Precision = 15
-      Size = 3
     end
-    object BCDField2: TBCDField
+    object BCDField2: TFloatField
       DisplayLabel = 'Contagem 2'
       FieldName = 'INVICONTAGEM2'
       Origin = 'DB.INVENTARIOESTOQUE.INVICONTAGEM2'
       DisplayFormat = '###0.00'
-      Precision = 15
-      Size = 3
     end
-    object BCDField3: TBCDField
+    object BCDField3: TFloatField
       DisplayLabel = 'Contagem 3'
       FieldName = 'INVICONTAGEM3'
       Origin = 'DB.INVENTARIOESTOQUE.INVICONTAGEM3'
       DisplayFormat = '###0.00'
-      Precision = 15
-      Size = 3
     end
     object StringField1: TStringField
       FieldName = 'PENDENTE'
@@ -2481,23 +2448,17 @@ object FormTelaContagemManual: TFormTelaContagemManual
       end>
     Left = 345
     Top = 607
-    object SQLTotalContagemTOTAL1: TBCDField
+    object SQLTotalContagemTOTAL1: TFloatField
       FieldName = 'TOTAL1'
       Origin = 'DB.INVENTARIOESTOQUE.INVICONTAGEM1'
-      Precision = 15
-      Size = 3
     end
-    object SQLTotalContagemTOTAL2: TBCDField
+    object SQLTotalContagemTOTAL2: TFloatField
       FieldName = 'TOTAL2'
       Origin = 'DB.INVENTARIOESTOQUE.INVICONTAGEM2'
-      Precision = 15
-      Size = 3
     end
-    object SQLTotalContagemTOTAL3: TBCDField
+    object SQLTotalContagemTOTAL3: TFloatField
       FieldName = 'TOTAL3'
       Origin = 'DB.INVENTARIOESTOQUE.INVICONTAGEM3'
-      Precision = 15
-      Size = 3
     end
     object SQLTotalContagemTOTALCUSTO1: TFloatField
       FieldName = 'TOTALCUSTO1'

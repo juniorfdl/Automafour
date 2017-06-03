@@ -23,7 +23,7 @@ type
     SQLNotaFiscalitemPRODICOD: TIntegerField;
     SQLNotaFiscalitemLOTEA30NRO: TStringField;
     SQLLoteSaldoQtdeNF: TFloatField;
-    SQLNotaFiscalitemQTDENF: TBCDField;
+    SQLNotaFiscalitemQTDENF: TFloatField;
     SQLLoteSaldoSaldoDisponivel: TFloatField;
     procedure DBGridListaKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);

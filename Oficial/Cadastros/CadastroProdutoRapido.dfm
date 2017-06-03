@@ -1157,22 +1157,19 @@ object FormCadastroProdutoRapido: TFormCadastroProdutoRapido
       FixedChar = True
       Size = 15
     end
-    object SQLTemplatePRODN3PESOBRUTO: TBCDField
+    object SQLTemplatePRODN3PESOBRUTO: TFloatField
       FieldName = 'PRODN3PESOBRUTO'
       Origin = 'DB.PRODUTO.PRODN3PESOBRUTO'
-      Size = 3
     end
-    object SQLTemplatePRODN3PESOLIQ: TBCDField
+    object SQLTemplatePRODN3PESOLIQ: TFloatField
       FieldName = 'PRODN3PESOLIQ'
       Origin = 'DB.PRODUTO.PRODN3PESOLIQ'
-      Size = 3
     end
-    object SQLTemplatePRODN3CAPACEMBAL: TBCDField
+    object SQLTemplatePRODN3CAPACEMBAL: TFloatField
       ConstraintErrorMessage = '1'
       FieldName = 'PRODN3CAPACEMBAL'
       Origin = 'DB.PRODUTO.PRODN3CAPACEMBAL'
       OnChange = SQLTemplatePRODN3CAPACEMBALChange
-      Size = 3
     end
     object SQLTemplatePRODDCAD: TDateTimeField
       DisplayLabel = 'Dt.Cadastro'
@@ -1202,14 +1199,13 @@ object FormCadastroProdutoRapido: TFormCadastroProdutoRapido
       DisplayFormat = 'dd/mm/yy'
       EditMask = '!99/99/00;1;_'
     end
-    object SQLTemplatePRODN2COMISVISTA: TBCDField
+    object SQLTemplatePRODN2COMISVISTA: TFloatField
       FieldName = 'PRODN2COMISVISTA'
       Origin = 'DB.PRODUTO.PRODN2COMISVISTA'
       DisplayFormat = '##0.00'
       EditFormat = '##0.00'
-      Size = 3
     end
-    object SQLTemplatePRODN3VLRCOMPRA: TBCDField
+    object SQLTemplatePRODN3VLRCOMPRA: TFloatField
       ConstraintErrorMessage = '1'
       DisplayLabel = 'Valor Compra'
       FieldName = 'PRODN3VLRCOMPRA'
@@ -1217,45 +1213,39 @@ object FormCadastroProdutoRapido: TFormCadastroProdutoRapido
       OnChange = SQLTemplatePRODN3VLRCOMPRAChange
       DisplayFormat = '#,##0.00000'
       EditFormat = '#,##0.00000'
-      Size = 3
     end
-    object SQLTemplatePRODN3VLRCOMPRAMED: TBCDField
+    object SQLTemplatePRODN3VLRCOMPRAMED: TFloatField
       FieldName = 'PRODN3VLRCOMPRAMED'
       Origin = 'DB.PRODUTO.PRODN3VLRCOMPRAMED'
       DisplayFormat = '#,##0.00000'
       EditFormat = '#,##0.00000'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplatePRODN3VLRCUSTO: TBCDField
+    object SQLTemplatePRODN3VLRCUSTO: TFloatField
       ConstraintErrorMessage = '1'
       DisplayLabel = 'Valor Custo'
       FieldName = 'PRODN3VLRCUSTO'
       Origin = 'DB.PRODUTO.PRODN3VLRCUSTO'
       DisplayFormat = '#,##0.00000'
       EditFormat = '#,##0.00000'
-      Size = 3
     end
     object SQLTemplatePRODDIMOBOLIZ: TDateTimeField
       FieldName = 'PRODDIMOBOLIZ'
       Origin = 'DB.PRODUTO.PRODDIMOBOLIZ'
       DisplayFormat = 'dd/mm/yyyy'
     end
-    object SQLTemplatePRODN3VLRVENDA: TBCDField
+    object SQLTemplatePRODN3VLRVENDA: TFloatField
       ConstraintErrorMessage = '1'
       DisplayLabel = 'Vlr.Venda Varejo'
       FieldName = 'PRODN3VLRVENDA'
       Origin = 'DB.PRODUTO.PRODN3VLRVENDA'
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
-      Size = 3
     end
-    object SQLTemplatePRODN3QTDEBAIXA: TBCDField
+    object SQLTemplatePRODN3QTDEBAIXA: TFloatField
       FieldName = 'PRODN3QTDEBAIXA'
       Origin = 'DB.PRODUTO.PRODN3QTDEBAIXA'
       DisplayFormat = '##0.00'
       EditFormat = '##0.00'
-      Size = 3
     end
     object SQLTemplatePRODA60DESCR: TStringField
       ConstraintErrorMessage = '1'
@@ -1265,37 +1255,33 @@ object FormCadastroProdutoRapido: TFormCadastroProdutoRapido
       FixedChar = True
       Size = 60
     end
-    object SQLTemplatePRODN3VLRVENDAPROM: TBCDField
+    object SQLTemplatePRODN3VLRVENDAPROM: TFloatField
       DisplayLabel = 'Vlr.Venda Promo'#231#227'o'
       FieldName = 'PRODN3VLRVENDAPROM'
       Origin = 'DB.PRODUTO.PRODN3VLRVENDAPROM'
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
-      Size = 3
     end
-    object SQLTemplatePRODN3VLRCUSTOMED: TBCDField
+    object SQLTemplatePRODN3VLRCUSTOMED: TFloatField
       FieldName = 'PRODN3VLRCUSTOMED'
       Origin = 'DB.PRODUTO.PRODN3VLRCUSTOMED'
       DisplayFormat = '#,##0.00000'
       EditFormat = '#,##0.00000'
-      Size = 3
     end
-    object SQLTemplatePRODN3PERCIPI: TBCDField
+    object SQLTemplatePRODN3PERCIPI: TFloatField
       ConstraintErrorMessage = '1'
       DisplayLabel = 'IPI %'
       FieldName = 'PRODN3PERCIPI'
       Origin = 'DB.PRODUTO.PRODN3PERCIPI'
       DisplayFormat = '##0.00'
       EditFormat = '##0.00'
-      Size = 3
     end
-    object SQLTemplatePRODN3PERCMARGLUCR: TBCDField
+    object SQLTemplatePRODN3PERCMARGLUCR: TFloatField
       DisplayLabel = 'Marg.Lucro Varejo'
       FieldName = 'PRODN3PERCMARGLUCR'
       Origin = 'DB.PRODUTO.PRODN3PERCMARGLUCR'
       DisplayFormat = '##0.00'
       EditFormat = '##0.00'
-      Size = 3
     end
     object SQLTemplatePRODCATIVO: TStringField
       FieldName = 'PRODCATIVO'
@@ -1328,12 +1314,11 @@ object FormCadastroProdutoRapido: TFormCadastroProdutoRapido
       FieldName = 'REGISTRO'
       Origin = 'DB.PRODUTO.REGISTRO'
     end
-    object SQLTemplatePRODN2COMISPRAZO: TBCDField
+    object SQLTemplatePRODN2COMISPRAZO: TFloatField
       FieldName = 'PRODN2COMISPRAZO'
       Origin = 'DB.PRODUTO.PRODN2COMISPRAZO'
       DisplayFormat = '##0.00'
       EditFormat = '##0.00'
-      Size = 3
     end
     object SQLTemplatePRODIORIGEM: TIntegerField
       ConstraintErrorMessage = '1'
@@ -1364,26 +1349,20 @@ object FormCadastroProdutoRapido: TFormCadastroProdutoRapido
       FieldName = 'PRODIDIASVALIDADE'
       Origin = 'DB.PRODUTO.PRODIDIASVALIDADE'
     end
-    object SQLTemplatePRODN3DOLARCUSTO: TBCDField
+    object SQLTemplatePRODN3DOLARCUSTO: TFloatField
       FieldName = 'PRODN3DOLARCUSTO'
       Origin = 'DB.PRODUTO.PRODN3DOLARCUSTO'
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplatePRODN3DOLARCOMPRA: TBCDField
+    object SQLTemplatePRODN3DOLARCOMPRA: TFloatField
       FieldName = 'PRODN3DOLARCOMPRA'
       Origin = 'DB.PRODUTO.PRODN3DOLARCOMPRA'
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplatePRODN3DOLARVENDA: TBCDField
+    object SQLTemplatePRODN3DOLARVENDA: TFloatField
       FieldName = 'PRODN3DOLARVENDA'
       Origin = 'DB.PRODUTO.PRODN3DOLARVENDA'
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplatePRODITIPOPRODBALAN: TStringField
       FieldName = 'PRODITIPOPRODBALAN'
@@ -1409,13 +1388,11 @@ object FormCadastroProdutoRapido: TFormCadastroProdutoRapido
       FixedChar = True
       Size = 1
     end
-    object SQLTemplatePRODN2PERCFRETE: TBCDField
+    object SQLTemplatePRODN2PERCFRETE: TFloatField
       ConstraintErrorMessage = '1'
       FieldName = 'PRODN2PERCFRETE'
       Origin = 'DB.PRODUTO.PRODN2PERCFRETE'
       OnChange = SQLTemplatePRODN3VLRCOMPRAChange
-      Precision = 15
-      Size = 3
     end
     object SQLTemplatePRODA03GARANTIA: TStringField
       FieldName = 'PRODA03GARANTIA'
@@ -1445,83 +1422,61 @@ object FormCadastroProdutoRapido: TFormCadastroProdutoRapido
       FixedChar = True
       Size = 5
     end
-    object SQLTemplatePRODN2PERDA: TBCDField
+    object SQLTemplatePRODN2PERDA: TFloatField
       FieldName = 'PRODN2PERDA'
       Origin = 'DB.PRODUTO.PRODN2PERDA'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplatePRODN2PIS: TBCDField
+    object SQLTemplatePRODN2PIS: TFloatField
       FieldName = 'PRODN2PIS'
       Origin = 'DB.PRODUTO.PRODN2PIS'
-      Precision = 15
-      Size = 2
     end
-    object SQLTemplatePRODN3ALTURA: TBCDField
+    object SQLTemplatePRODN3ALTURA: TFloatField
       FieldName = 'PRODN3ALTURA'
       Origin = 'DB.PRODUTO.PRODN3ALTURA'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplatePRODN3COMPRIMENTO: TBCDField
+    object SQLTemplatePRODN3COMPRIMENTO: TFloatField
       FieldName = 'PRODN3COMPRIMENTO'
       Origin = 'DB.PRODUTO.PRODN3COMPRIMENTO'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplatePRODN3DIMENTOTAL: TBCDField
+    object SQLTemplatePRODN3DIMENTOTAL: TFloatField
       FieldName = 'PRODN3DIMENTOTAL'
       Origin = 'DB.PRODUTO.PRODN3DIMENTOTAL'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplatePRODN3LARGURA: TBCDField
+    object SQLTemplatePRODN3LARGURA: TFloatField
       FieldName = 'PRODN3LARGURA'
       Origin = 'DB.PRODUTO.PRODN3LARGURA'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplatePRODN2PERCDESP: TBCDField
+    object SQLTemplatePRODN2PERCDESP: TFloatField
       ConstraintErrorMessage = '1'
       FieldName = 'PRODN2PERCDESP'
       Origin = 'DB.PRODUTO.PRODN2PERCDESP'
       OnChange = SQLTemplatePRODN3VLRCOMPRAChange
-      Precision = 15
-      Size = 2
     end
-    object SQLTemplatePRODN2PERCSUBST: TBCDField
+    object SQLTemplatePRODN2PERCSUBST: TFloatField
       ConstraintErrorMessage = '1'
       FieldName = 'PRODN2PERCSUBST'
       Origin = 'DB.PRODUTO.PRODN2PERCSUBST'
       OnChange = SQLTemplatePRODN3VLRCOMPRAChange
-      Precision = 15
-      Size = 2
     end
-    object SQLTemplatePRODN3PERCMARGLUC2: TBCDField
+    object SQLTemplatePRODN3PERCMARGLUC2: TFloatField
       DisplayLabel = 'Marg.Lucro Atacado'
       FieldName = 'PRODN3PERCMARGLUC2'
       Origin = 'DB.PRODUTO.PRODN3PERCMARGLUC2'
       DisplayFormat = '##0.00'
       EditFormat = '##0.00'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplatePRODN3PERCMGLVFIXA: TBCDField
+    object SQLTemplatePRODN3PERCMGLVFIXA: TFloatField
       FieldName = 'PRODN3PERCMGLVFIXA'
       Origin = 'DB.PRODUTO.PRODN3PERCMGLVFIXA'
       OnChange = SQLTemplatePRODN3PERCMGLVFIXAChange
       DisplayFormat = '##0.00'
       EditFormat = '##0.00'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplatePRODN3PERCMGLAFIXA: TBCDField
+    object SQLTemplatePRODN3PERCMGLAFIXA: TFloatField
       FieldName = 'PRODN3PERCMGLAFIXA'
       Origin = 'DB.PRODUTO.PRODN3PERCMGLAFIXA'
       DisplayFormat = '##0.00'
       EditFormat = '##0.00'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplatePRODDULTCOMPRA: TDateTimeField
       FieldName = 'PRODDULTCOMPRA'
@@ -1531,19 +1486,15 @@ object FormCadastroProdutoRapido: TFormCadastroProdutoRapido
       FieldName = 'PRODDULTVENDA'
       Origin = 'DB.PRODUTO.PRODDULTVENDA'
     end
-    object SQLTemplatePRODN3QTDULTCOMPRA: TBCDField
+    object SQLTemplatePRODN3QTDULTCOMPRA: TFloatField
       FieldName = 'PRODN3QTDULTCOMPRA'
       Origin = 'DB.PRODUTO.PRODN3QTDULTCOMPRA'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplatePRODN2PERCDIFICM: TBCDField
+    object SQLTemplatePRODN2PERCDIFICM: TFloatField
       ConstraintErrorMessage = '1'
       FieldName = 'PRODN2PERCDIFICM'
       Origin = 'DB.PRODUTO.PRODN2PERCDIFICM'
       OnChange = SQLTemplatePRODN3VLRCOMPRAChange
-      Precision = 15
-      Size = 2
     end
     object SQLTemplatePRODIPRINCIPAL: TIntegerField
       DisplayLabel = 'Cod.Principal'
@@ -1566,11 +1517,9 @@ object FormCadastroProdutoRapido: TFormCadastroProdutoRapido
       FixedChar = True
       Size = 1
     end
-    object SQLTemplatePRODN3VLRVENDA2: TBCDField
+    object SQLTemplatePRODN3VLRVENDA2: TFloatField
       FieldName = 'PRODN3VLRVENDA2'
       Origin = 'DB.PRODUTO.PRODN3VLRVENDA2'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplatePRODCIMPETIQCDBAR: TStringField
       FieldName = 'PRODCIMPETIQCDBAR'
@@ -1578,11 +1527,9 @@ object FormCadastroProdutoRapido: TFormCadastroProdutoRapido
       FixedChar = True
       Size = 1
     end
-    object SQLTemplatePRODN3QTDVOLUME: TBCDField
+    object SQLTemplatePRODN3QTDVOLUME: TFloatField
       FieldName = 'PRODN3QTDVOLUME'
       Origin = 'DB.PRODUTO.PRODN3QTDVOLUME'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplatePRODCVDESTNEG: TStringField
       FieldName = 'PRODCVDESTNEG'
@@ -1605,19 +1552,17 @@ object FormCadastroProdutoRapido: TFormCadastroProdutoRapido
       EditMask = '99;0;_'
       Size = 2
     end
-    object SQLTemplatePRODN2ALIQCOFINS: TBCDField
+    object SQLTemplatePRODN2ALIQCOFINS: TFloatField
       ConstraintErrorMessage = '1'
       FieldName = 'PRODN2ALIQCOFINS'
       Origin = 'DB.PRODUTO.PRODN2ALIQCOFINS'
       Precision = 9
-      Size = 2
     end
-    object SQLTemplatePRODN2ALIQPIS: TBCDField
+    object SQLTemplatePRODN2ALIQPIS: TFloatField
       ConstraintErrorMessage = '1'
       FieldName = 'PRODN2ALIQPIS'
       Origin = 'DB.PRODUTO.PRODN2ALIQPIS'
       Precision = 9
-      Size = 2
     end
     object SQLTemplatePRODCBLOQVPRAZO: TStringField
       FieldName = 'PRODCBLOQVPRAZO'
@@ -1649,11 +1594,9 @@ object FormCadastroProdutoRapido: TFormCadastroProdutoRapido
       FixedChar = True
       Size = 1
     end
-    object SQLTemplatePRODN2DESCMAX: TBCDField
+    object SQLTemplatePRODN2DESCMAX: TFloatField
       FieldName = 'PRODN2DESCMAX'
       Origin = 'DB.PRODUTO.PRODN2DESCMAX'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplatePRODA20BARRAUNIDADE: TStringField
       FieldName = 'PRODA20BARRAUNIDADE'
@@ -1697,12 +1640,11 @@ object FormCadastroProdutoRapido: TFormCadastroProdutoRapido
       Origin = 'DB.PRODUTO.PRODA3CSTPISENTRADA'
       Size = 3
     end
-    object SQLTemplatePRODN2PERCIPIENTRADA: TBCDField
+    object SQLTemplatePRODN2PERCIPIENTRADA: TFloatField
       FieldName = 'PRODN2PERCIPIENTRADA'
       Origin = 'DB.PRODUTO.PRODN2PERCIPIENTRADA'
       OnChange = SQLTemplatePRODN3VLRCOMPRAChange
       Precision = 9
-      Size = 2
     end
     object SQLTemplatePRODA1CSTSERVICO: TStringField
       FieldName = 'PRODA1CSTSERVICO'
@@ -1730,29 +1672,21 @@ object FormCadastroProdutoRapido: TFormCadastroProdutoRapido
       FixedChar = True
       Size = 1
     end
-    object SQLTemplatePRODN3QTDVENDA2835D: TBCDField
+    object SQLTemplatePRODN3QTDVENDA2835D: TFloatField
       FieldName = 'PRODN3QTDVENDA2835D'
       Origin = 'DB.PRODUTO.PRODN3QTDVENDA2835D'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplatePRODN3QTDVENDA283542D: TBCDField
+    object SQLTemplatePRODN3QTDVENDA283542D: TFloatField
       FieldName = 'PRODN3QTDVENDA283542D'
       Origin = 'DB.PRODUTO.PRODN3QTDVENDA283542D'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplatePRODN2VLRVENDA2835D: TBCDField
+    object SQLTemplatePRODN2VLRVENDA2835D: TFloatField
       FieldName = 'PRODN2VLRVENDA2835D'
       Origin = 'DB.PRODUTO.PRODN2VLRVENDA2835D'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplatePRODN2VLRVENDA283542D: TBCDField
+    object SQLTemplatePRODN2VLRVENDA283542D: TFloatField
       FieldName = 'PRODN2VLRVENDA283542D'
       Origin = 'DB.PRODUTO.PRODN2VLRVENDA283542D'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplatePRODA255DESCRTEC: TMemoField
       FieldName = 'PRODA255DESCRTEC'
@@ -1760,17 +1694,13 @@ object FormCadastroProdutoRapido: TFormCadastroProdutoRapido
       BlobType = ftMemo
       Size = 2000
     end
-    object SQLTemplatePRODN2MGVENDA283542D: TBCDField
+    object SQLTemplatePRODN2MGVENDA283542D: TFloatField
       FieldName = 'PRODN2MGVENDA283542D'
       Origin = 'DB.PRODUTO.PRODN2MGVENDA283542D'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplatePRODN2MGVENDA2835D: TBCDField
+    object SQLTemplatePRODN2MGVENDA2835D: TFloatField
       FieldName = 'PRODN2MGVENDA2835D'
       Origin = 'DB.PRODUTO.PRODN2MGVENDA2835D'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplateTABCEST: TStringField
       FieldName = 'TABCEST'
@@ -1831,11 +1761,9 @@ object FormCadastroProdutoRapido: TFormCadastroProdutoRapido
       FixedChar = True
       Size = 60
     end
-    object SQLIcmsICMSN2ALIQUOTA: TBCDField
+    object SQLIcmsICMSN2ALIQUOTA: TFloatField
       FieldName = 'ICMSN2ALIQUOTA'
       Origin = 'DB.ICMS.ICMSN2ALIQUOTA'
-      Precision = 15
-      Size = 3
     end
     object SQLIcmsICMSICODSITTRIB: TIntegerField
       FieldName = 'ICMSICODSITTRIB'
@@ -1924,23 +1852,17 @@ object FormCadastroProdutoRapido: TFormCadastroProdutoRapido
       FieldName = 'PRODICOD'
       Origin = 'DB.PRODUTOSALDO.PRODICOD'
     end
-    object SQLProdutoSaldoNovoPSLDN3QTDE: TBCDField
+    object SQLProdutoSaldoNovoPSLDN3QTDE: TFloatField
       FieldName = 'PSLDN3QTDE'
       Origin = 'DB.PRODUTOSALDO.PSLDN3QTDE'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoSaldoNovoPSLDN3QTDMIN: TBCDField
+    object SQLProdutoSaldoNovoPSLDN3QTDMIN: TFloatField
       FieldName = 'PSLDN3QTDMIN'
       Origin = 'DB.PRODUTOSALDO.PSLDN3QTDMIN'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoSaldoNovoPSLDN3QTDMAX: TBCDField
+    object SQLProdutoSaldoNovoPSLDN3QTDMAX: TFloatField
       FieldName = 'PSLDN3QTDMAX'
       Origin = 'DB.PRODUTOSALDO.PSLDN3QTDMAX'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoSaldoNovoPENDENTE: TStringField
       FieldName = 'PENDENTE'

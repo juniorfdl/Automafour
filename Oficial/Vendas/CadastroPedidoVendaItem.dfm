@@ -1373,41 +1373,33 @@ inherited FormCadastroPedidoVendaItem: TFormCadastroPedidoVendaItem
       Origin = 'DB.PEDIDOVENDAITEM.PRODICOD'
       OnChange = SQLTemplatePRODICODChange
     end
-    object SQLTemplatePVITN3QUANT: TBCDField
+    object SQLTemplatePVITN3QUANT: TFloatField
       DisplayLabel = 'Qtde'
       FieldName = 'PVITN3QUANT'
       Origin = 'DB.PEDIDOVENDAITEM.PVITN3QUANT'
       OnChange = SQLTemplatePVITN3QUANTChange
       DisplayFormat = '#,##0.000'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplatePVITN2VLRUNIT: TBCDField
+    object SQLTemplatePVITN2VLRUNIT: TFloatField
       DisplayLabel = 'Vlr Unit'#225'rio'
       FieldName = 'PVITN2VLRUNIT'
       Origin = 'DB.PEDIDOVENDAITEM.PVITN2VLRUNIT'
       OnChange = SQLTemplatePVITN2VLRUNITChange
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplatePVITN2PERCDESC: TBCDField
+    object SQLTemplatePVITN2PERCDESC: TFloatField
       DisplayLabel = '% Desconto'
       FieldName = 'PVITN2PERCDESC'
       Origin = 'DB.PEDIDOVENDAITEM.PVITN2PERCDESC'
       OnChange = SQLTemplatePVITN2PERCDESCChange
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplatePVITN2VLRDESC: TBCDField
+    object SQLTemplatePVITN2VLRDESC: TFloatField
       DisplayLabel = 'Vlr Desconto'
       FieldName = 'PVITN2VLRDESC'
       Origin = 'DB.PEDIDOVENDAITEM.PVITN2VLRDESC'
       OnChange = SQLTemplatePVITN2VLRDESCChange
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplateREGISTRO: TDateTimeField
       FieldName = 'REGISTRO'
@@ -1439,11 +1431,10 @@ inherited FormCadastroPedidoVendaItem: TFormCadastroPedidoVendaItem
       Visible = False
       Calculated = True
     end
-    object SQLTemplateTotalItemCalc: TBCDField
+    object SQLTemplateTotalItemCalc: TFloatField
       FieldKind = fkCalculated
       FieldName = 'TotalItemCalc'
       Visible = False
-      Size = 3
       Calculated = True
     end
     object SQLTemplateReferenciaLookUp: TStringField
@@ -1453,12 +1444,10 @@ inherited FormCadastroPedidoVendaItem: TFormCadastroPedidoVendaItem
       Size = 60
       Calculated = True
     end
-    object SQLTemplatePVITN3QUANTVEND: TBCDField
+    object SQLTemplatePVITN3QUANTVEND: TFloatField
       FieldName = 'PVITN3QUANTVEND'
       Origin = 'DB.PEDIDOVENDAITEM.PVITN3QUANTVEND'
       DisplayFormat = '#,##0.000'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplatePDVDA60OBS: TStringField
       FieldName = 'PDVDA60OBS'
@@ -1466,11 +1455,9 @@ inherited FormCadastroPedidoVendaItem: TFormCadastroPedidoVendaItem
       FixedChar = True
       Size = 60
     end
-    object SQLTemplatePVITN2PERCCOMIS: TBCDField
+    object SQLTemplatePVITN2PERCCOMIS: TFloatField
       FieldName = 'PVITN2PERCCOMIS'
       Origin = 'DB.PEDIDOVENDAITEM.PVITN2PERCCOMIS'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplatePDVDA255OBS1: TStringField
       FieldName = 'PDVDA255OBS1'
@@ -1628,19 +1615,15 @@ inherited FormCadastroPedidoVendaItem: TFormCadastroPedidoVendaItem
       FieldName = 'PRODICODFILHO'
       Origin = 'DB.PRODVENDITEMCOMP.PRODICODFILHO'
     end
-    object SQLComposicaoItemPedidoPVCON3QUANT: TBCDField
+    object SQLComposicaoItemPedidoPVCON3QUANT: TFloatField
       DisplayLabel = 'Qtde'
       FieldName = 'PVCON3QUANT'
       Origin = 'DB.PRODVENDITEMCOMP.PVCON3QUANT'
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
-    object SQLComposicaoItemPedidoPVCON2VLRUNIT: TBCDField
+    object SQLComposicaoItemPedidoPVCON2VLRUNIT: TFloatField
       FieldName = 'PVCON2VLRUNIT'
       Origin = 'DB.PRODVENDITEMCOMP.PVCON2VLRUNIT'
-      Precision = 15
-      Size = 2
     end
     object SQLComposicaoItemPedidoPVCOA254OBS: TStringField
       FieldName = 'PVCOA254OBS'
@@ -1665,17 +1648,13 @@ inherited FormCadastroPedidoVendaItem: TFormCadastroPedidoVendaItem
       Size = 60
       Calculated = True
     end
-    object SQLComposicaoItemPedidoPVCON2PERCDESC: TBCDField
+    object SQLComposicaoItemPedidoPVCON2PERCDESC: TFloatField
       FieldName = 'PVCON2PERCDESC'
       Origin = 'DB.PEDVENDITEMCOMP.PVCON2PERCDESC'
-      Precision = 15
-      Size = 2
     end
-    object SQLComposicaoItemPedidoPVCON2VLRDESC: TBCDField
+    object SQLComposicaoItemPedidoPVCON2VLRDESC: TFloatField
       FieldName = 'PVCON2VLRDESC'
       Origin = 'DB.PEDVENDITEMCOMP.PVCON2VLRDESC'
-      Precision = 15
-      Size = 2
     end
   end
   object DSSQLComposicaoItemPedido: TDataSource
@@ -1702,12 +1681,10 @@ inherited FormCadastroPedidoVendaItem: TFormCadastroPedidoVendaItem
       end>
     Left = 40
     Top = 280
-    object SQLTotalQdteTOTALQTDEITEM: TBCDField
+    object SQLTotalQdteTOTALQTDEITEM: TFloatField
       FieldName = 'TOTALQTDEITEM'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN3QTDEMBAL'
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
   end
   object DSSQLTotalQdte: TDataSource

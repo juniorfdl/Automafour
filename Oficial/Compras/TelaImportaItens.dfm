@@ -233,23 +233,17 @@ object FormTelaImportaItens: TFormTelaImportaItens
       FieldName = 'PRODICOD'
       Origin = 'DB.INVENTARIOESTOQUE.PRODICOD'
     end
-    object SQLConsultaInventarioINVICONTAGEM1: TBCDField
+    object SQLConsultaInventarioINVICONTAGEM1: TFloatField
       FieldName = 'INVICONTAGEM1'
       Origin = 'DB.INVENTARIOESTOQUE.INVICONTAGEM1'
-      Precision = 15
-      Size = 3
     end
-    object SQLConsultaInventarioINVICONTAGEM2: TBCDField
+    object SQLConsultaInventarioINVICONTAGEM2: TFloatField
       FieldName = 'INVICONTAGEM2'
       Origin = 'DB.INVENTARIOESTOQUE.INVICONTAGEM2'
-      Precision = 15
-      Size = 3
     end
-    object SQLConsultaInventarioINVICONTAGEM3: TBCDField
+    object SQLConsultaInventarioINVICONTAGEM3: TFloatField
       FieldName = 'INVICONTAGEM3'
       Origin = 'DB.INVENTARIOESTOQUE.INVICONTAGEM3'
-      Precision = 15
-      Size = 3
     end
     object SQLConsultaInventarioINVDFECHAMENTO: TDateTimeField
       FieldName = 'INVDFECHAMENTO'

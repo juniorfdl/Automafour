@@ -14,10 +14,10 @@ type
     TblQtde: TMemoryTable;
     TblQtdePRODICOD: TIntegerField;
     TblQtdePRODA60DESCR: TStringField;
-    TblQtdePVITN3VLRUNIT: TBCDField;
-    TblQtdePVITN3QUANT: TBCDField;
-    TblQtdeVlrTotalItem: TBCDField;
-    TblQtdeQTDEATENDIDO: TBCDField;
+    TblQtdePVITN3VLRUNIT: TFloatField;
+    TblQtdePVITN3QUANT: TFloatField;
+    TblQtdeVlrTotalItem: TFloatField;
+    TblQtdeQTDEATENDIDO: TFloatField;
     DSTblQtde: TDataSource;
     BtnOk: TSpeedButton;
     Label1: TLabel;
