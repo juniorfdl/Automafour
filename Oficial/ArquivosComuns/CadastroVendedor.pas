@@ -17,8 +17,8 @@ type
     DBEdit2: TDBEdit;
     SQLTemplateVENDICOD: TIntegerField;
     SQLTemplateVENDA60NOME: TStringField;
-    SQLTemplateVENDN2COMISV: TBCDField;
-    SQLTemplateVENDN2COMISP: TBCDField;
+    SQLTemplateVENDN2COMISV: TFloatField;
+    SQLTemplateVENDN2COMISP: TFloatField;
     SQLTemplateVENDCTIPCOMIS: TStringField;
     SQLTemplateVENDCCOMISACRESC: TStringField;
     SQLTemplatePENDENTE: TStringField;
@@ -100,13 +100,13 @@ type
     TblBanco: TTable;
     TblBancoBANCA5COD: TStringField;
     TblBancoBANCA60NOME: TStringField;
-    SQLTemplateVENDN2PERCFIDEL: TBCDField;
+    SQLTemplateVENDN2PERCFIDEL: TFloatField;
     Label9: TLabel;
     DBEdit7: TDBEdit;
     Label16: TLabel;
     DBEdit12: TDBEdit;
     SQLTemplateVENDIDIASVALFIDEL: TIntegerField;
-    SQLTemplateVENDN2PERCIRRF: TBCDField;
+    SQLTemplateVENDN2PERCIRRF: TFloatField;
     Label17: TLabel;
     DBEditComissao: TDBEdit;
     ComboUF: TRxDBComboBox;
@@ -119,7 +119,7 @@ type
     SQLTemplateVENDA30SENHA: TStringField;
     Label20: TLabel;
     DBEdit14: TDBEdit;
-    SQLTemplateVENDN2FLEX: TBCDField;
+    SQLTemplateVENDN2FLEX: TFloatField;
     procedure FormCreate(Sender: TObject);
     procedure DSTemplateDataChange(Sender: TObject; Field: TField);
     procedure AcessaBancoClick(Sender: TObject);

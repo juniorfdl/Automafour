@@ -18,7 +18,7 @@ type
     SQLTemplatePRODICOD: TIntegerField;
     SQLTemplatePENDENTE: TStringField;
     SQLTemplateREGISTRO: TDateTimeField;
-    SQLTemplateMVDIN3QTD: TBCDField;
+    SQLTemplateMVDIN3QTD: TFloatField;
     SQLTemplateProdutoLookup: TStringField;
     SQLTemplateLOTEA30NRO: TStringField;
     MnImprimirItens: TMenuItem;
@@ -67,7 +67,7 @@ type
     SQLItensMVDIIITEM: TIntegerField;
     SQLItensPRODICOD: TIntegerField;
     SQLItensProdutoLookup: TStringField;
-    SQLItensMVDIN3QTD: TBCDField;
+    SQLItensMVDIN3QTD: TFloatField;
     SQLItensPENDENTE: TStringField;
     SQLItensREGISTRO: TDateTimeField;
     SQLItensLOTEA30NRO: TStringField;
@@ -87,8 +87,8 @@ type
     SQLGeral: TRxQuery;
     DBEditQtde: TEvDBNumEdit;
     SQLTemplateReferenciaLookup: TStringField;
-    SQLTemplatePRODN3VLRCOMPRA: TBCDField;
-    SQLTemplatePRODN3VLRVENDA: TBCDField;
+    SQLTemplatePRODN3VLRCOMPRA: TFloatField;
+    SQLTemplatePRODN3VLRVENDA: TFloatField;
     DBEdit1: TDBEdit;
     DBEditCompra: TEvDBNumEdit;
     Label3: TLabel;

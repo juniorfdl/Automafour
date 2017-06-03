@@ -742,19 +742,15 @@ inherited FormCadastroCurriculum: TFormCadastroCurriculum
       Origin = 'DB.CURRICULUM.CUVIA30SETOR'
       Size = 30
     end
-    object SQLTemplateCUVIN2ULTSALARIO: TBCDField
+    object SQLTemplateCUVIN2ULTSALARIO: TFloatField
       DisplayLabel = 'Vlr.Ult.Salario'
       FieldName = 'CUVIN2ULTSALARIO'
       Origin = 'DB.CURRICULUM.CUVIN2ULTSALARIO'
-      Precision = 15
-      Size = 2
     end
-    object SQLTemplateCUVIN2PRETSALARIO: TBCDField
+    object SQLTemplateCUVIN2PRETSALARIO: TFloatField
       DisplayLabel = 'Vlr.Pret.Salarial'
       FieldName = 'CUVIN2PRETSALARIO'
       Origin = 'DB.CURRICULUM.CUVIN2PRETSALARIO'
-      Precision = 15
-      Size = 2
     end
     object SQLTemplateCUVITEMPRESAS: TMemoField
       FieldName = 'CUVITEMPRESAS'

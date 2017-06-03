@@ -13,10 +13,10 @@ type
   TFormCadastroICMS = class(TFormCadastroTemplate)
     SQLTemplateICMSICOD: TIntegerField;
     SQLTemplateICMSA60DESCR: TStringField;
-    SQLTemplateICMSN2ALIQUOTA: TBCDField;
+    SQLTemplateICMSN2ALIQUOTA: TFloatField;
     SQLTemplateICMSA5TOTECF: TStringField;
-    SQLTemplateICMSN2PERCSUBSTSAI: TBCDField;
-    SQLTemplateICMSN2PERCSUBSTENT: TBCDField;
+    SQLTemplateICMSN2PERCSUBSTSAI: TFloatField;
+    SQLTemplateICMSN2PERCSUBSTENT: TFloatField;
     SQLTemplateICMSICODSITTRIB: TIntegerField;
     Label1: TLabel;
     DBEdit1: TDBEdit;
@@ -36,11 +36,11 @@ type
     DBEdit9: TDBEdit;
     Label10: TLabel;
     DBEdit10: TDBEdit;
-    SQLTemplateICMSN2REDBASEICMS: TBCDField;
+    SQLTemplateICMSN2REDBASEICMS: TFloatField;
     Label11: TLabel;
     DBEdit12: TDBEdit;
     Label12: TLabel;
-    SQLTemplateICMSN2ICMSM1: TBCDField;
+    SQLTemplateICMSN2ICMSM1: TFloatField;
     Label68: TLabel;
     ComboSitTrib: TRxDBComboBox;
     EvDBNumEdit1: TEvDBNumEdit;

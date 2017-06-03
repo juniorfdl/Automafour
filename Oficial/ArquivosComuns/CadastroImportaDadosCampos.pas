@@ -47,14 +47,14 @@ type
     SQLClienteCLIEA8CEPRES: TStringField;
     SQLClienteCLIEA60EMAIL: TStringField;
     SQLClienteCLIEA60URL: TStringField;
-    SQLClienteCLIEN2RENDA: TBCDField;
+    SQLClienteCLIEN2RENDA: TFloatField;
     SQLClienteCLIEA60NOMEPAI: TStringField;
     SQLClienteCLIEA60NOMEMAE: TStringField;
     SQLClienteCLIEDNASC: TDateTimeField;
     SQLClienteCLIECESTADOCIVIL: TStringField;
     SQLClienteCLIEA60CONJUGE: TStringField;
     SQLClienteCLIEA60CONJUGEMAE: TStringField;
-    SQLClienteCLIEN2CONJUGERENDA: TBCDField;
+    SQLClienteCLIEN2CONJUGERENDA: TFloatField;
     SQLClienteCLIEDNASCCONJUGE: TDateTimeField;
     SQLClienteCLIEA60CONJUGEEMPR: TStringField;
     SQLClienteCLIEA15CONJFONEMPR: TStringField;
@@ -74,7 +74,7 @@ type
     SQLClienteCLIEICOD: TIntegerField;
     SQLClienteCLIEA60CONTATO: TStringField;
     SQLClienteCLIEA60PROFISSAO: TStringField;
-    SQLClienteCLIEN2LIMITECRED: TBCDField;
+    SQLClienteCLIEN2LIMITECRED: TFloatField;
     SQLClienteBANCA5COD: TStringField;
     SQLClienteCLIEA5AGENCIA: TStringField;
     SQLClienteCLIEA10CONTA: TStringField;

@@ -6,7 +6,8 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, TelaGeralTEMPLATE, Buttons, jpeg, ExtCtrls, DBCtrls, StdCtrls,
   ComCtrls, Grids, DBGrids, DB, DBTables, Mask, ToolEdit, CurrEdit, RxQuery,
-  RxLookup, RXCtrls, Menus, VarSys, FormResources, IniFiles;
+  RxLookup, RXCtrls, Menus, VarSys, FormResources, IniFiles,
+  AdvOfficeStatusBar, AdvOfficeStatusBarStylers;
 
 type
   TFormTelaEmissaoEtiquetasCodigoBarras = class(TFormTelaGeralTEMPLATE)
@@ -80,7 +81,7 @@ type
     SQLProdutoPRODA60REFER: TStringField;
     SQLProdutoPRODICODBALANCA: TIntegerField;
     SQLProdutoPRODA60DESCR: TStringField;
-    SQLProdutoPRODN3VLRVENDA: TBCDField;
+    SQLProdutoPRODN3VLRVENDA: TFloatField;
     SQLProdutoGRADICOD: TIntegerField;
     LabelDiversos: TRxSpeedButton;
     PopupMenuDiversos: TPopupMenu;
@@ -94,7 +95,7 @@ type
     BtnIncProdNota: TButton;
     SQLPedidoCompraItem: TRxQuery;
     SQLNotaCompraItem: TRxQuery;
-    SQLProdutoPRODN3VLRVENDAPROM: TBCDField;
+    SQLProdutoPRODN3VLRVENDAPROM: TFloatField;
     SQLProdutoPRODDINIPROMO: TDateTimeField;
     SQLProdutoPRODDFIMPROMO: TDateTimeField;
     TabSheetPedidoVenda: TTabSheet;
@@ -130,7 +131,7 @@ type
     SQLProdutoPRODA15RUA: TStringField;
     SQLProdutoPRODA15PRATEL: TStringField;
     SQLProdutoPRODA60DIMENSAO: TStringField;
-    SQLProdutoPRODN3DIMENTOTAL: TBCDField;
+    SQLProdutoPRODN3DIMENTOTAL: TFloatField;
     TblEtiquetasInfo01EtqBarras: TStringField;
     TblEtiquetasInfo02EtqBarras: TStringField;
     SQLProdutoPRODA30INF01ETQBARRAS: TStringField;

@@ -116,10 +116,8 @@ inherited FormRelatorioVendasColecao: TFormRelatorioVendasColecao
     object SQLVendaColecaoTOTAL: TFloatField
       FieldName = 'TOTAL'
     end
-    object SQLVendaColecaoQTDETOTAL: TBCDField
+    object SQLVendaColecaoQTDETOTAL: TFloatField
       FieldName = 'QTDETOTAL'
-      Precision = 15
-      Size = 3
     end
   end
   object Report: TCrpe

@@ -75,14 +75,14 @@ inherited FormCadastroIcmsUF: TFormCadastroIcmsUF
                   item
                     Expanded = False
                     FieldName = 'NCMA30CODIGO'
-                    Title.Caption = 'C'#243'd. NCM'
+                    Title.Caption = 'Cód. NCM'
                     Width = 100
                     Visible = True
                   end
                   item
                     Expanded = False
                     FieldName = 'ICMUN2ALIQUOTA'
-                    Title.Caption = 'Al'#237'quota UF'
+                    Title.Caption = 'Alíquota UF'
                     Width = 75
                     Visible = True
                   end
@@ -157,7 +157,7 @@ inherited FormCadastroIcmsUF: TFormCadastroIcmsUF
               Top = 175
               Width = 79
               Height = 13
-              Caption = 'Al'#237'quota ICMS'
+              Caption = 'Alíquota ICMS'
               FocusControl = DBEdit4
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 8404992
@@ -185,7 +185,7 @@ inherited FormCadastroIcmsUF: TFormCadastroIcmsUF
               Top = 175
               Width = 98
               Height = 13
-              Caption = 'Red. Base C'#225'lculo'
+              Caption = 'Red. Base Cálculo'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 8404992
               Font.Height = -11
@@ -199,8 +199,8 @@ inherited FormCadastroIcmsUF: TFormCadastroIcmsUF
               Width = 512
               Height = 13
               Caption = 
-                'Situa'#231#227'o Tributaria para pessoa F'#205'SICA (usa a do cadastro do pro' +
-                'duto se n'#227'o especificada)'
+                'Situação Tributaria para pessoa FÍSICA (usa a do cadastro do pro' +
+                'duto se não especificada)'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 8404992
               Font.Height = -11
@@ -240,7 +240,7 @@ inherited FormCadastroIcmsUF: TFormCadastroIcmsUF
               Top = 92
               Width = 24
               Height = 13
-              Caption = 'C'#243'd.'
+              Caption = 'Cód.'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 8404992
               Font.Height = -11
@@ -254,7 +254,7 @@ inherited FormCadastroIcmsUF: TFormCadastroIcmsUF
               Width = 470
               Height = 13
               Caption = 
-                'Descri'#231#227'o do Produto  (somente para casos espec'#237'ficos a um deter' +
+                'Descrição do Produto  (somente para casos específicos a um deter' +
                 'minado produto)'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 8404992
@@ -269,8 +269,8 @@ inherited FormCadastroIcmsUF: TFormCadastroIcmsUF
               Width = 529
               Height = 13
               Caption = 
-                'Situa'#231#227'o Tributaria para pessoa JUR'#205'DICA (usa a do cadastro do p' +
-                'roduto se n'#227'o especificada)'
+                'Situação Tributaria para pessoa JURÍDICA (usa a do cadastro do p' +
+                'roduto se não especificada)'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 8404992
               Font.Height = -11
@@ -325,7 +325,7 @@ inherited FormCadastroIcmsUF: TFormCadastroIcmsUF
               Top = 48
               Width = 119
               Height = 13
-              Caption = 'Regime Tribututa'#231#227'o'
+              Caption = 'Regime Tribututação'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 8404992
               Font.Height = -11
@@ -393,42 +393,42 @@ inherited FormCadastroIcmsUF: TFormCadastroIcmsUF
               Items.Strings = (
                 '00   - Tributada integralmente'
                 
-                  '10   - Tributada e com cobran'#231'a do ICMS por substitui'#231#227'o tribut'#225 +
+                  '10   - Tributada e com cobrança do ICMS por substituição tributá' +
                   'ria'
-                '20   - Com redu'#231#227'o de base de c'#225'lculo'
+                '20   - Com redução de base de cálculo'
                 
-                  '30   - Isenta ou n'#227'o tributada e com cobran'#231'a do ICMS por substi' +
-                  'tui'#231#227'o tribut'#225'ria'
+                  '30   - Isenta ou não tributada e com cobrança do ICMS por substi' +
+                  'tuição tributária'
                 '40   - Isenta'
-                '41   - N'#227'o tributada'
-                '50   - Suspens'#227'o'
+                '41   - Não tributada'
+                '50   - Suspensão'
                 '51   - Diferimento'
-                '60   - ICMS cobrado anteriormente por substitui'#231#227'o tribut'#225'ria'
+                '60   - ICMS cobrado anteriormente por substituição tributária'
                 
-                  '70   - Com redu'#231#227'o de base de c'#225'lculo e cobran'#231'a do ICMS por sub' +
-                  'stitui'#231#227'o tribut'#225'ria'
+                  '70   - Com redução de base de cálculo e cobrança do ICMS por sub' +
+                  'stituição tributária'
                 '90   - Outros '
                 
-                  '101 - Tributada pelo Simples Nacional com permiss'#227'o de cr'#233'dito. ' +
+                  '101 - Tributada pelo Simples Nacional com permissão de crédito. ' +
                   '(v.2.0) '
-                '102 - Tributada pelo Simples Nacional sem permiss'#227'o de cr'#233'dito.'
+                '102 - Tributada pelo Simples Nacional sem permissão de crédito.'
                 
-                  '103 - Isen'#231#227'o do ICMS no Simples Nacional para faixa de receita ' +
+                  '103 - Isenção do ICMS no Simples Nacional para faixa de receita ' +
                   'bruta.'
                 '300 - Imune.'
-                '400 - N'#227'o tributada pelo Simples Nacional (v.2.0)'
+                '400 - Não tributada pelo Simples Nacional (v.2.0)'
                 
-                  '201 - Tributada pelo Simples Nacional com permiss'#227'o de cr'#233'dito e' +
-                  ' com cobran'#231'a do ICMS por Substitui'#231#227'o Tribut'#225'ria;'
+                  '201 - Tributada pelo Simples Nacional com permissão de crédito e' +
+                  ' com cobrança do ICMS por Substituição Tributária;'
                 
-                  '202 - Tributada pelo Simples Nacional sem permiss'#227'o de cr'#233'dito e' +
-                  ' com cobran'#231'a do ICMS por Substitui'#231#227'o Tribut'#225'ria;'
+                  '202 - Tributada pelo Simples Nacional sem permissão de crédito e' +
+                  ' com cobrança do ICMS por Substituição Tributária;'
                 
-                  '203 - Isen'#231#227'o do ICMS nos Simples Nacional para faixa de receita' +
-                  ' bruta e com cobran'#231'a do ICMS por Substitui'#231#227'o Tribut'#225'ria;'
+                  '203 - Isenção do ICMS nos Simples Nacional para faixa de receita' +
+                  ' bruta e com cobrança do ICMS por Substituição Tributária;'
                 
-                  '500 - ICMS cobrado anteriormente por substitui'#231#227'o tribut'#225'ria (su' +
-                  'bstitu'#237'do) ou por antecipa'#231#227'o; '
+                  '500 - ICMS cobrado anteriormente por substituição tributária (su' +
+                  'bstituído) ou por antecipação; '
                 '900 - Outros')
               ParentFont = False
               ParentShowHint = False
@@ -494,42 +494,42 @@ inherited FormCadastroIcmsUF: TFormCadastroIcmsUF
               Items.Strings = (
                 '00   - Tributada integralmente'
                 
-                  '10   - Tributada e com cobran'#231'a do ICMS por substitui'#231#227'o tribut'#225 +
+                  '10   - Tributada e com cobrança do ICMS por substituição tributá' +
                   'ria'
-                '20   - Com redu'#231#227'o de base de c'#225'lculo'
+                '20   - Com redução de base de cálculo'
                 
-                  '30   - Isenta ou n'#227'o tributada e com cobran'#231'a do ICMS por substi' +
-                  'tui'#231#227'o tribut'#225'ria'
+                  '30   - Isenta ou não tributada e com cobrança do ICMS por substi' +
+                  'tuição tributária'
                 '40   - Isenta'
-                '41   - N'#227'o tributada'
-                '50   - Suspens'#227'o'
+                '41   - Não tributada'
+                '50   - Suspensão'
                 '51   - Diferimento'
-                '60   - ICMS cobrado anteriormente por substitui'#231#227'o tribut'#225'ria'
+                '60   - ICMS cobrado anteriormente por substituição tributária'
                 
-                  '70   - Com redu'#231#227'o de base de c'#225'lculo e cobran'#231'a do ICMS por sub' +
-                  'stitui'#231#227'o tribut'#225'ria'
+                  '70   - Com redução de base de cálculo e cobrança do ICMS por sub' +
+                  'stituição tributária'
                 '90   - Outros '
                 
-                  '101 - Tributada pelo Simples Nacional com permiss'#227'o de cr'#233'dito. ' +
+                  '101 - Tributada pelo Simples Nacional com permissão de crédito. ' +
                   '(v.2.0) '
-                '102 - Tributada pelo Simples Nacional sem permiss'#227'o de cr'#233'dito.'
+                '102 - Tributada pelo Simples Nacional sem permissão de crédito.'
                 
-                  '103 - Isen'#231#227'o do ICMS no Simples Nacional para faixa de receita ' +
+                  '103 - Isenção do ICMS no Simples Nacional para faixa de receita ' +
                   'bruta.'
                 '300 - Imune.'
-                '400 - N'#227'o tributada pelo Simples Nacional (v.2.0)'
+                '400 - Não tributada pelo Simples Nacional (v.2.0)'
                 
-                  '201 - Tributada pelo Simples Nacional com permiss'#227'o de cr'#233'dito e' +
-                  ' com cobran'#231'a do ICMS por Substitui'#231#227'o Tribut'#225'ria;'
+                  '201 - Tributada pelo Simples Nacional com permissão de crédito e' +
+                  ' com cobrança do ICMS por Substituição Tributária;'
                 
-                  '202 - Tributada pelo Simples Nacional sem permiss'#227'o de cr'#233'dito e' +
-                  ' com cobran'#231'a do ICMS por Substitui'#231#227'o Tribut'#225'ria;'
+                  '202 - Tributada pelo Simples Nacional sem permissão de crédito e' +
+                  ' com cobrança do ICMS por Substituição Tributária;'
                 
-                  '203 - Isen'#231#227'o do ICMS nos Simples Nacional para faixa de receita' +
-                  ' bruta e com cobran'#231'a do ICMS por Substitui'#231#227'o Tribut'#225'ria;'
+                  '203 - Isenção do ICMS nos Simples Nacional para faixa de receita' +
+                  ' bruta e com cobrança do ICMS por Substituição Tributária;'
                 
-                  '500 - ICMS cobrado anteriormente por substitui'#231#227'o tribut'#225'ria (su' +
-                  'bstitu'#237'do) ou por antecipa'#231#227'o; '
+                  '500 - ICMS cobrado anteriormente por substituição tributária (su' +
+                  'bstituído) ou por antecipação; '
                 '900 - Outros')
               ParentFont = False
               ParentShowHint = False
@@ -583,9 +583,9 @@ inherited FormCadastroIcmsUF: TFormCadastroIcmsUF
               EnableValues = True
               ItemHeight = 13
               Items.Strings = (
-                'Qualquer Regime de Tributa'#231#227'o'
+                'Qualquer Regime de Tributação'
                 'Optantes pelo SIMPLES Nacional'
-                'Regime de Tributa'#231#227'o Normal')
+                'Regime de Tributação Normal')
               ParentCtl3D = False
               TabOrder = 3
               Values.Strings = (
@@ -679,8 +679,8 @@ inherited FormCadastroIcmsUF: TFormCadastroIcmsUF
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
               Items.Strings = (
-                'F'#237'sica'
-                'Jur'#237'dica'
+                'Física'
+                'Jurídica'
                 'Ambas')
               ParentFont = False
               TabOrder = 2
@@ -782,7 +782,7 @@ inherited FormCadastroIcmsUF: TFormCadastroIcmsUF
       Size = 1
     end
     object SQLTemplatePRODICOD: TIntegerField
-      DisplayLabel = 'C'#243'd.Prod.'
+      DisplayLabel = 'Cód.Prod.'
       FieldName = 'PRODICOD'
       Origin = 'DB.ICMSUF.PRODICOD'
     end
@@ -791,14 +791,14 @@ inherited FormCadastroIcmsUF: TFormCadastroIcmsUF
       Origin = 'DB.ICMSUF.NCMA30CODIGO'
       Size = 30
     end
-    object SQLTemplateICMUN2ALIQUOTA: TBCDField
-      DisplayLabel = 'Al'#237'quota'
+    object SQLTemplateICMUN2ALIQUOTA: TFloatField
+      DisplayLabel = 'Alíquota'
       FieldName = 'ICMUN2ALIQUOTA'
       Origin = 'DB.ICMSUF.ICMUN2ALIQUOTA'
       Precision = 15
       Size = 3
     end
-    object SQLTemplateICMSN2PERCSUBSTSAI: TBCDField
+    object SQLTemplateICMSN2PERCSUBSTSAI: TFloatField
       DisplayLabel = 'Subst.Tribut %'
       FieldName = 'ICMSN2PERCSUBSTSAI'
       Origin = 'DB.ICMSUF.ICMSN2PERCSUBSTSAI'
@@ -831,8 +831,8 @@ inherited FormCadastroIcmsUF: TFormCadastroIcmsUF
       FieldName = 'ICMUICOD'
       Origin = 'DB.ICMSUF.ICMUICOD'
     end
-    object SQLTemplateICMUN3REDBASECALC: TBCDField
-      DisplayLabel = 'Red.Base C'#225'lc.'
+    object SQLTemplateICMUN3REDBASECALC: TFloatField
+      DisplayLabel = 'Red.Base Cálc.'
       FieldName = 'ICMUN3REDBASECALC'
       Origin = 'DB.ICMSUF.ICMUN3REDBASECALC'
       Precision = 15
@@ -843,15 +843,15 @@ inherited FormCadastroIcmsUF: TFormCadastroIcmsUF
       FieldName = 'ICMUISITTRIB'
       Origin = 'DB.ICMSUF.ICMUISITTRIB'
     end
-    object SQLTemplateICMUN3MVA: TBCDField
+    object SQLTemplateICMUN3MVA: TFloatField
       DisplayLabel = 'Margem Valor Agregado'
       FieldName = 'ICMUN3MVA'
       Origin = 'DB.ICMSUF.ICMUN3MVA'
       Precision = 15
       Size = 3
     end
-    object SQLTemplateICMUN2ALIQUOTAINTERNA: TBCDField
-      DisplayLabel = 'Al'#237'quota Interna'
+    object SQLTemplateICMUN2ALIQUOTAINTERNA: TFloatField
+      DisplayLabel = 'Alíquota Interna'
       FieldName = 'ICMUN2ALIQUOTAINTERNA'
       Origin = 'DB.ICMSUF.ICMUN2ALIQUOTAINTERNA'
       Precision = 15

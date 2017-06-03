@@ -16,7 +16,7 @@ object FormTelaDetalheRecebimento: TFormTelaDetalheRecebimento
   object PanelCabecalho: TPanel
     Left = 0
     Top = 0
-    Width = 728
+    Width = 720
     Height = 31
     Align = alTop
     BevelOuter = bvNone
@@ -46,8 +46,8 @@ object FormTelaDetalheRecebimento: TFormTelaDetalheRecebimento
   end
   object Panel1: TPanel
     Left = 0
-    Top = 179
-    Width = 728
+    Top = 167
+    Width = 720
     Height = 15
     Align = alBottom
     BevelOuter = bvNone
@@ -63,8 +63,8 @@ object FormTelaDetalheRecebimento: TFormTelaDetalheRecebimento
   object DBGrid2: TDBGrid
     Left = 0
     Top = 31
-    Width = 728
-    Height = 148
+    Width = 720
+    Height = 136
     TabStop = False
     Align = alClient
     BorderStyle = bsNone
@@ -173,37 +173,29 @@ object FormTelaDetalheRecebimento: TFormTelaDetalheRecebimento
       Origin = 'DB.RECEBIMENTO.RECEDRECTO'
       DisplayFormat = 'dd/mm/yyyy'
     end
-    object SQLRecebimentoRECEN2VLRRECTO: TBCDField
+    object SQLRecebimentoRECEN2VLRRECTO: TFloatField
       DisplayLabel = 'Valor'
       FieldName = 'RECEN2VLRRECTO'
       Origin = 'DB.RECEBIMENTO.RECEN2VLRRECTO'
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
-    object SQLRecebimentoRECEN2VLRJURO: TBCDField
+    object SQLRecebimentoRECEN2VLRJURO: TFloatField
       DisplayLabel = 'Juros'
       FieldName = 'RECEN2VLRJURO'
       Origin = 'DB.RECEBIMENTO.RECEN2VLRJURO'
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
-    object SQLRecebimentoRECEN2VLRMULTA: TBCDField
+    object SQLRecebimentoRECEN2VLRMULTA: TFloatField
       DisplayLabel = 'Multa'
       FieldName = 'RECEN2VLRMULTA'
       Origin = 'DB.RECEBIMENTO.RECEN2VLRMULTA'
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
-    object SQLRecebimentoRECEN2DESC: TBCDField
+    object SQLRecebimentoRECEN2DESC: TFloatField
       DisplayLabel = 'Desconto'
       FieldName = 'RECEN2DESC'
       Origin = 'DB.RECEBIMENTO.RECEN2DESC'
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
     object SQLRecebimentoEMPRICODREC: TIntegerField
       DisplayLabel = 'Empresa Recto.'

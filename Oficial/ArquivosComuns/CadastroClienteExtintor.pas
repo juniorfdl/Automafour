@@ -71,11 +71,11 @@ type
     SQLProdutos: TRxQuery;
     SQLProdutosPRODICOD: TIntegerField;
     SQLProdutosPRODA60DESCR: TStringField;
-    SQLProdutosPRODN3VLRVENDA: TBCDField;
-    SQLProdutosPRODN3VLRVENDAPROM: TBCDField;
+    SQLProdutosPRODN3VLRVENDA: TFloatField;
+    SQLProdutosPRODN3VLRVENDAPROM: TFloatField;
     SQLProdutosPRODDINIPROMO: TDateTimeField;
     SQLProdutosPRODDFIMPROMO: TDateTimeField;
-    SQLProdutosPRODN3VLRVENDA2: TBCDField;
+    SQLProdutosPRODN3VLRVENDA2: TFloatField;
     dsSQLProdutos: TDataSource;
     Label20: TLabel;
     SQLTemplateProdutoLookup: TStringField;

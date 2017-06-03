@@ -1293,39 +1293,31 @@ inherited FormCadastroManutencaoCupom: TFormCadastroManutencaoCupom
       FixedChar = True
       Size = 1
     end
-    object SQLTemplateCUPON2TOTITENS: TBCDField
+    object SQLTemplateCUPON2TOTITENS: TFloatField
       DisplayLabel = 'Total Itens'
       FieldName = 'CUPON2TOTITENS'
       Origin = 'DB.CUPOM.CUPON2TOTITENS'
       Visible = False
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplateCUPON2DESC: TBCDField
+    object SQLTemplateCUPON2DESC: TFloatField
       DisplayLabel = 'Desconto'
       FieldName = 'CUPON2DESC'
       Origin = 'DB.CUPOM.CUPON2DESC'
       Visible = False
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplateCUPON2ACRESC: TBCDField
+    object SQLTemplateCUPON2ACRESC: TFloatField
       DisplayLabel = 'Acr'#233'scimo'
       FieldName = 'CUPON2ACRESC'
       Origin = 'DB.CUPOM.CUPON2ACRESC'
       Visible = False
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplateCUPON2TOTITENSRET: TBCDField
+    object SQLTemplateCUPON2TOTITENSRET: TFloatField
       FieldName = 'CUPON2TOTITENSRET'
       Origin = 'DB.CUPOM.CUPON2TOTITENSRET'
       Visible = False
-      Precision = 15
-      Size = 3
     end
     object SQLTemplateCUPOINRO: TIntegerField
       DisplayLabel = 'Nro.Cupom'
@@ -1340,13 +1332,11 @@ inherited FormCadastroManutencaoCupom: TFormCadastroManutencaoCupom
       FixedChar = True
       Size = 5
     end
-    object SQLTemplateCUPON2CONVTAXA: TBCDField
+    object SQLTemplateCUPON2CONVTAXA: TFloatField
       DisplayLabel = 'Tx.Conv.'
       FieldName = 'CUPON2CONVTAXA'
       Origin = 'DB.CUPOM.CUPON2CONVTAXA'
       Visible = False
-      Precision = 15
-      Size = 3
     end
     object SQLTemplateCUPOINROORDCOMPRA: TIntegerField
       FieldName = 'CUPOINROORDCOMPRA'
@@ -1361,12 +1351,10 @@ inherited FormCadastroManutencaoCupom: TFormCadastroManutencaoCupom
       FixedChar = True
       Size = 13
     end
-    object SQLTemplateCUPON2VLRCOMISSAO: TBCDField
+    object SQLTemplateCUPON2VLRCOMISSAO: TFloatField
       FieldName = 'CUPON2VLRCOMISSAO'
       Origin = 'DB.CUPOM.CUPON2VLRCOMISSAO'
       Visible = False
-      Precision = 15
-      Size = 3
     end
     object SQLTemplateCUPOA20CODANT: TStringField
       DisplayLabel = 'Contrato Antigo'
@@ -1380,19 +1368,15 @@ inherited FormCadastroManutencaoCupom: TFormCadastroManutencaoCupom
       Origin = 'DB.CUPOM.CUPODCANC'
       Visible = False
     end
-    object SQLTemplateCUPON2JUROATRAS: TBCDField
+    object SQLTemplateCUPON2JUROATRAS: TFloatField
       FieldName = 'CUPON2JUROATRAS'
       Origin = 'DB.CUPOM.CUPON2JUROATRAS'
       Visible = False
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplateCUPON2MULTAATRAS: TBCDField
+    object SQLTemplateCUPON2MULTAATRAS: TFloatField
       FieldName = 'CUPON2MULTAATRAS'
       Origin = 'DB.CUPOM.CUPON2MULTAATRAS'
       Visible = False
-      Precision = 15
-      Size = 3
     end
     object SQLTemplateCUPODPAGTOCONSIG: TDateTimeField
       FieldName = 'CUPODPAGTOCONSIG'
@@ -1411,14 +1395,12 @@ inherited FormCadastroManutencaoCupom: TFormCadastroManutencaoCupom
       Origin = 'DB.CUPOM.REGISTRO'
       Visible = False
     end
-    object SQLTemplateCUPON3BONUSTROCA: TBCDField
+    object SQLTemplateCUPON3BONUSTROCA: TFloatField
       DisplayLabel = 'B'#244'nus Troca'
       FieldName = 'CUPON3BONUSTROCA'
       Origin = 'DB.CUPOM.CUPON3BONUSTROCA'
       Visible = False
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplateCUPODENTREGA: TDateTimeField
       FieldName = 'CUPODENTREGA'
@@ -1435,13 +1417,11 @@ inherited FormCadastroManutencaoCupom: TFormCadastroManutencaoCupom
       Origin = 'DB.CUPOM.USUAICODCANC'
       Visible = False
     end
-    object SQLTemplateCUPON3CREDTAXA: TBCDField
+    object SQLTemplateCUPON3CREDTAXA: TFloatField
       DisplayLabel = 'Tx.Credi'#225'rio'
       FieldName = 'CUPON3CREDTAXA'
       Origin = 'DB.CUPOM.CUPON3CREDTAXA'
       Visible = False
-      Precision = 15
-      Size = 3
     end
     object SQLTemplateEmpresaLookup: TStringField
       DisplayLabel = 'Empresa'
@@ -1692,37 +1672,29 @@ inherited FormCadastroManutencaoCupom: TFormCadastroManutencaoCupom
       FixedChar = True
       Size = 1
     end
-    object SQLContasReceberCTRCN2VLR: TBCDField
+    object SQLContasReceberCTRCN2VLR: TFloatField
       DisplayLabel = 'Valor'
       FieldName = 'CTRCN2VLR'
       Origin = 'DB.CONTASRECEBER.CTRCN2VLR'
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
-    object SQLContasReceberCTRCN2DESCFIN: TBCDField
+    object SQLContasReceberCTRCN2DESCFIN: TFloatField
       DisplayLabel = 'Desc.'
       FieldName = 'CTRCN2DESCFIN'
       Origin = 'DB.CONTASRECEBER.CTRCN2DESCFIN'
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
-    object SQLContasReceberCTRCN2TXJURO: TBCDField
+    object SQLContasReceberCTRCN2TXJURO: TFloatField
       DisplayLabel = 'Tx. Juro'
       FieldName = 'CTRCN2TXJURO'
       Origin = 'DB.CONTASRECEBER.CTRCN2TXJURO'
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
-    object SQLContasReceberCTRCN2TXMULTA: TBCDField
+    object SQLContasReceberCTRCN2TXMULTA: TFloatField
       DisplayLabel = 'Tx. Multa'
       FieldName = 'CTRCN2TXMULTA'
       Origin = 'DB.CONTASRECEBER.CTRCN2TXMULTA'
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
     object SQLContasReceberCTRCA5TIPOPADRAO: TStringField
       DisplayLabel = 'Tipo Padr'#227'o'
@@ -1737,13 +1709,11 @@ inherited FormCadastroManutencaoCupom: TFormCadastroManutencaoCupom
       Origin = 'DB.CONTASRECEBER.CTRCDULTREC'
       DisplayFormat = 'dd/mm/yyyy'
     end
-    object SQLContasReceberCTRCN2TOTREC: TBCDField
+    object SQLContasReceberCTRCN2TOTREC: TFloatField
       DisplayLabel = 'Total Recebido'
       FieldName = 'CTRCN2TOTREC'
       Origin = 'DB.CONTASRECEBER.CTRCN2TOTREC'
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
     object SQLContasReceberCUPOA13ID: TStringField
       DisplayLabel = 'ID Cupom'
@@ -1860,47 +1830,33 @@ inherited FormCadastroManutencaoCupom: TFormCadastroManutencaoCupom
       FixedChar = True
       Size = 1
     end
-    object SQLCupomItemCPITN3QTD: TBCDField
+    object SQLCupomItemCPITN3QTD: TFloatField
       FieldName = 'CPITN3QTD'
       Origin = 'DB.CUPOMITEM.CPITN3QTD'
-      Precision = 15
-      Size = 3
     end
-    object SQLCupomItemCPITN3QTDTROCA: TBCDField
+    object SQLCupomItemCPITN3QTDTROCA: TFloatField
       FieldName = 'CPITN3QTDTROCA'
       Origin = 'DB.CUPOMITEM.CPITN3QTDTROCA'
-      Precision = 15
-      Size = 3
     end
-    object SQLCupomItemCPITN3VLRUNIT: TBCDField
+    object SQLCupomItemCPITN3VLRUNIT: TFloatField
       FieldName = 'CPITN3VLRUNIT'
       Origin = 'DB.CUPOMITEM.CPITN3VLRUNIT'
-      Precision = 15
-      Size = 3
     end
-    object SQLCupomItemCPITN3VLRCUSTUNIT: TBCDField
+    object SQLCupomItemCPITN3VLRCUSTUNIT: TFloatField
       FieldName = 'CPITN3VLRCUSTUNIT'
       Origin = 'DB.CUPOMITEM.CPITN3VLRCUSTUNIT'
-      Precision = 15
-      Size = 3
     end
-    object SQLCupomItemCPITN2DESC: TBCDField
+    object SQLCupomItemCPITN2DESC: TFloatField
       FieldName = 'CPITN2DESC'
       Origin = 'DB.CUPOMITEM.CPITN2DESC'
-      Precision = 15
-      Size = 3
     end
-    object SQLCupomItemCPITN3VLRUNITLUCR: TBCDField
+    object SQLCupomItemCPITN3VLRUNITLUCR: TFloatField
       FieldName = 'CPITN3VLRUNITLUCR'
       Origin = 'DB.CUPOMITEM.CPITN3VLRUNITLUCR'
-      Precision = 15
-      Size = 3
     end
-    object SQLCupomItemCOITN2ICMSALIQ: TBCDField
+    object SQLCupomItemCOITN2ICMSALIQ: TFloatField
       FieldName = 'COITN2ICMSALIQ'
       Origin = 'DB.CUPOMITEM.COITN2ICMSALIQ'
-      Precision = 15
-      Size = 3
     end
     object SQLCupomItemVENDICOD: TIntegerField
       FieldName = 'VENDICOD'
@@ -1916,29 +1872,21 @@ inherited FormCadastroManutencaoCupom: TFormCadastroManutencaoCupom
       FieldName = 'REGISTRO'
       Origin = 'DB.CUPOMITEM.REGISTRO'
     end
-    object SQLCupomItemCPITN2VLRDESCSOBTOT: TBCDField
+    object SQLCupomItemCPITN2VLRDESCSOBTOT: TFloatField
       FieldName = 'CPITN2VLRDESCSOBTOT'
       Origin = 'DB.CUPOMITEM.CPITN2VLRDESCSOBTOT'
-      Precision = 15
-      Size = 3
     end
-    object SQLCupomItemCPITN2BASEICMS: TBCDField
+    object SQLCupomItemCPITN2BASEICMS: TFloatField
       FieldName = 'CPITN2BASEICMS'
       Origin = 'DB.CUPOMITEM.CPITN2BASEICMS'
-      Precision = 15
-      Size = 2
     end
-    object SQLCupomItemCPITN2VLRICMS: TBCDField
+    object SQLCupomItemCPITN2VLRICMS: TFloatField
       FieldName = 'CPITN2VLRICMS'
       Origin = 'DB.CUPOMITEM.CPITN2VLRICMS'
-      Precision = 15
-      Size = 2
     end
-    object SQLCupomItemCPITN2VLRQDEVERIAVENDER: TBCDField
+    object SQLCupomItemCPITN2VLRQDEVERIAVENDER: TFloatField
       FieldName = 'CPITN2VLRQDEVERIAVENDER'
       Origin = 'DB.CUPOMITEM.CPITN2VLRQDEVERIAVENDER'
-      Precision = 15
-      Size = 2
     end
     object SQLCupomItemBOMBICOD: TIntegerField
       FieldName = 'BOMBICOD'
@@ -1957,28 +1905,22 @@ inherited FormCadastroManutencaoCupom: TFormCadastroManutencaoCupom
       Origin = 'DB.CUPOMITEM.CPITTOBS'
       Size = 60
     end
-    object SQLCupomItemCPITN2VLRPIS: TBCDField
+    object SQLCupomItemCPITN2VLRPIS: TFloatField
       FieldName = 'CPITN2VLRPIS'
       Origin = 'DB.CUPOMITEM.CPITN2VLRPIS'
-      Precision = 15
-      Size = 2
     end
-    object SQLCupomItemCPITN2VLRCOFINS: TBCDField
+    object SQLCupomItemCPITN2VLRCOFINS: TFloatField
       FieldName = 'CPITN2VLRCOFINS'
       Origin = 'DB.CUPOMITEM.CPITN2VLRCOFINS'
-      Precision = 15
-      Size = 2
     end
     object SQLCupomItemADICIONAIS: TStringField
       FieldName = 'ADICIONAIS'
       Origin = 'DB.CUPOMITEM.ADICIONAIS'
       Size = 30
     end
-    object SQLCupomItemCPITN2IMPOSTOMED: TBCDField
+    object SQLCupomItemCPITN2IMPOSTOMED: TFloatField
       FieldName = 'CPITN2IMPOSTOMED'
       Origin = 'DB.CUPOMITEM.CPITN2IMPOSTOMED'
-      Precision = 15
-      Size = 2
     end
     object SQLCupomItemTotalItemCalc: TFloatField
       FieldKind = fkCalculated

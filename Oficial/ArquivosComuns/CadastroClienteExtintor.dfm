@@ -946,17 +946,13 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       FixedChar = True
       Size = 60
     end
-    object SQLProdutosPRODN3VLRVENDA: TBCDField
+    object SQLProdutosPRODN3VLRVENDA: TFloatField
       FieldName = 'PRODN3VLRVENDA'
       Origin = 'DB.PRODUTO.PRODN3VLRVENDA'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutosPRODN3VLRVENDAPROM: TBCDField
+    object SQLProdutosPRODN3VLRVENDAPROM: TFloatField
       FieldName = 'PRODN3VLRVENDAPROM'
       Origin = 'DB.PRODUTO.PRODN3VLRVENDAPROM'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutosPRODDINIPROMO: TDateTimeField
       FieldName = 'PRODDINIPROMO'
@@ -966,11 +962,9 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       FieldName = 'PRODDFIMPROMO'
       Origin = 'DB.PRODUTO.PRODDFIMPROMO'
     end
-    object SQLProdutosPRODN3VLRVENDA2: TBCDField
+    object SQLProdutosPRODN3VLRVENDA2: TFloatField
       FieldName = 'PRODN3VLRVENDA2'
       Origin = 'DB.PRODUTO.PRODN3VLRVENDA2'
-      Precision = 15
-      Size = 3
     end
   end
   object dsSQLProdutos: TDataSource

@@ -204,13 +204,11 @@ inherited FormCadastroSubgrupo: TFormCadastroSubgrupo
       FieldName = 'REGISTRO'
       Origin = 'DB.SUBGRUPO.REGISTRO'
     end
-    object SQLTemplateSUBGN3MARGEM: TBCDField
+    object SQLTemplateSUBGN3MARGEM: TFloatField
       FieldName = 'SUBGN3MARGEM'
       Origin = 'DB.SUBGRUPO.SUBGN3MARGEM'
       DisplayFormat = '##0.00'
       EditFormat = '##0.00'
-      Precision = 15
-      Size = 3
     end
   end
   inherited UpdateSQLTemplate: TUpdateSQL

@@ -14,12 +14,12 @@ type
     SQLTemplateVENDICOD: TIntegerField;
     SQLTemplateCUPOA13ID: TStringField;
     SQLTemplateVDCOICOD: TIntegerField;
-    SQLTemplateVDCON2TOTVENDVISTA: TBCDField;
-    SQLTemplateVDCON2TOTVENDPRAZO: TBCDField;
+    SQLTemplateVDCON2TOTVENDVISTA: TFloatField;
+    SQLTemplateVDCON2TOTVENDPRAZO: TFloatField;
     SQLTemplateVDCOINROVEND: TIntegerField;
-    SQLTemplateVDCON2VENDMEDIA: TBCDField;
-    SQLTemplateVDCON3QTDVEND: TBCDField;
-    SQLTemplateVDCON2VLRCOMISS: TBCDField;
+    SQLTemplateVDCON2VENDMEDIA: TFloatField;
+    SQLTemplateVDCON3QTDVEND: TFloatField;
+    SQLTemplateVDCON2VLRCOMISS: TFloatField;
     SQLTemplateVDCODEMIS: TDateTimeField;
     SQLTemplatePENDENTE: TStringField;
     SQLTemplateREGISTRO: TDateTimeField;
@@ -40,7 +40,7 @@ type
     SQLTemplateVDCOA5TIPODOC: TStringField;
     SQLTemplateVDCOCDEBCRED: TStringField;
     SQLTemplateVDCODESTORNO: TDateTimeField;
-    SQLTemplateVDCON3VLRESTORNO: TBCDField;
+    SQLTemplateVDCON3VLRESTORNO: TFloatField;
     SQLCliente: TRxQuery;
     DSSQLCliente: TDataSource;
     SQLClienteCLIEA13ID: TStringField;
@@ -54,7 +54,7 @@ type
     DBDateEdit1: TDBDateEdit;
     Label5: TLabel;
     DBEdit4: TDBEdit;
-    SQLTemplateVDCON2PERCOMISSAO: TBCDField;
+    SQLTemplateVDCON2PERCOMISSAO: TFloatField;
     Label9: TLabel;
     DBEdit2: TDBEdit;
     procedure FormCreate(Sender: TObject);

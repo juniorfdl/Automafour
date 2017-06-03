@@ -6,7 +6,8 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, RelatorioTemplate, DBTables, Placemnt, DB, ComCtrls, StdCtrls,
   Mask, ToolEdit, RxLookup, ExtCtrls, Buttons, jpeg, RxQuery, TeEngine,
-  TeeFunci, Series, TeeProcs, Chart, DbChart, UCrpe32;
+  TeeFunci, Series, TeeProcs, Chart, DbChart, UCrpe32, AdvOfficeStatusBar,
+  AdvOfficeStatusBarStylers;
 
 type
   TFormRelatorioVendasGrupo = class(TFormRelatorioTEMPLATE)
@@ -19,7 +20,7 @@ type
     TblTemporariaTOTAL: TFloatField;
     Report: TCrpe;
     TblTemporariaQTDETOTAL: TFloatField;
-    SQLVendaGrupoQTDETOTAL: TBCDField;
+    SQLVendaGrupoQTDETOTAL: TFloatField;
     procedure ExecutarBtnClick(Sender: TObject);
   private
     { Private declarations }

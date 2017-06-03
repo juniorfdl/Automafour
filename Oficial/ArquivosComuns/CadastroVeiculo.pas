@@ -18,7 +18,7 @@ type
     SQLTemplateVEICA7PLACA: TStringField;
     SQLTemplateVEICA60DESCR: TStringField;
     SQLTemplateVEICA3OMARCA: TStringField;
-    SQLTemplateVEICN3PESOSUPORTA: TBCDField;
+    SQLTemplateVEICN3PESOSUPORTA: TFloatField;
     SQLTemplatePENDENTE: TStringField;
     SQLTemplateREGISTRO: TDateTimeField;
     Label1: TLabel;

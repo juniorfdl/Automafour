@@ -36,6 +36,23 @@ inherited FormCadastroPlanoPagamento: TFormCadastroPlanoPagamento
                     Visible = True
                   end>
               end
+              inherited PanelProcura: TPanel
+                inherited PanelBetween: TPanel
+                  inherited AdvPanel1: TAdvPanel
+                    FullHeight = 0
+                  end
+                end
+                inherited PanelEditProcura: TPanel
+                  inherited AdvPanelEditProcura: TAdvPanel
+                    FullHeight = 0
+                  end
+                end
+                inherited PanelIndice: TPanel
+                  inherited AdvPanelIndice: TAdvPanel
+                    FullHeight = 0
+                  end
+                end
+              end
             end
           end
           inherited PanelCodigoDescricao: TPanel
@@ -44,7 +61,7 @@ inherited FormCadastroPlanoPagamento: TFormCadastroPlanoPagamento
               Top = 0
               Width = 38
               Height = 13
-              Caption = 'C'#243'digo'
+              Caption = 'Código'
               FocusControl = DBEdit1
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 8404992
@@ -58,7 +75,7 @@ inherited FormCadastroPlanoPagamento: TFormCadastroPlanoPagamento
               Top = 0
               Width = 55
               Height = 13
-              Caption = 'Descri'#231#227'o'
+              Caption = 'Descrição'
               FocusControl = DBEdit2
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 8404992
@@ -119,24 +136,23 @@ inherited FormCadastroPlanoPagamento: TFormCadastroPlanoPagamento
       'Select * From PlanoPagamento Where (%MFiltro)')
     object SQLTemplatePLPGICOD: TIntegerField
       Tag = 1
-      DisplayLabel = 'C'#243'digo'
+      DisplayLabel = 'Código'
       FieldName = 'PLPGICOD'
       Origin = 'DB.PLANOPAGAMENTO.PLPGICOD'
       Visible = False
     end
     object SQLTemplatePLPGA60DESCR: TStringField
-      DisplayLabel = 'Descri'#231#227'o'
+      DisplayLabel = 'Descrição'
       FieldName = 'PLPGA60DESCR'
       Origin = 'DB.PLANOPAGAMENTO.PLPGA60DESCR'
       FixedChar = True
       Size = 60
     end
-    object SQLTemplatePLPGN3TXJURO: TBCDField
+    object SQLTemplatePLPGN3TXJURO: TFloatField
       DisplayLabel = 'Taxa Juros'
       FieldName = 'PLPGN3TXJURO'
       Origin = 'DB.PLANOPAGAMENTO.PLPGN3TXJURO'
-      Precision = 15
-      Size = 3
+
     end
     object SQLTemplatePENDENTE: TStringField
       FieldName = 'PENDENTE'

@@ -25,7 +25,7 @@ type
     SQLTemplateUSUAA5SENHA: TStringField;
     SQLTemplateUSUACVERDADCOMPRCLI: TStringField;
     SQLTemplateUSUACDESBLOQCLI: TStringField;
-    SQLTemplateUSUAN2PERCDESC: TBCDField;
+    SQLTemplateUSUAN2PERCDESC: TFloatField;
     SQLTemplateUSUACVENDCLIBLOQ: TStringField;
     DBCheckBox1: TDBCheckBox;
     DBCheckBox2: TDBCheckBox;

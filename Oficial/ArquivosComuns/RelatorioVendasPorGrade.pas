@@ -5,7 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, RelatorioTemplate, DBTables, Placemnt, DB, ComCtrls, StdCtrls,
-  Mask, ToolEdit, RxLookup, ExtCtrls, Buttons, jpeg, RxQuery, UCrpe32;
+  Mask, ToolEdit, RxLookup, ExtCtrls, Buttons, jpeg, RxQuery, UCrpe32,
+  AdvOfficeStatusBar, AdvOfficeStatusBarStylers;
 
 type
   TFormRelatorioVendasPorGrade = class(TFormRelatorioTEMPLATE)
@@ -113,8 +114,8 @@ type
     SQLProdutoPRODA60REFER: TStringField;
     SQLProdutoCORA30DESCR: TStringField;
     SQLProdutoMARCA60DESCR: TStringField;
-    SQLProdutoPRODN3VLRCUSTO: TBCDField;
-    SQLProdutoSALDO: TBCDField;
+    SQLProdutoPRODN3VLRCUSTO: TFloatField;
+    SQLProdutoSALDO: TFloatField;
     SQLProdutoGRUPICOD: TIntegerField;
     SQLProdutoSUBGICOD: TIntegerField;
     SQLProdutoVARIICOD: TIntegerField;

@@ -32,7 +32,7 @@ type
     SQLItensMOVDA13ID: TStringField;
     SQLItensMVDIIITEM: TIntegerField;
     SQLItensPRODICOD: TIntegerField;
-    SQLItensMVDIN3QTD: TBCDField;
+    SQLItensMVDIN3QTD: TFloatField;
     SQLItensLOTEA30NRO: TStringField;
     TblEmpresa: TTable;
     SQLTemplateEmpresaLookup: TStringField;

@@ -55,7 +55,7 @@ type
     SQLTemplateAVALDFUND: TDateTimeField;
     SQLTemplateAVALA60NOMEPAI: TStringField;
     SQLTemplateAVALA60NOMEMAE: TStringField;
-    SQLTemplateAVALN2RENDA: TBCDField;
+    SQLTemplateAVALN2RENDA: TFloatField;
     PanelFisica: TPanel;
     Label17: TLabel;
     Label18: TLabel;

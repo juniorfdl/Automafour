@@ -952,19 +952,15 @@ inherited FormCadastroNCM: TFormCadastroNCM
       Origin = 'DB.NCM.NCMA5UNIDADE'
       Size = 5
     end
-    object SQLTemplateALIQUOTAINTERNA: TBCDField
+    object SQLTemplateALIQUOTAINTERNA: TFloatField
       FieldName = 'ALIQUOTAINTERNA'
       Origin = 'DB.NCM.ALIQUOTAINTERNA'
       DisplayFormat = ',0.000'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplateMVA: TBCDField
+    object SQLTemplateMVA: TFloatField
       FieldName = 'MVA'
       Origin = 'DB.NCM.MVA'
       DisplayFormat = ',0.000'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplateNCMIEX_TIP: TIntegerField
       FieldName = 'NCMIEX_TIP'
@@ -975,21 +971,17 @@ inherited FormCadastroNCM: TFormCadastroNCM
       FieldName = 'NCMITABELA'
       Origin = 'DB.NCM.NCMITABELA'
     end
-    object SQLTemplateNCMN2ALIQNAC: TBCDField
+    object SQLTemplateNCMN2ALIQNAC: TFloatField
       ConstraintErrorMessage = '1'
       DisplayLabel = 'Aliq.Media Produtos Nacional'
       FieldName = 'NCMN2ALIQNAC'
       Origin = 'DB.NCM.NCMN2ALIQNAC'
-      Precision = 15
-      Size = 2
     end
-    object SQLTemplateNCMN2ALIQIMP: TBCDField
+    object SQLTemplateNCMN2ALIQIMP: TFloatField
       ConstraintErrorMessage = '1'
       DisplayLabel = 'Aliq.Media Produtos Importados'
       FieldName = 'NCMN2ALIQIMP'
       Origin = 'DB.NCM.NCMN2ALIQIMP'
-      Precision = 15
-      Size = 2
     end
     object SQLTemplateREGISTRO: TDateTimeField
       FieldName = 'REGISTRO'
@@ -1005,29 +997,25 @@ inherited FormCadastroNCM: TFormCadastroNCM
       FieldName = 'CSTICMS'
       Origin = 'DB.NCM.CSTICMS'
     end
-    object SQLTemplateBASE_ICMS: TBCDField
+    object SQLTemplateBASE_ICMS: TFloatField
       FieldName = 'BASE_ICMS'
       Origin = 'DB.NCM.BASE_ICMS'
       Precision = 9
-      Size = 2
     end
-    object SQLTemplateALIQ_ICMS: TBCDField
+    object SQLTemplateALIQ_ICMS: TFloatField
       FieldName = 'ALIQ_ICMS'
       Origin = 'DB.NCM.ALIQ_ICMS'
       Precision = 9
-      Size = 2
     end
-    object SQLTemplateBASE_ICMSST: TBCDField
+    object SQLTemplateBASE_ICMSST: TFloatField
       FieldName = 'BASE_ICMSST'
       Origin = 'DB.NCM.BASE_ICMSST'
       Precision = 9
-      Size = 2
     end
-    object SQLTemplateALIQ_ICMSST: TBCDField
+    object SQLTemplateALIQ_ICMSST: TFloatField
       FieldName = 'ALIQ_ICMSST'
       Origin = 'DB.NCM.ALIQ_ICMSST'
       Precision = 9
-      Size = 2
     end
     object SQLTemplateCSTPIS_COFINS_ENT: TStringField
       FieldName = 'CSTPIS_COFINS_ENT'
@@ -1039,59 +1027,46 @@ inherited FormCadastroNCM: TFormCadastroNCM
       Origin = 'DB.NCM.CSTPIS_COFINS'
       Size = 2
     end
-    object SQLTemplateBASE_PIS_COFINS: TBCDField
+    object SQLTemplateBASE_PIS_COFINS: TFloatField
       FieldName = 'BASE_PIS_COFINS'
       Origin = 'DB.NCM.BASE_PIS_COFINS'
       Precision = 9
-      Size = 2
     end
-    object SQLTemplateALIQ_PIS_REAL: TBCDField
+    object SQLTemplateALIQ_PIS_REAL: TFloatField
       FieldName = 'ALIQ_PIS_REAL'
       Origin = 'DB.NCM.ALIQ_PIS_REAL'
       Precision = 9
-      Size = 2
     end
-    object SQLTemplateALIQ_PIS_PRESUMIDO: TBCDField
+    object SQLTemplateALIQ_PIS_PRESUMIDO: TFloatField
       FieldName = 'ALIQ_PIS_PRESUMIDO'
       Origin = 'DB.NCM.ALIQ_PIS_PRESUMIDO'
       Precision = 9
-      Size = 2
     end
-    object SQLTemplateALIQ_COFINS_REAL: TBCDField
+    object SQLTemplateALIQ_COFINS_REAL: TFloatField
       FieldName = 'ALIQ_COFINS_REAL'
       Origin = 'DB.NCM.ALIQ_COFINS_REAL'
       Precision = 9
-      Size = 2
     end
-    object SQLTemplateALIQ_COFINS_PRESUMIDO: TBCDField
+    object SQLTemplateALIQ_COFINS_PRESUMIDO: TFloatField
       FieldName = 'ALIQ_COFINS_PRESUMIDO'
       Origin = 'DB.NCM.ALIQ_COFINS_PRESUMIDO'
       Precision = 9
-      Size = 2
     end
-    object SQLTemplateCPITN2IMPOSTOMED: TBCDField
+    object SQLTemplateCPITN2IMPOSTOMED: TFloatField
       FieldName = 'CPITN2IMPOSTOMED'
       Origin = 'DB.NCM.CPITN2IMPOSTOMED'
-      Precision = 15
-      Size = 2
     end
-    object SQLTemplateNFITN2IMPOSTOMED: TBCDField
+    object SQLTemplateNFITN2IMPOSTOMED: TFloatField
       FieldName = 'NFITN2IMPOSTOMED'
       Origin = 'DB.NCM.NFITN2IMPOSTOMED'
-      Precision = 15
-      Size = 2
     end
-    object SQLTemplateALIQESTADUAL: TBCDField
+    object SQLTemplateALIQESTADUAL: TFloatField
       FieldName = 'ALIQESTADUAL'
       Origin = 'DB.NCM.ALIQESTADUAL'
-      Precision = 15
-      Size = 2
     end
-    object SQLTemplateALIQMUNICIPAL: TBCDField
+    object SQLTemplateALIQMUNICIPAL: TFloatField
       FieldName = 'ALIQMUNICIPAL'
       Origin = 'DB.NCM.ALIQMUNICIPAL'
-      Precision = 15
-      Size = 2
     end
     object SQLTemplateVIGENCIA_INI: TDateTimeField
       FieldName = 'VIGENCIA_INI'

@@ -505,11 +505,10 @@ inherited FormCadastroICMS: TFormCadastroICMS
       FixedChar = True
       Size = 60
     end
-    object SQLTemplateICMSN2ALIQUOTA: TBCDField
+    object SQLTemplateICMSN2ALIQUOTA: TFloatField
       DisplayLabel = 'Al'#237'quota'
       FieldName = 'ICMSN2ALIQUOTA'
       Origin = 'DB.ICMS.ICMSN2ALIQUOTA'
-      Size = 3
     end
     object SQLTemplateICMSA5TOTECF: TStringField
       DisplayLabel = 'Totalizador ECF'
@@ -518,17 +517,15 @@ inherited FormCadastroICMS: TFormCadastroICMS
       FixedChar = True
       Size = 5
     end
-    object SQLTemplateICMSN2PERCSUBSTSAI: TBCDField
+    object SQLTemplateICMSN2PERCSUBSTSAI: TFloatField
       DisplayLabel = 'Al'#237'q.Subst.Sa'#237'da'
       FieldName = 'ICMSN2PERCSUBSTSAI'
       Origin = 'DB.ICMS.ICMSN2PERCSUBSTSAI'
-      Size = 3
     end
-    object SQLTemplateICMSN2PERCSUBSTENT: TBCDField
+    object SQLTemplateICMSN2PERCSUBSTENT: TFloatField
       DisplayLabel = 'Al'#237'q.Subst.Entrada'
       FieldName = 'ICMSN2PERCSUBSTENT'
       Origin = 'DB.ICMS.ICMSN2PERCSUBSTENT'
-      Size = 3
     end
     object SQLTemplateICMSICODSITTRIB: TIntegerField
       DisplayLabel = 'Sit.Tribut'#225'ria'
@@ -564,19 +561,15 @@ inherited FormCadastroICMS: TFormCadastroICMS
       FieldName = 'ICMSPOSMAPARESUMO'
       Origin = 'DB.ICMS.ICMSPOSMAPARESUMO'
     end
-    object SQLTemplateICMSN2REDBASEICMS: TBCDField
+    object SQLTemplateICMSN2REDBASEICMS: TFloatField
       DisplayLabel = '% Redu'#231#227'o Base ICMS'
       FieldName = 'ICMSN2REDBASEICMS'
       Origin = 'DB.ICMS.ICMSN2REDBASEICMS'
       DisplayFormat = '###0.000'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplateICMSN2ICMSM1: TBCDField
+    object SQLTemplateICMSN2ICMSM1: TFloatField
       FieldName = 'ICMSN2ICMSM1'
       Origin = 'DB.ICMS.ICMSN2ICMSM1'
-      Precision = 15
-      Size = 3
     end
   end
   inherited UpdateSQLTemplate: TUpdateSQL

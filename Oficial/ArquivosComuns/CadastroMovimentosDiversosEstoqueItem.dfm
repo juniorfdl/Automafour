@@ -634,14 +634,12 @@ inherited FormCadastroMovimentosDiversosEstoqueItem: TFormCadastroMovimentosDive
       Size = 60
       Calculated = True
     end
-    object SQLTemplateMVDIN3QTD: TBCDField
+    object SQLTemplateMVDIN3QTD: TFloatField
       ConstraintErrorMessage = '1'
       DisplayLabel = 'Quantidade'
       FieldName = 'MVDIN3QTD'
       Origin = 'DB.MOVIMENTODIVERSOITEM.MVDIN3QTD'
       OnChange = SQLTemplateMVDIN3QTDChange
-      Precision = 15
-      Size = 3
     end
     object SQLTemplatePENDENTE: TStringField
       FieldName = 'PENDENTE'
@@ -678,17 +676,13 @@ inherited FormCadastroMovimentosDiversosEstoqueItem: TFormCadastroMovimentosDive
       FieldName = 'ReferenciaLookup'
       Calculated = True
     end
-    object SQLTemplatePRODN3VLRCOMPRA: TBCDField
+    object SQLTemplatePRODN3VLRCOMPRA: TFloatField
       FieldName = 'PRODN3VLRCOMPRA'
       Origin = 'DB.MOVIMENTODIVERSOITEM.PRODN3VLRCOMPRA'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplatePRODN3VLRVENDA: TBCDField
+    object SQLTemplatePRODN3VLRVENDA: TFloatField
       FieldName = 'PRODN3VLRVENDA'
       Origin = 'DB.MOVIMENTODIVERSOITEM.PRODN3VLRVENDA'
-      Precision = 15
-      Size = 3
     end
   end
   object ReportItens: TppReport
@@ -1136,13 +1130,11 @@ inherited FormCadastroMovimentosDiversosEstoqueItem: TFormCadastroMovimentosDive
       Size = 60
       Calculated = True
     end
-    object SQLItensMVDIN3QTD: TBCDField
+    object SQLItensMVDIN3QTD: TFloatField
       ConstraintErrorMessage = '1'
       DisplayLabel = 'Quantidade'
       FieldName = 'MVDIN3QTD'
       Origin = 'DB.MOVIMENTODIVERSOITEM.MVDIN3QTD'
-      Precision = 15
-      Size = 3
     end
     object SQLItensPENDENTE: TStringField
       FieldName = 'PENDENTE'

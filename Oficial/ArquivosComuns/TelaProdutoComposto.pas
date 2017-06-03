@@ -5,7 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, TelaGeralTEMPLATE, Buttons, jpeg, ExtCtrls, DBCtrls, StdCtrls,
-  DB, DBTables, RxQuery, Mask, ToolEdit, CurrEdit, VarSys;
+  DB, DBTables, RxQuery, Mask, ToolEdit, CurrEdit, VarSys,
+  AdvOfficeStatusBar, AdvOfficeStatusBarStylers;
 
 type
   TFormTelaGeralTEMPLATE2 = class(TFormTelaGeralTEMPLATE)
@@ -33,29 +34,29 @@ type
     SQLTemplateSUBGICOD: TIntegerField;
     SQLTemplateVARIICOD: TIntegerField;
     SQLTemplateICMSICOD: TIntegerField;
-    SQLTemplatePRODN3PESOBRUTO: TBCDField;
-    SQLTemplatePRODN3PESOLIQ: TBCDField;
-    SQLTemplatePRODN3CAPACEMBAL: TBCDField;
+    SQLTemplatePRODN3PESOBRUTO: TFloatField;
+    SQLTemplatePRODN3PESOLIQ: TFloatField;
+    SQLTemplatePRODN3CAPACEMBAL: TFloatField;
     SQLTemplatePRODDCAD: TDateTimeField;
     SQLTemplatePRODDULTALTER: TDateTimeField;
-    SQLTemplatePRODN3VLRVENDA: TBCDField;
-    SQLTemplatePRODN3VLRVENDAPROM: TBCDField;
+    SQLTemplatePRODN3VLRVENDA: TFloatField;
+    SQLTemplatePRODN3VLRVENDAPROM: TFloatField;
     SQLTemplatePRODDINIPROMO: TDateTimeField;
     SQLTemplatePRODDFIMPROMO: TDateTimeField;
-    SQLTemplatePRODN3VLRCOMPRA: TBCDField;
-    SQLTemplatePRODN3VLRCUSTO: TBCDField;
-    SQLTemplatePRODN3VLRCUSTOMED: TBCDField;
-    SQLTemplatePRODN3PERCIPI: TBCDField;
-    SQLTemplatePRODN3PERCMARGLUCR: TBCDField;
+    SQLTemplatePRODN3VLRCOMPRA: TFloatField;
+    SQLTemplatePRODN3VLRCUSTO: TFloatField;
+    SQLTemplatePRODN3VLRCUSTOMED: TFloatField;
+    SQLTemplatePRODN3PERCIPI: TFloatField;
+    SQLTemplatePRODN3PERCMARGLUCR: TFloatField;
     SQLTemplatePRODCATIVO: TStringField;
     SQLTemplatePRODCSERVICO: TStringField;
     SQLTemplatePRODCGERACOMIS: TStringField;
-    SQLTemplatePRODN2COMISVISTA: TBCDField;
-    SQLTemplatePRODN2COMISPRAZO: TBCDField;
+    SQLTemplatePRODN2COMISVISTA: TFloatField;
+    SQLTemplatePRODN2COMISPRAZO: TFloatField;
     SQLTemplatePRODDIMOBOLIZ: TDateTimeField;
     SQLTemplatePRODICODPAI: TIntegerField;
     SQLTemplatePRODCTIPOBAIXA: TStringField;
-    SQLTemplatePRODN3QTDEBAIXA: TBCDField;
+    SQLTemplatePRODN3QTDEBAIXA: TFloatField;
     SQLTemplateCORICOD: TIntegerField;
     SQLTemplatePRODIORIGEM: TIntegerField;
     SQLTemplatePENDENTE: TStringField;

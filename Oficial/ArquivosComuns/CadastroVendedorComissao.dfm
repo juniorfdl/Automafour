@@ -355,23 +355,19 @@ inherited FormCadastroVendedorComissao: TFormCadastroVendedorComissao
       FieldName = 'VDCOICOD'
       Origin = 'DB.VENDEDORCOMISSAO.VDCOICOD'
     end
-    object SQLTemplateVDCON2TOTVENDVISTA: TBCDField
+    object SQLTemplateVDCON2TOTVENDVISTA: TFloatField
       ConstraintErrorMessage = '1'
       DisplayLabel = 'Tot. Venda Vista'
       FieldName = 'VDCON2TOTVENDVISTA'
       Origin = 'DB.VENDEDORCOMISSAO.VDCON2TOTVENDVISTA'
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplateVDCON2TOTVENDPRAZO: TBCDField
+    object SQLTemplateVDCON2TOTVENDPRAZO: TFloatField
       ConstraintErrorMessage = '1'
       DisplayLabel = 'Tot. Venda Prazo'
       FieldName = 'VDCON2TOTVENDPRAZO'
       Origin = 'DB.VENDEDORCOMISSAO.VDCON2TOTVENDPRAZO'
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplateVDCOINROVEND: TIntegerField
       DisplayLabel = 'Nro. Vendas'
@@ -379,29 +375,23 @@ inherited FormCadastroVendedorComissao: TFormCadastroVendedorComissao
       Origin = 'DB.VENDEDORCOMISSAO.VDCOINROVEND'
       DisplayFormat = '#,##0.00'
     end
-    object SQLTemplateVDCON2VENDMEDIA: TBCDField
+    object SQLTemplateVDCON2VENDMEDIA: TFloatField
       DisplayLabel = 'Venda M'#233'dia'
       FieldName = 'VDCON2VENDMEDIA'
       Origin = 'DB.VENDEDORCOMISSAO.VDCON2VENDMEDIA'
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplateVDCON3QTDVEND: TBCDField
+    object SQLTemplateVDCON3QTDVEND: TFloatField
       DisplayLabel = 'Qde. Vendida'
       FieldName = 'VDCON3QTDVEND'
       Origin = 'DB.VENDEDORCOMISSAO.VDCON3QTDVEND'
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplateVDCON2VLRCOMISS: TBCDField
+    object SQLTemplateVDCON2VLRCOMISS: TFloatField
       DisplayLabel = 'Vlr. Comiss'#227'o'
       FieldName = 'VDCON2VLRCOMISS'
       Origin = 'DB.VENDEDORCOMISSAO.VDCON2VLRCOMISS'
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplateVDCODEMIS: TDateTimeField
       DisplayLabel = 'Emiss'#227'o'
@@ -458,20 +448,16 @@ inherited FormCadastroVendedorComissao: TFormCadastroVendedorComissao
       FieldName = 'VDCODESTORNO'
       Origin = 'DB.VENDEDORCOMISSAO.VDCODESTORNO'
     end
-    object SQLTemplateVDCON3VLRESTORNO: TBCDField
+    object SQLTemplateVDCON3VLRESTORNO: TFloatField
       DisplayLabel = 'Vlr. Estorno'
       FieldName = 'VDCON3VLRESTORNO'
       Origin = 'DB.VENDEDORCOMISSAO.VDCON3VLRESTORNO'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplateVDCON2PERCOMISSAO: TBCDField
+    object SQLTemplateVDCON2PERCOMISSAO: TFloatField
       DisplayLabel = '% Comiss'#227'o'
       FieldName = 'VDCON2PERCOMISSAO'
       Origin = 'DB.VENDEDORCOMISSAO.VDCON2PERCOMISSAO'
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 2
     end
   end
   object SQLVendedor: TRxQuery

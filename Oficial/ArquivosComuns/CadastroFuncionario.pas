@@ -22,7 +22,7 @@ type
     SQLTemplateREGISTRO: TDateTimeField;
     Label1: TLabel;
     DBEdit1: TDBEdit;
-    SQLTemplateFUNCN2PERCCOMISSAO: TBCDField;
+    SQLTemplateFUNCN2PERCCOMISSAO: TFloatField;
     SQLTemplateFUNCA11CPF: TStringField;
     SQLTemplateFUNCA14CNPJ: TStringField;
     SQLTemplateFUNCA15INSS: TStringField;
@@ -111,15 +111,15 @@ type
     Label18: TLabel;
     DBEdit16: TDBEdit;
     SQLTemplateFUNCCTIPOREMUN: TStringField;
-    SQLTemplateFUNCN3VLRREMUN: TBCDField;
+    SQLTemplateFUNCN3VLRREMUN: TFloatField;
     SQLTemplateFUNCA30SISTEMATIC: TStringField;
     Label6: TLabel;
     ComboAutonomoFuncionario: TRxDBComboBox;
     Label7: TLabel;
     DBEdit5: TDBEdit;
-    SQLTemplateFUNCNVLRVT: TBCDField;
-    SQLTemplateFUNCNVLRVR: TBCDField;
-    SQLTemplateFUNCNVLRRANCHO: TBCDField;
+    SQLTemplateFUNCNVLRVT: TFloatField;
+    SQLTemplateFUNCNVLRVR: TFloatField;
+    SQLTemplateFUNCNVLRRANCHO: TFloatField;
     Label40: TLabel;
     DBEdit35: TDBEdit;
     SQLTemplateFUNCA2UF: TStringField;
@@ -199,7 +199,7 @@ type
     SQLTemplateFUNCA60TITULAR: TStringField;
     SQLTemplateBancoLookup: TStringField;
     SQLBanco: TTable;
-    SQLTemplateFUNCN2PERCENCARGOS: TBCDField;
+    SQLTemplateFUNCN2PERCENCARGOS: TFloatField;
     GroupBox7: TGroupBox;
     Label9: TLabel;
     ButtonVeiculo: TSpeedButton;

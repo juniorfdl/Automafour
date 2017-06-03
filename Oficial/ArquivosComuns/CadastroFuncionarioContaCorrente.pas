@@ -13,8 +13,8 @@ type
   TFormCadastroFuncionarioContaCorrente = class(TFormCadastroTEMPLATE)
     SQLTemplateFUNCA13ID: TStringField;
     SQLTemplateFUCCICOD: TIntegerField;
-    SQLTemplateFUCCN2VLRDEBITO: TBCDField;
-    SQLTemplateFUCCN2VLRCREDITO: TBCDField;
+    SQLTemplateFUCCN2VLRDEBITO: TFloatField;
+    SQLTemplateFUCCN2VLRCREDITO: TFloatField;
     SQLTemplatePENDENTE: TStringField;
     SQLTemplateREGISTRO: TDateTimeField;
     QueryOperacaoFrete: TQuery;
@@ -29,8 +29,8 @@ type
     ButtonCadastroOperacaoFrete: TSpeedButton;
     SQLTemplateOPFUICOD: TIntegerField;
     SQLTemplateFUCCDULTREC: TDateTimeField;
-    SQLTemplateFUCCN2VLRTOTREC: TBCDField;
-    SQLTemplateFUCCN2VLRULTREC: TBCDField;
+    SQLTemplateFUCCN2VLRTOTREC: TFloatField;
+    SQLTemplateFUCCN2VLRULTREC: TFloatField;
     SQLTemplateFUCCDLANCAMENTO: TDateTimeField;
     DBDateEdit1: TDBDateEdit;
     Label3: TLabel;

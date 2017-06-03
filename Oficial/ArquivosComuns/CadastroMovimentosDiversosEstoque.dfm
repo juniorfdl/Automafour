@@ -607,11 +607,9 @@ inherited FormCadastroMovimentosDiversosEstoque: TFormCadastroMovimentosDiversos
       FieldName = 'PRODICOD'
       Origin = 'DB.MOVIMENTODIVERSOITEM.PRODICOD'
     end
-    object SQLItensMVDIN3QTD: TBCDField
+    object SQLItensMVDIN3QTD: TFloatField
       FieldName = 'MVDIN3QTD'
       Origin = 'DB.MOVIMENTODIVERSOITEM.MVDIN3QTD'
-      Precision = 15
-      Size = 3
     end
     object SQLItensLOTEA30NRO: TStringField
       FieldName = 'LOTEA30NRO'

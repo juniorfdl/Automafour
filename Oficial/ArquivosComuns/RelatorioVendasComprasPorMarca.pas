@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, RelatorioTemplate, DBTables, Placemnt, DB, ComCtrls, StdCtrls,
   Mask, ToolEdit, RxLookup, ExtCtrls, Buttons, jpeg, RxQuery, OleCtrls,
-  UnitLibrary, UCrpe32;
+  UnitLibrary, UCrpe32, AdvOfficeStatusBar, AdvOfficeStatusBarStylers;
 
 type
   TFormRelatorioVendasComprasPorGrupo = class(TFormRelatorioTEMPLATE)
@@ -30,19 +30,19 @@ type
     TblTemporariaQTDECOMPRA: TIntegerField;
     SQLRelSaldoPorGrupoGRUPICOD: TIntegerField;
     SQLRelSaldoPorGrupoGRUPA60DESCR: TStringField;
-    SQLRelSaldoPorGrupoVENDA: TBCDField;
-    SQLRelSaldoPorGrupoCOMPRA: TBCDField;
-    SQLRelSaldoPorGrupoCUSTO: TBCDField;
-    SQLRelSaldoPorGrupoSALDO: TBCDField;
+    SQLRelSaldoPorGrupoVENDA: TFloatField;
+    SQLRelSaldoPorGrupoCOMPRA: TFloatField;
+    SQLRelSaldoPorGrupoCUSTO: TFloatField;
+    SQLRelSaldoPorGrupoSALDO: TFloatField;
     SQLRelSaldoPorGrupoTOTALVENDA: TFloatField;
     SQLRelSaldoPorGrupoTOTALCOMPRA: TFloatField;
     SQLRelSaldoPorGrupoTOTALCUSTO: TFloatField;
     TblTemporariaSaldoGRUPICOD: TIntegerField;
     TblTemporariaSaldoGRUPA60DESCR: TStringField;
-    TblTemporariaSaldoVENDA: TBCDField;
-    TblTemporariaSaldoCOMPRA: TBCDField;
-    TblTemporariaSaldoCUSTO: TBCDField;
-    TblTemporariaSaldoSALDO: TBCDField;
+    TblTemporariaSaldoVENDA: TFloatField;
+    TblTemporariaSaldoCOMPRA: TFloatField;
+    TblTemporariaSaldoCUSTO: TFloatField;
+    TblTemporariaSaldoSALDO: TFloatField;
     TblTemporariaSaldoTOTALVENDA: TFloatField;
     TblTemporariaSaldoTOTALCOMPRA: TFloatField;
     TblTemporariaSaldoTOTALCUSTO: TFloatField;

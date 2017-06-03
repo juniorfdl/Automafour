@@ -34,7 +34,7 @@ inherited FormCadastroUnidade: TFormCadastroUnidade
                   item
                     Expanded = False
                     FieldName = 'UNIDN3FATORCONV'
-                    Title.Caption = 'Fator Convers'#227'o'
+                    Title.Caption = 'Fator Conversão'
                     Visible = True
                   end>
               end
@@ -65,7 +65,7 @@ inherited FormCadastroUnidade: TFormCadastroUnidade
                 Caption = 
                   'Obs.: O campo Fator Conversao de Estoque, serve para  multiplica' +
                   'r '#13#10'a Capacidade de Embalagens X Quantidade Comprada, '#13#10'na hora ' +
-                  'de lan'#231'ar a Nota de Compra! Conforme layout SPED Fiscal!'
+                  'de lançar a Nota de Compra! Conforme layout SPED Fiscal!'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clRed
                 Font.Height = -11
@@ -78,7 +78,7 @@ inherited FormCadastroUnidade: TFormCadastroUnidade
                 Top = 10
                 Width = 302
                 Height = 17
-                Hint = 'Substitui'#231#227'o Tribut'#225'ria'
+                Hint = 'Substituição Tributária'
                 Caption = 'Permite Venda com Quantidade Fracionada '
                 DataField = 'UNIDCFRAC'
                 DataSource = DSTemplate
@@ -102,7 +102,7 @@ inherited FormCadastroUnidade: TFormCadastroUnidade
               Top = 3
               Width = 38
               Height = 13
-              Caption = 'C'#243'digo'
+              Caption = 'Código'
               FocusControl = DBEdit1
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 8404992
@@ -130,7 +130,7 @@ inherited FormCadastroUnidade: TFormCadastroUnidade
               Top = 3
               Width = 55
               Height = 13
-              Caption = 'Descri'#231#227'o'
+              Caption = 'Descrição'
               FocusControl = DBEdit3
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 8404992
@@ -233,7 +233,7 @@ inherited FormCadastroUnidade: TFormCadastroUnidade
       'Select * From Unidade Where (%MFiltro)')
     object SQLTemplateUNIDICOD: TIntegerField
       Tag = 1
-      DisplayLabel = 'C'#243'digo'
+      DisplayLabel = 'Código'
       FieldName = 'UNIDICOD'
       Origin = 'DB.UNIDADE.UNIDICOD'
       Visible = False
@@ -248,7 +248,7 @@ inherited FormCadastroUnidade: TFormCadastroUnidade
     end
     object SQLTemplateUNIDA15DESCR: TStringField
       ConstraintErrorMessage = '1'
-      DisplayLabel = 'Descri'#231#227'o Completa'
+      DisplayLabel = 'Descrição Completa'
       FieldName = 'UNIDA15DESCR'
       Origin = 'DB.UNIDADE.UNIDA15DESCR'
       FixedChar = True
@@ -270,12 +270,10 @@ inherited FormCadastroUnidade: TFormCadastroUnidade
       FieldName = 'REGISTRO'
       Origin = 'DB.UNIDADE.REGISTRO'
     end
-    object SQLTemplateUNIDN3FATORCONV: TBCDField
+    object SQLTemplateUNIDN3FATORCONV: TFloatField
       ConstraintErrorMessage = '1'
       FieldName = 'UNIDN3FATORCONV'
       Origin = 'DB.UNIDADE.UNIDN3FATORCONV'
-      Precision = 15
-      Size = 3
     end
   end
   inherited UpdateSQLTemplate: TUpdateSQL

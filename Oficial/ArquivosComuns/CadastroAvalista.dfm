@@ -89,7 +89,7 @@ inherited FormCadastroAvalista: TFormCadastroAvalista
                     Top = 0
                     Width = 103
                     Height = 13
-                    Caption = 'Inscri'#231#227'o Estadual'
+                    Caption = 'Inscrição Estadual'
                     FocusControl = DBEditIE
                     Font.Charset = DEFAULT_CHARSET
                     Font.Color = clNavy
@@ -103,7 +103,7 @@ inherited FormCadastroAvalista: TFormCadastroAvalista
                     Top = 0
                     Width = 101
                     Height = 13
-                    Caption = 'Data de Funda'#231#227'o'
+                    Caption = 'Data de Fundação'
                     Font.Charset = DEFAULT_CHARSET
                     Font.Color = clNavy
                     Font.Height = -11
@@ -233,8 +233,8 @@ inherited FormCadastroAvalista: TFormCadastroAvalista
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
                   Items.Strings = (
-                    'F'#237'sica'
-                    'Jur'#237'dica')
+                    'Física'
+                    'Jurídica')
                   ParentFont = False
                   TabOrder = 2
                   Values.Strings = (
@@ -271,7 +271,7 @@ inherited FormCadastroAvalista: TFormCadastroAvalista
                   Top = -1
                   Width = 76
                   Height = 13
-                  Caption = 'Nome da M'#227'e'
+                  Caption = 'Nome da Mãe'
                   FocusControl = DBEdit15
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clNavy
@@ -327,7 +327,7 @@ inherited FormCadastroAvalista: TFormCadastroAvalista
                   Top = 14
                   Width = 21
                   Height = 21
-                  Hint = 'Acessa Cep'#39's'
+                  Hint = 'Acessa Cep''s'
                   Flat = True
                   Glyph.Data = {
                     9E020000424D9E0200000000000036000000280000000E0000000E0000000100
@@ -361,7 +361,7 @@ inherited FormCadastroAvalista: TFormCadastroAvalista
                   Top = 0
                   Width = 52
                   Height = 13
-                  Caption = 'Endere'#231'o'
+                  Caption = 'Endereço'
                   FocusControl = DBEditEnd
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clNavy
@@ -699,7 +699,7 @@ inherited FormCadastroAvalista: TFormCadastroAvalista
               Top = 4
               Width = 172
               Height = 13
-              Caption = 'Nome Completo / Raz'#227'o Social'
+              Caption = 'Nome Completo / Razão Social'
               FocusControl = DBEditNome
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clNavy
@@ -794,7 +794,7 @@ inherited FormCadastroAvalista: TFormCadastroAvalista
     end
     object SQLTemplateAVALA60RAZAOSOC: TStringField
       ConstraintErrorMessage = '1'
-      DisplayLabel = 'Nome / Raz'#227'o Social'
+      DisplayLabel = 'Nome / Razão Social'
       FieldName = 'AVALA60RAZAOSOC'
       Origin = 'DB.AVALISTA.AVALA60RAZAOSOC'
       FixedChar = True
@@ -829,7 +829,7 @@ inherited FormCadastroAvalista: TFormCadastroAvalista
       Size = 15
     end
     object SQLTemplateAVALA60ENDRES: TStringField
-      DisplayLabel = 'Endere'#231'o'
+      DisplayLabel = 'Endereço'
       FieldName = 'AVALA60ENDRES'
       Origin = 'DB.AVALISTA.AVALA60ENDRES'
       FixedChar = True
@@ -877,7 +877,7 @@ inherited FormCadastroAvalista: TFormCadastroAvalista
       Origin = 'DB.AVALISTA.AVALDNASC'
     end
     object SQLTemplateAVALDFUND: TDateTimeField
-      DisplayLabel = 'Dt.Funda'#231#227'o'
+      DisplayLabel = 'Dt.Fundação'
       FieldName = 'AVALDFUND'
       Origin = 'DB.AVALISTA.AVALDFUND'
     end
@@ -889,18 +889,17 @@ inherited FormCadastroAvalista: TFormCadastroAvalista
       Size = 60
     end
     object SQLTemplateAVALA60NOMEMAE: TStringField
-      DisplayLabel = 'M'#227'e'
+      DisplayLabel = 'Mãe'
       FieldName = 'AVALA60NOMEMAE'
       Origin = 'UNITGESTAO.AVALISTA.AVALA60NOMEMAE'
       FixedChar = True
       Size = 60
     end
-    object SQLTemplateAVALN2RENDA: TBCDField
+    object SQLTemplateAVALN2RENDA: TFloatField
       DisplayLabel = 'Renda'
       FieldName = 'AVALN2RENDA'
       Origin = 'UNITGESTAO.AVALISTA.AVALN2RENDA'
-      Precision = 15
-      Size = 2
+
     end
     object SQLTemplatePENDENTE: TStringField
       FieldName = 'PENDENTE'

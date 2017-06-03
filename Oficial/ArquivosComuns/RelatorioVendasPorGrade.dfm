@@ -5,6 +5,9 @@ inherited FormRelatorioVendasPorGrade: TFormRelatorioVendasPorGrade
   ClientHeight = 530
   PixelsPerInch = 96
   TextHeight = 13
+  inherited Progresso: TProgressBar
+    Top = 514
+  end
   inherited ScrollBox: TScrollBox
     Height = 514
     inherited PanelCentro: TPanel
@@ -315,9 +318,6 @@ inherited FormRelatorioVendasPorGrade: TFormRelatorioVendasPorGrade
         end
       end
     end
-  end
-  inherited Progresso: TProgressBar
-    Top = 514
   end
   inherited TblTemporaria: TTable
     TableName = 'VendasPorGrade.DB'
@@ -810,18 +810,14 @@ inherited FormRelatorioVendasPorGrade: TFormRelatorioVendasPorGrade
       FixedChar = True
       Size = 60
     end
-    object SQLProdutoPRODN3VLRCUSTO: TBCDField
+    object SQLProdutoPRODN3VLRCUSTO: TFloatField
       FieldName = 'PRODN3VLRCUSTO'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoPRODN3VLRVENDA: TFloatField
       FieldName = 'PRODN3VLRVENDA'
     end
-    object SQLProdutoSALDO: TBCDField
+    object SQLProdutoSALDO: TFloatField
       FieldName = 'SALDO'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoGRUPICOD: TIntegerField
       FieldName = 'GRUPICOD'
@@ -908,7 +904,7 @@ inherited FormRelatorioVendasPorGrade: TFormRelatorioVendasPorGrade
     LogOnInfo.Table = -1
     SessionInfo.Table = -1
     SessionInfo.Propagate = True
-    Export.Excel.Constant = 9
+    Export.Excel.Constant = 9.000000000000000000
     Export.Excel.Area = 'D'
     Export.CharSepQuote = ' '
     WindowZoom.Magnification = -1
@@ -965,8 +961,8 @@ inherited FormRelatorioVendasPorGrade: TFormRelatorioVendasPorGrade
     GraphText.DataLabelsFont.Name = 'MS Sans Serif'
     GraphText.DataLabelsFont.Style = []
     GraphOptions.Number = -1
-    GraphOptions.Max = -1
-    GraphOptions.Min = -1
+    GraphOptions.Max = -1.000000000000000000
+    GraphOptions.Min = -1.000000000000000000
     GraphOptions.DataValues = cDefault
     GraphOptions.GridLines = cDefault
     GraphOptions.Legend = cDefault

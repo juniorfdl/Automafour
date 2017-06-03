@@ -30,9 +30,9 @@ type
     DBEdit5: TDBDateEdit;
     SQLTemplateTPRCICOD: TIntegerField;
     SQLTemplatePRODICOD: TIntegerField;
-    SQLTemplateTPCPN3VLRVENDA: TBCDField;
-    SQLTemplateTPCPN3MARGLUCR: TBCDField;
-    SQLTemplateTPCPN3VLRVENDAPROM: TBCDField;
+    SQLTemplateTPCPN3VLRVENDA: TFloatField;
+    SQLTemplateTPCPN3MARGLUCR: TFloatField;
+    SQLTemplateTPCPN3VLRVENDAPROM: TFloatField;
     SQLTemplateTPCPDINIPROMO: TDateTimeField;
     SQLTemplateTPCPDFIMPROMO: TDateTimeField;
     SQLTemplatePENDENTE: TStringField;

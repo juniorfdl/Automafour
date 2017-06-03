@@ -744,18 +744,14 @@ inherited FormCadastroMateriais: TFormCadastroMateriais
       FieldName = 'PRODDCAD'
       Origin = 'DB.PRODUTO.PRODDCAD'
     end
-    object SQLTemplatePRODN3VLRCOMPRA: TBCDField
+    object SQLTemplatePRODN3VLRCOMPRA: TFloatField
       DisplayLabel = 'Vlr.Compra'
       FieldName = 'PRODN3VLRCOMPRA'
       Origin = 'DB.PRODUTO.PRODN3VLRCOMPRA'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplatePRODN3PERCIPI: TBCDField
+    object SQLTemplatePRODN3PERCIPI: TFloatField
       FieldName = 'PRODN3PERCIPI'
       Origin = 'DB.PRODUTO.PRODN3PERCIPI'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplatePRODCSERVICO: TStringField
       FieldName = 'PRODCSERVICO'
@@ -777,11 +773,9 @@ inherited FormCadastroMateriais: TFormCadastroMateriais
       FixedChar = True
       Size = 5
     end
-    object SQLTemplatePRODN3QTDEBAIXA: TBCDField
+    object SQLTemplatePRODN3QTDEBAIXA: TFloatField
       FieldName = 'PRODN3QTDEBAIXA'
       Origin = 'DB.PRODUTO.PRODN3QTDEBAIXA'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplatePENDENTE: TStringField
       FieldName = 'PENDENTE'
@@ -793,11 +787,9 @@ inherited FormCadastroMateriais: TFormCadastroMateriais
       FieldName = 'REGISTRO'
       Origin = 'DB.PRODUTO.REGISTRO'
     end
-    object SQLTemplatePRODN3CAPACEMBAL: TBCDField
+    object SQLTemplatePRODN3CAPACEMBAL: TFloatField
       FieldName = 'PRODN3CAPACEMBAL'
       Origin = 'DB.PRODUTO.PRODN3CAPACEMBAL'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplatePRODCATIVO: TStringField
       FieldName = 'PRODCATIVO'
@@ -821,17 +813,13 @@ inherited FormCadastroMateriais: TFormCadastroMateriais
       FixedChar = True
       Size = 1
     end
-    object SQLTemplatePRODN3PESOBRUTO: TBCDField
+    object SQLTemplatePRODN3PESOBRUTO: TFloatField
       FieldName = 'PRODN3PESOBRUTO'
       Origin = 'DB.PRODUTO.PRODN3PESOBRUTO'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplatePRODN3PESOLIQ: TBCDField
+    object SQLTemplatePRODN3PESOLIQ: TFloatField
       FieldName = 'PRODN3PESOLIQ'
       Origin = 'DB.PRODUTO.PRODN3PESOLIQ'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplatePRODCTEMNROSERIE: TStringField
       FieldName = 'PRODCTEMNROSERIE'

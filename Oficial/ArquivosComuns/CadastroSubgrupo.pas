@@ -20,7 +20,7 @@ type
     Label2: TLabel;
     SQLTemplatePENDENTE: TStringField;
     SQLTemplateREGISTRO: TDateTimeField;
-    SQLTemplateSUBGN3MARGEM: TBCDField;
+    SQLTemplateSUBGN3MARGEM: TFloatField;
     DBMgFixaVarejo: TEvDBNumEdit;
     Label3: TLabel;
     procedure FormCreate(Sender: TObject);

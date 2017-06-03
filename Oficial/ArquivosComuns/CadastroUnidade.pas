@@ -26,7 +26,7 @@ type
     Label3: TLabel;
     SQLTemplateUNIDA15DESCR: TStringField;
     SQLTemplateUNIDCFRAC: TStringField;
-    SQLTemplateUNIDN3FATORCONV: TBCDField;
+    SQLTemplateUNIDN3FATORCONV: TFloatField;
     DBCheckFrac: TDBCheckBox;
     DBMgFixaVarejo: TEvDBNumEdit;
     Label4: TLabel;

@@ -235,26 +235,20 @@ inherited FormCadastroProdutoTabelaPreco: TFormCadastroProdutoTabelaPreco
       FieldName = 'PRODICOD'
       Origin = 'DB.TABELAPRECOPRODUTO.PRODICOD'
     end
-    object SQLTemplateTPCPN3VLRVENDA: TBCDField
+    object SQLTemplateTPCPN3VLRVENDA: TFloatField
       DisplayLabel = 'Valor Venda'
       FieldName = 'TPCPN3VLRVENDA'
       Origin = 'DB.TABELAPRECOPRODUTO.TPCPN3VLRVENDA'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplateTPCPN3MARGLUCR: TBCDField
+    object SQLTemplateTPCPN3MARGLUCR: TFloatField
       DisplayLabel = 'Margem Lucro'
       FieldName = 'TPCPN3MARGLUCR'
       Origin = 'DB.TABELAPRECOPRODUTO.TPCPN3MARGLUCR'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplateTPCPN3VLRVENDAPROM: TBCDField
+    object SQLTemplateTPCPN3VLRVENDAPROM: TFloatField
       DisplayLabel = 'Valor Venda Prom.'
       FieldName = 'TPCPN3VLRVENDAPROM'
       Origin = 'DB.TABELAPRECOPRODUTO.TPCPN3VLRVENDAPROM'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplateTPCPDINIPROMO: TDateTimeField
       DisplayLabel = 'In'#237'cio da Promo'#231#227'o'

@@ -1,7 +1,7 @@
 inherited FormCadastroUsuario: TFormCadastroUsuario
   Left = 259
   Top = 118
-  Caption = 'Cadastro de Usu'#225'rios'
+  Caption = 'Cadastro de Usuários'
   ClientHeight = 569
   ClientWidth = 837
   OldCreateOrder = True
@@ -130,7 +130,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                 Top = 44
                 Width = 628
                 Height = 301
-                Caption = 'Controles de Permiss'#245'es'
+                Caption = 'Controles de Permissões'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
                 Font.Height = -11
@@ -233,7 +233,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   Top = 123
                   Width = 221
                   Height = 17
-                  Caption = 'Desativar Pr'#233'-Vendas/Or'#231'amentos'
+                  Caption = 'Desativar Pré-Vendas/Orçamentos'
                   DataField = 'USUACCANCPREVENDA'
                   DataSource = DSTemplate
                   Font.Charset = DEFAULT_CHARSET
@@ -251,7 +251,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   Top = 139
                   Width = 202
                   Height = 17
-                  Caption = 'Gera libera'#231#227'o de cr'#233'dito'
+                  Caption = 'Gera liberação de crédito'
                   DataField = 'USUACLIBERACREDITO'
                   DataSource = DSTemplate
                   Font.Charset = DEFAULT_CHARSET
@@ -305,7 +305,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   Top = 202
                   Width = 259
                   Height = 17
-                  Caption = 'Atualiza Saldo de Estoque no Invent'#225'rio'
+                  Caption = 'Atualiza Saldo de Estoque no Inventário'
                   DataField = 'USUCALTERASLDINVENTARIO'
                   DataSource = DSTemplate
                   Font.Charset = DEFAULT_CHARSET
@@ -323,7 +323,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   Top = 187
                   Width = 202
                   Height = 17
-                  Caption = 'Excluir Movimenta'#231#227'o Banc'#225'ria'
+                  Caption = 'Excluir Movimentação Bancária'
                   DataField = 'USUACEXCMOVBCO'
                   DataSource = DSTemplate
                   Font.Charset = DEFAULT_CHARSET
@@ -359,7 +359,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   Top = 234
                   Width = 283
                   Height = 17
-                  Caption = 'Bloquear a fun'#231#227'o CTRL+G para abrir gaveta'
+                  Caption = 'Bloquear a função CTRL+G para abrir gaveta'
                   DataField = 'USUACBLOQCTRLG'
                   DataSource = DSTemplate
                   Font.Charset = DEFAULT_CHARSET
@@ -485,7 +485,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   Top = 112
                   Width = 289
                   Height = 17
-                  Caption = 'Permite ver as vendas por per'#237'odo'
+                  Caption = 'Permite ver as vendas por período'
                   DataField = 'USUACPERMVVENDAS'
                   DataSource = DSTemplate
                   Font.Charset = DEFAULT_CHARSET
@@ -503,7 +503,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   Top = 127
                   Width = 300
                   Height = 17
-                  Caption = 'Permite ver os movimentos de caixa por per'#237'odo'
+                  Caption = 'Permite ver os movimentos de caixa por período'
                   DataField = 'USUACPERMVMOVCX'
                   DataSource = DSTemplate
                   Font.Charset = DEFAULT_CHARSET
@@ -557,7 +557,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   Top = 157
                   Width = 146
                   Height = 17
-                  Caption = 'Fecha CX e Redu'#231#227'o Z'
+                  Caption = 'Fecha CX e Redução Z'
                   DataField = 'USUACPERMREDZ'
                   DataSource = DSTemplate
                   Font.Charset = DEFAULT_CHARSET
@@ -812,7 +812,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
               Top = 3
               Width = 38
               Height = 13
-              Caption = 'C'#243'digo'
+              Caption = 'Código'
               FocusControl = DBEdit1
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 8404992
@@ -854,7 +854,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
               Top = 2
               Width = 125
               Height = 13
-              Caption = '% M'#225'x.Desc na Venda'
+              Caption = '% Máx.Desc na Venda'
               FocusControl = DBEdit4
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 8404992
@@ -937,7 +937,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
               ItemHeight = 13
               Items.Strings = (
                 'Sim'
-                'N'#227'o')
+                'Não')
               ParentCtl3D = False
               TabOrder = 2
               Values.Strings = (
@@ -958,7 +958,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
               Top = 38
               Width = 585
               Height = 31
-              Caption = ' Acesso aos M'#243'dulos '
+              Caption = ' Acesso aos Módulos '
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
               Font.Height = -11
@@ -1119,7 +1119,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
   end
   inherited PopupMenuImpressao: TPopupMenu
     object MnImprimeCrach: TMenuItem
-      Caption = 'Imprime Crach'#225' com senha'
+      Caption = 'Imprime Crachá com senha'
       OnClick = MnImprimeCrachClick
     end
   end
@@ -1129,7 +1129,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
       'Select * From Usuario Where (%MFiltro)')
     object SQLTemplateUSUAICOD: TIntegerField
       Tag = 1
-      DisplayLabel = 'C'#243'digo'
+      DisplayLabel = 'Código'
       FieldName = 'USUAICOD'
       Origin = 'DB.USUARIO.USUAICOD'
       Visible = False
@@ -1169,11 +1169,9 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
       FixedChar = True
       Size = 1
     end
-    object SQLTemplateUSUAN2PERCDESC: TBCDField
+    object SQLTemplateUSUAN2PERCDESC: TFloatField
       FieldName = 'USUAN2PERCDESC'
       Origin = 'DB.USUARIO.USUAN2PERCDESC'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplateUSUACVENDCLIBLOQ: TStringField
       FieldName = 'USUACVENDCLIBLOQ'
@@ -1243,7 +1241,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
       Size = 60
     end
     object SQLTemplateUSUACBLOQCTRLG: TStringField
-      DisplayLabel = 'Bloqueia a fun'#231#227'o CTRL + G'
+      DisplayLabel = 'Bloqueia a função CTRL + G'
       FieldName = 'USUACBLOQCTRLG'
       Origin = 'DB.USUARIO.USUACBLOQCTRLG'
       FixedChar = True
@@ -1494,8 +1492,8 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
       '151000')
     DataPipeline = Pipe
     PrinterSetup.BinName = 'Default'
-    PrinterSetup.DocumentName = 'Etiquetas de C'#243'digo de Barras'
-    PrinterSetup.PaperName = 'Letter'
+    PrinterSetup.DocumentName = 'Etiquetas de Código de Barras'
+    PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 7000
     PrinterSetup.mmMarginLeft = 2000
@@ -1503,7 +1501,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
     PrinterSetup.mmMarginTop = 14000
     PrinterSetup.mmPaperHeight = 279000
     PrinterSetup.mmPaperWidth = 216000
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.PaperSize = 1
     Template.FileName = 'C:\TiagoAllfaro\Moreleh\EtiquetasMalaDireta\EtiquetaMoreleh.rtm'
     Units = utMillimeters
     DeviceType = 'Screen'
@@ -1558,7 +1556,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
         Border.Color = clBlack
         Border.Style = psSolid
         Border.Visible = False
-        Caption = 'Funcion'#225'rio:'
+        Caption = 'Funcionário:'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial Narrow'

@@ -1131,19 +1131,15 @@ inherited FormCadastroVendedor: TFormCadastroVendedor
       FixedChar = True
       Size = 60
     end
-    object SQLTemplateVENDN2COMISV: TBCDField
+    object SQLTemplateVENDN2COMISV: TFloatField
       DisplayLabel = '% Comiss'#227'o a Vista'
       FieldName = 'VENDN2COMISV'
       Origin = 'DB.VENDEDOR.VENDN2COMISV'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplateVENDN2COMISP: TBCDField
+    object SQLTemplateVENDN2COMISP: TFloatField
       DisplayLabel = '% Comiss'#227'o a Prazo'
       FieldName = 'VENDN2COMISP'
       Origin = 'DB.VENDEDOR.VENDN2COMISP'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplateVENDCTIPCOMIS: TStringField
       DisplayLabel = 'Tipo'
@@ -1342,25 +1338,21 @@ inherited FormCadastroVendedor: TFormCadastroVendedor
       FixedChar = True
       Size = 254
     end
-    object SQLTemplateVENDN2PERCFIDEL: TBCDField
+    object SQLTemplateVENDN2PERCFIDEL: TFloatField
       DisplayLabel = '% Comiss'#227'o por Fideliza'#231#227'o'
       FieldName = 'VENDN2PERCFIDEL'
       Origin = 'DB.VENDEDOR.VENDN2PERCFIDEL'
-      Precision = 15
-      Size = 2
     end
     object SQLTemplateVENDIDIASVALFIDEL: TIntegerField
       DisplayLabel = 'Dias de Validade Fideliza'#231#227'o'
       FieldName = 'VENDIDIASVALFIDEL'
       Origin = 'DB.VENDEDOR.VENDIDIASVALFIDEL'
     end
-    object SQLTemplateVENDN2PERCIRRF: TBCDField
+    object SQLTemplateVENDN2PERCIRRF: TFloatField
       DisplayLabel = '% IRRF'
       FieldName = 'VENDN2PERCIRRF'
       Origin = 'DB.VENDEDOR.VENDN2PERCIRRF'
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 2
     end
     object SQLTemplateVENDCATIVO: TStringField
       FieldName = 'VENDCATIVO'
@@ -1373,11 +1365,9 @@ inherited FormCadastroVendedor: TFormCadastroVendedor
       Origin = 'DB.VENDEDOR.VENDA30SENHA'
       Size = 30
     end
-    object SQLTemplateVENDN2FLEX: TBCDField
+    object SQLTemplateVENDN2FLEX: TFloatField
       FieldName = 'VENDN2FLEX'
       Origin = 'DB.VENDEDOR.VENDN2FLEX'
-      Precision = 15
-      Size = 2
     end
   end
   object TblBanco: TTable

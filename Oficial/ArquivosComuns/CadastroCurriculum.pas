@@ -28,8 +28,8 @@ type
     SQLTemplateCUVIA20CARTMOT: TStringField;
     SQLTemplateCUVIA20TITELEIT: TStringField;
     SQLTemplateCUVIA30SETOR: TStringField;
-    SQLTemplateCUVIN2ULTSALARIO: TBCDField;
-    SQLTemplateCUVIN2PRETSALARIO: TBCDField;
+    SQLTemplateCUVIN2ULTSALARIO: TFloatField;
+    SQLTemplateCUVIN2PRETSALARIO: TFloatField;
     SQLTemplateCUVITEMPRESAS: TMemoField;
     SQLTemplateCUVITREFPESSOAL: TMemoField;
     SQLTemplatePENDENTE: TStringField;
