@@ -759,7 +759,7 @@ begin
     end;
   SQLContasReceber.Close;
 
-  if (DM.SQLTerminalAtivoTERMCIMPPREVENDA.AsString = 'S') then
+  if (DM.SQLTerminalAtivo.FieldByName('TERMCIMPPREVENDA').AsString = 'S') then
     if FileExists('IMPRESSAOPREVENDA.EXE') then
       WinExec(Pchar('IMPRESSAOPREVENDA.EXE'),sw_Show)
     else

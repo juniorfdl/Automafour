@@ -473,7 +473,7 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
                 Top = 4
                 Width = 103
                 Height = 13
-                Caption = 'Inscrição Estadual'
+                Caption = 'Inscri'#231#227'o Estadual'
                 FocusControl = DBEdit5
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = 8404992
@@ -487,7 +487,7 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
                 Top = 40
                 Width = 52
                 Height = 13
-                Caption = 'Endereço'
+                Caption = 'Endere'#231'o'
                 FocusControl = DBEditEnd
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = 8404992
@@ -611,7 +611,7 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
                 Top = 184
                 Width = 113
                 Height = 13
-                Caption = 'Informações ao SPC'
+                Caption = 'Informa'#231#245'es ao SPC'
                 FocusControl = DBEdit15
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = 8404992
@@ -639,7 +639,7 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
                 Top = 52
                 Width = 21
                 Height = 21
-                Hint = 'Acessa Profissão'
+                Hint = 'Acessa Profiss'#227'o'
                 Flat = True
                 Glyph.Data = {
                   9E020000424D9E0200000000000036000000280000000E0000000E0000000100
@@ -671,7 +671,7 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
                 Top = 113
                 Width = 79
                 Height = 13
-                Caption = 'Código na EAN'
+                Caption = 'C'#243'digo na EAN'
                 FocusControl = DBEdit6
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = 8404992
@@ -713,7 +713,7 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
                 Top = 184
                 Width = 108
                 Height = 13
-                Caption = 'Inscrição Municipal'
+                Caption = 'Inscri'#231#227'o Municipal'
                 FocusControl = DBEdit17
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = 8404992
@@ -755,7 +755,7 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
                 Top = 40
                 Width = 44
                 Height = 13
-                Caption = 'Número'
+                Caption = 'N'#250'mero'
                 FocusControl = DBEditEnd
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = 8404992
@@ -1493,7 +1493,7 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
               object rgpEmissao: TcxDBRadioGroup
                 Left = 504
                 Top = 2
-                Caption = 'Emissão NF-e'
+                Caption = 'Emiss'#227'o NF-e'
                 DataBinding.DataField = 'EMPRIFORMAEMISNFE'
                 DataBinding.DataSource = DSTemplate
                 Properties.Columns = 2
@@ -1503,7 +1503,7 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
                     Value = '0'
                   end
                   item
-                    Caption = 'Contingência'
+                    Caption = 'Conting'#234'ncia'
                     Value = '1'
                   end
                   item
@@ -1548,7 +1548,7 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
                   Top = 18
                   Width = 29
                   Height = 13
-                  Caption = 'Série'
+                  Caption = 'S'#233'rie'
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = 8404992
                   Font.Height = -11
@@ -1582,7 +1582,7 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
               object gbxLocais: TcxGroupBox
                 Left = 2
                 Top = 65
-                Caption = 'Parametrização de Locais e Diretórios'
+                Caption = 'Parametriza'#231#227'o de Locais e Diret'#243'rios'
                 TabOrder = 3
                 Height = 143
                 Width = 371
@@ -1669,7 +1669,7 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
               object gbxConfigProxy: TcxGroupBox
                 Left = 2
                 Top = 209
-                Caption = 'Configurações de Proxy'
+                Caption = 'Configura'#231#245'es de Proxy'
                 TabOrder = 4
                 Height = 54
                 Width = 679
@@ -1706,7 +1706,7 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
                   Top = 14
                   Width = 43
                   Height = 13
-                  Caption = 'Usuário'
+                  Caption = 'Usu'#225'rio'
                   FocusControl = cxDBTextEdit3
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = 8404992
@@ -1765,7 +1765,7 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
               object gbxConfgEmail: TcxGroupBox
                 Left = 2
                 Top = 319
-                Caption = 'Configurações para Envio de Danfe por E-mail'
+                Caption = 'Configura'#231#245'es para Envio de Danfe por E-mail'
                 TabOrder = 6
                 Height = 114
                 Width = 679
@@ -1802,7 +1802,7 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
                   Top = 20
                   Width = 43
                   Height = 13
-                  Caption = 'Usuário'
+                  Caption = 'Usu'#225'rio'
                   FocusControl = cxDBTextEdit6
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = 8404992
@@ -2060,7 +2060,7 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
                 object cxDBCheckBox3: TcxDBCheckBox
                   Left = 334
                   Top = 69
-                  Caption = 'Autenticação TSL'
+                  Caption = 'Autentica'#231#227'o TSL'
                   DataBinding.DataField = 'EMPRA1TSL'
                   DataBinding.DataSource = DSTemplate
                   Properties.DisplayChecked = 'S'
@@ -2079,11 +2079,11 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
                 DataBinding.DataSource = DSTemplate
                 Properties.Items = <
                   item
-                    Caption = 'Ambiente de Produção (Usuário Final)'
+                    Caption = 'Ambiente de Produ'#231#227'o (Usu'#225'rio Final)'
                     Value = '0'
                   end
                   item
-                    Caption = 'Ambiente de Homologação (Testes)'
+                    Caption = 'Ambiente de Homologa'#231#227'o (Testes)'
                     Value = '1'
                   end>
                 TabOrder = 7
@@ -2227,7 +2227,7 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
               Top = 3
               Width = 38
               Height = 13
-              Caption = 'Código'
+              Caption = 'C'#243'digo'
               FocusControl = DBEdit1
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 8404992
@@ -2241,7 +2241,7 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
               Top = 3
               Width = 71
               Height = 13
-              Caption = 'Razão Social'
+              Caption = 'Raz'#227'o Social'
               FocusControl = DBEdit2
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 8404992
@@ -2322,14 +2322,14 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
       'select * from EMPRESA where (%MFiltro)')
     object SQLTemplateEMPRICOD: TIntegerField
       Tag = 1
-      DisplayLabel = 'Código'
+      DisplayLabel = 'C'#243'digo'
       FieldName = 'EMPRICOD'
       Origin = 'DB.EMPRESA.EMPRICOD'
       Visible = False
     end
     object SQLTemplateEMPRA60RAZAOSOC: TStringField
       ConstraintErrorMessage = '1'
-      DisplayLabel = 'Razão Social'
+      DisplayLabel = 'Raz'#227'o Social'
       FieldName = 'EMPRA60RAZAOSOC'
       Origin = 'DB.EMPRESA.EMPRA60RAZAOSOC'
       FixedChar = True
@@ -2365,7 +2365,7 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
     end
     object SQLTemplateEMPRA60END: TStringField
       ConstraintErrorMessage = '1'
-      DisplayLabel = 'Endereço'
+      DisplayLabel = 'Endere'#231'o'
       FieldName = 'EMPRA60END'
       Origin = 'DB.EMPRESA.EMPRA60END'
       FixedChar = True
@@ -2413,7 +2413,7 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
       Size = 14
     end
     object SQLTemplateEMPRA20IE: TStringField
-      DisplayLabel = 'Inscrição Estadual'
+      DisplayLabel = 'Inscri'#231#227'o Estadual'
       FieldName = 'EMPRA20IE'
       Origin = 'DB.EMPRESA.EMPRA20IE'
       FixedChar = True
@@ -2458,7 +2458,7 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
       Origin = 'DB.EMPRESA.REGISTRO'
     end
     object SQLTemplateEMPRCFISJURID: TStringField
-      DisplayLabel = 'Física / Jurídica'
+      DisplayLabel = 'F'#237'sica / Jur'#237'dica'
       FieldName = 'EMPRCFISJURID'
       Origin = 'DB.EMPRESA.EMPRCFISJURID'
       FixedChar = True
@@ -2472,7 +2472,7 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
       Size = 100
     end
     object SQLTemplateEMPRA15CODEAN: TStringField
-      DisplayLabel = 'Cód. EAN'
+      DisplayLabel = 'C'#243'd. EAN'
       FieldName = 'EMPRA15CODEAN'
       Origin = 'DB.EMPRESA.EMPRA15CODEAN'
       FixedChar = True
@@ -2492,8 +2492,6 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
     object SQLTemplateEMPRN2VLRFUNDOPROMO: TFloatField
       FieldName = 'EMPRN2VLRFUNDOPROMO'
       Origin = 'DB.EMPRESA.EMPRN2VLRFUNDOPROMO'
-      Precision = 15
-      Size = 2
     end
     object SQLTemplateEMPRA20IMUNIC: TStringField
       FieldName = 'EMPRA20IMUNIC'
@@ -2567,8 +2565,6 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
       FieldName = 'EMPRN2CREDICMS'
       Origin = 'DB.EMPRESA.EMPRN2CREDICMS'
       DisplayFormat = ',0.00'
-      Precision = 15
-      Size = 2
     end
     object SQLTemplateEMPRA15CRCCONTADOR: TStringField
       FieldName = 'EMPRA15CRCCONTADOR'
@@ -2619,7 +2615,7 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
       Size = 15
     end
     object SQLTemplateEMPRA100CERTIFSERIE: TStringField
-      DisplayLabel = 'Série'
+      DisplayLabel = 'S'#233'rie'
       FieldName = 'EMPRA100CERTIFSERIE'
       Origin = 'UNITGESTAO.EMPRESA.EMPRA100CERTIFSERIE'
       Size = 100
@@ -2631,12 +2627,12 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
       Size = 35
     end
     object SQLTemplateEMPRIFORMAEMISDANFE: TIntegerField
-      DisplayLabel = 'Layout Emissão'
+      DisplayLabel = 'Layout Emiss'#227'o'
       FieldName = 'EMPRIFORMAEMISDANFE'
       Origin = 'UNITGESTAO.EMPRESA.EMPRIFORMAEMISDANFE'
     end
     object SQLTemplateEMPRIFORMAEMISNFE: TIntegerField
-      DisplayLabel = 'Forma Emissão'
+      DisplayLabel = 'Forma Emiss'#227'o'
       FieldName = 'EMPRIFORMAEMISNFE'
       Origin = 'UNITGESTAO.EMPRESA.EMPRIFORMAEMISNFE'
     end
@@ -2647,13 +2643,13 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
       Size = 100
     end
     object SQLTemplateEMPRA100CAMINHOXML: TStringField
-      DisplayLabel = 'Diretório XML'
+      DisplayLabel = 'Diret'#243'rio XML'
       FieldName = 'EMPRA100CAMINHOXML'
       Origin = 'UNITGESTAO.EMPRESA.EMPRA100CAMINHOXML'
       Size = 100
     end
     object SQLTemplateEMPRA100CAMINHODANFES: TStringField
-      DisplayLabel = 'Diretório Danfes'
+      DisplayLabel = 'Diret'#243'rio Danfes'
       FieldName = 'EMPRA100CAMINHODANFES'
       Origin = 'UNITGESTAO.EMPRESA.EMPRA100CAMINHODANFES'
       Size = 100
@@ -2688,7 +2684,7 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
       Origin = 'UNITGESTAO.EMPRESA.EMPRIPROXYPORTA'
     end
     object SQLTemplateEMPRA50PROXYUSUARIO: TStringField
-      DisplayLabel = 'Usuário'
+      DisplayLabel = 'Usu'#225'rio'
       FieldName = 'EMPRA50PROXYUSUARIO'
       Origin = 'UNITGESTAO.EMPRESA.EMPRA50PROXYUSUARIO'
       Size = 50
@@ -2711,7 +2707,7 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
       Origin = 'UNITGESTAO.EMPRESA.EMPRIEMAILPORTA'
     end
     object SQLTemplateEMPRA75EMAILUSUARIO: TStringField
-      DisplayLabel = 'Usuário'
+      DisplayLabel = 'Usu'#225'rio'
       FieldName = 'EMPRA75EMAILUSUARIO'
       Origin = 'UNITGESTAO.EMPRESA.EMPRA75EMAILUSUARIO'
       Size = 75
@@ -2880,20 +2876,14 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
     object SQLProdutoSaldoPSLDN3QTDE: TFloatField
       FieldName = 'PSLDN3QTDE'
       Origin = 'DB.PRODUTOSALDO.PSLDN3QTDE'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoSaldoPSLDN3QTDMIN: TFloatField
       FieldName = 'PSLDN3QTDMIN'
       Origin = 'DB.PRODUTOSALDO.PSLDN3QTDMIN'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoSaldoPSLDN3QTDMAX: TFloatField
       FieldName = 'PSLDN3QTDMAX'
       Origin = 'DB.PRODUTOSALDO.PSLDN3QTDMAX'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoSaldoPENDENTE: TStringField
       FieldName = 'PENDENTE'

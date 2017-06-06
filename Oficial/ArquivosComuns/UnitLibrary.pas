@@ -224,10 +224,304 @@ procedure GravaMovimentoEstoqueSimples(SqlProd,
                                        NumDocOrig,
                                        Lote : String) ;
 
+function PlanoVistaPrazo(Plano : integer; SQLPlRec, SQLPlRecParc : TRxQuery)  : string ;
+function  RetornaUltimaCompraCliente(Cliente, Vendedor :String) : TinfoRetornoUltCompra;
+function CancelamentoCupom(Documento, Usuario:string) : boolean ;
+function AbreFechaDataset(ADataSet: TDataSet; AAbrir: Boolean= True; AAtualizar: Boolean = False): Boolean;
+function MontaDataSQL(ACampo: String; ADe, AAte: TDate): String;                     
+
 
 implementation
 
 uses DataModulo, TelaAutenticaUsuario;
+
+function MontaDataSQL(ACampo: String; ADe, AAte: TDate): String;
+begin
+   Result := ' ' + ACampo + ' >= "' + FormatDateTime('mm/dd/yyyy', ADe) + '" and ' +
+             ' ' + ACampo + ' <= "' + FormatDateTime('mm/dd/yyyy', AAte)+ '"'; 
+end;
+
+function AbreFechaDataset(ADataSet: TDataSet; AAbrir: Boolean= True; AAtualizar: Boolean = False): Boolean;
+begin
+   if AAtualizar then
+     ADataSet.Close;
+   if not ADataSet.Active then
+     ADataSet.Active := AAbrir;
+end;
+
+function CancelamentoCupom(Documento, Usuario:string) : boolean ;
+var
+  Tabela       : string ;
+  Valor        : double ;
+  SQLItemTroca : TRxQuery;
+  IniFile      : TiniFile;
+  MovEstoqueTerm : Boolean;
+begin
+  SQLItemTroca := TRxQuery.Create(DM) ;
+  SQLItemTroca.DatabaseName := 'DB' ;
+
+  CancelamentoCupom := false ;
+
+ if DM.SQLConfigVenda.FieldByName('OPESICODCANCTROCA').AsString = '' then
+   begin
+     Informa('A Operação de Estoque para Cancelamento de Troca não foi configurada. Este cancelamento não será efetuado !') ;
+     exit ;
+   end ;
+
+  if DM.SQLConfigVenda.FieldByName('OPESICODCANCCUPOM').AsString = '' then
+  begin
+    Informa('A Operação de Estoque para Cancelamento de Cupom não foi configurada. Este cancelamento não será efetuado !') ;
+    exit ;
+  end ;
+
+  DM.DB.StartTransaction ;
+  TRY
+    //CANCELAR CUPOM
+    Tabela := 'Cupom' ;
+    DM.SQLTemplate.Close ;
+    DM.SQLTemplate.SQL.Clear ;
+    DM.SQLTemplate.SQL.Add('update CUPOM') ;
+    DM.SQLTemplate.SQL.Add('set CUPOCSTATUS = "C", CUPODCANC = "' + FormatDateTime('mm/dd/yyyy', Date) + '", USUAICODCANC = ' + Usuario + ' , PENDENTE = "S", REGISTRO = "'+ FormatDateTime('mm/dd/yyyy', Date) + '"');
+    DM.SQLTemplate.SQL.Add('where CUPOA13ID = "' + Documento + '"') ;
+    DM.SQLTemplate.ExecSQL ;
+
+    //FAZER MOVIMENTO CONTRARIO ESTOQUE CASO O TERMINAL MOVIMENTE ESTOQUE ONLINE, SENAO DEIXAR A ROTINA ATUALZA SALDO PDVS CORRIGIR.
+    if (DM.SQLTerminalAtivo.FindField('TERMCMOVESTOQUE').AsString = 'S') then
+      begin
+        Tabela := 'Itens Cupom' ;
+        SQLItemTroca.Close ;
+        SQLItemTroca.SQL.Clear ;
+        SQLItemTroca.SQL.Add('select * from CUPOMITEM') ;
+        SQLItemTroca.SQL.Add('where CUPOA13ID = "' + Documento + '"') ;
+        SQLItemTroca.Open ;
+        while not SQLItemTroca.EOF do
+          begin
+            //CANCELA ITENS VENDIDOS
+            if SQLItemTroca.FieldByName('CPITN3QTD').Value > 0 then
+              GravaMovimentoEstoque(DM.SQLProduto,
+                                    DM.SQLProdutoFilho,
+                                    DM.SQLProdutoSaldo,
+                                    StrToInt(EmpresaPadrao),//Empresa
+                                    SQLItemTroca.FieldByName('PRODICOD').AsInteger,//Produto
+                                    DM.SQLConfigVenda.FieldByName('OPESICODCANCCUPOM').Value,//Operacao
+                                    SQLItemTroca.FieldByName('CPITN3QTD').AsFloat,//Quantidade
+                                    'E',//ENTRADA/SAIDA
+                                    FormatDateTime('mm/dd/yyyy', Now),
+                                    '0',
+                                    'CUPOM',
+                                    Documento,
+                                    '') ;
+
+            //CANCELA ITENS TROCA
+            if SQLItemTroca.FieldByName('CPITN3QTDTROCA').Value > 0 then
+              GravaMovimentoEstoque(DM.SQLProduto,
+                                    DM.SQLProdutoFilho,
+                                    DM.SQLProdutoSaldo,
+                                    StrToInt(EmpresaPadrao),//Empresa
+                                    SQLItemTroca.FieldByName('PRODICOD').AsInteger,//Produto
+                                    DM.SQLConfigVenda.FieldByName('OPESICODCANCTROCA').Value,//Operacao
+                                    SQLItemTroca.FieldByName('CPITN3QTDTROCA').AsFloat,//Quantidade
+                                    'S',//ENTRADA/SAIDA
+                                    FormatDateTime('mm/dd/yyyy', Now),
+                                    '0',
+                                    'CUPOM',
+                                    Documento,
+                                    '') ;
+
+            SQLItemTroca.Next ;
+          end ;
+      end;
+    //CANCELAR ITENS
+    DM.SQLTemplate.Close ;
+    DM.SQLTemplate.SQL.Clear ;
+    DM.SQLTemplate.SQL.Add('update CUPOMITEM') ;
+    DM.SQLTemplate.SQL.Add('set CPITCSTATUS = "C", PENDENTE = "S", REGISTRO = "'+ FormatDateTime('mm/dd/yyyy', Date) + '"') ;
+    DM.SQLTemplate.SQL.Add('where CUPOA13ID = "' + Documento + '"') ;
+    DM.SQLTemplate.ExecSQL ;
+
+    //CANCELAR NUMERARIO
+    Tabela := 'Numerário Cupom' ;
+    DM.SQLTemplate.Close ;
+    DM.SQLTemplate.SQL.Clear ;
+    DM.SQLTemplate.SQL.Add('update CUPOMNUMERARIO') ;
+    DM.SQLTemplate.SQL.Add('set CONMCSTATUS = "C", PENDENTE = "S", REGISTRO = "'+ FormatDateTime('mm/dd/yyyy', Date) + '"') ;
+    DM.SQLTemplate.SQL.Add('where CUPOA13ID = "' + Documento + '"') ;
+    DM.SQLTemplate.ExecSQL ;
+    //CANCELAR CONTASRECEBER
+    Tabela := 'Contas a Receber' ;
+    DM.SQLTemplate.Close ;
+    DM.SQLTemplate.SQL.Clear ;
+    DM.SQLTemplate.SQL.Add('update CONTASRECEBER') ;
+    DM.SQLTemplate.SQL.Add('set CTRCCSTATUS = "C", PENDENTE = "S", REGISTRO = "'+ FormatDateTime('mm/dd/yyyy', Date) + '"') ;
+    DM.SQLTemplate.SQL.Add('where CUPOA13ID = "' + Documento + '"') ;
+    DM.SQLTemplate.ExecSQL ;
+    //EXCLUIR MOVIMENO CADERNO
+    Tabela := 'Caderno' ;
+    DM.SQLTemplate.Close ;
+    DM.SQLTemplate.SQL.Clear ;
+    DM.SQLTemplate.SQL.Add('delete from CADERNO') ;
+    DM.SQLTemplate.SQL.Add('where CUPOA13ID = "' + Documento + '"') ;
+    DM.SQLTemplate.ExecSQL ;
+    //EXCLUIR CARTAS AVISO
+    Tabela := 'CARTAAVISOCOBRANCA' ;
+    DM.SQLTemplate.Close ;
+    DM.SQLTemplate.SQL.Clear ;
+    DM.SQLTemplate.SQL.Add('delete from CARTAAVISOCOBRANCA') ;
+    DM.SQLTemplate.SQL.Add('where CUPOA13ID = "' + Documento + '"') ;
+    DM.SQLTemplate.ExecSQL ;
+    //EXCLUIR CARTAS AVISO
+    Tabela := 'CARTAAVISOSPC' ;
+    DM.SQLTemplate.Close ;
+    DM.SQLTemplate.SQL.Clear ;
+    DM.SQLTemplate.SQL.Add('delete from CARTAAVISOSPC') ;
+    DM.SQLTemplate.SQL.Add('where CUPOA13ID = "' + Documento + '"') ;
+    DM.SQLTemplate.ExecSQL ;
+    //EXCLUIR CARTAS AVISO
+    Tabela := 'CARTAPRIMEIROAVISO' ;
+    DM.SQLTemplate.Close ;
+    DM.SQLTemplate.SQL.Clear ;
+    DM.SQLTemplate.SQL.Add('delete from CARTAPRIMEIROAVISO') ;
+    DM.SQLTemplate.SQL.Add('where CUPOA13ID = "' + Documento + '"') ;
+    DM.SQLTemplate.ExecSQL ;
+    //EXCLUIR CARTAS AVISO
+    Tabela := 'CARTASEGUNDOAVISO' ;
+    DM.SQLTemplate.Close ;
+    DM.SQLTemplate.SQL.Clear ;
+    DM.SQLTemplate.SQL.Add('delete from CARTASEGUNDOAVISO') ;
+    DM.SQLTemplate.SQL.Add('where CUPOA13ID = "' + Documento + '"') ;
+    DM.SQLTemplate.ExecSQL ;
+  EXCEPT
+    on E: Exception do
+    begin
+      DM.DB.Rollback ;
+      Informa('Erro Cancelando ' + Tabela + #13 + E.Message) ;
+      exit ;
+    end ;
+  END ;
+
+  if DM.DB.InTransaction then
+    DM.DB.Commit ;
+
+  SQLItemTroca.Close ;
+  SQLItemTroca.Free ;
+
+  CancelamentoCupom := true ;
+end ;
+
+
+function  RetornaUltimaCompraCliente(Cliente, Vendedor :String) : TinfoRetornoUltCompra;
+var
+  Query : Tquery;
+  UltCompraNF, UltCompraCP: String;
+  InfoRetorno : TinfoRetornoUltCompra;
+  DocNF, DocCP : String;
+begin
+  UltCompraCP := '';
+  UltCompraNF := '';
+  Query := Tquery.Create(DM);
+  Query.DatabaseName := 'DB';
+  //nota fiscal
+  Query.Close;
+  Query.SQL.Clear;
+  Query.SQL.ADD('SELECT NOFIDEMIS, NOFIA13ID FROM NOTAFISCAL WHERE CLIEA13ID = "' + CLIENTE + '" AND ') ;
+  Query.SQL.ADD('VENDICOD = ' + Vendedor);
+  Query.SQL.ADD(' AND NOFICSTATUS = "E"');
+  Query.SQL.ADD(' ORDER BY NOFIDEMIS DESC');
+  Query.Open;
+  Query.First;
+  if not Query.IsEmpty then
+    begin
+      UltCompraNF := FormatDateTime('dd/mm/yyyy',Query.FieldByName('NOFIDEMIS').AsDateTime);
+      DocNF       := Query.FieldByName('NOFIA13ID').AsString;
+    end;
+  //cupom
+  Query.Close;
+  Query.SQL.Clear;
+  Query.SQL.ADD('SELECT CUPODEMIS, CUPOA13ID FROM CUPOM WHERE CLIEA13ID = "' + CLIENTE + '" AND ') ;
+  Query.SQL.ADD('VENDICOD = ' + Vendedor);
+  Query.SQL.ADD(' AND CUPOCSTATUS = "A"');
+  Query.SQL.ADD(' ORDER BY CUPODEMIS DESC');
+  Query.Open;
+  Query.First;
+  if not Query.IsEmpty then
+    begin
+      UltCompraCP := FormatDateTime('dd/mm/yyyy',Query.FieldByName('CUPODEMIS').AsDateTime);
+      DocCP       := Query.FieldByName('CUPOA13ID').AsString;
+    end;
+  if UltCompraNF <> '' then
+    begin
+      if UltCompraNF > UltCompraCP then
+        begin
+          InfoRetorno.UltimaCompra := UltCompraNF;
+          InfoRetorno.OrigemCompra := 'NOTAFISCAL';
+          InfoRetorno.Documento    := DocNF;
+        end
+      else
+        begin
+          if UltCompraCP <> '' then
+            begin
+              InfoRetorno.UltimaCompra := UltCompraCP;
+              InfoRetorno.OrigemCompra := 'CUPOM';
+              InfoRetorno.Documento    := DocCP;
+            end;
+        end;
+      end
+    else
+      if UltCompraCP <> '' then
+        begin
+          InfoRetorno.UltimaCompra := UltCompraCP;
+          InfoRetorno.OrigemCompra := 'CUPOM';
+          InfoRetorno.Documento    := DocCP;
+        end;
+
+  RetornaUltimaCompraCliente := InfoRetorno;
+end;
+
+
+function PlanoVistaPrazo(Plano : integer; SQLPlRec, SQLPlRecParc : TRxQuery)  : string ;
+var
+  NroParc : integer ;
+begin
+  Result := '' ;
+  SQLPlRec.Close ;
+  SQLPlRec.MacroByName('MFiltro').Value := 'PLRCICOD = ' + IntToStr(Plano) ;
+  SQLPlRec.Open ;
+
+  SQLPlRecParc.Close ;
+  SQLPlRecParc.MacroByName('MFiltro').Value := 'PLRCICOD = ' + IntToStr(Plano) ;
+  SQLPlRecParc.Open ;
+
+  if (SQLPlRec.FieldByName('PLRCCDFIX').Value = 'S') or (SQLPlRec.FieldByName('PLRCCDFIX').Value = 'V') then
+    begin
+      Result := 'PRAZO' ;
+    end
+  else
+    begin
+      NroParc := 0 ;
+      SQLPlRecParc.Close ;
+      SQLPlRecParc.Open ;
+      SQLPlRecParc.First ;
+      while not SQLPlRecParc.Eof do
+        begin
+          SQLPlRecParc.Next ;
+          Inc(NroParc) ;
+        end ;
+
+      if NroParc = 1 then
+        begin
+          SQLPlRecParc.First ;
+          if SQLPlRecParc.FieldByName('PLRPINRODIAS').Value = 0 then
+            Result := 'VISTA' ;
+          if SQLPlRecParc.FieldByName('PLRPINRODIAS').Value > 0 then
+            Result := 'PRAZO' ;
+        end ;
+
+      if NroParc > 1 then
+        begin
+          Result := 'PRAZO' ;
+        end ;
+   end ;
+end ;
 
 procedure GravaMovimentoEstoqueSimples(SqlProd,
                                        SQLProdFilho,

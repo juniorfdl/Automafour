@@ -107,14 +107,14 @@ type
     MnADMInvZerarSaldoEstoque: TMenuItem;
     ProdutosSemMovimento1: TMenuItem;
     Utilitrios1: TMenuItem;
-    ManutenodeProdutos1: TMenuItem;
-    ManutenodeCupom1: TMenuItem;
+    MnADMManutencaoProdutos: TMenuItem;
+    MnADMUtilitariosManutenodeCupons: TMenuItem;
     Comisso1: TMenuItem;
-    CalculodeComisso1: TMenuItem;
-    CadastrodeComisso1: TMenuItem;
-    QuitaodeComisso1: TMenuItem;
+    MnADMUtilitariosCalcularComissoes: TMenuItem;
+    MnADMFINCadastroComissao: TMenuItem;
+    mnQuitaoComisses: TMenuItem;
     PrVenda1: TMenuItem;
-    ApagarPrevenda7Dias1: TMenuItem;
+    MnADMUtilitariosApagarPreVendasImportadas: TMenuItem;
     ApagarOramento30Dias1: TMenuItem;
     Relatrios1: TMenuItem;
     Administrativo1: TMenuItem;
@@ -349,7 +349,16 @@ type
     procedure MnADMInvRelDivergenciasInventarioClick(Sender: TObject);
     procedure MnADMInvZerarSaldoEstoqueClick(Sender: TObject);
     procedure ProdutosSemMovimento1Click(Sender: TObject);
+    procedure MnADMManutencaoProdutosClick(Sender: TObject);
+    procedure MnADMUtilitariosManutenodeCuponsClick(Sender: TObject);
+    procedure MnADMUtilitariosCalcularComissoesClick(Sender: TObject);
+    procedure MnADMFINCadastroComissaoClick(Sender: TObject);
+    procedure mnQuitaoComissesClick(Sender: TObject);
+    procedure MnADMUtilitariosApagarPreVendasImportadasClick(Sender: TObject);
+    procedure ApagarOramento30Dias1Click(Sender: TObject);
   private
+    procedure ApagarOrcamentos;
+    procedure ApagarPreVendas;
     { Private declarations }
   public
     { Public declarations }
@@ -380,7 +389,9 @@ uses
   TelaReajustePreco, CadastroTrocas, TelaTransferenciaGrade,
   TelaTransferenciaMercadoria, TelaContagemManual,
   RelatorioDivergenciaInventario, TelaZerarSaldoEstoque,
-  TelaProdutosSemMovimento;
+  TelaProdutosSemMovimento, TelaManutencaoProdutos,
+  CadastroManutencaoCupom, TelaCalculoComissao, CadastroVendedorComissao,
+  TelaQuitacaoComissoes;
 
 
 
@@ -1504,6 +1515,193 @@ procedure TFormPrincipal.ProdutosSemMovimento1Click(Sender: TObject);
 begin
   inherited;
   CriaFormulario(TFormTelaProdutosSemMov,'FormTelaProdutosSemMov',False,False,False,'');
+end;
+
+procedure TFormPrincipal.MnADMManutencaoProdutosClick(Sender: TObject);
+begin  
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormTelaManutencaoProdutos,'FormTelaManutencaoProdutos',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnADMUtilitariosManutenodeCuponsClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroManutencaoCupom,'FormCadastroManutencaoCupom',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnADMUtilitariosCalcularComissoesClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario( TFormTelaCalculoComissao, 'FormTelaCalculoComissao', False, False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnADMFINCadastroComissaoClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroVendedorComissao, 'FormCadastroVendedorComissao',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.mnQuitaoComissesClick(Sender: TObject);
+begin
+  inherited;
+    if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormTelaQuitacaoComissoes, 'FormTelaQuitacaoComissoes',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnADMUtilitariosApagarPreVendasImportadasClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) = 0 then
+    exit
+  else
+    if Pergunta('Nao','Deseja apagar as Prevendas com mais de quinze dias.') then
+      ApagarPreVendas;
+end;
+
+procedure TFormPrincipal.ApagarPreVendas;
+var
+  Painel, DataLimite : string ;
+begin
+  {Painel := FormPrincipal.Caption ;
+
+  DataLimite := FormatDateTime('mm/dd/yyyy',now-7) ;
+
+  FormPrincipal.Caption := Application.Title + ' - Preparando para apagar Pré-Venda com mais de 7 dias...' ;
+
+  DM.SQLTemplate.Close ;
+  DM.SQLTemplate.SQL.Clear ;
+  DM.SQLTemplate.SQL.Add('select * from PREVENDA') ;
+  DM.SQLTemplate.SQL.Add('where PDVDDHVENDA <= "' + DataLimite + '"');
+  DM.SQLTemplate.SQL.Add('order by PDVDDHVENDA');
+  DM.SQLTemplate.Open ;
+
+  Screen.Cursor := crHourglass ;
+  while not DM.SQLTemplate.EOF do
+  begin
+    FormPrincipal.Caption := Application.Title + ' - Apagando Pré-Venda Item ' +
+                             DM.SQLTemplate.FieldByName('TERMICOD').AsString + '.' +
+                             DM.SQLTemplate.FieldByName('PRVDICOD').AsString ;
+    DM.SQLLimparPreVenda.Close ;
+    DM.SQLLimparPreVenda.SQL.Clear ;
+    DM.SQLLimparPreVenda.SQL.Add('delete from PREVENDAITEM') ;
+    DM.SQLLimparPreVenda.SQL.Add('where TERMICOD = ' + DM.SQLTemplate.FieldByName('TERMICOD').AsString) ;
+    DM.SQLLimparPreVenda.SQL.Add('and   PRVDICOD = ' + DM.SQLTemplate.FieldByName('PRVDICOD').AsString) ;
+    DM.SQLLimparPreVenda.ExecSQL ;
+
+    FormPrincipal.Caption := Application.Title + ' - Apagando Pré-Venda Nuerário ' +
+                             DM.SQLTemplate.FieldByName('TERMICOD').AsString + '.' +
+                             DM.SQLTemplate.FieldByName('PRVDICOD').AsString ;
+    DM.SQLLimparPreVenda.Close ;
+    DM.SQLLimparPreVenda.SQL.Clear ;
+    DM.SQLLimparPreVenda.SQL.Add('delete from PREVENDANUMERARIO') ;
+    DM.SQLLimparPreVenda.SQL.Add('where TERMICOD = ' + DM.SQLTemplate.FieldByName('TERMICOD').AsString) ;
+    DM.SQLLimparPreVenda.SQL.Add('and   PRVDICOD = ' + DM.SQLTemplate.FieldByName('PRVDICOD').AsString) ;
+    DM.SQLLimparPreVenda.ExecSQL ;
+
+    FormPrincipal.Caption := Application.Title + ' - Apagando Pré-Venda Contas Receber ' +
+                             DM.SQLTemplate.FieldByName('TERMICOD').AsString + '.' +
+                             DM.SQLTemplate.FieldByName('PRVDICOD').AsString ;
+
+    DM.SQLLimparPreVenda.Close ;
+    DM.SQLLimparPreVenda.SQL.Clear ;
+    DM.SQLLimparPreVenda.SQL.Add('delete from PREVENDACONTASRECEBER') ;
+    DM.SQLLimparPreVenda.SQL.Add('where TERMICOD = ' + DM.SQLTemplate.FieldByName('TERMICOD').AsString) ;
+    DM.SQLLimparPreVenda.SQL.Add('and   PRVDICOD = ' + DM.SQLTemplate.FieldByName('PRVDICOD').AsString) ;
+    DM.SQLLimparPreVenda.ExecSQL ;
+
+    FormPrincipal.Caption := Application.Title + ' - Apagando Pré-Venda ' +
+                             DM.SQLTemplate.FieldByName('TERMICOD').AsString + '.' +
+                             DM.SQLTemplate.FieldByName('PRVDICOD').AsString ;
+    DM.SQLLimparPreVenda.Close ;
+    DM.SQLLimparPreVenda.SQL.Clear ;
+    DM.SQLLimparPreVenda.SQL.Add('delete from PREVENDA') ;
+    DM.SQLLimparPreVenda.SQL.Add('where TERMICOD = ' + DM.SQLTemplate.FieldByName('TERMICOD').AsString);
+    DM.SQLLimparPreVenda.SQL.Add('and   PRVDICOD = ' + DM.SQLTemplate.FieldByName('PRVDICOD').AsString);
+    DM.SQLLimparPreVenda.ExecSQL ;
+
+    DM.SQLTemplate.Next ;
+  end ;
+  Screen.Cursor := crDefault ;
+
+  FormPrincipal.Caption := Painel ;
+  Informa('Pré-Vendas apagadas com sucesso !') ;}
+end;
+
+procedure TFormPrincipal.ApagarOrcamentos;
+var
+  Painel, DataLimite : string ;
+begin
+  {Painel := FormPrincipal.Caption ;
+
+  DataLimite := FormatDateTime('mm/dd/yyyy',now-30) ;
+
+  FormPrincipal.Caption := Application.Title + ' - Preparando para apagar Orçamentos com mais de 30 dias...' ;
+
+  DM.SQLTemplate.Close ;
+  DM.SQLTemplate.SQL.Clear ;
+  DM.SQLTemplate.SQL.Add('select * from PEDIDOVENDA') ;
+  DM.SQLTemplate.SQL.Add('where REGISTRO <= "' + DataLimite + '"');
+  DM.SQLTemplate.SQL.Add('order by REGISTRO');
+  DM.SQLTemplate.Open ;
+
+  Screen.Cursor := crHourglass ;
+  while not DM.SQLTemplate.EOF do
+  begin
+    FormPrincipal.Caption := Application.Title + ' - Apagando Orçamento Item ' +
+                             DM.SQLTemplate.FieldByName('PDVDA13ID').AsString ;
+    DM.SQLLimparPreVenda.Close ;
+    DM.SQLLimparPreVenda.SQL.Clear ;
+    DM.SQLLimparPreVenda.SQL.Add('delete from PEDIDOVENDAITEM') ;
+    DM.SQLLimparPreVenda.SQL.Add('where PDVDA13ID = "' + DM.SQLTemplate.FieldByName('PDVDA13ID').AsString+'"') ;
+    DM.SQLLimparPreVenda.ExecSQL ;
+
+
+    FormPrincipal.Caption := Application.Title + ' - Apagando Orçamento Contas Receber ' +
+                             DM.SQLTemplate.FieldByName('PDVDA13ID').AsString ;
+    DM.SQLLimparPreVenda.Close ;
+    DM.SQLLimparPreVenda.SQL.Clear ;
+    DM.SQLLimparPreVenda.SQL.Add('delete from CONTASRECEBER') ;
+    DM.SQLLimparPreVenda.SQL.Add('where PDVDA13ID = "' + DM.SQLTemplate.FieldByName('PDVDA13ID').AsString+'"') ;
+    DM.SQLLimparPreVenda.ExecSQL ;
+
+    FormPrincipal.Caption := Application.Title + ' - Apagando Orçamento ' +
+                             DM.SQLTemplate.FieldByName('PDVDA13ID').AsString ;
+    DM.SQLLimparPreVenda.Close ;
+    DM.SQLLimparPreVenda.SQL.Clear ;
+    DM.SQLLimparPreVenda.SQL.Add('delete from PEDIDOVENDA') ;
+    DM.SQLLimparPreVenda.SQL.Add('where PDVDA13ID = "' + DM.SQLTemplate.FieldByName('PDVDA13ID').AsString+'"') ;
+    DM.SQLLimparPreVenda.ExecSQL ;
+
+    DM.SQLTemplate.Next ;
+  end ;
+  Screen.Cursor := crDefault ;
+
+  FormPrincipal.Caption := Painel ;
+  Informa('Orçamentos apagados com sucesso!') ; }
+end;
+
+procedure TFormPrincipal.ApagarOramento30Dias1Click(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) = 0 then
+    exit
+  else
+    if Pergunta('Nao','Deseja apagar os Orçamentos com mais de trinta dias.') then
+      ApagarOrcamentos;
 end;
 
 end.

@@ -2907,4 +2907,357 @@ inherited DM: TDM
     Left = 536
     Top = 361
   end
+  object ACBrPosPrinter: TACBrPosPrinter
+    ConfigBarras.MostrarCodigo = False
+    ConfigBarras.LarguraLinha = 0
+    ConfigBarras.Altura = 0
+    ConfigBarras.Margem = 0
+    ConfigQRCode.Tipo = 2
+    ConfigQRCode.LarguraModulo = 4
+    ConfigQRCode.ErrorLevel = 0
+    ConfigLogo.IgnorarLogo = True
+    LinhasEntreCupons = 3
+    ControlePorta = True
+    Left = 606
+    Top = 5
+  end
+  object ACBrNFe: TACBrNFe
+    Configuracoes.Geral.SSLLib = libCapicom
+    Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
+    Configuracoes.Geral.ValidarDigest = False
+    Configuracoes.Geral.ModeloDF = moNFCe
+    Configuracoes.Geral.AtualizarXMLCancelado = True
+    Configuracoes.Arquivos.PathSalvar = 'c:\easy2solutions\nfce\'
+    Configuracoes.Arquivos.SepararPorMes = True
+    Configuracoes.Arquivos.PathNFe = 'c:\easy2solutions\nfce\'
+    Configuracoes.Arquivos.PathInu = 'c:\easy2solutions\nfce\'
+    Configuracoes.Arquivos.PathEvento = 'c:\easy2solutions\nfce\'
+    Configuracoes.WebServices.UF = 'RS'
+    Configuracoes.WebServices.Ambiente = taProducao
+    Configuracoes.WebServices.AguardarConsultaRet = 1500
+    Configuracoes.WebServices.Tentativas = 1
+    Configuracoes.WebServices.AjustaAguardaConsultaRet = True
+    Configuracoes.WebServices.QuebradeLinha = '|'
+    DANFE = ACBrNFeDANFeESCPOS
+    Left = 545
+    Top = 5
+  end
+  object ACBrNFeDANFeESCPOS: TACBrNFeDANFeESCPOS
+    ACBrNFe = ACBrNFe
+    Sistema = 'Easy2Solutions'
+    PathPDF = '.\pdf\'
+    MostrarPreview = True
+    MostrarStatus = True
+    TipoDANFE = tiNFCe
+    NumCopias = 1
+    Site = 'http://www.projetoacbr.com.br'
+    ImprimeNomeFantasia = False
+    ImprimirDescPorc = False
+    ImprimirTotalLiquido = False
+    MargemInferior = 0.800000000000000000
+    MargemSuperior = 0.800000000000000000
+    MargemEsquerda = 0.600000000000000000
+    MargemDireita = 0.510000000000000000
+    CasasDecimais.Formato = tdetInteger
+    CasasDecimais._qCom = 3
+    CasasDecimais._vUnCom = 2
+    CasasDecimais._Mask_qCom = '###,###,###,##0.00'
+    CasasDecimais._Mask_vUnCom = '###,###,###,##0.00'
+    ExibirResumoCanhoto = False
+    FormularioContinuo = False
+    TamanhoFonte_DemaisCampos = 10
+    ProdutosPorPagina = 0
+    ImprimirDetalhamentoEspecifico = True
+    NFeCancelada = False
+    ImprimirItens = True
+    ViaConsumidor = True
+    TamanhoLogoHeight = 0
+    TamanhoLogoWidth = 0
+    RecuoEndereco = 0
+    RecuoEmpresa = 0
+    LogoemCima = False
+    TamanhoFonteEndereco = 0
+    RecuoLogo = 0
+    TributosSeparadamente = False
+    FonteTributos = 'IBPT'
+    ImprimeEmUmaLinha = False
+    ImprimeDescAcrescItem = False
+    PosPrinter = ACBrPosPrinter
+    Left = 576
+    Top = 5
+  end
+  object TblTicketPreVendaCab: TTable
+    DatabaseName = 'Easy_Temp'
+    TableName = 'TicketPreVendaCab.DB'
+    Left = 568
+    Top = 133
+    object TblTicketPreVendaCabTicketNumero: TStringField
+      FieldName = 'TicketNumero'
+      Size = 13
+    end
+    object TblTicketPreVendaCabVendedor: TStringField
+      FieldName = 'Vendedor'
+      Size = 60
+    end
+    object TblTicketPreVendaCabPlano: TStringField
+      FieldName = 'Plano'
+      Size = 60
+    end
+    object TblTicketPreVendaCabCliente: TStringField
+      FieldName = 'Cliente'
+      Size = 60
+    end
+    object TblTicketPreVendaCabFoneCliente: TStringField
+      FieldName = 'FoneCliente'
+      Size = 15
+    end
+    object TblTicketPreVendaCabTotalNominal: TFloatField
+      FieldName = 'TotalNominal'
+    end
+    object TblTicketPreVendaCabTaxaCrediario: TFloatField
+      FieldName = 'TaxaCrediario'
+    end
+    object TblTicketPreVendaCabAcrescimo: TFloatField
+      FieldName = 'Acrescimo'
+    end
+    object TblTicketPreVendaCabDesconto: TFloatField
+      FieldName = 'Desconto'
+    end
+    object TblTicketPreVendaCabTotalGeral: TFloatField
+      FieldName = 'TotalGeral'
+    end
+    object TblTicketPreVendaCabNroCreditCard: TStringField
+      FieldName = 'NroCreditCard'
+    end
+    object TblTicketPreVendaCabNumerarioPagto: TStringField
+      FieldName = 'NumerarioPagto'
+      Size = 60
+    end
+    object TblTicketPreVendaCabMensagem: TStringField
+      FieldName = 'Mensagem'
+      Size = 254
+    end
+    object TblTicketPreVendaCabDataEntrega: TStringField
+      FieldName = 'DataEntrega'
+      Size = 30
+    end
+    object TblTicketPreVendaCabTipoVenda: TStringField
+      FieldName = 'TipoVenda'
+      Size = 60
+    end
+    object TblTicketPreVendaCabPessoaRecebeNome: TStringField
+      FieldName = 'PessoaRecebeNome'
+      Size = 60
+    end
+    object TblTicketPreVendaCabPessoaRecebeEnder: TStringField
+      FieldName = 'PessoaRecebeEnder'
+      Size = 60
+    end
+    object TblTicketPreVendaCabPessoaRecebeBai: TStringField
+      FieldName = 'PessoaRecebeBai'
+      Size = 60
+    end
+    object TblTicketPreVendaCabPessoaRecebeCid: TStringField
+      FieldName = 'PessoaRecebeCid'
+      Size = 60
+    end
+    object TblTicketPreVendaCabPessoaRecebeUF: TStringField
+      FieldName = 'PessoaRecebeUF'
+      Size = 2
+    end
+    object TblTicketPreVendaCabPessoaRecebeFone: TStringField
+      FieldName = 'PessoaRecebeFone'
+      Size = 15
+    end
+    object TblTicketPreVendaCabMensagem2: TMemoField
+      FieldName = 'Mensagem2'
+      BlobType = ftMemo
+      Size = 240
+    end
+    object TblTicketPreVendaCabVlrEntrada: TFloatField
+      FieldName = 'VlrEntrada'
+    end
+    object TblTicketPreVendaCabNomeClienteVenda: TStringField
+      FieldName = 'NomeClienteVenda'
+      Size = 60
+    end
+    object TblTicketPreVendaCabDocumentoClienteVenda: TStringField
+      FieldName = 'DocumentoClienteVenda'
+    end
+    object TblTicketPreVendaCabEnderecoClienteVenda: TStringField
+      FieldName = 'EnderecoClienteVenda'
+      Size = 60
+    end
+    object TblTicketPreVendaCabCidadeClienteVenda: TStringField
+      FieldName = 'CidadeClienteVenda'
+      Size = 30
+    end
+    object TblTicketPreVendaCabOBSImpressaoCupom: TStringField
+      FieldName = 'OBSImpressaoCupom'
+      Size = 60
+    end
+    object TblTicketPreVendaCabTERMICOD: TIntegerField
+      FieldName = 'TERMICOD'
+    end
+    object TblTicketPreVendaCabPRVDICOD: TIntegerField
+      FieldName = 'PRVDICOD'
+    end
+    object TblTicketPreVendaCabDataEmissao: TDateTimeField
+      FieldName = 'DataEmissao'
+    end
+    object TblTicketPreVendaCabFoneClienteVenda: TStringField
+      FieldName = 'FoneClienteVenda'
+      Size = 15
+    end
+    object TblTicketPreVendaCabUsuarioVendaSTR: TStringField
+      FieldName = 'UsuarioVendaSTR'
+    end
+    object TblTicketPreVendaCabPlacaVeiculo: TStringField
+      FieldName = 'PlacaVeiculo'
+      Size = 10
+    end
+    object TblTicketPreVendaCabTroco: TFloatField
+      FieldName = 'Troco'
+    end
+    object TblTicketPreVendaCabPEDIDOORCAMENTO: TStringField
+      FieldName = 'PEDIDOORCAMENTO'
+    end
+    object TblTicketPreVendaCabDisplayNumero: TIntegerField
+      FieldName = 'DisplayNumero'
+    end
+    object TblTicketPreVendaCabMesaCodigo: TIntegerField
+      FieldName = 'MesaCodigo'
+    end
+    object TblTicketPreVendaCabContaCodigo: TIntegerField
+      FieldName = 'ContaCodigo'
+    end
+    object TblTicketPreVendaCabLevarCasa: TStringField
+      FieldName = 'LevarCasa'
+      Size = 1
+    end
+    object TblTicketPreVendaCabBairroClienteVenda: TStringField
+      FieldName = 'BairroClienteVenda'
+      Size = 60
+    end
+    object TblTicketPreVendaCabKM: TStringField
+      FieldName = 'KM'
+      Size = 10
+    end
+    object TblTicketPreVendaCabEmpresaEmit: TStringField
+      FieldName = 'EmpresaEmit'
+      Size = 60
+    end
+    object TblTicketPreVendaCabEmpresaEmit_Ender: TStringField
+      FieldName = 'EmpresaEmit_Ender'
+      Size = 60
+    end
+    object TblTicketPreVendaCabEmpresaEmit_Bairro: TStringField
+      FieldName = 'EmpresaEmit_Bairro'
+      Size = 60
+    end
+    object TblTicketPreVendaCabEmpresaEmit_Cidade: TStringField
+      FieldName = 'EmpresaEmit_Cidade'
+      Size = 60
+    end
+    object TblTicketPreVendaCabEmpresaEmit_Fone: TStringField
+      FieldName = 'EmpresaEmit_Fone'
+      Size = 15
+    end
+    object TblTicketPreVendaCabClienteDependente: TStringField
+      FieldName = 'ClienteDependente'
+    end
+    object TblTicketPreVendaCabTerminal: TStringField
+      FieldName = 'Terminal'
+      Size = 30
+    end
+  end
+  object TblTicketPreVendaItem: TTable
+    DatabaseName = 'Easy_Temp'
+    TableName = 'TicketPreVendaItem.DB'
+    Left = 596
+    Top = 133
+    object TblTicketPreVendaItemCodigo: TIntegerField
+      FieldName = 'Codigo'
+    end
+    object TblTicketPreVendaItemDescricao: TStringField
+      FieldName = 'Descricao'
+      Size = 60
+    end
+    object TblTicketPreVendaItemValorUnitario: TFloatField
+      FieldName = 'ValorUnitario'
+    end
+    object TblTicketPreVendaItemQuantidade: TFloatField
+      FieldName = 'Quantidade'
+    end
+    object TblTicketPreVendaItemValorTotal: TFloatField
+      FieldName = 'ValorTotal'
+    end
+    object TblTicketPreVendaItemDesconto: TFloatField
+      FieldName = 'Desconto'
+    end
+    object TblTicketPreVendaItemMarca: TStringField
+      FieldName = 'Marca'
+      Size = 15
+    end
+    object TblTicketPreVendaItemReferencia: TStringField
+      FieldName = 'Referencia'
+      Size = 15
+    end
+    object TblTicketPreVendaItemUnidade: TStringField
+      FieldName = 'Unidade'
+      Size = 5
+    end
+    object TblTicketPreVendaItemTroca: TStringField
+      FieldName = 'Troca'
+      Size = 1
+    end
+    object TblTicketPreVendaItemComplemento: TStringField
+      FieldName = 'Complemento'
+      Size = 60
+    end
+    object TblTicketPreVendaItemImpCozinha: TStringField
+      FieldName = 'ImpCozinha'
+      Size = 1
+    end
+    object TblTicketPreVendaItemImpVale: TStringField
+      FieldName = 'ImpVale'
+      Size = 1
+    end
+  end
+  object TblTicketPreVendaFin: TTable
+    DatabaseName = 'Easy_Temp'
+    TableName = 'PedidoFinan.DB'
+    Left = 624
+    Top = 133
+    object TblTicketPreVendaFinPedICod: TStringField
+      FieldName = 'PedICod'
+      Size = 13
+    end
+    object TblTicketPreVendaFinParcela: TStringField
+      FieldName = 'Parcela'
+      Size = 3
+    end
+    object TblTicketPreVendaFinVencimento: TDateField
+      FieldName = 'Vencimento'
+    end
+    object TblTicketPreVendaFinValor: TFloatField
+      FieldName = 'Valor'
+    end
+    object TblTicketPreVendaFinPortador: TStringField
+      FieldName = 'Portador'
+      Size = 60
+    end
+    object TblTicketPreVendaFinNumerario: TStringField
+      FieldName = 'Numerario'
+      Size = 15
+    end
+    object TblTicketPreVendaFinTipopadrao: TStringField
+      FieldName = 'Tipopadrao'
+      Size = 5
+    end
+    object TblTicketPreVendaFinBonusTroca: TStringField
+      FieldName = 'BonusTroca'
+      Size = 1
+    end
+  end
 end

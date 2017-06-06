@@ -182,7 +182,13 @@ uses
   RelatorioDivergenciaInventario in 'Estoque\RelatorioDivergenciaInventario.pas' {FormRelatorioDivergenciaInventario},
   TelaZerarSaldoEstoque in 'Estoque\TelaZerarSaldoEstoque.pas' {FormTelaZeraSaldoEstoque},
   TelaProdutosSemMovimento in 'Estoque\TelaProdutosSemMovimento.pas' {FormTelaProdutosSemMov},
-  TelaConsultaOperacaoEstoque in 'ArquivosComuns\TelaConsultaOperacaoEstoque.pas' {FormTelaConsultaOperacaoEstoque};
+  TelaConsultaOperacaoEstoque in 'ArquivosComuns\TelaConsultaOperacaoEstoque.pas' {FormTelaConsultaOperacaoEstoque},
+  TelaManutencaoProdutos in 'ArquivosComuns\TelaManutencaoProdutos.pas' {FormTelaManutencaoProdutos},
+  CadastroManutencaoCupom in 'ArquivosComuns\CadastroManutencaoCupom.pas' {FormCadastroManutencaoCupom},
+  TelaCalculoComissao in 'Utilitarios\TelaCalculoComissao.pas' {FormTelaCalculoComissao},
+  CadastroVendedorComissao in 'ArquivosComuns\CadastroVendedorComissao.pas' {FormCadastroVendedorComissao},
+  TelaImpressaoDadosVenda in 'ArquivosComuns\TelaImpressaoDadosVenda.pas' {FormTelaImpressaoDadosVenda},
+  TelaQuitacaoComissoes in 'Utilitarios\TelaQuitacaoComissoes.pas' {FormTelaQuitacaoComissoes};
 
 {$R *.res}
 

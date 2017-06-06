@@ -368,7 +368,8 @@ begin
     SMTP.Connect;
     SMTP.Send(IdMsgSend);
 
-    if SMTP.Connected then SMTP.Disconnect; }
+    if SMTP.Connected then SMTP.Disconnect; } 
+
   except
     Application.ProcessMessages;
   end;

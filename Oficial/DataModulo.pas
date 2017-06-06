@@ -6,7 +6,8 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DataModuloTemplate, DB, DBTables, DBLists, RxQuery, UCrpe32,
   ppStrtch, ppMemo, ppBands, ppCtrls, ppPrnabl, ppClass, ppCache, ppProd,
-  ppReport, ppComm, ppRelatv, ppDB, ppDBPipe, ppDBBDE;
+  ppReport, ppComm, ppRelatv, ppDB, ppDBPipe, ppDBBDE, ACBrNFeDANFEClass,
+  ACBrNFeDANFeESCPOS, ACBrDFe, ACBrNFe, ACBrBase, ACBrPosPrinter;
 
 type
   TDM = class(TDMTemplate)
@@ -259,6 +260,82 @@ type
     DSTblPedidoCab: TDataSource;
     SQLProvedorCartao: TRxQuery;
     SQLConfigGeralEmpresaPadraoCalcField: TStringField;
+    ACBrPosPrinter: TACBrPosPrinter;
+    ACBrNFe: TACBrNFe;
+    ACBrNFeDANFeESCPOS: TACBrNFeDANFeESCPOS;
+    TblTicketPreVendaCab: TTable;
+    TblTicketPreVendaCabTicketNumero: TStringField;
+    TblTicketPreVendaCabVendedor: TStringField;
+    TblTicketPreVendaCabPlano: TStringField;
+    TblTicketPreVendaCabCliente: TStringField;
+    TblTicketPreVendaCabFoneCliente: TStringField;
+    TblTicketPreVendaCabTotalNominal: TFloatField;
+    TblTicketPreVendaCabTaxaCrediario: TFloatField;
+    TblTicketPreVendaCabAcrescimo: TFloatField;
+    TblTicketPreVendaCabDesconto: TFloatField;
+    TblTicketPreVendaCabTotalGeral: TFloatField;
+    TblTicketPreVendaCabNroCreditCard: TStringField;
+    TblTicketPreVendaCabNumerarioPagto: TStringField;
+    TblTicketPreVendaCabMensagem: TStringField;
+    TblTicketPreVendaCabDataEntrega: TStringField;
+    TblTicketPreVendaCabTipoVenda: TStringField;
+    TblTicketPreVendaCabPessoaRecebeNome: TStringField;
+    TblTicketPreVendaCabPessoaRecebeEnder: TStringField;
+    TblTicketPreVendaCabPessoaRecebeBai: TStringField;
+    TblTicketPreVendaCabPessoaRecebeCid: TStringField;
+    TblTicketPreVendaCabPessoaRecebeUF: TStringField;
+    TblTicketPreVendaCabPessoaRecebeFone: TStringField;
+    TblTicketPreVendaCabMensagem2: TMemoField;
+    TblTicketPreVendaCabVlrEntrada: TFloatField;
+    TblTicketPreVendaCabNomeClienteVenda: TStringField;
+    TblTicketPreVendaCabDocumentoClienteVenda: TStringField;
+    TblTicketPreVendaCabEnderecoClienteVenda: TStringField;
+    TblTicketPreVendaCabCidadeClienteVenda: TStringField;
+    TblTicketPreVendaCabOBSImpressaoCupom: TStringField;
+    TblTicketPreVendaCabTERMICOD: TIntegerField;
+    TblTicketPreVendaCabPRVDICOD: TIntegerField;
+    TblTicketPreVendaCabDataEmissao: TDateTimeField;
+    TblTicketPreVendaCabFoneClienteVenda: TStringField;
+    TblTicketPreVendaCabUsuarioVendaSTR: TStringField;
+    TblTicketPreVendaCabPlacaVeiculo: TStringField;
+    TblTicketPreVendaCabTroco: TFloatField;
+    TblTicketPreVendaCabPEDIDOORCAMENTO: TStringField;
+    TblTicketPreVendaCabDisplayNumero: TIntegerField;
+    TblTicketPreVendaCabMesaCodigo: TIntegerField;
+    TblTicketPreVendaCabContaCodigo: TIntegerField;
+    TblTicketPreVendaCabLevarCasa: TStringField;
+    TblTicketPreVendaCabBairroClienteVenda: TStringField;
+    TblTicketPreVendaCabKM: TStringField;
+    TblTicketPreVendaCabEmpresaEmit: TStringField;
+    TblTicketPreVendaCabEmpresaEmit_Ender: TStringField;
+    TblTicketPreVendaCabEmpresaEmit_Bairro: TStringField;
+    TblTicketPreVendaCabEmpresaEmit_Cidade: TStringField;
+    TblTicketPreVendaCabEmpresaEmit_Fone: TStringField;
+    TblTicketPreVendaCabClienteDependente: TStringField;
+    TblTicketPreVendaCabTerminal: TStringField;
+    TblTicketPreVendaItem: TTable;
+    TblTicketPreVendaItemCodigo: TIntegerField;
+    TblTicketPreVendaItemDescricao: TStringField;
+    TblTicketPreVendaItemValorUnitario: TFloatField;
+    TblTicketPreVendaItemQuantidade: TFloatField;
+    TblTicketPreVendaItemValorTotal: TFloatField;
+    TblTicketPreVendaItemDesconto: TFloatField;
+    TblTicketPreVendaItemMarca: TStringField;
+    TblTicketPreVendaItemReferencia: TStringField;
+    TblTicketPreVendaItemUnidade: TStringField;
+    TblTicketPreVendaItemTroca: TStringField;
+    TblTicketPreVendaItemComplemento: TStringField;
+    TblTicketPreVendaItemImpCozinha: TStringField;
+    TblTicketPreVendaItemImpVale: TStringField;
+    TblTicketPreVendaFin: TTable;
+    TblTicketPreVendaFinPedICod: TStringField;
+    TblTicketPreVendaFinParcela: TStringField;
+    TblTicketPreVendaFinVencimento: TDateField;
+    TblTicketPreVendaFinValor: TFloatField;
+    TblTicketPreVendaFinPortador: TStringField;
+    TblTicketPreVendaFinNumerario: TStringField;
+    TblTicketPreVendaFinTipopadrao: TStringField;
+    TblTicketPreVendaFinBonusTroca: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

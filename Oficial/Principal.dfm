@@ -2532,31 +2532,38 @@ inherited FormPrincipal: TFormPrincipal
     end
     object Utilitrios1: TMenuItem [3]
       Caption = 'Utilit'#225'rios'
-      object ManutenodeProdutos1: TMenuItem
+      object MnADMManutencaoProdutos: TMenuItem
         Caption = 'Manuten'#231#227'o de Produtos'
+        OnClick = MnADMManutencaoProdutosClick
       end
-      object ManutenodeCupom1: TMenuItem
+      object MnADMUtilitariosManutenodeCupons: TMenuItem
         Caption = 'Manuten'#231#227'o de Cupom'
+        OnClick = MnADMUtilitariosManutenodeCuponsClick
       end
       object Comisso1: TMenuItem
         Caption = 'Comiss'#227'o'
-        object CalculodeComisso1: TMenuItem
+        object MnADMUtilitariosCalcularComissoes: TMenuItem
           Caption = 'C'#225'lculo de Comiss'#227'o'
+          OnClick = MnADMUtilitariosCalcularComissoesClick
         end
-        object CadastrodeComisso1: TMenuItem
+        object MnADMFINCadastroComissao: TMenuItem
           Caption = 'Cadastro de Comiss'#227'o'
+          OnClick = MnADMFINCadastroComissaoClick
         end
-        object QuitaodeComisso1: TMenuItem
+        object mnQuitaoComisses: TMenuItem
           Caption = 'Quita'#231#227'o de Comiss'#227'o'
+          OnClick = mnQuitaoComissesClick
         end
       end
       object PrVenda1: TMenuItem
         Caption = 'Pr'#233'-Venda'
-        object ApagarPrevenda7Dias1: TMenuItem
+        object MnADMUtilitariosApagarPreVendasImportadas: TMenuItem
           Caption = 'Apagar Pr'#233'-venda 7 Dias'
+          OnClick = MnADMUtilitariosApagarPreVendasImportadasClick
         end
         object ApagarOramento30Dias1: TMenuItem
           Caption = 'Apagar Or'#231'amento 30 Dias'
+          OnClick = ApagarOramento30Dias1Click
         end
       end
     end
