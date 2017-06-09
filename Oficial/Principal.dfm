@@ -2631,8 +2631,9 @@ inherited FormPrincipal: TFormPrincipal
         Caption = 'Pedido de Venda'
         OnClick = FATUMnVendasPedidosVendaClick
       end
-      object NotaFiscal1: TMenuItem
+      object FATUMnVendasNotasFiscais: TMenuItem
         Caption = 'Nota Fiscal'
+        OnClick = NotaFiscal1Click
       end
     end
     object Servio1: TMenuItem [6]

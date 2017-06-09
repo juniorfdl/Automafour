@@ -1,9 +1,9 @@
 inherited DM: TDM
   OldCreateOrder = True
-  Left = 64
-  Top = 63
-  Height = 522
-  Width = 760
+  Left = 9
+  Top = 26
+  Height = 600
+  Width = 1200
   inherited DB: TDatabase
     AliasName = 'Easy_Gestao'
   end
@@ -3267,5 +3267,2384 @@ inherited DM: TDM
     Macros = <>
     Left = 30
     Top = 404
+  end
+  object SQLPreVenda: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'select'
+      '  P.TERMICOD,'
+      '  P.PRVDICOD,'
+      '  P.CONVICOD,'
+      '  P.CLIEA13ID,'
+      '  P.PLRCICOD,'
+      '  P.PRVDCMARCADO,'
+      '  P.PRVDN2TOTITENS,'
+      '  P.PRVDN2DESC,'
+      '  P.VENDICOD,'
+      '  P.PRVDCIMPORT,'
+      '  P.PDVDDHVENDA,'
+      '  C.CLIEA60RAZAOSOC,'
+      '  C.CLIEA60ENDRES,'
+      '  C.CLIEA60BAIRES,'
+      '  C.CLIEA60CIDRES,'
+      '  C.CLIEA15FONE1,'
+      '  C.CLIETOBS1,'
+      '  C.CLIEDCAD,'
+      '  C.CLIEDNASC,'
+      '  C.CLIEDPRICOMPRA,'
+      '  C.CLIEDULTCOMPRA,'
+      '  C.TPCLICOD,'
+      '  C.MTBLICOD,'
+      '  C.CLIEN2RENDA,'
+      '  C.CLIEN2CONJUGERENDA,'
+      '  C.CLIEN2LIMITECRED,'
+      '  V.VENDA60NOME,'
+      '  T.TERMA60DESCR,'
+      '  P.CLIENTENOME,'
+      '  P.CLIENTECNPJ,'
+      '  P.CLIENTEENDE,'
+      '  P.CLIENTECIDA,'
+      '  P.CLIENTEFONE,'
+      '  P.CLIENTEOBS,'
+      '  P.PDVCPreConclu,'
+      '  P.CLDPICOD'
+      'from'
+      '  PREVENDA P, CLIENTE C, VENDEDOR V, TERMINAL T'
+      'where'
+      '  P.CLIEA13ID = C.CLIEA13ID and'
+      '  P.VENDICOD = V.VENDICOD and'
+      '  P.TERMICOD = T.TERMICOD and'
+      '  (%MFiltro)'
+      '  %Ordem')
+    Macros = <
+      item
+        DataType = ftString
+        Name = 'MFiltro'
+        ParamType = ptInput
+        Value = '0=0'
+      end
+      item
+        DataType = ftString
+        Name = 'Ordem'
+        ParamType = ptInput
+        Value = '0=0'
+      end>
+    Left = 556
+    Top = 188
+    object SQLPreVendaTERMICOD: TIntegerField
+      FieldName = 'TERMICOD'
+      Origin = 'DB.PREVENDA.TERMICOD'
+    end
+    object SQLPreVendaPRVDICOD: TIntegerField
+      FieldName = 'PRVDICOD'
+      Origin = 'DB.PREVENDA.PRVDICOD'
+    end
+    object SQLPreVendaCONVICOD: TIntegerField
+      FieldName = 'CONVICOD'
+      Origin = 'DB.PREVENDA.CONVICOD'
+    end
+    object SQLPreVendaCLIEA13ID: TStringField
+      FieldName = 'CLIEA13ID'
+      Origin = 'DB.PREVENDA.CLIEA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLPreVendaPLRCICOD: TIntegerField
+      FieldName = 'PLRCICOD'
+      Origin = 'DB.PREVENDA.PLRCICOD'
+    end
+    object SQLPreVendaPRVDCMARCADO: TStringField
+      FieldName = 'PRVDCMARCADO'
+      Origin = 'DB.PREVENDA.PRVDCMARCADO'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLPreVendaPRVDN2TOTITENS: TFloatField
+      FieldName = 'PRVDN2TOTITENS'
+      Origin = 'DB.PREVENDA.PRVDN2TOTITENS'
+    end
+    object SQLPreVendaPRVDN2DESC: TFloatField
+      FieldName = 'PRVDN2DESC'
+      Origin = 'DB.PREVENDA.PRVDN2DESC'
+    end
+    object SQLPreVendaVENDICOD: TIntegerField
+      FieldName = 'VENDICOD'
+      Origin = 'DB.PREVENDA.VENDICOD'
+    end
+    object SQLPreVendaPRVDCIMPORT: TStringField
+      FieldName = 'PRVDCIMPORT'
+      Origin = 'DB.PREVENDA.PRVDCIMPORT'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLPreVendaCLIEA60RAZAOSOC: TStringField
+      FieldName = 'CLIEA60RAZAOSOC'
+      Origin = 'DB.CLIENTE.CLIEA60RAZAOSOC'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLPreVendaCLIEA60ENDRES: TStringField
+      FieldName = 'CLIEA60ENDRES'
+      Origin = 'DB.CLIENTE.CLIEA60ENDRES'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLPreVendaCLIEA60BAIRES: TStringField
+      FieldName = 'CLIEA60BAIRES'
+      Origin = 'DB.CLIENTE.CLIEA60BAIRES'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLPreVendaCLIEA60CIDRES: TStringField
+      FieldName = 'CLIEA60CIDRES'
+      Origin = 'DB.CLIENTE.CLIEA60CIDRES'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLPreVendaCLIEA15FONE1: TStringField
+      FieldName = 'CLIEA15FONE1'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLPreVendaCLIEDCAD: TDateTimeField
+      FieldName = 'CLIEDCAD'
+      Origin = 'DB.CLIENTE.CLIEDCAD'
+    end
+    object SQLPreVendaCLIEDPRICOMPRA: TDateTimeField
+      FieldName = 'CLIEDPRICOMPRA'
+      Origin = 'DB.CLIENTE.CLIEDPRICOMPRA'
+    end
+    object SQLPreVendaCLIEDULTCOMPRA: TDateTimeField
+      FieldName = 'CLIEDULTCOMPRA'
+      Origin = 'DB.CLIENTE.CLIEDULTCOMPRA'
+    end
+    object SQLPreVendaTPCLICOD: TIntegerField
+      FieldName = 'TPCLICOD'
+      Origin = 'DB.CLIENTE.TPCLICOD'
+    end
+    object SQLPreVendaMTBLICOD: TIntegerField
+      FieldName = 'MTBLICOD'
+      Origin = 'DB.CLIENTE.MTBLICOD'
+    end
+    object SQLPreVendaVENDA60NOME: TStringField
+      FieldName = 'VENDA60NOME'
+      Origin = 'DB.VENDEDOR.VENDA60NOME'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLPreVendaTERMA60DESCR: TStringField
+      FieldName = 'TERMA60DESCR'
+      Origin = 'DB.TERMINAL.TERMA60DESCR'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLPreVendaCLIENTENOME: TStringField
+      FieldName = 'CLIENTENOME'
+      Origin = 'DB.PREVENDA.CLIENTENOME'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLPreVendaCLIENTEENDE: TStringField
+      FieldName = 'CLIENTEENDE'
+      Origin = 'DB.PREVENDA.CLIENTEENDE'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLPreVendaCLIENTECIDA: TStringField
+      FieldName = 'CLIENTECIDA'
+      Origin = 'DB.PREVENDA.CLIENTECIDA'
+      FixedChar = True
+      Size = 30
+    end
+    object SQLPreVendaCLIENTEOBS: TStringField
+      FieldName = 'CLIENTEOBS'
+      Origin = 'DB.PREVENDA.CLIENTEOBS'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLPreVendaCLIENTECNPJ: TStringField
+      FieldName = 'CLIENTECNPJ'
+      Origin = 'DB.PREVENDA.CLIENTECNPJ'
+      FixedChar = True
+    end
+    object SQLPreVendaCLIEDNASC: TDateTimeField
+      FieldName = 'CLIEDNASC'
+      Origin = 'DB.CLIENTE.CLIEDNASC'
+    end
+    object SQLPreVendaCLIEN2RENDA: TFloatField
+      FieldName = 'CLIEN2RENDA'
+      Origin = 'DB.CLIENTE.CLIEN2RENDA'
+    end
+    object SQLPreVendaCLIEN2CONJUGERENDA: TFloatField
+      FieldName = 'CLIEN2CONJUGERENDA'
+      Origin = 'DB.CLIENTE.CLIEN2CONJUGERENDA'
+    end
+    object SQLPreVendaCLIEN2LIMITECRED: TFloatField
+      FieldName = 'CLIEN2LIMITECRED'
+      Origin = 'DB.CLIENTE.CLIEN2LIMITECRED'
+    end
+    object SQLPreVendaPDVDDHVENDA: TDateTimeField
+      FieldName = 'PDVDDHVENDA'
+      Origin = 'DB.PREVENDA.PDVDDHVENDA'
+    end
+    object SQLPreVendaPDVCPRECONCLU: TStringField
+      FieldName = 'PDVCPRECONCLU'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLPreVendaCLIENTEFONE: TStringField
+      FieldName = 'CLIENTEFONE'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLPreVendaCLDPICOD: TIntegerField
+      FieldName = 'CLDPICOD'
+    end
+    object SQLPreVendaCLIETOBS1: TBlobField
+      FieldName = 'CLIETOBS1'
+      Size = 1
+    end
+  end
+  object SQLPreVendaItem1: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'select * from PREVENDAITEM where (%MFiltro)')
+    Macros = <
+      item
+        DataType = ftString
+        Name = 'MFiltro'
+        ParamType = ptInput
+        Value = '0=0'
+      end>
+    Left = 586
+    Top = 188
+    object SQLPreVendaItem1TERMICOD: TIntegerField
+      FieldName = 'TERMICOD'
+      Origin = 'DB.PREVENDAITEM.TERMICOD'
+    end
+    object SQLPreVendaItem1PRVDICOD: TIntegerField
+      FieldName = 'PRVDICOD'
+      Origin = 'DB.PREVENDAITEM.PRVDICOD'
+    end
+    object SQLPreVendaItem1PVITIPOS: TIntegerField
+      FieldName = 'PVITIPOS'
+      Origin = 'DB.PREVENDAITEM.PVITIPOS'
+    end
+    object SQLPreVendaItem1PRODICOD: TIntegerField
+      FieldName = 'PRODICOD'
+      Origin = 'DB.PREVENDAITEM.PRODICOD'
+    end
+    object SQLPreVendaItem1PVITN3QTD: TFloatField
+      FieldName = 'PVITN3QTD'
+      Origin = 'DB.PREVENDAITEM.PVITN3QTD'
+    end
+    object SQLPreVendaItem1PVITN3VLRUNIT: TFloatField
+      FieldName = 'PVITN3VLRUNIT'
+      Origin = 'DB.PREVENDAITEM.PVITN3VLRUNIT'
+    end
+    object SQLPreVendaItem1PVITN3VLRCUSTUNIT: TFloatField
+      FieldName = 'PVITN3VLRCUSTUNIT'
+      Origin = 'DB.PREVENDAITEM.PVITN3VLRCUSTUNIT'
+    end
+    object SQLPreVendaItem1PVITN2DESC: TFloatField
+      FieldName = 'PVITN2DESC'
+      Origin = 'DB.PREVENDAITEM.PVITN2DESC'
+    end
+    object SQLPreVendaItem1VENDICOD: TIntegerField
+      FieldName = 'VENDICOD'
+      Origin = 'DB.PREVENDAITEM.VENDICOD'
+    end
+    object SQLPreVendaItem1PVITN3VLRUNITLUCR: TFloatField
+      FieldName = 'PVITN3VLRUNITLUCR'
+      Origin = 'DB.PREVENDAITEM.PVITN3VLRUNITLUCR'
+    end
+    object SQLPreVendaItem1PVITCSTATUS: TStringField
+      FieldName = 'PVITCSTATUS'
+      Origin = 'DB.PREVENDAITEM.PVITCSTATUS'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLPreVendaItem1PVITN2ICMSALIQ: TFloatField
+      FieldName = 'PVITN2ICMSALIQ'
+      Origin = 'DB.PREVENDAITEM.PVITN2ICMSALIQ'
+    end
+    object SQLPreVendaItem1PRODA60NROSERIE: TStringField
+      FieldName = 'PRODA60NROSERIE'
+      Origin = 'DB.PREVENDAITEM.PRODA60NROSERIE'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLPreVendaItem1PVITN3QTDTROCA: TFloatField
+      FieldName = 'PVITN3QTDTROCA'
+      Origin = 'DB.PREVENDAITEM.PVITN3QTDTROCA'
+    end
+    object SQLPreVendaItem1PVITTOBS: TStringField
+      FieldName = 'PVITTOBS'
+      Origin = 'DB.PREVENDAITEM.PVITTOBS'
+      Size = 200
+    end
+    object SQLPreVendaItem1M3_ESPESSURA: TFloatField
+      FieldName = 'M3_ESPESSURA'
+      Origin = 'DB.PREVENDAITEM.M3_ESPESSURA'
+      Precision = 9
+    end
+    object SQLPreVendaItem1M3_LARGURA: TFloatField
+      FieldName = 'M3_LARGURA'
+      Origin = 'DB.PREVENDAITEM.M3_LARGURA'
+      Precision = 9
+    end
+    object SQLPreVendaItem1M3_COMPRI: TFloatField
+      FieldName = 'M3_COMPRI'
+      Origin = 'DB.PREVENDAITEM.M3_COMPRI'
+      Precision = 9
+    end
+  end
+  object SQLPreVendaNumerario: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'select * from PREVENDANUMERARIO where (%MFiltro)')
+    Macros = <
+      item
+        DataType = ftString
+        Name = 'MFiltro'
+        ParamType = ptInput
+        Value = '0=0'
+      end>
+    Left = 624
+    Top = 188
+    object SQLPreVendaNumerarioTERMICOD: TIntegerField
+      FieldName = 'TERMICOD'
+      Origin = 'DB.PREVENDANUMERARIO.TERMICOD'
+    end
+    object SQLPreVendaNumerarioPRVDICOD: TIntegerField
+      FieldName = 'PRVDICOD'
+      Origin = 'DB.PREVENDANUMERARIO.PRVDICOD'
+    end
+    object SQLPreVendaNumerarioNUMEICOD: TIntegerField
+      FieldName = 'NUMEICOD'
+      Origin = 'DB.PREVENDANUMERARIO.NUMEICOD'
+    end
+    object SQLPreVendaNumerarioPVNUN2VLR: TFloatField
+      FieldName = 'PVNUN2VLR'
+      Origin = 'DB.PREVENDANUMERARIO.PVNUN2VLR'
+    end
+  end
+  object SQLPreVendaContasReceber: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'select * from PREVENDACONTASRECEBER where (%MFiltro)')
+    Macros = <
+      item
+        DataType = ftString
+        Name = 'MFiltro'
+        ParamType = ptInput
+        Value = '0=0'
+      end>
+    Left = 662
+    Top = 188
+    object SQLPreVendaContasReceberPVCRICOD: TIntegerField
+      FieldName = 'PVCRICOD'
+      Origin = 'DB.PREVENDACONTASRECEBER.PVCRICOD'
+    end
+    object SQLPreVendaContasReceberTERMICOD: TIntegerField
+      FieldName = 'TERMICOD'
+      Origin = 'DB.PREVENDACONTASRECEBER.TERMICOD'
+    end
+    object SQLPreVendaContasReceberPRVDICOD: TIntegerField
+      FieldName = 'PRVDICOD'
+      Origin = 'DB.PREVENDACONTASRECEBER.PRVDICOD'
+    end
+    object SQLPreVendaContasReceberNUMEICOD: TIntegerField
+      FieldName = 'NUMEICOD'
+      Origin = 'DB.PREVENDACONTASRECEBER.NUMEICOD'
+    end
+    object SQLPreVendaContasReceberPVCRINROPARC: TIntegerField
+      FieldName = 'PVCRINROPARC'
+      Origin = 'DB.PREVENDACONTASRECEBER.PVCRINROPARC'
+    end
+    object SQLPreVendaContasReceberPVCRDVENC: TDateTimeField
+      FieldName = 'PVCRDVENC'
+      Origin = 'DB.PREVENDACONTASRECEBER.PVCRDVENC'
+    end
+    object SQLPreVendaContasReceberPVCRN2VLR: TFloatField
+      FieldName = 'PVCRN2VLR'
+      Origin = 'DB.PREVENDACONTASRECEBER.PVCRN2VLR'
+    end
+    object SQLPreVendaContasReceberPVCRN2DESCFIN: TFloatField
+      FieldName = 'PVCRN2DESCFIN'
+      Origin = 'DB.PREVENDACONTASRECEBER.PVCRN2DESCFIN'
+    end
+  end
+  object SQLCup: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'select * from CUPOM'
+      'where (%MFiltro)')
+    Macros = <
+      item
+        DataType = ftString
+        Name = 'MFiltro'
+        ParamType = ptInput
+        Value = '0=0'
+      end>
+    Left = 589
+    Top = 245
+  end
+  object SQLCupomIt: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'select * from CUPOMITEM'
+      'where (%MFiltro)')
+    Macros = <
+      item
+        DataType = ftString
+        Name = 'MFiltro'
+        ParamType = ptInput
+        Value = '0=0'
+      end>
+    Left = 641
+    Top = 245
+    object SQLCupomItCUPOA13ID: TStringField
+      FieldName = 'CUPOA13ID'
+      Origin = 'DB.CUPOMITEM.CUPOA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLCupomItCPITIPOS: TIntegerField
+      FieldName = 'CPITIPOS'
+      Origin = 'DB.CUPOMITEM.CPITIPOS'
+    end
+    object SQLCupomItPRODICOD: TIntegerField
+      FieldName = 'PRODICOD'
+      Origin = 'DB.CUPOMITEM.PRODICOD'
+    end
+    object SQLCupomItCPITCSTATUS: TStringField
+      FieldName = 'CPITCSTATUS'
+      Origin = 'DB.CUPOMITEM.CPITCSTATUS'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLCupomItCPITN3QTD: TFloatField
+      FieldName = 'CPITN3QTD'
+      Origin = 'DB.CUPOMITEM.CPITN3QTD'
+    end
+    object SQLCupomItCPITN3QTDTROCA: TFloatField
+      FieldName = 'CPITN3QTDTROCA'
+      Origin = 'DB.CUPOMITEM.CPITN3QTDTROCA'
+    end
+    object SQLCupomItCPITN3VLRUNIT: TFloatField
+      FieldName = 'CPITN3VLRUNIT'
+      Origin = 'DB.CUPOMITEM.CPITN3VLRUNIT'
+    end
+    object SQLCupomItCPITN2DESC: TFloatField
+      FieldName = 'CPITN2DESC'
+      Origin = 'DB.CUPOMITEM.CPITN2DESC'
+    end
+    object SQLCupomItVENDICOD: TIntegerField
+      FieldName = 'VENDICOD'
+      Origin = 'DB.CUPOMITEM.VENDICOD'
+    end
+    object SQLCupomItADICIONAIS: TStringField
+      FieldName = 'ADICIONAIS'
+      Origin = 'DB.CUPOMITEM.ADICIONAIS'
+      Size = 30
+    end
+    object SQLCupomItCPITN2VLRDESCSOBTOT: TFloatField
+      FieldName = 'CPITN2VLRDESCSOBTOT'
+      Origin = 'DB.CUPOMITEM.CPITN2VLRDESCSOBTOT'
+    end
+    object SQLCupomItCPITTOBS: TStringField
+      FieldName = 'CPITTOBS'
+      Origin = 'DB.CUPOMITEM.CPITTOBS'
+      Size = 60
+    end
+  end
+  object SQLCupomItem: TRxQuery
+    DatabaseName = 'DB'
+    RequestLive = True
+    SQL.Strings = (
+      'select * from CUPOMITEM'
+      'where %MFiltro')
+    Macros = <
+      item
+        DataType = ftString
+        Name = 'MFiltro'
+        ParamType = ptInput
+        Value = '0=0'
+      end>
+    Left = 544
+    Top = 249
+    object SQLCupomItemCUPOA13ID: TStringField
+      FieldName = 'CUPOA13ID'
+      Origin = 'DB.CUPOMITEM.CUPOA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLCupomItemCPITIPOS: TIntegerField
+      FieldName = 'CPITIPOS'
+      Origin = 'DB.CUPOMITEM.CPITIPOS'
+    end
+    object SQLCupomItemPRODICOD: TIntegerField
+      FieldName = 'PRODICOD'
+      Origin = 'DB.CUPOMITEM.PRODICOD'
+    end
+    object SQLCupomItemCPITCSTATUS: TStringField
+      FieldName = 'CPITCSTATUS'
+      Origin = 'DB.CUPOMITEM.CPITCSTATUS'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLCupomItemCPITN3QTD: TFloatField
+      FieldName = 'CPITN3QTD'
+      Origin = 'DB.CUPOMITEM.CPITN3QTD'
+    end
+    object SQLCupomItemCPITN3QTDTROCA: TFloatField
+      FieldName = 'CPITN3QTDTROCA'
+      Origin = 'DB.CUPOMITEM.CPITN3QTDTROCA'
+    end
+    object SQLCupomItemCPITN3VLRUNIT: TFloatField
+      FieldName = 'CPITN3VLRUNIT'
+      Origin = 'DB.CUPOMITEM.CPITN3VLRUNIT'
+    end
+    object SQLCupomItemCPITN3VLRCUSTUNIT: TFloatField
+      FieldName = 'CPITN3VLRCUSTUNIT'
+      Origin = 'DB.CUPOMITEM.CPITN3VLRCUSTUNIT'
+    end
+    object SQLCupomItemCPITN2DESC: TFloatField
+      FieldName = 'CPITN2DESC'
+      Origin = 'DB.CUPOMITEM.CPITN2DESC'
+    end
+    object SQLCupomItemCPITN3VLRUNITLUCR: TFloatField
+      FieldName = 'CPITN3VLRUNITLUCR'
+      Origin = 'DB.CUPOMITEM.CPITN3VLRUNITLUCR'
+    end
+    object SQLCupomItemCOITN2ICMSALIQ: TFloatField
+      FieldName = 'COITN2ICMSALIQ'
+      Origin = 'DB.CUPOMITEM.COITN2ICMSALIQ'
+    end
+    object SQLCupomItemVENDICOD: TIntegerField
+      FieldName = 'VENDICOD'
+      Origin = 'DB.CUPOMITEM.VENDICOD'
+    end
+    object SQLCupomItemPENDENTE: TStringField
+      FieldName = 'PENDENTE'
+      Origin = 'DB.CUPOMITEM.PENDENTE'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLCupomItemREGISTRO: TDateTimeField
+      FieldName = 'REGISTRO'
+      Origin = 'DB.CUPOMITEM.REGISTRO'
+    end
+    object SQLCupomItemCPITN2VLRDESCSOBTOT: TFloatField
+      FieldName = 'CPITN2VLRDESCSOBTOT'
+      Origin = 'DB.CUPOMITEM.CPITN2VLRDESCSOBTOT'
+    end
+    object SQLCupomItemCPITN2BASEICMS: TFloatField
+      FieldName = 'CPITN2BASEICMS'
+      Origin = 'DB.CUPOMITEM.CPITN2BASEICMS'
+    end
+    object SQLCupomItemCPITN2VLRICMS: TFloatField
+      FieldName = 'CPITN2VLRICMS'
+      Origin = 'DB.CUPOMITEM.CPITN2VLRICMS'
+    end
+    object SQLCupomItemCPITN2VLRQDEVERIAVENDER: TFloatField
+      FieldName = 'CPITN2VLRQDEVERIAVENDER'
+      Origin = 'DB.CUPOMITEM.CPITN2VLRQDEVERIAVENDER'
+    end
+    object SQLCupomItemBOMBICOD: TIntegerField
+      FieldName = 'BOMBICOD'
+      Origin = 'DB.CUPOMITEM.BOMBICOD'
+    end
+    object SQLCupomItemEMPRICOD: TIntegerField
+      FieldName = 'EMPRICOD'
+      Origin = 'DB.CUPOMITEM.EMPRICOD'
+    end
+    object SQLCupomItemENCERRANTE: TIntegerField
+      FieldName = 'ENCERRANTE'
+      Origin = 'DB.CUPOMITEM.ENCERRANTE'
+    end
+    object SQLCupomItemCPITTOBS: TStringField
+      FieldName = 'CPITTOBS'
+      Origin = 'DB.CUPOMITEM.CPITTOBS'
+      Size = 60
+    end
+    object SQLCupomItemADICIONAIS: TStringField
+      FieldName = 'ADICIONAIS'
+      Origin = 'DB.CUPOMITEM.ADICIONAIS'
+      Size = 30
+    end
+    object SQLCupomItemCPITN2IMPOSTOMED: TFloatField
+      FieldName = 'CPITN2IMPOSTOMED'
+      Origin = 'DB.CUPOMITEM.CPITN2IMPOSTOMED'
+    end
+    object SQLCupomItemTERMICOD: TIntegerField
+      FieldName = 'TERMICOD'
+      Origin = 'DB.CUPOMITEM.TERMICOD'
+    end
+    object SQLCupomItemDENSIDADE: TStringField
+      FieldName = 'DENSIDADE'
+      Origin = 'DB.CUPOMITEM.DENSIDADE'
+      Size = 15
+    end
+    object SQLCupomItemMEDIDA: TStringField
+      FieldName = 'MEDIDA'
+      Origin = 'DB.CUPOMITEM.MEDIDA'
+      Size = 15
+    end
+    object SQLCupomItemESPESSURA: TStringField
+      FieldName = 'ESPESSURA'
+      Origin = 'DB.CUPOMITEM.ESPESSURA'
+      Size = 15
+    end
+    object SQLCupomItemTECIDO: TStringField
+      FieldName = 'TECIDO'
+      Origin = 'DB.CUPOMITEM.TECIDO'
+      Size = 30
+    end
+    object SQLCupomItemM3_LARGURA: TFloatField
+      FieldName = 'M3_LARGURA'
+      Origin = 'DB.CUPOMITEM.M3_LARGURA'
+      Precision = 9
+    end
+    object SQLCupomItemM3_COMPRI: TFloatField
+      FieldName = 'M3_COMPRI'
+      Origin = 'DB.CUPOMITEM.M3_COMPRI'
+      Precision = 9
+    end
+    object SQLCupomItemM3_ESPESSURA: TFloatField
+      FieldName = 'M3_ESPESSURA'
+      Origin = 'DB.CUPOMITEM.M3_ESPESSURA'
+      Precision = 9
+    end
+  end
+  object SQLPedidoVenda: TRxQuery
+    Tag = 2
+    DatabaseName = 'DB'
+    RequestLive = True
+    SQL.Strings = (
+      'select * from PEDIDOVENDA'
+      'where PDVDA13ID is null')
+    Macros = <>
+    Left = 664
+    Top = 325
+    object SQLPedidoVendaPDVDA13ID: TStringField
+      Tag = 2
+      FieldName = 'PDVDA13ID'
+      Origin = 'DB.PEDIDOVENDA.PDVDA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLPedidoVendaEMPRICOD: TIntegerField
+      FieldName = 'EMPRICOD'
+      Origin = 'DB.PEDIDOVENDA.EMPRICOD'
+    end
+    object SQLPedidoVendaPDVDICOD: TIntegerField
+      Tag = 1
+      FieldName = 'PDVDICOD'
+      Origin = 'DB.PEDIDOVENDA.PDVDICOD'
+    end
+    object SQLPedidoVendaVENDICOD: TIntegerField
+      FieldName = 'VENDICOD'
+      Origin = 'DB.PEDIDOVENDA.VENDICOD'
+    end
+    object SQLPedidoVendaCLIEA13ID: TStringField
+      FieldName = 'CLIEA13ID'
+      Origin = 'DB.PEDIDOVENDA.CLIEA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLPedidoVendaTRANICOD: TIntegerField
+      FieldName = 'TRANICOD'
+      Origin = 'DB.PEDIDOVENDA.TRANICOD'
+    end
+    object SQLPedidoVendaPLRCICOD: TIntegerField
+      FieldName = 'PLRCICOD'
+      Origin = 'DB.PEDIDOVENDA.PLRCICOD'
+    end
+    object SQLPedidoVendaPDVDDEMISSAO: TDateTimeField
+      FieldName = 'PDVDDEMISSAO'
+      Origin = 'DB.PEDIDOVENDA.PDVDDEMISSAO'
+    end
+    object SQLPedidoVendaPDVDN2VLRFRETE: TFloatField
+      FieldName = 'PDVDN2VLRFRETE'
+      Origin = 'DB.PEDIDOVENDA.PDVDN2VLRFRETE'
+    end
+    object SQLPedidoVendaPDVDA30NROPEDCOMP: TStringField
+      FieldName = 'PDVDA30NROPEDCOMP'
+      Origin = 'DB.PEDIDOVENDA.PDVDA30NROPEDCOMP'
+      FixedChar = True
+      Size = 30
+    end
+    object SQLPedidoVendaPDVDA30COMPRADOR: TStringField
+      FieldName = 'PDVDA30COMPRADOR'
+      Origin = 'DB.PEDIDOVENDA.PDVDA30COMPRADOR'
+      FixedChar = True
+      Size = 30
+    end
+    object SQLPedidoVendaPDVDCTIPO: TStringField
+      FieldName = 'PDVDCTIPO'
+      Origin = 'DB.PEDIDOVENDA.PDVDCTIPO'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLPedidoVendaPDVDCSTATUS: TStringField
+      FieldName = 'PDVDCSTATUS'
+      Origin = 'DB.PEDIDOVENDA.PDVDCSTATUS'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLPedidoVendaPDVDN2VLRDESC: TFloatField
+      FieldName = 'PDVDN2VLRDESC'
+      Origin = 'DB.PEDIDOVENDA.PDVDN2VLRDESC'
+    end
+    object SQLPedidoVendaPDVDN2TOTPROD: TFloatField
+      FieldName = 'PDVDN2TOTPROD'
+      Origin = 'DB.PEDIDOVENDA.PDVDN2TOTPROD'
+    end
+    object SQLPedidoVendaPDVDN2TOTPED: TFloatField
+      FieldName = 'PDVDN2TOTPED'
+      Origin = 'DB.PEDIDOVENDA.PDVDN2TOTPED'
+    end
+    object SQLPedidoVendaPDVDTOBS: TStringField
+      FieldName = 'PDVDTOBS'
+      Origin = 'DB.PEDIDOVENDA.PDVDTOBS'
+      FixedChar = True
+      Size = 254
+    end
+    object SQLPedidoVendaREGISTRO: TDateTimeField
+      FieldName = 'REGISTRO'
+      Origin = 'DB.PEDIDOVENDA.REGISTRO'
+    end
+    object SQLPedidoVendaPENDENTE: TStringField
+      FieldName = 'PENDENTE'
+      Origin = 'DB.PEDIDOVENDA.PENDENTE'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLPedidoVendaPDVDN2VLRDESCPROM: TFloatField
+      FieldName = 'PDVDN2VLRDESCPROM'
+      Origin = 'DB.PEDIDOVENDA.PDVDN2VLRDESCPROM'
+    end
+    object SQLPedidoVendaPDVDCTIPOFRETE: TStringField
+      FieldName = 'PDVDCTIPOFRETE'
+      Origin = 'DB.PEDIDOVENDA.PDVDCTIPOFRETE'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLPedidoVendaPDVDDENTREGA: TDateTimeField
+      FieldName = 'PDVDDENTREGA'
+      Origin = 'DB.PEDIDOVENDA.PDVDDENTREGA'
+    end
+    object SQLPedidoVendaPDVDINROTALAO: TIntegerField
+      FieldName = 'PDVDINROTALAO'
+      Origin = 'DB.PEDIDOVENDA.PDVDINROTALAO'
+    end
+    object SQLPedidoVendaPDVDCIMPORTADO: TStringField
+      FieldName = 'PDVDCIMPORTADO'
+      Origin = 'DB.PEDIDOVENDA.PDVDCIMPORTADO'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLPedidoVendaCLIENTENOME: TStringField
+      FieldName = 'CLIENTENOME'
+      Origin = 'DB.PEDIDOVENDA.CLIENTENOME'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLPedidoVendaCLIENTEFONE: TStringField
+      FieldName = 'CLIENTEFONE'
+      Origin = 'DB.PEDIDOVENDA.CLIENTEFONE'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLPedidoVendaCLIENTEEMAIL: TStringField
+      FieldName = 'CLIENTEEMAIL'
+      Origin = 'DB.PEDIDOVENDA.CLIENTEEMAIL'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLPedidoVendaUSUAA60LOGIN: TStringField
+      FieldName = 'USUAA60LOGIN'
+      Origin = 'DB.PEDIDOVENDA.USUAA60LOGIN'
+      FixedChar = True
+      Size = 60
+    end
+  end
+  object DSSQLPedidoVenda: TDataSource
+    DataSet = SQLPedidoVenda
+    Left = 701
+    Top = 325
+  end
+  object SQLPedidoVendaItem: TRxQuery
+    DatabaseName = 'DB'
+    RequestLive = True
+    SQL.Strings = (
+      'select * from PEDIDOVENDAITEM'
+      'where PDVDA13ID is null')
+    Macros = <>
+    Left = 670
+    Top = 376
+    object SQLPedidoVendaItemPDVDA13ID: TStringField
+      FieldName = 'PDVDA13ID'
+      Origin = 'DB.PEDIDOVENDAITEM.PDVDA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLPedidoVendaItemPVITIITEM: TIntegerField
+      FieldName = 'PVITIITEM'
+      Origin = 'DB.PEDIDOVENDAITEM.PVITIITEM'
+    end
+    object SQLPedidoVendaItemPRODICOD: TIntegerField
+      FieldName = 'PRODICOD'
+      Origin = 'DB.PEDIDOVENDAITEM.PRODICOD'
+    end
+    object SQLPedidoVendaItemPVITN3QUANT: TFloatField
+      FieldName = 'PVITN3QUANT'
+      Origin = 'DB.PEDIDOVENDAITEM.PVITN3QUANT'
+    end
+    object SQLPedidoVendaItemPVITN2VLRUNIT: TFloatField
+      FieldName = 'PVITN2VLRUNIT'
+      Origin = 'DB.PEDIDOVENDAITEM.PVITN2VLRUNIT'
+    end
+    object SQLPedidoVendaItemPVITN2PERCDESC: TFloatField
+      FieldName = 'PVITN2PERCDESC'
+      Origin = 'DB.PEDIDOVENDAITEM.PVITN2PERCDESC'
+    end
+    object SQLPedidoVendaItemPVITN2VLRDESC: TFloatField
+      FieldName = 'PVITN2VLRDESC'
+      Origin = 'DB.PEDIDOVENDAITEM.PVITN2VLRDESC'
+    end
+    object SQLPedidoVendaItemREGISTRO: TDateTimeField
+      FieldName = 'REGISTRO'
+      Origin = 'DB.PEDIDOVENDAITEM.REGISTRO'
+    end
+    object SQLPedidoVendaItemPENDENTE: TStringField
+      FieldName = 'PENDENTE'
+      Origin = 'DB.PEDIDOVENDAITEM.PENDENTE'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLPedidoVendaItemPDVDA60OBS: TStringField
+      FieldName = 'PDVDA60OBS'
+      Origin = 'DB.PEDIDOVENDAITEM.PDVDA60OBS'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLPedidoVendaItemPVITN2PERCCOMIS: TFloatField
+      FieldName = 'PVITN2PERCCOMIS'
+      Origin = 'DB.PEDIDOVENDAITEM.PVITN2PERCCOMIS'
+    end
+    object SQLPedidoVendaItemPVITN3QUANTVEND: TFloatField
+      FieldName = 'PVITN3QUANTVEND'
+      Origin = 'DB.PEDIDOVENDAITEM.PVITN3QUANTVEND'
+    end
+    object SQLPedidoVendaItemPDVDA255OBS1: TStringField
+      FieldName = 'PDVDA255OBS1'
+      Origin = 'DB.PEDIDOVENDAITEM.PDVDA255OBS1'
+      FixedChar = True
+      Size = 255
+    end
+    object SQLPedidoVendaItemPVITN3TOTVENDITEM: TFloatField
+      FieldName = 'PVITN3TOTVENDITEM'
+      Origin = 'DB.PEDIDOVENDAITEM.PVITN3TOTVENDITEM'
+    end
+    object SQLPedidoVendaItemUNIDICOD: TIntegerField
+      FieldName = 'UNIDICOD'
+      Origin = 'DB.PEDIDOVENDAITEM.UNIDICOD'
+    end
+    object SQLPedidoVendaItemPRODCMIX: TStringField
+      FieldName = 'PRODCMIX'
+      Origin = 'DB.PEDIDOVENDAITEM.PRODCMIX'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLPedidoVendaItemPRODN3PESOBRUTO: TFloatField
+      FieldName = 'PRODN3PESOBRUTO'
+      Origin = 'DB.PEDIDOVENDAITEM.PRODN3PESOBRUTO'
+    end
+  end
+  object TblCheques: TMemoryTable
+    DatabaseName = 'Easy_Temp'
+    TableName = 'TblCheques'
+    Left = 773
+    Top = 273
+    object TblChequesDtDep: TDateTimeField
+      FieldName = 'DtDep'
+    end
+    object TblChequesNroCheque: TFloatField
+      FieldName = 'NroCheque'
+      DisplayFormat = '000000'
+    end
+    object TblChequesValor: TFloatField
+      FieldName = 'Valor'
+      DisplayFormat = '#,##0.00'
+    end
+    object TblChequesHistorico: TStringField
+      FieldName = 'Historico'
+      Size = 50
+    end
+    object TblChequesPORTICOD: TIntegerField
+      FieldName = 'PORTICOD'
+    end
+    object TblChequesBANCA5COD: TStringField
+      FieldName = 'BANCA5COD'
+      Size = 5
+    end
+    object TblChequesAGENCIA: TStringField
+      FieldName = 'AGENCIA'
+      Size = 10
+    end
+    object TblChequesCONTA: TStringField
+      FieldName = 'CONTA'
+      Size = 15
+    end
+    object TblChequesDATAABERT: TDateField
+      FieldName = 'DATAABERT'
+    end
+    object TblChequesTITULAR: TStringField
+      FieldName = 'TITULAR'
+      Size = 60
+    end
+    object TblChequesCGCCPF: TStringField
+      FieldName = 'CGCCPF'
+    end
+    object TblChequesALINICOD: TIntegerField
+      FieldName = 'ALINICOD'
+      Origin = 'DB.CONTASRECEBER.ALINICOD'
+    end
+    object TblChequesDataVecto: TDateField
+      DisplayLabel = 'Dt. Vencto.'
+      FieldName = 'DataVecto'
+      DisplayFormat = 'dd/mm/yyyy'
+      EditMask = '!99/99/0000;1;_'
+    end
+    object TblChequesNroDias: TIntegerField
+      FieldName = 'NroDias'
+    end
+  end
+  object DSTblCheques: TDataSource
+    DataSet = TblCheques
+    Left = 801
+    Top = 273
+  end
+  object SQLParcelas: TRxQuery
+    DatabaseName = 'DB'
+    Macros = <>
+    Left = 600
+    Top = 448
+  end
+  object SQLCliente: TRxQuery
+    DatabaseName = 'DB'
+    Macros = <>
+    Left = 628
+    Top = 448
+  end
+  object SQLPreVendaItem2: TRxQuery
+    DatabaseName = 'DB'
+    RequestLive = True
+    SQL.Strings = (
+      'select * from PREVENDAITEM'
+      'where PRVDICOD is null')
+    Macros = <>
+    Left = 828
+    Top = 120
+    object SQLPreVendaItem2TERMICOD: TIntegerField
+      FieldName = 'TERMICOD'
+      Origin = 'DB.PREVENDAITEM.TERMICOD'
+    end
+    object SQLPreVendaItem2PRVDICOD: TIntegerField
+      FieldName = 'PRVDICOD'
+      Origin = 'DB.PREVENDAITEM.PRVDICOD'
+    end
+    object SQLPreVendaItem2PVITIPOS: TIntegerField
+      FieldName = 'PVITIPOS'
+      Origin = 'DB.PREVENDAITEM.PVITIPOS'
+    end
+    object SQLPreVendaItem2PRODICOD: TIntegerField
+      FieldName = 'PRODICOD'
+      Origin = 'DB.PREVENDAITEM.PRODICOD'
+    end
+    object SQLPreVendaItem2PVITN3QTD: TFloatField
+      FieldName = 'PVITN3QTD'
+      Origin = 'DB.PREVENDAITEM.PVITN3QTD'
+    end
+    object SQLPreVendaItem2PVITN3VLRUNIT: TFloatField
+      FieldName = 'PVITN3VLRUNIT'
+      Origin = 'DB.PREVENDAITEM.PVITN3VLRUNIT'
+    end
+    object SQLPreVendaItem2PVITN3VLRCUSTUNIT: TFloatField
+      FieldName = 'PVITN3VLRCUSTUNIT'
+      Origin = 'DB.PREVENDAITEM.PVITN3VLRCUSTUNIT'
+    end
+    object SQLPreVendaItem2PVITN2DESC: TFloatField
+      FieldName = 'PVITN2DESC'
+      Origin = 'DB.PREVENDAITEM.PVITN2DESC'
+    end
+    object SQLPreVendaItem2VENDICOD: TIntegerField
+      FieldName = 'VENDICOD'
+      Origin = 'DB.PREVENDAITEM.VENDICOD'
+    end
+    object SQLPreVendaItem2PVITN3VLRUNITLUCR: TFloatField
+      FieldName = 'PVITN3VLRUNITLUCR'
+      Origin = 'DB.PREVENDAITEM.PVITN3VLRUNITLUCR'
+    end
+    object SQLPreVendaItem2PVITCSTATUS: TStringField
+      FieldName = 'PVITCSTATUS'
+      Origin = 'DB.PREVENDAITEM.PVITCSTATUS'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLPreVendaItem2PVITN2ICMSALIQ: TFloatField
+      FieldName = 'PVITN2ICMSALIQ'
+      Origin = 'DB.PREVENDAITEM.PVITN2ICMSALIQ'
+    end
+    object SQLPreVendaItem2PRODA60NROSERIE: TStringField
+      FieldName = 'PRODA60NROSERIE'
+      Origin = 'DB.PREVENDAITEM.PRODA60NROSERIE'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLPreVendaItem2PVITN3QTDTROCA: TFloatField
+      FieldName = 'PVITN3QTDTROCA'
+      Origin = 'DB.PREVENDAITEM.PVITN3QTDTROCA'
+    end
+    object SQLPreVendaItem2PVITTOBS: TStringField
+      FieldName = 'PVITTOBS'
+      Origin = 'DB.PREVENDAITEM.PVITTOBS'
+      Size = 200
+    end
+    object SQLPreVendaItem2M3_LARGURA: TFloatField
+      FieldName = 'M3_LARGURA'
+      Origin = 'DB.PREVENDAITEM.M3_LARGURA'
+      Precision = 9
+    end
+    object SQLPreVendaItem2M3_COMPRI: TFloatField
+      FieldName = 'M3_COMPRI'
+      Origin = 'DB.PREVENDAITEM.M3_COMPRI'
+      Precision = 9
+    end
+    object SQLPreVendaItem2M3_ESPESSURA: TFloatField
+      FieldName = 'M3_ESPESSURA'
+      Origin = 'DB.PREVENDAITEM.M3_ESPESSURA'
+      Precision = 9
+    end
+  end
+  object SQLCupomNumerario: TRxQuery
+    DatabaseName = 'DB'
+    RequestLive = True
+    SQL.Strings = (
+      'select * from CUPOMNUMERARIO'
+      'where %MFiltro')
+    Macros = <
+      item
+        DataType = ftString
+        Name = 'MFiltro'
+        ParamType = ptInput
+        Value = '0=0'
+      end>
+    Left = 832
+    Top = 197
+    object SQLCupomNumerarioCUPOA13ID: TStringField
+      FieldName = 'CUPOA13ID'
+      Origin = 'DB.CUPOMNUMERARIO.CUPOA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLCupomNumerarioNUMEICOD: TIntegerField
+      FieldName = 'NUMEICOD'
+      Origin = 'DB.CUPOMNUMERARIO.NUMEICOD'
+    end
+    object SQLCupomNumerarioCONMCSTATUS: TStringField
+      FieldName = 'CONMCSTATUS'
+      Origin = 'DB.CUPOMNUMERARIO.CONMCSTATUS'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLCupomNumerarioCPNMN2VLR: TFloatField
+      FieldName = 'CPNMN2VLR'
+      Origin = 'DB.CUPOMNUMERARIO.CPNMN2VLR'
+    end
+    object SQLCupomNumerarioPENDENTE: TStringField
+      FieldName = 'PENDENTE'
+      Origin = 'DB.CUPOMNUMERARIO.PENDENTE'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLCupomNumerarioREGISTRO: TDateTimeField
+      FieldName = 'REGISTRO'
+      Origin = 'DB.CUPOMNUMERARIO.REGISTRO'
+    end
+    object SQLCupomNumerarioCPNMCAUTENT: TStringField
+      FieldName = 'CPNMCAUTENT'
+      Origin = 'DB.CUPOMNUMERARIO.CPNMCAUTENT'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLCupomNumerarioCLIEA13ID: TStringField
+      FieldName = 'CLIEA13ID'
+      Origin = 'DB.CUPOMNUMERARIO.CLIEA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLCupomNumerarioPLCTA15COD: TStringField
+      FieldName = 'PLCTA15COD'
+      Origin = 'DB.CUPOMNUMERARIO.PLCTA15COD'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLCupomNumerarioEMPRICOD: TIntegerField
+      FieldName = 'EMPRICOD'
+      Origin = 'DB.CUPOMNUMERARIO.EMPRICOD'
+    end
+  end
+  object MemCtRecParc: TTable
+    DatabaseName = 'Easy_Temp'
+    TableName = 'CtRecParc.DB'
+    Left = 152
+    Top = 420
+    object MemCtRecParcCTRCDVENC: TDateTimeField
+      DisplayLabel = 'Dt. Vcto.'
+      FieldName = 'CTRCDVENC'
+      Origin = 'DB.CONTASRECEBER.CTRCDVENC'
+      DisplayFormat = 'dd/mm/yyyy'
+    end
+    object MemCtRecParcCUPODEMIS: TDateTimeField
+      DisplayLabel = 'Emiss'#227'o'
+      FieldName = 'CUPODEMIS'
+      Origin = 'DB.CUPOM.CUPODEMIS'
+      DisplayFormat = 'dd/mm/yyyy'
+    end
+    object MemCtRecParcCUPOA13ID: TStringField
+      DisplayLabel = 'Documento'
+      FieldName = 'CUPOA13ID'
+      Origin = 'DB.CUPOM.CUPOA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object MemCtRecParcCTRCA13ID: TStringField
+      FieldName = 'CTRCA13ID'
+      Origin = 'DB.CONTASRECEBER.CTRCA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object MemCtRecParcCTRCINROPARC: TIntegerField
+      DisplayLabel = 'Parc.'
+      FieldName = 'CTRCINROPARC'
+      Origin = 'DB.CONTASRECEBER.CTRCINROPARC'
+    end
+    object MemCtRecParcCUPON2DESC: TBCDField
+      DisplayLabel = 'Desc.'
+      FieldName = 'CUPON2DESC'
+      Origin = 'DB.CUPOM.CUPON2DESC'
+      DisplayFormat = '#,##0.00'
+      EditFormat = '#,##0.00'
+    end
+    object MemCtRecParcCUPON2TOTITENS: TBCDField
+      DisplayLabel = 'Produtos'
+      FieldName = 'CUPON2TOTITENS'
+      Origin = 'DB.CUPOM.CUPON2TOTITENS'
+      DisplayFormat = '#,##0.00'
+      EditFormat = '#,##0.00'
+    end
+    object MemCtRecParcCUPON2ACRESC: TBCDField
+      DisplayLabel = 'Acr'#233'sc.'
+      FieldName = 'CUPON2ACRESC'
+      Origin = 'DB.CUPOM.CUPON2ACRESC'
+      DisplayFormat = '#,##0.00'
+      EditFormat = '#,##0.00'
+    end
+    object MemCtRecParcCLIEA13ID: TStringField
+      DisplayLabel = 'ID Cliente'
+      FieldName = 'CLIEA13ID'
+      Origin = 'DB.CUPOM.CLIEA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object MemCtRecParcCTRCN2VLR: TBCDField
+      DisplayLabel = 'Valor Atual'
+      FieldName = 'CTRCN2VLR'
+      Origin = 'DB.CONTASRECEBER.CTRCN2VLR'
+      DisplayFormat = '#,##0.00'
+      EditFormat = '#,##0.00'
+      Size = 2
+    end
+    object MemCtRecParcBaixar: TBooleanField
+      FieldName = 'Baixar'
+    end
+    object MemCtRecParcCTRCN2VLRJURO: TFloatField
+      DisplayLabel = 'Vlr. Juro'
+      FieldName = 'CTRCN2VLRJURO'
+      DisplayFormat = '#,##0.00'
+    end
+    object MemCtRecParcCTRCN2VLRMULTA: TFloatField
+      DisplayLabel = 'Vlr. Multa'
+      FieldName = 'CTRCN2VLRMULTA'
+      DisplayFormat = '#,##0.00'
+    end
+    object MemCtRecParcCTRCN2VLRDESC: TFloatField
+      DisplayLabel = 'Vlr. Desc.'
+      FieldName = 'CTRCN2VLRDESC'
+      DisplayFormat = '#,##0.00'
+    end
+    object MemCtRecParcCTRCN2VLRTXCOBR: TFloatField
+      DisplayLabel = 'Vlr. Taxa Cob.'
+      FieldName = 'CTRCN2VLRTXCOBR'
+      DisplayFormat = '#,##0.00'
+    end
+    object MemCtRecParcCTRCDULTREC: TDateField
+      FieldName = 'CTRCDULTREC'
+    end
+    object MemCtRecParcValorOrigem: TFloatField
+      DisplayLabel = 'Vlr. Origem'
+      FieldName = 'ValorOrigem'
+      DisplayFormat = '#,##0.00'
+    end
+  end
+  object DSMemCtRecParc: TDataSource
+    DataSet = MemCtRecParc
+    Left = 153
+    Top = 416
+  end
+  object SQLContasReceber: TRxQuery
+    DatabaseName = 'DB'
+    RequestLive = True
+    SQL.Strings = (
+      'select * from CONTASRECEBER'
+      'where %MFiltro')
+    Macros = <
+      item
+        DataType = ftString
+        Name = 'MFiltro'
+        ParamType = ptInput
+        Value = '0=0'
+      end>
+    Left = 352
+    Top = 17
+    object SQLContasReceberCTRCA13ID: TStringField
+      FieldName = 'CTRCA13ID'
+      Origin = 'DB.CONTASRECEBER.CTRCA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLContasReceberEMPRICOD: TIntegerField
+      FieldName = 'EMPRICOD'
+      Origin = 'DB.CONTASRECEBER.EMPRICOD'
+    end
+    object SQLContasReceberTERMICOD: TIntegerField
+      FieldName = 'TERMICOD'
+      Origin = 'DB.CONTASRECEBER.TERMICOD'
+    end
+    object SQLContasReceberCTRCICOD: TIntegerField
+      FieldName = 'CTRCICOD'
+      Origin = 'DB.CONTASRECEBER.CTRCICOD'
+    end
+    object SQLContasReceberCLIEA13ID: TStringField
+      FieldName = 'CLIEA13ID'
+      Origin = 'DB.CONTASRECEBER.CLIEA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLContasReceberCTRCCSTATUS: TStringField
+      FieldName = 'CTRCCSTATUS'
+      Origin = 'DB.CONTASRECEBER.CTRCCSTATUS'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLContasReceberCTRCINROPARC: TIntegerField
+      FieldName = 'CTRCINROPARC'
+      Origin = 'DB.CONTASRECEBER.CTRCINROPARC'
+    end
+    object SQLContasReceberCTRCDVENC: TDateTimeField
+      FieldName = 'CTRCDVENC'
+      Origin = 'DB.CONTASRECEBER.CTRCDVENC'
+    end
+    object SQLContasReceberCTRCN2VLR: TFloatField
+      FieldName = 'CTRCN2VLR'
+      Origin = 'DB.CONTASRECEBER.CTRCN2VLR'
+    end
+    object SQLContasReceberCTRCN2DESCFIN: TFloatField
+      FieldName = 'CTRCN2DESCFIN'
+      Origin = 'DB.CONTASRECEBER.CTRCN2DESCFIN'
+    end
+    object SQLContasReceberNUMEICOD: TIntegerField
+      FieldName = 'NUMEICOD'
+      Origin = 'DB.CONTASRECEBER.NUMEICOD'
+    end
+    object SQLContasReceberPORTICOD: TIntegerField
+      FieldName = 'PORTICOD'
+      Origin = 'DB.CONTASRECEBER.PORTICOD'
+    end
+    object SQLContasReceberCTRCN2TXJURO: TFloatField
+      FieldName = 'CTRCN2TXJURO'
+      Origin = 'DB.CONTASRECEBER.CTRCN2TXJURO'
+    end
+    object SQLContasReceberCTRCN2TXMULTA: TFloatField
+      FieldName = 'CTRCN2TXMULTA'
+      Origin = 'DB.CONTASRECEBER.CTRCN2TXMULTA'
+    end
+    object SQLContasReceberCTRCA5TIPOPADRAO: TStringField
+      FieldName = 'CTRCA5TIPOPADRAO'
+      Origin = 'DB.CONTASRECEBER.CTRCA5TIPOPADRAO'
+      FixedChar = True
+      Size = 5
+    end
+    object SQLContasReceberCTRCDULTREC: TDateTimeField
+      FieldName = 'CTRCDULTREC'
+      Origin = 'DB.CONTASRECEBER.CTRCDULTREC'
+    end
+    object SQLContasReceberCTRCN2TOTREC: TFloatField
+      FieldName = 'CTRCN2TOTREC'
+      Origin = 'DB.CONTASRECEBER.CTRCN2TOTREC'
+    end
+    object SQLContasReceberCTRCN2TOTJUROREC: TFloatField
+      FieldName = 'CTRCN2TOTJUROREC'
+      Origin = 'DB.CONTASRECEBER.CTRCN2TOTJUROREC'
+    end
+    object SQLContasReceberCTRCN2TOTMULTAREC: TFloatField
+      FieldName = 'CTRCN2TOTMULTAREC'
+      Origin = 'DB.CONTASRECEBER.CTRCN2TOTMULTAREC'
+    end
+    object SQLContasReceberCTRCN2TOTDESCREC: TFloatField
+      FieldName = 'CTRCN2TOTDESCREC'
+      Origin = 'DB.CONTASRECEBER.CTRCN2TOTDESCREC'
+    end
+    object SQLContasReceberEMPRICODULTREC: TIntegerField
+      FieldName = 'EMPRICODULTREC'
+      Origin = 'DB.CONTASRECEBER.EMPRICODULTREC'
+    end
+    object SQLContasReceberCUPOA13ID: TStringField
+      FieldName = 'CUPOA13ID'
+      Origin = 'DB.CONTASRECEBER.CUPOA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLContasReceberTPDCICOD: TIntegerField
+      FieldName = 'TPDCICOD'
+      Origin = 'DB.CONTASRECEBER.TPDCICOD'
+    end
+    object SQLContasReceberPLCTA15COD: TStringField
+      FieldName = 'PLCTA15COD'
+      Origin = 'DB.CONTASRECEBER.PLCTA15COD'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLContasReceberCTRCA30NRODUPLICBANCO: TStringField
+      FieldName = 'CTRCA30NRODUPLICBANCO'
+      Origin = 'DB.CONTASRECEBER.CTRCA30NRODUPLICBANCO'
+      FixedChar = True
+      Size = 30
+    end
+    object SQLContasReceberNOFIA13ID: TStringField
+      FieldName = 'NOFIA13ID'
+      Origin = 'DB.CONTASRECEBER.NOFIA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLContasReceberCTRCDEMIS: TDateTimeField
+      FieldName = 'CTRCDEMIS'
+      Origin = 'DB.CONTASRECEBER.CTRCDEMIS'
+    end
+    object SQLContasReceberPENDENTE: TStringField
+      FieldName = 'PENDENTE'
+      Origin = 'DB.CONTASRECEBER.PENDENTE'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLContasReceberREGISTRO: TDateTimeField
+      FieldName = 'REGISTRO'
+      Origin = 'DB.CONTASRECEBER.REGISTRO'
+    end
+    object SQLContasReceberCTRCDREABILSPC: TDateTimeField
+      FieldName = 'CTRCDREABILSPC'
+      Origin = 'DB.CONTASRECEBER.CTRCDREABILSPC'
+    end
+    object SQLContasReceberCTRCN2TOTMULTACOBR: TFloatField
+      FieldName = 'CTRCN2TOTMULTACOBR'
+      Origin = 'DB.CONTASRECEBER.CTRCN2TOTMULTACOBR'
+    end
+    object SQLContasReceberBANCA5CODCHQ: TStringField
+      FieldName = 'BANCA5CODCHQ'
+      Origin = 'DB.CONTASRECEBER.BANCA5CODCHQ'
+      FixedChar = True
+      Size = 5
+    end
+    object SQLContasReceberCTRCA10AGENCIACHQ: TStringField
+      FieldName = 'CTRCA10AGENCIACHQ'
+      Origin = 'DB.CONTASRECEBER.CTRCA10AGENCIACHQ'
+      FixedChar = True
+      Size = 10
+    end
+    object SQLContasReceberCTRCA15CONTACHQ: TStringField
+      FieldName = 'CTRCA15CONTACHQ'
+      Origin = 'DB.CONTASRECEBER.CTRCA15CONTACHQ'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLContasReceberCTRCA15NROCHQ: TStringField
+      FieldName = 'CTRCA15NROCHQ'
+      Origin = 'DB.CONTASRECEBER.CTRCA15NROCHQ'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLContasReceberCTRCA60TITULARCHQ: TStringField
+      FieldName = 'CTRCA60TITULARCHQ'
+      Origin = 'DB.CONTASRECEBER.CTRCA60TITULARCHQ'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLContasReceberCTRCA20CGCCPFCHQ: TStringField
+      FieldName = 'CTRCA20CGCCPFCHQ'
+      Origin = 'DB.CONTASRECEBER.CTRCA20CGCCPFCHQ'
+      FixedChar = True
+    end
+    object SQLContasReceberCTRCDDEPOSCHQ: TDateTimeField
+      FieldName = 'CTRCDDEPOSCHQ'
+      Origin = 'DB.CONTASRECEBER.CTRCDDEPOSCHQ'
+    end
+    object SQLContasReceberALINICOD: TIntegerField
+      FieldName = 'ALINICOD'
+      Origin = 'DB.CONTASRECEBER.ALINICOD'
+    end
+    object SQLContasReceberPLCTA15CODDEBITO: TStringField
+      FieldName = 'PLCTA15CODDEBITO'
+      Origin = 'DB.CONTASRECEBER.PLCTA15CODDEBITO'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLContasReceberPDVDA13ID: TStringField
+      FieldName = 'PDVDA13ID'
+      Origin = 'DB.CONTASRECEBER.PDVDA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLContasReceberCTRCDESTORNO: TDateTimeField
+      FieldName = 'CTRCDESTORNO'
+      Origin = 'DB.CONTASRECEBER.CTRCDESTORNO'
+    end
+    object SQLContasReceberFRETA13ID: TStringField
+      FieldName = 'FRETA13ID'
+      Origin = 'DB.CONTASRECEBER.FRETA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLContasReceberCTRCCTEMREGRECEBER: TStringField
+      FieldName = 'CTRCCTEMREGRECEBER'
+      Origin = 'DB.CONTASRECEBER.CTRCCTEMREGRECEBER'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLContasReceberCOBRA13ID: TStringField
+      FieldName = 'COBRA13ID'
+      Origin = 'DB.CONTASRECEBER.COBRA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLContasReceberCTRCDENVIOCOBRANCA: TDateTimeField
+      FieldName = 'CTRCDENVIOCOBRANCA'
+      Origin = 'DB.CONTASRECEBER.CTRCDENVIOCOBRANCA'
+    end
+    object SQLContasReceberCTRCA254HIST: TStringField
+      FieldName = 'CTRCA254HIST'
+      Origin = 'DB.CONTASRECEBER.CTRCA254HIST'
+      FixedChar = True
+      Size = 254
+    end
+    object SQLContasReceberDUPLA13ID: TStringField
+      FieldName = 'DUPLA13ID'
+      Origin = 'DB.CONTASRECEBER.DUPLA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLContasReceberAVALA13ID: TStringField
+      FieldName = 'AVALA13ID'
+      Origin = 'DB.CONTASRECEBER.AVALA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLContasReceberCTRCCTIPOREGISTRO: TStringField
+      FieldName = 'CTRCCTIPOREGISTRO'
+      Origin = 'DB.CONTASRECEBER.CTRCCTIPOREGISTRO'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLContasReceberHTPDICOD: TIntegerField
+      FieldName = 'HTPDICOD'
+      Origin = 'DB.CONTASRECEBER.HTPDICOD'
+    end
+    object SQLContasReceberCONTA13ID: TStringField
+      FieldName = 'CONTA13ID'
+      Origin = 'DB.CONTASRECEBER.CONTA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLContasReceberCTRCA13CTRCAIDCHQ: TStringField
+      FieldName = 'CTRCA13CTRCAIDCHQ'
+      Origin = 'DB.CONTASRECEBER.CTRCA13CTRCAIDCHQ'
+      Size = 13
+    end
+    object SQLContasReceberCTRCCEMITIDOBOLETO: TStringField
+      FieldName = 'CTRCCEMITIDOBOLETO'
+      Origin = 'DB.CONTASRECEBER.CTRCCEMITIDOBOLETO'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLContasReceberCTRCA2MESCOMP: TStringField
+      FieldName = 'CTRCA2MESCOMP'
+      Origin = 'DB.CONTASRECEBER.CTRCA2MESCOMP'
+      FixedChar = True
+      Size = 2
+    end
+    object SQLContasReceberCTRCA4ANOCOMP: TStringField
+      FieldName = 'CTRCA4ANOCOMP'
+      Origin = 'DB.CONTASRECEBER.CTRCA4ANOCOMP'
+      FixedChar = True
+      Size = 4
+    end
+    object SQLContasReceberCLDPICOD: TIntegerField
+      FieldName = 'CLDPICOD'
+      Origin = 'DB.CONTASRECEBER.CLDPICOD'
+    end
+  end
+  object SQLPopUP: TQuery
+    DatabaseName = 'DB'
+    RequestLive = True
+    SQL.Strings = (
+      'SELECT * FROM CFGCALLCENTER')
+    Left = 352
+    Top = 80
+    object SQLPopUPPOPTEMPO: TStringField
+      FieldName = 'POPTEMPO'
+      Origin = 'DB.CFGCALLCENTER.POPTEMPO'
+      FixedChar = True
+      Size = 2
+    end
+    object SQLPopUPCFGCCEXIBIRPOPTARE: TStringField
+      FieldName = 'CFGCCEXIBIRPOPTARE'
+      Origin = 'DB.CFGCALLCENTER.CFGCCEXIBIRPOPTARE'
+      FixedChar = True
+      Size = 1
+    end
+  end
+  object SQLPreVD: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'select * from PREVENDA'
+      'where %MFiltro')
+    Macros = <
+      item
+        DataType = ftString
+        Name = 'MFiltro'
+        ParamType = ptInput
+        Value = '0=0'
+      end>
+    Left = 336
+    Top = 288
+  end
+  object SQLPreVDIt: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'select * from PREVENDAITEM'
+      'where %MFiltro')
+    Macros = <
+      item
+        DataType = ftString
+        Name = 'MFiltro'
+        ParamType = ptInput
+        Value = '0=0'
+      end>
+    Left = 364
+    Top = 288
+  end
+  object SQLECF: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'select distinct'
+      'ECFA30MODELO'
+      'from'
+      'ecf ')
+    Macros = <>
+    Left = 224
+    Top = 384
+  end
+  object SQLPedidoOrcamento: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'Select'
+      'Pedido.*,'
+      'Cliente.CLIEA60RAZAOSOC,'
+      'Vendedor.VENDA60NOME,'
+      'Plano.PLRCA60DESCR'
+      'from'
+      'PEDIDOVENDA PEDIDO'
+      'left outer join CLIENTE  on Pedido.CLIEA13ID = CLIENTE.CLIEA13ID'
+      'left outer join VENDEDOR on Pedido.VENDICOD  = VENDEDOR.VENDICOD'
+      
+        'left outer join PLANORECEBIMENTO PLANO on Pedido.PLRCICOD = PLAN' +
+        'ORECEBIMENTO.PLRCICOD'
+      'where'
+      '(%MFiltro)'
+      ''
+      '')
+    Macros = <
+      item
+        DataType = ftString
+        Name = 'MFiltro'
+        ParamType = ptInput
+        Value = '0=0'
+      end>
+    Left = 224
+    Top = 448
+    object SQLPedidoOrcamentoPDVDA13ID: TStringField
+      FieldName = 'PDVDA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLPedidoOrcamentoCLIEA13ID: TStringField
+      FieldName = 'CLIEA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLPedidoOrcamentoVENDICOD: TIntegerField
+      FieldName = 'VENDICOD'
+    end
+    object SQLPedidoOrcamentoPLRCICOD: TIntegerField
+      FieldName = 'PLRCICOD'
+    end
+    object SQLPedidoOrcamentoPDVDN2TOTPROD: TFloatField
+      FieldName = 'PDVDN2TOTPROD'
+    end
+    object SQLPedidoOrcamentoCLIEA60RAZAOSOC: TStringField
+      FieldName = 'CLIEA60RAZAOSOC'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLPedidoOrcamentoVENDA60NOME: TStringField
+      FieldName = 'VENDA60NOME'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLPedidoOrcamentoPLRCA60DESCR: TStringField
+      FieldName = 'PLRCA60DESCR'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLPedidoOrcamentoPDVDN2VLRDESC: TFloatField
+      FieldName = 'PDVDN2VLRDESC'
+    end
+    object SQLPedidoOrcamentoPDVDN2VLRDESCPROM: TFloatField
+      FieldName = 'PDVDN2VLRDESCPROM'
+    end
+    object SQLPedidoOrcamentoPDVDN2VLRFRETE: TFloatField
+      FieldName = 'PDVDN2VLRFRETE'
+    end
+    object SQLPedidoOrcamentoPDVDTOBS: TStringField
+      FieldName = 'PDVDTOBS'
+      FixedChar = True
+      Size = 254
+    end
+    object SQLPedidoOrcamentoPDVDCTIPO: TStringField
+      FieldName = 'PDVDCTIPO'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLPedidoOrcamentoPDVDDEMISSAO: TDateTimeField
+      FieldName = 'PDVDDEMISSAO'
+    end
+    object SQLPedidoOrcamentoEMPRICOD: TIntegerField
+      FieldName = 'EMPRICOD'
+    end
+    object SQLPedidoOrcamentoPDVDICOD: TIntegerField
+      FieldName = 'PDVDICOD'
+    end
+    object SQLPedidoOrcamentoTRANICOD: TIntegerField
+      FieldName = 'TRANICOD'
+    end
+    object SQLPedidoOrcamentoPDVDA30NROPEDCOMP: TStringField
+      FieldName = 'PDVDA30NROPEDCOMP'
+      FixedChar = True
+      Size = 30
+    end
+    object SQLPedidoOrcamentoPDVDA30COMPRADOR: TStringField
+      FieldName = 'PDVDA30COMPRADOR'
+      FixedChar = True
+      Size = 30
+    end
+    object SQLPedidoOrcamentoPDVDCSTATUS: TStringField
+      FieldName = 'PDVDCSTATUS'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLPedidoOrcamentoPDVDN2TOTPED: TFloatField
+      FieldName = 'PDVDN2TOTPED'
+    end
+    object SQLPedidoOrcamentoREGISTRO: TDateTimeField
+      FieldName = 'REGISTRO'
+    end
+    object SQLPedidoOrcamentoPENDENTE: TStringField
+      FieldName = 'PENDENTE'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLPedidoOrcamentoPDVDCTIPOFRETE: TStringField
+      FieldName = 'PDVDCTIPOFRETE'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLPedidoOrcamentoPDVDDENTREGA: TDateTimeField
+      FieldName = 'PDVDDENTREGA'
+    end
+    object SQLPedidoOrcamentoPDVDINROTALAO: TIntegerField
+      FieldName = 'PDVDINROTALAO'
+    end
+    object SQLPedidoOrcamentoPDVDCIMPORTADO: TStringField
+      FieldName = 'PDVDCIMPORTADO'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLPedidoOrcamentoPDVDN2PERCFAT: TFloatField
+      FieldName = 'PDVDN2PERCFAT'
+    end
+    object SQLPedidoOrcamentoPDVDN2PERCOMIS: TFloatField
+      FieldName = 'PDVDN2PERCOMIS'
+    end
+    object SQLPedidoOrcamentoUSUAA60LOGIN: TStringField
+      FieldName = 'USUAA60LOGIN'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLPedidoOrcamentoROTAICOD: TIntegerField
+      FieldName = 'ROTAICOD'
+    end
+    object SQLPedidoOrcamentoSERIA5COD: TStringField
+      FieldName = 'SERIA5COD'
+      FixedChar = True
+      Size = 5
+    end
+    object SQLPedidoOrcamentoVEICA13ID: TStringField
+      FieldName = 'VEICA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLPedidoOrcamentoPDVDA15NROPEDPALM: TStringField
+      FieldName = 'PDVDA15NROPEDPALM'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLPedidoOrcamentoNOFIAOBSCORPONF: TStringField
+      FieldName = 'NOFIAOBSCORPONF'
+      FixedChar = True
+      Size = 200
+    end
+    object SQLPedidoOrcamentoPDVD8PLACAVEIC: TStringField
+      FieldName = 'PDVD8PLACAVEIC'
+      FixedChar = True
+      Size = 8
+    end
+    object SQLPedidoOrcamentoOPESICOD: TIntegerField
+      FieldName = 'OPESICOD'
+    end
+    object SQLPedidoOrcamentoCLIENTENOME: TStringField
+      FieldName = 'CLIENTENOME'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLPedidoOrcamentoCLIENTEFONE: TStringField
+      FieldName = 'CLIENTEFONE'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLPedidoOrcamentoCLIENTEEMAIL: TStringField
+      FieldName = 'CLIENTEEMAIL'
+      FixedChar = True
+      Size = 60
+    end
+  end
+  object SQLPedidoOrcamentoItem: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'Select'
+      '*'
+      'From'
+      'PEDIDOVENDAITEM'
+      'where'
+      '(%MFiltro)')
+    Macros = <
+      item
+        DataType = ftString
+        Name = 'MFiltro'
+        ParamType = ptInput
+        Value = '0=0'
+      end>
+    Left = 265
+    Top = 448
+    object SQLPedidoOrcamentoItemPDVDA13ID: TStringField
+      FieldName = 'PDVDA13ID'
+      Origin = 'DB.PEDIDOVENDAITEM.PDVDA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLPedidoOrcamentoItemPVITIITEM: TIntegerField
+      FieldName = 'PVITIITEM'
+      Origin = 'DB.PEDIDOVENDAITEM.PVITIITEM'
+    end
+    object SQLPedidoOrcamentoItemPRODICOD: TIntegerField
+      FieldName = 'PRODICOD'
+      Origin = 'DB.PEDIDOVENDAITEM.PRODICOD'
+    end
+    object SQLPedidoOrcamentoItemPVITN3QUANT: TFloatField
+      FieldName = 'PVITN3QUANT'
+      Origin = 'DB.PEDIDOVENDAITEM.PVITN3QUANT'
+    end
+    object SQLPedidoOrcamentoItemPVITN2VLRUNIT: TFloatField
+      FieldName = 'PVITN2VLRUNIT'
+      Origin = 'DB.PEDIDOVENDAITEM.PVITN2VLRUNIT'
+    end
+    object SQLPedidoOrcamentoItemPVITN2PERCDESC: TFloatField
+      FieldName = 'PVITN2PERCDESC'
+      Origin = 'DB.PEDIDOVENDAITEM.PVITN2PERCDESC'
+    end
+    object SQLPedidoOrcamentoItemPVITN2VLRDESC: TFloatField
+      FieldName = 'PVITN2VLRDESC'
+      Origin = 'DB.PEDIDOVENDAITEM.PVITN2VLRDESC'
+    end
+    object SQLPedidoOrcamentoItemREGISTRO: TDateTimeField
+      FieldName = 'REGISTRO'
+      Origin = 'DB.PEDIDOVENDAITEM.REGISTRO'
+    end
+    object SQLPedidoOrcamentoItemPENDENTE: TStringField
+      FieldName = 'PENDENTE'
+      Origin = 'DB.PEDIDOVENDAITEM.PENDENTE'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLPedidoOrcamentoItemPVITN3QUANTVEND: TFloatField
+      FieldName = 'PVITN3QUANTVEND'
+      Origin = 'DB.PEDIDOVENDAITEM.PVITN3QUANTVEND'
+    end
+    object SQLPedidoOrcamentoItemPDVDA60OBS: TStringField
+      FieldName = 'PDVDA60OBS'
+      Origin = 'DB.PEDIDOVENDAITEM.PDVDA60OBS'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLPedidoOrcamentoItemPVITN2PERCCOMIS: TFloatField
+      FieldName = 'PVITN2PERCCOMIS'
+      Origin = 'DB.PEDIDOVENDAITEM.PVITN2PERCCOMIS'
+    end
+    object SQLPedidoOrcamentoItemPDVDA255OBS1: TStringField
+      FieldName = 'PDVDA255OBS1'
+      Origin = 'DB.PEDIDOVENDAITEM.PDVDA255OBS1'
+      FixedChar = True
+      Size = 255
+    end
+    object SQLPedidoOrcamentoItemLOTEA30NRO: TStringField
+      FieldName = 'LOTEA30NRO'
+      Origin = 'DB.PEDIDOVENDAITEM.LOTEA30NRO'
+      FixedChar = True
+      Size = 30
+    end
+  end
+  object sqlImportarPrevenda: TRxQuery
+    DatabaseName = 'DB'
+    Macros = <>
+    Left = 293
+    Top = 500
+  end
+  object TblAutenticacao: TTable
+    DatabaseName = 'Easy_Temp'
+    TableName = 'Autenticacao.DB'
+    Left = 456
+    Top = 461
+    object TblAutenticacaoEmpresaNome: TStringField
+      FieldName = 'EmpresaNome'
+      Size = 60
+    end
+    object TblAutenticacaoOperacao: TStringField
+      FieldName = 'Operacao'
+      Size = 60
+    end
+    object TblAutenticacaoUsuarioNome: TStringField
+      FieldName = 'UsuarioNome'
+      Size = 60
+    end
+    object TblAutenticacaoValor: TFloatField
+      FieldName = 'Valor'
+    end
+    object TblAutenticacaoHistorico: TStringField
+      FieldName = 'Historico'
+      Size = 60
+    end
+    object TblAutenticacaoTerminalNome: TStringField
+      FieldName = 'TerminalNome'
+      Size = 30
+    end
+    object TblAutenticacaoForma: TStringField
+      FieldName = 'Forma'
+      Size = 15
+    end
+  end
+  object SQLTotalizadorCaixa: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'select * from TOTALIZADORCAIXA ')
+    Macros = <>
+    Left = 736
+    Top = 16
+  end
+  object SQLTotalizar: TRxQuery
+    DatabaseName = 'DB'
+    Macros = <>
+    Left = 768
+    Top = 16
+  end
+  object SQLFechamentoCaixa: TRxQuery
+    Tag = 3
+    DatabaseName = 'DB'
+    RequestLive = True
+    SQL.Strings = (
+      'Select * from FECHAMENTOCAIXA where FECXDDATAMOV is null')
+    Macros = <>
+    Left = 800
+    Top = 440
+    object SQLFechamentoCaixaFECXA13ID: TStringField
+      Tag = 2
+      FieldName = 'FECXA13ID'
+      Origin = 'DB.FECHAMENTOCAIXA.FECXA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLFechamentoCaixaFECXDDATAMOV: TDateTimeField
+      DisplayLabel = 'Data Mov.'
+      FieldName = 'FECXDDATAMOV'
+      Origin = 'DB.FECHAMENTOCAIXA.FECXDDATAMOV'
+    end
+    object SQLFechamentoCaixaEMPRICOD: TIntegerField
+      DisplayLabel = 'Empresa'
+      FieldName = 'EMPRICOD'
+      Origin = 'DB.FECHAMENTOCAIXA.EMPRICOD'
+    end
+    object SQLFechamentoCaixaTERMICOD: TIntegerField
+      DisplayLabel = 'Terminal'
+      FieldName = 'TERMICOD'
+      Origin = 'DB.FECHAMENTOCAIXA.TERMICOD'
+    end
+    object SQLFechamentoCaixaNUMEICOD: TIntegerField
+      DisplayLabel = 'Numer'#225'rio'
+      FieldName = 'NUMEICOD'
+      Origin = 'DB.FECHAMENTOCAIXA.NUMEICOD'
+    end
+    object SQLFechamentoCaixaFECXICOD: TIntegerField
+      Tag = 1
+      FieldName = 'FECXICOD'
+      Origin = 'DB.FECHAMENTOCAIXA.FECXICOD'
+    end
+    object SQLFechamentoCaixaFECXN2VALOR: TFloatField
+      DisplayLabel = 'Valor'
+      FieldName = 'FECXN2VALOR'
+      Origin = 'DB.FECHAMENTOCAIXA.FECXN2VALOR'
+      DisplayFormat = '#,##0.00'
+      EditFormat = '#,##0.00'
+    end
+    object SQLFechamentoCaixaUSUAICOD: TIntegerField
+      DisplayLabel = 'Usu'#225'rio'
+      FieldName = 'USUAICOD'
+      Origin = 'DB.FECHAMENTOCAIXA.USUAICOD'
+    end
+    object SQLFechamentoCaixaNUMEA30DESCR: TStringField
+      DisplayLabel = 'Descri'#231#227'o'
+      FieldKind = fkLookup
+      FieldName = 'NUMEA30DESCR'
+      LookupKeyFields = 'NUMEICOD'
+      LookupResultField = 'NUMEA30DESCR'
+      KeyFields = 'NUMEICOD'
+      Size = 30
+      Lookup = True
+    end
+    object SQLFechamentoCaixaPENDENTE: TStringField
+      FieldName = 'PENDENTE'
+      Origin = 'DB.FECHAMENTOCAIXA.PENDENTE'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLFechamentoCaixaREGISTRO: TDateTimeField
+      FieldName = 'REGISTRO'
+      Origin = 'DB.FECHAMENTOCAIXA.REGISTRO'
+    end
+  end
+  object SQLNumerario: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'Select * from NUMERARIO')
+    Macros = <>
+    Left = 805
+    Top = 392
+    object SQLNumerarioNUMEICOD: TIntegerField
+      FieldName = 'NUMEICOD'
+      Origin = 'DB.NUMERARIO.NUMEICOD'
+    end
+    object SQLNumerarioNUMEA30DESCR: TStringField
+      FieldName = 'NUMEA30DESCR'
+      Origin = 'DB.NUMERARIO.NUMEA30DESCR'
+      FixedChar = True
+      Size = 30
+    end
+    object SQLNumerarioNUMECVISTAPRAZO: TStringField
+      FieldName = 'NUMECVISTAPRAZO'
+      Origin = 'DB.NUMERARIO.NUMECVISTAPRAZO'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLNumerarioNUMECATIVO: TStringField
+      FieldName = 'NUMECATIVO'
+      Origin = 'DB.NUMERARIO.NUMECATIVO'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLNumerarioNUMEA5TIPO: TStringField
+      FieldName = 'NUMEA5TIPO'
+      Origin = 'DB.NUMERARIO.NUMEA5TIPO'
+      FixedChar = True
+      Size = 5
+    end
+    object SQLNumerarioOPCXICOD: TIntegerField
+      FieldName = 'OPCXICOD'
+      Origin = 'DB.NUMERARIO.OPCXICOD'
+    end
+    object SQLNumerarioPENDENTE: TStringField
+      FieldName = 'PENDENTE'
+      Origin = 'DB.NUMERARIO.PENDENTE'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLNumerarioREGISTRO: TDateTimeField
+      FieldName = 'REGISTRO'
+      Origin = 'DB.NUMERARIO.REGISTRO'
+    end
+    object SQLNumerarioPRCAA13ID: TStringField
+      FieldName = 'PRCAA13ID'
+      Origin = 'DB.NUMERARIO.PRCAA13ID'
+      FixedChar = True
+      Size = 13
+    end
+  end
+  object SQLCupom: TRxQuery
+    Tag = 3
+    DatabaseName = 'DB'
+    RequestLive = True
+    SQL.Strings = (
+      'select * from CUPOM'
+      'where %MFiltro')
+    Macros = <
+      item
+        DataType = ftString
+        Name = 'MFiltro'
+        ParamType = ptInput
+        Value = '0=0'
+      end>
+    Left = 944
+    Top = 92
+    object SQLCupomCUPOA13ID: TStringField
+      Tag = 2
+      FieldName = 'CUPOA13ID'
+      Origin = 'DB.CUPOM.CUPOA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLCupomEMPRICOD: TIntegerField
+      FieldName = 'EMPRICOD'
+      Origin = 'DB.CUPOM.EMPRICOD'
+    end
+    object SQLCupomTERMICOD: TIntegerField
+      FieldName = 'TERMICOD'
+      Origin = 'DB.CUPOM.TERMICOD'
+    end
+    object SQLCupomCUPOICOD: TIntegerField
+      Tag = 1
+      FieldName = 'CUPOICOD'
+      Origin = 'DB.CUPOM.CUPOICOD'
+    end
+    object SQLCupomCUPODEMIS: TDateTimeField
+      FieldName = 'CUPODEMIS'
+      Origin = 'DB.CUPOM.CUPODEMIS'
+    end
+    object SQLCupomCLIEA13ID: TStringField
+      FieldName = 'CLIEA13ID'
+      Origin = 'DB.CUPOM.CLIEA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLCupomPLRCICOD: TIntegerField
+      FieldName = 'PLRCICOD'
+      Origin = 'DB.CUPOM.PLRCICOD'
+    end
+    object SQLCupomVENDICOD: TIntegerField
+      FieldName = 'VENDICOD'
+      Origin = 'DB.CUPOM.VENDICOD'
+    end
+    object SQLCupomCONVICOD: TIntegerField
+      FieldName = 'CONVICOD'
+      Origin = 'DB.CUPOM.CONVICOD'
+    end
+    object SQLCupomCUPOCSTATUS: TStringField
+      FieldName = 'CUPOCSTATUS'
+      Origin = 'DB.CUPOM.CUPOCSTATUS'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLCupomCUPON2TOTITENS: TFloatField
+      FieldName = 'CUPON2TOTITENS'
+      Origin = 'DB.CUPOM.CUPON2TOTITENS'
+    end
+    object SQLCupomCUPON2DESC: TFloatField
+      FieldName = 'CUPON2DESC'
+      Origin = 'DB.CUPOM.CUPON2DESC'
+    end
+    object SQLCupomCUPON2ACRESC: TFloatField
+      FieldName = 'CUPON2ACRESC'
+      Origin = 'DB.CUPOM.CUPON2ACRESC'
+    end
+    object SQLCupomCUPON2TOTITENSRET: TFloatField
+      FieldName = 'CUPON2TOTITENSRET'
+      Origin = 'DB.CUPOM.CUPON2TOTITENSRET'
+    end
+    object SQLCupomCUPOINRO: TIntegerField
+      FieldName = 'CUPOINRO'
+      Origin = 'DB.CUPOM.CUPOINRO'
+    end
+    object SQLCupomCUPOCTIPOPADRAO: TStringField
+      FieldName = 'CUPOCTIPOPADRAO'
+      Origin = 'DB.CUPOM.CUPOCTIPOPADRAO'
+      FixedChar = True
+      Size = 5
+    end
+    object SQLCupomCUPON2CONVTAXA: TFloatField
+      FieldName = 'CUPON2CONVTAXA'
+      Origin = 'DB.CUPOM.CUPON2CONVTAXA'
+    end
+    object SQLCupomCUPOINROORDCOMPRA: TIntegerField
+      FieldName = 'CUPOINROORDCOMPRA'
+      Origin = 'DB.CUPOM.CUPOINROORDCOMPRA'
+    end
+    object SQLCupomCUPOA13IDTROCA: TStringField
+      FieldName = 'CUPOA13IDTROCA'
+      Origin = 'DB.CUPOM.CUPOA13IDTROCA'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLCupomCUPON2VLRCOMISSAO: TFloatField
+      FieldName = 'CUPON2VLRCOMISSAO'
+      Origin = 'DB.CUPOM.CUPON2VLRCOMISSAO'
+    end
+    object SQLCupomCUPOA20CODANT: TStringField
+      FieldName = 'CUPOA20CODANT'
+      Origin = 'DB.CUPOM.CUPOA20CODANT'
+      FixedChar = True
+    end
+    object SQLCupomCUPODCANC: TDateTimeField
+      FieldName = 'CUPODCANC'
+      Origin = 'DB.CUPOM.CUPODCANC'
+    end
+    object SQLCupomCUPON2JUROATRAS: TFloatField
+      FieldName = 'CUPON2JUROATRAS'
+      Origin = 'DB.CUPOM.CUPON2JUROATRAS'
+    end
+    object SQLCupomCUPON2MULTAATRAS: TFloatField
+      FieldName = 'CUPON2MULTAATRAS'
+      Origin = 'DB.CUPOM.CUPON2MULTAATRAS'
+    end
+    object SQLCupomCUPODPAGTOCONSIG: TDateTimeField
+      FieldName = 'CUPODPAGTOCONSIG'
+      Origin = 'DB.CUPOM.CUPODPAGTOCONSIG'
+    end
+    object SQLCupomPENDENTE: TStringField
+      FieldName = 'PENDENTE'
+      Origin = 'DB.CUPOM.PENDENTE'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLCupomREGISTRO: TDateTimeField
+      FieldName = 'REGISTRO'
+      Origin = 'DB.CUPOM.REGISTRO'
+    end
+    object SQLCupomCUPON3BONUSTROCA: TFloatField
+      FieldName = 'CUPON3BONUSTROCA'
+      Origin = 'DB.CUPOM.CUPON3BONUSTROCA'
+    end
+    object SQLCupomCUPODENTREGA: TDateTimeField
+      FieldName = 'CUPODENTREGA'
+      Origin = 'DB.CUPOM.CUPODENTREGA'
+    end
+    object SQLCupomTPVDICOD: TIntegerField
+      FieldName = 'TPVDICOD'
+      Origin = 'DB.CUPOM.TPVDICOD'
+    end
+    object SQLCupomCUPON3CREDTAXA: TFloatField
+      FieldName = 'CUPON3CREDTAXA'
+      Origin = 'DB.CUPOM.CUPON3CREDTAXA'
+    end
+    object SQLCupomCUPOCCONSIG: TStringField
+      FieldName = 'CUPOCCONSIG'
+      Origin = 'DB.CUPOM.CUPOCCONSIG'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLCupomCUPOV254OBS: TStringField
+      FieldName = 'CUPOV254OBS'
+      Origin = 'DB.CUPOM.CUPOV254OBS'
+      Size = 254
+    end
+    object SQLCupomUSUAICODCANC: TIntegerField
+      FieldName = 'USUAICODCANC'
+      Origin = 'DB.CUPOM.USUAICODCANC'
+    end
+    object SQLCupomCUPOA30DATACARTAO: TStringField
+      FieldName = 'CUPOA30DATACARTAO'
+      Origin = 'DB.CUPOM.CUPOA30DATACARTAO'
+      FixedChar = True
+      Size = 30
+    end
+    object SQLCupomCUPOA30HORACARTAO: TStringField
+      FieldName = 'CUPOA30HORACARTAO'
+      Origin = 'DB.CUPOM.CUPOA30HORACARTAO'
+      FixedChar = True
+      Size = 30
+    end
+    object SQLCupomCUPOA30NSUPROVEDOR: TStringField
+      FieldName = 'CUPOA30NSUPROVEDOR'
+      Origin = 'DB.CUPOM.CUPOA30NSUPROVEDOR'
+      FixedChar = True
+      Size = 30
+    end
+    object SQLCupomCUPOA30NSUINSTITUICAO: TStringField
+      FieldName = 'CUPOA30NSUINSTITUICAO'
+      Origin = 'DB.CUPOM.CUPOA30NSUINSTITUICAO'
+      FixedChar = True
+      Size = 30
+    end
+    object SQLCupomCUPON2DESCITENS: TFloatField
+      FieldName = 'CUPON2DESCITENS'
+      Origin = 'DB.CUPOM.CUPON2DESCITENS'
+    end
+    object SQLCupomCATCA13ID: TStringField
+      FieldName = 'CATCA13ID'
+      Origin = 'DB.CUPOM.CATCA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLCupomOPESICOD: TIntegerField
+      FieldName = 'OPESICOD'
+      Origin = 'DB.CUPOM.OPESICOD'
+    end
+    object SQLCupomPLCTA15CODCRED: TStringField
+      FieldName = 'PLCTA15CODCRED'
+      Origin = 'DB.CUPOM.PLCTA15CODCRED'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLCupomPLCTA15CODDEB: TStringField
+      FieldName = 'PLCTA15CODDEB'
+      Origin = 'DB.CUPOM.PLCTA15CODDEB'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLCupomCUPON2BASEICMS: TFloatField
+      FieldName = 'CUPON2BASEICMS'
+      Origin = 'DB.CUPOM.CUPON2BASEICMS'
+    end
+    object SQLCupomCUPON2VLRICMS: TFloatField
+      FieldName = 'CUPON2VLRICMS'
+      Origin = 'DB.CUPOM.CUPON2VLRICMS'
+    end
+    object SQLCupomCUPOA13IDCUPNEG: TStringField
+      FieldName = 'CUPOA13IDCUPNEG'
+      Origin = 'DB.CUPOM.CUPOA13IDCUPNEG'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLCupomCFOPA5COD: TStringField
+      FieldName = 'CFOPA5COD'
+      Origin = 'DB.CUPOM.CFOPA5COD'
+      FixedChar = True
+      Size = 5
+    end
+    object SQLCupomAVALA13ID: TStringField
+      FieldName = 'AVALA13ID'
+      Origin = 'DB.CUPOM.AVALA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLCupomCUPODQUITACAO: TDateTimeField
+      FieldName = 'CUPODQUITACAO'
+      Origin = 'DB.CUPOM.CUPODQUITACAO'
+    end
+    object SQLCupomCLIENTENOME: TStringField
+      FieldName = 'CLIENTENOME'
+      Origin = 'DB.CUPOM.CLIENTENOME'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLCupomCLIENTECNPJ: TStringField
+      FieldName = 'CLIENTECNPJ'
+      Origin = 'DB.CUPOM.CLIENTECNPJ'
+      FixedChar = True
+    end
+    object SQLCupomCLIENTEENDE: TStringField
+      FieldName = 'CLIENTEENDE'
+      Origin = 'DB.CUPOM.CLIENTEENDE'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLCupomCLIENTECIDA: TStringField
+      FieldName = 'CLIENTECIDA'
+      Origin = 'DB.CUPOM.CLIENTECIDA'
+      FixedChar = True
+      Size = 30
+    end
+    object SQLCupomCLIENTEFONE: TStringField
+      FieldName = 'CLIENTEFONE'
+      Origin = 'DB.CUPOM.CLIENTEFONE'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLCupomUSUAICODVENDA: TIntegerField
+      FieldName = 'USUAICODVENDA'
+      Origin = 'DB.CUPOM.USUAICODVENDA'
+    end
+    object SQLCupomCLDPICOD: TIntegerField
+      FieldName = 'CLDPICOD'
+      Origin = 'DB.CUPOM.CLDPICOD'
+    end
+    object SQLCupomCUPOA8PLACAVEIC: TStringField
+      FieldName = 'CUPOA8PLACAVEIC'
+      Origin = 'DB.CUPOM.CUPOA8PLACAVEIC'
+      FixedChar = True
+      Size = 8
+    end
+    object SQLCupomTROCO: TFloatField
+      FieldName = 'TROCO'
+      Origin = 'DB.CUPOM.TROCO'
+    end
+    object SQLCupomDISPICOD: TIntegerField
+      FieldName = 'DISPICOD'
+      Origin = 'DB.CUPOM.DISPICOD'
+    end
+    object SQLCupomCHAVEACESSO: TStringField
+      FieldName = 'CHAVEACESSO'
+      Origin = 'DB.CUPOM.CHAVEACESSO'
+      Size = 44
+    end
+    object SQLCupomPROTOCOLO: TStringField
+      FieldName = 'PROTOCOLO'
+      Origin = 'DB.CUPOM.PROTOCOLO'
+      Size = 15
+    end
+  end
+  object DBRel: TDatabase
+    AliasName = 'Easy_Temp'
+    DatabaseName = 'DBRelat'
+    SessionName = 'Default'
+    Left = 869
+    Top = 16
   end
 end

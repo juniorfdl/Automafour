@@ -37,7 +37,7 @@ type
     EmissodeRecibo1: TMenuItem;
     Faturamento1: TMenuItem;
     PedidodeVenda1: TMenuItem;
-    NotaFiscal1: TMenuItem;
+    FATUMnVendasNotasFiscais: TMenuItem;
     Servio1: TMenuItem;
     OrdemdeServioMecanica1: TMenuItem;
     GrupodeServio1: TMenuItem;
@@ -357,6 +357,7 @@ type
     procedure MnADMUtilitariosApagarPreVendasImportadasClick(Sender: TObject);
     procedure ApagarOramento30Dias1Click(Sender: TObject);
     procedure MnFINPagarBaixarDocumentosClick(Sender: TObject);
+    procedure NotaFiscal1Click(Sender: TObject);
   private
     procedure ApagarOrcamentos;
     procedure ApagarPreVendas;
@@ -392,7 +393,7 @@ uses
   RelatorioDivergenciaInventario, TelaZerarSaldoEstoque,
   TelaProdutosSemMovimento, TelaManutencaoProdutos,
   CadastroManutencaoCupom, TelaCalculoComissao, CadastroVendedorComissao,
-  TelaQuitacaoComissoes, TelaBaixarDocumentosPagar;
+  TelaQuitacaoComissoes, TelaBaixarDocumentosPagar, CadastroNotaFiscal;
 
 
 
@@ -1715,6 +1716,15 @@ begin
       CriaFormulario(TFormTelaBaixarDocumentosPagar, 'FormTelaBaixarDocumentosPagar',False,False,False,'')
     else
       SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.NotaFiscal1Click(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroNotaFiscal, 'FormCadastroNotaFiscal',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
 end;
 
 end.

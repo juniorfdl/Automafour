@@ -161,6 +161,7 @@ function ExecSql(xsql: string; Tipo: Integer = 0): TQuery;
 function Pergunta(BotaoDefault, Texto:string) : boolean ;
 procedure InformaErro(Texto:string; Abortar: Boolean; SetarFoco: TWinControl) ;
 procedure AtualizaTotaisCabecalhoContasPagar(NroDocumento : string) ;
+function  ConverteAcentos(Str : string) : string ;
 function TiraPontoMilhar(Numero : Double) : Double ;
 function ConvFloatToStr(Numero : Double) : string ;
 procedure LancaMovimentacaoBanco(Empresa,ContaCorrente,Operacao,NroCheque : integer;ValorMov:Double; BomPara, DtBaixa, DtMovimento:TDateTime; Historico,Favorecido, IDContasReceber, IDContasPagar, IDChqEmitido, IDPlanoContas : String);
@@ -169,11 +170,13 @@ procedure AtualizaSaldoContaCorrente(ContaCorrente : Integer; ValorDebito,ValorC
 procedure LancaMovimentacaoTesouraria(Empresa,Terminal,Numerario,OperacaoTes : Integer;Valor : Double;Historico, IDContaPagar, IDContaReceber, IDCheque, IDFechaCaixa : String; DataMovimento : TDateTime; DocOrigem: String ; PlanoContas : String);
 function ValidaCPF(CPF: string): boolean;
 function ValidaCGC(CGC: string): boolean;
+function  RetornaNumerario(CodNumerario : string) : String ;
 function GeraCodigoBarras(CodigoBase:String):String;
 function IsNumeric(Valor, Tipo : String) : boolean ;
 function TrocaVirgulaPorPonto(Numero : String) : string ;
 function TrocaPontoPorVirgula(Numero : String) : string ;
 function  RetornaUltimaCotacaoMoeda(Dia : TDateTime; Moeda : String): Double;
+function  RetornaTotalizadorNumerarioECF(EcfID, CodNumerario : string) : String ;
 function ArredondaValor1(Valor : Double;NroCasasDec:Integer) : Double;
 procedure LancaReajustePreco(ValorVenda,ValorCompra,ValorCompraMedio,ValorCusto,ValorCustoMedio,Margem:Double; Produto:Integer);
 function CalculaMargemLucro(Produto:Integer;ValorBase,ValorVenda:Double):Double;
@@ -209,6 +212,36 @@ function VerificaNumeroSerie(NroSerie, CodProduto : String) : String;
 procedure GravaSaidaNroSerieProduto(NroSERIE, Produto, Status, EMPRICOD, CLIEA13ID, CUPOA13ID, PDVDA13ID, NOFIA13ID, MOVDA13ID : String);
 procedure DeletaNumeroSerie(PRODICOD, NOFIA13ID, PDVDA13ID, MOVDA13ID : String);
 procedure GravaEntradaNroSerieProduto(NOCPA13ID, MOVDA13ID, NOFIA13ID, PDVDA13ID : String);
+procedure GravaMovimentoCaixa( SQLTotalizadorCaixa,
+                               SQLTotalizar : TQuery;
+                               WEMPRICOD,
+                               WTERMICOD,
+                               WMVCXDMOV,
+                               WNUMEICOD,
+                               WOPCXICOD,
+                               WUSUAICOD,
+                               WMVCXA15DOCORIG : string;
+                               WMVCXN2VLR,
+                               WMVCXN2VLRJURO,
+                               WMVCXN2VLRMULTA,
+                               WMVCXN2VLRDESC  : double ;
+                               WMVCXA6NUMCUPOM,
+                               WTIPO,
+                               WMVCXA255HIST,
+                               MOVNORMREV,
+                               Tipo : string) ;
+
+procedure AtualizaDataQuitacaoCupom(IDCupom : String);
+function  Zeros(Str:String; Tam:Integer; Orient:String) : String ;
+function  RetornaTotalizadorNumerarioECFElgin_FIT(EcfID, CodNumerario : string) : String ;
+function  Spaces(Tamanho : Integer): String;
+function  Alltrim(const Search: string): String;
+function  PadR(Str : String; Tamanho : Integer) : String;
+function  PadL(Str : String; Tamanho : Integer) : String;
+function  CancelamentoCupom(Documento, Usuario:string) : boolean ;
+Function  Preenche( STRI, FloodStr:String; TAM:Integer ; JUST : Integer):String ;
+function AbreFechaDataset(ADataSet: TDataSet; AAbrir: Boolean= True; AAtualizar: Boolean = False): Boolean;
+
 
 procedure GravaMovimentoEstoqueSimples(SqlProd,
                                        SQLProdFilho,
@@ -226,15 +259,252 @@ procedure GravaMovimentoEstoqueSimples(SqlProd,
 
 function PlanoVistaPrazo(Plano : integer; SQLPlRec, SQLPlRecParc : TRxQuery)  : string ;
 function  RetornaUltimaCompraCliente(Cliente, Vendedor :String) : TinfoRetornoUltCompra;
-function CancelamentoCupom(Documento, Usuario:string) : boolean ;
-function AbreFechaDataset(ADataSet: TDataSet; AAbrir: Boolean= True; AAtualizar: Boolean = False): Boolean;
-function MontaDataSQL(ACampo: String; ADe, AAte: TDate): String;                     
+function MontaDataSQL(ACampo: String; ADe, AAte: TDate): String;
 Procedure AtualizaCampoChequeEmitidoCabecalhoContasPagar(IDCheque,IDContasPagar : String) ;
+function RetornaTotalizadorNumerarioECFDarumaFS345(EcfID, CodNumerario : string) : String ;
+procedure AtualizaDataQuitacaoCupomConsignado(NroDocumento : string) ;
+procedure AtualizaTotaisCabecalhoContasReceber(NroDocumento : string) ;
+function  RetornaTotalizadorIcmsECF(EcfID, CodICMS : string) : string ;
+Function  VerificaLimiteCredito(Cliente : String;ValorCompra : Double;SQLParcelas, SQLCliente : TQuery) : Boolean;
+Function  AutenticaVendedor(UserNameDefault, CAMPO : String; var InfoRetorno:TInfoRetornoUser) : String;
+function  TrataCodigoLidoPelaSerial(Data:String) : String;
+function  CriaParcelas(SQLParcelasPrazo,
+                      SQLPlnRec,
+                      SQLPlnRecParc : TQuery;
+                      Entrada,
+                      Desconto,
+                      Valor:Double;
+                      Plano:integer;
+                      Data : TDateTime ;
+                      TpRecVistaTel,
+                      TpRecPrazoTel,
+                      TpRecVistaPDV,
+                      TpRecPrazoPDV,
+                      Documento: string ;
+                      DiminuiAcresc : double ;
+                      var ValorJuro, Acrescimo, EntradaCalc, TaxaCred:Double ) : Variant ;
+procedure CalculaImpostosNotaFiscalItem(DataSet : TRXQuery; DataSource : TDataSource; FatorConversaoUnidade : Double);
 
 
 implementation
 
-uses DataModulo, TelaAutenticaUsuario;
+uses DataModulo, TelaAutenticaUsuario, TelaAvisoDebito;
+
+procedure AtualizaTotaisCabecalhoContasReceber(NroDocumento : string) ;
+var
+  RECEN2VLRRECTO,
+  RECEN2VLRJURO,
+  RECEN2DESC,
+  RECEN2MULTACOBR,
+  RECEN2VLRMULTA : double ;
+  DATAULTREC     : TDateTime ;
+  EMPRULTREC     : integer ;
+begin
+  RECEN2VLRRECTO  := 0 ;
+  RECEN2VLRJURO   := 0 ;
+  RECEN2DESC      := 0 ;
+  RECEN2MULTACOBR := 0 ;
+  RECEN2VLRMULTA  := 0 ;
+  DATAULTREC      := 0 ;
+  EMPRULTREC      := 0 ;
+
+  DM.SQLTemplate.Close ;
+  DM.SQLTemplate.SQL.Clear ;
+  DM.SQLTemplate.SQL.Add('select sum(RECEN2VLRRECTO) AS RECTO,') ;
+  DM.SQLTemplate.SQL.Add('sum(RECEN2VLRJURO) AS JURO,') ;
+  DM.SQLTemplate.SQL.Add('sum(RECEN2DESC) AS DESCO,') ;
+  DM.SQLTemplate.SQL.Add('sum(RECEN2MULTACOBR) AS MULTACOBR,') ;
+  DM.SQLTemplate.SQL.Add('sum(RECEN2VLRMULTA) AS MULTA from RECEBIMENTO') ;
+  DM.SQLTemplate.SQL.Add('where CTRCA13ID = "' + NroDocumento + '"') ;
+  DM.SQLTemplate.SQL.Add('group by CTRCA13ID') ;
+  DM.SQLTemplate.Open ;
+  if not DM.SQLTemplate.EOF then
+  begin
+    if DM.SQLTemplate.FieldByName('RECTO').Value > 0 then
+      RECEN2VLRRECTO := DM.SQLTemplate.FieldByName('RECTO').Value ;
+    if DM.SQLTemplate.FieldByName('JURO').Value > 0 then
+      RECEN2VLRJURO  := DM.SQLTemplate.FieldByName('JURO').Value ;
+    if DM.SQLTemplate.FieldByName('DESCO').Value > 0 then
+      RECEN2DESC     := DM.SQLTemplate.FieldByName('DESCO').Value ;
+    if DM.SQLTemplate.FieldByName('MULTACOBR').Value > 0 then
+      RECEN2MULTACOBR:= DM.SQLTemplate.FieldByName('MULTACOBR').Value ;
+    if DM.SQLTemplate.FieldByName('MULTA').Value > 0 then
+      RECEN2VLRMULTA := DM.SQLTemplate.FieldByName('MULTA').Value ;
+
+    DM.SQLTemplate.Close ;
+    DM.SQLTemplate.SQL.Clear ;
+    DM.SQLTemplate.SQL.Add('select RECEDRECTO,EMPRICODREC from RECEBIMENTO') ;
+    DM.SQLTemplate.SQL.Add('where CTRCA13ID = "' + NroDocumento + '" ') ;
+    DM.SQLTemplate.SQL.Add('order by RECEDRECTO') ;
+    DM.SQLTemplate.Open ;
+    DM.SQLTemplate.Last ;
+    DATAULTREC := DM.SQLTemplate.FieldByName('RECEDRECTO').Value ;
+    EMPRULTREC := DM.SQLTemplate.FieldByName('EMPRICODREC').Value ;
+  end ;
+
+  DM.SQLTemplate.Close ;
+  DM.SQLTemplate.SQL.Clear ;
+  DM.SQLTemplate.SQL.Add('Update CONTASRECEBER') ;
+  DM.SQLTemplate.SQL.Add('Set') ;
+  if DATAULTREC > 0 then
+    DM.SQLTemplate.SQL.Add('CTRCDULTREC = "'  + FormatDateTime('mm/dd/yyyy', DATAULTREC) + '", ')
+  else
+    DM.SQLTemplate.SQL.Add('CTRCDULTREC = Null, ') ;
+  DM.SQLTemplate.SQL.Add('CTRCN2TOTREC = ' + ConvFloatToStr(RECEN2VLRRECTO) + ', ') ;
+  DM.SQLTemplate.SQL.Add('CTRCN2TOTJUROREC = ' + ConvFloatToStr(RECEN2VLRJURO)  + ', ') ;
+  DM.SQLTemplate.SQL.Add('CTRCN2TOTMULTAREC = ' + ConvFloatToStr(RECEN2VLRMULTA) + ', ') ;
+  DM.SQLTemplate.SQL.Add('CTRCN2TOTMULTACOBR = ' + ConvFloatToStr(RECEN2MULTACOBR) + ', ') ;
+  DM.SQLTemplate.SQL.Add('CTRCN2TOTDESCREC = ' + ConvFloatToStr(RECEN2DESC) + ', ') ;
+  DM.SQLTemplate.SQL.Add('REGISTRO = "' + FormatDateTime('mm/dd/yyyy hh:mm:ss', Now) + '", ') ;
+  DM.SQLTemplate.SQL.Add('PENDENTE = "S",') ;
+  DM.SQLTemplate.SQL.Add('EMPRICODULTREC = ' + IntToStr(EMPRULTREC)) ;
+  DM.SQLTemplate.SQL.Add('where CTRCA13ID = "' + NroDocumento + '"') ;
+  DM.SQLTemplate.ExecSQL ;
+end ;
+procedure AtualizaDataQuitacaoCupomConsignado(NroDocumento : string) ;
+var
+  VLRRECTO   : double ;
+  DATAULTREC : TDateTime ;
+begin
+  DM.SQLTemplate.Close ;
+  DM.SQLTemplate.SQL.Clear ;
+  DM.SQLTemplate.SQL.Add('select sum(CTRCN2VLR-CTRCN2TOTREC) AS SALDO') ;
+  DM.SQLTemplate.SQL.Add('from CONTASRECEBER') ;
+  DM.SQLTemplate.SQL.Add('where CUPOA13ID = "' + NroDocumento + '"') ;
+  DM.SQLTemplate.SQL.Add('and   CTRCA5TIPOPADRAO <> "CONSI"') ;
+  DM.SQLTemplate.Open ;
+  if not DM.SQLTemplate.EOF then
+    if (DM.SQLTemplate.FieldByName('SALDO').Value <= 1.00) then
+      begin
+        DM.SQLTemplate.Close ;
+        DM.SQLTemplate.SQL.Clear ;
+        DM.SQLTemplate.SQL.Add('update CUPOM') ;
+        DM.SQLTemplate.SQL.Add('set Pendente="S", CUPODPAGTOCONSIG = "' + FormatDateTime('mm/dd/yyyy', Now)+ '"') ;
+        DM.SQLTemplate.SQL.Add('where CUPOA13ID = "' + NroDocumento + '"') ;
+        DM.SQLTemplate.ExecSQL ;
+      end ;
+end ;
+
+function RetornaTotalizadorNumerarioECF(EcfID, CodNumerario : string) : String ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var
+  MyQuery : TQuery ;
+begin
+  MyQuery := TQuery.Create(DM);
+  MyQuery.DatabaseName := 'DB' ;
+  MyQuery.Close ;
+  MyQuery.SQL.Clear ;
+  MyQuery.SQL.Add('select * from NUMERARIOTOTALIZADORECF') ;
+  MyQuery.SQL.Add('where ECFA13ID = "' + EcfID + '"') ;
+  MyQuery.SQL.Add('and   NUMEICOD = ' + CodNumerario) ;
+  MyQuery.Open ;
+  if MyQuery.Fieldbyname('NUTCA5IDENTIFICADOR').AsString <> '' then
+    RetornaTotalizadorNumerarioECF := MyQuery.Fieldbyname('NUTCA5IDENTIFICADOR').AsString
+  else
+    begin
+      Informa('Nenhum totalizador foi encontrado para o numerário ' + CodNumerario + '.' +  #13 + 'O sistema utilizará o primeiro numerário cadastrado na ECF.');
+      if ECFAtual = 'BEMATECH MP-20 FI II' then
+        RetornaTotalizadorNumerarioECF := '01'
+      else
+        RetornaTotalizadorNumerarioECF := '';
+    end;
+  MyQuery.Destroy;
+end ;
+function RetornaTotalizadorNumerarioECFDarumaFS345(EcfID, CodNumerario : string) : String ;
+var
+  MyQuery : TQuery ;
+begin
+  MyQuery := TQuery.Create(DM);
+  MyQuery.DatabaseName := 'DB' ;
+  MyQuery.Close ;
+  MyQuery.SQL.Clear ;
+  MyQuery.SQL.Add('Select * From NUMERARIOTOTALIZADORECF') ;
+  MyQuery.SQL.Add('Where ECFA13ID = "' + EcfID + '"') ;
+  MyQuery.SQL.Add('And   NUMEICOD = ' + CodNumerario) ;
+  MyQuery.Open ;
+  if MyQuery.Fieldbyname('NUTCA15NUMERARIO').AsString <> '' then
+    RetornaTotalizadorNumerarioECFDarumaFS345 := MyQuery.Fieldbyname('NUTCA15NUMERARIO').AsString
+  else
+    begin
+      Informa('Nenhum totalizador foi encontrado para o numerário ' + CodNumerario + '.');
+      RetornaTotalizadorNumerarioECFDarumaFS345 := '';
+    end;
+  MyQuery.Destroy;
+
+end ;
+
+function RetornaNumerario(CodNumerario : string) : String ;
+var
+  MyQuery : TQuery ;
+begin
+  MyQuery := TQuery.Create(DM);
+  MyQuery.DatabaseName := 'DB' ;
+  MyQuery.Close ;
+  MyQuery.SQL.Clear ;
+  MyQuery.SQL.Add('select NUMEA30DESCR from NUMERARIO') ;
+  MyQuery.SQL.Add('where NUMEICOD = ' + CodNumerario ) ;
+  MyQuery.Open ;
+  if MyQuery.Fieldbyname('NUMEA30DESCR').AsString <> '' then
+    RetornaNumerario := MyQuery.Fieldbyname('NUMEA30DESCR').AsString
+  else
+    RetornaNumerario := '';
+  MyQuery.Destroy;
+end ;
 
 Procedure AtualizaCampoChequeEmitidoCabecalhoContasPagar(IDCheque,IDContasPagar : String) ;
 begin
@@ -249,6 +519,84 @@ function MontaDataSQL(ACampo: String; ADe, AAte: TDate): String;
 begin
    Result := ' ' + ACampo + ' >= "' + FormatDateTime('mm/dd/yyyy', ADe) + '" and ' +
              ' ' + ACampo + ' <= "' + FormatDateTime('mm/dd/yyyy', AAte)+ '"'; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 end;
 
 function AbreFechaDataset(ADataSet: TDataSet; AAbrir: Boolean= True; AAtualizar: Boolean = False): Boolean;
@@ -256,7 +604,7 @@ begin
    if AAtualizar then
      ADataSet.Close;
    if not ADataSet.Active then
-     ADataSet.Active := AAbrir;
+     ADataSet.Active := AAbrir;  
 end;
 
 function CancelamentoCupom(Documento, Usuario:string) : boolean ;
@@ -554,6 +902,11 @@ var
   CodProduto : Integer;
   QuantOrigem : Double;
 begin
+
+
+
+
+
   SairMov := False ;
   while not SairMov do
   begin
@@ -578,6 +931,12 @@ begin
     except
       Application.ProcessMessages;
     end;
+
+
+
+
+
+
 
     //PEGAR PROXIMO CODIGO MOVIMENTO DE ESTOQUE
     DM.SQLTemplate.Close ;
@@ -684,6 +1043,7 @@ begin
     try
       DM.SQLTemplate.ExecSQL;
       SairMov := True;
+
       if QuantOrigem > 0 then
         Quant := QuantOrigem;
       Application.ProcessMessages;
@@ -707,6 +1067,11 @@ begin
   SqlProd.SQL.Add('Where PRODICOD = ' + IntToStr(ProdCod));
   SqlProd.Open;
 
+
+
+
+
+
   SQLProdSald.Close;
   SQLProdSald.Open;
 
@@ -725,6 +1090,78 @@ begin
           Sleep(1);
         end;
       end;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     end;
 end ;
 
@@ -774,6 +1211,83 @@ begin
   SQLProdutoSerie.Close;
   SQLProdutoSerie.Destroy;
 end;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 procedure DeletaNumeroSerie(PRODICOD, NOFIA13ID, PDVDA13ID, MOVDA13ID : String);
@@ -922,7 +1436,7 @@ begin
     Result := 'N';
 
   SQLConsulta.Close;
-  SQLConsulta.Destroy;
+  SQLConsulta.Destroy; 
 end;
 
 
@@ -1081,6 +1595,55 @@ begin
     Result := '';
   SQLCor.Close;
   SQLCor.Destroy;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 end;
 
 function  RetornaTamanhoProduto(Grade, Tamanho : String ) : String;
@@ -1102,6 +1665,18 @@ begin
     end
   else
     Result := '';
+
+
+
+
+
+
+
+
+
+
+
+
 end;
 
 Function CalculaLimiteCredito(Cliente : String;ValorCompra : Double;SQLParcelas, SQLCliente : TQuery) : Double;
@@ -1239,6 +1814,45 @@ begin
       end;
       SQLocal.Close;
       SQLocal.Destroy;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     end;
 end;
 
@@ -1655,6 +2269,37 @@ begin
     end
  else
    Result := Valor;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 end;
 
 
@@ -1714,6 +2359,22 @@ begin
   QuerySql.Free;
   QueryProduto.Close;
   QueryProduto.Free;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 end;
 
 function CalculaMargemLucro(Produto:Integer;ValorBase,ValorVenda:Double):Double;
@@ -1761,6 +2422,56 @@ begin
           else
             Result := 0;
           //-------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         end
       else
         begin
@@ -1768,12 +2479,28 @@ begin
             Result := ((ValorVenda / ValorBase)- 1) * 100
           else
             Result := 0;
+
+
+
+
+
+
+
         end;
     end;
   QuerySql.Close;
   QuerySql.Free;
   QueryProduto.Close;
   QueryProduto.Free;
+
+
+
+
+
+
+
+
+
 end;
 
 procedure LancaReajustePreco(ValorVenda,ValorCompra,ValorCompraMedio,ValorCusto,ValorCustoMedio,Margem:Double; Produto:Integer);
@@ -1924,6 +2651,18 @@ begin
       TrocaVirgulaPorPonto := Numero ;
   end
   else TrocaVirgulaPorPonto := '0.00' ;
+
+
+
+
+
+
+
+
+
+
+
+
 end ;
 
 
@@ -2230,6 +2969,27 @@ begin
       Digito := '0' ;
 
     DigitVerifEAN := Digito ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   end ;
 
   {***********  EAN8 ***********}
@@ -2757,4 +3517,1650 @@ begin
   end;
 end;
 
+procedure AtualizaDataQuitacaoCupom(IDCupom : String);
+var
+  SQLCupom, SQLAtualiza : TQuery;
+begin
+  if IDCupom <> '' then
+    begin
+      SQLCupom := TQuery.Create(SQLCupom);
+      SQLCupom.DatabaseName := 'DB';
+      SQLCupom.Close;
+      SQLCupom.SQL.Clear;
+      SQLCupom.SQL.ADD('SELECT * FROM CONTASRECEBER WHERE CUPOA13ID = "' + IDCupom + '"');
+      SQLCupom.SQL.ADD(' AND CTRCN2VLR > CTRCN2TOTREC');
+      SQLCupom.Open;
+      if SQLCupom.IsEmpty  then
+        begin
+          SQLAtualiza := TQuery.Create(SQLAtualiza);
+          SQLAtualiza.DataBaseName := 'DB';
+          SQLAtualiza.Close;
+          SQLAtualiza.SQL.Clear;
+          SQLAtualiza.SQL.ADD('UPDATE CUPOM SET Pendente="S", CUPODQUITACAO = "' + FormatDateTime('mm/dd/yyyy',Date) + '"');
+          SQLAtualiza.SQL.ADD(' WHERE CUPOA13ID = "' + IDCupom + '"');
+          try
+            SQLAtualiza.ExecSQL;
+          except
+           on E:EXCEPTION do
+             begin
+               Informa('Erro ao atualizar data de quitação do CUPOM. ANOTE O ERRO: ' + E.Message);
+               SQLAtualiza.Destroy;
+               Abort;
+             end;
+          end;
+          SQLAtualiza.Destroy;
+        end;
+      SQLCupom.Destroy;
+    end
+  else
+    begin
+      Informa('IDCupom não foi informado na função: "AtualizaDataQuitacaoCupom". Informe seu revendedor!');
+    end;
+  Application.ProcessMessages;
+end;
+function ConverteAcentos(Str : string) : string ;
+const
+  NumChars = 47;
+  Acentuados: array [1..NumChars] of Char = ('Á', 'É', 'Í', 'Ó', 'Ú',
+                                             'á', 'é', 'í', 'ó', 'ú',
+                                             'À', 'È', 'Ì', 'Ò', 'Ù',
+                                             'à', 'è', 'ì', 'ò', 'ù',
+                                             'Â', 'Ê', 'Î', 'Ô', 'Û',
+                                             'â', 'ê', 'î', 'ô', 'û',
+                                             'Ã', 'Õ', 'ã', 'õ',
+                                             'Ä', 'Ë', 'Ï', 'Ö', 'Ü',
+                                             'ä', 'ë', 'ï', 'ö', 'ü',
+                                             'Ç', 'ç', 'º');
+  Normais: array [1..NumChars] of Char = ('A', 'e', 'I', 'O', 'U',
+                                          'a', 'e', 'i', 'o', 'u',
+                                          'A', 'E', 'I', 'O', 'U',
+                                          'a', 'e', 'i', 'o', 'u',
+                                          'A', 'E', 'I', 'O', 'U',
+                                          'a', 'e', 'i', 'o', 'u',
+                                          'A', 'O', 'a', 'o',
+                                          'A', 'E', 'I', 'O', 'U',
+                                          'a', 'e', 'i', 'o', 'u',
+                                          'C', 'c', '.');
+var
+  Len, C: Integer;
+  { --- }
+  function ConvChar(Ch: Char): Char;
+  var
+    I: Integer;
+  begin
+    for I := 1 to NumChars do
+      if Acentuados[I] = Ch then
+      begin
+        Result := Normais[I];
+        Exit;
+      end;
+    Result := Ch;
+  end;
+  { --- }
+begin
+  Result := '';
+  Len := Length(Str);
+  for C := 1 to Len do
+    Result := Result+ConvChar(Str[C]);
+end;
+
+function Zeros(Str:String; Tam:Integer; Orient:String) : String ;
+Var Dif, i : integer ;
+begin
+  Dif := Tam - Length(Str) ;
+  for i := 1 to Dif do
+  begin
+    if Orient = 'Esq' then
+      Str := Str + '0' ;
+    if Orient = 'Dir' then
+      Str := '0' + Str ;
+  End ;
+
+  Zeros := Str ;
+end ;
+function RetornaTotalizadorNumerarioECFElgin_FIT(EcfID, CodNumerario : string) : String ;
+var
+  MyQuery : TQuery ;
+begin
+  MyQuery := TQuery.Create(DM);
+  MyQuery.DatabaseName := 'DB' ;
+  MyQuery.Close ;
+  MyQuery.SQL.Clear ;
+  MyQuery.SQL.Add('Select * From NUMERARIOTOTALIZADORECF') ;
+  MyQuery.SQL.Add('Where ECFA13ID = "' + EcfID + '"') ;
+  MyQuery.SQL.Add('And   NUMEICOD = ' + CodNumerario) ;
+  MyQuery.Open ;
+  if MyQuery.Fieldbyname('NUTCA15NUMERARIO').AsString <> '' then
+    RetornaTotalizadorNumerarioECFElgin_FIT := MyQuery.Fieldbyname('NUTCA15NUMERARIO').AsString
+  else
+    begin
+      Informa('Nenhum totalizador foi encontrado para o numerário ' + CodNumerario + '.');
+      RetornaTotalizadorNumerarioECFElgin_FIT := '';
+    end;
+  MyQuery.Destroy;
+end ;
+function PadR(Str : String; Tamanho : Integer) : String;
+begin
+  result := Copy(Alltrim(Str) + Spaces(Tamanho), 1, Tamanho);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+end;
+
+function PadL(Str : String; Tamanho : Integer) : String;
+var
+  Temp : String;
+begin
+  Temp := Spaces(Tamanho) + AllTrim(Str);
+  result := Copy(Temp, (Length(Temp) - Tamanho) + 1, Tamanho);
+end;
+function Alltrim(const Search: string): string;
+const
+  BlackSpace = [#33..#126];
+var
+  Index: byte;
+begin
+  Index:=1;
+  while (Index <= Length(Search)) and not (Search[Index] in BlackSpace) do
+  begin
+    Index:=Index + 1;
+  end;
+  Result:=Copy(Search, Index, 255);
+  Index := Length(Result);
+  while (Index > 0) and not (Result[Index] in BlackSpace) do
+  begin
+    Index:=Index - 1;
+  end;
+  Result := Copy(Result, 1, Index);
+end;
+function Spaces(Tamanho : Integer): String;
+var
+  nPos : Integer;
+begin
+  result := '';
+  for nPos := 1 to Tamanho do
+    result := result + ' ';
+end;
+
+Function Preenche( STRI, FloodStr:String; TAM:Integer ; JUST : Integer):String ;
+VAR Conta : integer ;
+    TotalStr : String;
+    Aux_Str : String ;
+begin
+  Aux_Str := '' ;
+  FOR Conta := 1 TO (Tam-Length(STRI)) DO
+     if FloodStr = '' then
+       AUX_STR := AUX_STR + ' '
+     else
+        AUX_STR := AUX_STR + FloodStr ;
+  IF JUST = 0 THEN //Esquerda
+    AUX_STR := AUX_STR + STRI ;
+  IF JUST = 2 THEN //Direita
+    AUX_STR := STRI + AUX_STR ;
+  Preenche := AUX_STR ;
+End ;
+
+procedure GravaMovimentoCaixa( SQLTotalizadorCaixa,
+                               SQLTotalizar : TQuery;
+                               WEMPRICOD,
+                               WTERMICOD,
+                               WMVCXDMOV,
+                               WNUMEICOD,
+                               WOPCXICOD,
+                               WUSUAICOD,
+                               WMVCXA15DOCORIG : string;
+                               WMVCXN2VLR,
+                               WMVCXN2VLRJURO,
+                               WMVCXN2VLRMULTA,
+                               WMVCXN2VLRDESC  : double ;
+                               WMVCXA6NUMCUPOM,
+                               WTIPO,
+                               WMVCXA255HIST,
+                               MOVNORMREV,
+                               Tipo : string) ;
+var
+  ProxCod    : integer ;
+  Gravou     : boolean ;
+  VlrTotaliz : double ;
+begin
+  {// ************** OBSERVAÇÃO ************** \\
+  O PARAMETRO "MOVNORMREV" SERVE PARA INFORMAR SE O LANCEMANETO DE CAIXA IRA
+  TOTALIZAR DE FORMA NORMAL "N" OU REVERSA "R"(CANCELAMENTO DE CUPOM NO CAIXA)}
+
+  //  Apartir 24/06/2006 nao estou mais calculando os totalizadores ao final de cada operacao de caixa
+  //  para agilizar o encerramento da venda. O Calculo sera efetuado na tela de Recalculo dos Totalizadores
+
+  if Tipo = '' then
+    begin
+      //GERAR CODIGO MOVIMENTO CAIXA
+      DM.SQLTemplate.Close ;
+      DM.SQLTemplate.SQL.Clear ;
+      DM.SQLTemplate.SQL.Add('select Max(MVCXICOD) as Contador from MOVIMENTOCAIXA') ;
+      DM.SQLTemplate.SQL.Add('where') ;
+      DM.SQLTemplate.SQL.Add('EMPRICOD = '  + WEMPRICOD + ' and') ;
+      DM.SQLTemplate.SQL.Add('TERMICOD = '  + WTERMICOD + ' and') ;
+      DM.SQLTemplate.SQL.Add('MVCXDMOV = "' + WMVCXDMOV + '"') ;
+      DM.SQLTemplate.Open ;
+      if DM.SQLTemplate.FieldByName('Contador').AsInteger <> null then
+        ProxCod := DM.SQLTemplate.FieldByName('Contador').AsInteger + 1
+      else
+        ProxCod := 1 ;
+
+      //GRAVA LANCAMENTO DO CAIXA
+      Gravou := false ;
+      while not Gravou do
+        begin
+          DM.SQLTemplate.Close ;
+          DM.SQLTemplate.SQL.Clear ;
+          DM.SQLTemplate.SQL.Add('insert into MOVIMENTOCAIXA') ;
+          DM.SQLTemplate.SQL.Add('(EMPRICOD,') ;
+          DM.SQLTemplate.SQL.Add('TERMICOD,') ;
+          DM.SQLTemplate.SQL.Add('MVCXDMOV,') ;
+          DM.SQLTemplate.SQL.Add('MVCXICOD,') ;
+          DM.SQLTemplate.SQL.Add('NUMEICOD,') ;
+          DM.SQLTemplate.SQL.Add('OPCXICOD,') ;
+          DM.SQLTemplate.SQL.Add('USUAICOD,') ;
+          DM.SQLTemplate.SQL.Add('MVCXA15DOCORIG,'); // ESTE CAMPPO POSSUI 30 CARACTERES NO BANCO
+                                                     // POIS QUANDO TINHAMOS MAIS DE 9 PARCELAS ESTORAVA O NRO DE CARACTERES
+                                                     // O NOME PERMANECE COM 15 PARA EVITAR ERROS;
+          DM.SQLTemplate.SQL.Add('MVCXN2VLRDEB,') ;
+          DM.SQLTemplate.SQL.Add('MVCXN2VLRCRED,') ;
+          DM.SQLTemplate.SQL.Add('MVCXN2VLRJURO,') ;
+          DM.SQLTemplate.SQL.Add('MVCXN2VLRMULTA,') ;
+          DM.SQLTemplate.SQL.Add('MVCXN2VLRDESC,') ;
+          DM.SQLTemplate.SQL.Add('MVCXINROCUPOM,') ;
+          DM.SQLTemplate.SQL.Add('MVCXA255HIST,') ;
+          DM.SQLTemplate.SQL.Add('PENDENTE,') ;
+          DM.SQLTemplate.SQL.Add('MVCXCNORMREV,') ;
+          DM.SQLTemplate.SQL.Add('REGISTRO)') ;
+          DM.SQLTemplate.SQL.Add('values(') ;
+          DM.SQLTemplate.SQL.Add(WEMPRICOD + ', ') ;
+          DM.SQLTemplate.SQL.Add(WTERMICOD + ', ') ;
+          DM.SQLTemplate.SQL.Add('"' + WMVCXDMOV + '", ') ;
+          DM.SQLTemplate.SQL.Add(IntToStr(ProxCod) + ', ') ;
+
+          if WNUMEICOD <> '' then
+            DM.SQLTemplate.SQL.Add(WNUMEICOD + ', ')
+          else
+            DM.SQLTemplate.SQL.Add('Null' + ', ');
+          if WOPCXICOD <> '' then
+            DM.SQLTemplate.SQL.Add(WOPCXICOD + ', ')
+          else
+            DM.SQLTemplate.SQL.Add('Null' + ', ');
+
+          DM.SQLTemplate.SQL.Add(WUSUAICOD + ', ') ;
+          if WMVCXA15DOCORIG <> '' then
+            DM.SQLTemplate.SQL.Add('"' + WMVCXA15DOCORIG + '", ')// ESTE CAMPPO POSSUI 30 CARACTERES NO BANCO
+                                                                 //POIS QUANDO TINHAMOS MAIS DE 9 PARCELAS ESTORAVA O NRO DE CARACTERES
+                                                                 //O NOME PERMANECE COM 15 PARA EVITAR ERROS;
+          else
+            DM.SQLTemplate.SQL.Add('"' + IntToStr(ProxCod) + '", ') ;
+          if (WTIPO = '') or (WTIPO = 'N') then
+            begin
+              DM.SQLTemplate.SQL.Add(ConvFloatToStr(0) + ', ') ;
+              DM.SQLTemplate.SQL.Add(ConvFloatToStr(0) + ', ') ;
+            end ;
+          if WTIPO = 'D' then
+            begin
+              DM.SQLTemplate.SQL.Add(ConvFloatToStr(WMVCXN2VLR) + ', ') ;
+              DM.SQLTemplate.SQL.Add(ConvFloatToStr(0) + ', ') ;
+            end ;
+          if WTIPO = 'C' then
+            begin
+              DM.SQLTemplate.SQL.Add(ConvFloatToStr(0) + ', ') ;
+              DM.SQLTemplate.SQL.Add(ConvFloatToStr(WMVCXN2VLR) + ', ') ;
+            end ;
+          DM.SQLTemplate.SQL.Add(ConvFloatToStr(WMVCXN2VLRJURO) + ', ') ;
+          DM.SQLTemplate.SQL.Add(ConvFloatToStr(WMVCXN2VLRMULTA) + ', ') ;
+          DM.SQLTemplate.SQL.Add(ConvFloatToStr(WMVCXN2VLRDESC) + ', ') ;
+          DM.SQLTemplate.SQL.Add(WMVCXA6NUMCUPOM + ', ') ;
+          DM.SQLTemplate.SQL.Add('"' + WMVCXA255HIST + '", ') ;
+          DM.SQLTemplate.SQL.Add('"S", ') ;{PENDENTE}
+          DM.SQLTemplate.SQL.Add('"' + MOVNORMREV + '", ') ; {NormReverso}
+          DM.SQLTemplate.SQL.Add('"' + FormatDateTime('mm/dd/yyyy hh:mm:ss', Now) + '")') ;{REGISTRO}
+          try
+            DM.SQLTemplate.ExecSQL ;
+            Gravou := true ;
+          except
+            on E: Exception do
+              begin
+                ShowMessage('Entre em contato com o suporte e comunique este erro: '+ #13 + E.Message);
+                Inc(ProxCod) ;
+              end;
+          end ;
+        end ;
+    end ;
+
+  if (AnsiUpperCase(WNUMEICOD) <> 'NULL') and (WNUMEICOD <> '') and (Tipo <> '') then
+    begin
+      //GRAVA NOS TOTALIZADORES APARTIR DO NUMERARIO
+      if not SQLTotalizadorCaixa.Active then
+        SQLTotalizadorCaixa.Open ;
+
+      SQLTotalizar.Close ;
+      SQLTotalizar.SQL.Clear ;
+      SQLTotalizar.SQL.Add('select NUMEICOD, TOTAICOD, NUTOCSOMASUBTRAI') ;
+      SQLTotalizar.SQL.Add('from NUMERARIOTOTALIZADOR') ;
+      SQLTotalizar.SQL.Add('where NUMEICOD = ' + WNUMEICOD) ;
+      SQLTotalizar.Open ;
+
+      SQLTotalizar.First ;
+      while not SQLTotalizar.EOF do
+        begin
+          SQLTotalizadorCaixa.Locate('TOTAICOD', SQLTotalizar.FieldByName('TOTAICOD').AsString, []) ;
+          if SQLTotalizadorCaixa.FieldByName('TOTACDEBITOCREDITO').Value = '' then
+            begin
+              Informa('Você deve informar se o totalizador ' + SQLTotalizadorCaixa.FieldByName('TOTAA60DESCR').Value + ' é do tipo Débito ou Crédito. Esta operação não irá totalizar no caixa!') ;
+              Exit ;
+            end ;
+
+          DM.SQLTemplate.Close ;
+          DM.SQLTemplate.SQL.Clear ;
+          DM.SQLTemplate.SQL.Add('Update TOTALIZADORDIARIOCAIXA') ;
+
+          if SQLTotalizadorCaixa.FieldByName('TOTACDEBITOCREDITO').Value = Null then
+            begin
+              Informa('O campo Débito/Crédito do Totalizador de Caixa "' +
+                       SQLTotalizadorCaixa.FieldByName('TOTAA60DESCR').Value +
+                       '" não foi informado. Esta Operação não será totalizadada no caixa!!' ) ;
+              exit ;
+            end ;
+
+          if SQLTotalizar.FieldByName('NUTOCSOMASUBTRAI').AsString = Null then
+            begin
+              Informa('O campo Soma/Subtrai do Totalizador de Caixa "' +
+                       SQLTotalizadorCaixa.FieldByName('TOTAA60DESCR').Value +
+                       '" não foi informado. Esta Operação não será totalizadada no caixa!!' ) ;
+              exit ;
+            end ;
+
+          if SQLTotalizadorCaixa.FieldByName('TOTACDEBITOCREDITO').Value = 'D' then
+            begin
+              if SQLTotalizar.FieldByName('NUTOCSOMASUBTRAI').AsString = '+' then
+                case MOVNORMREV[1] of
+                  'N' : DM.SQLTemplate.SQL.Add('set TODIN2VLRDEBITO = TODIN2VLRDEBITO + ' + ConvFloatToStr(WMVCXN2VLR)) ;
+                  'R' : DM.SQLTemplate.SQL.Add('set TODIN2VLRDEBITO = TODIN2VLRDEBITO - ' + ConvFloatToStr(WMVCXN2VLR)) ;
+                end ;
+              if SQLTotalizar.FieldByName('NUTOCSOMASUBTRAI').AsString = '-' then
+                case MOVNORMREV[1] of
+                  'N' : DM.SQLTemplate.SQL.Add('set TODIN2VLRDEBITO = TODIN2VLRDEBITO - ' + ConvFloatToStr(WMVCXN2VLR)) ;
+                  'R' : DM.SQLTemplate.SQL.Add('set TODIN2VLRDEBITO = TODIN2VLRDEBITO + ' + ConvFloatToStr(WMVCXN2VLR)) ;
+                end ;
+            end ;
+
+          if SQLTotalizadorCaixa.FieldByName('TOTACDEBITOCREDITO').Value = 'C' then
+            begin
+              if SQLTotalizar.FieldByName('NUTOCSOMASUBTRAI').AsString = '+' then
+                case MOVNORMREV[1] of
+                  'N' : DM.SQLTemplate.SQL.Add('set TODIN2VLRCREDITO = TODIN2VLRCREDITO + ' + ConvFloatToStr(WMVCXN2VLR)) ;
+                  'R' : DM.SQLTemplate.SQL.Add('set TODIN2VLRCREDITO = TODIN2VLRCREDITO - ' + ConvFloatToStr(WMVCXN2VLR)) ;
+                end ;
+              if SQLTotalizar.FieldByName('NUTOCSOMASUBTRAI').AsString = '-' then
+                case MOVNORMREV[1] of
+                  'N' : DM.SQLTemplate.SQL.Add('set TODIN2VLRCREDITO = TODIN2VLRCREDITO - ' + ConvFloatToStr(WMVCXN2VLR)) ;
+                  'R' : DM.SQLTemplate.SQL.Add('set TODIN2VLRCREDITO = TODIN2VLRCREDITO + ' + ConvFloatToStr(WMVCXN2VLR)) ;
+                end ;
+            end ;
+
+          DM.SQLTemplate.SQL.Add('where') ;
+          DM.SQLTemplate.SQL.Add('EMPRICOD = ' + EmpresaPadrao + ' and ') ;
+          DM.SQLTemplate.SQL.Add('TERMICOD = '  + IntToStr(TerminalAtual) + ' and ') ;
+          DM.SQLTemplate.SQL.Add('TODIDMOV = "' + FormatDateTime('mm/dd/yyyy', StrToDateTime(TerminalAtualData)) + '" and ') ;
+          //SE ESTA RECALCULANDO NAO PROCURAR PELO USUARIO
+          //TENHO DE ESTUDAR MELHOR MAS ACHO QUE NÃO DEVE PESQUISAR PELO USUÁRIO NUNCA
+          //POIS SE ABRIR COM UM USUÁRIO E LANÇAR COM OUTRO NÃO VAI MOVIMENTAR O TOTALIZADOR
+          {if Tipo = '' then
+            DM.SQLTemplate.SQL.Add('USUAICOD = '  + WUSUAICOD + ' and ') ;}
+          DM.SQLTemplate.SQL.Add('TOTAICOD = '  + SQLTotalizar.FieldByName('TOTAICOD').AsString) ;
+          try
+            DM.SQLTemplate.ExecSQL ;
+          except
+            on E: Exception do
+            begin
+              Informa('Problemas ao totalizar em ' + SQLTotalizadorCaixa.FieldByName('TOTAA60DESCR').Value + #13 +
+                      'Anote a mensagem abaixo e tecle ENTER para continuar:' + #13 +
+                      E.Message) ;
+            end ;
+          end ;
+
+          SQLTotalizar.Next ;
+        end ;
+    end ;
+
+  if (Tipo <> '') and (WOPCXICOD <> '') and (AnsiUpperCase(WOPCXICOD) <> 'NULL') then
+    begin
+      //GRAVA NOS TOTALIZADORES APARTIR DA OPERACAO DE CAIXA
+      if not SQLTotalizadorCaixa.Active then
+        SQLTotalizadorCaixa.Open ;
+
+      SQLTotalizar.Close ;
+      SQLTotalizar.SQL.Clear ;
+      SQLTotalizar.SQL.Add('select OPCXICOD, TOTAICOD, OPTOCSOMASUBTRAI') ;
+      SQLTotalizar.SQL.Add('from OPERACAOCAIXATOTALIZADOR') ;
+      SQLTotalizar.SQL.Add('where OPCXICOD = ' + WOPCXICOD) ;
+      SQLTotalizar.Open ;
+      SQLTotalizar.First ;
+      while not SQLTotalizar.EOF do
+        begin
+          SQLTotalizadorCaixa.Locate('TOTAICOD', SQLTotalizar.FieldByName('TOTAICOD').AsString, []) ;
+          if (SQLTotalizadorCaixa.FieldByName('TOTACDEBITOCREDITO').AsVariant = Null) then
+            begin
+              // Informa('Você deve informar se o totalizador ' + SQLTotalizadorCaixa.FieldByName('TOTAA60DESCR').Value + ' é do tipo Débito ou Crédito. Esta operação não irá totalizar no caixa!') ;
+              Exit ;
+            end ;
+
+          DM.SQLTemplate.Close ;
+          DM.SQLTemplate.SQL.Clear ;
+          DM.SQLTemplate.SQL.Add('Update TOTALIZADORDIARIOCAIXA') ;
+          if SQLTotalizadorCaixa.FieldByName('TOTACDEBITOCREDITO').Value = 'D' then
+            begin
+              if SQLTotalizar.FieldByName('OPTOCSOMASUBTRAI').AsString = '+' then
+                case MOVNORMREV[1] of
+                  'N' : DM.SQLTemplate.SQL.Add('set TODIN2VLRDEBITO = TODIN2VLRDEBITO + ' + ConvFloatToStr(WMVCXN2VLR)) ;
+                  'R' : DM.SQLTemplate.SQL.Add('set TODIN2VLRDEBITO = TODIN2VLRDEBITO - ' + ConvFloatToStr(WMVCXN2VLR)) ;
+                end ;
+              if SQLTotalizar.FieldByName('OPTOCSOMASUBTRAI').AsString = '-' then
+                case MOVNORMREV[1] of
+                  'N' : DM.SQLTemplate.SQL.Add('set TODIN2VLRDEBITO = TODIN2VLRDEBITO - ' + ConvFloatToStr(WMVCXN2VLR)) ;
+                  'R' : DM.SQLTemplate.SQL.Add('set TODIN2VLRDEBITO = TODIN2VLRDEBITO + ' + ConvFloatToStr(WMVCXN2VLR)) ;
+                end ;
+            end ;
+
+          if SQLTotalizadorCaixa.FieldByName('TOTACDEBITOCREDITO').Value = 'C' then
+            begin
+              if SQLTotalizar.FieldByName('OPTOCSOMASUBTRAI').AsString = '+' then
+                case MOVNORMREV[1] of
+                  'N' : DM.SQLTemplate.SQL.Add('set TODIN2VLRCREDITO = TODIN2VLRCREDITO + ' + ConvFloatToStr(WMVCXN2VLR)) ;
+                  'R' : DM.SQLTemplate.SQL.Add('set TODIN2VLRCREDITO = TODIN2VLRCREDITO - ' + ConvFloatToStr(WMVCXN2VLR)) ;
+                end ;
+              if SQLTotalizar.FieldByName('OPTOCSOMASUBTRAI').AsString = '-' then
+                case MOVNORMREV[1] of
+                  'N' : DM.SQLTemplate.SQL.Add('set TODIN2VLRCREDITO = TODIN2VLRCREDITO - ' + ConvFloatToStr(WMVCXN2VLR)) ;
+                  'R' : DM.SQLTemplate.SQL.Add('set TODIN2VLRCREDITO = TODIN2VLRCREDITO + ' + ConvFloatToStr(WMVCXN2VLR)) ;
+                end ;
+            end ;
+          DM.SQLTemplate.SQL.Add('where') ;
+          DM.SQLTemplate.SQL.Add('EMPRICOD = ' + EmpresaPadrao + ' and ') ;
+          DM.SQLTemplate.SQL.Add('TERMICOD = '  + IntToStr(TerminalAtual) + ' and ') ;
+          DM.SQLTemplate.SQL.Add('TODIDMOV = "' + FormatDateTime('mm/dd/yyyy', StrToDateTime(TerminalAtualData)) + '" and ') ;
+          //SE ESTA RECALCULANDO NAO PROCURAR PELO USUARIO
+          //TENHO DE ESTUDAR MELHOR MAS ACHO QUE NÃO DEVE PESQUISAR PELO USUÁRIO NUNCA
+          //POIS SE ABRIR COM UM USUÁRIO E LANÇAR COM OUTRO NÃO VAI MOVIMENTAR O TOTALIZADOR
+          {if Tipo = '' then
+            DM.SQLTemplate.SQL.Add('USUAICOD = '  + WUSUAICOD + ' and ') ;}
+
+          DM.SQLTemplate.SQL.Add('TOTAICOD = '  + SQLTotalizar.FieldByName('TOTAICOD').AsString) ;
+          DM.SQLTemplate.ExecSQL ;
+
+          SQLTotalizar.Next ;
+        end ;
+    end ;
+end;
+
+
+function RetornaTotalizadorIcmsECF(EcfID, CodICMS : string) : string ;
+var
+  MyQuery : TQuery ;
+begin
+  MyQuery := TQuery.Create(DM);
+  MyQuery.DatabaseName := 'DB' ;
+  MyQuery.Close ;
+  MyQuery.SQL.Clear ;
+  MyQuery.SQL.Add('select * from ECFALIQUOTAICMS') ;
+  MyQuery.SQL.Add('where ECFA13ID = "' + EcfID + '"') ;
+  MyQuery.SQL.Add('and   ICMSICOD = ' + CodICMS) ;
+  MyQuery.Open ;
+  if MyQuery.Fieldbyname('ECALA5TOTALIECF').AsString <> '' then
+    RetornaTotalizadorIcmsECF := MyQuery.Fieldbyname('ECALA5TOTALIECF').AsString
+  else
+    RetornaTotalizadorIcmsECF := '' ;
+  MyQuery.Destroy ;
+end ;
+
+
+Function VerificaLimiteCredito(Cliente : String;ValorCompra : Double;SQLParcelas, SQLCliente : TQuery) : Boolean;
+var
+  Documento : String;
+  Limite, LimiteOrigem, Debito, JurosMultaDescPendentes, SaldoParc, JuroParc, MultaParc, DescParc, JuroParcTot, MultaParcTot, DescParcTot : Double;
+  Vencimento : TDate;
+  hMutex :THandle;
+  Aplicativo :THandle;
+begin
+  {Testa pra ver se esta rodando nessa maquina. Se achou é pq usa PDV Off e tem que procurar o limite no banco Servidor}
+  Aplicativo := FindWindow(nil, pchar('IntegradorPDVs'));
+  if Aplicativo = 0 then {Consulta no Banco do PDV}
+    begin
+      SQLCliente.Close;
+      SQLCliente.SQL.Clear;
+      SQLCliente.SQL.Add('Select CLIEA60RAZAOSOC, CLIEN2RENDA, CLIEN2CONJUGERENDA, CLIEN2LIMITECRED from CLIENTE where CLIEA13ID = ' + '"' + Cliente + '"');
+      SQLCliente.Open;
+      if not SQLCliente.IsEmpty then
+        begin
+          if (DM.SQLConfigVenda.FieldByName('CFVEN2PERCLIMCRED').Value > 0) then
+            begin
+              if DM.SQLConfigVenda.FieldByName('CFVECRENDCONJNOLIM').AsString = 'S' then
+                LimiteOrigem := (SQLCliente.FieldByName('CLIEN2RENDA').AsFloat +
+                           SQLCliente.FieldByName('CLIEN2CONJUGERENDA').AsFloat) *
+                          (DM.SQLConfigVenda.FieldByName('CFVEN2PERCLIMCRED').AsFloat/100)
+              else
+                LimiteOrigem := (SQLCliente.FieldByName('CLIEN2RENDA').AsFloat) *
+                          (DM.SQLConfigVenda.FieldByName('CFVEN2PERCLIMCRED').AsFloat/100) ;
+            end
+          else
+            begin
+              // Application.MessageBox('O sistema está configurado para testar o limite de crédito, mas a operação não foi realizada porque não existe nenhum percentual configurado para o cálculo do limite ! ','Chekout Informa', MB_OK + MB_ICONWARNING + MB_SYSTEMMODAL);
+              Result := True;
+              Exit;
+            end;
+
+          // Achar os Totais de Juros, Multas, Descontos Pendentes nas parcelas em Atrasadas
+          SQLParcelas.Close ;
+          SQLParcelas.sql.Clear;
+          SQLParcelas.SQL.Add('Select CONTASRECEBER.CUPOA13ID, CONTASRECEBER.NOFIA13ID as NOFIA13ID, CONTASRECEBER.CTRCA30NRODUPLICBANCO as CTRCA30NRODUPLICBANCO,');
+          SQLParcelas.SQL.Add('CONTASRECEBER.CLIEA13ID, CONTASRECEBER.CTRCA13ID, CONTASRECEBER.CTRCDULTREC, CONTASRECEBER.CTRCDVENC, CONTASRECEBER.CTRCDEMIS,');
+          SQLParcelas.SQL.Add('CONTASRECEBER.CTRCINROPARC, CONTASRECEBER.CTRCN2TOTDESCREC, CONTASRECEBER.CTRCN2TOTJUROREC, CONTASRECEBER.CTRCN2TOTMULTAREC,');
+          SQLParcelas.SQL.Add('CONTASRECEBER.CTRCN2TOTREC + CONTASRECEBER.CTRCN2TOTJUROREC + CONTASRECEBER.CTRCN2TOTMULTAREC + CONTASRECEBER.CTRCN2TOTMULTACOBR - CONTASRECEBER.CTRCN2TOTDESCREC as CTRCN2TOTREC,');
+          SQLParcelas.SQL.Add('CONTASRECEBER.CTRCN2TXJURO, CONTASRECEBER.CTRCN2TXMULTA, CONTASRECEBER.CTRCN2VLR, CONTASRECEBER.CTRCCSTATUS, CONTASRECEBER.EMPRICODULTREC,');
+          SQLParcelas.SQL.Add('CONTASRECEBER.NUMEICOD, CONTASRECEBER.EMPRICOD, CONTASRECEBER.AVALA13ID, CONTASRECEBER.PORTICOD, CONTASRECEBER.PDVDA13ID, CONTASRECEBER.BANCA5CODCHQ,');
+          SQLParcelas.SQL.Add('CONTASRECEBER.CTRCA15NROCHQ, CONTASRECEBER.ALINICOD from CONTASRECEBER where (CONTASRECEBER.CTRCCSTATUS = "A" or CONTASRECEBER.CTRCCSTATUS = "N") and ');
+          SQLParcelas.SQL.Add('(CONTASRECEBER.CTRCCTIPOREGISTRO = "N" or CONTASRECEBER.CTRCCTIPOREGISTRO = "" or CONTASRECEBER.CTRCCTIPOREGISTRO IS NULL) and ');
+          SQLParcelas.SQL.Add('(CONTASRECEBER.PDVDA13ID = "" or CONTASRECEBER.PDVDA13ID IS NULL) and CONTASRECEBER.CLIEA13ID = "'+ Cliente + '"');
+          SQLParcelas.Open ;
+
+          JuroParcTot  := 0 ;
+          MultaParcTot := 0 ;
+          DescParcTot  := 0 ;
+          JuroParc     := 0 ;
+          MultaParc    := 0 ;
+          DescParc     := 0 ;
+          while not SQLParcelas.EOF do
+            begin
+              try
+                SaldoParc := SQLParcelas.FieldByName('CTRCN2VLR').Value;
+                if SQLParcelas.FieldByName('CTRCDULTREC').AsVariant <> null then
+                  Vencimento := SQLParcelas.FieldByName('CTRCDULTREC').AsDateTime
+                else
+                  Vencimento := SQLParcelas.FieldByName('CTRCDVENC').AsDateTime;
+
+                If (SQLParcelas.FieldByName('CTRCA13ID').AsString <> '') and (Length(SQLParcelas.FieldByName('CTRCA13ID').AsString) = 13) Then
+                  Documento := SQLParcelas.FieldByName('CTRCA13ID').AsString ;
+                If (SQLParcelas.FieldByName('CUPOA13ID').AsString <> '') and (Length(SQLParcelas.FieldByName('CUPOA13ID').AsString) = 13) Then
+                  Documento := dm.SQLTemplate.FieldByName('CUPOA13ID').AsString ;
+                If (SQLParcelas.FieldByName('NOFIA13ID').AsString <> '') and (Length(SQLParcelas.FieldByName('NOFIA13ID').AsString) = 13) Then
+                  Documento := SQLParcelas.FieldByName('NOFIA13ID').AsString ;
+
+                if SQLParcelas.FieldByName('CTRCN2TOTREC').AsVariant <> null then
+                  SaldoParc := SQLParcelas.FieldByName('CTRCN2VLR').Value -
+                           (SQLParcelas.FieldByName('CTRCN2TOTREC').AsVariant -
+                            SQLParcelas.FieldByName('CTRCN2TOTJUROREC').AsVariant -
+                            SQLParcelas.FieldByName('CTRCN2TOTMULTAREC').AsVariant +
+                            SQLParcelas.FieldByName('CTRCN2TOTDESCREC').AsVariant);
+
+
+                if (SQLParcelas.FieldByName('CTRCN2TXJURO').asFloat > 0) and (SaldoParc > 0) and
+                   (DM.SQLConfigCrediario.Fieldbyname('CFCRINRODIASTOLJUR').Value >= 0) then
+                  JuroParc := CalculaJuroMultaDesc(SaldoParc,
+                                                   SQLParcelas.FieldByName('CTRCN2TXJURO').asFloat,
+                                                   SQLParcelas.FieldByName('CTRCDVENC').AsDateTime,  // Adilson Troquei a variavel Vencimento pelo campo SQLParcelasCTRCDVENC.Value.
+                                                   Date,
+                                                   0,
+                                                   DM.SQLConfigCrediario.Fieldbyname('CFCRINRODIASTOLJUR').Value,
+                                                   'Juro',
+                                                   Documento,
+                                                   SQLParcelas.FieldByName('CTRCINROPARC').AsString) ;
+
+                JuroParcTot := JuroParcTot + JuroParc;
+
+                if (SQLParcelas.FieldByName('CTRCN2TXMULTA').asFloat > 0) and (SaldoParc > 0) and
+                   (DM.SQLConfigCrediario.Fieldbyname('CFCRINRODIASTOLJUR').Value >= 0) and
+                   (Documento <> '') then
+                  MultaParc := CalculaJuroMultaDesc(SaldoParc,
+                                                    SQLParcelas.Fieldbyname('CTRCN2TXMULTA').AsFloat,
+                                                    SQLParcelas.FieldByName('CTRCDVENC').AsDateTime,  // Adilson Troquei a variavel Vencimento pelo campo SQLParcelasCTRCDVENC.Value.
+                                                    Date,
+                                                    0,
+                                                    DM.SQLConfigCrediario.Fieldbyname('CFCRINRODIASTOLMUL').Value,
+                                                    'Multa',
+                                                    Documento,
+                                                    SQLParcelas.FieldByName('CTRCINROPARC').AsString) ;
+
+                MultaParcTot := MultaParcTot + MultaParc;
+
+                if (DM.SQLConfigCrediario.Fieldbyname('CFCRN2PERCADIANT').asFloat > 0) and
+                   (DM.SQLConfigCrediario.Fieldbyname('CFCRN2PERCADIANT').Value >= 0) and
+                   (DM.SQLConfigCrediario.Fieldbyname('CFCRINRODIASADIANT').Value >= 0)  and
+                   (Documento <> '') and (SaldoParc > 0)  then
+                  DescParc := CalculaJuroMultaDesc(SaldoParc,
+                                                   DM.SQLConfigCrediario.Fieldbyname('CFCRN2PERCADIANT').Value,
+                                                   SQLParcelas.FieldByName('CTRCDVENC').AsDateTime,  // Adilson Troquei a variavel Vencimento pelo campo SQLParcelasCTRCDVENC.Value.
+                                                   Date,
+                                                   0,
+                                                   DM.SQLConfigCrediario.Fieldbyname('CFCRINRODIASADIANT').Value,
+                                                   'Desconto',
+                                                   Documento,
+                                                   SQLParcelas.FieldByName('CTRCINROPARC').AsString) ;
+
+                DescParcTot := DescParcTot + DescParc;
+              except
+                Application.ProcessMessages;
+              end;
+
+              SQLParcelas.Next ;
+            end ;
+
+           JurosMultaDescPendentes := JuroParcTot + MultaParcTot - DescParcTot;
+
+          SQLParcelas.Close ;
+          // Final da rotina para achar os Totais de Juros, Multas, Descontos Pendentes nas parcelas em Atrasadas
+
+          // Igual a SIM, subtrai do limite o valor das parcelas abertas s/juro p/atraso...
+          if DM.SQLConfigVenda.FieldByName('CFVECSUBDEBNOLIMITE').AsString = 'S' then
+            begin
+              SQLParcelas.Close;
+              SQLParcelas.SQL.Clear;
+              SQLParcelas.SQL.Add('Select sum(CTRCN2VLR) from CONTASRECEBER where CLIEA13ID = '+ '"' + Cliente + '"' +  ' AND CTRCN2VLR > CTRCN2TOTREC');
+              SQLParcelas.SQL.Add('AND (CTRCA5TIPOPADRAO NOT IN ("CRT","CONV") or CTRCA5TIPOPADRAO is null) ');
+              SQLParcelas.SQL.Add('AND (CTRCCSTATUS = "A" or CTRCCSTATUS = "N")') ;
+              SQLParcelas.Open;
+              if not SQLParcelas.IsEmpty then
+                Debito := SQLParcelas.FieldByName('SUM').AsFloat;
+
+              Limite := LimiteOrigem;
+              // Se Subtrai as Parcelas Abertas do Limite
+              if DM.SQLConfigVenda.FieldByName('CFVECSUBDEBNOLIMITE').AsString = 'S' then
+                Limite := Limite - (Debito + JurosMultaDescPendentes)
+
+            end;
+
+          if Limite < ValorCompra then
+            begin
+              if DM.SQLConfigVenda.FieldByName('CFVECSUBDEBNOLIMITE').AsString <> 'S' then
+                begin  // Nao Subtrai Parcelas Abertas do Limite
+                  if FileExists('MostraLimiteMaior.txt') then
+                  begin
+                    FormTelaAvisoDebito := TFormTelaAvisoDebito.create(Application);
+                    FormTelaAvisodebito.Label8.Caption           :=  'Saldo do Limite Ultrapassado:';
+                    FormTelaAvisoDebito.lblSaldoFinal.font.Color := clRed;
+                    FormTelaAvisoDebito.lblCliente.Caption       :=  SQLCliente.FieldByName('CLIEA60RAZAOSOC').AsVariant;
+                    FormTelaAvisoDebito.lblLimiteInicial.Caption :=  FormatFloat('###0.00',LimiteOrigem) ;
+                    FormTelaAvisoDebito.lblParcelas.Caption      :=  FormatFloat('###0.00',Debito);
+                    FormTelaAvisoDebito.lbljuros.Caption         :=  FormatFloat('###0.00',JurosMultaDescPendentes);
+                    FormTelaAvisoDebito.lblSaldoAtual.Caption    :=  FormatFloat('###0.00',LimiteOrigem - (Debito+JurosMultaDescPendentes));
+                    if LimiteOrigem - (Debito+JurosMultaDescPendentes) > 0 then
+                      FormTelaAvisoDebito.lblSaldoAtual.Font.Color := clGreen
+                    Else
+                      FormTelaAvisoDebito.lblSaldoAtual.Font.Color := clRed;
+                    FormTelaAvisoDebito.lblCompra.Caption        :=  FormatFloat('###0.00',ValorCompra);
+                    FormTelaAvisoDebito.lblSaldoFinal.Caption    :=  FormatFloat('###0.00',Limite - ValorCompra);
+                    FormTelaAvisoDebito.ShowModal;
+                  end else
+                  begin
+                    if not FileExists('MostraLimiteComprasReduzido.txt') then
+                      ShowMessage('Cliente => ' + SQLCliente.FieldByName('CLIEA60RAZAOSOC').AsVariant               + #13 + #13 +
+                                  'Valor do Limite Inicial    =>  R$ ' + FormatFloat('###0.00',LimiteOrigem)              + #13 +
+                                  'Valor da Compra Atual      =>  R$ ' + FormatFloat('###0.00',ValorCompra)               + #13 +
+                                  'Limite Ultrapassado em     =>  R$ ' + FormatFloat('###0.00',(Limite - ValorCompra)))
+                    else
+                      ShowMessage('Cliente => ' + SQLCliente.FieldByName('CLIEA60RAZAOSOC').AsVariant               + #13 + #13 +
+                                  'Valor da Compra Atual      =>  R$ ' + FormatFloat('###0.00',ValorCompra)               + #13 +
+                                  'Limite Ultrapassado em     =>  R$ ' + FormatFloat('###0.00',(Limite - ValorCompra)));
+                  End;
+                  Result := False;
+                end
+              else
+                begin
+                  if FileExists('MostraLimiteMaior.txt') then
+                  begin
+                    FormTelaAvisoDebito := TFormTelaAvisoDebito.create(Application);
+                    FormTelaAvisodebito.Label8.Caption           :=  'Saldo do Limite Ultrapassado:';
+                    FormTelaAvisoDebito.lblSaldoFinal.font.Color := clRed;
+                    FormTelaAvisoDebito.lblCliente.Caption       :=  SQLCliente.FieldByName('CLIEA60RAZAOSOC').AsVariant;
+                    FormTelaAvisoDebito.lblLimiteInicial.Caption :=  FormatFloat('###0.00',LimiteOrigem) ;
+                    FormTelaAvisoDebito.lblParcelas.Caption      :=  FormatFloat('###0.00',Debito);
+                    FormTelaAvisoDebito.lbljuros.Caption         :=  FormatFloat('###0.00',JurosMultaDescPendentes);
+                    FormTelaAvisoDebito.lblSaldoAtual.Caption    :=  FormatFloat('###0.00',LimiteOrigem - (Debito+JurosMultaDescPendentes));
+                    if LimiteOrigem - (Debito+JurosMultaDescPendentes) > 0 then
+                      FormTelaAvisoDebito.lblSaldoAtual.Font.Color := clGreen
+                    Else
+                      FormTelaAvisoDebito.lblSaldoAtual.Font.Color := clRed;
+                    FormTelaAvisoDebito.lblCompra.Caption        :=  FormatFloat('###0.00',ValorCompra);
+                    FormTelaAvisoDebito.lblSaldoFinal.Caption    :=  FormatFloat('###0.00',Limite - ValorCompra);
+                    FormTelaAvisoDebito.ShowModal;
+                  end else
+                  begin
+                    if not FileExists('MostraLimiteComprasReduzido.txt') then
+                      ShowMessage('Cliente => ' + SQLCliente.FieldByName('CLIEA60RAZAOSOC').AsVariant                   + #13 + #13 +
+                                  'Valor do Limite Inicial.            =>  R$ ' + FormatFloat('###0.00',LimiteOrigem)         + #13 +
+                                  'Parcelas Abertas S/Encargos =>  R$ ' + FormatFloat('###0.00',Debito)                       + #13 +
+                                  'Juros, Multas, Descontos       =>  R$ ' + FormatFloat('###0.00',JurosMultaDescPendentes)   + #13 +
+                                  '----------------------------------------------------------'                                + #13 +
+                                  'Valor do Limite Atual              =>  R$ ' + FormatFloat('###0.00',Limite)                + #13 +
+                                  'Valor da Compra Atual           =>  R$ ' + FormatFloat('###0.00',ValorCompra)              + #13 +
+                                  '----------------------------------------------------------'                                + #13 +
+                                  'Limite Ultrapassado em          =>  R$ ' + FormatFloat('###0.00',Limite - ValorCompra)     + #13 +
+                                  '----------------------------------------------------------')
+                    else
+                      ShowMessage('Cliente => ' + SQLCliente.FieldByName('CLIEA60RAZAOSOC').AsVariant                   + #13 + #13 +
+                                  '----------------------------------------------------------'                                + #13 +
+                                  'Valor da Compra Atual           =>  R$ ' + FormatFloat('###0.00',ValorCompra)              + #13 +
+                                  '----------------------------------------------------------'                                + #13 +
+                                  'Limite Ultrapassado em          =>  R$ ' + FormatFloat('###0.00',Limite - ValorCompra)     + #13 +
+                                  '----------------------------------------------------------');
+                  End;
+                  Result := False;
+                end;
+            end
+          else  // Se o Limite for maior que o valor da Compra
+            begin
+              if DM.SQLConfigVenda.FieldByName('CFVECSUBDEBNOLIMITE').AsString <> 'S' then
+                begin  // Nao Subtrai Parcelas Abertas do Limite
+                  if FileExists('MostraLimiteMaior.txt') then
+                  begin
+                    FormTelaAvisoDebito := TFormTelaAvisoDebito.create(Application);
+                    FormTelaAvisodebito.Label8.Caption           :=  'Saldo do Limite de Crédito.....:';
+                    FormTelaAvisoDebito.lblSaldoFinal.Font.Color := clGreen;
+                    FormTelaAvisoDebito.lblCliente.Caption       :=  SQLCliente.FieldByName('CLIEA60RAZAOSOC').AsVariant;
+                    FormTelaAvisoDebito.lblLimiteInicial.Caption :=  FormatFloat('###0.00',LimiteOrigem) ;
+                    FormTelaAvisoDebito.lblParcelas.Caption      :=  FormatFloat('###0.00',Debito);
+                    FormTelaAvisoDebito.lbljuros.Caption         :=  FormatFloat('###0.00',JurosMultaDescPendentes);
+                    FormTelaAvisoDebito.lblSaldoAtual.Caption    :=  FormatFloat('###0.00',LimiteOrigem - (Debito+JurosMultaDescPendentes));
+                    if LimiteOrigem - (Debito+JurosMultaDescPendentes) > 0 then
+                      FormTelaAvisoDebito.lblSaldoAtual.Font.Color := clGreen
+                    Else
+                      FormTelaAvisoDebito.lblSaldoAtual.Font.Color := clRed;
+                    FormTelaAvisoDebito.lblCompra.Caption        :=  FormatFloat('###0.00',ValorCompra);
+                    FormTelaAvisoDebito.lblSaldoFinal.Caption    :=  FormatFloat('###0.00',Limite - ValorCompra);
+                    FormTelaAvisoDebito.ShowModal;
+                  end else
+                  begin
+                    if not FileExists('MostraLimiteComprasReduzido.txt') then
+                      ShowMessage('Cliente => ' + SQLCliente.FieldByName('CLIEA60RAZAOSOC').AsVariant               + #13 + #13 +
+                                  'Valor do Limite Inicial    =>  R$ ' + FormatFloat('###0.00',LimiteOrigem)              + #13 +
+                                  'Valor da Compra Atual      =>  R$ ' + FormatFloat('###0.00',ValorCompra)               + #13 +
+                                  'Limite para Novas Compras  =>  R$ ' + FormatFloat('###0.00',(Limite - ValorCompra)));
+                  End;
+                  Result := True;
+                end
+              else
+                begin  // Subtrai do valor da Compra e das parcelas abertas
+                 if FileExists('MostraLimiteMaior.txt') then
+                  begin
+                    FormTelaAvisoDebito := TFormTelaAvisoDebito.create(Application);
+                    FormTelaAvisodebito.Label8.Caption           := 'Saldo do Limite de Crédito.....:';
+                    FormTelaAvisoDebito.lblSaldoFinal.font.Color := clGreen;
+                    FormTelaAvisoDebito.lblCliente.Caption       :=  SQLCliente.FieldByName('CLIEA60RAZAOSOC').AsVariant;
+                    FormTelaAvisoDebito.lblLimiteInicial.Caption :=  FormatFloat('###0.00',LimiteOrigem) ;
+                    FormTelaAvisoDebito.lblParcelas.Caption      :=  FormatFloat('###0.00',Debito);
+                    FormTelaAvisoDebito.lbljuros.Caption         :=  FormatFloat('###0.00',JurosMultaDescPendentes);
+                    FormTelaAvisoDebito.lblSaldoAtual.Caption    :=  FormatFloat('###0.00',LimiteOrigem - (Debito+JurosMultaDescPendentes));
+                    if LimiteOrigem - (Debito+JurosMultaDescPendentes) > 0 then
+                      FormTelaAvisoDebito.lblSaldoAtual.Font.Color := clGreen
+                    Else
+                      FormTelaAvisoDebito.lblSaldoAtual.Font.Color := clRed;
+                    FormTelaAvisoDebito.lblCompra.Caption        :=  FormatFloat('###0.00',ValorCompra);
+                    FormTelaAvisoDebito.lblSaldoFinal.Caption    :=  FormatFloat('###0.00',Limite - ValorCompra);
+                    FormTelaAvisoDebito.ShowModal;
+                  end else
+                    begin
+                    if not FileExists('MostraLimiteComprasReduzido.txt') then
+                      ShowMessage('Cliente => ' + SQLCliente.FieldByName('CLIEA60RAZAOSOC').AsVariant                   + #13 + #13 +
+                                  'Valor do Limite Inicial.            =>  R$ ' + FormatFloat('###0.00',LimiteOrigem)         + #13 +
+                                  'Parcelas Abertas S/Encargos =>  R$ ' + FormatFloat('###0.00',Debito)                       + #13 +
+                                  'Juros, Multas, Descontos       =>  R$ ' + FormatFloat('###0.00',JurosMultaDescPendentes)   + #13 +
+                                  '----------------------------------------------------------'                                + #13 +
+                                  'Valor do Limite Atual              =>  R$ ' + FormatFloat('###0.00',Limite)                + #13 +
+                                  'Valor da Compra Atual           =>  R$ ' + FormatFloat('###0.00',ValorCompra)              + #13 +
+                                  '----------------------------------------------------------'                                + #13 +
+                                  'Limite para Novas Compras    =>  R$ ' + FormatFloat('###0.00',(Limite - ValorCompra))      + #13 +
+                                  '----------------------------------------------------------');
+                  End;
+                  Result := True;
+                end;
+            end;
+        end;
+    end
+  else
+    begin {Consulta no Banco Servidor}
+     { dm.zdbServidor.Connected := False;
+      dm.zdbServidor.HostName  := Servidor_HostName;
+      dm.zdbServidor.Database  := Servidor_Database;
+      dm.zdbServidor.Connected := True;
+      if dm.zdbServidor.Connected then
+        begin
+          SQLCliente.Close;
+          SQLCliente.SQL.Clear;
+          SQLCliente.SQL.Add('Select CLIEA60RAZAOSOC, CLIEN2RENDA, CLIEN2CONJUGERENDA, CLIEN2LIMITECRED from CLIENTE where CLIEA13ID = ''' + Cliente + '''');
+          SQLCliente.Open;
+          if not SQLCliente.IsEmpty then
+            begin
+              if (DM.SQLConfigVenda.FieldByName('CFVEN2PERCLIMCRED').Value > 0) then
+                begin
+                  if DM.SQLConfigVenda.FieldByName('CFVECRENDCONJNOLIM').AsString = 'S' then
+                    LimiteOrigem := (SQLCliente.FieldByName('CLIEN2RENDA').AsFloat +
+                               SQLCliente.FieldByName('CLIEN2CONJUGERENDA').AsFloat) *
+                              (DM.SQLConfigVenda.FieldByName('CFVEN2PERCLIMCRED').AsFloat/100)
+                  else
+                    LimiteOrigem := (SQLCliente.FieldByName('CLIEN2RENDA').AsFloat) *
+                              (DM.SQLConfigVenda.FieldByName('CFVEN2PERCLIMCRED').AsFloat/100) ;
+                end
+              else
+                begin
+                  // Application.MessageBox('O sistema está configurado para testar o limite de crédito, mas a operação não foi realizada porque não existe nenhum percentual configurado para o cálculo do limite ! ','Chekout Informa', MB_OK + MB_ICONWARNING + MB_SYSTEMMODAL);
+                  Result := True;
+                  Exit;
+                end;
+
+              // Achar os Totais de Juros, Multas, Descontos Pendentes nas parcelas em Atrasadas
+              dm.zServidor_Consulta.Close ;
+              dm.zServidor_Consulta.sql.Clear;
+              dm.zServidor_Consulta.SQL.Add('Select CONTASRECEBER.CUPOA13ID, CONTASRECEBER.NOFIA13ID as NOFIA13ID, CONTASRECEBER.CTRCA30NRODUPLICBANCO as CTRCA30NRODUPLICBANCO,');
+              dm.zServidor_Consulta.SQL.Add('CONTASRECEBER.CLIEA13ID, CONTASRECEBER.CTRCA13ID, CONTASRECEBER.CTRCDULTREC, CONTASRECEBER.CTRCDVENC, CONTASRECEBER.CTRCDEMIS,');
+              dm.zServidor_Consulta.SQL.Add('CONTASRECEBER.CTRCINROPARC, CONTASRECEBER.CTRCN2TOTDESCREC, CONTASRECEBER.CTRCN2TOTJUROREC, CONTASRECEBER.CTRCN2TOTMULTAREC,');
+              dm.zServidor_Consulta.SQL.Add('CONTASRECEBER.CTRCN2TOTREC + CONTASRECEBER.CTRCN2TOTJUROREC + CONTASRECEBER.CTRCN2TOTMULTAREC + CONTASRECEBER.CTRCN2TOTMULTACOBR - CONTASRECEBER.CTRCN2TOTDESCREC as CTRCN2TOTREC,');
+              dm.zServidor_Consulta.SQL.Add('CONTASRECEBER.CTRCN2TXJURO, CONTASRECEBER.CTRCN2TXMULTA, CONTASRECEBER.CTRCN2VLR, CONTASRECEBER.CTRCCSTATUS, CONTASRECEBER.EMPRICODULTREC,');
+              dm.zServidor_Consulta.SQL.Add('CONTASRECEBER.NUMEICOD, CONTASRECEBER.EMPRICOD, CONTASRECEBER.AVALA13ID, CONTASRECEBER.PORTICOD, CONTASRECEBER.PDVDA13ID, CONTASRECEBER.BANCA5CODCHQ,');
+              dm.zServidor_Consulta.SQL.Add('CONTASRECEBER.CTRCA15NROCHQ, CONTASRECEBER.ALINICOD from CONTASRECEBER where (CONTASRECEBER.CTRCCSTATUS = ''A'' or CONTASRECEBER.CTRCCSTATUS = ''N'') and ');
+              dm.zServidor_Consulta.SQL.Add('(CONTASRECEBER.CTRCCTIPOREGISTRO = ''N'' or CONTASRECEBER.CTRCCTIPOREGISTRO = '''' or CONTASRECEBER.CTRCCTIPOREGISTRO IS NULL) and ');
+              dm.zServidor_Consulta.SQL.Add('(CONTASRECEBER.PDVDA13ID = '''' or CONTASRECEBER.PDVDA13ID IS NULL) and CONTASRECEBER.CLIEA13ID = '''+ Cliente + '''');
+              dm.zServidor_Consulta.Open ;
+
+              JuroParcTot  := 0 ;
+              MultaParcTot := 0 ;
+              DescParcTot  := 0 ;
+              JuroParc     := 0 ;
+              MultaParc    := 0 ;
+              DescParc     := 0 ;
+              while not dm.zServidor_Consulta.EOF do
+                begin
+                  try
+                    SaldoParc := dm.zServidor_Consulta.FieldByName('CTRCN2VLR').Value;
+                    if dm.zServidor_Consulta.FieldByName('CTRCDULTREC').AsVariant <> null then
+                      Vencimento := dm.zServidor_Consulta.FieldByName('CTRCDULTREC').AsDateTime
+                    else
+                      Vencimento := dm.zServidor_Consulta.FieldByName('CTRCDVENC').AsDateTime;
+
+                    If (dm.zServidor_Consulta.FieldByName('CTRCA13ID').AsString <> '') and (Length(dm.zServidor_Consulta.FieldByName('CTRCA13ID').AsString) = 13) Then
+                      Documento := dm.zServidor_Consulta.FieldByName('CTRCA13ID').AsString ;
+                    If (dm.zServidor_Consulta.FieldByName('CUPOA13ID').AsString <> '') and (Length(dm.zServidor_Consulta.FieldByName('CUPOA13ID').AsString) = 13) Then
+                      Documento := dm.SQLTemplate.FieldByName('CUPOA13ID').AsString ;
+                    If (dm.zServidor_Consulta.FieldByName('NOFIA13ID').AsString <> '') and (Length(dm.zServidor_Consulta.FieldByName('NOFIA13ID').AsString) = 13) Then
+                      Documento := dm.zServidor_Consulta.FieldByName('NOFIA13ID').AsString ;
+
+                    if dm.zServidor_Consulta.FieldByName('CTRCN2TOTREC').AsVariant <> null then
+                      SaldoParc := dm.zServidor_Consulta.FieldByName('CTRCN2VLR').Value -
+                               (dm.zServidor_Consulta.FieldByName('CTRCN2TOTREC').AsVariant -
+                                dm.zServidor_Consulta.FieldByName('CTRCN2TOTJUROREC').AsVariant -
+                                dm.zServidor_Consulta.FieldByName('CTRCN2TOTMULTAREC').AsVariant +
+                                dm.zServidor_Consulta.FieldByName('CTRCN2TOTDESCREC').AsVariant);
+
+                    if (dm.zServidor_Consulta.FieldByName('CTRCN2TXJURO').asFloat > 0) and (SaldoParc > 0) and
+                       (DM.SQLConfigCrediario.Fieldbyname('CFCRINRODIASTOLJUR').Value >= 0) then
+                      JuroParc := CalculaJuroMultaDesc(SaldoParc,
+                                                       dm.zServidor_Consulta.FieldByName('CTRCN2TXJURO').asFloat,
+                                                       dm.zServidor_Consulta.FieldByName('CTRCDVENC').AsDateTime,  // Adilson Troquei a variavel Vencimento pelo campo SQLParcelasCTRCDVENC.Value.
+                                                       Date,
+                                                       0,
+                                                       DM.SQLConfigCrediario.Fieldbyname('CFCRINRODIASTOLJUR').Value,
+                                                       'Juro',
+                                                       Documento,
+                                                       dm.zServidor_Consulta.FieldByName('CTRCINROPARC').AsString) ;
+
+                    JuroParcTot := JuroParcTot + JuroParc;
+
+                    if (dm.zServidor_Consulta.FieldByName('CTRCN2TXMULTA').asFloat > 0) and (SaldoParc > 0) and
+                       (DM.SQLConfigCrediario.Fieldbyname('CFCRINRODIASTOLJUR').Value >= 0) and
+                       (Documento <> '') then
+                      MultaParc := CalculaJuroMultaDesc(SaldoParc,
+                                                        dm.zServidor_Consulta.Fieldbyname('CTRCN2TXMULTA').AsFloat,
+                                                        dm.zServidor_Consulta.FieldByName('CTRCDVENC').AsDateTime,  // Adilson Troquei a variavel Vencimento pelo campo SQLParcelasCTRCDVENC.Value.
+                                                        Date,
+                                                        0,
+                                                        DM.SQLConfigCrediario.Fieldbyname('CFCRINRODIASTOLMUL').Value,
+                                                        'Multa',
+                                                        Documento,
+                                                        dm.zServidor_Consulta.FieldByName('CTRCINROPARC').AsString) ;
+
+                    MultaParcTot := MultaParcTot + MultaParc;
+
+                    if (DM.SQLConfigCrediario.Fieldbyname('CFCRN2PERCADIANT').asFloat > 0) and
+                       (DM.SQLConfigCrediario.Fieldbyname('CFCRN2PERCADIANT').Value >= 0) and
+                       (DM.SQLConfigCrediario.Fieldbyname('CFCRINRODIASADIANT').Value >= 0)  and
+                       (Documento <> '') and (SaldoParc > 0)  then
+                      DescParc := CalculaJuroMultaDesc(SaldoParc,
+                                                       DM.SQLConfigCrediario.Fieldbyname('CFCRN2PERCADIANT').Value,
+                                                       dm.zServidor_Consulta.FieldByName('CTRCDVENC').AsDateTime,  // Adilson Troquei a variavel Vencimento pelo campo SQLParcelasCTRCDVENC.Value.
+                                                       Date,
+                                                       0,
+                                                       DM.SQLConfigCrediario.Fieldbyname('CFCRINRODIASADIANT').Value,
+                                                       'Desconto',
+                                                       Documento,
+                                                       dm.zServidor_Consulta.FieldByName('CTRCINROPARC').AsString) ;
+
+                    DescParcTot := DescParcTot + DescParc;
+                  except
+                    Application.ProcessMessages;
+                  end;
+
+                  dm.zServidor_Consulta.Next ;
+                end ;
+
+               JurosMultaDescPendentes := JuroParcTot + MultaParcTot - DescParcTot;
+
+              SQLParcelas.Close ;
+              // Final da rotina para achar os Totais de Juros, Multas, Descontos Pendentes nas parcelas em Atrasadas
+
+              // Igual a SIM, subtrai do limite o valor das parcelas abertas s/juro p/atraso...
+              if DM.SQLConfigVenda.FieldByName('CFVECSUBDEBNOLIMITE').AsString = 'S' then
+                begin
+                  dm.zServidor_Consulta.Close;
+                  dm.zServidor_Consulta.SQL.Clear;
+                  dm.zServidor_Consulta.SQL.Add('Select sum(CTRCN2VLR) from CONTASRECEBER where CLIEA13ID = ''' + Cliente + ''' AND CTRCN2VLR > CTRCN2TOTREC');
+                  dm.zServidor_Consulta.SQL.Add('AND (CTRCA5TIPOPADRAO NOT IN (''CRT'',''CONV'') or CTRCA5TIPOPADRAO is null) ');
+                  dm.zServidor_Consulta.SQL.Add('AND (CTRCCSTATUS = ''A'' or CTRCCSTATUS = ''N'')') ;
+                  dm.zServidor_Consulta.Open;
+                  if not dm.zServidor_Consulta.IsEmpty then
+                    Debito := dm.zServidor_Consulta.FieldByName('SUM').AsFloat;
+
+                  Limite := LimiteOrigem;
+                  // Se Subtrai as Parcelas Abertas do Limite
+                  if DM.SQLConfigVenda.FieldByName('CFVECSUBDEBNOLIMITE').AsString = 'S' then
+                    Limite := Limite - (Debito + JurosMultaDescPendentes)
+                end;
+
+              if Limite < ValorCompra then
+                begin
+                  if DM.SQLConfigVenda.FieldByName('CFVECSUBDEBNOLIMITE').AsString <> 'S' then
+                    begin  // Nao Subtrai Parcelas Abertas do Limite
+                      if FileExists('MostraLimiteMaior.txt') then
+                      begin
+                        FormTelaAvisoDebito := TFormTelaAvisoDebito.create(Application);
+                        FormTelaAvisodebito.Label8.Caption           :=  'Saldo do Limite Ultrapassado:';
+                        FormTelaAvisoDebito.lblSaldoFinal.font.Color := clRed;
+                        FormTelaAvisoDebito.lblCliente.Caption       :=  SQLCliente.FieldByName('CLIEA60RAZAOSOC').AsVariant;
+                        FormTelaAvisoDebito.lblLimiteInicial.Caption :=  FormatFloat('###0.00',LimiteOrigem) ;
+                        FormTelaAvisoDebito.lblParcelas.Caption      :=  FormatFloat('###0.00',Debito);
+                        FormTelaAvisoDebito.lbljuros.Caption         :=  FormatFloat('###0.00',JurosMultaDescPendentes);
+                        FormTelaAvisoDebito.lblSaldoAtual.Caption    :=  FormatFloat('###0.00',LimiteOrigem - (Debito+JurosMultaDescPendentes));
+                        if LimiteOrigem - (Debito+JurosMultaDescPendentes) > 0 then
+                          FormTelaAvisoDebito.lblSaldoAtual.Font.Color := clGreen
+                        Else
+                          FormTelaAvisoDebito.lblSaldoAtual.Font.Color := clRed;
+                        FormTelaAvisoDebito.lblCompra.Caption        :=  FormatFloat('###0.00',ValorCompra);
+                        FormTelaAvisoDebito.lblSaldoFinal.Caption    :=  FormatFloat('###0.00',Limite - ValorCompra);
+                        FormTelaAvisoDebito.ShowModal;
+                      end else
+                      begin
+                        if not FileExists('MostraLimiteComprasReduzido.txt') then
+                          ShowMessage('Cliente => ' + SQLCliente.FieldByName('CLIEA60RAZAOSOC').AsVariant               + #13 + #13 +
+                                      'Valor do Limite Inicial    =>  R$ ' + FormatFloat('###0.00',LimiteOrigem)              + #13 +
+                                      'Valor da Compra Atual      =>  R$ ' + FormatFloat('###0.00',ValorCompra)               + #13 +
+                                      'Limite Ultrapassado em     =>  R$ ' + FormatFloat('###0.00',(Limite - ValorCompra)))
+                        else
+                          ShowMessage('Cliente => ' + SQLCliente.FieldByName('CLIEA60RAZAOSOC').AsVariant               + #13 + #13 +
+                                      'Valor da Compra Atual      =>  R$ ' + FormatFloat('###0.00',ValorCompra)               + #13 +
+                                      'Limite Ultrapassado em     =>  R$ ' + FormatFloat('###0.00',(Limite - ValorCompra)));
+                      End;
+                      Result := False;
+                    end
+                  else
+                    begin
+                      if FileExists('MostraLimiteMaior.txt') then
+                      begin
+                        FormTelaAvisoDebito := TFormTelaAvisoDebito.create(Application);
+                        FormTelaAvisodebito.Label8.Caption           :=  'Saldo do Limite Ultrapassado:';
+                        FormTelaAvisoDebito.lblSaldoFinal.font.Color := clRed;
+                        FormTelaAvisoDebito.lblCliente.Caption       :=  SQLCliente.FieldByName('CLIEA60RAZAOSOC').AsVariant;
+                        FormTelaAvisoDebito.lblLimiteInicial.Caption :=  FormatFloat('###0.00',LimiteOrigem) ;
+                        FormTelaAvisoDebito.lblParcelas.Caption      :=  FormatFloat('###0.00',Debito);
+                        FormTelaAvisoDebito.lbljuros.Caption         :=  FormatFloat('###0.00',JurosMultaDescPendentes);
+                        FormTelaAvisoDebito.lblSaldoAtual.Caption    :=  FormatFloat('###0.00',LimiteOrigem - (Debito+JurosMultaDescPendentes));
+                        if LimiteOrigem - (Debito+JurosMultaDescPendentes) > 0 then
+                          FormTelaAvisoDebito.lblSaldoAtual.Font.Color := clGreen
+                        Else
+                          FormTelaAvisoDebito.lblSaldoAtual.Font.Color := clRed;
+                        FormTelaAvisoDebito.lblCompra.Caption        :=  FormatFloat('###0.00',ValorCompra);
+                        FormTelaAvisoDebito.lblSaldoFinal.Caption    :=  FormatFloat('###0.00',Limite - ValorCompra);
+                        FormTelaAvisoDebito.ShowModal;
+                      end else
+                      begin
+                        if not FileExists('MostraLimiteComprasReduzido.txt') then
+                          ShowMessage('Cliente => ' + SQLCliente.FieldByName('CLIEA60RAZAOSOC').AsVariant                   + #13 + #13 +
+                                      'Valor do Limite Inicial.            =>  R$ ' + FormatFloat('###0.00',LimiteOrigem)         + #13 +
+                                      'Parcelas Abertas S/Encargos =>  R$ ' + FormatFloat('###0.00',Debito)                       + #13 +
+                                      'Juros, Multas, Descontos       =>  R$ ' + FormatFloat('###0.00',JurosMultaDescPendentes)   + #13 +
+                                      '----------------------------------------------------------'                                + #13 +
+                                      'Valor do Limite Atual              =>  R$ ' + FormatFloat('###0.00',Limite)                + #13 +
+                                      'Valor da Compra Atual           =>  R$ ' + FormatFloat('###0.00',ValorCompra)              + #13 +
+                                      '----------------------------------------------------------'                                + #13 +
+                                      'Limite Ultrapassado em          =>  R$ ' + FormatFloat('###0.00',Limite - ValorCompra)     + #13 +
+                                      '----------------------------------------------------------')
+                        else
+                          ShowMessage('Cliente => ' + SQLCliente.FieldByName('CLIEA60RAZAOSOC').AsVariant                   + #13 + #13 +
+                                      '----------------------------------------------------------'                                + #13 +
+                                      'Valor da Compra Atual           =>  R$ ' + FormatFloat('###0.00',ValorCompra)              + #13 +
+                                      '----------------------------------------------------------'                                + #13 +
+                                      'Limite Ultrapassado em          =>  R$ ' + FormatFloat('###0.00',Limite - ValorCompra)     + #13 +
+                                      '----------------------------------------------------------');
+                      End;
+                      Result := False;
+                    end;
+                end
+              else  // Se o Limite for maior que o valor da Compra
+                begin
+                  if DM.SQLConfigVenda.FieldByName('CFVECSUBDEBNOLIMITE').AsString <> 'S' then
+                    begin  // Nao Subtrai Parcelas Abertas do Limite
+                      if FileExists('MostraLimiteMaior.txt') then
+                      begin
+                        FormTelaAvisoDebito := TFormTelaAvisoDebito.create(Application);
+                        FormTelaAvisodebito.Label8.Caption           :=  'Saldo do Limite de Crédito.....:';
+                        FormTelaAvisoDebito.lblSaldoFinal.Font.Color := clGreen;
+                        FormTelaAvisoDebito.lblCliente.Caption       :=  SQLCliente.FieldByName('CLIEA60RAZAOSOC').AsVariant;
+                        FormTelaAvisoDebito.lblLimiteInicial.Caption :=  FormatFloat('###0.00',LimiteOrigem) ;
+                        FormTelaAvisoDebito.lblParcelas.Caption      :=  FormatFloat('###0.00',Debito);
+                        FormTelaAvisoDebito.lbljuros.Caption         :=  FormatFloat('###0.00',JurosMultaDescPendentes);
+                        FormTelaAvisoDebito.lblSaldoAtual.Caption    :=  FormatFloat('###0.00',LimiteOrigem - (Debito+JurosMultaDescPendentes));
+                        if LimiteOrigem - (Debito+JurosMultaDescPendentes) > 0 then
+                          FormTelaAvisoDebito.lblSaldoAtual.Font.Color := clGreen
+                        Else
+                          FormTelaAvisoDebito.lblSaldoAtual.Font.Color := clRed;
+                        FormTelaAvisoDebito.lblCompra.Caption        :=  FormatFloat('###0.00',ValorCompra);
+                        FormTelaAvisoDebito.lblSaldoFinal.Caption    :=  FormatFloat('###0.00',Limite - ValorCompra);
+                        FormTelaAvisoDebito.ShowModal;
+                      end else
+                      begin
+                        if not FileExists('MostraLimiteComprasReduzido.txt') then
+                          ShowMessage('Cliente => ' + SQLCliente.FieldByName('CLIEA60RAZAOSOC').AsVariant               + #13 + #13 +
+                                      'Valor do Limite Inicial    =>  R$ ' + FormatFloat('###0.00',LimiteOrigem)              + #13 +
+                                      'Valor da Compra Atual      =>  R$ ' + FormatFloat('###0.00',ValorCompra)               + #13 +
+                                      'Limite para Novas Compras  =>  R$ ' + FormatFloat('###0.00',(Limite - ValorCompra)));
+                      End;
+                      Result := True;
+                    end
+                  else
+                    begin  // Subtrai do valor da Compra e das parcelas abertas
+                     if FileExists('MostraLimiteMaior.txt') then
+                      begin
+                        FormTelaAvisoDebito := TFormTelaAvisoDebito.create(Application);
+                        FormTelaAvisodebito.Label8.Caption           := 'Saldo do Limite de Crédito.....:';
+                        FormTelaAvisoDebito.lblSaldoFinal.font.Color := clGreen;
+                        FormTelaAvisoDebito.lblCliente.Caption       :=  SQLCliente.FieldByName('CLIEA60RAZAOSOC').AsVariant;
+                        FormTelaAvisoDebito.lblLimiteInicial.Caption :=  FormatFloat('###0.00',LimiteOrigem) ;
+                        FormTelaAvisoDebito.lblParcelas.Caption      :=  FormatFloat('###0.00',Debito);
+                        FormTelaAvisoDebito.lbljuros.Caption         :=  FormatFloat('###0.00',JurosMultaDescPendentes);
+                        FormTelaAvisoDebito.lblSaldoAtual.Caption    :=  FormatFloat('###0.00',LimiteOrigem - (Debito+JurosMultaDescPendentes));
+                        if LimiteOrigem - (Debito+JurosMultaDescPendentes) > 0 then
+                          FormTelaAvisoDebito.lblSaldoAtual.Font.Color := clGreen
+                        Else
+                          FormTelaAvisoDebito.lblSaldoAtual.Font.Color := clRed;
+                        FormTelaAvisoDebito.lblCompra.Caption        :=  FormatFloat('###0.00',ValorCompra);
+                        FormTelaAvisoDebito.lblSaldoFinal.Caption    :=  FormatFloat('###0.00',Limite - ValorCompra);
+                        FormTelaAvisoDebito.ShowModal;
+                      end else
+                        begin
+                        if not FileExists('MostraLimiteComprasReduzido.txt') then
+                          ShowMessage('Cliente => ' + SQLCliente.FieldByName('CLIEA60RAZAOSOC').AsVariant                   + #13 + #13 +
+                                      'Valor do Limite Inicial.            =>  R$ ' + FormatFloat('###0.00',LimiteOrigem)         + #13 +
+                                      'Parcelas Abertas S/Encargos =>  R$ ' + FormatFloat('###0.00',Debito)                       + #13 +
+                                      'Juros, Multas, Descontos       =>  R$ ' + FormatFloat('###0.00',JurosMultaDescPendentes)   + #13 +
+                                      '----------------------------------------------------------'                                + #13 +
+                                      'Valor do Limite Atual              =>  R$ ' + FormatFloat('###0.00',Limite)                + #13 +
+                                      'Valor da Compra Atual           =>  R$ ' + FormatFloat('###0.00',ValorCompra)              + #13 +
+                                      '----------------------------------------------------------'                                + #13 +
+                                      'Limite para Novas Compras    =>  R$ ' + FormatFloat('###0.00',(Limite - ValorCompra))      + #13 +
+                                      '----------------------------------------------------------');
+                      End;
+                      Result := True;
+                    end;
+                end;
+            end;
+        end
+      else
+        begin
+          ShowMessage('Sem Conexao ao Servidor não será possivel calcular limite de compra!');
+          Result := False;
+        end;  }
+
+    end;
+end;
+
+function AutenticaVendedor(UserNameDefault, CAMPO : String; var InfoRetorno:TInfoRetornoUser) : String;
+var
+  SQLVendedor : TQuery;
+  UserName :String;
+  Password : String;
+  Contador : Integer;
+  VendedorOK, SenhaOK : Boolean;
+begin
+  SQLVendedor := TQuery.Create(DM);
+  SQLVendedor.DatabaseName := 'DB';
+  UserName := '';
+  Password := '';
+  Contador := 0;
+  // While (ContUser < 3) and (MResult <> MrCancel) do
+  while (Contador < 3) do
+    begin
+      // PassWord := InputBoxMask('Autenticação de Usuário','Digite a sua senha de usuário :','');
+      Application.CreateForm(TFormTelaAutenticaUsuario, FormTelaAutenticaUsuario);
+      FormTelaAutenticaUsuario.RxLabel1.Caption := 'Informe a Senha do Vendedor!';
+      FormTelaAutenticaUsuario.ShowModal ;
+      if (FormTelaAutenticaUsuario.ModalResult = MrOK) and (FormTelaAutenticaUsuario.EditSenha.Text<>'') then
+        Password := FormTelaAutenticaUsuario.EditSenha.Text;
+      if (FormTelaAutenticaUsuario.ModalResult = MrCancel) then
+        begin
+          Contador := 3; // Sai da Rotina
+          Exit;
+        end;
+
+      FormTelaAutenticaUsuario.Close;
+      FormTelaAutenticaUsuario.Free;
+      SQLVendedor.Close;
+      SQLVendedor.SQL.Clear;
+      SQLVendedor.SQL.Add('SELECT VENDICOD,VENDA60NOME,VENDA30SENHA FROM VENDEDOR WHERE VENDA30SENHA = ' + '"' + UpperCase(Password) + '"');
+      SQLVendedor.Open;
+      if SQLVendedor.IsEmpty then
+        begin
+          ShowMessage('Senha Inválida!');
+          Inc(Contador);
+        end
+      else
+        begin
+          if SQLVendedor.RecordCount > 1 then
+            begin
+              ShowMessage('Existe mais de um Vendedor com a mesma senha!');
+              Inc(Contador);
+            end
+          else
+            begin
+              UserName := SQLVendedor.fieldbyname('VENDA60NOME').Value;
+              SenhaOK  := True;
+              Contador := 3;
+            end;
+        end;
+    end;
+    if not SQLVendedor.IsEmpty then
+      begin
+        AutenticaVendedor                  := SQLVendedor.FieldByName(CAMPO).AsString;
+        InfoRetorno.CampoRetorno           := SQLVendedor.FieldByName(CAMPO).FieldName;
+        InfoRetorno.CodUsuarioAutenticado  := SQLVendedor.FieldByName('VENDICOD').AsInteger;
+        InfoRetorno.NomeUsuarioAutenticado := SQLVendedor.FieldByName('VENDA60NOME').AsString;
+        InfoRetorno.ModalResult            := MrOk;
+      end;
+  SQLVendedor.Destroy;
+  Password := '';
+  Contador := 0;
+end;
+
+function  TrataCodigoLidoPelaSerial(Data:String) : String;
+var
+StrAux : String;
+I : Integer;
+begin
+  if Data <> '' then
+    begin
+      for I:=0 to Length(Data) do
+        begin
+          try
+            StrToInt(Data[I]);
+            StrAux := StrAux + Data[I];
+          except
+          end
+        end;
+      TrataCodigoLidoPelaSerial := StrAux;
+    end;
+end;
+function CriaParcelas(SQLParcelasPrazo,
+                      SQLPlnRec,
+                      SQLPlnRecParc : TQuery;
+                      Entrada,
+                      Desconto,
+                      Valor:Double;
+                      Plano:integer;
+                      Data : TDateTime ;
+                      TpRecVistaTel,
+                      TpRecPrazoTel,
+                      TpRecVistaPDV,
+                      TpRecPrazoPDV,
+                      Documento: string ;
+                      DiminuiAcresc : double ;
+                      var ValorJuro, Acrescimo, EntradaCalc, TaxaCred:Double ) : Variant ;
+var
+  OffSet,
+  NumeroParcelas,
+  I               : Integer;
+  TotParc,
+  Acumulado,
+  ValorDevido,
+  Arredondamento   : Double;
+  DiasAnterior     : TDateTime;
+  VarAno,
+  VarMes,
+  VarDia,
+  VarDiaOficial    : Word;
+  Erro             : Boolean;
+begin
+  // se for plano variavel sair da rotina
+  if SQLPlnRec.FieldByName('PLRCCDFIX').Value = 'V' then
+    exit;
+
+  DM.SQLTemplate.Close ;
+  DM.SQLTemplate.SQL.Clear ;
+  DM.SQLTemplate.SQL.Add('delete from PARCELASPRAZOVENDATEMP') ;
+  DM.SQLTemplate.SQL.Add('where TERMICOD = ' + IntToStr(TerminalAtual)) ;
+  DM.SQLTemplate.ExecSQL ;
+
+  SQLParcelasPrazo.Close ;
+  SQLParcelasPrazo.Open ;
+  SQLParcelasPrazo.DisableControls;
+
+  if SQLPlnRec.FieldByName('PLRCCDFIX').Value <> 'S' then
+    begin
+      SQLPlnRecParc.First;
+      if SQLPlnRecParc.FieldByName('PLRPINRODIAS').Value = 0 then
+        OffSet := 1
+      else
+        OffSet := 0;
+
+      while not SQLPlnRecParc.EOF  do
+      begin
+        SQLParcelasPrazo.Append ;
+        SQLParcelasPrazo.FieldByName('TERMICOD').Value   := TerminalAtual ;
+        SQLParcelasPrazo.FieldByName('NROPARCELA').Value := SQLPlnRecParc.FieldByName('PLRPINROPARC').Value-OffSet;
+        if (SQLPlnRecParc.FieldByName('PLRPINRODIAS').Value mod 30 = 0) and
+           (SQLPlnRecParc.FieldByName('PLRPINRODIAS').Value > 0) and
+           (ConvenioVenda > 0) then
+          begin
+            SQLParcelasPrazo.FieldByName('DATAVENCTO').Value := IncMonth(Data,
+                                                                         SQLPlnRecParc.FieldByName('PLRPINRODIAS').Value
+                                                                         / 30)
+          end
+        else
+          SQLParcelasPrazo.FieldByName('DATAVENCTO').Value := Data +
+                                                              SQLPlnRecParc.FieldByName('PLRPINRODIAS').Value;
+
+        SQLParcelasPrazo.Post;
+        SQLPlnRecParc.Next;
+      end ;
+    end
+  else
+    begin
+      DecodeDate(Date, VarAno, VarMes, VarDiaOficial);
+
+      if SQLPlnRec.FieldByName('PLRCCDFIXENTR').Value = 'S' then
+        OffSet     := 1
+      else
+        OffSet := 0 ;
+
+
+      for I := 1-OffSet to SQLPlnRec.FieldByName('PLRCIDFIXNROPARC').Value-OffSet Do
+        begin
+          SQLParcelasPrazo.Append ;
+          SQLParcelasPrazo.FieldByName('TERMICOD').Value   := TerminalAtual ;
+          SQLParcelasPrazo.FieldByName('NROPARCELA').Value := I ;
+
+          if (SQLPlnRec.FieldByName('PLRCCDFIXENTR').Value = 'S') and (I = 1-OffSet) Then
+            SQLParcelasPrazo.FieldByName('DATAVENCTO').Value := Data
+          else
+            begin
+              VarDia := VarDiaOficial ;
+              Inc(VarMes) ;
+              If VarMes > 12 Then
+                Begin
+                  VarMes := 1 ;
+                  Inc(VarAno);
+                End ;
+              Erro := true ;
+
+              while Erro do
+                try
+                  if SQLPlnRec.FieldByName('PLRCDFIXDVENC').AsString = '' then
+                    SQLParcelasPrazo.FieldByName('DATAVENCTO').asString := Format('%.2d',[VarDia]) + '/' +
+                                                                           Format('%.2d',[VarMes]) + '/' +
+                                                                           Format('%.4d',[VarAno])
+                  else
+                    begin
+                      if SQLPlnRec.FieldByName('PLRCDFIXDVENC').AsInteger > 31 then // indica dia da semana 32=segunda,37 terca ... 38 domingo
+                      Begin
+
+                        Vardia := (SQLPlnRec.FieldByName('PLRCDFIXDVENC').AsInteger - 31) - ( (DayOfWeek(Date)-1) - 7 );
+                        Vardia := VarDiaOficial + Vardia;
+                      end else
+                        VarDia := SQLPlnRec.FieldByName('PLRCDFIXDVENC').AsInteger;
+                      // se existir o arquivo, coloca o mes de vencimento para o atual caso o dia atual seja menor que o dia do vencimento
+                      if FileExists('Coonsumo.txt') Then
+                        if Vardia > VarDiaOficial then
+                          Dec(VarMes);
+
+                      SQLParcelasPrazo.FieldByName('DATAVENCTO').asString := Format('%.2d',[VarDia]) + '/' +
+                                                                             Format('%.2d',[VarMes]) + '/' +
+                                                                             Format('%.4d',[VarAno]);
+                    end;
+                  Erro := False ;
+                except
+                  Dec(VarDia) ;
+                  Erro := true ;
+                end ;
+            end ;
+          SQLParcelasPrazo.Post ;
+        end ;
+
+    end ;
+
+  SQLParcelasPrazo.Close;
+  SQLParcelasPrazo.Open;
+  SQLParcelasPrazo.First;
+
+  if SQLPlnRec.FieldByName('PLRCCDFIX').Value <> 'S' then
+    begin
+      DM.SQLTemplate.Close;
+      DM.SQLTemplate.SQL.Clear;
+      DM.SQLTemplate.SQL.Add('select Count(*) from PLANORECEBIMENTOPARCELA');
+      DM.SQLTemplate.SQL.Add('where PLRCICOD = ' + SQLPlnRec.FieldByName('PLRCICOD').asString);
+      DM.SQLTemplate.Open;
+
+      NumeroParcelas := DM.SQLTemplate.Fieldbyname('Count').Value
+    end
+  else
+    NumeroParcelas := SQLPlnRec.FieldByName('PLRCIDFIXNROPARC').AsInteger;
+
+  ValorDevido := Valor + SQLPlnRec.FieldByName('PLRCN2TXCRED').Value - Desconto;
+
+  if SQLPlnRec.FieldByName('PLRCN2TXCRED').Value > 0 then
+    TaxaCred  := SQLPlnRec.FieldByName('PLRCN2TXCRED').Value;
+
+  if SQLPlnRec.FieldByName('PLRCN2PERCACRESC').Value > 0 then
+    Acrescimo := (ValorDevido * SQLPlnRec.FieldByName('PLRCN2PERCACRESC').Value) / 100;
+
+  if Entrada > 0 then
+    begin
+      ValorDevido := ValorDevido - Entrada;
+      SQLParcelasPrazo.Edit;
+      SQLParcelasPrazo.FieldByName('VALORVENCTO').Value := Entrada;
+      SQLParcelasPrazo.Post;
+      SQLParcelasPrazo.Next;
+      Dec(NumeroParcelas);
+    end;
+  if Acrescimo > 0 then
+    ValorDevido := ValorDevido + Acrescimo;
+
+//  SQLParcelasPrazo.Close;
+//  SQLParcelasPrazo.Open;
+
+  if NumeroParcelas > 0 then
+  begin
+    Acumulado    := 0;
+    DiasAnterior := Data;
+    Valor := ValorDevido / NumeroParcelas;
+    for I := 1 To NumeroParcelas Do
+      begin
+        ValorJuro    := (ValorDevido * (SQLParcelasPrazo.FieldByName('DATAVENCTO').Value - DiasAnterior) *
+                        SQLPlnRec.FieldByName('PLRCN2TXJURO').Value/30/100);
+        DiasAnterior := SQLParcelasPrazo.FieldByName('DATAVENCTO').Value;
+        Acrescimo    :=  Acrescimo + ValorJuro;
+        Acumulado    := Acumulado + Valor + ValorJuro;
+        ValorDevido  := ValorDevido - Valor;
+
+        if NumeroParcelas <> 1 then
+          SQLParcelasPrazo.Next;
+      end ;
+
+    Acrescimo := Acrescimo - DiminuiAcresc;
+    Acumulado := Acumulado - DiminuiAcresc;
+
+    For I := 1 To NumeroParcelas-1 do
+     SQLParcelasPrazo.Prior;
+
+    Valor := Acumulado / NumeroParcelas;
+    while Not SQLParcelasPrazo.EOF do
+    begin
+      SQLParcelasPrazo.Edit;
+      if (Entrada > 0) and (SQLParcelasPrazo.FieldByName('NROPARCELA').Value = 0) then
+        SQLParcelasPrazo.FieldByName('VALORVENCTO').AsString := FormatFloat('###0.00', Entrada)
+      else
+        SQLParcelasPrazo.FieldByName('VALORVENCTO').AsString := FormatFloat('###0.00', Valor);
+      SQLParcelasPrazo.Post;
+
+      SQLParcelasPrazo.Next;
+    end ;
+    if not DM.SQLConfigVenda.Active then DM.SQLConfigVenda.Open;
+    if (TipoPadrao <> 'CRT') then
+    begin
+      Arredondamento := 0;
+      if DM.SQLConfigVenda.Fieldbyname('CFVECARREDPARCELA').AsString = '' then
+        begin
+          Informa('Você deve configurar o tipo de arredondamento, nas configurações de venda do sistema ! Operação Cancelada !');
+          Abort;
+        end;
+
+      case DM.SQLConfigVenda.Fieldbyname('CFVECARREDPARCELA').AsString[1] of
+        'P'://Arrendondamentos para a Primeira Parcela
+            begin
+              SQLParcelasPrazo.First;
+              Arredondamento := 0;
+              while not SQLParcelasPrazo.EOF do
+              begin
+                {  Arredondamento := Arredondamento +
+                                     Frac(SQLParcelasPrazo.FieldByName('VALORVENCTO').Value);
+                }
+
+                SQLParcelasPrazo.Edit;
+                if (Entrada > 0) and (SQLParcelasPrazo.FieldByName('NROPARCELA').Value = 0) then
+                  SQLParcelasPrazo.FieldByName('VALORVENCTO').Value := Entrada
+                else
+                  SQLParcelasPrazo.FieldByName('VALORVENCTO').Value := SQLParcelasPrazo.FieldByName('VALORVENCTO').Value -
+                                                                       Frac(SQLParcelasPrazo.FieldByName('VALORVENCTO').Value) ;
+                SQLParcelasPrazo.Post;
+                Arredondamento := Arredondamento + SQLParcelasPrazo.FieldByName('VALORVENCTO').Value;
+                SQLParcelasPrazo.Next;
+              end;
+
+              SQLParcelasPrazo.close;
+              SQLParcelasPrazo.open;
+              SQLParcelasPrazo.First;
+              SQLParcelasPrazo.Edit;
+              {SQLParcelasPrazo.FieldByName('VALORVENCTO').Value := SQLParcelasPrazo.FieldByName('VALORVENCTO').Value +
+                                                                   Arredondamento;}
+              SQLParcelasPrazo.FieldByName('VALORVENCTO').Value := (Acumulado+SQLParcelasPrazo.FieldByName('VALORVENCTO').Value) - Arredondamento;
+              SQLParcelasPrazo.Post;
+
+              //CALCULAR TOTAL DAS PARCELAS
+              TotParc := 0 ;
+              {SQLParcelasPrazo.Close;
+              SQLParcelasPrazo.Open;
+              SQLParcelasPrazo.First;
+              while not SQLParcelasPrazo.EOF do
+              begin
+                TotParc := TotParc + SQLParcelasPrazo.FieldByName('VALORVENCTO').Value;
+                SQLParcelasPrazo.Next;
+              end ;
+              TotParc := StrToFloat(FloatToStr(Acumulado+Entrada)) -
+                         StrToFloat(FloatToStr(TotParc));
+
+              SQLParcelasPrazo.First;
+              //ESTA LINHA FOI COLOCADA PARA GRAVAR O RESTANTE NA PRIMEIRA PARACELA A PRAZO
+              //SE TIVER ENTRADA
+              if (Entrada > 0) then
+                begin
+                  SQLParcelasPrazo.Next;
+
+                  SQLParcelasPrazo.Edit;
+                  if TotParc > 0 then
+                    SQLParcelasPrazo.FieldByName('VALORVENCTO').Value := (SQLParcelasPrazo.FieldByName('VALORVENCTO').Value +
+                                                                          Arredondamento) +
+                                                                          ABS(TotParc)
+                  else
+                    SQLParcelasPrazo.FieldByName('VALORVENCTO').Value := (SQLParcelasPrazo.FieldByName('VALORVENCTO').Value +
+                                                                          Arredondamento) -
+                                                                          ABS(TotParc);
+
+                  SQLParcelasPrazo.Post;
+                end; }
+            end;
+        'U'://Arrendondamentos para a Última Parcela
+            begin
+              SQLParcelasPrazo.Last;
+              SQLParcelasPrazo.Prior;
+              while not SQLParcelasPrazo.Bof do
+              begin
+                Arredondamento := Arredondamento +
+                                  Frac(SQLParcelasPrazo.FieldByName('VALORVENCTO').Value) ;
+                SQLParcelasPrazo.Edit;
+                if (Entrada > 0) and (SQLParcelasPrazo.FieldByName('NROPARCELA').Value = 0) then
+                  SQLParcelasPrazo.FieldByName('VALORVENCTO').Value := Entrada
+                else
+                  SQLParcelasPrazo.FieldByName('VALORVENCTO').Value := SQLParcelasPrazo.FieldByName('VALORVENCTO').Value -
+                                                                       Frac(SQLParcelasPrazo.FieldByName('VALORVENCTO').Value) ;
+                SQLParcelasPrazo.Post;
+                SQLParcelasPrazo.Prior;
+              end;
+              SQLParcelasPrazo.Last;
+              SQLParcelasPrazo.Edit;
+              SQLParcelasPrazo.FieldByName('VALORVENCTO').Value := SQLParcelasPrazo.FieldByName('VALORVENCTO').Value +
+                                                                   Arredondamento;
+              SQLParcelasPrazo.Post;
+
+              //CALCULAR TOTAL DAS PARCELAS
+              TotParc := 0;
+              SQLParcelasPrazo.First;
+              while not SQLParcelasPrazo.EOF do
+              begin
+                TotParc := TotParc + SQLParcelasPrazo.FieldByName('VALORVENCTO').Value;
+
+                SQLParcelasPrazo.Next;
+              end ;
+              TotParc := StrToFloat(FloatToStr(Acumulado+Entrada)) -
+                         StrToFloat(FloatToStr(TotParc));
+              SQLParcelasPrazo.Last;
+              SQLParcelasPrazo.Edit;
+              SQLParcelasPrazo.FieldByName('VALORVENCTO').Value := SQLParcelasPrazo.FieldByName('VALORVENCTO').Value +
+                                                                   TotParc;
+              SQLParcelasPrazo.Post;
+            end;
+        'N'://Sem Arrendondamentos
+            begin
+              //CALCULAR TOTAL DAS PARCELAS
+              {if OffSet = 0 then
+                begin}
+                  TotParc := 0 ;
+                  SQLParcelasPrazo.First;
+                  while not SQLParcelasPrazo.EOF do
+                  begin
+                    TotParc := TotParc + SQLParcelasPrazo.FieldByName('VALORVENCTO').AsFloat;
+
+                    SQLParcelasPrazo.Next;
+                  end ;
+                  TotParc := StrToFloat(FloatToStr(Acumulado+Entrada)) -
+                             StrToFloat(FloatToStr(TotParc));
+
+                  SQLParcelasPrazo.Last;
+                  SQLParcelasPrazo.Edit;
+                  SQLParcelasPrazo.FieldByName('VALORVENCTO').Value := SQLParcelasPrazo.FieldByName('VALORVENCTO').Value +
+                                                                       TotParc;
+                  SQLParcelasPrazo.Post;
+                //end ;
+            end;
+      end;
+    end;
+  end;
+  //VER SE O PLANO É COM ENTRADA, SE FOR DEVE JOGAR O VALOR DA ENTRADA PARA O CAMPO ENTRADA
+  //E DELETAR DAS PARCELAS POIS SERÁ GRAVADO NUMA TABELA DIFERENTE
+  SQLParcelasPrazo.First;
+  if (SQLParcelasPrazo.FieldByName('DATAVENCTO').Value = Date) and (Application.FindComponent('FormTelaFechamentoVenda') <> Nil) and (not ConsultandoPlano) then
+  begin
+    EntradaCalc := SQLParcelasPrazo.FieldByName('VALORVENCTO').AsFloat;
+    SQLParcelasPrazo.Delete;
+  end
+  else EntradaCalc := 0;
+
+  SQLParcelasPrazo.Close;
+  SQLParcelasPrazo.Open;
+  SQLParcelasPrazo.EnableControls;
+end;
+
+procedure CalculaImpostosNotaFiscalItem(DataSet : TRXQuery; DataSource : TDataSource; FatorConversaoUnidade : Double);
+var
+  TOTALITEM, REDUCAO, VALORCOMPRA : Double;
+begin
+  if ((DataSet <> nil) and
+      (DataSource <> nil)) then
+    begin
+
+      try
+        VALORCOMPRA := StrToFloat(SQLLocate('PRODUTO','PRODICOD','PRODN3VLRCOMPRA',DataSet.FieldByName('PRODICOD').AsString));
+      except
+        VALORCOMPRA := 0;
+      end;
+
+      DataSet.FieldByName('NFITN2VLRLUCRO').AsFloat := (DataSet.FieldByName('NFITN2VLRUNIT').AsFloat - VALORCOMPRA) * (DataSet.FieldByName('NFITN3QUANT').AsFloat*FatorConversaoUnidade);
+      DataSet.FieldByName('NFITN2VLRDESC').AsFloat := (DataSet.FieldByName('NFITN2VLRUNIT').AsFloat * (DataSet.FieldByName('NFITN3QUANT').AsFloat*FatorConversaoUnidade)) * (DataSet.FieldByName('NFITN2PERCDESC').AsFloat / 100);
+      TOTALITEM := (DataSet.FieldByName('NFITN2VLRUNIT').AsFloat * DataSet.FieldByName('NFITN3QUANT').AsFloat) - DataSet.FieldByName('NFITN2VLRDESC').AsFloat;
+      if (SQLLocate('OPERACAOESTOQUE','OPESICOD','OPESCCALCIPI',DataSource.DataSet.FieldByName('OPESICOD').AsString) = 'S') then
+        DataSet.FieldByName('NFITN2VLRIPI').AsFloat := TOTALITEM * (DataSet.FieldByName('NFITN2PERCIPI').AsFloat / 100)
+      else
+        DataSet.FieldByName('NFITN2VLRIPI').AsFloat := 0;
+      if SQLLocate('PRODUTO','PRODICOD','PRODCSERVICO',DataSet.FieldByName('PRODICOD').AsString) = 'S' then
+        DataSet.FieldByName('NFITN2VLRISSQN').AsFloat := TOTALITEM * (DataSet.FieldByName('NFITN2PERCISSQN').AsFloat / 100)
+      else
+        DataSet.FieldByName('NFITN2VLRISSQN').AsFloat := 0;
+      if (SQLLocate('OPERACAOESTOQUE','OPESICOD','OPESCCALCICMS',DataSource.DataSet.FieldByName('OPESICOD').AsString) = 'S') and
+         (DataSet.FieldByName('NFITN2PERCICMS').AsFloat > 0) then
+        begin
+          DataSet.FieldByName('NFITN2BASEICMS').AsFloat := TOTALITEM;
+
+          // CALCULAR NOVA BASE DE ICMS BASEADO EM OUTRO CAMPO NO ICMS
+          try
+            REDUCAO := StrToFloat(SQLLocate('ICMS','ICMSICOD','ICMSN2REDBASEICMS',SQLLocate('PRODUTO','PRODICOD','ICMSICOD',DataSet.FieldByName('PRODICOD').AsString)));
+          except
+            REDUCAO := 0;
+          end;
+          if REDUCAO > 0 then
+            begin
+              DataSet.FieldByName('NFITN2BASEICMS').AsFloat := TOTALITEM * (REDUCAO / 100);
+            end;
+
+          DataSet.FieldByName('NFITN2VLRICMS').AsFloat := DataSet.FieldByName('NFITN2BASEICMS').AsFloat * (DataSet.FieldByName('NFITN2PERCICMS').AsFloat / 100);
+          if DataSet.FieldByName('NFITN2PERCSUBS').AsFloat > 0 then
+            begin
+              DataSet.FieldByName('NFITN2BASESUBS').AsFloat := TOTALITEM * (DataSet.FieldByName('NFITN2PERCREDUCAO').AsFloat / 100) * (1 + (DataSet.FieldByName('NFITN2PERCSUBS').AsFloat/100));
+              DataSet.FieldByName('NFITN2VLRSUBS').AsFloat := (DataSet.FieldByName('NFITN2BASESUBS').AsFloat * (DataSet.FieldByName('NFITN2PERCICMS').AsFloat / 100)) - DataSet.FieldByName('NFITN2VLRICMS').AsFloat;
+            end
+          else
+            begin
+              DataSet.FieldByName('NFITN2BASESUBS').AsFloat := 0;
+              DataSet.FieldByName('NFITN2VLRSUBS').AsFloat := 0;
+            end;
+        end;
+  end;
+end;
+
+
+
 end.
+
