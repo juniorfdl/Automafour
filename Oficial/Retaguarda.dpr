@@ -188,7 +188,11 @@ uses
   TelaCalculoComissao in 'Utilitarios\TelaCalculoComissao.pas' {FormTelaCalculoComissao},
   CadastroVendedorComissao in 'ArquivosComuns\CadastroVendedorComissao.pas' {FormCadastroVendedorComissao},
   TelaImpressaoDadosVenda in 'ArquivosComuns\TelaImpressaoDadosVenda.pas' {FormTelaImpressaoDadosVenda},
-  TelaQuitacaoComissoes in 'Utilitarios\TelaQuitacaoComissoes.pas' {FormTelaQuitacaoComissoes};
+  TelaQuitacaoComissoes in 'Utilitarios\TelaQuitacaoComissoes.pas' {FormTelaQuitacaoComissoes},
+  TelaBaixarDocumentosPagar in 'Financeiro\TelaBaixarDocumentosPagar.pas' {FormTelaBaixarDocumentosPagar},
+  TelaBaixarDocumentosPlanoConta in 'Financeiro\TelaBaixarDocumentosPlanoConta.pas' {FormTelaBaixarDocumentosPlanoConta},
+  CadastroRecibo in 'Financeiro\CadastroRecibo.pas' {FormCadastroRecibo},
+  TelaBaixarDocumentosPagarPagamento in 'Financeiro\TelaBaixarDocumentosPagarPagamento.pas' {FormTelaBaixaDocumentosPagarPagamento};
 
 {$R *.res}
 

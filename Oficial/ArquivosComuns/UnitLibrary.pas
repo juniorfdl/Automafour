@@ -229,11 +229,21 @@ function  RetornaUltimaCompraCliente(Cliente, Vendedor :String) : TinfoRetornoUl
 function CancelamentoCupom(Documento, Usuario:string) : boolean ;
 function AbreFechaDataset(ADataSet: TDataSet; AAbrir: Boolean= True; AAtualizar: Boolean = False): Boolean;
 function MontaDataSQL(ACampo: String; ADe, AAte: TDate): String;                     
+Procedure AtualizaCampoChequeEmitidoCabecalhoContasPagar(IDCheque,IDContasPagar : String) ;
 
 
 implementation
 
 uses DataModulo, TelaAutenticaUsuario;
+
+Procedure AtualizaCampoChequeEmitidoCabecalhoContasPagar(IDCheque,IDContasPagar : String) ;
+begin
+  DM.SQLTemplate.Close;
+  DM.SQLTemplate.SQL.Clear;
+  DM.SQLTemplate.SQL.Add('Update ContasPagar Set CQEMA13ID = ''' + IDChequeEmitido + ''', Pendente=''S'' where CTPGA13ID = ''' +  IDContasPagar + '''');
+  DM.SQLTemplate.ExecSQL;
+end;
+
 
 function MontaDataSQL(ACampo: String; ADe, AAte: TDate): String;
 begin
@@ -994,6 +1004,9 @@ Var
   SQLPreco:TQuery;
 begin
   PrecoOk := False;
+
+  if trim(TabelaPrecoCliente) = '' then
+    TabelaPrecoCliente := '0';
 
   SQLPreco := ExecSql(' select * from TABELAPRECOPRODUTO Where PRODICOD= '
     +IntToStr(QueryProduto.FindField('PRODICOD').asInteger)+' AND TPRCICOD = '+ TabelaPrecoCliente);

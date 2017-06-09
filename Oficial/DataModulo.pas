@@ -336,6 +336,7 @@ type
     TblTicketPreVendaFinNumerario: TStringField;
     TblTicketPreVendaFinTipopadrao: TStringField;
     TblTicketPreVendaFinBonusTroca: TStringField;
+    SQLConfigFinanceiro: TRxQuery;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

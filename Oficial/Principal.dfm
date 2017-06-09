@@ -2578,8 +2578,9 @@ inherited FormPrincipal: TFormPrincipal
           Caption = 'Lan'#231'amentos de Contas a Pagar'
           OnClick = MnFINPagarLancamentosClick
         end
-        object BaixadeContasaPagar1: TMenuItem
+        object MnFINPagarBaixarDocumentos: TMenuItem
           Caption = 'Baixa de Contas a Pagar'
+          OnClick = MnFINPagarBaixarDocumentosClick
         end
       end
       object Receber1: TMenuItem

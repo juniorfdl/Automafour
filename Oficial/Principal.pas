@@ -23,7 +23,7 @@ type
     ResumoFinanceiro1: TMenuItem;
     Pagar1: TMenuItem;
     MnFINPagarLancamentos: TMenuItem;
-    BaixadeContasaPagar1: TMenuItem;
+    MnFINPagarBaixarDocumentos: TMenuItem;
     Receber1: TMenuItem;
     LanamentosdeContasaReceber1: TMenuItem;
     BaixadeContasaReceber1: TMenuItem;
@@ -356,6 +356,7 @@ type
     procedure mnQuitaoComissesClick(Sender: TObject);
     procedure MnADMUtilitariosApagarPreVendasImportadasClick(Sender: TObject);
     procedure ApagarOramento30Dias1Click(Sender: TObject);
+    procedure MnFINPagarBaixarDocumentosClick(Sender: TObject);
   private
     procedure ApagarOrcamentos;
     procedure ApagarPreVendas;
@@ -391,7 +392,7 @@ uses
   RelatorioDivergenciaInventario, TelaZerarSaldoEstoque,
   TelaProdutosSemMovimento, TelaManutencaoProdutos,
   CadastroManutencaoCupom, TelaCalculoComissao, CadastroVendedorComissao,
-  TelaQuitacaoComissoes;
+  TelaQuitacaoComissoes, TelaBaixarDocumentosPagar;
 
 
 
@@ -1702,6 +1703,18 @@ begin
   else
     if Pergunta('Nao','Deseja apagar os Orçamentos com mais de trinta dias.') then
       ApagarOrcamentos;
+end;
+
+procedure TFormPrincipal.MnFINPagarBaixarDocumentosClick(Sender: TObject);
+begin
+  inherited;
+  if dm.SQLLocate('USUARIO','USUAICOD','USUACBXCPAGFIN',INTTOSTR(UsuarioCorrente)) <> 'S' then
+    Showmessage('Você não possui acesso a esta rotina! Entre em contato com o administrador do sistema!')
+  else
+    if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+      CriaFormulario(TFormTelaBaixarDocumentosPagar, 'FormTelaBaixarDocumentosPagar',False,False,False,'')
+    else
+      SoundPlay('Acesso Negado.wav',Sender);
 end;
 
 end.

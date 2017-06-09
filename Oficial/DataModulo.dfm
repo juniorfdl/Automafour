@@ -3260,4 +3260,12 @@ inherited DM: TDM
       Size = 1
     end
   end
+  object SQLConfigFinanceiro: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'select * from CONFIGFINANCEIRO')
+    Macros = <>
+    Left = 30
+    Top = 404
+  end
 end
