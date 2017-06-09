@@ -65,7 +65,7 @@ begin
       Query := TQuery.Create(DM);
       Query.DatabaseName := 'DB';
       Query.SQL.Clear;
-      Query.SQL.ADD('SELECT PRODICOD, PRODA60DESCR, PRODA60REFER, PRODA15CODANT FROM PRODUTO WHERE PRODA15CODANT = "' + CodAntigo + '"');
+      Query.SQL.ADD('SELECT PRODICOD, PRODA60DESCR, PRODA60REFER, PRODA15CODANT FROM PRODUTO WHERE PRODA15CODANT = ''' + CodAntigo + '''');
       Query.SQL.ADD(' AND PRODICOD = PRODIAGRUPGRADE');
       Query.Open;
       Query.Last;
@@ -120,7 +120,7 @@ begin
       Query := TQuery.Create(DM);
       Query.DatabaseName := 'DB';
       Query.SQL.Clear;
-      Query.SQL.ADD('SELECT PRODICOD, PRODA60DESCR, PRODA60REFER, PRODA15CODANT FROM PRODUTO WHERE PRODA60REFER = "' + CodReferencia + '"');
+      Query.SQL.ADD('SELECT PRODICOD, PRODA60DESCR, PRODA60REFER, PRODA15CODANT FROM PRODUTO WHERE PRODA60REFER = ''' + CodReferencia + '''');
       Query.SQL.ADD(' AND PRODICOD = PRODIAGRUPGRADE');
       Query.Open;
       Query.Last;

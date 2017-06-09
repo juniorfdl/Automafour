@@ -607,7 +607,7 @@ begin
   dm.sqlconsulta.RequestLive := False;
   dm.sqlconsulta.sql.add('Select i.*, p.proda60descr, P.PRODA60REFER, p.marcicod, p.coricod from  pedidocompraitem i ');
   dm.sqlconsulta.sql.add('left join produto p on p.prodicod = i.prodicod ');
-  dm.sqlconsulta.sql.add('where PDCPA13ID = "'+DSMasterTemplate.DataSet.FieldByName('PDCPA13ID').AsString+'"');
+  dm.sqlconsulta.sql.add('where PDCPA13ID = '''+DSMasterTemplate.DataSet.FieldByName('PDCPA13ID').AsString+'''');
   dm.sqlconsulta.Open;
   Application.CreateForm(TFormTelaPedidoCompraItemFiltro,FormTelaPedidoCompraItemFiltro);
   FormTelaPedidoCompraItemFiltro.ComboFornecedor.Value := DSMasterTemplate.DataSet.FieldByName('FORNICOD').AsString;
@@ -657,14 +657,14 @@ begin
           dm.SQLTemplate.Close;
           dm.SQLTemplate.SQL.Clear;
           dm.SQLTemplate.SQL.add('Delete from PedidoCompraItem');
-          dm.SQLTemplate.SQL.add('Where PDCPA13ID = "'+ DSMasterTemplate.DataSet.FieldByName('PDCPA13ID').AsString+'"');
+          dm.SQLTemplate.SQL.add('Where PDCPA13ID = '''+ DSMasterTemplate.DataSet.FieldByName('PDCPA13ID').AsString+'''');
           dm.SQLTemplate.ExecSQL;
         end;
 
       dm.SQLConsulta.close;
       dm.SQLConsulta.RequestLive := true;
       dm.SQLConsulta.sql.clear;
-      dm.SQLConsulta.sql.Text := 'select * from pedidocompraitem where PDCPA13ID="'+DSMasterTemplate.DataSet.FieldByName('PDCPA13ID').AsString+'"';
+      dm.SQLConsulta.sql.Text := 'select * from pedidocompraitem where PDCPA13ID='''+DSMasterTemplate.DataSet.FieldByName('PDCPA13ID').AsString+'''';
       dm.SQLConsulta.Open;
       FormTelaPedidoCompraItemFiltro.TblTempComprados.first;
       While Not FormTelaPedidoCompraItemFiltro.TblTempComprados.Eof Do

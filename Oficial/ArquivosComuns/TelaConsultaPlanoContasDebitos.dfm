@@ -57,8 +57,8 @@ inherited FormTelaConsultaPlanoContasDebitos: TFormTelaConsultaPlanoContasDebito
       '  PLANODECONTAS '
       'Where '
       '  (%MFiltro) and'
-      '  PLCTCANALSINT = "A" and'
-      '  (PLCTCTIPOSALDO = "D" or PLCTCTIPOSALDO = "A")')
+      '  PLCTCANALSINT = ''A'' and'
+      '  (PLCTCTIPOSALDO = ''D'' or PLCTCTIPOSALDO = ''A'')')
     object SQLTemplatePLCTA15COD: TStringField
       DisplayLabel = 'Conta'
       FieldName = 'PLCTA15COD'

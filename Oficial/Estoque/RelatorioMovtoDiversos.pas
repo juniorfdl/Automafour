@@ -75,10 +75,10 @@ begin
   inherited;
   SQLMovimentos.Close ;
   SQLMovimentos.MacrobyName('MEmpresa').Value := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'MOVIMENTODIVERSO', '') ;
-  SQLMovimentos.MacrobyName('MData').Value    := 'MOVIMENTODIVERSO.MOVDDMOVIMENTO >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                 'MOVIMENTODIVERSO.MOVDDMOVIMENTO <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
+  SQLMovimentos.MacrobyName('MData').Value    := 'MOVIMENTODIVERSO.MOVDDMOVIMENTO >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                 'MOVIMENTODIVERSO.MOVDDMOVIMENTO <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
   if ComboCliente.Text <> '' then
-    SQLMovimentos.MacrobyName('MCliente').Value := 'MOVIMENTODIVERSO.CLIEA13ID = ' + '"' + ComboCliente.Value + '"'
+    SQLMovimentos.MacrobyName('MCliente').Value := 'MOVIMENTODIVERSO.CLIEA13ID = ' + '''' + ComboCliente.Value + ''''
   else
     SQLMovimentos.MacrobyName('MCliente').Value := '0=0';
 
@@ -93,7 +93,7 @@ begin
     SQLMovimentos.MacrobyName('Mid').Value := '0=0';
 
   if not CKConcluido.Checked then
-    SQLMovimentos.MacrobyName('MStatus').Value := 'MOVIMENTODIVERSO.MOVDCCONLUIDO = "S"'
+    SQLMovimentos.MacrobyName('MStatus').Value := 'MOVIMENTODIVERSO.MOVDCCONLUIDO = ''S'''
   else
     SQLMovimentos.MacrobyName('MStatus').Value := '0=0';
 
@@ -136,20 +136,20 @@ begin
   Report.Formulas.Retrieve ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Empresa' ;
-  Report.Formulas.Formula.Text := '"' + ComboEmpresa.Text + '"' ;
+  Report.Formulas.Formula.Text := '''' + ComboEmpresa.Text + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Emissao' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'PeriodoEmissao' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
-                                  FormatDateTime('dd/mm/yyyy', Ate.Date) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
+                                  FormatDateTime('dd/mm/yyyy', Ate.Date) + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name := 'Cliente' ;
   if ComboCliente.Text <> '' then
-    Report.Formulas.Formula.Text := '"' + ComboCliente.Text + '"'
+    Report.Formulas.Formula.Text := '''' + ComboCliente.Text + ''''
   else
-    Report.Formulas.Formula.Text := '"Todos"' ;
+    Report.Formulas.Formula.Text := '''Todos''' ;
   //--------------------------------------------------------------------------\\
 
   Report.Execute ;

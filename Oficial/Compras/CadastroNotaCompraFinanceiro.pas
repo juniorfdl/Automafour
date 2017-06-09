@@ -233,7 +233,7 @@ begin
   SQLGeral.Close ;
   SQLGeral.SQL.Clear ;
   SQLGeral.SQL.Add('select Max(CTPGINROPARC) As Parcela from CONTASPAGAR') ;
-  SQLGeral.SQL.Add('where NOCPA13ID = "'+DataSet.DataSource.DataSet.FindField('NOCPA13ID').asString+'"');
+  SQLGeral.SQL.Add('where NOCPA13ID = '''+DataSet.DataSource.DataSet.FindField('NOCPA13ID').asString+'''');
   SQLGeral.Open ;
   if SQLGeral.FieldByName('Parcela').Value > 0 then
     SQLTemplateCTPGINROPARC.Value := SQLGeral.FieldByName('Parcela').Value + 1
@@ -330,7 +330,7 @@ var
 begin
   inherited;
   SQLEspelhoNovoLanc.Close ;
-  SQLEspelhoNovoLanc.MacroByName('MFiltro').Value := 'CTPGA13ID = "' + SQLTemplateCTPGA13ID.Value + '"' ;
+  SQLEspelhoNovoLanc.MacroByName('MFiltro').Value := 'CTPGA13ID = ''' + SQLTemplateCTPGA13ID.Value + '''' ;
   SQLEspelhoNovoLanc.Open ;
 
   SQLTemplate.Append ;

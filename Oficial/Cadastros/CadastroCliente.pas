@@ -1159,14 +1159,14 @@ begin
   DM.SQLTemplate.SQL.Add('Sum(CTRCN2VLR-CTRCN2TOTREC) as TOTALAPAGAR,') ;
   DM.SQLTemplate.SQL.Add('Sum(CTRCN2TOTREC) as TOTALPAGO') ;
   DM.SQLTemplate.SQL.Add('From CONTASRECEBER');
-  DM.SQLTemplate.SQL.Add('Where CLIEA13ID = "' + SQLTemplateCLIEA13ID.AsString + '"') ;
-  DM.SQLTemplate.SQL.Add(' And (CTRCCSTATUS = "A" OR CTRCCSTATUS = "N")') ;
-  DM.SQLTemplate.SQL.Add(' And (PDVDA13ID = "" OR PDVDA13ID is Null)') ;
+  DM.SQLTemplate.SQL.Add('Where CLIEA13ID = ''' + SQLTemplateCLIEA13ID.AsString + '''') ;
+  DM.SQLTemplate.SQL.Add(' And (CTRCCSTATUS = ''A'' OR CTRCCSTATUS = ''N'')') ;
+  DM.SQLTemplate.SQL.Add(' And (PDVDA13ID = '''' OR PDVDA13ID is Null)') ;
   if RadioSomenteParcelasAbertas.Checked then
     Dm.SQLTemplate.SQL.Add(' and (CONTASRECEBER.CTRCN2VLR-CONTASRECEBER.CTRCN2TOTREC>0) ');
   if RadioIgnoracheque.Checked then
-    Dm.SQLTemplate.SQL.Add(' and ( CONTASRECEBER.CTRCA5TIPOPADRAO <> "CHQ") ');
-//  DM.SQLTemplate.SQL.Add(' And (CTRCCTIPOREGISTRO = "N" OR CTRCCTIPOREGISTRO is Null or CTRCCTIPOREGISTRO = "") And (PDVDA13ID = "" OR PDVDA13ID is Null)') ;
+    Dm.SQLTemplate.SQL.Add(' and ( CONTASRECEBER.CTRCA5TIPOPADRAO <> ''CHQ'') ');
+//  DM.SQLTemplate.SQL.Add(' And (CTRCCTIPOREGISTRO = ''N'' OR CTRCCTIPOREGISTRO is Null or CTRCCTIPOREGISTRO = '''') And (PDVDA13ID = '''' OR PDVDA13ID is Null)') ;
   DM.SQLTemplate.Open ;
   if DM.SQLTemplate.FieldByName('TOTALJUROS').Value > 0 then
     TotalJuros.Value    := DM.SQLTemplate.FieldByName('TOTALJUROS').Value ;
@@ -1182,14 +1182,14 @@ begin
   DM.SQLTemplate.SQL.Add('select') ;
   DM.SQLTemplate.SQL.Add('Count(*) as NROPARCVENC') ;
   DM.SQLTemplate.SQL.Add('from CONTASRECEBER') ;
-  DM.SQLTemplate.SQL.Add('where CLIEA13ID = "' + SQLTemplateCLIEA13ID.AsString + '"') ;
+  DM.SQLTemplate.SQL.Add('where CLIEA13ID = ''' + SQLTemplateCLIEA13ID.AsString + '''') ;
   DM.SQLTemplate.SQL.Add(' and (CTRCN2VLR-CTRCN2TOTREC) > 0') ;
-  DM.SQLTemplate.SQL.Add(' and (CTRCCSTATUS = "A" OR CTRCCSTATUS = "N")') ;
-  DM.SQLTemplate.SQL.Add(' and (PDVDA13ID = "" OR PDVDA13ID is Null)') ;
+  DM.SQLTemplate.SQL.Add(' and (CTRCCSTATUS = ''A'' OR CTRCCSTATUS = ''N'')') ;
+  DM.SQLTemplate.SQL.Add(' and (PDVDA13ID = '''' OR PDVDA13ID is Null)') ;
   if RadioIgnoracheque.Checked then
-    Dm.SQLTemplate.SQL.Add(' and (CONTASRECEBER.CTRCA5TIPOPADRAO <> "CHQ") ');
+    Dm.SQLTemplate.SQL.Add(' and (CONTASRECEBER.CTRCA5TIPOPADRAO <> ''CHQ'') ');
 
-  //  DM.SQLTemplate.SQL.Add(' and (CTRCCTIPOREGISTRO = "N" OR CTRCCTIPOREGISTRO is Null or CTRCCTIPOREGISTRO = "") and (PDVDA13ID = "" or PDVDA13ID is null)') ;
+  //  DM.SQLTemplate.SQL.Add(' and (CTRCCTIPOREGISTRO = ''N'' OR CTRCCTIPOREGISTRO is Null or CTRCCTIPOREGISTRO = '''') and (PDVDA13ID = '''' or PDVDA13ID is null)') ;
   DM.SQLTemplate.Open ;
   if DM.SQLTemplate.FieldByName('NROPARCVENC').Value > 0 then
     NroParcelasAbertas.Value := DM.SQLTemplate.FieldByName('NROPARCVENC').Value ;
@@ -1199,10 +1199,10 @@ begin
   DM.SQLTemplate.SQL.Add('select Count(CLIEA13ID) as NROCOMPRAS,') ;
   DM.SQLTemplate.SQL.Add('sum(CUPON2TOTITENS+CUPON3CREDTAXA+CUPON2ACRESC-CUPON2DESC-CUPON3BONUSTROCA) as TOTALCOMPRAS') ;
   DM.SQLTemplate.SQL.Add('from CUPOM') ;
-  DM.SQLTemplate.SQL.Add('where CLIEA13ID = "' + SQLTemplateCLIEA13ID.AsString + '"') ;
-  DM.SQLTemplate.SQL.Add(' and (CUPOCSTATUS = "A" or CUPOCSTATUS = "N")') ;
+  DM.SQLTemplate.SQL.Add('where CLIEA13ID = ''' + SQLTemplateCLIEA13ID.AsString + '''') ;
+  DM.SQLTemplate.SQL.Add(' and (CUPOCSTATUS = ''A'' or CUPOCSTATUS = ''N'')') ;
   if RadioIgnoracheque.Checked then
-    Dm.SQLTemplate.SQL.Add(' and (CUPOCTIPOPADRAO NOT CONTAINING "CHQ") ');
+    Dm.SQLTemplate.SQL.Add(' and (CUPOCTIPOPADRAO NOT CONTAINING ''CHQ'') ');
 
   DM.SQLTemplate.Open ;
   if DM.SQLTemplate.FieldByName('NROCOMPRAS').Value > 0 then
@@ -1211,10 +1211,10 @@ begin
     TotalCompras.Value := DM.SQLTemplate.FieldByName('TOTALCOMPRAS').Value ;
 
   SQLParcelas.Close ;
-  SQLParcelas.MacroByName('MCliente').Value  := 'CONTASRECEBER.CLIEA13ID = "' + SQLTemplateCLIEA13ID.AsString + '"' ;
-  SQLParcelas.MacroByName('MCliente2').Value := 'CUPOM.CLIEA13ID = "' + SQLTemplateCLIEA13ID.AsString + '"' ;
+  SQLParcelas.MacroByName('MCliente').Value  := 'CONTASRECEBER.CLIEA13ID = ''' + SQLTemplateCLIEA13ID.AsString + '''' ;
+  SQLParcelas.MacroByName('MCliente2').Value := 'CUPOM.CLIEA13ID = ''' + SQLTemplateCLIEA13ID.AsString + '''' ;
   if RadioIgnoracheque.Checked then
-    SQLParcelas.MacroByName('MCheques').Value := ' CONTASRECEBER.CTRCA5TIPOPADRAO <> "CHQ" '
+    SQLParcelas.MacroByName('MCheques').Value := ' CONTASRECEBER.CTRCA5TIPOPADRAO <> ''CHQ'' '
   Else
     SQLParcelas.MacroByName('MCheques').Value := '0=0';
 
@@ -1389,14 +1389,14 @@ begin
   SQLGeral.Close ;
   SQLGeral.SQL.Clear ;
   SQLGeral.SQL.Add('select sum(CTRCDULTREC-CTRCDVENC) TotDias, count(CTRCA13ID) as NroParc from CONTASRECEBER');
-  SQLGeral.SQL.Add('where CLIEA13ID = "' + SQLTemplateCLIEA13ID.AsString + '" and');
+  SQLGeral.SQL.Add('where CLIEA13ID = ''' + SQLTemplateCLIEA13ID.AsString + ''' and');
   SQLGeral.SQL.Add('not (CTRCDULTREC is null) and') ;
   SQLGeral.SQL.Add('CTRCDULTREC > CTRCDVENC and') ;
-  SQLGeral.SQL.Add('CTRCDVENC < "' + FormatDateTime('mm/dd/yyyy', DataBase) + '"');
-  SQLGeral.SQL.Add(' and (CTRCCSTATUS = "A" OR CTRCCSTATUS = "N")') ;
-  SQLGeral.SQL.Add(' and (PDVDA13ID = "" OR PDVDA13ID is Null)') ;
+  SQLGeral.SQL.Add('CTRCDVENC < ''' + FormatDateTime('mm/dd/yyyy', DataBase) + '''');
+  SQLGeral.SQL.Add(' and (CTRCCSTATUS = ''A'' OR CTRCCSTATUS = ''N'')') ;
+  SQLGeral.SQL.Add(' and (PDVDA13ID = '''' OR PDVDA13ID is Null)') ;
   if RadioIgnoracheque.Checked then
-    Dm.SQLTemplate.SQL.Add(' and (CTRCA5TIPOPADRAO <> "CHQ" ) ');
+    Dm.SQLTemplate.SQL.Add(' and (CTRCA5TIPOPADRAO <> ''CHQ'' ) ');
   SQLGeral.Open ;
   if SQLGeral.FieldByName('TotDias').Value > 0 then
     TotDiasAtraso := TotDiasAtraso + SQLGeral.FieldByName('TotDias').Value ;
@@ -1405,14 +1405,14 @@ begin
   //PARCELAS VENCIDAS Nï¿½O PAGAS
   SQLGeral.Close ;
   SQLGeral.SQL.Clear ;
-  SQLGeral.SQL.Add('Select Sum("' + FormatDateTime('mm/dd/yyyy', DataBase) + '" -CTRCDVENC) TotDias, count(CTRCA13ID) as NroParc from CONTASRECEBER') ;
-  SQLGeral.SQL.Add('Where CLIEA13ID = "' + SQLTemplateCLIEA13ID.AsString + '" and') ;
+  SQLGeral.SQL.Add('Select Sum(''' + FormatDateTime('mm/dd/yyyy', DataBase) + ''' -CTRCDVENC) TotDias, count(CTRCA13ID) as NroParc from CONTASRECEBER') ;
+  SQLGeral.SQL.Add('Where CLIEA13ID = ''' + SQLTemplateCLIEA13ID.AsString + ''' and') ;
   SQLGeral.SQL.Add(' (CTRCDULTREC is null) and') ;
-  SQLGeral.SQL.Add(' CTRCDVENC < "' + FormatDateTime('mm/dd/yyyy', DataBase) + '"') ;
-  SQLGeral.SQL.Add(' and (CTRCCSTATUS = "A" OR CTRCCSTATUS = "N")') ;
-  SQLGeral.SQL.Add(' and (PDVDA13ID = "" OR PDVDA13ID is Null)') ;
+  SQLGeral.SQL.Add(' CTRCDVENC < ''' + FormatDateTime('mm/dd/yyyy', DataBase) + '''') ;
+  SQLGeral.SQL.Add(' and (CTRCCSTATUS = ''A'' OR CTRCCSTATUS = ''N'')') ;
+  SQLGeral.SQL.Add(' and (PDVDA13ID = '''' OR PDVDA13ID is Null)') ;
   if RadioIgnoracheque.Checked then
-    Dm.SQLTemplate.SQL.Add(' and (CTRCA5TIPOPADRAO <> "CHQ") ');
+    Dm.SQLTemplate.SQL.Add(' and (CTRCA5TIPOPADRAO <> ''CHQ'') ');
   SQLGeral.Open ;
   if SQLGeral.FieldByName('TotDias').Value > 0 then
     TotDiasAtraso := TotDiasAtraso + SQLGeral.FieldByName('TotDias').Value ;
@@ -1493,7 +1493,7 @@ begin
 
   {Calcula Totais tabela credito cliente}
   dm.sqlconsulta.close;
-  dm.sqlconsulta.sql.text := 'select sum(valorcredito) as TotalCredito, sum(valordebito) as TotalDebito, sum(valorcredito-ValorDebito) as Saldo from CLIENTECREDITO where cliea13id = "'+SQLtemplateCLIEA13ID.value+'"';
+  dm.sqlconsulta.sql.text := 'select sum(valorcredito) as TotalCredito, sum(valordebito) as TotalDebito, sum(valorcredito-ValorDebito) as Saldo from CLIENTECREDITO where cliea13id = '''+SQLtemplateCLIEA13ID.value+'''';
   dm.sqlconsulta.open;
   try TotalCreditosAntecipados.Value := dm.sqlconsulta.findfield('TotalCredito').Value; except TotalCreditosAntecipados.Value      := 0; end;
   try TotalDebitosAntecipados.Value  := dm.sqlconsulta.findfield('TotalDebito').Value;  except TotalDebitosAntecipados.Value       := 0; end;
@@ -1625,7 +1625,7 @@ begin
       MontaDadosCheque;
 
       sqlCredito.Close;
-      sqlCredito.MacroByName('MFiltro').AsString := 'CLIEA13ID = "' + SQLTEMPLATECLIEA13ID.Value + '"' ;
+      sqlCredito.MacroByName('MFiltro').AsString := 'CLIEA13ID = ''' + SQLTEMPLATECLIEA13ID.Value + '''' ;
       sqlCredito.Open;
 
       if not Dm.SQLConfigVenda.Active then Dm.SQLConfigVenda.Open;
@@ -1641,7 +1641,7 @@ begin
       PagePrincipal.ActivePage := TabSheetItens;
       MontaDadosCompra;
       sqlCredito.Close;
-      sqlCredito.MacroByName('MFiltro').AsString := 'CLIEA13ID = "' + SQLTEMPLATECLIEA13ID.Value + '"' ;
+      sqlCredito.MacroByName('MFiltro').AsString := 'CLIEA13ID = ''' + SQLTEMPLATECLIEA13ID.Value + '''' ;
       sqlCredito.Open;
 
     end ;
@@ -1709,14 +1709,14 @@ begin
 
     if SQLTemplate.FieldByName('CLIEA60RAZAOSOC').AsString <> '' then
       begin
-        IdCliente := SQLLocate('CLIENTE','CLIEA60RAZAOSOC','CLIEA13ID','"' + SQLTemplate.FieldByName('CLIEA60RAZAOSOC').AsString + '"');
+        IdCliente := SQLLocate('CLIENTE','CLIEA60RAZAOSOC','CLIEA13ID','''' + SQLTemplate.FieldByName('CLIEA60RAZAOSOC').AsString + '''');
         if IdCliente <> '' then
           begin
             if not Pergunta('NAO','O Sistema verificou que jï¿½ existe no ID = '+IdCliente+' um Cliente com este Nome/Razï¿½o Social. Deseja Continuar Mesmo Assim ?') then
               Abort;
           end;
         IdCliente := '';
-        IdCliente := SQLLocate('CLIENTEDEPENDENTE','CLDPA60NOME','CLIEA13ID','"' + SQLTemplate.FieldByName('CLIEA60RAZAOSOC').AsString + '"');
+        IdCliente := SQLLocate('CLIENTEDEPENDENTE','CLDPA60NOME','CLIEA13ID','''' + SQLTemplate.FieldByName('CLIEA60RAZAOSOC').AsString + '''');
         if IdCliente <> '' then
           begin
             if not Pergunta('NAO','O Sistema verificou que jï¿½ existe no ID = '+IdCliente+' um Dependente com este Nome/Razï¿½o Social. Deseja Continuar Mesmo Assim ?') then
@@ -1765,7 +1765,7 @@ begin
       Informa('O CCG não foi informado !');
 
   if CPFAlterado then
-    if SQLLocate('CLIENTE', 'CLIEA11CPF', 'CLIEA11CPF', '"' + DataSet.FieldByName('CLIEA11CPF').AsString + '"') <> '' then
+    if SQLLocate('CLIENTE', 'CLIEA11CPF', 'CLIEA11CPF', '''' + DataSet.FieldByName('CLIEA11CPF').AsString + '''') <> '' then
       begin
         if not Pergunta('NAO','O Sistema verificou que jï¿½ existe um cliente com este CPF. Deseja Continuar Mesmo Assim ?') then
           begin
@@ -1775,7 +1775,7 @@ begin
       end ;
 
   if RGAlterado then
-    if SQLLocate('CLIENTE', 'CLIEA10RG', 'CLIEA10RG', '"' + DataSet.FieldByName('CLIEA10RG').AsString + '"') <> '' then
+    if SQLLocate('CLIENTE', 'CLIEA10RG', 'CLIEA10RG', '''' + DataSet.FieldByName('CLIEA10RG').AsString + '''') <> '' then
       begin
         if not Pergunta('NAO','O Sistema verificou que jï¿½ existe um cliente com este RG. Deseja Continuar Mesmo Assim ?') then
           begin
@@ -1785,7 +1785,7 @@ begin
       end ;
 
   if CGCAlterado then
-    if SQLLocate('CLIENTE', 'CLIEA14CGC', 'CLIEA14CGC', '"' + DataSet.FieldByName('CLIEA14CGC').AsString + '"') <> '' then
+    if SQLLocate('CLIENTE', 'CLIEA14CGC', 'CLIEA14CGC', '''' + DataSet.FieldByName('CLIEA14CGC').AsString + '''') <> '' then
       begin
         if not Pergunta('NAO','O Sistema verificou que jï¿½ existe um cliente com este CNPJ. Deseja Continuar Mesmo Assim ?') then
           begin
@@ -1836,7 +1836,7 @@ begin
     MontaDadosCompra;
     MontaDadosCheque;
     sqlCredito.Close;
-    sqlCredito.MacroByName('MFiltro').AsString := 'CLIEA13ID = "' + SQLTEMPLATECLIEA13ID.Value + '"' ;
+    sqlCredito.MacroByName('MFiltro').AsString := 'CLIEA13ID = ''' + SQLTEMPLATECLIEA13ID.Value + '''' ;
     sqlCredito.Open;
 
     if not Dm.SQLConfigVenda.Active then Dm.SQLConfigVenda.Open;
@@ -1893,8 +1893,8 @@ begin
     SQLGeral.Close ;
     SQLGeral.SQL.Clear ;
     SQLGeral.SQL.Add('select * from CUPOMNUMERARIO') ;
-    SQLGeral.SQL.Add('where CUPOA13ID = "' + SQLDadosCompraCUPOA13ID.AsString + '"') ;
-//    SQLGeral.SQL.Add('and   CPNMCAUTENT <> "S"') ;
+    SQLGeral.SQL.Add('where CUPOA13ID = ''' + SQLDadosCompraCUPOA13ID.AsString + '''') ;
+//    SQLGeral.SQL.Add('and   CPNMCAUTENT <> ''S''') ;
     SQLGeral.Open ;
     SQLGeral.First ;
     VlrVista := 0 ;
@@ -1904,7 +1904,7 @@ begin
         SQLGeral.Next ;
       end ;
 
-    NroCupom := SQLLocate('CUPOM', 'CUPOA13ID', 'CUPOINRO',  '"' + SQLDadosCompraCUPOA13ID.AsString + '"') ;
+    NroCupom := SQLLocate('CUPOM', 'CUPOA13ID', 'CUPOINRO',  '''' + SQLDadosCompraCUPOA13ID.AsString + '''') ;
 
     if VlrVista > 0 then
       begin
@@ -1923,7 +1923,7 @@ begin
         TblCarneBairro.AsString         := SQLTemplateCLIEA60CIDRES.AsString ;
         TblCarneCidade.AsString         := SQLTemplateCLIEA60BAIRES.AsString ;
         TblCarneCodigoCliente.AsString  := SQLTemplateCLIEA13ID.AsString ;
-        TblCarneClienteDependente.AsString  := SQLLocate('CUPOM', 'CUPOA13ID', 'CLDPICOD',  '"' + SQLDadosCompraCUPOA13ID.AsString + '"') ;
+        TblCarneClienteDependente.AsString  := SQLLocate('CUPOM', 'CUPOA13ID', 'CLDPICOD',  '''' + SQLDadosCompraCUPOA13ID.AsString + '''') ;
         TblCarneNumeroContrato.AsString := SQLDadosCompraCUPOA13ID.AsString ;
         TblCarneNumeroParcela.Value     := 0 ;
         TblCarneContadorParcelas.Value  := NumParcelas ;
@@ -1931,36 +1931,36 @@ begin
         TblCarneValorParcela.Value      := VlrVista ;
         TblCarneDataEmissao.AsString    := SQLDadosCompraCTRCDEMIS.AsString ;
         TblCarneNroCupom.AsString       := NroCupom ;
-        TblCarneVendedor.AsString       := SQLLocate('VENDEDOR','VENDICOD','VENDA60NOME', SQLLocate('CUPOM','CUPOA13ID','VENDICOD','"' + TblCarneNumeroContrato.AsString + '"'));
-        TblCarneTotalCupom.AsString     := SQLLocate('CUPOM','CUPOA13ID','CUPON2TOTITENS','"' + TblCarneNumeroContrato.AsString + '"');
-        TblCarneAcrescimo.AsString      := SQLLocate('CUPOM','CUPOA13ID','CUPON2ACRESC','"' + TblCarneNumeroContrato.AsString + '"');
-        TblCarneValorDesconto.AsString  := SQLLocate('CUPOM','CUPOA13ID','CUPON2DESC','"' + TblCarneNumeroContrato.AsString + '"');
-        TblCarneTotalCupom.AsString     := SQLLocate('CUPOM','CUPOA13ID','CUPON2TOTITENS','"' + TblCarneNumeroContrato.AsString + '"');
-        TblCarneTaxaCrediario.AsString  := SQLLocate('CUPOM','CUPOA13ID','CUPON3CREDTAXA','"' + TblCarneNumeroContrato.AsString + '"');
+        TblCarneVendedor.AsString       := SQLLocate('VENDEDOR','VENDICOD','VENDA60NOME', SQLLocate('CUPOM','CUPOA13ID','VENDICOD','''' + TblCarneNumeroContrato.AsString + ''''));
+        TblCarneTotalCupom.AsString     := SQLLocate('CUPOM','CUPOA13ID','CUPON2TOTITENS','''' + TblCarneNumeroContrato.AsString + '''');
+        TblCarneAcrescimo.AsString      := SQLLocate('CUPOM','CUPOA13ID','CUPON2ACRESC','''' + TblCarneNumeroContrato.AsString + '''');
+        TblCarneValorDesconto.AsString  := SQLLocate('CUPOM','CUPOA13ID','CUPON2DESC','''' + TblCarneNumeroContrato.AsString + '''');
+        TblCarneTotalCupom.AsString     := SQLLocate('CUPOM','CUPOA13ID','CUPON2TOTITENS','''' + TblCarneNumeroContrato.AsString + '''');
+        TblCarneTaxaCrediario.AsString  := SQLLocate('CUPOM','CUPOA13ID','CUPON3CREDTAXA','''' + TblCarneNumeroContrato.AsString + '''');
         TblCarneTotalCupom.AsString     := FloatToStr(TblCarneTotalCupom.Value + TblCarneTaxaCrediario.Value);
 
         Dm.SQLTemplate.Close;
         Dm.SQLTemplate.SQL.Clear;
-        Dm.SQLTemplate.SQL.Add('SELECT CPNMN2VLR FROM CUPOMNUMERARIO WHERE CONMCSTATUS = "A" AND ');
-        Dm.SQLTemplate.SQL.Add('CUPOA13ID = "' + TblCarneNumeroContrato.AsString + '"');
+        Dm.SQLTemplate.SQL.Add('SELECT CPNMN2VLR FROM CUPOMNUMERARIO WHERE CONMCSTATUS = ''A'' AND ');
+        Dm.SQLTemplate.SQL.Add('CUPOA13ID = ''' + TblCarneNumeroContrato.AsString + '''');
         Dm.SQLTemplate.Open;
         if not Dm.SQLTemplate.IsEmpty then
           TblCarneEntrada.Value           := Dm.SQLTemplate.FieldByName('CPNMN2VLR').AsFloat
         else
           TblCarneEntrada.Value           := 0;
-        TblCarneTaxaCrediario.AsString  := SQLLocate('CUPOM','CUPOA13ID','CUPON3CREDTAXA','"' + TblCarneNumeroContrato.AsString + '"');
-        TblCarnePlano.AsString          := SQLLocate('PLANORECEBIMENTO','PLRCICOD','PLRCA60DESCR',SQLLocate('CUPOM','CUPOA13ID','PLRCICOD','"' + TblCarneNumeroContrato.AsString + '"'));
+        TblCarneTaxaCrediario.AsString  := SQLLocate('CUPOM','CUPOA13ID','CUPON3CREDTAXA','''' + TblCarneNumeroContrato.AsString + '''');
+        TblCarnePlano.AsString          := SQLLocate('PLANORECEBIMENTO','PLRCICOD','PLRCA60DESCR',SQLLocate('CUPOM','CUPOA13ID','PLRCICOD','''' + TblCarneNumeroContrato.AsString + ''''));
 
         TblCarne.Post ;
 
         SQLGeral.Next ;
       end ;
     //GRAVAR PARCELAS A PRAZO NA TABELA TEMPORARIA DE CARNE
-    NumParcelas := NumParcelas + SQLRecCount('CONTASRECEBER', 'where CUPOA13ID = "' + SQLDadosCompraCUPOA13ID.AsString + '"') ;
+    NumParcelas := NumParcelas + SQLRecCount('CONTASRECEBER', 'where CUPOA13ID = ''' + SQLDadosCompraCUPOA13ID.AsString + '''') ;
     SQLGeral.Close ;
     SQLGeral.SQL.Clear ;
     SQLGeral.SQL.Add('select * from CONTASRECEBER') ;
-    SQLGeral.SQL.Add('where CUPOA13ID = "' + SQLDadosCompraCUPOA13ID.AsString + '"') ;
+    SQLGeral.SQL.Add('where CUPOA13ID = ''' + SQLDadosCompraCUPOA13ID.AsString + '''') ;
     SQLGeral.Open ;
     SQLGeral.First ;
 
@@ -1979,7 +1979,7 @@ begin
         TblCarneBairro.AsString         := SQLTemplateCLIEA60CIDRES.AsString ;
         TblCarneCidade.AsString         := SQLTemplateCLIEA60BAIRES.AsString ;
         TblCarneCodigoCliente.AsString  := SQLTemplateCLIEA13ID.AsString ;
-        TblCarneClienteDependente.AsString  := SQLLocate('CUPOM', 'CUPOA13ID', 'CLDPICOD',  '"' + SQLDadosCompraCUPOA13ID.AsString + '"') ;
+        TblCarneClienteDependente.AsString  := SQLLocate('CUPOM', 'CUPOA13ID', 'CLDPICOD',  '''' + SQLDadosCompraCUPOA13ID.AsString + '''') ;
         TblCarneNumeroContrato.AsString := SQLDadosCompraCUPOA13ID.AsString ;
         TblCarneNumeroParcela.AsString  := SQLGeral.FieldByName('CTRCINROPARC').AsString ;
         TblCarneContadorParcelas.Value  := NumParcelas ;
@@ -1987,25 +1987,25 @@ begin
         TblCarneValorParcela.AsString   := SQLGeral.FieldByName('CTRCN2VLR').AsString ;
         TblCarneDataEmissao.AsString    := SQLGeral.FieldByName('CTRCDEMIS').AsString ;
         TblCarneNroCupom.AsString       := NroCupom ;
-        TblCarneVendedor.AsString       := SQLLocate('VENDEDOR','VENDICOD','VENDA60NOME', SQLLocate('CUPOM','CUPOA13ID','VENDICOD','"' + TblCarneNumeroContrato.AsString + '"'));
-        TblCarneTotalCupom.AsString     := SQLLocate('CUPOM','CUPOA13ID','CUPON2TOTITENS','"' + TblCarneNumeroContrato.AsString + '"');
-        TblCarneAcrescimo.AsString      := SQLLocate('CUPOM','CUPOA13ID','CUPON2ACRESC','"' + TblCarneNumeroContrato.AsString + '"');
-        TblCarneValorDesconto.AsString  := SQLLocate('CUPOM','CUPOA13ID','CUPON2DESC','"' + TblCarneNumeroContrato.AsString + '"');
-        TblCarneTotalCupom.AsString     := SQLLocate('CUPOM','CUPOA13ID','CUPON2TOTITENS','"' + TblCarneNumeroContrato.AsString + '"');
-        TblCarneTaxaCrediario.AsString  := SQLLocate('CUPOM','CUPOA13ID','CUPON3CREDTAXA','"' + TblCarneNumeroContrato.AsString + '"');
+        TblCarneVendedor.AsString       := SQLLocate('VENDEDOR','VENDICOD','VENDA60NOME', SQLLocate('CUPOM','CUPOA13ID','VENDICOD','''' + TblCarneNumeroContrato.AsString + ''''));
+        TblCarneTotalCupom.AsString     := SQLLocate('CUPOM','CUPOA13ID','CUPON2TOTITENS','''' + TblCarneNumeroContrato.AsString + '''');
+        TblCarneAcrescimo.AsString      := SQLLocate('CUPOM','CUPOA13ID','CUPON2ACRESC','''' + TblCarneNumeroContrato.AsString + '''');
+        TblCarneValorDesconto.AsString  := SQLLocate('CUPOM','CUPOA13ID','CUPON2DESC','''' + TblCarneNumeroContrato.AsString + '''');
+        TblCarneTotalCupom.AsString     := SQLLocate('CUPOM','CUPOA13ID','CUPON2TOTITENS','''' + TblCarneNumeroContrato.AsString + '''');
+        TblCarneTaxaCrediario.AsString  := SQLLocate('CUPOM','CUPOA13ID','CUPON3CREDTAXA','''' + TblCarneNumeroContrato.AsString + '''');
         TblCarneTotalCupom.AsString     := FloatToStr(TblCarneTotalCupom.Value + TblCarneTaxaCrediario.Value);
 
         Dm.SQLTemplate.Close;
         Dm.SQLTemplate.SQL.Clear;
-        Dm.SQLTemplate.SQL.Add('SELECT CPNMN2VLR FROM CUPOMNUMERARIO WHERE CONMCSTATUS = "A" AND ');
-        Dm.SQLTemplate.SQL.Add('CUPOA13ID = "' + TblCarneNumeroContrato.AsString + '"');
+        Dm.SQLTemplate.SQL.Add('SELECT CPNMN2VLR FROM CUPOMNUMERARIO WHERE CONMCSTATUS = ''A'' AND ');
+        Dm.SQLTemplate.SQL.Add('CUPOA13ID = ''' + TblCarneNumeroContrato.AsString + '''');
         Dm.SQLTemplate.Open;
         if not Dm.SQLTemplate.IsEmpty then
           TblCarneEntrada.Value           := Dm.SQLTemplate.FieldByName('CPNMN2VLR').AsFloat
         else
           TblCarneEntrada.Value           := 0;
-        TblCarneTaxaCrediario.AsString  := SQLLocate('CUPOM','CUPOA13ID','CUPON3CREDTAXA','"' + TblCarneNumeroContrato.AsString + '"');
-        TblCarnePlano.AsString          := SQLLocate('PLANORECEBIMENTO','PLRCICOD','PLRCA60DESCR',SQLLocate('CUPOM','CUPOA13ID','PLRCICOD','"' + TblCarneNumeroContrato.AsString + '"'));
+        TblCarneTaxaCrediario.AsString  := SQLLocate('CUPOM','CUPOA13ID','CUPON3CREDTAXA','''' + TblCarneNumeroContrato.AsString + '''');
+        TblCarnePlano.AsString          := SQLLocate('PLANORECEBIMENTO','PLRCICOD','PLRCA60DESCR',SQLLocate('CUPOM','CUPOA13ID','PLRCICOD','''' + TblCarneNumeroContrato.AsString + ''''));
 
         TblCarne.Post ;
 
@@ -2059,7 +2059,7 @@ begin
     TblCarne.CreateTable ;
     TblCarne.Open ;
 
-    NroCupom := SQLLocate('CUPOM', 'CUPOA13ID', 'CUPOINRO',  '"' + SQLDadosCompraCUPOA13ID.AsString + '"') ;
+    NroCupom := SQLLocate('CUPOM', 'CUPOA13ID', 'CUPOINRO',  '''' + SQLDadosCompraCUPOA13ID.AsString + '''') ;
 
     TblCarne.Append ;
     TblCarneEmpresaNome.AsString    := SQLLocate('EMPRESA', 'EMPRICOD', 'EMPRA60NOMEFANT', EmpresaPadrao) ;
@@ -2079,10 +2079,10 @@ begin
     //TblCarneContadorParcelas.AsString :=
     TblCarneDataVencimento.AsString := SQLDadosCompraCTRCDVENC.AsString ;
     TblCarneValorParcela.AsString   := SQLDadosCompraCTRCN2VLR.AsString ;
-    TblCarneTotalCupom.AsString     := SQLLocate('CUPOM','CUPOA13ID','CUPON2TOTITENS','"' + TblCarneNumeroContrato.AsString + '"');
-    TblCarneAcrescimo.AsString      := SQLLocate('CUPOM','CUPOA13ID','CUPON2ACRESC','"' + TblCarneNumeroContrato.AsString + '"');
-    TblCarneValorDesconto.AsString  := SQLLocate('CUPOM','CUPOA13ID','CUPON2DESC','"' + TblCarneNumeroContrato.AsString + '"');
-    TblCarneTaxaCrediario.AsString  := SQLLocate('CUPOM','CUPOA13ID','CUPON3CREDTAXA','"' + TblCarneNumeroContrato.AsString + '"');
+    TblCarneTotalCupom.AsString     := SQLLocate('CUPOM','CUPOA13ID','CUPON2TOTITENS','''' + TblCarneNumeroContrato.AsString + '''');
+    TblCarneAcrescimo.AsString      := SQLLocate('CUPOM','CUPOA13ID','CUPON2ACRESC','''' + TblCarneNumeroContrato.AsString + '''');
+    TblCarneValorDesconto.AsString  := SQLLocate('CUPOM','CUPOA13ID','CUPON2DESC','''' + TblCarneNumeroContrato.AsString + '''');
+    TblCarneTaxaCrediario.AsString  := SQLLocate('CUPOM','CUPOA13ID','CUPON3CREDTAXA','''' + TblCarneNumeroContrato.AsString + '''');
     TblCarneTotalCupom.AsString     := FloatToStr(TblCarneTotalCupom.Value + TblCarneTaxaCrediario.Value);
 
     //TblCarneVendedor.AsString       := LblNomeVendedor.Caption ;
@@ -2131,12 +2131,12 @@ begin
       Informa('Você não tem poder para excluir clientes!') ;
       Sysutils.Abort ;
     End;
-  if SQLLocate('CUPOM', 'CLIEA13ID', 'CLIEA13ID', '"' + SQLTemplateCLIEA13ID.Value + '"') <> '' then
+  if SQLLocate('CUPOM', 'CLIEA13ID', 'CLIEA13ID', '''' + SQLTemplateCLIEA13ID.Value + '''') <> '' then
   begin
     Informa('Este cliente não pode ser excluído pois possui compras !') ;
     Sysutils.Abort ;
   end ;
-  if SQLLocate('NOTAFISCAL', 'CLIEA13ID', 'CLIEA13ID', '"' + SQLTemplateCLIEA13ID.Value + '"') <> '' then
+  if SQLLocate('NOTAFISCAL', 'CLIEA13ID', 'CLIEA13ID', '''' + SQLTemplateCLIEA13ID.Value + '''') <> '' then
   begin
     Informa('Este cliente não pode ser excluído pois possui compras !') ;
     Sysutils.Abort ;
@@ -2314,10 +2314,10 @@ begin
   //SETAR LEGENDA DE FILTROS NO RPT\\
   Report.Formulas.Retrieve;
   Report.Formulas.Name         := 'Emissao';
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"';
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''';
   //-------------------------------------------------\\
   Report.Formulas.Name         := 'NomeCliente' ;
-  Report.Formulas.Formula.Text := '"' + SQLTemplateCLIEA60RAZAOSOC.Value + '"' ;
+  Report.Formulas.Formula.Text := '''' + SQLTemplateCLIEA60RAZAOSOC.Value + '''' ;
   Report.Execute ;
 end;
 
@@ -2426,13 +2426,13 @@ begin
       if POS('*',Produto) > 0  then
         begin
           Delete(Produto,POS('*',Produto),1);
-          SQLItem.MacroByName('MProdutoCP').Value := 'PRODUTO.PRODA60DESCR Like "%' + Produto + '%"' ;
-          SQLItem.MacroByName('MProdutoNF').Value := 'PRODUTO.PRODA60DESCR Like "%' + Produto + '%"' ;
+          SQLItem.MacroByName('MProdutoCP').Value := 'PRODUTO.PRODA60DESCR Like ''%' + Produto + '%''' ;
+          SQLItem.MacroByName('MProdutoNF').Value := 'PRODUTO.PRODA60DESCR Like ''%' + Produto + '%''' ;
         end
       else
         begin
-          SQLItem.MacroByName('MProdutoCP').Value := 'PRODUTO.PRODA60DESCR Like "' + Produto + '%"' ;
-          SQLItem.MacroByName('MProdutoNF').Value := 'PRODUTO.PRODA60DESCR Like "' + Produto + '%"' ;
+          SQLItem.MacroByName('MProdutoCP').Value := 'PRODUTO.PRODA60DESCR Like ''' + Produto + '%''' ;
+          SQLItem.MacroByName('MProdutoNF').Value := 'PRODUTO.PRODA60DESCR Like ''' + Produto + '%''' ;
         end;
       SQLItem.Open;
     end;
@@ -2641,10 +2641,10 @@ begin
   ClausulaNF := '';
   if (EditDe.Text <> '  /  /    ') and (EditDe.Text <> '  /  /    ') then
     begin
-      ClausulaCP := 'CUPOM.CUPODEMIS >= "'      + FormatDateTime('mm/dd/yyyy',EditDe.Date)  + '" AND ' +
-                    'CUPOM.CUPODEMIS <= "'      + FormatDateTime('mm/dd/yyyy',EditAte.Date) + '"';
-      ClausulaNF := 'NOTAFISCAL.NOFIDEMIS >= "' + FormatDateTime('mm/dd/yyyy',EditDe.Date)  + '" AND ' +
-                    'NOTAFISCAL.NOFIDEMIS <= "' + FormatDateTime('mm/dd/yyyy',EditAte.Date) + '"';
+      ClausulaCP := 'CUPOM.CUPODEMIS >= '''      + FormatDateTime('mm/dd/yyyy',EditDe.Date)  + ''' AND ' +
+                    'CUPOM.CUPODEMIS <= '''      + FormatDateTime('mm/dd/yyyy',EditAte.Date) + '''';
+      ClausulaNF := 'NOTAFISCAL.NOFIDEMIS >= ''' + FormatDateTime('mm/dd/yyyy',EditDe.Date)  + ''' AND ' +
+                    'NOTAFISCAL.NOFIDEMIS <= ''' + FormatDateTime('mm/dd/yyyy',EditAte.Date) + '''';
     end;
 
   if ((ClausulaCP <> '') or (ClausulaNF <> '')) and (ComboProduto.Value <> '') then
@@ -2774,7 +2774,7 @@ procedure TFormCadastroCliente.SQLChequesCalcFields(DataSet: TDataSet);
 begin
   inherited;
   if DataSet.FieldByName('NOFIA13ID').AsString <> '' then
-    DataSet.FieldByName('NOFIINUMERO').AsString := SQLLocate('NOTAFISCAL','NOFIA13ID','NOFIINUMERO','"' + DataSet.FieldByName('NOFIA13ID').AsString + '"');
+    DataSet.FieldByName('NOFIINUMERO').AsString := SQLLocate('NOTAFISCAL','NOFIA13ID','NOFIINUMERO','''' + DataSet.FieldByName('NOFIA13ID').AsString + '''');
 end;
 
 procedure TFormCadastroCliente.TabChequesShow(Sender: TObject);
@@ -2822,7 +2822,7 @@ begin
   VlrSaldo   := DataSet.FieldByName('CTRCN2VLR').Value ;
   if DataSet.FieldByName('NOFIA13ID').AsString <> '' then
     begin
-      ValorItens := SQLLocate('NOTAFISCAL','NOFIA13ID','NOFIN2VLRPRODUTO','"' + DataSet.FieldByName('NOFIA13ID').AsString + '"');
+      ValorItens := SQLLocate('NOTAFISCAL','NOFIA13ID','NOFIN2VLRPRODUTO','''' + DataSet.FieldByName('NOFIA13ID').AsString + '''');
       if ValorItens <> '' then
         DataSet.FieldByName('CUPON2TOTITENS').AsFloat := StrToFloat(ValorItens)
       else
@@ -2831,7 +2831,7 @@ begin
   if DataSet.FieldByName('CUPOA13ID').AsString <> '' then
     begin
       try
-        DataSet.FieldByName('CUPON2TOTITENS').AsFloat := StrToFloat(SQLLocate('CUPOM','CUPOA13ID','CUPON2TOTITENS','"' + DataSet.FieldByName('CUPOA13ID').AsString + '"'));
+        DataSet.FieldByName('CUPON2TOTITENS').AsFloat := StrToFloat(SQLLocate('CUPOM','CUPOA13ID','CUPON2TOTITENS','''' + DataSet.FieldByName('CUPOA13ID').AsString + ''''));
       except
         DataSet.FieldByName('CUPON2TOTITENS').AsFloat := 0; // Quando nao tem cabecalho por exemplo na exclusao de movimentos.
       end;
@@ -2856,12 +2856,12 @@ begin
 
   If DataSet.FieldByName('NOFIA13ID').AsString <> '' Then
     begin
-      DataSet.FieldByName('Documento').asString := 'NF ' + SQLLocate('NOTAFISCAL', 'NOFIA13ID', 'SERIA5COD', '"' + DataSet.FieldByName('NOFIA13ID').asString + '"') + '-' + SQLLocate('NOTAFISCAL', 'NOFIA13ID', 'NOFIINUMERO', '"' + DataSet.FieldByName('NOFIA13ID').asString + '"');
+      DataSet.FieldByName('Documento').asString := 'NF ' + SQLLocate('NOTAFISCAL', 'NOFIA13ID', 'SERIA5COD', '''' + DataSet.FieldByName('NOFIA13ID').asString + '''') + '-' + SQLLocate('NOTAFISCAL', 'NOFIA13ID', 'NOFIINUMERO', '''' + DataSet.FieldByName('NOFIA13ID').asString + '''');
       If DataSet.FieldByName('Documento').AsString[1] = 'N' Then
         DataSet.FieldByName('Documento').asString := DataSet.FieldByName('EMPRICOD').AsString    +
                                                     ' - NF ' + DataSet.FieldByName('CTRCA30NRODUPLICBANCO').AsString;
       try
-        Vendedor := SQLLocate('NOTAFISCAL','NOFIA13ID','VENDICOD','"' + DataSet.FieldByName('NOFIA13ID').asString + '"');
+        Vendedor := SQLLocate('NOTAFISCAL','NOFIA13ID','VENDICOD','''' + DataSet.FieldByName('NOFIA13ID').asString + '''');
         if Vendedor <> '' then
           DataSet.FieldByName('VENDA60NOME').asString := SQLLocate('VENDEDOR','VENDICOD','VENDA60NOME',Vendedor);
       except
@@ -2872,7 +2872,7 @@ begin
       if DataSet.FieldByName('CUPOA13ID').AsString <> '' then
         begin
           try
-            Vendedor := SQLLocate('CUPOM','CUPOA13ID','VENDICOD','"' + DataSet.FieldByName('CUPOA13ID').asString + '"');
+            Vendedor := SQLLocate('CUPOM','CUPOA13ID','VENDICOD','''' + DataSet.FieldByName('CUPOA13ID').asString + '''');
             if Vendedor <> '' then
               DataSet.FieldByName('VENDA60NOME').asString := SQLLocate('VENDEDOR','VENDICOD','VENDA60NOME',Vendedor);
           except
@@ -2884,7 +2884,7 @@ begin
           if DataSet.FieldByName('PDVDA13ID').AsString <> '' then
             begin
               try
-                Vendedor := SQLLocate('PEDIDOVENDA','PDVDA13ID','VENDICOD','"' + DataSet.FieldByName('PDVDA13ID').asString + '"');
+                Vendedor := SQLLocate('PEDIDOVENDA','PDVDA13ID','VENDICOD','''' + DataSet.FieldByName('PDVDA13ID').asString + '''');
                 if Vendedor <> '' then
                   DataSet.FieldByName('VENDA60NOME').asString := SQLLocate('VENDEDOR','VENDICOD','VENDA60NOME',Vendedor);
               except
@@ -2896,7 +2896,7 @@ begin
 
   //AVALISTA
   if DataSet.FieldByName('AVALA13ID').asVariant <> Null then
-    DataSet.FieldByName('AVALA60RAZAOSOC').AsString := SQLLocate('AVALISTA','AVALA13ID','AVALA60RAZAOSOC','"' + DataSet.FieldByName('AVALA13ID').AsString + '"')
+    DataSet.FieldByName('AVALA60RAZAOSOC').AsString := SQLLocate('AVALISTA','AVALA13ID','AVALA60RAZAOSOC','''' + DataSet.FieldByName('AVALA13ID').AsString + '''')
   else
     DataSet.FieldByName('AVALA60RAZAOSOC').AsString := 'NAO INFORMADO';
 
@@ -3154,7 +3154,7 @@ begin
         begin
           if Pergunta('Nï¿½o','Deseja bloquear todos os clientes que estejam na lista de SPC pela cobranï¿½a?') then
             begin
-              if SQLLocate('CARTAAVISOSPC','CLIEA13ID','CLIEA13ID','"'+SQLTemplateCLIEA13ID.Value+'"') = SQLTemplateCLIEA13ID.Value then
+              if SQLLocate('CARTAAVISOSPC','CLIEA13ID','CLIEA13ID',''''+SQLTemplateCLIEA13ID.Value+'''') = SQLTemplateCLIEA13ID.Value then
                 begin
                   SQLTemplate.Edit;
                   SQLTemplateMTBLICOD.Value := 2;
@@ -3342,7 +3342,7 @@ begin
   inherited;
   if PagePrincipal.ActivePage <> TabSheetItens then
     begin
-      Informa('Por favor selecione a página "Itens Comprados" antes de executar esta função!');
+      Informa('Por favor selecione a página ''Itens Comprados'' antes de executar esta função!');
       Exit;
     end;
   try
@@ -3380,13 +3380,13 @@ begin
   Report.Formulas.Retrieve;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Empresa' ;
-  Report.Formulas.Formula.Text := '"' + SQLLocate('EMPRESA','EMPRICOD','EMPRA60RAZAOSOC',EmpresaPadrao) + '"' ;
+  Report.Formulas.Formula.Text := '''' + SQLLocate('EMPRESA','EMPRICOD','EMPRA60RAZAOSOC',EmpresaPadrao) + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Emissao' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Cliente';
-  Report.Formulas.Formula.Text := '"' + SQLTemplateCLIEA60RAZAOSOC.AsString + '"';
+  Report.Formulas.Formula.Text := '''' + SQLTemplateCLIEA60RAZAOSOC.AsString + '''';
   //--------------------------------------------------------------------------\\
   Report.Formulas.Send;
   Report.Execute;
@@ -3399,7 +3399,7 @@ begin
   inherited;
   if PagePrincipal.ActivePage <> TabSheetItens then
     begin
-      Informa('Por favor selecione a página "Itens Comprados" antes de executar esta função!');
+      Informa('Por favor selecione a página ''Itens Comprados'' antes de executar esta função!');
       Exit;
     end;
   try
@@ -3433,13 +3433,13 @@ begin
   Report.Formulas.Retrieve;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Empresa' ;
-  Report.Formulas.Formula.Text := '"' + SQLLocate('EMPRESA','EMPRICOD','EMPRA60RAZAOSOC',EmpresaPadrao) + '"' ;
+  Report.Formulas.Formula.Text := '''' + SQLLocate('EMPRESA','EMPRICOD','EMPRA60RAZAOSOC',EmpresaPadrao) + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Emissao' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Cliente';
-  Report.Formulas.Formula.Text := '"' + SQLTemplateCLIEA60RAZAOSOC.AsString + '"';
+  Report.Formulas.Formula.Text := '''' + SQLTemplateCLIEA60RAZAOSOC.AsString + '''';
   //--------------------------------------------------------------------------\\
   Report.Formulas.Send;
   Report.Execute;
@@ -3459,7 +3459,7 @@ begin
   {Filtra Terminais que devem receber carga}
   dm.sqlconsulta.Close;
   dm.sqlconsulta.sql.clear;
-  dm.sqlconsulta.sql.Text := 'Select Termicod from Terminal where TERMCTIPO = "C"';
+  dm.sqlconsulta.sql.Text := 'Select Termicod from Terminal where TERMCTIPO = ''C''';
   dm.sqlconsulta.Open;
   if not dm.sqlconsulta.IsEmpty then
     begin

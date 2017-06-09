@@ -454,7 +454,7 @@ begin
       SQLGeral.SQL.Add('select Max(CTPGINROPARC) As Parcela from CONTASPAGAR') ;
       SQLGeral.SQL.Add('where EMPRICOD = ' + SQLTemplateEMPRICOD.AsString) ;
       SQLGeral.SQL.Add('and   FORNICOD = ' + SQLTemplateFORNICOD.AsString) ;
-      SQLGeral.SQL.Add('and   CTPGA20DOCORIG = "' + SQLTemplateCTPGA20DOCORIG.AsString + '"') ;
+      SQLGeral.SQL.Add('and   CTPGA20DOCORIG = ''' + SQLTemplateCTPGA20DOCORIG.AsString + '''') ;
       SQLGeral.Open ;
       if SQLGeral.FieldByName('Parcela').Value > 0 then
         SQLTemplateCTPGINROPARC.Value := SQLGeral.FieldByName('Parcela').Value + 1;
@@ -481,7 +481,7 @@ var
 begin
   inherited;
   SQLEspelhoNovoLanc.Close ;
-  SQLEspelhoNovoLanc.MacroByName('MFiltro').Value := 'CTPGA13ID = "' + SQLTemplateCTPGA13ID.Value + '"' ;
+  SQLEspelhoNovoLanc.MacroByName('MFiltro').Value := 'CTPGA13ID = ''' + SQLTemplateCTPGA13ID.Value + '''' ;
   SQLEspelhoNovoLanc.Open ;
 
   SQLTemplate.Append ;
@@ -535,19 +535,19 @@ begin
   if (Clausula <> '') then
     begin
       if(ComboFornecedor.Value <> '') then
-        Clausula := Clausula + ' AND FORNICOD = "' + ComboFornecedor.Value + '"';
+        Clausula := Clausula + ' AND FORNICOD = ''' + ComboFornecedor.Value + '''';
     end
   else
     begin
       if(ComboFornecedor.Value <> '') then
-        Clausula := ' FORNICOD = "' + ComboFornecedor.Value + '"';
+        Clausula := ' FORNICOD = ''' + ComboFornecedor.Value + '''';
     end;
 
   if (ComboConta.Value <> '') and (Clausula <> '') then
-    Clausula := Clausula + ' AND PLCTA15COD = "' + ComboConta.Value + '"'
+    Clausula := Clausula + ' AND PLCTA15COD = ''' + ComboConta.Value + ''''
   else
     if (Clausula = '') and (ComboConta.Value <> '') then
-      Clausula := 'PLCTA15COD = "' + ComboConta.Value + '"';
+      Clausula := 'PLCTA15COD = ''' + ComboConta.Value + '''';
 
   if (ComboTipoDoc.Value <> '') and (Clausula <> '') then
     Clausula := Clausula + ' AND TPDCICOD = ' + ComboTipoDoc.Value
@@ -775,7 +775,7 @@ begin
               inc(I);
             end;
           SQLTemplate.Close;
-          SQLTemplate.MacroByName('MFiltro').AsString := 'NOCPA30NRO = "' + FormTelaAssistenteLancamentoContasPagar.EditNFNro.Text + '"';
+          SQLTemplate.MacroByName('MFiltro').AsString := 'NOCPA30NRO = ''' + FormTelaAssistenteLancamentoContasPagar.EditNFNro.Text + '''';
           SQLTemplate.Open;
           PagePrincipal.ActivePage := TabSheetConsulta;
           SQLTemplate.EnableControls;
@@ -805,7 +805,7 @@ begin
          DM.RegistraExclusao('PAGAMENTO',TRxQuery(SQLPagamento));
          DM.SQLTemplate.Close;
          DM.SQLTemplate.SQL.Clear;
-         DM.SQLTemplate.SQL.ADD('DELETE FROM PAGAMENTO WHERE CTPGA13ID = "' + SQLPagamentoCTPGA13ID.AsString + '"');
+         DM.SQLTemplate.SQL.ADD('DELETE FROM PAGAMENTO WHERE CTPGA13ID = ''' + SQLPagamentoCTPGA13ID.AsString + '''');
          DM.SQLTemplate.SQL.ADD(' AND PAGAICOD = ' + SQLPagamentoPAGAICOD.AsString);
          try
            DM.SQLTemplate.ExecSQL;
@@ -860,19 +860,19 @@ begin
      //Verifica e Estorna Recebimentos feitos com BANCO;
      SQLCount.Close;
      SQLCount.RequestLive := True;
-     SQLCount.SQL.Text := 'select * from MOVIMENTOBANCO where CTPGA13ID = "' + SQLTemplateCTPGA13ID.AsString + '" and ' +
-                          'MVBCDLANC = "' + FormatDateTime('mm/dd/yyyy', SQLPagamentoPAGADPAGTO.AsDateTime) + '"'; // and ' +
-                          //'(MVBCCSTATUS <> "E" or MVBCCSTATUS is Null) ';
+     SQLCount.SQL.Text := 'select * from MOVIMENTOBANCO where CTPGA13ID = ''' + SQLTemplateCTPGA13ID.AsString + ''' and ' +
+                          'MVBCDLANC = ''' + FormatDateTime('mm/dd/yyyy', SQLPagamentoPAGADPAGTO.AsDateTime) + ''''; // and ' +
+                          //'(MVBCCSTATUS <> ''E'' or MVBCCSTATUS is Null) ';
      SQLCount.Open;
 
      if SQLCount.RecordCount > 0 then
        begin
          if ExecSql(' select OPBCICODESTORNODEB from CONFIGFINANCEIRO ').FieldByName('OPBCICODESTORNODEB').IsNull then
-           InformaErro('� necess�rio Configurar uma Opera��o Banc�ria de Estorno "D�bito" para o Contas A PAGAR no Configurador', True, Nil);
+           InformaErro('� necess�rio Configurar uma Opera��o Banc�ria de Estorno ''D�bito'' para o Contas A PAGAR no Configurador', True, Nil);
 
-         if not Pergunta('Sim', 'Deseja Criar um Lan�amento de Cr�dito no "MOVIMENTO BANC�RIO" Valor de R$ ' +
-                     FormatFloat('#,##0.00', SQLCount.FieldByName('MVBCN2VLRCRED').AsFloat) + ' referente Estorno do Pagamento de ID : "' + SQLPagamentoCTPGA13ID.AsString + '"?' + #13 +
-                     'Clique "SIM" para Continuar e "N�O" para Cancelar o Estorno.') then
+         if not Pergunta('Sim', 'Deseja Criar um Lan�amento de Cr�dito no ''MOVIMENTO BANC�RIO'' Valor de R$ ' +
+                     FormatFloat('#,##0.00', SQLCount.FieldByName('MVBCN2VLRCRED').AsFloat) + ' referente Estorno do Pagamento de ID : ''' + SQLPagamentoCTPGA13ID.AsString + '''?' + #13 +
+                     'Clique ''SIM'' para Continuar e ''N�O'' para Cancelar o Estorno.') then
             Abort;
 
          LancaMovimentacaoBanco(SQLTemplateEMPRICOD.AsInteger, SQLCount.FieldByName('CTCRICOD').AsInteger,
@@ -897,19 +897,19 @@ begin
 
      //Verifica e Estorna Recebimentos feitos com CAIXA;
      SQLCount.Close;
-     SQLCount.SQL.Text := 'select * from TESOURARIA where CTPGA13ID = "' + SQLTemplateCTPGA13ID.AsString + '" and ' +
-                          'TESODMOV = "' + FormatDateTime('mm/dd/yyyy', SQLPagamentoPAGADPAGTO.AsDateTime) + '" and ' +
-                          '(TESOCSTATUS <> "E" or TESOCSTATUS is Null) ';
+     SQLCount.SQL.Text := 'select * from TESOURARIA where CTPGA13ID = ''' + SQLTemplateCTPGA13ID.AsString + ''' and ' +
+                          'TESODMOV = ''' + FormatDateTime('mm/dd/yyyy', SQLPagamentoPAGADPAGTO.AsDateTime) + ''' and ' +
+                          '(TESOCSTATUS <> ''E'' or TESOCSTATUS is Null) ';
      SQLCount.Open;
 
      if SQLCount.RecordCount > 0 then
        begin
          if ExecSql(' select OPTEICODESTORNODEB from CONFIGFINANCEIRO ').FieldByName('OPBCICODESTORNODEB').IsNull then
-           InformaErro('� necess�rio Configurar uma Opera��o Tesouraria para Estorno "D�bito" para o Contas A PAGAR no Configurador', True, Nil);
+           InformaErro('� necess�rio Configurar uma Opera��o Tesouraria para Estorno ''D�bito'' para o Contas A PAGAR no Configurador', True, Nil);
 
-         if not Pergunta('Sim', 'Deseja Criar um Lan�amento de Cr�dito na "TESOURARIA/CAIXA" no valor de R$ ' +
-                         FormatFloat('#,##0.00', SQLCount.FieldByName('TESON2VLRDEBITO').AsFloat) + ' Referente Estorno do Pagamento de ID: "' + SQLPagamentoCTPGA13ID.AsString + '"?' + #13 +
-                         'Clique "SIM" para Continuar e "N�O" para Cancelar o Estorno.') then
+         if not Pergunta('Sim', 'Deseja Criar um Lan�amento de Cr�dito na ''TESOURARIA/CAIXA'' no valor de R$ ' +
+                         FormatFloat('#,##0.00', SQLCount.FieldByName('TESON2VLRDEBITO').AsFloat) + ' Referente Estorno do Pagamento de ID: ''' + SQLPagamentoCTPGA13ID.AsString + '''?' + #13 +
+                         'Clique ''SIM'' para Continuar e ''N�O'' para Cancelar o Estorno.') then
             Abort;
 
 
@@ -939,19 +939,19 @@ begin
 
       //Verifica e Estorna Recebimentos feitos com CHEQUES;
 {       SQLCount.Close;
-       SQLCount.SQL.Text := 'select * from ContasPagar where CTPGA13ID = "' + SQLTemplateCTPGA13ID.AsString + '"';
+       SQLCount.SQL.Text := 'select * from ContasPagar where CTPGA13ID = ''' + SQLTemplateCTPGA13ID.AsString + '''';
        SQLCount.Open;}
 
        if not SQLTemplateCQEMA13ID.IsNull then
         begin
-          if not Pergunta('Sim', 'O CHQ "' + SQLTemplateCQEMA13ID.AsString + '" ser� desvinculado do Recebimento Atual.' + #13 +
+          if not Pergunta('Sim', 'O CHQ ''' + SQLTemplateCQEMA13ID.AsString + ''' ser� desvinculado do Recebimento Atual.' + #13 +
              'Voc� dever� Excluir ou Cancelar o Cheque no Controle de Cheques.' + #13 +
              'Deseja Continuar?') then
              Exit;
 
           DM.SQLTemplate.Close;
           DM.SQLTemplate.SQL.Clear;
-          DM.SQLTemplate.SQL.Add('Update ContasPagar Set Pendente="S", CQEMA13ID = "' + IDChequeEmitido + '" where CTPGA13ID = "' +  SQLTemplateCTPGA13ID.AsString + '" and CTPGCPREVREAL = "R"');
+          DM.SQLTemplate.SQL.Add('Update ContasPagar Set Pendente=''S'', CQEMA13ID = ''' + IDChequeEmitido + ''' where CTPGA13ID = ''' +  SQLTemplateCTPGA13ID.AsString + ''' and CTPGCPREVREAL = ''R''');
           DM.SQLTemplate.ExecSQL;
 
           SQLPagamento.Delete;

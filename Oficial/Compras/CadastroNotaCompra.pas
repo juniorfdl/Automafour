@@ -702,7 +702,7 @@ procedure TFormCadastroNotaCompra.SQLTemplateBeforeDelete(
 begin
   If SQLTemplate.FindField('NOCPCSTATUS').asString<>'A' Then
     Begin
-      ShowMessage('Exclusões somente são permitidas enquanto a nota de entrada está com o status de "Aberta", esta operação será cancelada!');
+      ShowMessage('Exclusões somente são permitidas enquanto a nota de entrada está com o status de ''Aberta'', esta operação será cancelada!');
       Abort;
     End;
   inherited;
@@ -739,7 +739,7 @@ begin
 
   if (DataSet.State in [DsInsert]) and (SQLTemplateFORNICOD.AsVariant <> Null) then
     begin
-      UfFornec := dm.SQLLocate('ICMSUF','ICMUA2UF','ICMUA2UF','"'+SQLFornecedorFORNA2UF.AsString+'"');
+      UfFornec := dm.SQLLocate('ICMSUF','ICMUA2UF','ICMUA2UF',''''+SQLFornecedorFORNA2UF.AsString+'''');
       if  UfFornec = '' then
         begin
           ShowMessage('ERRO: Este estado não consta no cadastro de ICMS por UF !');
@@ -795,7 +795,7 @@ begin
           // Testar se falta alguma informação importante no Produto
           xInconsistencias := '';
           SQLNotaCompraItens.Close;
-          SQLNotaCompraItens.MacroByName('MFiltro').AsString := 'NOCPA13ID = "' + DataSet.FindField('NOCPA13ID').AsString + '"' ;
+          SQLNotaCompraItens.MacroByName('MFiltro').AsString := 'NOCPA13ID = ''' + DataSet.FindField('NOCPA13ID').AsString + '''' ;
           SQLNotaCompraItens.Open;
           if SQLNotaCompraItens.IsEmpty then
             begin
@@ -937,7 +937,7 @@ begin
     Begin
       // Atualizando Ficha Produtos e Estoque
       SQLNotaCompraItens.Close;
-      SQLNotaCompraItens.MacroByName('MFiltro').AsString := 'NOCPA13ID = "' + DataSet.FindField('NOCPA13ID').AsString + '"' ;
+      SQLNotaCompraItens.MacroByName('MFiltro').AsString := 'NOCPA13ID = ''' + DataSet.FindField('NOCPA13ID').AsString + '''' ;
       SQLNotaCompraItens.Open;
       if SQLNotaCompraItens.IsEmpty then
         begin
@@ -1340,7 +1340,7 @@ begin
   If (StatusNovo = 'C') Then
     Begin
       SQLNotaCompraItens.Close;
-      SQLNotaCompraItens.MacroByName('MFiltro').AsString := 'NOCPA13ID = "' + DataSet.FindField('NOCPA13ID').AsString + '"';
+      SQLNotaCompraItens.MacroByName('MFiltro').AsString := 'NOCPA13ID = ''' + DataSet.FindField('NOCPA13ID').AsString + '''';
       SQLNotaCompraItens.Open;
       SQLNotaCompraItens.First;
       if SQLTemplateOPESICOD.AsInteger > 0 then
@@ -1389,7 +1389,7 @@ begin
       SQLNotaCompraItens.Close;
       DM.SQLTemplate.Close;
       DM.SQLTemplate.SQL.Clear;
-      DM.SQLTemplate.SQL.Add('Delete from ContasPagar Where NOCPA13ID = "' + DataSet.FindField('NOCPA13ID').AsString + '"');
+      DM.SQLTemplate.SQL.Add('Delete from ContasPagar Where NOCPA13ID = ''' + DataSet.FindField('NOCPA13ID').AsString + '''');
       DM.SQLTemplate.ExecSQL;
     End;
   If PedidoNovo <> PedidoAnterior Then
@@ -1398,7 +1398,7 @@ begin
         AtualizaContasPagarPC.ParamByName('PDCPA13ID').asString := SQLTemplate.FindField('PDCPA13ID').AsString;
         AtualizaContasPagarPC.ParamByName('NOCPA13ID').asString := SQLTemplate.FindField('NOCPA13ID').AsString;
         If SQLTemplate.FindField('PLCTA15COD').asVariant<>Null Then
-          AtualizaContasPagarPC.MacroByName('MConta').asString := ', PLCTA15COD = "'+SQLTemplate.FindField('PLCTA15COD').asString+'"'
+          AtualizaContasPagarPC.MacroByName('MConta').asString := ', PLCTA15COD = '''+SQLTemplate.FindField('PLCTA15COD').asString+''''
         Else
           AtualizaContasPagarPC.MacroByName('MConta').asString := '';
         Erro:=True;
@@ -1608,7 +1608,7 @@ begin
       if SQLTemplateNOCPN3VLRTOTNOTA.AsString <> '' then
         begin
           SQLParcelas.Close;
-          SQLParcelas.MacroByName('MFiltro').AsString := 'NOCPA13ID = "' + SQLTemplateNOCPA13ID.AsString + '"';
+          SQLParcelas.MacroByName('MFiltro').AsString := 'NOCPA13ID = ''' + SQLTemplateNOCPA13ID.AsString + '''';
           SQLParcelas.Open;
           SQLParcelas.First;
           While not SQLParcelas.Eof do
@@ -1720,7 +1720,7 @@ begin
   TblNotaCompraItem.Open;
 
   SQLNotaCompraItens.Close;
-  SQLNotaCompraItens.MacroByName('MFiltro').AsString := 'NOCPA13ID = "' + SQLTemplate.FindField('NOCPA13ID').AsString + '"';
+  SQLNotaCompraItens.MacroByName('MFiltro').AsString := 'NOCPA13ID = ''' + SQLTemplate.FindField('NOCPA13ID').AsString + '''';
   SQLNotaCompraItens.Open;
   SQLNotaCompraItens.First;
 
@@ -1737,7 +1737,7 @@ begin
     end;
 
   SQLParcelas.Close;
-  SQLParcelas.MacroByName('MFiltro').AsString := 'NOCPA13ID = "' + SQLTemplateNOCPA13ID.AsString + '"';
+  SQLParcelas.MacroByName('MFiltro').AsString := 'NOCPA13ID = ''' + SQLTemplateNOCPA13ID.AsString + '''';
   SQLParcelas.Open;
   SQLParcelas.First;
 
@@ -1874,7 +1874,7 @@ begin
     begin
       dm.SQLTemplate.close;
       dm.SQLTemplate.sql.clear;
-      dm.SQLTemplate.sql.Add('Select Fornicod from Fornecedor Where FORNA14CGC = "'+EditCNPJ.Text+'"');
+      dm.SQLTemplate.sql.Add('Select Fornicod from Fornecedor Where FORNA14CGC = '''+EditCNPJ.Text+'''');
       dm.SQLTemplate.Open;
       if not dm.SQLTemplate.IsEmpty then
         Clausula := 'FORNICOD = '+ dm.SQLTemplate.fieldbyname('FORNICOD').AsString;
@@ -1953,7 +1953,7 @@ begin
   While not SQLTemplate.Eof Do
     begin
       SQLNotaCompraItens.Close;
-      SQLNotaCompraItens.MacroByName('MFiltro').AsString := 'NOCPA13ID = "' + SQLTemplate.FindField('NOCPA13ID').AsString + '"';
+      SQLNotaCompraItens.MacroByName('MFiltro').AsString := 'NOCPA13ID = ''' + SQLTemplate.FindField('NOCPA13ID').AsString + '''';
       SQLNotaCompraItens.Open;
       SQLNotaCompraItens.First;
       while not SQLNotaCompraItens.Eof do
@@ -2064,7 +2064,7 @@ begin
   While not SQLTemplate.Eof Do
     begin
       SQLNotaCompraItens.Close;
-      SQLNotaCompraItens.MacroByName('MFiltro').AsString := 'NOCPA13ID = "' + SQLTemplate.FindField('NOCPA13ID').AsString + '"';
+      SQLNotaCompraItens.MacroByName('MFiltro').AsString := 'NOCPA13ID = ''' + SQLTemplate.FindField('NOCPA13ID').AsString + '''';
       SQLNotaCompraItens.Open;
       SQLNotaCompraItens.First;
       while not SQLNotaCompraItens.Eof do
@@ -2192,7 +2192,7 @@ begin
   while not SQLTemplate.eof do
     begin
       SQLNotaCompraItens.Close;
-      SQLNotaCompraItens.MacroByName('MFiltro').AsString := 'NOCPA13ID = "' + SQLTemplate.fieldbyname('NOCPA13ID').AsString + '"' ;
+      SQLNotaCompraItens.MacroByName('MFiltro').AsString := 'NOCPA13ID = ''' + SQLTemplate.fieldbyname('NOCPA13ID').AsString + '''' ;
       SQLNotaCompraItens.Open;
 
       MakeWindow(SQLNotaCompraItens.RecordCount, 'Aguarde, Atualizando Ficha de Produtos!');
@@ -2339,7 +2339,7 @@ begin
   While not SQLTemplate.Eof Do
     begin
       SQLNotaCompraItens.Close;
-      SQLNotaCompraItens.MacroByName('MFiltro').AsString := 'NOCPA13ID = "' + SQLTemplate.FindField('NOCPA13ID').AsString + '"';
+      SQLNotaCompraItens.MacroByName('MFiltro').AsString := 'NOCPA13ID = ''' + SQLTemplate.FindField('NOCPA13ID').AsString + '''';
       SQLNotaCompraItens.Open;
       SQLNotaCompraItens.First;
       while not SQLNotaCompraItens.Eof do
@@ -2438,7 +2438,7 @@ begin
           try
             dm.SQLTemplate.Close;
             dm.SQLTemplate.SQL.Clear;
-            dm.SQLTemplate.SQL.Add('Update NotaCompra set NOCPCSTATUS = "A", NOCPDCANCELAMENTO = NULL where NOCPA13ID = "'+ SQLTemplateNOCPA13ID.Value+'"');
+            dm.SQLTemplate.SQL.Add('Update NotaCompra set NOCPCSTATUS = ''A'', NOCPDCANCELAMENTO = NULL where NOCPA13ID = '''+ SQLTemplateNOCPA13ID.Value+'''');
             dm.SQLTemplate.ExecSQL;
             ShowMessage('Operação realizada com sucesso!');
             SQLTemplate.Close;
@@ -2455,7 +2455,7 @@ Var Posicao:TBookmark;
     nTxtErros: String;
 begin
   SQLNotaCompraItens.Close;
-  SQLNotaCompraItens.MacroByName('MFiltro').AsString := 'NOCPA13ID = "' + SQLTemplate.FindField('NOCPA13ID').AsString + '"' ;
+  SQLNotaCompraItens.MacroByName('MFiltro').AsString := 'NOCPA13ID = ''' + SQLTemplate.FindField('NOCPA13ID').AsString + '''' ;
   SQLNotaCompraItens.Open;
 
   nTxTErros := '';
@@ -2564,7 +2564,7 @@ begin
             sqltemplateNOCPA4ANO.Value       := '20'+Ano;
             SQLTemplateNOCPA5SERIE.AsInteger := StrToInt(Serie);
             sqltemplateNOCPA30NRO.Value      := IntToStr(strToInt(Numero));
-            SQLTemplateFORNICOD.AsString     := dm.sqllocate('FORNECEDOR','FORNA14CGC','FORNICOD','"'+Cnpj+'"') ;
+            SQLTemplateFORNICOD.AsString     := dm.sqllocate('FORNECEDOR','FORNA14CGC','FORNICOD',''''+Cnpj+'''') ;
             sqltemplateNOCPDEMISSAO.AsString := copy(sqltemplateNOCPDEMISSAO.AsString,1,2)+'/' + Mes + '/20' + Ano;
             SQLTemplateNOCPDRECEBIMENTO.AsString := copy(sqltemplateNOCPDEMISSAO.AsString,1,2)+'/' + Mes + '/20' + Ano;
             DBEdit11.setfocus;
@@ -2591,7 +2591,7 @@ begin
   if SQLTemplateNOCPCFRETEMANUAL.Value='S' then
     begin
       SQLNotaCompraItens.Close;
-      SQLNotaCompraItens.MacroByName('MFiltro').AsString := 'NOCPA13ID = "' + SQLTemplate.FindField('NOCPA13ID').AsString + '"' ;
+      SQLNotaCompraItens.MacroByName('MFiltro').AsString := 'NOCPA13ID = ''' + SQLTemplate.FindField('NOCPA13ID').AsString + '''' ;
       SQLNotaCompraItens.Open;
       SQLNotaCompraItens.first;
       while not SQLNotaCompraItens.eof do
@@ -2602,7 +2602,7 @@ begin
           dm.sqltemplate.Close;
           dm.sqltemplate.sql.clear;
           dm.sqltemplate.sql.add('update notacompraitem set NOCIN3VLRFRETE='+ConvFloatToStr(VlrFreteItem));
-          dm.sqltemplate.sql.add('where nocpa13id="'+SQLTemplateNOCPA13ID.Value+'" and prodicod='+SQLNotaCompraItensPRODICOD.AsString);
+          dm.sqltemplate.sql.add('where nocpa13id='''+SQLTemplateNOCPA13ID.Value+''' and prodicod='+SQLNotaCompraItensPRODICOD.AsString);
           dm.sqltemplate.Prepare;
           dm.sqltemplate.ExecSQL;
 

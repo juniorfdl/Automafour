@@ -329,7 +329,7 @@ begin
   Else
     IncluindoEmpresa := False;
 
-   if (SQLLocate('Empresa','EMPRCMATRIZFILIAL','EMPRCMATRIZFILIAL','"M"') <> '') and (IncluindoEmpresa) and (SQLTemplateEMPRCMATRIZFILIAL.AsString = 'M') then
+   if (SQLLocate('Empresa','EMPRCMATRIZFILIAL','EMPRCMATRIZFILIAL','''M''') <> '') and (IncluindoEmpresa) and (SQLTemplateEMPRCMATRIZFILIAL.AsString = 'M') then
      begin
        Informa('Já exite uma empresa cadastrada como matriz, portanto, as outras empresas devem ser cadastradas como filiais !');
        Abort;

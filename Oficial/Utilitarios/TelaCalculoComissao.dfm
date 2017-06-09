@@ -3,7 +3,7 @@ inherited FormTelaCalculoComissao: TFormTelaCalculoComissao
   Top = 170
   Width = 815
   Height = 457
-  Caption = 'Calcular Comiss'#245'es'
+  Caption = 'Calcular Comissões'
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
@@ -75,7 +75,7 @@ inherited FormTelaCalculoComissao: TFormTelaCalculoComissao
         Top = 66
         Width = 447
         Height = 129
-        Caption = ' Tipo de C'#225'lculo de comiss'#245'es '
+        Caption = ' Tipo de Cálculo de comissões '
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -105,7 +105,7 @@ inherited FormTelaCalculoComissao: TFormTelaCalculoComissao
           Top = 32
           Width = 393
           Height = 17
-          Caption = 'Calcular aplicando o percentual do Produto em cada '#237'tem da venda'
+          Caption = 'Calcular aplicando o percentual do Produto em cada ítem da venda'
           Font.Charset = ANSI_CHARSET
           Font.Color = 8404992
           Font.Height = -11
@@ -120,7 +120,7 @@ inherited FormTelaCalculoComissao: TFormTelaCalculoComissao
           Top = 47
           Width = 393
           Height = 17
-          Caption = 'Calcular usando perc.vendedor e parcelas quitadas do per'#237'odo'
+          Caption = 'Calcular usando perc.vendedor e parcelas quitadas do período'
           Font.Charset = ANSI_CHARSET
           Font.Color = 8404992
           Font.Height = -11
@@ -135,7 +135,7 @@ inherited FormTelaCalculoComissao: TFormTelaCalculoComissao
           Top = 62
           Width = 393
           Height = 17
-          Caption = 'Calcular usando percentual do vendedor e fideliza'#231#227'o por venda'
+          Caption = 'Calcular usando percentual do vendedor e fidelização por venda'
           Font.Charset = ANSI_CHARSET
           Font.Color = 8404992
           Font.Height = -11
@@ -164,7 +164,7 @@ inherited FormTelaCalculoComissao: TFormTelaCalculoComissao
           Width = 437
           Height = 17
           Caption = 
-            'Calcular aplicando o percentual do Produto em cada '#237'tem do Pedid' +
+            'Calcular aplicando o percentual do Produto em cada ítem do Pedid' +
             'oVenda'
           Font.Charset = ANSI_CHARSET
           Font.Color = 8404992
@@ -194,7 +194,7 @@ inherited FormTelaCalculoComissao: TFormTelaCalculoComissao
         Top = 23
         Width = 446
         Height = 41
-        Caption = ' Per'#237'odo '
+        Caption = ' Período '
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -221,7 +221,7 @@ inherited FormTelaCalculoComissao: TFormTelaCalculoComissao
           Top = 18
           Width = 19
           Height = 13
-          Caption = 'a&t'#233
+          Caption = 'a&té'
           FocusControl = Ate
           Font.Charset = ANSI_CHARSET
           Font.Color = 8404992
@@ -296,7 +296,7 @@ inherited FormTelaCalculoComissao: TFormTelaCalculoComissao
         Top = 26
         Width = 184
         Height = 88
-        Caption = 'Emiss'#227'o'
+        Caption = 'Emissão'
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -363,7 +363,7 @@ inherited FormTelaCalculoComissao: TFormTelaCalculoComissao
               Width = 84
               Height = 25
               Cursor = crHandPoint
-              Hint = 'Calcula as Comiss'#245'es do Per'#237'odo'
+              Hint = 'Calcula as Comissões do Período'
               Caption = '&Calcular'
               Flat = True
               Font.Charset = ANSI_CHARSET
@@ -411,7 +411,7 @@ inherited FormTelaCalculoComissao: TFormTelaCalculoComissao
               Width = 129
               Height = 25
               Cursor = crHandPoint
-              Hint = 'Visualizar Relat'#243'rio'
+              Hint = 'Visualizar Relatório'
               Caption = '&Comissao Fabrica'
               Flat = True
               Font.Charset = ANSI_CHARSET
@@ -602,7 +602,7 @@ inherited FormTelaCalculoComissao: TFormTelaCalculoComissao
       '  VENDEDOR.VENDN2COMISP,'
       '  CUPOM.CUPON3BONUSTROCA+CUPOM.CUPON2DESC AS CUPON3BONUSTROCA,'
       '  CUPOM.CLIEA13ID,'
-      '  '#39'CP'#39' as TIPODOC'
+      '  ''CP'' as TIPODOC'
       'from'
       '  CUPOM'
       '  left outer join Vendedor on Cupom.vendicod = vendedor.vendicod'
@@ -621,12 +621,12 @@ inherited FormTelaCalculoComissao: TFormTelaCalculoComissao
       'NOTAFISCAL.PLRCICOD AS PLRCICOD,'
       'NOTAFISCAL.NOFIN2VLRPRODUTO AS CUPON2TOTITENS,'
       'NOTAFISCAL.NOFIN2VLROUTRASDESP AS CUPON2ACRESC,'
-      'CAST('#39'CRD'#39' AS CHAR(5)) AS CUPOCTIPOPADRAO,'
+      'CAST(''CRD'' AS CHAR(5)) AS CUPOCTIPOPADRAO,'
       'VENDEDOR.VENDN2COMISV,'
       'VENDEDOR.VENDN2COMISP,'
       'NOTAFISCAL.NOFIN2VLRDESC AS CUPON3BONUSTROCA,'
       'NOTAFISCAL.CLIEA13ID,'
-      #39'NF'#39' as TIPODOC'
+      '''NF'' as TIPODOC'
       'from'
       'NOTAFISCAL'
       
@@ -746,9 +746,9 @@ inherited FormTelaCalculoComissao: TFormTelaCalculoComissao
         ' INNER JOIN VENDEDOR VENDEDOR ON CUPOMITEM.VENDICOD = VENDEDOR.V' +
         'ENDICOD'
       'where'
-      '  CUPOM.CUPOCSTATUS = "A" and'
+      '  CUPOM.CUPOCSTATUS = ''A'' and'
       '  CUPOMITEM.CPITN3QTD > 0 and'
-      '  CUPOMITEM.CPITCSTATUS = "A" and'
+      '  CUPOMITEM.CPITCSTATUS = ''A'' and'
       
         '  CUPOM.CUPON2TOTITENS+CUPOM.CUPON3CREDTAXA+CUPOM.CUPON2ACRESC-C' +
         'UPOM.CUPON2DESC-CUPOM.CUPON3BONUSTROCA > 0 and'
@@ -764,7 +764,7 @@ inherited FormTelaCalculoComissao: TFormTelaCalculoComissao
       'NOTAFISCALITEM.NFITN2VLRUNIT as CPITN3VLRUNIT,'
       'NOTAFISCAL.NOFIDEMIS as CUPODEMIS,'
       'NOTAFISCAL.NOFICSTATUS as CUPOCSTATUS,'
-      'CAST('#39'CRD'#39' AS CHAR(5)) as CUPOCTIPOPADRAO,'
+      'CAST(''CRD'' AS CHAR(5)) as CUPOCTIPOPADRAO,'
       'NOTAFISCAL.NOFIN2VLRDESC as CUPON2DESC,'
       'NOTAFISCAL.NOFIN2VLRPRODUTO as CUPON2TOTITENS,'
       'NOTAFISCAL.PLRCICOD as PLRCICOD,'
@@ -781,7 +781,7 @@ inherited FormTelaCalculoComissao: TFormTelaCalculoComissao
         'left outer join VENDEDOR ON NOTAFISCAL.VENDICOD = VENDEDOR.VENDI' +
         'COD'
       'where'
-      'NOTAFISCAL.NOFICSTATUS = "E" and'
+      'NOTAFISCAL.NOFICSTATUS = ''E'' and'
       'NOTAFISCALITEM.NFITN3QUANT > 0 and'
       '(%MVendedor) and'
       '(%MData1)'
@@ -927,7 +927,7 @@ inherited FormTelaCalculoComissao: TFormTelaCalculoComissao
       'from'
       'ContasReceber'
       'Where'
-      ' (CTRCN2TOTREC >0) and (CTRCCSTATUS<>'#39'C'#39')'
+      ' (CTRCN2TOTREC >0) and (CTRCCSTATUS<>''C'')'
       'and'
       '(%Data)'
       'and'
@@ -1143,7 +1143,7 @@ inherited FormTelaCalculoComissao: TFormTelaCalculoComissao
     DatabaseName = 'DB'
     SQL.Strings = (
       'Select * from CupomNumerario'
-      'Where (%Cupom) and (CPNMN2VLR>0) and (CPNMCAUTENT='#39'S'#39')'
+      'Where (%Cupom) and (CPNMN2VLR>0) and (CPNMCAUTENT=''S'')'
       'ORDER BY CUPOA13ID')
     Macros = <
       item
@@ -1259,7 +1259,7 @@ inherited FormTelaCalculoComissao: TFormTelaCalculoComissao
       '  VENDEDOR.VENDN2PERCFIDEL as VENDN2COMISV,'
       '  VENDEDOR.VENDN2PERCFIDEL as VENDN2COMISP,'
       '  CUPOM.CUPON3BONUSTROCA,'
-      '  '#39'CP'#39' as TIPODOC'
+      '  ''CP'' as TIPODOC'
       'from'
       '  CUPOM'
       
@@ -1272,7 +1272,7 @@ inherited FormTelaCalculoComissao: TFormTelaCalculoComissao
         '  left outer join OperacaoEstoque on Cupom.OPESICOD = OperacaoEs' +
         'toque.OPESICOD'
       'where'
-      '  CUPOM.CUPOCSTATUS = "A"  and'
+      '  CUPOM.CUPOCSTATUS = ''A''  and'
       '  (%MData) and'
       'cliente.vendicod > 0 and'
       'cliente.vendicod <> cupom.vendicod'
@@ -1286,11 +1286,11 @@ inherited FormTelaCalculoComissao: TFormTelaCalculoComissao
       'NOTAFISCAL.PLRCICOD AS PLRCICOD,'
       'NOTAFISCAL.NOFIN2VLRPRODUTO AS CUPON2TOTITENS,'
       'NOTAFISCAL.NOFIN2VLROUTRASDESP AS CUPON2ACRESC,'
-      'CAST('#39'CRD'#39' AS CHAR(5)) AS CUPOCTIPOPADRAO,'
+      'CAST(''CRD'' AS CHAR(5)) AS CUPOCTIPOPADRAO,'
       'VENDEDOR.VENDN2PERCFIDEL as VENDN2COMISV,'
       'VENDEDOR.VENDN2PERCFIDEL as VENDN2COMISP,'
       'NOTAFISCAL.NOFIN2VLRDESCPROM,'
-      #39'NF'#39' as TIPODOC'
+      '''NF'' as TIPODOC'
       'from'
       'NOTAFISCAL'
       
@@ -1301,7 +1301,7 @@ inherited FormTelaCalculoComissao: TFormTelaCalculoComissao
         'left outer join OperacaoEstoque on NOTAFISCAL.OPESICOD = Operaca' +
         'oEstoque.OPESICOD'
       'where'
-      'NOTAFISCAL.NOFICSTATUS = '#39'E'#39' and'
+      'NOTAFISCAL.NOFICSTATUS = ''E'' and'
       '(%MData1)'
       'and'
       'cliente.vendicod > 0'
@@ -1571,7 +1571,7 @@ inherited FormTelaCalculoComissao: TFormTelaCalculoComissao
       'VENDEDOR.VENDN2COMISV,'
       'VENDEDOR.VENDN2COMISP,'
       'PEDIDOVENDA.CLIEA13ID,'
-      #39'PV'#39' as TIPODOC,'
+      '''PV'' as TIPODOC,'
       'PEDIDOVENDA.PDVDN2PERCOMIS,'
       'PEDIDOVENDA.PDVDN2VLRFRETE'
       'from'
@@ -1580,9 +1580,9 @@ inherited FormTelaCalculoComissao: TFormTelaCalculoComissao
         'left outer join Vendedor on PEDIDOVENDA.vendicod = VENDEDOR.vend' +
         'icod'
       'where'
-      'PEDIDOVENDA.PDVDCTIPO   = '#39'P'#39' and'
+      'PEDIDOVENDA.PDVDCTIPO   = ''P'' and'
       
-        '(PEDIDOVENDA.PDVDCSTATUS = '#39'E'#39' or PEDIDOVENDA.PDVDCSTATUS = '#39'A'#39')' +
+        '(PEDIDOVENDA.PDVDCSTATUS = ''E'' or PEDIDOVENDA.PDVDCSTATUS = ''A'')' +
         '  and'
       '(%MData)'
       ''
@@ -1826,7 +1826,7 @@ inherited FormTelaCalculoComissao: TFormTelaCalculoComissao
       '  VENDEDOR.VENDN2COMISV,'
       '  VENDEDOR.VENDN2COMISP,'
       '  PEDIDOVENDA.CLIEA13ID,'
-      '  '#39'PV'#39' as TIPODOC,'
+      '  ''PV'' as TIPODOC,'
       '  PEDIDOVENDAITEM.PVITN2VLRUNIT,'
       '  PEDIDOVENDAITEM.PVITN3QUANT,'
       '  PEDIDOVENDAITEM.PVITN2VLRDESC,'
@@ -1840,10 +1840,10 @@ inherited FormTelaCalculoComissao: TFormTelaCalculoComissao
         ' INNER JOIN VENDEDOR VENDEDOR ON PEDIDOVENDA.VENDICOD = VENDEDOR' +
         '.VENDICOD'
       'where'
-      '  PEDIDOVENDA.PDVDCTIPO   = '#39'P'#39' and'
+      '  PEDIDOVENDA.PDVDCTIPO   = ''P'' and'
       
-        '  (PEDIDOVENDA.PDVDCSTATUS = '#39'E'#39' or PEDIDOVENDA.PDVDCSTATUS = '#39'A' +
-        #39') and'
+        '  (PEDIDOVENDA.PDVDCSTATUS = ''E'' or PEDIDOVENDA.PDVDCSTATUS = ''A' +
+        ''') and'
       '  PEDIDOVENDAITEM.PVITN3TOTVENDITEM > 0 and'
       '  (%MVendedor) and'
       '  (%MData)')
@@ -1933,9 +1933,9 @@ inherited FormTelaCalculoComissao: TFormTelaCalculoComissao
         '  CUPOMITEM inner join CUPOM  on CUPOMITEM.CUPOA13ID = CUPOM.CUP' +
         'OA13ID'
       'where'
-      '  CUPOM.CUPOCSTATUS = "A" and'
+      '  CUPOM.CUPOCSTATUS = ''A'' and'
       '  CUPOMITEM.CPITN3QTD > 0 and'
-      '  CUPOMITEM.CPITCSTATUS <> "C" and'
+      '  CUPOMITEM.CPITCSTATUS <> ''C'' and'
       '  (%MEmpresa) and'
       '  (%MData)')
     Macros = <
@@ -2146,7 +2146,7 @@ inherited FormTelaCalculoComissao: TFormTelaCalculoComissao
         Border.Color = clBlack
         Border.Style = psSolid
         Border.Visible = False
-        Caption = 'Relatorio de Comiss'#245'es por Filial'
+        Caption = 'Relatorio de Comissões por Filial'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'

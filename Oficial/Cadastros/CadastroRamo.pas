@@ -67,7 +67,7 @@ begin
     end;
   // Testar se o Ramo ja existe!!!
   SQLRamoAux.Close;
-  SQLRamoAux.MacroByName('Descricao').Value := 'RAMOA30DESCR = ' + '"' + SQLTemplateRAMOA30DESCR.Value + '"';
+  SQLRamoAux.MacroByName('Descricao').Value := 'RAMOA30DESCR = ' + '''' + SQLTemplateRAMOA30DESCR.Value + '''';
   SQLRamoAux.Open;
   If not SQLRamoAux.IsEmpty Then
     Begin

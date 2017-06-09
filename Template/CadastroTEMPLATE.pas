@@ -620,7 +620,7 @@ procedure TFormCadastroTEMPLATE.FormKeyPress(Sender: TObject;
   begin
     Result := Copy(Text,4,2)+'/'+
               Copy(Text,1,2)+'/'+
-              Copy(Text,7,4)+'"';
+              Copy(Text,7,4)+'''';
   end;
 var
   Clausula, ColunaOrdem, ColunaOrdenar, Ordenar, Operador, Texto :String;
@@ -683,12 +683,12 @@ begin
                                        else
                                          Clausula := Clausula + Operador + EditProcura.Text;
                 FtString,ftMemo      : if Copy(EditProcura.Text,1,1) = '*' then
-                                         Clausula := Clausula + ' LIKE "%' + Copy(EditProcura.Text,2,Length(EditProcura.Text)-1) + '%"'
+                                         Clausula := Clausula + ' LIKE ''%' + Copy(EditProcura.Text,2,Length(EditProcura.Text)-1) + '%'''
                                        else
                                          if ComboOperador.ItemIndex = 3 then
-                                           Clausula := Clausula + Operador + ' "' + EditEntre.Text + '" AND "' + EditE.Text + '"'
+                                           Clausula := Clausula + Operador + ' ''' + EditEntre.Text + ''' AND ''' + EditE.Text + ''''
                                          else
-                                           Clausula := Clausula + ' LIKE "' + EditProcura.Text + '%"';
+                                           Clausula := Clausula + ' LIKE ''' + EditProcura.Text + '%''';
 
 {                FtString,ftMemo      : begin
                                          Texto := '%';
@@ -699,7 +699,7 @@ begin
                                              else
                                                Texto := Texto+copy(EditProcura.Text,I,1);
                                            end;
-                                         Clausula := Clausula + ' LIKE "' + Texto + '"';
+                                         Clausula := Clausula + ' LIKE ''' + Texto + '''';
                                        end;
 }
                 ftFloat,ftCurrency,
@@ -710,16 +710,16 @@ begin
                 FtDateTime           : if Pos('HORA',DSTemplate.DataSet.FindField(ColunaOrdem).FieldName) <> 0 then
                                          begin
                                            if ComboOperador.ItemIndex = 3 then
-                                             Clausula := Clausula + Operador + ' "12/30/1899 ' + EditEntre.Text + ':00" AND "12/30/1899 ' + EditE.Text + ':00"'
+                                             Clausula := Clausula + Operador + ' ''12/30/1899 ' + EditEntre.Text + ':00'' AND ''12/30/1899 ' + EditE.Text + ':00'''
                                            else
-                                             Clausula := Clausula + Operador + ' "12/30/1899 ' + EditProcura.Text + ':00"';
+                                             Clausula := Clausula + Operador + ' ''12/30/1899 ' + EditProcura.Text + ':00''';
                                          end
                                        else
                                          begin
                                            if ComboOperador.ItemIndex = 3 then
-                                             Clausula := Clausula + Operador + ' "' + FormataData(EditEntre.Text) + ' AND "' + FormataData(EditE.Text)
+                                             Clausula := Clausula + Operador + ' ''' + FormataData(EditEntre.Text) + ' AND ''' + FormataData(EditE.Text)
                                            else
-                                             Clausula := Clausula + Operador + ' "' + FormataData(EditProcura.Text);
+                                             Clausula := Clausula + Operador + ' ''' + FormataData(EditProcura.Text);
                                          end;
               end ;
 
@@ -734,7 +734,7 @@ begin
                       else
                         Clausula := Clausula+copy(EditProcura.Text,I,1);
                     end;
-                  Clausula := 'CLIEA15FONE1 like "' + Clausula + '"';
+                  Clausula := 'CLIEA15FONE1 like ''' + Clausula + '''';
                 end;
               if (Tabela = 'PRODUTO') and (ColunaOrdem = 'PRODA60DESCR') and (EditProcura.Text <> '') and (FileExists(DM.PathAplicacao+'ProcuraContendo.txt')) Then
                 begin
@@ -747,14 +747,14 @@ begin
                       else
                         Clausula := Clausula+copy(EditProcura.Text,I,1);
                     end;
-                  Clausula := 'PRODA60DESCR like "' + Clausula + '"';
+                  Clausula := 'PRODA60DESCR like ''' + Clausula + '''';
                 end;
 
               if (Tabela = 'PRODUTO') and (ColunaOrdem = 'PRODA60CODBAR') and (EditProcura.Text <> '') Then
                 begin
                   dm.SQLTemplate.close;
                   dm.SQLTemplate.sql.clear;
-                  dm.SQLTemplate.sql.add('Select * from ProdutoBarras Where PRBAA15BARRAS = "'+EditProcura.Text+'"');
+                  dm.SQLTemplate.sql.add('Select * from ProdutoBarras Where PRBAA15BARRAS = '''+EditProcura.Text+'''');
                   dm.SQLTemplate.open;
                   if not dm.SQLTemplate.IsEmpty then
                     Clausula := 'PRODICOD = '+ dm.SQLTemplate.FieldByName('PRODICOD').AsString
@@ -762,7 +762,7 @@ begin
                     begin
                       dm.SQLTemplate.close;
                       dm.SQLTemplate.sql.clear;
-                      dm.SQLTemplate.sql.add('Select * from Produto Where PRODA60CODBAR = "'+EditProcura.Text+'"');
+                      dm.SQLTemplate.sql.add('Select * from Produto Where PRODA60CODBAR = '''+EditProcura.Text+'''');
                       dm.SQLTemplate.open;
                       if not dm.SQLTemplate.IsEmpty then
                         Clausula := 'PRODIAGRUPGRADE = '+ dm.SQLTemplate.FieldByName('PRODIAGRUPGRADE').AsString
@@ -773,7 +773,7 @@ begin
                 begin
                   dm.SQLTemplate.close;
                   dm.SQLTemplate.sql.clear;
-                  dm.SQLTemplate.sql.add('Select * from Produto Where PRODICOD = "'+EditProcura.Text+'"');
+                  dm.SQLTemplate.sql.add('Select * from Produto Where PRODICOD = '''+EditProcura.Text+'''');
                   dm.SQLTemplate.open;
                   if not dm.SQLTemplate.IsEmpty then
                     Clausula := 'PRODICOD = '+ dm.SQLTemplate.FieldByName('PRODIAGRUPGRADE').AsString;
@@ -787,10 +787,10 @@ begin
             begin
               dm.SQLTemplate.close;
               dm.SQLTemplate.sql.clear;
-              dm.SQLTemplate.sql.add('Select * from CLIENTE Where CLIEA15FONE2 = "'+EditProcura.Text+'"');
+              dm.SQLTemplate.sql.add('Select * from CLIENTE Where CLIEA15FONE2 = '''+EditProcura.Text+'''');
               dm.SQLTemplate.open;
               if not dm.SQLTemplate.IsEmpty then
-                Clausula := 'CLIEA13ID = "'+ dm.SQLTemplate.FieldByName('CLIEA13ID').AsString + '"';
+                Clausula := 'CLIEA13ID = '''+ dm.SQLTemplate.FieldByName('CLIEA13ID').AsString + '''';
               dm.SQLTemplate.close;
              TRxQuery(DSTemplate.DataSet).Close;
              TRxQuery(DSTemplate.DataSet).MacroByName('MFiltro').Value := Clausula;
@@ -1382,7 +1382,7 @@ begin
           DM.SQLTemplate.Close;
           DM.SQLTemplate.SQL.Text := ' select * from USUARIOPERMISSOES ' +
                                      ' where USUAICOD = ' + IntToStr(UsuarioCorrente) +
-                                     ' and USPEA60NOMETELA = "' + Self.Name + '"';
+                                     ' and USPEA60NOMETELA = ''' + Self.Name + '''';
           DM.SQLTemplate.Open;
 
           if not DM.SQLTemplate.IsEmpty then

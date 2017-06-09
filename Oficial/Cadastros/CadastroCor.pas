@@ -56,7 +56,7 @@ begin
     end;
   // Testar se a Cor ja existe!!!
   SQLCorAux.Close;
-  SQLCorAux.MacroByName('Descricao').Value := 'CORA30DESCR = ' + '"' + SQLTemplateCORA30DESCR.Value + '"';
+  SQLCorAux.MacroByName('Descricao').Value := 'CORA30DESCR = ' + '''' + SQLTemplateCORA30DESCR.Value + '''';
   SQLCorAux.Open;
   If not SQLCorAux.IsEmpty Then
     Begin

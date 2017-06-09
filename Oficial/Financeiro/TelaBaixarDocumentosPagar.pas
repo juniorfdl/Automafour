@@ -318,8 +318,8 @@ begin
     SQLContasPagar.MacroByName('MFornecedor').Value := '0=0';
 
   if not CheckVencimento.Checked then
-    SQLContasPagar.MacroByName('MData').Value := '(CONTASPAGAR.CTPGDVENC >= "' + FormatDateTime('mm/dd/yyyy', Data1.Date) + '") and ' +
-                                               '(CONTASPAGAR.CTPGDVENC <= "' + FormatDateTime('mm/dd/yyyy', Data2.Date) + '")'
+    SQLContasPagar.MacroByName('MData').Value := '(CONTASPAGAR.CTPGDVENC >= ''' + FormatDateTime('mm/dd/yyyy', Data1.Date) + ''') and ' +
+                                               '(CONTASPAGAR.CTPGDVENC <= ''' + FormatDateTime('mm/dd/yyyy', Data2.Date) + ''')'
   else
     SQLContasPagar.MacroByName('MData').Value := '0=0';
 
@@ -334,7 +334,7 @@ begin
     SQLContasPagar.MacrobyName('MTipoDoc').Value := '0=0';
 
   if EditDocumento.Text <> '' then
-    SQLContasPagar.MacrobyName('MDocumento').Value := 'CONTASPAGAR.CTPGA20DOCORIG = "'  + EditDocumento.Text  + '"'
+    SQLContasPagar.MacrobyName('MDocumento').Value := 'CONTASPAGAR.CTPGA20DOCORIG = '''  + EditDocumento.Text  + ''''
   else
     SQLContasPagar.MacrobyName('MDocumento').Value := '0=0';
 
@@ -344,7 +344,7 @@ begin
     begin
       dm.SQLTemplate.close;
       dm.SQLTemplate.SQL.clear;
-      dm.SQLTemplate.SQL.add('Select * from ContasPagar where CTPGA20DOCORIG = "'+EditDocumento.Text+'"');
+      dm.SQLTemplate.SQL.add('Select * from ContasPagar where CTPGA20DOCORIG = '''+EditDocumento.Text+'''');
       dm.SQLTemplate.Open;
       if dm.SQLTemplate.IsEmpty then
         begin
@@ -495,7 +495,7 @@ begin
       DM.SQLTemplate.Close ;
       DM.SQLTemplate.SQL.Clear ;
       DM.SQLTemplate.SQL.Add('select MAX(PAGAICOD) as CONTADOR from PAGAMENTO') ;
-      DM.SQLTemplate.SQL.Add('where CTPGA13ID = "' + TblPagtosTempCTPGA13ID.Value + '"') ;
+      DM.SQLTemplate.SQL.Add('where CTPGA13ID = ''' + TblPagtosTempCTPGA13ID.Value + '''') ;
       DM.SQLTemplate.Open ;
       SQLPagamento.Append ;
       SQLPagamentoCTPGA13ID.Value      := TblPagtosTempCTPGA13ID.Value ;
@@ -770,7 +770,7 @@ begin
       BtnBaixarDoc.Click;
       Application.CreateForm(TFormCadastroRecibo,FormCadastroRecibo);
       FormCadastroRecibo.SQLTemplate.Close;
-      FormCadastroRecibo.SQLTemplate.MacroByName('MFiltro').AsString := 'RECIDEMISSAO IS NULL AND RECICTIPO = "F"';
+      FormCadastroRecibo.SQLTemplate.MacroByName('MFiltro').AsString := 'RECIDEMISSAO IS NULL AND RECICTIPO = ''F''';
       FormCadastroRecibo.SQLTemplate.Open;
       FormCadastroRecibo.Show;
     end;
@@ -908,7 +908,7 @@ begin
           DM.SQLTemplate.Close ;
           DM.SQLTemplate.SQL.Clear ;
           DM.SQLTemplate.SQL.Add('select MAX(PAGAICOD) as CONTADOR from PAGAMENTO') ;
-          DM.SQLTemplate.SQL.Add('where CTPGA13ID = "' + TblPagtosTempCTPGA13ID.Value + '"') ;
+          DM.SQLTemplate.SQL.Add('where CTPGA13ID = ''' + TblPagtosTempCTPGA13ID.Value + '''') ;
           DM.SQLTemplate.Open ;
           SQLPagamento.Append ;
           SQLPagamentoCTPGA13ID.Value      := TblPagtosTempCTPGA13ID.Value ;

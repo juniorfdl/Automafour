@@ -12186,7 +12186,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
       'and'
       '(%Data)'
       'and'
-      'CUPOM.CUPOCSTATUS = "A"')
+      'CUPOM.CUPOCSTATUS = ''A''')
     Macros = <
       item
         DataType = ftString
@@ -12308,7 +12308,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
       'and'
       '(%Data)'
       'and'
-      'NOTAFISCAL.NOFICSTATUS = "E"')
+      'NOTAFISCAL.NOFICSTATUS = ''E''')
     Macros = <
       item
         DataType = ftString
@@ -12435,7 +12435,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
       'and'
       '(%Data)'
       'and'
-      'NOTACOMPRA.NOCPCSTATUS = "E"')
+      'NOTACOMPRA.NOCPCSTATUS = ''E''')
     Macros = <
       item
         DataType = ftString
@@ -12562,7 +12562,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
       'and'
       '(%Data)'
       'and'
-      'MOVIMENTODIVERSO.MOVDCCONLUIDO = "S"')
+      'MOVIMENTODIVERSO.MOVDCCONLUIDO = ''S''')
     Macros = <
       item
         DataType = ftString

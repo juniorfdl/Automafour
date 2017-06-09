@@ -369,17 +369,17 @@ begin
       DM.SQLTemplate.Close ;
       DM.SQLTemplate.SQL.Clear ;
       DM.SQLTemplate.SQL.Add('delete from VENDEDORCOMISSAO') ;
-      DM.SQLTemplate.SQL.Add('where VDCODEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '"') ;
-      DM.SQLTemplate.SQL.Add('and   VDCODEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"') ;
-      DM.SQLTemplate.SQL.Add('and VDCOA5TIPODOC <> "MN"');
+      DM.SQLTemplate.SQL.Add('where VDCODEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + '''') ;
+      DM.SQLTemplate.SQL.Add('and   VDCODEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''') ;
+      DM.SQLTemplate.SQL.Add('and VDCOA5TIPODOC <> ''MN''');
       DM.SQLTemplate.ExecSQL ;
     end;
 
   DM.SQLTemplate.Close ;
   DM.SQLTemplate.SQL.Clear ;
   DM.SQLTemplate.SQL.Add('delete from EMPRESACOMISSAO') ;
-  DM.SQLTemplate.SQL.Add('where CUPODEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '"') ;
-  DM.SQLTemplate.SQL.Add('and   CUPODEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"') ;
+  DM.SQLTemplate.SQL.Add('where CUPODEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + '''') ;
+  DM.SQLTemplate.SQL.Add('and   CUPODEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''') ;
   DM.SQLTemplate.ExecSQL ;
 
   Msg.Caption := 'Filtrando vendas no período selecionado...' ;
@@ -391,17 +391,17 @@ begin
   //CALCULAR USANDO SOMENTE PERCENTUAL DO VENDEDOR
   if Opcao1.Checked then
   begin
-    Clausula := 'CUPOM.CUPODEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                'CUPOM.CUPODEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
+    Clausula := 'CUPOM.CUPODEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                'CUPOM.CUPODEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
 
     Progress.Max := SQLRecCount('CUPOM', 'where ' + Clausula) ;
     Progress.Position := 0;
     SQLCalcComiss.Close;
     SQLCalcComiss.MacrobyName('MData').Value    := Clausula ;
-    SQLCalcComiss.MacrobyName('MStatus').Value  := 'CUPOM.CUPOCSTATUS = "A"';
-    SQLCalcComiss.MacrobyName('MStatus1').Value := 'NOTAFISCAL.NOFICSTATUS = "E"';
-    SQLCalcComiss.MacrobyName('MData1').Value   := 'NOTAFISCAL.NOFIDEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                   'NOTAFISCAL.NOFIDEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
+    SQLCalcComiss.MacrobyName('MStatus').Value  := 'CUPOM.CUPOCSTATUS = ''A''';
+    SQLCalcComiss.MacrobyName('MStatus1').Value := 'NOTAFISCAL.NOFICSTATUS = ''E''';
+    SQLCalcComiss.MacrobyName('MData1').Value   := 'NOTAFISCAL.NOFIDEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                   'NOTAFISCAL.NOFIDEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
     SQLCalcComiss.Open;
     SQLCalcComiss.First;
 
@@ -471,8 +471,8 @@ begin
     Msg.Caption := 'Contando registros...' ;
     Msg.Refresh ;
 
-    Clausula := 'CUPOM.CUPODEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                'CUPOM.CUPODEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
+    Clausula := 'CUPOM.CUPODEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                'CUPOM.CUPODEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
 
     DM.SQLTemplate.Close ;
     DM.SQLTemplate.SQL.Clear ;
@@ -480,10 +480,10 @@ begin
     DM.SQLTemplate.SQL.Add('from') ;
     DM.SQLTemplate.SQL.Add('CUPOM CUPOM INNER JOIN CUPOMITEM CUPOMITEM ON CUPOM.CUPOA13ID = CUPOMITEM.CUPOA13ID') ;
     DM.SQLTemplate.SQL.Add('where') ;
-    DM.SQLTemplate.SQL.Add('CUPOM.CUPOCSTATUS = "A" and') ;
+    DM.SQLTemplate.SQL.Add('CUPOM.CUPOCSTATUS = ''A'' and') ;
     DM.SQLTemplate.SQL.Add('CUPOMITEM.CPITN3QTD > 0 and') ;
-    DM.SQLTemplate.SQL.Add('CUPOM.CUPODEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ') ;
-    DM.SQLTemplate.SQL.Add('CUPOM.CUPODEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"') ;
+    DM.SQLTemplate.SQL.Add('CUPOM.CUPODEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ') ;
+    DM.SQLTemplate.SQL.Add('CUPOM.CUPODEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''') ;
     DM.SQLTemplate.Open ;
     Progress.Max := DM.SQLTemplate.fieldbyname('RecCount').Value ;
 
@@ -493,8 +493,8 @@ begin
     Msg.Refresh ;
     SQLItensVenda.Close ;
     SQLItensVenda.MacrobyName('MData').Value := Clausula ;
-    SQLItensVenda.MacrobyName('MData1').Value := 'NOTAFISCAL.NOFIDEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                 'NOTAFISCAL.NOFIDEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
+    SQLItensVenda.MacrobyName('MData1').Value := 'NOTAFISCAL.NOFIDEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                 'NOTAFISCAL.NOFIDEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
 
     SQLItensVenda.Open ;
     SQLItensVenda.First ;
@@ -516,7 +516,7 @@ begin
 
       SQLVendedorComissao.Close ;
       SQLVendedorComissao.MacroByName('MFiltro').Value := 'VENDICOD  = ' + SQLItensVendaVENDICOD.AsString + ' and ' +
-                                                          'CUPOA13ID = "' + SQLItensVendaCUPOA13ID.AsString + '"' ;
+                                                          'CUPOA13ID = ''' + SQLItensVendaCUPOA13ID.AsString + '''' ;
       try
         SQLVendedorComissao.Open ;
       except
@@ -643,18 +643,18 @@ begin
   // Calcular Usando Percentual do Vendedor e Parcelas Quitadas do Periodo...
   if Opcao3.Checked then
   begin
-    Clausula := 'CUPOM.CUPODEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date)  + '" and ' +
-                'CUPOM.CUPODEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"';
+    Clausula := 'CUPOM.CUPODEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date)  + ''' and ' +
+                'CUPOM.CUPODEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''';
 
     Progress.Max := SQLRecCount('CUPOM', 'where ' + Clausula) ;
     Progress.Position := 1 ;
     SQLCalcComiss.Close ;
     SQLCalcComiss.MacrobyName('MData').Value := Clausula ;
-    SQLCalcComiss.MacrobyName('MData1').Value := 'NOTAFISCAL.NOFIDEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                 'NOTAFISCAL.NOFIDEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
+    SQLCalcComiss.MacrobyName('MData1').Value := 'NOTAFISCAL.NOFIDEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                 'NOTAFISCAL.NOFIDEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
 
-    SQLCalcComiss.MacrobyName('MStatus').Value  := 'CUPOM.CUPOCSTATUS = "A"';
-    SQLCalcComiss.MacrobyName('MStatus1').Value := 'NOTAFISCAL.NOFICSTATUS = "E"';
+    SQLCalcComiss.MacrobyName('MStatus').Value  := 'CUPOM.CUPOCSTATUS = ''A''';
+    SQLCalcComiss.MacrobyName('MStatus1').Value := 'NOTAFISCAL.NOFICSTATUS = ''E''';
     SQLCalcComiss.Open ;
     SQLCalcComiss.First ;
     while not SQLCalcComiss.EOF do
@@ -669,7 +669,7 @@ begin
         MemoProb.Lines.Add('O Documento ' + SQLCalcComissCUPOA13ID.Value + ' não é à VISTA nem à PRAZO!') ;
 
       SQLCupomNumerario.Close;
-      SQLCupomNumerario.MacroByName('Cupom').Value := 'CUPOA13ID = "'+SQLCalcComissCUPOA13ID.Value+'"';
+      SQLCupomNumerario.MacroByName('Cupom').Value := 'CUPOA13ID = '''+SQLCalcComissCUPOA13ID.Value+'''';
       SQLCupomNumerario.Open;
 
       SQLVendedorComissao.Append ;
@@ -707,17 +707,17 @@ begin
     Application.ProcessMessages;
 
     SQLContasReceber.Close;
-    SQLContasReceber.MacroByName('Data').Value      := 'CTRCDULTREC >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                       'CTRCDULTREC <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
+    SQLContasReceber.MacroByName('Data').Value      := 'CTRCDULTREC >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                       'CTRCDULTREC <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
 
     if DateEmissao.Text <> '  /  /    ' then
-      SQLContasReceber.MacroByName('Emissao').Value := 'CTRCDEMIS >= ' + '"' + FormatDateTime('mm/dd/yyyy',DateEmissao.Date) + '"'
+      SQLContasReceber.MacroByName('Emissao').Value := 'CTRCDEMIS >= ' + '''' + FormatDateTime('mm/dd/yyyy',DateEmissao.Date) + ''''
     else
       SQLContasReceber.MacroByName('Emissao').Value := '0=0';
 
     SQLVendedorComissao.Close;
-    SQLVendedorComissao.MacroByName('MFiltro').AsString := 'VDCODEMIS >= "' + FormatDateTime('mm/dd/yyyy',De.Date) + '" AND ' +
-                                                           'VDCODEMIS <= "' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '"';
+    SQLVendedorComissao.MacroByName('MFiltro').AsString := 'VDCODEMIS >= ''' + FormatDateTime('mm/dd/yyyy',De.Date) + ''' AND ' +
+                                                           'VDCODEMIS <= ''' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '''';
     SQLVendedorComissao.Open;
     SQLContasReceber.Open;
     SQLContasReceber.Last;
@@ -737,8 +737,8 @@ begin
         Application.ProcessMessages;
 
         SQLRecebimento.Close;
-        SQLRecebimento.MacroByName('Data').Value := 'RECEDRECTO >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                    'RECEDRECTO <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
+        SQLRecebimento.MacroByName('Data').Value := 'RECEDRECTO >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                    'RECEDRECTO <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
         SQLRecebimento.Open;
         SQLRecebimento.First;
 
@@ -786,18 +786,18 @@ begin
   if Opcao4.Checked then
     begin
       // CALCULA A COMISSAO NORMALMENTE USANDO PERCENTUAL DO VENDEDOR
-      Clausula := 'CUPOM.CUPODEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                  'CUPOM.CUPODEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' +
-                  ' and OperacaoEstoque.OPESCENTRADASAIDA = "S" and OperacaoEstoque.OPESCGERAFINANCEIRO = "S" ';
+      Clausula := 'CUPOM.CUPODEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                  'CUPOM.CUPODEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' +
+                  ' and OperacaoEstoque.OPESCENTRADASAIDA = ''S'' and OperacaoEstoque.OPESCGERAFINANCEIRO = ''S'' ';
 
       SQLCalcComiss.Close;
       SQLCalcComiss.MacrobyName('MData').Value := Clausula ;
-      SQLCalcComiss.MacrobyName('MData1').Value := 'NOTAFISCAL.NOFIDEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                   'NOTAFISCAL.NOFIDEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' +
-                                                   ' and OperacaoEstoque.OPESCENTRADASAIDA = "S" and OperacaoEstoque.OPESCGERAFINANCEIRO = "S" ';
+      SQLCalcComiss.MacrobyName('MData1').Value := 'NOTAFISCAL.NOFIDEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                   'NOTAFISCAL.NOFIDEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' +
+                                                   ' and OperacaoEstoque.OPESCENTRADASAIDA = ''S'' and OperacaoEstoque.OPESCGERAFINANCEIRO = ''S'' ';
 
-      SQLCalcComiss.MacrobyName('MStatus').Value  := 'CUPOM.CUPOCSTATUS = "A"';
-      SQLCalcComiss.MacrobyName('MStatus1').Value := 'NOTAFISCAL.NOFICSTATUS = "E"';
+      SQLCalcComiss.MacrobyName('MStatus').Value  := 'CUPOM.CUPOCSTATUS = ''A''';
+      SQLCalcComiss.MacrobyName('MStatus1').Value := 'NOTAFISCAL.NOFICSTATUS = ''E''';
       SQLCalcComiss.Open;
       SQLCalcComiss.Last;
       Progress.Min := 0;
@@ -866,15 +866,15 @@ begin
       end;
       Progress.Position := 0 ;
       // VERIFICA A VENDA FIDELIZADA
-      Clausula := 'CUPOM.CUPODEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                  'CUPOM.CUPODEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' +
-                  ' and OperacaoEstoque.OPESCENTRADASAIDA = "S" and OperacaoEstoque.OPESCGERAFINANCEIRO = "S" ';
+      Clausula := 'CUPOM.CUPODEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                  'CUPOM.CUPODEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' +
+                  ' and OperacaoEstoque.OPESCENTRADASAIDA = ''S'' and OperacaoEstoque.OPESCGERAFINANCEIRO = ''S'' ';
 
       SQLVendasFidelizadas.Close;
       SQLVendasFidelizadas.MacrobyName('MData').Value := Clausula ;
-      SQLVendasFidelizadas.MacrobyName('MData1').Value := 'NOTAFISCAL.NOFIDEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                          'NOTAFISCAL.NOFIDEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' +
-                                                          ' and OperacaoEstoque.OPESCENTRADASAIDA = "S" and OperacaoEstoque.OPESCGERAFINANCEIRO = "S" ';
+      SQLVendasFidelizadas.MacrobyName('MData1').Value := 'NOTAFISCAL.NOFIDEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                          'NOTAFISCAL.NOFIDEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' +
+                                                          ' and OperacaoEstoque.OPESCENTRADASAIDA = ''S'' and OperacaoEstoque.OPESCGERAFINANCEIRO = ''S'' ';
       SQLVendasFidelizadas.Open;
       SQLVendasFidelizadas.Last;
       Progress.Min := 0;
@@ -948,18 +948,18 @@ begin
         Application.ProcessMessages;
       end;
       // CALCULA OS ESTORNOS DO PERIODO
-      Clausula := ' (CUPOM.CUPODEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                             'CUPOM.CUPODEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' +
-                             ' and OperacaoEstoque.OPESCENTRADASAIDA = "D" and OperacaoEstoque.OPESCGERAFINANCEIRO = "S") ';
+      Clausula := ' (CUPOM.CUPODEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                             'CUPOM.CUPODEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' +
+                             ' and OperacaoEstoque.OPESCENTRADASAIDA = ''D'' and OperacaoEstoque.OPESCGERAFINANCEIRO = ''S'') ';
       Progress.Position := 0;
       SQLCalcComiss.Close;
       SQLCalcComiss.MacrobyName('MData').Value  := Clausula ;
-      SQLCalcComiss.MacrobyName('MData1').Value := ' (NOTAFISCAL.NOFIDEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                   'NOTAFISCAL.NOFIDEMIS     <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' +
-                                                   ' and OperacaoEstoque.OPESCENTRADASAIDA = "D" and OperacaoEstoque.OPESCGERAFINANCEIRO = "S") ';
+      SQLCalcComiss.MacrobyName('MData1').Value := ' (NOTAFISCAL.NOFIDEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                   'NOTAFISCAL.NOFIDEMIS     <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' +
+                                                   ' and OperacaoEstoque.OPESCENTRADASAIDA = ''D'' and OperacaoEstoque.OPESCGERAFINANCEIRO = ''S'') ';
 
-      SQLCalcComiss.MacrobyName('MStatus').Value  := 'CUPOM.CUPOCSTATUS = "C"';
-      SQLCalcComiss.MacrobyName('MStatus1').Value := 'NOTAFISCAL.NOFICSTATUS <> "A"';
+      SQLCalcComiss.MacrobyName('MStatus').Value  := 'CUPOM.CUPOCSTATUS = ''C''';
+      SQLCalcComiss.MacrobyName('MStatus1').Value := 'NOTAFISCAL.NOFICSTATUS <> ''A''';
 
       SQLCalcComiss.Open;
       SQLCalcComiss.Last;
@@ -1027,15 +1027,15 @@ begin
       Progress.Position := 0 ;
       // VERIFICA ESTORNO DA VENDA FIDELIZADA
 
-      Clausula := ' (CUPOM.CUPODEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                             'CUPOM.CUPODEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' +
-                             ' and OperacaoEstoque.OPESCENTRADASAIDA = "D" and OperacaoEstoque.OPESCGERAFINANCEIRO = "S") ';
+      Clausula := ' (CUPOM.CUPODEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                             'CUPOM.CUPODEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' +
+                             ' and OperacaoEstoque.OPESCENTRADASAIDA = ''D'' and OperacaoEstoque.OPESCGERAFINANCEIRO = ''S'') ';
       Progress.Position := 0;
       SQLVendasFidelizadas.Close;
       SQLVendasFidelizadas.MacrobyName('MData').Value  := Clausula ;
-      SQLVendasFidelizadas.MacrobyName('MData1').Value := ' (NOTAFISCAL.NOFIDEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                   'NOTAFISCAL.NOFIDEMIS     <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' +
-                                                   ' and OperacaoEstoque.OPESCENTRADASAIDA = "D" and OperacaoEstoque.OPESCGERAFINANCEIRO = "S") ';
+      SQLVendasFidelizadas.MacrobyName('MData1').Value := ' (NOTAFISCAL.NOFIDEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                   'NOTAFISCAL.NOFIDEMIS     <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' +
+                                                   ' and OperacaoEstoque.OPESCENTRADASAIDA = ''D'' and OperacaoEstoque.OPESCGERAFINANCEIRO = ''S'') ';
 
       SQLVendasFidelizadas.Open;
       SQLVendasFidelizadas.Last;
@@ -1111,8 +1111,8 @@ begin
   if Opcao5.Checked then
     begin
       SQLPedidoVenda.Close;
-      SQLPedidoVenda.MacroByName('MData').AsString := 'PEDIDOVENDA.PDVDDEMISSAO >= "' + FormatDateTime('mm/dd/yyyy 00:00:00', De.Date) + '" and ' +
-                                                      'PEDIDOVENDA.PDVDDEMISSAO <= "' + FormatDateTime('mm/dd/yyyy 23:59:00', Ate.Date) + '"' ;
+      SQLPedidoVenda.MacroByName('MData').AsString := 'PEDIDOVENDA.PDVDDEMISSAO >= ''' + FormatDateTime('mm/dd/yyyy 00:00:00', De.Date) + ''' and ' +
+                                                      'PEDIDOVENDA.PDVDDEMISSAO <= ''' + FormatDateTime('mm/dd/yyyy 23:59:00', Ate.Date) + '''' ;
       SQLPedidoVenda.Open;
       SQLPedidoVenda.First;
 
@@ -1201,8 +1201,8 @@ begin
       Msg.Caption := 'Contando registros...' ;
       Msg.Refresh ;
 
-      Clausula := 'PEDIDOVENDA.PDVDDEMISSAO >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                  'PEDIDOVENDA.PDVDDEMISSAO <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
+      Clausula := 'PEDIDOVENDA.PDVDDEMISSAO >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                  'PEDIDOVENDA.PDVDDEMISSAO <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
 
       DM.SQLTemplate.Close ;
       DM.SQLTemplate.SQL.Clear ;
@@ -1210,10 +1210,10 @@ begin
       DM.SQLTemplate.SQL.Add('From') ;
       DM.SQLTemplate.SQL.Add('PEDIDOVENDA PEDIDOVENDA INNER JOIN PEDIDOVENDAITEM PEDIDOVENDAITEM ON PEDIDOVENDA.PDVDA13ID = PEDIDOVENDAITEM.PDVDA13ID') ;
       DM.SQLTemplate.SQL.Add('Where') ;
-      DM.SQLTemplate.SQL.Add('PEDIDOVENDA.PDVDCSTATUS <> "C" and') ;
+      DM.SQLTemplate.SQL.Add('PEDIDOVENDA.PDVDCSTATUS <> ''C'' and') ;
       DM.SQLTemplate.SQL.Add('PEDIDOVENDAITEM.PVITN3QUANT > 0 and') ;
-      DM.SQLTemplate.SQL.Add('PEDIDOVENDA.PDVDDEMISSAO >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ') ;
-      DM.SQLTemplate.SQL.Add('PEDIDOVENDA.PDVDDEMISSAO <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"') ;
+      DM.SQLTemplate.SQL.Add('PEDIDOVENDA.PDVDDEMISSAO >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ') ;
+      DM.SQLTemplate.SQL.Add('PEDIDOVENDA.PDVDDEMISSAO <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''') ;
       DM.SQLTemplate.Open ;
 
       Progress.Position := 0 ;
@@ -1243,7 +1243,7 @@ begin
 
         SQLVendedorComissao.Close ;
         SQLVendedorComissao.MacroByName('MFiltro').Value := 'VENDICOD  = ' + SQLPedidoVendaItemVENDICOD.AsString + ' and ' +
-                                                            'CUPOA13ID = "' + SQLPedidoVendaItemPDVDA13ID.AsString + '"' ;
+                                                            'CUPOA13ID = ''' + SQLPedidoVendaItemPDVDA13ID.AsString + '''' ;
         try
           SQLVendedorComissao.Open ;
         except
@@ -1374,9 +1374,9 @@ begin
 
     DM.SQLConsulta.Close ;
     DM.SQLConsulta.SQL.Clear ;
-    DM.SQLConsulta.SQL.Add('select * from CUPOM where (CUPOCSTATUS <> "C") and ') ;
-    DM.SQLConsulta.SQL.Add('CUPODEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ') ;
-    DM.SQLConsulta.SQL.Add('CUPODEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"') ;
+    DM.SQLConsulta.SQL.Add('select * from CUPOM where (CUPOCSTATUS <> ''C'') and ') ;
+    DM.SQLConsulta.SQL.Add('CUPODEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ') ;
+    DM.SQLConsulta.SQL.Add('CUPODEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''') ;
     DM.SQLConsulta.Open ;
     Progress.Max := DM.SQLConsulta.RecordCount ;
 
@@ -1403,7 +1403,7 @@ begin
       Msg.Refresh ;
 
       SQLEmpresaComissao.Close ;
-      SQLEmpresaComissao.MacroByName('MFiltro').Value := 'CUPOA13ID = "' + DM.SQLConsulta.Fieldbyname('CUPOA13ID').Value + '"' ;
+      SQLEmpresaComissao.MacroByName('MFiltro').Value := 'CUPOA13ID = ''' + DM.SQLConsulta.Fieldbyname('CUPOA13ID').Value + '''' ;
       try
         SQLEmpresaComissao.Open ;
       except
@@ -1532,8 +1532,8 @@ procedure TFormTelaCalculoComissao.SpeedButton1Click(Sender: TObject);
 begin
   inherited;
   SQLEmpresaComissao.Close ;
-  SQLEmpresaComissao.MacroByName('MFiltro').Value := 'CUPODEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) +
-                                                     '" and   CUPODEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
+  SQLEmpresaComissao.MacroByName('MFiltro').Value := 'CUPODEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) +
+                                                     ''' and   CUPODEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
   SQLEmpresaComissao.open;
   if not SQLEmpresaComissao.IsEmpty then
     ppReportVertebralle.print;

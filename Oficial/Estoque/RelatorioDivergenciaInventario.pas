@@ -201,8 +201,8 @@ begin
 
   SQLInventario.MacroByName('Empresa').Value := SQLDeLista(ComboEmpresa,ListaEmpresas,'','InventarioEstoque','EMPRICOD');
 
-  SQLInventario.MacroByName('Data').Value := 'InventarioEstoque.INVDDATA >= ' + '"' + FormatDateTime('mm/dd/yy',De.Date) + '" and ' +
-                                             'InventarioEstoque.INVDDATA <= ' + '"' + FormatDateTime('mm/dd/yy',Ate.Date) + '"';
+  SQLInventario.MacroByName('Data').Value := 'InventarioEstoque.INVDDATA >= ' + '''' + FormatDateTime('mm/dd/yy',De.Date) + ''' and ' +
+                                             'InventarioEstoque.INVDDATA <= ' + '''' + FormatDateTime('mm/dd/yy',Ate.Date) + '''';
 
   if ComboTerminal.Value <> '' then
     SQLInventario.MacroByName('Terminal').Value := 'InventarioEstoque.TERMICOD = ' + ComboTerminal.Value
@@ -280,8 +280,8 @@ begin
       SQLProduto.MacroByName('Empresa1').Value := SQLDeLista(ComboEmpresa,ListaEmpresas,'','InventarioEstoque','EMPRICOD');
       SQLProduto.MacroByName('Empresa').Value  := SQLDeLista(ComboEmpresa,ListaEmpresas,'','ProdutoSaldo','EMPRICOD');
 
-      SQLProduto.MacroByName('Data1').Value := 'InventarioEstoque.INVDDATA >= ' + '"' + FormatDateTime('mm/dd/yy',De.Date) + '" and ' +
-                                               'InventarioEstoque.INVDDATA <= ' + '"' + FormatDateTime('mm/dd/yy',Ate.Date) + '"';
+      SQLProduto.MacroByName('Data1').Value := 'InventarioEstoque.INVDDATA >= ' + '''' + FormatDateTime('mm/dd/yy',De.Date) + ''' and ' +
+                                               'InventarioEstoque.INVDDATA <= ' + '''' + FormatDateTime('mm/dd/yy',Ate.Date) + '''';
 
       if ComboTerminal.Value <> '' then
         SQLProduto.MacroByName('Terminal1').Value := 'InventarioEstoque.TERMICOD = ' + ComboTerminal.Value
@@ -355,23 +355,23 @@ begin
   Report.Formulas.Retrieve;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Emissao' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'PeriodoEmissao' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
-                                  FormatDateTime('dd/mm/yyyy', Ate.Date) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
+                                  FormatDateTime('dd/mm/yyyy', Ate.Date) + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Empresa' ;
-  Report.Formulas.Formula.Text := '"' + ComboEmpresa.Text + '"' ;
+  Report.Formulas.Formula.Text := '''' + ComboEmpresa.Text + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Terminal' ;
   if ComboTerminal.Text <> '' then
-    Report.Formulas.Formula.Text := '"' + ComboTerminal.Text + '"'
+    Report.Formulas.Formula.Text := '''' + ComboTerminal.Text + ''''
   else
-    Report.Formulas.Formula.Text := '"Todos"' ;
+    Report.Formulas.Formula.Text := '''Todos''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Contagem';
-  Report.Formulas.Formula.Text := '"' + RadioTipoRel.Items[RadioTipoRel.ItemIndex] + '"';
+  Report.Formulas.Formula.Text := '''' + RadioTipoRel.Items[RadioTipoRel.ItemIndex] + '''';
   //--------------------------------------------------------------------------\\
   Report.Execute;
 end;

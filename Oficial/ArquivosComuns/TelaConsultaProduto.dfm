@@ -1140,7 +1140,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
       'From'
       'Produto'
       'Where'
-      'PRODCATIVO = "S" and'
+      'PRODCATIVO = ''S'' and'
       'PRODICOD = PRODIAGRUPGRADE and '
       '(%MFiltro)')
     object SQLTemplatePRODICOD: TIntegerField

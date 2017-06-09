@@ -226,7 +226,7 @@ begin
             if IsNumeric(cdNCM,'INTEGER') then
               begin
                 SQLTemplate.Close;
-                SQLTemplate.macrobyname('MFiltro').value := 'NCMA30CODIGO = "' + CdNCM +'"';
+                SQLTemplate.macrobyname('MFiltro').value := 'NCMA30CODIGO = ''' + CdNCM +'''';
                 SQLTemplate.Open;
                 if not SQLTemplate.IsEmpty then
                   begin
@@ -355,7 +355,7 @@ begin
       if vNcm <> '' then
         begin
           SQLTemplate.Close;
-          SQLTemplate.macrobyname('MFiltro').value := 'NCMA30CODIGO = "' + vNcm +'"';
+          SQLTemplate.macrobyname('MFiltro').value := 'NCMA30CODIGO = ''' + vNcm +'''';
           SQLTemplate.Open;
           if not SQLTemplate.IsEmpty then
             begin

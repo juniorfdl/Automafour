@@ -282,30 +282,30 @@ begin
             begin
               ClausulaSql := EditFiltroEsp.Text;
               Delete(ClausulaSql,Pos('*',EditFiltroEsp.Text),1);
-              SQLConsulta.MacroByName('Referencia').Value := 'PRODA60REFER Like ' + '"%' + EditFiltroEsp.Text + '%"'
+              SQLConsulta.MacroByName('Referencia').Value := 'PRODA60REFER Like ' + '''%' + EditFiltroEsp.Text + '%'''
             end
           else
-            SQLConsulta.MacroByName('Referencia').Value := 'PRODA60REFER Like ' + '"' + EditFiltroEsp.Text + '%"'
+            SQLConsulta.MacroByName('Referencia').Value := 'PRODA60REFER Like ' + '''' + EditFiltroEsp.Text + '%'''
         end;
     1 : begin
           if Pos('*',EditFiltroEsp.Text) > 0 then
             begin
               ClausulaSql := EditFiltroEsp.Text;
               Delete(ClausulaSql,Pos('*',EditFiltroEsp.Text),1);
-              SQLConsulta.MacroByName('DescrPrinc').Value := 'PRODA60DESCR Like ' + '"%' + ClausulaSql + '%"'
+              SQLConsulta.MacroByName('DescrPrinc').Value := 'PRODA60DESCR Like ' + '''%' + ClausulaSql + '%'''
             end
           else
-            SQLConsulta.MacroByName('DescrPrinc').Value := 'PRODA60DESCR Like ' + '"' + EditFiltroEsp.Text + '%"'
+            SQLConsulta.MacroByName('DescrPrinc').Value := 'PRODA60DESCR Like ' + '''' + EditFiltroEsp.Text + '%'''
         end;
     2 : begin
           if Pos('*',EditFiltroEsp.Text) > 0 then
             begin
               ClausulaSql := EditFiltroEsp.Text;
               Delete(ClausulaSql,Pos('*',EditFiltroEsp.Text),1);
-              SQLConsulta.MacroByName('DescrReduz').Value := 'PRODA30DESCRREDUZ Like = ' + '"%' + EditFiltroEsp.Text + '%"'
+              SQLConsulta.MacroByName('DescrReduz').Value := 'PRODA30DESCRREDUZ Like = ' + '''%' + EditFiltroEsp.Text + '%'''
             end
           else
-            SQLConsulta.MacroByName('DescrReduz').Value := 'PRODA30DESCRREDUZ Like = ' + '"' + EditFiltroEsp.Text + '%"'
+            SQLConsulta.MacroByName('DescrReduz').Value := 'PRODA30DESCRREDUZ Like = ' + '''' + EditFiltroEsp.Text + '%'''
         end;
     3 : begin
           SQLConsulta.MacroByName('AgrupGrade').Value := 'PRODIAGRUPGRADE = ' + EditFiltroEsp.Text ;
@@ -388,7 +388,7 @@ begin
      4 : begin
            if (ComboGrupo.Text = '') or (ComboSubGrupo.Text = '') or (ComboVariacao.Text = '') then
              begin
-               if not Pergunta('SIM','A estrutura " Grupo/SubGrupo/Variação " está incompleta !'+ #13 + 'Deseja continuar mesmo assim ?') then
+               if not Pergunta('SIM','A estrutura '' Grupo/SubGrupo/Variação '' está incompleta !'+ #13 + 'Deseja continuar mesmo assim ?') then
                  begin
                    GroupEstrutura.SetFocus;
                    Abort;

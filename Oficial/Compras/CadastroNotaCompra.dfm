@@ -256,7 +256,7 @@ inherited FormCadastroNotaCompra: TFormCadastroNotaCompra
                   item
                     Expanded = False
                     FieldName = 'NOCPDEMISSAO'
-                    Title.Caption = 'Emiss'#227'o'
+                    Title.Caption = 'Emissão'
                     Width = 59
                     Visible = True
                   end
@@ -281,7 +281,7 @@ inherited FormCadastroNotaCompra: TFormCadastroNotaCompra
                     Alignment = taRightJustify
                     Expanded = False
                     FieldName = 'Cod_FornEmprCli'
-                    Title.Caption = 'C'#243'digo'
+                    Title.Caption = 'Código'
                     Width = 41
                     Visible = True
                   end
@@ -408,8 +408,8 @@ inherited FormCadastroNotaCompra: TFormCadastroNotaCompra
                     Width = 388
                     Height = 21
                     Hint = 
-                      'Esta '#233' uma pesquisa avan'#231'ada, os dados inclusos na pesquisa acim' +
-                      'a n'#227'o '#13#10'ser'#227'o considerados na pesquisa atual...'
+                      'Esta é uma pesquisa avançada, os dados inclusos na pesquisa acim' +
+                      'a não '#13#10'serão considerados na pesquisa atual...'
                     DropDownCount = 8
                     DisplayEmpty = 'Selecione um Fornecedor...'
                     LookupField = 'FORNICOD'
@@ -451,7 +451,7 @@ inherited FormCadastroNotaCompra: TFormCadastroNotaCompra
                 Top = 1
                 Width = 76
                 Height = 13
-                Caption = 'Data Emiss'#227'o'
+                Caption = 'Data Emissão'
                 FocusControl = DBEdit9
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = 8404992
@@ -493,7 +493,7 @@ inherited FormCadastroNotaCompra: TFormCadastroNotaCompra
                 Top = 266
                 Width = 73
                 Height = 13
-                Caption = 'Observa'#231#245'es'
+                Caption = 'Observações'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = 8404992
                 Font.Height = -11
@@ -766,7 +766,7 @@ inherited FormCadastroNotaCompra: TFormCadastroNotaCompra
                   Top = 12
                   Width = 119
                   Height = 13
-                  Caption = 'Opera'#231#227'o de Estoque'
+                  Caption = 'Operação de Estoque'
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = 8404992
                   Font.Height = -11
@@ -1327,7 +1327,7 @@ inherited FormCadastroNotaCompra: TFormCadastroNotaCompra
                 ItemHeight = 13
                 Items.Strings = (
                   'Emitente (CIF)'
-                  'Destinat'#225'rio (FOB)')
+                  'Destinatário (FOB)')
                 ParentFont = False
                 TabOrder = 3
                 Values.Strings = (
@@ -1570,7 +1570,7 @@ inherited FormCadastroNotaCompra: TFormCadastroNotaCompra
               Top = 46
               Width = 29
               Height = 13
-              Caption = 'S'#233'rie'
+              Caption = 'Série'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 8404992
               Font.Height = -11
@@ -1583,7 +1583,7 @@ inherited FormCadastroNotaCompra: TFormCadastroNotaCompra
               Top = 45
               Width = 44
               Height = 13
-              Caption = 'N'#250'mero'
+              Caption = 'Número'
               FocusControl = DBEdit4
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 8404992
@@ -1663,7 +1663,7 @@ inherited FormCadastroNotaCompra: TFormCadastroNotaCompra
               Top = 82
               Width = 43
               Height = 13
-              Caption = 'Usu'#225'rio'
+              Caption = 'Usuário'
               FocusControl = DBEdit7
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 8404992
@@ -1745,7 +1745,7 @@ inherited FormCadastroNotaCompra: TFormCadastroNotaCompra
               ItemHeight = 13
               Items.Strings = (
                 'Aberta'
-                'Pre'#231'os Alterados'
+                'Preços Alterados'
                 'Encerrada'
                 'Cancelada')
               TabOrder = 4
@@ -1998,11 +1998,11 @@ inherited FormCadastroNotaCompra: TFormCadastroNotaCompra
       Enabled = False
     end
     object ReabrirNotaEncerradanomovimentestoque1: TMenuItem
-      Caption = 'Reabrir Nota Encerrada - (N'#227'o Moviment Estoque)'
+      Caption = 'Reabrir Nota Encerrada - (Não Moviment Estoque)'
       OnClick = ReabrirNotaEncerradanomovimentestoque1Click
     end
     object FecharNotaAbertaNoMovimentaEstoque1: TMenuItem
-      Caption = 'Fechar Nota Aberta - (N'#227'o Movimenta Estoque)'
+      Caption = 'Fechar Nota Aberta - (Não Movimenta Estoque)'
       OnClick = FecharNotaAbertaNoMovimentaEstoque1Click
     end
     object N1: TMenuItem
@@ -2019,19 +2019,19 @@ inherited FormCadastroNotaCompra: TFormCadastroNotaCompra
       OnClick = EtiquetasdeCodigodeBarras1Click
     end
     object MnADMListConfEntrada: TMenuItem
-      Caption = 'Listagem para Confer'#234'ncia de Entrada'
+      Caption = 'Listagem para Conferência de Entrada'
       OnClick = MnADMListConfEntradaClick
     end
     object MnListProdutosaltpreco: TMenuItem
       Caption = 
-        'Listagem de Produtos que sofreram altera'#231#227'o de pre'#231'o pelas notas' +
+        'Listagem de Produtos que sofreram alteração de preço pelas notas' +
         ' fiscais'
       OnClick = MnListProdutosaltprecoClick
     end
     object EtiquetasGondolaProdutoPrecoAlterado: TMenuItem
       Caption = 
-        'Etiquetas para Gondola de produtos que sofreram altera'#231#227'o de pre' +
-        #231'o'
+        'Etiquetas para Gondola de produtos que sofreram alteração de pre' +
+        'ço'
       OnClick = EtiquetasGondolaProdutoPrecoAlteradoClick
     end
     object MnListagemdeProdutosDigitados: TMenuItem
@@ -2107,7 +2107,7 @@ inherited FormCadastroNotaCompra: TFormCadastroNotaCompra
     end
     object SQLTemplateOPESICOD: TIntegerField
       ConstraintErrorMessage = '1'
-      DisplayLabel = 'C'#243'd.Opera'#231#227'o'
+      DisplayLabel = 'Cód.Operação'
       FieldName = 'OPESICOD'
       Origin = 'DB.NOTACOMPRA.OPESICOD'
     end
@@ -2152,7 +2152,7 @@ inherited FormCadastroNotaCompra: TFormCadastroNotaCompra
     end
     object SQLTemplateNOCPDEMISSAO: TDateTimeField
       ConstraintErrorMessage = '1'
-      DisplayLabel = 'Dt.Emiss'#227'o'
+      DisplayLabel = 'Dt.Emissão'
       FieldName = 'NOCPDEMISSAO'
       Origin = 'DB.NOTACOMPRA.NOCPDEMISSAO'
       DisplayFormat = 'dd/mm/yyyy'
@@ -2511,9 +2511,9 @@ inherited FormCadastroNotaCompra: TFormCadastroNotaCompra
     SQL.Strings = (
       'Select * From OPERACAOESTOQUE'
       'where'
-      'OPESCENTRADASAIDA <> '#39'S'#39
+      'OPESCENTRADASAIDA <> ''S'''
       'and '
-      'OPESCORIGEMDESTINO = '#39'F'#39
+      'OPESCORIGEMDESTINO = ''F'''
       'order by OPESA60DESCR')
     Macros = <>
     Left = 32
@@ -2567,9 +2567,9 @@ inherited FormCadastroNotaCompra: TFormCadastroNotaCompra
       'From '
       'PLANODECONTAS'
       'where  '
-      'PLCTCANALSINT = "A" '
+      'PLCTCANALSINT = ''A'' '
       'and'
-      'PLCTCTIPOSALDO = "D" '
+      'PLCTCTIPOSALDO = ''D'' '
       ''
       'order by PLCTA60DESCR')
     Macros = <>
@@ -3329,7 +3329,7 @@ inherited FormCadastroNotaCompra: TFormCadastroNotaCompra
       Size = 4
     end
     object TblNotaCompraNOCPA5SERIE: TStringField
-      DisplayLabel = 'S'#233'rie'
+      DisplayLabel = 'Série'
       FieldName = 'NOCPA5SERIE'
       Origin = 'DB.NOTACOMPRA.NOCPA5SERIE'
       FixedChar = True
@@ -3337,7 +3337,7 @@ inherited FormCadastroNotaCompra: TFormCadastroNotaCompra
     end
     object TblNotaCompraNOCPA30NRO: TStringField
       ConstraintErrorMessage = '1'
-      DisplayLabel = 'N'#250'mero'
+      DisplayLabel = 'Número'
       FieldName = 'NOCPA30NRO'
       Origin = 'DB.NOTACOMPRA.NOCPA30NRO'
       FixedChar = True
@@ -3359,7 +3359,7 @@ inherited FormCadastroNotaCompra: TFormCadastroNotaCompra
     end
     object TblNotaCompraNOCPDEMISSAO: TDateTimeField
       ConstraintErrorMessage = '1'
-      DisplayLabel = 'Data Emiss'#227'o'
+      DisplayLabel = 'Data Emissão'
       FieldName = 'NOCPDEMISSAO'
       Origin = 'DB.NOTACOMPRA.NOCPDEMISSAO'
       DisplayFormat = 'dd/mm/yyyy'
@@ -3864,29 +3864,29 @@ inherited FormCadastroNotaCompra: TFormCadastroNotaCompra
       DisplayFormat = 'dd/mm/yyyy'
     end
     object SQLMovEstoqueOPESA60DESCR: TStringField
-      DisplayLabel = 'Opera'#231#227'o'
+      DisplayLabel = 'Operação'
       FieldName = 'OPESA60DESCR'
       FixedChar = True
       Size = 60
     end
     object SQLMovEstoquePRODICOD: TIntegerField
-      DisplayLabel = 'C'#243'd. Produto'
+      DisplayLabel = 'Cód. Produto'
       FieldName = 'PRODICOD'
     end
     object SQLMovEstoquePRODA60REFER: TStringField
-      DisplayLabel = 'Refer'#234'ncia'
+      DisplayLabel = 'Referência'
       FieldName = 'PRODA60REFER'
       FixedChar = True
       Size = 60
     end
     object SQLMovEstoquePRODA60CODBAR: TStringField
-      DisplayLabel = 'C'#243'd. Barras'
+      DisplayLabel = 'Cód. Barras'
       FieldName = 'PRODA60CODBAR'
       FixedChar = True
       Size = 60
     end
     object SQLMovEstoqueNOCPDEMISSAO: TDateTimeField
-      DisplayLabel = 'Emiss'#227'o NF'
+      DisplayLabel = 'Emissão NF'
       FieldName = 'NOCPDEMISSAO'
       DisplayFormat = 'dd/mm/yyyy'
     end
@@ -3981,7 +3981,7 @@ inherited FormCadastroNotaCompra: TFormCadastroNotaCompra
       'RIMA=RIMA'
       'EMILIA=RIMA'
       '//'
-      '//--- Linha HP/Xerox padr'#227'o PCL ---//'
+      '//--- Linha HP/Xerox padrão PCL ---//'
       '//'
       'PCL=HP'
       '//'
@@ -4070,7 +4070,7 @@ inherited FormCadastroNotaCompra: TFormCadastroNotaCompra
       ReadOnly = True
     end
     object TblEtiquetasProdutoCodigo: TIntegerField
-      DisplayLabel = 'C'#243'digo'
+      DisplayLabel = 'Código'
       FieldName = 'ProdutoCodigo'
     end
     object TblEtiquetasCodigoBarras: TStringField
@@ -4078,17 +4078,17 @@ inherited FormCadastroNotaCompra: TFormCadastroNotaCompra
       FieldName = 'CodigoBarras'
     end
     object TblEtiquetasREFERENCIA: TStringField
-      DisplayLabel = 'Refer'#234'ncia'
+      DisplayLabel = 'Referência'
       FieldName = 'REFERENCIA'
       Size = 60
     end
     object TblEtiquetasDescricao: TStringField
-      DisplayLabel = 'Descri'#231#227'o'
+      DisplayLabel = 'Descrição'
       FieldName = 'Descricao'
       Size = 60
     end
     object TblEtiquetasPreco: TFloatField
-      DisplayLabel = 'Pre'#231'o'
+      DisplayLabel = 'Preço'
       FieldName = 'Preco'
       DisplayFormat = '#,##0.00'
     end
@@ -4098,7 +4098,7 @@ inherited FormCadastroNotaCompra: TFormCadastroNotaCompra
       Size = 5
     end
     object TblEtiquetasDescricaoReduzida: TStringField
-      DisplayLabel = 'Descri'#231#227'o Reduzida'
+      DisplayLabel = 'Descrição Reduzida'
       FieldName = 'DescricaoReduzida'
       Size = 30
     end
@@ -4112,7 +4112,7 @@ inherited FormCadastroNotaCompra: TFormCadastroNotaCompra
       Size = 15
     end
     object TblEtiquetasDtUltEntr: TDateField
-      DisplayLabel = #218'lt.Entrada'
+      DisplayLabel = 'Últ.Entrada'
       FieldName = 'DtUltEntr'
     end
     object TblEtiquetasCustFant: TStringField
@@ -4133,7 +4133,7 @@ inherited FormCadastroNotaCompra: TFormCadastroNotaCompra
       FieldName = 'Quant'
     end
     object TblEtiquetasProdutoCodigoAntigo: TStringField
-      DisplayLabel = 'C'#243'd.Antigo'
+      DisplayLabel = 'Cód.Antigo'
       FieldName = 'ProdutoCodigoAntigo'
       Size = 15
     end

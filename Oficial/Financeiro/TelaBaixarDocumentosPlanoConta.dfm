@@ -364,11 +364,11 @@ inherited FormTelaBaixarDocumentosPlanoConta: TFormTelaBaixarDocumentosPlanoCont
       'FROM'
       'PLANODECONTAS'
       'WHERE'
-      '(PLCTCTIPOSALDO = "C"'
+      '(PLCTCTIPOSALDO = ''C'''
       'or'
-      'PLCTCTIPOSALDO = "A")'
+      'PLCTCTIPOSALDO = ''A'')'
       'AND'
-      'PLCTCANALSINT = "A" ')
+      'PLCTCANALSINT = ''A'' ')
     Macros = <>
     Left = 320
     Top = 20
@@ -404,11 +404,11 @@ inherited FormTelaBaixarDocumentosPlanoConta: TFormTelaBaixarDocumentosPlanoCont
       'FROM'
       'PLANODECONTAS'
       'WHERE'
-      '(PLCTCTIPOSALDO = "D"'
+      '(PLCTCTIPOSALDO = ''D'''
       'or'
-      'PLCTCTIPOSALDO = "A")'
+      'PLCTCTIPOSALDO = ''A'')'
       'AND'
-      'PLCTCANALSINT = "A" ')
+      'PLCTCANALSINT = ''A'' ')
     Macros = <>
     Left = 376
     Top = 20

@@ -988,7 +988,7 @@ begin
   if ExecSql('select CFGCCEXIBIRPOPTARE from CFGCALLCENTER').fieldbyname('CFGCCEXIBIRPOPTARE').AsString = 'S' then
   begin
     SQLAgendaVer.Close;
-    SQLAgendaVer.SQL.Text := 'Select Count(*) From TAREFA Where  USUAICODDEST = ' + IntToStr(UsuarioCorrente) + ' and TARECSTATUS <> "T"';
+    SQLAgendaVer.SQL.Text := 'Select Count(*) From TAREFA Where  USUAICODDEST = ' + IntToStr(UsuarioCorrente) + ' and TARECSTATUS <> ''T''';
     SQLAgendaVer.Open;
     if (SQLAgendaVer.FieldByName('Count').AsInteger > 0) then
     begin
@@ -1115,7 +1115,7 @@ begin
   TimerImpressaoTablets.Enabled := False;
   {fitlra pedidos a serem impressos}
   dm.sqltemplate.Close;
-  dm.sqltemplate.sql.Text := 'Select * from Prevenda where PRVDN2TOTITENS>0 and PRVDCIMPORT="N" and PDVCPRECONCLU="S" and PRVDCIMPRESSO<>"S" and EMPRICOD=' + EmpresaPadrao + ' order by PRVDICOD asc';
+  dm.sqltemplate.sql.Text := 'Select * from Prevenda where PRVDN2TOTITENS>0 and PRVDCIMPORT=''N'' and PDVCPRECONCLU=''S'' and PRVDCIMPRESSO<>''S'' and EMPRICOD=' + EmpresaPadrao + ' order by PRVDICOD asc';
   dm.sqltemplate.open;
   if not dm.sqltemplate.IsEmpty then
   begin
@@ -1587,7 +1587,7 @@ begin
   DM.SQLTemplate.Close ;
   DM.SQLTemplate.SQL.Clear ;
   DM.SQLTemplate.SQL.Add('select * from PREVENDA') ;
-  DM.SQLTemplate.SQL.Add('where PDVDDHVENDA <= "' + DataLimite + '"');
+  DM.SQLTemplate.SQL.Add('where PDVDDHVENDA <= ''' + DataLimite + '''');
   DM.SQLTemplate.SQL.Add('order by PDVDDHVENDA');
   DM.SQLTemplate.Open ;
 
@@ -1656,7 +1656,7 @@ begin
   DM.SQLTemplate.Close ;
   DM.SQLTemplate.SQL.Clear ;
   DM.SQLTemplate.SQL.Add('select * from PEDIDOVENDA') ;
-  DM.SQLTemplate.SQL.Add('where REGISTRO <= "' + DataLimite + '"');
+  DM.SQLTemplate.SQL.Add('where REGISTRO <= ''' + DataLimite + '''');
   DM.SQLTemplate.SQL.Add('order by REGISTRO');
   DM.SQLTemplate.Open ;
 
@@ -1668,7 +1668,7 @@ begin
     DM.SQLLimparPreVenda.Close ;
     DM.SQLLimparPreVenda.SQL.Clear ;
     DM.SQLLimparPreVenda.SQL.Add('delete from PEDIDOVENDAITEM') ;
-    DM.SQLLimparPreVenda.SQL.Add('where PDVDA13ID = "' + DM.SQLTemplate.FieldByName('PDVDA13ID').AsString+'"') ;
+    DM.SQLLimparPreVenda.SQL.Add('where PDVDA13ID = ''' + DM.SQLTemplate.FieldByName('PDVDA13ID').AsString+'''') ;
     DM.SQLLimparPreVenda.ExecSQL ;
 
 
@@ -1677,7 +1677,7 @@ begin
     DM.SQLLimparPreVenda.Close ;
     DM.SQLLimparPreVenda.SQL.Clear ;
     DM.SQLLimparPreVenda.SQL.Add('delete from CONTASRECEBER') ;
-    DM.SQLLimparPreVenda.SQL.Add('where PDVDA13ID = "' + DM.SQLTemplate.FieldByName('PDVDA13ID').AsString+'"') ;
+    DM.SQLLimparPreVenda.SQL.Add('where PDVDA13ID = ''' + DM.SQLTemplate.FieldByName('PDVDA13ID').AsString+'''') ;
     DM.SQLLimparPreVenda.ExecSQL ;
 
     FormPrincipal.Caption := Application.Title + ' - Apagando Orçamento ' +
@@ -1685,7 +1685,7 @@ begin
     DM.SQLLimparPreVenda.Close ;
     DM.SQLLimparPreVenda.SQL.Clear ;
     DM.SQLLimparPreVenda.SQL.Add('delete from PEDIDOVENDA') ;
-    DM.SQLLimparPreVenda.SQL.Add('where PDVDA13ID = "' + DM.SQLTemplate.FieldByName('PDVDA13ID').AsString+'"') ;
+    DM.SQLLimparPreVenda.SQL.Add('where PDVDA13ID = ''' + DM.SQLTemplate.FieldByName('PDVDA13ID').AsString+'''') ;
     DM.SQLLimparPreVenda.ExecSQL ;
 
     DM.SQLTemplate.Next ;

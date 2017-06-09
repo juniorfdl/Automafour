@@ -40,8 +40,8 @@ procedure TFormRelatorioMediaComprasPeriodo.ExecutarBtnClick(
 begin
   inherited;
   SQLTotalQdte.Close;
-  SQLTotalQdte.MacroByName('MFiltro').Value   := 'REGISTRO >= "' + FormatDateTime('mm/dd/yyyy 00:01:01', De.Date) + '" and ' +
-                                                 'REGISTRO <= "' + FormatDateTime('mm/dd/yyyy 23:59:59', Ate.Date) + '"';
+  SQLTotalQdte.MacroByName('MFiltro').Value   := 'REGISTRO >= ''' + FormatDateTime('mm/dd/yyyy 00:01:01', De.Date) + ''' and ' +
+                                                 'REGISTRO <= ''' + FormatDateTime('mm/dd/yyyy 23:59:59', Ate.Date) + '''';
   SQLTotalQdte.Open;
 end;
 

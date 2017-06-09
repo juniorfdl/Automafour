@@ -6,19 +6,6 @@ inherited FormCadastroMovimentosDiversosEstoque: TFormCadastroMovimentosDiversos
   PixelsPerInch = 96
   TextHeight = 13
   inherited ScrollBoxFundo: TScrollBox
-    inherited PanelCabecalho: TPanel
-      inherited ScrollBoxPanelCabecalho: TScrollBox
-        inherited Panel1: TPanel
-          inherited PanelNavigator: TPanel
-            inherited AdvPanelNavigator: TAdvOfficeStatusBar
-              inherited LabelImpressao: TRxSpeedButton
-                OnClick = LabelImpressaoClick
-              end
-            end
-          end
-        end
-      end
-    end
     inherited PanelCentral: TPanel
       inherited PanelBarra: TPanel
         inherited Button3: TRxSpeedButton

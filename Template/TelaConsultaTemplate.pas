@@ -259,17 +259,17 @@ begin
               Case DSTemplate.DataSet.FindField(ColunaOrdem).DataType Of
                 FtInteger            : Clausula:=Clausula+' = '+EditProcura.Text;
                 FtString,ftMemo      : If copy(EditProcura.Text,1,1)='*' Then
-                                         Clausula:=Clausula+' LIKE "%'+copy(EditProcura.Text,2,Length(EditProcura.Text)-1)+'%"'
+                                         Clausula:=Clausula+' LIKE ''%'+copy(EditProcura.Text,2,Length(EditProcura.Text)-1)+'%'''
                                        Else
-                                         Clausula:=Clausula+' LIKE "'+EditProcura.Text+'%"';
+                                         Clausula:=Clausula+' LIKE '''+EditProcura.Text+'%''';
                 ftFloat              : Clausula:=Clausula+' >= '+ DM.VerificaPonto(EditProcura.Text);
                 FtDateTime           : If Pos('HORA',DSTemplate.DataSet.FindField(ColunaOrdem).FieldName)<>0 Then
-                                         Clausula:=Clausula+' >= "12/30/1899 '+EditProcura.Text+':00"'
+                                         Clausula:=Clausula+' >= ''12/30/1899 '+EditProcura.Text+':00'''
                                        Else
-                                         Clausula:=Clausula+' >= "'+
+                                         Clausula:=Clausula+' >= '''+
                                          Copy(EditProcura.Text,4,2)+'/'+
                                          Copy(EditProcura.Text,1,2)+'/'+
-                                         Copy(EditProcura.Text,7,4)+'"';
+                                         Copy(EditProcura.Text,7,4)+'''';
               end ;
               TRxQuery(DSTemplate.DataSet).MacroByName('MFiltro').Value := Clausula;
               if ComboOrder.Text <> '' then

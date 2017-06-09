@@ -84,7 +84,7 @@ begin
   SQLUsuario.Open;
   SQLTarefa.Close;
   SQLTarefa.MacroByName('MUsuarioDest').AsString := 'USUAICODORIG = ' + IntToStr(UsuarioCorrente);
-  SQLTarefa.MacroByName('MStatus').AsString := 'TARECSTATUS <> "T"';
+  SQLTarefa.MacroByName('MStatus').AsString := 'TARECSTATUS <> ''T''';
   SQLTarefa.Open;
 end;
 

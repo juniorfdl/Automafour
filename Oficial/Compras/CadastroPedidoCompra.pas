@@ -584,7 +584,7 @@ begin
           SQLTemplate.Post;
           DM.SQLTemplate.Close;
           DM.SQLTemplate.SQL.Clear;
-          DM.SQLTemplate.SQL.Add('Delete from ContasPagar where PDCPA13ID = "' + SQLTemplate.FindField('PDCPA13ID').AsString + '"');
+          DM.SQLTemplate.SQL.Add('Delete from ContasPagar where PDCPA13ID = ''' + SQLTemplate.FindField('PDCPA13ID').AsString + '''');
           DM.SQLTemplate.ExecSQL;
           CancelandoPedido := False;
         end;
@@ -668,7 +668,7 @@ procedure TFormCadastroPedidoCompra.ImprimirPedidodeCompra1Click(
 begin
   inherited;
   SQLPedidoCompraItem.Close ;
-  SQLPedidoCompraItem.MacroByName('MPedido').Value := 'PEDIDOCOMPRAITEM.PDCPA13ID = "' + SQLTemplatePDCPA13ID.Value + '"' ;
+  SQLPedidoCompraItem.MacroByName('MPedido').Value := 'PEDIDOCOMPRAITEM.PDCPA13ID = ''' + SQLTemplatePDCPA13ID.Value + '''' ;
   SQLPedidoCompraItem.Open ;
 
   TblImpressao.Close ;
@@ -798,7 +798,7 @@ begin
   end ;
 
   SQLFinanceiro.Close ;
-  SQLFinanceiro.MacroByName('MFiltro').Value := 'PDCPA13ID = "' + SQLPedidoCompraItemPDCPA13ID.Value + '"' ;
+  SQLFinanceiro.MacroByName('MFiltro').Value := 'PDCPA13ID = ''' + SQLPedidoCompraItemPDCPA13ID.Value + '''' ;
   SQLFinanceiro.Open ;
   while not SQLFinanceiro.Eof do
     begin
@@ -834,7 +834,7 @@ begin
   if (not CallDetail) and (StatusAnterior = 'A') and (SQLTemplatePDCPCSTATUS.AsString = 'E') then
     begin
       SQLPedidoCompraItem.Close ;
-      SQLPedidoCompraItem.MacroByName('MPedido').Value := 'PEDIDOCOMPRAITEM.PDCPA13ID = "' + SQLTemplatePDCPA13ID.Value + '"' ;
+      SQLPedidoCompraItem.MacroByName('MPedido').Value := 'PEDIDOCOMPRAITEM.PDCPA13ID = ''' + SQLTemplatePDCPA13ID.Value + '''' ;
       SQLPedidoCompraItem.Open ;
       MakeWindow(SQLPedidoCompraItem.RecordCount, 'Aguarde, Atualizando Ficha de Produtos!');
       Item := 1;
@@ -844,7 +844,7 @@ begin
           SetProgress(Item);
           DM.SQLTemplate.Close;
           DM.SQLTemplate.sql.Clear;
-          DM.SQLTemplate.sql.Add('Update PRODUTO Set Pendente="S", PRODDPREVCOMPRA = '+'"'+ FormatDateTime('mm/dd/yyyy',SQLTemplatePDCPDPREVENTREGA.Value)+'"');
+          DM.SQLTemplate.sql.Add('Update PRODUTO Set Pendente=''S'', PRODDPREVCOMPRA = '+''''+ FormatDateTime('mm/dd/yyyy',SQLTemplatePDCPDPREVENTREGA.Value)+'''');
           DM.SQLTemplate.sql.Add('Where PRODICOD = '+ SQLPedidoCompraItem.FindField('PRODICOD').AsString);
           DM.SQLTemplate.ExecSQL;
           SQLPedidoCompraItem.Next;
@@ -902,7 +902,7 @@ begin
     begin
       dm.SQLTemplate.close;
       dm.SQLTemplate.sql.clear;
-      dm.SQLTemplate.sql.Add('Select Fornicod from Fornecedor Where FORNA14CGC = "'+EditCNPJ.Text+'"');
+      dm.SQLTemplate.sql.Add('Select Fornicod from Fornecedor Where FORNA14CGC = '''+EditCNPJ.Text+'''');
       dm.SQLTemplate.Open;
       if not dm.SQLTemplate.IsEmpty then
         Clausula := 'FORNICOD = '+ dm.SQLTemplate.fieldbyname('FORNICOD').AsString;
@@ -943,18 +943,18 @@ procedure TFormCadastroPedidoCompra.BtCalcClick(Sender: TObject);
 begin
   inherited;
   SQLTotalPedAbertos.Close;
-  SQLTotalPedAbertos.MacroByName('MFiltro').Value   := 'PDCPDEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                       'PDCPDEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"';
+  SQLTotalPedAbertos.MacroByName('MFiltro').Value   := 'PDCPDEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                       'PDCPDEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''';
   SQLTotalPedAbertos.Open;
 
   SQLTotalPedFaturados.Close;
-  SQLTotalPedFaturados.MacroByName('MFiltro').Value   := 'PDCPDEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                         'PDCPDEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"';
+  SQLTotalPedFaturados.MacroByName('MFiltro').Value   := 'PDCPDEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                         'PDCPDEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''';
   SQLTotalPedFaturados.Open;
 
   SQLTotalPedEncerrados.Close;
-  SQLTotalPedEncerrados.MacroByName('MFiltro').Value   := 'PDCPDEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                          'PDCPDEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"';
+  SQLTotalPedEncerrados.MacroByName('MFiltro').Value   := 'PDCPDEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                          'PDCPDEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''';
   SQLTotalPedEncerrados.Open;
 end;
 
@@ -988,7 +988,7 @@ begin
     begin
       dm.SQLTemplate.Close;
       dm.SQLTemplate.SQL.Clear;
-      dm.SQLTemplate.SQL.Add('Update PedidoCompra Set Pendente="S", PDCPA255OBS = "'+NovaObs+'" where PDCPA13ID = "'+SQLTemplatePDCPA13ID.AsString+'"');
+      dm.SQLTemplate.SQL.Add('Update PedidoCompra Set Pendente=''S'', PDCPA255OBS = '''+NovaObs+''' where PDCPA13ID = '''+SQLTemplatePDCPA13ID.AsString+'''');
       dm.SQLTemplate.ExecSQL;
       SQLTemplate.Close;
     end;

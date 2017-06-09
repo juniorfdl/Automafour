@@ -181,8 +181,8 @@ Begin
   DM.SQLTemplate.FieldDefs.Update;
   Case DM.SQLTemplate.FieldDefs.Find(Copy(Combo.Text,POS('.',Combo.Text)+1,Length(Combo.Text))).DataType Of
     ftString,
-    ftMemo : Result := '"'+Valor+'"';
-    ftDateTime : Result := '"'+FormatDateTime('mm/dd/yyyy hh:nn:ss',StrToDate(Valor))+'"';
+    ftMemo : Result := ''''+Valor+'''';
+    ftDateTime : Result := ''''+FormatDateTime('mm/dd/yyyy hh:nn:ss',StrToDate(Valor))+'''';
   Else
     Result := VerificaPonto(Valor);
   End;
@@ -443,7 +443,7 @@ begin
     While Cont < 2 Do
       Begin
         DBMemoFiltros.SelLength:=DBMemoFiltros.SelLength+1;
-        If DBMemoFiltros.SelText[DBMemoFiltros.SelLength]='"' Then
+        If DBMemoFiltros.SelText[DBMemoFiltros.SelLength]='''' Then
           Inc(Cont);
       End;
   BtnParenteses.Enabled := DBMemoFiltros.SelText <> '';
@@ -451,7 +451,7 @@ end;
 
 procedure TFormCadastroConsulta.BtnAddFiltroClick(Sender: TObject);
 Const
-  Dias = '"01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"';
+  Dias = '''01'',''02'',''03'',''04'',''05'',''06'',''07'',''08'',''09'',''10'',''11'',''12'',''13'',''14'',''15'',''16'',''17'',''18'',''19'',''20'',''21'',''22'',''23'',''24'',''25'',''26'',''27'',''28'',''29'',''30'',''31''';
 Var
   OpCampo:String;
 begin
@@ -472,20 +472,20 @@ begin
         //Entre
         5:OpCampo := '(' + ComboFiltro.Text + '>=' + ValorCampo(ComboFiltro,EditValor1.Text) + ')AND(' + ComboFiltro.Text + '<=' + ValorCampo(ComboFiltro,EditValor2.Text)+')';
         //Contendo
-        6:OpCampo := ComboFiltro.Text + ' LIKE "%'+ EditValor1.Text + '%"';
+        6:OpCampo := ComboFiltro.Text + ' LIKE ''%'+ EditValor1.Text + '%''';
         //Diferente
         7:OpCampo := ComboFiltro.Text + '<>'+ ValorCampo(ComboFiltro,EditValor1.Text);
         //Anivers�rio
         8:If (CMI.ItemIndex) = (CMF.ItemIndex) Then
-            OpCampo := '((EXTRACT(MONTH FROM '+ComboFiltro.Text+')="'+IntToStr(CMI.ItemIndex+1)+'")AND(EXTRACT(DAY FROM '+ComboFiltro.Text+') IN ('+Copy(Dias,((CDI.ItemIndex+1)*5)-4,((CDF.ItemIndex-CDI.ItemIndex)*5)+4)+')))'
+            OpCampo := '((EXTRACT(MONTH FROM '+ComboFiltro.Text+')='''+IntToStr(CMI.ItemIndex+1)+''')AND(EXTRACT(DAY FROM '+ComboFiltro.Text+') IN ('+Copy(Dias,((CDI.ItemIndex+1)*5)-4,((CDF.ItemIndex-CDI.ItemIndex)*5)+4)+')))'
           Else
             If (CMF.ItemIndex)-(CMI.ItemIndex)=1 Then
-              OpCampo := '((EXTRACT(MONTH FROM '+ComboFiltro.Text+')="'+IntToStr(CMI.ItemIndex+1)+'")AND(EXTRACT(DAY FROM '+ComboFiltro.Text+') IN ('+Copy(Dias,((CDI.ItemIndex+1)*5)-4,Length(Dias))+'))) OR ((EXTRACT(MONTH FROM '+ComboFiltro.Text+')="'+IntToStr(CMF.ItemIndex+1)+'")AND(EXTRACT(DAY FROM '+ComboFiltro.Text+') IN ('+Copy(Dias,1,((CDF.ItemIndex+1)*5)-1)+')))'
+              OpCampo := '((EXTRACT(MONTH FROM '+ComboFiltro.Text+')='''+IntToStr(CMI.ItemIndex+1)+''')AND(EXTRACT(DAY FROM '+ComboFiltro.Text+') IN ('+Copy(Dias,((CDI.ItemIndex+1)*5)-4,Length(Dias))+'))) OR ((EXTRACT(MONTH FROM '+ComboFiltro.Text+')='''+IntToStr(CMF.ItemIndex+1)+''')AND(EXTRACT(DAY FROM '+ComboFiltro.Text+') IN ('+Copy(Dias,1,((CDF.ItemIndex+1)*5)-1)+')))'
             Else
               If (CMF.ItemIndex)-(CMI.ItemIndex)=2 Then
-                OpCampo := '((EXTRACT(MONTH FROM '+ComboFiltro.Text+')="'+IntToStr(CMI.ItemIndex+1)+'")AND(EXTRACT(DAY FROM '+ComboFiltro.Text+') IN ('+Copy(Dias,((CDI.ItemIndex+1)*5)-4,Length(Dias))+'))) OR (EXTRACT(MONTH FROM '+ComboFiltro.Text+')='+Copy(Dias,((CMI.ItemIndex+2)*5)-4,(((CMF.ItemIndex)-(CMI.ItemIndex+1))*5)-1)+') OR ((EXTRACT(MONTH FROM '+ComboFiltro.Text+')="'+IntToStr(CMF.ItemIndex+1)+'") AND (EXTRACT(DAY FROM '+ComboFiltro.Text+') IN ('+Copy(Dias,1,((CDF.ItemIndex+1)*5)-1)+')))'
+                OpCampo := '((EXTRACT(MONTH FROM '+ComboFiltro.Text+')='''+IntToStr(CMI.ItemIndex+1)+''')AND(EXTRACT(DAY FROM '+ComboFiltro.Text+') IN ('+Copy(Dias,((CDI.ItemIndex+1)*5)-4,Length(Dias))+'))) OR (EXTRACT(MONTH FROM '+ComboFiltro.Text+')='+Copy(Dias,((CMI.ItemIndex+2)*5)-4,(((CMF.ItemIndex)-(CMI.ItemIndex+1))*5)-1)+') OR ((EXTRACT(MONTH FROM '+ComboFiltro.Text+')='''+IntToStr(CMF.ItemIndex+1)+''') AND (EXTRACT(DAY FROM '+ComboFiltro.Text+') IN ('+Copy(Dias,1,((CDF.ItemIndex+1)*5)-1)+')))'
               Else
-                OpCampo := '((EXTRACT(MONTH FROM '+ComboFiltro.Text+')="'+IntToStr(CMI.ItemIndex+1)+'")AND(EXTRACT(DAY FROM '+ComboFiltro.Text+') IN ('+Copy(Dias,((CDI.ItemIndex+1)*5)-4,Length(Dias))+'))) OR (EXTRACT(MONTH FROM '+ComboFiltro.Text+') IN ('+Copy(Dias,((CMI.ItemIndex+2)*5)-4,(((CMF.ItemIndex)-(CMI.ItemIndex+1))*5)-1)+')) OR ((EXTRACT(MONTH FROM '+ComboFiltro.Text+')="'+IntToStr(CMF.ItemIndex+1)+'") AND (EXTRACT(DAY FROM '+ComboFiltro.Text+') IN ('+Copy(Dias,1,((CDF.ItemIndex+1)*5)-1)+')))';
+                OpCampo := '((EXTRACT(MONTH FROM '+ComboFiltro.Text+')='''+IntToStr(CMI.ItemIndex+1)+''')AND(EXTRACT(DAY FROM '+ComboFiltro.Text+') IN ('+Copy(Dias,((CDI.ItemIndex+1)*5)-4,Length(Dias))+'))) OR (EXTRACT(MONTH FROM '+ComboFiltro.Text+') IN ('+Copy(Dias,((CMI.ItemIndex+2)*5)-4,(((CMF.ItemIndex)-(CMI.ItemIndex+1))*5)-1)+')) OR ((EXTRACT(MONTH FROM '+ComboFiltro.Text+')='''+IntToStr(CMF.ItemIndex+1)+''') AND (EXTRACT(DAY FROM '+ComboFiltro.Text+') IN ('+Copy(Dias,1,((CDF.ItemIndex+1)*5)-1)+')))';
       End;
       If (DBMemoFiltros.Lines.IndexOf(OpCampo)=-1) Then
         Begin

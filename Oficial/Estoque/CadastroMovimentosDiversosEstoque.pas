@@ -178,7 +178,7 @@ begin
   if MovimentarEstoque then
     begin
       SQLItens.Close ;
-      SQLItens.MacroByName('MFiltro').Value := 'MOVDA13ID = "' + DataSet.FieldByName('MOVDA13ID').AsString + '"';
+      SQLItens.MacroByName('MFiltro').Value := 'MOVDA13ID = ''' + DataSet.FieldByName('MOVDA13ID').AsString + '''';
       SQLItens.Open ;
 
       Tipo := SQLLocate('OPERACAOESTOQUE', 'OPESICOD', 'OPESCENTRADASAIDA', DataSet.FieldByName('OPESICOD').AsString);
@@ -219,7 +219,7 @@ begin
           while not SQLItens.Eof do
             begin
               SQLProdutoSerie.Close;
-              SQLProdutoSerie.MacroByName('MFiltro').AsString := 'MOVDA13ID = "' + SQLTemplateMOVDA13ID.AsString + '" AND PRODICOD = ' + SQLItensPRODICOD.AsString;
+              SQLProdutoSerie.MacroByName('MFiltro').AsString := 'MOVDA13ID = ''' + SQLTemplateMOVDA13ID.AsString + ''' AND PRODICOD = ' + SQLItensPRODICOD.AsString;
               SQLProdutoSerie.Open;
               if not SQLProdutoSerie.IsEmpty then
                 begin
@@ -266,7 +266,7 @@ procedure TFormCadastroMovimentosDiversosEstoque.BtnFecharTelaClick(
 begin
   if (SQLTemplate.State = DsBrowse) and (SQLTemplate.FieldByName('MOVDCCONLUIDO') .Value = 'N') then
   begin
-   if Pergunta('NAO','A movimentação de estoque somente será efetuada quando este movimento estiver com o campo concluído = "SIM" !' + #13 + 'Deseja concluir agora ?') then
+   if Pergunta('NAO','A movimentação de estoque somente será efetuada quando este movimento estiver com o campo concluído = ''SIM'' !' + #13 + 'Deseja concluir agora ?') then
      begin
        SQLTemplate.Edit;
        SQLTemplate.FieldByName('MOVDCCONLUIDO') .Value := 'S';

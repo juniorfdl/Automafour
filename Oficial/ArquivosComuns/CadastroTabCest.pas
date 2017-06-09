@@ -108,7 +108,7 @@ begin
             if IsNumeric(cdCest,'INTEGER') then
               begin
                 SQLTemplate.Close;
-                SQLTemplate.macrobyname('MFiltro').value := 'CEST = "' + CdCest +'"';
+                SQLTemplate.macrobyname('MFiltro').value := 'CEST = ''' + CdCest +'''';
                 SQLTemplate.Open;
                 if SQLTemplate.IsEmpty then
                   begin

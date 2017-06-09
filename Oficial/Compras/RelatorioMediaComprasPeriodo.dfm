@@ -1,7 +1,7 @@
 inherited FormRelatorioMediaComprasPeriodo: TFormRelatorioMediaComprasPeriodo
   Left = 203
   Top = 100
-  Caption = 'Média de Compras por Período'
+  Caption = 'M'#233'dia de Compras por Per'#237'odo'
   ClientHeight = 481
   ClientWidth = 800
   PixelsPerInch = 96
@@ -23,7 +23,7 @@ inherited FormRelatorioMediaComprasPeriodo: TFormRelatorioMediaComprasPeriodo
         Top = 238
         Width = 99
         Height = 16
-        Caption = 'Valor.Total NF''s'
+        Caption = 'Valor.Total NF'#39's'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clNavy
         Font.Height = -13
@@ -36,7 +36,7 @@ inherited FormRelatorioMediaComprasPeriodo: TFormRelatorioMediaComprasPeriodo
         Top = 238
         Width = 111
         Height = 16
-        Caption = 'Qtde.Média Itens'
+        Caption = 'Qtde.M'#233'dia Itens'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clNavy
         Font.Height = -13
@@ -49,7 +49,7 @@ inherited FormRelatorioMediaComprasPeriodo: TFormRelatorioMediaComprasPeriodo
         Top = 238
         Width = 114
         Height = 16
-        Caption = 'Valor Médio Itens'
+        Caption = 'Valor M'#233'dio Itens'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clNavy
         Font.Height = -13
@@ -233,7 +233,7 @@ inherited FormRelatorioMediaComprasPeriodo: TFormRelatorioMediaComprasPeriodo
       'AND'
       '   NC.NOCPA13ID = NCI.NOCPA13ID'
       'AND'
-      '   NC.NOCPCSTATUS <> ''C''')
+      '   NC.NOCPCSTATUS <> '#39'C'#39)
     Macros = <
       item
         DataType = ftString
@@ -248,8 +248,6 @@ inherited FormRelatorioMediaComprasPeriodo: TFormRelatorioMediaComprasPeriodo
     end
     object SQLTotalQdteTOTALQTDEITEMMEDIA: TFloatField
       FieldName = 'TOTALQTDEITEMMEDIA'
-      Precision = 15
-      Size = 2
     end
     object SQLTotalQdteVALORTOTALNFMED: TFloatField
       FieldName = 'VALORTOTALNFMED'

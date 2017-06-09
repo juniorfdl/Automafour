@@ -559,7 +559,7 @@ begin
   end;
 
   if ComboCliente.Value <> '' then
-    SQLCliente.MacrobyName('MCliente').Value := 'CLIEA13ID = "' + ComboCliente.Value+'"'
+    SQLCliente.MacrobyName('MCliente').Value := 'CLIEA13ID = ''' + ComboCliente.Value+''''
   else
     SQLCliente.MacrobyName('MCliente').Value := '0=0';
 
@@ -585,13 +585,13 @@ begin
     SQLCliente.MacrobyName('MMotBloqDif').Value := '0=0';
 
   if DataUltCompra.Date > 0 then
-    SQLCliente.MacrobyName('MFiltroDataCompra').Value := 'CLIEDULTCOMPRA <= "' + FormatDateTime('mm/dd/yyyy', DataUltCompra.Date) + '"'
+    SQLCliente.MacrobyName('MFiltroDataCompra').Value := 'CLIEDULTCOMPRA <= ''' + FormatDateTime('mm/dd/yyyy', DataUltCompra.Date) + ''''
   else
     SQLCliente.MacrobyName('MFiltroDataCompra').Value := '0=0';
 
   if (DataUltCompra1.Date > 0) and (DataUltCompra2.Date > 0) then
-    SQLCliente.MacrobyName('MFiltroDataCompra').Value := 'CLIEDULTCOMPRA >= "' + FormatDateTime('mm/dd/yyyy', DataUltCompra1.Date) + '" and ' +
-                                                         'CLIEDULTCOMPRA <= "' + FormatDateTime('mm/dd/yyyy', DataUltCompra2.Date) + '"'
+    SQLCliente.MacrobyName('MFiltroDataCompra').Value := 'CLIEDULTCOMPRA >= ''' + FormatDateTime('mm/dd/yyyy', DataUltCompra1.Date) + ''' and ' +
+                                                         'CLIEDULTCOMPRA <= ''' + FormatDateTime('mm/dd/yyyy', DataUltCompra2.Date) + ''''
   else
     SQLCliente.MacrobyName('MFiltroDataCompra').Value := '0=0';
 
@@ -602,9 +602,9 @@ begin
       2 : SQLCliente.MacrobyName('MOrdem').Value := ' order by  Extract(Month From Cliente.CLIEDNASC), Extract(Day From Cliente.CLIEDNASC)';
   end;
   if CKAtivo.Checked then
-    SQLCliente.MacrobyName('MAtivo').Value := 'CLIECATIVO = "S"'
+    SQLCliente.MacrobyName('MAtivo').Value := 'CLIECATIVO = ''S'''
   else
-    SQLCliente.MacrobyName('MAtivo').Value := 'CLIECATIVO = "N"';
+    SQLCliente.MacrobyName('MAtivo').Value := 'CLIECATIVO = ''N''';
 
   if ckSPC.Checked then
     SQLCliente.MacrobyName('Mspc').Value := 'CLIEA13ID not in (select CLIEA13ID from CARTAAVISOSPC)'
@@ -612,7 +612,7 @@ begin
     SQLCliente.MacrobyName('Mspc').Value := '0=0';
 
   if EditBairro.Text <> '' then
-    SQLCliente.MacrobyName('MBairro').Value := 'CLIEA60BAIRES = "' + EditBairro.Text +'"'
+    SQLCliente.MacrobyName('MBairro').Value := 'CLIEA60BAIRES = ''' + EditBairro.Text +''''
   else
     SQLCliente.MacrobyName('MBairro').Value := '0=0';
 

@@ -160,7 +160,7 @@ begin
                                       SQLConsultaInventario.MacroByName('MFILTRO').AsString :=
                                                               ' EMPRICOD = '      + IntToStr(CodEmpresa)  +
                                                               ' AND TERMICOD = '  + IntToStr(CodTerminal) +
-                                                              ' AND INVDDATA = "' + FormatDateTime('mm/dd/yyyy',DataInventario) + '"'+
+                                                              ' AND INVDDATA = ''' + FormatDateTime('mm/dd/yyyy',DataInventario) + ''''+
                                                               ' AND PRODICOD = '  + QueryProduto.FieldByName('PRODICOD').AsString ;
                                       SQLConsultaInventario.Open;
                                       if not SQLConsultaInventario.IsEmpty then
@@ -209,8 +209,8 @@ begin
                                   SQLConsultaInventario.MacroByName('MFILTRO').AsString :=
                                                           ' EMPRICOD = '      + IntToStr(CodEmpresa)  +
                                                           ' AND TERMICOD = '  + IntToStr(CodTerminal) +
-                                                          ' AND INVDDATA = "' + FormatDateTime('mm/dd/yyyy',DataInventario) +
-                                                          '" AND PRODICOD = ' + QueryProduto.FieldByName('PRODICOD').AsString ;
+                                                          ' AND INVDDATA = ''' + FormatDateTime('mm/dd/yyyy',DataInventario) +
+                                                          ''' AND PRODICOD = ' + QueryProduto.FieldByName('PRODICOD').AsString ;
                                   SQLConsultaInventario.Open;
                                   if not SQLConsultaInventario.IsEmpty then
                                     begin

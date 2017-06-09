@@ -99,10 +99,10 @@ begin
   SQLProdutos.MacroByName('MEmpresa').Value := 'produtosaldo.EMPRICOD = ' + dm.SQLEmpresaEMPRICOD.AsString ;
 
   if CKAtivos.Checked then
-    SQLProdutos.MacroByName('MAtivo').Value := 'produto.PRODCATIVO = "S"';
+    SQLProdutos.MacroByName('MAtivo').Value := 'produto.PRODCATIVO = ''S''';
 
   if CKInativos.Checked then
-    SQLProdutos.MacroByName('MAtivo').Value := 'produto.PRODCATIVO = "N"';
+    SQLProdutos.MacroByName('MAtivo').Value := 'produto.PRODCATIVO = ''N''';
 
   SQLProdutos.Open;
 
@@ -172,7 +172,7 @@ begin
           try
             erro := False;
             dm.SQLTemplate.Close;
-            dm.SQLTemplate.sql.Text := 'update produto set prodcativo = "N" where prodicod = ' + TblProdutosTempCodigo.AsString;
+            dm.SQLTemplate.sql.Text := 'update produto set prodcativo = ''N'' where prodicod = ' + TblProdutosTempCodigo.AsString;
             dm.SQLTemplate.Prepare;
             dm.SQLTemplate.Open;
             Application.ProcessMessages;

@@ -397,7 +397,7 @@ begin
   DMFaturamento.TblTicketPreVendaItem.Open ;
 
   SQLCup.Close ;
-  SQLCup.MacroByName('MFiltro').Value := 'CUPOA13ID = "' + IDCupom + '"' ;
+  SQLCup.MacroByName('MFiltro').Value := 'CUPOA13ID = ''' + IDCupom + '''' ;
   SQLCup.Open ;
   if SQLCup.IsEmpty then
     begin
@@ -411,7 +411,7 @@ begin
   DMFaturamento.TblTicketPreVendaCabVendedor.AsString      := SQLLocate('VENDEDOR', 'VENDICOD', 'VENDA60NOME', SQLCup.FieldByName('VENDICOD').AsString) ;
   DMFaturamento.TblTicketPreVendaCabPlano.AsString         := SQLLocate('PLANORECEBIMENTO', 'PLRCICOD', 'PLRCA60DESCR', SQLCup.FieldByName('PLRCICOD').AsString) ;
   DMFaturamento.TblTicketPreVendaCabCliente.AsString       := SQLCup.FieldByName('CLIEA13ID').Value + ' ' +
-                                                   SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA60RAZAOSOC', '"' + SQLCup.FieldByName('CLIEA13ID').AsString + '"') ;
+                                                   SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA60RAZAOSOC', '''' + SQLCup.FieldByName('CLIEA13ID').AsString + '''') ;
   DMFaturamento.TblTicketPreVendaCabTotalNominal.AsString  := SQLCup.FieldByName('CUPON2TOTITENS').AsString ;
   DMFaturamento.TblTicketPreVendaCabTaxaCrediario.Value    := 0 ;
   DMFaturamento.TblTicketPreVendaCabAcrescimo.AsString     := SQLCup.FieldByName('CUPON2ACRESC').AsString ;
@@ -423,8 +423,8 @@ begin
 
   if DM.SQLConfigVenda.FieldByName('CFVECINFDADOVENDA').Value = 'S' then
     begin
-      DMFaturamento.TblTicketPreVendaCabFoneCliente.Value   := SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA15FONE1', '"' + SQLCup.FieldByName('CLIEA13ID').AsString + '"') ;
-      DMFaturamento.TblTicketPreVendaCabNroCreditCard.Value := SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA20NROCARTCRED', '"' + SQLCup.FieldByName('CLIEA13ID').AsString + '"') ;
+      DMFaturamento.TblTicketPreVendaCabFoneCliente.Value   := SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA15FONE1', '''' + SQLCup.FieldByName('CLIEA13ID').AsString + '''') ;
+      DMFaturamento.TblTicketPreVendaCabNroCreditCard.Value := SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA20NROCARTCRED', '''' + SQLCup.FieldByName('CLIEA13ID').AsString + '''') ;
       DMFaturamento.TblTicketPreVendaCabMensagem2.Value     := MensagemVenda;
       DMFaturamento.TblTicketPreVendaCabDataEmissao.AsDateTime  := SQLCup.FieldByName('REGISTRO').AsDateTime;
 
@@ -474,7 +474,7 @@ begin
   DMFaturamento.TblTicketPreVendaCab.Post ;
 
   SQLCupomIt.Close ;
-  SQLCupomIt.MacroByName('MFiltro').Value := 'CUPOA13ID = "' + IDCupom + '"' ;
+  SQLCupomIt.MacroByName('MFiltro').Value := 'CUPOA13ID = ''' + IDCupom + '''' ;
   SQLCupomIt.Open ;
 
   while not SQLCupomIt.EOF do

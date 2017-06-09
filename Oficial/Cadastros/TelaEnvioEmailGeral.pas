@@ -173,7 +173,7 @@ begin
     begin
       Close;
       SQL.Clear;
-      SQL.Add('DELETE FROM EMAIL WHERE MAILCSTATUS = "N"');
+      SQL.Add('DELETE FROM EMAIL WHERE MAILCSTATUS = ''N''');
       ExecSQL;
     end;
   LabelEnviar.Caption := IntToStr(0) + ' Mensagen(s) � enviar ';
@@ -242,13 +242,13 @@ begin
     begin
       Close;
       SQL.Clear;
-      SQL.Add('SELECT Count(MAILICOD) FROM EMAIL WHERE MAILCSTATUS = "N"');
+      SQL.Add('SELECT Count(MAILICOD) FROM EMAIL WHERE MAILCSTATUS = ''N''');
       Open;
     end;
   LabelEnviar.Caption := IntToStr(SQLTemp.FieldByName('Count').AsInteger) + ' Mensagen(s) � enviar ';
   LabelEnviar.Update;
   SQLGeraMail.Close;
-  SQLGeraMail.MacroByName('MFiltro').Value := 'MAILCSTATUS = "N"';
+  SQLGeraMail.MacroByName('MFiltro').Value := 'MAILCSTATUS = ''N''';
   SQLGeraMail.Open;
 end;
 
@@ -285,7 +285,7 @@ procedure TFormTelaEnvioEmailGeral.FormCreate(Sender: TObject);
 begin
   inherited;
   SQLGeraMail.Close;
-  SQLGeraMail.MacroByName('MFiltro').Value := 'MAILCSTATUS = "N"';
+  SQLGeraMail.MacroByName('MFiltro').Value := 'MAILCSTATUS = ''N''';
   SQLGeraMail.Open;
 end;
 
