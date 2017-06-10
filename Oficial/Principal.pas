@@ -359,6 +359,32 @@ type
     procedure MnFINPagarBaixarDocumentosClick(Sender: TObject);
     procedure NotaFiscal1Click(Sender: TObject);
     procedure MnExportaparaBalancasClick(Sender: TObject);
+    procedure MnADMRelVendasPorPeriodoClick(Sender: TObject);
+    procedure MnADMRelVendasPorPerodocomApuraodeMargemClick(
+      Sender: TObject);
+    procedure MNADMRelApuraodeMargemporProdutoClick(Sender: TObject);
+    procedure MnPorPeriodoporEmpresaConferenciaClick(Sender: TObject);
+    procedure MnADMRelProdutosVendidosClick(Sender: TObject);
+    procedure MnADMRelVendasPorPlanoClick(Sender: TObject);
+    procedure PorGrade1Click(Sender: TObject);
+    procedure MnADMRelVendasPorGrupoClick(Sender: TObject);
+    procedure MnADMRelVendasPorMarcaClick(Sender: TObject);
+    procedure MnVendasPorColecaoClick(Sender: TObject);
+    procedure MnADMRelVenComSinteticoClick(Sender: TObject);
+    procedure MnADMRelVenDetalhadoClick(Sender: TObject);
+    procedure MNADMRelPrevendasClick(Sender: TObject);
+    procedure MnADMNotasEntradasClick(Sender: TObject);
+    procedure MnProdutosCompradosClick(Sender: TObject);
+    procedure MnComprasporGrupoClick(Sender: TObject);
+    procedure MnComprasporMarcaClick(Sender: TObject);
+    procedure MnComprasporColecaoClick(Sender: TObject);
+    procedure MNADMRelatoriosComprasVendasporGrupoClick(Sender: TObject);
+    procedure MnProdutosPedidosCompraClick(Sender: TObject);
+    procedure MnProdutosAbaixoMinimoClick(Sender: TObject);
+    procedure ResumodeCaixa1Click(Sender: TObject);
+    procedure MnADMRelCaixaMovimentacaoCaixaClick(Sender: TObject);
+    procedure MnADMRelCaixaTotaisporNumerarioClick(Sender: TObject);
+    procedure MnADMRelCaixaBoletimCaixaClick(Sender: TObject);
   private
     procedure ApagarOrcamentos;
     procedure ApagarPreVendas;
@@ -396,7 +422,17 @@ uses
   CadastroManutencaoCupom, TelaCalculoComissao, CadastroVendedorComissao,
   TelaQuitacaoComissoes, TelaBaixarDocumentosPagar, CadastroNotaFiscal,
   CadastroMecOrdem, CadastroMecExecutaEm, CadastroMecTipoServico,
-  TelaExportacaoBalanca;
+  TelaExportacaoBalanca, RelatorioVendasPeriodo,
+  RelatorioVendasPeriodoApuracaoMargem, RelatorioApuracaoMargemPorProduto,
+  RelatorioCupomEmitidoPorEmpresa, RelatorioProdutosVendidos,
+  RelatorioVendasPorPlano, RelatorioVendasPorGrade, RelatorioVendasGrupo,
+  RelatorioVendasMarca, RelatorioVendasColecao, RelatorioComissao,
+  RelatorioComissaoDetalhado, RelatorioNotasCompra,
+  RelatorioProdutosComprados, RelatorioComprasGrupo, RelatorioComprasMarca,
+  RelatorioComprasColecao, RelatorioVendasComprasPorGrupo,
+  RelatorioProdutosPedidosCompra, RelatorioProdutosAbaixoMinimo,
+  RelatorioResumoCaixa, RelatorioMovimentacaoCaixa,
+  RelatorioTotalNumerarioCaixa, RelatorioBoletimCaixa;
 
 
 
@@ -1734,6 +1770,236 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     CriaFormulario(TFormTelaExportacaoBalanca,'FormTelaExportacaoBalanca',False,True,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnADMRelVendasPorPeriodoClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioVendasPeriodo, 'FormRelatorioVendasPeriodo', False, False, False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnADMRelVendasPorPerodocomApuraodeMargemClick(
+  Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioVendasPeriodoApuracaoMargem, 'FormRelatorioVendasPeriodoApuracaoMargem', False, False, False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MNADMRelApuraodeMargemporProdutoClick(
+  Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioApuracaoMargemPorProduto,'FormRelatorioApuracaoMargemPorProduto',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnPorPeriodoporEmpresaConferenciaClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioCupomEmitidoPorEmpresa, 'FormRelatorioCupomEmitidoPorEmpresa', False, False, False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnADMRelProdutosVendidosClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioProdutosVendidos, 'FormRelatorioProdutosVendidos',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnADMRelVendasPorPlanoClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioVendasPorPlano, 'FormRelatorioVendasPorPlano',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.PorGrade1Click(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioVendasPorGrade,'FormRelatorioVendasPorGrade',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnADMRelVendasPorGrupoClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioVendasGrupo,'FormRelatorioVendasGrupo',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnADMRelVendasPorMarcaClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioVendasMarca,'FormRelatorioVendasMarca',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnVendasPorColecaoClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioVendasColecao, 'FormRelatorioVendasColecao',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnADMRelVenComSinteticoClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario( TFormRelatorioComissao, 'FormRelatorioComissao',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnADMRelVenDetalhadoClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario( TFormRelatorioComissaoDetalhado, 'FormRelatorioComissaoDetalhado',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MNADMRelPrevendasClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    //CriaFormulario(TFormRelatorioPrevendas,'FormRelatorioPrevendas',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnADMNotasEntradasClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioNotasCompra,'FormRelatorioNotasCompra',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnProdutosCompradosClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioProdutosComprados,'FormRelatorioProdutosComprados',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnComprasporGrupoClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioComprasGrupo,'FormRelatorioComprasGrupo',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnComprasporMarcaClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioComprasMarca,'FormRelatorioComprasMarca',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnComprasporColecaoClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioComprasColecao,'FormRelatorioComprasColecao',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MNADMRelatoriosComprasVendasporGrupoClick(
+  Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioVendasComprasPorGrupo,'FormRelatorioVendasComprasPorGrupo',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnProdutosPedidosCompraClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioProdutosPedidosCompra,'FormRelatorioProdutosPedidosCompra',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnProdutosAbaixoMinimoClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioProdutosAbaixoMinimo,'FormRelatorioProdutosAbaixoMinimo',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.ResumodeCaixa1Click(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioResumoCaixa, 'FormRelatorioResumoCaixa',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnADMRelCaixaMovimentacaoCaixaClick(
+  Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioMovimentacaoCaixa, 'FormRelatorioMovimentacaoCaixa', False, False, False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnADMRelCaixaTotaisporNumerarioClick(
+  Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioTotalNumerarioCaixa,'FormRelatorioTotalNumerarioCaixa',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnADMRelCaixaBoletimCaixaClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioBoletimCaixa, 'FormRelatorioBoletimCaixa',False,False,False,'')
   else
     SoundPlay('Acesso Negado.wav',Sender);
 end;

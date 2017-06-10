@@ -2678,87 +2678,112 @@ inherited FormPrincipal: TFormPrincipal
           Caption = 'Vendas'
           object PorPerodo1: TMenuItem
             Caption = 'Por Per'#237'odo'
+            OnClick = MnADMRelVendasPorPeriodoClick
           end
           object PorPerodocomMargemdeVendedor1: TMenuItem
             Caption = 'Por Per'#237'odo com Margem de Vendedor'
+            OnClick = MnADMRelVendasPorPerodocomApuraodeMargemClick
           end
           object PorPerodocomMargemdeProduto1: TMenuItem
             Caption = 'Por Per'#237'odo com Margem de Produto'
+            OnClick = MNADMRelApuraodeMargemporProdutoClick
           end
           object PorPeriododeEmpresa1: TMenuItem
             Caption = 'Por Per'#237'odo de Empresa'
+            OnClick = MnPorPeriodoporEmpresaConferenciaClick
           end
           object ProdutosVendidos1: TMenuItem
             Caption = 'Produtos Vendidos'
+            OnClick = MnADMRelProdutosVendidosClick
           end
           object PorPlano1: TMenuItem
             Caption = 'Por Plano'
+            OnClick = MnADMRelVendasPorPlanoClick
           end
           object PorGrade1: TMenuItem
             Caption = 'Por Grade'
+            OnClick = PorGrade1Click
           end
           object PorGrupo1: TMenuItem
             Caption = 'Por Grupo'
+            OnClick = MnADMRelVendasPorGrupoClick
           end
           object PorMarca1: TMenuItem
             Caption = 'Por Marca'
+            OnClick = MnADMRelVendasPorMarcaClick
           end
           object PorColeo1: TMenuItem
             Caption = 'Por Cole'#231#227'o'
+            OnClick = MnVendasPorColecaoClick
           end
           object ComissoSinttico1: TMenuItem
             Caption = 'Comiss'#227'o - Sint'#233'tico'
+            OnClick = MnADMRelVenComSinteticoClick
           end
           object ComissoDetalhado1: TMenuItem
             Caption = 'Comiss'#227'o - Detalhado'
+            OnClick = MnADMRelVenDetalhadoClick
           end
           object PrVendaporPerodo1: TMenuItem
             Caption = 'Pr'#233'-Venda por Per'#237'odo'
+            OnClick = MNADMRelPrevendasClick
           end
         end
         object Compras2: TMenuItem
           Caption = 'Compras'
           object NotadeEntrada2: TMenuItem
             Caption = 'Nota de Entrada'
+            OnClick = MnADMNotasEntradasClick
           end
           object ProdutosComprados1: TMenuItem
             Caption = 'Produtos Comprados'
+            OnClick = MnProdutosCompradosClick
           end
           object ComprasporGrupo1: TMenuItem
             Caption = 'Compras por Grupo'
+            OnClick = MnComprasporGrupoClick
           end
           object ComprasporMarca1: TMenuItem
             Caption = 'Compras por Marca'
+            OnClick = MnComprasporMarcaClick
           end
           object ComprasporColeo1: TMenuItem
             Caption = 'Compras por Cole'#231#227'o'
+            OnClick = MnComprasporColecaoClick
           end
           object CompraxVendaporGrupo1: TMenuItem
             Caption = 'Compra x Venda por Grupo'
+            OnClick = MNADMRelatoriosComprasVendasporGrupoClick
           end
           object ProdutossemPedidodeCompra1: TMenuItem
             Caption = 'Produtos sem Pedido de Compra'
+            OnClick = MnProdutosPedidosCompraClick
           end
           object ProdutosAbaixodoMnimo1: TMenuItem
             Caption = 'Produtos Abaixo do M'#237'nimo'
+            OnClick = MnProdutosAbaixoMinimoClick
           end
         end
         object Caixa1: TMenuItem
           Caption = 'Caixa'
           object ResumodeCaixa1: TMenuItem
             Caption = 'Resumo de Caixa'
+            OnClick = ResumodeCaixa1Click
           end
           object MovimentaodeCaixa1: TMenuItem
             Caption = 'Movimenta'#231#227'o de Caixa'
+            OnClick = MnADMRelCaixaMovimentacaoCaixaClick
           end
           object otaisporNumerario1: TMenuItem
             Caption = 'Totais por Numer'#225'rio'
+            OnClick = MnADMRelCaixaTotaisporNumerarioClick
           end
           object otalizadoresdeCaixa1: TMenuItem
             Caption = 'Totalizadores de Caixa'
           end
           object BoletimdeCaixa1: TMenuItem
             Caption = 'Boletim de Caixa'
+            OnClick = MnADMRelCaixaBoletimCaixaClick
           end
         end
         object Produtos2: TMenuItem
