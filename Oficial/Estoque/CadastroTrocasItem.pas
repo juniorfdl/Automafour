@@ -278,7 +278,7 @@ begin
               SQLGeral.Close ;
               SQLGeral.SQL.Clear ;
               SQLGeral.SQL.Add('Select PRODICOD From MOVIMENTODIVERSOITEM') ;
-              SQLGeral.SQL.Add(' Where MOVDA13ID = "' + SQLTemplateMOVDA13ID.AsString+'"') ;
+              SQLGeral.SQL.Add(' Where MOVDA13ID = ''' + SQLTemplateMOVDA13ID.AsString+'''') ;
               SQLGeral.SQL.Add(' And   PRODICOD = ' + SQLTemplatePRODICOD.AsString) ;
               SQLGeral.Open ;
               if not SQLGeral.IsEmpty then

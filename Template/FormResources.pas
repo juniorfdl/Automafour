@@ -54,7 +54,7 @@ begin
           DM.SQLTemplate.Close;
           DM.SQLTemplate.SQL.Text := ' select * from USUARIOPERMISSOES ' +
                                      ' where USUAICOD = ' + IntToStr(UsuarioCorrente) +
-                                     ' and USPEA60NOMETELA = "' + NomeFormulario + '"';
+                                     ' and USPEA60NOMETELA = ''' + NomeFormulario + '''';
           DM.SQLTemplate.Open;
           if DM.SQLTemplate.IsEmpty then
              begin

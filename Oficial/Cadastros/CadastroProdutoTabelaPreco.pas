@@ -91,7 +91,7 @@ begin
   {Filtra Terminais que devem receber carga}
   dm.sqlconsulta.Close;
   dm.sqlconsulta.sql.clear;
-  dm.sqlconsulta.sql.Text := 'Select Termicod from Terminal where TERMCTIPO = "C"';
+  dm.sqlconsulta.sql.Text := 'Select Termicod from Terminal where TERMCTIPO = ''C''';
   dm.sqlconsulta.Open;
   if not dm.sqlconsulta.IsEmpty then
     begin
@@ -127,7 +127,7 @@ begin
   {Filtra Terminais que devem receber carga}
   dm.sqlconsulta.Close;
   dm.sqlconsulta.sql.clear;
-  dm.sqlconsulta.sql.Text := 'Select Termicod from Terminal where TERMCTIPO = "C"';
+  dm.sqlconsulta.sql.Text := 'Select Termicod from Terminal where TERMCTIPO = ''C''';
   dm.sqlconsulta.Open;
   if not dm.sqlconsulta.IsEmpty then
     begin

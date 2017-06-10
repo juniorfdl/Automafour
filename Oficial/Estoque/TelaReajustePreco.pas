@@ -289,7 +289,7 @@ begin
     QueryReajuste.MacroByName('MGrade').Value   := '0=0';
 
   If (ComboProdutoDescricao.Value<>'') then
-    QueryReajuste.MacroByName('MProduto').Value   :='P.PRODA60REFER = ' + '"' + ComboProdutoDescricao.Value + '"'
+    QueryReajuste.MacroByName('MProduto').Value   :='P.PRODA60REFER = ' + '''' + ComboProdutoDescricao.Value + ''''
   else
     QueryReajuste.MacroByName('MProduto').Value   := '0=0';
 
@@ -598,7 +598,7 @@ begin
 
           Dm.SQLTemplate.Close;
           Dm.SQLTemplate.SQL.Clear;
-          Dm.SQLTemplate.SQL.Add('Select MAX(PRRJICOD) from PRODUTOREAJUSTE where PRODICOD = ' + SQLProdutoPRODICOD.AsString + ' AND  PRRJDREAJUSTE = ' + '"' + FormatDateTime('mm/dd/yyyy',Now)+ '"');
+          Dm.SQLTemplate.SQL.Add('Select MAX(PRRJICOD) from PRODUTOREAJUSTE where PRODICOD = ' + SQLProdutoPRODICOD.AsString + ' AND  PRRJDREAJUSTE = ' + '''' + FormatDateTime('mm/dd/yyyy',Now)+ '''');
           Dm.SQLTemplate.Open;
 
           if Dm.SQLTemplate.FieldByName('MAX').AsFloat > 0 then
@@ -716,7 +716,7 @@ begin
     QueryReajuste.MacroByName('MGrade').Value   := '0=0';
 
   If (ComboProdutoDescricao.Value<>'') then
-    QueryReajuste.MacroByName('MProduto').Value :='P.PRODA60REFER = ' + '"' + ComboProdutoDescricao.Value + '"'
+    QueryReajuste.MacroByName('MProduto').Value :='P.PRODA60REFER = ' + '''' + ComboProdutoDescricao.Value + ''''
   else
     QueryReajuste.MacroByName('MProduto').Value := '0=0';
 

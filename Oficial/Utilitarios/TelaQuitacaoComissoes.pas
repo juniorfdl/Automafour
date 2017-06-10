@@ -129,18 +129,18 @@ begin
   StTipo := '(';
 
   if chkCUPOM.Checked then
-    StTipo := StTipo + ' VC.VDCOA5TIPODOC = "CP" or';
+    StTipo := StTipo + ' VC.VDCOA5TIPODOC = ''CP'' or';
 
   if chkNF.Checked then
-    StTipo := StTipo + ' VC.VDCOA5TIPODOC = "NF" or';
+    StTipo := StTipo + ' VC.VDCOA5TIPODOC = ''NF'' or';
 
   if chkMANUTENCAO.Checked then
-    StTipo := StTipo + ' VC.VDCOA5TIPODOC = "MN"';
+    StTipo := StTipo + ' VC.VDCOA5TIPODOC = ''MN''';
 
   if StTipo <> '(' then
     StSelecao := StSelecao + StTipo + ') and ';
 
-  StSelecao := StSelecao + ' (VC.VDCOCSTATUS = "A" or VC.VDCOCSTATUS = "L" or VC.VDCOCSTATUS is null) and ';
+  StSelecao := StSelecao + ' (VC.VDCOCSTATUS = ''A'' or VC.VDCOCSTATUS = ''L'' or VC.VDCOCSTATUS is null) and ';
 
   StSelecao := Copy(StSelecao, 1, Length(StSelecao)-4);
 

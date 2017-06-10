@@ -298,7 +298,7 @@ begin
         end;
       SQLCupomItem.Append;
       SQLCupomItemCUPOA13ID.Value   := SQLTemplateCUPOA13ID.AsString;
-      SQLCupomItemCPITIPOS.Value    := SQLMax('CUPOMITEM','CPITIPOS','CUPOA13ID="'+SQLTemplateCUPOA13ID.AsString+'"');
+      SQLCupomItemCPITIPOS.Value    := SQLMax('CUPOMITEM','CPITIPOS','CUPOA13ID='''+SQLTemplateCUPOA13ID.AsString+'''');
       SQLCupomItemCPITCSTATUS.Value := 'A';
       SQLCupomItemCPITN2DESC.Value  :=  0;
 
@@ -341,7 +341,7 @@ begin
   if (SQLCupomItem.State in dsEditModes) then
     begin
       SQLCupomItemCUPOA13ID.Value   := SQLTemplateCUPOA13ID.AsString;
-      SQLCupomItemCPITIPOS.Value    := SQLMax('CUPOMITEM','CPITIPOS','CUPOA13ID="'+SQLTemplateCUPOA13ID.AsString+'"');
+      SQLCupomItemCPITIPOS.Value    := SQLMax('CUPOMITEM','CPITIPOS','CUPOA13ID='''+SQLTemplateCUPOA13ID.AsString+'''');
       SQLCupomItemCPITCSTATUS.Value := 'A';
       SQLCupomItem.Post;
       SQLCupomItem.Close;
@@ -381,9 +381,9 @@ begin
   SQLTotal.Close;
   SQLTotal.SQL.Clear;
   if SQLCupomItemCPITN3QTD.Value > 0 then
-    SQLTotal.SQL.Add('Select Sum((CPITN3VLRUNIT*CPITN3QTD)-CPITN2DESC) as TotalGeral from CupomItem where CUPOA13ID = "'+SQLTemplateCUPOA13ID.Value+'"')
+    SQLTotal.SQL.Add('Select Sum((CPITN3VLRUNIT*CPITN3QTD)-CPITN2DESC) as TotalGeral from CupomItem where CUPOA13ID = '''+SQLTemplateCUPOA13ID.Value+'''')
   else
-    SQLTotal.SQL.Add('Select Sum((CPITN3VLRUNIT*CPITN3QTDTROCA)-CPITN2DESC) as TotalGeral from CupomItem where CUPOA13ID = "'+SQLTemplateCUPOA13ID.Value+'"');
+    SQLTotal.SQL.Add('Select Sum((CPITN3VLRUNIT*CPITN3QTDTROCA)-CPITN2DESC) as TotalGeral from CupomItem where CUPOA13ID = '''+SQLTemplateCUPOA13ID.Value+'''');
 
   SQLTotal.Prepare;
   SQLTotal.Open;

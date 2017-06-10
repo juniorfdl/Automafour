@@ -36,8 +36,8 @@ procedure TFormTelaConsultaPlanoContas.FormCreate(Sender: TObject);
 begin
   if TipoPlanoContas <>  '' then
     Case TipoPlanoContas[1] of
-      'C' : SQLTemplate.MacroByName('DebitoCredito').AsString := 'PLCTCTIPOSALDO = "C" OR PLCTCTIPOSALDO = "A"';
-      'D' : SQLTemplate.MacroByName('DebitoCredito').AsString := 'PLCTCTIPOSALDO = "D" OR PLCTCTIPOSALDO = "A"';
+      'C' : SQLTemplate.MacroByName('DebitoCredito').AsString := 'PLCTCTIPOSALDO = ''C'' OR PLCTCTIPOSALDO = ''A''';
+      'D' : SQLTemplate.MacroByName('DebitoCredito').AsString := 'PLCTCTIPOSALDO = ''D'' OR PLCTCTIPOSALDO = ''A''';
     end;
   inherited;
 
@@ -47,7 +47,7 @@ procedure TFormTelaConsultaPlanoContas.SQLTemplateCalcFields(
   DataSet: TDataSet);
 begin
   inherited;
-  SQLTemplateDescricaoNivelAnterior.Value := SQLLocate('PLANODECONTAS','PLCTA15COD','PLCTA60DESCR', '"'+SQLTemplatePLCTA15CODPAI.Value+'"');
+  SQLTemplateDescricaoNivelAnterior.Value := SQLLocate('PLANODECONTAS','PLCTA15COD','PLCTA60DESCR', ''''+SQLTemplatePLCTA15CODPAI.Value+'''');
 end;
 
 end.

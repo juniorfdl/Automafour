@@ -3,7 +3,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
   Top = 136
   Width = 1019
   Height = 552
-  Caption = 'Geração de Mala Direta'
+  Caption = 'Gera'#231#227'o de Mala Direta'
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
@@ -37,7 +37,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
           Top = 229
           Width = 162
           Height = 13
-          Caption = 'Seleção de Cliente específico'
+          Caption = 'Sele'#231#227'o de Cliente espec'#237'fico'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clNavy
           Font.Height = -11
@@ -187,12 +187,12 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
           ItemIndex = 0
           Items.Strings = (
             '&A - Todos os clientes'
-            '&B - Para o titular e conjugê em data de casamento'
-            '&C - Para o titular em data de aniversário do conjugê'
-            '&D - Para o titular em data de aniversário dos dependentes'
-            '&E - Para o titular em seu aniversário'
-            '&F - Para o conjugê em data de aniversário do titular'
-            '&G - Para os dependentes em data de aniversário do titular')
+            '&B - Para o titular e conjug'#234' em data de casamento'
+            '&C - Para o titular em data de anivers'#225'rio do conjug'#234
+            '&D - Para o titular em data de anivers'#225'rio dos dependentes'
+            '&E - Para o titular em seu anivers'#225'rio'
+            '&F - Para o conjug'#234' em data de anivers'#225'rio do titular'
+            '&G - Para os dependentes em data de anivers'#225'rio do titular')
           ParentFont = False
           TabOrder = 0
         end
@@ -237,7 +237,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
           Top = 95
           Width = 352
           Height = 100
-          Caption = ' &Tipo de Impressão '
+          Caption = ' &Tipo de Impress'#227'o '
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
@@ -247,7 +247,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
           Items.Strings = (
             '&A - Etiq 2 Col Pimaco Carta'
             '&B - Etiq 3 Col Pimaco Carta'
-            '&C - Listagem Padrão Carta'
+            '&C - Listagem Padr'#227'o Carta'
             '&D - Etiq 3 Col Pimaco Carta com Cd Barras Cliente'
             '&E - Envelope Remetente'
             '&F - Envelope Destinatario'
@@ -261,7 +261,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
           Top = 30
           Width = 238
           Height = 64
-          Caption = ' Período Aniversário '
+          Caption = ' Per'#237'odo Anivers'#225'rio '
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -274,7 +274,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
             Top = 15
             Width = 110
             Height = 45
-            Caption = ' Dia / Mês Inicial '
+            Caption = ' Dia / M'#234's Inicial '
             Font.Charset = ANSI_CHARSET
             Font.Color = clWindowText
             Font.Height = -11
@@ -345,7 +345,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
               ItemHeight = 13
               MaxLength = 2
               TabOrder = 1
-              Text = 'MÊS'
+              Text = 'M'#202'S'
               Items.Strings = (
                 '01'
                 '02'
@@ -366,7 +366,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
             Top = 15
             Width = 109
             Height = 45
-            Caption = ' Dia / Mês Final '
+            Caption = ' Dia / M'#234's Final '
             Font.Charset = ANSI_CHARSET
             Font.Color = clWindowText
             Font.Height = -11
@@ -437,7 +437,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
               ItemHeight = 13
               MaxLength = 2
               TabOrder = 1
-              Text = 'MÊS'
+              Text = 'M'#202'S'
               Items.Strings = (
                 '01'
                 '02'
@@ -744,7 +744,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
           Width = 301
           Height = 26
           Align = alLeft
-          Caption = '  Lista Temporária de Cliente'
+          Caption = '  Lista Tempor'#225'ria de Cliente'
           Color = 16249066
           Font.Charset = ANSI_CHARSET
           Font.Color = 10053171
@@ -771,7 +771,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
           Height = 20
           Align = alClient
           Alignment = taCenter
-          Caption = 'Escolha os Filtros Desejados e após clique no botão Gerar Lista'
+          Caption = 'Escolha os Filtros Desejados e ap'#243's clique no bot'#227'o Gerar Lista'
           Color = 16249066
           Font.Charset = ANSI_CHARSET
           Font.Color = 10053171
@@ -989,13 +989,13 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       Size = 13
     end
     object TblMalaDiretaCliCLIEA60RAZAOSOC: TStringField
-      DisplayLabel = 'Razão Social/Nome do Cliente'
+      DisplayLabel = 'Raz'#227'o Social/Nome do Cliente'
       FieldName = 'CLIEA60RAZAOSOC'
       Origin = 'Easy_TEMP."EtiquetaEndereco.DB".CLIEA60RAZAOSOC'
       Size = 60
     end
     object TblMalaDiretaCliCLIEA60ENDRES: TStringField
-      DisplayLabel = 'Endereço'
+      DisplayLabel = 'Endere'#231'o'
       FieldName = 'CLIEA60ENDRES'
       Origin = 'Easy_TEMP."EtiquetaEndereco.DB".CLIEA60ENDRES'
       Size = 60
@@ -2156,7 +2156,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       Size = 10
     end
     object SQLClienteDependenteCLIEA60RAZAOSOC: TStringField
-      DisplayLabel = 'Nome / Razão Social'
+      DisplayLabel = 'Nome / Raz'#227'o Social'
       FieldName = 'CLIEA60RAZAOSOC'
       Origin = 'DB.CLIENTE.CLIEA60RAZAOSOC'
       FixedChar = True
@@ -2214,7 +2214,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       Size = 60
     end
     object SQLClienteDependenteCLIEA60ENDRES: TStringField
-      DisplayLabel = 'Endereço'
+      DisplayLabel = 'Endere'#231'o'
       FieldName = 'CLIEA60ENDRES'
       Origin = 'DB.CLIENTE.CLIEA60ENDRES'
       FixedChar = True
@@ -2264,7 +2264,6 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     object SQLClienteDependenteCLIEN2RENDA: TFloatField
       FieldName = 'CLIEN2RENDA'
       Origin = 'DB.CLIENTE.CLIEN2RENDA'
-      Size = 3
     end
     object SQLClienteDependenteCLIEN2LIMITECRED: TFloatField
       FieldName = 'CLIEN2LIMITECRED'
@@ -2810,7 +2809,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     DataPipeline = ppBDEPipeline
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
-    PrinterSetup.DocumentName = 'Etiquetas de Código de Barras'
+    PrinterSetup.DocumentName = 'Etiquetas de C'#243'digo de Barras'
     PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 5000
@@ -2823,6 +2822,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     Template.FileName = 'C:\TiagoAllfaro\Moreleh\EtiquetasMalaDireta\EtiquetaMoreleh.rtm'
     Units = utMillimeters
     DeviceType = 'Screen'
+    EmailSettings.ReportFormat = 'PDF'
     OutlineSettings.CreateNode = True
     OutlineSettings.CreatePageNodes = True
     OutlineSettings.Enabled = False
@@ -2831,7 +2831,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     TextSearchSettings.Enabled = False
     Left = 562
     Top = 3
-    Version = '7.04'
+    Version = '10.06'
     mmColumnWidth = 0
     DataPipelineName = 'ppBDEPipeline'
     object ppColumnHeaderBand2: TppColumnHeaderBand
@@ -2846,6 +2846,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       mmPrintPosition = 0
       object ppDBText9: TppDBText
         UserName = 'ppDBText9'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppBDEPipeline
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2863,6 +2867,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppDBText10: TppDBText
         UserName = 'ppDBText10'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppBDEPipeline
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2880,6 +2888,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppDBText11: TppDBText
         UserName = 'ppDBText11'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppBDEPipeline
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2897,6 +2909,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppDBText12: TppDBText
         UserName = 'ppDBText12'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppBDEPipeline
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2914,6 +2930,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppDBText13: TppDBText
         UserName = 'ppDBText13'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppBDEPipeline
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2931,6 +2951,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppDBText14: TppDBText
         UserName = 'ppDBText14'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppBDEPipeline
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2963,7 +2987,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     DataPipeline = ppBDEPipeline
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
-    PrinterSetup.DocumentName = 'Etiquetas de Código de Barras'
+    PrinterSetup.DocumentName = 'Etiquetas de C'#243'digo de Barras'
     PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 7000
@@ -2976,6 +3000,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     Template.FileName = 'C:\TiagoAllfaro\Moreleh\EtiquetasMalaDireta\EtiquetaMoreleh.rtm'
     Units = utMillimeters
     DeviceType = 'Screen'
+    EmailSettings.ReportFormat = 'PDF'
     OutlineSettings.CreateNode = True
     OutlineSettings.CreatePageNodes = True
     OutlineSettings.Enabled = False
@@ -2984,7 +3009,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     TextSearchSettings.Enabled = False
     Left = 591
     Top = 3
-    Version = '7.04'
+    Version = '10.06'
     mmColumnWidth = 0
     DataPipelineName = 'ppBDEPipeline'
     object ppColumnHeaderBand1: TppColumnHeaderBand
@@ -2998,6 +3023,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       mmPrintPosition = 0
       object ppDBText1: TppDBText
         UserName = 'ppDBText1'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppBDEPipeline
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3015,6 +3044,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppDBText2: TppDBText
         UserName = 'ppDBText2'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppBDEPipeline
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3032,6 +3065,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppDBText3: TppDBText
         UserName = 'ppDBText3'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppBDEPipeline
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3049,6 +3086,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppDBText4: TppDBText
         UserName = 'ppDBText4'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppBDEPipeline
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3066,6 +3107,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppDBText5: TppDBText
         UserName = 'ppDBText5'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppBDEPipeline
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3083,6 +3128,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppDBText6: TppDBText
         UserName = 'ppDBText6'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppBDEPipeline
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3100,6 +3149,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppDBText33: TppDBText
         UserName = 'ppDBText33'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppBDEPipeline
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3138,6 +3191,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     PrinterSetup.mmPaperWidth = 0
     PrinterSetup.PaperSize = 9
     DeviceType = 'Screen'
+    EmailSettings.ReportFormat = 'PDF'
     OutlineSettings.CreateNode = True
     OutlineSettings.CreatePageNodes = True
     OutlineSettings.Enabled = False
@@ -3146,7 +3200,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     TextSearchSettings.Enabled = False
     Left = 620
     Top = 3
-    Version = '7.04'
+    Version = '10.06'
     mmColumnWidth = 0
     DataPipelineName = 'ppBDEPipeline'
     object ppHeaderBand2: TppHeaderBand
@@ -3155,6 +3209,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       mmPrintPosition = 0
       object ppLabel1: TppLabel
         UserName = 'ppLabel1'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'www.conceitossistemas.com'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3171,6 +3229,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppLabel2: TppLabel
         UserName = 'ppLabel2'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Listagem de Clientes para Mala Direta'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3186,6 +3248,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppLine2: TppLine
         UserName = 'ppLine2'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Pen.Style = psDot
         ParentWidth = True
         Position = lpBottom
@@ -3198,6 +3264,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppSystemVariable3: TppSystemVariable
         UserName = 'ppSystemVariable3'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         VarType = vtDateTime
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3214,6 +3284,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppLine4: TppLine
         UserName = 'ppLine4'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Pen.Style = psDot
         ParentWidth = True
         Position = lpBottom
@@ -3226,7 +3300,11 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppLabel4: TppLabel
         UserName = 'ppLabel4'
-        Caption = 'Código'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
+        Caption = 'C'#243'digo'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Name = 'MS Sans Serif'
@@ -3241,6 +3319,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppLabel5: TppLabel
         UserName = 'ppLabel5'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Nome'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3256,6 +3338,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppLabel11: TppLabel
         UserName = 'ppLabel11'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Fone 1'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3271,7 +3357,11 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppLabel6: TppLabel
         UserName = 'ppLabel6'
-        Caption = 'Endereço'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
+        Caption = 'Endere'#231'o'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Name = 'MS Sans Serif'
@@ -3286,6 +3376,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppLabel7: TppLabel
         UserName = 'ppLabel7'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Cidade'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3301,6 +3395,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppLabel3: TppLabel
         UserName = 'ppLabel3'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Dt.Nascimento'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3316,7 +3414,11 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppLabel10: TppLabel
         UserName = 'ppLabel10'
-        Caption = 'Observação'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
+        Caption = 'Observa'#231#227'o'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Name = 'MS Sans Serif'
@@ -3331,6 +3433,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppLabel12: TppLabel
         UserName = 'ppLabel12'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Fone 2'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3351,6 +3457,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       mmPrintPosition = 0
       object ppDBText15: TppDBText
         UserName = 'ppDBText15'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppBDEPipeline
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3368,6 +3478,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppDBText16: TppDBText
         UserName = 'ppDBText16'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppBDEPipeline
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3386,6 +3500,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       object ppDBText17: TppDBText
         UserName = 'ppDBText17'
         AutoSize = True
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppBDEPipeline
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3403,6 +3521,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppDBText18: TppDBText
         UserName = 'ppDBText18'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppBDEPipeline
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3420,6 +3542,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppDBText19: TppDBText
         UserName = 'ppDBText19'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppBDEPipeline
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3438,6 +3564,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       object ppDBText7: TppDBText
         UserName = 'ppDBText7'
         AutoSize = True
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppBDEPipeline
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3463,6 +3593,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppLine1: TppLine
         UserName = 'ppLine1'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Position = lpBottom
         Weight = 0.750000000000000000
         mmHeight = 629974
@@ -3474,6 +3608,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       object ppDBText32: TppDBText
         UserName = 'ppDBText32'
         AutoSize = True
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppBDEPipeline
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3496,6 +3634,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       mmPrintPosition = 0
       object ppLine5: TppLine
         UserName = 'ppLine5'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Pen.Style = psDot
         ParentWidth = True
         Position = lpBottom
@@ -3508,8 +3650,12 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppSystemVariable4: TppSystemVariable
         UserName = 'ppSystemVariable4'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         VarType = vtPageNo
-        DisplayFormat = 'Página #'
+        DisplayFormat = 'P'#225'gina #'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Name = 'MS Sans Serif'
@@ -3534,7 +3680,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     DataPipeline = ppBDEPipeline
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
-    PrinterSetup.DocumentName = 'Etiquetas de Código de Barras'
+    PrinterSetup.DocumentName = 'Etiquetas de C'#243'digo de Barras'
     PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 7000
@@ -3547,6 +3693,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     Template.FileName = 'C:\TiagoAllfaro\Moreleh\EtiquetasMalaDireta\EtiquetaMoreleh.rtm'
     Units = utMillimeters
     DeviceType = 'Screen'
+    EmailSettings.ReportFormat = 'PDF'
     OutlineSettings.CreateNode = True
     OutlineSettings.CreatePageNodes = True
     OutlineSettings.Enabled = False
@@ -3555,7 +3702,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     TextSearchSettings.Enabled = False
     Left = 649
     Top = 3
-    Version = '7.04'
+    Version = '10.06'
     mmColumnWidth = 0
     DataPipelineName = 'ppBDEPipeline'
     object ppColumnHeaderBand3: TppColumnHeaderBand
@@ -3570,6 +3717,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       mmPrintPosition = 0
       object ppDBText20: TppDBText
         UserName = 'ppDBText20'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppBDEPipeline
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3590,6 +3741,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
         AutoEncode = True
         BarCodeType = bcCode128
         BarColor = clWindowText
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         CalcCheckDigit = False
         DataPipeline = ppBDEPipeline
         AutoSize = False
@@ -3619,8 +3774,8 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     AutoStop = False
     DataPipeline = ppBDEPipeline
     PassSetting = psTwoPass
-    PrinterSetup.BinName = 'Seleção automática'
-    PrinterSetup.DocumentName = 'Etiquetas de Código de Barras'
+    PrinterSetup.BinName = 'Sele'#231#227'o autom'#225'tica'
+    PrinterSetup.DocumentName = 'Etiquetas de C'#243'digo de Barras'
     PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 7000
@@ -3633,6 +3788,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     Template.FileName = 'C:\TiagoAllfaro\Moreleh\EtiquetasMalaDireta\EtiquetaMoreleh.rtm'
     Units = utMillimeters
     DeviceType = 'Screen'
+    EmailSettings.ReportFormat = 'PDF'
     OutlineSettings.CreateNode = True
     OutlineSettings.CreatePageNodes = True
     OutlineSettings.Enabled = False
@@ -3641,7 +3797,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     TextSearchSettings.Enabled = False
     Left = 708
     Top = 3
-    Version = '7.04'
+    Version = '10.06'
     mmColumnWidth = 0
     DataPipelineName = 'ppBDEPipeline'
     object ppDetailBand5: TppDetailBand
@@ -3651,6 +3807,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       mmPrintPosition = 0
       object ppLabel8: TppLabel
         UserName = 'ppLabel8'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Destinatario'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3666,6 +3826,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppDBText8: TppDBText
         UserName = 'ppDBText8'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppBDEPipeline
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3682,6 +3846,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppDBText21: TppDBText
         UserName = 'ppDBText21'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppBDEPipeline
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3698,6 +3866,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppDBText22: TppDBText
         UserName = 'ppDBText22'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppBDEPipeline
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3714,6 +3886,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppDBText23: TppDBText
         UserName = 'ppDBText23'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppBDEPipeline
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3730,6 +3906,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppDBText24: TppDBText
         UserName = 'ppDBText24'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppBDEPipeline
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3747,6 +3927,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       object ppDBText25: TppDBText
         UserName = 'ppDBText25'
         AutoSize = True
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppBDEPipeline
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3767,8 +3951,8 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     AutoStop = False
     DataPipeline = ppBDEPipeline
     PassSetting = psTwoPass
-    PrinterSetup.BinName = 'Seleção automática'
-    PrinterSetup.DocumentName = 'Etiquetas de Código de Barras'
+    PrinterSetup.BinName = 'Sele'#231#227'o autom'#225'tica'
+    PrinterSetup.DocumentName = 'Etiquetas de C'#243'digo de Barras'
     PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 7000
@@ -3781,6 +3965,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     Template.FileName = 'C:\TiagoAllfaro\Moreleh\EtiquetasMalaDireta\EtiquetaMoreleh.rtm'
     Units = utMillimeters
     DeviceType = 'Screen'
+    EmailSettings.ReportFormat = 'PDF'
     OutlineSettings.CreateNode = True
     OutlineSettings.CreatePageNodes = True
     OutlineSettings.Enabled = False
@@ -3789,7 +3974,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     TextSearchSettings.Enabled = False
     Left = 680
     Top = 3
-    Version = '7.04'
+    Version = '10.06'
     mmColumnWidth = 0
     DataPipelineName = 'ppBDEPipeline'
     object ppDetailBand6: TppDetailBand
@@ -3799,6 +3984,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       mmPrintPosition = 0
       object ppLabel9: TppLabel
         UserName = 'ppLabel9'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Remetente'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3814,6 +4003,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppNomeFantasia: TppLabel
         UserName = 'ppNomeFantasia'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'NomeFantasia'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3829,6 +4022,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppEndereco: TppLabel
         UserName = 'ppEndereco'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Endereco'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3844,6 +4041,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppCidade: TppLabel
         UserName = 'ppCidade'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Cidade'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3859,6 +4060,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppBairro: TppLabel
         UserName = 'ppBairro'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Bairro'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3874,6 +4079,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppCep: TppLabel
         UserName = 'ppCep'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'ppCep'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3894,7 +4103,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     DataPipeline = ppBDEPipeline
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
-    PrinterSetup.DocumentName = 'Etiquetas de Código de Barras'
+    PrinterSetup.DocumentName = 'Etiquetas de C'#243'digo de Barras'
     PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 0
@@ -3907,6 +4116,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     Template.FileName = 'C:\TiagoAllfaro\Moreleh\EtiquetasMalaDireta\EtiquetaMoreleh.rtm'
     Units = utMillimeters
     DeviceType = 'Screen'
+    EmailSettings.ReportFormat = 'PDF'
     OutlineSettings.CreateNode = True
     OutlineSettings.CreatePageNodes = True
     OutlineSettings.Enabled = False
@@ -3915,7 +4125,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     TextSearchSettings.Enabled = False
     Left = 736
     Top = 3
-    Version = '7.04'
+    Version = '10.06'
     mmColumnWidth = 0
     DataPipelineName = 'ppBDEPipeline'
     object ppDetailBand7: TppDetailBand
@@ -3927,6 +4137,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
         UserName = 'ppImage1'
         MaintainAspectRatio = False
         Stretch = True
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Picture.Data = {
           0A544A504547496D616765969D0100FFD8FFE000104A46494600010101012C01
           2C0000FFDB0043000302020302020303030304030304050805050404050A0707
@@ -7246,6 +7460,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppDBText26: TppDBText
         UserName = 'ppDBText26'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppBDEPipeline
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -7266,6 +7484,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
         AutoEncode = True
         BarCodeType = bcEAN_13
         BarColor = clWindowText
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         CalcCheckDigit = False
         DataPipeline = ppBDEPipeline
         AutoSize = False
@@ -7286,6 +7508,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object LBDTVenc: TppLabel
         UserName = 'LBDTVenc'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Vencimento'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -7302,6 +7528,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       object ppDBText27: TppDBText
         UserName = 'ppDBText27'
         AutoSize = True
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppBDEPipeline
         DisplayFormat = 'dd/mm/yyyy'
         Font.Charset = ANSI_CHARSET
@@ -7320,6 +7550,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object LBEmissao: TppLabel
         UserName = 'LBEmissao'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Emissao'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -7335,6 +7569,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppDBText28: TppDBText
         UserName = 'ppDBText28'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppBDEPipeline
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -7352,6 +7590,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       end
       object ppDBText29: TppDBText
         UserName = 'ppDBText29'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppBDEPipeline
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -7370,6 +7612,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       object ppDBText30: TppDBText
         UserName = 'ppDBText30'
         AutoSize = True
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppBDEPipeline
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -7388,6 +7634,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       object ppDBText31: TppDBText
         UserName = 'ppDBText31'
         AutoSize = True
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppBDEPipeline
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -7427,6 +7677,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     PrinterSetup.mmPaperWidth = 0
     PrinterSetup.PaperSize = 139
     DeviceType = 'Screen'
+    EmailSettings.ReportFormat = 'PDF'
     OutlineSettings.CreateNode = True
     OutlineSettings.CreatePageNodes = True
     OutlineSettings.Enabled = False
@@ -7435,7 +7686,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
     TextSearchSettings.Enabled = False
     Left = 844
     Top = 3
-    Version = '7.04'
+    Version = '10.06'
     mmColumnWidth = 0
     DataPipelineName = 'PipeCarta'
     object ppDetailBand8: TppDetailBand
@@ -7445,6 +7696,10 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       mmPrintPosition = 0
       object ppTexto: TppRichText
         UserName = 'ppTexto'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'ppTexto'
         MailMerge = True
         mmHeight = 69304567

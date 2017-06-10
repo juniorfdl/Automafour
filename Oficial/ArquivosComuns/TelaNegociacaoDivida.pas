@@ -1191,14 +1191,14 @@ begin
     //GRAVAR PARCELAS A PRAZO NA TABELA TEMPORARIA DE CARNE
     RefazTabelaTemp(TblCarne);
 
-    NroCupom := SQLLocate('CUPOM', 'CUPOA13ID', 'CUPOINRO',  '"' + SQLCupomCUPOA13ID.AsString + '"') ;
+    NroCupom := SQLLocate('CUPOM', 'CUPOA13ID', 'CUPOINRO',  '''' + SQLCupomCUPOA13ID.AsString + '''') ;
 
-    NumParcelas := SQLRecCount('CONTASRECEBER', 'where CUPOA13ID = "' + SQLCupomCUPOA13ID.AsString + '"') ;
+    NumParcelas := SQLRecCount('CONTASRECEBER', 'where CUPOA13ID = ''' + SQLCupomCUPOA13ID.AsString + '''') ;
 
     SQLExec.Close ;
     SQLExec.SQL.Clear ;
     SQLExec.SQL.Add('select * from CONTASRECEBER') ;
-    SQLExec.SQL.Add('where CUPOA13ID = "' + SQLCupomCUPOA13ID.AsString + '"') ;
+    SQLExec.SQL.Add('where CUPOA13ID = ''' + SQLCupomCUPOA13ID.AsString + '''') ;
     SQLExec.Open ;
     SQLExec.First ;
 
@@ -1224,23 +1224,23 @@ begin
         TblCarneValorParcela.AsString   := SQLExec.FieldByName('CTRCN2VLR').AsString ;
         TblCarneDataEmissao.AsString    := SQLExec.FieldByName('CTRCDEMIS').AsString ;
         TblCarneNroCupom.AsString       := NroCupom ;
-        TblCarneVendedor.AsString       := SQLLocate('VENDEDOR','VENDICOD','VENDA60NOME', SQLLocate('CUPOM','CUPOA13ID','VENDICOD','"' + TblCarneNumeroContrato.AsString + '"'));
-        TblCarneTotalCupom.AsString     := SQLLocate('CUPOM','CUPOA13ID','CUPON2TOTITENS','"' + TblCarneNumeroContrato.AsString + '"');
-        TblCarneAcrescimo.AsString      := SQLLocate('CUPOM','CUPOA13ID','CUPON2ACRESC','"' + TblCarneNumeroContrato.AsString + '"');
-        TblCarneValorDesconto.AsString  := SQLLocate('CUPOM','CUPOA13ID','CUPON2DESC','"' + TblCarneNumeroContrato.AsString + '"');
+        TblCarneVendedor.AsString       := SQLLocate('VENDEDOR','VENDICOD','VENDA60NOME', SQLLocate('CUPOM','CUPOA13ID','VENDICOD','''' + TblCarneNumeroContrato.AsString + ''''));
+        TblCarneTotalCupom.AsString     := SQLLocate('CUPOM','CUPOA13ID','CUPON2TOTITENS','''' + TblCarneNumeroContrato.AsString + '''');
+        TblCarneAcrescimo.AsString      := SQLLocate('CUPOM','CUPOA13ID','CUPON2ACRESC','''' + TblCarneNumeroContrato.AsString + '''');
+        TblCarneValorDesconto.AsString  := SQLLocate('CUPOM','CUPOA13ID','CUPON2DESC','''' + TblCarneNumeroContrato.AsString + '''');
 
         Dm.SQLTemplate.Close;
         Dm.SQLTemplate.SQL.Clear;
-        Dm.SQLTemplate.SQL.Add('SELECT CPNMN2VLR FROM CUPOMNUMERARIO WHERE CONMCSTATUS = "A" AND ');
-        Dm.SQLTemplate.SQL.Add('CUPOA13ID = "' + TblCarneNumeroContrato.AsString + '"');
+        Dm.SQLTemplate.SQL.Add('SELECT CPNMN2VLR FROM CUPOMNUMERARIO WHERE CONMCSTATUS = ''A'' AND ');
+        Dm.SQLTemplate.SQL.Add('CUPOA13ID = ''' + TblCarneNumeroContrato.AsString + '''');
         Dm.SQLTemplate.Open;
 
         if not Dm.SQLTemplate.IsEmpty then
           TblCarneEntrada.Value           := Dm.SQLTemplate.FieldByName('CPNMN2VLR').AsFloat
         else
           TblCarneEntrada.Value           := 0;
-        TblCarneTaxaCrediario.AsString  := SQLLocate('CUPOM','CUPOA13ID','CUPON3CREDTAXA','"' + TblCarneNumeroContrato.AsString + '"');
-        TblCarnePlano.AsString          := SQLLocate('PLANORECEBIMENTO','PLRCICOD','PLRCA60DESCR',SQLLocate('CUPOM','CUPOA13ID','PLRCICOD','"' + TblCarneNumeroContrato.AsString + '"'));
+        TblCarneTaxaCrediario.AsString  := SQLLocate('CUPOM','CUPOA13ID','CUPON3CREDTAXA','''' + TblCarneNumeroContrato.AsString + '''');
+        TblCarnePlano.AsString          := SQLLocate('PLANORECEBIMENTO','PLRCICOD','PLRCA60DESCR',SQLLocate('CUPOM','CUPOA13ID','PLRCICOD','''' + TblCarneNumeroContrato.AsString + ''''));
 
         TblCarne.Post ;
 
@@ -1347,7 +1347,7 @@ begin
              while not SQLDadosDup.Eof do
                begin
                   SQLExec.Close;
-                  SQLExec.SQL.Text := 'update CONTASRECEBER set Pendente="S", CTRCCSTATUS = "E" where CUPOA13ID = ' + '"' + TabelaTempCUPOA13ID.AsString + '"';
+                  SQLExec.SQL.Text := 'update CONTASRECEBER set Pendente=''S'', CTRCCSTATUS = ''E'' where CUPOA13ID = ' + '''' + TabelaTempCUPOA13ID.AsString + '''';
                   SQLExec.ExecSQL;
                   Application.ProcessMessages;
                   SQLDadosDup.Next;
@@ -1355,13 +1355,13 @@ begin
              if TabelaTempTIPO.AsString = 'CP' then
                 begin
                    SQLExec.Close;
-                   SQLExec.SQL.Text := 'update CUPOM set Pendente="S", CUPOCSTATUS = "E" ,  CUPOA13IDCUPNEG = ' + '"' + SQLCupomCUPOA13ID.AsString + '"' + ' where CUPOA13ID = ' + '"' + TabelaTempCUPOA13ID.AsString + '"';
+                   SQLExec.SQL.Text := 'update CUPOM set Pendente=''S'', CUPOCSTATUS = ''E'' ,  CUPOA13IDCUPNEG = ' + '''' + SQLCupomCUPOA13ID.AsString + '''' + ' where CUPOA13ID = ' + '''' + TabelaTempCUPOA13ID.AsString + '''';
                    SQLExec.ExecSQL;
                 end;
              if TabelaTempTIPO.AsString = 'NF' then
                 begin
                    SQLExec.Close;
-                   SQLExec.SQL.Text := 'update NOTAFISCAL set Pendente="S", NOFICSTATUS = ''E'' ,  CUPOA13IDCUPNEG = ''' + SQLCupomCUPOA13ID.AsString + ''' where NOFIA13ID = ''' + TabelaTempCUPOA13ID.AsString + '''';
+                   SQLExec.SQL.Text := 'update NOTAFISCAL set Pendente=''S'', NOFICSTATUS = ''E'' ,  CUPOA13IDCUPNEG = ''' + SQLCupomCUPOA13ID.AsString + ''' where NOFIA13ID = ''' + TabelaTempCUPOA13ID.AsString + '''';
                    SQLExec.ExecSQL;
                 end;
           end;

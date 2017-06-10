@@ -336,13 +336,13 @@ begin
   QueryTerminal.Close;
   QueryTerminal.SQL.Clear;
   QueryTerminal.SQL.Add('SELECT TERMICOD, TERMA60DESCR FROM TERMINAL');
-  QueryTerminal.SQL.Add(' WHERE TERMCTIPO = "C" ');
+  QueryTerminal.SQL.Add(' WHERE TERMCTIPO = ''C'' ');
 
   if Empresa <> '' then
     QueryTerminal.SQL.Add(' and EMPRICOD = ' + Empresa);
 
   if FileExists('Terminal.cfg') then
-    QueryTerminal.SQL.Add(' and ECFA13ID <> ""');
+    QueryTerminal.SQL.Add(' and ECFA13ID <> ''''');
 
   QueryTerminal.Open;
   if not QueryTerminal.IsEmpty then
@@ -475,9 +475,9 @@ begin
     begin
       if Lista.Checked[i] then
         if SQL = '' then
-          SQL := SQL + '"'+Lista.Items[i]+'"'
+          SQL := SQL + ''''+Lista.Items[i]+''''
         else
-          SQL := SQL + ',' + '"'+Lista.Items[i]+'"';
+          SQL := SQL + ',' + ''''+Lista.Items[i]+'''';
     end;
     Result := '(' + SQL + ')';
 end;

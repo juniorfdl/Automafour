@@ -108,7 +108,7 @@ procedure TFormTelaLembreteTarefa.FormCreate(Sender: TObject);
 begin
   SQLTarefa.Close;
   SQLTarefa.MacroByName('MUsuarioDest').AsString := 'USUAICODDEST = ' + IntToStr(UsuarioCorrente);
-  SQLTarefa.MacroByName('MStatus').AsString := 'TARECSTATUS <> "T"';
+  SQLTarefa.MacroByName('MStatus').AsString := 'TARECSTATUS <> ''T''';
   SQLTarefa.Open;
   pnMais.Visible := False;
 end;
@@ -317,9 +317,9 @@ begin
   SQLTarefa.Close;
   SQLTarefa.MacroByName('MUsuarioDest').AsString := 'USUAICODDEST = ' + IntToStr(UsuarioCorrente);
   if CKTerminadas.Checked then
-    SQLTarefa.MacroByName('MStatus').AsString := 'TARECSTATUS = "T"'
+    SQLTarefa.MacroByName('MStatus').AsString := 'TARECSTATUS = ''T'''
   else
-    SQLTarefa.MacroByName('MStatus').AsString := 'TARECSTATUS <> "T"';
+    SQLTarefa.MacroByName('MStatus').AsString := 'TARECSTATUS <> ''T''';
   SQLTarefa.Open;
 end;
 

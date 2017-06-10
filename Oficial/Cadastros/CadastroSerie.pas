@@ -66,7 +66,7 @@ begin
   inherited;
 {  if TField(Sender).AsString <>  '' then
     begin
-      if SQLLocate('NOTAFISCAL','SERIA5COD','SERIA5COD','"' + TField(Sender).AsString + '"') <> '' then
+      if SQLLocate('NOTAFISCAL','SERIA5COD','SERIA5COD','''' + TField(Sender).AsString + '''') <> '' then
         begin
           Informa('Esta série já foi utilizada, portanto não pode ser alterada!');
           Abort;
@@ -105,7 +105,7 @@ begin
     end;
   if SQLTemplate.State in ([dsInsert]) Then
   begin
-    If SQLLocate('SERIE','SERIA5COD','SERIA5COD','"'+SQLTemplateSERIA5COD.AsString+'"') <> '' Then
+    If SQLLocate('SERIE','SERIA5COD','SERIA5COD',''''+SQLTemplateSERIA5COD.AsString+'''') <> '' Then
     Begin
       Informa('Esta Série Já Existe!');
       Abort;

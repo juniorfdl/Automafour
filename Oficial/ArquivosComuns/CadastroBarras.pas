@@ -60,7 +60,7 @@ begin
   inherited;
   DM.SQLTemplate.Close;
   DM.SQLTemplate.SQL.Clear;
-  DM.SQLTemplate.SQl.Add('SELECT PRODICOD FROM PRODUTO WHERE PRODA60CODBAR = "' + SQLTemplate.FieldByName('PRBAA15BARRAS').AsString +'"');
+  DM.SQLTemplate.SQl.Add('SELECT PRODICOD FROM PRODUTO WHERE PRODA60CODBAR = ''' + SQLTemplate.FieldByName('PRBAA15BARRAS').AsString +'''');
   DM.SQLTemplate.Open;
   if DM.SQLTemplate.RecordCount > 0 then
     begin
@@ -75,7 +75,7 @@ begin
     begin
       DM.SQLTemplate.Close;
       DM.SQLTemplate.SQL.Clear;
-      DM.SQLTemplate.SQl.Add('SELECT PRODICOD FROM PRODUTOBARRAS WHERE PRBAA15BARRAS = "' + SQLTemplate.FieldByName('PRBAA15BARRAS').AsString + '" AND PRODICOD <>'+SQLTemplate.FieldByName('PRODICOD').asString);
+      DM.SQLTemplate.SQl.Add('SELECT PRODICOD FROM PRODUTOBARRAS WHERE PRBAA15BARRAS = ''' + SQLTemplate.FieldByName('PRBAA15BARRAS').AsString + ''' AND PRODICOD <>'+SQLTemplate.FieldByName('PRODICOD').asString);
       DM.SQLTemplate.Open;
       if DM.SQLTemplate.RecordCount > 0 then
         begin
@@ -103,7 +103,7 @@ begin
   {Filtra Terminais que devem receber carga}
   dm.sqlconsulta.Close;
   dm.sqlconsulta.sql.clear;
-  dm.sqlconsulta.sql.Text := 'Select Termicod from Terminal where TERMCTIPO = "C"';
+  dm.sqlconsulta.sql.Text := 'Select Termicod from Terminal where TERMCTIPO = ''C''';
   dm.sqlconsulta.Open;
   if not dm.sqlconsulta.IsEmpty then
     begin
@@ -112,7 +112,7 @@ begin
           SQLBarrasPdvs.close;
           SQLBarrasPdvs.MacroByName('MFiltro').Value := 'PRODICOD='+SQLTemplatePRODICOD.AsString+
                                                         ' and TERMICOD='+dm.sqlconsulta.fieldbyname('TERMICOD').AsString+
-                                                        ' and PRBAA15BARRAS="'+SQLTemplatePRBAA15BARRAS.Value+'"' ;
+                                                        ' and PRBAA15BARRAS='''+SQLTemplatePRBAA15BARRAS.Value+'''' ;
           SQLBarrasPdvs.Open;
           if SQLBarrasPdvs.IsEmpty then
             SQLBarrasPdvs.append

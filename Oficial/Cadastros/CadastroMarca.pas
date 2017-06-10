@@ -58,7 +58,7 @@ begin
     end;
   // Testar se a Marca ja existe!!!
   SQLMarcaAux.Close;
-  SQLMarcaAux.MacroByName('Descricao').Value := 'MARCA60DESCR = ' + '"' + SQLTemplateMARCA60DESCR.Value + '"';
+  SQLMarcaAux.MacroByName('Descricao').Value := 'MARCA60DESCR = ' + '''' + SQLTemplateMARCA60DESCR.Value + '''';
   SQLMarcaAux.Open;
   If not SQLMarcaAux.IsEmpty Then
     Begin

@@ -84,7 +84,7 @@ begin
     end;
   // Testar se a Grupo ja existe!!!
  { SQLGrupoAux.Close;
-  SQLGrupoAux.MacroByName('Descricao').Value := 'GRUPA60DESCR = ' + '"' + SQLTemplateGRUPA60DESCR.Value + '"';
+  SQLGrupoAux.MacroByName('Descricao').Value := 'GRUPA60DESCR = ' + '''' + SQLTemplateGRUPA60DESCR.Value + '''';
   SQLGrupoAux.Open;
   If not SQLGrupoAux.IsEmpty Then
     Begin

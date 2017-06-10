@@ -49,7 +49,7 @@ begin
   inherited;
   if (SQLTemplate.State in [DsInsert]) then
     begin
-      if SQLLocate('LOTE','LOTEA30NRO','LOTEA30NRO','"' + SQLTemplateLOTEA30NRO.AsString + '"') <> '' then
+      if SQLLocate('LOTE','LOTEA30NRO','LOTEA30NRO','''' + SQLTemplateLOTEA30NRO.AsString + '''') <> '' then
         begin
           Informa('Número de lote já existe !');
           Abort;
@@ -59,7 +59,7 @@ end;
 
 procedure TFormCadastroLote.SQLTemplateBeforeDelete(DataSet: TDataSet);
 begin
-  if SQLLocate('MOVIMENTOESTOQUE','LOTEA30NRO','LOTEA30NRO','"'+ SQLTemplateLOTEA30NRO.AsString +'"') <> '' then
+  if SQLLocate('MOVIMENTOESTOQUE','LOTEA30NRO','LOTEA30NRO',''''+ SQLTemplateLOTEA30NRO.AsString +'''') <> '' then
     begin
       Informa('Este lote já foi utilizado, portanto não pode ser excluído!');
       Abort;

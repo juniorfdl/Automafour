@@ -54,7 +54,7 @@ begin
     end;
   // Testar se a Profissao ja existe!!!
   SQLProfissaoAux.Close;
-  SQLProfissaoAux.MacroByName('Descricao').Value := 'PROFA60DESCR = ' + '"' + SQLTemplatePROFA60DESCR.Value + '"';
+  SQLProfissaoAux.MacroByName('Descricao').Value := 'PROFA60DESCR = ' + '''' + SQLTemplatePROFA60DESCR.Value + '''';
   SQLProfissaoAux.Open;
   If not SQLProfissaoAux.IsEmpty Then
     Begin

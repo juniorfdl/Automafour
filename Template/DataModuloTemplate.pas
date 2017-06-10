@@ -196,7 +196,7 @@ begin
            if (OrigemComponents.FindComponent(Copy(E.Message, 0,Pos(':', E.Message) - 1)).ClassType = TTable) then
               begin
                  TabelaErro := TTable(OrigemComponents.FindComponent(Copy(E.Message, 0,Pos(':', E.Message) - 1)));
-                 Tabela     := '"' + TabelaErro.TableName + '"';
+                 Tabela     := '''' + TabelaErro.TableName + '''';
               end;
          Result := True;
       end;
@@ -305,7 +305,7 @@ begin
             else
                begin
                   ShellExecute(0, 'open', PChar('mailto:suporte@multistorers.com.br ?Subject=Relatorio de erros &Body=' + Email),'','', SW_SHOWNORMAL);
-                  Informa('O Sistema criou um e-mail de erro para você, por favor anexe o arquivo "' + ImagemArquivo + '" ao e-mail e envie-o assim que puder.');
+                  Informa('O Sistema criou um e-mail de erro para você, por favor anexe o arquivo ''' + ImagemArquivo + ''' ao e-mail e envie-o assim que puder.');
                end;
          end; } 
 end;
@@ -610,12 +610,12 @@ Begin
       ftInteger:
         Result:=Field.FieldName+'='+Field.asString;
       ftString,ftMemo:
-        Result:=Field.FieldName+'="'+Field.asString+'"';
+        Result:=Field.FieldName+'='''+Field.asString+'''';
       ftDateTime:
         If POS('HORA',Field.FieldName)<>0 Then
-          Result:=Field.FieldName+'="12/30/1899 '+FormatDateTime('hh:nn:ss',Field.asDateTime)+'"'
+          Result:=Field.FieldName+'=''12/30/1899 '+FormatDateTime('hh:nn:ss',Field.asDateTime)+''''
         Else
-          Result:=Field.FieldName+'="'+FormatDateTime('mm/dd/yyyy hh:nn:ss',Field.asDateTime)+'"';
+          Result:=Field.FieldName+'='''+FormatDateTime('mm/dd/yyyy hh:nn:ss',Field.asDateTime)+'''';
       ftFloat:
         If Frac(Field.asFloat)=0 Then
            Result:=Field.FieldName+'='+VerificaPonto(FloatToStr(Field.asFloat))
@@ -839,16 +839,16 @@ Begin
     If I<NumCampos-1 Then
       Case SQLTemplate.FieldDefs.Find(Chave[I]).DataType Of
         ftInteger:  SQLTemplate.SQL.ADD(Chave[I]+'='+Valores[I]+' and ');
-        ftString:   SQLTemplate.SQL.ADD(Chave[I]+'="'+Valores[I]+'" and ');
-        ftDate:     SQLTemplate.SQL.ADD(Chave[I]+'="'+FormatDateTime('mm/dd/yyyy',StrToDateTime(Valores[I]))+'" and ');
-        ftDateTime: SQLTemplate.SQL.ADD(Chave[I]+'="'+FormatDateTime('mm/dd/yyyy hh:nn:ss',StrToDateTime(Valores[I]))+'" and ');
+        ftString:   SQLTemplate.SQL.ADD(Chave[I]+'='''+Valores[I]+''' and ');
+        ftDate:     SQLTemplate.SQL.ADD(Chave[I]+'='''+FormatDateTime('mm/dd/yyyy',StrToDateTime(Valores[I]))+''' and ');
+        ftDateTime: SQLTemplate.SQL.ADD(Chave[I]+'='''+FormatDateTime('mm/dd/yyyy hh:nn:ss',StrToDateTime(Valores[I]))+''' and ');
       End
     Else
       Case SQLTemplate.FieldDefs.Find(Chave[I]).DataType Of
         ftInteger: SQLTemplate.SQL.ADD(Chave[I]+'='+Valores[I]);
-        ftString:  SQLTemplate.SQL.ADD(Chave[I]+'="'+Valores[I]+'"');
-        ftDate:     SQLTemplate.SQL.ADD(Chave[I]+'="'+FormatDateTime('mm/dd/yyyy',StrToDateTime(Valores[I]))+'"');
-        ftDateTime: SQLTemplate.SQL.ADD(Chave[I]+'="'+FormatDateTime('mm/dd/yyyy hh:nn:ss',StrToDateTime(Valores[I]))+'"');
+        ftString:  SQLTemplate.SQL.ADD(Chave[I]+'='''+Valores[I]+'''');
+        ftDate:     SQLTemplate.SQL.ADD(Chave[I]+'='''+FormatDateTime('mm/dd/yyyy',StrToDateTime(Valores[I]))+'''');
+        ftDateTime: SQLTemplate.SQL.ADD(Chave[I]+'='''+FormatDateTime('mm/dd/yyyy hh:nn:ss',StrToDateTime(Valores[I]))+'''');
       End;
   Try
     SQLTemplate.Open;

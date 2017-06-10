@@ -566,7 +566,7 @@ begin
   dm.SQLTemplate.Close;
   dm.SQLTemplate.SQL.Clear;
   dm.SQLTemplate.SQL.add('Delete From PedidoCompraItem Where PRODICOD = ' + TblTempCompradosPRODICOD.AsString +
-                         ' and PDCPA13ID = "' + NotaCompraID + '"');
+                         ' and PDCPA13ID = ''' + NotaCompraID + '''');
   dm.SQLTemplate.ExecSQL;
   LbProdEscolhidosCompra.Caption := ' Produtos Escolhidos para Compra => '+ IntToStr(TblTempComprados.RecordCount)+' Registros Encontrados... ';
   LbProdEscolhidosCompra.Update;
@@ -630,8 +630,8 @@ begin
       FormTelaPedidoCompraHistoricoComprasVendasProduto.SQLVendas.MacroByName('MEmpresa1').Value := 'NOTAFISCAL.EMPRICOD = '+EmpresaPadraoPedidosCompra;
       FormTelaPedidoCompraHistoricoComprasVendasProduto.SQLVendas.MacroByName('MProduto').Value  := 'CUPOMITEM.PRODICOD = '+TblTemporariaPRODICOD.AsString;
       FormTelaPedidoCompraHistoricoComprasVendasProduto.SQLVendas.MacroByName('MProduto1').Value := 'NOTAFISCALITEM.PRODICOD = '+TblTemporariaPRODICOD.AsString;
-      FormTelaPedidoCompraHistoricoComprasVendasProduto.SQLVendas.MacroByName('MFiltro').Value   := 'CUPOM.CUPODEMIS > "'+FormatDateTime('mm/dd/yyyy',Date-90)+'"';
-      FormTelaPedidoCompraHistoricoComprasVendasProduto.SQLVendas.MacroByName('MFiltro1').Value  := 'NOTAFISCAL.NOFIDEMIS > "'+FormatDateTime('mm/dd/yyyy',Date-90)+'"';
+      FormTelaPedidoCompraHistoricoComprasVendasProduto.SQLVendas.MacroByName('MFiltro').Value   := 'CUPOM.CUPODEMIS > '''+FormatDateTime('mm/dd/yyyy',Date-90)+'''';
+      FormTelaPedidoCompraHistoricoComprasVendasProduto.SQLVendas.MacroByName('MFiltro1').Value  := 'NOTAFISCAL.NOFIDEMIS > '''+FormatDateTime('mm/dd/yyyy',Date-90)+'''';
       FormTelaPedidoCompraHistoricoComprasVendasProduto.SQLVendas.Open;
       FormTelaPedidoCompraHistoricoComprasVendasProduto.LBProduto.Caption := 'Produto => '+TblTemporariaPRODICOD.AsString+'-'+TblTemporariaPRODA60DESCR.Value;
       FormTelaPedidoCompraHistoricoComprasVendasProduto.ShowModal;

@@ -105,7 +105,7 @@ begin
     SQLGeral.SQL.Text := 'select CLASSE.CLASSA60DESCRICAO,CLASSE.CLASSICOD,USUARIO.USUAICOD,USUARIO.USUAA60LOGIN from USUARIO ' +
                          'left outer join CLASSEUSUARIO on USUARIO.USUAICOD = CLASSEUSUARIO.USUAICOD ' +
                          'left outer join CLASSE on CLASSE.CLASSICOD = CLASSEUSUARIO.CLASSICOD ' +
-                         'where USUARIO.USUAICOD in (select USUAICOD from USUARIOPERMISSOES where USPEA60NOMETELA = "' + DM.JanelaAtiva.Nome + '") ' +
+                         'where USUARIO.USUAICOD in (select USUAICOD from USUARIOPERMISSOES where USPEA60NOMETELA = ''' + DM.JanelaAtiva.Nome + ''') ' +
                          'order by CLASSE.CLASSA60DESCRICAO, USUARIO.USUAA60LOGIN';
 
     SQLGeral.Open;
@@ -226,7 +226,7 @@ begin
         CodUsuario := copy(lstUsuarioSel.Items.Strings[lstUsuarioSel.ItemIndex],Pos1,Pos2);
 
         SQLGeral.Close;
-        SQLGeral.SQL.Text := 'select * from USUARIOPERMISSOES where USUAICOD = ' + CodUsuario + ' and USPEA60NOMETELA = "' + DM.JanelaAtiva.Nome + '"';
+        SQLGeral.SQL.Text := 'select * from USUARIOPERMISSOES where USUAICOD = ' + CodUsuario + ' and USPEA60NOMETELA = ''' + DM.JanelaAtiva.Nome + '''';
         SQLGeral.Open;
 
         if not SQLGeral.IsEmpty then

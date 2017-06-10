@@ -237,10 +237,10 @@ procedure TFormCadastroClienteExtintor.ppHeaderBand1BeforePrint(
   Sender: TObject);
 begin
   inherited;
-  ppRazao.Caption    := dm.SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC','"'+SQLTemplateCLIEA13ID.Value+'"');
-  ppEnd.Caption      := dm.SQLLocate('CLIENTE','CLIEA13ID','CLIEA60ENDRES','"'+SQLTemplateCLIEA13ID.Value+'"');
-  ppBairro.Caption   := dm.SQLLocate('CLIENTE','CLIEA13ID','CLIEA60BAIRES','"'+SQLTemplateCLIEA13ID.Value+'"');
-  ppCidade.Caption   := dm.SQLLocate('CLIENTE','CLIEA13ID','CLIEA60CIDRES','"'+SQLTemplateCLIEA13ID.Value+'"');
+  ppRazao.Caption    := dm.SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC',''''+SQLTemplateCLIEA13ID.Value+'''');
+  ppEnd.Caption      := dm.SQLLocate('CLIENTE','CLIEA13ID','CLIEA60ENDRES',''''+SQLTemplateCLIEA13ID.Value+'''');
+  ppBairro.Caption   := dm.SQLLocate('CLIENTE','CLIEA13ID','CLIEA60BAIRES',''''+SQLTemplateCLIEA13ID.Value+'''');
+  ppCidade.Caption   := dm.SQLLocate('CLIENTE','CLIEA13ID','CLIEA60CIDRES',''''+SQLTemplateCLIEA13ID.Value+'''');
 end;
 
 procedure TFormCadastroClienteExtintor.ppDetailBand1BeforePrint(

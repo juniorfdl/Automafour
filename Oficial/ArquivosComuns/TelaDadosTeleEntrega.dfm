@@ -78,7 +78,7 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
     Top = 304
     Width = 52
     Height = 13
-    Caption = 'Endereço'
+    Caption = 'Endere'#231'o'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 8404992
     Font.Height = -11
@@ -218,7 +218,7 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
     Top = 199
     Width = 44
     Height = 13
-    Caption = 'Ocasião'
+    Caption = 'Ocasi'#227'o'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 8404992
     Font.Height = -11
@@ -1270,7 +1270,6 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
     object SQLPrazoCTRCN2VLR: TFloatField
       FieldName = 'CTRCN2VLR'
       Origin = 'DB.CONTASRECEBER.CTRCN2VLR'
-      Size = 3
     end
     object SQLPrazoCTRCN2DESCFIN: TFloatField
       FieldName = 'CTRCN2DESCFIN'
@@ -1496,6 +1495,7 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
     PrinterSetup.PaperSize = 139
     Units = utMillimeters
     DeviceType = 'Printer'
+    EmailSettings.ReportFormat = 'PDF'
     OutlineSettings.CreateNode = True
     OutlineSettings.CreatePageNodes = True
     OutlineSettings.Enabled = False
@@ -1506,7 +1506,7 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
     TextSearchSettings.Enabled = False
     Left = 404
     Top = 190
-    Version = '7.04'
+    Version = '10.06'
     mmColumnWidth = 0
     object ppTitleBand4: TppTitleBand
       mmBottomOffset = 0
@@ -1515,6 +1515,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
       object ppLabel58: TppLabel
         UserName = 'ppLabel58'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = '* FICHA DE VENDA *'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1567,7 +1571,7 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
           PrinterSetup.mmPaperWidth = 0
           PrinterSetup.PaperSize = 139
           Units = utMillimeters
-          Version = '7.04'
+          Version = '10.06'
           mmColumnWidth = 0
           DataPipelineName = 'PipeItem'
           object ppTitleBand2: TppTitleBand
@@ -1578,6 +1582,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel8: TppLabel
               UserName = 'ppLabel8'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'Cliente....:'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -1593,6 +1601,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText13: TppDBText
               UserName = 'ppDBText13'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -1611,6 +1623,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel14: TppLabel
               UserName = 'ppLabel14'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 
                 '----------------------------------------------------------------' +
                 '----------------'
@@ -1629,7 +1645,11 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel16: TppLabel
               UserName = 'ppLabel16'
               AutoSize = False
-              Caption = 'Código'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
+              Caption = 'C'#243'digo'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
               Font.Name = 'Sans Serif 17cpi'
@@ -1645,7 +1665,11 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel19: TppLabel
               UserName = 'ppLabel19'
               AutoSize = False
-              Caption = 'Descrição'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
+              Caption = 'Descri'#231#227'o'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
               Font.Name = 'Sans Serif 17cpi'
@@ -1660,6 +1684,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppLabel21: TppLabel
               UserName = 'ppLabel21'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'Qtde.'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -1676,7 +1704,11 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppLabel22: TppLabel
               UserName = 'ppLabel22'
-              Caption = 'Preço'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
+              Caption = 'Pre'#231'o'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
               Font.Name = 'Sans Serif 17cpi'
@@ -1693,6 +1725,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel23: TppLabel
               UserName = 'ppLabel23'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 
                 '----------------------------------------------------------------' +
                 '-----------------------------------------------'
@@ -1710,6 +1746,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText17: TppDBText
               UserName = 'ppDBText17'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -1728,6 +1768,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel24: TppLabel
               UserName = 'ppLabel24'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'Desc.'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -1745,6 +1789,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel25: TppLabel
               UserName = 'ppLabel25'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'Venda......:'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -1761,6 +1809,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppDBText20: TppDBText
               UserName = 'ppDBText20'
               AutoSize = True
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -1779,6 +1831,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel11: TppLabel
               UserName = 'ppLabel11'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'Fone Cli...:'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -1794,6 +1850,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText28: TppDBText
               UserName = 'ppDBText28'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -1812,6 +1872,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel34: TppLabel
               UserName = 'ppLabel34'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'Nro.Cartao.:'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -1827,6 +1891,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText29: TppDBText
               UserName = 'ppDBText29'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -1844,6 +1912,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText48: TppDBText
               UserName = 'ppDBText48'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
@@ -1867,6 +1939,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             mmPrintPosition = 0
             object ppDBText7: TppDBText
               UserName = 'ppDBText7'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeItem
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -1884,6 +1960,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText6: TppDBText
               UserName = 'ppDBText6'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeItem
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -1901,6 +1981,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText9: TppDBText
               UserName = 'ppDBText9'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeItem
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -1918,6 +2002,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText10: TppDBText
               UserName = 'ppDBText10'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeItem
               DisplayFormat = '#,##0.00'
               Font.Charset = ANSI_CHARSET
@@ -1937,6 +2025,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText18: TppDBText
               UserName = 'ppDBText18'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeItem
               DisplayFormat = '#,##0.00'
               Font.Charset = ANSI_CHARSET
@@ -1962,6 +2054,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             mmPrintPosition = 0
             object ppLabel12: TppLabel
               UserName = 'ppLabel12'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'Total Geral'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -1978,6 +2074,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel13: TppLabel
               UserName = 'ppLabel13'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 
                 '----------------------------------------------------------------' +
                 '-----------------------------------------------'
@@ -1995,6 +2095,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppLabel15: TppLabel
               UserName = 'ppLabel15'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'Total'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2010,6 +2114,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppLabel18: TppLabel
               UserName = 'ppLabel18'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'Desconto'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2026,6 +2134,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppDBText16: TppDBText
               UserName = 'ppDBText16'
               AutoSize = True
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               DisplayFormat = '#,##0.00'
               Font.Charset = ANSI_CHARSET
@@ -2046,6 +2158,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel1: TppLabel
               UserName = 'ppLabel1'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'Tipo Pagto:'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2061,6 +2177,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText2: TppDBText
               UserName = 'ppDBText2'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2079,6 +2199,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel2: TppLabel
               UserName = 'ppLabel2'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'Tipo Venda:'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2094,6 +2218,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText3: TppDBText
               UserName = 'ppDBText3'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2112,6 +2240,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel3: TppLabel
               UserName = 'ppLabel3'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'Entrega:'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2127,6 +2259,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText8: TppDBText
               UserName = 'ppDBText8'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2145,6 +2281,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel6: TppLabel
               UserName = 'ppLabel6'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = '* PROTOCOLO DE ENTREGA *'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2161,6 +2301,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText23: TppDBText
               UserName = 'ppDBText23'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2179,6 +2323,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel7: TppLabel
               UserName = 'ppLabel7'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'Venda :'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2195,6 +2343,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppDBText24: TppDBText
               UserName = 'ppDBText24'
               AutoSize = True
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2213,6 +2365,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel9: TppLabel
               UserName = 'ppLabel9'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 
                 '----------------------------------------------------------------' +
                 '-----------------------------------------------'
@@ -2231,6 +2387,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabelLinhaAss: TppLabel
               UserName = 'ppLabelLinhaAss'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 
                 '----------------------------------------------------------------' +
                 '-'
@@ -2249,6 +2409,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel10: TppLabel
               UserName = 'ppLabel10'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'Entrega:'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2264,6 +2428,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText26: TppDBText
               UserName = 'ppDBText26'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2281,6 +2449,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppLabel17: TppLabel
               UserName = 'ppLabel17'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'ENTREGADOR:_______________________________'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2297,6 +2469,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel33: TppLabel
               UserName = 'ppLabel33'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = '* PESSOA QUE VAI RECEBER *'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2314,6 +2490,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel35: TppLabel
               UserName = 'ppLabel35'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'Vendedor :'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2329,6 +2509,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText30: TppDBText
               UserName = 'ppDBText30'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2347,6 +2531,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel36: TppLabel
               UserName = 'ppLabel36'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'Vendedor :'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2362,6 +2550,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText31: TppDBText
               UserName = 'ppDBText31'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2380,6 +2572,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppDBText12: TppDBText
               UserName = 'ppDBText12'
               AutoSize = True
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               DisplayFormat = '#,##0.00'
               Font.Charset = ANSI_CHARSET
@@ -2400,6 +2596,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppDBText41: TppDBText
               UserName = 'ppDBText41'
               AutoSize = True
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               DisplayFormat = '#,##0.00'
               Font.Charset = ANSI_CHARSET
@@ -2419,6 +2619,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText42: TppDBText
               UserName = 'ppDBText42'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2436,6 +2640,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText43: TppDBText
               UserName = 'ppDBText43'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2453,6 +2661,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText44: TppDBText
               UserName = 'ppDBText44'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2470,6 +2682,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText45: TppDBText
               UserName = 'ppDBText45'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2487,6 +2703,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText46: TppDBText
               UserName = 'ppDBText46'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2505,6 +2725,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel49: TppLabel
               UserName = 'ppLabel49'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'Cliente:'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2520,6 +2744,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText22: TppDBText
               UserName = 'ppDBText22'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2538,6 +2766,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel50: TppLabel
               UserName = 'ppLabel50'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'Fone:'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2553,6 +2785,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText25: TppDBText
               UserName = 'ppDBText25'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2570,6 +2806,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppLabel51: TppLabel
               UserName = 'ppLabel51'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'Data: _____/_____/________   Hora:_____:_____'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2585,6 +2825,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText21: TppDBText
               UserName = 'ppDBText21'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2603,6 +2847,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText52: TppDBText
               UserName = 'ppDBText52'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2621,6 +2869,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppDBText59: TppDBText
               UserName = 'ppDBText59'
               AutoSize = True
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               DisplayFormat = 'dd/mm/yyyy hh:nn:ss'
               Font.Charset = ANSI_CHARSET
@@ -2673,7 +2925,7 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
           PrinterSetup.mmPaperWidth = 0
           PrinterSetup.PaperSize = 139
           Units = utMillimeters
-          Version = '7.04'
+          Version = '10.06'
           mmColumnWidth = 0
           DataPipelineName = 'PipeItem'
           object ppTitleBand3: TppTitleBand
@@ -2684,6 +2936,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel4: TppLabel
               UserName = 'ppLabel4'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = '* ORDEM DE FABRICACAO *'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2700,6 +2956,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText15: TppDBText
               UserName = 'ppDBText15'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2718,6 +2978,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel5: TppLabel
               UserName = 'ppLabel5'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'Venda :'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2734,6 +2998,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppDBText19: TppDBText
               UserName = 'ppDBText19'
               AutoSize = True
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2752,6 +3020,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel20: TppLabel
               UserName = 'ppLabel20'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 
                 '----------------------------------------------------------------' +
                 '-'
@@ -2770,7 +3042,11 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel26: TppLabel
               UserName = 'ppLabel26'
               AutoSize = False
-              Caption = 'Código'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
+              Caption = 'C'#243'digo'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
               Font.Name = 'Sans Serif 17cpi'
@@ -2786,7 +3062,11 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel27: TppLabel
               UserName = 'ppLabel27'
               AutoSize = False
-              Caption = 'Descrição'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
+              Caption = 'Descri'#231#227'o'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
               Font.Name = 'Sans Serif 17cpi'
@@ -2801,6 +3081,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppLabel28: TppLabel
               UserName = 'ppLabel28'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'Qtde.'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2817,7 +3101,11 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppLabel29: TppLabel
               UserName = 'ppLabel29'
-              Caption = 'Preço'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
+              Caption = 'Pre'#231'o'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
               Font.Name = 'Sans Serif 17cpi'
@@ -2834,6 +3122,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel30: TppLabel
               UserName = 'ppLabel30'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 
                 '----------------------------------------------------------------' +
                 '-'
@@ -2852,6 +3144,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel31: TppLabel
               UserName = 'ppLabel31'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'Desc.'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2869,6 +3165,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel59: TppLabel
               UserName = 'ppLabel59'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 
                 '----------------------------------------------------------------' +
                 '-'
@@ -2887,6 +3187,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppDBText49: TppDBText
               UserName = 'ppDBText49'
               AutoSize = True
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               DisplayFormat = 'dd/mm/yyyy hh:nn:ss'
               Font.Charset = ANSI_CHARSET
@@ -2911,6 +3215,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             mmPrintPosition = 0
             object ppDBText1: TppDBText
               UserName = 'ppDBText1'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeItem
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2928,6 +3236,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText4: TppDBText
               UserName = 'ppDBText4'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeItem
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2945,6 +3257,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText5: TppDBText
               UserName = 'ppDBText5'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeItem
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2962,6 +3278,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText11: TppDBText
               UserName = 'ppDBText11'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeItem
               DisplayFormat = '#,##0.00'
               Font.Charset = ANSI_CHARSET
@@ -2981,6 +3301,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText14: TppDBText
               UserName = 'ppDBText14'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeItem
               DisplayFormat = '#,##0.00'
               Font.Charset = ANSI_CHARSET
@@ -3006,6 +3330,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             mmPrintPosition = 0
             object ppDBText27: TppDBText
               UserName = 'ppDBText27'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -3023,6 +3351,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppLabel32: TppLabel
               UserName = 'ppLabel32'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'Entrega:'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -3039,6 +3371,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel47: TppLabel
               UserName = 'ppLabel47'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 
                 '----------------------------------------------------------------' +
                 '-----------------------------------------------'
@@ -3056,6 +3392,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppLabel55: TppLabel
               UserName = 'ppLabel55'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'Total Geral'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -3071,6 +3411,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppLabel56: TppLabel
               UserName = 'ppLabel56'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'Total'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -3086,6 +3430,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppLabel57: TppLabel
               UserName = 'ppLabel57'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'Desconto'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -3102,6 +3450,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppDBText53: TppDBText
               UserName = 'ppDBText53'
               AutoSize = True
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               DisplayFormat = '#,##0.00'
               Font.Charset = ANSI_CHARSET
@@ -3122,6 +3474,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppDBText54: TppDBText
               UserName = 'ppDBText54'
               AutoSize = True
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               DisplayFormat = '#,##0.00'
               Font.Charset = ANSI_CHARSET
@@ -3142,6 +3498,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppDBText55: TppDBText
               UserName = 'ppDBText55'
               AutoSize = True
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               DisplayFormat = '#,##0.00'
               Font.Charset = ANSI_CHARSET
@@ -3162,6 +3522,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel60: TppLabel
               UserName = 'ppLabel60'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 
                 '----------------------------------------------------------------' +
                 '-----------------------------------------------'
@@ -3179,6 +3543,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppLabel65: TppLabel
               UserName = 'ppLabel65'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'Vendedor:'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -3194,6 +3562,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText47: TppDBText
               UserName = 'ppDBText47'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -3212,6 +3584,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel53: TppLabel
               UserName = 'ppLabel53'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = '* * M E N S A G E M  * *'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -3228,6 +3604,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBMemo1: TppDBMemo
               UserName = 'ppDBMemo1'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               CharWrap = True
               DataPipeline = PipeCab
               Font.Charset = ANSI_CHARSET
@@ -3285,7 +3665,7 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
           PrinterSetup.mmPaperWidth = 0
           PrinterSetup.PaperSize = 139
           Units = utMillimeters
-          Version = '7.04'
+          Version = '10.06'
           mmColumnWidth = 0
           DataPipelineName = 'PipeItem'
           object ppTitleBand1: TppTitleBand
@@ -3295,6 +3675,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel37: TppLabel
               UserName = 'ppLabel37'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = '* RECIBO DE ENCOMENDA *'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -3311,6 +3695,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText32: TppDBText
               UserName = 'ppDBText32'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -3329,6 +3717,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel38: TppLabel
               UserName = 'ppLabel38'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'Venda :'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -3345,6 +3737,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppDBText33: TppDBText
               UserName = 'ppDBText33'
               AutoSize = True
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -3363,6 +3759,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel39: TppLabel
               UserName = 'ppLabel39'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 
                 '----------------------------------------------------------------' +
                 '-'
@@ -3381,7 +3781,11 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel40: TppLabel
               UserName = 'ppLabel40'
               AutoSize = False
-              Caption = 'Código'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
+              Caption = 'C'#243'digo'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
               Font.Name = 'Sans Serif 17cpi'
@@ -3397,7 +3801,11 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel41: TppLabel
               UserName = 'ppLabel41'
               AutoSize = False
-              Caption = 'Descrição'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
+              Caption = 'Descri'#231#227'o'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
               Font.Name = 'Sans Serif 17cpi'
@@ -3412,6 +3820,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppLabel42: TppLabel
               UserName = 'ppLabel42'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'Qtde.'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -3428,7 +3840,11 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppLabel43: TppLabel
               UserName = 'ppLabel43'
-              Caption = 'Preço'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
+              Caption = 'Pre'#231'o'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
               Font.Name = 'Sans Serif 17cpi'
@@ -3445,6 +3861,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel44: TppLabel
               UserName = 'ppLabel44'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 
                 '----------------------------------------------------------------' +
                 '-'
@@ -3463,6 +3883,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel45: TppLabel
               UserName = 'ppLabel45'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'Desc.'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -3479,6 +3903,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText34: TppDBText
               UserName = 'ppDBText34'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -3497,6 +3925,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel54: TppLabel
               UserName = 'ppLabel54'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 
                 '----------------------------------------------------------------' +
                 '-'
@@ -3515,6 +3947,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppDBText50: TppDBText
               UserName = 'ppDBText50'
               AutoSize = True
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               DisplayFormat = 'dd/mm/yyyy hh:nn:ss'
               Font.Charset = ANSI_CHARSET
@@ -3539,6 +3975,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             mmPrintPosition = 0
             object ppDBText35: TppDBText
               UserName = 'ppDBText35'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeItem
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -3556,6 +3996,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText36: TppDBText
               UserName = 'ppDBText36'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeItem
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -3573,6 +4017,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText37: TppDBText
               UserName = 'ppDBText37'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeItem
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -3590,6 +4038,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText38: TppDBText
               UserName = 'ppDBText38'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeItem
               DisplayFormat = '#,##0.00'
               Font.Charset = ANSI_CHARSET
@@ -3609,6 +4061,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText39: TppDBText
               UserName = 'ppDBText39'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeItem
               DisplayFormat = '#,##0.00'
               Font.Charset = ANSI_CHARSET
@@ -3634,6 +4090,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             mmPrintPosition = 0
             object ppDBText40: TppDBText
               UserName = 'ppDBText40'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -3651,6 +4111,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppLabel46: TppLabel
               UserName = 'ppLabel46'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'Entrega:'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -3667,6 +4131,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel48: TppLabel
               UserName = 'ppLabel48'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 
                 '----------------------------------------------------------------' +
                 '-----------------------------------------------'
@@ -3685,6 +4153,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel52: TppLabel
               UserName = 'ppLabel52'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'Vendedor :'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -3700,6 +4172,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppDBText51: TppDBText
               UserName = 'ppDBText51'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -3717,6 +4193,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppLabel61: TppLabel
               UserName = 'ppLabel61'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'Total Geral'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -3732,6 +4212,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppLabel62: TppLabel
               UserName = 'ppLabel62'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'Total'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -3747,6 +4231,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             end
             object ppLabel63: TppLabel
               UserName = 'ppLabel63'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 'Desconto'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -3763,6 +4251,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppDBText56: TppDBText
               UserName = 'ppDBText56'
               AutoSize = True
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               DisplayFormat = '#,##0.00'
               Font.Charset = ANSI_CHARSET
@@ -3783,6 +4275,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppDBText57: TppDBText
               UserName = 'ppDBText57'
               AutoSize = True
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               DisplayFormat = '#,##0.00'
               Font.Charset = ANSI_CHARSET
@@ -3803,6 +4299,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppDBText58: TppDBText
               UserName = 'ppDBText58'
               AutoSize = True
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               DataPipeline = PipeCab
               DisplayFormat = '#,##0.00'
               Font.Charset = ANSI_CHARSET
@@ -3823,6 +4323,10 @@ object FormTelaDadosTeleEntrega: TFormTelaDadosTeleEntrega
             object ppLabel64: TppLabel
               UserName = 'ppLabel64'
               AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
               Caption = 
                 '----------------------------------------------------------------' +
                 '-----------------------------------------------'

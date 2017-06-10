@@ -294,7 +294,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
                 Top = 76
                 Width = 93
                 Height = 13
-                Caption = 'Hist'#243'rico Padr'#227'o'
+                Caption = 'Histórico Padrão'
                 FocusControl = DBEditHistoricoPadrao
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = 8404992
@@ -308,7 +308,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
                 Top = 89
                 Width = 21
                 Height = 21
-                Hint = 'Acessa Hist'#243'ricos Padr'#245'es'
+                Hint = 'Acessa Históricos Padrões'
                 Flat = True
                 Glyph.Data = {
                   9E020000424D9E0200000000000036000000280000000E0000000E0000000100
@@ -340,7 +340,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
                 Top = 76
                 Width = 50
                 Height = 13
-                Caption = 'Hist'#243'rico'
+                Caption = 'Histórico'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = 8404992
                 Font.Height = -11
@@ -394,7 +394,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
                 Top = 111
                 Width = 134
                 Height = 13
-                Caption = 'Compet'#234'ncia M'#234's    Ano'
+                Caption = 'Competência Mês    Ano'
                 FocusControl = DBEdit13
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = 8404992
@@ -676,7 +676,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
                 Items.Strings = (
                   'Janeiro'
                   'Fevereio'
-                  'Mar'#231'o'
+                  'Março'
                   'Abril'
                   'Maio'
                   'Junho'
@@ -775,7 +775,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
               Top = 51
               Width = 88
               Height = 13
-              Caption = 'Opera'#231#227'o Fiscal'
+              Caption = 'Operação Fiscal'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 8404992
               Font.Height = -11
@@ -829,7 +829,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
               Top = 10
               Width = 29
               Height = 13
-              Caption = 'S'#233'rie'
+              Caption = 'Série'
               FocusControl = DBEdit6
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 8404992
@@ -843,7 +843,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
               Top = 10
               Width = 44
               Height = 13
-              Caption = 'N'#250'mero'
+              Caption = 'Número'
               FocusControl = DBEdit7
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 8404992
@@ -1147,7 +1147,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
   end
   inherited PopupMenuDiversos: TPopupMenu
     object MnGeraroutrolanc: TMenuItem
-      Caption = 'Gerar outro lan'#231'amento a partir do documento atual'
+      Caption = 'Gerar outro lançamento a partir do documento atual'
       OnClick = MnGeraroutrolancClick
     end
   end
@@ -1273,7 +1273,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
       Origin = 'DB.CONTASPAGAR.REGISTRO'
     end
     object SQLTemplateCTPGDTEMIS: TDateTimeField
-      DisplayLabel = 'Emiss'#227'o'
+      DisplayLabel = 'Emissão'
       FieldName = 'CTPGDTEMIS'
       Origin = 'DB.CONTASPAGAR.CTPGDTEMIS'
       DisplayFormat = 'dd/mm/yyyy'
@@ -1751,7 +1751,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
       Size = 15
     end
     object SQLPagamentoPAGAA254HISTORICO: TStringField
-      DisplayLabel = 'Hist'#243'rico'
+      DisplayLabel = 'Histórico'
       FieldName = 'PAGAA254HISTORICO'
       Origin = 'DB.PAGAMENTO.PAGAA254HISTORICO'
       Size = 254
@@ -1780,9 +1780,9 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
       'From '
       'PLANODECONTAS'
       'where  '
-      'PLCTCANALSINT = "A" '
+      'PLCTCANALSINT = ''A'' '
       'and'
-      'PLCTCTIPOSALDO = "D" '
+      'PLCTCTIPOSALDO = ''D'' '
       ''
       'order by PLCTA60DESCR')
     Macros = <>

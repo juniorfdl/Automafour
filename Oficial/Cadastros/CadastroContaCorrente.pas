@@ -118,7 +118,7 @@ procedure TFormCadastroContaCorrente.SQLTemplateCalcFields(
   DataSet: TDataSet);
 begin
   inherited;
-  SQLTemplateBancoCalcField.AsString := SQLLocate('BANCO', 'BANCA5COD', 'BANCA60NOME', '"' + SQLTemplateBANCA5COD.AsString + '"') ;
+  SQLTemplateBancoCalcField.AsString := SQLLocate('BANCO', 'BANCA5COD', 'BANCA60NOME', '''' + SQLTemplateBANCA5COD.AsString + '''') ;
 end;
 
 procedure TFormCadastroContaCorrente.RetornaBancoClick(Sender: TObject);

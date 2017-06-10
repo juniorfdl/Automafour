@@ -1769,7 +1769,7 @@ inherited FormTelaBaixaDocumentosPagarPagamento: TFormTelaBaixaDocumentosPagarPa
       'FROM '
       'OPERACAOTESOURARIA '
       'WHERE '
-      'OPTECDEBCRED <> "C"')
+      'OPTECDEBCRED <> ''C''')
     Left = 403
     Top = 3
     object SQLOperacaoTesourariaOPTEICOD: TIntegerField
@@ -1807,7 +1807,7 @@ inherited FormTelaBaixaDocumentosPagarPagamento: TFormTelaBaixaDocumentosPagarPa
   object SQLNumerario: TQuery
     DatabaseName = 'DB'
     SQL.Strings = (
-      'SELECT * from NUMERARIO where NUMEA5TIPO = "DIN"')
+      'SELECT * from NUMERARIO where NUMEA5TIPO = ''DIN''')
     Left = 459
     Top = 3
     object SQLNumerarioNUMEICOD: TIntegerField
@@ -1883,11 +1883,11 @@ inherited FormTelaBaixaDocumentosPagarPagamento: TFormTelaBaixaDocumentosPagarPa
       'FROM'
       'PLANODECONTAS'
       'WHERE'
-      '(PLCTCTIPOSALDO = "C" '
+      '(PLCTCTIPOSALDO = ''C'' '
       'OR'
-      'PLCTCTIPOSALDO = "A")'
+      'PLCTCTIPOSALDO = ''A'')'
       'AND'
-      'PLCTCANALSINT = "A" ')
+      'PLCTCANALSINT = ''A'' ')
     Macros = <>
     Left = 515
     Top = 31
@@ -1913,11 +1913,11 @@ inherited FormTelaBaixaDocumentosPagarPagamento: TFormTelaBaixaDocumentosPagarPa
       'FROM'
       'PLANODECONTAS'
       'WHERE'
-      '(PLCTCTIPOSALDO = "D"'
+      '(PLCTCTIPOSALDO = ''D'''
       'or'
-      'PLCTCTIPOSALDO = "A")'
+      'PLCTCTIPOSALDO = ''A'')'
       'AND'
-      'PLCTCANALSINT = "A" ')
+      'PLCTCANALSINT = ''A'' ')
     Macros = <>
     Left = 515
     Top = 59

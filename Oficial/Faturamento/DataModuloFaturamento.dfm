@@ -2569,13 +2569,13 @@ inherited DMFaturamento: TDMFaturamento
     DataSet = SQLConfigTransportadora
     Left = 565
     Top = 64
-  end
+  end                                        
   object QueryOperacaoDebito: TQuery
     DatabaseName = 'DB'
     SQL.Strings = (
       'SELECT OPFUICOD,OPFUA60DESCR FROM OPERACAOFUNCIONARIO'
       'WHERE'
-      'OPFUCTIPOOPERACAO = "D"'
+      'OPFUCTIPOOPERACAO = ''D'''
       '')
     Left = 549
     Top = 232
@@ -2585,7 +2585,7 @@ inherited DMFaturamento: TDMFaturamento
     SQL.Strings = (
       'SELECT OPFUICOD,OPFUA60DESCR FROM OPERACAOFUNCIONARIO'
       'WHERE'
-      'OPFUCTIPOOPERACAO = "C"'
+      'OPFUCTIPOOPERACAO = ''C'''
       '')
     Left = 549
     Top = 158

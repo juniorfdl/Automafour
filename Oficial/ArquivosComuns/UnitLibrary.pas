@@ -315,7 +315,7 @@ begin
   DM.SQLTemplate.SQL.Add('sum(RECEN2DESC) AS DESCO,') ;
   DM.SQLTemplate.SQL.Add('sum(RECEN2MULTACOBR) AS MULTACOBR,') ;
   DM.SQLTemplate.SQL.Add('sum(RECEN2VLRMULTA) AS MULTA from RECEBIMENTO') ;
-  DM.SQLTemplate.SQL.Add('where CTRCA13ID = "' + NroDocumento + '"') ;
+  DM.SQLTemplate.SQL.Add('where CTRCA13ID = ''' + NroDocumento + '''') ;
   DM.SQLTemplate.SQL.Add('group by CTRCA13ID') ;
   DM.SQLTemplate.Open ;
   if not DM.SQLTemplate.EOF then
@@ -334,7 +334,7 @@ begin
     DM.SQLTemplate.Close ;
     DM.SQLTemplate.SQL.Clear ;
     DM.SQLTemplate.SQL.Add('select RECEDRECTO,EMPRICODREC from RECEBIMENTO') ;
-    DM.SQLTemplate.SQL.Add('where CTRCA13ID = "' + NroDocumento + '" ') ;
+    DM.SQLTemplate.SQL.Add('where CTRCA13ID = ''' + NroDocumento + ''' ') ;
     DM.SQLTemplate.SQL.Add('order by RECEDRECTO') ;
     DM.SQLTemplate.Open ;
     DM.SQLTemplate.Last ;
@@ -347,7 +347,7 @@ begin
   DM.SQLTemplate.SQL.Add('Update CONTASRECEBER') ;
   DM.SQLTemplate.SQL.Add('Set') ;
   if DATAULTREC > 0 then
-    DM.SQLTemplate.SQL.Add('CTRCDULTREC = "'  + FormatDateTime('mm/dd/yyyy', DATAULTREC) + '", ')
+    DM.SQLTemplate.SQL.Add('CTRCDULTREC = '''  + FormatDateTime('mm/dd/yyyy', DATAULTREC) + ''', ')
   else
     DM.SQLTemplate.SQL.Add('CTRCDULTREC = Null, ') ;
   DM.SQLTemplate.SQL.Add('CTRCN2TOTREC = ' + ConvFloatToStr(RECEN2VLRRECTO) + ', ') ;
@@ -355,10 +355,10 @@ begin
   DM.SQLTemplate.SQL.Add('CTRCN2TOTMULTAREC = ' + ConvFloatToStr(RECEN2VLRMULTA) + ', ') ;
   DM.SQLTemplate.SQL.Add('CTRCN2TOTMULTACOBR = ' + ConvFloatToStr(RECEN2MULTACOBR) + ', ') ;
   DM.SQLTemplate.SQL.Add('CTRCN2TOTDESCREC = ' + ConvFloatToStr(RECEN2DESC) + ', ') ;
-  DM.SQLTemplate.SQL.Add('REGISTRO = "' + FormatDateTime('mm/dd/yyyy hh:mm:ss', Now) + '", ') ;
-  DM.SQLTemplate.SQL.Add('PENDENTE = "S",') ;
+  DM.SQLTemplate.SQL.Add('REGISTRO = ''' + FormatDateTime('mm/dd/yyyy hh:mm:ss', Now) + ''', ') ;
+  DM.SQLTemplate.SQL.Add('PENDENTE = ''S'',') ;
   DM.SQLTemplate.SQL.Add('EMPRICODULTREC = ' + IntToStr(EMPRULTREC)) ;
-  DM.SQLTemplate.SQL.Add('where CTRCA13ID = "' + NroDocumento + '"') ;
+  DM.SQLTemplate.SQL.Add('where CTRCA13ID = ''' + NroDocumento + '''') ;
   DM.SQLTemplate.ExecSQL ;
 end ;
 procedure AtualizaDataQuitacaoCupomConsignado(NroDocumento : string) ;
@@ -370,8 +370,8 @@ begin
   DM.SQLTemplate.SQL.Clear ;
   DM.SQLTemplate.SQL.Add('select sum(CTRCN2VLR-CTRCN2TOTREC) AS SALDO') ;
   DM.SQLTemplate.SQL.Add('from CONTASRECEBER') ;
-  DM.SQLTemplate.SQL.Add('where CUPOA13ID = "' + NroDocumento + '"') ;
-  DM.SQLTemplate.SQL.Add('and   CTRCA5TIPOPADRAO <> "CONSI"') ;
+  DM.SQLTemplate.SQL.Add('where CUPOA13ID = ''' + NroDocumento + '''') ;
+  DM.SQLTemplate.SQL.Add('and   CTRCA5TIPOPADRAO <> ''CONSI''') ;
   DM.SQLTemplate.Open ;
   if not DM.SQLTemplate.EOF then
     if (DM.SQLTemplate.FieldByName('SALDO').Value <= 1.00) then
@@ -379,8 +379,8 @@ begin
         DM.SQLTemplate.Close ;
         DM.SQLTemplate.SQL.Clear ;
         DM.SQLTemplate.SQL.Add('update CUPOM') ;
-        DM.SQLTemplate.SQL.Add('set Pendente="S", CUPODPAGTOCONSIG = "' + FormatDateTime('mm/dd/yyyy', Now)+ '"') ;
-        DM.SQLTemplate.SQL.Add('where CUPOA13ID = "' + NroDocumento + '"') ;
+        DM.SQLTemplate.SQL.Add('set Pendente=''S'', CUPODPAGTOCONSIG = ''' + FormatDateTime('mm/dd/yyyy', Now)+ '''') ;
+        DM.SQLTemplate.SQL.Add('where CUPOA13ID = ''' + NroDocumento + '''') ;
         DM.SQLTemplate.ExecSQL ;
       end ;
 end ;
@@ -450,7 +450,7 @@ begin
   MyQuery.Close ;
   MyQuery.SQL.Clear ;
   MyQuery.SQL.Add('select * from NUMERARIOTOTALIZADORECF') ;
-  MyQuery.SQL.Add('where ECFA13ID = "' + EcfID + '"') ;
+  MyQuery.SQL.Add('where ECFA13ID = ''' + EcfID + '''') ;
   MyQuery.SQL.Add('and   NUMEICOD = ' + CodNumerario) ;
   MyQuery.Open ;
   if MyQuery.Fieldbyname('NUTCA5IDENTIFICADOR').AsString <> '' then
@@ -474,7 +474,7 @@ begin
   MyQuery.Close ;
   MyQuery.SQL.Clear ;
   MyQuery.SQL.Add('Select * From NUMERARIOTOTALIZADORECF') ;
-  MyQuery.SQL.Add('Where ECFA13ID = "' + EcfID + '"') ;
+  MyQuery.SQL.Add('Where ECFA13ID = ''' + EcfID + '''') ;
   MyQuery.SQL.Add('And   NUMEICOD = ' + CodNumerario) ;
   MyQuery.Open ;
   if MyQuery.Fieldbyname('NUTCA15NUMERARIO').AsString <> '' then
@@ -517,8 +517,8 @@ end;
 
 function MontaDataSQL(ACampo: String; ADe, AAte: TDate): String;
 begin
-   Result := ' ' + ACampo + ' >= "' + FormatDateTime('mm/dd/yyyy', ADe) + '" and ' +
-             ' ' + ACampo + ' <= "' + FormatDateTime('mm/dd/yyyy', AAte)+ '"'; 
+   Result := ' ' + ACampo + ' >= ''' + FormatDateTime('mm/dd/yyyy', ADe) + ''' and ' +
+             ' ' + ACampo + ' <= ''' + FormatDateTime('mm/dd/yyyy', AAte)+ ''''; 
 
 
 
@@ -639,8 +639,8 @@ begin
     DM.SQLTemplate.Close ;
     DM.SQLTemplate.SQL.Clear ;
     DM.SQLTemplate.SQL.Add('update CUPOM') ;
-    DM.SQLTemplate.SQL.Add('set CUPOCSTATUS = "C", CUPODCANC = "' + FormatDateTime('mm/dd/yyyy', Date) + '", USUAICODCANC = ' + Usuario + ' , PENDENTE = "S", REGISTRO = "'+ FormatDateTime('mm/dd/yyyy', Date) + '"');
-    DM.SQLTemplate.SQL.Add('where CUPOA13ID = "' + Documento + '"') ;
+    DM.SQLTemplate.SQL.Add('set CUPOCSTATUS = ''C'', CUPODCANC = ''' + FormatDateTime('mm/dd/yyyy', Date) + ''', USUAICODCANC = ' + Usuario + ' , PENDENTE = ''S'', REGISTRO = '''+ FormatDateTime('mm/dd/yyyy', Date) + '''');
+    DM.SQLTemplate.SQL.Add('where CUPOA13ID = ''' + Documento + '''') ;
     DM.SQLTemplate.ExecSQL ;
 
     //FAZER MOVIMENTO CONTRARIO ESTOQUE CASO O TERMINAL MOVIMENTE ESTOQUE ONLINE, SENAO DEIXAR A ROTINA ATUALZA SALDO PDVS CORRIGIR.
@@ -650,7 +650,7 @@ begin
         SQLItemTroca.Close ;
         SQLItemTroca.SQL.Clear ;
         SQLItemTroca.SQL.Add('select * from CUPOMITEM') ;
-        SQLItemTroca.SQL.Add('where CUPOA13ID = "' + Documento + '"') ;
+        SQLItemTroca.SQL.Add('where CUPOA13ID = ''' + Documento + '''') ;
         SQLItemTroca.Open ;
         while not SQLItemTroca.EOF do
           begin
@@ -693,8 +693,8 @@ begin
     DM.SQLTemplate.Close ;
     DM.SQLTemplate.SQL.Clear ;
     DM.SQLTemplate.SQL.Add('update CUPOMITEM') ;
-    DM.SQLTemplate.SQL.Add('set CPITCSTATUS = "C", PENDENTE = "S", REGISTRO = "'+ FormatDateTime('mm/dd/yyyy', Date) + '"') ;
-    DM.SQLTemplate.SQL.Add('where CUPOA13ID = "' + Documento + '"') ;
+    DM.SQLTemplate.SQL.Add('set CPITCSTATUS = ''C'', PENDENTE = ''S'', REGISTRO = '''+ FormatDateTime('mm/dd/yyyy', Date) + '''') ;
+    DM.SQLTemplate.SQL.Add('where CUPOA13ID = ''' + Documento + '''') ;
     DM.SQLTemplate.ExecSQL ;
 
     //CANCELAR NUMERARIO
@@ -702,51 +702,51 @@ begin
     DM.SQLTemplate.Close ;
     DM.SQLTemplate.SQL.Clear ;
     DM.SQLTemplate.SQL.Add('update CUPOMNUMERARIO') ;
-    DM.SQLTemplate.SQL.Add('set CONMCSTATUS = "C", PENDENTE = "S", REGISTRO = "'+ FormatDateTime('mm/dd/yyyy', Date) + '"') ;
-    DM.SQLTemplate.SQL.Add('where CUPOA13ID = "' + Documento + '"') ;
+    DM.SQLTemplate.SQL.Add('set CONMCSTATUS = ''C'', PENDENTE = ''S'', REGISTRO = '''+ FormatDateTime('mm/dd/yyyy', Date) + '''') ;
+    DM.SQLTemplate.SQL.Add('where CUPOA13ID = ''' + Documento + '''') ;
     DM.SQLTemplate.ExecSQL ;
     //CANCELAR CONTASRECEBER
     Tabela := 'Contas a Receber' ;
     DM.SQLTemplate.Close ;
     DM.SQLTemplate.SQL.Clear ;
     DM.SQLTemplate.SQL.Add('update CONTASRECEBER') ;
-    DM.SQLTemplate.SQL.Add('set CTRCCSTATUS = "C", PENDENTE = "S", REGISTRO = "'+ FormatDateTime('mm/dd/yyyy', Date) + '"') ;
-    DM.SQLTemplate.SQL.Add('where CUPOA13ID = "' + Documento + '"') ;
+    DM.SQLTemplate.SQL.Add('set CTRCCSTATUS = ''C'', PENDENTE = ''S'', REGISTRO = '''+ FormatDateTime('mm/dd/yyyy', Date) + '''') ;
+    DM.SQLTemplate.SQL.Add('where CUPOA13ID = ''' + Documento + '''') ;
     DM.SQLTemplate.ExecSQL ;
     //EXCLUIR MOVIMENO CADERNO
     Tabela := 'Caderno' ;
     DM.SQLTemplate.Close ;
     DM.SQLTemplate.SQL.Clear ;
     DM.SQLTemplate.SQL.Add('delete from CADERNO') ;
-    DM.SQLTemplate.SQL.Add('where CUPOA13ID = "' + Documento + '"') ;
+    DM.SQLTemplate.SQL.Add('where CUPOA13ID = ''' + Documento + '''') ;
     DM.SQLTemplate.ExecSQL ;
     //EXCLUIR CARTAS AVISO
     Tabela := 'CARTAAVISOCOBRANCA' ;
     DM.SQLTemplate.Close ;
     DM.SQLTemplate.SQL.Clear ;
     DM.SQLTemplate.SQL.Add('delete from CARTAAVISOCOBRANCA') ;
-    DM.SQLTemplate.SQL.Add('where CUPOA13ID = "' + Documento + '"') ;
+    DM.SQLTemplate.SQL.Add('where CUPOA13ID = ''' + Documento + '''') ;
     DM.SQLTemplate.ExecSQL ;
     //EXCLUIR CARTAS AVISO
     Tabela := 'CARTAAVISOSPC' ;
     DM.SQLTemplate.Close ;
     DM.SQLTemplate.SQL.Clear ;
     DM.SQLTemplate.SQL.Add('delete from CARTAAVISOSPC') ;
-    DM.SQLTemplate.SQL.Add('where CUPOA13ID = "' + Documento + '"') ;
+    DM.SQLTemplate.SQL.Add('where CUPOA13ID = ''' + Documento + '''') ;
     DM.SQLTemplate.ExecSQL ;
     //EXCLUIR CARTAS AVISO
     Tabela := 'CARTAPRIMEIROAVISO' ;
     DM.SQLTemplate.Close ;
     DM.SQLTemplate.SQL.Clear ;
     DM.SQLTemplate.SQL.Add('delete from CARTAPRIMEIROAVISO') ;
-    DM.SQLTemplate.SQL.Add('where CUPOA13ID = "' + Documento + '"') ;
+    DM.SQLTemplate.SQL.Add('where CUPOA13ID = ''' + Documento + '''') ;
     DM.SQLTemplate.ExecSQL ;
     //EXCLUIR CARTAS AVISO
     Tabela := 'CARTASEGUNDOAVISO' ;
     DM.SQLTemplate.Close ;
     DM.SQLTemplate.SQL.Clear ;
     DM.SQLTemplate.SQL.Add('delete from CARTASEGUNDOAVISO') ;
-    DM.SQLTemplate.SQL.Add('where CUPOA13ID = "' + Documento + '"') ;
+    DM.SQLTemplate.SQL.Add('where CUPOA13ID = ''' + Documento + '''') ;
     DM.SQLTemplate.ExecSQL ;
   EXCEPT
     on E: Exception do
@@ -781,9 +781,9 @@ begin
   //nota fiscal
   Query.Close;
   Query.SQL.Clear;
-  Query.SQL.ADD('SELECT NOFIDEMIS, NOFIA13ID FROM NOTAFISCAL WHERE CLIEA13ID = "' + CLIENTE + '" AND ') ;
+  Query.SQL.ADD('SELECT NOFIDEMIS, NOFIA13ID FROM NOTAFISCAL WHERE CLIEA13ID = ''' + CLIENTE + ''' AND ') ;
   Query.SQL.ADD('VENDICOD = ' + Vendedor);
-  Query.SQL.ADD(' AND NOFICSTATUS = "E"');
+  Query.SQL.ADD(' AND NOFICSTATUS = ''E''');
   Query.SQL.ADD(' ORDER BY NOFIDEMIS DESC');
   Query.Open;
   Query.First;
@@ -795,9 +795,9 @@ begin
   //cupom
   Query.Close;
   Query.SQL.Clear;
-  Query.SQL.ADD('SELECT CUPODEMIS, CUPOA13ID FROM CUPOM WHERE CLIEA13ID = "' + CLIENTE + '" AND ') ;
+  Query.SQL.ADD('SELECT CUPODEMIS, CUPOA13ID FROM CUPOM WHERE CLIEA13ID = ''' + CLIENTE + ''' AND ') ;
   Query.SQL.ADD('VENDICOD = ' + Vendedor);
-  Query.SQL.ADD(' AND CUPOCSTATUS = "A"');
+  Query.SQL.ADD(' AND CUPOCSTATUS = ''A''');
   Query.SQL.ADD(' ORDER BY CUPODEMIS DESC');
   Query.Open;
   Query.First;
@@ -943,7 +943,7 @@ begin
     DM.SQLTemplate.SQL.Clear ;
     DM.SQLTemplate.SQL.Add('select Max(MVESICOD) as CONTADOR from MOVIMENTOESTOQUE') ;
     DM.SQLTemplate.SQL.Add('where EMPRICOD = ' + IntToStr(EmprCod)) ;
-    DM.SQLTemplate.SQL.Add('and   MVESDMOV = "' + DataHora + '"') ;
+    DM.SQLTemplate.SQL.Add('and   MVESDMOV = ''' + DataHora + '''') ;
     DM.SQLTemplate.Open ;
     if (DM.SQLTemplate.FieldByName('CONTADOR').AsFloat <= 0) or not(DM.SQLTemplate.FieldByName('CONTADOR').IsNull) then
       ProxCod := DM.SQLTemplate.FieldByName('CONTADOR').AsInteger + 1
@@ -992,7 +992,7 @@ begin
     DM.SQLTemplate.SQL.Add('REGISTRO)') ;
     DM.SQLTemplate.SQL.Add('values(') ;
     DM.SQLTemplate.SQL.Add(IntToStr(EmprCod) + ', ') ;//EMPRICOD
-    DM.SQLTemplate.SQL.Add('"' + DataHora + '", ') ;//MVESDMOV
+    DM.SQLTemplate.SQL.Add('''' + DataHora + ''', ') ;//MVESDMOV
     DM.SQLTemplate.SQL.Add(IntToStr(ProxCod) +', ') ;//MVESICOD
     DM.SQLTemplate.SQL.Add(IntToStr(Produto) + ', ') ;//PRODICOD
     DM.SQLTemplate.SQL.Add(IntToStr(Operacao) + ', ') ;//OPESICOD
@@ -1030,16 +1030,16 @@ begin
         DM.SQLTemplate.SQL.Add(ConvFloatToStr(Quant) + ', ') ; //MVESN3QTDSAIDA
       end ;
 
-    DM.SQLTemplate.SQL.Add('"'+ NumDocOrig + '", ') ;
+    DM.SQLTemplate.SQL.Add(''''+ NumDocOrig + ''', ') ;
 
     if Lote <> '' then
-      DM.SQLTemplate.SQL.Add('"'+ LOTE + '", ')
+      DM.SQLTemplate.SQL.Add(''''+ LOTE + ''', ')
     else
       DM.SQLTemplate.SQL.Add('null, ') ; //LOTE
 
-    DM.SQLTemplate.SQL.Add('"N", ') ; //STATUS DO MOVIMENTO PARA IMPORTACAO DE LOG
-    DM.SQLTemplate.SQL.Add('"S", ') ; //PENDENTE
-    DM.SQLTemplate.SQL.Add('"' + FormatDateTime('mm/dd/yyyy hh:mm:ss', Now) + '")') ; //REGISTRO
+    DM.SQLTemplate.SQL.Add('''N'', ') ; //STATUS DO MOVIMENTO PARA IMPORTACAO DE LOG
+    DM.SQLTemplate.SQL.Add('''S'', ') ; //PENDENTE
+    DM.SQLTemplate.SQL.Add('''' + FormatDateTime('mm/dd/yyyy hh:mm:ss', Now) + ''')') ; //REGISTRO
     try
       DM.SQLTemplate.ExecSQL;
       SairMov := True;
@@ -1178,24 +1178,24 @@ begin
   SQLProdutoSerie.Close;
   SQLProdutoSerie.SQL.Clear;
   SQLProdutoSerie.SQL.ADD('UPDATE PRODUTOSERIE SET ');
-  SQLProdutoSerie.SQL.ADD('PRSECSTATUS = "D" , '); // Status I = Indisponivel / D = Disponivel
+  SQLProdutoSerie.SQL.ADD('PRSECSTATUS = ''D'' , '); // Status I = Indisponivel / D = Disponivel
   // Pendente
-  SQLProdutoSerie.SQL.ADD('PENDENTE = "S" , ');
+  SQLProdutoSerie.SQL.ADD('PENDENTE = ''S'' , ');
   // Registro
-  SQLProdutoSerie.SQL.ADD('REGISTRO = "' + FormatDateTime('mm/dd/yyyy hh:nn:ss',Now) + '"');
+  SQLProdutoSerie.SQL.ADD('REGISTRO = ''' + FormatDateTime('mm/dd/yyyy hh:nn:ss',Now) + '''');
   // FILTRO
   SQLProdutoSerie.SQL.ADD(' WHERE ');
   if NOCPA13ID <> '' then
-    SQLProdutoSerie.SQL.ADD('NOCPA13ID = "' + NOCPA13ID + '"')
+    SQLProdutoSerie.SQL.ADD('NOCPA13ID = ''' + NOCPA13ID + '''')
   else
     if MOVDA13ID <> '' then
-      SQLProdutoSerie.SQL.ADD('MOVDA13ID = "' + MOVDA13ID + '"')
+      SQLProdutoSerie.SQL.ADD('MOVDA13ID = ''' + MOVDA13ID + '''')
     else
       if NOFIA13ID <> '' then
-        SQLProdutoSerie.SQL.ADD('NOFIA13ID = "' + NOFIA13ID + '"')
+        SQLProdutoSerie.SQL.ADD('NOFIA13ID = ''' + NOFIA13ID + '''')
       else
         if PDVDA13ID <> '' then
-          SQLProdutoSerie.SQL.ADD('PDVDA13ID = "' + PDVDA13ID + '"');
+          SQLProdutoSerie.SQL.ADD('PDVDA13ID = ''' + PDVDA13ID + '''');
   try
     SQLProdutoSerie.Prepare;
     SQLProdutoSerie.ExecSQL;
@@ -1301,13 +1301,13 @@ begin
   SQLConsulta.SQL.Add('DELETE FROM PRODUTOSERIETEMP WHERE PRODICOD = ' + PRODICOD);
 
   if NOFIA13ID <> '' then
-    SQLConsulta.SQL.Add(' AND NOFIA13ID = "'    + NOFIA13ID + '"')
+    SQLConsulta.SQL.Add(' AND NOFIA13ID = '''    + NOFIA13ID + '''')
   else
     if PDVDA13ID <> '' then
-      SQLConsulta.SQL.Add(' AND PDVDA13ID = "'  + PDVDA13ID + '"')
+      SQLConsulta.SQL.Add(' AND PDVDA13ID = '''  + PDVDA13ID + '''')
     else
       if MOVDA13ID <> '' then
-        SQLConsulta.SQL.Add(' AND MOVDA13ID= "' + MOVDA13ID + '"');
+        SQLConsulta.SQL.Add(' AND MOVDA13ID= ''' + MOVDA13ID + '''');
   try
     SQLConsulta.Prepare;
     SQLConsulta.ExecSQL;
@@ -1321,7 +1321,7 @@ begin
 
   SQLConsulta.Close;
   SQLConsulta.SQL.Clear;
-  SQLConsulta.SQL.Add('UPDATE PRODUTOSERIE SET Pendente="S", ');
+  SQLConsulta.SQL.Add('UPDATE PRODUTOSERIE SET Pendente=''S'', ');
 
   if NOFIA13ID <> '' then
     SQLConsulta.SQL.Add('NOFIA13ID = NULL')
@@ -1335,13 +1335,13 @@ begin
   SQLConsulta.SQL.Add(' WHERE PRODICOD = ' + PRODICOD);
 
   if NOFIA13ID <> '' then
-    SQLConsulta.SQL.Add(' AND NOFIA13ID = "'    + NOFIA13ID + '"')
+    SQLConsulta.SQL.Add(' AND NOFIA13ID = '''    + NOFIA13ID + '''')
   else
     if PDVDA13ID <> '' then
-      SQLConsulta.SQL.Add(' AND PDVDA13ID = "'  + PDVDA13ID + '"')
+      SQLConsulta.SQL.Add(' AND PDVDA13ID = '''  + PDVDA13ID + '''')
     else
       if MOVDA13ID <> '' then
-        SQLConsulta.SQL.Add(' AND MOVDA13ID= "' + MOVDA13ID + '"');
+        SQLConsulta.SQL.Add(' AND MOVDA13ID= ''' + MOVDA13ID + '''');
   try
     SQLConsulta.Prepare;
     SQLConsulta.ExecSQL;
@@ -1373,7 +1373,7 @@ begin
   SQLProdutoSerie.SQL.Clear;
   SQLProdutoSerie.SQL.ADD('UPDATE PRODUTOSERIE SET ');
   if Status <> '' then
-    SQLProdutoSerie.SQL.ADD('PRSECSTATUS = "' + Status + '" , ') // Status I = Indisponivel / D = Disponivel
+    SQLProdutoSerie.SQL.ADD('PRSECSTATUS = ''' + Status + ''' , ') // Status I = Indisponivel / D = Disponivel
   else
     SQLProdutoSerie.SQL.ADD('PRSECSTATUS = Null , ');
   // Empresa Destino
@@ -1381,27 +1381,27 @@ begin
     SQLProdutoSerie.SQL.ADD('EMPRICOD = ' + EMPRICOD + ' , ');
   // Cliente
   if CLIEA13ID <> '' then
-    SQLProdutoSerie.SQL.ADD('CLIEA13ID = "' + CLIEA13ID + '" , ');
+    SQLProdutoSerie.SQL.ADD('CLIEA13ID = ''' + CLIEA13ID + ''' , ');
   // Nota Fiscal
   if NOFIA13ID <> '' then
-    SQLProdutoSerie.SQL.ADD('NOFIA13ID = "' + NOFIA13ID + '" , ');
+    SQLProdutoSerie.SQL.ADD('NOFIA13ID = ''' + NOFIA13ID + ''' , ');
   // Cupom
   if CUPOA13ID <> '' then
-    SQLProdutoSerie.SQL.ADD('CUPOA13ID = "' + CUPOA13ID + '" , ');
+    SQLProdutoSerie.SQL.ADD('CUPOA13ID = ''' + CUPOA13ID + ''' , ');
   // Pedido de Venda
   if PDVDA13ID <> '' then
-    SQLProdutoSerie.SQL.ADD('PDVDA13ID = "' + PDVDA13ID + '" , ');
+    SQLProdutoSerie.SQL.ADD('PDVDA13ID = ''' + PDVDA13ID + ''' , ');
   // Movimento Diverso
   if MOVDA13ID <> '' then
-    SQLProdutoSerie.SQL.ADD('MOVDA13ID = "' + MOVDA13ID + '" , ');
+    SQLProdutoSerie.SQL.ADD('MOVDA13ID = ''' + MOVDA13ID + ''' , ');
   // Pendente
-  SQLProdutoSerie.SQL.ADD('PENDENTE = "S" , ');
+  SQLProdutoSerie.SQL.ADD('PENDENTE = ''S'' , ');
   // Registro
-  SQLProdutoSerie.SQL.ADD('REGISTRO = "' + FormatDateTime('mm/dd/yyyy hh:nn:ss',Now) + '"');
+  SQLProdutoSerie.SQL.ADD('REGISTRO = ''' + FormatDateTime('mm/dd/yyyy hh:nn:ss',Now) + '''');
   // FILTRO
   SQLProdutoSerie.SQL.ADD(' WHERE ');
   SQLProdutoSerie.SQL.ADD('PRODICOD = ' + Produto + ' AND ');
-  SQLProdutoSerie.SQL.ADD('PRSEA60NROSERIE = "' + NroSERIE + '"');
+  SQLProdutoSerie.SQL.ADD('PRSEA60NROSERIE = ''' + NroSERIE + '''');
   try
     SQLProdutoSerie.Prepare;
     SQLProdutoSerie.ExecSQL;
@@ -1427,7 +1427,7 @@ begin
   SQLConsulta.DatabaseName := 'DB';
   SQLConsulta.Close;
   SQLConsulta.SQL.Clear;
-  SQLConsulta.SQL.Add('SELECT * FROM PRODUTOSERIE WHERE PRSEA60NROSERIE = "' + NroSerie + '"');
+  SQLConsulta.SQL.Add('SELECT * FROM PRODUTOSERIE WHERE PRSEA60NROSERIE = ''' + NroSerie + '''');
   SQLConsulta.SQL.Add(' AND PRODICOD = ' + CodProduto);
   SQLConsulta.Open;
   if not SQLConsulta.IsEmpty then
@@ -1494,11 +1494,11 @@ begin
   MyQuery.Close ;
   MyQuery.SQL.Clear ;
   if IDNotaCompra <> '' then
-    MyQuery.SQL.Add('Select Count(NOCPA13ID) as Contador from MovimentoEstoque Where NOCPA13ID="'+IDNotaCompra+'" and PRODICOD='+Produto + ' and MVESN3QTDENTRADA='+ConvFloatToStr(quantidade)) ;
+    MyQuery.SQL.Add('Select Count(NOCPA13ID) as Contador from MovimentoEstoque Where NOCPA13ID='''+IDNotaCompra+''' and PRODICOD='+Produto + ' and MVESN3QTDENTRADA='+ConvFloatToStr(quantidade)) ;
   if IDMovDiv <> '' then
-    MyQuery.SQL.Add('Select Count(MOVDA13ID) as Contador from MovimentoEstoque Where MOVDA13ID = "'+IDMovDiv+'" and PRODICOD = '+Produto) ;
+    MyQuery.SQL.Add('Select Count(MOVDA13ID) as Contador from MovimentoEstoque Where MOVDA13ID = '''+IDMovDiv+''' and PRODICOD = '+Produto) ;
   if IDNotaVenda <> '' then
-    MyQuery.SQL.Add('Select Count(NOFIA13ID) as Contador from MovimentoEstoque Where NOFIA13ID = "'+IDNotaVenda+'" and PRODICOD = '+Produto) ;
+    MyQuery.SQL.Add('Select Count(NOFIA13ID) as Contador from MovimentoEstoque Where NOFIA13ID = '''+IDNotaVenda+''' and PRODICOD = '+Produto) ;
   MyQuery.Open ;
   if MyQuery.FieldByName('Contador').Value > 0 then
     Result := True
@@ -1685,7 +1685,7 @@ var
 begin
   SQLCliente.Close;
   SQLCliente.SQL.Clear;
-  SQLCliente.SQL.Add('Select CLIEN2RENDA, CLIEN2CONJUGERENDA, CLIEN2LIMITECRED from CLIENTE where CLIEA13ID = ' + '"' + Cliente + '"');
+  SQLCliente.SQL.Add('Select CLIEN2RENDA, CLIEN2CONJUGERENDA, CLIEN2LIMITECRED from CLIENTE where CLIEA13ID = ' + '''' + Cliente + '''');
   SQLCliente.Open;
   if not SQLCliente.IsEmpty then
     begin
@@ -1709,10 +1709,10 @@ begin
         begin
           SQLParcelas.Close;
           SQLParcelas.SQL.Clear;
-          SQLParcelas.SQL.Add('Select sum(CTRCN2VLR-CTRCN2TOTREC) from CONTASRECEBER where CLIEA13ID = '+ '"' + Cliente + '"' +  ' AND CTRCN2VLR > CTRCN2TOTREC');
-          SQLParcelas.SQL.Add('AND (CTRCA5TIPOPADRAO NOT IN ("CRT","CONV") or CTRCA5TIPOPADRAO is null) ');
-          SQLParcelas.SQL.Add(' And (CTRCCSTATUS = "A" OR CTRCCSTATUS = "N")') ;
-          SQLParcelas.SQL.Add(' And (CTRCCTIPOREGISTRO = "N" OR CTRCCTIPOREGISTRO is Null) And (PDVDA13ID = "" OR PDVDA13ID is Null)') ;
+          SQLParcelas.SQL.Add('Select sum(CTRCN2VLR-CTRCN2TOTREC) from CONTASRECEBER where CLIEA13ID = '+ '''' + Cliente + '''' +  ' AND CTRCN2VLR > CTRCN2TOTREC');
+          SQLParcelas.SQL.Add('AND (CTRCA5TIPOPADRAO NOT IN (''CRT'',''CONV'') or CTRCA5TIPOPADRAO is null) ');
+          SQLParcelas.SQL.Add(' And (CTRCCSTATUS = ''A'' OR CTRCCSTATUS = ''N'')') ;
+          SQLParcelas.SQL.Add(' And (CTRCCTIPOREGISTRO = ''N'' OR CTRCCTIPOREGISTRO is Null) And (PDVDA13ID = '''' OR PDVDA13ID is Null)') ;
           SQLParcelas.Open;
           if not SQLParcelas.IsEmpty then
             Debito := SQLParcelas.FieldByName('SUM').AsFloat;
@@ -1796,7 +1796,7 @@ begin
       SQLocal.Close;
       SQLocal.SQL.Clear;
       SQLocal.SQL.Add('select AVCOCENVIADO from CARTAAVISOCOBRANCA');
-      SQLocal.SQL.Add('where CUPOA13ID = "' + Cupom + '"');
+      SQLocal.SQL.Add('where CUPOA13ID = ''' + Cupom + '''');
       SQLocal.SQL.Add('and   CTRCINROPARC = ' + Parc);
       try
         SQLocal.Open;
@@ -1918,7 +1918,7 @@ begin
     DM.SQLTemplate.SQL.Clear ;
     DM.SQLTemplate.SQL.Add('select Max(MVESICOD) as CONTADOR from MOVIMENTOESTOQUE') ;
     DM.SQLTemplate.SQL.Add('where EMPRICOD = ' + IntToStr(EmprCod)) ;
-    DM.SQLTemplate.SQL.Add('and   MVESDMOV = "' + DataHora + '"') ;
+    DM.SQLTemplate.SQL.Add('and   MVESDMOV = ''' + DataHora + '''') ;
     DM.SQLTemplate.Open ;
     if (DM.SQLTemplate.FieldByName('CONTADOR').AsFloat <= 0) or not(DM.SQLTemplate.FieldByName('CONTADOR').IsNull) then
       ProxCod := DM.SQLTemplate.FieldByName('CONTADOR').AsInteger + 1
@@ -1958,7 +1958,7 @@ begin
     DM.SQLTemplate.SQL.Add('REGISTRO)') ;
     DM.SQLTemplate.SQL.Add('values(') ;
     DM.SQLTemplate.SQL.Add(IntToStr(EmprCod) + ', ')  ; //EMPRICOD
-    DM.SQLTemplate.SQL.Add('"' + DataHora + '", ')    ; //MVESDMOV
+    DM.SQLTemplate.SQL.Add('''' + DataHora + ''', ')    ; //MVESDMOV
     DM.SQLTemplate.SQL.Add(IntToStr(ProxCod) +', ')   ; //MVESICOD
     DM.SQLTemplate.SQL.Add(IntToStr(Produto) + ', ')  ; //PRODICOD
     DM.SQLTemplate.SQL.Add(IntToStr(Operacao) + ', ') ; //OPESICOD
@@ -1996,16 +1996,16 @@ begin
         DM.SQLTemplate.SQL.Add(ConvFloatToStr(Quant) + ', ') ;//MVESN3QTDSAIDA
       end ;
 
-    DM.SQLTemplate.SQL.Add('"'+ NumDocOrig + '", ') ;
+    DM.SQLTemplate.SQL.Add(''''+ NumDocOrig + ''', ') ;
 
     if Lote <> '' then
-      DM.SQLTemplate.SQL.Add('"'+ LOTE + '", ')
+      DM.SQLTemplate.SQL.Add(''''+ LOTE + ''', ')
     else
       DM.SQLTemplate.SQL.Add('null, ') ; //LOTE
 
-    DM.SQLTemplate.SQL.Add('"N", ') ; //STATUS DO MOVIMENTO PARA IMPORTACAO DE LOG
-    DM.SQLTemplate.SQL.Add('"S", ') ; //PENDENTE
-    DM.SQLTemplate.SQL.Add('"' + FormatDateTime('mm/dd/yyyy hh:mm:ss', Now) + '")') ; //REGISTRO
+    DM.SQLTemplate.SQL.Add('''N'', ') ; //STATUS DO MOVIMENTO PARA IMPORTACAO DE LOG
+    DM.SQLTemplate.SQL.Add('''S'', ') ; //PENDENTE
+    DM.SQLTemplate.SQL.Add('''' + FormatDateTime('mm/dd/yyyy hh:mm:ss', Now) + ''')') ; //REGISTRO
     try
       DM.SQLTemplate.ExecSQL;
       SairMov := True;
@@ -2169,9 +2169,9 @@ begin
     (Tabela as TQuery).SQL.Clear ;
     (Tabela as TQuery).SQL.Add('Select * from PRODUTO') ;
     if ProcuraProdutoPelaRef08Char then
-      (Tabela as TQuery).SQL.Add('where PRODCATIVO = "S" and PRODA60CODBAR = "' + Copy(Codigo,1,8) + '"')
+      (Tabela as TQuery).SQL.Add('where PRODCATIVO = ''S'' and PRODA60CODBAR = ''' + Copy(Codigo,1,8) + '''')
      else
-      (Tabela as TQuery).SQL.Add('where PRODCATIVO = "S" and PRODA60CODBAR = "' + Codigo + '"') ;
+      (Tabela as TQuery).SQL.Add('where PRODCATIVO = ''S'' and PRODA60CODBAR = ''' + Codigo + '''') ;
     (Tabela as TQuery).Open ;
     (Tabela as TQuery).First ;
     if not (Tabela as TQuery).IsEmpty then
@@ -2186,7 +2186,7 @@ begin
         dm.SQLTemplate.Close ;
         dm.SQLTemplate.SQL.Clear ;
         dm.SQLTemplate.SQL.Add('select PRODICOD, PRBAA15BARRAS from PRODUTOBARRAS') ;
-        dm.SQLTemplate.SQL.Add('where PRBAA15BARRAS = "' + Codigo + '"') ;
+        dm.SQLTemplate.SQL.Add('where PRBAA15BARRAS = ''' + Codigo + '''') ;
         dm.SQLTemplate.Open ;
         dm.SQLTemplate.First ;
         if not dm.SQLTemplate.IsEmpty then
@@ -2197,7 +2197,7 @@ begin
             (Tabela as TQuery).Close ;
             (Tabela as TQuery).SQL.Clear ;
             (Tabela as TQuery).SQL.Add('select * from PRODUTO') ;
-            (Tabela as TQuery).SQL.Add('where PRODCATIVO = "S" and PRODICOD = ' + Codigo) ;
+            (Tabela as TQuery).SQL.Add('where PRODCATIVO = ''S'' and PRODICOD = ' + Codigo) ;
             (Tabela as TQuery).Open ;
             (Tabela as TQuery).First ;
             if not (Tabela as TQuery).IsEmpty then
@@ -2213,13 +2213,13 @@ begin
             (Tabela as TQuery).SQL.Clear ;
             (Tabela as TQuery).SQL.Add('select * from PRODUTO') ;
             if pos('*',Codigo) > 0 then
-              (Tabela as TQuery).SQL.Add('where PRODCATIVO = "S" and PRODICOD = 0')
+              (Tabela as TQuery).SQL.Add('where PRODCATIVO = ''S'' and PRODICOD = 0')
             else
               begin
                 if IsNumeric(Codigo, 'INTEGER') then
-                  (Tabela as TQuery).SQL.Add('where PRODCATIVO = "S" and PRODICOD = ' + Codigo)
+                  (Tabela as TQuery).SQL.Add('where PRODCATIVO = ''S'' and PRODICOD = ' + Codigo)
                  else
-                  (Tabela as TQuery).SQL.Add('where PRODCATIVO = "S" and PRODICOD = 0');
+                  (Tabela as TQuery).SQL.Add('where PRODCATIVO = ''S'' and PRODICOD = 0');
               end;
             (Tabela as TQuery).Open ;
             (Tabela as TQuery).First ;
@@ -2235,9 +2235,9 @@ begin
                 (Tabela as TQuery).SQL.Clear ;
                 (Tabela as TQuery).SQL.Add('select * from PRODUTO') ;
                 if ProcuraProdutoPelaRef08Char then
-                  (Tabela as TQuery).SQL.Add('where PRODCATIVO = "S" and PRODA60REFER = "' + Copy(Codigo,1,8) + '"')
+                  (Tabela as TQuery).SQL.Add('where PRODCATIVO = ''S'' and PRODA60REFER = ''' + Copy(Codigo,1,8) + '''')
                  else
-                  (Tabela as TQuery).SQL.Add('where PRODCATIVO = "S" and PRODA60REFER = "' + Codigo + '"') ;
+                  (Tabela as TQuery).SQL.Add('where PRODCATIVO = ''S'' and PRODA60REFER = ''' + Codigo + '''') ;
                 (Tabela as TQuery).Open ;
                 (Tabela as TQuery).First ;
                 if not (Tabela as TQuery).EOF then
@@ -2546,8 +2546,8 @@ begin
                     QueryMax.Close;
                     QueryMax.SQL.Clear;
                     QueryMax.SQL.Add('Select MAX(PRRJICOD) from PRODUTOREAJUSTE where PRODICOD = ' + IntToStr(PRODUTO));
-                    QueryMax.SQL.Add(' AND PRRJDREAJUSTE >= ' + '"' + FormatDateTime('mm/dd/yyyy hh:nn:ss',Now) + '"');
-                    QueryMax.SQL.Add(' AND PRRJDREAJUSTE <= ' + '"' + FormatDateTime('mm/dd/yyyy hh:nn:ss',Now) + '"');
+                    QueryMax.SQL.Add(' AND PRRJDREAJUSTE >= ' + '''' + FormatDateTime('mm/dd/yyyy hh:nn:ss',Now) + '''');
+                    QueryMax.SQL.Add(' AND PRRJDREAJUSTE <= ' + '''' + FormatDateTime('mm/dd/yyyy hh:nn:ss',Now) + '''');
                     QueryMax.Open;
                     //CODIGO
                     if QueryMax.FieldByName('MAX').AsFloat > 0 then
@@ -2557,7 +2557,7 @@ begin
                     //PRODUTO
                     QueryProdutoReajuste.SQL.Add(IntToStr(Produto) + ',');
                     //DATA DO REAJUSTE
-                    QueryProdutoReajuste.SQL.Add('"' + FormatDateTime('mm/dd/yyyy hh:nn:ss', Now)+'"'+ ',');
+                    QueryProdutoReajuste.SQL.Add('''' + FormatDateTime('mm/dd/yyyy hh:nn:ss', Now)+''''+ ',');
                     //VALOR DE VENDA
                     QueryProdutoReajuste.SQL.Add(ConvFloatToStr(ValorVenda) + ',');
                     //VALOR DE COMPRA
@@ -2570,8 +2570,8 @@ begin
                     QueryProdutoReajuste.SQL.Add(ConvFloatToStr(ValorCustoMedio) + ',');
                     //MARGEM DE LUCRO
                     QueryProdutoReajuste.SQL.Add(ConvFloatToStr(Margem) + ',');
-                    QueryProdutoReajuste.SQL.Add('"S",');
-                    QueryProdutoReajuste.SQL.Add('"' + FormatDateTime('mm/dd/yyyy hh:nn:ss',Now) + '"');
+                    QueryProdutoReajuste.SQL.Add('''S'',');
+                    QueryProdutoReajuste.SQL.Add('''' + FormatDateTime('mm/dd/yyyy hh:nn:ss',Now) + '''');
                     QueryProdutoReajuste.SQL.Add(' ) ');
                     QueryProdutoReajuste.ExecSQL;
                     Erro := False;
@@ -2611,8 +2611,8 @@ begin
   Query.DatabaseName := 'DB';
   Query.Close;
   Query.SQL.Clear;
-  Query.SQL.Add('SELECT * FROM COTACAOMOEDA WHERE CTMODDIA <= "' + FormatDateTime('mm/dd/yyyy',Dia) + '" AND ');
-  Query.SQL.Add('CTMOA5MOEDA = "' + MOEDA + '"');
+  Query.SQL.Add('SELECT * FROM COTACAOMOEDA WHERE CTMODDIA <= ''' + FormatDateTime('mm/dd/yyyy',Dia) + ''' AND ');
+  Query.SQL.Add('CTMOA5MOEDA = ''' + MOEDA + '''');
   Query.SQL.Add('ORDER BY REGISTRO DESC');
   Query.Open;
   if not Query.IsEmpty then
@@ -2834,11 +2834,11 @@ begin
              ProximoCodigo := SQLGeral.FindField('MAX').AsFloat + 1;
           IDTesouraria := FormatFloat('000',Empresa) + FormatFloat('000',Terminal) + FormatFloat('000000',ProximoCodigo);
           IDTesouraria := IDTesouraria + DigitVerifEAN(IDTesouraria);
-          Tesouraria.SQL.Add('"' + IDTesouraria + '"' + ', '); //ID
+          Tesouraria.SQL.Add('''' + IDTesouraria + '''' + ', '); //ID
           Tesouraria.SQL.Add(IntToStr(Empresa)+ ', ');//EMPRESA
           Tesouraria.SQL.Add(IntToStr(Terminal)+ ', ');//TERMINAL
           Tesouraria.SQL.Add(FloatToStr(ProximoCodigo) + ', ');//CODIGO
-          Tesouraria.SQL.Add('"' + FormatDateTime('mm/dd/yyyy',DataMovimento)+ '"' + ' , ');//DATA MOV
+          Tesouraria.SQL.Add('''' + FormatDateTime('mm/dd/yyyy',DataMovimento)+ '''' + ' , ');//DATA MOV
           Case Operacao.FindField('OPTECDEBCRED').AsString[1] of
             'D' : begin
                     Tesouraria.SQL.Add(ConvFloatToStr(Valor) + ', '); //DEBITO
@@ -2851,36 +2851,36 @@ begin
           end;
           Tesouraria.SQL.Add(IntToStr(Numerario)+ ', ');//NUMERARIO
           Tesouraria.SQL.Add(IntToStr(OperacaoTes)+ ', ');//OPERACAO
-          Tesouraria.SQL.Add('"' + Historico + '"' + ', ');//HISTORICO
+          Tesouraria.SQL.Add('''' + Historico + '''' + ', ');//HISTORICO
 
           if IDContaReceber <> '' then
-            Tesouraria.SQL.Add('"' + IDContaReceber + '"' + ', ')
+            Tesouraria.SQL.Add('''' + IDContaReceber + '''' + ', ')
           else
             Tesouraria.SQL.Add('Null, ');
 
           if IDContaPagar <> '' then
-            Tesouraria.SQL.Add('"' + IDContaPagar + '"' + ', ')
+            Tesouraria.SQL.Add('''' + IDContaPagar + '''' + ', ')
           else
             Tesouraria.SQL.Add('Null, ');
 
           if IDCheque <> '' then
-            Tesouraria.SQL.Add('"' + IDCheque + '"' + ', ')
+            Tesouraria.SQL.Add('''' + IDCheque + '''' + ', ')
           else
             Tesouraria.SQL.Add('Null, ');
 
           if IDFechaCaixa <> '' then
-            Tesouraria.SQL.Add('"' + IDFechaCaixa + '"' + ', ')
+            Tesouraria.SQL.Add('''' + IDFechaCaixa + '''' + ', ')
           else
             Tesouraria.SQL.Add('Null, ');
 
           Tesouraria.SQL.Add(IntToStr(DM.UsuarioAtual) +', ');
 
-          Tesouraria.SQL.Add('"S" , '); // Pendente
-          Tesouraria.SQL.Add('"' + FormatDateTime('mm/dd/yyyy hh:mm:ss', Now) + '"  ,'); // Registro
+          Tesouraria.SQL.Add('''S'' , '); // Pendente
+          Tesouraria.SQL.Add('''' + FormatDateTime('mm/dd/yyyy hh:mm:ss', Now) + '''  ,'); // Registro
 
-          Tesouraria.SQL.Add('"' + DocOrigem + '"'); //DOCUMENTO ORIGEM
+          Tesouraria.SQL.Add('''' + DocOrigem + ''''); //DOCUMENTO ORIGEM
           if PlanoContas <> '' then
-            Tesouraria.SQL.Add(', "'+ PlanoContas + '")') //PLANO DE CONTAS
+            Tesouraria.SQL.Add(', '''+ PlanoContas + ''')') //PLANO DE CONTAS
           else
             Tesouraria.SQL.Add(')');
           Tesouraria.ExecSQL;
@@ -2919,7 +2919,7 @@ begin
           NovoSaldo := SaldoAtual - ValorDebito;
           SqlConta.Close;
           SqlConta.SQL.Clear;
-          SqlConta.SQL.Add('UPDATE CONTACORRENTE SET CTCRN2SALDOATUAL = ' + ConvFloatToStr(NovoSaldo) + ' , CTCRDULTALTSALDO = "' + FormatDateTime('mm/dd/yyyy',Now) + '" , Pendente="S"');
+          SqlConta.SQL.Add('UPDATE CONTACORRENTE SET CTCRN2SALDOATUAL = ' + ConvFloatToStr(NovoSaldo) + ' , CTCRDULTALTSALDO = ''' + FormatDateTime('mm/dd/yyyy',Now) + ''' , Pendente=''S''');
           SqlConta.SQL.Add('WHERE CTCRICOD = ' + IntToStr(ContaCorrente));
           SqlConta.ExecSQL;
         end
@@ -2928,7 +2928,7 @@ begin
           NovoSaldo := SaldoAtual + ValorCredito;
           SqlConta.Close;
           SqlConta.SQL.Clear;
-          SqlConta.SQL.Add('UPDATE CONTACORRENTE SET CTCRN2SALDOATUAL = ' + ConvFloatToStr(NovoSaldo) + ' , CTCRDULTALTSALDO = "' + FormatDateTime('mm/dd/yyyy',Now) + '", Pendente="S"');
+          SqlConta.SQL.Add('UPDATE CONTACORRENTE SET CTCRN2SALDOATUAL = ' + ConvFloatToStr(NovoSaldo) + ' , CTCRDULTALTSALDO = ''' + FormatDateTime('mm/dd/yyyy',Now) + ''', Pendente=''S''');
           SqlConta.SQL.Add('WHERE CTCRICOD = ' + IntToStr(ContaCorrente));
           SqlConta.ExecSQL;
         end;
@@ -3157,14 +3157,14 @@ begin
           IDMovBanco := FormatFloat('000',Empresa) ;
           IDMovBanco := IDMovBanco + FormatFloat('000000000',ProximoCodigo);
           IDMovBanco := IDMovBanco + DigitVerifEAN(IDMovBanco);
-          SQLLancamento.SQL.Add('"' + IDMovBanco + '"'+',');
+          SQLLancamento.SQL.Add('''' + IDMovBanco + ''''+',');
           SQLLancamento.SQL.Add(IntToStr(Empresa)+', ');
           SQLLancamento.SQL.Add(FloatToStr(ProximoCodigo)+', ');
-          SQLLancamento.SQL.Add('"' + FormatDateTime('mm/dd/yyyy',DtMovimento)+'"'+ ', '); // Lancamento
+          SQLLancamento.SQL.Add('''' + FormatDateTime('mm/dd/yyyy',DtMovimento)+''''+ ', '); // Lancamento
           SQLLancamento.SQL.Add(SQLConta.FindField('BANCA5COD').AsString + ', ');
           SQLLancamento.SQL.Add(IntToStr(ContaCorrente) + ', ');
           if NroCheque > 0 then
-            SQLLancamento.SQL.Add('"' + IntToStr(NroCheque)+'"'+', ')
+            SQLLancamento.SQL.Add('''' + IntToStr(NroCheque)+''''+', ')
           else
             SQLLancamento.SQL.Add('Null, ');
           Case SQLOperacao.FindField('OPBCCTIPO').AsString[1] of
@@ -3179,47 +3179,47 @@ begin
           end;
 
           if BomPara > 0 then
-            SQLLancamento.SQL.Add('"' + FormatDateTime('mm/dd/yyyy',BomPara)+'"'+ ', ')
+            SQLLancamento.SQL.Add('''' + FormatDateTime('mm/dd/yyyy',BomPara)+''''+ ', ')
           else
             SQLLancamento.SQL.Add('Null, ');
 
           if DtBaixa > 0 then
-            SQLLancamento.SQL.Add('"' + FormatDateTime('mm/dd/yyyy',DtBaixa)+'"'+ ', ')
+            SQLLancamento.SQL.Add('''' + FormatDateTime('mm/dd/yyyy',DtBaixa)+''''+ ', ')
           else
             SQLLancamento.SQL.Add('Null, ');
 
           if Historico <> '' then
-            SQLLancamento.SQL.Add('"'+Historico +'"'+', ')
+            SQLLancamento.SQL.Add(''''+Historico +''''+', ')
           else
             SQLLancamento.SQL.Add('Null, ');
 
           if Favorecido <> '' then
-            SQLLancamento.SQL.Add('"'+Favorecido +'"'+', ')
+            SQLLancamento.SQL.Add(''''+Favorecido +''''+', ')
           else
             SQLLancamento.SQL.Add('Null, ');
 
           SQLLancamento.SQL.Add(IntToStr(Operacao)+ ', ');
 
           if IDContasReceber <> '' then
-            SQLLancamento.SQL.Add('"' + IDContasReceber + '" ,')
+            SQLLancamento.SQL.Add('''' + IDContasReceber + ''' ,')
           else
             SQLLancamento.SQL.Add('Null ,');
 
           if IDContasPagar <> '' then
-            SQLLancamento.SQL.Add('"' + IDContasPagar + '" ,')
+            SQLLancamento.SQL.Add('''' + IDContasPagar + ''' ,')
           else
             SQLLancamento.SQL.Add('Null ,');
 
           if IDChqEmitido <> '' then
-            SQLLancamento.SQL.Add('"' + IDChqEmitido + '" ,')
+            SQLLancamento.SQL.Add('''' + IDChqEmitido + ''' ,')
           else
             SQLLancamento.SQL.Add('Null ,');
 
-          SQLLancamento.SQL.Add('"S", ');
-          SQLLancamento.SQL.Add('"' + FormatDateTime('mm/dd/yyyy hh:nn:ss',Now)+'" ,');
+          SQLLancamento.SQL.Add('''S'', ');
+          SQLLancamento.SQL.Add('''' + FormatDateTime('mm/dd/yyyy hh:nn:ss',Now)+''' ,');
 
           if IDPlanoContas <> '' then
-            SQLLancamento.SQL.Add('"' + IDPlanoContas + '"' + ' )')
+            SQLLancamento.SQL.Add('''' + IDPlanoContas + '''' + ' )')
           else
             SQLLancamento.SQL.Add('NULL )');
 
@@ -3349,7 +3349,7 @@ begin
   DM.SQLTemplate.SQL.Add('sum(PAGAN3VLRJURO) AS JURO,') ;
   DM.SQLTemplate.SQL.Add('sum(PAGAN3VLRDESC) AS DESCO,') ;
   DM.SQLTemplate.SQL.Add('sum(PAGAN3VLRMULTA) AS MULTA from PAGAMENTO') ;
-  DM.SQLTemplate.SQL.Add('where CTPGA13ID = "' + NroDocumento + '"') ;
+  DM.SQLTemplate.SQL.Add('where CTPGA13ID = ''' + NroDocumento + '''') ;
   DM.SQLTemplate.SQL.Add('group by CTPGA13ID') ;
   DM.SQLTemplate.Open ;
   if not DM.SQLTemplate.EOF then
@@ -3362,7 +3362,7 @@ begin
     DM.SQLTemplate.Close ;
     DM.SQLTemplate.SQL.Clear ;
     DM.SQLTemplate.SQL.Add('select PAGADPAGTO from PAGAMENTO') ;
-    DM.SQLTemplate.SQL.Add('where CTPGA13ID = "' + NroDocumento + '"') ;
+    DM.SQLTemplate.SQL.Add('where CTPGA13ID = ''' + NroDocumento + '''') ;
     DM.SQLTemplate.SQL.Add('order by PAGADPAGTO') ;
     DM.SQLTemplate.Open ;
     DM.SQLTemplate.Last ;
@@ -3374,16 +3374,16 @@ begin
   DM.SQLTemplate.SQL.Add('update CONTASPAGAR') ;
   DM.SQLTemplate.SQL.Add('set') ;
   if DATAULTPAG > 0 then
-    DM.SQLTemplate.SQL.Add('CTPGDULTPAGTO = "'  + FormatDateTime('mm/dd/yyyy', DATAULTPAG) + '", ')
+    DM.SQLTemplate.SQL.Add('CTPGDULTPAGTO = '''  + FormatDateTime('mm/dd/yyyy', DATAULTPAG) + ''', ')
   else
     DM.SQLTemplate.SQL.Add('CTPGDULTPAGTO = Null, ') ;
   DM.SQLTemplate.SQL.Add('CTPGN2TOTPAG = ' + ConvFloatToStr(PAGAN2VLRRECTO) + ', ') ;
   DM.SQLTemplate.SQL.Add('CTPGN3JUROPAGTO = ' + ConvFloatToStr(PAGAN2VLRJURO)  + ', ') ;
   DM.SQLTemplate.SQL.Add('CTPGN3MULTAPAGTO = ' + ConvFloatToStr(PAGAN2VLRMULTA) + ', ') ;
   DM.SQLTemplate.SQL.Add('CTPGN3DESCPAGTO = ' + ConvFloatToStr(PAGAN2DESC) + ', ') ;
-  DM.SQLTemplate.SQL.Add('REGISTRO = "' + FormatDateTime('mm/dd/yyyy hh:mm:ss', Now) + '", ') ;
-  DM.SQLTemplate.SQL.Add('PENDENTE = "S"') ;
-  DM.SQLTemplate.SQL.Add('where CTPGA13ID = "' + NroDocumento + '"') ;
+  DM.SQLTemplate.SQL.Add('REGISTRO = ''' + FormatDateTime('mm/dd/yyyy hh:mm:ss', Now) + ''', ') ;
+  DM.SQLTemplate.SQL.Add('PENDENTE = ''S''') ;
+  DM.SQLTemplate.SQL.Add('where CTPGA13ID = ''' + NroDocumento + '''') ;
   DM.SQLTemplate.ExecSQL ;
 end ;
 
@@ -3418,7 +3418,7 @@ begin
       FormTelaAutenticaUsuario.Free;
       SQLUsuario.Close;
       SQLUsuario.SQL.Clear;
-      SQLUsuario.SQL.Add('SELECT * FROM USUARIO WHERE USUAA5SENHA = ' + '"' + UpperCase(Password) + '"');
+      SQLUsuario.SQL.Add('SELECT * FROM USUARIO WHERE USUAA5SENHA = ' + '''' + UpperCase(Password) + '''');
       SQLUsuario.Open;
       if SQLUsuario.IsEmpty then
         begin
@@ -3527,7 +3527,7 @@ begin
       SQLCupom.DatabaseName := 'DB';
       SQLCupom.Close;
       SQLCupom.SQL.Clear;
-      SQLCupom.SQL.ADD('SELECT * FROM CONTASRECEBER WHERE CUPOA13ID = "' + IDCupom + '"');
+      SQLCupom.SQL.ADD('SELECT * FROM CONTASRECEBER WHERE CUPOA13ID = ''' + IDCupom + '''');
       SQLCupom.SQL.ADD(' AND CTRCN2VLR > CTRCN2TOTREC');
       SQLCupom.Open;
       if SQLCupom.IsEmpty  then
@@ -3536,8 +3536,8 @@ begin
           SQLAtualiza.DataBaseName := 'DB';
           SQLAtualiza.Close;
           SQLAtualiza.SQL.Clear;
-          SQLAtualiza.SQL.ADD('UPDATE CUPOM SET Pendente="S", CUPODQUITACAO = "' + FormatDateTime('mm/dd/yyyy',Date) + '"');
-          SQLAtualiza.SQL.ADD(' WHERE CUPOA13ID = "' + IDCupom + '"');
+          SQLAtualiza.SQL.ADD('UPDATE CUPOM SET Pendente=''S'', CUPODQUITACAO = ''' + FormatDateTime('mm/dd/yyyy',Date) + '''');
+          SQLAtualiza.SQL.ADD(' WHERE CUPOA13ID = ''' + IDCupom + '''');
           try
             SQLAtualiza.ExecSQL;
           except
@@ -3554,7 +3554,7 @@ begin
     end
   else
     begin
-      Informa('IDCupom não foi informado na função: "AtualizaDataQuitacaoCupom". Informe seu revendedor!');
+      Informa('IDCupom não foi informado na função: ''AtualizaDataQuitacaoCupom''. Informe seu revendedor!');
     end;
   Application.ProcessMessages;
 end;
@@ -3627,7 +3627,7 @@ begin
   MyQuery.Close ;
   MyQuery.SQL.Clear ;
   MyQuery.SQL.Add('Select * From NUMERARIOTOTALIZADORECF') ;
-  MyQuery.SQL.Add('Where ECFA13ID = "' + EcfID + '"') ;
+  MyQuery.SQL.Add('Where ECFA13ID = ''' + EcfID + '''') ;
   MyQuery.SQL.Add('And   NUMEICOD = ' + CodNumerario) ;
   MyQuery.Open ;
   if MyQuery.Fieldbyname('NUTCA15NUMERARIO').AsString <> '' then
@@ -3752,8 +3752,8 @@ var
   VlrTotaliz : double ;
 begin
   {// ************** OBSERVAÇÃO ************** \\
-  O PARAMETRO "MOVNORMREV" SERVE PARA INFORMAR SE O LANCEMANETO DE CAIXA IRA
-  TOTALIZAR DE FORMA NORMAL "N" OU REVERSA "R"(CANCELAMENTO DE CUPOM NO CAIXA)}
+  O PARAMETRO ''MOVNORMREV'' SERVE PARA INFORMAR SE O LANCEMANETO DE CAIXA IRA
+  TOTALIZAR DE FORMA NORMAL ''N'' OU REVERSA ''R''(CANCELAMENTO DE CUPOM NO CAIXA)}
 
   //  Apartir 24/06/2006 nao estou mais calculando os totalizadores ao final de cada operacao de caixa
   //  para agilizar o encerramento da venda. O Calculo sera efetuado na tela de Recalculo dos Totalizadores
@@ -3767,7 +3767,7 @@ begin
       DM.SQLTemplate.SQL.Add('where') ;
       DM.SQLTemplate.SQL.Add('EMPRICOD = '  + WEMPRICOD + ' and') ;
       DM.SQLTemplate.SQL.Add('TERMICOD = '  + WTERMICOD + ' and') ;
-      DM.SQLTemplate.SQL.Add('MVCXDMOV = "' + WMVCXDMOV + '"') ;
+      DM.SQLTemplate.SQL.Add('MVCXDMOV = ''' + WMVCXDMOV + '''') ;
       DM.SQLTemplate.Open ;
       if DM.SQLTemplate.FieldByName('Contador').AsInteger <> null then
         ProxCod := DM.SQLTemplate.FieldByName('Contador').AsInteger + 1
@@ -3804,7 +3804,7 @@ begin
           DM.SQLTemplate.SQL.Add('values(') ;
           DM.SQLTemplate.SQL.Add(WEMPRICOD + ', ') ;
           DM.SQLTemplate.SQL.Add(WTERMICOD + ', ') ;
-          DM.SQLTemplate.SQL.Add('"' + WMVCXDMOV + '", ') ;
+          DM.SQLTemplate.SQL.Add('''' + WMVCXDMOV + ''', ') ;
           DM.SQLTemplate.SQL.Add(IntToStr(ProxCod) + ', ') ;
 
           if WNUMEICOD <> '' then
@@ -3818,11 +3818,11 @@ begin
 
           DM.SQLTemplate.SQL.Add(WUSUAICOD + ', ') ;
           if WMVCXA15DOCORIG <> '' then
-            DM.SQLTemplate.SQL.Add('"' + WMVCXA15DOCORIG + '", ')// ESTE CAMPPO POSSUI 30 CARACTERES NO BANCO
+            DM.SQLTemplate.SQL.Add('''' + WMVCXA15DOCORIG + ''', ')// ESTE CAMPPO POSSUI 30 CARACTERES NO BANCO
                                                                  //POIS QUANDO TINHAMOS MAIS DE 9 PARCELAS ESTORAVA O NRO DE CARACTERES
                                                                  //O NOME PERMANECE COM 15 PARA EVITAR ERROS;
           else
-            DM.SQLTemplate.SQL.Add('"' + IntToStr(ProxCod) + '", ') ;
+            DM.SQLTemplate.SQL.Add('''' + IntToStr(ProxCod) + ''', ') ;
           if (WTIPO = '') or (WTIPO = 'N') then
             begin
               DM.SQLTemplate.SQL.Add(ConvFloatToStr(0) + ', ') ;
@@ -3842,10 +3842,10 @@ begin
           DM.SQLTemplate.SQL.Add(ConvFloatToStr(WMVCXN2VLRMULTA) + ', ') ;
           DM.SQLTemplate.SQL.Add(ConvFloatToStr(WMVCXN2VLRDESC) + ', ') ;
           DM.SQLTemplate.SQL.Add(WMVCXA6NUMCUPOM + ', ') ;
-          DM.SQLTemplate.SQL.Add('"' + WMVCXA255HIST + '", ') ;
-          DM.SQLTemplate.SQL.Add('"S", ') ;{PENDENTE}
-          DM.SQLTemplate.SQL.Add('"' + MOVNORMREV + '", ') ; {NormReverso}
-          DM.SQLTemplate.SQL.Add('"' + FormatDateTime('mm/dd/yyyy hh:mm:ss', Now) + '")') ;{REGISTRO}
+          DM.SQLTemplate.SQL.Add('''' + WMVCXA255HIST + ''', ') ;
+          DM.SQLTemplate.SQL.Add('''S'', ') ;{PENDENTE}
+          DM.SQLTemplate.SQL.Add('''' + MOVNORMREV + ''', ') ; {NormReverso}
+          DM.SQLTemplate.SQL.Add('''' + FormatDateTime('mm/dd/yyyy hh:mm:ss', Now) + ''')') ;{REGISTRO}
           try
             DM.SQLTemplate.ExecSQL ;
             Gravou := true ;
@@ -3888,17 +3888,17 @@ begin
 
           if SQLTotalizadorCaixa.FieldByName('TOTACDEBITOCREDITO').Value = Null then
             begin
-              Informa('O campo Débito/Crédito do Totalizador de Caixa "' +
+              Informa('O campo Débito/Crédito do Totalizador de Caixa ''' +
                        SQLTotalizadorCaixa.FieldByName('TOTAA60DESCR').Value +
-                       '" não foi informado. Esta Operação não será totalizadada no caixa!!' ) ;
+                       ''' não foi informado. Esta Operação não será totalizadada no caixa!!' ) ;
               exit ;
             end ;
 
           if SQLTotalizar.FieldByName('NUTOCSOMASUBTRAI').AsString = Null then
             begin
-              Informa('O campo Soma/Subtrai do Totalizador de Caixa "' +
+              Informa('O campo Soma/Subtrai do Totalizador de Caixa ''' +
                        SQLTotalizadorCaixa.FieldByName('TOTAA60DESCR').Value +
-                       '" não foi informado. Esta Operação não será totalizadada no caixa!!' ) ;
+                       ''' não foi informado. Esta Operação não será totalizadada no caixa!!' ) ;
               exit ;
             end ;
 
@@ -3933,7 +3933,7 @@ begin
           DM.SQLTemplate.SQL.Add('where') ;
           DM.SQLTemplate.SQL.Add('EMPRICOD = ' + EmpresaPadrao + ' and ') ;
           DM.SQLTemplate.SQL.Add('TERMICOD = '  + IntToStr(TerminalAtual) + ' and ') ;
-          DM.SQLTemplate.SQL.Add('TODIDMOV = "' + FormatDateTime('mm/dd/yyyy', StrToDateTime(TerminalAtualData)) + '" and ') ;
+          DM.SQLTemplate.SQL.Add('TODIDMOV = ''' + FormatDateTime('mm/dd/yyyy', StrToDateTime(TerminalAtualData)) + ''' and ') ;
           //SE ESTA RECALCULANDO NAO PROCURAR PELO USUARIO
           //TENHO DE ESTUDAR MELHOR MAS ACHO QUE NÃO DEVE PESQUISAR PELO USUÁRIO NUNCA
           //POIS SE ABRIR COM UM USUÁRIO E LANÇAR COM OUTRO NÃO VAI MOVIMENTAR O TOTALIZADOR
@@ -4010,7 +4010,7 @@ begin
           DM.SQLTemplate.SQL.Add('where') ;
           DM.SQLTemplate.SQL.Add('EMPRICOD = ' + EmpresaPadrao + ' and ') ;
           DM.SQLTemplate.SQL.Add('TERMICOD = '  + IntToStr(TerminalAtual) + ' and ') ;
-          DM.SQLTemplate.SQL.Add('TODIDMOV = "' + FormatDateTime('mm/dd/yyyy', StrToDateTime(TerminalAtualData)) + '" and ') ;
+          DM.SQLTemplate.SQL.Add('TODIDMOV = ''' + FormatDateTime('mm/dd/yyyy', StrToDateTime(TerminalAtualData)) + ''' and ') ;
           //SE ESTA RECALCULANDO NAO PROCURAR PELO USUARIO
           //TENHO DE ESTUDAR MELHOR MAS ACHO QUE NÃO DEVE PESQUISAR PELO USUÁRIO NUNCA
           //POIS SE ABRIR COM UM USUÁRIO E LANÇAR COM OUTRO NÃO VAI MOVIMENTAR O TOTALIZADOR
@@ -4035,7 +4035,7 @@ begin
   MyQuery.Close ;
   MyQuery.SQL.Clear ;
   MyQuery.SQL.Add('select * from ECFALIQUOTAICMS') ;
-  MyQuery.SQL.Add('where ECFA13ID = "' + EcfID + '"') ;
+  MyQuery.SQL.Add('where ECFA13ID = ''' + EcfID + '''') ;
   MyQuery.SQL.Add('and   ICMSICOD = ' + CodICMS) ;
   MyQuery.Open ;
   if MyQuery.Fieldbyname('ECALA5TOTALIECF').AsString <> '' then
@@ -4060,7 +4060,7 @@ begin
     begin
       SQLCliente.Close;
       SQLCliente.SQL.Clear;
-      SQLCliente.SQL.Add('Select CLIEA60RAZAOSOC, CLIEN2RENDA, CLIEN2CONJUGERENDA, CLIEN2LIMITECRED from CLIENTE where CLIEA13ID = ' + '"' + Cliente + '"');
+      SQLCliente.SQL.Add('Select CLIEA60RAZAOSOC, CLIEN2RENDA, CLIEN2CONJUGERENDA, CLIEN2LIMITECRED from CLIENTE where CLIEA13ID = ' + '''' + Cliente + '''');
       SQLCliente.Open;
       if not SQLCliente.IsEmpty then
         begin
@@ -4090,9 +4090,9 @@ begin
           SQLParcelas.SQL.Add('CONTASRECEBER.CTRCN2TOTREC + CONTASRECEBER.CTRCN2TOTJUROREC + CONTASRECEBER.CTRCN2TOTMULTAREC + CONTASRECEBER.CTRCN2TOTMULTACOBR - CONTASRECEBER.CTRCN2TOTDESCREC as CTRCN2TOTREC,');
           SQLParcelas.SQL.Add('CONTASRECEBER.CTRCN2TXJURO, CONTASRECEBER.CTRCN2TXMULTA, CONTASRECEBER.CTRCN2VLR, CONTASRECEBER.CTRCCSTATUS, CONTASRECEBER.EMPRICODULTREC,');
           SQLParcelas.SQL.Add('CONTASRECEBER.NUMEICOD, CONTASRECEBER.EMPRICOD, CONTASRECEBER.AVALA13ID, CONTASRECEBER.PORTICOD, CONTASRECEBER.PDVDA13ID, CONTASRECEBER.BANCA5CODCHQ,');
-          SQLParcelas.SQL.Add('CONTASRECEBER.CTRCA15NROCHQ, CONTASRECEBER.ALINICOD from CONTASRECEBER where (CONTASRECEBER.CTRCCSTATUS = "A" or CONTASRECEBER.CTRCCSTATUS = "N") and ');
-          SQLParcelas.SQL.Add('(CONTASRECEBER.CTRCCTIPOREGISTRO = "N" or CONTASRECEBER.CTRCCTIPOREGISTRO = "" or CONTASRECEBER.CTRCCTIPOREGISTRO IS NULL) and ');
-          SQLParcelas.SQL.Add('(CONTASRECEBER.PDVDA13ID = "" or CONTASRECEBER.PDVDA13ID IS NULL) and CONTASRECEBER.CLIEA13ID = "'+ Cliente + '"');
+          SQLParcelas.SQL.Add('CONTASRECEBER.CTRCA15NROCHQ, CONTASRECEBER.ALINICOD from CONTASRECEBER where (CONTASRECEBER.CTRCCSTATUS = ''A'' or CONTASRECEBER.CTRCCSTATUS = ''N'') and ');
+          SQLParcelas.SQL.Add('(CONTASRECEBER.CTRCCTIPOREGISTRO = ''N'' or CONTASRECEBER.CTRCCTIPOREGISTRO = '''' or CONTASRECEBER.CTRCCTIPOREGISTRO IS NULL) and ');
+          SQLParcelas.SQL.Add('(CONTASRECEBER.PDVDA13ID = '''' or CONTASRECEBER.PDVDA13ID IS NULL) and CONTASRECEBER.CLIEA13ID = '''+ Cliente + '''');
           SQLParcelas.Open ;
 
           JuroParcTot  := 0 ;
@@ -4186,9 +4186,9 @@ begin
             begin
               SQLParcelas.Close;
               SQLParcelas.SQL.Clear;
-              SQLParcelas.SQL.Add('Select sum(CTRCN2VLR) from CONTASRECEBER where CLIEA13ID = '+ '"' + Cliente + '"' +  ' AND CTRCN2VLR > CTRCN2TOTREC');
-              SQLParcelas.SQL.Add('AND (CTRCA5TIPOPADRAO NOT IN ("CRT","CONV") or CTRCA5TIPOPADRAO is null) ');
-              SQLParcelas.SQL.Add('AND (CTRCCSTATUS = "A" or CTRCCSTATUS = "N")') ;
+              SQLParcelas.SQL.Add('Select sum(CTRCN2VLR) from CONTASRECEBER where CLIEA13ID = '+ '''' + Cliente + '''' +  ' AND CTRCN2VLR > CTRCN2TOTREC');
+              SQLParcelas.SQL.Add('AND (CTRCA5TIPOPADRAO NOT IN (''CRT'',''CONV'') or CTRCA5TIPOPADRAO is null) ');
+              SQLParcelas.SQL.Add('AND (CTRCCSTATUS = ''A'' or CTRCCSTATUS = ''N'')') ;
               SQLParcelas.Open;
               if not SQLParcelas.IsEmpty then
                 Debito := SQLParcelas.FieldByName('SUM').AsFloat;
@@ -4683,7 +4683,7 @@ begin
       FormTelaAutenticaUsuario.Free;
       SQLVendedor.Close;
       SQLVendedor.SQL.Clear;
-      SQLVendedor.SQL.Add('SELECT VENDICOD,VENDA60NOME,VENDA30SENHA FROM VENDEDOR WHERE VENDA30SENHA = ' + '"' + UpperCase(Password) + '"');
+      SQLVendedor.SQL.Add('SELECT VENDICOD,VENDA60NOME,VENDA30SENHA FROM VENDEDOR WHERE VENDA30SENHA = ' + '''' + UpperCase(Password) + '''');
       SQLVendedor.Open;
       if SQLVendedor.IsEmpty then
         begin

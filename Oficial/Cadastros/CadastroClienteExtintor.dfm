@@ -1,6 +1,6 @@
 inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
   Left = 412
-  Caption = 'Relação de Extintores'
+  Caption = 'Rela'#231#227'o de Extintores'
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
@@ -21,7 +21,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
                   item
                     Expanded = False
                     FieldName = 'ProdutoLookup'
-                    Title.Caption = 'Descrição do Produto'
+                    Title.Caption = 'Descri'#231#227'o do Produto'
                     Width = 252
                     Visible = True
                   end
@@ -46,7 +46,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
                   item
                     Expanded = False
                     FieldName = 'CLEXA30LOCALIZACAO'
-                    Title.Caption = 'Localização'
+                    Title.Caption = 'Localiza'#231#227'o'
                     Visible = True
                   end
                   item
@@ -58,7 +58,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
                   item
                     Expanded = False
                     FieldName = 'CLEXA30OBS'
-                    Title.Caption = 'Observações'
+                    Title.Caption = 'Observa'#231#245'es'
                     Visible = True
                   end
                   item
@@ -100,7 +100,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
                   item
                     Expanded = False
                     FieldName = 'CLEXIEX_CARROCAVEL'
-                    Title.Caption = 'Carroçavel'
+                    Title.Caption = 'Carro'#231'avel'
                     Visible = True
                   end
                   item
@@ -124,7 +124,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
                   item
                     Expanded = False
                     FieldName = 'CLEXDINSPECAO'
-                    Title.Caption = 'Dt.Inspeção'
+                    Title.Caption = 'Dt.Inspe'#231#227'o'
                     Visible = True
                   end
                   item
@@ -136,7 +136,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
                   item
                     Expanded = False
                     FieldName = 'CLEXDREVISAO'
-                    Title.Caption = 'Dt.Revisão'
+                    Title.Caption = 'Dt.Revis'#227'o'
                     Visible = True
                   end
                   item
@@ -214,7 +214,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
                 Top = 109
                 Width = 71
                 Height = 13
-                Caption = 'Dt. Inspeção'
+                Caption = 'Dt. Inspe'#231#227'o'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clBlack
                 Font.Height = -11
@@ -240,7 +240,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
                 Top = 109
                 Width = 64
                 Height = 13
-                Caption = 'Dt. Revisão'
+                Caption = 'Dt. Revis'#227'o'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clBlack
                 Font.Height = -11
@@ -337,7 +337,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
                 Top = 263
                 Width = 124
                 Height = 13
-                Caption = 'e) Extintor Carroçável'
+                Caption = 'e) Extintor Carro'#231#225'vel'
                 FocusControl = DBEdit9
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clBlack
@@ -351,7 +351,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
                 Top = 18
                 Width = 130
                 Height = 13
-                Caption = 'Localização do Extintor'
+                Caption = 'Localiza'#231#227'o do Extintor'
                 FocusControl = DBEdit10
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clBlack
@@ -407,7 +407,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
                 Top = 53
                 Width = 154
                 Height = 13
-                Caption = 'Observação Complementar'
+                Caption = 'Observa'#231#227'o Complementar'
                 FocusControl = DBEdit14
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clBlack
@@ -536,7 +536,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
                 Top = 148
                 Width = 545
                 Height = 16
-                Caption = '------ Número de Extintores ------'
+                Caption = '------ N'#250'mero de Extintores ------'
                 Color = 10053171
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWhite
@@ -683,7 +683,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
               Top = 4
               Width = 38
               Height = 13
-              Caption = 'Código'
+              Caption = 'C'#243'digo'
               FocusControl = DBEdit2
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
@@ -697,7 +697,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
               Top = 4
               Width = 120
               Height = 13
-              Caption = 'Descrição do Produto'
+              Caption = 'Descri'#231#227'o do Produto'
               FocusControl = DBEdit2
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
@@ -711,7 +711,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
               Top = 4
               Width = 72
               Height = 13
-              Caption = 'Responsável'
+              Caption = 'Respons'#225'vel'
               FocusControl = DBEdit2
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
@@ -766,7 +766,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
   end
   inherited PopupMenuImpressao: TPopupMenu
     object ImpressodeLaudoTcnico1: TMenuItem
-      Caption = 'Impressão de Laudo Técnico'
+      Caption = 'Impress'#227'o de Laudo T'#233'cnico'
       OnClick = ImpressodeLaudoTcnico1Click
     end
   end
@@ -931,7 +931,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
     DatabaseName = 'DB'
     SQL.Strings = (
       'Select * from PRODUTO'
-      'where PRODCATIVO = ''S'''
+      'where PRODCATIVO = '#39'S'#39
       'Order by PRODA60DESCR')
     Macros = <>
     Left = 44
@@ -949,14 +949,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
     object SQLProdutosPRODN3VLRVENDA: TFloatField
       FieldName = 'PRODN3VLRVENDA'
       Origin = 'DB.PRODUTO.PRODN3VLRVENDA'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutosPRODN3VLRVENDAPROM: TFloatField
       FieldName = 'PRODN3VLRVENDAPROM'
       Origin = 'DB.PRODUTO.PRODN3VLRVENDAPROM'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutosPRODDINIPROMO: TDateTimeField
       FieldName = 'PRODDINIPROMO'
@@ -969,8 +965,6 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
     object SQLProdutosPRODN3VLRVENDA2: TFloatField
       FieldName = 'PRODN3VLRVENDA2'
       Origin = 'DB.PRODUTO.PRODN3VLRVENDA2'
-      Precision = 15
-      Size = 3
     end
   end
   object dsSQLProdutos: TDataSource
@@ -994,6 +988,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
     PrinterSetup.mmPaperWidth = 0
     PrinterSetup.PaperSize = 9
     DeviceType = 'Screen'
+    EmailSettings.ReportFormat = 'PDF'
     OutlineSettings.CreateNode = True
     OutlineSettings.CreatePageNodes = True
     OutlineSettings.Enabled = False
@@ -1002,7 +997,7 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
     TextSearchSettings.Enabled = False
     Left = 584
     Top = 1
-    Version = '7.04'
+    Version = '10.06'
     mmColumnWidth = 0
     DataPipelineName = 'PipeItens'
     object ppHeaderBand1: TppHeaderBand
@@ -1020,7 +1015,11 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLabel1: TppLabel
         UserName = 'ppLabel1'
-        Caption = '1. DADOS DO PRÉDIO'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
+        Caption = '1. DADOS DO PR'#201'DIO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
@@ -1035,7 +1034,11 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLabel2: TppLabel
         UserName = 'ppLabel2'
-        Caption = '1.1 Proprietário: '
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
+        Caption = '1.1 Propriet'#225'rio: '
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
@@ -1050,7 +1053,11 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLabel3: TppLabel
         UserName = 'ppLabel3'
-        Caption = '1.2 Endereço: '
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
+        Caption = '1.2 Endere'#231'o: '
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
@@ -1065,7 +1072,11 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLabel4: TppLabel
         UserName = 'ppLabel4'
-        Caption = '1.4 Responsável Técnico: '
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
+        Caption = '1.4 Respons'#225'vel T'#233'cnico: '
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
@@ -1080,6 +1091,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLabel5: TppLabel
         UserName = 'ppLabel5'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = '2. EXTINTORES'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1095,6 +1110,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLabel6: TppLabel
         UserName = 'ppLabel6'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = '1.3 Bairro: '
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1110,6 +1129,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLabel7: TppLabel
         UserName = 'ppLabel7'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = '1.5 Municipio:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1134,7 +1157,11 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLabel8: TppLabel
         UserName = 'ppLabel8'
-        Caption = 'Nº de Ordem'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
+        Caption = 'N'#186' de Ordem'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
@@ -1151,6 +1178,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLine1: TppLine
         UserName = 'ppLine1'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 1960037
@@ -1161,6 +1192,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLabel9: TppLabel
         UserName = 'ppLabel9'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'CAPACIDADE'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1176,6 +1211,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLine2: TppLine
         UserName = 'ppLine2'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 1960037
@@ -1186,7 +1225,11 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLabel10: TppLabel
         UserName = 'ppLabel10'
-        Caption = 'LOCALIZAÇÃO'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
+        Caption = 'LOCALIZA'#199#195'O'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
@@ -1201,6 +1244,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLine3: TppLine
         UserName = 'ppLine3'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 1960037
@@ -1211,6 +1258,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLine4: TppLine
         UserName = 'ppLine4'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 1960037
@@ -1221,7 +1272,11 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLabel11: TppLabel
         UserName = 'ppLabel11'
-        Caption = 'Nº do RECIPIENTE'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
+        Caption = 'N'#186' do RECIPIENTE'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
@@ -1238,6 +1293,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLine5: TppLine
         UserName = 'ppLine5'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 1960037
@@ -1248,7 +1307,11 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLabel12: TppLabel
         UserName = 'ppLabel12'
-        Caption = 'Nº SELO IMETRO'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
+        Caption = 'N'#186' SELO IMETRO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
@@ -1265,6 +1328,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLabel13: TppLabel
         UserName = 'ppLabel13'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'VALIDADE SELO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1282,6 +1349,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLine6: TppLine
         UserName = 'ppLine6'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 1960037
@@ -1292,6 +1363,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLabel14: TppLabel
         UserName = 'ppLabel14'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'DATA DA CARGA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1309,6 +1384,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLine7: TppLine
         UserName = 'ppLine7'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 1960037
@@ -1319,7 +1398,11 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLabel15: TppLabel
         UserName = 'ppLabel15'
-        Caption = 'DATA DA INSPEÇÃO'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
+        Caption = 'DATA DA INSPE'#199#195'O'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
@@ -1336,6 +1419,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLine8: TppLine
         UserName = 'ppLine8'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 1960037
@@ -1346,6 +1433,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLabel16: TppLabel
         UserName = 'ppLabel16'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'DATA DO RETESTE'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1363,6 +1454,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLine9: TppLine
         UserName = 'ppLine9'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 1960037
@@ -1373,6 +1468,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLabel17: TppLabel
         UserName = 'ppLabel17'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'VISTORIADOR'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1389,6 +1488,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLine10: TppLine
         UserName = 'ppLine10'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 1960037
@@ -1399,7 +1502,11 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLabel18: TppLabel
         UserName = 'ppLabel18'
-        Caption = 'OBSERVAÇÕES'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
+        Caption = 'OBSERVA'#199#213'ES'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
@@ -1415,6 +1522,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppRazao: TppLabel
         UserName = 'ppRazao'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'ppRazao'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1430,6 +1541,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppEnd: TppLabel
         UserName = 'ppEnd'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Endereco'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1445,6 +1560,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppBairro: TppLabel
         UserName = 'ppBairro'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'ppBairro'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1460,6 +1579,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppCidade: TppLabel
         UserName = 'ppCidade'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Cidade'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1475,6 +1598,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLine27: TppLine
         UserName = 'ppLine27'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 1960037
@@ -1486,6 +1613,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       object ppLabel30: TppLabel
         UserName = 'ppLabel30'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'TIPO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1506,6 +1637,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       mmPrintPosition = 0
       object ppDBText1: TppDBText
         UserName = 'ppDBText1'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipeItens
         DisplayFormat = '###000'
         Font.Charset = DEFAULT_CHARSET
@@ -1524,6 +1659,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppDBText2: TppDBText
         UserName = 'ppDBText2'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1541,6 +1680,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppDBText3: TppDBText
         UserName = 'ppDBText3'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1557,6 +1700,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppDBText4: TppDBText
         UserName = 'ppDBText4'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1573,6 +1720,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppDBText5: TppDBText
         UserName = 'ppDBText5'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1589,6 +1740,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppDBText6: TppDBText
         UserName = 'ppDBText6'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1605,6 +1760,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppDBText7: TppDBText
         UserName = 'ppDBText7'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1621,6 +1780,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppDBText8: TppDBText
         UserName = 'ppDBText8'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1637,6 +1800,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppDBText9: TppDBText
         UserName = 'ppDBText9'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1653,6 +1820,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppDBText10: TppDBText
         UserName = 'ppDBText10'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1669,6 +1840,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppDBText11: TppDBText
         UserName = 'ppDBText11'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1685,6 +1860,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLine13: TppLine
         UserName = 'ppLine13'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Weight = 0.750000000000000000
         mmHeight = 70115
         mmLeft = 2520161
@@ -1694,6 +1873,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLine14: TppLine
         UserName = 'ppLine14'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 910168
@@ -1704,6 +1887,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLine15: TppLine
         UserName = 'ppLine15'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 910168
@@ -1714,6 +1901,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLine16: TppLine
         UserName = 'ppLine16'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 910168
@@ -1724,6 +1915,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLine17: TppLine
         UserName = 'ppLine17'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 910168
@@ -1734,6 +1929,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLine18: TppLine
         UserName = 'ppLine18'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 910168
@@ -1744,6 +1943,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLine19: TppLine
         UserName = 'ppLine19'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 910168
@@ -1754,6 +1957,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLine20: TppLine
         UserName = 'ppLine20'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 910168
@@ -1764,6 +1971,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLine21: TppLine
         UserName = 'ppLine21'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 910168
@@ -1774,6 +1985,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLine22: TppLine
         UserName = 'ppLine22'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 910168
@@ -1784,6 +1999,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLine23: TppLine
         UserName = 'ppLine23'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 910168
@@ -1794,6 +2013,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLine24: TppLine
         UserName = 'ppLine24'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 910168
@@ -1804,6 +2027,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLine25: TppLine
         UserName = 'ppLine25'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 910168
@@ -1814,6 +2041,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLine26: TppLine
         UserName = 'ppLine26'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 910168
@@ -1825,6 +2056,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       object pplbTipo: TppLabel
         UserName = 'pplbTipo'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'TIPO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1854,6 +2089,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLabel19: TppLabel
         UserName = 'ppLabel19'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = '3. UNIDADES EXTINTORAS EXIGIDAS:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1869,6 +2108,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLabel20: TppLabel
         UserName = 'ppLabel20'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = '4. UNIDADES EXISTENTES:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1884,7 +2127,11 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLabel21: TppLabel
         UserName = 'ppLabel21'
-        Caption = '5. REVISÃO EM:'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
+        Caption = '5. REVIS'#195'O EM:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
@@ -1899,7 +2146,11 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLabel22: TppLabel
         UserName = 'ppLabel22'
-        Caption = 'a. Extintor de Água Pressurizada/Gás (AP - AG):'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
+        Caption = 'a. Extintor de '#193'gua Pressurizada/G'#225's (AP - AG):'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
@@ -1914,6 +2165,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLabel23: TppLabel
         UserName = 'ppLabel23'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'b. Extintor de Espuma (ES):'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1929,7 +2184,11 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLabel24: TppLabel
         UserName = 'ppLabel24'
-        Caption = 'c. Extintor de Pó Quimico Seco (PQS):'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
+        Caption = 'c. Extintor de P'#243' Quimico Seco (PQS):'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
@@ -1944,7 +2203,11 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLabel25: TppLabel
         UserName = 'ppLabel25'
-        Caption = 'd. Extintor de Gás Carbônico:'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
+        Caption = 'd. Extintor de G'#225's Carb'#244'nico:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
@@ -1959,7 +2222,11 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLabel26: TppLabel
         UserName = 'ppLabel26'
-        Caption = 'e. Extintor sobre rodas (carroçável):'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
+        Caption = 'e. Extintor sobre rodas (carro'#231#225'vel):'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
@@ -1974,6 +2241,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLabel27: TppLabel
         UserName = 'ppLabel27'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'TRAMANDAI, '
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1989,6 +2260,11 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppVariable1: TppVariable
         UserName = 'ppVariable1'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
+        BlankWhenZero = False
         CalcOrder = 0
         DataType = dtDate
         Font.Charset = DEFAULT_CHARSET
@@ -2005,6 +2281,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLine11: TppLine
         UserName = 'ppLine11'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Weight = 0.750000000000000000
         mmHeight = 70115
         mmLeft = 18831227
@@ -2014,6 +2294,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLabel28: TppLabel
         UserName = 'ppLabel28'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'PROPRIETARIO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2029,6 +2313,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLine12: TppLine
         UserName = 'ppLine12'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Weight = 0.750000000000000000
         mmHeight = 70115
         mmLeft = 47743099
@@ -2038,7 +2326,11 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppLabel29: TppLabel
         UserName = 'ppLabel29'
-        Caption = 'RESPONSÁVEL TÉCNICO'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
+        Caption = 'RESPONS'#193'VEL T'#201'CNICO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
@@ -2053,6 +2345,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppDBText12: TppDBText
         UserName = 'ppDBText12'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2069,6 +2365,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppDBText13: TppDBText
         UserName = 'ppDBText13'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2085,6 +2385,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppDBText14: TppDBText
         UserName = 'ppDBText14'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2101,6 +2405,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppDBText15: TppDBText
         UserName = 'ppDBText15'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2117,6 +2425,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppDBText16: TppDBText
         UserName = 'ppDBText16'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2133,6 +2445,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppDBText17: TppDBText
         UserName = 'ppDBText17'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2149,6 +2465,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppDBText18: TppDBText
         UserName = 'ppDBText18'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2165,6 +2485,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppDBText19: TppDBText
         UserName = 'ppDBText19'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2181,6 +2505,10 @@ inherited FormCadastroClienteExtintor: TFormCadastroClienteExtintor
       end
       object ppDBText20: TppDBText
         UserName = 'ppDBText20'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipeItens
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack

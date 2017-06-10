@@ -123,7 +123,7 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
           BiDiMode = bdRightToLeftNoAlign
           ParentBiDiMode = False
           GroupIndex = 1
-          Caption = '&5 Stat'#237'sticas'
+          Caption = '&5 Statísticas'
           Flat = True
           Font.Charset = ANSI_CHARSET
           Font.Color = clBlack
@@ -263,7 +263,7 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
                   item
                     Expanded = False
                     FieldName = 'PDCPDEMIS'
-                    Title.Caption = 'Data Emiss'#227'o'
+                    Title.Caption = 'Data Emissão'
                     Width = 80
                     Visible = True
                   end
@@ -355,10 +355,10 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
                     Width = 396
                     Height = 21
                     Hint = 
-                      'Esta '#233' uma pesquisa avan'#231'ada, os dados inclusos na pesquisa acim' +
-                      'a n'#227'o '#13#10'ser'#227'o considerados na pesquisa atual...'
+                      'Esta é uma pesquisa avançada, os dados inclusos na pesquisa acim' +
+                      'a não '#13#10'serão considerados na pesquisa atual...'
                     DropDownCount = 8
-                    DisplayEmpty = 'Procura Fornecedor pela Raz'#227'o Social'
+                    DisplayEmpty = 'Procura Fornecedor pela Razão Social'
                     LookupField = 'FORNICOD'
                     LookupDisplay = 'FORNA60RAZAOSOC'
                     LookupSource = DSTblFornecedor
@@ -414,7 +414,7 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
                 Top = 198
                 Width = 96
                 Height = 13
-                Caption = 'Previs'#227'o Entrega'
+                Caption = 'Previsão Entrega'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = 8404992
                 Font.Height = -11
@@ -492,7 +492,7 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
                 Top = 279
                 Width = 73
                 Height = 13
-                Caption = 'Observa'#231#245'es'
+                Caption = 'Observações'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = 8404992
                 Font.Height = -11
@@ -640,7 +640,7 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
                 ItemHeight = 13
                 Items.Strings = (
                   'Emitente (CIF)'
-                  'Destinat'#225'rio (FOB)')
+                  'Destinatário (FOB)')
                 TabOrder = 7
                 Values.Strings = (
                   'C'
@@ -905,7 +905,7 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
               end
             end
             object TabStatisticas: TTabSheet
-              Caption = 'Stat'#237'sticas'
+              Caption = 'Statísticas'
               ImageIndex = 2
               object Label24: TLabel
                 Left = 15
@@ -986,7 +986,7 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
                     Width = 426
                     Height = 25
                     Align = alLeft
-                    Caption = '         ***     Estat'#237'sticas do Per'#237'odo    ***'
+                    Caption = '         ***     Estatísticas do Período    ***'
                     Font.Charset = ANSI_CHARSET
                     Font.Color = clWhite
                     Font.Height = -21
@@ -1001,7 +1001,7 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
                 Top = 39
                 Width = 232
                 Height = 53
-                Caption = ' Per'#237'odo para An'#225'lise '
+                Caption = ' Período para Análise '
                 TabOrder = 1
                 object Label21: TLabel
                   Left = 10
@@ -1021,7 +1021,7 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
                   Top = 26
                   Width = 19
                   Height = 13
-                  Caption = 'at'#233
+                  Caption = 'até'
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clNavy
                   Font.Height = -11
@@ -1273,7 +1273,7 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
               Top = 3
               Width = 46
               Height = 13
-              Caption = 'Emiss'#227'o'
+              Caption = 'Emissão'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 8404992
               Font.Height = -11
@@ -1489,7 +1489,7 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
       OnClick = MnCancelarPedidodeCompraClick
     end
     object MnAlterarObs: TMenuItem
-      Caption = 'Alterar Observa'#231#245'es'
+      Caption = 'Alterar Observações'
       OnClick = MnAlterarObsClick
     end
   end
@@ -1502,7 +1502,7 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
       Caption = '-'
     end
     object EtiquetasdeCodigodeBarras1: TMenuItem
-      Caption = '&Etiquetas de C'#243'digo de Barras'
+      Caption = '&Etiquetas de Código de Barras'
       OnClick = EtiquetasdeCodigodeBarras1Click
     end
   end
@@ -1528,23 +1528,23 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
       Visible = False
     end
     object SQLTemplateEMPRICOD: TIntegerField
-      DisplayLabel = 'C'#243'd.Emp'
+      DisplayLabel = 'Cód.Emp'
       FieldName = 'EMPRICOD'
       Origin = 'DB.PEDIDOCOMPRA.EMPRICOD'
     end
     object SQLTemplateEMPRICODDEST: TIntegerField
-      DisplayLabel = 'C'#243'd.Emp.Dest.'
+      DisplayLabel = 'Cód.Emp.Dest.'
       FieldName = 'EMPRICODDEST'
       Origin = 'DB.PEDIDOCOMPRA.EMPRICODDEST'
     end
     object SQLTemplateFORNICOD: TIntegerField
-      DisplayLabel = 'C'#243'd.Fornec'
+      DisplayLabel = 'Cód.Fornec'
       FieldName = 'FORNICOD'
       Origin = 'DB.PEDIDOCOMPRA.FORNICOD'
     end
     object SQLTemplatePDCPDEMIS: TDateTimeField
       ConstraintErrorMessage = '1'
-      DisplayLabel = 'Dt.Emiss'#227'o'
+      DisplayLabel = 'Dt.Emissão'
       FieldName = 'PDCPDEMIS'
       Origin = 'DB.PEDIDOCOMPRA.PDCPDEMIS'
       DisplayFormat = 'dd/mm/yyyy'
@@ -1614,7 +1614,7 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
       Size = 255
     end
     object SQLTemplateTRANICOD: TIntegerField
-      DisplayLabel = 'C'#243'd.Transp'
+      DisplayLabel = 'Cód.Transp'
       FieldName = 'TRANICOD'
       Origin = 'DB.PEDIDOCOMPRA.TRANICOD'
     end
@@ -2560,7 +2560,7 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
       'FROM'
       '  PEDIDOCOMPRA'
       'WHERE'
-      '  PDCPCSTATUS = "A"  and (%MFiltro)')
+      '  PDCPCSTATUS = ''A''  and (%MFiltro)')
     Macros = <
       item
         DataType = ftString
@@ -2589,7 +2589,7 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
       'FROM'
       '  PEDIDOCOMPRA'
       'WHERE'
-      '  PDCPCSTATUS = "E"  and (%MFiltro)')
+      '  PDCPCSTATUS = ''E''  and (%MFiltro)')
     Macros = <
       item
         DataType = ftString
@@ -2618,7 +2618,7 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
       'FROM'
       '  PEDIDOCOMPRA'
       'WHERE'
-      '  PDCPCSTATUS = "F"  and (%MFiltro)')
+      '  PDCPCSTATUS = ''F''  and (%MFiltro)')
     Macros = <
       item
         DataType = ftString
@@ -2649,10 +2649,10 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
       'MovimentoDiversoItem.MOVDA13ID = MovimentoDiverso.MOVDA13ID and'
       'MovimentoDiverso.FORNICOD = Fornecedor.FORNICOD and'
       'MovimentoDiversoItem.PRODICOD = Produto.PRODICOD and'
-      'MovimentoDiverso.MOVDCTROCA = "S" and'
+      'MovimentoDiverso.MOVDCTROCA = ''S'' and'
       
-        '(MovimentoDiverso.MOVDCTROCASTAT = "S" or MovimentoDiverso.MOVDC' +
-        'TROCASTAT = "E")'
+        '(MovimentoDiverso.MOVDCTROCASTAT = ''S'' or MovimentoDiverso.MOVDC' +
+        'TROCASTAT = ''E'')'
       'order by'
       'MovimentoDiverso.MOVDDMOVIMENTO')
     Macros = <

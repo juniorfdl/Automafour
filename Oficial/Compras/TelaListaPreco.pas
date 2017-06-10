@@ -245,15 +245,15 @@ begin
   inherited;
   dsLista.AutoEdit := True;
   SQLLista.Close;
-  SQLLista.MacroByName('MFiltro').Value := 'STATUS = "A"';
+  SQLLista.MacroByName('MFiltro').Value := 'STATUS = ''A''';
   if EDTNF.Text <> '' then
-    SQLLista.MacroByName('MNF').Value     := 'NRONF = "'+EDTNF.Text+'"'
+    SQLLista.MacroByName('MNF').Value     := 'NRONF = '''+EDTNF.Text+''''
   else
     SQLLista.MacroByName('MNF').Value := '0=0';
 
   if (de.Text <> '  /  /    ') then
-    SQLLista.MacroByName('MData').Value := 'DATA >= "' + FormatDateTime('mm/dd/yyyy', De.Date)  + '" and ' +
-                                           'DATA <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"'
+    SQLLista.MacroByName('MData').Value := 'DATA >= ''' + FormatDateTime('mm/dd/yyyy', De.Date)  + ''' and ' +
+                                           'DATA <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + ''''
   else
     SQLLista.MacroByName('MData').Value := '0=0';
 
@@ -342,7 +342,7 @@ begin
       try
         dm.SQLTemplate.Close;
         dm.SQLTemplate.sql.Clear;
-        dm.SQLTemplate.sql.Add('Update PRODUTO Set Pendente="S", PRODN3PERCMARGLUCR = '+ ConvFloatToStr(SQLListaPERCMGVAREJO.Value));
+        dm.SQLTemplate.sql.Add('Update PRODUTO Set Pendente=''S'', PRODN3PERCMARGLUCR = '+ ConvFloatToStr(SQLListaPERCMGVAREJO.Value));
         if SQLListaPERCMGVAREJO.Value > 0 then
           dm.SQLTemplate.sql.Add(', PRODN3PERCMGLVFIXA = '+ ConvFloatToStr(SQLListaPERCMGVAREJO.Value));
 
@@ -386,8 +386,8 @@ begin
         if NovoCustoMedio > 0 then
           dm.SQLTemplate.sql.Add(', PRODN3VLRCUSTOMED = '+ ConvFloatToStr(NovoCustoMedio));
 
-        dm.SQLTemplate.SQL.Add(', REGISTRO="' + FormatDateTime('mm/dd/yyyy hh:mm:ss', Now) + '"') ; // REGISTRO
-        dm.SQLTemplate.SQL.Add(', PRODDULTALTER="' + FormatDateTime('mm/dd/yyyy', Now) + '"') ;     // DATA ULT ALTERACAO
+        dm.SQLTemplate.SQL.Add(', REGISTRO=''' + FormatDateTime('mm/dd/yyyy hh:mm:ss', Now) + '''') ; // REGISTRO
+        dm.SQLTemplate.SQL.Add(', PRODDULTALTER=''' + FormatDateTime('mm/dd/yyyy', Now) + '''') ;     // DATA ULT ALTERACAO
         dm.SQLTemplate.sql.Add(' Where PRODIPRINCIPAL = '+ SQLLocate('PRODUTO','PRODICOD','PRODIPRINCIPAL',SQLListaPRODICOD.AsString));
         dm.SQLTemplate.ExecSQL;
 
@@ -419,8 +419,8 @@ begin
       try
         dm.SQLTemplate.Close;
         dm.SQLTemplate.sql.Clear;
-        dm.SQLTemplate.sql.Add('Update NOTACOMPRA Set NOCPCSTATUS="P", PENDENTE="S" ');
-        dm.SQLTemplate.sql.Add('Where NOCPA13ID = "'+ SQLListaNOCPA13ID.AsString+'"');
+        dm.SQLTemplate.sql.Add('Update NOTACOMPRA Set NOCPCSTATUS=''P'', PENDENTE=''S'' ');
+        dm.SQLTemplate.sql.Add('Where NOCPA13ID = '''+ SQLListaNOCPA13ID.AsString+'''');
         dm.SQLTemplate.ExecSQL;
       except
         Application.ProcessMessages;
@@ -429,7 +429,7 @@ begin
       SQLLista.Next;
     end;
   SQLLista.Close;
-  SQLLista.MacroByName('MFiltro').Value := 'STATUS = "A"';
+  SQLLista.MacroByName('MFiltro').Value := 'STATUS = ''A''';
   SQLLista.Open;
 end;
 
@@ -452,16 +452,16 @@ begin
   'LEFT JOIN OPERACAOESTOQUE O ON O.OPESICOD = N.OPESICOD '+
   'Where %Filtro and %NroNF and %Periodo';
   SQLPesquisa.Prepare;
-  SQLPesquisa.MacroByName('Filtro').AsString := 'N.NOCPCSTATUS = "A" and OPESCGERAFINANCEIRO="S" and OPESCENTRADASAIDA="E"';
+  SQLPesquisa.MacroByName('Filtro').AsString := 'N.NOCPCSTATUS = ''A'' and OPESCGERAFINANCEIRO=''S'' and OPESCENTRADASAIDA=''E''';
 
   if EDTNF.Text <> '' then
-    SQLPesquisa.MacroByName('NroNF').AsString  := 'N.NOCPA30NRO  = "'+ EDTNF.Text + '"'
+    SQLPesquisa.MacroByName('NroNF').AsString  := 'N.NOCPA30NRO  = '''+ EDTNF.Text + ''''
   else
     SQLPesquisa.MacroByName('NroNF').AsString  := '0=0';
 
   if ( (de.Date > 0) and (ate.date>0) ) then
-    SQLPesquisa.MacrobyName('Periodo').Value   := 'N.NOCPDRECEBIMENTO >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                  'N.NOCPDRECEBIMENTO <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"'
+    SQLPesquisa.MacrobyName('Periodo').Value   := 'N.NOCPDRECEBIMENTO >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                  'N.NOCPDRECEBIMENTO <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + ''''
   else
     SQLPesquisa.MacrobyName('Periodo').Value   := '0=0';
 
@@ -487,7 +487,7 @@ begin
 
       SQLTeste.Close;
       SQLTeste.SQL.Text := 'Select PRODICOD From LISTAPRECO where PRODICOD = ' + SQLPesquisa.FieldByName('PRODICOD').AsString +
-                           ' and STATUS="A"';
+                           ' and STATUS=''A''';
       SQLTeste.Open;
       if SQLTeste.IsEmpty then
         begin
@@ -582,7 +582,7 @@ begin
   SQLPesquisa.EnableControls;
   SQLLista.EnableControls;
   SQLLista.Close;
-  SQLLista.MacroByName('MFiltro').Value := 'STATUS = "A"';
+  SQLLista.MacroByName('MFiltro').Value := 'STATUS = ''A''';
   SQLLista.Open;
 end;
 
@@ -597,7 +597,7 @@ begin
           dm.SQLTemplate.Close;
           dm.SQLTemplate.sql.Clear;
           dm.SQLTemplate.sql.Add('Delete From LISTAPRECO');
-          dm.SQLTemplate.sql.Add('Where PRODICOD = '+SQLListaPRODICOD.AsString+' and REMOVEITEM="S"');
+          dm.SQLTemplate.sql.Add('Where PRODICOD = '+SQLListaPRODICOD.AsString+' and REMOVEITEM=''S''');
           dm.SQLTemplate.ExecSQL;
         end;
       SQLLista.Next;
@@ -724,15 +724,15 @@ begin
   inherited;
   dsLista.AutoEdit := True;
   SQLLista.Close;
-  SQLLista.MacroByName('MFiltro').Value := 'STATUS = "E"';
+  SQLLista.MacroByName('MFiltro').Value := 'STATUS = ''E''';
   if EDTNF.Text <> '' then
-    SQLLista.MacroByName('MNF').Value     := 'NRONF = "'+EDTNF.Text+'"'
+    SQLLista.MacroByName('MNF').Value     := 'NRONF = '''+EDTNF.Text+''''
   else
   SQLLista.MacroByName('MNF').Value := '0=0';
 
   if (de.Text <> '  /  /    ') then
-    SQLLista.MacroByName('MData').Value := 'DATA >= "' + FormatDateTime('mm/dd/yyyy', De.Date)  + '" and ' +
-                                           'DATA <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"'
+    SQLLista.MacroByName('MData').Value := 'DATA >= ''' + FormatDateTime('mm/dd/yyyy', De.Date)  + ''' and ' +
+                                           'DATA <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + ''''
   else
     SQLLista.MacroByName('MData').Value := '0=0';
 
@@ -1091,7 +1091,7 @@ begin
   {Filtra Terminais que devem receber carga}
   dm.sqlconsulta.Close;
   dm.sqlconsulta.sql.clear;
-  dm.sqlconsulta.sql.Text := 'Select Termicod from Terminal where TERMA60NOMECOMPUT <> "" and TERMCTIPO="C"';
+  dm.sqlconsulta.sql.Text := 'Select Termicod from Terminal where TERMA60NOMECOMPUT <> '''' and TERMCTIPO=''C''';
   dm.sqlconsulta.Open;
   if not dm.sqlconsulta.IsEmpty then
     begin

@@ -239,7 +239,7 @@ begin
     end;
 
   if SQLTemplateLOTEA30NRO.AsString <> '' then
-    if SQLLocate('LOTE','LOTEA30NRO','LOTEA30NRO','"' + SQLTemplateLOTEA30NRO.AsString + '"') = '' then
+    if SQLLocate('LOTE','LOTEA30NRO','LOTEA30NRO','''' + SQLTemplateLOTEA30NRO.AsString + '''') = '' then
       begin
         Informa('O número de lote informado está incorreto ou não foi cadastrado. Tente novamente !');
         SQLTemplateLOTEA30NRO.FocusControl;
@@ -258,7 +258,7 @@ begin
       begin
         Application.CreateForm(TFormTelaGeralModalCadastroProdutoNumeroSerieTEMP,FormTelaGeralModalCadastroProdutoNumeroSerieTEMP);
         FormTelaGeralModalCadastroProdutoNumeroSerieTEMP.SQLProdutoSerie.Close;
-        FormTelaGeralModalCadastroProdutoNumeroSerieTEMP.SQLProdutoSerie.MacroByName('MFiltro').AsString := 'MOVDA13ID = "' + SQLTemplateMOVDA13ID.AsString + '" AND PRODICOD = ' + SQLTemplatePRODICOD.AsString;
+        FormTelaGeralModalCadastroProdutoNumeroSerieTEMP.SQLProdutoSerie.MacroByName('MFiltro').AsString := 'MOVDA13ID = ''' + SQLTemplateMOVDA13ID.AsString + ''' AND PRODICOD = ' + SQLTemplatePRODICOD.AsString;
         FormTelaGeralModalCadastroProdutoNumeroSerieTEMP.SQLProdutoSerie.Open;
         FormTelaGeralModalCadastroProdutoNumeroSerieTEMP.CodProduto    := SQLTemplatePRODICOD.AsInteger;
         FormTelaGeralModalCadastroProdutoNumeroSerieTEMP.Destino       := 'E';
@@ -281,7 +281,7 @@ procedure TFormCadastroMovimentosDiversosEstoqueItem.SQLTemplateLOTEA30NROChange
 begin
   inherited;
   if (Sender as TField).AsString <> '' then
-    if SQLLocate('LOTE','LOTEA30NRO','LOTEA30NRO','"' + SQLTemplateLOTEA30NRO.AsString + '"') = '' then
+    if SQLLocate('LOTE','LOTEA30NRO','LOTEA30NRO','''' + SQLTemplateLOTEA30NRO.AsString + '''') = '' then
       begin
         Informa('O número de lote informado está incorreto ou não foi cadastrado. Tente novamente !');
         SQLTemplateLOTEA30NRO.FocusControl;
@@ -366,7 +366,7 @@ begin
         begin
           Application.CreateForm(TFormTelaGeralModalCadastroProdutoNumeroSerieTEMP,FormTelaGeralModalCadastroProdutoNumeroSerieTEMP);
           FormTelaGeralModalCadastroProdutoNumeroSerieTEMP.SQLProdutoSerie.Close;
-          FormTelaGeralModalCadastroProdutoNumeroSerieTEMP.SQLProdutoSerie.MacroByName('MFiltro').AsString := 'MOVDA13ID = "' + SQLTemplateMOVDA13ID.AsString + '" AND PRODICOD = ' + SQLTemplatePRODICOD.AsString;
+          FormTelaGeralModalCadastroProdutoNumeroSerieTEMP.SQLProdutoSerie.MacroByName('MFiltro').AsString := 'MOVDA13ID = ''' + SQLTemplateMOVDA13ID.AsString + ''' AND PRODICOD = ' + SQLTemplatePRODICOD.AsString;
           FormTelaGeralModalCadastroProdutoNumeroSerieTEMP.SQLProdutoSerie.Open;
           FormTelaGeralModalCadastroProdutoNumeroSerieTEMP.CodProduto    := SQLTemplatePRODICOD.AsInteger;
           FormTelaGeralModalCadastroProdutoNumeroSerieTEMP.Destino       := 'E';

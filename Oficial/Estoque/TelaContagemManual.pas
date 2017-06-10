@@ -397,9 +397,9 @@ begin
     MacroByName('MFILTRO').AsString :=
       ' EMPRICOD = ' +  IntToStr(ComboEmpresa.KeyValue) +
       ' AND TERMICOD = '  + IntToStr(ComboTerminal.KeyValue) +
-      ' AND TIPO = "'     + vTipoInventario + '"' +
-      ' AND INVDDATA = "' + FormatDateTime('mm/dd/yyyy',Data.Date) +
-      '" AND PRODICOD = ' + DBEdit1.Text;
+      ' AND TIPO = '''     + vTipoInventario + '''' +
+      ' AND INVDDATA = ''' + FormatDateTime('mm/dd/yyyy',Data.Date) +
+      ''' AND PRODICOD = ' + DBEdit1.Text;
     Open;
     if not (SQLInventario.Active) then
       SQLInventario.Open;
@@ -448,8 +448,8 @@ begin
   SQLInventario.MacroByName('MFILTRO').AsString :=
     ' EMPRICOD = '      + IntToStr(ComboEmpresa.KeyValue) +
     ' AND TERMICOD = '  + IntToStr(ComboTerminal.KeyValue) +
-    ' AND TIPO = "'     + vTipoInventario + '"' +
-    ' AND INVDDATA = "' + FormatDateTime('mm/dd/yyyy',Data.Date) + '"';
+    ' AND TIPO = '''     + vTipoInventario + '''' +
+    ' AND INVDDATA = ''' + FormatDateTime('mm/dd/yyyy',Data.Date) + '''';
   if lbProdutoConsulta.Caption <> '' then
     SQLInventario.MacroByName('MProduto').AsString := 'PRODICOD = ' + lbProdutoConsulta.Caption
   else
@@ -459,8 +459,8 @@ begin
  SQLTotalContagem.MacroByName('MFILTRO').AsString :=
     ' EMPRICOD = '      + IntToStr(ComboEmpresa.KeyValue) +
     ' AND TERMICOD = '  + IntToStr(ComboTerminal.KeyValue) +
-    ' AND TIPO = "'     + vTipoInventario + '"' +
-    ' AND INVDDATA = "' + FormatDateTime('mm/dd/yyyy',Data.Date) + '"';
+    ' AND TIPO = '''     + vTipoInventario + '''' +
+    ' AND INVDDATA = ''' + FormatDateTime('mm/dd/yyyy',Data.Date) + '''';
  SQLTotalContagem.Open;
 end;
 
@@ -517,15 +517,15 @@ begin
     SQLExcluirInventario.MacroByName('MFILTRO').AsString :=
       ' EMPRICOD = '      + IntToStr(ComboEmpresa.KeyValue) +
       ' AND TERMICOD = '  + IntToStr(ComboTerminal.KeyValue) +
-      ' AND TIPO = "'     + vTipoInventario + '"' +
-      ' AND INVDDATA = "' + FormatDateTime('mm/dd/yyyy',Data.Date) + '"';
+      ' AND TIPO = '''     + vTipoInventario + '''' +
+      ' AND INVDDATA = ''' + FormatDateTime('mm/dd/yyyy',Data.Date) + '''';
     GravarExclusao;
     SQLExcluirInventario.SQL.Text := SQLEXCLUIR;
     SQLExcluirInventario.MacroByName('MFILTRO').AsString :=
       ' EMPRICOD = '      + IntToStr(ComboEmpresa.KeyValue) +
       ' AND TERMICOD = '  + IntToStr(ComboTerminal.KeyValue) +
-      ' AND TIPO = "'     + vTipoInventario + '"' +
-      ' AND INVDDATA = "' + FormatDateTime('mm/dd/yyyy',Data.Date) + '"';
+      ' AND TIPO = '''     + vTipoInventario + '''' +
+      ' AND INVDDATA = ''' + FormatDateTime('mm/dd/yyyy',Data.Date) + '''';
     SQLExcluirInventario.ExecSQL;
     SQLInventario.Close;
     SQLInventario.Open;
@@ -647,16 +647,16 @@ begin
         SQLExcluirInventario.MacroByName('MFILTRO').AsString :=
           ' EMPRICOD = '      + IntToStr(ComboEmpresa.KeyValue) +
           ' AND TERMICOD = '  + IntToStr(ComboTerminal.KeyValue) +
-          ' AND TIPO = "'     + vTipoInventario + '"' +
-          ' AND INVDDATA = "' + FormatDateTime('mm/dd/yyyy',Data.Date) + '"' +
+          ' AND TIPO = '''     + vTipoInventario + '''' +
+          ' AND INVDDATA = ''' + FormatDateTime('mm/dd/yyyy',Data.Date) + '''' +
           ' AND PRODICOD = '  + SQLInventarioPRODICOD.AsString;
         GravarExclusao;
         SQLExcluirInventario.SQL.Text := SQLEXCLUIR;
         SQLExcluirInventario.MacroByName('MFILTRO').AsString :=
           ' EMPRICOD = '      + IntToStr(ComboEmpresa.KeyValue) +
           ' AND TERMICOD = '  + IntToStr(ComboTerminal.KeyValue) +
-          ' AND TIPO = "'     + vTipoInventario + '"' +
-          ' AND INVDDATA = "' + FormatDateTime('mm/dd/yyyy',Data.Date) + '"' +
+          ' AND TIPO = '''     + vTipoInventario + '''' +
+          ' AND INVDDATA = ''' + FormatDateTime('mm/dd/yyyy',Data.Date) + '''' +
           ' AND PRODICOD = '  + SQLInventarioPRODICOD.AsString;
         SQLExcluirInventario.ExecSQL;
         SQLInventario.Close;
@@ -674,7 +674,7 @@ begin
   SQLConsultaInventario.Close;
   SQLConsultaInventario.MacroByName('MFiltro').AsString := ' EMPRICOD = '      + IntToStr(ComboEmpresa.KeyValue) +
                                                            ' AND TERMICOD = '  + IntToStr(ComboTerminal.KeyValue) +
-                                                           ' AND INVDDATA = "' + FormatDateTime('mm/dd/yyyy',Data.Date) + '"';
+                                                           ' AND INVDDATA = ''' + FormatDateTime('mm/dd/yyyy',Data.Date) + '''';
   SQLConsultaInventario.Open;
   Application.CreateForm(TFormTelaImportaItens,FormTelaImportaItens);
   case RadioGroupContagem.ItemIndex of
@@ -729,8 +729,8 @@ begin
         MacroByName('MPRODA60CODBAR').AsString := '0 = 0';
         case RadioGroupPesquisa.ItemIndex of
           0: MacroByName('MPRODICOD').AsString := 'PRODICOD = '+EditPesquisa.Text;
-          1: MacroByName('MPRODA15CODANT').AsString := 'PRODA15CODANT = "'+EditPesquisa.Text + '"';
-          2: MacroByName('MPRODA60CODBAR').AsString := 'PRODa60CODBAR = "'+EditPesquisa.Text + '"';
+          1: MacroByName('MPRODA15CODANT').AsString := 'PRODA15CODANT = '''+EditPesquisa.Text + '''';
+          2: MacroByName('MPRODA60CODBAR').AsString := 'PRODa60CODBAR = '''+EditPesquisa.Text + '''';
         end;
         Open;
         Last;
@@ -741,7 +741,7 @@ begin
             dm.SQLTemplate.Close ;
             dm.SQLTemplate.SQL.Clear ;
             dm.SQLTemplate.SQL.Add('select * from PRODUTOBARRAS') ;
-            dm.SQLTemplate.SQL.Add('where PRBAA15BARRAS = "' + EditPesquisa.Text + '"') ;
+            dm.SQLTemplate.SQL.Add('where PRBAA15BARRAS = ''' + EditPesquisa.Text + '''') ;
             dm.SQLTemplate.Open ;
             dm.SQLTemplate.First ;
             if not dm.SQLTemplate.IsEmpty then
@@ -805,8 +805,8 @@ begin
     MacroByName('MFILTRO').AsString :=
       ' EMPRICOD = ' +  IntToStr(ComboEmpresa.KeyValue) +
       ' AND TERMICOD = ' + IntToStr(ComboTerminal.KeyValue) +
-      ' AND INVDDATA = "' + FormatDateTime('mm/dd/yyyy',Data.Date) +
-      '" AND PRODICOD = ' + SQLInventarioPRODICOD.AsString;
+      ' AND INVDDATA = ''' + FormatDateTime('mm/dd/yyyy',Data.Date) +
+      ''' AND PRODICOD = ' + SQLInventarioPRODICOD.AsString;
     //ShowMessage(RealSQL.Text);
     Open;
     if not (SQLInventario.Active) then
@@ -998,10 +998,10 @@ begin
         // FECHA INVENTARIO
         SQLExec.Close;
         SQLExec.SQL.Clear;
-        SQLExec.SQL.ADD('UPDATE INVENTARIOESTOQUE SET Pendente="S", INVDFECHAMENTO = "' + FormatDateTime('mm/dd/yyyy',Date) + '"');
+        SQLExec.SQL.ADD('UPDATE INVENTARIOESTOQUE SET Pendente=''S'', INVDFECHAMENTO = ''' + FormatDateTime('mm/dd/yyyy',Date) + '''');
         SQLExec.SQL.ADD(' WHERE EMPRICOD = ' +  IntToStr(SQLInventarioEMPRICOD.Value));
         SQLExec.SQL.ADD(' AND TERMICOD = ' + IntToStr(SQLInventarioTERMICOD.Value));
-        SQLExec.SQL.ADD(' AND INVDDATA = "' + FormatDateTime('mm/dd/yyyy',Data.Date) + '"');
+        SQLExec.SQL.ADD(' AND INVDDATA = ''' + FormatDateTime('mm/dd/yyyy',Data.Date) + '''');
         SQLExec.ExecSQL;
         SQLInventario.Close;
         SQLInventario.Open;
@@ -1109,10 +1109,10 @@ begin
         // FECHA INVENTARIO
         SQLExec.Close;
         SQLExec.SQL.Clear;
-        SQLExec.SQL.ADD('UPDATE INVENTARIOESTOQUE SET Pendente="S", INVDFECHAMENTO = "' + FormatDateTime('mm/dd/yyyy',Date) + '"');
+        SQLExec.SQL.ADD('UPDATE INVENTARIOESTOQUE SET Pendente=''S'', INVDFECHAMENTO = ''' + FormatDateTime('mm/dd/yyyy',Date) + '''');
         SQLExec.SQL.ADD(' WHERE EMPRICOD = ' +  IntToStr(SQLInventarioEMPRICOD.Value));
         SQLExec.SQL.ADD(' AND TERMICOD = ' + IntToStr(SQLInventarioTERMICOD.Value));
-        SQLExec.SQL.ADD(' AND INVDDATA = "' + FormatDateTime('mm/dd/yyyy',Data.Date) + '"');
+        SQLExec.SQL.ADD(' AND INVDDATA = ''' + FormatDateTime('mm/dd/yyyy',Data.Date) + '''');
         SQLExec.ExecSQL;
         SQLInventario.Close;
         SQLInventario.Open;
@@ -1263,10 +1263,10 @@ begin
         // FECHA INVENTARIO
         SQLExec.Close;
         SQLExec.SQL.Clear;
-        SQLExec.SQL.ADD('UPDATE INVENTARIOESTOQUE SET Pendente="S", INVDFECHAMENTO = "' + FormatDateTime('mm/dd/yyyy',Date) + '"');
+        SQLExec.SQL.ADD('UPDATE INVENTARIOESTOQUE SET Pendente=''S'', INVDFECHAMENTO = ''' + FormatDateTime('mm/dd/yyyy',Date) + '''');
         SQLExec.SQL.ADD(' WHERE EMPRICOD = ' +  IntToStr(SQLInventarioEMPRICOD.Value));
         SQLExec.SQL.ADD(' AND TERMICOD = ' + IntToStr(SQLInventarioTERMICOD.Value));
-        SQLExec.SQL.ADD(' AND INVDDATA = "' + FormatDateTime('mm/dd/yyyy',Data.Date) + '"');
+        SQLExec.SQL.ADD(' AND INVDDATA = ''' + FormatDateTime('mm/dd/yyyy',Data.Date) + '''');
         SQLExec.ExecSQL;
         SQLInventario.Close;
         SQLInventario.Open;
@@ -1337,10 +1337,10 @@ begin
         ProgressBar.Update;
         try
           CodProduto := '';
-          CodProduto := Dm.SQLLocate('PRODUTOBARRAS','PRBAA15BARRAS','PRODICOD','"'+Info+'"');
+          CodProduto := Dm.SQLLocate('PRODUTOBARRAS','PRBAA15BARRAS','PRODICOD',''''+Info+'''');
 
           if (CodProduto = '') then
-            CodProduto := Dm.SQLLocate('PRODUTO','PRODA60CODBAR','PRODICOD','"'+Info+'"');
+            CodProduto := Dm.SQLLocate('PRODUTO','PRODA60CODBAR','PRODICOD',''''+Info+'''');
 
           if (CodProduto = '') then
             CodProduto := Dm.SQLLocate('PRODUTO','PRODICOD','PRODICOD', Info);
@@ -1351,9 +1351,9 @@ begin
             SQLConsultaInventario.MacroByName('MFILTRO').AsString :=
                                     ' EMPRICOD = '      + IntToStr(EmpresaCorrente)  +
                                     ' AND TERMICOD = '  + IntToStr(TerminalCorrente) +
-                                    ' AND TIPO = "'     + vTipoInventario + '"' +
-                                    ' AND INVDDATA = "' + FormatDateTime('mm/dd/yyyy',Data.Date) + '"'+
-                                    ' AND PRODICOD = "' + CodProduto +'"';
+                                    ' AND TIPO = '''     + vTipoInventario + '''' +
+                                    ' AND INVDDATA = ''' + FormatDateTime('mm/dd/yyyy',Data.Date) + ''''+
+                                    ' AND PRODICOD = ''' + CodProduto +'''';
             SQLConsultaInventario.Open;
 
             if not SQLConsultaInventario.IsEmpty then
@@ -1431,8 +1431,8 @@ begin
   dm.SQLConsulta.sql.clear;
   dm.SQLConsulta.sql.add('select sum(PRODUTOSALDO.PSLDN3QTDE*PRODUTO.PRODN3VLRCUSTO) as ValorEstoque from ');
   dm.SQLConsulta.sql.add('Produto Produto inner join ProdutoSaldo on Produto.PRODICOD = ProdutoSaldo.PRODICOD');
-  dm.SQLConsulta.sql.add('where PRODUTOSALDO.PSLDN3QTDE>0 and PRODUTO.PRODN3VLRCUSTO>0 and PRODUTO.PRODA2TIPOITEM = "00" and PRODUTO.PRODCSERVICO <> "M"');
-  dm.SQLConsulta.sql.add(' and PRODUTO.PRODCATIVO = "S" and PRODUTOSALDO.EMPRICOD = '+ intToStr(ComboEmpresa.KeyValue));
+  dm.SQLConsulta.sql.add('where PRODUTOSALDO.PSLDN3QTDE>0 and PRODUTO.PRODN3VLRCUSTO>0 and PRODUTO.PRODA2TIPOITEM = ''00'' and PRODUTO.PRODCSERVICO <> ''M''');
+  dm.SQLConsulta.sql.add(' and PRODUTO.PRODCATIVO = ''S'' and PRODUTOSALDO.EMPRICOD = '+ intToStr(ComboEmpresa.KeyValue));
   dm.SQLConsulta.Open;
   if dm.SQLConsulta.findfield('ValorEstoque').IsNull then
     nCustoEstoqueCalc := 0
@@ -1472,8 +1472,8 @@ begin
           dm.SQLConsulta.sql.clear;
           dm.SQLConsulta.sql.add('select PRODUTO.PRODICOD, PRODUTO.PRODN3VLRCUSTO, PRODUTO.UNIDICOD, PRODUTOSALDO.PSLDN3QTDE from ');
           dm.SQLConsulta.sql.add('PRODUTOSALDO inner join PRODUTO on (PRODUTO.PRODICOD  = PRODUTOSALDO.PRODICOD)');
-          dm.SQLConsulta.sql.add('where PRODUTOSALDO.PSLDN3QTDE>10 and PRODUTO.PRODN3VLRCOMPRA>0 and PRODUTO.PRODA2TIPOITEM = "00" and PRODUTO.PRODCSERVICO = "N"');
-          dm.SQLConsulta.sql.add(' and PRODUTO.PRODCATIVO = "S" and PRODUTOSALDO.EMPRICOD = '+ intToStr(ComboEmpresa.KeyValue));
+          dm.SQLConsulta.sql.add('where PRODUTOSALDO.PSLDN3QTDE>10 and PRODUTO.PRODN3VLRCOMPRA>0 and PRODUTO.PRODA2TIPOITEM = ''00'' and PRODUTO.PRODCSERVICO = ''N''');
+          dm.SQLConsulta.sql.add(' and PRODUTO.PRODCATIVO = ''S'' and PRODUTOSALDO.EMPRICOD = '+ intToStr(ComboEmpresa.KeyValue));
           dm.SQLConsulta.sql.add(' order by PRODUTOSALDO.PSLDN3QTDE asc');
           dm.SQLConsulta.Open;
 
@@ -1486,9 +1486,9 @@ begin
               SQLConsultaInventario.Close;
               SQLConsultaInventario.MacroByName('MFILTRO').AsString := ' EMPRICOD = ' +  IntToStr(ComboEmpresa.KeyValue) +
                                                                        ' AND TERMICOD = '  + IntToStr(ComboTerminal.KeyValue) +
-                                                                       ' AND TIPO = "'     + vTipoInventario + '"' +
-                                                                       ' AND INVDDATA = "' + FormatDateTime('mm/dd/yyyy',Data.Date) +
-                                                                       '" AND PRODICOD = ' + dm.SQLConsulta.findfield('PRODICOD').AsString;
+                                                                       ' AND TIPO = '''     + vTipoInventario + '''' +
+                                                                       ' AND INVDDATA = ''' + FormatDateTime('mm/dd/yyyy',Data.Date) +
+                                                                       ''' AND PRODICOD = ' + dm.SQLConsulta.findfield('PRODICOD').AsString;
               SQLConsultaInventario.Open;
 
               SQLConsultaInventario.Insert;
@@ -1539,8 +1539,8 @@ begin
           dm.SQLConsulta.sql.clear;
           dm.SQLConsulta.sql.add('select PRODUTO.PRODICOD, PRODUTO.PRODN3VLRCUSTO, PRODUTO.UNIDICOD, PRODUTOSALDO.PSLDN3QTDE from ');
           dm.SQLConsulta.sql.add('PRODUTOSALDO inner join PRODUTO on (PRODUTO.PRODICOD  = PRODUTOSALDO.PRODICOD)');
-          dm.SQLConsulta.sql.add('where PRODUTOSALDO.PSLDN3QTDE>1 and PRODUTO.PRODN3VLRCOMPRA>0 and PRODUTO.PRODA2TIPOITEM = "00" and PRODUTO.PRODCSERVICO = "N"');
-          dm.SQLConsulta.sql.add(' and PRODUTO.PRODCATIVO = "S" and PRODUTOSALDO.EMPRICOD = '+ intToStr(ComboEmpresa.KeyValue));
+          dm.SQLConsulta.sql.add('where PRODUTOSALDO.PSLDN3QTDE>1 and PRODUTO.PRODN3VLRCOMPRA>0 and PRODUTO.PRODA2TIPOITEM = ''00'' and PRODUTO.PRODCSERVICO = ''N''');
+          dm.SQLConsulta.sql.add(' and PRODUTO.PRODCATIVO = ''S'' and PRODUTOSALDO.EMPRICOD = '+ intToStr(ComboEmpresa.KeyValue));
           dm.SQLConsulta.sql.add(' order by PRODUTOSALDO.PSLDN3QTDE asc');
           dm.SQLConsulta.Open;
 
@@ -1553,9 +1553,9 @@ begin
               SQLConsultaInventario.Close;
               SQLConsultaInventario.MacroByName('MFILTRO').AsString := ' EMPRICOD = ' +  IntToStr(ComboEmpresa.KeyValue) +
                                                                        ' AND TERMICOD = '  + IntToStr(ComboTerminal.KeyValue) +
-                                                                       ' AND TIPO = "'     + vTipoInventario + '"' +
-                                                                       ' AND INVDDATA = "' + FormatDateTime('mm/dd/yyyy',Data.Date) +
-                                                                       '" AND PRODICOD = ' + dm.SQLConsulta.findfield('PRODICOD').AsString;
+                                                                       ' AND TIPO = '''     + vTipoInventario + '''' +
+                                                                       ' AND INVDDATA = ''' + FormatDateTime('mm/dd/yyyy',Data.Date) +
+                                                                       ''' AND PRODICOD = ' + dm.SQLConsulta.findfield('PRODICOD').AsString;
               SQLConsultaInventario.Open;
 
               SQLConsultaInventario.Insert;
@@ -1765,10 +1765,10 @@ begin
 
               try
                 CodInterno := '';
-                CodInterno := Dm.SQLLocate('PRODUTOBARRAS','PRBAA15BARRAS','PRODICOD','"'+CodProduto+'"');
+                CodInterno := Dm.SQLLocate('PRODUTOBARRAS','PRBAA15BARRAS','PRODICOD',''''+CodProduto+'''');
 
                 if (CodInterno = '') then
-                  CodInterno := Dm.SQLLocate('PRODUTO','PRODA60CODBAR','PRODICOD','"'+CodProduto+'"');
+                  CodInterno := Dm.SQLLocate('PRODUTO','PRODA60CODBAR','PRODICOD',''''+CodProduto+'''');
 
                 if (CodInterno = '') then
                   CodInterno := Dm.SQLLocate('PRODUTO','PRODICOD','PRODICOD',CodProduto);
@@ -1779,9 +1779,9 @@ begin
                     SQLConsultaInventario.MacroByName('MFILTRO').AsString :=
                                             ' EMPRICOD = '      + IntToStr(EmpresaCorrente)  +
                                             ' AND TERMICOD = '  + IntToStr(TerminalCorrente) +
-                                            ' AND TIPO = "'     + vTipoInventario + '"' +
-                                            ' AND INVDDATA = "' + FormatDateTime('mm/dd/yyyy',Data.Date) + '"'+
-                                            ' AND PRODICOD = "' + CodInterno +'"';
+                                            ' AND TIPO = '''     + vTipoInventario + '''' +
+                                            ' AND INVDDATA = ''' + FormatDateTime('mm/dd/yyyy',Data.Date) + ''''+
+                                            ' AND PRODICOD = ''' + CodInterno +'''';
                     SQLConsultaInventario.Open;
 
                     if not SQLConsultaInventario.IsEmpty then
@@ -1908,10 +1908,10 @@ begin
 
               try
                 CodInterno := '';
-                CodInterno := Dm.SQLLocate('PRODUTOBARRAS','PRBAA15BARRAS','PRODICOD','"'+CodProduto+'"');
+                CodInterno := Dm.SQLLocate('PRODUTOBARRAS','PRBAA15BARRAS','PRODICOD',''''+CodProduto+'''');
 
                 if (CodInterno = '') then
-                  CodInterno := Dm.SQLLocate('PRODUTO','PRODA60CODBAR','PRODICOD','"'+CodProduto+'"');
+                  CodInterno := Dm.SQLLocate('PRODUTO','PRODA60CODBAR','PRODICOD',''''+CodProduto+'''');
 
                 if (CodInterno = '') then
                   CodInterno := Dm.SQLLocate('PRODUTO','PRODICOD','PRODICOD',CodProduto);
@@ -1922,9 +1922,9 @@ begin
                     SQLConsultaInventario.MacroByName('MFILTRO').AsString :=
                                             ' EMPRICOD = '      + IntToStr(EmpresaCorrente)  +
                                             ' AND TERMICOD = '  + IntToStr(TerminalCorrente) +
-                                            ' AND TIPO = "'     + vTipoInventario + '"' +
-                                            ' AND INVDDATA = "' + FormatDateTime('mm/dd/yyyy',Data.Date) + '"'+
-                                            ' AND PRODICOD = "' + CodInterno +'"';
+                                            ' AND TIPO = '''     + vTipoInventario + '''' +
+                                            ' AND INVDDATA = ''' + FormatDateTime('mm/dd/yyyy',Data.Date) + ''''+
+                                            ' AND PRODICOD = ''' + CodInterno +'''';
                     SQLConsultaInventario.Open;
 
                     if not SQLConsultaInventario.IsEmpty then

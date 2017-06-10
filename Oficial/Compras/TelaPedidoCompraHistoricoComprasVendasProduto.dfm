@@ -472,7 +472,7 @@ inherited FormTelaPedidoCompraHistoricoComprasVendasProduto: TFormTelaPedidoComp
         ' left outer join PRODUTO on CUPOMITEM.PRODICOD = PRODUTO.PRODICO' +
         'D)'
       'where'
-      '  CUPOM.CUPOCSTATUS <> "C" and'
+      '  CUPOM.CUPOCSTATUS <> ''C'' and'
       '  CUPOMITEM.CPITN3QTD > 0 and'
       '  (%MFiltro)  and'
       '  (%MProduto) and'
@@ -514,7 +514,7 @@ inherited FormTelaPedidoCompraHistoricoComprasVendasProduto: TFormTelaPedidoComp
         ' left outer join OPERACAOESTOQUE on NOTAFISCAL.OPESICOD = OPERAC' +
         'AOESTOQUE.OPESICOD'
       'where'
-      '  NOTAFISCAL.NOFICSTATUS = "E"   and'
+      '  NOTAFISCAL.NOFICSTATUS = ''E''   and'
       '  NOTAFISCALITEM.NFITN3QUANT > 0 and'
       '  (%MFiltro1)  and'
       '  (%MProduto1) and'

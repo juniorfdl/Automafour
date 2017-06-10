@@ -155,7 +155,7 @@ begin
   if FileExists('NaoTestaTerminal.txt') then
     SQLTerminal.MacroByName('MFiltro').Value := '0=0'
   else
-    SQLTerminal.MacroByName('MFiltro').Value := 'TERMA60NOMECOMPUT = "' + AnsiUpperCase(RetornarNomeComputador) + '"';
+    SQLTerminal.MacroByName('MFiltro').Value := 'TERMA60NOMECOMPUT = ''' + AnsiUpperCase(RetornarNomeComputador) + '''';
   SQLTerminal.Open ;
   if SQLTerminal.EOF then
   begin
@@ -173,7 +173,7 @@ begin
     begin
       if DM.SQLConfigVenda.FieldByName('OPESICODNF').AsVariant = Null then
         begin
-          Informa('A operação padrão de estoque para "VENDA" na nota fiscal não foi configurada, o sistema será fechado!');
+          Informa('A operação padrão de estoque para ''VENDA'' na nota fiscal não foi configurada, o sistema será fechado!');
           Halt;
           Exit;
         end
@@ -181,14 +181,14 @@ begin
         begin
           if SQLLocate('OPERACAOESTOQUE','OPESICOD','OPESCENTRADASAIDA',DM.SQLConfigVenda.FieldByName('OPESICODNF').AsString) <> 'S' then
             begin
-              Informa('A operação de estoque selecionada para "VENDA" na nota fiscal não é do tipo "SAIDA", favor verifique. O sistema será fechado!');
+              Informa('A operação de estoque selecionada para ''VENDA'' na nota fiscal não é do tipo ''SAIDA'', favor verifique. O sistema será fechado!');
               Halt;
               Exit;
             end;
         end;
       if DM.SQLConfigVenda.FieldByName('OPESICODCANCNF').AsVariant = Null then
         begin
-          Informa('A operação padrão de estoque para "CANCELAMENTO" na nota fiscal não foi configurada, o sistema será fechado!');
+          Informa('A operação padrão de estoque para ''CANCELAMENTO'' na nota fiscal não foi configurada, o sistema será fechado!');
           Halt;
           Exit;
         end
@@ -196,7 +196,7 @@ begin
         begin
           if SQLLocate('OPERACAOESTOQUE','OPESICOD','OPESCENTRADASAIDA',DM.SQLConfigVenda.FieldByName('OPESICODCANCNF').AsString) <> 'E' then
             begin
-              Informa('A operação de estoque selecionada para "CANCELAMENTO" na nota fiscal não é do tipo "ENTRADA", favor verifique. O sistema será fechado!');
+              Informa('A operação de estoque selecionada para ''CANCELAMENTO'' na nota fiscal não é do tipo ''ENTRADA'', favor verifique. O sistema será fechado!');
               Halt;
               Exit;
             end;
@@ -207,7 +207,7 @@ begin
     begin
       if DM.SQLConfigVenda.FieldByName('OPESICODPED').AsVariant = Null then
         begin
-          Informa('A operação padrão de estoque para "VENDA" no pedido de venda não foi configurada, o sistema será fechado!');
+          Informa('A operação padrão de estoque para ''VENDA'' no pedido de venda não foi configurada, o sistema será fechado!');
           Halt;
           Exit;
         end
@@ -215,14 +215,14 @@ begin
         begin
           if SQLLocate('OPERACAOESTOQUE','OPESICOD','OPESCENTRADASAIDA',DM.SQLConfigVenda.FieldByName('OPESICODPED').AsString) <> 'S' then
             begin
-              Informa('A operação de estoque selecionada para "VENDA" no pedido de venda não é do tipo "SAIDA", favor verifique. O sistema será fechado!');
+              Informa('A operação de estoque selecionada para ''VENDA'' no pedido de venda não é do tipo ''SAIDA'', favor verifique. O sistema será fechado!');
               Halt;
               Exit;
             end;
         end;
       if DM.SQLConfigVenda.FieldByName('OPESICODCANCPED').AsVariant = Null then
         begin
-          Informa('A operação padrão de estoque para "CANCELAMENTO" no pedido de venda não foi configurada, o sistema será fechado!');
+          Informa('A operação padrão de estoque para ''CANCELAMENTO'' no pedido de venda não foi configurada, o sistema será fechado!');
           Halt;
           Exit;
         end
@@ -230,7 +230,7 @@ begin
         begin
           if SQLLocate('OPERACAOESTOQUE','OPESICOD','OPESCENTRADASAIDA',DM.SQLConfigVenda.FieldByName('OPESICODCANCPED').AsString) <> 'E' then
             begin
-              Informa('A operação de estoque selecionada para "CANCELAMENTO" no pedido de venda não é do tipo "ENTRADA", favor verifique. O sistema será fechado!');
+              Informa('A operação de estoque selecionada para ''CANCELAMENTO'' no pedido de venda não é do tipo ''ENTRADA'', favor verifique. O sistema será fechado!');
               Halt;
               Exit;
             end;

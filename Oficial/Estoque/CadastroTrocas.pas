@@ -253,7 +253,7 @@ begin
   if MovimentarEstoque then
     begin
       SQLItens.Close ;
-      SQLItens.MacroByName('MFiltro').Value := 'MOVDA13ID = "' + DataSet.FieldByName('MOVDA13ID').AsString + '"';
+      SQLItens.MacroByName('MFiltro').Value := 'MOVDA13ID = ''' + DataSet.FieldByName('MOVDA13ID').AsString + '''';
       SQLItens.Open ;
 
       if DataSet.FieldByName('OPESICOD').AsString <> '' then
@@ -367,7 +367,7 @@ procedure TFormCadastroTrocas.MnTrocasClick(Sender: TObject);
 begin
   inherited;
   SQLTrocaItem.Close ;
-  SQLTrocaItem.MacroByName('MFiltro').Value := 'MOVDA13ID = "' + SQLTemplateMOVDA13ID.Value + '"' ;
+  SQLTrocaItem.MacroByName('MFiltro').Value := 'MOVDA13ID = ''' + SQLTemplateMOVDA13ID.Value + '''' ;
   SQLTrocaItem.Open ;
 
   TblImpressao.Close ;
@@ -411,7 +411,7 @@ begin
   try
     dm.SQLTemplate.Close;
     dm.SQLTemplate.SQL.Clear;
-    dm.SQLTemplate.SQL.Add('Update MOVIMENTODIVERSO Set Pendente="S", MOVDCTROCASTAT = "E" where MOVDA13ID = "'+ SQLTemplateMOVDA13ID.Value+'"');
+    dm.SQLTemplate.SQL.Add('Update MOVIMENTODIVERSO Set Pendente=''S'', MOVDCTROCASTAT = ''E'' where MOVDA13ID = '''+ SQLTemplateMOVDA13ID.Value+'''');
     dm.SQLTemplate.ExecSQL;
     ShowMessage('Operação realizada com sucesso!');
     SQLTemplate.Close;
@@ -428,7 +428,7 @@ begin
   try
     dm.SQLTemplate.Close;
     dm.SQLTemplate.SQL.Clear;
-    dm.SQLTemplate.SQL.Add('Update MOVIMENTODIVERSO Set Pendente="S", MOVDCTROCASTAT = "R" where MOVDA13ID = "'+ SQLTemplateMOVDA13ID.Value+'"');
+    dm.SQLTemplate.SQL.Add('Update MOVIMENTODIVERSO Set Pendente=''S'', MOVDCTROCASTAT = ''R'' where MOVDA13ID = '''+ SQLTemplateMOVDA13ID.Value+'''');
     dm.SQLTemplate.ExecSQL;
     ShowMessage('Operação realizada com sucesso!');
     SQLTemplate.Close;

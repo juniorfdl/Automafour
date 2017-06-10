@@ -235,11 +235,11 @@ begin
       if SQLTemplateRECICTIPO.AsString = 'U' then
         begin
           TblReciboNome.AsString                := SQLTemplateFUNCA60NOME.AsString;
-          TblReciboFUNCA11CPF.AsString          := SQlLocate('FUNCIONARIO','FUNCA13ID','FUNCA11CPF','"'+ SQLTemplateFUNCA13ID.AsString+'"');
-          TblReciboFUNCA14CNPJ.AsString         := SQlLocate('FUNCIONARIO','FUNCA13ID','FUNCA14CNPJ','"'+ SQLTemplateFUNCA13ID.AsString+'"');
-          TblReciboFUNCA15INSS.AsString         := SQlLocate('FUNCIONARIO','FUNCA13ID','FUNCA15INSS','"'+ SQLTemplateFUNCA13ID.AsString+'"');
-          TblReciboFUNCA60ENDRES.AsString       := SQlLocate('FUNCIONARIO','FUNCA13ID','FUNCA60ENDRES','"'+ SQLTemplateFUNCA13ID.AsString+'"');
-          TblReciboVeiculo.AsString             := SQLLocate('VEICULO','VEICA13ID','VEICA7PLACA','"' + SQlLocate('FUNCIONARIO','FUNCA13ID','VEICA13ID','"'+ SQLTemplateFUNCA13ID.AsString+'"')+ '"')
+          TblReciboFUNCA11CPF.AsString          := SQlLocate('FUNCIONARIO','FUNCA13ID','FUNCA11CPF',''''+ SQLTemplateFUNCA13ID.AsString+'''');
+          TblReciboFUNCA14CNPJ.AsString         := SQlLocate('FUNCIONARIO','FUNCA13ID','FUNCA14CNPJ',''''+ SQLTemplateFUNCA13ID.AsString+'''');
+          TblReciboFUNCA15INSS.AsString         := SQlLocate('FUNCIONARIO','FUNCA13ID','FUNCA15INSS',''''+ SQLTemplateFUNCA13ID.AsString+'''');
+          TblReciboFUNCA60ENDRES.AsString       := SQlLocate('FUNCIONARIO','FUNCA13ID','FUNCA60ENDRES',''''+ SQLTemplateFUNCA13ID.AsString+'''');
+          TblReciboVeiculo.AsString             := SQLLocate('VEICULO','VEICA13ID','VEICA7PLACA','''' + SQlLocate('FUNCIONARIO','FUNCA13ID','VEICA13ID',''''+ SQLTemplateFUNCA13ID.AsString+'''')+ '''')
         end
       else
         begin
@@ -289,10 +289,10 @@ begin
     TblReciboValorExtenso.AsString        := VExt[0];
     TblReciboRECITOBS.AsString            := SQLTemplateRECITOBS.AsString;
     TblReciboNmero.AsString               := SQLTemplateRECIA15NRO.AsString;
-    TblReciboEndereco.AsString            := SQLLocate('CLIENTE','CLIEA13ID','CLIEA60ENDRES','"' + SQLTemplateCLIEA13ID.AsString + '"');
-    TblReciboCidade.AsString              := SQLLocate('CLIENTE','CLIEA13ID','CLIEA60CIDRES','"' + SQLTemplateCLIEA13ID.AsString + '"');
-    TblReciboEstado.AsString              := SQLLocate('CLIENTE','CLIEA13ID','CLIEA2UFRES','"' + SQLTemplateCLIEA13ID.AsString + '"');
-    TblReciboCNPJ.AsString                := SQLLocate('CLIENTE','CLIEA13ID','CLIEA14CGC','"' + SQLTemplateCLIEA13ID.AsString + '"');
+    TblReciboEndereco.AsString            := SQLLocate('CLIENTE','CLIEA13ID','CLIEA60ENDRES','''' + SQLTemplateCLIEA13ID.AsString + '''');
+    TblReciboCidade.AsString              := SQLLocate('CLIENTE','CLIEA13ID','CLIEA60CIDRES','''' + SQLTemplateCLIEA13ID.AsString + '''');
+    TblReciboEstado.AsString              := SQLLocate('CLIENTE','CLIEA13ID','CLIEA2UFRES','''' + SQLTemplateCLIEA13ID.AsString + '''');
+    TblReciboCNPJ.AsString                := SQLLocate('CLIENTE','CLIEA13ID','CLIEA14CGC','''' + SQLTemplateCLIEA13ID.AsString + '''');
     TblReciboEMPRA60RAZAOSOC.AsString     := DM.SQLEmpresaEMPRA60RAZAOSOC.AsString;
     TblReciboEMPRA14CNPJ.AsString         := DM.SQLEmpresaEMPRA14CGC.AsString;
     TblReciboEMPRA20FAX.AsString          := DM.SQLEmpresaEMPRA20FAX.AsString;
@@ -432,7 +432,7 @@ begin
   inherited;
   Clausula := '';
   if ComboCliente.Value <> '' then
-    Clausula := 'CLIEA13ID = "' + ComboCliente.Value + '" ';
+    Clausula := 'CLIEA13ID = ''' + ComboCliente.Value + ''' ';
 
   EditProcura.Text := '';
   EditEntre.Text   := '';

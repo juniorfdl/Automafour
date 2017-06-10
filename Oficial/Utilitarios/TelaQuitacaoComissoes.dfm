@@ -1,7 +1,7 @@
 inherited FormTelaQuitacaoComissoes: TFormTelaQuitacaoComissoes
   Left = 218
   Top = 161
-  Caption = 'Tela Quita'#231#227'o Comiss'#245'es'
+  Caption = 'Tela Quitação Comissões'
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
@@ -51,7 +51,7 @@ inherited FormTelaQuitacaoComissoes: TFormTelaQuitacaoComissoes
             Top = 22
             Width = 19
             Height = 13
-            Caption = 'a&t'#233
+            Caption = 'a&té'
             FocusControl = Ate
             Font.Charset = ANSI_CHARSET
             Font.Color = 8404992
@@ -65,7 +65,7 @@ inherited FormTelaQuitacaoComissoes: TFormTelaQuitacaoComissoes
             Top = 19
             Width = 295
             Height = 13
-            Caption = 'DIMINUIR O VALOR PAGO COM LIQUIDA'#199#195'O PARCIAL'
+            Caption = 'DIMINUIR O VALOR PAGO COM LIQUIDAÇÃO PARCIAL'
           end
           object De: TDateEdit
             Left = 60
@@ -142,7 +142,7 @@ inherited FormTelaQuitacaoComissoes: TFormTelaQuitacaoComissoes
             Width = 161
             Height = 62
             Cursor = crHandPoint
-            Hint = 'Calcula as Comiss'#245'es do Per'#237'odo'
+            Hint = 'Calcula as Comissões do Período'
             Caption = '&Quitar'
             Flat = True
             Font.Charset = ANSI_CHARSET
@@ -190,7 +190,7 @@ inherited FormTelaQuitacaoComissoes: TFormTelaQuitacaoComissoes
             Width = 161
             Height = 62
             Cursor = crHandPoint
-            Hint = 'Calcula as Comiss'#245'es do Per'#237'odo'
+            Hint = 'Calcula as Comissões do Período'
             Caption = '&Atualizar'
             Flat = True
             Font.Charset = ANSI_CHARSET
@@ -210,7 +210,7 @@ inherited FormTelaQuitacaoComissoes: TFormTelaQuitacaoComissoes
             Width = 180
             Height = 17
             Cursor = crHandPoint
-            Caption = 'Comiss'#245'es de CUPOM'
+            Caption = 'Comissões de CUPOM'
             Checked = True
             Font.Charset = ANSI_CHARSET
             Font.Color = clNavy
@@ -227,7 +227,7 @@ inherited FormTelaQuitacaoComissoes: TFormTelaQuitacaoComissoes
             Width = 180
             Height = 17
             Cursor = crHandPoint
-            Caption = 'Comiss'#245'es de NOTA FISCAL'
+            Caption = 'Comissões de NOTA FISCAL'
             Checked = True
             Font.Charset = ANSI_CHARSET
             Font.Color = clNavy
@@ -244,7 +244,7 @@ inherited FormTelaQuitacaoComissoes: TFormTelaQuitacaoComissoes
             Width = 180
             Height = 17
             Cursor = crHandPoint
-            Caption = 'Comiss'#245'es de MANUTEN'#199#195'O'
+            Caption = 'Comissões de MANUTENÇÃO'
             Checked = True
             Font.Charset = ANSI_CHARSET
             Font.Color = clNavy
@@ -270,7 +270,7 @@ inherited FormTelaQuitacaoComissoes: TFormTelaQuitacaoComissoes
             Top = 5
             Width = 156
             Height = 13
-            Caption = 'Valor M'#225'ximo por Vendedor'
+            Caption = 'Valor Máximo por Vendedor'
             Font.Charset = ANSI_CHARSET
             Font.Color = clNavy
             Font.Height = -11
@@ -502,7 +502,7 @@ inherited FormTelaQuitacaoComissoes: TFormTelaQuitacaoComissoes
     DatabaseName = 'DB'
     SQL.Strings = (
       'Select '
-      '"S" SEL,'
+      '''S'' SEL,'
       'VD.VENDICOD,'
       'VD.VENDA60NOME,'
       'Sum(VC.VDCON2TOTVENDVISTA) TOTALVISTA,'
@@ -624,14 +624,14 @@ inherited FormTelaQuitacaoComissoes: TFormTelaQuitacaoComissoes
       Size = 60
     end
     object CdsTotaisTOTALVISTA: TFloatField
-      DisplayLabel = 'Total '#192' Vista'
+      DisplayLabel = 'Total À Vista'
       DisplayWidth = 19
       FieldName = 'TOTALVISTA'
       Origin = 'DB.VENDEDORCOMISSAO.VDCON2TOTVENDVISTA'
       DisplayFormat = '#,##0.00'
     end
     object CdsTotaisTOTALPRAZO: TFloatField
-      DisplayLabel = 'Total '#192' Prazo'
+      DisplayLabel = 'Total À Prazo'
       DisplayWidth = 19
       FieldName = 'TOTALPRAZO'
       Origin = 'DB.VENDEDORCOMISSAO.VDCON2TOTVENDPRAZO'

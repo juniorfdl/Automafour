@@ -501,7 +501,7 @@ begin
       begin
           Resultado := Application.MessageBox('Este Produto ja esta na lista de Transferência.' + #13 +
                                               'Deseja adicionar a Quantidade à Quantidade da lista?' + #13 +
-                                              'Clique "NÃO" para Substituir a Quantidade ou Cancelar.',
+                                              'Clique ''NÃO'' para Substituir a Quantidade ou Cancelar.',
                                               'Item Duplicado', MB_YESNOCANCEL + MB_SETFOREGROUND + MB_ICONQUESTION + MB_DEFBUTTON1);
           if Resultado = IDCancel then
              Abort;
@@ -1100,7 +1100,7 @@ begin
       {   begin
            dm.sqlConsulta.close;
            dm.sqlConsulta.sql.clear;
-           dm.sqlConsulta.sql.text := 'select CUPOA13ID from CUPOM where CUPOA13ID="'+IDCupomOrigem.Text+'"';
+           dm.sqlConsulta.sql.text := 'select CUPOA13ID from CUPOM where CUPOA13ID='''+IDCupomOrigem.Text+'''';
            dm.sqlConsulta.open;
            if dm.sqlConsulta.IsEmpty then
              begin
@@ -1333,7 +1333,7 @@ begin
       PageControl.ActivePage  := TabTransfRecebida;
       SQLTranferencia.Close;
       SQLTranferencia.MacroByName('MEmpresa').AsString := 'TRFEIEMPRDEST = ' + EmpresaPadrao;
-      SQLTranferencia.MacroByName('MFiltro').AsString  := 'TRFECRECEBIDO = "N"';
+      SQLTranferencia.MacroByName('MFiltro').AsString  := 'TRFECRECEBIDO = ''N''';
       SQLTranferencia.Open;
     end;
   if TButton(Sender).Name = 'Button3' then
@@ -1341,7 +1341,7 @@ begin
       PageControl.ActivePage  := TabTransfGerada;
       SQLTranferencia.Close;
       SQLTranferencia.MacroByName('MEmpresa').AsString := 'EMPRICOD = ' + EmpresaPadrao;
-      SQLTranferencia.MacroByName('MFiltro').AsString  := 'TRFECRECEBIDO = "S"';
+      SQLTranferencia.MacroByName('MFiltro').AsString  := 'TRFECRECEBIDO = ''S''';
       SQLTranferencia.Open;
     end;
 
@@ -1529,8 +1529,8 @@ begin
   SQLTranferencia.Close;
   SQLTranferencia.MacroByName('MEmpresa').AsString := 'TRFEIEMPRDEST = ' + EmpresaPadrao;
   case RadioRecebida.ItemIndex of
-    0 : SQLTranferencia.MacroByName('MFiltro').AsString  := 'TRFECRECEBIDO = "N"';
-    1 : SQLTranferencia.MacroByName('MFiltro').AsString  := 'TRFECRECEBIDO = "S"';
+    0 : SQLTranferencia.MacroByName('MFiltro').AsString  := 'TRFECRECEBIDO = ''N''';
+    1 : SQLTranferencia.MacroByName('MFiltro').AsString  := 'TRFECRECEBIDO = ''S''';
     2 : SQLTranferencia.MacroByName('MFiltro').AsString  := '0=0';
   end;
   SQLTranferencia.Open;
@@ -1561,8 +1561,8 @@ begin
   SQLTranferencia.Close;
   SQLTranferencia.MacroByName('MEmpresa').AsString := 'EMPRICOD = ' + EmpresaPadrao;
   case RadioGerada.ItemIndex of
-    0 : SQLTranferencia.MacroByName('MFiltro').AsString  := 'TRFECRECEBIDO = "S"';
-    1 : SQLTranferencia.MacroByName('MFiltro').AsString  := 'TRFECRECEBIDO = "N"';
+    0 : SQLTranferencia.MacroByName('MFiltro').AsString  := 'TRFECRECEBIDO = ''S''';
+    1 : SQLTranferencia.MacroByName('MFiltro').AsString  := 'TRFECRECEBIDO = ''N''';
     2 : SQLTranferencia.MacroByName('MFiltro').AsString  := '0=0';
   end;
   SQLTranferencia.Open;
@@ -1611,7 +1611,7 @@ begin
   // Gerar o Nro da Nota Fiscal
   SQLSerieNF.Close;
   SQLSerieNF.MacroByName('Empresa').value := 'EMPRICOD  = '+ EmpresaPadrao;
-  SQLSerieNF.MacroByName('Serie').Value   := 'SERIA5COD = "'+ ComboSerieNF.Value+'"';
+  SQLSerieNF.MacroByName('Serie').Value   := 'SERIA5COD = '''+ ComboSerieNF.Value+'''';
   SQLSerieNF.Open;
   Erro := True;
   if DataSet.State in [DSInsert] then
@@ -1724,10 +1724,10 @@ begin
 
               try
                 CodInterno := '';
-                CodInterno := Dm.SQLLocate('PRODUTOBARRAS','PRBAA15BARRAS','PRODICOD','"'+CodProduto+'"');
+                CodInterno := Dm.SQLLocate('PRODUTOBARRAS','PRBAA15BARRAS','PRODICOD',''''+CodProduto+'''');
 
                 if (CodInterno = '') then
-                  CodInterno := Dm.SQLLocate('PRODUTO','PRODA60CODBAR','PRODICOD','"'+CodProduto+'"');
+                  CodInterno := Dm.SQLLocate('PRODUTO','PRODA60CODBAR','PRODICOD',''''+CodProduto+'''');
 
                 if (CodInterno = '') then
                   CodInterno := Dm.SQLLocate('PRODUTO','PRODICOD','PRODICOD',CodProduto);
@@ -1740,7 +1740,7 @@ begin
                       begin
                         Resultado := Application.MessageBox('Este Produto ja esta na lista de Transferência.' + #13 +
                                                             'Deseja adicionar a Quantidade à Quantidade da lista?' + #13 +
-                                                            'Clique "NÃO" para Substituir a Quantidade ou Cancelar.',
+                                                            'Clique ''NÃO'' para Substituir a Quantidade ou Cancelar.',
                                                             'Item Duplicado', MB_YESNOCANCEL + MB_SETFOREGROUND + MB_ICONQUESTION + MB_DEFBUTTON1);
                         if Resultado = IDCancel then
                           Abort;
@@ -1828,7 +1828,7 @@ begin
                       begin
                         Resultado := Application.MessageBox('Este Produto ja esta na lista de Transferência.' + #13 +
                                                             'Deseja adicionar a Quantidade à Quantidade da lista?' + #13 +
-                                                            'Clique "NÃO" para Substituir a Quantidade ou Cancelar.',
+                                                            'Clique ''NÃO'' para Substituir a Quantidade ou Cancelar.',
                                                             'Item Duplicado', MB_YESNOCANCEL + MB_SETFOREGROUND + MB_ICONQUESTION + MB_DEFBUTTON1);
                         if Resultado = IDCancel then
                           Abort;

@@ -584,7 +584,7 @@ begin
            SQLProdutoFornecedor.Open;
            if SQLProdutoFornecedor.IsEmpty then
              begin
-               ShowMessage('Este Produto não é fornecido por ' + dm.SQLLocate('Fornecedor','Fornicod','FORNA60RAZAOSOC','"'+SQLTemplate.DataSource.DataSet.FindField('FORNICOD').AsString+'"'));
+               ShowMessage('Este Produto não é fornecido por ' + dm.SQLLocate('Fornecedor','Fornicod','FORNA60RAZAOSOC',''''+SQLTemplate.DataSource.DataSet.FindField('FORNICOD').AsString+''''));
                SQLTemplate.FieldByName('PRODICOD').FocusControl ;
              end ;
          end ;
@@ -635,7 +635,7 @@ begin
 
           // VERIFICA A CONVERSAO DA CST - Adilson, removi essa rotina pois devo dar entrada como vem na nfe o CSTIcms e trocar apenas o Cfop
           {SQLCSTConverte.Close;
-          SQLCSTConverte.MacroByName('MFiltro').AsString := 'TIPOEMPRESA = "'+dm.sqlempresaEMPRA3CRT.Value+'" AND CSTSAIDA = "'+DM.SQLTemplate.FindField('PRODISITTRIB').AsString+'"';
+          SQLCSTConverte.MacroByName('MFiltro').AsString := 'TIPOEMPRESA = '''+dm.sqlempresaEMPRA3CRT.Value+''' AND CSTSAIDA = '''+DM.SQLTemplate.FindField('PRODISITTRIB').AsString+'''';
           SQLCSTConverte.Open;
           SQLTemplateNOCA1CSTORIGEM.AsString := DM.SQLTemplate.FindField('PRODIORIGEM').AsString;
           SQLTemplateNOCIA3CSTICMS.AsString  := SQLCSTConverteCSTENTRADA.AsString;
@@ -945,7 +945,7 @@ begin
 
   // TESTAR NRO LOTE
   if SQLTemplateLOTEA30NRO.AsString <> '' then
-    if SQLLocate('LOTE','LOTEA30NRO','LOTEA30NRO','"' + SQLTemplateLOTEA30NRO.AsString + '"') = '' then
+    if SQLLocate('LOTE','LOTEA30NRO','LOTEA30NRO','''' + SQLTemplateLOTEA30NRO.AsString + '''') = '' then
         xErros := xErros + #13+#10+'O número de lote informado está incorreto ou não foi cadastrado. Tente novamente !';
 
   if (DM.SQLConfigGeralCFGECESTOQUEPORLOTE.AsString = 'S') and (SQLTemplateLOTEA30NRO.AsString = '') then
@@ -1026,7 +1026,7 @@ begin
     AtualizaPedidoCompra(CodigoPedido,PosicaoItem,QtdePed,NovaQtdePed);
 
   SQLTotalQdte.Close;
-  SQLTotalQdte.MacroByName('NotaCompra').AsString := 'NOCPA13ID = "' + DSMasterTemplate.DataSet.FieldByName('NOCPA13ID').AsString + '"';
+  SQLTotalQdte.MacroByName('NotaCompra').AsString := 'NOCPA13ID = ''' + DSMasterTemplate.DataSet.FieldByName('NOCPA13ID').AsString + '''';
   SQLTotalQdte.Open;
   if VlrMedCompra.Value > 0 then
     PercMedioCompra.Value := ((2 / VlrMedCompra.Value) -1 ) * 100;
@@ -1092,7 +1092,7 @@ begin
   If (CodigoPedido<>'') Then
     AtualizaPedidoCompra(CodigoPedido,PosicaoItem,QtdePed,0);
   SQLTotalQdte.Close;
-  SQLTotalQdte.MacroByName('NotaCompra').AsString := 'NOCPA13ID = "' + DSMasterTemplate.DataSet.FieldByName('NOCPA13ID').AsString + '"';
+  SQLTotalQdte.MacroByName('NotaCompra').AsString := 'NOCPA13ID = ''' + DSMasterTemplate.DataSet.FieldByName('NOCPA13ID').AsString + '''';
   SQLTotalQdte.Open;
   try
     PercMedioCompra.Value := ((2 / VlrMedCompra.Value) -1 ) * 100;
@@ -1167,7 +1167,7 @@ procedure TFormCadastroNotaCompraItem.DBEditLoteExit(Sender: TObject);
 begin
   inherited;
   if SQLTemplateLOTEA30NRO.AsString <> '' then
-    if SQLLocate('LOTE','LOTEA30NRO','LOTEA30NRO','"' + SQLTemplateLOTEA30NRO.AsString + '"') = '' then
+    if SQLLocate('LOTE','LOTEA30NRO','LOTEA30NRO','''' + SQLTemplateLOTEA30NRO.AsString + '''') = '' then
       begin
         Informa('O número de lote informado está incorreto ou não foi cadastrado. Tente novamente !');
         (Sender as TDBEdit).SetFocus;
@@ -1197,7 +1197,7 @@ procedure TFormCadastroNotaCompraItem.SQLTemplateAfterOpen(
 begin
   inherited;
   if SQLTotalQdte.Active then SQLTotalQdte.Close;
-  SQLTotalQdte.MacroByName('NotaCompra').AsString := 'NOCPA13ID = "' + DSMasterTemplate.DataSet.FieldByName('NOCPA13ID').AsString + '"';
+  SQLTotalQdte.MacroByName('NotaCompra').AsString := 'NOCPA13ID = ''' + DSMasterTemplate.DataSet.FieldByName('NOCPA13ID').AsString + '''';
   SQLTotalQdte.Open;
   if VlrMedCompra.Value > 0 then
     PercMedioCompra.Value := ((2 / VlrMedCompra.Value) -1 ) * 100;
@@ -1368,7 +1368,7 @@ begin
                       SQLGeral.Close ;
                       SQLGeral.SQL.Clear ;
                       SQLGeral.SQL.Add('Select PRODICOD from NOTACOMPRAITEM') ;
-                      SQLGeral.SQL.Add('where NOCPA13ID = "' + SQLTemplateNOCPA13ID.AsString+'"') ;
+                      SQLGeral.SQL.Add('where NOCPA13ID = ''' + SQLTemplateNOCPA13ID.AsString+'''') ;
                       SQLGeral.SQL.Add('and   PRODICOD = ' + SQLTemplatePRODICOD.AsString) ;
                       SQLGeral.Open ;
                       if not SQLGeral.IsEmpty then
@@ -1382,7 +1382,7 @@ begin
                   SQLProdutoFornecedor.Close;
                   SQLProdutoFornecedor.MacroByName('PRODICOD').AsString := '0=0';
                   SQLProdutoFornecedor.MacroByName('FORNICOD').AsString := 'FORNICOD = ' + SQLTemplate.DataSource.DataSet.FindField('FORNICOD').AsString;
-                  SQLProdutoFornecedor.MacroByName('Referencia').AsString := 'PRFOA30REFERENCIA = '+'"'+EditCDProduto.Text+'"';
+                  SQLProdutoFornecedor.MacroByName('Referencia').AsString := 'PRFOA30REFERENCIA = '+''''+EditCDProduto.Text+'''';
                   SQLProdutoFornecedor.Open;
                   if not SQLProdutoFornecedor.IsEmpty then
                     begin
@@ -1392,7 +1392,7 @@ begin
                       SQLGeral.SQL.Clear ;
                       SQLGeral.SQL.Add('Select PRODICOD, PRODCATIVO from PRODUTO') ;
                       SQLGeral.SQL.Add('where PRODICOD = ' + SQLProdutoFornecedor.FieldByName('PRODICOD').AsString) ;
-                      SQLGeral.SQL.Add('and PRODCATIVO = "S"') ;
+                      SQLGeral.SQL.Add('and PRODCATIVO = ''S''') ;
                       SQLGeral.Open ;
                       if SQLGeral.IsEmpty then
                         begin
@@ -1405,7 +1405,7 @@ begin
                           SQLGeral.Close ;
                           SQLGeral.SQL.Clear ;
                           SQLGeral.SQL.Add('Select PRODICOD from NOTACOMPRAITEM') ;
-                          SQLGeral.SQL.Add('where NOCPA13ID = "' + SQLTemplateNOCPA13ID.AsString+'"') ;
+                          SQLGeral.SQL.Add('where NOCPA13ID = ''' + SQLTemplateNOCPA13ID.AsString+'''') ;
                           SQLGeral.SQL.Add('and   PRODICOD = ' + SQLTemplatePRODICOD.AsString) ;
                           SQLGeral.Open ;
                           if not SQLGeral.IsEmpty then
@@ -2218,7 +2218,7 @@ var newMVA, icmCalc:Extended;
 
 begin
   inherited;
-    newMVA := StrToFloat(SQLLocate('NCM','NCMA30CODIGO','MVA','"'+Trim(DBEdit9.Text)+'"'));
+    newMVA := StrToFloat(SQLLocate('NCM','NCMA30CODIGO','MVA',''''+Trim(DBEdit9.Text)+''''));
     if (edtMVA.value > 0) and (edtMVA.Value <> newMVA) then
     begin
       if Pergunta('SIM','O MVA digitado é diferente do gravado na tabela NCM. Atualiar o MVA?') then
@@ -2228,7 +2228,7 @@ begin
 
     If (SQLTemplate.State in ([dsInsert, dsEdit])) and (edtMVA.value > 0) then
     begin
-      SQLTemplateNOCIN2PERCSUBST.Value   := StrToFloat(SQLLocate('NCM','NCMA30CODIGO','ALIQUOTAINTERNA','"'+Trim(DBEdit9.Text)+'"'));
+      SQLTemplateNOCIN2PERCSUBST.Value   := StrToFloat(SQLLocate('NCM','NCMA30CODIGO','ALIQUOTAINTERNA',''''+Trim(DBEdit9.Text)+''''));
       SQLTemplateNOCIN2VBCST.Value       := (SQLTemplateTotalItemCalc.Value + SQLTemplateNOCIN3VLRIPI.Value) + ((SQLTemplateTotalItemCalc.Value + SQLTemplateNOCIN3VLRIPI.Value) * (edtMVA.value / 100) );
       icmCalc := SQLTemplateNOCIN2VBCST.Value * ( SQLTemplateNOCIN2PERCSUBST.Value  / 100 );
       SQLTemplateNOCIN3VLRSUBST.Value    := icmCalc - SQLTemplateNOCIN3VLRICMS.Value;

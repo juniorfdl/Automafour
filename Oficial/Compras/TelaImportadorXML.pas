@@ -2176,7 +2176,7 @@ begin
       zNcm.fieldbyname('REGISTRO').AsDateTime      :=  now;
       try
         zncm.post;
-      except
+      except                                        
         zncm.cancel;
       end;
     end;
@@ -2188,8 +2188,8 @@ begin
   dm.SQLConsulta.close;
   dm.SQLConsulta.SQL.Clear;  
   dm.SQLConsulta.SQL.Add('select CEST from CESTNCM');
-  dm.SQLConsulta.SQL.Add('where NCM ="'+aNCM+'" and ');
-  dm.SQLConsulta.SQL.Add(' CEST="'+aCEST+'"');
+  dm.SQLConsulta.SQL.Add('where NCM ='''+aNCM+''' and ');
+  dm.SQLConsulta.SQL.Add(' CEST='''+aCEST+'''');
   dm.SQLConsulta.Open;
   if dm.SQLConsulta.IsEmpty then
     begin
@@ -2614,7 +2614,7 @@ begin
   {Procura NCM compativel em nossa tabela de NCMs}
   dm.SQLTemplate.Close;
   dm.SQLTemplate.sql.clear;
-  dm.SQLTemplate.sql.Text := 'Select * From NCM Where NCMA30CODIGO = "' + cdsItensncm.AsString +'"';
+  dm.SQLTemplate.sql.Text := 'Select * From NCM Where NCMA30CODIGO = ''' + cdsItensncm.AsString +'''';
   dm.SQLTemplate.Open;
   if not dm.SQLTemplate.IsEmpty then
     begin
@@ -2899,7 +2899,7 @@ begin
 
             // Registra no Banco de Dados as Notas Retornadas pela Consulta
             SQLNFSEFAZ.Close;
-            SQLNFSEFAZ.MacroByName('MFiltro').Value := 'CHAVE = "' + sChave + '"';
+            SQLNFSEFAZ.MacroByName('MFiltro').Value := 'CHAVE = ''' + sChave + '''';
             SQLNFSEFAZ.Open;
             if SQLNFSEFAZ.IsEmpty then
               begin

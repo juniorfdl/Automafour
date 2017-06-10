@@ -4024,10 +4024,10 @@ inherited FormCadastroFornecedor: TFormCadastroFornecedor
       'MovimentoDiversoItem.MOVDA13ID = MovimentoDiverso.MOVDA13ID and'
       'MovimentoDiverso.FORNICOD = Fornecedor.FORNICOD and'
       'MovimentoDiversoItem.PRODICOD = Produto.PRODICOD and'
-      'MovimentoDiverso.MOVDCTROCA = "S" and'
+      'MovimentoDiverso.MOVDCTROCA = ''S'' and'
       
-        '(MovimentoDiverso.MOVDCTROCASTAT = "S" or MovimentoDiverso.MOVDC' +
-        'TROCASTAT = "E")'
+        '(MovimentoDiverso.MOVDCTROCASTAT = ''S'' or MovimentoDiverso.MOVDC' +
+        'TROCASTAT = ''E'')'
       'order by'
       'MovimentoDiverso.MOVDDMOVIMENTO')
     Macros = <

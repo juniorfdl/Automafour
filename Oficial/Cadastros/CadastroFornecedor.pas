@@ -604,9 +604,9 @@ begin
           else
             begin
               if (SQLTemplate.State in [DSInsert]) or (CPFAlterado) then
-                if SQLLocate('FORNECEDOR','FORNA11CPF','FORNA11CPF','"' + SqlTemplate.FieldByName('FORNA11CPF').AsString + '"') <> '' then
+                if SQLLocate('FORNECEDOR','FORNA11CPF','FORNA11CPF','''' + SqlTemplate.FieldByName('FORNA11CPF').AsString + '''') <> '' then
                   begin
-                    if SQLLocate('FORNECEDOR','FORNA11CPF','FORNA20IE','"' + SqlTemplate.FieldByName('FORNA11CPF').AsString + '"') = SQLTemplateFORNA20IE.AsString then
+                    if SQLLocate('FORNECEDOR','FORNA11CPF','FORNA20IE','''' + SqlTemplate.FieldByName('FORNA11CPF').AsString + '''') = SQLTemplateFORNA20IE.AsString then
                     Begin
                         Informa('Este CPF já foi cadastrado!');
                         Abort;
@@ -633,7 +633,7 @@ begin
           else
             begin
               if (SQLTemplate.State in [DSInsert]) or (CGCAlterado) then
-                if SQLLocate('FORNECEDOR','FORNA14CGC','FORNA14CGC','"' + SqlTemplate.FieldByName('FORNA14CGC').AsString + '"') <> '' then
+                if SQLLocate('FORNECEDOR','FORNA14CGC','FORNA14CGC','''' + SqlTemplate.FieldByName('FORNA14CGC').AsString + '''') <> '' then
                   begin
                     Informa('Este CNPJ já foi cadastrado!');
                     Abort;
@@ -885,7 +885,7 @@ begin
       Close;
       SQl.Clear;
       SQL.Add('SELECT sum(CTPGN3VLR - CTPGN2TOTPAG) as TotalPagar ' + 'FROM CONTASPAGAR WHERE FORNICOD = ' + SQLTemplate.FieldByName('FORNICOD').AsString);
-      SQL.Add('AND CTPGDVENC >= ' + '"' + FormatDateTime('mm/dd/yyy',Now) + '"' + 'AND CTPGN3VLR >= CTPGN2TOTPAG');
+      SQL.Add('AND CTPGDVENC >= ' + '''' + FormatDateTime('mm/dd/yyy',Now) + '''' + 'AND CTPGN3VLR >= CTPGN2TOTPAG');
       Open;
     end;
 
@@ -896,7 +896,7 @@ begin
       Close;
       SQl.Clear;
       SQL.Add('SELECT sum(CTPGN3VLR - CTPGN2TOTPAG) as TotalVencidas ' + 'FROM CONTASPAGAR WHERE FORNICOD = ' + SQLTemplate.FieldByName('FORNICOD').AsString);
-      SQL.Add('AND CTPGDVENC < ' + '"' + FormatDateTime('mm/dd/yyy',Now) + '"' + 'AND CTPGN3VLR >= CTPGN2TOTPAG');
+      SQL.Add('AND CTPGDVENC < ' + '''' + FormatDateTime('mm/dd/yyy',Now) + '''' + 'AND CTPGN3VLR >= CTPGN2TOTPAG');
       Open;
     end;
 
@@ -1134,7 +1134,7 @@ procedure TFormCadastroFornecedor.FornecedoressemCdNFeCidade1Click(
 begin
   inherited;
   sqltemplate.close;
-  sqltemplate.macrobyname('MFiltro').Value := 'FORNIMUNICODFED is null  and Registro > "01/01/2012 01:01:01"';
+  sqltemplate.macrobyname('MFiltro').Value := 'FORNIMUNICODFED is null  and Registro > ''01/01/2012 01:01:01''';
   sqltemplate.open;
 end;
 
@@ -1143,7 +1143,7 @@ procedure TFormCadastroFornecedor.FornecedoressemBairro1Click(
 begin
   inherited;
   sqltemplate.close;
-  sqltemplate.macrobyname('MFiltro').Value := 'FORNA60BAI is null or FORNA60BAI=""  and Registro > "01/01/2012 01:01:01"';
+  sqltemplate.macrobyname('MFiltro').Value := 'FORNA60BAI is null or FORNA60BAI=''''  and Registro > ''01/01/2012 01:01:01''';
   sqltemplate.open;
 end;
 
@@ -1152,7 +1152,7 @@ procedure TFormCadastroFornecedor.FornecedoressemCidade1Click(
 begin
   inherited;
   sqltemplate.close;
-  sqltemplate.macrobyname('MFiltro').Value := 'FORNA60CID is null or FORNA60CID=""  and Registro > "01/01/2012 01:01:01"';
+  sqltemplate.macrobyname('MFiltro').Value := 'FORNA60CID is null or FORNA60CID=''''  and Registro > ''01/01/2012 01:01:01''';
   sqltemplate.open;
 end;
 
@@ -1161,7 +1161,7 @@ procedure TFormCadastroFornecedor.FornecedoressemRegimeTributario1Click(
 begin
   inherited;
   sqltemplate.close;
-  sqltemplate.macrobyname('MFiltro').Value := 'FORNCSIMPLES is null or FORNCSIMPLES="" and Registro > "01/01/2012 01:01:01"';
+  sqltemplate.macrobyname('MFiltro').Value := 'FORNCSIMPLES is null or FORNCSIMPLES='''' and Registro > ''01/01/2012 01:01:01''';
   sqltemplate.open;
 end;
 

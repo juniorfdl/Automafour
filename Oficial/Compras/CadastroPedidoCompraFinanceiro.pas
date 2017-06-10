@@ -141,7 +141,7 @@ begin
   SQLGeral.Close ;
   SQLGeral.SQL.Clear ;
   SQLGeral.SQL.Add('select Max(CTPGINROPARC) As Parcela from CONTASPAGAR') ;
-  SQLGeral.SQL.Add('where PDCPA13ID = "'+DataSet.DataSource.DataSet.FindField('PDCPA13ID').asString+'"');
+  SQLGeral.SQL.Add('where PDCPA13ID = '''+DataSet.DataSource.DataSet.FindField('PDCPA13ID').asString+'''');
   SQLGeral.Open ;
   if SQLGeral.FieldByName('Parcela').Value > 0 then
     SQLTemplateCTPGINROPARC.Value := SQLGeral.FieldByName('Parcela').Value + 1

@@ -1225,6 +1225,7 @@ inherited FormCadastroConsulta: TFormCadastroConsulta
     AllowPrintToArchive = True
     AllowPrintToFile = True
     DeviceType = 'Screen'
+    EmailSettings.ReportFormat = 'PDF'
     OutlineSettings.CreateNode = True
     OutlineSettings.CreatePageNodes = True
     OutlineSettings.Enabled = False
@@ -1233,7 +1234,7 @@ inherited FormCadastroConsulta: TFormCadastroConsulta
     TextSearchSettings.Enabled = False
     Left = 440
     Top = 2
-    Version = '7.04'
+    Version = '10.06'
     mmColumnWidth = 0
     DataPipelineName = 'PipeMalaDireta'
     object ppDetailBand1: TppDetailBand
@@ -1243,6 +1244,10 @@ inherited FormCadastroConsulta: TFormCadastroConsulta
       mmPrintPosition = 0
       object ppTextoMalaDireta: TppRichText
         UserName = 'ppTextoMalaDireta'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'ppTextoMalaDireta'
         MailMerge = True
         mmHeight = 67624460

@@ -670,9 +670,9 @@ begin
               TblEtiquetasCodigoEstrut.AsString        := SQLProdutoPRODA30CODESTRUT.AsString ;
               TblEtiquetasMarca.AsString               := SQLProdutoMarcaLookup.AsString ;
               TblEtiquetasUnidade.AsString             := SQLProdutoUnidadeLookup.AsString ;
-              TblEtiquetasDtUltEntr.AsString           := dm.SQLLocate('NOTACOMPRA','NOCPA13ID','NOCPDRECEBIMENTO','"'+SQLNotaCompraItem.FindField('NOCPA13ID').AsString+'"') ;
-              TblEtiquetasNFnumero.AsString            := dm.SQLLocate('NOTACOMPRA','NOCPA13ID','NOCPA30NRO','"'+SQLNotaCompraItem.FindField('NOCPA13ID').AsString+'"') ;
-              TblEtiquetasCOD_FORN.AsString            := dm.SQLLocate('NOTACOMPRA','NOCPA13ID','FORNICOD','"'+SQLNotaCompraItem.FindField('NOCPA13ID').AsString+'"') ;
+              TblEtiquetasDtUltEntr.AsString           := dm.SQLLocate('NOTACOMPRA','NOCPA13ID','NOCPDRECEBIMENTO',''''+SQLNotaCompraItem.FindField('NOCPA13ID').AsString+'''') ;
+              TblEtiquetasNFnumero.AsString            := dm.SQLLocate('NOTACOMPRA','NOCPA13ID','NOCPA30NRO',''''+SQLNotaCompraItem.FindField('NOCPA13ID').AsString+'''') ;
+              TblEtiquetasCOD_FORN.AsString            := dm.SQLLocate('NOTACOMPRA','NOCPA13ID','FORNICOD',''''+SQLNotaCompraItem.FindField('NOCPA13ID').AsString+'''') ;
               TblEtiquetasFornecedor.AsString          := dm.SQLLocate('FORNECEDOR','FORNICOD','FORNA60RAZAOSOC',TblEtiquetasCOD_FORN.AsString) ;
               TblEtiquetasCustFant.AsString            := '' ;
               TblEtiquetasParcPlanos.AsString          := '' ;

@@ -33,7 +33,7 @@ type
 var
   FormCadastroHistoricoPadrao: TFormCadastroHistoricoPadrao;
 
-implementation
+implementation                                                         
 
 uses DataModulo, UnitLibrary;
 
@@ -43,8 +43,8 @@ procedure TFormCadastroHistoricoPadrao.FormCreate(Sender: TObject);
 begin
   if TipoHistoricoPadrao <>  '' then
     Case TipoHistoricoPadrao[1] of
-      'C' : SQLTemplate.MacroByName('Tipo').AsString := 'HTPDCTIPO = "C"';
-      'D' : SQLTemplate.MacroByName('Tipo').AsString := 'HTPDCTIPO = "D"';
+      'C' : SQLTemplate.MacroByName('Tipo').AsString := 'HTPDCTIPO = ''C''';
+      'D' : SQLTemplate.MacroByName('Tipo').AsString := 'HTPDCTIPO = ''D''';
     end;
   inherited;
   Tabela := 'HISTORICOPADRAO';

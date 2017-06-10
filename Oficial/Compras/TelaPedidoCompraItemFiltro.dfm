@@ -2191,6 +2191,7 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
     PrinterSetup.mmPaperWidth = 0
     PrinterSetup.PaperSize = 9
     DeviceType = 'Screen'
+    EmailSettings.ReportFormat = 'PDF'
     OnPreviewFormCreate = ppListagemPreviewFormCreate
     OutlineSettings.CreateNode = True
     OutlineSettings.CreatePageNodes = True
@@ -2200,7 +2201,7 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
     TextSearchSettings.Enabled = False
     Left = 149
     Top = 296
-    Version = '7.04'
+    Version = '10.06'
     mmColumnWidth = 0
     DataPipelineName = 'PipePrincipal'
     object ppHeaderBand1: TppHeaderBand
@@ -2209,6 +2210,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       mmPrintPosition = 0
       object ppLabel1: TppLabel
         UserName = 'ppLabel1'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Listagem de Apoio a Compras'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2224,6 +2229,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object ppLbEmpresa: TppLabel
         UserName = 'ppLbEmpresa'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Empresa'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2239,6 +2248,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object pplbData: TppLabel
         UserName = 'pplbData'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Data'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2254,6 +2267,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object ppLabel3: TppLabel
         UserName = 'ppLabel3'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Produto Detalhamento'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2269,6 +2286,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object ppLine1: TppLine
         UserName = 'ppLine1'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Pen.Style = psDot
         Weight = 0.750000000000000000
         mmHeight = 139965
@@ -2279,6 +2300,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object ppLabel4: TppLabel
         UserName = 'ppLabel4'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Marca'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2294,6 +2319,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object ppLabel6: TppLabel
         UserName = 'ppLabel6'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Dt.Venda'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2309,6 +2338,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object ppLabel7: TppLabel
         UserName = 'ppLabel7'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Qtd.Tot Venda'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2324,6 +2357,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object ppLabel8: TppLabel
         UserName = 'ppLabel8'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Vlr.Venda'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2339,6 +2376,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object ppLabel10: TppLabel
         UserName = 'ppLabel10'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Dt.Compra'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2354,6 +2395,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object ppLabel11: TppLabel
         UserName = 'ppLabel11'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Qtd Comprada'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2369,6 +2414,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object ppLabel12: TppLabel
         UserName = 'ppLabel12'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Vlr.Compra'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2384,6 +2433,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object ppLabel18: TppLabel
         UserName = 'ppLabel18'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Resumo'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2400,6 +2453,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object ppLabel5: TppLabel
         UserName = 'ppLabel5'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Cd.Barras'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2420,6 +2477,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       mmPrintPosition = 0
       object ppDBText1: TppDBText
         UserName = 'ppDBText1'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePrincipal
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2436,6 +2497,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object ppDBText2: TppDBText
         UserName = 'ppDBText2'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePrincipal
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2452,6 +2517,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object ppDBText5: TppDBText
         UserName = 'ppDBText5'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePrincipal
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -2468,6 +2537,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object lbDCompra1: TppLabel
         UserName = 'lbDCompra1'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
@@ -2482,6 +2555,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object lbQCompra1: TppLabel
         UserName = 'lbQCompra1'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
@@ -2497,6 +2574,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object lbVCompra1: TppLabel
         UserName = 'lbVCompra1'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
@@ -2512,6 +2593,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object lbDCompra2: TppLabel
         UserName = 'lbDCompra2'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
@@ -2526,6 +2611,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object lbQCompra2: TppLabel
         UserName = 'lbQCompra2'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
@@ -2541,6 +2630,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object lbVCompra2: TppLabel
         UserName = 'lbVCompra2'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
@@ -2556,6 +2649,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object lbDCompra3: TppLabel
         UserName = 'lbDCompra3'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
@@ -2570,6 +2667,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object lbQCompra3: TppLabel
         UserName = 'lbQCompra3'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
@@ -2585,6 +2686,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object lbVCompra3: TppLabel
         UserName = 'lbVCompra3'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
@@ -2609,6 +2714,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object pplbEstoqueAtual: TppLabel
         UserName = 'pplbEstoqueAtual'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = '0,000'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2625,6 +2734,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object ppLabel9: TppLabel
         UserName = 'ppLabel9'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Saldo Estoque'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2641,6 +2754,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object ppLabel13: TppLabel
         UserName = 'ppLabel13'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Total de Vendas'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2657,6 +2774,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object ppLabel14: TppLabel
         UserName = 'ppLabel14'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Total de Compras'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2673,6 +2794,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object pplbQtdeTotalCompras: TppLabel
         UserName = 'pplbQtdeTotalCompras'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = '0,000'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2689,6 +2814,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object ppDBText3: TppDBText
         UserName = 'ppDBText3'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePrincipal
         DisplayFormat = 'dd/mm/yy'
         Font.Charset = DEFAULT_CHARSET
@@ -2706,6 +2835,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object ppDBText4: TppDBText
         UserName = 'ppDBText4'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePrincipal
         DisplayFormat = '##0.00'
         Font.Charset = DEFAULT_CHARSET
@@ -2724,6 +2857,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object ppDBText6: TppDBText
         UserName = 'ppDBText6'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePrincipal
         DisplayFormat = '##0.00'
         Font.Charset = DEFAULT_CHARSET
@@ -2742,6 +2879,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object ppDBText7: TppDBText
         UserName = 'ppDBText7'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePrincipal
         DisplayFormat = '##0.00'
         Font.Charset = DEFAULT_CHARSET
@@ -2760,6 +2901,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object ppDBText8: TppDBText
         UserName = 'ppDBText8'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePrincipal
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -2781,6 +2926,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       mmPrintPosition = 0
       object ppLabel2: TppLabel
         UserName = 'ppLabel2'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'www.conceitossistemas.com'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2797,6 +2946,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object ppLine2: TppLine
         UserName = 'ppLine2'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Pen.Style = psDot
         Weight = 0.750000000000000000
         mmHeight = 70115

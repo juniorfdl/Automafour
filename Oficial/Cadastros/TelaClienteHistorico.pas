@@ -119,7 +119,7 @@ begin
     DataSet.FindField('PENDENTE').AsString := 'S' ;
   DM.SQLTemplate.Close;
   DM.SQLTemplate.SQL.Clear;
-  DM.SQLTemplate.SQL.ADD('SELECT MAX(CLHTICOD) FROM CLIENTEHISTORICO WHERE CLIEA13ID = "' + SQLTemplateCLIEA13ID.AsString + '"');
+  DM.SQLTemplate.SQL.ADD('SELECT MAX(CLHTICOD) FROM CLIENTEHISTORICO WHERE CLIEA13ID = ''' + SQLTemplateCLIEA13ID.AsString + '''');
   DM.SQLTemplate.Open;
   if DM.SQLTemplate.IsEmpty then
     DataSet.FieldByName('CLHTICOD').AsInteger := 1

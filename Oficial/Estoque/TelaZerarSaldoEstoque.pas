@@ -201,7 +201,7 @@ begin
     SQLProduto.MacroByName('MVariacao').Value := '0=0';
 
   if ComboProdutoReferencia.Value <> '' then
-    SQLProduto.MacroByName('MReferencia').Value := 'Produto.PRODA60REFER = ' +'"'+ComboProdutoReferencia.Value+'"'
+    SQLProduto.MacroByName('MReferencia').Value := 'Produto.PRODA60REFER = ' +''''+ComboProdutoReferencia.Value+''''
   else
     SQLProduto.MacroByName('MReferencia').Value := '0=0';
 

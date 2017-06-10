@@ -703,6 +703,7 @@ inherited FormCadastroMovimentosDiversosEstoqueItem: TFormCadastroMovimentosDive
     AllowPrintToArchive = True
     AllowPrintToFile = True
     DeviceType = 'Screen'
+    EmailSettings.ReportFormat = 'PDF'
     OutlineSettings.CreateNode = True
     OutlineSettings.CreatePageNodes = True
     OutlineSettings.Enabled = False
@@ -711,7 +712,7 @@ inherited FormCadastroMovimentosDiversosEstoqueItem: TFormCadastroMovimentosDive
     TextSearchSettings.Enabled = False
     Left = 437
     Top = 1
-    Version = '7.04'
+    Version = '10.06'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBPipeline'
     object ppHeaderBand1: TppHeaderBand
@@ -720,6 +721,10 @@ inherited FormCadastroMovimentosDiversosEstoqueItem: TFormCadastroMovimentosDive
       mmPrintPosition = 0
       object ppLabel1: TppLabel
         UserName = 'ppLabel1'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Listagem de Itens de Movimento Diverso de Estoque'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -735,6 +740,10 @@ inherited FormCadastroMovimentosDiversosEstoqueItem: TFormCadastroMovimentosDive
       end
       object ppLabel2: TppLabel
         UserName = 'ppLabel2'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'C'#243'digo'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -750,6 +759,10 @@ inherited FormCadastroMovimentosDiversosEstoqueItem: TFormCadastroMovimentosDive
       end
       object ppLabel3: TppLabel
         UserName = 'ppLabel3'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Produto'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -765,6 +778,10 @@ inherited FormCadastroMovimentosDiversosEstoqueItem: TFormCadastroMovimentosDive
       end
       object ppLabel4: TppLabel
         UserName = 'ppLabel4'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Qtde'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -780,6 +797,10 @@ inherited FormCadastroMovimentosDiversosEstoqueItem: TFormCadastroMovimentosDive
       end
       object ppLabel5: TppLabel
         UserName = 'ppLabel5'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Lote'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -795,6 +816,10 @@ inherited FormCadastroMovimentosDiversosEstoqueItem: TFormCadastroMovimentosDive
       end
       object ppSystemVariable1: TppSystemVariable
         UserName = 'ppSystemVariable1'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         VarType = vtPageSetDesc
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -810,6 +835,10 @@ inherited FormCadastroMovimentosDiversosEstoqueItem: TFormCadastroMovimentosDive
       end
       object ppDBText5: TppDBText
         UserName = 'ppDBText5'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppDBPipeline
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -826,6 +855,10 @@ inherited FormCadastroMovimentosDiversosEstoqueItem: TFormCadastroMovimentosDive
       end
       object ppLabel6: TppLabel
         UserName = 'ppLabel6'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Movimento :'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -841,6 +874,10 @@ inherited FormCadastroMovimentosDiversosEstoqueItem: TFormCadastroMovimentosDive
       end
       object ppSystemVariable2: TppSystemVariable
         UserName = 'ppSystemVariable2'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -861,6 +898,10 @@ inherited FormCadastroMovimentosDiversosEstoqueItem: TFormCadastroMovimentosDive
       mmPrintPosition = 0
       object ppDBText1: TppDBText
         UserName = 'ppDBText1'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppDBPipeline
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -877,6 +918,10 @@ inherited FormCadastroMovimentosDiversosEstoqueItem: TFormCadastroMovimentosDive
       end
       object ppDBText2: TppDBText
         UserName = 'ppDBText2'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppDBPipeline
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -893,6 +938,10 @@ inherited FormCadastroMovimentosDiversosEstoqueItem: TFormCadastroMovimentosDive
       end
       object Qtde: TppDBText
         UserName = 'Qtde'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppDBPipeline
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -909,6 +958,10 @@ inherited FormCadastroMovimentosDiversosEstoqueItem: TFormCadastroMovimentosDive
       end
       object ppDBText4: TppDBText
         UserName = 'ppDBText4'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppDBPipeline
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -930,6 +983,10 @@ inherited FormCadastroMovimentosDiversosEstoqueItem: TFormCadastroMovimentosDive
       mmPrintPosition = 0
       object ppDBCalc1: TppDBCalc
         UserName = 'ppDBCalc1'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppDBPipeline
         DisplayFormat = '###0.00'
         Font.Charset = DEFAULT_CHARSET
@@ -947,6 +1004,10 @@ inherited FormCadastroMovimentosDiversosEstoqueItem: TFormCadastroMovimentosDive
       end
       object ppDBCalc2: TppDBCalc
         UserName = 'ppDBCalc2'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = ppDBPipeline
         DisplayFormat = '###0.00'
         Font.Charset = DEFAULT_CHARSET
@@ -965,6 +1026,10 @@ inherited FormCadastroMovimentosDiversosEstoqueItem: TFormCadastroMovimentosDive
       end
       object ppLabel7: TppLabel
         UserName = 'ppLabel7'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Produtos :'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack

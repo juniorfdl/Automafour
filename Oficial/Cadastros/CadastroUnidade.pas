@@ -72,7 +72,7 @@ begin
 
   // Testar se a Unidade ja existe!!!
   SQLUnidadeAux.Close;
-  SQLUnidadeAux.MacroByName('Descricao').Value := 'UNIDA5DESCR = ' + '"' + SQLTemplateUNIDA5DESCR.Value + '"';
+  SQLUnidadeAux.MacroByName('Descricao').Value := 'UNIDA5DESCR = ' + '''' + SQLTemplateUNIDA5DESCR.Value + '''';
   SQLUnidadeAux.Open;
   If (not SQLUnidadeAux.IsEmpty) and (dstemplate.State = dsinsert) Then
     Begin

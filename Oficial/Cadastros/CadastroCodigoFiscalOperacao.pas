@@ -54,10 +54,10 @@ procedure TFormCadastroCodigoFiscalOperacao.SQLTemplateBeforePost(
 begin
   inherited;
   if AlterouChave then
-{  if SQLLocate('CFOP','CFOPA5COD','CFOPA5COD','"' + SQLTemplateCFOPA5COD.AsString + '"') <> '' then
+{  if SQLLocate('CFOP','CFOPA5COD','CFOPA5COD','''' + SQLTemplateCFOPA5COD.AsString + '''') <> '' then
     begin
       ShowMessage('Atenção !  Codigo CFOP Já Cadastrado com a Descricao '+#13+#10+
-      SQLLocate('CFOP','CFOPA5COD','CFOPA60DESCR','"' + SQLTemplateCFOPA5COD.AsString + '"')) ;
+      SQLLocate('CFOP','CFOPA5COD','CFOPA60DESCR','''' + SQLTemplateCFOPA5COD.AsString + '''')) ;
       Abort;
     end; }
 

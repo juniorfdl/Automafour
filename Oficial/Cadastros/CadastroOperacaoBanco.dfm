@@ -270,7 +270,7 @@ inherited FormCadastroOperacaoBanco: TFormCadastroOperacaoBanco
     DatabaseName = 'DB'
     SQL.Strings = (
       'SELECT * from PLANODECONTAS'
-      'Where PLCTCANALSINT = "A"')
+      'Where PLCTCANALSINT = ''A''')
     Macros = <>
     Left = 48
     Top = 212
