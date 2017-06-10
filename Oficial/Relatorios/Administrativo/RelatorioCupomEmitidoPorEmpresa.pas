@@ -18,7 +18,7 @@ type
     TblTemporariaPRODICOD: TIntegerField;
     TblTemporariaPRODA60DESCR: TStringField;
     TblTemporariaCPITTOBS: TStringField;
-    TblTemporariaCPITN3QTD: TBCDField;
+    TblTemporariaCPITN3QTD: TFloatField;
     TblTemporariaVENDICOD: TIntegerField;
     TblTemporariaVendedorNome: TStringField;
     TblTemporariaCLIEA13ID: TStringField;
@@ -36,7 +36,7 @@ type
     SQLVendasGRADICOD: TIntegerField;
     SQLVendasGRTMICOD: TIntegerField;
     SQLVendasCORICOD: TIntegerField;
-    SQLVendasCPITN3QTD: TBCDField;
+    SQLVendasCPITN3QTD: TFloatField;
     SQLVendasVENDICOD: TIntegerField;
     SQLVendasCLIEA13ID: TStringField;
     SQLVendasCPITTOBS: TStringField;

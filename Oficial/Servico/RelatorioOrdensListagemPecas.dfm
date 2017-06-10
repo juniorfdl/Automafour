@@ -635,11 +635,9 @@ object FormListagemOrdemMec_Itens: TFormListagemOrdemMec_Itens
     object SQLOrdItensPRODICOD: TIntegerField
       FieldName = 'PRODICOD'
     end
-    object SQLOrdItensSUM: TBCDField
+    object SQLOrdItensSUM: TFloatField
       FieldName = 'SUM'
       DisplayFormat = ',0.00;-,0.00'
-      Precision = 15
-      Size = 3
     end
     object SQLOrdItensTOTAL: TFloatField
       FieldName = 'TOTAL'

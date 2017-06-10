@@ -4601,28 +4601,22 @@ object FormTelaReceituario: TFormTelaReceituario
       FixedChar = True
       Size = 254
     end
-    object SQLClienteReceituarioCLRCN3VLRTOTAL: TBCDField
+    object SQLClienteReceituarioCLRCN3VLRTOTAL: TFloatField
       DisplayLabel = 'Vlr.Total'
       FieldName = 'CLRCN3VLRTOTAL'
       Origin = 'DB.CLIENTERECEITUARIO.CLRCN3VLRTOTAL'
       OnChange = SQLClienteReceituarioCLRCN3VLRTOTALChange
-      Precision = 15
-      Size = 3
     end
-    object SQLClienteReceituarioCLRCN3VLRSINAL: TBCDField
+    object SQLClienteReceituarioCLRCN3VLRSINAL: TFloatField
       DisplayLabel = 'Vlr.Sinal'
       FieldName = 'CLRCN3VLRSINAL'
       Origin = 'DB.CLIENTERECEITUARIO.CLRCN3VLRSINAL'
       OnChange = SQLClienteReceituarioCLRCN3VLRTOTALChange
-      Precision = 15
-      Size = 3
     end
-    object SQLClienteReceituarioCLRCN3VLRSALDO: TBCDField
+    object SQLClienteReceituarioCLRCN3VLRSALDO: TFloatField
       DisplayLabel = 'Vlr.Saldo'
       FieldName = 'CLRCN3VLRSALDO'
       Origin = 'DB.CLIENTERECEITUARIO.CLRCN3VLRSALDO'
-      Precision = 15
-      Size = 3
     end
     object SQLClienteReceituarioPENDENTE: TStringField
       FieldName = 'PENDENTE'
@@ -4661,7 +4655,7 @@ object FormTelaReceituario: TFormTelaReceituario
     PrinterSetup.mmMarginTop = 1270
     PrinterSetup.mmPaperHeight = 190000
     PrinterSetup.mmPaperWidth = 250000
-    PrinterSetup.PaperSize = 177
+    PrinterSetup.PaperSize = 139
     Units = utMillimeters
     DeviceType = 'Printer'
     EmailSettings.ReportFormat = 'PDF'
@@ -5614,7 +5608,7 @@ object FormTelaReceituario: TFormTelaReceituario
     PrinterSetup.mmMarginTop = 1270
     PrinterSetup.mmPaperHeight = 210000
     PrinterSetup.mmPaperWidth = 250000
-    PrinterSetup.PaperSize = 177
+    PrinterSetup.PaperSize = 139
     Units = utMillimeters
     DeviceType = 'Printer'
     EmailSettings.ReportFormat = 'PDF'
@@ -6400,7 +6394,7 @@ object FormTelaReceituario: TFormTelaReceituario
     PrinterSetup.mmMarginTop = 1270
     PrinterSetup.mmPaperHeight = 240000
     PrinterSetup.mmPaperWidth = 250000
-    PrinterSetup.PaperSize = 177
+    PrinterSetup.PaperSize = 139
     Units = utMillimeters
     DeviceType = 'Printer'
     EmailSettings.ReportFormat = 'PDF'
@@ -8197,31 +8191,25 @@ object FormTelaReceituario: TFormTelaReceituario
       FixedChar = True
       Size = 254
     end
-    object TblOSCLRCN3VLRTOTAL: TBCDField
+    object TblOSCLRCN3VLRTOTAL: TFloatField
       DisplayLabel = 'Vlr.Total'
       FieldName = 'CLRCN3VLRTOTAL'
       Origin = 'DB.CLIENTERECEITUARIO.CLRCN3VLRTOTAL'
       OnChange = SQLClienteReceituarioCLRCN3VLRTOTALChange
       DisplayFormat = 'R$ #,##0.00'
-      Precision = 15
-      Size = 3
     end
-    object TblOSCLRCN3VLRSINAL: TBCDField
+    object TblOSCLRCN3VLRSINAL: TFloatField
       DisplayLabel = 'Vlr.Sinal'
       FieldName = 'CLRCN3VLRSINAL'
       Origin = 'DB.CLIENTERECEITUARIO.CLRCN3VLRSINAL'
       OnChange = SQLClienteReceituarioCLRCN3VLRTOTALChange
       DisplayFormat = 'R$ #,##0.00'
-      Precision = 15
-      Size = 3
     end
-    object TblOSCLRCN3VLRSALDO: TBCDField
+    object TblOSCLRCN3VLRSALDO: TFloatField
       DisplayLabel = 'Vlr.Saldo'
       FieldName = 'CLRCN3VLRSALDO'
       Origin = 'DB.CLIENTERECEITUARIO.CLRCN3VLRSALDO'
       DisplayFormat = 'R$ #,##0.00'
-      Precision = 15
-      Size = 3
     end
     object TblOSEmpresa: TStringField
       FieldName = 'Empresa'

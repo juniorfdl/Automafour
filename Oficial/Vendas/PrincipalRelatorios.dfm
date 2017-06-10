@@ -2,7 +2,7 @@ object FormPrincipalRelatorios: TFormPrincipalRelatorios
   Left = 367
   Top = 192
   Width = 607
-  Height = 383
+  Height = 384
   AutoSize = True
   Caption = 'Relat'#243'rio para Resumo de Caixa'
   Color = clWhite
@@ -1176,19 +1176,15 @@ object FormPrincipalRelatorios: TFormPrincipalRelatorios
       FixedChar = True
       Size = 60
     end
-    object SQLTotalOperacaoCREDITOS: TBCDField
+    object SQLTotalOperacaoCREDITOS: TFloatField
       FieldName = 'CREDITOS'
       Origin = 'DB.MOVIMENTOCAIXA.MVCXN2VLRCRED'
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
-    object SQLTotalOperacaoDEBITOS: TBCDField
+    object SQLTotalOperacaoDEBITOS: TFloatField
       FieldName = 'DEBITOS'
       Origin = 'DB.MOVIMENTOCAIXA.MVCXN2VLRDEB'
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
     object SQLTotalOperacaoSALDO: TFloatField
       FieldName = 'SALDO'
@@ -1256,17 +1252,13 @@ object FormPrincipalRelatorios: TFormPrincipalRelatorios
       FixedChar = True
       Size = 30
     end
-    object SQLTotaNumerarioVLRCREDITO: TBCDField
+    object SQLTotaNumerarioVLRCREDITO: TFloatField
       FieldName = 'VLRCREDITO'
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
-    object SQLTotaNumerarioVLRDEBITO: TBCDField
+    object SQLTotaNumerarioVLRDEBITO: TFloatField
       FieldName = 'VLRDEBITO'
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
     object SQLTotaNumerarioSALDO: TFloatField
       FieldName = 'SALDO'
@@ -1327,10 +1319,8 @@ object FormPrincipalRelatorios: TFormPrincipalRelatorios
       end>
     Left = 363
     Top = 257
-    object SQLVendaCartoesChequesCTRCN2VLR: TBCDField
+    object SQLVendaCartoesChequesCTRCN2VLR: TFloatField
       FieldName = 'CTRCN2VLR'
-      Precision = 15
-      Size = 3
     end
     object SQLVendaCartoesChequesCTRCDVENC: TDateTimeField
       FieldName = 'CTRCDVENC'
@@ -1423,10 +1413,8 @@ object FormPrincipalRelatorios: TFormPrincipalRelatorios
     object SQLItensVendidosPRODICOD: TIntegerField
       FieldName = 'PRODICOD'
     end
-    object SQLItensVendidosCPITN3VLRUNIT: TBCDField
+    object SQLItensVendidosCPITN3VLRUNIT: TFloatField
       FieldName = 'CPITN3VLRUNIT'
-      Precision = 15
-      Size = 3
     end
     object SQLItensVendidosQTDE: TFloatField
       FieldName = 'QTDE'

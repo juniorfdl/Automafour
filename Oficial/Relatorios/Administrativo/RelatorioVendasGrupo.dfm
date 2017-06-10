@@ -1,7 +1,7 @@
 inherited FormRelatorioVendasGrupo: TFormRelatorioVendasGrupo
   Left = 381
   Top = 190
-  Caption = 'Relat'#243'rio de Vendas Por Grupo'
+  Caption = 'Relatório de Vendas Por Grupo'
   PixelsPerInch = 96
   TextHeight = 13
   inherited TblTemporaria: TTable
@@ -71,9 +71,9 @@ inherited FormRelatorioVendasGrupo: TFormRelatorioVendasGrupo
         'ACAOESTOQUE.OPESICOD'
       'where'
       '  NOTAFISCAL.NOFICSTATUS = "E" and'
-      '  OPERACAOESTOQUE.OPESCGERAFINANCEIRO = '#39'S'#39'  and'
-      '  OPERACAOESTOQUE.OPESCENTRADASAIDA   = '#39'S'#39'  and'
-      '  OPERACAOESTOQUE.OPESCORIGEMDESTINO  = '#39'C'#39'  and'
+      '  OPERACAOESTOQUE.OPESCGERAFINANCEIRO = ''S''  and'
+      '  OPERACAOESTOQUE.OPESCENTRADASAIDA   = ''S''  and'
+      '  OPERACAOESTOQUE.OPESCORIGEMDESTINO  = ''C''  and'
       '  (%MEmpresaNF) and'
       '  (%MDataNF)'
       'group by'
@@ -117,10 +117,8 @@ inherited FormRelatorioVendasGrupo: TFormRelatorioVendasGrupo
     object SQLVendaGrupoTOTAL: TFloatField
       FieldName = 'TOTAL'
     end
-    object SQLVendaGrupoQTDETOTAL: TBCDField
+    object SQLVendaGrupoQTDETOTAL: TFloatField
       FieldName = 'QTDETOTAL'
-      Precision = 15
-      Size = 3
     end
   end
   object Report: TCrpe

@@ -7,9 +7,9 @@ inherited FormTelaExportacaoBalanca: TFormTelaExportacaoBalanca
   PixelsPerInch = 96
   TextHeight = 13
   inherited ScrollBoxFundo: TScrollBox
-    Height = 534
+    Height = 533
     inherited PanelCentral: TPanel
-      Height = 450
+      Height = 449
       object Label3: TLabel [0]
         Left = 13
         Top = 17
@@ -53,7 +53,7 @@ inherited FormTelaExportacaoBalanca: TFormTelaExportacaoBalanca
       end
       inherited PanelBarra: TPanel
         Width = 0
-        Height = 450
+        Height = 449
       end
       object ComboBalanca: TRxDBLookupCombo
         Left = 11
@@ -560,23 +560,17 @@ inherited FormTelaExportacaoBalanca: TFormTelaExportacaoBalanca
       FieldName = 'ICMSICOD'
       Origin = 'DB.PRODUTO.ICMSICOD'
     end
-    object SQLProdutoPRODN3PESOBRUTO: TBCDField
+    object SQLProdutoPRODN3PESOBRUTO: TFloatField
       FieldName = 'PRODN3PESOBRUTO'
       Origin = 'DB.PRODUTO.PRODN3PESOBRUTO'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoPRODN3PESOLIQ: TBCDField
+    object SQLProdutoPRODN3PESOLIQ: TFloatField
       FieldName = 'PRODN3PESOLIQ'
       Origin = 'DB.PRODUTO.PRODN3PESOLIQ'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoPRODN3CAPACEMBAL: TBCDField
+    object SQLProdutoPRODN3CAPACEMBAL: TFloatField
       FieldName = 'PRODN3CAPACEMBAL'
       Origin = 'DB.PRODUTO.PRODN3CAPACEMBAL'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoPRODDCAD: TDateTimeField
       FieldName = 'PRODDCAD'
@@ -586,17 +580,13 @@ inherited FormTelaExportacaoBalanca: TFormTelaExportacaoBalanca
       FieldName = 'PRODDULTALTER'
       Origin = 'DB.PRODUTO.PRODDULTALTER'
     end
-    object SQLProdutoPRODN3VLRVENDA: TBCDField
+    object SQLProdutoPRODN3VLRVENDA: TFloatField
       FieldName = 'PRODN3VLRVENDA'
       Origin = 'DB.PRODUTO.PRODN3VLRVENDA'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoPRODN3VLRVENDAPROM: TBCDField
+    object SQLProdutoPRODN3VLRVENDAPROM: TFloatField
       FieldName = 'PRODN3VLRVENDAPROM'
       Origin = 'DB.PRODUTO.PRODN3VLRVENDAPROM'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoPRODDINIPROMO: TDateTimeField
       FieldName = 'PRODDINIPROMO'
@@ -606,35 +596,25 @@ inherited FormTelaExportacaoBalanca: TFormTelaExportacaoBalanca
       FieldName = 'PRODDFIMPROMO'
       Origin = 'DB.PRODUTO.PRODDFIMPROMO'
     end
-    object SQLProdutoPRODN3VLRCOMPRA: TBCDField
+    object SQLProdutoPRODN3VLRCOMPRA: TFloatField
       FieldName = 'PRODN3VLRCOMPRA'
       Origin = 'DB.PRODUTO.PRODN3VLRCOMPRA'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoPRODN3VLRCUSTO: TBCDField
+    object SQLProdutoPRODN3VLRCUSTO: TFloatField
       FieldName = 'PRODN3VLRCUSTO'
       Origin = 'DB.PRODUTO.PRODN3VLRCUSTO'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoPRODN3VLRCUSTOMED: TBCDField
+    object SQLProdutoPRODN3VLRCUSTOMED: TFloatField
       FieldName = 'PRODN3VLRCUSTOMED'
       Origin = 'DB.PRODUTO.PRODN3VLRCUSTOMED'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoPRODN3PERCIPI: TBCDField
+    object SQLProdutoPRODN3PERCIPI: TFloatField
       FieldName = 'PRODN3PERCIPI'
       Origin = 'DB.PRODUTO.PRODN3PERCIPI'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoPRODN3PERCMARGLUCR: TBCDField
+    object SQLProdutoPRODN3PERCMARGLUCR: TFloatField
       FieldName = 'PRODN3PERCMARGLUCR'
       Origin = 'DB.PRODUTO.PRODN3PERCMARGLUCR'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoPRODCATIVO: TStringField
       FieldName = 'PRODCATIVO'
@@ -654,17 +634,13 @@ inherited FormTelaExportacaoBalanca: TFormTelaExportacaoBalanca
       FixedChar = True
       Size = 1
     end
-    object SQLProdutoPRODN2COMISVISTA: TBCDField
+    object SQLProdutoPRODN2COMISVISTA: TFloatField
       FieldName = 'PRODN2COMISVISTA'
       Origin = 'DB.PRODUTO.PRODN2COMISVISTA'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoPRODN2COMISPRAZO: TBCDField
+    object SQLProdutoPRODN2COMISPRAZO: TFloatField
       FieldName = 'PRODN2COMISPRAZO'
       Origin = 'DB.PRODUTO.PRODN2COMISPRAZO'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoPRODDIMOBOLIZ: TDateTimeField
       FieldName = 'PRODDIMOBOLIZ'
@@ -680,11 +656,9 @@ inherited FormTelaExportacaoBalanca: TFormTelaExportacaoBalanca
       FixedChar = True
       Size = 5
     end
-    object SQLProdutoPRODN3QTDEBAIXA: TBCDField
+    object SQLProdutoPRODN3QTDEBAIXA: TFloatField
       FieldName = 'PRODN3QTDEBAIXA'
       Origin = 'DB.PRODUTO.PRODN3QTDEBAIXA'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoCORICOD: TIntegerField
       FieldName = 'CORICOD'

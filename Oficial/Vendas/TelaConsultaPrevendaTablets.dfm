@@ -496,7 +496,7 @@ object FormConsultaPrevendaTablets: TFormConsultaPrevendaTablets
     Left = 0
     Top = 80
     Width = 1125
-    Height = 239
+    Height = 238
     Align = alClient
     BorderStyle = bsNone
     Color = clWhite
@@ -579,7 +579,7 @@ object FormConsultaPrevendaTablets: TFormConsultaPrevendaTablets
   end
   object DBGrid1: TDBGrid
     Left = 0
-    Top = 319
+    Top = 318
     Width = 1125
     Height = 207
     Align = alBottom
@@ -727,17 +727,13 @@ object FormConsultaPrevendaTablets: TFormConsultaPrevendaTablets
       FieldName = 'VENDICOD'
       Origin = 'DB.PREVENDA.VENDICOD'
     end
-    object SQLTemplatePRVDN2TOTITENS: TBCDField
+    object SQLTemplatePRVDN2TOTITENS: TFloatField
       FieldName = 'PRVDN2TOTITENS'
       Origin = 'DB.PREVENDA.PRVDN2TOTITENS'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplatePRVDN2DESC: TBCDField
+    object SQLTemplatePRVDN2DESC: TFloatField
       FieldName = 'PRVDN2DESC'
       Origin = 'DB.PREVENDA.PRVDN2DESC'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplatePRVDCIMPORT: TStringField
       FieldName = 'PRVDCIMPORT'
@@ -813,29 +809,21 @@ object FormConsultaPrevendaTablets: TFormConsultaPrevendaTablets
       FieldName = 'PRODICOD'
       Origin = 'DB.PREVENDAITEM.PRODICOD'
     end
-    object sqlitensPVITN3QTD: TBCDField
+    object sqlitensPVITN3QTD: TFloatField
       FieldName = 'PVITN3QTD'
       Origin = 'DB.PREVENDAITEM.PVITN3QTD'
-      Precision = 15
-      Size = 3
     end
-    object sqlitensPVITN3VLRUNIT: TBCDField
+    object sqlitensPVITN3VLRUNIT: TFloatField
       FieldName = 'PVITN3VLRUNIT'
       Origin = 'DB.PREVENDAITEM.PVITN3VLRUNIT'
-      Precision = 15
-      Size = 3
     end
-    object sqlitensPVITN3VLRCUSTUNIT: TBCDField
+    object sqlitensPVITN3VLRCUSTUNIT: TFloatField
       FieldName = 'PVITN3VLRCUSTUNIT'
       Origin = 'DB.PREVENDAITEM.PVITN3VLRCUSTUNIT'
-      Precision = 15
-      Size = 3
     end
-    object sqlitensPVITN2DESC: TBCDField
+    object sqlitensPVITN2DESC: TFloatField
       FieldName = 'PVITN2DESC'
       Origin = 'DB.PREVENDAITEM.PVITN2DESC'
-      Precision = 15
-      Size = 3
     end
     object sqlitensDESCRICAO: TStringField
       FieldName = 'DESCRICAO'

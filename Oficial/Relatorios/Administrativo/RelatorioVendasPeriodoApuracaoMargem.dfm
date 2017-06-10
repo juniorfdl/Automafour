@@ -66,20 +66,14 @@ inherited FormRelatorioVendasPeriodoApuracaoMargem: TFormRelatorioVendasPeriodoA
     object TblTemporariaNOFIDEMIS: TDateTimeField
       FieldName = 'NOFIDEMIS'
     end
-    object TblTemporariaNOFIN2VLRPRODUTO: TBCDField
+    object TblTemporariaNOFIN2VLRPRODUTO: TFloatField
       FieldName = 'NOFIN2VLRPRODUTO'
-      Precision = 15
-      Size = 3
     end
-    object TblTemporariaTOTAL: TBCDField
+    object TblTemporariaTOTAL: TFloatField
       FieldName = 'TOTAL'
-      Precision = 15
-      Size = 3
     end
-    object TblTemporariaNOFIN2VLRDESC: TBCDField
+    object TblTemporariaNOFIN2VLRDESC: TFloatField
       FieldName = 'NOFIN2VLRDESC'
-      Precision = 15
-      Size = 3
     end
     object TblTemporariaVENDICOD: TIntegerField
       FieldName = 'VENDICOD'
@@ -99,18 +93,14 @@ inherited FormRelatorioVendasPeriodoApuracaoMargem: TFormRelatorioVendasPeriodoA
       FixedChar = True
       Size = 60
     end
-    object TblTemporariaVLRLUCRO: TBCDField
+    object TblTemporariaVLRLUCRO: TFloatField
       FieldName = 'VLRLUCRO'
-      Precision = 15
-      Size = 3
     end
     object TblTemporariaDOC: TIntegerField
       FieldName = 'DOC'
     end
-    object TblTemporariaCOMISSAO: TBCDField
+    object TblTemporariaCOMISSAO: TFloatField
       FieldName = 'COMISSAO'
-      Precision = 15
-      Size = 3
     end
   end
   object SQLNotasFiscais: TRxQuery
@@ -219,20 +209,14 @@ inherited FormRelatorioVendasPeriodoApuracaoMargem: TFormRelatorioVendasPeriodoA
     object SQLNotasFiscaisNOFIDEMIS: TDateTimeField
       FieldName = 'NOFIDEMIS'
     end
-    object SQLNotasFiscaisNOFIN2VLRPRODUTO: TBCDField
+    object SQLNotasFiscaisNOFIN2VLRPRODUTO: TFloatField
       FieldName = 'NOFIN2VLRPRODUTO'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotasFiscaisTOTAL: TBCDField
+    object SQLNotasFiscaisTOTAL: TFloatField
       FieldName = 'TOTAL'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotasFiscaisNOFIN2VLRDESC: TBCDField
+    object SQLNotasFiscaisNOFIN2VLRDESC: TFloatField
       FieldName = 'NOFIN2VLRDESC'
-      Precision = 15
-      Size = 3
     end
     object SQLNotasFiscaisVENDICOD: TIntegerField
       FieldName = 'VENDICOD'
@@ -252,18 +236,14 @@ inherited FormRelatorioVendasPeriodoApuracaoMargem: TFormRelatorioVendasPeriodoA
       FixedChar = True
       Size = 60
     end
-    object SQLNotasFiscaisVLRLUCRO: TBCDField
+    object SQLNotasFiscaisVLRLUCRO: TFloatField
       FieldName = 'VLRLUCRO'
-      Precision = 15
-      Size = 3
     end
     object SQLNotasFiscaisDOC: TIntegerField
       FieldName = 'DOC'
     end
-    object SQLNotasFiscaisCOMISSAO: TBCDField
+    object SQLNotasFiscaisCOMISSAO: TFloatField
       FieldName = 'COMISSAO'
-      Precision = 15
-      Size = 3
     end
   end
   object SQLVendedor: TRxQuery
@@ -527,18 +507,14 @@ inherited FormRelatorioVendasPeriodoApuracaoMargem: TFormRelatorioVendasPeriodoA
     object SQLVendasNOFIDEMIS: TDateTimeField
       FieldName = 'NOFIDEMIS'
     end
-    object SQLVendasNOFIN2VLRPRODUTO: TBCDField
+    object SQLVendasNOFIN2VLRPRODUTO: TFloatField
       FieldName = 'NOFIN2VLRPRODUTO'
-      Precision = 15
-      Size = 3
     end
     object SQLVendasTOTAL: TFloatField
       FieldName = 'TOTAL'
     end
-    object SQLVendasNOFIN2VLRDESC: TBCDField
+    object SQLVendasNOFIN2VLRDESC: TFloatField
       FieldName = 'NOFIN2VLRDESC'
-      Precision = 15
-      Size = 3
     end
     object SQLVendasVENDICOD: TIntegerField
       FieldName = 'VENDICOD'
@@ -558,18 +534,14 @@ inherited FormRelatorioVendasPeriodoApuracaoMargem: TFormRelatorioVendasPeriodoA
       FixedChar = True
       Size = 60
     end
-    object SQLVendasVLRLUCRO: TBCDField
+    object SQLVendasVLRLUCRO: TFloatField
       FieldName = 'VLRLUCRO'
-      Precision = 15
-      Size = 3
     end
     object SQLVendasDOC: TIntegerField
       FieldName = 'DOC'
     end
-    object SQLVendasCOMISSAO: TBCDField
+    object SQLVendasCOMISSAO: TFloatField
       FieldName = 'COMISSAO'
-      Precision = 15
-      Size = 3
     end
   end
 end

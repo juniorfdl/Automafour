@@ -169,9 +169,9 @@ type
     SQLClienteReceituarioCLRCA15CAIXA: TStringField;
     SQLClienteReceituarioCLRCA15PULSEIRA: TStringField;
     SQLClienteReceituarioCLRCA15MOSTRADOR: TStringField;
-    SQLClienteReceituarioCLRCN3VLRTOTAL: TBCDField;
-    SQLClienteReceituarioCLRCN3VLRSINAL: TBCDField;
-    SQLClienteReceituarioCLRCN3VLRSALDO: TBCDField;
+    SQLClienteReceituarioCLRCN3VLRTOTAL: TFloatField;
+    SQLClienteReceituarioCLRCN3VLRSINAL: TFloatField;
+    SQLClienteReceituarioCLRCN3VLRSALDO: TFloatField;
     SQLClienteReceituarioREGISTRO: TDateTimeField;
     DBRadioTipoOS: TDBRadioGroup;
     SQLClienteReceituarioCLRCCTIPOOS: TStringField;
@@ -425,9 +425,9 @@ type
     TblOSCLRCA15MOSTRADOR: TStringField;
     TblOSCLRCA254SOLICIT: TStringField;
     TblOSCLRCA254REALIZA: TStringField;
-    TblOSCLRCN3VLRTOTAL: TBCDField;
-    TblOSCLRCN3VLRSINAL: TBCDField;
-    TblOSCLRCN3VLRSALDO: TBCDField;
+    TblOSCLRCN3VLRTOTAL: TFloatField;
+    TblOSCLRCN3VLRSINAL: TFloatField;
+    TblOSCLRCN3VLRSALDO: TFloatField;
     TblOSEmpresa: TStringField;
     TblOSEmpresaEndereco: TStringField;
     TblOSEmpresaFone: TStringField;

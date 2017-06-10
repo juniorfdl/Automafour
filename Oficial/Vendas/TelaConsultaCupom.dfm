@@ -10,7 +10,7 @@ inherited FormTelaConsultaCupom: TFormTelaConsultaCupom
   TextHeight = 13
   inherited ScrollBoxFundo: TScrollBox
     Width = 1059
-    Height = 455
+    Height = 454
     inherited PanelCentral: TPanel
       Width = 1017
       inherited PanelProcura: TPanel
@@ -231,13 +231,11 @@ inherited FormTelaConsultaCupom: TFormTelaConsultaCupom
       FieldName = 'VENDICOD'
       Origin = 'DB.CUPOM.VENDICOD'
     end
-    object SQLTemplateCUPON2TOTITENS: TBCDField
+    object SQLTemplateCUPON2TOTITENS: TFloatField
       DisplayLabel = 'Valor'
       FieldName = 'CUPON2TOTITENS'
       Origin = 'DB.CUPOM.CUPON2TOTITENS'
       DisplayFormat = '###0.00'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplateCUPOCTIPOPADRAO: TStringField
       DisplayLabel = 'Tipo Padr'#227'o'
@@ -272,35 +270,23 @@ inherited FormTelaConsultaCupom: TFormTelaConsultaCupom
       DisplayFormat = '#,##0.00'
       Calculated = True
     end
-    object SQLTemplateCUPON2JUROATRAS: TBCDField
+    object SQLTemplateCUPON2JUROATRAS: TFloatField
       FieldName = 'CUPON2JUROATRAS'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplateCUPON2MULTAATRAS: TBCDField
+    object SQLTemplateCUPON2MULTAATRAS: TFloatField
       FieldName = 'CUPON2MULTAATRAS'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplateCUPON3CREDTAXA: TBCDField
+    object SQLTemplateCUPON3CREDTAXA: TFloatField
       FieldName = 'CUPON3CREDTAXA'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplateCUPON2ACRESC: TBCDField
+    object SQLTemplateCUPON2ACRESC: TFloatField
       FieldName = 'CUPON2ACRESC'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplateCUPON2DESC: TBCDField
+    object SQLTemplateCUPON2DESC: TFloatField
       FieldName = 'CUPON2DESC'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplateCUPON3BONUSTROCA: TBCDField
+    object SQLTemplateCUPON3BONUSTROCA: TFloatField
       FieldName = 'CUPON3BONUSTROCA'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplateCUPOINRO: TIntegerField
       DisplayLabel = 'Cupom Nro'

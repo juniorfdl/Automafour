@@ -1106,11 +1106,9 @@ object FormTelaImportarPreVenda: TFormTelaImportarPreVenda
       FixedChar = True
       Size = 1
     end
-    object SQLReimpPreVendaPRVDN2TOTITENS: TBCDField
+    object SQLReimpPreVendaPRVDN2TOTITENS: TFloatField
       FieldName = 'PRVDN2TOTITENS'
       Origin = 'DB.PREVENDA.PRVDN2TOTITENS'
-      Precision = 15
-      Size = 3
     end
     object SQLReimpPreVendaVENDICOD: TIntegerField
       FieldName = 'VENDICOD'
@@ -1140,17 +1138,13 @@ object FormTelaImportarPreVenda: TFormTelaImportarPreVenda
       FixedChar = True
       Size = 60
     end
-    object SQLReimpPreVendaPRVDN2ACRESC: TBCDField
+    object SQLReimpPreVendaPRVDN2ACRESC: TFloatField
       FieldName = 'PRVDN2ACRESC'
       Origin = 'DB.PREVENDA.PRVDN2ACRESC'
-      Precision = 15
-      Size = 3
     end
-    object SQLReimpPreVendaPRVDN2DESC: TBCDField
+    object SQLReimpPreVendaPRVDN2DESC: TFloatField
       FieldName = 'PRVDN2DESC'
       Origin = 'DB.PREVENDA.PRVDN2DESC'
-      Precision = 15
-      Size = 3
     end
   end
   object SQLPrevendaItem: TRxQuery
@@ -1185,40 +1179,30 @@ object FormTelaImportarPreVenda: TFormTelaImportarPreVenda
       FieldName = 'PRODICOD'
       Origin = 'DB.PREVENDAITEM.PRODICOD'
     end
-    object SQLPrevendaItemPVITN3QTD: TBCDField
+    object SQLPrevendaItemPVITN3QTD: TFloatField
       FieldName = 'PVITN3QTD'
       Origin = 'DB.PREVENDAITEM.PVITN3QTD'
-      Precision = 15
-      Size = 3
     end
-    object SQLPrevendaItemPVITN3VLRUNIT: TBCDField
+    object SQLPrevendaItemPVITN3VLRUNIT: TFloatField
       FieldName = 'PVITN3VLRUNIT'
       Origin = 'DB.PREVENDAITEM.PVITN3VLRUNIT'
       DisplayFormat = '##0.00'
-      Precision = 15
-      Size = 3
     end
-    object SQLPrevendaItemPVITN3VLRCUSTUNIT: TBCDField
+    object SQLPrevendaItemPVITN3VLRCUSTUNIT: TFloatField
       FieldName = 'PVITN3VLRCUSTUNIT'
       Origin = 'DB.PREVENDAITEM.PVITN3VLRCUSTUNIT'
-      Precision = 15
-      Size = 3
     end
-    object SQLPrevendaItemPVITN2DESC: TBCDField
+    object SQLPrevendaItemPVITN2DESC: TFloatField
       FieldName = 'PVITN2DESC'
       Origin = 'DB.PREVENDAITEM.PVITN2DESC'
-      Precision = 15
-      Size = 3
     end
     object SQLPrevendaItemVENDICOD: TIntegerField
       FieldName = 'VENDICOD'
       Origin = 'DB.PREVENDAITEM.VENDICOD'
     end
-    object SQLPrevendaItemPVITN3VLRUNITLUCR: TBCDField
+    object SQLPrevendaItemPVITN3VLRUNITLUCR: TFloatField
       FieldName = 'PVITN3VLRUNITLUCR'
       Origin = 'DB.PREVENDAITEM.PVITN3VLRUNITLUCR'
-      Precision = 15
-      Size = 3
     end
     object SQLPrevendaItemPVITCSTATUS: TStringField
       FieldName = 'PVITCSTATUS'
@@ -1226,11 +1210,9 @@ object FormTelaImportarPreVenda: TFormTelaImportarPreVenda
       FixedChar = True
       Size = 1
     end
-    object SQLPrevendaItemPVITN2ICMSALIQ: TBCDField
+    object SQLPrevendaItemPVITN2ICMSALIQ: TFloatField
       FieldName = 'PVITN2ICMSALIQ'
       Origin = 'DB.PREVENDAITEM.PVITN2ICMSALIQ'
-      Precision = 15
-      Size = 3
     end
     object SQLPrevendaItemPRODA60NROSERIE: TStringField
       FieldName = 'PRODA60NROSERIE'
@@ -1238,11 +1220,9 @@ object FormTelaImportarPreVenda: TFormTelaImportarPreVenda
       FixedChar = True
       Size = 60
     end
-    object SQLPrevendaItemPVITN3QTDTROCA: TBCDField
+    object SQLPrevendaItemPVITN3QTDTROCA: TFloatField
       FieldName = 'PVITN3QTDTROCA'
       Origin = 'DB.PREVENDAITEM.PVITN3QTDTROCA'
-      Precision = 15
-      Size = 3
     end
     object SQLPrevendaItemDescricaoRed: TStringField
       FieldKind = fkLookup
@@ -1311,11 +1291,9 @@ object FormTelaImportarPreVenda: TFormTelaImportarPreVenda
       FieldName = 'NUMEICOD'
       Origin = 'DB.PREVENDANUMERARIO.NUMEICOD'
     end
-    object SQLPrevendaNumerarioPVNUN2VLR: TBCDField
+    object SQLPrevendaNumerarioPVNUN2VLR: TFloatField
       FieldName = 'PVNUN2VLR'
       Origin = 'DB.PREVENDANUMERARIO.PVNUN2VLR'
-      Precision = 15
-      Size = 3
     end
     object SQLPrevendaNumerarioNumerarioDescri: TStringField
       FieldKind = fkLookup
@@ -1389,11 +1367,9 @@ object FormTelaImportarPreVenda: TFormTelaImportarPreVenda
       FieldName = 'NUMEICOD'
       Origin = 'DB.PREVENDACONTASRECEBER.NUMEICOD'
     end
-    object SQLPrevendaContasReceberPVCRN2VLR: TBCDField
+    object SQLPrevendaContasReceberPVCRN2VLR: TFloatField
       FieldName = 'PVCRN2VLR'
       Origin = 'DB.PREVENDACONTASRECEBER.PVCRN2VLR'
-      Precision = 15
-      Size = 3
     end
     object SQLPrevendaContasReceberNumerarioDescri: TStringField
       FieldKind = fkLookup
@@ -1451,13 +1427,11 @@ object FormTelaImportarPreVenda: TFormTelaImportarPreVenda
       FieldName = 'PlanoNome'
       Size = 60
     end
-    object TblMemPreVendaPRVDN2TOTITENS: TBCDField
+    object TblMemPreVendaPRVDN2TOTITENS: TFloatField
       DisplayLabel = 'Total'
       FieldName = 'PRVDN2TOTITENS'
       Origin = 'DB.PREVENDA.PRVDN2TOTITENS'
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
     object TblMemPreVendaVENDICOD: TIntegerField
       FieldName = 'VENDICOD'
@@ -1583,11 +1557,9 @@ object FormTelaImportarPreVenda: TFormTelaImportarPreVenda
       Origin = 'UNITGESTAO_TEMP."TblMemPreVenda.DB".PlanoNome'
       Size = 60
     end
-    object SQLImportarPrevendaSelPRVDN2TOTITENS: TBCDField
+    object SQLImportarPrevendaSelPRVDN2TOTITENS: TFloatField
       FieldName = 'PRVDN2TOTITENS'
       Origin = 'UNITGESTAO_TEMP."TblMemPreVenda.DB".PRVDN2TOTITENS'
-      Precision = 32
-      Size = 3
     end
     object SQLImportarPrevendaSelVENDICOD: TIntegerField
       FieldName = 'VENDICOD'

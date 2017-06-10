@@ -1,7 +1,7 @@
 inherited FormRelatorioVendasMarca: TFormRelatorioVendasMarca
   Left = 206
   Top = 132
-  Caption = 'Relat'#243'rio de Vendas Por Marca'
+  Caption = 'Relatório de Vendas Por Marca'
   PixelsPerInch = 96
   TextHeight = 13
   inherited TblTemporaria: TTable
@@ -115,10 +115,8 @@ inherited FormRelatorioVendasMarca: TFormRelatorioVendasMarca
     object SQLVendaMarcaTOTAL: TFloatField
       FieldName = 'TOTAL'
     end
-    object SQLVendaMarcaQTDETOTAL: TBCDField
+    object SQLVendaMarcaQTDETOTAL: TFloatField
       FieldName = 'QTDETOTAL'
-      Precision = 15
-      Size = 3
     end
   end
   object Report: TCrpe

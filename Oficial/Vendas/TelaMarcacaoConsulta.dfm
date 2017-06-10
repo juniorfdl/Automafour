@@ -23,11 +23,11 @@ inherited FormTelaMarcacaoConsulta: TFormTelaMarcacaoConsulta
   end
   inherited ScrollBoxFundo: TScrollBox
     Width = 1021
-    Height = 550
+    Height = 549
     inherited PanelCentral: TPanel
       Top = 61
       Width = 1017
-      Height = 485
+      Height = 484
       inherited PanelBarra: TPanel
         Width = 1017
         Height = 54
@@ -123,7 +123,6 @@ inherited FormTelaMarcacaoConsulta: TFormTelaMarcacaoConsulta
             Top = 27
             Width = 89
             Height = 21
-            CheckOnExit = True
             DefaultToday = True
             DialogTitle = 'Escolha a Data'
             Font.Charset = DEFAULT_CHARSET
@@ -219,7 +218,7 @@ inherited FormTelaMarcacaoConsulta: TFormTelaMarcacaoConsulta
         Left = 738
         Top = 54
         Width = 279
-        Height = 431
+        Height = 430
         ActivePage = TabSheetConsulta
         Align = alRight
         Font.Charset = ANSI_CHARSET
@@ -1478,7 +1477,7 @@ inherited FormTelaMarcacaoConsulta: TFormTelaMarcacaoConsulta
         Left = 0
         Top = 54
         Width = 738
-        Height = 431
+        Height = 430
         Align = alClient
         BevelInner = bvSpace
         BevelOuter = bvSpace
@@ -1489,7 +1488,7 @@ inherited FormTelaMarcacaoConsulta: TFormTelaMarcacaoConsulta
           Left = 5
           Top = 5
           Width = 728
-          Height = 250
+          Height = 249
           Align = alClient
           Color = clWhite
           DataSource = DSSQLAgendamento
@@ -1561,7 +1560,7 @@ inherited FormTelaMarcacaoConsulta: TFormTelaMarcacaoConsulta
         end
         object GroupBox11: TGroupBox
           Left = 5
-          Top = 255
+          Top = 254
           Width = 728
           Height = 171
           Align = alBottom
@@ -2511,13 +2510,11 @@ inherited FormTelaMarcacaoConsulta: TFormTelaMarcacaoConsulta
       FixedChar = True
       Size = 60
     end
-    object SQLEspecialidadeESPEN3VLRCONSULTA: TBCDField
+    object SQLEspecialidadeESPEN3VLRCONSULTA: TFloatField
       DisplayLabel = 'Valor Consulta'
       FieldName = 'ESPEN3VLRCONSULTA'
       Origin = 'DB.ESPECIALIDADE.ESPEN3VLRCONSULTA'
       DisplayFormat = '#,###.00'
-      Precision = 15
-      Size = 3
     end
   end
   object DSSQLEspecialidade: TDataSource
@@ -2628,17 +2625,13 @@ inherited FormTelaMarcacaoConsulta: TFormTelaMarcacaoConsulta
       FieldName = 'AGENDDIGIT'
       Origin = 'DB.AGENDACONSULTA.AGENDDIGIT'
     end
-    object SQLAgendamentoConsultaAGENN3VLRCONSULTA: TBCDField
+    object SQLAgendamentoConsultaAGENN3VLRCONSULTA: TFloatField
       FieldName = 'AGENN3VLRCONSULTA'
       Origin = 'DB.AGENDACONSULTA.AGENN3VLRCONSULTA'
-      Precision = 15
-      Size = 3
     end
-    object SQLAgendamentoConsultaAGENN3VLRPAGO: TBCDField
+    object SQLAgendamentoConsultaAGENN3VLRPAGO: TFloatField
       FieldName = 'AGENN3VLRPAGO'
       Origin = 'DB.AGENDACONSULTA.AGENN3VLRPAGO'
-      Precision = 15
-      Size = 3
     end
     object SQLAgendamentoConsultaAGENDPAGO: TDateTimeField
       FieldName = 'AGENDPAGO'
@@ -2967,22 +2960,18 @@ inherited FormTelaMarcacaoConsulta: TFormTelaMarcacaoConsulta
       Size = 30
       Lookup = True
     end
-    object SQLAgendamentoAGENN3VLRCONSULTA: TBCDField
+    object SQLAgendamentoAGENN3VLRCONSULTA: TFloatField
       DisplayLabel = 'Vlr.Consulta'
       FieldName = 'AGENN3VLRCONSULTA'
       Origin = 'DB.AGENDAMENTO.AGENN3VLRCONSULTA'
       DisplayFormat = '##0.00'
       EditFormat = '##0.00'
-      Precision = 15
-      Size = 3
     end
-    object SQLAgendamentoAGENN3VLRPAGO: TBCDField
+    object SQLAgendamentoAGENN3VLRPAGO: TFloatField
       DisplayLabel = 'Vlr.Pagto'
       FieldName = 'AGENN3VLRPAGO'
       Origin = 'DB.AGENDAMENTO.AGENN3VLRPAGO'
       DisplayFormat = '##0.00'
-      Precision = 15
-      Size = 3
     end
     object SQLAgendamentoAGENDPAGO: TDateTimeField
       DisplayLabel = 'Data Pagto'
@@ -3368,7 +3357,7 @@ inherited FormTelaMarcacaoConsulta: TFormTelaMarcacaoConsulta
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 139700
     PrinterSetup.mmPaperWidth = 215900
-    PrinterSetup.PaperSize = 177
+    PrinterSetup.PaperSize = 139
     BeforePrint = ppReciboBeforePrint
     DeviceType = 'Printer'
     EmailSettings.ReportFormat = 'PDF'
@@ -4004,7 +3993,7 @@ inherited FormTelaMarcacaoConsulta: TFormTelaMarcacaoConsulta
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 200000
     PrinterSetup.mmPaperWidth = 80000
-    PrinterSetup.PaperSize = 177
+    PrinterSetup.PaperSize = 139
     Units = utMillimeters
     DeviceType = 'Screen'
     EmailSettings.ReportFormat = 'PDF'
@@ -4336,10 +4325,8 @@ inherited FormTelaMarcacaoConsulta: TFormTelaMarcacaoConsulta
       FixedChar = True
       Size = 60
     end
-    object TblEspecialidadeESPEN3VLRCONSULTA: TBCDField
+    object TblEspecialidadeESPEN3VLRCONSULTA: TFloatField
       FieldName = 'ESPEN3VLRCONSULTA'
-      Precision = 15
-      Size = 3
     end
   end
   object SQLAgendamentoTodos: TRxQuery
@@ -4429,17 +4416,13 @@ inherited FormTelaMarcacaoConsulta: TFormTelaMarcacaoConsulta
       FieldName = 'AGENDDIGIT'
       Origin = 'DB.AGENDAMENTO.AGENDDIGIT'
     end
-    object SQLAgendamentoTodosAGENN3VLRCONSULTA: TBCDField
+    object SQLAgendamentoTodosAGENN3VLRCONSULTA: TFloatField
       FieldName = 'AGENN3VLRCONSULTA'
       Origin = 'DB.AGENDAMENTO.AGENN3VLRCONSULTA'
-      Precision = 15
-      Size = 3
     end
-    object SQLAgendamentoTodosAGENN3VLRPAGO: TBCDField
+    object SQLAgendamentoTodosAGENN3VLRPAGO: TFloatField
       FieldName = 'AGENN3VLRPAGO'
       Origin = 'DB.AGENDAMENTO.AGENN3VLRPAGO'
-      Precision = 15
-      Size = 3
     end
     object SQLAgendamentoTodosAGENDPAGO: TDateTimeField
       FieldName = 'AGENDPAGO'
@@ -4549,7 +4532,7 @@ inherited FormTelaMarcacaoConsulta: TFormTelaMarcacaoConsulta
     PrinterSetup.mmMarginTop = 0
     PrinterSetup.mmPaperHeight = 200000
     PrinterSetup.mmPaperWidth = 130000
-    PrinterSetup.PaperSize = 177
+    PrinterSetup.PaperSize = 139
     Units = utMillimeters
     DeviceType = 'Printer'
     EmailSettings.ReportFormat = 'PDF'
@@ -5015,7 +4998,7 @@ inherited FormTelaMarcacaoConsulta: TFormTelaMarcacaoConsulta
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 200000
     PrinterSetup.mmPaperWidth = 80000
-    PrinterSetup.PaperSize = 177
+    PrinterSetup.PaperSize = 139
     Units = utMillimeters
     DeviceType = 'Screen'
     EmailSettings.ReportFormat = 'PDF'

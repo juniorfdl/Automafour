@@ -922,12 +922,10 @@ object FormRelatoriOrdensPorExecucao: TFormRelatoriOrdensPorExecucao
       BlobType = ftMemo
       Size = 1
     end
-    object SQLOrdItensVALOR: TBCDField
+    object SQLOrdItensVALOR: TFloatField
       FieldName = 'VALOR'
       Origin = 'DB.ORD_MECANICA.VALOR'
       DisplayFormat = ',0.00'
-      Precision = 15
-      Size = 2
     end
     object SQLOrdItensFINALIZADO: TDateTimeField
       FieldName = 'FINALIZADO'
@@ -1001,26 +999,20 @@ object FormRelatoriOrdensPorExecucao: TFormRelatoriOrdensPorExecucao
       FieldName = 'EMPRICOD'
       Origin = 'DB.ORD_MECANICA.EMPRICOD'
     end
-    object SQLOrdItensORITN2VLRPRODUTO: TBCDField
+    object SQLOrdItensORITN2VLRPRODUTO: TFloatField
       FieldName = 'ORITN2VLRPRODUTO'
       Origin = 'DB.ORD_MECANICA.ORITN2VLRPRODUTO'
       DisplayFormat = ',0.00'
-      Precision = 15
-      Size = 2
     end
-    object SQLOrdItensORITN2VLRSERVICO: TBCDField
+    object SQLOrdItensORITN2VLRSERVICO: TFloatField
       FieldName = 'ORITN2VLRSERVICO'
       Origin = 'DB.ORD_MECANICA.ORITN2VLRSERVICO'
       DisplayFormat = ',0.00'
-      Precision = 15
-      Size = 2
     end
-    object BCDField1: TBCDField
+    object BCDField1: TFloatField
       FieldName = 'ORITN2VLRDESC'
       Origin = 'DB.ORD_MECANICA.ORITN2VLRDESC'
       DisplayFormat = ',0.00'
-      Precision = 15
-      Size = 2
     end
     object SQLOrdItensPLACA: TStringField
       FieldName = 'PLACA'

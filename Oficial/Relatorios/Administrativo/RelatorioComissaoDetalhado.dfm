@@ -83,33 +83,23 @@ inherited FormRelatorioComissaoDetalhado: TFormRelatorioComissaoDetalhado
     object TblTemporariaVDCOICOD: TIntegerField
       FieldName = 'VDCOICOD'
     end
-    object TblTemporariaVDCON2TOTVENDVISTA: TBCDField
+    object TblTemporariaVDCON2TOTVENDVISTA: TFloatField
       FieldName = 'VDCON2TOTVENDVISTA'
-      Precision = 15
-      Size = 3
     end
-    object TblTemporariaVDCON2TOTVENDPRAZO: TBCDField
+    object TblTemporariaVDCON2TOTVENDPRAZO: TFloatField
       FieldName = 'VDCON2TOTVENDPRAZO'
-      Precision = 15
-      Size = 3
     end
     object TblTemporariaVDCOINROVEND: TIntegerField
       FieldName = 'VDCOINROVEND'
     end
-    object TblTemporariaVDCON2VENDMEDIA: TBCDField
+    object TblTemporariaVDCON2VENDMEDIA: TFloatField
       FieldName = 'VDCON2VENDMEDIA'
-      Precision = 15
-      Size = 3
     end
-    object TblTemporariaVDCON3QTDVEND: TBCDField
+    object TblTemporariaVDCON3QTDVEND: TFloatField
       FieldName = 'VDCON3QTDVEND'
-      Precision = 15
-      Size = 3
     end
-    object TblTemporariaVDCON2VLRCOMISS: TBCDField
+    object TblTemporariaVDCON2VLRCOMISS: TFloatField
       FieldName = 'VDCON2VLRCOMISS'
-      Precision = 15
-      Size = 3
     end
     object TblTemporariaVDCODEMIS: TDateTimeField
       FieldName = 'VDCODEMIS'
@@ -125,10 +115,8 @@ inherited FormRelatorioComissaoDetalhado: TFormRelatorioComissaoDetalhado
     object TblTemporariaVDCODESTORNO: TDateTimeField
       FieldName = 'VDCODESTORNO'
     end
-    object TblTemporariaVDCON3VLRESTORNO: TBCDField
+    object TblTemporariaVDCON3VLRESTORNO: TFloatField
       FieldName = 'VDCON3VLRESTORNO'
-      Precision = 15
-      Size = 3
     end
     object TblTemporariaCLIEA13ID: TStringField
       FieldName = 'CLIEA13ID'
@@ -145,10 +133,8 @@ inherited FormRelatorioComissaoDetalhado: TFormRelatorioComissaoDetalhado
       FixedChar = True
       Size = 1
     end
-    object TblTemporariaVDCON2PERCOMISSAO: TBCDField
+    object TblTemporariaVDCON2PERCOMISSAO: TFloatField
       FieldName = 'VDCON2PERCOMISSAO'
-      Precision = 15
-      Size = 2
     end
     object TblTemporariaCLIEA60RAZAOSOC: TStringField
       FieldName = 'CLIEA60RAZAOSOC'
@@ -164,10 +150,8 @@ inherited FormRelatorioComissaoDetalhado: TFormRelatorioComissaoDetalhado
       FieldName = 'Documento'
       Size = 30
     end
-    object TblTemporariaVENDN2PERCIRRF: TBCDField
+    object TblTemporariaVENDN2PERCIRRF: TFloatField
       FieldName = 'VENDN2PERCIRRF'
-      Precision = 15
-      Size = 2
     end
   end
   object SQLComissao: TRxQuery
@@ -215,33 +199,23 @@ inherited FormRelatorioComissaoDetalhado: TFormRelatorioComissaoDetalhado
     object SQLComissaoVDCOICOD: TIntegerField
       FieldName = 'VDCOICOD'
     end
-    object SQLComissaoVDCON2TOTVENDVISTA: TBCDField
+    object SQLComissaoVDCON2TOTVENDVISTA: TFloatField
       FieldName = 'VDCON2TOTVENDVISTA'
-      Precision = 15
-      Size = 3
     end
-    object SQLComissaoVDCON2TOTVENDPRAZO: TBCDField
+    object SQLComissaoVDCON2TOTVENDPRAZO: TFloatField
       FieldName = 'VDCON2TOTVENDPRAZO'
-      Precision = 15
-      Size = 3
     end
     object SQLComissaoVDCOINROVEND: TIntegerField
       FieldName = 'VDCOINROVEND'
     end
-    object SQLComissaoVDCON2VENDMEDIA: TBCDField
+    object SQLComissaoVDCON2VENDMEDIA: TFloatField
       FieldName = 'VDCON2VENDMEDIA'
-      Precision = 15
-      Size = 3
     end
-    object SQLComissaoVDCON3QTDVEND: TBCDField
+    object SQLComissaoVDCON3QTDVEND: TFloatField
       FieldName = 'VDCON3QTDVEND'
-      Precision = 15
-      Size = 3
     end
-    object SQLComissaoVDCON2VLRCOMISS: TBCDField
+    object SQLComissaoVDCON2VLRCOMISS: TFloatField
       FieldName = 'VDCON2VLRCOMISS'
-      Precision = 15
-      Size = 3
     end
     object SQLComissaoVDCODEMIS: TDateTimeField
       FieldName = 'VDCODEMIS'
@@ -257,10 +231,8 @@ inherited FormRelatorioComissaoDetalhado: TFormRelatorioComissaoDetalhado
     object SQLComissaoVDCODESTORNO: TDateTimeField
       FieldName = 'VDCODESTORNO'
     end
-    object SQLComissaoVDCON3VLRESTORNO: TBCDField
+    object SQLComissaoVDCON3VLRESTORNO: TFloatField
       FieldName = 'VDCON3VLRESTORNO'
-      Precision = 15
-      Size = 3
     end
     object SQLComissaoCLIEA13ID: TStringField
       FieldName = 'CLIEA13ID'
@@ -277,10 +249,8 @@ inherited FormRelatorioComissaoDetalhado: TFormRelatorioComissaoDetalhado
       FixedChar = True
       Size = 1
     end
-    object SQLComissaoVDCON2PERCOMISSAO: TBCDField
+    object SQLComissaoVDCON2PERCOMISSAO: TFloatField
       FieldName = 'VDCON2PERCOMISSAO'
-      Precision = 15
-      Size = 2
     end
     object SQLComissaoCLIEA60RAZAOSOC: TStringField
       FieldName = 'CLIEA60RAZAOSOC'
@@ -292,10 +262,8 @@ inherited FormRelatorioComissaoDetalhado: TFormRelatorioComissaoDetalhado
       FixedChar = True
       Size = 60
     end
-    object SQLComissaoVENDN2PERCIRRF: TBCDField
+    object SQLComissaoVENDN2PERCIRRF: TFloatField
       FieldName = 'VENDN2PERCIRRF'
-      Precision = 15
-      Size = 2
     end
   end
   object Report: TCrpe

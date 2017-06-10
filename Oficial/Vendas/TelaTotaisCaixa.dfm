@@ -156,7 +156,7 @@ object FormTelaTotaisCaixa: TFormTelaTotaisCaixa
       Align = alTop
       Alignment = taCenter
       AutoSize = False
-      Caption = 'Total Numer'#225'rios'
+      Caption = 'Total Numerários'
       Color = clWhite
       Font.Charset = ANSI_CHARSET
       Font.Color = clRed
@@ -185,7 +185,7 @@ object FormTelaTotaisCaixa: TFormTelaTotaisCaixa
         Align = alTop
         Alignment = taCenter
         AutoSize = False
-        Caption = 'Total Opera'#231#245'es de Caixa'
+        Caption = 'Total Operações de Caixa'
         Color = clWhite
         Font.Charset = ANSI_CHARSET
         Font.Color = clRed
@@ -366,7 +366,7 @@ object FormTelaTotaisCaixa: TFormTelaTotaisCaixa
       Origin = 'DB.MOVIMENTOCAIXA.NUMEICOD'
     end
     object SQLTotaNumerarioNUMEA30DESCR: TStringField
-      DisplayLabel = 'NUMER'#193'RIO'
+      DisplayLabel = 'NUMERÁRIO'
       FieldName = 'NUMEA30DESCR'
       Origin = 'DB.NUMERARIO.NUMEA30DESCR'
       FixedChar = True
@@ -412,20 +412,20 @@ object FormTelaTotaisCaixa: TFormTelaTotaisCaixa
       Origin = 'DB.MOVIMENTOCAIXA.OPCXICOD'
     end
     object SQLTotalOperacaoOPCXA60DESCR: TStringField
-      DisplayLabel = 'OPERA'#199#195'O'
+      DisplayLabel = 'OPERAÇÃO'
       FieldName = 'OPCXA60DESCR'
       Origin = 'DB.OPERACAOCAIXA.OPCXA60DESCR'
       FixedChar = True
       Size = 60
     end
-    object SQLTotalOperacaoCREDITOS: TBCDField
+    object SQLTotalOperacaoCREDITOS: TFloatField
       FieldName = 'CREDITOS'
       Origin = 'DB.MOVIMENTOCAIXA.MVCXN2VLRCRED'
       DisplayFormat = '#,##0.00'
       Precision = 15
       Size = 3
     end
-    object SQLTotalOperacaoDEBITOS: TBCDField
+    object SQLTotalOperacaoDEBITOS: TFloatField
       FieldName = 'DEBITOS'
       Origin = 'DB.MOVIMENTOCAIXA.MVCXN2VLRDEB'
       DisplayFormat = '#,##0.00'

@@ -20,7 +20,7 @@ type
     TblTemporariaMARCA60DESCR: TStringField;
     TblTemporariaTOTAL: TFloatField;
     TblTemporariaQTDETOTAL: TFloatField;
-    SQLVendaMarcaQTDETOTAL: TBCDField;
+    SQLVendaMarcaQTDETOTAL: TFloatField;
     procedure ExecutarBtnClick(Sender: TObject);
   private
     { Private declarations }

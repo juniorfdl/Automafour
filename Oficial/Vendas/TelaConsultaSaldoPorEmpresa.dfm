@@ -9,11 +9,11 @@ inherited FormTelaConsultaSaldoPorEmpresa: TFormTelaConsultaSaldoPorEmpresa
   inherited ScrollBoxFundo: TScrollBox
     inherited PanelCentral: TPanel
       Top = 68
-      Height = 280
+      Height = 279
       inherited PanelBarra: TPanel
         Top = 66
         Width = 0
-        Height = 129
+        Height = 128
       end
       object Panel4: TPanel
         Left = 0
@@ -81,7 +81,7 @@ inherited FormTelaConsultaSaldoPorEmpresa: TFormTelaConsultaSaldoPorEmpresa
         Left = 0
         Top = 66
         Width = 799
-        Height = 129
+        Height = 128
         TabStop = False
         Align = alClient
         DataSource = DSTblSaldoEmpresa
@@ -212,7 +212,7 @@ inherited FormTelaConsultaSaldoPorEmpresa: TFormTelaConsultaSaldoPorEmpresa
       end
       object Panel1: TPanel
         Left = 0
-        Top = 195
+        Top = 194
         Width = 799
         Height = 85
         Align = alBottom
@@ -405,23 +405,17 @@ inherited FormTelaConsultaSaldoPorEmpresa: TFormTelaConsultaSaldoPorEmpresa
       FixedChar = True
       Size = 60
     end
-    object SQLProdutoGradePRODN3VLRVENDA: TBCDField
+    object SQLProdutoGradePRODN3VLRVENDA: TFloatField
       FieldName = 'PRODN3VLRVENDA'
       Origin = 'DB.PRODUTO.PRODN3VLRVENDA'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoGradePRODN3VLRCOMPRA: TBCDField
+    object SQLProdutoGradePRODN3VLRCOMPRA: TFloatField
       FieldName = 'PRODN3VLRCOMPRA'
       Origin = 'DB.PRODUTO.PRODN3VLRCOMPRA'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoGradePRODN3VLRCUSTO: TBCDField
+    object SQLProdutoGradePRODN3VLRCUSTO: TFloatField
       FieldName = 'PRODN3VLRCUSTO'
       Origin = 'DB.PRODUTO.PRODN3VLRCUSTO'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoGradeGRADICOD: TIntegerField
       FieldName = 'GRADICOD'
@@ -463,10 +457,8 @@ inherited FormTelaConsultaSaldoPorEmpresa: TFormTelaConsultaSaldoPorEmpresa
       FixedChar = True
       Size = 30
     end
-    object SQLProdutoOldViewPSLDN3QTDE: TBCDField
+    object SQLProdutoOldViewPSLDN3QTDE: TFloatField
       FieldName = 'PSLDN3QTDE'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoOldViewGRADICOD: TIntegerField
       FieldName = 'GRADICOD'
@@ -605,15 +597,11 @@ inherited FormTelaConsultaSaldoPorEmpresa: TFormTelaConsultaSaldoPorEmpresa
       FixedChar = True
       Size = 60
     end
-    object SQLProdutoPRODN3VLRCUSTO: TBCDField
+    object SQLProdutoPRODN3VLRCUSTO: TFloatField
       FieldName = 'PRODN3VLRCUSTO'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoPRODN3VLRVENDA: TBCDField
+    object SQLProdutoPRODN3VLRVENDA: TFloatField
       FieldName = 'PRODN3VLRVENDA'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoCORICOD: TIntegerField
       FieldName = 'CORICOD'
@@ -629,10 +617,8 @@ inherited FormTelaConsultaSaldoPorEmpresa: TFormTelaConsultaSaldoPorEmpresa
       FixedChar = True
       Size = 30
     end
-    object SQLProdutoPSLDN3QTDE: TBCDField
+    object SQLProdutoPSLDN3QTDE: TFloatField
       FieldName = 'PSLDN3QTDE'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoEMPRICOD: TIntegerField
       FieldName = 'EMPRICOD'

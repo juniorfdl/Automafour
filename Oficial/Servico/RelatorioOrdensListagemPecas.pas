@@ -20,7 +20,7 @@ type
     QRDBText4: TQRDBText;
     SQLOrdItens: TQuery;
     SQLOrdItensPRODICOD: TIntegerField;
-    SQLOrdItensSUM: TBCDField;
+    SQLOrdItensSUM: TFloatField;
     SQLOrdItensTOTAL: TFloatField;
     SQLOrdItensPRODUTO: TStringField;
     DSSQLOrdItens: TDataSource;

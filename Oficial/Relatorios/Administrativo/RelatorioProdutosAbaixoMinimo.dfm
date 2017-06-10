@@ -111,40 +111,28 @@ inherited FormRelatorioProdutosAbaixoMinimo: TFormRelatorioProdutosAbaixoMinimo
       FixedChar = True
       Size = 60
     end
-    object SQLProdutoPRODN3VLRVENDA: TBCDField
+    object SQLProdutoPRODN3VLRVENDA: TFloatField
       FieldName = 'PRODN3VLRVENDA'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoPRODN3VLRCOMPRA: TBCDField
+    object SQLProdutoPRODN3VLRCOMPRA: TFloatField
       FieldName = 'PRODN3VLRCOMPRA'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoPRODN3VLRCUSTO: TBCDField
+    object SQLProdutoPRODN3VLRCUSTO: TFloatField
       FieldName = 'PRODN3VLRCUSTO'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoUNIDA5DESCR: TStringField
       FieldName = 'UNIDA5DESCR'
       FixedChar = True
       Size = 5
     end
-    object SQLProdutoSALDOATUAL: TBCDField
+    object SQLProdutoSALDOATUAL: TFloatField
       FieldName = 'SALDOATUAL'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoMINIMO: TBCDField
+    object SQLProdutoMINIMO: TFloatField
       FieldName = 'MINIMO'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoMAXIMO: TBCDField
+    object SQLProdutoMAXIMO: TFloatField
       FieldName = 'MAXIMO'
-      Precision = 15
-      Size = 3
     end
   end
   object Report: TppReport
@@ -152,7 +140,7 @@ inherited FormRelatorioProdutosAbaixoMinimo: TFormRelatorioProdutosAbaixoMinimo
     DataPipeline = Pipe
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Letter'
+    PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350

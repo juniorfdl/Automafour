@@ -231,7 +231,6 @@ inherited FormTelaNotaFiscalitemFiltro: TFormTelaNotaFiscalitemFiltro
               Font.Style = []
               Title.Alignment = taCenter
               Title.Caption = 'Vlr Venda Origem'
-              Width = 101
               Visible = True
             end
             item
@@ -349,22 +348,18 @@ inherited FormTelaNotaFiscalitemFiltro: TFormTelaNotaFiscalitemFiltro
       FieldName = 'PRODA60DESCR'
       Size = 60
     end
-    object TblTemporariaPRODN3VLRVENDA: TBCDField
+    object TblTemporariaPRODN3VLRVENDA: TFloatField
       DisplayLabel = 'Vlr.Venda'
       FieldName = 'PRODN3VLRVENDA'
       DisplayFormat = '#,##0.00'
-      Precision = 32
-      Size = 3
     end
-    object TblTemporariaQTDENFOrigem: TBCDField
+    object TblTemporariaQTDENFOrigem: TFloatField
       DisplayLabel = 'Qtde.NF Origem'
       FieldName = 'QTDENFOrigem'
-      Size = 3
     end
-    object TblTemporariaQTDENFDest: TBCDField
+    object TblTemporariaQTDENFDest: TFloatField
       DisplayLabel = 'Q.Venda'
       FieldName = 'QTDENFDest'
-      Size = 3
     end
   end
   object SQLProdutos: TRxQuery
@@ -523,23 +518,17 @@ inherited FormTelaNotaFiscalitemFiltro: TFormTelaNotaFiscalitemFiltro
       FieldName = 'ICMSICOD'
       Origin = 'DB.PRODUTO.ICMSICOD'
     end
-    object SQLProdutosPRODN3PESOBRUTO: TBCDField
+    object SQLProdutosPRODN3PESOBRUTO: TFloatField
       FieldName = 'PRODN3PESOBRUTO'
       Origin = 'DB.PRODUTO.PRODN3PESOBRUTO'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutosPRODN3PESOLIQ: TBCDField
+    object SQLProdutosPRODN3PESOLIQ: TFloatField
       FieldName = 'PRODN3PESOLIQ'
       Origin = 'DB.PRODUTO.PRODN3PESOLIQ'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutosPRODN3CAPACEMBAL: TBCDField
+    object SQLProdutosPRODN3CAPACEMBAL: TFloatField
       FieldName = 'PRODN3CAPACEMBAL'
       Origin = 'DB.PRODUTO.PRODN3CAPACEMBAL'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutosPRODDCAD: TDateTimeField
       FieldName = 'PRODDCAD'
@@ -549,17 +538,13 @@ inherited FormTelaNotaFiscalitemFiltro: TFormTelaNotaFiscalitemFiltro
       FieldName = 'PRODDULTALTER'
       Origin = 'DB.PRODUTO.PRODDULTALTER'
     end
-    object SQLProdutosPRODN3VLRVENDA: TBCDField
+    object SQLProdutosPRODN3VLRVENDA: TFloatField
       FieldName = 'PRODN3VLRVENDA'
       Origin = 'DB.PRODUTO.PRODN3VLRVENDA'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutosPRODN3VLRVENDAPROM: TBCDField
+    object SQLProdutosPRODN3VLRVENDAPROM: TFloatField
       FieldName = 'PRODN3VLRVENDAPROM'
       Origin = 'DB.PRODUTO.PRODN3VLRVENDAPROM'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutosPRODDINIPROMO: TDateTimeField
       FieldName = 'PRODDINIPROMO'
@@ -569,35 +554,25 @@ inherited FormTelaNotaFiscalitemFiltro: TFormTelaNotaFiscalitemFiltro
       FieldName = 'PRODDFIMPROMO'
       Origin = 'DB.PRODUTO.PRODDFIMPROMO'
     end
-    object SQLProdutosPRODN3VLRCOMPRA: TBCDField
+    object SQLProdutosPRODN3VLRCOMPRA: TFloatField
       FieldName = 'PRODN3VLRCOMPRA'
       Origin = 'DB.PRODUTO.PRODN3VLRCOMPRA'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutosPRODN3VLRCUSTO: TBCDField
+    object SQLProdutosPRODN3VLRCUSTO: TFloatField
       FieldName = 'PRODN3VLRCUSTO'
       Origin = 'DB.PRODUTO.PRODN3VLRCUSTO'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutosPRODN3VLRCUSTOMED: TBCDField
+    object SQLProdutosPRODN3VLRCUSTOMED: TFloatField
       FieldName = 'PRODN3VLRCUSTOMED'
       Origin = 'DB.PRODUTO.PRODN3VLRCUSTOMED'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutosPRODN3PERCIPI: TBCDField
+    object SQLProdutosPRODN3PERCIPI: TFloatField
       FieldName = 'PRODN3PERCIPI'
       Origin = 'DB.PRODUTO.PRODN3PERCIPI'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutosPRODN3PERCMARGLUCR: TBCDField
+    object SQLProdutosPRODN3PERCMARGLUCR: TFloatField
       FieldName = 'PRODN3PERCMARGLUCR'
       Origin = 'DB.PRODUTO.PRODN3PERCMARGLUCR'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutosPRODCATIVO: TStringField
       FieldName = 'PRODCATIVO'
@@ -617,17 +592,13 @@ inherited FormTelaNotaFiscalitemFiltro: TFormTelaNotaFiscalitemFiltro
       FixedChar = True
       Size = 1
     end
-    object SQLProdutosPRODN2COMISVISTA: TBCDField
+    object SQLProdutosPRODN2COMISVISTA: TFloatField
       FieldName = 'PRODN2COMISVISTA'
       Origin = 'DB.PRODUTO.PRODN2COMISVISTA'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutosPRODN2COMISPRAZO: TBCDField
+    object SQLProdutosPRODN2COMISPRAZO: TFloatField
       FieldName = 'PRODN2COMISPRAZO'
       Origin = 'DB.PRODUTO.PRODN2COMISPRAZO'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutosPRODDIMOBOLIZ: TDateTimeField
       FieldName = 'PRODDIMOBOLIZ'
@@ -643,11 +614,9 @@ inherited FormTelaNotaFiscalitemFiltro: TFormTelaNotaFiscalitemFiltro
       FixedChar = True
       Size = 5
     end
-    object SQLProdutosPRODN3QTDEBAIXA: TBCDField
+    object SQLProdutosPRODN3QTDEBAIXA: TFloatField
       FieldName = 'PRODN3QTDEBAIXA'
       Origin = 'DB.PRODUTO.PRODN3QTDEBAIXA'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutosCORICOD: TIntegerField
       FieldName = 'CORICOD'
@@ -695,29 +664,21 @@ inherited FormTelaNotaFiscalitemFiltro: TFormTelaNotaFiscalitemFiltro
       FieldName = 'PRODIDIASVALIDADE'
       Origin = 'DB.PRODUTO.PRODIDIASVALIDADE'
     end
-    object SQLProdutosPRODN3VLRCOMPRAMED: TBCDField
+    object SQLProdutosPRODN3VLRCOMPRAMED: TFloatField
       FieldName = 'PRODN3VLRCOMPRAMED'
       Origin = 'DB.PRODUTO.PRODN3VLRCOMPRAMED'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutosPRODN3DOLARCUSTO: TBCDField
+    object SQLProdutosPRODN3DOLARCUSTO: TFloatField
       FieldName = 'PRODN3DOLARCUSTO'
       Origin = 'DB.PRODUTO.PRODN3DOLARCUSTO'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutosPRODN3DOLARCOMPRA: TBCDField
+    object SQLProdutosPRODN3DOLARCOMPRA: TFloatField
       FieldName = 'PRODN3DOLARCOMPRA'
       Origin = 'DB.PRODUTO.PRODN3DOLARCOMPRA'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutosPRODN3DOLARVENDA: TBCDField
+    object SQLProdutosPRODN3DOLARVENDA: TFloatField
       FieldName = 'PRODN3DOLARVENDA'
       Origin = 'DB.PRODUTO.PRODN3DOLARVENDA'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutosPRODBIMAGEM: TBlobField
       FieldName = 'PRODBIMAGEM'
@@ -754,47 +715,33 @@ inherited FormTelaNotaFiscalitemFiltro: TFormTelaNotaFiscalitemFiltro
       FixedChar = True
       Size = 5
     end
-    object SQLProdutosPRODN2PERCFRETE: TBCDField
+    object SQLProdutosPRODN2PERCFRETE: TFloatField
       FieldName = 'PRODN2PERCFRETE'
       Origin = 'DB.PRODUTO.PRODN2PERCFRETE'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutosPRODN2PERDA: TBCDField
+    object SQLProdutosPRODN2PERDA: TFloatField
       FieldName = 'PRODN2PERDA'
       Origin = 'DB.PRODUTO.PRODN2PERDA'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutosPRODN2PIS: TBCDField
+    object SQLProdutosPRODN2PIS: TFloatField
       FieldName = 'PRODN2PIS'
       Origin = 'DB.PRODUTO.PRODN2PIS'
-      Precision = 15
-      Size = 2
     end
-    object SQLProdutosPRODN3ALTURA: TBCDField
+    object SQLProdutosPRODN3ALTURA: TFloatField
       FieldName = 'PRODN3ALTURA'
       Origin = 'DB.PRODUTO.PRODN3ALTURA'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutosPRODN3COMPRIMENTO: TBCDField
+    object SQLProdutosPRODN3COMPRIMENTO: TFloatField
       FieldName = 'PRODN3COMPRIMENTO'
       Origin = 'DB.PRODUTO.PRODN3COMPRIMENTO'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutosPRODN3DIMENTOTAL: TBCDField
+    object SQLProdutosPRODN3DIMENTOTAL: TFloatField
       FieldName = 'PRODN3DIMENTOTAL'
       Origin = 'DB.PRODUTO.PRODN3DIMENTOTAL'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutosPRODN3LARGURA: TBCDField
+    object SQLProdutosPRODN3LARGURA: TFloatField
       FieldName = 'PRODN3LARGURA'
       Origin = 'DB.PRODUTO.PRODN3LARGURA'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutosPRODA30INF01ETQBARRAS: TStringField
       FieldName = 'PRODA30INF01ETQBARRAS'
@@ -812,105 +759,73 @@ inherited FormTelaNotaFiscalitemFiltro: TFormTelaNotaFiscalitemFiltro
       FieldName = 'COLEICOD'
       Origin = 'DB.PRODUTO.COLEICOD'
     end
-    object SQLProdutosPRODN2PERCDESP: TBCDField
+    object SQLProdutosPRODN2PERCDESP: TFloatField
       FieldName = 'PRODN2PERCDESP'
       Origin = 'DB.PRODUTO.PRODN2PERCDESP'
-      Precision = 15
-      Size = 2
     end
-    object SQLProdutosPRODN2PERCSUBST: TBCDField
+    object SQLProdutosPRODN2PERCSUBST: TFloatField
       FieldName = 'PRODN2PERCSUBST'
       Origin = 'DB.PRODUTO.PRODN2PERCSUBST'
-      Precision = 15
-      Size = 2
     end
-    object SQLProdutosPRODN2PERCDESC1: TBCDField
+    object SQLProdutosPRODN2PERCDESC1: TFloatField
       FieldName = 'PRODN2PERCDESC1'
       Origin = 'DB.PRODUTO.PRODN2PERCDESC1'
-      Precision = 15
-      Size = 2
     end
-    object SQLProdutosPRODN2PERCDESC2: TBCDField
+    object SQLProdutosPRODN2PERCDESC2: TFloatField
       FieldName = 'PRODN2PERCDESC2'
       Origin = 'DB.PRODUTO.PRODN2PERCDESC2'
-      Precision = 15
-      Size = 2
     end
-    object SQLProdutosPRODN2PERCDESC3: TBCDField
+    object SQLProdutosPRODN2PERCDESC3: TFloatField
       FieldName = 'PRODN2PERCDESC3'
       Origin = 'DB.PRODUTO.PRODN2PERCDESC3'
-      Precision = 15
-      Size = 2
     end
-    object SQLProdutosPRODN2PERCDESC4: TBCDField
+    object SQLProdutosPRODN2PERCDESC4: TFloatField
       FieldName = 'PRODN2PERCDESC4'
       Origin = 'DB.PRODUTO.PRODN2PERCDESC4'
-      Precision = 15
-      Size = 2
     end
-    object SQLProdutosPRODN2PERCDESC5: TBCDField
+    object SQLProdutosPRODN2PERCDESC5: TFloatField
       FieldName = 'PRODN2PERCDESC5'
       Origin = 'DB.PRODUTO.PRODN2PERCDESC5'
-      Precision = 15
-      Size = 2
     end
-    object SQLProdutosPRODN2PERCAUME1: TBCDField
+    object SQLProdutosPRODN2PERCAUME1: TFloatField
       FieldName = 'PRODN2PERCAUME1'
       Origin = 'DB.PRODUTO.PRODN2PERCAUME1'
-      Precision = 15
-      Size = 2
     end
-    object SQLProdutosPRODN2PERCAUME2: TBCDField
+    object SQLProdutosPRODN2PERCAUME2: TFloatField
       FieldName = 'PRODN2PERCAUME2'
       Origin = 'DB.PRODUTO.PRODN2PERCAUME2'
-      Precision = 15
-      Size = 2
     end
-    object SQLProdutosPRODN2PERCAUME3: TBCDField
+    object SQLProdutosPRODN2PERCAUME3: TFloatField
       FieldName = 'PRODN2PERCAUME3'
       Origin = 'DB.PRODUTO.PRODN2PERCAUME3'
-      Precision = 15
-      Size = 2
     end
-    object SQLProdutosPRODN2PERCAUME4: TBCDField
+    object SQLProdutosPRODN2PERCAUME4: TFloatField
       FieldName = 'PRODN2PERCAUME4'
       Origin = 'DB.PRODUTO.PRODN2PERCAUME4'
-      Precision = 15
-      Size = 2
     end
-    object SQLProdutosPRODN2PERCAUME5: TBCDField
+    object SQLProdutosPRODN2PERCAUME5: TFloatField
       FieldName = 'PRODN2PERCAUME5'
       Origin = 'DB.PRODUTO.PRODN2PERCAUME5'
-      Precision = 15
-      Size = 2
     end
     object SQLProdutosDECRICOD: TIntegerField
       FieldName = 'DECRICOD'
       Origin = 'DB.PRODUTO.DECRICOD'
     end
-    object SQLProdutosPRODN2VLRVENDA2: TBCDField
+    object SQLProdutosPRODN2VLRVENDA2: TFloatField
       FieldName = 'PRODN2VLRVENDA2'
       Origin = 'DB.PRODUTO.PRODN2VLRVENDA2'
-      Precision = 15
-      Size = 2
     end
-    object SQLProdutosPRODN3PERCMARGLUC2: TBCDField
+    object SQLProdutosPRODN3PERCMARGLUC2: TFloatField
       FieldName = 'PRODN3PERCMARGLUC2'
       Origin = 'DB.PRODUTO.PRODN3PERCMARGLUC2'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutosPRODN3PERCMGLVFIXA: TBCDField
+    object SQLProdutosPRODN3PERCMGLVFIXA: TFloatField
       FieldName = 'PRODN3PERCMGLVFIXA'
       Origin = 'DB.PRODUTO.PRODN3PERCMGLVFIXA'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutosPRODN3PERCMGLAFIXA: TBCDField
+    object SQLProdutosPRODN3PERCMGLAFIXA: TFloatField
       FieldName = 'PRODN3PERCMGLAFIXA'
       Origin = 'DB.PRODUTO.PRODN3PERCMGLAFIXA'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutosPRODDULTCOMPRA: TDateTimeField
       FieldName = 'PRODDULTCOMPRA'
@@ -920,11 +835,9 @@ inherited FormTelaNotaFiscalitemFiltro: TFormTelaNotaFiscalitemFiltro
       FieldName = 'PRODDULTVENDA'
       Origin = 'DB.PRODUTO.PRODDULTVENDA'
     end
-    object SQLProdutosPRODN3QTDULTCOMPRA: TBCDField
+    object SQLProdutosPRODN3QTDULTCOMPRA: TFloatField
       FieldName = 'PRODN3QTDULTCOMPRA'
       Origin = 'DB.PRODUTO.PRODN3QTDULTCOMPRA'
-      Precision = 15
-      Size = 3
     end
   end
   object SQLSerie: TRxQuery

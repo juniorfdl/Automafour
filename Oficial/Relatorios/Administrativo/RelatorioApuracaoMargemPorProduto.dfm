@@ -190,15 +190,11 @@ inherited FormRelatorioApuracaoMargemPorProduto: TFormRelatorioApuracaoMargemPor
     object TblTemporariaVLRTOTALITEM: TFloatField
       FieldName = 'VLRTOTALITEM'
     end
-    object TblTemporariaPRODN3VLRCUSTO: TBCDField
+    object TblTemporariaPRODN3VLRCUSTO: TFloatField
       FieldName = 'PRODN3VLRCUSTO'
-      Precision = 15
-      Size = 3
     end
-    object TblTemporariaPRODN3VLRVENDA: TBCDField
+    object TblTemporariaPRODN3VLRVENDA: TFloatField
       FieldName = 'PRODN3VLRVENDA'
-      Precision = 15
-      Size = 3
     end
     object TblTemporariaGRUPICOD: TIntegerField
       FieldName = 'GRUPICOD'
@@ -218,10 +214,8 @@ inherited FormRelatorioApuracaoMargemPorProduto: TFormRelatorioApuracaoMargemPor
     object TblTemporariaMARGEMVLR: TFloatField
       FieldName = 'MARGEMVLR'
     end
-    object TblTemporariaCPITN3QTD: TBCDField
+    object TblTemporariaCPITN3QTD: TFloatField
       FieldName = 'CPITN3QTD'
-      Precision = 15
-      Size = 3
     end
     object TblTemporariaCUPOA13ID: TStringField
       FieldName = 'CUPOA13ID'
@@ -615,15 +609,11 @@ inherited FormRelatorioApuracaoMargemPorProduto: TFormRelatorioApuracaoMargemPor
     object SQLVendasVLRTOTALITEM: TFloatField
       FieldName = 'VLRTOTALITEM'
     end
-    object SQLVendasPRODN3VLRCUSTO: TBCDField
+    object SQLVendasPRODN3VLRCUSTO: TFloatField
       FieldName = 'PRODN3VLRCUSTO'
-      Precision = 15
-      Size = 3
     end
-    object SQLVendasPRODN3VLRVENDA: TBCDField
+    object SQLVendasPRODN3VLRVENDA: TFloatField
       FieldName = 'PRODN3VLRVENDA'
-      Precision = 15
-      Size = 3
     end
     object SQLVendasGRUPICOD: TIntegerField
       FieldName = 'GRUPICOD'
@@ -643,10 +633,8 @@ inherited FormRelatorioApuracaoMargemPorProduto: TFormRelatorioApuracaoMargemPor
     object SQLVendasMARGEMVLR: TFloatField
       FieldName = 'MARGEMVLR'
     end
-    object SQLVendasCPITN3QTD: TBCDField
+    object SQLVendasCPITN3QTD: TFloatField
       FieldName = 'CPITN3QTD'
-      Precision = 15
-      Size = 3
     end
     object SQLVendasCUPOA13ID: TStringField
       FieldName = 'CUPOA13ID'

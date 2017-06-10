@@ -1,7 +1,7 @@
 inherited FormRelatorioVendasColecao: TFormRelatorioVendasColecao
   Left = 420
   Top = 244
-  Caption = 'Relat'#243'rio de Vendas Por Cole'#231#227'o'
+  Caption = 'Relatório de Vendas Por Coleção'
   PixelsPerInch = 96
   TextHeight = 13
   inherited TblTemporaria: TTable
@@ -116,10 +116,8 @@ inherited FormRelatorioVendasColecao: TFormRelatorioVendasColecao
     object SQLVendaColecaoTOTAL: TFloatField
       FieldName = 'TOTAL'
     end
-    object SQLVendaColecaoQTDETOTAL: TBCDField
+    object SQLVendaColecaoQTDETOTAL: TFloatField
       FieldName = 'QTDETOTAL'
-      Precision = 15
-      Size = 3
     end
   end
   object Report: TCrpe

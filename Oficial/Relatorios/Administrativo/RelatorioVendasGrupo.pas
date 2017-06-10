@@ -20,7 +20,7 @@ type
     TblTemporariaTOTAL: TFloatField;
     Report: TCrpe;
     TblTemporariaQTDETOTAL: TFloatField;
-    SQLVendaGrupoQTDETOTAL: TBCDField;
+    SQLVendaGrupoQTDETOTAL: TFloatField;
     procedure ExecutarBtnClick(Sender: TObject);
   private
     { Private declarations }

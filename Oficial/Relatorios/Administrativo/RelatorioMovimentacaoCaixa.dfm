@@ -299,30 +299,20 @@ inherited FormRelatorioMovimentacaoCaixa: TFormRelatorioMovimentacaoCaixa
     object TblTemporariaMVCXINROCUPOM: TIntegerField
       FieldName = 'MVCXINROCUPOM'
     end
-    object TblTemporariaMVCXN2VLRCRED: TBCDField
+    object TblTemporariaMVCXN2VLRCRED: TFloatField
       FieldName = 'MVCXN2VLRCRED'
-      Precision = 15
-      Size = 3
     end
-    object TblTemporariaMVCXN2VLRDEB: TBCDField
+    object TblTemporariaMVCXN2VLRDEB: TFloatField
       FieldName = 'MVCXN2VLRDEB'
-      Precision = 15
-      Size = 3
     end
-    object TblTemporariaMVCXN2VLRJURO: TBCDField
+    object TblTemporariaMVCXN2VLRJURO: TFloatField
       FieldName = 'MVCXN2VLRJURO'
-      Precision = 15
-      Size = 3
     end
-    object TblTemporariaMVCXN2VLRMULTA: TBCDField
+    object TblTemporariaMVCXN2VLRMULTA: TFloatField
       FieldName = 'MVCXN2VLRMULTA'
-      Precision = 15
-      Size = 3
     end
-    object TblTemporariaMVCXN2VLRDESC: TBCDField
+    object TblTemporariaMVCXN2VLRDESC: TFloatField
       FieldName = 'MVCXN2VLRDESC'
-      Precision = 15
-      Size = 3
     end
     object TblTemporariaNUMEICOD: TIntegerField
       FieldName = 'NUMEICOD'
@@ -494,30 +484,20 @@ inherited FormRelatorioMovimentacaoCaixa: TFormRelatorioMovimentacaoCaixa
     object SQLMovimentoCaixaMVCXINROCUPOM: TIntegerField
       FieldName = 'MVCXINROCUPOM'
     end
-    object SQLMovimentoCaixaMVCXN2VLRCRED: TBCDField
+    object SQLMovimentoCaixaMVCXN2VLRCRED: TFloatField
       FieldName = 'MVCXN2VLRCRED'
-      Precision = 15
-      Size = 3
     end
-    object SQLMovimentoCaixaMVCXN2VLRDEB: TBCDField
+    object SQLMovimentoCaixaMVCXN2VLRDEB: TFloatField
       FieldName = 'MVCXN2VLRDEB'
-      Precision = 15
-      Size = 3
     end
-    object SQLMovimentoCaixaMVCXN2VLRJURO: TBCDField
+    object SQLMovimentoCaixaMVCXN2VLRJURO: TFloatField
       FieldName = 'MVCXN2VLRJURO'
-      Precision = 15
-      Size = 3
     end
-    object SQLMovimentoCaixaMVCXN2VLRMULTA: TBCDField
+    object SQLMovimentoCaixaMVCXN2VLRMULTA: TFloatField
       FieldName = 'MVCXN2VLRMULTA'
-      Precision = 15
-      Size = 3
     end
-    object SQLMovimentoCaixaMVCXN2VLRDESC: TBCDField
+    object SQLMovimentoCaixaMVCXN2VLRDESC: TFloatField
       FieldName = 'MVCXN2VLRDESC'
-      Precision = 15
-      Size = 3
     end
     object SQLMovimentoCaixaNUMEICOD: TIntegerField
       FieldName = 'NUMEICOD'

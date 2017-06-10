@@ -34,10 +34,8 @@ inherited FormRelatorioCupomEmitidoPorEmpresa: TFormRelatorioCupomEmitidoPorEmpr
       FieldName = 'CPITTOBS'
       Size = 200
     end
-    object TblTemporariaCPITN3QTD: TBCDField
+    object TblTemporariaCPITN3QTD: TFloatField
       FieldName = 'CPITN3QTD'
-      Precision = 15
-      Size = 3
     end
     object TblTemporariaVENDICOD: TIntegerField
       FieldName = 'VENDICOD'
@@ -151,10 +149,8 @@ inherited FormRelatorioCupomEmitidoPorEmpresa: TFormRelatorioCupomEmitidoPorEmpr
     object SQLVendasCORICOD: TIntegerField
       FieldName = 'CORICOD'
     end
-    object SQLVendasCPITN3QTD: TBCDField
+    object SQLVendasCPITN3QTD: TFloatField
       FieldName = 'CPITN3QTD'
-      Precision = 15
-      Size = 3
     end
     object SQLVendasVENDICOD: TIntegerField
       FieldName = 'VENDICOD'
