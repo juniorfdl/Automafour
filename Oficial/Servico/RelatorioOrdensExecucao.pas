@@ -26,7 +26,7 @@ type
     SQLOrdItensTIPO: TIntegerField;
     SQLOrdItensACESSORIOS: TMemoField;
     SQLOrdItensPROBLEMA: TMemoField;
-    SQLOrdItensVALOR: TBCDField;
+    SQLOrdItensVALOR: TFloatField;
     SQLOrdItensFINALIZADO: TDateTimeField;
     SQLOrdItensKM_ENTRADA: TIntegerField;
     SQLOrdItensCOMBUSTIVEL: TStringField;
@@ -42,9 +42,9 @@ type
     SQLOrdItensORDA50VEICULO: TStringField;
     SQLOrdItensSTATUS: TStringField;
     SQLOrdItensEMPRICOD: TIntegerField;
-    SQLOrdItensORITN2VLRPRODUTO: TBCDField;
-    SQLOrdItensORITN2VLRSERVICO: TBCDField;
-    BCDField1: TBCDField;
+    SQLOrdItensORITN2VLRPRODUTO: TFloatField;
+    SQLOrdItensORITN2VLRSERVICO: TFloatField;
+    BCDField1: TFloatField;
     SQLOrdItensPLACA: TStringField;
     SQLOrdItensPARCELAS: TStringField;
     SQLOrdItensPARCELASVARIAVEIS: TStringField;

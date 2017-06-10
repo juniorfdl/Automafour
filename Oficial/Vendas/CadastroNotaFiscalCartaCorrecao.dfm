@@ -171,7 +171,7 @@ inherited FormCadastroNotaFiscalCartaCorrecao: TFormCadastroNotaFiscalCartaCorre
               Top = 3
               Width = 76
               Height = 13
-              Caption = 'Data Emiss'#227'o'
+              Caption = 'Data Emissão'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 8404992
               Font.Height = -11
@@ -229,13 +229,13 @@ inherited FormCadastroNotaFiscalCartaCorrecao: TFormCadastroNotaFiscalCartaCorre
   end
   inherited PopupMenuDiversos: TPopupMenu
     object EnviarCarta: TMenuItem
-      Caption = 'Enviar Carta de Corre'#231#227'o'
+      Caption = 'Enviar Carta de Correção'
       OnClick = EnviarCartaClick
     end
   end
   inherited PopupMenuImpressao: TPopupMenu
     object ImrprimirCartaCorrecao: TMenuItem
-      Caption = 'Imrprimir Carta de Corre'#231#227'o'
+      Caption = 'Imrprimir Carta de Correção'
       OnClick = ImrprimirCartaCorrecaoClick
     end
   end
@@ -286,9 +286,6 @@ inherited FormCadastroNotaFiscalCartaCorrecao: TFormCadastroNotaFiscalCartaCorre
     MAIL = ACBrMail1
     OnStatusChange = ACBrNFe1StatusChange
     Configuracoes.Geral.SSLLib = libCapicom
-    Configuracoes.Geral.SSLCryptLib = cryCapicom
-    Configuracoes.Geral.SSLHttpLib = httpWinINet
-    Configuracoes.Geral.SSLXmlSignLib = xsMsXmlCapicom
     Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
     Configuracoes.Geral.IncluirQRCodeXMLNFCe = False
     Configuracoes.Arquivos.SepararPorMes = True
@@ -510,11 +507,9 @@ inherited FormCadastroNotaFiscalCartaCorrecao: TFormCadastroNotaFiscalCartaCorre
       FixedChar = True
       Size = 1
     end
-    object SQLEmpresaEMPRN2VLRFUNDOPROMO: TBCDField
+    object SQLEmpresaEMPRN2VLRFUNDOPROMO: TFloatField
       FieldName = 'EMPRN2VLRFUNDOPROMO'
       Origin = 'DB.EMPRESA.EMPRN2VLRFUNDOPROMO'
-      Precision = 15
-      Size = 2
     end
     object SQLEmpresaEMPRA15REGJUNTA: TStringField
       FieldName = 'EMPRA15REGJUNTA'

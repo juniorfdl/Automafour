@@ -694,10 +694,9 @@ inherited FormCadastroMecOrdemItem: TFormCadastroMecOrdemItem
       Size = 60
       Calculated = True
     end
-    object SQLTemplateTotalItemCalc: TBCDField
+    object SQLTemplateTotalItemCalc: TFloatField
       FieldKind = fkCalculated
       FieldName = 'TotalItemCalc'
-      Size = 3
       Calculated = True
     end
     object SQLTemplateGARANTIA: TStringField
@@ -711,45 +710,33 @@ inherited FormCadastroMecOrdemItem: TFormCadastroMecOrdemItem
       Origin = 'DB.ORD_ITENS_TMP.PRODICOD'
       OnChange = SQLTemplatePRODICODChange
     end
-    object SQLTemplateORITN3QUANT: TBCDField
+    object SQLTemplateORITN3QUANT: TFloatField
       DisplayLabel = 'Quantidade'
       FieldName = 'ORITN3QUANT'
       Origin = 'DB.ORD_ITENS_TMP.ORITN3QUANT'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplateORITN2VLRUNIT: TBCDField
+    object SQLTemplateORITN2VLRUNIT: TFloatField
       DisplayLabel = 'Valor Unit'
       FieldName = 'ORITN2VLRUNIT'
       Origin = 'DB.ORD_ITENS_TMP.ORITN2VLRUNIT'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplateORITN2PERCDESC: TBCDField
+    object SQLTemplateORITN2PERCDESC: TFloatField
       FieldName = 'ORITN2PERCDESC'
       Origin = 'DB.ORD_ITENS_TMP.ORITN2PERCDESC'
       OnChange = SQLTemplateORITN2PERCDESCChange
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplateORITN2VLRDESC: TBCDField
+    object SQLTemplateORITN2VLRDESC: TFloatField
       FieldName = 'ORITN2VLRDESC'
       Origin = 'DB.ORD_MEC_ITENS.ORITN2VLRDESC'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplateORITN3TOTVEND: TBCDField
+    object SQLTemplateORITN3TOTVEND: TFloatField
       DisplayLabel = 'ValorTotal'
       FieldName = 'ORITN3TOTVEND'
       Origin = 'DB.ORD_ITENS_TMP.ORITN3TOTVEND'
-      Precision = 15
-      Size = 3
     end
-    object SQLTemplateORITN2PERCCOMIS: TBCDField
+    object SQLTemplateORITN2PERCCOMIS: TFloatField
       FieldName = 'ORITN2PERCCOMIS'
       Origin = 'DB.ORD_ITENS_TMP.ORITN2PERCCOMIS'
-      Precision = 15
-      Size = 3
     end
     object SQLTemplateORITA254OBS: TStringField
       FieldName = 'ORITA254OBS'
@@ -773,11 +760,9 @@ inherited FormCadastroMecOrdemItem: TFormCadastroMecOrdemItem
       FieldName = 'IDMECANICO'
       Origin = 'DB.ORD_MEC_ITENS.IDMECANICO'
     end
-    object SQLTemplateORITN3TEMPO: TBCDField
+    object SQLTemplateORITN3TEMPO: TFloatField
       FieldName = 'ORITN3TEMPO'
       Origin = 'DB.ORD_MEC_ITENS.ORITN3TEMPO'
-      Precision = 15
-      Size = 3
     end
   end
   object SQLIcms: TRxQuery

@@ -58,7 +58,7 @@ type
     SQLEmpresaEMPRBLOGOTIPO: TBlobField;
     SQLEmpresaEMPRA60CONTATO: TStringField;
     SQLEmpresaEMPRCLUCROREAL: TStringField;
-    SQLEmpresaEMPRN2VLRFUNDOPROMO: TBCDField;
+    SQLEmpresaEMPRN2VLRFUNDOPROMO: TFloatField;
     SQLEmpresaEMPRA15REGJUNTA: TStringField;
     SQLEmpresaEMPRIUFCODFED: TIntegerField;
     SQLEmpresaEMPRA3CRT: TStringField;

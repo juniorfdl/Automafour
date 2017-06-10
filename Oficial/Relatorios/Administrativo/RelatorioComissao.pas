@@ -12,20 +12,20 @@ type
   TFormRelatorioComissao = class(TFormRelatorioTEMPLATE)
     SQLVendedorComissao: TRxQuery;
     SQLVendedorComissaoVENDICOD: TIntegerField;
-    SQLVendedorComissaoVENDAVISTA: TBCDField;
-    SQLVendedorComissaoVENDAPRAZO: TBCDField;
+    SQLVendedorComissaoVENDAVISTA: TFloatField;
+    SQLVendedorComissaoVENDAPRAZO: TFloatField;
     SQLVendedorComissaoNROVENDAS: TIntegerField;
-    SQLVendedorComissaoNTOITENS: TBCDField;
-    SQLVendedorComissaoVALORCOMISSAO: TBCDField;
+    SQLVendedorComissaoNTOITENS: TFloatField;
+    SQLVendedorComissaoVALORCOMISSAO: TFloatField;
     SQLVendedorComissaoVENDA60NOME: TStringField;
     SQLVendedorComissaoTOTALVENDA: TFloatField;
     TblTemporariaVENDICOD: TIntegerField;
-    TblTemporariaVENDAVISTA: TBCDField;
-    TblTemporariaVENDAPRAZO: TBCDField;
+    TblTemporariaVENDAVISTA: TFloatField;
+    TblTemporariaVENDAPRAZO: TFloatField;
     TblTemporariaTOTALVENDA: TFloatField;
     TblTemporariaNROVENDAS: TIntegerField;
-    TblTemporariaNTOITENS: TBCDField;
-    TblTemporariaVALORCOMISSAO: TBCDField;
+    TblTemporariaNTOITENS: TFloatField;
+    TblTemporariaVALORCOMISSAO: TFloatField;
     TblTemporariaVENDA60NOME: TStringField;
     Report: TCrpe;
     procedure ExecutarBtnClick(Sender: TObject);

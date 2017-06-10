@@ -1,7 +1,7 @@
 inherited FormRelatorioBoletimCaixa: TFormRelatorioBoletimCaixa
   Left = -16
   Top = 83
-  Caption = 'Relat'#243'rio Boletim de Caixa'
+  Caption = 'Relatório Boletim de Caixa'
   PixelsPerInch = 96
   TextHeight = 13
   inherited ScrollBox: TScrollBox
@@ -11,9 +11,9 @@ inherited FormRelatorioBoletimCaixa: TFormRelatorioBoletimCaixa
       Width = 208
       Height = 65
       Caption = 
-        '* N'#227'o esqueca de efetuar o '#13#10'  o Recalculo dos Totalizadores'#13#10'  ' +
-        'do Caixa, para que sejam '#13#10'  atualizados todos os lan'#231'amentos'#13#10' ' +
-        ' realizados no per'#237'odo selecionado.'
+        '* Não esqueca de efetuar o '#13#10'  o Recalculo dos Totalizadores'#13#10'  ' +
+        'do Caixa, para que sejam '#13#10'  atualizados todos os lançamentos'#13#10' ' +
+        ' realizados no período selecionado.'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clRed
       Font.Height = -11
@@ -103,7 +103,7 @@ inherited FormRelatorioBoletimCaixa: TFormRelatorioBoletimCaixa
         Top = 296
         Width = 163
         Height = 17
-        Caption = 'Imprime em bobina n'#227'o fiscal'
+        Caption = 'Imprime em bobina não fiscal'
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -128,12 +128,12 @@ inherited FormRelatorioBoletimCaixa: TFormRelatorioBoletimCaixa
     object TblTemporariaTODIDMOV: TDateTimeField
       FieldName = 'TODIDMOV'
     end
-    object TblTemporariaTODIN2VLRDEBITO: TBCDField
+    object TblTemporariaTODIN2VLRDEBITO: TFloatField
       FieldName = 'TODIN2VLRDEBITO'
       Precision = 15
       Size = 3
     end
-    object TblTemporariaTODIN2VLRCREDITO: TBCDField
+    object TblTemporariaTODIN2VLRCREDITO: TFloatField
       FieldName = 'TODIN2VLRCREDITO'
       Precision = 15
       Size = 3
@@ -242,12 +242,12 @@ inherited FormRelatorioBoletimCaixa: TFormRelatorioBoletimCaixa
     object SQLBoletimTODIDMOV: TDateTimeField
       FieldName = 'TODIDMOV'
     end
-    object SQLBoletimTODIN2VLRDEBITO: TBCDField
+    object SQLBoletimTODIN2VLRDEBITO: TFloatField
       FieldName = 'TODIN2VLRDEBITO'
       Precision = 15
       Size = 3
     end
-    object SQLBoletimTODIN2VLRCREDITO: TBCDField
+    object SQLBoletimTODIN2VLRCREDITO: TFloatField
       FieldName = 'TODIN2VLRCREDITO'
       Precision = 15
       Size = 3
@@ -469,7 +469,7 @@ inherited FormRelatorioBoletimCaixa: TFormRelatorioBoletimCaixa
       FieldName = 'NUMEICOD'
       Origin = 'DB.FECHAMENTOCAIXA.NUMEICOD'
     end
-    object SQLFechamentoCaixaFECXN2VALOR: TBCDField
+    object SQLFechamentoCaixaFECXN2VALOR: TFloatField
       FieldName = 'FECXN2VALOR'
       Origin = 'DB.FECHAMENTOCAIXA.FECXN2VALOR'
       Precision = 15
@@ -502,7 +502,7 @@ inherited FormRelatorioBoletimCaixa: TFormRelatorioBoletimCaixa
       FieldName = 'NUMEICOD'
       Origin = 'DB.FECHAMENTOCAIXA.NUMEICOD'
     end
-    object TblFechamentoCaixaFECXN2VALOR: TBCDField
+    object TblFechamentoCaixaFECXN2VALOR: TFloatField
       FieldName = 'FECXN2VALOR'
       Origin = 'DB.FECHAMENTOCAIXA.FECXN2VALOR'
       Precision = 15
@@ -635,12 +635,12 @@ inherited FormRelatorioBoletimCaixa: TFormRelatorioBoletimCaixa
     object SQLBoletimAuxTODIDMOV: TDateTimeField
       FieldName = 'TODIDMOV'
     end
-    object SQLBoletimAuxTODIN2VLRDEBITO: TBCDField
+    object SQLBoletimAuxTODIN2VLRDEBITO: TFloatField
       FieldName = 'TODIN2VLRDEBITO'
       Precision = 15
       Size = 3
     end
-    object SQLBoletimAuxTODIN2VLRCREDITO: TBCDField
+    object SQLBoletimAuxTODIN2VLRCREDITO: TFloatField
       FieldName = 'TODIN2VLRCREDITO'
       Precision = 15
       Size = 3
@@ -699,7 +699,7 @@ inherited FormRelatorioBoletimCaixa: TFormRelatorioBoletimCaixa
       FieldName = 'NUMEICOD'
       Origin = 'DB.FECHAMENTOCAIXA.NUMEICOD'
     end
-    object SQLFechamentoCaixaAuxFECXN2VALOR: TBCDField
+    object SQLFechamentoCaixaAuxFECXN2VALOR: TFloatField
       FieldName = 'FECXN2VALOR'
       Origin = 'DB.FECHAMENTOCAIXA.FECXN2VALOR'
       Precision = 15
@@ -723,7 +723,7 @@ inherited FormRelatorioBoletimCaixa: TFormRelatorioBoletimCaixa
     PrinterSetup.mmMarginTop = 0
     PrinterSetup.mmPaperHeight = 200000
     PrinterSetup.mmPaperWidth = 130000
-    PrinterSetup.PaperSize = 177
+    PrinterSetup.PaperSize = 139
     Units = utMillimeters
     DeviceType = 'Printer'
     EmailSettings.ReportFormat = 'PDF'

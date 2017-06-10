@@ -11,17 +11,13 @@ inherited FormRelatorioComissao: TFormRelatorioComissao
       FieldName = 'VENDICOD'
       Origin = 'DB.VENDEDORCOMISSAO.VENDICOD'
     end
-    object TblTemporariaVENDAVISTA: TBCDField
+    object TblTemporariaVENDAVISTA: TFloatField
       FieldName = 'VENDAVISTA'
       Origin = 'DB.VENDEDORCOMISSAO.VDCON2TOTVENDVISTA'
-      Precision = 15
-      Size = 3
     end
-    object TblTemporariaVENDAPRAZO: TBCDField
+    object TblTemporariaVENDAPRAZO: TFloatField
       FieldName = 'VENDAPRAZO'
       Origin = 'DB.VENDEDORCOMISSAO.VDCON2TOTVENDPRAZO'
-      Precision = 15
-      Size = 3
     end
     object TblTemporariaTOTALVENDA: TFloatField
       FieldName = 'TOTALVENDA'
@@ -31,17 +27,13 @@ inherited FormRelatorioComissao: TFormRelatorioComissao
       FieldName = 'NROVENDAS'
       Origin = 'DB.VENDEDORCOMISSAO.VDCOINROVEND'
     end
-    object TblTemporariaNTOITENS: TBCDField
+    object TblTemporariaNTOITENS: TFloatField
       FieldName = 'NTOITENS'
       Origin = 'DB.VENDEDORCOMISSAO.VDCON3QTDVEND'
-      Precision = 15
-      Size = 3
     end
-    object TblTemporariaVALORCOMISSAO: TBCDField
+    object TblTemporariaVALORCOMISSAO: TFloatField
       FieldName = 'VALORCOMISSAO'
       Origin = 'DB.VENDEDORCOMISSAO.VDCON2VLRCOMISS'
-      Precision = 15
-      Size = 3
     end
     object TblTemporariaVENDA60NOME: TStringField
       FieldName = 'VENDA60NOME'
@@ -86,17 +78,13 @@ inherited FormRelatorioComissao: TFormRelatorioComissao
       FieldName = 'VENDICOD'
       Origin = 'DB.VENDEDORCOMISSAO.VENDICOD'
     end
-    object SQLVendedorComissaoVENDAVISTA: TBCDField
+    object SQLVendedorComissaoVENDAVISTA: TFloatField
       FieldName = 'VENDAVISTA'
       Origin = 'DB.VENDEDORCOMISSAO.VDCON2TOTVENDVISTA'
-      Precision = 15
-      Size = 3
     end
-    object SQLVendedorComissaoVENDAPRAZO: TBCDField
+    object SQLVendedorComissaoVENDAPRAZO: TFloatField
       FieldName = 'VENDAPRAZO'
       Origin = 'DB.VENDEDORCOMISSAO.VDCON2TOTVENDPRAZO'
-      Precision = 15
-      Size = 3
     end
     object SQLVendedorComissaoTOTALVENDA: TFloatField
       FieldName = 'TOTALVENDA'
@@ -106,17 +94,13 @@ inherited FormRelatorioComissao: TFormRelatorioComissao
       FieldName = 'NROVENDAS'
       Origin = 'DB.VENDEDORCOMISSAO.VDCOINROVEND'
     end
-    object SQLVendedorComissaoNTOITENS: TBCDField
+    object SQLVendedorComissaoNTOITENS: TFloatField
       FieldName = 'NTOITENS'
       Origin = 'DB.VENDEDORCOMISSAO.VDCON3QTDVEND'
-      Precision = 15
-      Size = 3
     end
-    object SQLVendedorComissaoVALORCOMISSAO: TBCDField
+    object SQLVendedorComissaoVALORCOMISSAO: TFloatField
       FieldName = 'VALORCOMISSAO'
       Origin = 'DB.VENDEDORCOMISSAO.VDCON2VLRCOMISS'
-      Precision = 15
-      Size = 3
     end
     object SQLVendedorComissaoVENDA60NOME: TStringField
       FieldName = 'VENDA60NOME'

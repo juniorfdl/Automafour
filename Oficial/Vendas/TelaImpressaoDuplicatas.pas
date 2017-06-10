@@ -54,8 +54,8 @@ type
     TblDuplicatasCLIEA13ID: TStringField;
     TblDuplicatasCTRCINROPARC: TIntegerField;
     TblDuplicatasCTRCDVENC: TDateTimeField;
-    TblDuplicatasCTRCN2VLR: TBCDField;
-    TblDuplicatasCTRCN2DESCFIN: TBCDField;
+    TblDuplicatasCTRCN2VLR: TFloatField;
+    TblDuplicatasCTRCN2DESCFIN: TFloatField;
     TblDuplicatasNOFIA13ID: TStringField;
     TblDuplicatasCTRCA30NRODUPLICBANCO: TStringField;
     TblDuplicatasCTRCDEMIS: TDateTimeField;
@@ -74,9 +74,9 @@ type
     SQLContasReceberCTRCCSTATUS: TStringField;
     SQLContasReceberCTRCINROPARC: TIntegerField;
     SQLContasReceberCTRCDVENC: TDateTimeField;
-    SQLContasReceberCTRCN2VLR: TBCDField;
-    SQLContasReceberCTRCN2DESCFIN: TBCDField;
-    SQLContasReceberCTRCN2TOTREC: TBCDField;
+    SQLContasReceberCTRCN2VLR: TFloatField;
+    SQLContasReceberCTRCN2DESCFIN: TFloatField;
+    SQLContasReceberCTRCN2TOTREC: TFloatField;
     SQLContasReceberCTRCDULTREC: TDateTimeField;
     SQLContasReceberPORTICOD: TIntegerField;
     SQLContasReceberCTRCA5TIPOPADRAO: TStringField;
@@ -108,7 +108,7 @@ type
     SQLTotais: TRxQuery;
     Label7: TLabel;
     TblDuplicatasTotalDocumento: TFloatField;
-    SQLTotaisTOTALDOCUMENTO: TBCDField;
+    SQLTotaisTOTALDOCUMENTO: TFloatField;
     SQLTotaisNROPARCELAS: TIntegerField;
     SQLTotaisCTRCA30NRODUPLICBANCO: TStringField;
     EditParcelas: TEdit;
@@ -346,8 +346,8 @@ type
     SQLContaCorrenteCTCRA15NUMERO: TStringField;
     SQLContaCorrenteCTCRA60TITULAR: TStringField;
     SQLContaCorrenteCTCRDABERTURA: TDateTimeField;
-    SQLContaCorrenteCTCRN2LIMITE: TBCDField;
-    SQLContaCorrenteCTCRN2SALDOATUAL: TBCDField;
+    SQLContaCorrenteCTCRN2LIMITE: TFloatField;
+    SQLContaCorrenteCTCRN2SALDOATUAL: TFloatField;
     SQLContaCorrenteTMBCICOD: TIntegerField;
     SQLContaCorrentePENDENTE: TStringField;
     SQLContaCorrenteREGISTRO: TDateTimeField;

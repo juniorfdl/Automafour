@@ -32,11 +32,11 @@ type
     SQLTemplateGRUPO_SERVICO: TIntegerField;
     SQLTemplateGARANTIA: TStringField;
     SQLTemplatePRODICOD: TIntegerField;
-    SQLTemplateORITN3QUANT: TBCDField;
-    SQLTemplateORITN2VLRUNIT: TBCDField;
-    SQLTemplateORITN2PERCDESC: TBCDField;
-    SQLTemplateORITN3TOTVEND: TBCDField;
-    SQLTemplateORITN2PERCCOMIS: TBCDField;
+    SQLTemplateORITN3QUANT: TFloatField;
+    SQLTemplateORITN2VLRUNIT: TFloatField;
+    SQLTemplateORITN2PERCDESC: TFloatField;
+    SQLTemplateORITN3TOTVEND: TFloatField;
+    SQLTemplateORITN2PERCCOMIS: TFloatField;
     SQLTemplateORITA254OBS: TStringField;
     Label9: TLabel;
     BtnProduto: TSpeedButton;
@@ -46,7 +46,7 @@ type
     DBEdit11: TDBEdit;
     EditProduto: TEdit;
     SQLTemplateProdutoLookUp: TStringField;
-    SQLTemplateTotalItemCalc: TBCDField;
+    SQLTemplateTotalItemCalc: TFloatField;
     SQLTemplateServicoLookup: TStringField;
     SQLTemplateUnidadeLookup: TStringField;
     SQLNumeroItens: TQuery;
@@ -65,8 +65,8 @@ type
     SQLTemplateIDMECANICO: TIntegerField;
     edtHora: TMaskEdit;
     Label2: TLabel;
-    SQLTemplateORITN3TEMPO: TBCDField;
-    SQLTemplateORITN2VLRDESC: TBCDField;
+    SQLTemplateORITN3TEMPO: TFloatField;
+    SQLTemplateORITN2VLRDESC: TFloatField;
 
     procedure EditProdutoEnter(Sender: TObject);
     procedure EditProdutoExit(Sender: TObject);

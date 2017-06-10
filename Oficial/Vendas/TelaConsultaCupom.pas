@@ -15,7 +15,7 @@ type
     SQLTemplateCUPODEMIS: TDateTimeField;
     SQLTemplateCLIEA13ID: TStringField;
     SQLTemplateVENDICOD: TIntegerField;
-    SQLTemplateCUPON2TOTITENS: TBCDField;
+    SQLTemplateCUPON2TOTITENS: TFloatField;
     SQLTemplateCUPOCTIPOPADRAO: TStringField;
     SQLTemplateCLIEA60RAZAOSOC: TStringField;
     SQLTemplateVENDA60NOME: TStringField;
@@ -23,12 +23,12 @@ type
     FormStorage: TFormStorage;
     Timer1: TTimer;
     SQLTemplateTotalGeral: TFloatField;
-    SQLTemplateCUPON2JUROATRAS: TBCDField;
-    SQLTemplateCUPON2MULTAATRAS: TBCDField;
-    SQLTemplateCUPON3CREDTAXA: TBCDField;
-    SQLTemplateCUPON2ACRESC: TBCDField;
-    SQLTemplateCUPON2DESC: TBCDField;
-    SQLTemplateCUPON3BONUSTROCA: TBCDField;
+    SQLTemplateCUPON2JUROATRAS: TFloatField;
+    SQLTemplateCUPON2MULTAATRAS: TFloatField;
+    SQLTemplateCUPON3CREDTAXA: TFloatField;
+    SQLTemplateCUPON2ACRESC: TFloatField;
+    SQLTemplateCUPON2DESC: TFloatField;
+    SQLTemplateCUPON3BONUSTROCA: TFloatField;
     SQLTemplateCUPOINRO: TIntegerField;
     De: TDateEdit;
     Label1: TLabel;

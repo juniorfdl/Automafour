@@ -952,33 +952,23 @@ object RelatorioOrdensServicoPorTipo: TRelatorioOrdensServicoPorTipo
     object SQLOrdItensPRODICOD: TIntegerField
       FieldName = 'PRODICOD'
     end
-    object SQLOrdItensORITN3QUANT: TBCDField
+    object SQLOrdItensORITN3QUANT: TFloatField
       FieldName = 'ORITN3QUANT'
       DisplayFormat = ',0.00'
-      Precision = 15
-      Size = 3
     end
-    object SQLOrdItensORITN2VLRUNIT: TBCDField
+    object SQLOrdItensORITN2VLRUNIT: TFloatField
       FieldName = 'ORITN2VLRUNIT'
-      Precision = 15
-      Size = 3
     end
-    object SQLOrdItensORITN2PERCDESC: TBCDField
+    object SQLOrdItensORITN2PERCDESC: TFloatField
       FieldName = 'ORITN2PERCDESC'
-      Precision = 15
-      Size = 3
     end
-    object SQLOrdItensORITN2VLRDESC: TBCDField
+    object SQLOrdItensORITN2VLRDESC: TFloatField
       FieldName = 'ORITN2VLRDESC'
       DisplayFormat = ',0.00'
-      Precision = 15
-      Size = 2
     end
-    object SQLOrdItensORITN3TOTVEND: TBCDField
+    object SQLOrdItensORITN3TOTVEND: TFloatField
       FieldName = 'ORITN3TOTVEND'
       DisplayFormat = ',0.00'
-      Precision = 15
-      Size = 3
     end
     object SQLOrdItensORITA254OBS: TStringField
       FieldName = 'ORITA254OBS'
@@ -991,16 +981,12 @@ object RelatorioOrdensServicoPorTipo: TRelatorioOrdensServicoPorTipo
     object SQLOrdItensIDMECANICO: TIntegerField
       FieldName = 'IDMECANICO'
     end
-    object SQLOrdItensORITN2PERCCOMIS: TBCDField
+    object SQLOrdItensORITN2PERCCOMIS: TFloatField
       FieldName = 'ORITN2PERCCOMIS'
       DisplayFormat = ',0.00'
-      Precision = 15
-      Size = 3
     end
-    object SQLOrdItensORITN3TEMPO: TBCDField
+    object SQLOrdItensORITN3TEMPO: TFloatField
       FieldName = 'ORITN3TEMPO'
-      Precision = 15
-      Size = 3
     end
     object SQLOrdItensVALORITEM: TFloatField
       FieldName = 'VALORITEM'

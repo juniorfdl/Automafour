@@ -9,10 +9,10 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
   TextHeight = 13
   inherited ScrollBoxFundo: TScrollBox
     Width = 831
-    Height = 469
+    Height = 468
     inherited PanelCentral: TPanel
       Width = 827
-      Height = 385
+      Height = 384
       inherited PanelBarra: TPanel
         Width = 827
         Height = 255
@@ -380,7 +380,7 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
         Left = 0
         Top = 255
         Width = 827
-        Height = 130
+        Height = 129
         Hint = 
           'Clique com o bot'#227'o direito do mouse para visualizar outras fun'#231#245 +
           'es...'
@@ -873,24 +873,18 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
       FieldName = 'CTRCDVENC'
       DisplayFormat = 'dd/mm/yy'
     end
-    object SQLContasReceberCTRCN2VLR: TBCDField
+    object SQLContasReceberCTRCN2VLR: TFloatField
       DisplayLabel = 'Valor'
       FieldName = 'CTRCN2VLR'
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
-    object SQLContasReceberCTRCN2DESCFIN: TBCDField
+    object SQLContasReceberCTRCN2DESCFIN: TFloatField
       DisplayLabel = 'Desconto'
       FieldName = 'CTRCN2DESCFIN'
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
-    object SQLContasReceberCTRCN2TOTREC: TBCDField
+    object SQLContasReceberCTRCN2TOTREC: TFloatField
       FieldName = 'CTRCN2TOTREC'
-      Precision = 15
-      Size = 3
     end
     object SQLContasReceberCTRCDULTREC: TDateTimeField
       FieldName = 'CTRCDULTREC'
@@ -1381,17 +1375,13 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
       FixedChar = True
       Size = 13
     end
-    object TblDuplicatasCTRCN2DESCFIN: TBCDField
+    object TblDuplicatasCTRCN2DESCFIN: TFloatField
       FieldName = 'CTRCN2DESCFIN'
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
-    object TblDuplicatasCTRCN2VLR: TBCDField
+    object TblDuplicatasCTRCN2VLR: TFloatField
       FieldName = 'CTRCN2VLR'
       DisplayFormat = '#,##0.00'
-      Precision = 15
-      Size = 3
     end
     object TblDuplicatasCTRCDVENC: TDateTimeField
       FieldName = 'CTRCDVENC'
@@ -1540,10 +1530,8 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
       end>
     Left = 496
     Top = 16
-    object SQLTotaisTOTALDOCUMENTO: TBCDField
+    object SQLTotaisTOTALDOCUMENTO: TFloatField
       FieldName = 'TOTALDOCUMENTO'
-      Precision = 15
-      Size = 3
     end
     object SQLTotaisNROPARCELAS: TIntegerField
       FieldName = 'NROPARCELAS'
@@ -5254,17 +5242,13 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
       FieldName = 'CTCRDABERTURA'
       Origin = 'DB.CONTACORRENTE.CTCRDABERTURA'
     end
-    object SQLContaCorrenteCTCRN2LIMITE: TBCDField
+    object SQLContaCorrenteCTCRN2LIMITE: TFloatField
       FieldName = 'CTCRN2LIMITE'
       Origin = 'DB.CONTACORRENTE.CTCRN2LIMITE'
-      Precision = 15
-      Size = 3
     end
-    object SQLContaCorrenteCTCRN2SALDOATUAL: TBCDField
+    object SQLContaCorrenteCTCRN2SALDOATUAL: TFloatField
       FieldName = 'CTCRN2SALDOATUAL'
       Origin = 'DB.CONTACORRENTE.CTCRN2SALDOATUAL'
-      Precision = 15
-      Size = 3
     end
     object SQLContaCorrenteTMBCICOD: TIntegerField
       FieldName = 'TMBCICOD'

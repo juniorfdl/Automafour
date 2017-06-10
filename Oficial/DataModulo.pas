@@ -556,11 +556,11 @@ type
     MemCtRecParcCUPOA13ID: TStringField;
     MemCtRecParcCTRCA13ID: TStringField;
     MemCtRecParcCTRCINROPARC: TIntegerField;
-    MemCtRecParcCUPON2DESC: TBCDField;
-    MemCtRecParcCUPON2TOTITENS: TBCDField;
-    MemCtRecParcCUPON2ACRESC: TBCDField;
+    MemCtRecParcCUPON2DESC: TFloatField;
+    MemCtRecParcCUPON2TOTITENS: TFloatField;
+    MemCtRecParcCUPON2ACRESC: TFloatField;
     MemCtRecParcCLIEA13ID: TStringField;
-    MemCtRecParcCTRCN2VLR: TBCDField;
+    MemCtRecParcCTRCN2VLR: TFloatField;
     MemCtRecParcBaixar: TBooleanField;
     MemCtRecParcCTRCN2VLRJURO: TFloatField;
     MemCtRecParcCTRCN2VLRMULTA: TFloatField;
@@ -568,6 +568,7 @@ type
     MemCtRecParcCTRCN2VLRTXCOBR: TFloatField;
     MemCtRecParcCTRCDULTREC: TDateField;
     MemCtRecParcValorOrigem: TFloatField;
+    
     DSMemCtRecParc: TDataSource;
     SQLContasReceber: TRxQuery;
     SQLContasReceberCTRCA13ID: TStringField;

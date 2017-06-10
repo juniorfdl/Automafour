@@ -319,23 +319,17 @@ inherited FormRelatorioNotasCompra: TFormRelatorioNotasCompra
       FieldName = 'FORNICOD'
       Origin = 'DB.NOTACOMPRA.FORNICOD'
     end
-    object TblTemporariaNOCPN3VLRICMS: TBCDField
+    object TblTemporariaNOCPN3VLRICMS: TFloatField
       FieldName = 'NOCPN3VLRICMS'
       Origin = 'DB.NOTACOMPRA.NOCPN3VLRICMS'
-      Precision = 15
-      Size = 3
     end
-    object TblTemporariaNOCPN3VLRIPI: TBCDField
+    object TblTemporariaNOCPN3VLRIPI: TFloatField
       FieldName = 'NOCPN3VLRIPI'
       Origin = 'DB.NOTACOMPRA.NOCPN3VLRIPI'
-      Precision = 15
-      Size = 3
     end
-    object TblTemporariaNOCPN3VLRTOTNOTA: TBCDField
+    object TblTemporariaNOCPN3VLRTOTNOTA: TFloatField
       FieldName = 'NOCPN3VLRTOTNOTA'
       Origin = 'DB.NOTACOMPRA.NOCPN3VLRTOTNOTA'
-      Precision = 15
-      Size = 3
     end
     object TblTemporariaFORNA60RAZAOSOC: TStringField
       FieldName = 'FORNA60RAZAOSOC'
@@ -343,11 +337,9 @@ inherited FormRelatorioNotasCompra: TFormRelatorioNotasCompra
       FixedChar = True
       Size = 60
     end
-    object TblTemporariaNOCPN3VLRBASCALICM: TBCDField
+    object TblTemporariaNOCPN3VLRBASCALICM: TFloatField
       FieldName = 'NOCPN3VLRBASCALICM'
       Origin = 'DB.NOTACOMPRA.NOCPN3VLRBASCALICM'
-      Precision = 15
-      Size = 3
     end
   end
   object SQLNotaCompras: TRxQuery
@@ -469,23 +461,17 @@ inherited FormRelatorioNotasCompra: TFormRelatorioNotasCompra
       FieldName = 'FORNICOD'
       Origin = 'DB.NOTACOMPRA.FORNICOD'
     end
-    object SQLNotaComprasNOCPN3VLRICMS: TBCDField
+    object SQLNotaComprasNOCPN3VLRICMS: TFloatField
       FieldName = 'NOCPN3VLRICMS'
       Origin = 'DB.NOTACOMPRA.NOCPN3VLRICMS'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaComprasNOCPN3VLRIPI: TBCDField
+    object SQLNotaComprasNOCPN3VLRIPI: TFloatField
       FieldName = 'NOCPN3VLRIPI'
       Origin = 'DB.NOTACOMPRA.NOCPN3VLRIPI'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaComprasNOCPN3VLRTOTNOTA: TBCDField
+    object SQLNotaComprasNOCPN3VLRTOTNOTA: TFloatField
       FieldName = 'NOCPN3VLRTOTNOTA'
       Origin = 'DB.NOTACOMPRA.NOCPN3VLRTOTNOTA'
-      Precision = 15
-      Size = 3
     end
     object SQLNotaComprasFORNA60RAZAOSOC: TStringField
       FieldName = 'FORNA60RAZAOSOC'
@@ -493,11 +479,9 @@ inherited FormRelatorioNotasCompra: TFormRelatorioNotasCompra
       FixedChar = True
       Size = 60
     end
-    object SQLNotaComprasNOCPN3VLRBASCALICM: TBCDField
+    object SQLNotaComprasNOCPN3VLRBASCALICM: TFloatField
       FieldName = 'NOCPN3VLRBASCALICM'
       Origin = 'DB.NOTACOMPRA.NOCPN3VLRBASCALICM'
-      Precision = 15
-      Size = 3
     end
   end
   object SQLFornecedor: TRxQuery
@@ -846,39 +830,29 @@ inherited FormRelatorioNotasCompra: TFormRelatorioNotasCompra
       FieldName = 'PRODICOD'
       Origin = 'DB.NOTACOMPRAITEM.PRODICOD'
     end
-    object SQLComprasItemNOCIN3VLREMBAL: TBCDField
+    object SQLComprasItemNOCIN3VLREMBAL: TFloatField
       FieldName = 'NOCIN3VLREMBAL'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN3VLREMBAL'
-      Precision = 15
-      Size = 5
     end
     object SQLComprasItemQTDE: TFloatField
       FieldName = 'QTDE'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN3CAPEMBAL'
     end
-    object SQLComprasItemNOCIN3VLRICMS: TBCDField
+    object SQLComprasItemNOCIN3VLRICMS: TFloatField
       FieldName = 'NOCIN3VLRICMS'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN3VLRICMS'
-      Precision = 15
-      Size = 3
     end
-    object SQLComprasItemNOCIN3PERCICMS: TBCDField
+    object SQLComprasItemNOCIN3PERCICMS: TFloatField
       FieldName = 'NOCIN3PERCICMS'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN3PERCICMS'
-      Precision = 15
-      Size = 3
     end
-    object SQLComprasItemNOCIN3VLRSUBST: TBCDField
+    object SQLComprasItemNOCIN3VLRSUBST: TFloatField
       FieldName = 'NOCIN3VLRSUBST'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN3VLRSUBST'
-      Precision = 15
-      Size = 3
     end
-    object SQLComprasItemNOCIN2PERCSUBST: TBCDField
+    object SQLComprasItemNOCIN2PERCSUBST: TFloatField
       FieldName = 'NOCIN2PERCSUBST'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN2PERCSUBST'
-      Precision = 15
-      Size = 2
     end
   end
 end

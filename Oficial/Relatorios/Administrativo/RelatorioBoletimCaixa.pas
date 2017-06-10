@@ -22,8 +22,8 @@ type
     SQLBoletimTERMICOD: TIntegerField;
     SQLBoletimTOTAICOD: TIntegerField;
     SQLBoletimTODIDMOV: TDateTimeField;
-    SQLBoletimTODIN2VLRDEBITO: TBCDField;
-    SQLBoletimTODIN2VLRCREDITO: TBCDField;
+    SQLBoletimTODIN2VLRDEBITO: TFloatField;
+    SQLBoletimTODIN2VLRCREDITO: TFloatField;
     SQLBoletimUSUAICOD: TIntegerField;
     SQLBoletimTOTAA60DESCR: TStringField;
     SQLBoletimTOTAIORDLIST: TIntegerField;
@@ -32,8 +32,8 @@ type
     TblTemporariaTERMICOD: TIntegerField;
     TblTemporariaTOTAICOD: TIntegerField;
     TblTemporariaTODIDMOV: TDateTimeField;
-    TblTemporariaTODIN2VLRDEBITO: TBCDField;
-    TblTemporariaTODIN2VLRCREDITO: TBCDField;
+    TblTemporariaTODIN2VLRDEBITO: TFloatField;
+    TblTemporariaTODIN2VLRCREDITO: TFloatField;
     TblTemporariaUSUAICOD: TIntegerField;
     TblTemporariaTOTAA60DESCR: TStringField;
     TblTemporariaTOTAIORDLIST: TIntegerField;
@@ -45,13 +45,13 @@ type
     SQLFechamentoCaixaEMPRICOD: TIntegerField;
     SQLFechamentoCaixaTERMICOD: TIntegerField;
     SQLFechamentoCaixaNUMEICOD: TIntegerField;
-    SQLFechamentoCaixaFECXN2VALOR: TBCDField;
+    SQLFechamentoCaixaFECXN2VALOR: TFloatField;
     SQLFechamentoCaixaUSUAICOD: TIntegerField;
     TblFechamentoCaixaFECXDDATAMOV: TDateTimeField;
     TblFechamentoCaixaEMPRICOD: TIntegerField;
     TblFechamentoCaixaTERMICOD: TIntegerField;
     TblFechamentoCaixaNUMEICOD: TIntegerField;
-    TblFechamentoCaixaFECXN2VALOR: TBCDField;
+    TblFechamentoCaixaFECXN2VALOR: TFloatField;
     TblFechamentoCaixaUSUAICOD: TIntegerField;
     TblFechamentoCaixaNUMEA30DESCR: TStringField;
     TblFechamentoCaixaUSUAA60LOGIN: TStringField;
@@ -65,8 +65,8 @@ type
     SQLBoletimAuxTERMICOD: TIntegerField;
     SQLBoletimAuxTOTAICOD: TIntegerField;
     SQLBoletimAuxTODIDMOV: TDateTimeField;
-    SQLBoletimAuxTODIN2VLRDEBITO: TBCDField;
-    SQLBoletimAuxTODIN2VLRCREDITO: TBCDField;
+    SQLBoletimAuxTODIN2VLRDEBITO: TFloatField;
+    SQLBoletimAuxTODIN2VLRCREDITO: TFloatField;
     SQLBoletimAuxUSUAICOD: TIntegerField;
     SQLBoletimAuxTOTAA60DESCR: TStringField;
     SQLBoletimAuxTOTAIORDLIST: TIntegerField;
@@ -76,7 +76,7 @@ type
     SQLFechamentoCaixaAuxEMPRICOD: TIntegerField;
     SQLFechamentoCaixaAuxTERMICOD: TIntegerField;
     SQLFechamentoCaixaAuxNUMEICOD: TIntegerField;
-    SQLFechamentoCaixaAuxFECXN2VALOR: TBCDField;
+    SQLFechamentoCaixaAuxFECXN2VALOR: TFloatField;
     SQLFechamentoCaixaAuxUSUAICOD: TIntegerField;
     CkBobina: TCheckBox;
     ReportBobina: TppReport;

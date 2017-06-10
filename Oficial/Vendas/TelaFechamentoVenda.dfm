@@ -2580,7 +2580,7 @@ object FormTelaFechamentoVenda: TFormTelaFechamentoVenda
       object LblVendedor: TRxLabel
         Left = 28
         Top = 91
-        Width = 92
+        Width = 91
         Height = 20
         Caption = 'Vendedor:'
         Color = 10567680
@@ -2677,7 +2677,7 @@ object FormTelaFechamentoVenda: TFormTelaFechamentoVenda
       object LblBonusTroca: TRxLabel
         Left = 569
         Top = 91
-        Width = 115
+        Width = 113
         Height = 20
         Caption = 'B'#244'nus Troca:'
         Color = 10567680
@@ -3172,7 +3172,7 @@ object FormTelaFechamentoVenda: TFormTelaFechamentoVenda
       object LblTotalVenda: TRxLabel
         Left = 10
         Top = 56
-        Width = 90
+        Width = 86
         Height = 32
         Caption = 'TOTAL'
         Color = 32767
@@ -3191,7 +3191,7 @@ object FormTelaFechamentoVenda: TFormTelaFechamentoVenda
       object LblValorDescontoAcrescimo: TRxLabel
         Left = 10
         Top = 117
-        Width = 140
+        Width = 139
         Height = 29
         Caption = 'DESCONTO'
         Color = 32767
@@ -3453,25 +3453,21 @@ object FormTelaFechamentoVenda: TFormTelaFechamentoVenda
       FixedChar = True
       Size = 60
     end
-    object SQLPlanoRecebimentoPLRCN2TXJURO: TBCDField
+    object SQLPlanoRecebimentoPLRCN2TXJURO: TFloatField
       FieldName = 'PLRCN2TXJURO'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN2TXJURO'
-      Size = 3
     end
-    object SQLPlanoRecebimentoPLRCN2TXMULTA: TBCDField
+    object SQLPlanoRecebimentoPLRCN2TXMULTA: TFloatField
       FieldName = 'PLRCN2TXMULTA'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN2TXMULTA'
-      Size = 3
     end
-    object SQLPlanoRecebimentoPLRCN2TXCRED: TBCDField
+    object SQLPlanoRecebimentoPLRCN2TXCRED: TFloatField
       FieldName = 'PLRCN2TXCRED'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN2TXCRED'
-      Size = 3
     end
-    object SQLPlanoRecebimentoPLRCN2PERCDESC: TBCDField
+    object SQLPlanoRecebimentoPLRCN2PERCDESC: TFloatField
       FieldName = 'PLRCN2PERCDESC'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN2PERCDESC'
-      Size = 3
     end
     object SQLPlanoRecebimentoPLRCCDFIX: TStringField
       FieldName = 'PLRCCDFIX'
@@ -3493,10 +3489,9 @@ object FormTelaFechamentoVenda: TFormTelaFechamentoVenda
       FixedChar = True
       Size = 1
     end
-    object SQLPlanoRecebimentoPLRCN2PERCENTR: TBCDField
+    object SQLPlanoRecebimentoPLRCN2PERCENTR: TFloatField
       FieldName = 'PLRCN2PERCENTR'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN2PERCENTR'
-      Size = 3
     end
     object SQLPlanoRecebimentoPLRCCATIVO: TStringField
       FieldName = 'PLRCCATIVO'
@@ -3514,11 +3509,9 @@ object FormTelaFechamentoVenda: TFormTelaFechamentoVenda
       FieldName = 'REGISTRO'
       Origin = 'DB.PLANORECEBIMENTO.REGISTRO'
     end
-    object SQLPlanoRecebimentoPLRCN2PERCACRESC: TBCDField
+    object SQLPlanoRecebimentoPLRCN2PERCACRESC: TFloatField
       FieldName = 'PLRCN2PERCACRESC'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN2PERCACRESC'
-      Precision = 15
-      Size = 3
     end
     object SQLPlanoRecebimentoPLRCFATCASH: TStringField
       FieldName = 'PLRCFATCASH'
@@ -3596,11 +3589,10 @@ object FormTelaFechamentoVenda: TFormTelaFechamentoVenda
       Origin = 'DB.PARCELASPRAZOVENDATEMP.NROPARCELA'
       DisplayFormat = '000'
     end
-    object SQLParcelasPrazoVendaTempVALORVENCTO: TBCDField
+    object SQLParcelasPrazoVendaTempVALORVENCTO: TFloatField
       FieldName = 'VALORVENCTO'
       Origin = 'DB.PARCELASPRAZOVENDATEMP.VALORVENCTO'
       DisplayFormat = '#,##0.00'
-      Size = 3
     end
     object SQLParcelasPrazoVendaTempNUMEICOD: TIntegerField
       FieldName = 'NUMEICOD'
@@ -3782,11 +3774,10 @@ object FormTelaFechamentoVenda: TFormTelaFechamentoVenda
       FieldName = 'NUMEICOD'
       Origin = 'DB.PARCELASPRAZOVENDATEMP.NUMEICOD'
     end
-    object SQLParcelasVistaVendaTempVALORPARC: TBCDField
+    object SQLParcelasVistaVendaTempVALORPARC: TFloatField
       FieldName = 'VALORPARC'
       Origin = 'DB.PARCELASVISTAVENDATEMP.VALORPARC'
       DisplayFormat = '#,##0.00'
-      Size = 3
     end
     object SQLParcelasVistaVendaTempNumerarioLookup: TStringField
       DisplayLabel = 'Numer'#225'rio'
@@ -4098,39 +4089,29 @@ object FormTelaFechamentoVenda: TFormTelaFechamentoVenda
       FieldName = 'PRODICOD'
       Origin = 'DB.PREVENDAITEM.PRODICOD'
     end
-    object SQLPreVendaItemPVITN3QTD: TBCDField
+    object SQLPreVendaItemPVITN3QTD: TFloatField
       FieldName = 'PVITN3QTD'
       Origin = 'DB.PREVENDAITEM.PVITN3QTD'
-      Precision = 15
-      Size = 3
     end
-    object SQLPreVendaItemPVITN3VLRUNIT: TBCDField
+    object SQLPreVendaItemPVITN3VLRUNIT: TFloatField
       FieldName = 'PVITN3VLRUNIT'
       Origin = 'DB.PREVENDAITEM.PVITN3VLRUNIT'
-      Precision = 15
-      Size = 3
     end
-    object SQLPreVendaItemPVITN3VLRCUSTUNIT: TBCDField
+    object SQLPreVendaItemPVITN3VLRCUSTUNIT: TFloatField
       FieldName = 'PVITN3VLRCUSTUNIT'
       Origin = 'DB.PREVENDAITEM.PVITN3VLRCUSTUNIT'
-      Precision = 15
-      Size = 3
     end
-    object SQLPreVendaItemPVITN2DESC: TBCDField
+    object SQLPreVendaItemPVITN2DESC: TFloatField
       FieldName = 'PVITN2DESC'
       Origin = 'DB.PREVENDAITEM.PVITN2DESC'
-      Precision = 15
-      Size = 3
     end
     object SQLPreVendaItemVENDICOD: TIntegerField
       FieldName = 'VENDICOD'
       Origin = 'DB.PREVENDAITEM.VENDICOD'
     end
-    object SQLPreVendaItemPVITN3VLRUNITLUCR: TBCDField
+    object SQLPreVendaItemPVITN3VLRUNITLUCR: TFloatField
       FieldName = 'PVITN3VLRUNITLUCR'
       Origin = 'DB.PREVENDAITEM.PVITN3VLRUNITLUCR'
-      Precision = 15
-      Size = 3
     end
     object SQLPreVendaItemPVITCSTATUS: TStringField
       FieldName = 'PVITCSTATUS'
@@ -4138,11 +4119,9 @@ object FormTelaFechamentoVenda: TFormTelaFechamentoVenda
       FixedChar = True
       Size = 1
     end
-    object SQLPreVendaItemPVITN2ICMSALIQ: TBCDField
+    object SQLPreVendaItemPVITN2ICMSALIQ: TFloatField
       FieldName = 'PVITN2ICMSALIQ'
       Origin = 'DB.PREVENDAITEM.PVITN2ICMSALIQ'
-      Precision = 15
-      Size = 3
     end
     object SQLPreVendaItemPRODA60NROSERIE: TStringField
       FieldName = 'PRODA60NROSERIE'
@@ -4150,11 +4129,9 @@ object FormTelaFechamentoVenda: TFormTelaFechamentoVenda
       FixedChar = True
       Size = 60
     end
-    object SQLPreVendaItemPVITN3QTDTROCA: TBCDField
+    object SQLPreVendaItemPVITN3QTDTROCA: TFloatField
       FieldName = 'PVITN3QTDTROCA'
       Origin = 'DB.PREVENDAITEM.PVITN3QTDTROCA'
-      Precision = 15
-      Size = 3
     end
   end
   object SQLCupomNumerarioAut: TRxQuery
@@ -4182,11 +4159,9 @@ object FormTelaFechamentoVenda: TFormTelaFechamentoVenda
       FieldName = 'NUMEICOD'
       Origin = 'DB.CUPOMNUMERARIO.NUMEICOD'
     end
-    object SQLCupomNumerarioAutCPNMN2VLR: TBCDField
+    object SQLCupomNumerarioAutCPNMN2VLR: TFloatField
       FieldName = 'CPNMN2VLR'
       Origin = 'DB.CUPOMNUMERARIO.CPNMN2VLR'
-      Precision = 15
-      Size = 3
     end
     object SQLCupomNumerarioAutCPNMCAUTENT: TStringField
       FieldName = 'CPNMCAUTENT'
@@ -4218,29 +4193,21 @@ object FormTelaFechamentoVenda: TFormTelaFechamentoVenda
       FieldName = 'RECEDRECTO'
       Origin = 'DB.RECEBIMENTO.RECEDRECTO'
     end
-    object SQLRecebimentoRECEN2VLRRECTO: TBCDField
+    object SQLRecebimentoRECEN2VLRRECTO: TFloatField
       FieldName = 'RECEN2VLRRECTO'
       Origin = 'DB.RECEBIMENTO.RECEN2VLRRECTO'
-      Precision = 15
-      Size = 3
     end
-    object SQLRecebimentoRECEN2VLRJURO: TBCDField
+    object SQLRecebimentoRECEN2VLRJURO: TFloatField
       FieldName = 'RECEN2VLRJURO'
       Origin = 'DB.RECEBIMENTO.RECEN2VLRJURO'
-      Precision = 15
-      Size = 3
     end
-    object SQLRecebimentoRECEN2VLRMULTA: TBCDField
+    object SQLRecebimentoRECEN2VLRMULTA: TFloatField
       FieldName = 'RECEN2VLRMULTA'
       Origin = 'DB.RECEBIMENTO.RECEN2VLRMULTA'
-      Precision = 15
-      Size = 3
     end
-    object SQLRecebimentoRECEN2DESC: TBCDField
+    object SQLRecebimentoRECEN2DESC: TFloatField
       FieldName = 'RECEN2DESC'
       Origin = 'DB.RECEBIMENTO.RECEN2DESC'
-      Precision = 15
-      Size = 3
     end
     object SQLRecebimentoEMPRICODREC: TIntegerField
       FieldName = 'EMPRICODREC'
@@ -4266,11 +4233,9 @@ object FormTelaFechamentoVenda: TFormTelaFechamentoVenda
       FieldName = 'REGISTRO'
       Origin = 'DB.RECEBIMENTO.REGISTRO'
     end
-    object SQLRecebimentoRECEN2MULTACOBR: TBCDField
+    object SQLRecebimentoRECEN2MULTACOBR: TFloatField
       FieldName = 'RECEN2MULTACOBR'
       Origin = 'DB.RECEBIMENTO.RECEN2MULTACOBR'
-      Precision = 15
-      Size = 3
     end
     object SQLRecebimentoRECEA30HIST: TStringField
       FieldName = 'RECEA30HIST'
@@ -4385,17 +4350,13 @@ object FormTelaFechamentoVenda: TFormTelaFechamentoVenda
       FixedChar = True
       Size = 60
     end
-    object SQLConvenioCONVN2DESC: TBCDField
+    object SQLConvenioCONVN2DESC: TFloatField
       FieldName = 'CONVN2DESC'
       Origin = 'DB.CONVENIO.CONVN2DESC'
-      Precision = 15
-      Size = 3
     end
-    object SQLConvenioCONVN2TAXA: TBCDField
+    object SQLConvenioCONVN2TAXA: TFloatField
       FieldName = 'CONVN2TAXA'
       Origin = 'DB.CONVENIO.CONVN2TAXA'
-      Precision = 15
-      Size = 3
     end
     object SQLConvenioCONVDVENC: TIntegerField
       FieldName = 'CONVDVENC'
@@ -4441,17 +4402,13 @@ object FormTelaFechamentoVenda: TFormTelaFechamentoVenda
       FixedChar = True
       Size = 60
     end
-    object BCDField1: TBCDField
+    object BCDField1: TFloatField
       FieldName = 'CONVN2DESC'
       Origin = 'DB.CONVENIO.CONVN2DESC'
-      Precision = 15
-      Size = 3
     end
-    object BCDField2: TBCDField
+    object BCDField2: TFloatField
       FieldName = 'CONVN2TAXA'
       Origin = 'DB.CONVENIO.CONVN2TAXA'
-      Precision = 15
-      Size = 3
     end
     object IntegerField2: TIntegerField
       FieldName = 'CONVDVENC'
@@ -4535,17 +4492,13 @@ object FormTelaFechamentoVenda: TFormTelaFechamentoVenda
       Origin = 'DB.CLIENTECREDITO.CUPOA13ID'
       Size = 13
     end
-    object SQLClienteCreditoVALORCREDITO: TBCDField
+    object SQLClienteCreditoVALORCREDITO: TFloatField
       FieldName = 'VALORCREDITO'
       Origin = 'DB.CLIENTECREDITO.VALORCREDITO'
-      Precision = 15
-      Size = 3
     end
-    object SQLClienteCreditoVALORDEBITO: TBCDField
+    object SQLClienteCreditoVALORDEBITO: TFloatField
       FieldName = 'VALORDEBITO'
       Origin = 'DB.CLIENTECREDITO.VALORDEBITO'
-      Precision = 15
-      Size = 3
     end
     object SQLClienteCreditoHISTORICO: TStringField
       FieldName = 'HISTORICO'

@@ -27,7 +27,7 @@ type
     SQLMovimentoCaixaOPCXICOD: TIntegerField;
     SQLMovimentoCaixaUSUAICOD: TIntegerField;
     SQLMovimentoCaixaMVCXA15DOCORIG: TStringField;
-    SQLMovimentoCaixaDEBITO: TBCDField;
+    SQLMovimentoCaixaDEBITO: TFloatField;
     SQLMovimentoCaixaMVCXA255HIST: TStringField;
     SQLMovimentoCaixaOPCXA60DESCR: TStringField;
     SQLMovimentoCaixaNUMEA30DESCR: TStringField;
@@ -39,14 +39,14 @@ type
     TblTemporariaOPCXICOD: TIntegerField;
     TblTemporariaUSUAICOD: TIntegerField;
     TblTemporariaMVCXA15DOCORIG: TStringField;
-    TblTemporariaDEBITO: TBCDField;
+    TblTemporariaDEBITO: TFloatField;
     TblTemporariaMVCXA255HIST: TStringField;
     TblTemporariaOPCXA60DESCR: TStringField;
     TblTemporariaNUMEA30DESCR: TStringField;
     TblTemporariaUSUAA60LOGIN: TStringField;
     RadioTipo: TRadioGroup;
-    SQLMovimentoCaixaCREDITO: TBCDField;
-    TblTemporariaCREDITO: TBCDField;
+    SQLMovimentoCaixaCREDITO: TFloatField;
+    TblTemporariaCREDITO: TFloatField;
     procedure ExecutarBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private

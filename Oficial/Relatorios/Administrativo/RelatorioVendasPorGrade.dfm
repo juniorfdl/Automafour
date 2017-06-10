@@ -45,7 +45,7 @@ inherited FormRelatorioVendasPorGrade: TFormRelatorioVendasPorGrade
           Top = 42
           Width = 75
           Height = 17
-          Caption = 'Sint'#233'tico'
+          Caption = 'Sintético'
           Font.Charset = ANSI_CHARSET
           Font.Color = 8404992
           Font.Height = -11
@@ -113,7 +113,7 @@ inherited FormRelatorioVendasPorGrade: TFormRelatorioVendasPorGrade
           Top = 94
           Width = 49
           Height = 13
-          Caption = 'Varia'#231#227'o'
+          Caption = 'Variação'
           Font.Charset = ANSI_CHARSET
           Font.Color = 8404992
           Font.Height = -11
@@ -249,7 +249,7 @@ inherited FormRelatorioVendasPorGrade: TFormRelatorioVendasPorGrade
           Top = 13
           Width = 45
           Height = 17
-          Caption = 'C'#243'd'
+          Caption = 'Cód'
           Checked = True
           Font.Charset = ANSI_CHARSET
           Font.Color = 8404992
@@ -294,7 +294,7 @@ inherited FormRelatorioVendasPorGrade: TFormRelatorioVendasPorGrade
         Top = 329
         Width = 162
         Height = 33
-        Caption = ' Ocultar Pre'#231'o '
+        Caption = ' Ocultar Preço '
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -824,7 +824,7 @@ inherited FormRelatorioVendasPorGrade: TFormRelatorioVendasPorGrade
       FixedChar = True
       Size = 60
     end
-    object SQLProdutoPRODN3VLRCUSTO: TBCDField
+    object SQLProdutoPRODN3VLRCUSTO: TFloatField
       FieldName = 'PRODN3VLRCUSTO'
       Precision = 15
       Size = 3
@@ -832,7 +832,7 @@ inherited FormRelatorioVendasPorGrade: TFormRelatorioVendasPorGrade
     object SQLProdutoPRODN3VLRVENDA: TFloatField
       FieldName = 'PRODN3VLRVENDA'
     end
-    object SQLProdutoSALDO: TBCDField
+    object SQLProdutoSALDO: TFloatField
       FieldName = 'SALDO'
       Precision = 15
       Size = 3
@@ -1058,7 +1058,7 @@ inherited FormRelatorioVendasPorGrade: TFormRelatorioVendasPorGrade
       FieldName = 'EMPRICOD'
       Origin = 'DB.PRODUTOSALDO.EMPRICOD'
     end
-    object SQLSaldoSALDO: TBCDField
+    object SQLSaldoSALDO: TFloatField
       FieldName = 'SALDO'
       Origin = 'DB.PRODUTOSALDO.PSLDN3QTDE'
       Precision = 15

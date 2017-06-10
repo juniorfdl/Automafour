@@ -1,7 +1,7 @@
 inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
   Left = 578
   Top = 44
-  Caption = 'Ordens de Servi'#231'o'
+  Caption = 'Ordens de Serviço'
   ClientHeight = 713
   ClientWidth = 834
   OldCreateOrder = True
@@ -230,7 +230,7 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
                     Expanded = False
                     FieldName = 'ORDNUM'
                     Title.Alignment = taCenter
-                    Title.Caption = 'N'#186' Ord'
+                    Title.Caption = 'Nº Ord'
                     Visible = True
                   end
                   item
@@ -332,8 +332,8 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
                     Width = 310
                     Height = 21
                     Hint = 
-                      'Esta '#233' uma pesquisa avan'#231'ada, os dados inclusos na pesquisa acim' +
-                      'a n'#227'o '#13#10'ser'#227'o considerados na pesquisa atual...'
+                      'Esta é uma pesquisa avançada, os dados inclusos na pesquisa acim' +
+                      'a não '#13#10'serão considerados na pesquisa atual...'
                     DropDownCount = 8
                     DisplayEmpty = 'Procura por Nome do Cliente...'
                     LookupField = 'CLIEA13ID'
@@ -416,7 +416,7 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
                   Top = 41
                   Width = 136
                   Height = 13
-                  Caption = 'Identifica'#231#227'o do Servi'#231'o'
+                  Caption = 'Identificação do Serviço'
                   Color = 12572888
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clWindowText
@@ -431,7 +431,7 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
                   Top = 4
                   Width = 106
                   Height = 13
-                  Caption = 'Descri'#231#227'o Principal'
+                  Caption = 'Descrição Principal'
                   Color = 12572888
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clWindowText
@@ -758,7 +758,7 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
                 Top = 360
                 Width = 173
                 Height = 13
-                Caption = 'Observa'#231#245'es Complementares'
+                Caption = 'Observações Complementares'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
                 Font.Height = -11
@@ -784,7 +784,7 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
                   Top = 48
                   Width = 69
                   Height = 13
-                  Caption = 'C'#243'd.Produto'
+                  Caption = 'Cód.Produto'
                   Color = 12572888
                   FocusControl = edtProdicod
                   ParentColor = False
@@ -794,7 +794,7 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
                   Top = 47
                   Width = 106
                   Height = 13
-                  Caption = 'Descri'#231#227'o Principal'
+                  Caption = 'Descrição Principal'
                   Color = 12572888
                   ParentColor = False
                 end
@@ -837,7 +837,7 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
                   Top = 84
                   Width = 136
                   Height = 13
-                  Caption = 'Identifica'#231#227'o do Servi'#231'o'
+                  Caption = 'Identificação do Serviço'
                   Color = 12572888
                   ParentColor = False
                 end
@@ -846,7 +846,7 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
                   Top = 85
                   Width = 70
                   Height = 13
-                  Caption = '% Comiss'#227'o'
+                  Caption = '% Comissão'
                   Color = 12572888
                   ParentColor = False
                 end
@@ -1002,7 +1002,7 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
                   Ctl3D = True
                   DataField = 'TIPOSERVICO'
                   DataSource = DSTemplate
-                  DisplayEmpty = 'Selecione um Tipo de Servi'#231'o'
+                  DisplayEmpty = 'Selecione um Tipo de Serviço'
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clBlack
                   Font.Height = -11
@@ -1025,7 +1025,7 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
                   TabOrder = 7
                   TabStop = False
                   object TabSheet1: TTabSheet
-                    Caption = 'Impress'#245'es Gerais'
+                    Caption = 'Impressões Gerais'
                     object Label10: TLabel
                       Left = 182
                       Top = 48
@@ -1041,7 +1041,7 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
                       Top = 7
                       Width = 96
                       Height = 13
-                      Caption = 'Cores Impress'#227'o'
+                      Caption = 'Cores Impressão'
                       Color = 12572888
                       FocusControl = DBEdit15
                       ParentColor = False
@@ -1051,7 +1051,7 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
                       Top = 7
                       Width = 50
                       Height = 13
-                      Caption = 'N'#186' Inicial'
+                      Caption = 'Nº Inicial'
                       Color = 12572888
                       FocusControl = DBEdit9
                       ParentColor = False
@@ -1061,7 +1061,7 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
                       Top = 7
                       Width = 42
                       Height = 13
-                      Caption = 'N'#186' Final'
+                      Caption = 'Nº Final'
                       Color = 12572888
                       FocusControl = DBEdit9
                       ParentColor = False
@@ -1071,7 +1071,7 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
                       Top = 7
                       Width = 39
                       Height = 13
-                      Caption = 'N'#186' Vias'
+                      Caption = 'Nº Vias'
                       Color = 12572888
                       FocusControl = DBEdit9
                       ParentColor = False
@@ -1131,7 +1131,7 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
                       Top = 86
                       Width = 63
                       Height = 13
-                      Caption = 'Qtd. Tal'#245'es'
+                      Caption = 'Qtd. Talões'
                       Color = 12572888
                       FocusControl = DBEdit27
                       ParentColor = False
@@ -1366,7 +1366,7 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
                       Font.Style = []
                       ItemHeight = 13
                       Items.Strings = (
-                        'Formul'#225'rios'
+                        'Formulários'
                         'OffSet'
                         'Tipografia')
                       ParentFont = False
@@ -1636,7 +1636,7 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
                     Ctl3D = True
                     DataField = 'PlanoRecebimentoLookUp'
                     DataSource = DSTemplate
-                    DisplayEmpty = 'Selecione um Tipo de Servi'#231'o'
+                    DisplayEmpty = 'Selecione um Tipo de Serviço'
                     Font.Charset = DEFAULT_CHARSET
                     Font.Color = clBlack
                     Font.Height = -11
@@ -2196,7 +2196,7 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
                   Expanded = False
                   FieldName = 'NOTAFISCAL'
                   Title.Alignment = taCenter
-                  Title.Caption = 'N'#186' NF'
+                  Title.Caption = 'Nº NF'
                   Width = 69
                   Visible = True
                 end
@@ -2381,12 +2381,12 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
       OnClick = AlterarStatusparaPRODUZIDOa1Click
     end
     object InformarEntregadoServio1: TMenuItem
-      Caption = 'Informar Data de &Entrega do Servi'#231'o'
+      Caption = 'Informar Data de &Entrega do Serviço'
       ShortCut = 16453
       OnClick = InformarEntregadoServio1Click
     end
     object FinalizarOrdemdeServio1: TMenuItem
-      Caption = '&Finalizar Ordem de Servi'#231'o'
+      Caption = '&Finalizar Ordem de Serviço'
       ShortCut = 16454
       OnClick = FinalizarOrdemdeServio1Click
     end
@@ -2394,7 +2394,7 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
       Caption = '-'
     end
     object CancelarOrdemdeServioAtual1: TMenuItem
-      Caption = '&Cancelar Ordem de Servi'#231'o Atual'
+      Caption = '&Cancelar Ordem de Serviço Atual'
       OnClick = CancelarOrdemdeServioAtual1Click
     end
     object ReabirOrdemdeServioCancelada1: TMenuItem
@@ -2411,12 +2411,12 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
   end
   inherited PopupMenuImpressao: TPopupMenu
     object OrdemdeServioAtual1: TMenuItem
-      Caption = '&Ordem de Servi'#231'o Atual'
+      Caption = '&Ordem de Serviço Atual'
       ShortCut = 16464
       OnClick = OrdemdeServioAtual1Click
     end
     object OrdensdeServioemSequencia1: TMenuItem
-      Caption = 'Ordens de Servi'#231'o em Sequ'#234'ncia'
+      Caption = 'Ordens de Serviço em Sequência'
       OnClick = OrdensdeServioemSequencia1Click
     end
     object N4: TMenuItem
@@ -2511,13 +2511,13 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
       BlobType = ftMemo
       Size = 1
     end
-    object SQLTemplateLARGURA: TBCDField
+    object SQLTemplateLARGURA: TFloatField
       FieldName = 'LARGURA'
       Origin = 'DB.ORDENSGRAFICA.LARGURA'
       Precision = 9
       Size = 2
     end
-    object SQLTemplateALTURA: TBCDField
+    object SQLTemplateALTURA: TFloatField
       FieldName = 'ALTURA'
       Origin = 'DB.ORDENSGRAFICA.ALTURA'
       Precision = 9
@@ -2609,7 +2609,7 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
       Origin = 'DB.ORDENSGRAFICA.COMISSAO'
       DisplayFormat = ',0.00'
     end
-    object SQLTemplateVAL: TBCDField
+    object SQLTemplateVAL: TFloatField
       DisplayLabel = 'Valor'
       FieldName = 'VAL'
       Origin = 'DB.ORDENSGRAFICA.VAL'
@@ -3005,13 +3005,13 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
       FixedChar = True
       Size = 60
     end
-    object SQLVendedorVENDN2COMISV: TBCDField
+    object SQLVendedorVENDN2COMISV: TFloatField
       FieldName = 'VENDN2COMISV'
       Origin = 'DB.VENDEDOR.VENDN2COMISV'
       Precision = 15
       Size = 3
     end
-    object SQLVendedorVENDN2COMISP: TBCDField
+    object SQLVendedorVENDN2COMISP: TFloatField
       FieldName = 'VENDN2COMISP'
       Origin = 'DB.VENDEDOR.VENDN2COMISP'
       Precision = 15
@@ -3178,13 +3178,13 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
       FieldName = 'VENDIDIASVALFIDEL'
       Origin = 'DB.VENDEDOR.VENDIDIASVALFIDEL'
     end
-    object SQLVendedorVENDN2PERCFIDEL: TBCDField
+    object SQLVendedorVENDN2PERCFIDEL: TFloatField
       FieldName = 'VENDN2PERCFIDEL'
       Origin = 'DB.VENDEDOR.VENDN2PERCFIDEL'
       Precision = 15
       Size = 2
     end
-    object SQLVendedorVENDN2PERCIRRF: TBCDField
+    object SQLVendedorVENDN2PERCIRRF: TFloatField
       FieldName = 'VENDN2PERCIRRF'
       Origin = 'DB.VENDEDOR.VENDN2PERCIRRF'
       Precision = 15
@@ -3214,19 +3214,19 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
       FieldName = 'UNIDICOD'
       Origin = 'DB.PRODUTO.UNIDICOD'
     end
-    object SQLProdutoPRODN3VLRVENDA: TBCDField
+    object SQLProdutoPRODN3VLRVENDA: TFloatField
       FieldName = 'PRODN3VLRVENDA'
       Origin = 'DB.PRODUTO.PRODN3VLRVENDA'
       Precision = 15
       Size = 3
     end
-    object SQLProdutoPRODN3VLRVENDAPROM: TBCDField
+    object SQLProdutoPRODN3VLRVENDAPROM: TFloatField
       FieldName = 'PRODN3VLRVENDAPROM'
       Origin = 'DB.PRODUTO.PRODN3VLRVENDAPROM'
       Precision = 15
       Size = 3
     end
-    object SQLProdutoPRODN3VLRVENDA2: TBCDField
+    object SQLProdutoPRODN3VLRVENDA2: TFloatField
       FieldName = 'PRODN3VLRVENDA2'
       Origin = 'DB.PRODUTO.PRODN3VLRVENDA2'
       Precision = 15
@@ -3455,25 +3455,25 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
       FixedChar = True
       Size = 60
     end
-    object SQLFinanceiroPLRCN2TXJURO: TBCDField
+    object SQLFinanceiroPLRCN2TXJURO: TFloatField
       FieldName = 'PLRCN2TXJURO'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN2TXJURO'
       Precision = 15
       Size = 3
     end
-    object SQLFinanceiroPLRCN2TXMULTA: TBCDField
+    object SQLFinanceiroPLRCN2TXMULTA: TFloatField
       FieldName = 'PLRCN2TXMULTA'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN2TXMULTA'
       Precision = 15
       Size = 3
     end
-    object SQLFinanceiroPLRCN2TXCRED: TBCDField
+    object SQLFinanceiroPLRCN2TXCRED: TFloatField
       FieldName = 'PLRCN2TXCRED'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN2TXCRED'
       Precision = 15
       Size = 3
     end
-    object SQLFinanceiroPLRCN2PERCDESC: TBCDField
+    object SQLFinanceiroPLRCN2PERCDESC: TFloatField
       FieldName = 'PLRCN2PERCDESC'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN2PERCDESC'
       Precision = 15
@@ -3499,13 +3499,13 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
       FixedChar = True
       Size = 1
     end
-    object SQLFinanceiroPLRCN2PERCENTR: TBCDField
+    object SQLFinanceiroPLRCN2PERCENTR: TFloatField
       FieldName = 'PLRCN2PERCENTR'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN2PERCENTR'
       Precision = 15
       Size = 3
     end
-    object SQLFinanceiroPLRCN2DESC: TBCDField
+    object SQLFinanceiroPLRCN2DESC: TFloatField
       FieldName = 'PLRCN2DESC'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN2DESC'
       Precision = 15
@@ -3527,7 +3527,7 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
       FieldName = 'REGISTRO'
       Origin = 'DB.PLANORECEBIMENTO.REGISTRO'
     end
-    object SQLFinanceiroPLRCN2PERCACRESC: TBCDField
+    object SQLFinanceiroPLRCN2PERCACRESC: TFloatField
       FieldName = 'PLRCN2PERCACRESC'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN2PERCACRESC'
       Precision = 15
@@ -3539,13 +3539,13 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
       FixedChar = True
       Size = 1
     end
-    object SQLFinanceiroPLRCN5FATOR: TBCDField
+    object SQLFinanceiroPLRCN5FATOR: TFloatField
       FieldName = 'PLRCN5FATOR'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN5FATOR'
       Precision = 15
       Size = 5
     end
-    object SQLFinanceiroPLRCN5FATORPARC: TBCDField
+    object SQLFinanceiroPLRCN5FATORPARC: TFloatField
       FieldName = 'PLRCN5FATORPARC'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN5FATORPARC'
       Precision = 15
@@ -3557,7 +3557,7 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
       FixedChar = True
       Size = 1
     end
-    object SQLFinanceiroPLRCN2PERCJURDIA: TBCDField
+    object SQLFinanceiroPLRCN2PERCJURDIA: TFloatField
       FieldName = 'PLRCN2PERCJURDIA'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN2PERCJURDIA'
       Precision = 15
@@ -3642,7 +3642,7 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
       'RIMA=RIMA'
       'EMILIA=RIMA'
       '//'
-      '//--- Linha HP/Xerox padr'#227'o PCL ---//'
+      '//--- Linha HP/Xerox padrão PCL ---//'
       '//'
       'PCL=HP'
       '//'
@@ -3796,79 +3796,79 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
       FieldName = 'OPESICOD'
       Origin = 'DB.NOTAFISCAL.OPESICOD'
     end
-    object SQLNotaFiscalNOFIN2BASCALCICMS: TBCDField
+    object SQLNotaFiscalNOFIN2BASCALCICMS: TFloatField
       FieldName = 'NOFIN2BASCALCICMS'
       Origin = 'DB.NOTAFISCAL.NOFIN2BASCALCICMS'
       Precision = 15
       Size = 2
     end
-    object SQLNotaFiscalNOFIN2VLRICMS: TBCDField
+    object SQLNotaFiscalNOFIN2VLRICMS: TFloatField
       FieldName = 'NOFIN2VLRICMS'
       Origin = 'DB.NOTAFISCAL.NOFIN2VLRICMS'
       Precision = 15
       Size = 2
     end
-    object SQLNotaFiscalNOFIN2BASCALCSUBS: TBCDField
+    object SQLNotaFiscalNOFIN2BASCALCSUBS: TFloatField
       FieldName = 'NOFIN2BASCALCSUBS'
       Origin = 'DB.NOTAFISCAL.NOFIN2BASCALCSUBS'
       Precision = 15
       Size = 3
     end
-    object SQLNotaFiscalNOFIN2BASCALCCIPI: TBCDField
+    object SQLNotaFiscalNOFIN2BASCALCCIPI: TFloatField
       FieldName = 'NOFIN2BASCALCCIPI'
       Origin = 'DB.NOTAFISCAL.NOFIN2BASCALCCIPI'
       Precision = 15
       Size = 3
     end
-    object SQLNotaFiscalNOFIN2VLRIPI: TBCDField
+    object SQLNotaFiscalNOFIN2VLRIPI: TFloatField
       FieldName = 'NOFIN2VLRIPI'
       Origin = 'DB.NOTAFISCAL.NOFIN2VLRIPI'
       Precision = 15
       Size = 3
     end
-    object SQLNotaFiscalNOFIN2VLRDESC: TBCDField
+    object SQLNotaFiscalNOFIN2VLRDESC: TFloatField
       FieldName = 'NOFIN2VLRDESC'
       Origin = 'DB.NOTAFISCAL.NOFIN2VLRDESC'
       Precision = 15
       Size = 3
     end
-    object SQLNotaFiscalNOFIN2VLRFRETE: TBCDField
+    object SQLNotaFiscalNOFIN2VLRFRETE: TFloatField
       FieldName = 'NOFIN2VLRFRETE'
       Origin = 'DB.NOTAFISCAL.NOFIN2VLRFRETE'
       Precision = 15
       Size = 3
     end
-    object SQLNotaFiscalNOFIN2VLRSEGURO: TBCDField
+    object SQLNotaFiscalNOFIN2VLRSEGURO: TFloatField
       FieldName = 'NOFIN2VLRSEGURO'
       Origin = 'DB.NOTAFISCAL.NOFIN2VLRSEGURO'
       Precision = 15
       Size = 3
     end
-    object SQLNotaFiscalNOFIN2VLROUTRASDESP: TBCDField
+    object SQLNotaFiscalNOFIN2VLROUTRASDESP: TFloatField
       FieldName = 'NOFIN2VLROUTRASDESP'
       Origin = 'DB.NOTAFISCAL.NOFIN2VLROUTRASDESP'
       Precision = 15
       Size = 2
     end
-    object SQLNotaFiscalNOFIN2VLRSERVICO: TBCDField
+    object SQLNotaFiscalNOFIN2VLRSERVICO: TFloatField
       FieldName = 'NOFIN2VLRSERVICO'
       Origin = 'DB.NOTAFISCAL.NOFIN2VLRSERVICO'
       Precision = 15
       Size = 3
     end
-    object SQLNotaFiscalNOFIN2VLRISSQN: TBCDField
+    object SQLNotaFiscalNOFIN2VLRISSQN: TFloatField
       FieldName = 'NOFIN2VLRISSQN'
       Origin = 'DB.NOTAFISCAL.NOFIN2VLRISSQN'
       Precision = 15
       Size = 3
     end
-    object SQLNotaFiscalNOFIN2VLRPRODUTO: TBCDField
+    object SQLNotaFiscalNOFIN2VLRPRODUTO: TFloatField
       FieldName = 'NOFIN2VLRPRODUTO'
       Origin = 'DB.NOTAFISCAL.NOFIN2VLRPRODUTO'
       Precision = 15
       Size = 3
     end
-    object SQLNotaFiscalNOFIN2VLRNOTA: TBCDField
+    object SQLNotaFiscalNOFIN2VLRNOTA: TFloatField
       FieldName = 'NOFIN2VLRNOTA'
       Origin = 'DB.NOTAFISCAL.NOFIN2VLRNOTA'
       Precision = 15
@@ -3884,7 +3884,7 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
       FieldName = 'TRANICOD'
       Origin = 'DB.NOTAFISCAL.TRANICOD'
     end
-    object SQLNotaFiscalNOFIN3QUANT: TBCDField
+    object SQLNotaFiscalNOFIN3QUANT: TFloatField
       FieldName = 'NOFIN3QUANT'
       Origin = 'DB.NOTAFISCAL.NOFIN3QUANT'
       Precision = 15
@@ -3896,13 +3896,13 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
       FixedChar = True
       Size = 15
     end
-    object SQLNotaFiscalNOFIN3PESBRUT: TBCDField
+    object SQLNotaFiscalNOFIN3PESBRUT: TFloatField
       FieldName = 'NOFIN3PESBRUT'
       Origin = 'DB.NOTAFISCAL.NOFIN3PESBRUT'
       Precision = 15
       Size = 3
     end
-    object SQLNotaFiscalNOFIN3PESLIQ: TBCDField
+    object SQLNotaFiscalNOFIN3PESLIQ: TFloatField
       FieldName = 'NOFIN3PESLIQ'
       Origin = 'DB.NOTAFISCAL.NOFIN3PESLIQ'
       Precision = 15
@@ -3934,7 +3934,7 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
       FieldName = 'REGISTRO'
       Origin = 'DB.NOTAFISCAL.REGISTRO'
     end
-    object SQLNotaFiscalNOFIN2VLRDESCPROM: TBCDField
+    object SQLNotaFiscalNOFIN2VLRDESCPROM: TFloatField
       FieldName = 'NOFIN2VLRDESCPROM'
       Origin = 'DB.NOTAFISCAL.NOFIN2VLRDESCPROM'
       Precision = 15
@@ -3977,13 +3977,13 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
       FixedChar = True
       Size = 30
     end
-    object SQLNotaFiscalNOFIN2VLRICMSFRETE: TBCDField
+    object SQLNotaFiscalNOFIN2VLRICMSFRETE: TFloatField
       FieldName = 'NOFIN2VLRICMSFRETE'
       Origin = 'DB.NOTAFISCAL.NOFIN2VLRICMSFRETE'
       Precision = 15
       Size = 3
     end
-    object SQLNotaFiscalNOFIN2VLRSUBS: TBCDField
+    object SQLNotaFiscalNOFIN2VLRSUBS: TFloatField
       FieldName = 'NOFIN2VLRSUBS'
       Origin = 'DB.NOTAFISCAL.NOFIN2VLRSUBS'
       Precision = 15
@@ -4165,97 +4165,97 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
       FieldName = 'PRODICOD'
       Origin = 'DB.NOTAFISCALITEM.PRODICOD'
     end
-    object SQLNotaFiscalItemNFITN3QUANT: TBCDField
+    object SQLNotaFiscalItemNFITN3QUANT: TFloatField
       FieldName = 'NFITN3QUANT'
       Origin = 'DB.NOTAFISCALITEM.NFITN3QUANT'
       Precision = 15
       Size = 3
     end
-    object SQLNotaFiscalItemNFITN2VLRUNIT: TBCDField
+    object SQLNotaFiscalItemNFITN2VLRUNIT: TFloatField
       FieldName = 'NFITN2VLRUNIT'
       Origin = 'DB.NOTAFISCALITEM.NFITN2VLRUNIT'
       Precision = 15
       Size = 3
     end
-    object SQLNotaFiscalItemNFITN2PERCDESC: TBCDField
+    object SQLNotaFiscalItemNFITN2PERCDESC: TFloatField
       FieldName = 'NFITN2PERCDESC'
       Origin = 'DB.NOTAFISCALITEM.NFITN2PERCDESC'
       Precision = 15
       Size = 3
     end
-    object SQLNotaFiscalItemNFITN2VLRDESC: TBCDField
+    object SQLNotaFiscalItemNFITN2VLRDESC: TFloatField
       FieldName = 'NFITN2VLRDESC'
       Origin = 'DB.NOTAFISCALITEM.NFITN2VLRDESC'
       Precision = 15
       Size = 3
     end
-    object SQLNotaFiscalItemNFITN2PERCICMS: TBCDField
+    object SQLNotaFiscalItemNFITN2PERCICMS: TFloatField
       FieldName = 'NFITN2PERCICMS'
       Origin = 'DB.NOTAFISCALITEM.NFITN2PERCICMS'
       Precision = 15
       Size = 3
     end
-    object SQLNotaFiscalItemNFITN2BASEICMS: TBCDField
+    object SQLNotaFiscalItemNFITN2BASEICMS: TFloatField
       FieldName = 'NFITN2BASEICMS'
       Origin = 'DB.NOTAFISCALITEM.NFITN2BASEICMS'
       Precision = 15
       Size = 3
     end
-    object SQLNotaFiscalItemNFITN2VLRICMS: TBCDField
+    object SQLNotaFiscalItemNFITN2VLRICMS: TFloatField
       FieldName = 'NFITN2VLRICMS'
       Origin = 'DB.NOTAFISCALITEM.NFITN2VLRICMS'
       Precision = 15
       Size = 2
     end
-    object SQLNotaFiscalItemNFITN2PERCSUBS: TBCDField
+    object SQLNotaFiscalItemNFITN2PERCSUBS: TFloatField
       FieldName = 'NFITN2PERCSUBS'
       Origin = 'DB.NOTAFISCALITEM.NFITN2PERCSUBS'
       Precision = 15
       Size = 3
     end
-    object SQLNotaFiscalItemNFITN2BASESUBS: TBCDField
+    object SQLNotaFiscalItemNFITN2BASESUBS: TFloatField
       FieldName = 'NFITN2BASESUBS'
       Origin = 'DB.NOTAFISCALITEM.NFITN2BASESUBS'
       Precision = 15
       Size = 3
     end
-    object SQLNotaFiscalItemNFITN2VLRSUBS: TBCDField
+    object SQLNotaFiscalItemNFITN2VLRSUBS: TFloatField
       FieldName = 'NFITN2VLRSUBS'
       Origin = 'DB.NOTAFISCALITEM.NFITN2VLRSUBS'
       Precision = 15
       Size = 3
     end
-    object SQLNotaFiscalItemNFITN2PERCIPI: TBCDField
+    object SQLNotaFiscalItemNFITN2PERCIPI: TFloatField
       FieldName = 'NFITN2PERCIPI'
       Origin = 'DB.NOTAFISCALITEM.NFITN2PERCIPI'
       Precision = 15
       Size = 3
     end
-    object SQLNotaFiscalItemNFITN2VLRIPI: TBCDField
+    object SQLNotaFiscalItemNFITN2VLRIPI: TFloatField
       FieldName = 'NFITN2VLRIPI'
       Origin = 'DB.NOTAFISCALITEM.NFITN2VLRIPI'
       Precision = 15
       Size = 3
     end
-    object SQLNotaFiscalItemNFITN2PERCISSQN: TBCDField
+    object SQLNotaFiscalItemNFITN2PERCISSQN: TFloatField
       FieldName = 'NFITN2PERCISSQN'
       Origin = 'DB.NOTAFISCALITEM.NFITN2PERCISSQN'
       Precision = 15
       Size = 2
     end
-    object SQLNotaFiscalItemNFITN2VLRISSQN: TBCDField
+    object SQLNotaFiscalItemNFITN2VLRISSQN: TFloatField
       FieldName = 'NFITN2VLRISSQN'
       Origin = 'DB.NOTAFISCALITEM.NFITN2VLRISSQN'
       Precision = 15
       Size = 3
     end
-    object SQLNotaFiscalItemNFITN2VLRFRETE: TBCDField
+    object SQLNotaFiscalItemNFITN2VLRFRETE: TFloatField
       FieldName = 'NFITN2VLRFRETE'
       Origin = 'DB.NOTAFISCALITEM.NFITN2VLRFRETE'
       Precision = 15
       Size = 3
     end
-    object SQLNotaFiscalItemNFITN2VLRLUCRO: TBCDField
+    object SQLNotaFiscalItemNFITN2VLRLUCRO: TFloatField
       FieldName = 'NFITN2VLRLUCRO'
       Origin = 'DB.NOTAFISCALITEM.NFITN2VLRLUCRO'
       Precision = 15
@@ -4271,13 +4271,13 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
       FieldName = 'REGISTRO'
       Origin = 'DB.NOTAFISCALITEM.REGISTRO'
     end
-    object SQLNotaFiscalItemNFITN2PERCREDUCAO: TBCDField
+    object SQLNotaFiscalItemNFITN2PERCREDUCAO: TFloatField
       FieldName = 'NFITN2PERCREDUCAO'
       Origin = 'DB.NOTAFISCALITEM.NFITN2PERCREDUCAO'
       Precision = 15
       Size = 3
     end
-    object SQLNotaFiscalItemNFITN3TOTVEND: TBCDField
+    object SQLNotaFiscalItemNFITN3TOTVEND: TFloatField
       FieldName = 'NFITN3TOTVEND'
       Origin = 'DB.NOTAFISCALITEM.NFITN3TOTVEND'
       Precision = 15
@@ -4293,13 +4293,13 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
       FieldName = 'PVITIITEM'
       Origin = 'DB.NOTAFISCALITEM.PVITIITEM'
     end
-    object SQLNotaFiscalItemNFITN3QUANTVEND: TBCDField
+    object SQLNotaFiscalItemNFITN3QUANTVEND: TFloatField
       FieldName = 'NFITN3QUANTVEND'
       Origin = 'DB.NOTAFISCALITEM.NFITN3QUANTVEND'
       Precision = 15
       Size = 3
     end
-    object SQLNotaFiscalItemNFITN2PERCCOMIS: TBCDField
+    object SQLNotaFiscalItemNFITN2PERCCOMIS: TFloatField
       FieldName = 'NFITN2PERCCOMIS'
       Origin = 'DB.NOTAFISCALITEM.NFITN2PERCCOMIS'
       Precision = 15
@@ -4389,13 +4389,13 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
       FieldName = 'CTRCDVENC'
       Origin = 'DB.CONTASRECEBER.CTRCDVENC'
     end
-    object SQLNotaContasReceberCTRCN2VLR: TBCDField
+    object SQLNotaContasReceberCTRCN2VLR: TFloatField
       FieldName = 'CTRCN2VLR'
       Origin = 'DB.CONTASRECEBER.CTRCN2VLR'
       Precision = 15
       Size = 3
     end
-    object SQLNotaContasReceberCTRCN2DESCFIN: TBCDField
+    object SQLNotaContasReceberCTRCN2DESCFIN: TFloatField
       FieldName = 'CTRCN2DESCFIN'
       Origin = 'DB.CONTASRECEBER.CTRCN2DESCFIN'
       Precision = 15
@@ -4409,13 +4409,13 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
       FieldName = 'PORTICOD'
       Origin = 'DB.CONTASRECEBER.PORTICOD'
     end
-    object SQLNotaContasReceberCTRCN2TXJURO: TBCDField
+    object SQLNotaContasReceberCTRCN2TXJURO: TFloatField
       FieldName = 'CTRCN2TXJURO'
       Origin = 'DB.CONTASRECEBER.CTRCN2TXJURO'
       Precision = 15
       Size = 3
     end
-    object SQLNotaContasReceberCTRCN2TXMULTA: TBCDField
+    object SQLNotaContasReceberCTRCN2TXMULTA: TFloatField
       FieldName = 'CTRCN2TXMULTA'
       Origin = 'DB.CONTASRECEBER.CTRCN2TXMULTA'
       Precision = 15
@@ -4431,31 +4431,31 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
       FieldName = 'CTRCDULTREC'
       Origin = 'DB.CONTASRECEBER.CTRCDULTREC'
     end
-    object SQLNotaContasReceberCTRCN2TOTREC: TBCDField
+    object SQLNotaContasReceberCTRCN2TOTREC: TFloatField
       FieldName = 'CTRCN2TOTREC'
       Origin = 'DB.CONTASRECEBER.CTRCN2TOTREC'
       Precision = 15
       Size = 3
     end
-    object SQLNotaContasReceberCTRCN2TOTJUROREC: TBCDField
+    object SQLNotaContasReceberCTRCN2TOTJUROREC: TFloatField
       FieldName = 'CTRCN2TOTJUROREC'
       Origin = 'DB.CONTASRECEBER.CTRCN2TOTJUROREC'
       Precision = 15
       Size = 3
     end
-    object SQLNotaContasReceberCTRCN2TOTMULTAREC: TBCDField
+    object SQLNotaContasReceberCTRCN2TOTMULTAREC: TFloatField
       FieldName = 'CTRCN2TOTMULTAREC'
       Origin = 'DB.CONTASRECEBER.CTRCN2TOTMULTAREC'
       Precision = 15
       Size = 3
     end
-    object SQLNotaContasReceberCTRCN2TOTDESCREC: TBCDField
+    object SQLNotaContasReceberCTRCN2TOTDESCREC: TFloatField
       FieldName = 'CTRCN2TOTDESCREC'
       Origin = 'DB.CONTASRECEBER.CTRCN2TOTDESCREC'
       Precision = 15
       Size = 3
     end
-    object SQLNotaContasReceberCTRCN2TOTMULTACOBR: TBCDField
+    object SQLNotaContasReceberCTRCN2TOTMULTACOBR: TFloatField
       FieldName = 'CTRCN2TOTMULTACOBR'
       Origin = 'DB.CONTASRECEBER.CTRCN2TOTMULTACOBR'
       Precision = 15
@@ -4791,25 +4791,25 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
       FixedChar = True
       Size = 60
     end
-    object SQLPlanoPLRCN2TXJURO: TBCDField
+    object SQLPlanoPLRCN2TXJURO: TFloatField
       FieldName = 'PLRCN2TXJURO'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN2TXJURO'
       Precision = 15
       Size = 3
     end
-    object SQLPlanoPLRCN2TXMULTA: TBCDField
+    object SQLPlanoPLRCN2TXMULTA: TFloatField
       FieldName = 'PLRCN2TXMULTA'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN2TXMULTA'
       Precision = 15
       Size = 3
     end
-    object SQLPlanoPLRCN2TXCRED: TBCDField
+    object SQLPlanoPLRCN2TXCRED: TFloatField
       FieldName = 'PLRCN2TXCRED'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN2TXCRED'
       Precision = 15
       Size = 3
     end
-    object SQLPlanoPLRCN2PERCDESC: TBCDField
+    object SQLPlanoPLRCN2PERCDESC: TFloatField
       FieldName = 'PLRCN2PERCDESC'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN2PERCDESC'
       Precision = 15
@@ -4835,13 +4835,13 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
       FixedChar = True
       Size = 1
     end
-    object SQLPlanoPLRCN2PERCENTR: TBCDField
+    object SQLPlanoPLRCN2PERCENTR: TFloatField
       FieldName = 'PLRCN2PERCENTR'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN2PERCENTR'
       Precision = 15
       Size = 3
     end
-    object SQLPlanoPLRCN2DESC: TBCDField
+    object SQLPlanoPLRCN2DESC: TFloatField
       FieldName = 'PLRCN2DESC'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN2DESC'
       Precision = 15
@@ -4863,7 +4863,7 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
       FieldName = 'REGISTRO'
       Origin = 'DB.PLANORECEBIMENTO.REGISTRO'
     end
-    object SQLPlanoPLRCN2PERCACRESC: TBCDField
+    object SQLPlanoPLRCN2PERCACRESC: TFloatField
       FieldName = 'PLRCN2PERCACRESC'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN2PERCACRESC'
       Precision = 15
@@ -4952,13 +4952,13 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
       DisplayFormat = 'dd/mm/yyyy'
       EditMask = '!99/99/0000;1;_'
     end
-    object SQLContasReceberCTRCN2VLR: TBCDField
+    object SQLContasReceberCTRCN2VLR: TFloatField
       FieldName = 'CTRCN2VLR'
       Origin = 'DB.CONTASRECEBER.CTRCN2VLR'
       Precision = 15
       Size = 3
     end
-    object SQLContasReceberCTRCN2DESCFIN: TBCDField
+    object SQLContasReceberCTRCN2DESCFIN: TFloatField
       FieldName = 'CTRCN2DESCFIN'
       Origin = 'DB.CONTASRECEBER.CTRCN2DESCFIN'
       Precision = 15
@@ -4972,13 +4972,13 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
       FieldName = 'PORTICOD'
       Origin = 'DB.CONTASRECEBER.PORTICOD'
     end
-    object SQLContasReceberCTRCN2TXJURO: TBCDField
+    object SQLContasReceberCTRCN2TXJURO: TFloatField
       FieldName = 'CTRCN2TXJURO'
       Origin = 'DB.CONTASRECEBER.CTRCN2TXJURO'
       Precision = 15
       Size = 3
     end
-    object SQLContasReceberCTRCN2TXMULTA: TBCDField
+    object SQLContasReceberCTRCN2TXMULTA: TFloatField
       FieldName = 'CTRCN2TXMULTA'
       Origin = 'DB.CONTASRECEBER.CTRCN2TXMULTA'
       Precision = 15
@@ -4994,25 +4994,25 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
       FieldName = 'CTRCDULTREC'
       Origin = 'DB.CONTASRECEBER.CTRCDULTREC'
     end
-    object SQLContasReceberCTRCN2TOTREC: TBCDField
+    object SQLContasReceberCTRCN2TOTREC: TFloatField
       FieldName = 'CTRCN2TOTREC'
       Origin = 'DB.CONTASRECEBER.CTRCN2TOTREC'
       Precision = 15
       Size = 3
     end
-    object SQLContasReceberCTRCN2TOTJUROREC: TBCDField
+    object SQLContasReceberCTRCN2TOTJUROREC: TFloatField
       FieldName = 'CTRCN2TOTJUROREC'
       Origin = 'DB.CONTASRECEBER.CTRCN2TOTJUROREC'
       Precision = 15
       Size = 3
     end
-    object SQLContasReceberCTRCN2TOTMULTAREC: TBCDField
+    object SQLContasReceberCTRCN2TOTMULTAREC: TFloatField
       FieldName = 'CTRCN2TOTMULTAREC'
       Origin = 'DB.CONTASRECEBER.CTRCN2TOTMULTAREC'
       Precision = 15
       Size = 3
     end
-    object SQLContasReceberCTRCN2TOTDESCREC: TBCDField
+    object SQLContasReceberCTRCN2TOTDESCREC: TFloatField
       FieldName = 'CTRCN2TOTDESCREC'
       Origin = 'DB.CONTASRECEBER.CTRCN2TOTDESCREC'
       Precision = 15
@@ -5033,7 +5033,7 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
       Origin = 'DB.CONTASRECEBER.TPDCICOD'
     end
     object SQLContasReceberPLCTA15COD: TStringField
-      DisplayLabel = 'Conta Cr'#233'dito'
+      DisplayLabel = 'Conta Crédito'
       FieldName = 'PLCTA15COD'
       Origin = 'DB.CONTASRECEBER.PLCTA15COD'
       FixedChar = True
@@ -5071,7 +5071,7 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
       FieldName = 'CTRCDREABILSPC'
       Origin = 'DB.CONTASRECEBER.CTRCDREABILSPC'
     end
-    object SQLContasReceberCTRCN2TOTMULTACOBR: TBCDField
+    object SQLContasReceberCTRCN2TOTMULTACOBR: TFloatField
       FieldName = 'CTRCN2TOTMULTACOBR'
       Origin = 'DB.CONTASRECEBER.CTRCN2TOTMULTACOBR'
       Precision = 15
@@ -5125,14 +5125,14 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
       Size = 13
     end
     object SQLContasReceberCTRCA254HIST: TStringField
-      DisplayLabel = 'Hist'#243'rico'
+      DisplayLabel = 'Histórico'
       FieldName = 'CTRCA254HIST'
       Origin = 'DB.CONTASRECEBER.CTRCA254HIST'
       FixedChar = True
       Size = 254
     end
     object SQLContasReceberHTPDICOD: TIntegerField
-      DisplayLabel = 'C'#243'd. Hist. Padr'#227'o'
+      DisplayLabel = 'Cód. Hist. Padrão'
       FieldName = 'HTPDICOD'
       Origin = 'DB.CONTASRECEBER.HTPDICOD'
     end
@@ -5174,7 +5174,7 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
     DatabaseName = 'DB'
     SQL.Strings = (
       'select * from NUMERARIO '
-      'where NUMECVISTAPRAZO='#39'P'#39
+      'where NUMECVISTAPRAZO=''P'''
       'order by NUMEA30DESCR')
     Macros = <>
     Left = 73
@@ -5211,7 +5211,7 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
     DatabaseName = 'DB'
     SQL.Strings = (
       'select * from NUMERARIO '
-      'where NUMECVISTAPRAZO='#39'V'#39
+      'where NUMECVISTAPRAZO=''V'''
       'order by NUMEA30DESCR'
       '')
     Macros = <>
@@ -5240,7 +5240,7 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
       Origin = 'DB.PARCELASPRAZOVENDATEMP.NROPARCELA'
       DisplayFormat = '000'
     end
-    object SQLParcelasPrazoVendaTempVALORVENCTO: TBCDField
+    object SQLParcelasPrazoVendaTempVALORVENCTO: TFloatField
       FieldName = 'VALORVENCTO'
       Origin = 'DB.PARCELASPRAZOVENDATEMP.VALORVENCTO'
       DisplayFormat = '#,##0.00'
@@ -5251,7 +5251,7 @@ inherited FormCadastroGraficaOrdem: TFormCadastroGraficaOrdem
       Origin = 'DB.PARCELASPRAZOVENDATEMP.NUMEICOD'
     end
     object SQLParcelasPrazoVendaTempNumerarioLookup: TStringField
-      DisplayLabel = 'Numer'#225'rio'
+      DisplayLabel = 'Numerário'
       FieldKind = fkLookup
       FieldName = 'NumerarioLookup'
       LookupDataSet = SQLNumerario

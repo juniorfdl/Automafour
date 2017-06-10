@@ -507,33 +507,23 @@ inherited FormRelatorioVendasPeriodo: TFormRelatorioVendasPeriodo
     object TblTemporariaCUPODEMIS: TDateTimeField
       FieldName = 'CUPODEMIS'
     end
-    object TblTemporariaCUPON2TOTITENS: TBCDField
+    object TblTemporariaCUPON2TOTITENS: TFloatField
       FieldName = 'CUPON2TOTITENS'
-      Precision = 15
-      Size = 3
     end
-    object TblTemporariaCUPON2ACRESC: TBCDField
+    object TblTemporariaCUPON2ACRESC: TFloatField
       FieldName = 'CUPON2ACRESC'
-      Precision = 15
-      Size = 3
     end
-    object TblTemporariaCUPON2DESC: TBCDField
+    object TblTemporariaCUPON2DESC: TFloatField
       FieldName = 'CUPON2DESC'
-      Precision = 15
-      Size = 3
     end
     object TblTemporariaTOTAL: TFloatField
       FieldName = 'TOTAL'
     end
-    object TblTemporariaCUPON3BONUSTROCA: TBCDField
+    object TblTemporariaCUPON3BONUSTROCA: TFloatField
       FieldName = 'CUPON3BONUSTROCA'
-      Precision = 15
-      Size = 3
     end
-    object TblTemporariaNROITENS: TBCDField
+    object TblTemporariaNROITENS: TFloatField
       FieldName = 'NROITENS'
-      Precision = 15
-      Size = 3
     end
     object TblTemporariaEMPRICOD: TIntegerField
       FieldName = 'EMPRICOD'
@@ -748,10 +738,8 @@ inherited FormRelatorioVendasPeriodo: TFormRelatorioVendasPeriodo
     object SQLVendasCUPON2TOTITENS: TFloatField
       FieldName = 'CUPON2TOTITENS'
     end
-    object SQLVendasCUPON2ACRESC: TBCDField
+    object SQLVendasCUPON2ACRESC: TFloatField
       FieldName = 'CUPON2ACRESC'
-      Precision = 15
-      Size = 3
     end
     object SQLVendasCUPON2DESC2: TFloatField
       FieldName = 'CUPON2DESC'
@@ -759,15 +747,11 @@ inherited FormRelatorioVendasPeriodo: TFormRelatorioVendasPeriodo
     object SQLVendasTOTAL: TFloatField
       FieldName = 'TOTAL'
     end
-    object SQLVendasCUPON3BONUSTROCA: TBCDField
+    object SQLVendasCUPON3BONUSTROCA: TFloatField
       FieldName = 'CUPON3BONUSTROCA'
-      Precision = 15
-      Size = 3
     end
-    object SQLVendasNROITENS: TBCDField
+    object SQLVendasNROITENS: TFloatField
       FieldName = 'NROITENS'
-      Precision = 15
-      Size = 3
     end
     object SQLVendasEMPRICOD: TIntegerField
       FieldName = 'EMPRICOD'
@@ -1002,20 +986,14 @@ inherited FormRelatorioVendasPeriodo: TFormRelatorioVendasPeriodo
     object TblVendaConsigCUPODEMIS: TDateTimeField
       FieldName = 'CUPODEMIS'
     end
-    object TblVendaConsigCUPON2TOTITENS: TBCDField
+    object TblVendaConsigCUPON2TOTITENS: TFloatField
       FieldName = 'CUPON2TOTITENS'
-      Precision = 15
-      Size = 3
     end
-    object TblVendaConsigCUPON2ACRESC: TBCDField
+    object TblVendaConsigCUPON2ACRESC: TFloatField
       FieldName = 'CUPON2ACRESC'
-      Precision = 15
-      Size = 3
     end
-    object TblVendaConsigCUPON2DESC: TBCDField
+    object TblVendaConsigCUPON2DESC: TFloatField
       FieldName = 'CUPON2DESC'
-      Precision = 15
-      Size = 3
     end
     object TblVendaConsigTOTAL: TFloatField
       FieldName = 'TOTAL'
@@ -1129,20 +1107,14 @@ inherited FormRelatorioVendasPeriodo: TFormRelatorioVendasPeriodo
     object SQLVendasConsigCUPODEMIS: TDateTimeField
       FieldName = 'CUPODEMIS'
     end
-    object SQLVendasConsigCUPON2TOTITENS: TBCDField
+    object SQLVendasConsigCUPON2TOTITENS: TFloatField
       FieldName = 'CUPON2TOTITENS'
-      Precision = 15
-      Size = 3
     end
-    object SQLVendasConsigCUPON2ACRESC: TBCDField
+    object SQLVendasConsigCUPON2ACRESC: TFloatField
       FieldName = 'CUPON2ACRESC'
-      Precision = 15
-      Size = 3
     end
-    object SQLVendasConsigCUPON2DESC: TBCDField
+    object SQLVendasConsigCUPON2DESC: TFloatField
       FieldName = 'CUPON2DESC'
-      Precision = 15
-      Size = 3
     end
     object SQLVendasConsigTOTAL: TFloatField
       FieldName = 'TOTAL'
@@ -1289,11 +1261,9 @@ inherited FormRelatorioVendasPeriodo: TFormRelatorioVendasPeriodo
       FieldName = 'CTRCDVENC'
       Origin = 'DB.CONTASRECEBER.CTRCDVENC'
     end
-    object SQLChequesCTRCN2VLR: TBCDField
+    object SQLChequesCTRCN2VLR: TFloatField
       FieldName = 'CTRCN2VLR'
       Origin = 'DB.CONTASRECEBER.CTRCN2VLR'
-      Precision = 15
-      Size = 3
     end
     object SQLChequesCLIEA60RAZAOSOC: TStringField
       FieldName = 'CLIEA60RAZAOSOC'
@@ -1382,11 +1352,9 @@ inherited FormRelatorioVendasPeriodo: TFormRelatorioVendasPeriodo
       FieldName = 'CTRCDVENC'
       Origin = 'DB.CONTASRECEBER.CTRCDVENC'
     end
-    object TblVendaChequesCTRCN2VLR: TBCDField
+    object TblVendaChequesCTRCN2VLR: TFloatField
       FieldName = 'CTRCN2VLR'
       Origin = 'DB.CONTASRECEBER.CTRCN2VLR'
-      Precision = 15
-      Size = 3
     end
     object TblVendaChequesCLIEA60RAZAOSOC: TStringField
       FieldName = 'CLIEA60RAZAOSOC'
@@ -1431,35 +1399,25 @@ inherited FormRelatorioVendasPeriodo: TFormRelatorioVendasPeriodo
       FieldName = 'RECEDRECTO'
       Origin = 'DB.RECEBIMENTO.RECEDRECTO'
     end
-    object SQLRecebimentosRECEN2VLRRECTO: TBCDField
+    object SQLRecebimentosRECEN2VLRRECTO: TFloatField
       FieldName = 'RECEN2VLRRECTO'
       Origin = 'DB.RECEBIMENTO.RECEN2VLRRECTO'
-      Precision = 15
-      Size = 3
     end
-    object SQLRecebimentosRECEN2VLRJURO: TBCDField
+    object SQLRecebimentosRECEN2VLRJURO: TFloatField
       FieldName = 'RECEN2VLRJURO'
       Origin = 'DB.RECEBIMENTO.RECEN2VLRJURO'
-      Precision = 15
-      Size = 3
     end
-    object SQLRecebimentosRECEN2VLRMULTA: TBCDField
+    object SQLRecebimentosRECEN2VLRMULTA: TFloatField
       FieldName = 'RECEN2VLRMULTA'
       Origin = 'DB.RECEBIMENTO.RECEN2VLRMULTA'
-      Precision = 15
-      Size = 3
     end
-    object SQLRecebimentosRECEN2DESC: TBCDField
+    object SQLRecebimentosRECEN2DESC: TFloatField
       FieldName = 'RECEN2DESC'
       Origin = 'DB.RECEBIMENTO.RECEN2DESC'
-      Precision = 15
-      Size = 3
     end
-    object SQLRecebimentosRECEN2MULTACOBR: TBCDField
+    object SQLRecebimentosRECEN2MULTACOBR: TFloatField
       FieldName = 'RECEN2MULTACOBR'
       Origin = 'DB.RECEBIMENTO.RECEN2MULTACOBR'
-      Precision = 15
-      Size = 3
     end
     object SQLRecebimentosEMPRICODREC: TIntegerField
       FieldName = 'EMPRICODREC'
@@ -1500,11 +1458,9 @@ inherited FormRelatorioVendasPeriodo: TFormRelatorioVendasPeriodo
       FixedChar = True
       Size = 13
     end
-    object TblVendasPeriodoRecConsigRECEN2VLRRECTO: TBCDField
+    object TblVendasPeriodoRecConsigRECEN2VLRRECTO: TFloatField
       FieldName = 'RECEN2VLRRECTO'
       Origin = 'DB.RECEBIMENTO.RECEN2VLRRECTO'
-      Precision = 15
-      Size = 3
     end
     object TblVendasPeriodoRecConsigCliente: TStringField
       FieldName = 'Cliente'
@@ -1643,26 +1599,20 @@ inherited FormRelatorioVendasPeriodo: TFormRelatorioVendasPeriodo
     object SQLNotasCUPODEMIS: TDateTimeField
       FieldName = 'CUPODEMIS'
     end
-    object SQLNotasCUPON2TOTITENS: TBCDField
+    object SQLNotasCUPON2TOTITENS: TFloatField
       FieldName = 'CUPON2TOTITENS'
-      Precision = 15
-      Size = 3
     end
     object SQLNotasCUPON2ACRESC: TFloatField
       FieldName = 'CUPON2ACRESC'
     end
-    object SQLNotasCUPON2DESC: TBCDField
+    object SQLNotasCUPON2DESC: TFloatField
       FieldName = 'CUPON2DESC'
-      Precision = 15
-      Size = 3
     end
     object SQLNotasTOTAL: TFloatField
       FieldName = 'TOTAL'
     end
-    object SQLNotasNROITENS: TBCDField
+    object SQLNotasNROITENS: TFloatField
       FieldName = 'NROITENS'
-      Precision = 15
-      Size = 3
     end
     object SQLNotasEMPRICOD: TIntegerField
       FieldName = 'EMPRICOD'

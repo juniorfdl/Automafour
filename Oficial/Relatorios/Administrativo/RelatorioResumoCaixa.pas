@@ -17,8 +17,8 @@ type
     SQLTotalOperacao: TRxQuery;
     SQLTotalOperacaoOPCXICOD: TIntegerField;
     SQLTotalOperacaoOPCXA60DESCR: TStringField;
-    SQLTotalOperacaoCREDITOS: TBCDField;
-    SQLTotalOperacaoDEBITOS: TBCDField;
+    SQLTotalOperacaoCREDITOS: TFloatField;
+    SQLTotalOperacaoDEBITOS: TFloatField;
     DSSQLTotalOperacao: TDataSource;
     SQLTerminal: TRxQuery;
     DSSQLTerminal: TDataSource;
@@ -26,8 +26,8 @@ type
     ComboTerminal: TRxDBLookupCombo;
     SQLTotaNumerarioNUMEICOD: TIntegerField;
     SQLTotaNumerarioNUMEA30DESCR: TStringField;
-    SQLTotaNumerarioVLRCREDITO: TBCDField;
-    SQLTotaNumerarioVLRDEBITO: TBCDField;
+    SQLTotaNumerarioVLRCREDITO: TFloatField;
+    SQLTotaNumerarioVLRDEBITO: TFloatField;
     SQLTotaNumerarioSALDO: TFloatField;
     GroupBox2: TGroupBox;
     ComboTerminal2: TRxDBLookupCombo;
@@ -43,7 +43,7 @@ type
     ckImpEncerrantes: TCheckBox;
     SQLVendaCartoesCheques: TRxQuery;
     dsSQLVendaCartoesCheques: TDataSource;
-    SQLVendaCartoesChequesCTRCN2VLR: TBCDField;
+    SQLVendaCartoesChequesCTRCN2VLR: TFloatField;
     SQLVendaCartoesChequesCTRCDVENC: TDateTimeField;
     SQLVendaCartoesChequesNUMEICOD: TIntegerField;
     SQLVendaCartoesChequesNUMEA30DESCR: TStringField;
@@ -154,7 +154,7 @@ type
     dsSQLItensVendidos: TDataSource;
     SQLItensVendidos: TRxQuery;
     SQLItensVendidosPRODICOD: TIntegerField;
-    SQLItensVendidosCPITN3VLRUNIT: TBCDField;
+    SQLItensVendidosCPITN3VLRUNIT: TFloatField;
     SQLItensVendidosQTDE: TFloatField;
     SQLItensVendidosVLRTOTALITEM: TFloatField;
     ppLabel31: TppLabel;
@@ -209,7 +209,7 @@ type
     ppDBText35: TppDBText;
     ppLabel62: TppLabel;
     LbEmpresa2: TppLabel;
-    SQLTotalOperacaoDESCONTOS: TBCDField;
+    SQLTotalOperacaoDESCONTOS: TFloatField;
     ppLabel63: TppLabel;
     ppEstornoVenda: TppLabel;
     ppLabel64: TppLabel;

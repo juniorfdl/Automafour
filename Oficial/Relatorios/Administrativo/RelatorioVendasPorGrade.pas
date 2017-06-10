@@ -114,8 +114,8 @@ type
     SQLProdutoPRODA60REFER: TStringField;
     SQLProdutoCORA30DESCR: TStringField;
     SQLProdutoMARCA60DESCR: TStringField;
-    SQLProdutoPRODN3VLRCUSTO: TBCDField;
-    SQLProdutoSALDO: TBCDField;
+    SQLProdutoPRODN3VLRCUSTO: TFloatField;
+    SQLProdutoSALDO: TFloatField;
     SQLProdutoGRUPICOD: TIntegerField;
     SQLProdutoSUBGICOD: TIntegerField;
     SQLProdutoVARIICOD: TIntegerField;
@@ -130,7 +130,7 @@ type
     ckMostraSaldo: TCheckBox;
     SQLSaldo: TRxQuery;
     SQLSaldoPRODICOD: TIntegerField;
-    SQLSaldoSALDO: TBCDField;
+    SQLSaldoSALDO: TFloatField;
     SQLSaldoEMPRICOD: TIntegerField;
     procedure ComboGrupoChange(Sender: TObject);
     procedure ComboSubGrupoChange(Sender: TObject);

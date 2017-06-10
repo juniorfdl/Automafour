@@ -41,8 +41,8 @@ type
     TblDuplicatasCLIEA2UFCOB: TStringField;
     TblDuplicatasCLIEA8CEPCOB: TStringField;
     TblDuplicatasNOFIA13ID: TStringField;
-    TblDuplicatasCTRCN2DESCFIN: TBCDField;
-    TblDuplicatasCTRCN2VLR: TBCDField;
+    TblDuplicatasCTRCN2DESCFIN: TFloatField;
+    TblDuplicatasCTRCN2VLR: TFloatField;
     TblDuplicatasCTRCDVENC: TDateTimeField;
     TblDuplicatasCTRCINROPARC: TIntegerField;
     TblDuplicatasCTRCDEMIS: TDateTimeField;
@@ -69,10 +69,10 @@ type
     SQLContasReceberCTRCCSTATUS: TStringField;
     SQLContasReceberCTRCINROPARC: TIntegerField;
     SQLContasReceberCTRCDVENC: TDateTimeField;
-    SQLContasReceberCTRCN2VLR: TBCDField;
+    SQLContasReceberCTRCN2VLR: TFloatField;
     SQLContasReceberVALORTOTAL: TFloatField;
-    SQLContasReceberCTRCN2DESCFIN: TBCDField;
-    SQLContasReceberCTRCN2TOTREC: TBCDField;
+    SQLContasReceberCTRCN2DESCFIN: TFloatField;
+    SQLContasReceberCTRCN2TOTREC: TFloatField;
     SQLContasReceberCTRCDULTREC: TDateTimeField;
     SQLContasReceberPORTICOD: TIntegerField;
     SQLContasReceberCTRCA5TIPOPADRAO: TStringField;
@@ -100,7 +100,7 @@ type
     SQLContasReceberCLIEA2UFCOB: TStringField;
     SQLContasReceberCLIEA8CEPCOB: TStringField;
     SQLTotais: TRxQuery;
-    SQLTotaisTOTALDOCUMENTO: TBCDField;
+    SQLTotaisTOTALDOCUMENTO: TFloatField;
     SQLTotaisNROPARCELAS: TIntegerField;
     SQLTotaisCTRCA30NRODUPLICBANCO: TStringField;
     FormStorage: TFormStorage;
@@ -119,7 +119,7 @@ type
     SQLDuplicatasDUPLICOD: TIntegerField;
     SQLDuplicatasCLIEA13ID: TStringField;
     SQLDuplicatasDUPLDEMIS: TDateTimeField;
-    SQLDuplicatasDUPLN3VLR: TBCDField;
+    SQLDuplicatasDUPLN3VLR: TFloatField;
     SQLDuplicatasDUPLDVENC: TDateTimeField;
     SQLDuplicatasDUPLA254HIST: TStringField;
     SQLDuplicatasDUPLA60LOCALPAGTO: TStringField;

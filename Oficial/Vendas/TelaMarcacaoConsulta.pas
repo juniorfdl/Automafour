@@ -124,7 +124,7 @@ type
     TblProfissional: TTable;
     SQLProfissional: TRxQuery;
     DSSQLProfissional: TDataSource;
-    SQLEspecialidadeESPEN3VLRCONSULTA: TBCDField;
+    SQLEspecialidadeESPEN3VLRCONSULTA: TFloatField;
     Panel1: TPanel;
     GridAgendamento: TRxDBGrid;
     TblClienteDependenteCLIEA13ID: TStringField;
@@ -156,8 +156,8 @@ type
     SQLAgendamentoAtendente: TStringField;
     SQLAgendamentoClienteNome: TStringField;
     SQLAgendamentoDependenteNome: TStringField;
-    SQLAgendamentoAGENN3VLRCONSULTA: TBCDField;
-    SQLAgendamentoAGENN3VLRPAGO: TBCDField;
+    SQLAgendamentoAGENN3VLRCONSULTA: TFloatField;
+    SQLAgendamentoAGENN3VLRPAGO: TFloatField;
     EditDataBase: TDateEdit;
     BitBtn1: TBitBtn;
     CKHorariosLivres: TCheckBox;
@@ -251,7 +251,7 @@ type
     TblEspecialidade: TTable;
     TblEspecialidadeESPEICOD: TIntegerField;
     TblEspecialidadeESPEA60DESCR: TStringField;
-    TblEspecialidadeESPEN3VLRCONSULTA: TBCDField;
+    TblEspecialidadeESPEN3VLRCONSULTA: TFloatField;
     SQLAgendamentoEspecialidade: TStringField;
     ppDBText5: TppDBText;
     SQLAgendamentoAGENIQTDE: TIntegerField;
@@ -275,8 +275,8 @@ type
     SQLAgendamentoTodosAGENA254OBS: TStringField;
     SQLAgendamentoTodosAGENICODAGRUP: TIntegerField;
     SQLAgendamentoTodosAGENDDIGIT: TDateTimeField;
-    SQLAgendamentoTodosAGENN3VLRCONSULTA: TBCDField;
-    SQLAgendamentoTodosAGENN3VLRPAGO: TBCDField;
+    SQLAgendamentoTodosAGENN3VLRCONSULTA: TFloatField;
+    SQLAgendamentoTodosAGENN3VLRPAGO: TFloatField;
     SQLAgendamentoTodosAGENDPAGO: TDateTimeField;
     SQLAgendamentoTodosAGENIUSUATEND: TIntegerField;
     SQLAgendamentoTodosAGENIQTDE: TIntegerField;
@@ -364,8 +364,8 @@ type
     SQLAgendamentoConsultaAGENA254OBS: TStringField;
     SQLAgendamentoConsultaAGENICODAGRUP: TIntegerField;
     SQLAgendamentoConsultaAGENDDIGIT: TDateTimeField;
-    SQLAgendamentoConsultaAGENN3VLRCONSULTA: TBCDField;
-    SQLAgendamentoConsultaAGENN3VLRPAGO: TBCDField;
+    SQLAgendamentoConsultaAGENN3VLRCONSULTA: TFloatField;
+    SQLAgendamentoConsultaAGENN3VLRPAGO: TFloatField;
     SQLAgendamentoConsultaAGENDPAGO: TDateTimeField;
     SQLAgendamentoConsultaAGENIUSUATEND: TIntegerField;
     SQLAgendamentoConsultaAGENIQTDE: TIntegerField;

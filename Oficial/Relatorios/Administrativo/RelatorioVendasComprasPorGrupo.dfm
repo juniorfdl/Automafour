@@ -199,25 +199,17 @@ inherited FormRelatorioVendasComprasPorGrupo: TFormRelatorioVendasComprasPorGrup
       FixedChar = True
       Size = 60
     end
-    object SQLRelSaldoPorGrupoVENDA: TBCDField
+    object SQLRelSaldoPorGrupoVENDA: TFloatField
       FieldName = 'VENDA'
-      Precision = 15
-      Size = 3
     end
-    object SQLRelSaldoPorGrupoCOMPRA: TBCDField
+    object SQLRelSaldoPorGrupoCOMPRA: TFloatField
       FieldName = 'COMPRA'
-      Precision = 15
-      Size = 3
     end
-    object SQLRelSaldoPorGrupoCUSTO: TBCDField
+    object SQLRelSaldoPorGrupoCUSTO: TFloatField
       FieldName = 'CUSTO'
-      Precision = 15
-      Size = 3
     end
-    object SQLRelSaldoPorGrupoSALDO: TBCDField
+    object SQLRelSaldoPorGrupoSALDO: TFloatField
       FieldName = 'SALDO'
-      Precision = 15
-      Size = 3
     end
     object SQLRelSaldoPorGrupoTOTALVENDA: TFloatField
       FieldName = 'TOTALVENDA'
@@ -243,25 +235,17 @@ inherited FormRelatorioVendasComprasPorGrupo: TFormRelatorioVendasComprasPorGrup
       FixedChar = True
       Size = 60
     end
-    object TblTemporariaSaldoVENDA: TBCDField
+    object TblTemporariaSaldoVENDA: TFloatField
       FieldName = 'VENDA'
-      Precision = 15
-      Size = 3
     end
-    object TblTemporariaSaldoCOMPRA: TBCDField
+    object TblTemporariaSaldoCOMPRA: TFloatField
       FieldName = 'COMPRA'
-      Precision = 15
-      Size = 3
     end
-    object TblTemporariaSaldoCUSTO: TBCDField
+    object TblTemporariaSaldoCUSTO: TFloatField
       FieldName = 'CUSTO'
-      Precision = 15
-      Size = 3
     end
-    object TblTemporariaSaldoSALDO: TBCDField
+    object TblTemporariaSaldoSALDO: TFloatField
       FieldName = 'SALDO'
-      Precision = 15
-      Size = 3
     end
     object TblTemporariaSaldoTOTALVENDA: TFloatField
       FieldName = 'TOTALVENDA'

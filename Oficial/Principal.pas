@@ -234,6 +234,13 @@ type
     EmitidasporClienteeICMS1: TMenuItem;
     ListagemdeItens1: TMenuItem;
     CobranadeFrete1: TMenuItem;
+    AdvGlowButton1: TAdvGlowButton;
+    AdvGlowButton2: TAdvGlowButton;
+    AdvGlowButton3: TAdvGlowButton;
+    AdvGlowButton4: TAdvGlowButton;
+    AdvGlowButton5: TAdvGlowButton;
+    AdvGlowButton6: TAdvGlowButton;
+    AdvGlowButton7: TAdvGlowButton;
     procedure FATUMnCadastroClientesCadastroClick(Sender: TObject);
     procedure FATUMnCadastroClientesTipodeClienteClick(Sender: TObject);
     procedure FATUMnCadastroBancosClick(Sender: TObject);
@@ -385,6 +392,14 @@ type
     procedure MnADMRelCaixaMovimentacaoCaixaClick(Sender: TObject);
     procedure MnADMRelCaixaTotaisporNumerarioClick(Sender: TObject);
     procedure MnADMRelCaixaBoletimCaixaClick(Sender: TObject);
+    procedure AdvGlowButton5Click(Sender: TObject);
+    procedure bClientesClick(Sender: TObject);
+    procedure bProdutosClick(Sender: TObject);
+    procedure bEmitirNFEClick(Sender: TObject);
+    procedure AdvGlowButton1Click(Sender: TObject);
+    procedure AdvGlowButton2Click(Sender: TObject);
+    procedure AdvGlowButton3Click(Sender: TObject);
+    procedure AdvGlowButton4Click(Sender: TObject);
   private
     procedure ApagarOrcamentos;
     procedure ApagarPreVendas;
@@ -2002,6 +2017,58 @@ begin
     CriaFormulario(TFormRelatorioBoletimCaixa, 'FormRelatorioBoletimCaixa',False,False,False,'')
   else
     SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.AdvGlowButton5Click(Sender: TObject);
+begin
+  inherited;
+
+  MnADMEstoqueMovimentosDiversos.Click;
+
+end;
+
+procedure TFormPrincipal.bClientesClick(Sender: TObject);
+begin
+  inherited;
+  MnADMCadastroClientesCadastro.Click;
+end;
+
+procedure TFormPrincipal.bProdutosClick(Sender: TObject);
+begin
+  inherited;
+
+  MnADMCadastroProduto.Click;  
+
+end;
+
+procedure TFormPrincipal.bEmitirNFEClick(Sender: TObject);
+begin
+  inherited;
+  FATUMnVendasNotasFiscais.Click;
+end;
+
+procedure TFormPrincipal.AdvGlowButton1Click(Sender: TObject);
+begin
+  inherited;
+  MnFINPagarLancamentos.Click;
+end;
+
+procedure TFormPrincipal.AdvGlowButton2Click(Sender: TObject);
+begin
+  inherited;
+  MnFornecedores.Click;
+end;
+
+procedure TFormPrincipal.AdvGlowButton3Click(Sender: TObject);
+begin
+  inherited;
+  MNPedidoCompra.Click;
+end;
+
+procedure TFormPrincipal.AdvGlowButton4Click(Sender: TObject);
+begin
+  inherited;
+  MNPedidoCompra.Click;
 end;
 
 end.

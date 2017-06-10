@@ -2042,7 +2042,7 @@ inherited DM: TDM
         Border.Color = clBlack
         Border.Style = psSolid
         Border.Visible = False
-        Caption = 'ENDERE'#199'O.:'
+        Caption = 'ENDEREÇO.:'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Name = 'Draft 12cpi'
@@ -2287,7 +2287,7 @@ inherited DM: TDM
         Border.Color = clBlack
         Border.Style = psSolid
         Border.Visible = False
-        Caption = 'Descri'#231#227'o'
+        Caption = 'Descrição'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Name = 'Draft 12cpi'
@@ -2327,7 +2327,7 @@ inherited DM: TDM
         Border.Color = clBlack
         Border.Style = psSolid
         Border.Visible = False
-        Caption = 'Unit'#225'rio'
+        Caption = 'Unitário'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Name = 'Draft 12cpi'
@@ -2399,7 +2399,7 @@ inherited DM: TDM
         Border.Color = clBlack
         Border.Style = psSolid
         Border.Visible = False
-        Caption = 'OR'#199'AMENTO NRO:'
+        Caption = 'ORÇAMENTO NRO:'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Name = 'Draft 12cpi'
@@ -2624,7 +2624,7 @@ inherited DM: TDM
         Border.Color = clBlack
         Border.Style = psSolid
         Border.Visible = False
-        Caption = 'O B S E R V A '#199' '#213' E S'
+        Caption = 'O B S E R V A Ç Õ E S'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Name = 'Draft 12cpi'
@@ -4410,7 +4410,7 @@ inherited DM: TDM
       DisplayFormat = 'dd/mm/yyyy'
     end
     object MemCtRecParcCUPODEMIS: TDateTimeField
-      DisplayLabel = 'Emiss'#227'o'
+      DisplayLabel = 'Emissão'
       FieldName = 'CUPODEMIS'
       Origin = 'DB.CUPOM.CUPODEMIS'
       DisplayFormat = 'dd/mm/yyyy'
@@ -4433,22 +4433,22 @@ inherited DM: TDM
       FieldName = 'CTRCINROPARC'
       Origin = 'DB.CONTASRECEBER.CTRCINROPARC'
     end
-    object MemCtRecParcCUPON2DESC: TBCDField
+    object MemCtRecParcCUPON2DESC: TFloatField
       DisplayLabel = 'Desc.'
       FieldName = 'CUPON2DESC'
       Origin = 'DB.CUPOM.CUPON2DESC'
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
     end
-    object MemCtRecParcCUPON2TOTITENS: TBCDField
+    object MemCtRecParcCUPON2TOTITENS: TFloatField
       DisplayLabel = 'Produtos'
       FieldName = 'CUPON2TOTITENS'
       Origin = 'DB.CUPOM.CUPON2TOTITENS'
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
     end
-    object MemCtRecParcCUPON2ACRESC: TBCDField
-      DisplayLabel = 'Acr'#233'sc.'
+    object MemCtRecParcCUPON2ACRESC: TFloatField
+      DisplayLabel = 'Acrésc.'
       FieldName = 'CUPON2ACRESC'
       Origin = 'DB.CUPOM.CUPON2ACRESC'
       DisplayFormat = '#,##0.00'
@@ -4461,13 +4461,12 @@ inherited DM: TDM
       FixedChar = True
       Size = 13
     end
-    object MemCtRecParcCTRCN2VLR: TBCDField
+    object MemCtRecParcCTRCN2VLR: TFloatField
       DisplayLabel = 'Valor Atual'
       FieldName = 'CTRCN2VLR'
       Origin = 'DB.CONTASRECEBER.CTRCN2VLR'
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
-      Size = 2
     end
     object MemCtRecParcBaixar: TBooleanField
       FieldName = 'Baixar'
@@ -5230,7 +5229,7 @@ inherited DM: TDM
       Origin = 'DB.FECHAMENTOCAIXA.TERMICOD'
     end
     object SQLFechamentoCaixaNUMEICOD: TIntegerField
-      DisplayLabel = 'Numer'#225'rio'
+      DisplayLabel = 'Numerário'
       FieldName = 'NUMEICOD'
       Origin = 'DB.FECHAMENTOCAIXA.NUMEICOD'
     end
@@ -5247,12 +5246,12 @@ inherited DM: TDM
       EditFormat = '#,##0.00'
     end
     object SQLFechamentoCaixaUSUAICOD: TIntegerField
-      DisplayLabel = 'Usu'#225'rio'
+      DisplayLabel = 'Usuário'
       FieldName = 'USUAICOD'
       Origin = 'DB.FECHAMENTOCAIXA.USUAICOD'
     end
     object SQLFechamentoCaixaNUMEA30DESCR: TStringField
-      DisplayLabel = 'Descri'#231#227'o'
+      DisplayLabel = 'Descrição'
       FieldKind = fkLookup
       FieldName = 'NUMEA30DESCR'
       LookupKeyFields = 'NUMEICOD'

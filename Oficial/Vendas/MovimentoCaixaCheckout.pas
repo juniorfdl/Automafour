@@ -85,8 +85,8 @@ type
     SQLClienteCreditoDATA: TDateTimeField;
     SQLClienteCreditoCLIEA13ID: TStringField;
     SQLClienteCreditoCUPOA13ID: TStringField;
-    SQLClienteCreditoVALORCREDITO: TBCDField;
-    SQLClienteCreditoVALORDEBITO: TBCDField;
+    SQLClienteCreditoVALORCREDITO: TFloatField;
+    SQLClienteCreditoVALORDEBITO: TFloatField;
     SQLClienteCreditoHISTORICO: TStringField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormDeactivate(Sender: TObject);

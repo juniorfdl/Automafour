@@ -322,25 +322,21 @@ object FormTelaConsultaRapidaPlano: TFormTelaConsultaRapidaPlano
       FixedChar = True
       Size = 60
     end
-    object SQLPlanoRecebimentoPLRCN2TXJURO: TBCDField
+    object SQLPlanoRecebimentoPLRCN2TXJURO: TFloatField
       FieldName = 'PLRCN2TXJURO'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN2TXJURO'
-      Size = 3
     end
-    object SQLPlanoRecebimentoPLRCN2TXMULTA: TBCDField
+    object SQLPlanoRecebimentoPLRCN2TXMULTA: TFloatField
       FieldName = 'PLRCN2TXMULTA'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN2TXMULTA'
-      Size = 3
     end
-    object SQLPlanoRecebimentoPLRCN2TXCRED: TBCDField
+    object SQLPlanoRecebimentoPLRCN2TXCRED: TFloatField
       FieldName = 'PLRCN2TXCRED'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN2TXCRED'
-      Size = 3
     end
-    object SQLPlanoRecebimentoPLRCN2PERCDESC: TBCDField
+    object SQLPlanoRecebimentoPLRCN2PERCDESC: TFloatField
       FieldName = 'PLRCN2PERCDESC'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN2PERCDESC'
-      Size = 3
     end
     object SQLPlanoRecebimentoPLRCCDFIX: TStringField
       FieldName = 'PLRCCDFIX'
@@ -362,10 +358,9 @@ object FormTelaConsultaRapidaPlano: TFormTelaConsultaRapidaPlano
       FixedChar = True
       Size = 1
     end
-    object SQLPlanoRecebimentoPLRCN2PERCENTR: TBCDField
+    object SQLPlanoRecebimentoPLRCN2PERCENTR: TFloatField
       FieldName = 'PLRCN2PERCENTR'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN2PERCENTR'
-      Size = 3
     end
     object SQLPlanoRecebimentoPLRCCATIVO: TStringField
       FieldName = 'PLRCCATIVO'
@@ -383,11 +378,9 @@ object FormTelaConsultaRapidaPlano: TFormTelaConsultaRapidaPlano
       FieldName = 'REGISTRO'
       Origin = 'DB.PLANORECEBIMENTO.REGISTRO'
     end
-    object SQLPlanoRecebimentoPLRCN2PERCACRESC: TBCDField
+    object SQLPlanoRecebimentoPLRCN2PERCACRESC: TFloatField
       FieldName = 'PLRCN2PERCACRESC'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN2PERCACRESC'
-      Precision = 15
-      Size = 3
     end
   end
   object SQLPlanoRecebimentoParcela: TRxQuery
@@ -466,12 +459,11 @@ object FormTelaConsultaRapidaPlano: TFormTelaConsultaRapidaPlano
       Origin = 'DB.PARCELASPRAZOVENDATEMP.NROPARCELA'
       DisplayFormat = '000'
     end
-    object SQLParcelasPrazoVendaTempVALORVENCTO: TBCDField
+    object SQLParcelasPrazoVendaTempVALORVENCTO: TFloatField
       DisplayLabel = 'Valor'
       FieldName = 'VALORVENCTO'
       Origin = 'DB.PARCELASPRAZOVENDATEMP.VALORVENCTO'
       DisplayFormat = '#,##0.00'
-      Size = 3
     end
     object SQLParcelasPrazoVendaTempNUMEICOD: TIntegerField
       FieldName = 'NUMEICOD'

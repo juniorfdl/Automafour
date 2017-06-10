@@ -21,8 +21,8 @@ type
     SQLTotaNumerarioNUMEA30DESCR: TStringField;
     SQLTotalOperacaoOPCXICOD: TIntegerField;
     SQLTotalOperacaoOPCXA60DESCR: TStringField;
-    SQLTotalOperacaoCREDITOS: TBCDField;
-    SQLTotalOperacaoDEBITOS: TBCDField;
+    SQLTotalOperacaoCREDITOS: TFloatField;
+    SQLTotalOperacaoDEBITOS: TFloatField;
     SQLTotaNumerarioTOTAL: TFloatField;
     AdvOfficeStatusBarOfficeStyler1: TAdvOfficeStatusBarOfficeStyler;
     ptopo: TAdvOfficeStatusBar;

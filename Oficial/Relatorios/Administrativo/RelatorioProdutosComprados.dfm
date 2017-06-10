@@ -411,15 +411,11 @@ inherited FormRelatorioProdutosComprados: TFormRelatorioProdutosComprados
     object TblTemporariaVLRTOTALITEM: TFloatField
       FieldName = 'VLRTOTALITEM'
     end
-    object TblTemporariaPRODN3VLRCUSTO: TBCDField
+    object TblTemporariaPRODN3VLRCUSTO: TFloatField
       FieldName = 'PRODN3VLRCUSTO'
-      Precision = 15
-      Size = 3
     end
-    object TblTemporariaPRODN3VLRVENDA: TBCDField
+    object TblTemporariaPRODN3VLRVENDA: TFloatField
       FieldName = 'PRODN3VLRVENDA'
-      Precision = 15
-      Size = 3
     end
     object TblTemporariaGRUPICOD: TIntegerField
       FieldName = 'GRUPICOD'
@@ -436,10 +432,8 @@ inherited FormRelatorioProdutosComprados: TFormRelatorioProdutosComprados
     object TblTemporariaCOLEICOD: TIntegerField
       FieldName = 'COLEICOD'
     end
-    object TblTemporariaCPITN3QTD: TBCDField
+    object TblTemporariaCPITN3QTD: TFloatField
       FieldName = 'CPITN3QTD'
-      Precision = 15
-      Size = 3
     end
     object TblTemporariaCUPOA13ID: TStringField
       FieldName = 'CUPOA13ID'
@@ -449,15 +443,11 @@ inherited FormRelatorioProdutosComprados: TFormRelatorioProdutosComprados
     object TblTemporariaFORNICOD: TIntegerField
       FieldName = 'FORNICOD'
     end
-    object TblTemporariaPRODN2ALIQPIS: TBCDField
+    object TblTemporariaPRODN2ALIQPIS: TFloatField
       FieldName = 'PRODN2ALIQPIS'
-      Precision = 15
-      Size = 2
     end
-    object TblTemporariaPRODN2ALIQCOFINS: TBCDField
+    object TblTemporariaPRODN2ALIQCOFINS: TFloatField
       FieldName = 'PRODN2ALIQCOFINS'
-      Precision = 15
-      Size = 2
     end
     object TblTemporariaCFOPA5CODAUX: TStringField
       FieldName = 'CFOPA5CODAUX'
@@ -467,10 +457,8 @@ inherited FormRelatorioProdutosComprados: TFormRelatorioProdutosComprados
     object TblTemporariaNOCIN3VLREMBAL: TFloatField
       FieldName = 'NOCIN3VLREMBAL'
     end
-    object TblTemporariaNOCIN3CAPEMBAL: TBCDField
+    object TblTemporariaNOCIN3CAPEMBAL: TFloatField
       FieldName = 'NOCIN3CAPEMBAL'
-      Precision = 15
-      Size = 3
     end
     object TblTemporariaVALORUNIT: TFloatField
       FieldName = 'VALORUNIT'
@@ -615,15 +603,11 @@ inherited FormRelatorioProdutosComprados: TFormRelatorioProdutosComprados
     object SQLComprasVLRTOTALITEM: TFloatField
       FieldName = 'VLRTOTALITEM'
     end
-    object SQLComprasPRODN3VLRCUSTO: TBCDField
+    object SQLComprasPRODN3VLRCUSTO: TFloatField
       FieldName = 'PRODN3VLRCUSTO'
-      Precision = 15
-      Size = 3
     end
-    object SQLComprasPRODN3VLRVENDA: TBCDField
+    object SQLComprasPRODN3VLRVENDA: TFloatField
       FieldName = 'PRODN3VLRVENDA'
-      Precision = 15
-      Size = 3
     end
     object SQLComprasGRUPICOD: TIntegerField
       FieldName = 'GRUPICOD'
@@ -640,10 +624,8 @@ inherited FormRelatorioProdutosComprados: TFormRelatorioProdutosComprados
     object SQLComprasCOLEICOD: TIntegerField
       FieldName = 'COLEICOD'
     end
-    object SQLComprasCPITN3QTD: TBCDField
+    object SQLComprasCPITN3QTD: TFloatField
       FieldName = 'CPITN3QTD'
-      Precision = 15
-      Size = 3
     end
     object SQLComprasCUPOA13ID: TStringField
       FieldName = 'CUPOA13ID'
@@ -656,15 +638,11 @@ inherited FormRelatorioProdutosComprados: TFormRelatorioProdutosComprados
     object SQLComprasEMPRICODDESTCOMPRA: TIntegerField
       FieldName = 'EMPRICODDESTCOMPRA'
     end
-    object SQLComprasPRODN2ALIQPIS: TBCDField
+    object SQLComprasPRODN2ALIQPIS: TFloatField
       FieldName = 'PRODN2ALIQPIS'
-      Precision = 15
-      Size = 2
     end
-    object SQLComprasPRODN2ALIQCOFINS: TBCDField
+    object SQLComprasPRODN2ALIQCOFINS: TFloatField
       FieldName = 'PRODN2ALIQCOFINS'
-      Precision = 15
-      Size = 2
     end
     object SQLComprasCFOPA5CODAUX: TStringField
       FieldName = 'CFOPA5CODAUX'
@@ -674,10 +652,8 @@ inherited FormRelatorioProdutosComprados: TFormRelatorioProdutosComprados
     object SQLComprasNOCIN3VLREMBAL: TFloatField
       FieldName = 'NOCIN3VLREMBAL'
     end
-    object SQLComprasNOCIN3CAPEMBAL: TBCDField
+    object SQLComprasNOCIN3CAPEMBAL: TFloatField
       FieldName = 'NOCIN3CAPEMBAL'
-      Precision = 15
-      Size = 3
     end
     object SQLComprasVALORUNIT: TFloatField
       FieldName = 'VALORUNIT'

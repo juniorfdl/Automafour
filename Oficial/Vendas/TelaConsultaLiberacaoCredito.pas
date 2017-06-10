@@ -20,8 +20,8 @@ type
     SQLLiberacaoCATCICOD: TIntegerField;
     SQLLiberacaoCLDPICOD: TIntegerField;
     SQLLiberacaoCATCDAUTORIZACAO: TDateTimeField;
-    SQLLiberacaoCATCN2LIMITE: TBCDField;
-    SQLLiberacaoCATCN2VLRCREDITO: TBCDField;
+    SQLLiberacaoCATCN2LIMITE: TFloatField;
+    SQLLiberacaoCATCN2VLRCREDITO: TFloatField;
     SQLLiberacaoUSUAICOD: TIntegerField;
     SQLLiberacaoCATCTOBS: TStringField;
     SQLLiberacaoCATCCSTATUS: TStringField;

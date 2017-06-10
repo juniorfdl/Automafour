@@ -1455,23 +1455,17 @@ object FormTelaCadastroRapidoProduto: TFormTelaCadastroRapidoProduto
       FieldName = 'ICMSICOD'
       Origin = 'DB.PRODUTO.ICMSICOD'
     end
-    object SQLProdutoPRODN3PESOBRUTO: TBCDField
+    object SQLProdutoPRODN3PESOBRUTO: TFloatField
       FieldName = 'PRODN3PESOBRUTO'
       Origin = 'DB.PRODUTO.PRODN3PESOBRUTO'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoPRODN3PESOLIQ: TBCDField
+    object SQLProdutoPRODN3PESOLIQ: TFloatField
       FieldName = 'PRODN3PESOLIQ'
       Origin = 'DB.PRODUTO.PRODN3PESOLIQ'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoPRODN3CAPACEMBAL: TBCDField
+    object SQLProdutoPRODN3CAPACEMBAL: TFloatField
       FieldName = 'PRODN3CAPACEMBAL'
       Origin = 'DB.PRODUTO.PRODN3CAPACEMBAL'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoPRODDCAD: TDateTimeField
       FieldName = 'PRODDCAD'
@@ -1481,23 +1475,19 @@ object FormTelaCadastroRapidoProduto: TFormTelaCadastroRapidoProduto
       FieldName = 'PRODDULTALTER'
       Origin = 'DB.PRODUTO.PRODDULTALTER'
     end
-    object SQLProdutoPRODN3VLRVENDA: TBCDField
+    object SQLProdutoPRODN3VLRVENDA: TFloatField
       DisplayLabel = 'Vlr. Venda'
       FieldName = 'PRODN3VLRVENDA'
       Origin = 'DB.PRODUTO.PRODN3VLRVENDA'
       DisplayFormat = '###,##0.00'
       EditFormat = '###,##0.00'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoPRODN3VLRVENDAPROM: TBCDField
+    object SQLProdutoPRODN3VLRVENDAPROM: TFloatField
       DisplayLabel = 'Valor Promo'#231#227'o'
       FieldName = 'PRODN3VLRVENDAPROM'
       Origin = 'DB.PRODUTO.PRODN3VLRVENDAPROM'
       DisplayFormat = '###,##0.00'
       EditFormat = '###,##0.00'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoPRODDINIPROMO: TDateTimeField
       DisplayLabel = 'Inicio da Promo'#231#227'o'
@@ -1511,35 +1501,25 @@ object FormTelaCadastroRapidoProduto: TFormTelaCadastroRapidoProduto
       Origin = 'DB.PRODUTO.PRODDFIMPROMO'
       DisplayFormat = 'dd/mm/yyyy hh:nn:ss'
     end
-    object SQLProdutoPRODN3VLRCOMPRA: TBCDField
+    object SQLProdutoPRODN3VLRCOMPRA: TFloatField
       FieldName = 'PRODN3VLRCOMPRA'
       Origin = 'DB.PRODUTO.PRODN3VLRCOMPRA'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoPRODN3VLRCUSTO: TBCDField
+    object SQLProdutoPRODN3VLRCUSTO: TFloatField
       FieldName = 'PRODN3VLRCUSTO'
       Origin = 'DB.PRODUTO.PRODN3VLRCUSTO'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoPRODN3VLRCUSTOMED: TBCDField
+    object SQLProdutoPRODN3VLRCUSTOMED: TFloatField
       FieldName = 'PRODN3VLRCUSTOMED'
       Origin = 'DB.PRODUTO.PRODN3VLRCUSTOMED'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoPRODN3PERCIPI: TBCDField
+    object SQLProdutoPRODN3PERCIPI: TFloatField
       FieldName = 'PRODN3PERCIPI'
       Origin = 'DB.PRODUTO.PRODN3PERCIPI'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoPRODN3PERCMARGLUCR: TBCDField
+    object SQLProdutoPRODN3PERCMARGLUCR: TFloatField
       FieldName = 'PRODN3PERCMARGLUCR'
       Origin = 'DB.PRODUTO.PRODN3PERCMARGLUCR'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoPRODCATIVO: TStringField
       FieldName = 'PRODCATIVO'
@@ -1559,17 +1539,13 @@ object FormTelaCadastroRapidoProduto: TFormTelaCadastroRapidoProduto
       FixedChar = True
       Size = 1
     end
-    object SQLProdutoPRODN2COMISVISTA: TBCDField
+    object SQLProdutoPRODN2COMISVISTA: TFloatField
       FieldName = 'PRODN2COMISVISTA'
       Origin = 'DB.PRODUTO.PRODN2COMISVISTA'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoPRODN2COMISPRAZO: TBCDField
+    object SQLProdutoPRODN2COMISPRAZO: TFloatField
       FieldName = 'PRODN2COMISPRAZO'
       Origin = 'DB.PRODUTO.PRODN2COMISPRAZO'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoPRODDIMOBOLIZ: TDateTimeField
       FieldName = 'PRODDIMOBOLIZ'
@@ -1585,11 +1561,9 @@ object FormTelaCadastroRapidoProduto: TFormTelaCadastroRapidoProduto
       FixedChar = True
       Size = 5
     end
-    object SQLProdutoPRODN3QTDEBAIXA: TBCDField
+    object SQLProdutoPRODN3QTDEBAIXA: TFloatField
       FieldName = 'PRODN3QTDEBAIXA'
       Origin = 'DB.PRODUTO.PRODN3QTDEBAIXA'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoCORICOD: TIntegerField
       FieldName = 'CORICOD'
@@ -1631,11 +1605,9 @@ object FormTelaCadastroRapidoProduto: TFormTelaCadastroRapidoProduto
       FieldName = 'PRODIDIASVALIDADE'
       Origin = 'DB.PRODUTO.PRODIDIASVALIDADE'
     end
-    object SQLProdutoPRODN3VLRCOMPRAMED: TBCDField
+    object SQLProdutoPRODN3VLRCOMPRAMED: TFloatField
       FieldName = 'PRODN3VLRCOMPRAMED'
       Origin = 'DB.PRODUTO.PRODN3VLRCOMPRAMED'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoPRODICODBALANCA: TIntegerField
       FieldName = 'PRODICODBALANCA'
@@ -1807,11 +1779,9 @@ object FormTelaCadastroRapidoProduto: TFormTelaCadastroRapidoProduto
       FixedChar = True
       Size = 60
     end
-    object SQLIcmsICMSN2ALIQUOTA: TBCDField
+    object SQLIcmsICMSN2ALIQUOTA: TFloatField
       FieldName = 'ICMSN2ALIQUOTA'
       Origin = 'DB.ICMS.ICMSN2ALIQUOTA'
-      Precision = 15
-      Size = 3
     end
   end
   object DSSQLIcms: TDataSource

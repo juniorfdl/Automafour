@@ -26,8 +26,8 @@ type
     SQLTemplateCLIEA13ID: TStringField;
     SQLTemplatePLRCICOD: TIntegerField;
     SQLTemplateVENDICOD: TIntegerField;
-    SQLTemplatePRVDN2TOTITENS: TBCDField;
-    SQLTemplatePRVDN2DESC: TBCDField;
+    SQLTemplatePRVDN2TOTITENS: TFloatField;
+    SQLTemplatePRVDN2DESC: TFloatField;
     SQLTemplatePRVDCIMPORT: TStringField;
     SQLTemplateCLIENTENOME: TStringField;
     SQLTemplatePDVDDHVENDA: TDateTimeField;
@@ -43,10 +43,10 @@ type
     sqlitensPRVDICOD: TIntegerField;
     sqlitensPVITIPOS: TIntegerField;
     sqlitensPRODICOD: TIntegerField;
-    sqlitensPVITN3QTD: TBCDField;
-    sqlitensPVITN3VLRUNIT: TBCDField;
-    sqlitensPVITN3VLRCUSTUNIT: TBCDField;
-    sqlitensPVITN2DESC: TBCDField;
+    sqlitensPVITN3QTD: TFloatField;
+    sqlitensPVITN3VLRUNIT: TFloatField;
+    sqlitensPVITN3VLRCUSTUNIT: TFloatField;
+    sqlitensPVITN2DESC: TFloatField;
     sqlitensDESCRICAO: TStringField;
     btExcluir: TSpeedButton;
     btImpressao: TRxSpeedButton;
