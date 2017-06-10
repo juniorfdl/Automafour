@@ -358,6 +358,7 @@ type
     procedure ApagarOramento30Dias1Click(Sender: TObject);
     procedure MnFINPagarBaixarDocumentosClick(Sender: TObject);
     procedure NotaFiscal1Click(Sender: TObject);
+    procedure MnExportaparaBalancasClick(Sender: TObject);
   private
     procedure ApagarOrcamentos;
     procedure ApagarPreVendas;
@@ -393,7 +394,9 @@ uses
   RelatorioDivergenciaInventario, TelaZerarSaldoEstoque,
   TelaProdutosSemMovimento, TelaManutencaoProdutos,
   CadastroManutencaoCupom, TelaCalculoComissao, CadastroVendedorComissao,
-  TelaQuitacaoComissoes, TelaBaixarDocumentosPagar, CadastroNotaFiscal;
+  TelaQuitacaoComissoes, TelaBaixarDocumentosPagar, CadastroNotaFiscal,
+  CadastroMecOrdem, CadastroMecExecutaEm, CadastroMecTipoServico,
+  TelaExportacaoBalanca;
 
 
 
@@ -895,17 +898,16 @@ procedure TFormPrincipal.OrdensdeServiosMecnicas1Click(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
-    //CriaFormulario(TFormCadastroMecOrdem,'FormCadastroMecOrdem',False,False,False,'')
-
+    CriaFormulario(TFormCadastroMecOrdem,'FormCadastroMecOrdem',False,False,False,'')
   else
-    SoundPlay('Acesso Negado.wav', Sender);
+    SoundPlay('Acesso Negado.wav',Sender);
 end;
 
 procedure TFormPrincipal.GruposdeExecuodeServio1Click(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
-    //CriaFormulario(TFormCadastroMecExecutaEm,'FormCadastroMecExecutaEm',False,False,False,'')
+    CriaFormulario(TFormCadastroMecExecutaEm,'FormCadastroMecExecutaEm',False,False,False,'')
 
   else
     SoundPlay('Acesso Negado.wav', Sender);
@@ -925,7 +927,7 @@ procedure TFormPrincipal.ipodeServio1Click(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
-    //CriaFormulario(TFormCadastroMecTipoServico,'FormCadastroMecTipoServico',False,False,False,'')
+    CriaFormulario(TFormCadastroMecTipoServico,'FormCadastroMecTipoServico',False,False,False,'')
 
   else
     SoundPlay('Acesso Negado.wav', Sender);
@@ -1723,6 +1725,15 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     CriaFormulario(TFormCadastroNotaFiscal, 'FormCadastroNotaFiscal',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnExportaparaBalancasClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormTelaExportacaoBalanca,'FormTelaExportacaoBalanca',False,True,True,'')
   else
     SoundPlay('Acesso Negado.wav',Sender);
 end;

@@ -302,7 +302,25 @@ uses
   Urano_LoggerII in 'Vendas\Urano_LoggerII.pas',
   email in 'Vendas\email.pas',
   TelaConsultaPrevendaTablets in 'Vendas\TelaConsultaPrevendaTablets.pas' {FormConsultaPrevendaTablets},
-  TelaImpressaoDuplicatas in 'Vendas\TelaImpressaoDuplicatas.pas' {FormTelaImpressaoDuplicata};
+  TelaImpressaoDuplicatas in 'Vendas\TelaImpressaoDuplicatas.pas' {FormTelaImpressaoDuplicata},
+  PertoCheque in 'ArquivosComuns\PertoCheque.pas',
+  CadastroFuncionario in 'ArquivosComuns\CadastroFuncionario.pas' {FormCadastroFuncionario},
+  CadastroFuncionarioContaCorrente in 'ArquivosComuns\CadastroFuncionarioContaCorrente.pas' {FormCadastroFuncionarioContaCorrente},
+  CadastroVeiculo in 'ArquivosComuns\CadastroVeiculo.pas' {FormCadastroVeiculo},
+  CadastroOperacaoFuncionario in 'ArquivosComuns\CadastroOperacaoFuncionario.pas' {FormCadastroOperacaoFuncionario},
+  CadastroMecOrdem in 'Servico\CadastroMecOrdem.pas' {FormCadastroMecOrdem},
+  CadastroMecOrdemItens in 'Servico\CadastroMecOrdemItens.pas' {FormCadastroMecOrdemItem},
+  RelatorioOrdensListadas in 'Servico\RelatorioOrdensListadas.pas' {FormListagemOrdemMecanica},
+  RelatorioOrdensPorMecanico in 'Servico\RelatorioOrdensPorMecanico.pas' {RelatorioOrdPorMecanico},
+  RelatorioServicosPorMecanico in 'Servico\RelatorioServicosPorMecanico.pas' {FormRelatorioServicosPorMecanico},
+  RelatorioOrdensPorExecucao in 'Servico\RelatorioOrdensPorExecucao.pas' {RelatorioOrdPorExecucao},
+  RelatorioOrdensExecucao in 'Servico\RelatorioOrdensExecucao.pas' {FormRelatoriOrdensPorExecucao},
+  RelatorioOrdensPecas in 'Servico\RelatorioOrdensPecas.pas' {FormRelatorioOrdPecas},
+  FormRelatorioServicosPorTipo in 'Servico\FormRelatorioServicosPorTipo.pas' {FormRelatorioOrdPorTipoServico},
+  RelatorioOrdensListagemPecas in 'Servico\RelatorioOrdensListagemPecas.pas' {FormListagemOrdemMec_Itens},
+  RelatorioOrdensServicosPorTipo in 'Servico\RelatorioOrdensServicosPorTipo.pas' {RelatorioOrdensServicoPorTipo},
+  CadastroMecTipoServico in 'Servico\CadastroMecTipoServico.pas' {FormCadastroMecTipoServico},
+  TelaExportacaoBalanca in 'Integrador\TelaExportacaoBalanca.pas' {FormTelaExportacaoBalanca};
 
 {$R *.res}
 

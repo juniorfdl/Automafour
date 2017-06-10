@@ -9,7 +9,7 @@ inherited FormPrincipal: TFormPrincipal
   PixelsPerInch = 96
   TextHeight = 13
   inherited RodapePrincipal: TStatusBar
-    Top = 449
+    Top = 450
     Width = 1256
   end
   inherited ptopo: TAdvOfficeStatusBar
@@ -2640,12 +2640,15 @@ inherited FormPrincipal: TFormPrincipal
       Caption = 'Servi'#231'o'
       object OrdemdeServioMecanica1: TMenuItem
         Caption = 'Ordem de Servi'#231'o - Mec'#226'nica'
+        OnClick = OrdensdeServiosMecnicas1Click
       end
       object GrupodeServio1: TMenuItem
         Caption = 'Grupo de Servi'#231'o'
+        OnClick = GruposdeExecuodeServio1Click
       end
       object ipodeServio1: TMenuItem
         Caption = 'Tipo de Servi'#231'o'
+        OnClick = ipodeServio1Click
       end
     end
     object Integrador1: TMenuItem [7]
@@ -2654,6 +2657,7 @@ inherited FormPrincipal: TFormPrincipal
         Caption = 'Exporta'#231#227'o'
         object Balanas1: TMenuItem
           Caption = 'Balan'#231'as'
+          OnClick = MnExportaparaBalancasClick
         end
         object erminaldeConsulta1: TMenuItem
           Caption = 'Terminal de Consulta'
