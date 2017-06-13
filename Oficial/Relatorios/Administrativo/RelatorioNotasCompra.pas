@@ -273,6 +273,12 @@ begin
   else
     Report.ReportName   := DM.SQLConfigGeralCFGEA255PATHREPORT.Value + '\Notas de Compra Total por Aliquota.rpt';
 
+  if not FileExists(Report.ReportName) then
+  begin
+    ShowMessage('Relatório não encontrado!'+ #13 + 'Caminho:' + Report.ReportName);
+    abort;
+  end;
+
   Report.ReportTitle        := 'Relatório de Notas de Compra';
   Report.WindowStyle.Title  := 'Relatório de Notas de Compra';
 
