@@ -1,7 +1,7 @@
 inherited FormPrincipal: TFormPrincipal
   Tag = 4
-  Left = -8
-  Top = -8
+  Left = 20
+  Top = 17
   Width = 1382
   Height = 744
   Caption = 'Advanced Control'
@@ -9,7 +9,7 @@ inherited FormPrincipal: TFormPrincipal
   PixelsPerInch = 96
   TextHeight = 13
   inherited RodapePrincipal: TStatusBar
-    Top = 666
+    Top = 667
     Width = 1366
   end
   inherited ptopo: TAdvOfficeStatusBar
@@ -22,7 +22,7 @@ inherited FormPrincipal: TFormPrincipal
     object RxLabel5: TRxLabel
       Left = 11
       Top = 10
-      Width = 30
+      Width = 258
       Height = 39
       Caption = 'M'#243'dulo Retaguarda'
       Font.Charset = ANSI_CHARSET
@@ -3810,6 +3810,7 @@ inherited FormPrincipal: TFormPrincipal
           end
           object otalizadoresdeCaixa1: TMenuItem
             Caption = 'Totalizadores de Caixa'
+            OnClick = MnADMUtilitariosEspeciaisRecalcularTotalizadoresdeCaixaClick
           end
           object BoletimdeCaixa1: TMenuItem
             Caption = 'Boletim de Caixa'
@@ -3820,108 +3821,139 @@ inherited FormPrincipal: TFormPrincipal
           Caption = 'Produtos'
           object ListagemdeProdutos1: TMenuItem
             Caption = 'Listagem de Produtos'
+            OnClick = MnADMRelProdutosListagemProdutoClick
           end
           object PorFornecedor1: TMenuItem
             Caption = 'Por Fornecedor'
+            OnClick = MnADMRelProdutosPorFornecedorClick
           end
           object Cadastrados1: TMenuItem
             Caption = 'Cadastrados'
+            OnClick = MnADMRelProdProdutosCadastradosClick
           end
           object EmPromoo1: TMenuItem
             Caption = 'Em Promo'#231#227'o'
+            OnClick = MnADMRelProdutosemPromocaoClick
           end
           object LotesdeProdutos1: TMenuItem
             Caption = 'Lotes de Produtos'
+            OnClick = MnADMRelLotesPorProdutoClick
           end
         end
         object Estoque2: TMenuItem
           Caption = 'Estoque'
           object MovimentaodeEstoque1: TMenuItem
             Caption = 'Movimenta'#231#227'o de Estoque'
+            OnClick = MnADMRelMovimentacaodeEstoqueClick
           end
           object PorGrade2: TMenuItem
             Caption = 'Por Grade'
+            OnClick = MnADMRelEstoqueporGradeClick
           end
           object PorGradedeProdutos1: TMenuItem
             Caption = 'Por Grade de Produtos'
+            OnClick = MnADMRELEstoquePorGradePorProdutoClick
           end
           object PorMarca2: TMenuItem
             Caption = 'Por Marca'
+            OnClick = MnADMRelEstoquePorMarcaClick
           end
           object PorMarcaeGrupo1: TMenuItem
             Caption = 'Por Marca e Grupo'
+            OnClick = MnADMRELEstoquePorMarcaPorGrupoClick
           end
           object PorMarcaeReferncia1: TMenuItem
             Caption = 'Por Marca e Refer'#234'ncia'
+            OnClick = MnADMRelEstoqueMarcaReferenciaClick
           end
           object PosioDiariadeEstoque1: TMenuItem
             Caption = 'Posi'#231#227'o Di'#225'ria de Estoque'
+            OnClick = MnADMRelPosicaodiariaClick
           end
           object ransferenciadeProdutos1: TMenuItem
             Caption = 'Transfer'#234'ncia de Produtos'
+            OnClick = MnADMRelEstTransfernciadeProdutosClick
           end
           object SaldoporLote1: TMenuItem
             Caption = 'Saldo por Lote'
+            OnClick = MnADMRelSaldoporLoteClick
           end
           object PosioFsicaFinanceira1: TMenuItem
             Caption = 'Posi'#231#227'o F'#237'sica Financeira'
+            OnClick = MnADMRelPosicaoFisicoFinanceiroEstoqueClick
           end
           object MovimentaoDiversas2: TMenuItem
             Caption = 'Movimenta'#231#227'o Diversas'
+            OnClick = MnADMRelMovimentosDiversosporClienteClick
           end
         end
         object Invetrio1: TMenuItem
           Caption = 'Invet'#225'rio'
           object RegistrodeInventario1: TMenuItem
             Caption = 'Registro de Invent'#225'rio'
+            OnClick = MnADMRelRegistrodeInventarioClick
           end
           object PorestoqueporGrupodeProduto1: TMenuItem
             Caption = 'Por estoque por Grupo de Produto'
+            OnClick = MnADMRelInventarioEstoqueClick
           end
           object ListagemPorGradedeProdutos1: TMenuItem
             Caption = 'Listagem Por Grade de Produtos'
+            OnClick = MnADMRelInvListagemParaInventrioPorGradePorProdutoClick
           end
         end
         object Gerenciais1: TMenuItem
           Caption = 'Gerenciais'
           object CurvaABCdeVendaProdutos1: TMenuItem
             Caption = 'Curva ABC de Venda (Produtos)'
+            OnClick = MnADMRelCurvaABCVendasClick
           end
           object CurvaABCdeEstoque1: TMenuItem
             Caption = 'Curva ABC de Estoque'
+            OnClick = MnADMRelCurvaABCEstoqueClick
           end
           object CurvaABCdeVendaClientes1: TMenuItem
             Caption = 'Curva ABC de Venda (Clientes)'
+            OnClick = MnCurvaABCVendasClientesClick
           end
           object ndicedeInadimplenciaPeriodo1: TMenuItem
             Caption = #205'ndice de Inadimpl'#234'ncia Per'#237'odo'
+            OnClick = MnIndiceInadimpleciaCredClick
           end
           object ndicedeInadimplenciaUltimos6Anos1: TMenuItem
             Caption = #205'ndice de Inadimpl'#234'ncia '#218'ltimos 6 Anos'
+            OnClick = MnIndiceInadimpleciaAnualClick
           end
           object ResumodeOperaes1: TMenuItem
             Caption = 'Resumo de Opera'#231#245'es'
+            OnClick = MnADMRelGeranciaisResumodeOperacaoClick
           end
           object PontodeEquilbrio1: TMenuItem
             Caption = 'Ponto de Equil'#237'brio'
+            OnClick = MnADMRemPontodeEquilbrioClick
           end
           object ProdutossemMovimentao1: TMenuItem
             Caption = 'Produtos sem Movimenta'#231#227'o'
+            OnClick = MnProdutosSemMovtoClick
           end
         end
         object Clientes2: TMenuItem
           Caption = 'Clientes'
           object ListagemdeClientes1: TMenuItem
             Caption = 'Listagem de Clientes'
+            OnClick = MnADMRelClientesCadastradosClick
           end
           object Bloqueados1: TMenuItem
             Caption = 'Bloqueados'
+            OnClick = MnADMRelClientesBloqueadosClick
           end
           object PorCidades1: TMenuItem
             Caption = 'Por Cidades'
+            OnClick = MnADMRelClientesporcidadeClick
           end
           object LimitedeCompra1: TMenuItem
             Caption = 'Limite de Compra'
+            OnClick = MnRelatorioLimitesCompraClienteClick
           end
         end
       end
