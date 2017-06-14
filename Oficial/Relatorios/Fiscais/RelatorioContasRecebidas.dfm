@@ -529,20 +529,14 @@ inherited FormRelatorioContasRecebidas: TFormRelatorioContasRecebidas
     object TblTemporariaRECEDRECTO: TDateTimeField
       FieldName = 'RECEDRECTO'
     end
-    object TblTemporariaRECEN2DESC: TBCDField
+    object TblTemporariaRECEN2DESC: TFloatField
       FieldName = 'RECEN2DESC'
-      Precision = 15
-      Size = 3
     end
-    object TblTemporariaRECEN2VLRJURO: TBCDField
+    object TblTemporariaRECEN2VLRJURO: TFloatField
       FieldName = 'RECEN2VLRJURO'
-      Precision = 15
-      Size = 3
     end
-    object TblTemporariaRECEN2VLRMULTA: TBCDField
+    object TblTemporariaRECEN2VLRMULTA: TFloatField
       FieldName = 'RECEN2VLRMULTA'
-      Precision = 15
-      Size = 3
     end
     object TblTemporariaRECEN2VLRRECTO: TFloatField
       FieldName = 'RECEN2VLRRECTO'
@@ -576,10 +570,8 @@ inherited FormRelatorioContasRecebidas: TFormRelatorioContasRecebidas
       FixedChar = True
       Size = 13
     end
-    object TblTemporariaCTRCN2VLR: TBCDField
+    object TblTemporariaCTRCN2VLR: TFloatField
       FieldName = 'CTRCN2VLR'
-      Precision = 15
-      Size = 3
     end
     object TblTemporariaEMPRICODULTREC: TIntegerField
       FieldName = 'EMPRICODULTREC'
@@ -764,25 +756,17 @@ inherited FormRelatorioContasRecebidas: TFormRelatorioContasRecebidas
     object SQLContasReceberRECEDRECTO: TDateTimeField
       FieldName = 'RECEDRECTO'
     end
-    object SQLContasReceberRECEN2DESC: TBCDField
+    object SQLContasReceberRECEN2DESC: TFloatField
       FieldName = 'RECEN2DESC'
-      Precision = 15
-      Size = 3
     end
-    object SQLContasReceberRECEN2VLRJURO: TBCDField
+    object SQLContasReceberRECEN2VLRJURO: TFloatField
       FieldName = 'RECEN2VLRJURO'
-      Precision = 15
-      Size = 3
     end
-    object SQLContasReceberRECEN2VLRMULTA: TBCDField
+    object SQLContasReceberRECEN2VLRMULTA: TFloatField
       FieldName = 'RECEN2VLRMULTA'
-      Precision = 15
-      Size = 3
     end
-    object SQLContasReceberRECEN2VLRRECTO: TBCDField
+    object SQLContasReceberRECEN2VLRRECTO: TFloatField
       FieldName = 'RECEN2VLRRECTO'
-      Precision = 15
-      Size = 3
     end
     object SQLContasReceberEMPRICOD: TIntegerField
       FieldName = 'EMPRICOD'
@@ -813,10 +797,8 @@ inherited FormRelatorioContasRecebidas: TFormRelatorioContasRecebidas
       FixedChar = True
       Size = 13
     end
-    object SQLContasReceberCTRCN2VLR: TBCDField
+    object SQLContasReceberCTRCN2VLR: TFloatField
       FieldName = 'CTRCN2VLR'
-      Precision = 15
-      Size = 3
     end
     object SQLContasReceberEMPRICODULTREC: TIntegerField
       FieldName = 'EMPRICODULTREC'
@@ -1191,10 +1173,8 @@ inherited FormRelatorioContasRecebidas: TFormRelatorioContasRecebidas
     object SQLCupomNumerarioRECEN2VLRMULTA: TFloatField
       FieldName = 'RECEN2VLRMULTA'
     end
-    object SQLCupomNumerarioRECEN2VLRRECTO: TBCDField
+    object SQLCupomNumerarioRECEN2VLRRECTO: TFloatField
       FieldName = 'RECEN2VLRRECTO'
-      Precision = 15
-      Size = 3
     end
     object SQLCupomNumerarioEMPRICOD: TIntegerField
       FieldName = 'EMPRICOD'
@@ -1225,10 +1205,8 @@ inherited FormRelatorioContasRecebidas: TFormRelatorioContasRecebidas
       FixedChar = True
       Size = 13
     end
-    object SQLCupomNumerarioCTRCN2VLR: TBCDField
+    object SQLCupomNumerarioCTRCN2VLR: TFloatField
       FieldName = 'CTRCN2VLR'
-      Precision = 15
-      Size = 3
     end
     object SQLCupomNumerarioEMPRICODULTREC: TIntegerField
       FieldName = 'EMPRICODULTREC'

@@ -433,12 +433,12 @@ type
     procedure MnADMRelClientesBloqueadosClick(Sender: TObject);
     procedure MnADMRelClientesporcidadeClick(Sender: TObject);
     procedure MnRelatorioLimitesCompraClienteClick(Sender: TObject);
-<<<<<<< HEAD
+
     procedure MnFINReceberLancamentosClick(Sender: TObject);
     procedure MnFINReceberBaixarDocumentosClick(Sender: TObject);
     procedure MnCartoesCreditoManualClick(Sender: TObject);
     procedure MnFINReceberEmissaoBoletosDuplicatasClick(Sender: TObject);
-=======
+
     procedure MnADMRelCupomEmitidoClick(Sender: TObject);
     procedure MnADMRelCupomQuitadoClick(Sender: TObject);
     procedure MnADMRELApuracaodePisCofinsClick(Sender: TObject);
@@ -448,7 +448,7 @@ type
     procedure VendasporTipo1Click(Sender: TObject);
     procedure MnVendasporAliquotasparaContabilidadeClick(Sender: TObject);
     procedure MnContasRecebidasparaContabidadeClick(Sender: TObject);
->>>>>>> refs/remotes/origin/master
+
   private
     procedure ApagarOrcamentos;
     procedure ApagarPreVendas;
@@ -513,16 +513,14 @@ uses
   RelatorioResumoOperacaoDiaria, RelatorioPontoDeEquilibrio,
   RelatorioProdutosSemMovto, RelatorioClienteCadastrado,
   RelatorioClienteBloqueado, RelatorioClientesPorCidade,
-<<<<<<< HEAD
+
   RelatorioClienteLimiteCreditoExcedido, CadastroContasReceber,
   TelaBaixarDocumentosReceber, CadastroCartaoCreditoManual,
-  TelaImpressaoDuplicatas;
-=======
-  RelatorioClienteLimiteCreditoExcedido, RelatorioCupomEmitido,
+  TelaImpressaoDuplicatas,
+  RelatorioCupomEmitido,
   RelatorioCupomQuitado, RelatorioApuracaoPISCOFINS, RelatorioApuracaoICMS,
   RelatorioNotaFiscalEmitidaPorCFOP, RelatorioResumoVendasportipo,
   RelatorioResumoVendasporAliquota, RelatorioContasRecebidas;
->>>>>>> refs/remotes/origin/master
 
 
 
@@ -2435,24 +2433,22 @@ begin
     SoundPlay('Acesso Negado.wav',Sender);
 end;
 
-<<<<<<< HEAD
 procedure TFormPrincipal.MnFINReceberLancamentosClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     CriaFormulario(TFormCadastroContasReceber, 'FormCadastroContasReceber',False,False,False,'')
-=======
+end;
+
 procedure TFormPrincipal.MnADMRelCupomEmitidoClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     CriaFormulario(TFormRelatorioCupomEmitido, 'FormRelatorioCupomEmitido',False,False,False,'')
->>>>>>> refs/remotes/origin/master
   else
     SoundPlay('Acesso Negado.wav',Sender);
 end;
 
-<<<<<<< HEAD
 procedure TFormPrincipal.MnFINReceberBaixarDocumentosClick(Sender: TObject);
 begin
   inherited;
@@ -2470,7 +2466,10 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     CriaFormulario(TFormCadastroCartaoCreditoManual, 'FormCadastroCartaoCreditoManual',False,False,False,'')
-=======
+    else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
 procedure TFormPrincipal.MnADMRelCupomQuitadoClick(Sender: TObject);
 begin
   inherited;
@@ -2523,25 +2522,25 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     CriaFormulario(TFormRelatorioResumoVendasporAliquota,'FormRelatorioResumoVendasporAliquota',False,False,False,'')
->>>>>>> refs/remotes/origin/master
   else
     SoundPlay('Acesso Negado.wav',Sender);
 end;
 
-<<<<<<< HEAD
 procedure TFormPrincipal.MnFINReceberEmissaoBoletosDuplicatasClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     CriaFormulario(TFormTelaImpressaoDuplicata,'FormTelaImpressaoDuplicata',False,False,True,'')
-=======
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
 procedure TFormPrincipal.MnContasRecebidasparaContabidadeClick(
   Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     CriaFormulario(TFormRelatorioContasRecebidas, 'FormRelatorioContasRecebidas',False,False,False,'')
->>>>>>> refs/remotes/origin/master
   else
     SoundPlay('Acesso Negado.wav',Sender);
 end;

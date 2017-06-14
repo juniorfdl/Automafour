@@ -171,15 +171,11 @@ inherited FormRelatorioApuracaoICMS: TFormRelatorioApuracaoICMS
       FixedChar = True
       Size = 13
     end
-    object SQLCupomCUPON2TOTITENS: TBCDField
+    object SQLCupomCUPON2TOTITENS: TFloatField
       FieldName = 'CUPON2TOTITENS'
-      Precision = 15
-      Size = 3
     end
-    object SQLCupomCUPON2DESC: TBCDField
+    object SQLCupomCUPON2DESC: TFloatField
       FieldName = 'CUPON2DESC'
-      Precision = 15
-      Size = 3
     end
     object SQLCupomCUPOINRO: TIntegerField
       FieldName = 'CUPOINRO'
@@ -208,30 +204,20 @@ inherited FormRelatorioApuracaoICMS: TFormRelatorioApuracaoICMS
     object SQLCupomEMPRICODDEST: TIntegerField
       FieldName = 'EMPRICODDEST'
     end
-    object SQLCupomFRETE: TBCDField
+    object SQLCupomFRETE: TFloatField
       FieldName = 'FRETE'
-      Precision = 15
-      Size = 3
     end
-    object SQLCupomICMSFRETE: TBCDField
+    object SQLCupomICMSFRETE: TFloatField
       FieldName = 'ICMSFRETE'
-      Precision = 15
-      Size = 3
     end
-    object SQLCupomCUPON2BASEICMS: TBCDField
+    object SQLCupomCUPON2BASEICMS: TFloatField
       FieldName = 'CUPON2BASEICMS'
-      Precision = 15
-      Size = 2
     end
-    object SQLCupomCUPON2VLRICMS: TBCDField
+    object SQLCupomCUPON2VLRICMS: TFloatField
       FieldName = 'CUPON2VLRICMS'
-      Precision = 15
-      Size = 2
     end
-    object SQLCupomVLRIPI: TBCDField
+    object SQLCupomVLRIPI: TFloatField
       FieldName = 'VLRIPI'
-      Precision = 15
-      Size = 3
     end
   end
   object PipeApurICMSCredEntrResSint: TppBDEPipeline
@@ -3081,83 +3067,57 @@ inherited FormRelatorioApuracaoICMS: TFormRelatorioApuracaoICMS
       FieldName = 'NOCPDEMISSAO'
       Origin = 'DB.NOTACOMPRA.NOCPDEMISSAO'
     end
-    object SQLNotaCompraNOCPN3SOMAITENS: TBCDField
+    object SQLNotaCompraNOCPN3SOMAITENS: TFloatField
       FieldName = 'NOCPN3SOMAITENS'
       Origin = 'DB.NOTACOMPRA.NOCPN3SOMAITENS'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaCompraNOCPN3TOTITENS: TBCDField
+    object SQLNotaCompraNOCPN3TOTITENS: TFloatField
       FieldName = 'NOCPN3TOTITENS'
       Origin = 'DB.NOTACOMPRA.NOCPN3TOTITENS'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaCompraNOCPN3TOTDESC: TBCDField
+    object SQLNotaCompraNOCPN3TOTDESC: TFloatField
       FieldName = 'NOCPN3TOTDESC'
       Origin = 'DB.NOTACOMPRA.NOCPN3TOTDESC'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaCompraNOCPN3VLRTOTNOTA: TBCDField
+    object SQLNotaCompraNOCPN3VLRTOTNOTA: TFloatField
       FieldName = 'NOCPN3VLRTOTNOTA'
       Origin = 'DB.NOTACOMPRA.NOCPN3VLRTOTNOTA'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaCompraNOCPN3VLRBASCALICM: TBCDField
+    object SQLNotaCompraNOCPN3VLRBASCALICM: TFloatField
       FieldName = 'NOCPN3VLRBASCALICM'
       Origin = 'DB.NOTACOMPRA.NOCPN3VLRBASCALICM'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaCompraNOCPN3VLRICMS: TBCDField
+    object SQLNotaCompraNOCPN3VLRICMS: TFloatField
       FieldName = 'NOCPN3VLRICMS'
       Origin = 'DB.NOTACOMPRA.NOCPN3VLRICMS'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaCompraNOCPN3VLRBCICMSSUB: TBCDField
+    object SQLNotaCompraNOCPN3VLRBCICMSSUB: TFloatField
       FieldName = 'NOCPN3VLRBCICMSSUB'
       Origin = 'DB.NOTACOMPRA.NOCPN3VLRBCICMSSUB'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaCompraNOCPN3VLRICMSSUB: TBCDField
+    object SQLNotaCompraNOCPN3VLRICMSSUB: TFloatField
       FieldName = 'NOCPN3VLRICMSSUB'
       Origin = 'DB.NOTACOMPRA.NOCPN3VLRICMSSUB'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaCompraNOCPN3VLRFRETE: TBCDField
+    object SQLNotaCompraNOCPN3VLRFRETE: TFloatField
       FieldName = 'NOCPN3VLRFRETE'
       Origin = 'DB.NOTACOMPRA.NOCPN3VLRFRETE'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaCompraNOCPN3VLRSEGURO: TBCDField
+    object SQLNotaCompraNOCPN3VLRSEGURO: TFloatField
       FieldName = 'NOCPN3VLRSEGURO'
       Origin = 'DB.NOTACOMPRA.NOCPN3VLRSEGURO'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaCompraNOCPN3VLROUTRADESP: TBCDField
+    object SQLNotaCompraNOCPN3VLROUTRADESP: TFloatField
       FieldName = 'NOCPN3VLROUTRADESP'
       Origin = 'DB.NOTACOMPRA.NOCPN3VLROUTRADESP'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaCompraNOCPN3VLRIPI: TBCDField
+    object SQLNotaCompraNOCPN3VLRIPI: TFloatField
       FieldName = 'NOCPN3VLRIPI'
       Origin = 'DB.NOTACOMPRA.NOCPN3VLRIPI'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaCompraNOCPN3VLRDESC: TBCDField
+    object SQLNotaCompraNOCPN3VLRDESC: TFloatField
       FieldName = 'NOCPN3VLRDESC'
       Origin = 'DB.NOTACOMPRA.NOCPN3VLRDESC'
-      Precision = 15
-      Size = 3
     end
     object SQLNotaCompraNOCPDRECEBIMENTO: TDateTimeField
       FieldName = 'NOCPDRECEBIMENTO'
@@ -3189,11 +3149,9 @@ inherited FormRelatorioApuracaoICMS: TFormRelatorioApuracaoICMS
       FixedChar = True
       Size = 15
     end
-    object SQLNotaCompraNOCPN3PERCICMSFRET: TBCDField
+    object SQLNotaCompraNOCPN3PERCICMSFRET: TFloatField
       FieldName = 'NOCPN3PERCICMSFRET'
       Origin = 'DB.NOTACOMPRA.NOCPN3PERCICMSFRET'
-      Precision = 15
-      Size = 3
     end
     object SQLNotaCompraNOCPA254OBS: TMemoField
       FieldName = 'NOCPA254OBS'
@@ -3576,29 +3534,21 @@ inherited FormRelatorioApuracaoICMS: TFormRelatorioApuracaoICMS
       FieldName = 'ICMSICOD'
       Origin = 'DB.ICMS.ICMSICOD'
     end
-    object SQLIcmsICMSN2ALIQUOTA: TBCDField
+    object SQLIcmsICMSN2ALIQUOTA: TFloatField
       FieldName = 'ICMSN2ALIQUOTA'
       Origin = 'DB.ICMS.ICMSN2ALIQUOTA'
-      Precision = 15
-      Size = 3
     end
-    object SQLIcmsICMSN2PERCSUBSTSAI: TBCDField
+    object SQLIcmsICMSN2PERCSUBSTSAI: TFloatField
       FieldName = 'ICMSN2PERCSUBSTSAI'
       Origin = 'DB.ICMS.ICMSN2PERCSUBSTSAI'
-      Precision = 15
-      Size = 3
     end
-    object SQLIcmsICMSN2PERCSUBSTENT: TBCDField
+    object SQLIcmsICMSN2PERCSUBSTENT: TFloatField
       FieldName = 'ICMSN2PERCSUBSTENT'
       Origin = 'DB.ICMS.ICMSN2PERCSUBSTENT'
-      Precision = 15
-      Size = 3
     end
-    object SQLIcmsICMSN2PERCREDUCAO: TBCDField
+    object SQLIcmsICMSN2PERCREDUCAO: TFloatField
       FieldName = 'ICMSN2PERCREDUCAO'
       Origin = 'DB.ICMS.ICMSN2PERCREDUCAO'
-      Precision = 15
-      Size = 3
     end
     object SQLIcmsICMSICODSITTRIB: TIntegerField
       FieldName = 'ICMSICODSITTRIB'
@@ -3610,11 +3560,9 @@ inherited FormRelatorioApuracaoICMS: TFormRelatorioApuracaoICMS
       FixedChar = True
       Size = 60
     end
-    object SQLIcmsICMSN2REDBASEICMS: TBCDField
+    object SQLIcmsICMSN2REDBASEICMS: TFloatField
       FieldName = 'ICMSN2REDBASEICMS'
       Origin = 'DB.ICMS.ICMSN2REDBASEICMS'
-      Precision = 15
-      Size = 3
     end
   end
   object SQLProduto: TRxQuery

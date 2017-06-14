@@ -18,9 +18,9 @@ type
     Report: TCrpe;
     TblTemporariaEMPRICODREC: TIntegerField;
     TblTemporariaRECEDRECTO: TDateTimeField;
-    TblTemporariaRECEN2DESC: TBCDField;
-    TblTemporariaRECEN2VLRJURO: TBCDField;
-    TblTemporariaRECEN2VLRMULTA: TBCDField;
+    TblTemporariaRECEN2DESC: TFloatField;
+    TblTemporariaRECEN2VLRJURO: TFloatField;
+    TblTemporariaRECEN2VLRMULTA: TFloatField;
     TblTemporariaEMPRICOD: TIntegerField;
     TblTemporariaCTRCDVENC: TDateTimeField;
     TblTemporariaCTRCINROPARC: TIntegerField;
@@ -28,7 +28,7 @@ type
     TblTemporariaNOFIA13ID: TStringField;
     TblTemporariaPDVDA13ID: TStringField;
     TblTemporariaCLIEA13ID: TStringField;
-    TblTemporariaCTRCN2VLR: TBCDField;
+    TblTemporariaCTRCN2VLR: TFloatField;
     TblTemporariaEMPRICODULTREC: TIntegerField;
     TblTemporariaSALDO: TFloatField;
     TblTemporariaNUMEICOD: TIntegerField;
@@ -58,9 +58,9 @@ type
     CheckPortTipoDoc: TCheckBox;
     SQLContasReceberEMPRICODREC: TIntegerField;
     SQLContasReceberRECEDRECTO: TDateTimeField;
-    SQLContasReceberRECEN2DESC: TBCDField;
-    SQLContasReceberRECEN2VLRJURO: TBCDField;
-    SQLContasReceberRECEN2VLRMULTA: TBCDField;
+    SQLContasReceberRECEN2DESC: TFloatField;
+    SQLContasReceberRECEN2VLRJURO: TFloatField;
+    SQLContasReceberRECEN2VLRMULTA: TFloatField;
     SQLContasReceberEMPRICOD: TIntegerField;
     SQLContasReceberCTRCDVENC: TDateTimeField;
     SQLContasReceberCTRCINROPARC: TIntegerField;
@@ -68,7 +68,7 @@ type
     SQLContasReceberNOFIA13ID: TStringField;
     SQLContasReceberPDVDA13ID: TStringField;
     SQLContasReceberCLIEA13ID: TStringField;
-    SQLContasReceberCTRCN2VLR: TBCDField;
+    SQLContasReceberCTRCN2VLR: TFloatField;
     SQLContasReceberEMPRICODULTREC: TIntegerField;
     SQLContasReceberSALDO: TFloatField;
     SQLContasReceberNUMEICOD: TIntegerField;
@@ -98,7 +98,7 @@ type
     SQLCupomNumerarioRECEN2DESC: TFloatField;
     SQLCupomNumerarioRECEN2VLRJURO: TFloatField;
     SQLCupomNumerarioRECEN2VLRMULTA: TFloatField;
-    SQLCupomNumerarioRECEN2VLRRECTO: TBCDField;
+    SQLCupomNumerarioRECEN2VLRRECTO: TFloatField;
     SQLCupomNumerarioEMPRICOD: TIntegerField;
     SQLCupomNumerarioCTRCDVENC: TDateTimeField;
     SQLCupomNumerarioCTRCINROPARC: TIntegerField;
@@ -106,7 +106,7 @@ type
     SQLCupomNumerarioNOFIA13ID: TStringField;
     SQLCupomNumerarioPDVDA13ID: TStringField;
     SQLCupomNumerarioCLIEA13ID: TStringField;
-    SQLCupomNumerarioCTRCN2VLR: TBCDField;
+    SQLCupomNumerarioCTRCN2VLR: TFloatField;
     SQLCupomNumerarioEMPRICODULTREC: TIntegerField;
     SQLCupomNumerarioSALDO: TFloatField;
     SQLCupomNumerarioNUMEICOD: TIntegerField;
@@ -127,7 +127,7 @@ type
     CheckNossoNumero: TCheckBox;
     SQLContasReceberCTRCA15NOSSONUMERO: TStringField;
     TblTemporariaCTRCA15NOSSONUMERO: TStringField;
-    SQLContasReceberRECEN2VLRRECTO: TBCDField;
+    SQLContasReceberRECEN2VLRRECTO: TFloatField;
     procedure FormCreate(Sender: TObject);
     procedure ExecutarBtnClick(Sender: TObject);
     procedure ComboEmpresaChange(Sender: TObject);

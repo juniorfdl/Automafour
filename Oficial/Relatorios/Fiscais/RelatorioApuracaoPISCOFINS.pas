@@ -15,9 +15,9 @@ type
     SQLVendas: TRxQuery;
     SQLVendasVLRTOTALITEM: TFloatField;
     SQLVendasPRODA2CSTPIS: TStringField;
-    SQLVendasPRODN2ALIQPIS: TBCDField;
+    SQLVendasPRODN2ALIQPIS: TFloatField;
     SQLVendasPRODA2CSTCOFINS: TStringField;
-    SQLVendasPRODN2ALIQCOFINS: TBCDField;
+    SQLVendasPRODN2ALIQCOFINS: TFloatField;
     TblTemporariaTotalPIS: TFloatField;
     TblTemporariaTotalCOFINS: TFloatField;
     ppReport1: TppReport;
