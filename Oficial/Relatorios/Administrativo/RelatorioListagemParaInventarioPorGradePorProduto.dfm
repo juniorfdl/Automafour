@@ -750,20 +750,14 @@ inherited FormRelatorioListagemParaInventarioPorGradePorProduto: TFormRelatorioL
       FixedChar = True
       Size = 60
     end
-    object SQLProdutoPRODN3VLRCUSTO: TBCDField
+    object SQLProdutoPRODN3VLRCUSTO: TFloatField
       FieldName = 'PRODN3VLRCUSTO'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoPRODN3VLRVENDA: TBCDField
+    object SQLProdutoPRODN3VLRVENDA: TFloatField
       FieldName = 'PRODN3VLRVENDA'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoSALDO: TBCDField
+    object SQLProdutoSALDO: TFloatField
       FieldName = 'SALDO'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoGRUPICOD: TIntegerField
       FieldName = 'GRUPICOD'

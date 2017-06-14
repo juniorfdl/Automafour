@@ -56,9 +56,9 @@ type
     SQLProdutoPRODA60REFER: TStringField;
     SQLProdutoCORA30DESCR: TStringField;
     SQLProdutoMARCA60DESCR: TStringField;
-    SQLProdutoPRODN3VLRCUSTO: TBCDField;
-    SQLProdutoPRODN3VLRVENDA: TBCDField;
-    SQLProdutoSALDO: TBCDField;
+    SQLProdutoPRODN3VLRCUSTO: TFloatField;
+    SQLProdutoPRODN3VLRVENDA: TFloatField;
+    SQLProdutoSALDO: TFloatField;
     GroupOrdem: TGroupBox;
     OrdemCodigo: TRadioButton;
     OrdemDescricao: TRadioButton;

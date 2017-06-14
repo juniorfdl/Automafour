@@ -74,7 +74,7 @@ inherited FormRelatorioEstoquePorGrade: TFormRelatorioEstoquePorGrade
           Top = 101
           Width = 49
           Height = 13
-          Caption = 'Varia'#231#227'o'
+          Caption = 'Variação'
           Font.Charset = ANSI_CHARSET
           Font.Color = 8404992
           Font.Height = -11
@@ -139,7 +139,7 @@ inherited FormRelatorioEstoquePorGrade: TFormRelatorioEstoquePorGrade
           Top = 218
           Width = 44
           Height = 13
-          Caption = 'Cole'#231#227'o'
+          Caption = 'Coleção'
           Font.Charset = ANSI_CHARSET
           Font.Color = 8404992
           Font.Height = -11
@@ -266,7 +266,7 @@ inherited FormRelatorioEstoquePorGrade: TFormRelatorioEstoquePorGrade
           Top = 16
           Width = 59
           Height = 17
-          Caption = 'C'#243'digo'
+          Caption = 'Código'
           Checked = True
           Font.Charset = ANSI_CHARSET
           Font.Color = 8404992
@@ -282,7 +282,7 @@ inherited FormRelatorioEstoquePorGrade: TFormRelatorioEstoquePorGrade
           Top = 41
           Width = 78
           Height = 17
-          Caption = 'Descri'#231#227'o'
+          Caption = 'Descrição'
           Font.Charset = ANSI_CHARSET
           Font.Color = 8404992
           Font.Height = -11
@@ -296,7 +296,7 @@ inherited FormRelatorioEstoquePorGrade: TFormRelatorioEstoquePorGrade
           Top = 16
           Width = 81
           Height = 17
-          Caption = 'Refer'#234'ncia'
+          Caption = 'Referência'
           Font.Charset = ANSI_CHARSET
           Font.Color = 8404992
           Font.Height = -11
@@ -370,7 +370,7 @@ inherited FormRelatorioEstoquePorGrade: TFormRelatorioEstoquePorGrade
         Top = 223
         Width = 195
         Height = 46
-        Caption = ' Ocultar Pre'#231'o '
+        Caption = ' Ocultar Preço '
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -412,7 +412,7 @@ inherited FormRelatorioEstoquePorGrade: TFormRelatorioEstoquePorGrade
         Top = 239
         Width = 219
         Height = 17
-        Caption = 'Exibir o relat'#243'rio de forma sint'#233'tica'
+        Caption = 'Exibir o relatório de forma sintética'
         Font.Charset = ANSI_CHARSET
         Font.Color = 8404992
         Font.Height = -11
@@ -938,20 +938,14 @@ inherited FormRelatorioEstoquePorGrade: TFormRelatorioEstoquePorGrade
       FixedChar = True
       Size = 60
     end
-    object SQLProdutoPRODN3VLRCUSTO: TBCDField
+    object SQLProdutoPRODN3VLRCUSTO: TFloatField
       FieldName = 'PRODN3VLRCUSTO'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoPRODN3VLRVENDA: TBCDField
+    object SQLProdutoPRODN3VLRVENDA: TFloatField
       FieldName = 'PRODN3VLRVENDA'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoSALDO: TBCDField
+    object SQLProdutoSALDO: TFloatField
       FieldName = 'SALDO'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoCOLEICOD: TIntegerField
       FieldName = 'COLEICOD'

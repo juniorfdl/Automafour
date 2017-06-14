@@ -6,6 +6,7 @@ inherited DM: TDM
   Width = 1200
   inherited DB: TDatabase
     AliasName = 'Easy_Gestao'
+    AfterConnect = DBAfterConnect
   end
   object SQLConfigGeral: TRxQuery
     DatabaseName = 'DB'
@@ -2042,7 +2043,7 @@ inherited DM: TDM
         Border.Color = clBlack
         Border.Style = psSolid
         Border.Visible = False
-        Caption = 'ENDEREÇO.:'
+        Caption = 'ENDERE'#199'O.:'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Name = 'Draft 12cpi'
@@ -2287,7 +2288,7 @@ inherited DM: TDM
         Border.Color = clBlack
         Border.Style = psSolid
         Border.Visible = False
-        Caption = 'Descrição'
+        Caption = 'Descri'#231#227'o'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Name = 'Draft 12cpi'
@@ -2327,7 +2328,7 @@ inherited DM: TDM
         Border.Color = clBlack
         Border.Style = psSolid
         Border.Visible = False
-        Caption = 'Unitário'
+        Caption = 'Unit'#225'rio'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Name = 'Draft 12cpi'
@@ -2399,7 +2400,7 @@ inherited DM: TDM
         Border.Color = clBlack
         Border.Style = psSolid
         Border.Visible = False
-        Caption = 'ORÇAMENTO NRO:'
+        Caption = 'OR'#199'AMENTO NRO:'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Name = 'Draft 12cpi'
@@ -2624,7 +2625,7 @@ inherited DM: TDM
         Border.Color = clBlack
         Border.Style = psSolid
         Border.Visible = False
-        Caption = 'O B S E R V A Ç Õ E S'
+        Caption = 'O B S E R V A '#199' '#213' E S'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Name = 'Draft 12cpi'
@@ -4410,7 +4411,7 @@ inherited DM: TDM
       DisplayFormat = 'dd/mm/yyyy'
     end
     object MemCtRecParcCUPODEMIS: TDateTimeField
-      DisplayLabel = 'Emissão'
+      DisplayLabel = 'Emiss'#227'o'
       FieldName = 'CUPODEMIS'
       Origin = 'DB.CUPOM.CUPODEMIS'
       DisplayFormat = 'dd/mm/yyyy'
@@ -4448,7 +4449,7 @@ inherited DM: TDM
       EditFormat = '#,##0.00'
     end
     object MemCtRecParcCUPON2ACRESC: TFloatField
-      DisplayLabel = 'Acrésc.'
+      DisplayLabel = 'Acr'#233'sc.'
       FieldName = 'CUPON2ACRESC'
       Origin = 'DB.CUPOM.CUPON2ACRESC'
       DisplayFormat = '#,##0.00'
@@ -5229,7 +5230,7 @@ inherited DM: TDM
       Origin = 'DB.FECHAMENTOCAIXA.TERMICOD'
     end
     object SQLFechamentoCaixaNUMEICOD: TIntegerField
-      DisplayLabel = 'Numerário'
+      DisplayLabel = 'Numer'#225'rio'
       FieldName = 'NUMEICOD'
       Origin = 'DB.FECHAMENTOCAIXA.NUMEICOD'
     end
@@ -5246,12 +5247,12 @@ inherited DM: TDM
       EditFormat = '#,##0.00'
     end
     object SQLFechamentoCaixaUSUAICOD: TIntegerField
-      DisplayLabel = 'Usuário'
+      DisplayLabel = 'Usu'#225'rio'
       FieldName = 'USUAICOD'
       Origin = 'DB.FECHAMENTOCAIXA.USUAICOD'
     end
     object SQLFechamentoCaixaNUMEA30DESCR: TStringField
-      DisplayLabel = 'Descrição'
+      DisplayLabel = 'Descri'#231#227'o'
       FieldKind = fkLookup
       FieldName = 'NUMEA30DESCR'
       LookupKeyFields = 'NUMEICOD'

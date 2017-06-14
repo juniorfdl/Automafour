@@ -18,10 +18,10 @@ type
     GroupBox2: TGroupBox;
     ComboMarca: TRxDBLookupCombo;
     Report: TCrpe;
-    SQLSaldoSALDO: TBCDField;
+    SQLSaldoSALDO: TFloatField;
     SQLSaldoEMPRICOD: TIntegerField;
     SQLSaldoMARCA60DESCR: TStringField;
-    TblTemporariaSALDO: TBCDField;
+    TblTemporariaSALDO: TFloatField;
     TblTemporariaEMPRICOD: TIntegerField;
     TblTemporariaMARCA60DESCR: TStringField;
     SQLGeral: TQuery;

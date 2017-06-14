@@ -40,7 +40,7 @@ type
     SQLPRODUTOPRODICOD: TIntegerField;
     SQLPRODUTOPRODA60DESCR: TStringField;
     SQLPRODUTOPRODA60CODBAR: TStringField;
-    SQLPRODUTOPRODN3VLRCUSTO: TBCDField;
+    SQLPRODUTOPRODN3VLRCUSTO: TFloatField;
     Pipe: TppDBPipeline;
     ppHeaderBand1: TppHeaderBand;
     ppDetailBand1: TppDetailBand;
@@ -59,7 +59,7 @@ type
     ppDBText3: TppDBText;
     ppDBText4: TppDBText;
     ppDBText5: TppDBText;
-    SQLPRODUTOPSLDN3QTDE: TBCDField;
+    SQLPRODUTOPSLDN3QTDE: TFloatField;
     PSLDN3QTDE: TppField;
     ppCustoTotal: TppLabel;
     ppLabel7: TppLabel;

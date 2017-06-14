@@ -1,5 +1,5 @@
 inherited FormRelatorioClienteLimiteCreditoExcedido: TFormRelatorioClienteLimiteCreditoExcedido
-  Caption = 'Limite de Cr'#233'dito por Cliente'
+  Caption = 'Limite de Crédito por Cliente'
   PixelsPerInch = 96
   TextHeight = 13
   inherited ScrollBox: TScrollBox
@@ -57,11 +57,9 @@ inherited FormRelatorioClienteLimiteCreditoExcedido: TFormRelatorioClienteLimite
       FixedChar = True
       Size = 60
     end
-    object SQLClienteGeralCLIEN2LIMITECRED: TBCDField
+    object SQLClienteGeralCLIEN2LIMITECRED: TFloatField
       FieldName = 'CLIEN2LIMITECRED'
       Origin = 'DB.CLIENTE.CLIEN2LIMITECRED'
-      Precision = 15
-      Size = 3
     end
   end
   object SQLLimiteCliente: TRxQuery

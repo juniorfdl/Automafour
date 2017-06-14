@@ -1024,15 +1024,11 @@ inherited FormRelatorioListagemProduto: TFormRelatorioListagemProduto
     object TblTemporariaVARIICOD: TIntegerField
       FieldName = 'VARIICOD'
     end
-    object TblTemporariaPRODN3VLRVENDA: TBCDField
+    object TblTemporariaPRODN3VLRVENDA: TFloatField
       FieldName = 'PRODN3VLRVENDA'
-      Precision = 32
-      Size = 3
     end
-    object TblTemporariaPRODN3VLRVENDAPROM: TBCDField
+    object TblTemporariaPRODN3VLRVENDAPROM: TFloatField
       FieldName = 'PRODN3VLRVENDAPROM'
-      Precision = 32
-      Size = 3
     end
     object TblTemporariaPRODDINIPROMO: TDateTimeField
       FieldName = 'PRODDINIPROMO'
@@ -1040,20 +1036,14 @@ inherited FormRelatorioListagemProduto: TFormRelatorioListagemProduto
     object TblTemporariaPRODDFIMPROMO: TDateTimeField
       FieldName = 'PRODDFIMPROMO'
     end
-    object TblTemporariaPRODN3VLRCOMPRA: TBCDField
+    object TblTemporariaPRODN3VLRCOMPRA: TFloatField
       FieldName = 'PRODN3VLRCOMPRA'
-      Precision = 32
-      Size = 3
     end
-    object TblTemporariaPRODN3VLRCUSTO: TBCDField
+    object TblTemporariaPRODN3VLRCUSTO: TFloatField
       FieldName = 'PRODN3VLRCUSTO'
-      Precision = 32
-      Size = 3
     end
-    object TblTemporariaSALDO: TBCDField
+    object TblTemporariaSALDO: TFloatField
       FieldName = 'SALDO'
-      Precision = 15
-      Size = 3
     end
     object TblTemporariaCORA30DESCR: TStringField
       FieldName = 'CORA30DESCR'
@@ -1088,9 +1078,8 @@ inherited FormRelatorioListagemProduto: TFormRelatorioListagemProduto
     object TblTemporariaICMSICOD: TIntegerField
       FieldName = 'ICMSICOD'
     end
-    object TblTemporariaPRODN3VLRVENDA2: TBCDField
+    object TblTemporariaPRODN3VLRVENDA2: TFloatField
       FieldName = 'PRODN3VLRVENDA2'
-      Size = 3
     end
     object TblTemporariaPRODN2VLRVENDA2835D: TFloatField
       FieldName = 'PRODN2VLRVENDA2835D'

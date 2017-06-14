@@ -375,7 +375,18 @@ uses
   RelatorioClienteCadastrado in 'Relatorios\Administrativo\RelatorioClienteCadastrado.pas' {FormRelatorioClienteCadastrado},
   RelatorioClienteBloqueado in 'Relatorios\Administrativo\RelatorioClienteBloqueado.pas' {FormRelatorioClienteBloqueado},
   RelatorioClientesPorCidade in 'Relatorios\Administrativo\RelatorioClientesPorCidade.pas' {FormRelatorioClienteporCidade},
-  RelatorioClienteLimiteCreditoExcedido in 'Relatorios\Administrativo\RelatorioClienteLimiteCreditoExcedido.pas' {FormRelatorioClienteLimiteCreditoExcedido};
+  RelatorioClienteLimiteCreditoExcedido in 'Relatorios\Administrativo\RelatorioClienteLimiteCreditoExcedido.pas' {FormRelatorioClienteLimiteCreditoExcedido},
+  CadastroContasReceber in 'Financeiro\CadastroContasReceber.pas' {FormCadastroContasReceber},
+  CadastroPlanodeContas in 'Financeiro\CadastroPlanodeContas.pas' {FormCadastroPlanodeContas},
+  TelaConsultaRecebimento in 'Financeiro\TelaConsultaRecebimento.pas' {FormTelaConsultaRecebimento},
+  TelaDadosReplicacaoContasReceber in 'Financeiro\TelaDadosReplicacaoContasReceber.pas' {FormTelaDadosReplicacaoContasReceber},
+  TelaBaixaContasReceberAVista in 'Financeiro\TelaBaixaContasReceberAVista.pas' {FormTelaBaixaContasReceberAVista},
+  TelaAssistenteContratosMensais in 'Financeiro\TelaAssistenteContratosMensais.pas' {FormTelaAssistenteContratosMensais},
+  TelaBaixarDocumentosReceber in 'Financeiro\TelaBaixarDocumentosReceber.pas' {FormTelaBaixarDocumentosReceber},
+  TelaBaixarDocumentosReceberRecebimento in 'Financeiro\TelaBaixarDocumentosReceberRecebimento.pas' {FormTelaBaixaDocumentosReceberRecebimento},
+  TelaPesquisaDocumentoReceber in 'Financeiro\TelaPesquisaDocumentoReceber.pas' {FormTelaPesquisarDocumentoReceber},
+  TelaBaixarDocumentosReceberPlanoConta in 'Financeiro\TelaBaixarDocumentosReceberPlanoConta.pas' {FormTelaBaixarDocumentosReceberPlanoConta},
+  CadastroCartaoCreditoManual in 'Financeiro\CadastroCartaoCreditoManual.pas' {FormCadastroCartaoCreditoManual};
 
 {$R *.res}
 

@@ -260,10 +260,8 @@ inherited FormRelatorioInventarioEstoque: TFormRelatorioInventarioEstoque
       FixedChar = True
       Size = 60
     end
-    object TblTemporariaSALDO: TBCDField
+    object TblTemporariaSALDO: TFloatField
       FieldName = 'SALDO'
-      Precision = 15
-      Size = 3
     end
     object TblTemporariaUNIDA5DESCR: TStringField
       FieldName = 'UNIDA5DESCR'
@@ -275,19 +273,15 @@ inherited FormRelatorioInventarioEstoque: TFormRelatorioInventarioEstoque
       FixedChar = True
       Size = 60
     end
-    object TblTemporariaPRODN3VLRCUSTO: TBCDField
+    object TblTemporariaPRODN3VLRCUSTO: TFloatField
       FieldName = 'PRODN3VLRCUSTO'
-      Precision = 15
-      Size = 3
     end
     object TblTemporariaTOTAL: TFloatField
       FieldName = 'TOTAL'
     end
-    object TblTemporariaPRODN3VLRVENDA: TBCDField
+    object TblTemporariaPRODN3VLRVENDA: TFloatField
       FieldName = 'PRODN3VLRVENDA'
       Origin = 'DB.PRODUTO.PRODN3VLRVENDA'
-      Precision = 15
-      Size = 3
     end
     object TblTemporariaVENDATOTAL: TFloatField
       FieldName = 'VENDATOTAL'
@@ -385,10 +379,8 @@ inherited FormRelatorioInventarioEstoque: TFormRelatorioInventarioEstoque
       FixedChar = True
       Size = 60
     end
-    object SQLProdutoSaldoSALDO: TBCDField
+    object SQLProdutoSaldoSALDO: TFloatField
       FieldName = 'SALDO'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoSaldoTOTAL: TFloatField
       FieldName = 'TOTAL'
@@ -403,17 +395,13 @@ inherited FormRelatorioInventarioEstoque: TFormRelatorioInventarioEstoque
       FixedChar = True
       Size = 60
     end
-    object SQLProdutoSaldoPRODN3VLRCUSTO: TBCDField
+    object SQLProdutoSaldoPRODN3VLRCUSTO: TFloatField
       FieldName = 'PRODN3VLRCUSTO'
       Origin = 'DB.PRODUTO.PRODN3VLRCUSTO'
-      Precision = 15
-      Size = 3
     end
-    object SQLProdutoSaldoPRODN3VLRVENDA: TBCDField
+    object SQLProdutoSaldoPRODN3VLRVENDA: TFloatField
       FieldName = 'PRODN3VLRVENDA'
       Origin = 'DB.PRODUTO.PRODN3VLRVENDA'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoSaldoGRUPICOD: TIntegerField
       FieldName = 'GRUPICOD'

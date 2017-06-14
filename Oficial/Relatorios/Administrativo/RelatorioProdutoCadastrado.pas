@@ -19,7 +19,7 @@ type
     SQLProdutoCORA30DESCR: TStringField;
     SQLProdutoPRODIAGRUPGRADE: TIntegerField;
     SQLProdutoPRODA60REFER: TStringField;
-    SQLProdutoPRODN3VLRVENDA: TBCDField;
+    SQLProdutoPRODN3VLRVENDA: TFloatField;
     TblTemporariaPRODDCAD: TDateTimeField;
     TblTemporariaPRODICOD: TIntegerField;
     TblTemporariaPRODA60DESCR: TStringField;
@@ -28,7 +28,7 @@ type
     TblTemporariaCORA30DESCR: TStringField;
     TblTemporariaPRODIAGRUPGRADE: TIntegerField;
     TblTemporariaPRODA60REFER: TStringField;
-    TblTemporariaPRODN3VLRVENDA: TBCDField;
+    TblTemporariaPRODN3VLRVENDA: TFloatField;
     Report: TCrpe;
     procedure ExecutarBtnClick(Sender: TObject);
   private

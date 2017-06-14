@@ -88,30 +88,20 @@ inherited FormRelatorioIndiceInadimplenciaCrediario: TFormRelatorioIndiceInadimp
     object SQLContasAReceberCTRCDVENC: TDateTimeField
       FieldName = 'CTRCDVENC'
     end
-    object SQLContasAReceberCTRCN2VLR: TBCDField
+    object SQLContasAReceberCTRCN2VLR: TFloatField
       FieldName = 'CTRCN2VLR'
-      Precision = 15
-      Size = 3
     end
-    object SQLContasAReceberCTRCN2TXJURO: TBCDField
+    object SQLContasAReceberCTRCN2TXJURO: TFloatField
       FieldName = 'CTRCN2TXJURO'
-      Precision = 15
-      Size = 3
     end
-    object SQLContasAReceberCTRCN2TXMULTA: TBCDField
+    object SQLContasAReceberCTRCN2TXMULTA: TFloatField
       FieldName = 'CTRCN2TXMULTA'
-      Precision = 15
-      Size = 3
     end
-    object SQLContasAReceberCTRCN2TOTMULTACOBR: TBCDField
+    object SQLContasAReceberCTRCN2TOTMULTACOBR: TFloatField
       FieldName = 'CTRCN2TOTMULTACOBR'
-      Precision = 15
-      Size = 3
     end
-    object SQLContasAReceberCTRCN2TOTREC: TBCDField
+    object SQLContasAReceberCTRCN2TOTREC: TFloatField
       FieldName = 'CTRCN2TOTREC'
-      Precision = 15
-      Size = 3
     end
     object SQLContasAReceberCTRCDEMIS: TDateTimeField
       FieldName = 'CTRCDEMIS'
@@ -185,30 +175,20 @@ inherited FormRelatorioIndiceInadimplenciaCrediario: TFormRelatorioIndiceInadimp
     object SQLContasRecebidasCTRCDVENC: TDateTimeField
       FieldName = 'CTRCDVENC'
     end
-    object SQLContasRecebidasCTRCN2VLR: TBCDField
+    object SQLContasRecebidasCTRCN2VLR: TFloatField
       FieldName = 'CTRCN2VLR'
-      Precision = 15
-      Size = 3
     end
-    object SQLContasRecebidasCTRCN2TXJURO: TBCDField
+    object SQLContasRecebidasCTRCN2TXJURO: TFloatField
       FieldName = 'CTRCN2TXJURO'
-      Precision = 15
-      Size = 3
     end
-    object SQLContasRecebidasCTRCN2TXMULTA: TBCDField
+    object SQLContasRecebidasCTRCN2TXMULTA: TFloatField
       FieldName = 'CTRCN2TXMULTA'
-      Precision = 15
-      Size = 3
     end
-    object SQLContasRecebidasCTRCN2TOTMULTACOBR: TBCDField
+    object SQLContasRecebidasCTRCN2TOTMULTACOBR: TFloatField
       FieldName = 'CTRCN2TOTMULTACOBR'
-      Precision = 15
-      Size = 3
     end
-    object SQLContasRecebidasCTRCN2TOTREC: TBCDField
+    object SQLContasRecebidasCTRCN2TOTREC: TFloatField
       FieldName = 'CTRCN2TOTREC'
-      Precision = 15
-      Size = 3
     end
     object SQLContasRecebidasCTRCDEMIS: TDateTimeField
       FieldName = 'CTRCDEMIS'

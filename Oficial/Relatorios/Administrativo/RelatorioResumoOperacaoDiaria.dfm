@@ -122,45 +122,29 @@ inherited FormRelatorioResumoOperacaoDiaria: TFormRelatorioResumoOperacaoDiaria
     object SQLNotaFiscalNUMERO: TIntegerField
       FieldName = 'NUMERO'
     end
-    object SQLNotaFiscalVLRICMS: TBCDField
+    object SQLNotaFiscalVLRICMS: TFloatField
       FieldName = 'VLRICMS'
-      Precision = 15
-      Size = 2
     end
-    object SQLNotaFiscalVLRIPI: TBCDField
+    object SQLNotaFiscalVLRIPI: TFloatField
       FieldName = 'VLRIPI'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaFiscalVLRDESC: TBCDField
+    object SQLNotaFiscalVLRDESC: TFloatField
       FieldName = 'VLRDESC'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaFiscalVLRFRETE: TBCDField
+    object SQLNotaFiscalVLRFRETE: TFloatField
       FieldName = 'VLRFRETE'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaFiscalVLRSERVICO: TBCDField
+    object SQLNotaFiscalVLRSERVICO: TFloatField
       FieldName = 'VLRSERVICO'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaFiscalVLRISSQN: TBCDField
+    object SQLNotaFiscalVLRISSQN: TFloatField
       FieldName = 'VLRISSQN'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaFiscalVLRPRODUTO: TBCDField
+    object SQLNotaFiscalVLRPRODUTO: TFloatField
       FieldName = 'VLRPRODUTO'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaFiscalVLRNOTA: TBCDField
+    object SQLNotaFiscalVLRNOTA: TFloatField
       FieldName = 'VLRNOTA'
-      Precision = 15
-      Size = 3
     end
     object SQLNotaFiscalCLIENTE: TStringField
       FieldName = 'CLIENTE'
@@ -263,15 +247,11 @@ inherited FormRelatorioResumoOperacaoDiaria: TFormRelatorioResumoOperacaoDiaria
     object SQLPedidoVendaVLRIPI: TFloatField
       FieldName = 'VLRIPI'
     end
-    object SQLPedidoVendaVLRDESC: TBCDField
+    object SQLPedidoVendaVLRDESC: TFloatField
       FieldName = 'VLRDESC'
-      Precision = 15
-      Size = 3
     end
-    object SQLPedidoVendaVLRFRETE: TBCDField
+    object SQLPedidoVendaVLRFRETE: TFloatField
       FieldName = 'VLRFRETE'
-      Precision = 15
-      Size = 3
     end
     object SQLPedidoVendaVLRSERVICO: TFloatField
       FieldName = 'VLRSERVICO'
@@ -279,15 +259,11 @@ inherited FormRelatorioResumoOperacaoDiaria: TFormRelatorioResumoOperacaoDiaria
     object SQLPedidoVendaVLRISSQN: TFloatField
       FieldName = 'VLRISSQN'
     end
-    object SQLPedidoVendaVLRPRODUTO: TBCDField
+    object SQLPedidoVendaVLRPRODUTO: TFloatField
       FieldName = 'VLRPRODUTO'
-      Precision = 15
-      Size = 3
     end
-    object SQLPedidoVendaVLRNOTA: TBCDField
+    object SQLPedidoVendaVLRNOTA: TFloatField
       FieldName = 'VLRNOTA'
-      Precision = 15
-      Size = 3
     end
     object SQLPedidoVendaCLIENTE: TStringField
       FieldName = 'CLIENTE'
@@ -352,15 +328,11 @@ inherited FormRelatorioResumoOperacaoDiaria: TFormRelatorioResumoOperacaoDiaria
     object TblPedidosNotasVLRIPI: TFloatField
       FieldName = 'VLRIPI'
     end
-    object TblPedidosNotasVLRDESC: TBCDField
+    object TblPedidosNotasVLRDESC: TFloatField
       FieldName = 'VLRDESC'
-      Precision = 15
-      Size = 3
     end
-    object TblPedidosNotasVLRFRETE: TBCDField
+    object TblPedidosNotasVLRFRETE: TFloatField
       FieldName = 'VLRFRETE'
-      Precision = 15
-      Size = 3
     end
     object TblPedidosNotasVLRSERVICO: TFloatField
       FieldName = 'VLRSERVICO'
@@ -368,15 +340,11 @@ inherited FormRelatorioResumoOperacaoDiaria: TFormRelatorioResumoOperacaoDiaria
     object TblPedidosNotasVLRISSQN: TFloatField
       FieldName = 'VLRISSQN'
     end
-    object TblPedidosNotasVLRPRODUTO: TBCDField
+    object TblPedidosNotasVLRPRODUTO: TFloatField
       FieldName = 'VLRPRODUTO'
-      Precision = 15
-      Size = 3
     end
-    object TblPedidosNotasVLRNOTA: TBCDField
+    object TblPedidosNotasVLRNOTA: TFloatField
       FieldName = 'VLRNOTA'
-      Precision = 15
-      Size = 3
     end
     object TblPedidosNotasCLIENTE: TStringField
       FieldName = 'CLIENTE'
@@ -667,30 +635,20 @@ inherited FormRelatorioResumoOperacaoDiaria: TFormRelatorioResumoOperacaoDiaria
     object SQLNotaFiscalitensCODPRODUTO: TIntegerField
       FieldName = 'CODPRODUTO'
     end
-    object SQLNotaFiscalitensQTDE: TBCDField
+    object SQLNotaFiscalitensQTDE: TFloatField
       FieldName = 'QTDE'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaFiscalitensVLRUNITARIO: TBCDField
+    object SQLNotaFiscalitensVLRUNITARIO: TFloatField
       FieldName = 'VLRUNITARIO'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaFiscalitensVLRDESC: TBCDField
+    object SQLNotaFiscalitensVLRDESC: TFloatField
       FieldName = 'VLRDESC'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaFiscalitensVLRICMS: TBCDField
+    object SQLNotaFiscalitensVLRICMS: TFloatField
       FieldName = 'VLRICMS'
-      Precision = 15
-      Size = 2
     end
-    object SQLNotaFiscalitensVLRIPI: TBCDField
+    object SQLNotaFiscalitensVLRIPI: TFloatField
       FieldName = 'VLRIPI'
-      Precision = 15
-      Size = 3
     end
     object SQLNotaFiscalitensLOTE: TStringField
       FieldName = 'LOTE'
@@ -702,25 +660,17 @@ inherited FormRelatorioResumoOperacaoDiaria: TFormRelatorioResumoOperacaoDiaria
       FixedChar = True
       Size = 60
     end
-    object SQLNotaFiscalitensVLRCOMPRA: TBCDField
+    object SQLNotaFiscalitensVLRCOMPRA: TFloatField
       FieldName = 'VLRCOMPRA'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaFiscalitensVLRCOMPRAMEDIO: TBCDField
+    object SQLNotaFiscalitensVLRCOMPRAMEDIO: TFloatField
       FieldName = 'VLRCOMPRAMEDIO'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaFiscalitensVLRCUSTO: TBCDField
+    object SQLNotaFiscalitensVLRCUSTO: TFloatField
       FieldName = 'VLRCUSTO'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaFiscalitensVLRCUSTOMEDIO: TBCDField
+    object SQLNotaFiscalitensVLRCUSTOMEDIO: TFloatField
       FieldName = 'VLRCUSTOMEDIO'
-      Precision = 15
-      Size = 3
     end
     object SQLNotaFiscalitensREFPRODUTO: TStringField
       FieldName = 'REFPRODUTO'
@@ -743,10 +693,8 @@ inherited FormRelatorioResumoOperacaoDiaria: TFormRelatorioResumoOperacaoDiaria
     object SQLNotaFiscalitensDATAMOV: TDateTimeField
       FieldName = 'DATAMOV'
     end
-    object SQLNotaFiscalitensSALDOATUAL: TBCDField
+    object SQLNotaFiscalitensSALDOATUAL: TFloatField
       FieldName = 'SALDOATUAL'
-      Precision = 15
-      Size = 3
     end
     object SQLNotaFiscalitensSALDOANTERIOR: TFloatField
       FieldName = 'SALDOANTERIOR'
@@ -779,30 +727,20 @@ inherited FormRelatorioResumoOperacaoDiaria: TFormRelatorioResumoOperacaoDiaria
     object TblResumoItensCODPRODUTO: TIntegerField
       FieldName = 'CODPRODUTO'
     end
-    object TblResumoItensQTDE: TBCDField
+    object TblResumoItensQTDE: TFloatField
       FieldName = 'QTDE'
-      Precision = 15
-      Size = 3
     end
-    object TblResumoItensVLRUNITARIO: TBCDField
+    object TblResumoItensVLRUNITARIO: TFloatField
       FieldName = 'VLRUNITARIO'
-      Precision = 15
-      Size = 3
     end
-    object TblResumoItensVLRDESC: TBCDField
+    object TblResumoItensVLRDESC: TFloatField
       FieldName = 'VLRDESC'
-      Precision = 15
-      Size = 3
     end
-    object TblResumoItensVLRICMS: TBCDField
+    object TblResumoItensVLRICMS: TFloatField
       FieldName = 'VLRICMS'
-      Precision = 15
-      Size = 3
     end
-    object TblResumoItensVLRIPI: TBCDField
+    object TblResumoItensVLRIPI: TFloatField
       FieldName = 'VLRIPI'
-      Precision = 15
-      Size = 3
     end
     object TblResumoItensLOTE: TStringField
       FieldName = 'LOTE'
@@ -814,25 +752,17 @@ inherited FormRelatorioResumoOperacaoDiaria: TFormRelatorioResumoOperacaoDiaria
       FixedChar = True
       Size = 60
     end
-    object TblResumoItensVLRCOMPRA: TBCDField
+    object TblResumoItensVLRCOMPRA: TFloatField
       FieldName = 'VLRCOMPRA'
-      Precision = 15
-      Size = 3
     end
-    object TblResumoItensVLRCOMPRAMEDIO: TBCDField
+    object TblResumoItensVLRCOMPRAMEDIO: TFloatField
       FieldName = 'VLRCOMPRAMEDIO'
-      Precision = 15
-      Size = 3
     end
-    object TblResumoItensVLRCUSTO: TBCDField
+    object TblResumoItensVLRCUSTO: TFloatField
       FieldName = 'VLRCUSTO'
-      Precision = 15
-      Size = 3
     end
-    object TblResumoItensVLRCUSTOMEDIO: TBCDField
+    object TblResumoItensVLRCUSTOMEDIO: TFloatField
       FieldName = 'VLRCUSTOMEDIO'
-      Precision = 15
-      Size = 3
     end
     object TblResumoItensREFPRODUTO: TStringField
       FieldName = 'REFPRODUTO'
@@ -855,10 +785,8 @@ inherited FormRelatorioResumoOperacaoDiaria: TFormRelatorioResumoOperacaoDiaria
     object TblResumoItensDATAMOV: TDateTimeField
       FieldName = 'DATAMOV'
     end
-    object TblResumoItensSALDOATUAL: TBCDField
+    object TblResumoItensSALDOATUAL: TFloatField
       FieldName = 'SALDOATUAL'
-      Precision = 15
-      Size = 3
     end
     object TblResumoItensSALDOANTERIOR: TFloatField
       FieldName = 'SALDOANTERIOR'
@@ -975,20 +903,14 @@ inherited FormRelatorioResumoOperacaoDiaria: TFormRelatorioResumoOperacaoDiaria
     object SQLPedidoVendaItensCODPRODUTO: TIntegerField
       FieldName = 'CODPRODUTO'
     end
-    object SQLPedidoVendaItensQTDE: TBCDField
+    object SQLPedidoVendaItensQTDE: TFloatField
       FieldName = 'QTDE'
-      Precision = 15
-      Size = 3
     end
-    object SQLPedidoVendaItensVLRUNITARIO: TBCDField
+    object SQLPedidoVendaItensVLRUNITARIO: TFloatField
       FieldName = 'VLRUNITARIO'
-      Precision = 15
-      Size = 3
     end
-    object SQLPedidoVendaItensVLRDESC: TBCDField
+    object SQLPedidoVendaItensVLRDESC: TFloatField
       FieldName = 'VLRDESC'
-      Precision = 15
-      Size = 3
     end
     object SQLPedidoVendaItensVLRICMS: TFloatField
       FieldName = 'VLRICMS'
@@ -1006,25 +928,17 @@ inherited FormRelatorioResumoOperacaoDiaria: TFormRelatorioResumoOperacaoDiaria
       FixedChar = True
       Size = 60
     end
-    object SQLPedidoVendaItensVLRCOMPRA: TBCDField
+    object SQLPedidoVendaItensVLRCOMPRA: TFloatField
       FieldName = 'VLRCOMPRA'
-      Precision = 15
-      Size = 3
     end
-    object SQLPedidoVendaItensVLRCOMPRAMEDIO: TBCDField
+    object SQLPedidoVendaItensVLRCOMPRAMEDIO: TFloatField
       FieldName = 'VLRCOMPRAMEDIO'
-      Precision = 15
-      Size = 3
     end
-    object SQLPedidoVendaItensVLRCUSTO: TBCDField
+    object SQLPedidoVendaItensVLRCUSTO: TFloatField
       FieldName = 'VLRCUSTO'
-      Precision = 15
-      Size = 3
     end
-    object SQLPedidoVendaItensVLRCUSTOMEDIO: TBCDField
+    object SQLPedidoVendaItensVLRCUSTOMEDIO: TFloatField
       FieldName = 'VLRCUSTOMEDIO'
-      Precision = 15
-      Size = 3
     end
     object SQLPedidoVendaItensREFPRODUTO: TStringField
       FieldName = 'REFPRODUTO'
@@ -1047,10 +961,8 @@ inherited FormRelatorioResumoOperacaoDiaria: TFormRelatorioResumoOperacaoDiaria
     object SQLPedidoVendaItensDATAMOV: TDateTimeField
       FieldName = 'DATAMOV'
     end
-    object SQLPedidoVendaItensSALDOATUAL: TBCDField
+    object SQLPedidoVendaItensSALDOATUAL: TFloatField
       FieldName = 'SALDOATUAL'
-      Precision = 15
-      Size = 3
     end
     object SQLPedidoVendaItensSALDOANTERIOR: TFloatField
       FieldName = 'SALDOANTERIOR'
@@ -1142,25 +1054,17 @@ inherited FormRelatorioResumoOperacaoDiaria: TFormRelatorioResumoOperacaoDiaria
       FixedChar = True
       Size = 30
     end
-    object SQLNotaCompraVLRICMS: TBCDField
+    object SQLNotaCompraVLRICMS: TFloatField
       FieldName = 'VLRICMS'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaCompraVLRIPI: TBCDField
+    object SQLNotaCompraVLRIPI: TFloatField
       FieldName = 'VLRIPI'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaCompraVLRDESC: TBCDField
+    object SQLNotaCompraVLRDESC: TFloatField
       FieldName = 'VLRDESC'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaCompraVLRFRETE: TBCDField
+    object SQLNotaCompraVLRFRETE: TFloatField
       FieldName = 'VLRFRETE'
-      Precision = 15
-      Size = 3
     end
     object SQLNotaCompraVLRSERVICO: TFloatField
       FieldName = 'VLRSERVICO'
@@ -1168,15 +1072,11 @@ inherited FormRelatorioResumoOperacaoDiaria: TFormRelatorioResumoOperacaoDiaria
     object SQLNotaCompraVLRISSQN: TFloatField
       FieldName = 'VLRISSQN'
     end
-    object SQLNotaCompraVLRPRODUTO: TBCDField
+    object SQLNotaCompraVLRPRODUTO: TFloatField
       FieldName = 'VLRPRODUTO'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaCompraVLRNOTA: TBCDField
+    object SQLNotaCompraVLRNOTA: TFloatField
       FieldName = 'VLRNOTA'
-      Precision = 15
-      Size = 3
     end
     object SQLNotaCompraCLIENTE: TStringField
       FieldName = 'CLIENTE'
@@ -1345,20 +1245,14 @@ inherited FormRelatorioResumoOperacaoDiaria: TFormRelatorioResumoOperacaoDiaria
     object SQLPedidoCompraVLRICMS: TFloatField
       FieldName = 'VLRICMS'
     end
-    object SQLPedidoCompraVLRIPI: TBCDField
+    object SQLPedidoCompraVLRIPI: TFloatField
       FieldName = 'VLRIPI'
-      Precision = 15
-      Size = 3
     end
-    object SQLPedidoCompraVLRDESC: TBCDField
+    object SQLPedidoCompraVLRDESC: TFloatField
       FieldName = 'VLRDESC'
-      Precision = 15
-      Size = 3
     end
-    object SQLPedidoCompraVLRFRETE: TBCDField
+    object SQLPedidoCompraVLRFRETE: TFloatField
       FieldName = 'VLRFRETE'
-      Precision = 15
-      Size = 3
     end
     object SQLPedidoCompraVLRSERVICO: TFloatField
       FieldName = 'VLRSERVICO'
@@ -1366,10 +1260,8 @@ inherited FormRelatorioResumoOperacaoDiaria: TFormRelatorioResumoOperacaoDiaria
     object SQLPedidoCompraVLRISSQN: TFloatField
       FieldName = 'VLRISSQN'
     end
-    object SQLPedidoCompraVLRPRODUTO: TBCDField
+    object SQLPedidoCompraVLRPRODUTO: TFloatField
       FieldName = 'VLRPRODUTO'
-      Precision = 15
-      Size = 3
     end
     object SQLPedidoCompraVLRNOTA: TFloatField
       FieldName = 'VLRNOTA'
@@ -1498,30 +1390,20 @@ inherited FormRelatorioResumoOperacaoDiaria: TFormRelatorioResumoOperacaoDiaria
     object SQLNotaCompraItensCODPRODUTO: TIntegerField
       FieldName = 'CODPRODUTO'
     end
-    object SQLNotaCompraItensQTDE: TBCDField
+    object SQLNotaCompraItensQTDE: TFloatField
       FieldName = 'QTDE'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaCompraItensVLRUNITARIO: TBCDField
+    object SQLNotaCompraItensVLRUNITARIO: TFloatField
       FieldName = 'VLRUNITARIO'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaCompraItensVLRDESC: TBCDField
+    object SQLNotaCompraItensVLRDESC: TFloatField
       FieldName = 'VLRDESC'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaCompraItensVLRICMS: TBCDField
+    object SQLNotaCompraItensVLRICMS: TFloatField
       FieldName = 'VLRICMS'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaCompraItensVLRIPI: TBCDField
+    object SQLNotaCompraItensVLRIPI: TFloatField
       FieldName = 'VLRIPI'
-      Precision = 15
-      Size = 3
     end
     object SQLNotaCompraItensLOTE: TStringField
       FieldName = 'LOTE'
@@ -1533,25 +1415,17 @@ inherited FormRelatorioResumoOperacaoDiaria: TFormRelatorioResumoOperacaoDiaria
       FixedChar = True
       Size = 60
     end
-    object SQLNotaCompraItensVLRCOMPRA: TBCDField
+    object SQLNotaCompraItensVLRCOMPRA: TFloatField
       FieldName = 'VLRCOMPRA'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaCompraItensVLRCOMPRAMEDIO: TBCDField
+    object SQLNotaCompraItensVLRCOMPRAMEDIO: TFloatField
       FieldName = 'VLRCOMPRAMEDIO'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaCompraItensVLRCUSTO: TBCDField
+    object SQLNotaCompraItensVLRCUSTO: TFloatField
       FieldName = 'VLRCUSTO'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaCompraItensVLRCUSTOMEDIO: TBCDField
+    object SQLNotaCompraItensVLRCUSTOMEDIO: TFloatField
       FieldName = 'VLRCUSTOMEDIO'
-      Precision = 15
-      Size = 3
     end
     object SQLNotaCompraItensREFPRODUTO: TStringField
       FieldName = 'REFPRODUTO'
@@ -1574,10 +1448,8 @@ inherited FormRelatorioResumoOperacaoDiaria: TFormRelatorioResumoOperacaoDiaria
     object SQLNotaCompraItensDATAMOV: TDateTimeField
       FieldName = 'DATAMOV'
     end
-    object SQLNotaCompraItensSALDOATUAL: TBCDField
+    object SQLNotaCompraItensSALDOATUAL: TFloatField
       FieldName = 'SALDOATUAL'
-      Precision = 15
-      Size = 3
     end
     object SQLNotaCompraItensSALDOANTERIOR: TFloatField
       FieldName = 'SALDOANTERIOR'
@@ -1664,30 +1536,20 @@ inherited FormRelatorioResumoOperacaoDiaria: TFormRelatorioResumoOperacaoDiaria
     object SQLPedidoCompraItensCODPRODUTO: TIntegerField
       FieldName = 'CODPRODUTO'
     end
-    object SQLPedidoCompraItensQTDE: TBCDField
+    object SQLPedidoCompraItensQTDE: TFloatField
       FieldName = 'QTDE'
-      Precision = 15
-      Size = 3
     end
-    object SQLPedidoCompraItensVLRUNITARIO: TBCDField
+    object SQLPedidoCompraItensVLRUNITARIO: TFloatField
       FieldName = 'VLRUNITARIO'
-      Precision = 15
-      Size = 3
     end
-    object SQLPedidoCompraItensVLRDESC: TBCDField
+    object SQLPedidoCompraItensVLRDESC: TFloatField
       FieldName = 'VLRDESC'
-      Precision = 15
-      Size = 3
     end
-    object SQLPedidoCompraItensVLRICMS: TBCDField
+    object SQLPedidoCompraItensVLRICMS: TFloatField
       FieldName = 'VLRICMS'
-      Precision = 15
-      Size = 3
     end
-    object SQLPedidoCompraItensVLRIPI: TBCDField
+    object SQLPedidoCompraItensVLRIPI: TFloatField
       FieldName = 'VLRIPI'
-      Precision = 15
-      Size = 3
     end
     object SQLPedidoCompraItensLOTE: TStringField
       FieldName = 'LOTE'
@@ -1699,25 +1561,17 @@ inherited FormRelatorioResumoOperacaoDiaria: TFormRelatorioResumoOperacaoDiaria
       FixedChar = True
       Size = 60
     end
-    object SQLPedidoCompraItensVLRCOMPRA: TBCDField
+    object SQLPedidoCompraItensVLRCOMPRA: TFloatField
       FieldName = 'VLRCOMPRA'
-      Precision = 15
-      Size = 3
     end
-    object SQLPedidoCompraItensVLRCOMPRAMEDIO: TBCDField
+    object SQLPedidoCompraItensVLRCOMPRAMEDIO: TFloatField
       FieldName = 'VLRCOMPRAMEDIO'
-      Precision = 15
-      Size = 3
     end
-    object SQLPedidoCompraItensVLRCUSTO: TBCDField
+    object SQLPedidoCompraItensVLRCUSTO: TFloatField
       FieldName = 'VLRCUSTO'
-      Precision = 15
-      Size = 3
     end
-    object SQLPedidoCompraItensVLRCUSTOMEDIO: TBCDField
+    object SQLPedidoCompraItensVLRCUSTOMEDIO: TFloatField
       FieldName = 'VLRCUSTOMEDIO'
-      Precision = 15
-      Size = 3
     end
     object SQLPedidoCompraItensREFPRODUTO: TStringField
       FieldName = 'REFPRODUTO'
@@ -1740,15 +1594,11 @@ inherited FormRelatorioResumoOperacaoDiaria: TFormRelatorioResumoOperacaoDiaria
     object SQLPedidoCompraItensDATAMOV: TIntegerField
       FieldName = 'DATAMOV'
     end
-    object SQLPedidoCompraItensSALDOATUAL: TBCDField
+    object SQLPedidoCompraItensSALDOATUAL: TFloatField
       FieldName = 'SALDOATUAL'
-      Precision = 15
-      Size = 3
     end
-    object SQLPedidoCompraItensSALDOANTERIOR: TBCDField
+    object SQLPedidoCompraItensSALDOANTERIOR: TFloatField
       FieldName = 'SALDOANTERIOR'
-      Precision = 15
-      Size = 3
     end
   end
   object SQLSaldoDiario: TRxQuery
@@ -1798,35 +1648,23 @@ inherited FormRelatorioResumoOperacaoDiaria: TFormRelatorioResumoOperacaoDiaria
       end>
     Left = 558
     Top = 33
-    object SQLSaldoDiarioQTDE: TBCDField
+    object SQLSaldoDiarioQTDE: TFloatField
       FieldName = 'QTDE'
-      Precision = 15
-      Size = 2
     end
-    object SQLSaldoDiarioCOMPRA: TBCDField
+    object SQLSaldoDiarioCOMPRA: TFloatField
       FieldName = 'COMPRA'
-      Precision = 15
-      Size = 2
     end
-    object SQLSaldoDiarioCOMPRAMEDIO: TBCDField
+    object SQLSaldoDiarioCOMPRAMEDIO: TFloatField
       FieldName = 'COMPRAMEDIO'
-      Precision = 15
-      Size = 2
     end
-    object SQLSaldoDiarioCUSTO: TBCDField
+    object SQLSaldoDiarioCUSTO: TFloatField
       FieldName = 'CUSTO'
-      Precision = 15
-      Size = 2
     end
-    object SQLSaldoDiarioCUSTOMEDIO: TBCDField
+    object SQLSaldoDiarioCUSTOMEDIO: TFloatField
       FieldName = 'CUSTOMEDIO'
-      Precision = 15
-      Size = 2
     end
-    object SQLSaldoDiarioVENDA: TBCDField
+    object SQLSaldoDiarioVENDA: TFloatField
       FieldName = 'VENDA'
-      Precision = 15
-      Size = 2
     end
   end
   object TblResumoInicioDia: TTable
@@ -1835,35 +1673,23 @@ inherited FormRelatorioResumoOperacaoDiaria: TFormRelatorioResumoOperacaoDiaria
     TableName = 'ResumoInicioDia.db'
     Left = 586
     Top = 33
-    object TblResumoInicioDiaQTDE: TBCDField
+    object TblResumoInicioDiaQTDE: TFloatField
       FieldName = 'QTDE'
-      Precision = 15
-      Size = 2
     end
-    object TblResumoInicioDiaCOMPRA: TBCDField
+    object TblResumoInicioDiaCOMPRA: TFloatField
       FieldName = 'COMPRA'
-      Precision = 15
-      Size = 2
     end
-    object TblResumoInicioDiaCOMPRAMEDIO: TBCDField
+    object TblResumoInicioDiaCOMPRAMEDIO: TFloatField
       FieldName = 'COMPRAMEDIO'
-      Precision = 15
-      Size = 2
     end
-    object TblResumoInicioDiaCUSTO: TBCDField
+    object TblResumoInicioDiaCUSTO: TFloatField
       FieldName = 'CUSTO'
-      Precision = 15
-      Size = 2
     end
-    object TblResumoInicioDiaCUSTOMEDIO: TBCDField
+    object TblResumoInicioDiaCUSTOMEDIO: TFloatField
       FieldName = 'CUSTOMEDIO'
-      Precision = 15
-      Size = 2
     end
-    object TblResumoInicioDiaVENDA: TBCDField
+    object TblResumoInicioDiaVENDA: TFloatField
       FieldName = 'VENDA'
-      Precision = 15
-      Size = 2
     end
   end
   object SQLSaldoAtual: TRxQuery
@@ -1905,10 +1731,8 @@ inherited FormRelatorioResumoOperacaoDiaria: TFormRelatorioResumoOperacaoDiaria
       end>
     Left = 558
     Top = 61
-    object SQLSaldoAtualQTDEATUAL: TBCDField
+    object SQLSaldoAtualQTDEATUAL: TFloatField
       FieldName = 'QTDEATUAL'
-      Precision = 15
-      Size = 3
     end
     object SQLSaldoAtualCOMPRAATUAL: TFloatField
       FieldName = 'COMPRAATUAL'
@@ -1932,10 +1756,8 @@ inherited FormRelatorioResumoOperacaoDiaria: TFormRelatorioResumoOperacaoDiaria
     TableName = 'ResumoSaldoAtual.db'
     Left = 586
     Top = 61
-    object TblResumoSaldoAtualQTDEATUAL: TBCDField
+    object TblResumoSaldoAtualQTDEATUAL: TFloatField
       FieldName = 'QTDEATUAL'
-      Precision = 15
-      Size = 3
     end
     object TblResumoSaldoAtualCOMPRAATUAL: TFloatField
       FieldName = 'COMPRAATUAL'
@@ -2147,15 +1969,11 @@ inherited FormRelatorioResumoOperacaoDiaria: TFormRelatorioResumoOperacaoDiaria
     object SQLMovDiversoItemCODPRODUTO: TIntegerField
       FieldName = 'CODPRODUTO'
     end
-    object SQLMovDiversoItemQTDE: TBCDField
+    object SQLMovDiversoItemQTDE: TFloatField
       FieldName = 'QTDE'
-      Precision = 15
-      Size = 3
     end
-    object SQLMovDiversoItemVLRUNITARIO: TBCDField
+    object SQLMovDiversoItemVLRUNITARIO: TFloatField
       FieldName = 'VLRUNITARIO'
-      Precision = 15
-      Size = 3
     end
     object SQLMovDiversoItemVLRDESC: TFloatField
       FieldName = 'VLRDESC'
@@ -2176,25 +1994,17 @@ inherited FormRelatorioResumoOperacaoDiaria: TFormRelatorioResumoOperacaoDiaria
       FixedChar = True
       Size = 60
     end
-    object SQLMovDiversoItemVLRCOMPRA: TBCDField
+    object SQLMovDiversoItemVLRCOMPRA: TFloatField
       FieldName = 'VLRCOMPRA'
-      Precision = 15
-      Size = 3
     end
-    object SQLMovDiversoItemVLRCOMPRAMEDIO: TBCDField
+    object SQLMovDiversoItemVLRCOMPRAMEDIO: TFloatField
       FieldName = 'VLRCOMPRAMEDIO'
-      Precision = 15
-      Size = 3
     end
-    object SQLMovDiversoItemVLRCUSTO: TBCDField
+    object SQLMovDiversoItemVLRCUSTO: TFloatField
       FieldName = 'VLRCUSTO'
-      Precision = 15
-      Size = 3
     end
-    object SQLMovDiversoItemVLRCUSTOMEDIO: TBCDField
+    object SQLMovDiversoItemVLRCUSTOMEDIO: TFloatField
       FieldName = 'VLRCUSTOMEDIO'
-      Precision = 15
-      Size = 3
     end
     object SQLMovDiversoItemREFPRODUTO: TStringField
       FieldName = 'REFPRODUTO'
@@ -2217,10 +2027,8 @@ inherited FormRelatorioResumoOperacaoDiaria: TFormRelatorioResumoOperacaoDiaria
     object SQLMovDiversoItemDATAMOV: TDateTimeField
       FieldName = 'DATAMOV'
     end
-    object SQLMovDiversoItemSALDOATUAL: TBCDField
+    object SQLMovDiversoItemSALDOATUAL: TFloatField
       FieldName = 'SALDOATUAL'
-      Precision = 15
-      Size = 3
     end
     object SQLMovDiversoItemSALDOANTERIOR: TFloatField
       FieldName = 'SALDOANTERIOR'

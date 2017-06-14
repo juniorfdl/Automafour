@@ -17,13 +17,13 @@ type
     TblTemporariaGRUPICOD: TIntegerField;
     TblTemporariaSUBGICOD: TIntegerField;
     TblTemporariaVARIICOD: TIntegerField;
-    TblTemporariaPRODN3VLRVENDA: TBCDField;
-    TblTemporariaPRODN3VLRVENDAPROM: TBCDField;
+    TblTemporariaPRODN3VLRVENDA: TFloatField;
+    TblTemporariaPRODN3VLRVENDAPROM: TFloatField;
     TblTemporariaPRODDINIPROMO: TDateTimeField;
     TblTemporariaPRODDFIMPROMO: TDateTimeField;
-    TblTemporariaPRODN3VLRCOMPRA: TBCDField;
-    TblTemporariaPRODN3VLRCUSTO: TBCDField;
-    TblTemporariaSALDO: TBCDField;
+    TblTemporariaPRODN3VLRCOMPRA: TFloatField;
+    TblTemporariaPRODN3VLRCUSTO: TFloatField;
+    TblTemporariaSALDO: TFloatField;
     GroupFiltro: TGroupBox;
     ComboGrupo: TRxDBLookupCombo;
     Label5: TLabel;
@@ -136,7 +136,7 @@ type
     OrdemBalanca: TRadioButton;
     CKporMarca: TCheckBox;
     RadioICMS: TRadioButton;
-    TblTemporariaPRODN3VLRVENDA2: TBCDField;
+    TblTemporariaPRODN3VLRVENDA2: TFloatField;
     ckImpVlrAtacadoVarejo: TCheckBox;
     ckCatalogoFoto: TCheckBox;
     ppCatalogoFoto: TppReport;

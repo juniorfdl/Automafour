@@ -18,7 +18,7 @@ type
     TblTemporariaLIMITEFINAL: TFloatField;
     TblTemporariaCLIEA13ID: TStringField;
     TblTemporariaCLIEA60RAZAOSOC: TStringField;
-    SQLClienteGeralCLIEN2LIMITECRED: TBCDField;
+    SQLClienteGeralCLIEN2LIMITECRED: TFloatField;
     SQLLimiteCliente: TRxQuery;
     SQLLimiteParcelas: TRxQuery;
     SQLParcelas: TRxQuery;

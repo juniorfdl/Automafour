@@ -9,10 +9,10 @@ inherited FormTelaRecalcularTotalizador: TFormTelaRecalcularTotalizador
   TextHeight = 13
   inherited ScrollBoxFundo: TScrollBox
     Width = 755
-    Height = 374
+    Height = 373
     inherited PanelCentral: TPanel
       Width = 751
-      Height = 290
+      Height = 289
       object Label1: TLabel [0]
         Left = 103
         Top = 177
@@ -30,7 +30,7 @@ inherited FormTelaRecalcularTotalizador: TFormTelaRecalcularTotalizador
       end
       inherited PanelBarra: TPanel
         Width = 74
-        Height = 290
+        Height = 289
         TabOrder = 3
       end
       object GroupBox2: TGroupBox
@@ -285,17 +285,13 @@ inherited FormTelaRecalcularTotalizador: TFormTelaRecalcularTotalizador
       FieldName = 'TOTAICOD'
       Origin = 'DB.TOTALIZADORDIARIOCAIXA.TOTAICOD'
     end
-    object SQLTotalizadorDiarioCaixaTODIN2VLRDEBITO: TBCDField
+    object SQLTotalizadorDiarioCaixaTODIN2VLRDEBITO: TFloatField
       FieldName = 'TODIN2VLRDEBITO'
       Origin = 'DB.TOTALIZADORDIARIOCAIXA.TODIN2VLRDEBITO'
-      Precision = 15
-      Size = 3
     end
-    object SQLTotalizadorDiarioCaixaTODIN2VLRCREDITO: TBCDField
+    object SQLTotalizadorDiarioCaixaTODIN2VLRCREDITO: TFloatField
       FieldName = 'TODIN2VLRCREDITO'
       Origin = 'DB.TOTALIZADORDIARIOCAIXA.TODIN2VLRCREDITO'
-      Precision = 15
-      Size = 3
     end
     object SQLTotalizadorDiarioCaixaPENDENTE: TStringField
       FieldName = 'PENDENTE'
@@ -434,17 +430,13 @@ inherited FormTelaRecalcularTotalizador: TFormTelaRecalcularTotalizador
       FieldName = 'USUAICOD'
       Origin = 'DB.MOVIMENTOCAIXA.USUAICOD'
     end
-    object SQLMovimentoCaixaMVCXN2VLRDEB: TBCDField
+    object SQLMovimentoCaixaMVCXN2VLRDEB: TFloatField
       FieldName = 'MVCXN2VLRDEB'
       Origin = 'DB.MOVIMENTOCAIXA.MVCXN2VLRDEB'
-      Precision = 15
-      Size = 3
     end
-    object SQLMovimentoCaixaMVCXN2VLRCRED: TBCDField
+    object SQLMovimentoCaixaMVCXN2VLRCRED: TFloatField
       FieldName = 'MVCXN2VLRCRED'
       Origin = 'DB.MOVIMENTOCAIXA.MVCXN2VLRCRED'
-      Precision = 15
-      Size = 3
     end
     object SQLMovimentoCaixaMVCXCNORMREV: TStringField
       FieldName = 'MVCXCNORMREV'

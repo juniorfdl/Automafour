@@ -25,10 +25,10 @@ type
     MnFINPagarLancamentos: TMenuItem;
     MnFINPagarBaixarDocumentos: TMenuItem;
     Receber1: TMenuItem;
-    LanamentosdeContasaReceber1: TMenuItem;
-    BaixadeContasaReceber1: TMenuItem;
-    LanamentodeCartesCrediario1: TMenuItem;
-    EmissodeBoletos1: TMenuItem;
+    MnFINReceberLancamentos: TMenuItem;
+    MnFINReceberBaixarDocumentos: TMenuItem;
+    MnCartoesCreditoManual: TMenuItem;
+    MnFINReceberEmissaoBoletosDuplicatas: TMenuItem;
     ContaCorrent1: TMenuItem;
     LanamentodeMovimentao1: TMenuItem;
     RemessadeArquivo1: TMenuItem;
@@ -256,7 +256,6 @@ type
     procedure FATUMnRelatoriosNotasFiscaisEmitidasClick(Sender: TObject);
     procedure MnRelListagemdeItensClick(Sender: TObject);
     procedure MnGeracaodePedidosClick(Sender: TObject);
-    procedure FormActivate(Sender: TObject);
     procedure MnFATRelEmitidasporCFOPClick(Sender: TObject);
     procedure MnFATFreteConhecimentoClick(Sender: TObject);
     procedure MnFATRELListagemdeFretesClick(Sender: TObject);
@@ -434,6 +433,10 @@ type
     procedure MnADMRelClientesBloqueadosClick(Sender: TObject);
     procedure MnADMRelClientesporcidadeClick(Sender: TObject);
     procedure MnRelatorioLimitesCompraClienteClick(Sender: TObject);
+    procedure MnFINReceberLancamentosClick(Sender: TObject);
+    procedure MnFINReceberBaixarDocumentosClick(Sender: TObject);
+    procedure MnCartoesCreditoManualClick(Sender: TObject);
+    procedure MnFINReceberEmissaoBoletosDuplicatasClick(Sender: TObject);
   private
     procedure ApagarOrcamentos;
     procedure ApagarPreVendas;
@@ -498,7 +501,9 @@ uses
   RelatorioResumoOperacaoDiaria, RelatorioPontoDeEquilibrio,
   RelatorioProdutosSemMovto, RelatorioClienteCadastrado,
   RelatorioClienteBloqueado, RelatorioClientesPorCidade,
-  RelatorioClienteLimiteCreditoExcedido;
+  RelatorioClienteLimiteCreditoExcedido, CadastroContasReceber,
+  TelaBaixarDocumentosReceber, CadastroCartaoCreditoManual,
+  TelaImpressaoDuplicatas;
 
 
 
@@ -661,19 +666,6 @@ begin
     CriaFormulario(TFormTelaGeracaoPedido, 'FormTelaGeracaoPedido',False,False,True,'')
   else
     SoundPlay('Acesso Negado.wav',Sender); }
-end;
-
-procedure TFormPrincipal.FormActivate(Sender: TObject);
-begin
-  inherited;
-  {Dm.SQLConfigGeral.Close;
-  Dm.SQLConfigGeral.Open;
-  Dm.SQLConfigVenda.Close;
-  Dm.SQLConfigVenda.Open;
-  Dm.SQLUsuario.Close;
-  Dm.SQLUsuario.Open;
-  Dm.SQLTerminalAtivo.Close;
-  Dm.SQLTerminalAtivo.Open; }
 end;
 
 procedure TFormPrincipal.MnFATRelEmitidasporCFOPClick(Sender: TObject);
@@ -2420,6 +2412,45 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     CriaFormulario(TFormRelatorioClienteLimiteCreditoExcedido,'FormRelatorioClienteLimiteCreditoExcedido',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnFINReceberLancamentosClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroContasReceber, 'FormCadastroContasReceber',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnFINReceberBaixarDocumentosClick(Sender: TObject);
+begin
+  inherited;
+  if dm.SQLLocate('USUARIO','USUAICOD','USUACBXCRECFIN',INTTOSTR(UsuarioCorrente)) <> 'S' then
+    Showmessage('Você não possui acesso a esta rotina! Entre em contato com o administrador do sistema!')
+  else
+    if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+      CriaFormulario(TFormTelaBaixarDocumentosReceber, 'FormTelaBaixarDocumentosReceber',False,False,False,'')
+    else
+      soundplay('acesso negado.wav',sender);
+end;
+
+procedure TFormPrincipal.MnCartoesCreditoManualClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroCartaoCreditoManual, 'FormCadastroCartaoCreditoManual',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnFINReceberEmissaoBoletosDuplicatasClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormTelaImpressaoDuplicata,'FormTelaImpressaoDuplicata',False,False,True,'')
   else
     SoundPlay('Acesso Negado.wav',Sender);
 end;

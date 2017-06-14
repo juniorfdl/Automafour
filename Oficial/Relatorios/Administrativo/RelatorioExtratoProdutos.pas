@@ -59,8 +59,8 @@ type
     SQLProdutoMVESDMOV: TDateTimeField;
     SQLProdutoMVESICOD: TIntegerField;
     SQLProdutoPRODICOD: TIntegerField;
-    SQLProdutoMVESN3QTDENTRADA: TBCDField;
-    SQLProdutoMVESN3QTDSAIDA: TBCDField;
+    SQLProdutoMVESN3QTDENTRADA: TFloatField;
+    SQLProdutoMVESN3QTDSAIDA: TFloatField;
     SQLProdutoCUPOA13ID: TStringField;
     SQLProdutoMOVDA13ID: TStringField;
     SQLProdutoNOCPA13ID: TStringField;
@@ -82,8 +82,8 @@ type
     TblTemporariaMVESDMOV: TDateTimeField;
     TblTemporariaMVESICOD: TIntegerField;
     TblTemporariaPRODICOD: TIntegerField;
-    TblTemporariaMVESN3QTDENTRADA: TBCDField;
-    TblTemporariaMVESN3QTDSAIDA: TBCDField;
+    TblTemporariaMVESN3QTDENTRADA: TFloatField;
+    TblTemporariaMVESN3QTDSAIDA: TFloatField;
     TblTemporariaPRODA60DESCR: TStringField;
     TblTemporariaPRODA60REFER: TStringField;
     TblTemporariaCORA30DESCR: TStringField;

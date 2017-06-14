@@ -1,6 +1,6 @@
 inherited FormPrincipal: TFormPrincipal
   Tag = 4
-  Left = 20
+  Left = -6
   Top = 17
   Width = 1382
   Height = 744
@@ -9,7 +9,7 @@ inherited FormPrincipal: TFormPrincipal
   PixelsPerInch = 96
   TextHeight = 13
   inherited RodapePrincipal: TStatusBar
-    Top = 667
+    Top = 666
     Width = 1366
   end
   inherited ptopo: TAdvOfficeStatusBar
@@ -3615,17 +3615,21 @@ inherited FormPrincipal: TFormPrincipal
       end
       object Receber1: TMenuItem
         Caption = 'Receber'
-        object LanamentosdeContasaReceber1: TMenuItem
+        object MnFINReceberLancamentos: TMenuItem
           Caption = 'Lan'#231'amentos de Contas a Receber'
+          OnClick = MnFINReceberLancamentosClick
         end
-        object BaixadeContasaReceber1: TMenuItem
+        object MnFINReceberBaixarDocumentos: TMenuItem
           Caption = 'Baixa de Contas a Receber'
+          OnClick = MnFINReceberBaixarDocumentosClick
         end
-        object LanamentodeCartesCrediario1: TMenuItem
+        object MnCartoesCreditoManual: TMenuItem
           Caption = 'Lan'#231'amento de Cart'#245'es/Credi'#225'rio'
+          OnClick = MnCartoesCreditoManualClick
         end
-        object EmissodeBoletos1: TMenuItem
+        object MnFINReceberEmissaoBoletosDuplicatas: TMenuItem
           Caption = 'Emiss'#227'o de Boletos'
+          OnClick = MnFINReceberEmissaoBoletosDuplicatasClick
         end
       end
       object ContaCorrent1: TMenuItem

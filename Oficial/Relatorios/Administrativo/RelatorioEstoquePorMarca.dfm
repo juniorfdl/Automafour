@@ -47,10 +47,8 @@ inherited FormRelatorioEstoquePorMarca: TFormRelatorioEstoquePorMarca
   end
   inherited TblTemporaria: TTable
     TableName = 'SaldoPorMarca.db'
-    object TblTemporariaSALDO: TBCDField
+    object TblTemporariaSALDO: TFloatField
       FieldName = 'SALDO'
-      Precision = 15
-      Size = 3
     end
     object TblTemporariaEMPRICOD: TIntegerField
       FieldName = 'EMPRICOD'
@@ -134,10 +132,8 @@ inherited FormRelatorioEstoquePorMarca: TFormRelatorioEstoquePorMarca
       end>
     Left = 474
     Top = 5
-    object SQLSaldoSALDO: TBCDField
+    object SQLSaldoSALDO: TFloatField
       FieldName = 'SALDO'
-      Precision = 15
-      Size = 3
     end
     object SQLSaldoEMPRICOD: TIntegerField
       FieldName = 'EMPRICOD'

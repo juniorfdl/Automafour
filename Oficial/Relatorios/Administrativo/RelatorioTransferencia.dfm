@@ -778,17 +778,13 @@ inherited FormRelatorioTransferencia: TFormRelatorioTransferencia
       FieldName = 'PRODICOD'
       Origin = 'DB.TRANSFERENCIAITEM.PRODICOD'
     end
-    object SQLItemTRITN3QTDEENVIADA: TBCDField
+    object SQLItemTRITN3QTDEENVIADA: TFloatField
       FieldName = 'TRITN3QTDEENVIADA'
       Origin = 'DB.TRANSFERENCIAITEM.TRITN3QTDEENVIADA'
-      Precision = 15
-      Size = 3
     end
-    object SQLItemTRITN3QTDERECEBIDA: TBCDField
+    object SQLItemTRITN3QTDERECEBIDA: TFloatField
       FieldName = 'TRITN3QTDERECEBIDA'
       Origin = 'DB.TRANSFERENCIAITEM.TRITN3QTDERECEBIDA'
-      Precision = 15
-      Size = 3
     end
     object SQLItemTRITA254DIVERGENCIA: TStringField
       FieldName = 'TRITA254DIVERGENCIA'
@@ -942,17 +938,13 @@ inherited FormRelatorioTransferencia: TFormRelatorioTransferencia
       FieldName = 'PRODICOD'
       Origin = 'DB.TRANSFERENCIAITEM.PRODICOD'
     end
-    object tblRelTransferenciaItemTRITN3QTDEENVIADA: TBCDField
+    object tblRelTransferenciaItemTRITN3QTDEENVIADA: TFloatField
       FieldName = 'TRITN3QTDEENVIADA'
       Origin = 'DB.TRANSFERENCIAITEM.TRITN3QTDEENVIADA'
-      Precision = 15
-      Size = 3
     end
-    object tblRelTransferenciaItemTRITN3QTDERECEBIDA: TBCDField
+    object tblRelTransferenciaItemTRITN3QTDERECEBIDA: TFloatField
       FieldName = 'TRITN3QTDERECEBIDA'
       Origin = 'DB.TRANSFERENCIAITEM.TRITN3QTDERECEBIDA'
-      Precision = 15
-      Size = 3
     end
     object tblRelTransferenciaItemTRITA254DIVERGENCIA: TStringField
       FieldName = 'TRITA254DIVERGENCIA'
