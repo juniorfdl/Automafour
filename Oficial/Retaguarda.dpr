@@ -400,7 +400,8 @@ uses
   CadastroRemessaBancosContasReceber in 'Financeiro\CadastroRemessaBancosContasReceber.pas' {FormCadastroRemessaBancosContasReceber},
   TelaRemessaDocumentosReceber in 'Financeiro\TelaRemessaDocumentosReceber.pas',
   RemessaBanco in 'Financeiro\RemessaBanco.pas',
-  CadastroConfigRemessaBanco in 'Financeiro\CadastroConfigRemessaBanco.pas' {FormCadastroConfigRemessaBanco};
+  CadastroConfigRemessaBanco in 'Financeiro\CadastroConfigRemessaBanco.pas' {FormCadastroConfigRemessaBanco},
+  TelaExportacaoSPED in 'Integrador\TelaExportacaoSPED.pas' {FormTelaExportacaoSped};
 
 {$R *.res}
 
