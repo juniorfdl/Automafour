@@ -1,7 +1,7 @@
 inherited FormRelatorioResumoVendasportipo: TFormRelatorioResumoVendasportipo
   Left = 142
   Top = 123
-  Caption = 'Relat'#243'rio Resumo de Vendas por Tipo de Venda'
+  Caption = 'Relatório Resumo de Vendas por Tipo de Venda'
   ClientWidth = 788
   PixelsPerInch = 96
   TextHeight = 13
@@ -51,7 +51,7 @@ inherited FormRelatorioResumoVendasportipo: TFormRelatorioResumoVendasportipo
       end
       inherited GroupBox1: TGroupBox
         Top = 83
-        Caption = ' Per'#237'o&do '
+        Caption = ' Perío&do '
         inherited Label3: TLabel
           Left = 13
         end
@@ -446,11 +446,9 @@ inherited FormRelatorioResumoVendasportipo: TFormRelatorioResumoVendasportipo
       FieldName = 'NOFIDEMIS'
       Origin = 'DB.NOTAFISCAL.NOFIDEMIS'
     end
-    object SQLNOTAFISCALNOFIN2VLRNOTA: TBCDField
+    object SQLNOTAFISCALNOFIN2VLRNOTA: TFloatField
       FieldName = 'NOFIN2VLRNOTA'
       Origin = 'DB.NOTAFISCAL.NOFIN2VLRNOTA'
-      Precision = 15
-      Size = 3
     end
     object SQLNOTAFISCALNOFICSTATUS: TStringField
       FieldName = 'NOFICSTATUS'

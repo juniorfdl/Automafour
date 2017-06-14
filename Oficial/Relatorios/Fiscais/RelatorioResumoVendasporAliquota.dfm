@@ -416,10 +416,8 @@ inherited FormRelatorioResumoVendasporAliquota: TFormRelatorioResumoVendasporAli
     object SQLCupomICMSICOD: TIntegerField
       FieldName = 'ICMSICOD'
     end
-    object SQLCupomCPITN3QTD: TBCDField
+    object SQLCupomCPITN3QTD: TFloatField
       FieldName = 'CPITN3QTD'
-      Precision = 15
-      Size = 3
     end
     object SQLCupomVLRTOTALITEM: TFloatField
       FieldName = 'VLRTOTALITEM'
@@ -494,10 +492,8 @@ inherited FormRelatorioResumoVendasporAliquota: TFormRelatorioResumoVendasporAli
     object SQLNotasICMSICOD: TIntegerField
       FieldName = 'ICMSICOD'
     end
-    object SQLNotasNFITN3QUANT: TBCDField
+    object SQLNotasNFITN3QUANT: TFloatField
       FieldName = 'NFITN3QUANT'
-      Precision = 15
-      Size = 3
     end
     object SQLNotasVLRTOTALITEM: TFloatField
       FieldName = 'VLRTOTALITEM'

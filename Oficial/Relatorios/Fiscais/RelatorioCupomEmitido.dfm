@@ -363,20 +363,14 @@ inherited FormRelatorioCupomEmitido: TFormRelatorioCupomEmitido
     object SQLCupomItemPRODICOD: TIntegerField
       FieldName = 'PRODICOD'
     end
-    object SQLCupomItemCPITN3QTD: TBCDField
+    object SQLCupomItemCPITN3QTD: TFloatField
       FieldName = 'CPITN3QTD'
-      Precision = 15
-      Size = 3
     end
-    object SQLCupomItemCPITN3VLRUNIT: TBCDField
+    object SQLCupomItemCPITN3VLRUNIT: TFloatField
       FieldName = 'CPITN3VLRUNIT'
-      Precision = 15
-      Size = 3
     end
-    object SQLCupomItemCPITN2DESC: TBCDField
+    object SQLCupomItemCPITN2DESC: TFloatField
       FieldName = 'CPITN2DESC'
-      Precision = 15
-      Size = 3
     end
     object SQLCupomItemProdutoLookup: TStringField
       FieldKind = fkCalculated
@@ -393,20 +387,14 @@ inherited FormRelatorioCupomEmitido: TFormRelatorioCupomEmitido
     object TblCupomItemPRODICOD: TIntegerField
       FieldName = 'PRODICOD'
     end
-    object TblCupomItemCPITN3QTD: TBCDField
+    object TblCupomItemCPITN3QTD: TFloatField
       FieldName = 'CPITN3QTD'
-      Precision = 15
-      Size = 3
     end
-    object TblCupomItemCPITN3VLRUNIT: TBCDField
+    object TblCupomItemCPITN3VLRUNIT: TFloatField
       FieldName = 'CPITN3VLRUNIT'
-      Precision = 15
-      Size = 3
     end
-    object TblCupomItemCPITN2DESC: TBCDField
+    object TblCupomItemCPITN2DESC: TFloatField
       FieldName = 'CPITN2DESC'
-      Precision = 15
-      Size = 3
     end
     object TblCupomItemProdutoLookup: TStringField
       FieldKind = fkCalculated

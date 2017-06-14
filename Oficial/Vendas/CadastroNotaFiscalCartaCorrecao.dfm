@@ -171,7 +171,7 @@ inherited FormCadastroNotaFiscalCartaCorrecao: TFormCadastroNotaFiscalCartaCorre
               Top = 3
               Width = 76
               Height = 13
-              Caption = 'Data Emissão'
+              Caption = 'Data Emiss'#227'o'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 8404992
               Font.Height = -11
@@ -229,13 +229,13 @@ inherited FormCadastroNotaFiscalCartaCorrecao: TFormCadastroNotaFiscalCartaCorre
   end
   inherited PopupMenuDiversos: TPopupMenu
     object EnviarCarta: TMenuItem
-      Caption = 'Enviar Carta de Correção'
+      Caption = 'Enviar Carta de Corre'#231#227'o'
       OnClick = EnviarCartaClick
     end
   end
   inherited PopupMenuImpressao: TPopupMenu
     object ImrprimirCartaCorrecao: TMenuItem
-      Caption = 'Imrprimir Carta de Correção'
+      Caption = 'Imrprimir Carta de Corre'#231#227'o'
       OnClick = ImrprimirCartaCorrecaoClick
     end
   end

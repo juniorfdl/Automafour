@@ -26,7 +26,7 @@ object FormTelaGeralTEMPLATE: TFormTelaGeralTEMPLATE
     Left = 0
     Top = 0
     Width = 803
-    Height = 352
+    Height = 351
     Align = alClient
     Color = clWhite
     ParentColor = False
@@ -35,7 +35,7 @@ object FormTelaGeralTEMPLATE: TFormTelaGeralTEMPLATE
       Left = 0
       Top = 80
       Width = 799
-      Height = 268
+      Height = 267
       Align = alClient
       BevelOuter = bvNone
       Color = 16249066
@@ -44,7 +44,7 @@ object FormTelaGeralTEMPLATE: TFormTelaGeralTEMPLATE
         Left = 0
         Top = 0
         Width = 130
-        Height = 268
+        Height = 267
         Align = alLeft
         BevelOuter = bvNone
         Color = 14731440

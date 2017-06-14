@@ -1,12 +1,7 @@
 inherited FormPrincipal: TFormPrincipal
   Tag = 4
-<<<<<<< HEAD
   Left = -6
   Top = 17
-=======
-  Left = -2
-  Top = 31
->>>>>>> refs/remotes/origin/master
   Width = 1382
   Height = 744
   Caption = 'Advanced Control'

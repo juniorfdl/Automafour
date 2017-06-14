@@ -160,20 +160,14 @@ inherited FormRelatorioNotaFiscalEmitidaPorCFOP: TFormRelatorioNotaFiscalEmitida
     object TblTemporariaNOFIDEMIS: TDateTimeField
       FieldName = 'NOFIDEMIS'
     end
-    object TblTemporariaNOFIN2VLRICMS: TBCDField
+    object TblTemporariaNOFIN2VLRICMS: TFloatField
       FieldName = 'NOFIN2VLRICMS'
-      Precision = 15
-      Size = 2
     end
-    object TblTemporariaNOFIN2VLRNOTA: TBCDField
+    object TblTemporariaNOFIN2VLRNOTA: TFloatField
       FieldName = 'NOFIN2VLRNOTA'
-      Precision = 15
-      Size = 3
     end
-    object TblTemporariaNOFIN2VLRSUBS: TBCDField
+    object TblTemporariaNOFIN2VLRSUBS: TFloatField
       FieldName = 'NOFIN2VLRSUBS'
-      Precision = 15
-      Size = 3
     end
     object TblTemporariaFORNA60RAZAOSOC: TStringField
       FieldName = 'FORNA60RAZAOSOC'
@@ -199,10 +193,8 @@ inherited FormRelatorioNotaFiscalEmitidaPorCFOP: TFormRelatorioNotaFiscalEmitida
       FixedChar = True
       Size = 5
     end
-    object TblTemporariaNOFIN2BASCALCICMS: TBCDField
+    object TblTemporariaNOFIN2BASCALCICMS: TFloatField
       FieldName = 'NOFIN2BASCALCICMS'
-      Precision = 15
-      Size = 2
     end
     object TblTemporariaPLRCICOD: TIntegerField
       FieldName = 'PLRCICOD'
@@ -228,10 +220,8 @@ inherited FormRelatorioNotaFiscalEmitidaPorCFOP: TFormRelatorioNotaFiscalEmitida
       FixedChar = True
       Size = 60
     end
-    object TblTemporariaNOFIN2VLRICMSFRETE: TBCDField
+    object TblTemporariaNOFIN2VLRICMSFRETE: TFloatField
       FieldName = 'NOFIN2VLRICMSFRETE'
-      Precision = 15
-      Size = 3
     end
   end
   object SQLNotaFiscal: TRxQuery
@@ -386,20 +376,14 @@ inherited FormRelatorioNotaFiscalEmitidaPorCFOP: TFormRelatorioNotaFiscalEmitida
     object SQLNotaFiscalNOFIDEMIS: TDateTimeField
       FieldName = 'NOFIDEMIS'
     end
-    object SQLNotaFiscalNOFIN2VLRICMS: TBCDField
+    object SQLNotaFiscalNOFIN2VLRICMS: TFloatField
       FieldName = 'NOFIN2VLRICMS'
-      Precision = 15
-      Size = 2
     end
-    object SQLNotaFiscalNOFIN2VLRNOTA: TBCDField
+    object SQLNotaFiscalNOFIN2VLRNOTA: TFloatField
       FieldName = 'NOFIN2VLRNOTA'
-      Precision = 15
-      Size = 3
     end
-    object SQLNotaFiscalNOFIN2VLRSUBS: TBCDField
+    object SQLNotaFiscalNOFIN2VLRSUBS: TFloatField
       FieldName = 'NOFIN2VLRSUBS'
-      Precision = 15
-      Size = 3
     end
     object SQLNotaFiscalFORNA60RAZAOSOC: TStringField
       FieldName = 'FORNA60RAZAOSOC'
@@ -425,10 +409,8 @@ inherited FormRelatorioNotaFiscalEmitidaPorCFOP: TFormRelatorioNotaFiscalEmitida
       FixedChar = True
       Size = 5
     end
-    object SQLNotaFiscalNOFIN2BASCALCICMS: TBCDField
+    object SQLNotaFiscalNOFIN2BASCALCICMS: TFloatField
       FieldName = 'NOFIN2BASCALCICMS'
-      Precision = 15
-      Size = 2
     end
     object SQLNotaFiscalPLRCICOD: TIntegerField
       FieldName = 'PLRCICOD'
@@ -454,10 +436,8 @@ inherited FormRelatorioNotaFiscalEmitidaPorCFOP: TFormRelatorioNotaFiscalEmitida
       FixedChar = True
       Size = 60
     end
-    object SQLNotaFiscalNOFIN2VLRICMSFRETE: TBCDField
+    object SQLNotaFiscalNOFIN2VLRICMSFRETE: TFloatField
       FieldName = 'NOFIN2VLRICMSFRETE'
-      Precision = 15
-      Size = 3
     end
   end
   object DSSQLCFOP: TDataSource

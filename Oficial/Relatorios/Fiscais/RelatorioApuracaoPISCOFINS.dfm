@@ -60,20 +60,16 @@ inherited FormRelatorioApuracaoPisCofins: TFormRelatorioApuracaoPisCofins
       FixedChar = True
       Size = 2
     end
-    object SQLVendasPRODN2ALIQPIS: TBCDField
+    object SQLVendasPRODN2ALIQPIS: TFloatField
       FieldName = 'PRODN2ALIQPIS'
-      Precision = 15
-      Size = 2
     end
     object SQLVendasPRODA2CSTCOFINS: TStringField
       FieldName = 'PRODA2CSTCOFINS'
       FixedChar = True
       Size = 2
     end
-    object SQLVendasPRODN2ALIQCOFINS: TBCDField
+    object SQLVendasPRODN2ALIQCOFINS: TFloatField
       FieldName = 'PRODN2ALIQCOFINS'
-      Precision = 15
-      Size = 2
     end
   end
   object ppReport1: TppReport

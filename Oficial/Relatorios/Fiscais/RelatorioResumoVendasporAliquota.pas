@@ -31,7 +31,7 @@ type
     SQLCupomPRODICOD: TIntegerField;
     SQLCupomPRODA60DESCR: TStringField;
     SQLCupomICMSICOD: TIntegerField;
-    SQLCupomCPITN3QTD: TBCDField;
+    SQLCupomCPITN3QTD: TFloatField;
     SQLCupomVLRTOTALITEM: TFloatField;
     SQLNotasNOFIINUMERO: TIntegerField;
     SQLNotasEMPRICOD: TIntegerField;
@@ -39,7 +39,7 @@ type
     SQLNotasPRODICOD: TIntegerField;
     SQLNotasPRODA60DESCR: TStringField;
     SQLNotasICMSICOD: TIntegerField;
-    SQLNotasNFITN3QUANT: TBCDField;
+    SQLNotasNFITN3QUANT: TFloatField;
     SQLNotasVLRTOTALITEM: TFloatField;
     TblTemporariaNro_Venda: TStringField;
     TblTemporariaProdIcod: TIntegerField;
