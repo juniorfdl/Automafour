@@ -376,6 +376,7 @@ uses
   RelatorioClienteBloqueado in 'Relatorios\Administrativo\RelatorioClienteBloqueado.pas' {FormRelatorioClienteBloqueado},
   RelatorioClientesPorCidade in 'Relatorios\Administrativo\RelatorioClientesPorCidade.pas' {FormRelatorioClienteporCidade},
   RelatorioClienteLimiteCreditoExcedido in 'Relatorios\Administrativo\RelatorioClienteLimiteCreditoExcedido.pas' {FormRelatorioClienteLimiteCreditoExcedido},
+<<<<<<< HEAD
   CadastroContasReceber in 'Financeiro\CadastroContasReceber.pas' {FormCadastroContasReceber},
   CadastroPlanodeContas in 'Financeiro\CadastroPlanodeContas.pas' {FormCadastroPlanodeContas},
   TelaConsultaRecebimento in 'Financeiro\TelaConsultaRecebimento.pas' {FormTelaConsultaRecebimento},
@@ -387,6 +388,16 @@ uses
   TelaPesquisaDocumentoReceber in 'Financeiro\TelaPesquisaDocumentoReceber.pas' {FormTelaPesquisarDocumentoReceber},
   TelaBaixarDocumentosReceberPlanoConta in 'Financeiro\TelaBaixarDocumentosReceberPlanoConta.pas' {FormTelaBaixarDocumentosReceberPlanoConta},
   CadastroCartaoCreditoManual in 'Financeiro\CadastroCartaoCreditoManual.pas' {FormCadastroCartaoCreditoManual};
+=======
+  RelatorioCupomEmitido in 'Relatorios\Fiscais\RelatorioCupomEmitido.pas' {FormRelatorioCupomEmitido},
+  RelatorioCupomQuitado in 'Relatorios\Fiscais\RelatorioCupomQuitado.pas' {FormRelatorioCupomQuitado},
+  RelatorioApuracaoPISCOFINS in 'Relatorios\Fiscais\RelatorioApuracaoPISCOFINS.pas' {FormRelatorioApuracaoPisCofins},
+  RelatorioApuracaoICMS in 'Relatorios\Fiscais\RelatorioApuracaoICMS.pas' {FormRelatorioApuracaoICMS},
+  RelatorioNotaFiscalEmitidaPorCFOP in 'Relatorios\Fiscais\RelatorioNotaFiscalEmitidaPorCFOP.pas' {FormRelatorioNotaFiscalEmitidaPorCFOP},
+  RelatorioResumoVendasportipo in 'Relatorios\Fiscais\RelatorioResumoVendasportipo.pas' {FormRelatorioResumoVendasportipo},
+  RelatorioResumoVendasporAliquota in 'Relatorios\Fiscais\RelatorioResumoVendasporAliquota.pas' {FormRelatorioResumoVendasporAliquota},
+  RelatorioContasRecebidas in 'Relatorios\Fiscais\RelatorioContasRecebidas.pas' {FormRelatorioContasRecebidas};
+>>>>>>> refs/remotes/origin/master
 
 {$R *.res}
 

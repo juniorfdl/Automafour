@@ -1,7 +1,12 @@
 inherited FormPrincipal: TFormPrincipal
   Tag = 4
+<<<<<<< HEAD
   Left = -6
   Top = 17
+=======
+  Left = -2
+  Top = 31
+>>>>>>> refs/remotes/origin/master
   Width = 1382
   Height = 744
   Caption = 'Advanced Control'
@@ -3965,27 +3970,35 @@ inherited FormPrincipal: TFormPrincipal
         Caption = 'Fiscais'#9#9
         object CuponsEmitidos1: TMenuItem
           Caption = 'Cupons Emitidos'
+          OnClick = MnADMRelCupomEmitidoClick
         end
         object CuponsQuitados1: TMenuItem
           Caption = 'Cupons Quitados'
+          OnClick = MnADMRelCupomQuitadoClick
         end
         object ApuraodePisCofins1: TMenuItem
           Caption = 'Apura'#231#227'o de Pis/Cofins'
+          OnClick = MnADMRELApuracaodePisCofinsClick
         end
         object ApuraodeICMS1: TMenuItem
           Caption = 'Apura'#231#227'o de ICMS'
+          OnClick = MnADMRELApuracaodeICMSClick
         end
         object VendasporCFOP1: TMenuItem
           Caption = 'Vendas por CFOP'
+          OnClick = MnADMRelFiscalNotasFiscaisCuponsEmitidosPorCFOPClick
         end
         object VendasporTipo1: TMenuItem
           Caption = 'Vendas por Tipo'
+          OnClick = VendasporTipo1Click
         end
         object VendasporAlquota1: TMenuItem
           Caption = 'Vendas por Al'#237'quota'
+          OnClick = MnVendasporAliquotasparaContabilidadeClick
         end
         object ContasRecebidas1: TMenuItem
           Caption = 'Contas Recebidas'
+          OnClick = MnContasRecebidasparaContabidadeClick
         end
       end
       object Financeiro2: TMenuItem

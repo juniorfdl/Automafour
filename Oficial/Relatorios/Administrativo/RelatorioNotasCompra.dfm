@@ -19,7 +19,7 @@ inherited FormRelatorioNotasCompra: TFormRelatorioNotasCompra
       Height = 411
       inherited BtnVisualizar: TSpeedButton
         Left = 290
-        Top = 379
+        Top = 382
       end
       object Label5: TLabel [1]
         Left = 15
@@ -198,7 +198,7 @@ inherited FormRelatorioNotasCompra: TFormRelatorioNotasCompra
       end
       object GroupBox5: TGroupBox
         Left = 13
-        Top = 361
+        Top = 367
         Width = 211
         Height = 40
         Caption = ' Ordernar por '
@@ -242,7 +242,7 @@ inherited FormRelatorioNotasCompra: TFormRelatorioNotasCompra
       end
       object ckTotAliq: TCheckBox
         Left = 269
-        Top = 364
+        Top = 365
         Width = 147
         Height = 17
         Caption = 'Totalizar por Aliquotas'
