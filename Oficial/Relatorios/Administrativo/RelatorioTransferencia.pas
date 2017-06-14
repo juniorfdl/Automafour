@@ -40,8 +40,8 @@ type
     SQLItemTRITICOD: TIntegerField;
     SQLItemTRFEA13ID: TStringField;
     SQLItemPRODICOD: TIntegerField;
-    SQLItemTRITN3QTDEENVIADA: TBCDField;
-    SQLItemTRITN3QTDERECEBIDA: TBCDField;
+    SQLItemTRITN3QTDEENVIADA: TFloatField;
+    SQLItemTRITN3QTDERECEBIDA: TFloatField;
     SQLItemTRITA254DIVERGENCIA: TStringField;
     SQLItemREGISTRO: TDateTimeField;
     SQLItemPENDENTE: TStringField;
@@ -51,8 +51,8 @@ type
     tblRelTransferenciaItemTRITICOD: TIntegerField;
     tblRelTransferenciaItemTRFEA13ID: TStringField;
     tblRelTransferenciaItemPRODICOD: TIntegerField;
-    tblRelTransferenciaItemTRITN3QTDEENVIADA: TBCDField;
-    tblRelTransferenciaItemTRITN3QTDERECEBIDA: TBCDField;
+    tblRelTransferenciaItemTRITN3QTDEENVIADA: TFloatField;
+    tblRelTransferenciaItemTRITN3QTDERECEBIDA: TFloatField;
     tblRelTransferenciaItemTRITA254DIVERGENCIA: TStringField;
     tblRelTransferenciaItemREGISTRO: TDateTimeField;
     tblRelTransferenciaItemPENDENTE: TStringField;

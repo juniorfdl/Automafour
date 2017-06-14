@@ -1,7 +1,7 @@
 inherited FormRelatorioExtratoProdutos: TFormRelatorioExtratoProdutos
   Left = 240
   Top = 109
-  Caption = 'Relat'#243'rio de Movimenta'#231#227'o de Estoque'
+  Caption = 'Relatório de Movimentação de Estoque'
   ClientHeight = 587
   ClientWidth = 821
   PixelsPerInch = 96
@@ -88,7 +88,7 @@ inherited FormRelatorioExtratoProdutos: TFormRelatorioExtratoProdutos
           Top = 95
           Width = 49
           Height = 13
-          Caption = 'Varia'#231#227'o'
+          Caption = 'Variação'
           Font.Charset = ANSI_CHARSET
           Font.Color = 8404992
           Font.Height = -11
@@ -140,7 +140,7 @@ inherited FormRelatorioExtratoProdutos: TFormRelatorioExtratoProdutos
           Top = 133
           Width = 44
           Height = 13
-          Caption = 'Cole'#231#227'o'
+          Caption = 'Coleção'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 8404992
           Font.Height = -11
@@ -256,7 +256,7 @@ inherited FormRelatorioExtratoProdutos: TFormRelatorioExtratoProdutos
           Top = 13
           Width = 61
           Height = 17
-          Caption = 'C'#243'digo'
+          Caption = 'Código'
           Checked = True
           Font.Charset = ANSI_CHARSET
           Font.Color = 8404992
@@ -272,7 +272,7 @@ inherited FormRelatorioExtratoProdutos: TFormRelatorioExtratoProdutos
           Top = 13
           Width = 79
           Height = 17
-          Caption = 'Descri'#231#227'o'
+          Caption = 'Descrição'
           Font.Charset = ANSI_CHARSET
           Font.Color = 8404992
           Font.Height = -11
@@ -340,7 +340,7 @@ inherited FormRelatorioExtratoProdutos: TFormRelatorioExtratoProdutos
         Top = 51
         Width = 356
         Height = 43
-        Caption = 'Opera'#231#227'o de Estoque'
+        Caption = 'Operação de Estoque'
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -366,7 +366,7 @@ inherited FormRelatorioExtratoProdutos: TFormRelatorioExtratoProdutos
         Top = 258
         Width = 148
         Height = 17
-        Caption = 'Desconsiderar Per'#237'odo'
+        Caption = 'Desconsiderar Período'
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -406,7 +406,7 @@ inherited FormRelatorioExtratoProdutos: TFormRelatorioExtratoProdutos
         Top = 141
         Width = 356
         Height = 43
-        Caption = 'Produto / C'#243'digo / Cor / Tamanho'
+        Caption = 'Produto / Código / Cor / Tamanho'
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -436,7 +436,7 @@ inherited FormRelatorioExtratoProdutos: TFormRelatorioExtratoProdutos
         Top = 277
         Width = 186
         Height = 17
-        Caption = 'Mostrar Totais por Opera'#231#227'o'
+        Caption = 'Mostrar Totais por Operação'
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -491,12 +491,12 @@ inherited FormRelatorioExtratoProdutos: TFormRelatorioExtratoProdutos
       FieldName = 'DOCUMENTO'
       Size = 30
     end
-    object TblTemporariaMVESN3QTDENTRADA: TBCDField
+    object TblTemporariaMVESN3QTDENTRADA: TFloatField
       FieldName = 'MVESN3QTDENTRADA'
       Precision = 15
       Size = 3
     end
-    object TblTemporariaMVESN3QTDSAIDA: TBCDField
+    object TblTemporariaMVESN3QTDSAIDA: TFloatField
       FieldName = 'MVESN3QTDSAIDA'
       Precision = 15
       Size = 3
@@ -870,12 +870,12 @@ inherited FormRelatorioExtratoProdutos: TFormRelatorioExtratoProdutos
     object SQLProdutoPRODICOD: TIntegerField
       FieldName = 'PRODICOD'
     end
-    object SQLProdutoMVESN3QTDENTRADA: TBCDField
+    object SQLProdutoMVESN3QTDENTRADA: TFloatField
       FieldName = 'MVESN3QTDENTRADA'
       Precision = 15
       Size = 3
     end
-    object SQLProdutoMVESN3QTDSAIDA: TBCDField
+    object SQLProdutoMVESN3QTDSAIDA: TFloatField
       FieldName = 'MVESN3QTDSAIDA'
       Precision = 15
       Size = 3

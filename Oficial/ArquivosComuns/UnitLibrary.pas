@@ -284,11 +284,218 @@ function  CriaParcelas(SQLParcelasPrazo,
                       DiminuiAcresc : double ;
                       var ValorJuro, Acrescimo, EntradaCalc, TaxaCred:Double ) : Variant ;
 procedure CalculaImpostosNotaFiscalItem(DataSet : TRXQuery; DataSource : TDataSource; FatorConversaoUnidade : Double);
-
+procedure AlterPortadorTipoDocContaReceber(IdContaReceber,NovoPortador,NovoTipoDoc : String);
+function LancaChequeRecebido(Empresa,Terminal,Numerario,Portador,Alinea:Integer; Cliente,Banco,Agencia,Conta,NroChequeRecbto,Titular, CPFCGC, IdContaReceber:String;ValorCheque:Double;DataVencimento:TDateTime) : String;
+procedure LancaValorJuroContasReceber(IDContasReceber : String; VlrJuro : Double);
 
 implementation
 
 uses DataModulo, TelaAutenticaUsuario, TelaAvisoDebito;
+     
+procedure LancaValorJuroContasReceber(IDContasReceber : String; VlrJuro : Double);
+var
+  Query : TrxQuery;
+begin
+  Query := TRxQuery.Create(DM);
+  Query.DatabaseName := 'DB';
+  DM.DB.StartTransaction;
+  Query.SQL.Clear;
+  Query.SQL.Add('UPDATE CONTASRECEBER SET Pendente="S", CTRCN2TOTJUROREC = ' + ConvFloatToStr(VlrJuro));
+  Query.SQL.Add('WHERE CTRCA13ID = "' + IDContasReceber + '"');
+  try
+    Query.ExecSQL;
+    DM.DB.Commit;
+  except
+    on E:Exception do
+      begin
+        DM.DB.Rollback;
+        Informa('Problemas ao lançar juros, ANOTE O ERRO: ' + E.Message);
+        Application.ProcessMessages;
+      end;
+  end;
+end;
+
+
+function LancaChequeRecebido(Empresa,Terminal,Numerario,Portador,Alinea:Integer; Cliente,Banco,Agencia,Conta,NroChequeRecbto,Titular, CPFCGC, IdContaReceber:String;ValorCheque:Double;DataVencimento:TDateTime) : String;
+var
+  SqlCheque,SqlGeral : TRxQuery;
+  ProximoCodigo : Double;
+  IDCheque : String;
+  Sair : Boolean;
+begin
+  SqlCheque := TRxQuery.Create(DM);
+  SqlCheque.DatabaseName := 'DB';
+  Sair := False;
+  while not Sair do
+    begin
+      try
+        DM.DB.StartTransaction;
+        SqlCheque.Close;
+        SqlCheque.SQL.Clear;
+        SqlCheque.SQL.Add('INSERT INTO CONTASRECEBER (');
+        SqlCheque.SQL.Add('CTRCA13ID , ');
+        SqlCheque.SQL.Add('EMPRICOD , ');
+        SqlCheque.SQL.Add('TERMICOD , ');
+        SqlCheque.SQL.Add('CTRCICOD , ');
+        SqlCheque.SQL.Add('CLIEA13ID , ');
+        SqlCheque.SQL.Add('CTRCCSTATUS , ');
+        SqlCheque.SQL.Add('CTRCINROPARC , ');
+        SqlCheque.SQL.Add('CTRCDVENC , ');
+        SqlCheque.SQL.Add('CTRCN2VLR , ');
+        SqlCheque.SQL.Add('CTRCN2DESCFIN , ');
+        SqlCheque.SQL.Add('NUMEICOD , ');
+        SqlCheque.SQL.Add('PORTICOD , ');
+        SqlCheque.SQL.Add('CTRCN2TXJURO , ');
+        SqlCheque.SQL.Add('CTRCN2TXMULTA , ');
+        SqlCheque.SQL.Add('CTRCA5TIPOPADRAO , ');
+        SqlCheque.SQL.Add('CTRCDULTREC , ');
+        SqlCheque.SQL.Add('CTRCN2TOTREC , ');
+        SqlCheque.SQL.Add('CTRCN2TOTJUROREC , ');
+        SqlCheque.SQL.Add('CTRCN2TOTMULTAREC , ');
+        SqlCheque.SQL.Add('CTRCN2TOTDESCREC , ');
+        SqlCheque.SQL.Add('CTRCN2TOTMULTACOBR , ');
+        SqlCheque.SQL.Add('EMPRICODULTREC , ');
+        SqlCheque.SQL.Add('CUPOA13ID , ');
+        SqlCheque.SQL.Add('TPDCICOD , ');
+        SqlCheque.SQL.Add('PLCTA15COD , ');
+        SqlCheque.SQL.Add('CTRCA30NRODUPLICBANCO , ');
+        SqlCheque.SQL.Add('NOFIA13ID , ');
+        SqlCheque.SQL.Add('CTRCDEMIS , ');
+        SqlCheque.SQL.Add('PENDENTE , ');
+        SqlCheque.SQL.Add('REGISTRO , ');
+        SqlCheque.SQL.Add('CTRCDREABILSPC , ');
+        //Dados do cheque
+        SqlCheque.SQL.Add('BANCA5CODCHQ , ');
+        SqlCheque.SQL.Add('CTRCA10AGENCIACHQ , ');
+        SqlCheque.SQL.Add('CTRCA15CONTACHQ , ');
+        SqlCheque.SQL.Add('CTRCA15NROCHQ , ');
+        SqlCheque.SQL.Add('CTRCA60TITULARCHQ , ');
+        SqlCheque.SQL.Add('CTRCA20CGCCPFCHQ , ');
+        SqlCheque.SQL.Add('CTRCDDEPOSCHQ , ');
+        SqlCheque.SQL.Add('ALINICOD , ');
+        SqlCheque.SQL.Add('PDVDA13ID , ');
+        SqlCheque.SQL.Add('CTRCDESTORNO, ');
+        SqlCheque.SQL.Add('CTRCA13CTRCAIDCHQ ) ');
+        SqlCheque.SQL.Add('VALUES ( ');
+
+        // Valores dos campos
+        SqlGeral := TRxQuery.Create(DM);
+        SqlGeral.DatabaseName := 'DB';
+        SqlGeral.Close;
+        SqlGeral.SQL.Clear;
+        SqlGeral.SQL.Add('SELECT MAX(CTRCICOD) FROM CONTASRECEBER');
+        SqlGeral.Open;
+
+        if SqlGeral.IsEmpty then
+          ProximoCodigo := 1
+        else
+          ProximoCodigo := SqlGeral.FindField('MAX').AsFloat + 1;
+
+        IDCheque := FormatFloat('000',Empresa) + FormatFloat('000',TerminalAtual) + FormatFloat('000000',ProximoCodigo);
+        IDCheque := IDCheque + DigitVerifEAN(IDCheque);
+
+        SqlCheque.SQL.Add('"' + IDCheque +'"'+ ' , ');
+        SqlCheque.SQL.Add(IntToStr(Empresa)  + ' , ');
+        SqlCheque.SQL.Add(IntToStr(TerminalAtual) + ' , ');
+        SqlCheque.SQL.Add(FloatToStr(ProximoCodigo) + ' , ');
+        SqlCheque.SQL.Add('"' + Cliente + '" , ');
+        SqlCheque.SQL.Add('"A" , ');
+        SqlCheque.SQL.Add('Null , ');
+        SqlCheque.SQL.Add('"' + FormatDateTime('mm/dd/yyyy',DataVencimento)+'"' + ' , ');
+        SqlCheque.SQL.Add(ConvFloatToStr(ValorCheque) + ' , ');
+        SqlCheque.SQL.Add('Null , ');
+        SqlCheque.SQL.Add(IntToStr(Numerario) + ' , ');
+        SqlCheque.SQL.Add(IntToStr(Portador) + ' , ');
+        SqlCheque.SQL.Add('Null , ');
+        SqlCheque.SQL.Add('Null , ');
+
+        if DataVencimento <> Now then
+          SqlCheque.SQL.Add('"CHQP" , ')
+        else
+          SqlCheque.SQL.Add('"CHQV" , ');
+
+        SqlCheque.SQL.Add('Null , '); // Data ult. recbto
+        SqlCheque.SQL.Add('0 , '); // Total recbto
+        SqlCheque.SQL.Add('0 , '); // Total juro recbto
+        SqlCheque.SQL.Add('0 , '); // Total multa recbto
+        SqlCheque.SQL.Add('0 , '); // Total desc recbto
+        SqlCheque.SQL.Add('0 , '); // Total multa cobranca recbto
+        SqlCheque.SQL.Add('Null , '); // Empresa ult. recbto.
+        SqlCheque.SQL.Add('Null , '); // Id Cupom
+        SqlCheque.SQL.Add('Null , '); // Tipo Doc.
+        SqlCheque.SQL.Add('Null , '); // Plano Contas
+        SqlCheque.SQL.Add('Null , '); // Nro. Duplic. Banco
+        SqlCheque.SQL.Add('Null , '); // Id Nota Fiscal
+        SqlCheque.SQL.Add('"' + FormatDateTime('mm/dd/yyyy',Now)+ '"' + ' , ');
+        SqlCheque.SQL.Add('"S" , ');
+        SqlCheque.SQL.Add('"' + FormatDateTime('mm/dd/yyyy',Now)+ '"' +' , ');
+        SqlCheque.SQL.Add('Null , ');
+        //Valores do cheque
+        SqlCheque.SQL.Add('"'+ Banco + '"'+' , ');
+        SqlCheque.SQL.Add('"'+ Agencia + '"'+' , ');
+        SqlCheque.SQL.Add('"'+ Conta + '"'+' , ');
+        SqlCheque.SQL.Add('"'+ NroChequeRecbto + '"'+' , ');
+        SqlCheque.SQL.Add('"'+ Titular + '"'+' , ');
+        SqlCheque.SQL.Add('"'+ CPFCGC + '"'+' , ');
+        SqlCheque.SQL.Add('Null , '); // Data deposito
+        SqlCheque.SQL.Add(IntToStr(Alinea) + ' , ');
+        SqlCheque.SQL.Add('Null , '); // Id Pedido Venda
+        SqlCheque.SQL.Add('Null ,'); // Dt. Estorno
+        SqlCheque.SQL.Add('"'+IdContaReceber+'")'); // ID CONTAS RECEBER
+        SqlCheque.ExecSQL;
+        Dm.DB.Commit;
+        LancaChequeRecebido := IDCheque;
+        Sair := True;
+      except
+        on E:Exception do
+          begin
+            ShowMessage('Problemas ao incluir o cheque, anote o erro: ' + E.Message);
+            Dm.DB.Rollback;
+            Sair := False;
+          end;
+      end;
+    end;
+end;
+
+
+procedure AlterPortadorTipoDocContaReceber(IdContaReceber,NovoPortador,NovoTipoDoc : String);
+var
+  Query : TQuery;
+begin
+  TRY
+    if IdContaReceber <> '' then
+      begin
+        Query := Tquery.Create(DM);
+        Query.DatabaseName := 'DB';
+        if NovoPortador <> '' then
+          begin
+            Query.Close;
+            Query.SQL.Clear;
+            Query.SQL.ADD('UPDATE CONTASRECEBER SET Pendente="S", PORTICOD = ' + NovoPortador);
+            Query.SQL.ADD(' WHERE CTRCA13ID = "' + IdContaReceber + '"');
+            Query.ExecSQL;
+          end;
+        if NovoTipoDoc <> '' then
+          begin
+            Query.Close;
+            Query.SQL.Clear;
+            Query.SQL.ADD('UPDATE CONTASRECEBER SET Pendente="S", TPDCICOD = ' + NovoTipoDoc);
+            Query.SQL.ADD(' WHERE CTRCA13ID = "' + IdContaReceber + '"');
+            Query.ExecSQL;
+          end;
+        Query.Close;
+        Query.Destroy;
+      end;
+  EXCEPT
+   ON E:EXCEPTION DO
+     BEGIN
+       Informa('Erro ao Trocar Portador/Tipo Doc. ANOTE O ERRO: ' + E.Message);
+       Query.Destroy;
+       Abort;
+     END;
+  END;
+end;
+
 
 procedure AtualizaTotaisCabecalhoContasReceber(NroDocumento : string) ;
 var

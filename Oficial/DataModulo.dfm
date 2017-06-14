@@ -6,6 +6,7 @@ inherited DM: TDM
   Width = 1200
   inherited DB: TDatabase
     AliasName = 'Easy_Gestao'
+    AfterConnect = DBAfterConnect
   end
   object SQLConfigGeral: TRxQuery
     DatabaseName = 'DB'

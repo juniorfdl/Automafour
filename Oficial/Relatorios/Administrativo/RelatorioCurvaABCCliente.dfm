@@ -75,13 +75,13 @@ inherited FormRelatorioCurvaABCCliente: TFormRelatorioCurvaABCCliente
       ' (%MEmpresa) and'
       ' (%MDataCupom)'
       'and'
-      ' Cupom.CUPOCSTATUS <> '#39'C'#39
+      ' Cupom.CUPOCSTATUS <> ''C'''
       'and'
-      ' OperacaoEstoque.OPESCENTRADASAIDA  = '#39'S'#39
+      ' OperacaoEstoque.OPESCENTRADASAIDA  = ''S'''
       'and'
-      ' OperacaoEstoque.OPESCORIGEMDESTINO = '#39'C'#39
+      ' OperacaoEstoque.OPESCORIGEMDESTINO = ''C'''
       'and'
-      ' OperacaoEstoque.OPESCGERAFINANCEIRO = '#39'S'#39
+      ' OperacaoEstoque.OPESCGERAFINANCEIRO = ''S'''
       'Group By'
       ' Cupom.CLIEA13ID')
     Macros = <
@@ -124,13 +124,13 @@ inherited FormRelatorioCurvaABCCliente: TFormRelatorioCurvaABCCliente
       ' (%MEmpresa) and'
       ' (%MDataNF)'
       'and'
-      '  NotaFiscal.NOFICSTATUS = '#39'E'#39
+      '  NotaFiscal.NOFICSTATUS = ''E'''
       'and'
-      '  Operacaoestoque.OPESCENTRADASAIDA  = '#39'S'#39
+      '  Operacaoestoque.OPESCENTRADASAIDA  = ''S'''
       'and'
-      '  Operacaoestoque.OPESCORIGEMDESTINO = '#39'C'#39
+      '  Operacaoestoque.OPESCORIGEMDESTINO = ''C'''
       'and'
-      '  Operacaoestoque.OPESCGERAFINANCEIRO = '#39'S'#39
+      '  Operacaoestoque.OPESCGERAFINANCEIRO = ''S'''
       'and'
       '  NotaFiscal.CUPOA13ID is Null'
       'Group By'
@@ -151,10 +151,8 @@ inherited FormRelatorioCurvaABCCliente: TFormRelatorioCurvaABCCliente
       end>
     Left = 420
     Top = 33
-    object SQLNotaFiscalTOTALCLIENTE: TBCDField
+    object SQLNotaFiscalTOTALCLIENTE: TFloatField
       FieldName = 'TOTALCLIENTE'
-      Precision = 15
-      Size = 3
     end
     object SQLNotaFiscalCLIEA13ID: TStringField
       FieldName = 'CLIEA13ID'
@@ -206,7 +204,7 @@ inherited FormRelatorioCurvaABCCliente: TFormRelatorioCurvaABCCliente
     ParamFields.PLSortMethod = psmDefaultSort
     ParamFields.PLSortByDescription = cDefault
     Formulas.Formula.Strings = (
-      #39'Variacao'#39)
+      '''Variacao''')
     SectionFormat.BackgroundColor = clNone
     SectionHeight.Height = 0
     SQL.Params.ParamType = spChar

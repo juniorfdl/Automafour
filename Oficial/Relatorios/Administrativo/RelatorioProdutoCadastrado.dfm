@@ -45,10 +45,8 @@ inherited FormRelatorioProdutoCadastrado: TFormRelatorioProdutoCadastrado
       FixedChar = True
       Size = 60
     end
-    object TblTemporariaPRODN3VLRVENDA: TBCDField
+    object TblTemporariaPRODN3VLRVENDA: TFloatField
       FieldName = 'PRODN3VLRVENDA'
-      Precision = 15
-      Size = 3
     end
   end
   object SQLProduto: TRxQuery
@@ -124,10 +122,8 @@ inherited FormRelatorioProdutoCadastrado: TFormRelatorioProdutoCadastrado
       FixedChar = True
       Size = 60
     end
-    object SQLProdutoPRODN3VLRVENDA: TBCDField
+    object SQLProdutoPRODN3VLRVENDA: TFloatField
       FieldName = 'PRODN3VLRVENDA'
-      Precision = 15
-      Size = 3
     end
   end
   object Report: TCrpe

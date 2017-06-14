@@ -30,11 +30,11 @@ type
     SQLGrupoGRUPA60DESCR: TStringField;
     SQLSubGrupoSUBGICOD: TIntegerField;
     SQLSubGrupoSUBGA60DESCR: TStringField;
-    SQLSaldoSALDO: TBCDField;
+    SQLSaldoSALDO: TFloatField;
     SQLSaldoEMPRICOD: TIntegerField;
     SQLSaldoGRUPA60DESCR: TStringField;
     SQLSaldoMARCA60DESCR: TStringField;
-    TblTemporariaSALDO: TBCDField;
+    TblTemporariaSALDO: TFloatField;
     TblTemporariaEMPRICOD: TIntegerField;
     TblTemporariaGRUPA60DESCR: TStringField;
     TblTemporariaMARCA60DESCR: TStringField;

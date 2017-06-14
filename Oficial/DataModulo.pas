@@ -787,6 +787,7 @@ type
     SQLCupomPROTOCOLO: TStringField;
     DBRel: TDatabase;
     procedure DataModuleCreate(Sender: TObject);
+    procedure DBAfterConnect(Sender: TObject);
   private
     { Private declarations }
   public
@@ -809,6 +810,7 @@ type
     ConfigEtiqueta, VendedorAtualPedidos, RotaAtualPedidos, TranspAtualPedidos, SeqItemCompra, CodigoProdutoCompra: Integer;
     DataEntregaPedidos, DataEmissaoPedidos: TDate;
     TotalCartao : Double;
+    TemClienteDiferente:Boolean;
     function ConectaServidor : boolean ;
 
   end;
@@ -840,6 +842,21 @@ begin
   FormSplash.lbDados.Caption := 'Licença de uso Válida até => '+FormatDateTime('dd/mm/yyyy',SQLConfigGeralCFGEDBLOQ.Value) ; FormSplash.lbDados.Update;
   Sleep(1000);
   FormSplash.close;
+end;
+
+procedure TDM.DBAfterConnect(Sender: TObject);
+begin
+  inherited;   
+
+  Dm.SQLConfigGeral.Close;
+  Dm.SQLConfigGeral.Open;
+  Dm.SQLConfigVenda.Close;
+  Dm.SQLConfigVenda.Open;
+  Dm.SQLUsuario.Close;
+  Dm.SQLUsuario.Open;
+  Dm.SQLTerminalAtivo.Close;
+  Dm.SQLTerminalAtivo.Open;
+
 end;
 
 end.

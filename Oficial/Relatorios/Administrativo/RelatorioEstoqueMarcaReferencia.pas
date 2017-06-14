@@ -29,11 +29,11 @@ type
     SQLGrupoGRUPA60DESCR: TStringField;
     DSSQLGrupo: TDataSource;
     Report: TCrpe;
-    SQLSaldoSALDO: TBCDField;
+    SQLSaldoSALDO: TFloatField;
     SQLSaldoMARCA60DESCR: TStringField;
     SQLSaldoPRODA60REFER: TStringField;
     SQLSaldoEMPRICOD: TIntegerField;
-    TblTemporariaSALDO: TBCDField;
+    TblTemporariaSALDO: TFloatField;
     TblTemporariaMARCA60DESCR: TStringField;
     TblTemporariaPRODA60REFER: TStringField;
     TblTemporariaEMPRICOD: TIntegerField;

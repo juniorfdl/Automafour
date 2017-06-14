@@ -237,15 +237,11 @@ inherited FormRelatorioProdutosSemMovto: TFormRelatorioProdutosSemMovto
       FixedChar = True
       Size = 60
     end
-    object SQLPRODUTOPRODN3VLRCUSTO: TBCDField
+    object SQLPRODUTOPRODN3VLRCUSTO: TFloatField
       FieldName = 'PRODN3VLRCUSTO'
-      Precision = 15
-      Size = 3
     end
-    object SQLPRODUTOPSLDN3QTDE: TBCDField
+    object SQLPRODUTOPSLDN3QTDE: TFloatField
       FieldName = 'PSLDN3QTDE'
-      Precision = 15
-      Size = 3
     end
   end
   object SQLGrupo: TRxQuery

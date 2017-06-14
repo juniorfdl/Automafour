@@ -22,15 +22,15 @@ type
     DSSQLVariacao: TDataSource;
     Report: TCrpe;
     SQLNotaFiscal: TRxQuery;
-    TblTemporariaTOTALITEM: TBCDField;
+    TblTemporariaTOTALITEM: TFloatField;
     TblTemporariaPRODICOD: TIntegerField;
     TblTemporariaPRODA60DESCR: TStringField;
     TblTemporariaVALORUNITARIO: TFloatField;
     TblTemporariaQUANTIDADE: TFloatField;
-    SQLVendasQUANTIDADE: TBCDField;
+    SQLVendasQUANTIDADE: TFloatField;
     SQLVendasTOTALITEM: TFloatField;
     SQLVendasPRODICOD: TIntegerField;
-    SQLNotaFiscalNFQTDE: TBCDField;
+    SQLNotaFiscalNFQTDE: TFloatField;
     SQLNotaFiscalTOTALITEMNF: TFloatField;
     SQLNotaFiscalPRODICOD: TIntegerField;
     GroupBox3: TGroupBox;
@@ -51,7 +51,7 @@ type
     CkTopN25: TCheckBox;
     TblTemporariaAgrupGrade: TIntegerField;
     SQLTemp: TRxQuery;
-    SQLTempTOTALITEM: TBCDField;
+    SQLTempTOTALITEM: TFloatField;
     SQLTempAcumulado: TFloatField;
     SQLTempPRODICOD: TIntegerField;
     SQLTempAgrupGrade: TIntegerField;

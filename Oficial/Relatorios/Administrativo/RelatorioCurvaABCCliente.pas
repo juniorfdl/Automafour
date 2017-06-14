@@ -15,7 +15,7 @@ type
     Report: TCrpe;
     SQLVendasTOTALCLIENTE: TFloatField;
     SQLVendasCLIEA13ID: TStringField;
-    SQLNotaFiscalTOTALCLIENTE: TBCDField;
+    SQLNotaFiscalTOTALCLIENTE: TFloatField;
     SQLNotaFiscalCLIEA13ID: TStringField;
     TblTemporariaTOTALCLIENTE: TFloatField;
     TblTemporariaCLIEA13ID: TStringField;

@@ -95,10 +95,8 @@ inherited FormRelatorioEstoqueMarcaReferencia: TFormRelatorioEstoqueMarcaReferen
   end
   inherited TblTemporaria: TTable
     TableName = 'SaldoPorMarcaReferencia.db'
-    object TblTemporariaSALDO: TBCDField
+    object TblTemporariaSALDO: TFloatField
       FieldName = 'SALDO'
-      Precision = 15
-      Size = 3
     end
     object TblTemporariaMARCA60DESCR: TStringField
       FieldName = 'MARCA60DESCR'
@@ -193,10 +191,8 @@ inherited FormRelatorioEstoqueMarcaReferencia: TFormRelatorioEstoqueMarcaReferen
       end>
     Left = 474
     Top = 5
-    object SQLSaldoSALDO: TBCDField
+    object SQLSaldoSALDO: TFloatField
       FieldName = 'SALDO'
-      Precision = 15
-      Size = 3
     end
     object SQLSaldoMARCA60DESCR: TStringField
       FieldName = 'MARCA60DESCR'

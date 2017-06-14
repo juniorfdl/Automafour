@@ -24,8 +24,8 @@ type
     SQLTotalizadorDiarioCaixaTODIDMOV: TDateTimeField;
     SQLTotalizadorDiarioCaixaUSUAICOD: TIntegerField;
     SQLTotalizadorDiarioCaixaTOTAICOD: TIntegerField;
-    SQLTotalizadorDiarioCaixaTODIN2VLRDEBITO: TBCDField;
-    SQLTotalizadorDiarioCaixaTODIN2VLRCREDITO: TBCDField;
+    SQLTotalizadorDiarioCaixaTODIN2VLRDEBITO: TFloatField;
+    SQLTotalizadorDiarioCaixaTODIN2VLRCREDITO: TFloatField;
     SQLTotalizadorDiarioCaixaPENDENTE: TStringField;
     SQLTotalizadorDiarioCaixaREGISTRO: TDateTimeField;
     UpdateSQLTotalizadorDiarioCaixa: TUpdateSQL;
@@ -43,8 +43,8 @@ type
     SQLMovimentoCaixaNUMEICOD: TIntegerField;
     SQLMovimentoCaixaOPCXICOD: TIntegerField;
     SQLMovimentoCaixaUSUAICOD: TIntegerField;
-    SQLMovimentoCaixaMVCXN2VLRDEB: TBCDField;
-    SQLMovimentoCaixaMVCXN2VLRCRED: TBCDField;
+    SQLMovimentoCaixaMVCXN2VLRDEB: TFloatField;
+    SQLMovimentoCaixaMVCXN2VLRCRED: TFloatField;
     SQLTotalizar: TRxQuery;
     SQLMovimentoCaixaMVCXCNORMREV: TStringField;
     Label1: TLabel;

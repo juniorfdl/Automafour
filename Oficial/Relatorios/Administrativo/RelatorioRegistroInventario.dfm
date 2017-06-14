@@ -441,35 +441,25 @@ inherited FormRelatorioRegistroInventario: TFormRelatorioRegistroInventario
       FixedChar = True
       Size = 60
     end
-    object TblTemporariaPRODN3VLRVENDA: TBCDField
+    object TblTemporariaPRODN3VLRVENDA: TFloatField
       FieldName = 'PRODN3VLRVENDA'
       Origin = 'DB.PRODUTO.PRODN3VLRVENDA'
-      Precision = 15
-      Size = 3
     end
-    object TblTemporariaPRODN3VLRCOMPRA: TBCDField
+    object TblTemporariaPRODN3VLRCOMPRA: TFloatField
       FieldName = 'PRODN3VLRCOMPRA'
       Origin = 'DB.PRODUTO.PRODN3VLRCOMPRA'
-      Precision = 15
-      Size = 3
     end
-    object TblTemporariaPRODN3VLRCUSTO: TBCDField
+    object TblTemporariaPRODN3VLRCUSTO: TFloatField
       FieldName = 'PRODN3VLRCUSTO'
       Origin = 'DB.PRODUTO.PRODN3VLRCUSTO'
-      Precision = 15
-      Size = 3
     end
-    object TblTemporariaPRODN3VLRCUSTOMED: TBCDField
+    object TblTemporariaPRODN3VLRCUSTOMED: TFloatField
       FieldName = 'PRODN3VLRCUSTOMED'
       Origin = 'DB.PRODUTO.PRODN3VLRCUSTOMED'
-      Precision = 15
-      Size = 3
     end
-    object TblTemporariaPSLDN3QTDE: TBCDField
+    object TblTemporariaPSLDN3QTDE: TFloatField
       FieldName = 'PSLDN3QTDE'
       Origin = 'DB.PRODUTOSALDO.PSLDN3QTDE'
-      Precision = 15
-      Size = 3
     end
     object TblTemporariaQTDXCMEDIO: TFloatField
       FieldName = 'QTDXCMEDIO'
@@ -750,7 +740,7 @@ inherited FormRelatorioRegistroInventario: TFormRelatorioRegistroInventario
     DataPipeline = PipeInventario
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Letter'
+    PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350
@@ -2573,35 +2563,25 @@ inherited FormRelatorioRegistroInventario: TFormRelatorioRegistroInventario
       FixedChar = True
       Size = 60
     end
-    object BCDField1: TBCDField
+    object BCDField1: TFloatField
       FieldName = 'PRODN3VLRVENDA'
       Origin = 'DB.PRODUTO.PRODN3VLRVENDA'
-      Precision = 15
-      Size = 3
     end
-    object BCDField2: TBCDField
+    object BCDField2: TFloatField
       FieldName = 'PRODN3VLRCOMPRA'
       Origin = 'DB.PRODUTO.PRODN3VLRCOMPRA'
-      Precision = 15
-      Size = 3
     end
-    object BCDField3: TBCDField
+    object BCDField3: TFloatField
       FieldName = 'PRODN3VLRCUSTO'
       Origin = 'DB.PRODUTO.PRODN3VLRCUSTO'
-      Precision = 15
-      Size = 3
     end
-    object BCDField4: TBCDField
+    object BCDField4: TFloatField
       FieldName = 'PRODN3VLRCUSTOMED'
       Origin = 'DB.PRODUTO.PRODN3VLRCUSTOMED'
-      Precision = 15
-      Size = 3
     end
-    object BCDField5: TBCDField
+    object BCDField5: TFloatField
       FieldName = 'PSLDN3QTDE'
       Origin = 'DB.PRODUTOSALDO.PSLDN3QTDE'
-      Precision = 15
-      Size = 3
     end
     object FloatField1: TFloatField
       FieldName = 'QTDXCMEDIO'
@@ -2625,7 +2605,7 @@ inherited FormRelatorioRegistroInventario: TFormRelatorioRegistroInventario
     DataPipeline = PipeInventario
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Letter'
+    PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350
