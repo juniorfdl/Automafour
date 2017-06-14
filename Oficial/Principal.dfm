@@ -1,7 +1,7 @@
 inherited FormPrincipal: TFormPrincipal
   Tag = 4
-  Left = -6
-  Top = 17
+  Left = -11
+  Top = 0
   Width = 1382
   Height = 744
   Caption = 'Advanced Control'
@@ -3634,29 +3634,25 @@ inherited FormPrincipal: TFormPrincipal
       end
       object ContaCorrent1: TMenuItem
         Caption = 'Conta Corrente'
-        object LanamentodeMovimentao1: TMenuItem
+        object MnFINBancosLancarMovimentaco: TMenuItem
           Caption = 'Lan'#231'amento de Movimenta'#231#227'o'
+          OnClick = MnFINBancosLancarMovimentacoClick
         end
-        object RemessadeArquivo1: TMenuItem
+        object MnFINBancosRemessaArquivo: TMenuItem
           Caption = 'Remessa de Arquivo'
+          OnClick = MnFINBancosRemessaArquivoClick
         end
       end
       object esouraria1: TMenuItem
         Caption = 'Tesouraria'#9
-        object LanamentodeCaixa1: TMenuItem
+        object MnFINTesLancamentos: TMenuItem
           Caption = 'Lan'#231'amento de Caixa'#13#10
+          OnClick = MnFINTesLancamentosClick
         end
-        object EmissodeRecibo1: TMenuItem
+        object MnFINTesEmisscaodeRecibos: TMenuItem
           Caption = 'Emiss'#227'o de Recibo'
+          OnClick = MnFINTesEmisscaodeRecibosClick
         end
-      end
-      object N3: TMenuItem
-        Tag = 1
-        Caption = '-'
-      end
-      object FATUMnSairdoSistema: TMenuItem
-        Caption = '&Sair do Sistema'
-        OnClick = FATUMnSairdoSistemaClick
       end
     end
     object Faturamento1: TMenuItem [5]

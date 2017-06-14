@@ -11,8 +11,6 @@ uses
 type
   TFormPrincipal = class(TFormPrincipalTemplate)
     mmFinanceiro: TMenuItem;
-    FATUMnSairdoSistema: TMenuItem;
-    N3: TMenuItem;
     TimeLembrete: TTimer;
     SQLAgendaVer: TQuery;
     bClientes: TAdvGlowButton;
@@ -30,11 +28,11 @@ type
     MnCartoesCreditoManual: TMenuItem;
     MnFINReceberEmissaoBoletosDuplicatas: TMenuItem;
     ContaCorrent1: TMenuItem;
-    LanamentodeMovimentao1: TMenuItem;
-    RemessadeArquivo1: TMenuItem;
+    MnFINBancosLancarMovimentaco: TMenuItem;
+    MnFINBancosRemessaArquivo: TMenuItem;
     esouraria1: TMenuItem;
-    LanamentodeCaixa1: TMenuItem;
-    EmissodeRecibo1: TMenuItem;
+    MnFINTesLancamentos: TMenuItem;
+    MnFINTesEmisscaodeRecibos: TMenuItem;
     Faturamento1: TMenuItem;
     PedidodeVenda1: TMenuItem;
     FATUMnVendasNotasFiscais: TMenuItem;
@@ -448,6 +446,10 @@ type
     procedure VendasporTipo1Click(Sender: TObject);
     procedure MnVendasporAliquotasparaContabilidadeClick(Sender: TObject);
     procedure MnContasRecebidasparaContabidadeClick(Sender: TObject);
+    procedure MnFINBancosLancarMovimentacoClick(Sender: TObject);
+    procedure MnFINBancosRemessaArquivoClick(Sender: TObject);
+    procedure MnFINTesLancamentosClick(Sender: TObject);
+    procedure MnFINTesEmisscaodeRecibosClick(Sender: TObject);
 
   private
     procedure ApagarOrcamentos;
@@ -520,7 +522,8 @@ uses
   RelatorioCupomEmitido,
   RelatorioCupomQuitado, RelatorioApuracaoPISCOFINS, RelatorioApuracaoICMS,
   RelatorioNotaFiscalEmitidaPorCFOP, RelatorioResumoVendasportipo,
-  RelatorioResumoVendasporAliquota, RelatorioContasRecebidas;
+  RelatorioResumoVendasporAliquota, RelatorioContasRecebidas,
+  CadastroMovimentoBanco, CadastroRemessaBancos, CadastroRecibo;
 
 
 
@@ -2541,6 +2544,42 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     CriaFormulario(TFormRelatorioContasRecebidas, 'FormRelatorioContasRecebidas',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnFINBancosLancarMovimentacoClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroMovimentoBanco, 'FormCadastroMovimentoBanco',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnFINBancosRemessaArquivoClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroRemessaBancos,'FormCadastroRemessaBancos',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnFINTesLancamentosClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroTesouraria,'FormCadastroTesouraria',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnFINTesEmisscaodeRecibosClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroRecibo,'FormCadastroRecibo',False,False,False,'')
   else
     SoundPlay('Acesso Negado.wav',Sender);
 end;
