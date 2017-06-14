@@ -3691,12 +3691,14 @@ inherited FormPrincipal: TFormPrincipal
         end
         object erminaldeConsulta1: TMenuItem
           Caption = 'Terminal de Consulta'
+          OnClick = erminaldeConsulta1Click
         end
       end
       object Contabil1: TMenuItem
         Caption = 'Cont'#225'bil'
         object SPEDFiscal1: TMenuItem
           Caption = 'SPED Fiscal'
+          OnClick = SPEDFiscal1Click
         end
       end
     end

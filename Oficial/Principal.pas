@@ -450,6 +450,8 @@ type
     procedure MnFINBancosRemessaArquivoClick(Sender: TObject);
     procedure MnFINTesLancamentosClick(Sender: TObject);
     procedure MnFINTesEmisscaodeRecibosClick(Sender: TObject);
+    procedure erminaldeConsulta1Click(Sender: TObject);
+    procedure SPEDFiscal1Click(Sender: TObject);
 
   private
     procedure ApagarOrcamentos;
@@ -523,7 +525,8 @@ uses
   RelatorioCupomQuitado, RelatorioApuracaoPISCOFINS, RelatorioApuracaoICMS,
   RelatorioNotaFiscalEmitidaPorCFOP, RelatorioResumoVendasportipo,
   RelatorioResumoVendasporAliquota, RelatorioContasRecebidas,
-  CadastroMovimentoBanco, CadastroRemessaBancos, CadastroRecibo;
+  CadastroMovimentoBanco, CadastroRemessaBancos, CadastroRecibo,
+  TelaExportacaoSPED;
 
 
 
@@ -2582,6 +2585,19 @@ begin
     CriaFormulario(TFormCadastroRecibo,'FormCadastroRecibo',False,False,False,'')
   else
     SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.erminaldeConsulta1Click(Sender: TObject);
+begin
+  inherited;
+ //
+end;
+
+procedure TFormPrincipal.SPEDFiscal1Click(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormTelaExportacaoSped, 'FormTelaExportacaoSped',False,False,True,'');
 end;
 
 end.
