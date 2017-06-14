@@ -376,7 +376,6 @@ uses
   RelatorioClienteBloqueado in 'Relatorios\Administrativo\RelatorioClienteBloqueado.pas' {FormRelatorioClienteBloqueado},
   RelatorioClientesPorCidade in 'Relatorios\Administrativo\RelatorioClientesPorCidade.pas' {FormRelatorioClienteporCidade},
   RelatorioClienteLimiteCreditoExcedido in 'Relatorios\Administrativo\RelatorioClienteLimiteCreditoExcedido.pas' {FormRelatorioClienteLimiteCreditoExcedido},
-
   CadastroContasReceber in 'Financeiro\CadastroContasReceber.pas' {FormCadastroContasReceber},
   CadastroPlanodeContas in 'Financeiro\CadastroPlanodeContas.pas' {FormCadastroPlanodeContas},
   TelaConsultaRecebimento in 'Financeiro\TelaConsultaRecebimento.pas' {FormTelaConsultaRecebimento},
@@ -388,7 +387,6 @@ uses
   TelaPesquisaDocumentoReceber in 'Financeiro\TelaPesquisaDocumentoReceber.pas' {FormTelaPesquisarDocumentoReceber},
   TelaBaixarDocumentosReceberPlanoConta in 'Financeiro\TelaBaixarDocumentosReceberPlanoConta.pas' {FormTelaBaixarDocumentosReceberPlanoConta},
   CadastroCartaoCreditoManual in 'Financeiro\CadastroCartaoCreditoManual.pas' {FormCadastroCartaoCreditoManual},
-  
   RelatorioCupomEmitido in 'Relatorios\Fiscais\RelatorioCupomEmitido.pas' {FormRelatorioCupomEmitido},
   RelatorioCupomQuitado in 'Relatorios\Fiscais\RelatorioCupomQuitado.pas' {FormRelatorioCupomQuitado},
   RelatorioApuracaoPISCOFINS in 'Relatorios\Fiscais\RelatorioApuracaoPISCOFINS.pas' {FormRelatorioApuracaoPisCofins},
@@ -396,7 +394,13 @@ uses
   RelatorioNotaFiscalEmitidaPorCFOP in 'Relatorios\Fiscais\RelatorioNotaFiscalEmitidaPorCFOP.pas' {FormRelatorioNotaFiscalEmitidaPorCFOP},
   RelatorioResumoVendasportipo in 'Relatorios\Fiscais\RelatorioResumoVendasportipo.pas' {FormRelatorioResumoVendasportipo},
   RelatorioResumoVendasporAliquota in 'Relatorios\Fiscais\RelatorioResumoVendasporAliquota.pas' {FormRelatorioResumoVendasporAliquota},
-  RelatorioContasRecebidas in 'Relatorios\Fiscais\RelatorioContasRecebidas.pas' {FormRelatorioContasRecebidas};
+  RelatorioContasRecebidas in 'Relatorios\Fiscais\RelatorioContasRecebidas.pas' {FormRelatorioContasRecebidas},
+  CadastroMovimentoBanco in 'Financeiro\CadastroMovimentoBanco.pas' {FormCadastroMovimentoBanco},
+  CadastroRemessaBancos in 'Financeiro\CadastroRemessaBancos.pas' {FormCadastroRemessaBancos},
+  CadastroRemessaBancosContasReceber in 'Financeiro\CadastroRemessaBancosContasReceber.pas' {FormCadastroRemessaBancosContasReceber},
+  TelaRemessaDocumentosReceber in 'Financeiro\TelaRemessaDocumentosReceber.pas',
+  RemessaBanco in 'Financeiro\RemessaBanco.pas',
+  CadastroConfigRemessaBanco in 'Financeiro\CadastroConfigRemessaBanco.pas' {FormCadastroConfigRemessaBanco};
 
 {$R *.res}
 

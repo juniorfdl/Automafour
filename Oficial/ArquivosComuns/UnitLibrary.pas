@@ -287,11 +287,71 @@ procedure CalculaImpostosNotaFiscalItem(DataSet : TRXQuery; DataSource : TDataSo
 procedure AlterPortadorTipoDocContaReceber(IdContaReceber,NovoPortador,NovoTipoDoc : String);
 function LancaChequeRecebido(Empresa,Terminal,Numerario,Portador,Alinea:Integer; Cliente,Banco,Agencia,Conta,NroChequeRecbto,Titular, CPFCGC, IdContaReceber:String;ValorCheque:Double;DataVencimento:TDateTime) : String;
 procedure LancaValorJuroContasReceber(IDContasReceber : String; VlrJuro : Double);
+function SaldoContaCorrente(Conta, Operacao, Data : string) : double ;
 
 implementation
 
 uses DataModulo, TelaAutenticaUsuario, TelaAvisoDebito;
-     
+
+function SaldoContaCorrente(Conta, Operacao, Data : string) : double ;
+var
+  MyQuery : TQuery ;
+begin
+  if Conta <> '' then
+    begin
+      MyQuery := TQuery.Create(DM);
+      MyQuery.DatabaseName := 'DB' ;
+      MyQuery.Close ;
+      Data := FormatDateTime('mm/dd/yyyy', StrToDate(Data)) ;
+      MyQuery.SQL.Clear ;
+      MyQuery.SQL.Add('select sum(MVBCN2VLRDEB) as Debitos, sum(MVBCN2VLRCRED) as Creditos from MOVIMENTOBANCO') ;
+      MyQuery.SQL.Add('where CTCRICOD = ' + Conta) ;
+      if Operacao <> '' then
+        MyQuery.SQL.Add('and   OPBCICOD = ' + Operacao) ;
+      MyQuery.SQL.Add('and   MVBCDLANC <= "' + Data + '"') ;
+      MyQuery.Open ;
+      if not MyQuery.EOF then
+        begin
+          if MyQuery.FieldByName('Creditos').Value > 0 then
+            Result := MyQuery.FieldByName('Creditos').Value
+          else
+            Result := 0 ;
+
+          if MyQuery.FieldByName('Debitos').Value > 0 then
+            Result := Result - MyQuery.FieldByName('Debitos').Value ;
+        end
+      else
+        Result := 0 ;
+      MyQuery.Destroy ;
+    end
+  else
+    begin
+      MyQuery := TQuery.Create(DM);
+      MyQuery.DatabaseName := 'DB' ;
+      MyQuery.Close ;
+      Data := FormatDateTime('mm/dd/yyyy', StrToDate(Data)) ;
+      MyQuery.SQL.Clear ;
+      MyQuery.SQL.Add('select sum(MVBCN2VLRDEB) as Debitos, sum(MVBCN2VLRCRED) as Creditos from MOVIMENTOBANCO') ;
+      MyQuery.SQL.Add('where MVBCDLANC <= "' + Data + '"') ;
+      MyQuery.Open ;
+      if not MyQuery.EOF then
+        begin
+          if MyQuery.FieldByName('Creditos').Value > 0 then
+            Result := MyQuery.FieldByName('Creditos').Value
+          else
+            Result := 0 ;
+
+          if MyQuery.FieldByName('Debitos').Value > 0 then
+            Result := Result - MyQuery.FieldByName('Debitos').Value ;
+        end
+      else
+        Result := 0 ;
+      MyQuery.Destroy ;
+    end;
+end ;
+
+
+
 procedure LancaValorJuroContasReceber(IDContasReceber : String; VlrJuro : Double);
 var
   Query : TrxQuery;
