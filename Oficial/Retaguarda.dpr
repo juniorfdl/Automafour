@@ -375,7 +375,15 @@ uses
   RelatorioClienteCadastrado in 'Relatorios\Administrativo\RelatorioClienteCadastrado.pas' {FormRelatorioClienteCadastrado},
   RelatorioClienteBloqueado in 'Relatorios\Administrativo\RelatorioClienteBloqueado.pas' {FormRelatorioClienteBloqueado},
   RelatorioClientesPorCidade in 'Relatorios\Administrativo\RelatorioClientesPorCidade.pas' {FormRelatorioClienteporCidade},
-  RelatorioClienteLimiteCreditoExcedido in 'Relatorios\Administrativo\RelatorioClienteLimiteCreditoExcedido.pas' {FormRelatorioClienteLimiteCreditoExcedido};
+  RelatorioClienteLimiteCreditoExcedido in 'Relatorios\Administrativo\RelatorioClienteLimiteCreditoExcedido.pas' {FormRelatorioClienteLimiteCreditoExcedido},
+  RelatorioCupomEmitido in 'Relatorios\Fiscais\RelatorioCupomEmitido.pas' {FormRelatorioCupomEmitido},
+  RelatorioCupomQuitado in 'Relatorios\Fiscais\RelatorioCupomQuitado.pas' {FormRelatorioCupomQuitado},
+  RelatorioApuracaoPISCOFINS in 'Relatorios\Fiscais\RelatorioApuracaoPISCOFINS.pas' {FormRelatorioApuracaoPisCofins},
+  RelatorioApuracaoICMS in 'Relatorios\Fiscais\RelatorioApuracaoICMS.pas' {FormRelatorioApuracaoICMS},
+  RelatorioNotaFiscalEmitidaPorCFOP in 'Relatorios\Fiscais\RelatorioNotaFiscalEmitidaPorCFOP.pas' {FormRelatorioNotaFiscalEmitidaPorCFOP},
+  RelatorioResumoVendasportipo in 'Relatorios\Fiscais\RelatorioResumoVendasportipo.pas' {FormRelatorioResumoVendasportipo},
+  RelatorioResumoVendasporAliquota in 'Relatorios\Fiscais\RelatorioResumoVendasporAliquota.pas' {FormRelatorioResumoVendasporAliquota},
+  RelatorioContasRecebidas in 'Relatorios\Fiscais\RelatorioContasRecebidas.pas' {FormRelatorioContasRecebidas};
 
 {$R *.res}
 

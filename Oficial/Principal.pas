@@ -434,6 +434,15 @@ type
     procedure MnADMRelClientesBloqueadosClick(Sender: TObject);
     procedure MnADMRelClientesporcidadeClick(Sender: TObject);
     procedure MnRelatorioLimitesCompraClienteClick(Sender: TObject);
+    procedure MnADMRelCupomEmitidoClick(Sender: TObject);
+    procedure MnADMRelCupomQuitadoClick(Sender: TObject);
+    procedure MnADMRELApuracaodePisCofinsClick(Sender: TObject);
+    procedure MnADMRELApuracaodeICMSClick(Sender: TObject);
+    procedure MnADMRelFiscalNotasFiscaisCuponsEmitidosPorCFOPClick(
+      Sender: TObject);
+    procedure VendasporTipo1Click(Sender: TObject);
+    procedure MnVendasporAliquotasparaContabilidadeClick(Sender: TObject);
+    procedure MnContasRecebidasparaContabidadeClick(Sender: TObject);
   private
     procedure ApagarOrcamentos;
     procedure ApagarPreVendas;
@@ -498,7 +507,10 @@ uses
   RelatorioResumoOperacaoDiaria, RelatorioPontoDeEquilibrio,
   RelatorioProdutosSemMovto, RelatorioClienteCadastrado,
   RelatorioClienteBloqueado, RelatorioClientesPorCidade,
-  RelatorioClienteLimiteCreditoExcedido;
+  RelatorioClienteLimiteCreditoExcedido, RelatorioCupomEmitido,
+  RelatorioCupomQuitado, RelatorioApuracaoPISCOFINS, RelatorioApuracaoICMS,
+  RelatorioNotaFiscalEmitidaPorCFOP, RelatorioResumoVendasportipo,
+  RelatorioResumoVendasporAliquota, RelatorioContasRecebidas;
 
 
 
@@ -2420,6 +2432,81 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     CriaFormulario(TFormRelatorioClienteLimiteCreditoExcedido,'FormRelatorioClienteLimiteCreditoExcedido',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnADMRelCupomEmitidoClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioCupomEmitido, 'FormRelatorioCupomEmitido',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnADMRelCupomQuitadoClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioCupomQuitado, 'FormRelatorioCupomQuitado',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnADMRELApuracaodePisCofinsClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioApuracaoPisCofins,'FormRelatorioApuracaoPisCofins',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnADMRELApuracaodeICMSClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioApuracaoICMS, 'FormRelatorioApuracaoICMS',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnADMRelFiscalNotasFiscaisCuponsEmitidosPorCFOPClick(
+  Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioNotaFiscalEmitidaPorCFOP, 'FormRelatorioNotaFiscalEmitidaPorCFOP',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.VendasporTipo1Click(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioResumoVendasportipo,'FormRelatorioResumoVendasportipo',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnVendasporAliquotasparaContabilidadeClick(
+  Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioResumoVendasporAliquota,'FormRelatorioResumoVendasporAliquota',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnContasRecebidasparaContabidadeClick(
+  Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioContasRecebidas, 'FormRelatorioContasRecebidas',False,False,False,'')
   else
     SoundPlay('Acesso Negado.wav',Sender);
 end;
