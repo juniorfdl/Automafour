@@ -288,6 +288,7 @@ procedure AlterPortadorTipoDocContaReceber(IdContaReceber,NovoPortador,NovoTipoD
 function LancaChequeRecebido(Empresa,Terminal,Numerario,Portador,Alinea:Integer; Cliente,Banco,Agencia,Conta,NroChequeRecbto,Titular, CPFCGC, IdContaReceber:String;ValorCheque:Double;DataVencimento:TDateTime) : String;
 procedure LancaValorJuroContasReceber(IDContasReceber : String; VlrJuro : Double);
 function SaldoContaCorrente(Conta, Operacao, Data : string) : double ;
+procedure RefazTabelaTemp(Tabela: TTable; Abrir: Boolean);
 
 implementation
 
@@ -5426,7 +5427,18 @@ begin
         end;
   end;
 end;
-
+procedure RefazTabelaTemp(Tabela: TTable; Abrir: Boolean);
+begin
+    try
+       Tabela.Close;
+       if Tabela.Exists then
+         Tabela.DeleteTable;
+       Tabela.Createtable;
+    except
+       Tabela.CreateTable;
+    end;
+    Tabela.Active := Abrir;
+end;
 
 
 end.

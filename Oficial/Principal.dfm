@@ -1,7 +1,7 @@
 inherited FormPrincipal: TFormPrincipal
   Tag = 4
-  Left = -11
-  Top = 0
+  Left = 2
+  Top = 79
   Width = 1382
   Height = 744
   Caption = 'Advanced Control'
@@ -9,7 +9,7 @@ inherited FormPrincipal: TFormPrincipal
   PixelsPerInch = 96
   TextHeight = 13
   inherited RodapePrincipal: TStatusBar
-    Top = 666
+    Top = 667
     Width = 1366
   end
   inherited ptopo: TAdvOfficeStatusBar
@@ -4000,94 +4000,120 @@ inherited FormPrincipal: TFormPrincipal
           Caption = 'Contas a Pagar'
           object Emitidas1: TMenuItem
             Caption = 'Emitidas'
+            OnClick = MnFINRelPagarEmitidasClick
           end
           object Vencidas1: TMenuItem
             Caption = 'Vencidas'
+            OnClick = MnFINRelContasPagarVencidasClick
           end
           object Pagas1: TMenuItem
             Caption = 'Pagas'
+            OnClick = MnFINRelContasPagarPagasClick
           end
           object PagasporOrigem1: TMenuItem
             Caption = 'Pagas por Origem'
+            OnClick = PagasPorOrigem1Click
           end
           object PagasporTipodeLiquidao1: TMenuItem
             Caption = 'Pagas por Tipo de Liquida'#231#227'o'
+            OnClick = MnFINRELContasPagasPorTipodeLiquidcaoClick
           end
           object APagar1: TMenuItem
             Caption = 'A Pagar'
+            OnClick = MnFINRelContasPagarAPagarClick
           end
         end
         object ContasaReceber1: TMenuItem
           Caption = 'Contas a Receber'
           object Emitidas2: TMenuItem
             Caption = 'Emitidas'
+            OnClick = MnFINRelReceberEmitidasClick
           end
           object Recebidas1: TMenuItem
             Caption = 'Recebidas'
+            OnClick = MnFINRelReceberRecebidasClick
           end
           object RecebidasporOrigem1: TMenuItem
             Caption = 'Recebidas por Origem'
+            OnClick = MnFINRELRecebidasPorSetorClick
           end
           object RecebidasporTipodeLiquidao1: TMenuItem
             Caption = 'Recebidas por Tipo de Liquida'#231#227'o'
+            OnClick = MnFINRELRecebidasPorTipodeLiquidacaoClick
           end
           object RecebidasporEmpresa1: TMenuItem
             Caption = 'Recebidas por Empresa'
+            OnClick = MnFINRELRecebidasPorEmpresaOrigemRecebtoClick
           end
           object Vencidas2: TMenuItem
             Caption = 'Vencidas'
+            OnClick = MnFINRelReceberVencidasClick
           end
           object AReceber1: TMenuItem
             Caption = 'A Receber'
+            OnClick = MnFINRelReceberAReceberClick
           end
         end
         object Cheque1: TMenuItem
           Caption = 'Cheque'
           object Emitidos1: TMenuItem
             Caption = 'Emitidos'
+            OnClick = MnFINRelChequesEmitidosClick
           end
           object Recebidos1: TMenuItem
             Caption = 'Recebidos'
+            OnClick = MnFINRelChequesRecebidosClick
           end
         end
         object ContaCorrenteMovimentao1: TMenuItem
           Caption = 'Conta Corrente - Movimenta'#231#227'o'
+          OnClick = MNFINRelBancoExtratoBancarioClick
         end
         object Caixa2: TMenuItem
           Caption = 'Caixa'
           object BoletimdeCaixa2: TMenuItem
             Caption = 'Boletim de Caixa'
+            OnClick = MnFINRelCaixaBoletimdeCaixaClick
           end
           object MovimentaodeCaixa2: TMenuItem
             Caption = 'Movimenta'#231#227'o de Caixa'
+            OnClick = MnFINRelCaixaMovimentacaodeCaixaClick
           end
         end
         object esourariaSaldo1: TMenuItem
           Caption = 'Tesouraria - Saldo'
+          OnClick = MnFINRelTesourariaSaldoDiarioConsolidadoClick
         end
         object ClientesExtrato1: TMenuItem
           Caption = 'Clientes - Extrato'
+          OnClick = MnFINRelClientesExtratoClick
         end
         object Contabilidade1: TMenuItem
           Caption = 'Contabilidade'
           object SaldoContasaReceber1: TMenuItem
             Caption = 'Saldo Contas a Receber'
+            OnClick = MnFINRelContSaldodeContasReceberClick
           end
           object SaldoContasaPagar1: TMenuItem
             Caption = 'Saldo Contas a Pagar'
+            OnClick = MnFINRelPagContSaldodeContasaPagarClick
           end
           object LivroCaixa1: TMenuItem
             Caption = 'Livro Caixa'
+            OnClick = MnFINRelContAuxiliarParaLivroCaixaClick
           end
         end
         object PlanodeContasReceitaxDespesas1: TMenuItem
           Caption = 'Plano de Contas - (Receita x Despesas)'#9
+          OnClick = MnFINRelPlanodeContasClick
         end
         object FluxodeCaixaDiario1: TMenuItem
           Caption = 'Fluxo de Caixa Di'#225'rio'
+          OnClick = MnFINRelFluxodeCaixaDiarioClick
         end
         object PosioFinanceira1: TMenuItem
           Caption = 'Posi'#231#227'o Financeira'
+          OnClick = MnFINRelPosicaoFinanceiraConsolidadaClick
         end
       end
       object Faturamento3: TMenuItem
@@ -4096,27 +4122,34 @@ inherited FormPrincipal: TFormPrincipal
           Caption = 'Pedidos'
           object Listagem1: TMenuItem
             Caption = 'Listagem'
+            OnClick = FATUMnRelatoriosPedidosListagemClick
           end
           object ListagemporItem1: TMenuItem
             Caption = 'Listagem por Item'
+            OnClick = FATUMnRelatoriosPedidosListagemdeItensClick
           end
         end
         object NotaFiscal2: TMenuItem
           Caption = 'Nota Fiscal'
           object Emitidas3: TMenuItem
             Caption = 'Emitidas'
+            OnClick = FATUMnRelatoriosNotasFiscaisEmitidasClick
           end
           object EmitidasporCFOP1: TMenuItem
             Caption = 'Emitidas por CFOP'
+            OnClick = MnFATRelEmitidasporCFOPClick
           end
           object EmitidasporClienteeICMS1: TMenuItem
             Caption = 'Emitidas por Cliente e ICMS'
+            OnClick = MnFATEmitidasporClienteeporIcmsClick
           end
           object ListagemdeItens1: TMenuItem
             Caption = 'Listagem de Itens'
+            OnClick = MnRelListagemdeItensClick
           end
           object CobranadeFrete1: TMenuItem
             Caption = 'Cobran'#231'a de Frete'
+            OnClick = MnCobrancaFreteClick
           end
         end
       end

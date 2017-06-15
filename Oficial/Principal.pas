@@ -452,6 +452,34 @@ type
     procedure MnFINTesEmisscaodeRecibosClick(Sender: TObject);
     procedure erminaldeConsulta1Click(Sender: TObject);
     procedure SPEDFiscal1Click(Sender: TObject);
+    procedure MnFINRelPagarEmitidasClick(Sender: TObject);
+    procedure MnFINRelContasPagarVencidasClick(Sender: TObject);
+    procedure MnFINRelContasPagarPagasClick(Sender: TObject);
+    procedure PagasPorOrigem1Click(Sender: TObject);
+    procedure MnFINRELContasPagasPorTipodeLiquidcaoClick(Sender: TObject);
+    procedure MnFINRelContasPagarAPagarClick(Sender: TObject);
+    procedure MnFINRelReceberEmitidasClick(Sender: TObject);
+    procedure MnFINRelReceberRecebidasClick(Sender: TObject);
+    procedure MnFINRELRecebidasPorSetorClick(Sender: TObject);
+    procedure MnFINRELRecebidasPorTipodeLiquidacaoClick(Sender: TObject);
+    procedure MnFINRELRecebidasPorEmpresaOrigemRecebtoClick(
+      Sender: TObject);
+    procedure MnFINRelReceberVencidasClick(Sender: TObject);
+    procedure MnFINRelReceberAReceberClick(Sender: TObject);
+    procedure MnFINRelChequesEmitidosClick(Sender: TObject);
+    procedure MnFINRelChequesRecebidosClick(Sender: TObject);
+    procedure MNFINRelBancoExtratoBancarioClick(Sender: TObject);
+    procedure MnFINRelCaixaBoletimdeCaixaClick(Sender: TObject);
+    procedure MnFINRelCaixaMovimentacaodeCaixaClick(Sender: TObject);
+    procedure MnFINRelTesourariaSaldoDiarioConsolidadoClick(
+      Sender: TObject);
+    procedure MnFINRelClientesExtratoClick(Sender: TObject);
+    procedure MnFINRelContSaldodeContasReceberClick(Sender: TObject);
+    procedure MnFINRelPagContSaldodeContasaPagarClick(Sender: TObject);
+    procedure MnFINRelContAuxiliarParaLivroCaixaClick(Sender: TObject);
+    procedure MnFINRelPlanodeContasClick(Sender: TObject);
+    procedure MnFINRelFluxodeCaixaDiarioClick(Sender: TObject);
+    procedure MnFINRelPosicaoFinanceiraConsolidadaClick(Sender: TObject);
 
   private
     procedure ApagarOrcamentos;
@@ -526,7 +554,22 @@ uses
   RelatorioNotaFiscalEmitidaPorCFOP, RelatorioResumoVendasportipo,
   RelatorioResumoVendasporAliquota, RelatorioContasRecebidas,
   CadastroMovimentoBanco, CadastroRemessaBancos, CadastroRecibo,
-  TelaExportacaoSPED;
+  TelaExportacaoSPED, RelatorioContasPagarEMITIDAS,
+  RelatorioContasPagarVencidas, RelatorioContasPagarPAGAS,
+  RelatorioContasPagasPorOrigem, RelatorioContasPagasTipoLiquidacao,
+  RelatorioContasPagarAPAGAR, RelatorioContasReceberEmitidas,
+  RelatorioContasRecebidasPorSetor, RelatorioContasRecebidasTipoLiquidacao,
+  RelatorioContasRecebidasPorEmpresa, RelatorioContasReceberVencidas,
+  RelatorioContasaReceber, RelatorioChequeEmitido,
+  RelatorioChequesRecebidos, RelatorioExtratoMovimentoBanco,
+  RelatorioBoletimCaixaTesouraria, RelatorioMovimentacaoTesouraria,
+  RelatorioSaldoDiarioTesouraria, RelatorioExtratoCliente,
+  RelatorioSaldoContasaReceberContabil, RelatorioSaldoContasaPagarContabil,
+  RelatorioAuxiliarParaLivroCaixa, RelatorioReceitasDespesasPlanoContas,
+  RelatorioFluxoCaixa, RelatorioPosicaoFinanceiraConsolidada,
+  RelatorioPedidoVenda, RelatorioItensPedidoVenda,
+  RelatorioNotaFiscalEmitida, RelatorioNotaFiscalEmitidaPorICMS,
+  RelatorioItensNotaFiscal, RelatorioNotaFiscalItensCobrancaFrete;
 
 
 
@@ -649,37 +692,37 @@ end;
 procedure TFormPrincipal.FATUMnRelatoriosPedidosListagemClick(Sender: TObject);
 begin
   inherited;
-  {if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     CriaFormulario(TFormRelatorioPedidoVenda, 'FormRelatorioPedidoVenda',False,False,True,'')
   else
-    SoundPlay('Acesso Negado.wav',Sender);  }
+    SoundPlay('Acesso Negado.wav',Sender);
 end;
 
 procedure TFormPrincipal.FATUMnRelatoriosPedidosListagemdeItensClick(Sender: TObject);
 begin
   inherited;
- { if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     CriaFormulario(TFormRelatorioItensPedidoVenda, 'FormRelatorioItensPedidoVenda',False,False,True,'')
   else
-    SoundPlay('Acesso Negado.wav',Sender); }
+    SoundPlay('Acesso Negado.wav',Sender);
 end;
 
 procedure TFormPrincipal.FATUMnRelatoriosNotasFiscaisEmitidasClick(Sender: TObject);
 begin
   inherited;
- { if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     CriaFormulario(TFormRelatorioNotaFiscalEmitida, 'FormRelatorioNotaFiscalEmitida',False,False,True,'')
   else
-    SoundPlay('Acesso Negado.wav',Sender);  }
+    SoundPlay('Acesso Negado.wav',Sender);
 end;
 
 procedure TFormPrincipal.MnRelListagemdeItensClick(Sender: TObject);
 begin
   inherited;
-  {if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     CriaFormulario(TFormRelatorioItensNotaFiscal, 'FormRelatorioItensNotaFiscal',False,False,True,'')
   else
-    SoundPlay('Acesso Negado.wav',Sender); }
+    SoundPlay('Acesso Negado.wav',Sender);
 end;
 
 procedure TFormPrincipal.MnGeracaodePedidosClick(Sender: TObject);
@@ -694,10 +737,10 @@ end;
 procedure TFormPrincipal.MnFATRelEmitidasporCFOPClick(Sender: TObject);
 begin
   inherited;
-  {if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     CriaFormulario(TFormRelatorioNotaFiscalEmitidaPorCFOP, 'FormRelatorioNotaFiscalEmitidaPorCFOP',False,False,True,'')
   else
-    SoundPlay('Acesso Negado.wav',Sender);}
+    SoundPlay('Acesso Negado.wav',Sender);
 end;
 
 procedure TFormPrincipal.MnFATFreteConhecimentoClick(Sender: TObject);
@@ -947,10 +990,9 @@ procedure TFormPrincipal.MnCobrancaFreteClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
-    //CriaFormulario(TFormRelatorioNotaFiscalItensCobrancaFrete, 'FormRelatorioNotaFiscalItensCobrancaFrete',False,False,True,'')
-
+    CriaFormulario(TFormRelatorioNotaFiscalItensCobrancaFrete, 'FormRelatorioNotaFiscalItensCobrancaFrete',False,False,True,'')
   else
-    SoundPlay('Acesso Negado.wav', Sender);
+    SoundPlay('Acesso Negado.wav',Sender);
 end;
 
 procedure TFormPrincipal.MnOperacaoEstoqueClick(Sender: TObject);
@@ -1124,10 +1166,9 @@ procedure TFormPrincipal.MnFATEmitidasporClienteeporIcmsClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
-    //CriaFormulario(TFormRelatorioNotaEmitidaPorICMS,'FormRelatorioNotaEmitidaPorICMS',False,False,False,'')
-
+    CriaFormulario(TFormRelatorioNotaEmitidaPorICMS,'FormRelatorioNotaEmitidaPorICMS',False,False,False,'')
   else
-    SoundPlay('Acesso Negado.wav', Sender);
+    SoundPlay('Acesso Negado.wav',Sender);
 end;
 
 procedure TFormPrincipal.Cidades1Click(Sender: TObject);
@@ -2598,6 +2639,250 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     CriaFormulario(TFormTelaExportacaoSped, 'FormTelaExportacaoSped',False,False,True,'');
+end;
+
+procedure TFormPrincipal.MnFINRelPagarEmitidasClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioContasPagarEmitidas,'FormRelatorioContasPagarEmitidas',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnFINRelContasPagarVencidasClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioContasPagarVENCIDAS, 'FormRelatorioContasPagarVENCIDAS',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnFINRelContasPagarPagasClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioContasPagarPAGAS, 'FormRelatorioContasPagarPAGAS',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.PagasPorOrigem1Click(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioContasPagasPorOrigem,'FormRelatorioContasPagasPorOrigem',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnFINRELContasPagasPorTipodeLiquidcaoClick(
+  Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioContasPagasTipoLiquidacao,'FormRelatorioContasPagasTipoLiquidacao',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnFINRelContasPagarAPagarClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioContasPagarAPAGAR, 'FormRelatorioContasPagarAPAGAR',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnFINRelReceberEmitidasClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioContasReceberEmitidas,'FormRelatorioContasReceberEmitidas',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnFINRelReceberRecebidasClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioContasRecebidas, 'FormRelatorioContasRecebidas',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnFINRELRecebidasPorSetorClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioContasRecebidasPorSetor,'FormRelatorioContasRecebidasPorSetor',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnFINRELRecebidasPorTipodeLiquidacaoClick(
+  Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioContasRecebidasTipoLiquidacao,'FormRelatorioContasRecebidasTipoLiquidacao',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnFINRELRecebidasPorEmpresaOrigemRecebtoClick(
+  Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioContasRecebidasPorEmpresa,'FormRelatorioContasRecebidasPorEmpresa',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnFINRelReceberVencidasClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioContasReceberVencidas, 'FormRelatorioContasReceberVencidas',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnFINRelReceberAReceberClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioContasaReceber, 'FormRelatorioContasaReceber',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnFINRelChequesEmitidosClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioChequeEmitido, 'FormRelatorioChequeEmitido',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnFINRelChequesRecebidosClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioChequeRecebidos, 'FormRelatorioChequeRecebidos',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MNFINRelBancoExtratoBancarioClick(
+  Sender: TObject);
+begin
+  inherited;
+    if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioExtratoMovimentoBanco, 'FormRelatorioExtratoMovimentoBanco',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnFINRelCaixaBoletimdeCaixaClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioBoletimCaixaTesouraria,'FormRelatorioBoletimCaixaTesouraria',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnFINRelCaixaMovimentacaodeCaixaClick(
+  Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioMovimentacaoTesouraria, 'FormRelatorioMovimentacaoTesouraria',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnFINRelTesourariaSaldoDiarioConsolidadoClick(
+  Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioSaldoDiarioTesouraria,'FormRelatorioSaldoDiarioTesouraria',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnFINRelClientesExtratoClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioExtratoCliente,'FormRelatorioExtratoCliente',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnFINRelContSaldodeContasReceberClick(
+  Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioSaldoContasReceberContabil,'FormRelatorioSaldoContasReceberContabil',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnFINRelPagContSaldodeContasaPagarClick(
+  Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioSaldoContasPagarContabil,'FormRelatorioSaldoContasPagarContabil',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnFINRelContAuxiliarParaLivroCaixaClick(
+  Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioAuxiliarLivroCaixa, 'FormRelatorioAuxiliarLivroCaixa',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnFINRelPlanodeContasClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioReceitasDespesasPlanoContas,'FormRelatorioReceitasDespesasPlanoContas',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnFINRelFluxodeCaixaDiarioClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioFluxoCaixa,'FormRelatorioFluxoCaixa',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnFINRelPosicaoFinanceiraConsolidadaClick(
+  Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormRelatorioSaldoDiarioPosicaoFinanceiraConsolidada,'FormRelatorioSaldoDiarioPosicaoFinanceiraConsolidada',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
 end;
 
 end.
