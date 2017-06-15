@@ -5428,6 +5428,7 @@ begin
         end;
   end;
 end;
+
 procedure RefazTabelaTemp(Tabela: TTable; Abrir: Boolean);
 begin
     try
