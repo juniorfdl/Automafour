@@ -3198,7 +3198,7 @@ inherited FormCadastroFornecedor: TFormCadastroFornecedor
     Tag = 1
     AfterInsert = SQLTemplateAfterInsert
     SQL.Strings = (
-      'Select * From Fornecedor Where (%MFiltro)')
+      'Select * From FORNECEDOR Where (%MFiltro)')
     object SQLTemplateFORNICOD: TIntegerField
       Tag = 1
       DisplayLabel = 'C'#243'digo'
@@ -3531,7 +3531,7 @@ inherited FormCadastroFornecedor: TFormCadastroFornecedor
   end
   inherited UpdateSQLTemplate: TUpdateSQL
     ModifySQL.Strings = (
-      'update Fornecedor'
+      'update FORNECEDOR'
       'set'
       '  FORNICOD = :FORNICOD,'
       '  FORNA60RAZAOSOC = :FORNA60RAZAOSOC,'
@@ -3558,7 +3558,7 @@ inherited FormCadastroFornecedor: TFormCadastroFornecedor
       'where'
       '  FORNICOD = :OLD_FORNICOD')
     InsertSQL.Strings = (
-      'insert into Fornecedor'
+      'insert into FORNECEDOR'
       
         '  (FORNICOD, FORNA60RAZAOSOC, FORNA60NOMEFANT, FORNA60CONTATO, F' +
         'ORNCFISJURID, '
@@ -3717,7 +3717,7 @@ inherited FormCadastroFornecedor: TFormCadastroFornecedor
   object SQLTipoFornec: TRxQuery
     DatabaseName = 'DB'
     SQL.Strings = (
-      'Select * From TipoFornecedor')
+      'Select * From TIPOFORNECEDOR ')
     Macros = <>
     Left = 72
     Top = 250
@@ -3725,7 +3725,7 @@ inherited FormCadastroFornecedor: TFormCadastroFornecedor
   object SQLRamo: TRxQuery
     DatabaseName = 'DB'
     SQL.Strings = (
-      'Select * From Ramo'
+      'Select * From RAMO '
       'Order by RAMOA30DESCR')
     Macros = <>
     Left = 72
@@ -3755,7 +3755,7 @@ inherited FormCadastroFornecedor: TFormCadastroFornecedor
     DatabaseName = 'DB'
     DataSource = DSSQLRamo
     SQL.Strings = (
-      'Select * From SubRamo Where'
+      'Select * From SUBRAMO Where'
       'RAMOICOD = :RAMOICOD'
       'Order by SRAMA30DESCR')
     Macros = <>
@@ -3785,7 +3785,7 @@ inherited FormCadastroFornecedor: TFormCadastroFornecedor
   object SQLRepresentante: TRxQuery
     DatabaseName = 'DB'
     SQL.Strings = (
-      'Select * From Representante')
+      'Select * From REPRESENTANTE')
     Macros = <>
     Left = 38
     Top = 250
@@ -3828,7 +3828,7 @@ inherited FormCadastroFornecedor: TFormCadastroFornecedor
     DatabaseName = 'DB'
     DataSource = DSTemplate
     SQL.Strings = (
-      'Select * from NotaCompra, NotaCompraItem, Fornecedor, Produto'
+      'Select * from NOTACOMPRA, NOTACOMPRAITEM, FORNECEDOR, PRODUTO '
       'Where'
       '(%MFornecedor) and'
       'NotaCompraItem.NOCPA13ID = NotaCompra.NOCPA13ID and'

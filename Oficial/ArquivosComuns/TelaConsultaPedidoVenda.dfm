@@ -61,7 +61,7 @@ inherited FormTelaConsultaPedidoVenda: TFormTelaConsultaPedidoVenda
   end
   inherited SQLTemplate: TRxQuery
     SQL.Strings = (
-      'Select * From PedidoVenda Where (%MFiltro)')
+      'Select * From PEDIDOVENDA Where (%MFiltro)')
     object SQLTemplatePDVDA13ID: TStringField
       DisplayLabel = 'ID Pedido'
       FieldName = 'PDVDA13ID'

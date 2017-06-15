@@ -1,7 +1,7 @@
 inherited DM: TDM
   OldCreateOrder = True
-  Left = 65486
-  Top = 72
+  Left = 20
+  Top = 70
   Height = 600
   Width = 1200
   inherited DB: TDatabase
@@ -497,6 +497,7 @@ inherited DM: TDM
     end
   end
   object SqlConsulta: TQuery
+    DatabaseName = 'DB'
     Left = 352
     Top = 152
   end

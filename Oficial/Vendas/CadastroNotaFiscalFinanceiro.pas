@@ -205,8 +205,8 @@ begin
   DataSet.FindField('CTRCN2DESCFIN').Value      := 0;
   DataSet.FindField('CTRCCEMITIDOBOLETO').Value := 'N';
   DataSet.FindField('NUMEICOD').Value           := DM.SQLTerminalAtivo.ParamByName('TERMINUMEPRAZO').AsInteger;
-  DataSet.FindField('TPDCICOD').Value           := DM.SQLConfigVenda.ParamByName('TPDCICOD').AsInteger;
-  DataSet.FindField('PORTICOD').Value           := DM.SQLConfigVenda.ParamByName('PORTICOD').AsInteger;
+  DataSet.FindField('TPDCICOD').Value           := DM.SQLConfigVenda.FieldByName('TPDCICOD').AsInteger;
+  DataSet.FindField('PORTICOD').Value           := DM.SQLConfigVenda.FieldByName('PORTICOD').AsInteger;
 end;
 
 procedure TFormCadastroNotaFiscalFinanceiro.BtnPortadoresClick(

@@ -139,10 +139,10 @@ begin
           if SQLTabelaPrecoProdutoPdvs.IsEmpty then
             begin
               SQLTabelaPrecoProdutoPdvs.append ;
-              SQLTabelaPrecoProdutoPdvs.fieldbyname('TPRCICOD').Value := SQLTemplateTPRCICOD.Value;
-              SQLTabelaPrecoProdutoPdvs.fieldbyname('TERMICOD').Value := dm.sqlconsulta.fieldbyname('TERMICOD').AsString;
-              SQLTabelaPrecoProdutoPdvs.fieldbyname('PRODICOD').Value := SQLTemplatePRODICOD.Value;
-              SQLTabelaPrecoProdutoPdvs.fieldbyname('EXCLUIR').Value  := 'S';
+              SQLTabelaPrecoProdutoPdvs.ParamByName('TPRCICOD').Value := SQLTemplateTPRCICOD.Value;
+              SQLTabelaPrecoProdutoPdvs.ParamByName('TERMICOD').Value := dm.sqlconsulta.fieldbyname('TERMICOD').AsString;
+              SQLTabelaPrecoProdutoPdvs.ParamByName('PRODICOD').Value := SQLTemplatePRODICOD.Value;
+              SQLTabelaPrecoProdutoPdvs.ParamByName('EXCLUIR').Value  := 'S';
               try
                 SQLTabelaPrecoProdutoPdvs.post;
               except

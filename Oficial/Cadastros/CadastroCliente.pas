@@ -3459,7 +3459,7 @@ begin
   {Filtra Terminais que devem receber carga}
   dm.sqlconsulta.Close;
   dm.sqlconsulta.sql.clear;
-  dm.sqlconsulta.sql.Text := 'Select Termicod from Terminal where TERMCTIPO = ''C''';
+  dm.sqlconsulta.sql.Text := 'Select Termicod from TERMINAL where TERMCTIPO = ''C''';
   dm.sqlconsulta.Open;
   if not dm.sqlconsulta.IsEmpty then
     begin
@@ -3576,7 +3576,7 @@ begin
       Append(Arquivo);
       dm.zConsulta.Close;
       dm.zConsulta.sql.Clear;
-      dm.zConsulta.sql.Add('Select CLIEA15FONE1, CLIEA15FONE2 from Cliente');
+      dm.zConsulta.sql.Add('Select CLIEA15FONE1, CLIEA15FONE2 from CLIENTE');
       dm.zConsulta.Open;
       dm.zConsulta.First;
       Linha := '';

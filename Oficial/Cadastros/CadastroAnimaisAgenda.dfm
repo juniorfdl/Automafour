@@ -162,7 +162,7 @@ inherited FormCadastroAnimaisAgenda: TFormCadastroAnimaisAgenda
     Tag = 1
     SQL.Strings = (
       
-        'Select * From Animais_Agenda Where  ANIICOD = :ANIICOD AND (%MFi' +
+        'Select * From ANIMAIS_AGENDA Where  ANIICOD = :ANIICOD AND (%MFi' +
         'ltro)')
     ParamData = <
       item

@@ -98,7 +98,7 @@ inherited FormCadastroTipoCliente: TFormCadastroTipoCliente
   inherited SQLTemplate: TRxQuery
     Tag = 1
     SQL.Strings = (
-      'Select * From TipoCliente Where (%MFiltro)')
+      'Select * From TIPOCLIENTE Where (%MFiltro)')
     object SQLTemplateTPCLICOD: TIntegerField
       Tag = 1
       DisplayLabel = 'C'#243'digo'
@@ -128,7 +128,7 @@ inherited FormCadastroTipoCliente: TFormCadastroTipoCliente
       'values'
       '  (:TPCLICOD, :TPCLA30DESCR)')
     DeleteSQL.Strings = (
-      'delete from TipoCliente'
+      'delete from TIPOCLIENTE'
       'where'
       '  TPCLICOD = :OLD_TPCLICOD')
   end

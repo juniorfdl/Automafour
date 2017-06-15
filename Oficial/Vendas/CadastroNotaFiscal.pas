@@ -1832,10 +1832,11 @@ begin
   PedidoAnterior := '';
   SQLTemplateNOFICFINALIDADE.Value := '1'; // NOTA FISCAL ELETRONICA NORMAL
   SQLTemplateNOFICSTATUS.Value := 'A';
-  if dm.sqlconfigvenda.FieldByName('CFVECFRETEPADRAO').Value <> '' then
+  if not dm.sqlconfigvenda.FieldByName('CFVECFRETEPADRAO').IsNull then
     SQLTemplateNOFICFRETEPORCONTA.Value := dm.sqlconfigvenda.FieldByName('CFVECFRETEPADRAO').Value
   else
     SQLTemplateNOFICFRETEPORCONTA.Value := 'C';
+    
   SQLTemplateNOFIN2BASCALCCIPI.Value := 0;
   SQLTemplateNOFIN2BASCALCICMS.Value := 0;
   SQLTemplateNOFIN2BASCALCSUBS.Value := 0;

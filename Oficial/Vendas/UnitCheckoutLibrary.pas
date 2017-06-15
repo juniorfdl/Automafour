@@ -315,7 +315,7 @@ begin
       DM.TblTicketPreVendaCabPlacaVeiculo.AsString          := SQLCup.FieldByName('CUPOA8PLACAVEIC').AsString ;
     end;
 
-  if DM.SQLConfigVenda.ParamByName('CFVECINFDADOVENDA').Value = 'S' then
+  if DM.SQLConfigVenda.FieldByName('CFVECINFDADOVENDA').Value = 'S' then
     begin
       if DM.TblTicketPreVendaCabFoneClienteVenda.AsString = '' then
         DM.TblTicketPreVendaCabFoneCliente.Value   := SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA15FONE1', '''' + SQLCup.FieldByName('CLIEA13ID').AsString + '''') ;
@@ -635,7 +635,7 @@ begin
   try DM.TblTicketPreVendaFin.Close ; except Application.ProcessMessages end;
 
   if (DM.SQLTerminalAtivo.ParamByName('TERMCIMPPREVENDA').Value = 'S') and
-     (DM.SQLConfigVenda.ParamByName('CFVECINFDADOVENDA').Value <> 'S') and
+     (DM.SQLConfigVenda.FieldByName('CFVECINFDADOVENDA').Value <> 'S') and
      (DM.SQLTerminalAtivo.ParamByName('TERMA60IMPPEDIDO').AsString <> '') then
   begin
     Application.CreateForm(TFormTelaImpressaoPreVenda, FormTelaImpressaoPreVenda) ;

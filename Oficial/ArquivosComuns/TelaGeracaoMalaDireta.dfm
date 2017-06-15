@@ -1079,7 +1079,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
   object SQLCliente: TRxQuery
     DatabaseName = 'DB'
     SQL.Strings = (
-      'Select * from Cliente'
+      'Select * from CLIENTE'
       'Where'
       '(%MFiltroMes)'
       'and '
@@ -1616,7 +1616,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
   object SQLClienteAUX: TRxQuery
     DatabaseName = 'DB'
     SQL.Strings = (
-      'Select * from Cliente'
+      'Select * from CLIENTE '
       'Order by '
       'CLIEA60RAZAOSOC')
     Macros = <>
@@ -2049,12 +2049,12 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
   object SQLClienteDependente: TRxQuery
     DatabaseName = 'DB'
     SQL.Strings = (
-      'Select * from  Cliente, ClienteDependente  where'
+      'Select * from  CLIENTE, CLIENTEDEPENDENTE  where'
       '  (%MFiltroMes)'
       'and'
       '  (%MFiltroDia)'
       'and'
-      '  Cliente.CLIEA13ID = ClienteDependente.CLIEA13ID'
+      '  CLIENTE.CLIEA13ID = CLIENTEDEPENDENTE.CLIEA13ID'
       'and'
       '  (%MFiltroDataUltCompra)'
       'and'
@@ -2066,7 +2066,7 @@ inherited FormTelaGeracaoMalaDireta: TFormTelaGeracaoMalaDireta
       'and'
       '  (%MTipoCliente)'
       'Order by'
-      '  Cliente.CLIEA60RAZAOSOC')
+      '  CLIENTE.CLIEA60RAZAOSOC')
     Macros = <
       item
         DataType = ftString

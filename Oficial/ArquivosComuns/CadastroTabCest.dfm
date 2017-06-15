@@ -152,7 +152,7 @@ inherited FormCadastroTabCEST: TFormCadastroTabCEST
   end
   inherited SQLTemplate: TRxQuery
     SQL.Strings = (
-      'Select * From Cestncm Where (%MFiltro)')
+      'Select * From CESTNCM Where (%MFiltro)')
     object SQLTemplateCEST: TStringField
       DisplayLabel = 'Codigo CEST'
       FieldName = 'CEST'

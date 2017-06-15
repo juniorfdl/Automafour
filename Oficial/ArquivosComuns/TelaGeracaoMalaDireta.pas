@@ -541,8 +541,8 @@ begin
             SQLCliente.MacroByName('MFiltroDia').Value := 'Extract(Day From CLIEDNASCCONJUGE) Between ' + ComboDiaIni.Text + ' and ' +  ComboDiaFin.Text;
           end;
       3 : begin
-            SQLClienteDependente.MacroByName('MFiltroMes').Value := 'Extract(Month From ClienteDependente.CLDPDNASC)';
-            SQLClienteDependente.MacroByName('MFiltroDia').Value := 'Extract(Day From ClienteDependente.CLDPDNASC)';
+            SQLClienteDependente.MacroByName('MFiltroMes').Value := 'Extract(Month From CLIENTEDEPENDENTE.CLDPDNASC)';
+            SQLClienteDependente.MacroByName('MFiltroDia').Value := 'Extract(Day From CLIENTEDEPENDENTE.CLDPDNASC)';
           end;
       4 : begin
             SQLCliente.MacroByName('MFiltroMes').Value := 'Extract(Month From CLIEDNASC) Between ' + ComboMesIni.Text + ' and ' + ComboMesFin.Text;

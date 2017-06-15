@@ -1,6 +1,6 @@
 inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
-  Left = -23
-  Top = 96
+  Left = 0
+  Top = 13
   Caption = 'Notas Fiscais'
   ClientHeight = 654
   ClientWidth = 1230
@@ -10283,7 +10283,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
   object SQLFornecedor: TRxQuery
     DatabaseName = 'DB'
     SQL.Strings = (
-      'Select * From Fornecedor')
+      'Select * From FORNECEDOR')
     Macros = <>
     Left = 751
     Top = 574
@@ -10307,7 +10307,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
   object SQLTransportadora: TRxQuery
     DatabaseName = 'DB'
     SQL.Strings = (
-      'Select * From Transportadora order by TRANA60RAZAOSOC')
+      'Select * From TRANSPORTADORA order by TRANA60RAZAOSOC')
     Macros = <>
     Left = 638
     Top = 547
@@ -10425,7 +10425,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
   object SQLVendedor: TRxQuery
     DatabaseName = 'DB'
     SQL.Strings = (
-      'Select * From Vendedor'
+      'Select * From VENDEDOR'
       '')
     Macros = <>
     Left = 1028
@@ -11271,7 +11271,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
     DatabaseName = 'DB'
     RequestLive = True
     SQL.Strings = (
-      'Select * From Serie'
+      'Select * From SERIE'
       'Where (%mEmpresa)')
     Macros = <
       item
@@ -11416,7 +11416,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
     DatabaseName = 'DB'
     RequestLive = True
     SQL.Strings = (
-      'Select * From PedidoVenda Where PDVDA13ID=:PDVDA13ID')
+      'Select * From PEDIDOVENDA Where PDVDA13ID=:PDVDA13ID')
     Macros = <>
     Left = 1000
     Top = 446
@@ -12000,8 +12000,8 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
     DatabaseName = 'DB'
     SQL.Strings = (
       'Select C.*, E.ECFICOD, E.ECFA20NROSERIe from CUPOM C'
-      'LEFT join terminal T ON T.TERMICOD = C.termicod'
-      'LEFT JOIN ecf E ON E.ecfa13id = T.ECFA13ID'
+      'LEFT join TERMINAL T ON T.TERMICOD = C.termicod'
+      'LEFT JOIN ECF E ON E.ecfa13id = T.ECFA13ID'
       'where CUPOA13ID = :Cupom')
     Macros = <>
     Left = 571
@@ -12297,18 +12297,18 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
     DatabaseName = 'DB'
     SQL.Strings = (
       'select'
-      'sum(NotaFiscalItem.NFITN3QUANT) as Qtde,'
-      'NotaFiscalItem.PRODICOD'
+      'sum(NOTAFISCALITEM.NFITN3QUANT) as Qtde,'
+      'NOTAFISCALITEM.PRODICOD'
       'from'
-      'NotaFiscal, NotaFiscalItem'
+      'NOTAFISCAL, NOTAFISCALITEM'
       'where'
-      'NotaFiscal.NOFIA13ID = NotaFiscalItem.NOFIA13ID'
+      'NOTAFISCAL.NOFIA13ID = NOTAFISCALITEM.NOFIA13ID'
       'and'
-      'NotaFiscal.NOFICSTATUS = '#39'E'#39
+      'NOTAFISCAL.NOFICSTATUS = '#39'E'#39
       'and'
       '%NotaFiscal'
       'group by'
-      'NotaFiscalItem.PRODICOD')
+      'NOTAFISCALITEM.PRODICOD')
     Macros = <
       item
         DataType = ftString
@@ -12477,7 +12477,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
   object SQLNotaFiscal: TRxQuery
     DatabaseName = 'DB'
     SQL.Strings = (
-      'Select * from NotaFiscal where'
+      'Select * from NOTAFISCAL where'
       'NOFIA13ID = :NOFIA13ID')
     Macros = <>
     Left = 999
@@ -13343,7 +13343,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
       'Select * From PLANODECONTAS Where '
       'PLCTCANALSINT = '#39'A'#39
       'and'
-      'PLCTCTIPOSALDO = ''C''')
+      'PLCTCTIPOSALDO = '#39'C'#39)
     Macros = <>
     Left = 1059
     Top = 444
@@ -13563,7 +13563,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
   object SQLTipoDoc: TRxQuery
     DatabaseName = 'DB'
     SQL.Strings = (
-      'Select * from TipoDocumento'
+      'Select * from TIPODOCUMENTO'
       'Order by TPDCA60DESCR')
     Macros = <>
     Left = 1000
@@ -13605,7 +13605,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
     DatabaseName = 'DB'
     RequestLive = True
     SQL.Strings = (
-      'Select * From Serie'
+      'Select * From SERIE'
       'Where (%Empresa) and  (%Serie)')
     Macros = <
       item
@@ -13691,7 +13691,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
   object SQLUnidade: TRxQuery
     DatabaseName = 'DB'
     SQL.Strings = (
-      'Select * from Unidade'
+      'Select * from UNIDADE'
       'Where %Filtro')
     Macros = <
       item
@@ -13732,7 +13732,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
   object SQLOperacaoEstoque: TRxQuery
     DatabaseName = 'DB'
     SQL.Strings = (
-      'Select * from OperacaoEstoque'
+      'Select * from OPERACAOESTOQUE '
       'Order By OPESA60DESCR asc')
     Macros = <>
     Left = 1137

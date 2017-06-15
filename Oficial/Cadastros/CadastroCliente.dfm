@@ -7718,10 +7718,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
       '  CONTASRECEBER'
       'where'
       
-        '  (CONTASRECEBER.CTRCCSTATUS = ''A'' or CONTASRECEBER.CTRCCSTATUS ' +
-        '= ''E'' or CONTASRECEBER.CTRCCSTATUS = ''N'') and'
+        '  (CONTASRECEBER.CTRCCSTATUS = '#39'A'#39' or CONTASRECEBER.CTRCCSTATUS ' +
+        '= '#39'E'#39' or CONTASRECEBER.CTRCCSTATUS = '#39'N'#39') and'
       
-        '  (CONTASRECEBER.PDVDA13ID = '''' or CONTASRECEBER.PDVDA13ID IS NU' +
+        '  (CONTASRECEBER.PDVDA13ID = '#39#39' or CONTASRECEBER.PDVDA13ID IS NU' +
         'LL) and'
       '  (%MCliente) and'
       '  (%MCheques) and'
@@ -7765,7 +7765,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
         '  LEFT OUTER JOIN CLIENTE CLIENTE on CUPOM.CLIEA13ID = CLIENTE.C' +
         'LIEA13ID'
       'where'
-      '  CUPOM.CUPOCSTATUS = ''A'' and'
+      '  CUPOM.CUPOCSTATUS = '#39'A'#39' and'
       '  (%MCliente2) and'
       '  (%MAbertas2)'
       '')
@@ -7967,7 +7967,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
     DatabaseName = 'DB'
     DataSource = DSTemplate
     SQL.Strings = (
-      'select * from CartaPrimeiroAviso'
+      'select * from CARTAPRIMEIROAVISO'
       'where CLIEA13ID = :CLIEA13ID')
     Macros = <>
     Left = 483
@@ -8013,7 +8013,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
     DatabaseName = 'DB'
     DataSource = DSTemplate
     SQL.Strings = (
-      'select * from CartaSegundoAviso'
+      'select * from CARTASEGUNDOAVISO '
       'where CLIEA13ID = :CLIEA13ID')
     Macros = <>
     Left = 539
@@ -8059,7 +8059,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
     DatabaseName = 'DB'
     DataSource = DSTemplate
     SQL.Strings = (
-      'select * from CartaAvisoSPC'
+      'select * from CARTAAVISOSPC '
       'where CLIEA13ID = :CLIEA13ID')
     Macros = <>
     Left = 595
@@ -8249,7 +8249,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
         'ICOD'
       'where'
       '  CUPOM.CLIEA13ID = :CLIEA13ID and'
-      '  CUPOMITEM.CPITCSTATUS = ''A'' and'
+      '  CUPOMITEM.CPITCSTATUS = '#39'A'#39' and'
       '  (%MProdutoCP)'
       'UNION ALL'
       'select'
@@ -12304,7 +12304,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
   object SQLRamo: TRxQuery
     DatabaseName = 'DB'
     SQL.Strings = (
-      'Select * From Ramo'
+      'Select * From RAMO '
       'Order by RAMOA30DESCR')
     Macros = <>
     Left = 920
@@ -12324,7 +12324,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
     DatabaseName = 'DB'
     DataSource = DSSQLRamo
     SQL.Strings = (
-      'Select * From SubRamo Where'
+      'Select * From SUBRAMO Where'
       'RAMOICOD = :RAMOICOD'
       'Order by SRAMA30DESCR')
     Macros = <>
@@ -12468,7 +12468,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
   object SQLPortador: TRxQuery
     DatabaseName = 'DB'
     SQL.Strings = (
-      'Select * From Portador'
+      'Select * From PORTADOR'
       'Order by PORTA60DESCR')
     Macros = <>
     Left = 744
@@ -12499,7 +12499,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
   object SQLPlanoConta: TRxQuery
     DatabaseName = 'DB'
     SQL.Strings = (
-      'Select * From PlanodeContas'
+      'Select * From PLANODECONTAS'
       'where PLCTCTIPOSALDO = '#39'C'#39
       'order by PLCTA60DESCR')
     Macros = <>

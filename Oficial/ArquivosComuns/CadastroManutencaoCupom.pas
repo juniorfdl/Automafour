@@ -381,9 +381,9 @@ begin
   SQLTotal.Close;
   SQLTotal.SQL.Clear;
   if SQLCupomItemCPITN3QTD.Value > 0 then
-    SQLTotal.SQL.Add('Select Sum((CPITN3VLRUNIT*CPITN3QTD)-CPITN2DESC) as TotalGeral from CupomItem where CUPOA13ID = '''+SQLTemplateCUPOA13ID.Value+'''')
+    SQLTotal.SQL.Add('Select Sum((CPITN3VLRUNIT*CPITN3QTD)-CPITN2DESC) as TotalGeral from CUPOMITEM where CUPOA13ID = '''+SQLTemplateCUPOA13ID.Value+'''')
   else
-    SQLTotal.SQL.Add('Select Sum((CPITN3VLRUNIT*CPITN3QTDTROCA)-CPITN2DESC) as TotalGeral from CupomItem where CUPOA13ID = '''+SQLTemplateCUPOA13ID.Value+'''');
+    SQLTotal.SQL.Add('Select Sum((CPITN3VLRUNIT*CPITN3QTDTROCA)-CPITN2DESC) as TotalGeral from CUPOMITEM where CUPOA13ID = '''+SQLTemplateCUPOA13ID.Value+'''');
 
   SQLTotal.Prepare;
   SQLTotal.Open;

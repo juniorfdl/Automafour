@@ -7,6 +7,6 @@ inherited FormTelaConsultaNotaFiscal: TFormTelaConsultaNotaFiscal
   TextHeight = 13
   inherited SQLTemplate: TRxQuery
     SQL.Strings = (
-      'Select * From NotaFiscal Where (%MFiltro)')
+      'Select * From NOTAFISCAL Where (%MFiltro)')
   end
 end
