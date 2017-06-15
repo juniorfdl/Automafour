@@ -143,7 +143,7 @@ inherited FormCadastroCor: TFormCadastroCor
   inherited SQLTemplate: TRxQuery
     Tag = 1
     SQL.Strings = (
-      'Select * From Cor Where (%MFiltro)')
+      'Select * From COR Where (%MFiltro)')
     object SQLTemplateCORICOD: TIntegerField
       Tag = 1
       DisplayLabel = 'C'#243'digo'
@@ -171,7 +171,7 @@ inherited FormCadastroCor: TFormCadastroCor
   end
   inherited UpdateSQLTemplate: TUpdateSQL
     ModifySQL.Strings = (
-      'update Cor'
+      'update COR '
       'set'
       '  CORICOD = :CORICOD,'
       '  CORA30DESCR = :CORA30DESCR,'

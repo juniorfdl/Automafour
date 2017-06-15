@@ -511,7 +511,7 @@ inherited FormTelaConsultaProdutoGeral: TFormTelaConsultaProdutoGeral
   object SQLMarcaCombo: TRxQuery
     DatabaseName = 'DB'
     SQL.Strings = (
-      'Select MARCICOD, MARCA60DESCR from Marca'
+      'Select MARCICOD, MARCA60DESCR from MARCA'
       'Order by MARCA60DESCR')
     Macros = <>
     Left = 568

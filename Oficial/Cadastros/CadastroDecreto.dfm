@@ -156,7 +156,7 @@ inherited FormCadastroDecreto: TFormCadastroDecreto
   inherited SQLTemplate: TRxQuery
     Tag = 1
     SQL.Strings = (
-      'Select * From Decreto Where (%MFiltro)')
+      'Select * From DECRETO Where (%MFiltro)')
     object SQLTemplateDECRICOD: TIntegerField
       Tag = 1
       DisplayLabel = 'C'#243'digo'
@@ -184,7 +184,7 @@ inherited FormCadastroDecreto: TFormCadastroDecreto
   end
   inherited UpdateSQLTemplate: TUpdateSQL
     ModifySQL.Strings = (
-      'update Decreto'
+      'update DECRETO'
       'set'
       '  DECRICOD = :DECRICOD,'
       '  DECRA60DESCR = :DECRA60DESCR,'
@@ -193,12 +193,12 @@ inherited FormCadastroDecreto: TFormCadastroDecreto
       'where'
       '  DECRICOD = :OLD_DECRICOD')
     InsertSQL.Strings = (
-      'insert into Decreto'
+      'insert into DECRETO'
       '  (DECRICOD, DECRA60DESCR, PENDENTE, REGISTRO)'
       'values'
       '  (:DECRICOD, :DECRA60DESCR, :PENDENTE, :REGISTRO)')
     DeleteSQL.Strings = (
-      'delete from Decreto'
+      'delete from DECRETO'
       'where'
       '  DECRICOD = :OLD_DECRICOD')
   end

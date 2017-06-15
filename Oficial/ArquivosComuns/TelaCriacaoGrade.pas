@@ -276,7 +276,7 @@ begin
         SQLProduto.Open;
         If (ListaCorSel.Items.Count>0) and (ListaTamSel.Items.Count>0) Then
           Begin
-            ConsultaGrade.SQL.Text:='Select GRADICOD,GRTMICOD,CORICOD From Produto Where PRODIAGRUPGRADE=' + DataSet.FindField('PRODIAGRUPGRADE').asString +' AND GRADICOD='+DataSet.FindField('GRADICOD').asString;
+            ConsultaGrade.SQL.Text:='Select GRADICOD,GRTMICOD,CORICOD From PRODUTO Where PRODIAGRUPGRADE=' + DataSet.FindField('PRODIAGRUPGRADE').asString +' AND GRADICOD='+DataSet.FindField('GRADICOD').asString;
             ConsultaGrade.Open;
             For C:=0 To ListaCorSel.Items.Count-1 Do
               Begin
@@ -428,7 +428,7 @@ begin
   {Filtra Terminais que devem receber carga}
   dm.sqlconsulta.Close;
   dm.sqlconsulta.sql.clear;
-  dm.sqlconsulta.sql.Text := 'Select Termicod from Terminal where TERMCTIPO = ''C''';
+  dm.sqlconsulta.sql.Text := 'Select Termicod from TERMINAL where TERMCTIPO = ''C''';
   dm.sqlconsulta.Open;
   if not dm.sqlconsulta.IsEmpty then
     begin

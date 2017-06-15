@@ -525,7 +525,7 @@ begin
   SQLCFOP.Open;
   sqlunidade2.open;
   
-  case Dm.SQLConfigVenda.ParamByName('CFVEINROCASASDEC').AsInteger of
+  case Dm.SQLConfigVenda.FieldByName('CFVEINROCASASDEC').AsInteger of
   2 : begin
         SQLTemplateNFITN2VLRUNIT.DisplayFormat     := '##0.00';
         SQLTemplateNFITN2VLRUNIT.EditFormat        := '##0.00';
@@ -647,7 +647,7 @@ begin
         begin
           if TemProdutoSemSubsTrib then
             if DM.SQLTemplate.FieldByName('PRODCSUBSTRIB').AsString = 'S' then
-              if DM.SQLConfigVenda.ParamByName('CFVECINFPRODSUBTRI').AsString = 'S' then
+              if DM.SQLConfigVenda.FieldByName('CFVECINFPRODSUBTRI').AsString = 'S' then
                 begin
                   Informa('Já existe(m) produto(s) SEM substituição tributária nesta venda, você deve fazer uma nota fiscal separada para produtos COM substituição tributária!' + #13 + 'Para maiores informações contate o suporte!');
                   SQLTemplate.Cancel;
@@ -656,7 +656,7 @@ begin
                 end;
           if TemProdutoComSubsTrib then
             if DM.SQLTemplate.FieldByName('PRODCSUBSTRIB').AsString <> 'S' then
-              if DM.SQLConfigVenda.ParamByName('CFVECINFPRODSUBTRI').AsString = 'S' then
+              if DM.SQLConfigVenda.FieldByName('CFVECINFPRODSUBTRI').AsString = 'S' then
                 begin
                   Informa('Já existe(m) produto(s) COM substituição tributária nesta venda, você deve fazer uma nota fiscal separada para produtos SEM substituição tributária!' + #13 + 'Para maiores informações contate o suporte!');
                   SQLTemplate.Cancel;
@@ -695,7 +695,7 @@ begin
           Else
             If DM.SQLTemplate.FindField(SQLTemplate.DataSource.DataSet.FindField('CampoImpostoLookUp').asString).asFloat <> 0 Then
               If (AnsiUpperCase(SQLTemplate.DataSource.DataSet.FindField('CampoImpostoLookUp').asString)='PRODN3VLRVENDA') Then
-                SQLTemplateNFITN2VLRUNIT.asFloat := RetornaPreco(DM.SQLTemplate,DM.SQLConfigVenda.ParamByName('TPRCICOD').asString,SQLTemplate.DataSource.DataSet.FieldByName('CliFornEmpTabelaPrecoLookUp').asString)
+                SQLTemplateNFITN2VLRUNIT.asFloat := RetornaPreco(DM.SQLTemplate,DM.SQLConfigVenda.FieldByName('TPRCICOD').asString,SQLTemplate.DataSource.DataSet.FieldByName('CliFornEmpTabelaPrecoLookUp').asString)
               Else
                 SQLTemplateNFITN2VLRUNIT.asFloat := DM.SQLTemplate.FindField(SQLTemplate.DataSource.DataSet.FindField('CampoImpostoLookUp').asString).asFloat;
 
@@ -727,7 +727,7 @@ begin
                 SQLTemplateNFITN2VLRISSQN.asFloat  := ((SQLTemplateNFITN2VLRUNIT.asFloat*SQLTemplateNFITN3QUANT.asFloat)-SQLTemplateNFITN2VLRDESC.AsFloat)*(vISSQN / 100);
               end else
               begin
-                SQLTemplateNFITN2PERCISSQN.asFloat := DM.SQLConfigVenda.ParamByName('CFVEN3ALIQISSQN').asFloat;
+                SQLTemplateNFITN2PERCISSQN.asFloat := DM.SQLConfigVenda.FieldByName('CFVEN3ALIQISSQN').asFloat;
                 SQLTemplateNFITN2VLRISSQN.asFloat  := ((SQLTemplateNFITN2VLRUNIT.asFloat*SQLTemplateNFITN3QUANT.asFloat)-SQLTemplateNFITN2VLRDESC.AsFloat)*(SQLTemplateNFITN2PERCISSQN.asFloat / 100);
               end;
             End;
@@ -1194,8 +1194,8 @@ begin
       else
         NumItem := 0;
     end;
-  if DM.SQLConfigVenda.ParamByName('CFVEINROITENSNF').Value > 0 then
-    if (NumItem = DM.SQLConfigVenda.ParamByName('CFVEINROITENSNF').AsInteger) and (not Dm.ImportandoPedidoVenda) then
+  if DM.SQLConfigVenda.FieldByName('CFVEINROITENSNF').Value > 0 then
+    if (NumItem = DM.SQLConfigVenda.FieldByName('CFVEINROITENSNF').AsInteger) and (not Dm.ImportandoPedidoVenda) then
       begin
         if Pergunta('SIM','O número máximo de itens para uma mesma nota foi alcançado, você deseja iniciar uma nova nota ?') then
           begin

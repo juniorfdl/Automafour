@@ -176,7 +176,7 @@ Begin
 End;
 Function TFormCadastroConsulta.ValorCampo(Combo:TComboBox;Valor:String):String;
 Begin
-  DM.SQLTemplate.SQL.Text:='Select * From '+Copy(Combo.Text,1,POS('.',Combo.Text)-1);
+  DM.SQLTemplate.SQL.Text:='Select * From '+uPPERCASE(Copy(Combo.Text,1,POS('.',Combo.Text)-1));
   DM.SQLTemplate.FieldDefs.Clear;
   DM.SQLTemplate.FieldDefs.Update;
   Case DM.SQLTemplate.FieldDefs.Find(Copy(Combo.Text,POS('.',Combo.Text)+1,Length(Combo.Text))).DataType Of

@@ -143,7 +143,7 @@ inherited FormCadastroBanco: TFormCadastroBanco
   end
   inherited SQLTemplate: TRxQuery
     SQL.Strings = (
-      'Select * From Banco Where (%MFiltro)')
+      'Select * From BANCO Where (%MFiltro)')
     object SQLTemplateBANCA5COD: TStringField
       ConstraintErrorMessage = '1'
       DisplayLabel = 'C'#243'digo'
@@ -173,7 +173,7 @@ inherited FormCadastroBanco: TFormCadastroBanco
   end
   inherited UpdateSQLTemplate: TUpdateSQL
     ModifySQL.Strings = (
-      'update Banco'
+      'update BANCO'
       'set'
       '  BANCA5COD = :BANCA5COD,'
       '  BANCA60NOME = :BANCA60NOME,'
@@ -187,7 +187,7 @@ inherited FormCadastroBanco: TFormCadastroBanco
       'values'
       '  (:BANCA5COD, :BANCA60NOME, :PENDENTE, :REGISTRO)')
     DeleteSQL.Strings = (
-      'delete from Banco'
+      'delete from BANCO'
       'where'
       '  BANCA5COD = :OLD_BANCA5COD')
   end

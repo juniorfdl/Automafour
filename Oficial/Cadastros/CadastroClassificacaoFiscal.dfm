@@ -143,7 +143,7 @@ inherited FormCadastroClassificacaoFiscal: TFormCadastroClassificacaoFiscal
   inherited SQLTemplate: TRxQuery
     Tag = 1
     SQL.Strings = (
-      'Select * From ClassificacaoFiscal Where (%MFiltro)')
+      'Select * From CLASSIFICACAOFISCAL Where (%MFiltro)')
     object SQLTemplateCLFSICOD: TIntegerField
       Tag = 1
       DisplayLabel = 'C'#243'digo'
@@ -171,7 +171,7 @@ inherited FormCadastroClassificacaoFiscal: TFormCadastroClassificacaoFiscal
   end
   inherited UpdateSQLTemplate: TUpdateSQL
     ModifySQL.Strings = (
-      'update ClassificacaoFiscal'
+      'update CLASSIFICACAOFISCAL'
       'set'
       '  CLFSICOD = :CLFSICOD,'
       '  CLFSA30DESCR = :CLFSA30DESCR,'
@@ -180,12 +180,12 @@ inherited FormCadastroClassificacaoFiscal: TFormCadastroClassificacaoFiscal
       'where'
       '  CLFSICOD = :OLD_CLFSICOD')
     InsertSQL.Strings = (
-      'insert into ClassificacaoFiscal'
+      'insert into CLASSIFICACAOFISCAL'
       '  (CLFSICOD, CLFSA30DESCR, PENDENTE, REGISTRO)'
       'values'
       '  (:CLFSICOD, :CLFSA30DESCR, :PENDENTE, :REGISTRO)')
     DeleteSQL.Strings = (
-      'delete from ClassificacaoFiscal'
+      'delete from CLASSIFICACAOFISCAL'
       'where'
       '  CLFSICOD = :OLD_CLFSICOD')
   end

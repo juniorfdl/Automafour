@@ -290,7 +290,7 @@ begin
       else
         DM.SQLPreVenda.MacroByName('MFiltro').Value := 'PRVDCIMPORT = ''N'' and PDVCPreConclu = ''S'' and CLIENTENOME Like ''%'+NomeClienteVenda+'%''';
 
-      DM.SQLPreVenda.MacroByName('Ordem').Value   := 'Order by '+ dm.sqlconfigvenda.ParamByName('CFVEA20ORDIMPVEND').AsString ;
+      DM.SQLPreVenda.MacroByName('Ordem').Value   := 'Order by '+ dm.SQLConfigVenda.FieldByName('CFVEA20ORDIMPVEND').AsString ;
       DM.SQLPreVenda.Open ;
 
       DM.SQLPreVenda.First ;
@@ -405,7 +405,7 @@ begin
       else
         DM.SQLPreVenda.MacroByName('MFiltro').Value := 'PRVDCIMPORT = ''S'' and CLIENTENOME Like ''%'+NomeClienteVenda+'%''';
 
-      DM.SQLPreVenda.MacroByName('Ordem').Value   := 'Order by '+ dm.sqlconfigvenda.ParamByName('CFVEA20ORDIMPVEND').AsString ;
+      DM.SQLPreVenda.MacroByName('Ordem').Value   := 'Order by '+ dm.SQLConfigVenda.FieldByName('CFVEA20ORDIMPVEND').AsString ;
       DM.SQLPreVenda.Open ;
 
       DM.SQLPreVenda.First ;
@@ -464,7 +464,7 @@ begin
         DM.SQLPreVenda.MacroByName('MFiltro').Value := 'PRVDCIMPORT = ''N'' and P.VENDICOD = ' + IntToStr(VendedorVenda) +
                                                        ' and CLIENTENOME Like ''%'+NomeClienteVenda+'%''';
 
-      DM.SQLPreVenda.MacroByName('Ordem').Value   := 'Order by '+ dm.sqlconfigvenda.ParamByName('CFVEA20ORDIMPVEND').AsString ;
+      DM.SQLPreVenda.MacroByName('Ordem').Value   := 'Order by '+ dm.SQLConfigVenda.FieldByName('CFVEA20ORDIMPVEND').AsString ;
       DM.SQLPreVenda.Open ;
 
       if VendedorVenda > 0 then
@@ -472,7 +472,7 @@ begin
       else
         DM.SQLPreVenda.MacroByName('MFiltro').Value := 'PRVDCIMPORT = ''N''';
 
-      DM.SQLPreVenda.MacroByName('Ordem').Value   := 'Order by '+ dm.sqlconfigvenda.ParamByName('CFVEA20ORDIMPVEND').AsString ;
+      DM.SQLPreVenda.MacroByName('Ordem').Value   := 'Order by '+ dm.SQLConfigVenda.FieldByName('CFVEA20ORDIMPVEND').AsString ;
       DM.SQLPreVenda.Open ;
 
       DM.SQLPreVenda.First ;

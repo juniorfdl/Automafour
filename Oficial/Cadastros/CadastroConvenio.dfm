@@ -237,7 +237,7 @@ inherited FormCadastroConvenio: TFormCadastroConvenio
   inherited SQLTemplate: TRxQuery
     Tag = 1
     SQL.Strings = (
-      'Select * From Convenio Where (%MFiltro)')
+      'Select * From CONVENIO Where (%MFiltro)')
     object SQLTemplateCONVICOD: TIntegerField
       Tag = 1
       DisplayLabel = 'C'#243'digo'

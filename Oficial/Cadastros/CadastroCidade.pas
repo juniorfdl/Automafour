@@ -104,7 +104,7 @@ begin
 
             {testa se existe a cidade, se nao inclui}
             dm.SQLTemplate.Close;
-            dm.SQLTemplate.SQL.Text := 'select * from cidade where ID = '''+CodIBGE+'''' ;
+            dm.SQLTemplate.SQL.Text := 'select * from CIDADE where ID = '''+CodIBGE+'''' ;
             dm.SQLTemplate.Open;
             if dm.SQLTemplate.IsEmpty then
               begin

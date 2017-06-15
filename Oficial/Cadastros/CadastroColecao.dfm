@@ -109,7 +109,7 @@ inherited FormCadastroColecao: TFormCadastroColecao
   inherited SQLTemplate: TRxQuery
     Tag = 1
     SQL.Strings = (
-      'Select * From Colecao Where (%MFiltro)')
+      'Select * From COLECAO Where (%MFiltro)')
     object SQLTemplateCOLEICOD: TIntegerField
       Tag = 1
       DisplayLabel = 'C'#243'digo'

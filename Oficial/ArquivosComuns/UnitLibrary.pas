@@ -1721,7 +1721,7 @@ begin
       MyQuery.DatabaseName := DM.DataBaseName;
     MyQuery.Close;
     MyQuery.SQL.Clear;
-    MyQuery.SQL.Add('select MAX(' + CampoMax + ') from ' + Tabela);
+    MyQuery.SQL.Add('select MAX(' + CampoMax + ') from ' + UpperCase(Tabela));
     MyQuery.SQL.Add('where  ' + ClausulaSQL);
     MyQuery.Open;
     if not MyQuery.EOF then
@@ -1761,11 +1761,11 @@ begin
   MyQuery.Close ;
   MyQuery.SQL.Clear ;
   if IDNotaCompra <> '' then
-    MyQuery.SQL.Add('Select Count(NOCPA13ID) as Contador from MovimentoEstoque Where NOCPA13ID='''+IDNotaCompra+''' and PRODICOD='+Produto + ' and MVESN3QTDENTRADA='+ConvFloatToStr(quantidade)) ;
+    MyQuery.SQL.Add('Select Count(NOCPA13ID) as Contador from MOVIMENTOESTOQUE Where NOCPA13ID='''+IDNotaCompra+''' and PRODICOD='+Produto + ' and MVESN3QTDENTRADA='+ConvFloatToStr(quantidade)) ;
   if IDMovDiv <> '' then
-    MyQuery.SQL.Add('Select Count(MOVDA13ID) as Contador from MovimentoEstoque Where MOVDA13ID = '''+IDMovDiv+''' and PRODICOD = '+Produto) ;
+    MyQuery.SQL.Add('Select Count(MOVDA13ID) as Contador from MOVIMENTOESTOQUE Where MOVDA13ID = '''+IDMovDiv+''' and PRODICOD = '+Produto) ;
   if IDNotaVenda <> '' then
-    MyQuery.SQL.Add('Select Count(NOFIA13ID) as Contador from MovimentoEstoque Where NOFIA13ID = '''+IDNotaVenda+''' and PRODICOD = '+Produto) ;
+    MyQuery.SQL.Add('Select Count(NOFIA13ID) as Contador from MOVIMENTOESTOQUE Where NOFIA13ID = '''+IDNotaVenda+''' and PRODICOD = '+Produto) ;
   MyQuery.Open ;
   if MyQuery.FieldByName('Contador').Value > 0 then
     Result := True
@@ -1789,8 +1789,9 @@ begin
   if trim(TabelaPrecoCliente) = '' then
     TabelaPrecoCliente := '0';
 
-  SQLPreco := ExecSql(' select * from TABELAPRECOPRODUTO Where PRODICOD= '
-    +IntToStr(QueryProduto.FindField('PRODICOD').asInteger)+' AND TPRCICOD = '+ TabelaPrecoCliente);
+  SQLPreco := TQuery.Create(nil);
+  SQLPreco.DatabaseName := 'DB';
+  SQLPreco.SQL.Text := ' select * from TABELAPRECOPRODUTO Where PRODICOD = :PRODICOD AND TPRCICOD = :TPRCICOD ';
 
   If (Not PrecoOk) AND (TabelaPrecoCliente <> '') Then
     if (TabelaPrecoCliente <> 'V') and (copy(TabelaPrecoCliente,1,1) <> 'A') then
@@ -2011,7 +2012,7 @@ begin
   MyQuery.DatabaseName := 'DB' ;
   MyQuery.Close ;
   MyQuery.SQL.Clear ;
-  MyQuery.SQL.Add('select Count(*) as Contador from ' + Tabela) ;
+  MyQuery.SQL.Add('select Count(*) as Contador from ' + uPPERCASE(Tabela)) ;
   if ClausulaWhere <> '' then
     MyQuery.SQL.Add(ClausulaWhere) ;
   MyQuery.Open ;
