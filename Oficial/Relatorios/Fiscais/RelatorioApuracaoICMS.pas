@@ -545,8 +545,8 @@ begin
     //************************************ VERIFICAR ENTRADAS ************************************
     SQLNotaCompra.Close ;
     SQLNotaCompra.MacrobyName('MEmpresa').Value := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'NOTACOMPRA', '');
-    SQLNotaCompra.MacrobyName('MData').Value := 'NOTACOMPRA.NOCPDRECEBIMENTO >= "' + FormatDateTime('mm/dd/yyyy 00:00:00', Dt1) + '" and ' +
-                                                'NOTACOMPRA.NOCPDRECEBIMENTO <= "' + FormatDateTime('mm/dd/yyyy 23:59:00', Dt2) + '"' ;
+    SQLNotaCompra.MacrobyName('MData').Value := 'NOTACOMPRA.NOCPDRECEBIMENTO >= ''' + FormatDateTime('mm/dd/yyyy 00:00:00', Dt1) + ''' and ' +
+                                                'NOTACOMPRA.NOCPDRECEBIMENTO <= ''' + FormatDateTime('mm/dd/yyyy 23:59:00', Dt2) + '''' ;
 
     SQLNotaCompra.Open ;
     SQLNotaCompra.First;
@@ -585,7 +585,7 @@ begin
           SQLOperacaoEstoque.Locate('OPESICOD',SQLNotaCompraOPESICOD.AsString,[]);
 
         case SQLOperacaoEstoqueOPESCORIGEMDESTINO.AsString[1] of
-          'C' : UfCFOP := Trim(SQLLocate('CLIENTE'   , 'CLIEA13ID', 'CLIEA2UFRES', '"' + SQLNotaCompraCLIEA13ID.AsString + '"') + '-' + SQLNotaCompraCFOPA5COD.Value);
+          'C' : UfCFOP := Trim(SQLLocate('CLIENTE'   , 'CLIEA13ID', 'CLIEA2UFRES', '''' + SQLNotaCompraCLIEA13ID.AsString + '''') + '-' + SQLNotaCompraCFOPA5COD.Value);
           'F' : UfCFOP := Trim(SQLLocate('FORNECEDOR', 'FORNICOD' , 'FORNA2UF'   , SQLNotaCompraFORNICOD.AsString)+ '-' + SQLNotaCompraCFOPA5COD.Value);
           'E' : UfCFOP := Trim(SQLLocate('EMPRESA'   , 'EMPRICOD' , 'EMPRA2UF'   , SQLNotaCompraEMPRICOD.AsString)+ '-' + SQLNotaCompraCFOPA5COD.Value);
         end;
@@ -643,7 +643,7 @@ begin
           SQLOperacaoEstoque.Locate('OPESICOD',SQLNotaCompraOPESICOD.AsString,[]);
 
         case SQLOperacaoEstoqueOPESCORIGEMDESTINO.AsString[1] of
-          'C' : UfCFOP := Trim(SQLLocate('CLIENTE'   , 'CLIEA13ID', 'CLIEA2UFRES', '"' + SQLNotaCompraCLIEA13ID.AsString + '"'));
+          'C' : UfCFOP := Trim(SQLLocate('CLIENTE'   , 'CLIEA13ID', 'CLIEA2UFRES', '''' + SQLNotaCompraCLIEA13ID.AsString + ''''));
           'F' : UfCFOP := Trim(SQLLocate('FORNECEDOR', 'FORNICOD' , 'FORNA2UF'   , SQLNotaCompraFORNICOD.AsString));
           'E' : UfCFOP := Trim(SQLLocate('EMPRESA'   , 'EMPRICOD' , 'EMPRA2UF'   , SQLNotaCompraEMPRICOD.AsString));
         end;
@@ -690,8 +690,8 @@ begin
 
     SQLCupom.Close ;
     SQLCupom.MacrobyName('MEmpresa1').Value := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'NOTAFISCAL', '');
-    SQLCupom.MacrobyName('MData1').Value    := 'NOFIDEMIS >= "' + FormatDateTime('mm/dd/yyyy', Dt1) + '" and ' +
-                                               'NOFIDEMIS <= "' + FormatDateTime('mm/dd/yyyy', Dt2) + '"';
+    SQLCupom.MacrobyName('MData1').Value    := 'NOFIDEMIS >= ''' + FormatDateTime('mm/dd/yyyy', Dt1) + ''' and ' +
+                                               'NOFIDEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Dt2) + '''';
 
     SQLCupom.Open ;
     Screen.Cursor := -11 ;
@@ -727,7 +727,7 @@ begin
         SQLOperacaoEstoque.Locate('OPESICOD',SQLCupomOPESICOD.AsString,[]);
 
         case SQLOperacaoEstoqueOPESCORIGEMDESTINO.AsString[1] of
-          'C' : UfCFOP := Trim(SQLLocate('CLIENTE'   , 'CLIEA13ID', 'CLIEA2UFRES', '"' + SQLCupomCLIEA13ID.AsString + '"') + '-' + SQLCupomCFOPA5COD.Value);
+          'C' : UfCFOP := Trim(SQLLocate('CLIENTE'   , 'CLIEA13ID', 'CLIEA2UFRES', '''' + SQLCupomCLIEA13ID.AsString + '''') + '-' + SQLCupomCFOPA5COD.Value);
           'F' : UfCFOP := Trim(SQLLocate('FORNECEDOR', 'FORNICOD' , 'FORNA2UF'   , SQLCupomFORNICOD.AsString)+ '-' + SQLCupomCFOPA5COD.Value);
           'E' : UfCFOP := Trim(SQLLocate('EMPRESA'   , 'EMPRICOD' , 'EMPRA2UF'   , SQLCupomEMPRICODDEST.AsString)+ '-' + SQLCupomCFOPA5COD.Value);
         end;
@@ -776,7 +776,7 @@ begin
         if not SQLOperacaoEstoque.Active then SQLOperacaoEstoque.Open;
         SQLOperacaoEstoque.Locate('OPESICOD',SQLCupomOPESICOD.AsString,[]);
         case SQLOperacaoEstoqueOPESCORIGEMDESTINO.AsString[1] of
-          'C' : UfCFOP := Trim(SQLLocate('CLIENTE'   , 'CLIEA13ID', 'CLIEA2UFRES', '"' + SQLCupomCLIEA13ID.AsString + '"'));
+          'C' : UfCFOP := Trim(SQLLocate('CLIENTE'   , 'CLIEA13ID', 'CLIEA2UFRES', '''' + SQLCupomCLIEA13ID.AsString + ''''));
           'F' : UfCFOP := Trim(SQLLocate('FORNECEDOR', 'FORNICOD' , 'FORNA2UF'   , SQLCupomFORNICOD.AsString));
           'E' : UfCFOP := Trim(SQLLocate('EMPRESA'   , 'EMPRICOD' , 'EMPRA2UF'   , SQLCupomEMPRICODDEST.AsString));
         end;

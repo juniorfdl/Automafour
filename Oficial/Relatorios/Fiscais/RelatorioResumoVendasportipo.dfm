@@ -1,7 +1,7 @@
 inherited FormRelatorioResumoVendasportipo: TFormRelatorioResumoVendasportipo
   Left = 142
   Top = 123
-  Caption = 'Relatório Resumo de Vendas por Tipo de Venda'
+  Caption = 'Relat'#243'rio Resumo de Vendas por Tipo de Venda'
   ClientWidth = 788
   PixelsPerInch = 96
   TextHeight = 13
@@ -51,7 +51,7 @@ inherited FormRelatorioResumoVendasportipo: TFormRelatorioResumoVendasportipo
       end
       inherited GroupBox1: TGroupBox
         Top = 83
-        Caption = ' Perío&do '
+        Caption = ' Per'#237'o&do '
         inherited Label3: TLabel
           Left = 13
         end
@@ -152,7 +152,7 @@ inherited FormRelatorioResumoVendasportipo: TFormRelatorioResumoVendasportipo
       '   CUPOM'
       'WHERE'
       '   (CUPOINRO > 0) and'
-      '   (CUPOCSTATUS = "A") and'
+      '   (CUPOCSTATUS = ''A'') and'
       '   (%Empresa) and'
       '   (%Terminal) and'
       '   (%Data)'
@@ -414,7 +414,7 @@ inherited FormRelatorioResumoVendasportipo: TFormRelatorioResumoVendasportipo
       '   NOTAFISCAL'
       'WHERE'
       '   (NOFIINUMERO > 0) and'
-      '   (NOFICSTATUS = "E") and'
+      '   (NOFICSTATUS = ''E'') and'
       '   (%Empresa) and'
       '   (%Data)'
       'ORDER BY'

@@ -179,14 +179,14 @@ begin
     SQLContasReceber.MacroByName('MPortador').Value := '0=0';
 
   if RadioData.ItemIndex = 0 then
-    SQLContasReceber.MacroByName('MData').Value := 'CR.CTRCDEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                   'CR.CTRCDEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"'
+    SQLContasReceber.MacroByName('MData').Value := 'CR.CTRCDEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                   'CR.CTRCDEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + ''''
   else
-    SQLContasReceber.MacroByName('MData').Value := 'CR.CTRCDVENC >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                   'CR.CTRCDVENC <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"';
+    SQLContasReceber.MacroByName('MData').Value := 'CR.CTRCDVENC >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                   'CR.CTRCDVENC <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''';
 
   if ComboCliente.Text <> '' then
-    SQLContasReceber.MacroByName('MCliente').Value   := 'CL.CLIEA13ID = "' + ComboCliente.Value + '"'
+    SQLContasReceber.MacroByName('MCliente').Value   := 'CL.CLIEA13ID = ''' + ComboCliente.Value + ''''
   else
     SQLContasReceber.MacroByName('MCliente').Value   := '0=0';
   SQLContasReceber.Open;

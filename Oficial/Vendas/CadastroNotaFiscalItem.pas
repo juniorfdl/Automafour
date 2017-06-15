@@ -716,7 +716,7 @@ begin
               if DM.SQLTemplate.FindField('PRODA255DESCRTEC').AsString <> '' Then
                 SQLTemplateNFITA254OBS.Text := DM.SQLTemplate.FindField('PRODA255DESCRTEC').AsString;
               Try
-                vISSQN := StrToFloat(SQLLocate('CIDADE','CIDAA60NOME','CIDAN3ISSQN','"'+DSMasterTemplate.DataSet.FieldbyName('CLIFORNEMPCIDADELOOKUP').AsString+'"'));
+                vISSQN := StrToFloat(SQLLocate('CIDADE','CIDAA60NOME','CIDAN3ISSQN',''''+DSMasterTemplate.DataSet.FieldbyName('CLIFORNEMPCIDADELOOKUP').AsString+''''));
               except
                 vISSQN := 0;
               end;
@@ -1059,7 +1059,7 @@ begin
   SQLTemplate.DataSource.DataSet.AutoCalcFields:=False;
 
   sqlTotal.close;
-  sqlTotal.Macrobyname('ID').Value := 'NOFIA13ID = "'+ SQLTemplate.DataSource.DataSet.FindField('NOFIA13ID').AsString + '"';
+  sqlTotal.Macrobyname('ID').Value := 'NOFIA13ID = '''+ SQLTemplate.DataSource.DataSet.FindField('NOFIA13ID').AsString + '''';
   sqlTotal.Open;
 
   SQLTemplate.DataSource.DataSet.FindField('NOFIN2VLRPRODUTO').asFloat   :=  SQLTotal.FindField('NOFIN2VLRPRODUTO').asFloat;
@@ -1289,7 +1289,7 @@ begin
   SQLTemplate.DataSource.DataSet.AutoCalcFields := False;
 
   sqlTotal.close;
-  sqlTotal.Macrobyname('ID').Value := 'NOFIA13ID = "'+ SQLTemplate.DataSource.DataSet.FindField('NOFIA13ID').AsString + '"';
+  sqlTotal.Macrobyname('ID').Value := 'NOFIA13ID = '''+ SQLTemplate.DataSource.DataSet.FindField('NOFIA13ID').AsString + '''';
   sqlTotal.Open;
 
   SQLTemplate.DataSource.DataSet.FindField('NOFIN2VLRPRODUTO').asFloat   :=  SQLTotal.FindField('NOFIN2VLRPRODUTO').asFloat;
@@ -1391,7 +1391,7 @@ begin
   else
     begin
       if SQLTemplateLOTEA30NRO.AsString <> '' then
-        if SQLLocate('LOTE','LOTEA30NRO','LOTEA30NRO','"' + SQLTemplateLOTEA30NRO.AsString + '"') = '' then
+        if SQLLocate('LOTE','LOTEA30NRO','LOTEA30NRO','''' + SQLTemplateLOTEA30NRO.AsString + '''') = '' then
           begin
             Informa('O número de lote informado está incorreto ou não foi cadastrado. Tente novamente !');
             (Sender as TDBEdit).SetFocus;
@@ -1500,7 +1500,7 @@ begin
       begin
         Application.CreateForm(TFormTelaGeralModalCadastroProdutoNumeroSerie,FormTelaGeralModalCadastroProdutoNumeroSerie);
         FormTelaGeralModalCadastroProdutoNumeroSerie.SQLProdutoSerie.Close;
-        FormTelaGeralModalCadastroProdutoNumeroSerie.SQLProdutoSerie.MacroByName('MFiltro').AsString := 'NOFIA13ID = "' + SQLTemplateNOFIA13ID.AsString + '" AND PRODICOD = ' + SQLTemplatePRODICOD.AsString;
+        FormTelaGeralModalCadastroProdutoNumeroSerie.SQLProdutoSerie.MacroByName('MFiltro').AsString := 'NOFIA13ID = ''' + SQLTemplateNOFIA13ID.AsString + ''' AND PRODICOD = ' + SQLTemplatePRODICOD.AsString;
         FormTelaGeralModalCadastroProdutoNumeroSerie.SQLProdutoSerie.Open;
         FormTelaGeralModalCadastroProdutoNumeroSerie.CodProduto    := SQLTemplatePRODICOD.AsInteger;
         FormTelaGeralModalCadastroProdutoNumeroSerie.Destino       := DSMasterTemplate.DataSet.FieldByName('OrigemDestinoLookUp').AsString;
@@ -1771,7 +1771,7 @@ begin
             SQLTemplateNFITN2VLRUNIT.AsVariant := dm.zConsulta.fieldbyname('PRODN3VLRVENDA2').AsFloat;
 
 
-         { If SQLLocate('CLIENTE','CLIEA13ID','CLIECTPPRCVENDA','"'+DSMasterTemplate.DataSet.FieldByName('CLIEA13ID').AsString+'"') = 'A' Then
+         { If SQLLocate('CLIENTE','CLIEA13ID','CLIECTPPRCVENDA',''''+DSMasterTemplate.DataSet.FieldByName('CLIEA13ID').AsString+'''') = 'A' Then
             SQLTemplateNFITN2VLRUNIT.Value := dm.zConsulta.fieldbyname('PRODN3VLRVENDA2').AsFloat
           else
             begin

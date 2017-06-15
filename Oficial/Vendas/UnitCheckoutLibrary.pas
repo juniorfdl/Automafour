@@ -233,7 +233,7 @@ begin
 
 
   SQLCup.Close ;
-  SQLCup.MacroByName('MFiltro').Value := 'CUPOA13ID = "' + IDCupom + '"' ;
+  SQLCup.MacroByName('MFiltro').Value := 'CUPOA13ID = ''' + IDCupom + '''' ;
   SQLCup.Open ;
   if SQLCup.IsEmpty then
     begin
@@ -262,13 +262,13 @@ begin
   DM.TblTicketPreVendaCabVendedor.AsString      := SQLLocate('VENDEDOR', 'VENDICOD', 'VENDA60NOME', SQLCup.FieldByName('VENDICOD').AsString) ;
   DM.TblTicketPreVendaCabPlano.AsString         := SQLLocate('PLANORECEBIMENTO', 'PLRCICOD', 'PLRCA60DESCR', SQLCup.FieldByName('PLRCICOD').AsString) ;
   DM.TblTicketPreVendaCabCliente.AsString       := SQLCup.FieldByName('CLIEA13ID').Value + ' ' +
-                                                   SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA60RAZAOSOC', '"' + SQLCup.FieldByName('CLIEA13ID').AsString + '"') ;
+                                                   SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA60RAZAOSOC', '''' + SQLCup.FieldByName('CLIEA13ID').AsString + '''') ;
 
   if SQLCup.FieldByName('CLDPICOD').AsString <> '' then
     begin
       dm.sqltemplate.Close;
       dm.sqltemplate.sql.Clear;
-      dm.sqltemplate.sql.Add('Select CLDPA60NOME from CLIENTEDEPENDENTE where CLIEA13ID="'+SQLCup.FieldByName('CLIEA13ID').AsString+'" and CLDPICOD='+SQLCup.FieldByName('CLDPICOD').AssTring);
+      dm.sqltemplate.sql.Add('Select CLDPA60NOME from CLIENTEDEPENDENTE where CLIEA13ID='''+SQLCup.FieldByName('CLIEA13ID').AsString+''' and CLDPICOD='+SQLCup.FieldByName('CLDPICOD').AssTring);
       dm.sqltemplate.Open;
       if not dm.sqltemplate.IsEmpty then
         DM.TblTicketPreVendaCabClienteDependente.AsString := dm.SQLTemplate.fieldbyname('CLDPA60NOME').AsString;
@@ -318,8 +318,8 @@ begin
   if DM.SQLConfigVenda.ParamByName('CFVECINFDADOVENDA').Value = 'S' then
     begin
       if DM.TblTicketPreVendaCabFoneClienteVenda.AsString = '' then
-        DM.TblTicketPreVendaCabFoneCliente.Value   := SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA15FONE1', '"' + SQLCup.FieldByName('CLIEA13ID').AsString + '"') ;
-      DM.TblTicketPreVendaCabNroCreditCard.Value := SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA20NROCARTCRED', '"' + SQLCup.FieldByName('CLIEA13ID').AsString + '"') ;
+        DM.TblTicketPreVendaCabFoneCliente.Value   := SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA15FONE1', '''' + SQLCup.FieldByName('CLIEA13ID').AsString + '''') ;
+      DM.TblTicketPreVendaCabNroCreditCard.Value := SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA20NROCARTCRED', '''' + SQLCup.FieldByName('CLIEA13ID').AsString + '''') ;
       DM.TblTicketPreVendaCabMensagem2.Value     := MensagemVenda ;
 
       DM.TblTicketPreVendaCabTipoVenda.Value      := SQLLocate('TIPOVENDA', 'TPVDICOD', 'TPVDA60DESCR', IntToStr(TipoVenda)) ;
@@ -338,7 +338,7 @@ begin
   DM.TblTicketPreVendaCab.Post ;
 
   SQLCupomIt.Close ;
-  SQLCupomIt.MacroByName('MFiltro').Value := 'CPITCSTATUS <> "C" and CUPOA13ID = "' + IDCupom + '"' ;
+  SQLCupomIt.MacroByName('MFiltro').Value := 'CPITCSTATUS <> ''C'' and CUPOA13ID = ''' + IDCupom + '''' ;
   SQLCupomIt.Open ;
 
   DM.TblTicketPreVendaItem.Open;
@@ -403,7 +403,7 @@ begin
 
   dm.sqltemplate.Close;
   dm.sqltemplate.sql.Clear;
-  dm.sqltemplate.sql.Add('Select * from CUPOMNUMERARIO where CUPOA13ID="'+SQLCup.FieldByName('CUPOA13ID').AsString+'"');
+  dm.sqltemplate.sql.Add('Select * from CUPOMNUMERARIO where CUPOA13ID='''+SQLCup.FieldByName('CUPOA13ID').AsString+'''');
   dm.sqltemplate.Open;
   if not dm.sqltemplate.IsEmpty then
     begin
@@ -429,7 +429,7 @@ begin
   // Lanca Numerarios A Prazo
   dm.sqltemplate.Close;
   dm.sqltemplate.sql.Clear;
-  dm.sqltemplate.sql.Add('Select * from CONTASRECEBER where CUPOA13ID="'+SQLCup.FieldByName('CUPOA13ID').AsString+'"');
+  dm.sqltemplate.sql.Add('Select * from CONTASRECEBER where CUPOA13ID='''+SQLCup.FieldByName('CUPOA13ID').AsString+'''');
   dm.sqltemplate.Open;
   if not dm.sqltemplate.IsEmpty then
     begin
@@ -521,7 +521,7 @@ begin
   DM.TblTicketPreVendaCabVendedor.AsString      := SQLLocate('VENDEDOR', 'VENDICOD', 'VENDA60NOME', SQLPreVD.FieldByName('VENDICOD').AsString) ;
   DM.TblTicketPreVendaCabPlano.AsString         := SQLLocate('PLANORECEBIMENTO', 'PLRCICOD', 'PLRCA60DESCR', SQLPreVD.FieldByName('PLRCICOD').AsString) ;
   DM.TblTicketPreVendaCabCliente.AsString       := SQLPreVD.FieldByName('CLIEA13ID').Value + ' ' +
-                                                   SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA60RAZAOSOC', '"' + SQLPreVD.FieldByName('CLIEA13ID').AsString + '"') ;
+                                                   SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA60RAZAOSOC', '''' + SQLPreVD.FieldByName('CLIEA13ID').AsString + '''') ;
 
   DM.TblTicketPreVendaCabTotalNominal.AsString  := SQLPreVD.FieldByName('PRVDN2TOTITENS').Value -
                                                    SQLPreVD.FieldByName('PRVDN2ACRESC').Value +
@@ -571,7 +571,7 @@ begin
     end;
 
   SQLPreVDIt.Close ;
-  SQLPreVDIt.MacroByName('MFiltro').Value := 'TERMICOD = ' + Terminal + ' and PRVDICOD = ' + PReVenda + ' and PVITCSTATUS <> "C" ';
+  SQLPreVDIt.MacroByName('MFiltro').Value := 'TERMICOD = ' + Terminal + ' and PRVDICOD = ' + PReVenda + ' and PVITCSTATUS <> ''C'' ';
   SQLPreVDIt.Open ;
   Desco := 0;
   while not SQLPreVDIt.EOF do
@@ -672,7 +672,7 @@ begin
     end;
 
   SQLOrcamento.Close ;
-  SQLOrcamento.MacroByName('MFiltro').Value := 'PDVDA13ID = "' + IDOrcamento  + '"';
+  SQLOrcamento.MacroByName('MFiltro').Value := 'PDVDA13ID = ''' + IDOrcamento  + '''';
   SQLOrcamento.Open ;
   if SQLOrcamento.IsEmpty then
     begin
@@ -701,7 +701,7 @@ begin
   DM.TblTicketPreVendaCabVendedor.AsString         := SQLLocate('VENDEDOR', 'VENDICOD', 'VENDA60NOME', SQLOrcamento.FieldByName('VENDICOD').AsString) ;
   DM.TblTicketPreVendaCabPlano.AsString            := SQLLocate('PLANORECEBIMENTO', 'PLRCICOD', 'PLRCA60DESCR', SQLOrcamento.FieldByName('PLRCICOD').AsString) ;
   DM.TblTicketPreVendaCabCliente.AsString          := SQLOrcamento.FieldByName('CLIEA13ID').Value + ' ' +
-                                                      SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA60RAZAOSOC', '"' + SQLOrcamento.FieldByName('CLIEA13ID').AsString + '"') ;
+                                                      SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA60RAZAOSOC', '''' + SQLOrcamento.FieldByName('CLIEA13ID').AsString + '''') ;
   DM.TblTicketPreVendaCabTotalNominal.AsFloat      := SQLOrcamento.FieldByName('PDVDN2TOTPROD').AsFloat +
                                                       SQLOrcamento.FieldByName('PDVDN2VLRDESC').AsFloat +
                                                       SQLOrcamento.FieldByName('PDVDN2VLRDESCPROM').AsFloat -
@@ -728,7 +728,7 @@ begin
     end;
 
   SQLOrcamentoItem.Close ;
-  SQLOrcamentoItem.MacroByName('MFiltro').Value := 'PDVDA13ID = "' + IDOrcamento + '"';
+  SQLOrcamentoItem.MacroByName('MFiltro').Value := 'PDVDA13ID = ''' + IDOrcamento + '''';
   SQLOrcamentoItem.Open ;
   // Itens
   while not SQLOrcamentoItem.EOF do
@@ -771,7 +771,7 @@ procedure GeraArquivoExternoParaImpOrcamento(IDOrcamento, CampoValorParcela, Cam
 begin
   if not SQLOrcamento.Active then SQLOrcamento.Open;
   SQLOrcamento.Close ;
-  SQLOrcamento.MacroByName('MFiltro').Value := 'PDVDA13ID = "' + IDOrcamento  + '"';
+  SQLOrcamento.MacroByName('MFiltro').Value := 'PDVDA13ID = ''' + IDOrcamento  + '''';
   SQLOrcamento.Open ;
   if SQLOrcamento.IsEmpty then
     begin
@@ -844,7 +844,7 @@ begin
   DM.TblPedidoItens.Open;
 
   SQLOrcamentoItem.Close ;
-  SQLOrcamentoItem.MacroByName('MFiltro').Value := 'PDVDA13ID = "' + IDOrcamento + '"';
+  SQLOrcamentoItem.MacroByName('MFiltro').Value := 'PDVDA13ID = ''' + IDOrcamento + '''';
   SQLOrcamentoItem.Open ;
   if not SQLOrcamentoItem.Active then SQLOrcamentoItem.Open;
   // Itens

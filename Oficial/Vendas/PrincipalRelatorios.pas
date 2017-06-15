@@ -239,11 +239,11 @@ begin
   SQLTotaNumerario.MacroByName('MTerminal').Value := '0=0';
 
   if (HoraInicial.Text = '') and (HoraInicial.Text = '') then
-    SQLTotaNumerario.MacroByName('MData').Value := 'MOVIMENTOCAIXA.MVCXDMOV >= "' + FormatDateTime('mm/dd/yyyy', De.Date)  + '" and ' +
-                                                   'MOVIMENTOCAIXA.MVCXDMOV <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"'
+    SQLTotaNumerario.MacroByName('MData').Value := 'MOVIMENTOCAIXA.MVCXDMOV >= ''' + FormatDateTime('mm/dd/yyyy', De.Date)  + ''' and ' +
+                                                   'MOVIMENTOCAIXA.MVCXDMOV <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + ''''
   else
-    SQLTotaNumerario.MacroByName('MData').Value := 'MOVIMENTOCAIXA.REGISTRO >= "' + FormatDateTime('mm/dd/yyyy ', De.Date) + HoraInicial.Text + '" and ' +
-                                                   'MOVIMENTOCAIXA.REGISTRO <= "' + FormatDateTime('mm/dd/yyyy ', Ate.Date)+ HoraFinal.Text   + '"';
+    SQLTotaNumerario.MacroByName('MData').Value := 'MOVIMENTOCAIXA.REGISTRO >= ''' + FormatDateTime('mm/dd/yyyy ', De.Date) + HoraInicial.Text + ''' and ' +
+                                                   'MOVIMENTOCAIXA.REGISTRO <= ''' + FormatDateTime('mm/dd/yyyy ', Ate.Date)+ HoraFinal.Text   + '''';
 
   SQLTotaNumerario.MacroByName('MTerminal').Value := '0=0';
 
@@ -266,11 +266,11 @@ begin
   SQLTotalOperacao.MacroByName('MTerminal').Value := '0=0';
 
   if (HoraInicial.Text = '') and (HoraInicial.Text = '') then
-    SQLTotalOperacao.MacroByName('MData').Value := 'MOVIMENTOCAIXA.MVCXDMOV >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                   'MOVIMENTOCAIXA.MVCXDMOV <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"'
+    SQLTotalOperacao.MacroByName('MData').Value := 'MOVIMENTOCAIXA.MVCXDMOV >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                   'MOVIMENTOCAIXA.MVCXDMOV <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + ''''
   else
-    SQLTotalOperacao.MacroByName('MData').Value := 'MOVIMENTOCAIXA.REGISTRO >= "' + FormatDateTime('mm/dd/yyyy ', De.Date) + HoraInicial.Text + '" and ' +
-                                                   'MOVIMENTOCAIXA.REGISTRO <= "' + FormatDateTime('mm/dd/yyyy ', Ate.Date)+ HoraFinal.Text   + '"';
+    SQLTotalOperacao.MacroByName('MData').Value := 'MOVIMENTOCAIXA.REGISTRO >= ''' + FormatDateTime('mm/dd/yyyy ', De.Date) + HoraInicial.Text + ''' and ' +
+                                                   'MOVIMENTOCAIXA.REGISTRO <= ''' + FormatDateTime('mm/dd/yyyy ', Ate.Date)+ HoraFinal.Text   + '''';
 
 
   if ComboTerminal.Value <> '' then
@@ -293,11 +293,11 @@ begin
   SQLItensVendidos.MacrobyName('MEmpresa').Value := 'EMPRICOD  = ' + EmpresaPadrao;
 
   if (HoraInicial.Text = '') and (HoraInicial.Text = '') then
-    SQLItensVendidos.MacroByName('MData').Value := 'CUPOM.CUPODEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                   'CUPOM.CUPODEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"'
+    SQLItensVendidos.MacroByName('MData').Value := 'CUPOM.CUPODEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                   'CUPOM.CUPODEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + ''''
   else
-    SQLItensVendidos.MacroByName('MData').Value := 'CUPOM.CUPODEMIS >= "' + FormatDateTime('mm/dd/yyyy ', De.Date) + HoraInicial.Text + '" and ' +
-                                                   'CUPOM.CUPODEMIS <= "' + FormatDateTime('mm/dd/yyyy ', Ate.Date)+ HoraFinal.Text   + '"';
+    SQLItensVendidos.MacroByName('MData').Value := 'CUPOM.CUPODEMIS >= ''' + FormatDateTime('mm/dd/yyyy ', De.Date) + HoraInicial.Text + ''' and ' +
+                                                   'CUPOM.CUPODEMIS <= ''' + FormatDateTime('mm/dd/yyyy ', Ate.Date)+ HoraFinal.Text   + '''';
 
   SQLItensVendidos.MacroByName('MTerminal').Value := '0=0';
 
@@ -321,11 +321,11 @@ begin
   SQLVendaCartoesCheques.MacrobyName('MEmpresa').Value := 'EMPRICOD  = ' + EmpresaPadrao;
 
   if (HoraInicial.Text = '') and (HoraInicial.Text = '') then
-    SQLVendaCartoesCheques.MacroByName('MData').Value := 'CUPOM.CUPODEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                         'CUPOM.CUPODEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"'
+    SQLVendaCartoesCheques.MacroByName('MData').Value := 'CUPOM.CUPODEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                         'CUPOM.CUPODEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + ''''
   else
-    SQLVendaCartoesCheques.MacroByName('MData').Value := 'CUPOM.CUPODEMIS >= "' + FormatDateTime('mm/dd/yyyy ', De.Date) + HoraInicial.Text + '" and ' +
-                                                         'CUPOM.CUPODEMIS <= "' + FormatDateTime('mm/dd/yyyy ', Ate.Date)+ HoraFinal.Text   + '"';
+    SQLVendaCartoesCheques.MacroByName('MData').Value := 'CUPOM.CUPODEMIS >= ''' + FormatDateTime('mm/dd/yyyy ', De.Date) + HoraInicial.Text + ''' and ' +
+                                                         'CUPOM.CUPODEMIS <= ''' + FormatDateTime('mm/dd/yyyy ', Ate.Date)+ HoraFinal.Text   + '''';
 
   SQLVendaCartoesCheques.MacroByName('MTerminal').Value := '0=0';
 

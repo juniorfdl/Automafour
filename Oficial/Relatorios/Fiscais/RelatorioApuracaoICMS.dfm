@@ -140,7 +140,7 @@ inherited FormRelatorioApuracaoICMS: TFormRelatorioApuracaoICMS
         '  left outer join OPERACAOESTOQUE on NOTAFISCAL.OPESICOD = OPERA' +
         'CAOESTOQUE.OPESICOD'
       'where'
-      '(NOTAFISCAL.NOFICSTATUS = "E")and'
+      '(NOTAFISCAL.NOFICSTATUS = ''E'')and'
       '(%MEmpresa1) and'
       '(%MData1)')
     Macros = <
@@ -2993,7 +2993,7 @@ inherited FormRelatorioApuracaoICMS: TFormRelatorioApuracaoICMS
         '  left outer join OPERACAOESTOQUE on NOTACOMPRA.OPESICOD = OPERA' +
         'CAOESTOQUE.OPESICOD'
       'where'
-      '  (NOTACOMPRA.NOCPCSTATUS = "E") and'
+      '  (NOTACOMPRA.NOCPCSTATUS = ''E'') and'
       '  (%MEmpresa) and'
       '  (%MData)')
     Macros = <

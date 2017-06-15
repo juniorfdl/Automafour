@@ -154,7 +154,7 @@ begin
   if Cheque.Cidade <> '' then
     Result := EnviaComando(Porta,'#' + Cheque.Cidade,TimeOut,Resposta);
   if Cheque.Verso <> '' then
-    Result := EnviaComando(Porta,'"' + Cheque.Verso + 'ÿ',TimeOut,Resposta);
+    Result := EnviaComando(Porta,'''' + Cheque.Verso + '''',TimeOut,Resposta);
   if Cheque.BomPara <> '' then
     Result := EnviaComando(Porta,'+BOM PARA: ' + Cheque.BomPara,TimeOut,Resposta);
   if ((not Cheque.Chancelado) and (not Cheque.Cruzado)) then

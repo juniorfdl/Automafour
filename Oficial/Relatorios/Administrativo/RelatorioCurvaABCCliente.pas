@@ -49,11 +49,11 @@ begin
   SQLVendas.MacrobyName('MEmpresa').Value := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'CUPOM', '');
   SQLNotaFiscal.MacrobyName('MEmpresa').Value  := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'NOTAFISCAL','');
 
-  SQLNotaFiscal.MacroByName('MDataNF').Value   := 'NotaFiscal.NOFIDEMIS >= "' + FormatDateTime('mm/dd/yyyy',De.Date) + '" and ' +
-                                                  'NotaFiscal.NOFIDEMIS <= "' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '"';
+  SQLNotaFiscal.MacroByName('MDataNF').Value   := 'NotaFiscal.NOFIDEMIS >= ''' + FormatDateTime('mm/dd/yyyy',De.Date) + ''' and ' +
+                                                  'NotaFiscal.NOFIDEMIS <= ''' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '''';
 
-  SQLVendas.MacroByName('MDataCupom').Value    := 'Cupom.CUPODEMIS >= "' + FormatDateTime('mm/dd/yyyy',De.Date) + '" and ' +
-                                                  'Cupom.CUPODEMIS <= "' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '"';
+  SQLVendas.MacroByName('MDataCupom').Value    := 'Cupom.CUPODEMIS >= ''' + FormatDateTime('mm/dd/yyyy',De.Date) + ''' and ' +
+                                                  'Cupom.CUPODEMIS <= ''' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '''';
 
   RecordCount := 0;
   try
@@ -89,13 +89,13 @@ begin
           TblTemporaria.Append;
           if chkCNPJ.Checked then
           begin
-            if SQLLocate('CLIENTE','CLIEA13ID','CLIEA5FISJURID','"'+SQLVendasCLIEA13ID.AsString+'"') = 'F' then
-              TblTemporariaCLIEA13ID.Value       := SQLLocate('CLIENTE','CLIEA13ID','CLIEA11CPF','"'+SQLVendasCLIEA13ID.AsString+'"')
+            if SQLLocate('CLIENTE','CLIEA13ID','CLIEA5FISJURID',''''+SQLVendasCLIEA13ID.AsString+'''') = 'F' then
+              TblTemporariaCLIEA13ID.Value       := SQLLocate('CLIENTE','CLIEA13ID','CLIEA11CPF',''''+SQLVendasCLIEA13ID.AsString+'''')
             Else
-              TblTemporariaCLIEA13ID.Value       := SQLLocate('CLIENTE','CLIEA13ID','CLIEA14CGC','"'+SQLVendasCLIEA13ID.AsString+'"');
+              TblTemporariaCLIEA13ID.Value       := SQLLocate('CLIENTE','CLIEA13ID','CLIEA14CGC',''''+SQLVendasCLIEA13ID.AsString+'''');
           End Else
             TblTemporariaCLIEA13ID.Value       := SQLVendasCLIEA13ID.Value;
-          TblTemporariaNOMECLIENTE.Value     := SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC','"'+SQLVendasCLIEA13ID.AsString+'"');
+          TblTemporariaNOMECLIENTE.Value     := SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC',''''+SQLVendasCLIEA13ID.AsString+'''');
           TblTemporariaTOTALCLIENTE.AsFloat  := SQLVendasTOTALCLIENTE.AsFloat;
           TblTemporaria.Post;
         except
@@ -125,13 +125,13 @@ begin
               TblTemporaria.Append;
               if chkCNPJ.Checked then
               begin
-                if SQLLocate('CLIENTE','CLIEA13ID','CLIEA5FISJURID','"'+SQLVendasCLIEA13ID.AsString+'"') = 'F' then
-                  TblTemporariaCLIEA13ID.Value       := SQLLocate('CLIENTE','CLIEA13ID','CLIEA11CPF','"'+SQLNotaFiscalCLIEA13ID.AsString+'"')
+                if SQLLocate('CLIENTE','CLIEA13ID','CLIEA5FISJURID',''''+SQLVendasCLIEA13ID.AsString+'''') = 'F' then
+                  TblTemporariaCLIEA13ID.Value       := SQLLocate('CLIENTE','CLIEA13ID','CLIEA11CPF',''''+SQLNotaFiscalCLIEA13ID.AsString+'''')
                 Else
-                  TblTemporariaCLIEA13ID.Value       := SQLLocate('CLIENTE','CLIEA13ID','CLIEA14CGC','"'+SQLNotaFiscalCLIEA13ID.AsString+'"');
+                  TblTemporariaCLIEA13ID.Value       := SQLLocate('CLIENTE','CLIEA13ID','CLIEA14CGC',''''+SQLNotaFiscalCLIEA13ID.AsString+'''');
               End Else
                 TblTemporariaCLIEA13ID.Value       := SQLVendasCLIEA13ID.Value;
-              TblTemporariaNOMECLIENTE.Value     := SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC','"'+SQLNotaFiscalCLIEA13ID.AsString+'"');
+              TblTemporariaNOMECLIENTE.Value     := SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC',''''+SQLNotaFiscalCLIEA13ID.AsString+'''');
               TblTemporariaTOTALCLIENTE.AsFloat  := SQLNotaFiscalTOTALCLIENTE.AsFloat;
               TblTemporaria.Post;
             except
@@ -154,14 +154,14 @@ begin
   Report.Formulas.Retrieve ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Empresa' ;
-  Report.Formulas.Formula.Text := '"' + ComboEmpresa.Text + '"' ;
+  Report.Formulas.Formula.Text := '''' + ComboEmpresa.Text + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Emissao' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'PeriodoEmissao' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
-                                  FormatDateTime('dd/mm/yyyy', Ate.Date) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
+                                  FormatDateTime('dd/mm/yyyy', Ate.Date) + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Send;
   Report.Execute;

@@ -93,9 +93,9 @@ inherited FormRelatorioCupomEmitidoPorEmpresa: TFormRelatorioCupomEmitidoPorEmpr
         ' left outer join PRODUTO on CUPOMITEM.PRODICOD = PRODUTO.PRODICO' +
         'D)'
       'where'
-      '  CUPOM.CUPOCSTATUS = "A" and'
+      '  CUPOM.CUPOCSTATUS = ''A'' and'
       '  CUPOMITEM.CPITN3QTD > 0 and'
-      '  CUPOMITEM.CPITCSTATUS <> "C" and'
+      '  CUPOMITEM.CPITCSTATUS <> ''C'' and'
       '  (%MEmpresa) and'
       '  (%MData)'
       '')

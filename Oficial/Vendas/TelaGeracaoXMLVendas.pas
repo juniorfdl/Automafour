@@ -37,7 +37,7 @@ begin
   ProgressBar.Position := 10;
   dm.SQLTemplate.close;
   dm.SQLTemplate.sql.clear;
-  dm.SQLTemplate.sql.Add('Select * from Cupom where CUPOA13ID = "'+DM.CodNextCupom+'"');
+  dm.SQLTemplate.sql.Add('Select * from Cupom where CUPOA13ID = '''+DM.CodNextCupom+'''');
   dm.SQLTemplate.Open;
   if not dm.SQLTemplate.IsEmpty then
     begin
@@ -54,7 +54,7 @@ begin
   ProgressBar.Position := 20;
   dm.SQLTemplate.close;
   dm.SQLTemplate.sql.clear;
-  dm.SQLTemplate.sql.Add('Select * from CupomItem where CUPOA13ID = "'+DM.CodNextCupom+'"');
+  dm.SQLTemplate.sql.Add('Select * from CupomItem where CUPOA13ID = '''+DM.CodNextCupom+'''');
   dm.SQLTemplate.Open;
   if not dm.SQLTemplate.IsEmpty then
     begin
@@ -71,7 +71,7 @@ begin
   ProgressBar.Position := 30;
   dm.SQLTemplate.close;
   dm.SQLTemplate.sql.clear;
-  dm.SQLTemplate.sql.Add('Select * from CupomNumerario where CUPOA13ID = "'+DM.CodNextCupom+'"');
+  dm.SQLTemplate.sql.Add('Select * from CupomNumerario where CUPOA13ID = '''+DM.CodNextCupom+'''');
   dm.SQLTemplate.Open;
   if not dm.SQLTemplate.IsEmpty then
     begin
@@ -89,7 +89,7 @@ begin
   ProgressBar.Position := 40;
   dm.SQLTemplate.close;
   dm.SQLTemplate.sql.clear;
-  dm.SQLTemplate.sql.Add('Select * from ContasReceber where CUPOA13ID = "'+DM.CodNextCupom+'"');
+  dm.SQLTemplate.sql.Add('Select * from ContasReceber where CUPOA13ID = '''+DM.CodNextCupom+'''');
   dm.SQLTemplate.Open;
   if not dm.SQLTemplate.IsEmpty then
     begin

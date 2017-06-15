@@ -1,7 +1,7 @@
 inherited FormRelatorioVendasGrupo: TFormRelatorioVendasGrupo
   Left = 381
   Top = 190
-  Caption = 'Relatório de Vendas Por Grupo'
+  Caption = 'Relat'#243'rio de Vendas Por Grupo'
   PixelsPerInch = 96
   TextHeight = 13
   inherited TblTemporaria: TTable
@@ -39,7 +39,7 @@ inherited FormRelatorioVendasGrupo: TFormRelatorioVendasGrupo
       '   inner join GRUPO GRUPO on GRUPO.GRUPICOD = PRODUTO.GRUPICOD'
       'where'
       
-        '  CUPOM.CUPOCSTATUS = "A" and (CUPOMITEM.CPITCSTATUS <> "C" ) an' +
+        '  CUPOM.CUPOCSTATUS = ''A'' and (CUPOMITEM.CPITCSTATUS <> ''C'' ) an' +
         'd'
       '  (%MEmpresa) and'
       '  (%MData)'
@@ -70,10 +70,10 @@ inherited FormRelatorioVendasGrupo: TFormRelatorioVendasGrupo
         '   left outer join OPERACAOESTOQUE on NOTAFISCAL.OPESICOD = OPER' +
         'ACAOESTOQUE.OPESICOD'
       'where'
-      '  NOTAFISCAL.NOFICSTATUS = "E" and'
-      '  OPERACAOESTOQUE.OPESCGERAFINANCEIRO = ''S''  and'
-      '  OPERACAOESTOQUE.OPESCENTRADASAIDA   = ''S''  and'
-      '  OPERACAOESTOQUE.OPESCORIGEMDESTINO  = ''C''  and'
+      '  NOTAFISCAL.NOFICSTATUS = ''E'' and'
+      '  OPERACAOESTOQUE.OPESCGERAFINANCEIRO = '#39'S'#39'  and'
+      '  OPERACAOESTOQUE.OPESCENTRADASAIDA   = '#39'S'#39'  and'
+      '  OPERACAOESTOQUE.OPESCORIGEMDESTINO  = '#39'C'#39'  and'
       '  (%MEmpresaNF) and'
       '  (%MDataNF)'
       'group by'

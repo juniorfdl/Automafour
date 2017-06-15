@@ -1053,9 +1053,9 @@ begin
   if not CKHorariosLivres.Checked then
     SQLAgendamento.MacroByName('Cliente').Value := '0=0'
   else
-    SQLAgendamento.MacroByName('Cliente').Value := 'AGENDACONSULTA.CLIEA13ID is null or '+'AGENDACONSULTA.CLIEA13ID = '+'"'+'"';
-  SQLAgendamento.MacroByName('Data').Value  := 'AGENDACONSULTA.AGENDMARCACAO >= ' + '"' + FormatDateTime('mm/dd/yyyy',StrToDate(EditDataBase.Text)) + '"';
-  SQLAgendamentoTodos.MacroByName('Data').Value  := 'AGENDACONSULTA.AGENDMARCACAO >= ' + '"' + FormatDateTime('mm/dd/yyyy',StrToDate(EditDataBase.Text)) + '"';
+    SQLAgendamento.MacroByName('Cliente').Value := 'AGENDACONSULTA.CLIEA13ID is null or '+'AGENDACONSULTA.CLIEA13ID = '+''''+'''';
+  SQLAgendamento.MacroByName('Data').Value  := 'AGENDACONSULTA.AGENDMARCACAO >= ' + '''' + FormatDateTime('mm/dd/yyyy',StrToDate(EditDataBase.Text)) + '''';
+  SQLAgendamentoTodos.MacroByName('Data').Value  := 'AGENDACONSULTA.AGENDMARCACAO >= ' + '''' + FormatDateTime('mm/dd/yyyy',StrToDate(EditDataBase.Text)) + '''';
   SQLAgendamento.Open;
   SQLAgendamentoTodos.Open;
   PageControlDadosCliente.ActivePage:= TabSheetConsulta;
@@ -1299,12 +1299,12 @@ begin
   if not SQLCliente.IsEmpty then
     begin
       SQLAgendamentoConsulta.Close;
-      SQLAgendamentoConsulta.MacroByName('Cliente').Value := 'CLIEA13ID = '+'"'+SQLClienteCLIEA13ID.Value+'"';
+      SQLAgendamentoConsulta.MacroByName('Cliente').Value := 'CLIEA13ID = '+''''+SQLClienteCLIEA13ID.Value+'''';
       if ComboDependente.KeyValue <> null then
         SQLAgendamentoConsulta.MacroByName('Dependente').Value := 'CLDPICOD = ' + ComboDependente.KeyValue
       else
         SQLAgendamentoConsulta.MacroByName('Dependente').Value := 'CLDPICOD IS NULL';
-      SQLAgendamentoConsulta.MacroByName('DataBase').Value     := 'AGENDMARCACAO >= ' + '"' + FormatDateTime('mm/dd/yyyy 00:00',now)+ '"';
+      SQLAgendamentoConsulta.MacroByName('DataBase').Value     := 'AGENDMARCACAO >= ' + '''' + FormatDateTime('mm/dd/yyyy 00:00',now)+ '''';
       SQLAgendamentoConsulta.MacroByName('Status').Value       := 'AgencStatus > 0 and AgencStatus  < 4';
       SQLAgendamentoConsulta.MacroByName('Ordem').Value        := 'AGENDMARCACAO';
       SQLAgendamentoConsulta.Open;
@@ -1508,12 +1508,12 @@ begin
   if not SQLCliente.IsEmpty then
     begin
       SQLAgendamentoConsulta.Close;
-      SQLAgendamentoConsulta.MacroByName('Cliente').Value := 'CLIEA13ID = '+'"'+SQLClienteCLIEA13ID.Value+'"';
+      SQLAgendamentoConsulta.MacroByName('Cliente').Value := 'CLIEA13ID = '+''''+SQLClienteCLIEA13ID.Value+'''';
       if ComboDependente.KeyValue <> null then
         SQLAgendamentoConsulta.MacroByName('Dependente').Value := 'CLDPICOD = ' + ComboDependente.KeyValue
       else
         SQLAgendamentoConsulta.MacroByName('Dependente').Value := 'CLDPICOD IS NULL';
-      SQLAgendamentoConsulta.MacroByName('DataBase').Value     := 'AGENDMARCACAO <= ' + '"' + FormatDateTime('mm/dd/yyyy 00:00',StrToDate(EditDataBase.Text))+ '"';
+      SQLAgendamentoConsulta.MacroByName('DataBase').Value     := 'AGENDMARCACAO <= ' + '''' + FormatDateTime('mm/dd/yyyy 00:00',StrToDate(EditDataBase.Text))+ '''';
       SQLAgendamentoConsulta.MacroByName('Status').Value       := 'AgencStatus > 0';
       SQLAgendamentoConsulta.MacroByName('Ordem').Value        := 'AGENDMARCACAO';
       SQLAgendamentoConsulta.Open;

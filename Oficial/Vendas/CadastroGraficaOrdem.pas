@@ -1164,15 +1164,15 @@ begin
   inherited;
   Clausula := '';
   if ComboBuscaCliente.Value <> '' then
-    Clausula := 'CLIEA13ID = "' + ComboBuscaCliente.Value + '" ';
+    Clausula := 'CLIEA13ID = ''' + ComboBuscaCliente.Value + ''' ';
   if RadioStatus.ItemIndex >= 1 then
     if Clausula <> '' then
       Clausula := Clausula + ' and ';
   Case RadioStatus.ItemIndex of
-  1 : Clausula := Clausula + ' (STATUS = "A" )';
-  2 : Clausula := Clausula + ' (STATUS = "C" )';
-  3 : Clausula := Clausula + ' (STATUS = "E" )';
-  4 : Clausula := Clausula + ' (STATUS = "F" )';
+  1 : Clausula := Clausula + ' (STATUS = ''A'' )';
+  2 : Clausula := Clausula + ' (STATUS = ''C'' )';
+  3 : Clausula := Clausula + ' (STATUS = ''E'' )';
+  4 : Clausula := Clausula + ' (STATUS = ''F'' )';
   End;
   EditProcura.Text := '';
   EditEntre.Text   := '';
@@ -1915,7 +1915,7 @@ begin
   // Gravar Data Primeira Compra e Data Ultima Compra
   Dm.SQLCliente.Close;
   Dm.SQLCliente.Sql.Clear;
-  Dm.SQLCliente.SQL.Add('UPDATE CLIENTE SET Pendente="S" , CLIEDPRICOMPRA = "' + FormatDateTime('mm/dd/yyyy',SQLNotaFiscalNOFIDEMIS.Value) + '", CLIEDULTCOMPRA = "' +FormatDateTime('mm/dd/yyyy',SQLNotaFiscalNOFIDEMIS.Value)+ '" Where CLIEA13ID = ' + '"' + SQLNotaFiscalCLIEA13ID.Value + '" and CLIEDPRICOMPRA is null') ;
+  Dm.SQLCliente.SQL.Add('UPDATE CLIENTE SET Pendente=''S'' , CLIEDPRICOMPRA = ''' + FormatDateTime('mm/dd/yyyy',SQLNotaFiscalNOFIDEMIS.Value) + ''', CLIEDULTCOMPRA = ''' +FormatDateTime('mm/dd/yyyy',SQLNotaFiscalNOFIDEMIS.Value)+ ''' Where CLIEA13ID = ' + '''' + SQLNotaFiscalCLIEA13ID.Value + ''' and CLIEDPRICOMPRA is null') ;
   Dm.SQLCliente.ExecSql;
 end;
 
@@ -1931,7 +1931,7 @@ begin
   SQLSerieNF.Close;
   // Alterado pelo Judi
   SQLSerieNF.MacroByName('Empresa').value := 'EMPRICOD  = '+ DM.SQLTerminalAtivo.FieldByName('EMPRICOD').asstring;//ComboEmpresa.Value;
-  SQLSerieNF.MacroByName('Serie').Value   := 'SERIA5COD = "'+ SQLNotaFiscalSERIA5COD.asString+'"';
+  SQLSerieNF.MacroByName('Serie').Value   := 'SERIA5COD = '''+ SQLNotaFiscalSERIA5COD.asString+'''';
   SQLSerieNF.Open;
   Erro := True;
   if DataSet.State in [DSInsert] then
@@ -1971,7 +1971,7 @@ begin
       FisJur := nCLIE.nCliPessoa
     Else if nOPES.nOpOrigemDestino = 'F' then // operacao vinculada a fornecedor
     begin
-      FisJur := SQLLocate('FORNECEDOR','FORNICOD','FORNCFISJURID','"'+SQLTemplateCLIEA13ID.AsString+'"')
+      FisJur := SQLLocate('FORNECEDOR','FORNICOD','FORNCFISJURID',''''+SQLTemplateCLIEA13ID.AsString+'''')
     end Else // se for vinculada a empresa sempre é juridica
       FisJur := 'J' ;
 

@@ -467,7 +467,7 @@ inherited FormTelaRecalcularTotalizador: TFormTelaRecalcularTotalizador
       'from'
       '  TERMINAL'
       'where'
-      '  TERMCTIPO = "C" and'
+      '  TERMCTIPO = ''C'' and'
       '  (%MEmpresa)'
       'order by'
       '  TERMA60DESCR')
@@ -512,7 +512,7 @@ inherited FormTelaRecalcularTotalizador: TFormTelaRecalcularTotalizador
       'from'
       '  TERMINAL'
       'where'
-      '  TERMCTIPO = "C" and'
+      '  TERMCTIPO = ''C'' and'
       '  (%MEmpresa)'
       'order by'
       '  TERMA60DESCR')

@@ -365,7 +365,7 @@ inherited FormRelatorioResumoVendasporAliquota: TFormRelatorioResumoVendasporAli
         '  left outer join PRODUTO on CUPOMITEM.PRODICOD = PRODUTO.PRODIC' +
         'OD)'
       'where'
-      '  CUPOM.CUPOCSTATUS = "A" and'
+      '  CUPOM.CUPOCSTATUS = ''A'' and'
       '  CUPOMITEM.CPITN3QTD > 0 and'
       '  (%MEmpresa) and'
       '  (%MData) and'
@@ -448,7 +448,7 @@ inherited FormRelatorioResumoVendasporAliquota: TFormRelatorioResumoVendasporAli
         ' left outer join OPERACAOESTOQUE on NOTAFISCAL.OPESICOD = OPERAC' +
         'AOESTOQUE.OPESICOD'
       'where'
-      '  NOTAFISCAL.NOFICSTATUS = "E"   and'
+      '  NOTAFISCAL.NOFICSTATUS = ''E''   and'
       '  NOTAFISCALITEM.NFITN3QUANT > 0 and'
       '  (%MEmpresa) and'
       '  (%MData) and'

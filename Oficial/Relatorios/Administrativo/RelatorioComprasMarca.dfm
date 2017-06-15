@@ -42,7 +42,7 @@ inherited FormRelatorioComprasMarca: TFormRelatorioComprasMarca
         'EM.PRODICOD'
       '   inner join MARCA MARCA on MARCA.MARCICOD = PRODUTO.MARCICOD'
       'where'
-      '  NOTACOMPRA.NOCPCSTATUS = "E" and'
+      '  NOTACOMPRA.NOCPCSTATUS = ''E'' and'
       '  (%MEmpresa) and'
       '  (%MData)'
       'group by'

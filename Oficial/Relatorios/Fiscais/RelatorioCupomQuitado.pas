@@ -63,20 +63,20 @@ begin
   SQLCupom.Close;
   SQLCupom.MacroByName('MEmpresa').AsString := SQLDeLista(ComboEmpresa,ListaEmpresas,'','CUPOM','');
 
-  SQLCupom.MacroByName('MData').AsString    := 'CUPODQUITACAO >= "' + FormatDateTime('mm/dd/yyy',De.Date) + '" AND ' +
-                                               'CUPODQUITACAO <= "' + FormatDateTime('mm/dd/yyy',Ate.Date) + '"';
+  SQLCupom.MacroByName('MData').AsString    := 'CUPODQUITACAO >= ''' + FormatDateTime('mm/dd/yyy',De.Date) + ''' AND ' +
+                                               'CUPODQUITACAO <= ''' + FormatDateTime('mm/dd/yyy',Ate.Date) + '''';
 
   // Seta o Tipo Padrão
   if ComboTipoVenda.ItemIndex >= 0 then
     begin
       case ComboTipoVenda.ItemIndex of
         0 : SQLCupom.MacrobyName('MTipoPadrao').Value := '0=0';
-        1 : SQLCupom.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = "CRT"';
-        2 : SQLCupom.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = "CHQP"';
-        3 : SQLCupom.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = "CHQV"';
-        4 : SQLCupom.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = "CNV"';
-        5 : SQLCupom.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = "CRD"';
-        6 : SQLCupom.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = "DIN"';
+        1 : SQLCupom.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = ''CRT''';
+        2 : SQLCupom.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = ''CHQP''';
+        3 : SQLCupom.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = ''CHQV''';
+        4 : SQLCupom.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = ''CNV''';
+        5 : SQLCupom.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = ''CRD''';
+        6 : SQLCupom.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = ''DIN''';
       end;
     end
   else
@@ -103,14 +103,14 @@ begin
   Report.Formulas.Retrieve ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Empresa';
-  Report.Formulas.Formula.Text := '"' + ComboEmpresa.Text + '"';
+  Report.Formulas.Formula.Text := '''' + ComboEmpresa.Text + '''';
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Emissao';
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"';
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''';
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'PeriodoEmissao';
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
-                                        FormatDateTime('dd/mm/yyyy', Ate.Date) + '"';
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
+                                        FormatDateTime('dd/mm/yyyy', Ate.Date) + '''';
   //--------------------------------------------------------------------------\\
   Report.Execute;
 end;

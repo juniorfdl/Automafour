@@ -585,7 +585,7 @@ begin
   {Buscar Tp Doc do cliente}
   SQLConsulta.Close;
   SQLConsulta.SQL.clear;
-  SQLConsulta.SQL.Text  := 'Select TPDCICOD, PORTICOD, PLCTA15COD, CTRCN2VLR from cliente where CLIEA13ID="'+COMBOCLIENTE.Value+'"';
+  SQLConsulta.SQL.Text  := 'Select TPDCICOD, PORTICOD, PLCTA15COD, CTRCN2VLR from cliente where CLIEA13ID='''+COMBOCLIENTE.Value+'''';
   SQLConsulta.Open;
   ComboTipoDoc.KeyValue      := sqlconsulta.fieldbyname('TPDCICOD').AsVariant;
   ComboPortador.KeyValue     := sqlconsulta.fieldbyname('PORTICOD').AsVariant;

@@ -218,13 +218,13 @@ begin
               SQLProduto.Close ;
               SQLProduto.SQL.Clear ;
               SQLProduto.SQL.Add('Select * from PRODUTO') ;
-              SQLProduto.SQL.Add('Where PRODCATIVO = "S" and ') ;
+              SQLProduto.SQL.Add('Where PRODCATIVO = ''S'' and ') ;
               if not FileExists('ProcuraContendo.txt') then
                 begin
                   if Pos('*', FormTelaItens.EntradaDados.Text) > 0 then
-                    SQLProduto.SQL.Add('PRODA60DESCR like "%' + Copy(FormTelaItens.EntradaDados.Text, 2, Length(FormTelaItens.EntradaDados.Text)) + '%"')
+                    SQLProduto.SQL.Add('PRODA60DESCR like ''%' + Copy(FormTelaItens.EntradaDados.Text, 2, Length(FormTelaItens.EntradaDados.Text)) + '%''')
                   else
-                    SQLProduto.SQL.Add('PRODA60DESCR like "' + FormTelaItens.EntradaDados.Text + '%"') ;
+                    SQLProduto.SQL.Add('PRODA60DESCR like ''' + FormTelaItens.EntradaDados.Text + '%''') ;
                 end
               else
                 begin
@@ -238,7 +238,7 @@ begin
                       else
                         Filtro := Filtro+copy(FormTelaItens.EntradaDados.Text,I,1);
                     end;
-                  SQLProduto.SQL.Add('PRODA60DESCR like "' + Filtro + '"') ;
+                  SQLProduto.SQL.Add('PRODA60DESCR like ''' + Filtro + '''') ;
                 end;
 
               SQLProduto.SQL.Add('order by PRODA60DESCR, PRODA60REFER') ;
@@ -249,7 +249,7 @@ begin
            {   SQLProduto.Close ;
               SQLProduto.SQL.Clear ;
               SQLProduto.SQL.Add('Select P.*, C.CORA30DESCR from PRODUTO P LEFT JOIN COR C ON C.CORICOD = P.CORICOD ') ;
-              SQLProduto.SQL.Add('Where P.PRODCATIVO = "S" and ') ;
+              SQLProduto.SQL.Add('Where P.PRODCATIVO = ''S'' and ') ;
 
               vtamanho   := length(FormTelaItens.EntradaDados.Text)+1 ;
               FormTelaItens.EntradaDados.Text := Trim(FormTelaItens.EntradaDados.Text)+' ' ;
@@ -262,19 +262,19 @@ begin
                     Filtro := Filtro+copy(FormTelaItens.EntradaDados.Text,I,1);
                 end;
 
-              SQLProduto.SQL.Add('PRODA60DESCR like "' + Filtro + '"') ; }
+              SQLProduto.SQL.Add('PRODA60DESCR like ''' + Filtro + '''') ; }
 
               SQLProduto.Close ;
               SQLProduto.SQL.Clear ;
               SQLProduto.SQL.Add('Select P.*, C.CORA30DESCR from PRODUTO P LEFT JOIN COR C ON C.CORICOD = P.CORICOD ') ;
-              SQLProduto.SQL.Add('Where P.PRODCATIVO = "S" and ') ;
+              SQLProduto.SQL.Add('Where P.PRODCATIVO = ''S'' and ') ;
 
               if not FileExists('ProcuraContendo.txt') then
                 begin
                   if Pos('*', FormTelaItens.EntradaDados.Text) > 0 then
-                    SQLProduto.SQL.Add('PRODA60DESCR like "%' + Copy(FormTelaItens.EntradaDados.Text, 2, Length(FormTelaItens.EntradaDados.Text)) + '%"')
+                    SQLProduto.SQL.Add('PRODA60DESCR like ''%' + Copy(FormTelaItens.EntradaDados.Text, 2, Length(FormTelaItens.EntradaDados.Text)) + '%''')
                   else
-                    SQLProduto.SQL.Add('PRODA60DESCR like "' + FormTelaItens.EntradaDados.Text + '%"') ;
+                    SQLProduto.SQL.Add('PRODA60DESCR like ''' + FormTelaItens.EntradaDados.Text + '%''') ;
                 end
               else
                 begin
@@ -288,7 +288,7 @@ begin
                       else
                         Filtro := Filtro+copy(FormTelaItens.EntradaDados.Text,I,1);
                     end;
-                  SQLProduto.SQL.Add('PRODA60DESCR like "' + Filtro + '"') ;
+                  SQLProduto.SQL.Add('PRODA60DESCR like ''' + Filtro + '''') ;
                 end;
 
               SQLProduto.SQL.Add('order by P.PRODA60DESCR, C.CORA30DESCR') ;
@@ -302,7 +302,7 @@ begin
       SQLProduto.Close ;
       SQLProduto.SQL.Clear ;
       SQLProduto.SQL.Add('Select * from PRODUTO') ;
-      SQLProduto.SQL.Add('Where PRODCATIVO = "S" and PRODCRAPIDO = "S"') ;
+      SQLProduto.SQL.Add('Where PRODCATIVO = ''S'' and PRODCRAPIDO = ''S''') ;
       SQLProduto.SQL.Add('order by PRODA60DESCR, PRODA60REFER') ;
       SQLProduto.Open ;
     end;
@@ -473,9 +473,9 @@ begin
               if not FileExists('ProcuraContendo.txt') then
                 begin
                   if Pos('*', Valor.Text) > 0 then
-                    Filtro := 'PRODA60DESCR like "%' + Copy(Valor.Text, 2, Length(Valor.Text)) + '%"'
+                    Filtro := 'PRODA60DESCR like ''%' + Copy(Valor.Text, 2, Length(Valor.Text)) + '%'''
                   else
-                    Filtro := 'PRODA60DESCR like "' + Valor.Text + '%"';
+                    Filtro := 'PRODA60DESCR like ''' + Valor.Text + '%''';
                 end
               else
                 begin
@@ -489,18 +489,18 @@ begin
                       else
                         Filtro := Filtro+copy(Valor.Text,I,1);
                     end;
-                  Filtro := 'PRODA60DESCR like "' + Filtro + '"';
+                  Filtro := 'PRODA60DESCR like ''' + Filtro + '''';
                 end;
             end;
 
           if (EditDescTecnica.Text <> '') then
             if (Filtro = '') then
               begin
-                Filtro := 'PRODA255DESCRTEC like "%' + Copy(EditDescTecnica.Text, 2, Length(EditDescTecnica.Text)) + '%"';
+                Filtro := 'PRODA255DESCRTEC like ''%' + Copy(EditDescTecnica.Text, 2, Length(EditDescTecnica.Text)) + '%''';
               end
             else
               begin
-                Filtro := Filtro + ' and PRODA255DESCRTEC like "%' + Copy(EditDescTecnica.Text, 2, Length(EditDescTecnica.Text)) + '%"';
+                Filtro := Filtro + ' and PRODA255DESCRTEC like ''%' + Copy(EditDescTecnica.Text, 2, Length(EditDescTecnica.Text)) + '%''';
               end;
 
           if (EditRef.Text <> '') then
@@ -509,9 +509,9 @@ begin
                 if not FileExists('ProcuraContendo.txt') then
                   begin
                     if Pos('*', Valor.Text) > 0 then
-                      Filtro := 'PRODA60REFER like "' + Copy(EditRef.Text, 2, Length(EditRef.Text)) + '%"'
+                      Filtro := 'PRODA60REFER like ''' + Copy(EditRef.Text, 2, Length(EditRef.Text)) + '%'''
                     else
-                      Filtro := 'PRODA60REFER like "%' + EditRef.Text + '%"';
+                      Filtro := 'PRODA60REFER like ''%' + EditRef.Text + '%''';
                   end
                 else
                   begin
@@ -525,7 +525,7 @@ begin
                         else
                           FiltroRef := FiltroRef + copy(EditRef.Text,I,1);
                       end;
-                    Filtro := 'PRODA60REFER like "' + FiltroRef + '"';
+                    Filtro := 'PRODA60REFER like ''' + FiltroRef + '''';
                   end;
               end
             else
@@ -533,9 +533,9 @@ begin
                 if not FileExists('ProcuraContendo.txt') then
                   begin
                     if Pos('*', Valor.Text) > 0 then
-                      Filtro := Filtro + ' and PRODA60REFER like "' + Copy(EditRef.Text, 2, Length(EditRef.Text)) + '%"'
+                      Filtro := Filtro + ' and PRODA60REFER like ''' + Copy(EditRef.Text, 2, Length(EditRef.Text)) + '%'''
                     else
-                      Filtro := Filtro + ' and PRODA60REFER like "%' + EditRef.Text + '%"';
+                      Filtro := Filtro + ' and PRODA60REFER like ''%' + EditRef.Text + '%''';
                   end
                 else
                   begin
@@ -549,38 +549,38 @@ begin
                         else
                           FiltroRef := FiltroRef + copy(EditRef.Text,I,1);
                       end;
-                    Filtro := Filtro + ' and PRODA60REFER like "' + FiltroRef + '"';
+                    Filtro := Filtro + ' and PRODA60REFER like ''' + FiltroRef + '''';
                   end;
               end;
 
           if (EditPav.Text <> '') then
             if (Filtro = '') then
               begin
-                Filtro := 'PRODA15APAVIM like "%' + Copy(EditPav.Text, 1, Length(EditPav.Text)) + '%"';
+                Filtro := 'PRODA15APAVIM like ''%' + Copy(EditPav.Text, 1, Length(EditPav.Text)) + '%''';
               end
             else
               begin
-                Filtro := Filtro + ' and PRODA15APAVIM like "%' + Copy(EditPav.Text, 1, Length(EditPav.Text)) + '%"';
+                Filtro := Filtro + ' and PRODA15APAVIM like ''%' + Copy(EditPav.Text, 1, Length(EditPav.Text)) + '%''';
               end;
 
           if (EditRua.Text <> '') then
             if (Filtro = '') then
               begin
-                Filtro := 'PRODA15RUA like "%' + Copy(EditRua.Text, 1, Length(EditRua.Text)) + '%"';
+                Filtro := 'PRODA15RUA like ''%' + Copy(EditRua.Text, 1, Length(EditRua.Text)) + '%''';
               end
             else
               begin
-                Filtro := Filtro + ' and PRODA15RUA like "%' + Copy(EditRua.Text, 1, Length(EditRua.Text)) + '%"';
+                Filtro := Filtro + ' and PRODA15RUA like ''%' + Copy(EditRua.Text, 1, Length(EditRua.Text)) + '%''';
               end;
 
           if (EditPrateleira.Text <> '') then
             if (Filtro = '') then
               begin
-                Filtro := 'PRODA15PRATEL like "%' + Copy(EditPrateleira.Text, 1, Length(EditPrateleira.Text)) + '%"';
+                Filtro := 'PRODA15PRATEL like ''%' + Copy(EditPrateleira.Text, 1, Length(EditPrateleira.Text)) + '%''';
               end
             else
               begin
-                Filtro := Filtro + ' and PRODA15PRATEL like "%' + Copy(EditPrateleira.Text, 1, Length(EditPrateleira.Text)) + '%"';
+                Filtro := Filtro + ' and PRODA15PRATEL like ''%' + Copy(EditPrateleira.Text, 1, Length(EditPrateleira.Text)) + '%''';
               end;
 
           if (ComboMarca.Value <> '') then
@@ -595,7 +595,7 @@ begin
               SQLProduto.Close ;
               SQLProduto.SQL.Clear ;
               SQLProduto.SQL.Add('Select * from PRODUTO') ;
-              SQLProduto.SQL.Add('Where PRODCATIVO = "S" and') ;
+              SQLProduto.SQL.Add('Where PRODCATIVO = ''S'' and') ;
               SQLProduto.SQL.Add(Filtro);
               SQLProduto.SQL.Add('order by PRODA60DESCR, PRODA60REFER');
               SQLProduto.Open ;

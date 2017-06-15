@@ -51,8 +51,8 @@ procedure TFormRelatorioProdutoCadastrado.ExecutarBtnClick(
 begin
   inherited;
   SQLProduto.Close;
-  SQLProduto.MacroByName('MData').Value := 'PRODUTO.PRODDCAD >= "' + FormatDateTime('mm/dd/yyyy',De.Date) + '" AND ' +
-                                           'PRODUTO.PRODDCAD <= "' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '"';
+  SQLProduto.MacroByName('MData').Value := 'PRODUTO.PRODDCAD >= ''' + FormatDateTime('mm/dd/yyyy',De.Date) + ''' AND ' +
+                                           'PRODUTO.PRODDCAD <= ''' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '''';
 
   SQLProduto.Open;
   if not SQLProduto.IsEmpty then
@@ -65,11 +65,11 @@ begin
           Report.Formulas.Retrieve;
           //--------------------------------------------------------------------------\\
           Report.Formulas.Name         := 'Emissao';
-          Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"';
+          Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''';
           //--------------------------------------------------------------------------\\
           Report.Formulas.Name         := 'PeriodoEmissao';
-          Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
-                                                FormatDateTime('dd/mm/yyyy', Ate.Date) + '"' ;
+          Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
+                                                FormatDateTime('dd/mm/yyyy', Ate.Date) + '''' ;
           //--------------------------------------------------------------------------\\
           Report.Formulas.Send;
           Report.Execute;

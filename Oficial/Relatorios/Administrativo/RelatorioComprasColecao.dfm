@@ -44,7 +44,7 @@ inherited FormRelatorioComprasColecao: TFormRelatorioComprasColecao
         '   inner join COLECAO COLECAO on COLECAO.COLEICOD = PRODUTO.COLE' +
         'ICOD'
       'where'
-      '  NOTACOMPRA.NOCPCSTATUS = "E" and'
+      '  NOTACOMPRA.NOCPCSTATUS = ''E'' and'
       '  (%MEmpresa) and'
       '  (%MData)'
       'group by'

@@ -865,7 +865,7 @@ begin
       while pos(',',ValorUnitarioECF) > 0 do
         delete(ValorUnitarioECF,pos(',',ValorUnitarioECF),1);
 
-      // O Parametro abaixo "Casas Decimais" é somente para o Valor Unitario a ser passado
+      // O Parametro abaixo ''Casas Decimais'' é somente para o Valor Unitario a ser passado
       IntRet := EPSON_Fiscal_Vender_Item(Pchar(Codigo), Pchar(Descricao), Pchar(QuantEcf), DM.SQLTerminalAtivo.FieldByName('TERMINRODECQUANT').AsInteger, Pchar(UnidadeVenda), Pchar(ValorUnitarioEcf), DM.SQLTerminalAtivo.FieldByName('TERMINRODECVALORUNIT').AsInteger, Pchar(Aliquota), 1);
     end;
 

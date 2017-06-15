@@ -99,9 +99,9 @@ begin
           SQLPlano.SQL.Add('select * from PLANORECEBIMENTO') ;
           SQLPlano.SQL.Add('where') ;
           if Pos('*', Valor.Text) > 0 then
-            SQLPlano.SQL.Add('PLRCA60DESCR like "%' + Copy(Valor.Text, 2, Length(Valor.Text)) + '%"')
+            SQLPlano.SQL.Add('PLRCA60DESCR like ''%' + Copy(Valor.Text, 2, Length(Valor.Text)) + '%''')
           else
-            SQLPlano.SQL.Add('PLRCA60DESCR like "' + Valor.Text + '%"') ;
+            SQLPlano.SQL.Add('PLRCA60DESCR like ''' + Valor.Text + '%''') ;
           SQLPlano.Open ;
 
           SQLPlano.First ;

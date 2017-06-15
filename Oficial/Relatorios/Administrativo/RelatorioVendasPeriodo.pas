@@ -224,10 +224,10 @@ begin
   SQLVendas.MacrobyName('MEmpresa').Value := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'CUPOM', '');
   SQLNotas.MacrobyName('MEmpresa').Value  := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'NOTAFISCAL','');
 
-  SQLVendas.MacrobyName('MData').Value    := 'CUPOM.CUPODEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                             'CUPOM.CUPODEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
-  SQLNotas.MacrobyName('MData').Value     := 'NOTAFISCAL.NOFIDEMIS  >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                             'NOTAFISCAL.NOFIDEMIS  <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
+  SQLVendas.MacrobyName('MData').Value    := 'CUPOM.CUPODEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                             'CUPOM.CUPODEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
+  SQLNotas.MacrobyName('MData').Value     := 'NOTAFISCAL.NOFIDEMIS  >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                             'NOTAFISCAL.NOFIDEMIS  <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
 
   if ComboVendedor.Value <> '' then
     begin
@@ -242,8 +242,8 @@ begin
 
   if PlacaVeiculo.Text <> '' then
     begin
-      SQLVendas.MacrobyName('MPlaca').Value  := 'CUPOM.CUPOA8PLACAVEIC = "' + PlacaVeiculo.Text+ '"';
-      SQLNotas.MacroByName('MPlaca').Value   := 'NOTAFISCAL.NOFIA8PLACAVEIC = "' + PlacaVeiculo.Text+ '"';
+      SQLVendas.MacrobyName('MPlaca').Value  := 'CUPOM.CUPOA8PLACAVEIC = ''' + PlacaVeiculo.Text+ '''';
+      SQLNotas.MacroByName('MPlaca').Value   := 'NOTAFISCAL.NOFIA8PLACAVEIC = ''' + PlacaVeiculo.Text+ '''';
     end
   else
     begin
@@ -253,8 +253,8 @@ begin
 
   if ComboCliente.Value <> '' then
     begin
-      SQLVendas.MacrobyName('MCliente').Value   := 'CUPOM.CLIEA13ID      = "' + ComboCliente.Value  + '"';
-      SQLNotas.MacroByName('MCliente').Value    := 'NOTAFISCAL.CLIEA13ID = "' + ComboCliente.Value  + '"';
+      SQLVendas.MacrobyName('MCliente').Value   := 'CUPOM.CLIEA13ID      = ''' + ComboCliente.Value  + '''';
+      SQLNotas.MacroByName('MCliente').Value    := 'NOTAFISCAL.CLIEA13ID = ''' + ComboCliente.Value  + '''';
     end
   else
     begin
@@ -264,25 +264,25 @@ begin
 
   if CKApenasCanceladas.Checked then
     begin
-       SQLVendas.MacrobyName('MStatus').Value  := 'CUPOM.CUPOCSTATUS = "C"';
-       SQLNotas.MacrobyName('MStatus').Value   := 'NOTAFISCAL.NOFICSTATUS = "C"';
+       SQLVendas.MacrobyName('MStatus').Value  := 'CUPOM.CUPOCSTATUS = ''C''';
+       SQLNotas.MacrobyName('MStatus').Value   := 'NOTAFISCAL.NOFICSTATUS = ''C''';
     end
   else
     begin
-      SQLVendas.MacrobyName('MStatus').Value   := 'CUPOM.CUPOCSTATUS <> "C"';
-      SQLNotas.MacrobyName('MStatus').Value    := 'NOTAFISCAL.NOFICSTATUS = "E"';
+      SQLVendas.MacrobyName('MStatus').Value   := 'CUPOM.CUPOCSTATUS <> ''C''';
+      SQLNotas.MacrobyName('MStatus').Value    := 'NOTAFISCAL.NOFICSTATUS = ''E''';
     end;
   // Seta o Tipo Padrão
   if ComboTipoVenda.ItemIndex >= 0 then
     begin
       case ComboTipoVenda.ItemIndex of
         0 : SQLVendas.MacrobyName('MTipoPadrao').Value := '0=0';
-        1 : SQLVendas.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = "CRT"';
-        2 : SQLVendas.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = "CHQP"';
-        3 : SQLVendas.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = "CHQV"';
-        4 : SQLVendas.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = "CNV"';
-        5 : SQLVendas.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = "CRD"';
-        6 : SQLVendas.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = "DIN"';
+        1 : SQLVendas.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = ''CRT''';
+        2 : SQLVendas.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = ''CHQP''';
+        3 : SQLVendas.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = ''CHQV''';
+        4 : SQLVendas.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = ''CNV''';
+        5 : SQLVendas.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = ''CRD''';
+        6 : SQLVendas.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = ''DIN''';
       end;
     end
   else
@@ -359,7 +359,7 @@ begin
               End;
           if ckMostraDisplay.Checked then
             begin
-              Display := dm.SQLLocate('CUPOM','CUPOA13ID','DISPICOD','"'+SQLVendasCUPOA13ID.AsString+'"');
+              Display := dm.SQLLocate('CUPOM','CUPOA13ID','DISPICOD',''''+SQLVendasCUPOA13ID.AsString+'''');
               if (Display <> '') then
                 begin
                   TblTemporaria.FieldByName('CUPOA13ID').Clear;
@@ -428,23 +428,23 @@ begin
 
       SQLVendasConsig.Close;
       SQLVendasConsig.MacrobyName('MEmpresa').Value := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'CUPOM', '');
-      SQLVendasConsig.MacrobyName('MData').Value    := 'CUPOM.CUPODEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                       'CUPOM.CUPODEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
+      SQLVendasConsig.MacrobyName('MData').Value    := 'CUPOM.CUPODEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                       'CUPOM.CUPODEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
       SQLVendasConsig.Open;
       BatchExec(SQLVendasConsig, TblVendaConsig);
 
       SQLCheques.Close;
       SQLCheques.MacrobyName('MEmpresa').Value := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'CONTASRECEBER', '');
-      SQLCheques.MacrobyName('MData').Value    := 'CONTASRECEBER.CTRCDEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                  'CONTASRECEBER.CTRCDEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
+      SQLCheques.MacrobyName('MData').Value    := 'CONTASRECEBER.CTRCDEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                  'CONTASRECEBER.CTRCDEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
 
       SQLCheques.Open ;
       BatchExec(SQLCheques, TblVendaCheques) ;
 
       SQLRecebimentos.Close ;
       SQLRecebimentos.MacrobyName('MEmpresa').Value := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'RECEBIMENTO', 'EMPRICODREC');
-      SQLRecebimentos.MacrobyName('MData').Value    := 'RECEDRECTO >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                       'RECEDRECTO <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
+      SQLRecebimentos.MacrobyName('MData').Value    := 'RECEDRECTO >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                       'RECEDRECTO <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
       SQLRecebimentos.Open ;
       SQLRecebimentos.First ;
       VlrRectoConsig := 0;
@@ -453,15 +453,15 @@ begin
           TblVendasPeriodoRecConsig.Append ;
           TblVendasPeriodoRecConsigRECEDRECTO.Value     := SQLRecebimentosRECEDRECTO.Value ;
           TblVendasPeriodoRecConsigRECEN2VLRRECTO.Value := SQLRecebimentosRECEN2VLRRECTO.Value ;
-          TblVendasPeriodoRecConsigCUPOA13ID.Value      := SQLLocate('CONTASRECEBER', 'CTRCA13ID', 'CUPOA13ID', '"' + SQLRecebimentosCTRCA13ID.Value + '"') ;
-          Aux := SQLLocate('CUPOM', 'CUPOA13ID', 'CLIEA13ID', '"' + TblVendasPeriodoRecConsigCUPOA13ID.Value + '"') ;
-          Aux := SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA60RAZAOSOC', '"' + Aux + '"');
+          TblVendasPeriodoRecConsigCUPOA13ID.Value      := SQLLocate('CONTASRECEBER', 'CTRCA13ID', 'CUPOA13ID', '''' + SQLRecebimentosCTRCA13ID.Value + '''') ;
+          Aux := SQLLocate('CUPOM', 'CUPOA13ID', 'CLIEA13ID', '''' + TblVendasPeriodoRecConsigCUPOA13ID.Value + '''') ;
+          Aux := SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA60RAZAOSOC', '''' + Aux + '''');
           TblVendasPeriodoRecConsigCliente.Value        := Aux ;
-          Aux := SQLLocate('CUPOM', 'CUPOA13ID', 'PLRCICOD', '"' + TblVendasPeriodoRecConsigCUPOA13ID.Value + '"');
-          Aux := SQLLocate('PLANORECEBIMENTO', 'PLRCICOD', 'PLRCA60DESCR', '"' + Aux + '"');
+          Aux := SQLLocate('CUPOM', 'CUPOA13ID', 'PLRCICOD', '''' + TblVendasPeriodoRecConsigCUPOA13ID.Value + '''');
+          Aux := SQLLocate('PLANORECEBIMENTO', 'PLRCICOD', 'PLRCA60DESCR', '''' + Aux + '''');
           TblVendasPeriodoRecConsigPlano.Value := Aux;
-          Aux := SQLLocate('CUPOM', 'CUPOA13ID', 'VENDICOD', '"' + TblVendasPeriodoRecConsigCUPOA13ID.Value + '"');
-          Aux := SQLLocate('VENDEDOR', 'VENDICOD', 'VENDA60NOME', '"' + Aux + '"');
+          Aux := SQLLocate('CUPOM', 'CUPOA13ID', 'VENDICOD', '''' + TblVendasPeriodoRecConsigCUPOA13ID.Value + '''');
+          Aux := SQLLocate('VENDEDOR', 'VENDICOD', 'VENDA60NOME', '''' + Aux + '''');
           TblVendasPeriodoRecConsigVendedor.Value := Aux;
           TblVendasPeriodoRecConsig.Post;
           VlrRectoConsig := VlrRectoConsig + SQLRecebimentosRECEN2VLRRECTO.asFloat;
@@ -475,26 +475,26 @@ begin
       Report.Formulas.Retrieve;
       //--------------------------------------------------------------------------\\
       Report.Formulas.Name         := 'Empresa';
-      Report.Formulas.Formula.Text := '"' + ComboEmpresa.Text + '"';
+      Report.Formulas.Formula.Text := '''' + ComboEmpresa.Text + '''';
       //--------------------------------------------------------------------------\\
       Report.Formulas.Name         := 'Emissao';
-      Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"';
+      Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''';
       //--------------------------------------------------------------------------\\
       Report.Formulas.Name         := 'PeriodoEmissao' ;
-      Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
-                                            FormatDateTime('dd/mm/yyyy', Ate.Date) + '"';
+      Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
+                                            FormatDateTime('dd/mm/yyyy', Ate.Date) + '''';
       //--------------------------------------------------------------------------\\
       Report.Formulas.Name := 'Vendedor';
       if ComboVendedor.Text <> '' then
-        Report.Formulas.Formula.Text := '"' + ComboVendedor.Text + '"'
+        Report.Formulas.Formula.Text := '''' + ComboVendedor.Text + ''''
       else
-        Report.Formulas.Formula.Text := '"Todos"';
+        Report.Formulas.Formula.Text := '''Todos''';
       //--------------------------------------------------------------------------\\
       Report.Formulas.Name := 'PlacaVeiculo';
       if PlacaVeiculo.Text <> '' then
-        Report.Formulas.Formula.Text := '"' + PlacaVeiculo.Text + '"'
+        Report.Formulas.Formula.Text := '''' + PlacaVeiculo.Text + ''''
       else
-        Report.Formulas.Formula.Text := '"Todas"';
+        Report.Formulas.Formula.Text := '''Todas''';
 
       Report.Formulas.Name := 'TotalRecConsig';
       Report.Formulas.Formula.Text := ConvFloatToStr(VlrRectoConsig);
@@ -511,26 +511,26 @@ begin
       Report.Formulas.Retrieve ;
       //--------------------------------------------------------------------------\\
       Report.Formulas.Name         := 'Empresa';
-      Report.Formulas.Formula.Text := '"' + ComboEmpresa.Text + '"';
+      Report.Formulas.Formula.Text := '''' + ComboEmpresa.Text + '''';
       //--------------------------------------------------------------------------\\
       Report.Formulas.Name         := 'Emissao';
-      Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"';
+      Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''';
       //--------------------------------------------------------------------------\\
       Report.Formulas.Name         := 'PeriodoEmissao' ;
-      Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
-                                      FormatDateTime('dd/mm/yyyy', Ate.Date) + '"';
+      Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
+                                      FormatDateTime('dd/mm/yyyy', Ate.Date) + '''';
       //--------------------------------------------------------------------------\\
       Report.Formulas.Name := 'Vendedor' ;
       if ComboVendedor.Text <> '' then
-        Report.Formulas.Formula.Text := '"' + ComboVendedor.Text + '"'
+        Report.Formulas.Formula.Text := '''' + ComboVendedor.Text + ''''
       else
-        Report.Formulas.Formula.Text := '"Todos"' ;
+        Report.Formulas.Formula.Text := '''Todos''' ;
       //--------------------------------------------------------------------------\\
       Report.Formulas.Name := 'PlacaVeiculo';
       if PlacaVeiculo.Text <> '' then
-        Report.Formulas.Formula.Text := '"' + PlacaVeiculo.Text + '"'
+        Report.Formulas.Formula.Text := '''' + PlacaVeiculo.Text + ''''
       else
-        Report.Formulas.Formula.Text := '"Todas"';
+        Report.Formulas.Formula.Text := '''Todas''';
       //--------------------------------------------------------------------------\\
       if not CKSintetico.Checked then
       begin
@@ -613,10 +613,10 @@ begin
   SQLVendas.MacrobyName('MEmpresa').Value := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'CUPOM', '');
   SQLNotas.MacrobyName('MEmpresa').Value  := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'NOTAFISCAL','');
 
-  SQLVendas.MacrobyName('MData').Value   :=  'CUPOM.CUPODEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                             'CUPOM.CUPODEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
-  SQLNotas.MacrobyName('MData').Value    := 'NOTAFISCAL.NOFIDEMIS  >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                            'NOTAFISCAL.NOFIDEMIS  <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
+  SQLVendas.MacrobyName('MData').Value   :=  'CUPOM.CUPODEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                             'CUPOM.CUPODEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
+  SQLNotas.MacrobyName('MData').Value    := 'NOTAFISCAL.NOFIDEMIS  >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                            'NOTAFISCAL.NOFIDEMIS  <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
 
   if ComboVendedor.Value <> '' then
     begin
@@ -631,8 +631,8 @@ begin
 
   if PlacaVeiculo.Text <> '' then
     begin
-      SQLVendas.MacrobyName('MPlaca').Value  := 'CUPOM.CUPOA8PLACAVEIC = "' + PlacaVeiculo.Text+ '"';
-      SQLNotas.MacroByName('MPlaca').Value   := 'NOTAFISCAL.NOFIA8PLACAVEIC = "' + PlacaVeiculo.Text+ '"';
+      SQLVendas.MacrobyName('MPlaca').Value  := 'CUPOM.CUPOA8PLACAVEIC = ''' + PlacaVeiculo.Text+ '''';
+      SQLNotas.MacroByName('MPlaca').Value   := 'NOTAFISCAL.NOFIA8PLACAVEIC = ''' + PlacaVeiculo.Text+ '''';
     end
   else
     begin
@@ -642,8 +642,8 @@ begin
 
   if ComboCliente.Value <> '' then
     begin
-      SQLVendas.MacrobyName('MCliente').Value   := 'CUPOM.CLIEA13ID      = "' + ComboCliente.Value  + '"';
-      SQLNotas.MacroByName('MCliente').Value    := 'NOTAFISCAL.CLIEA13ID = "' + ComboCliente.Value  + '"';
+      SQLVendas.MacrobyName('MCliente').Value   := 'CUPOM.CLIEA13ID      = ''' + ComboCliente.Value  + '''';
+      SQLNotas.MacroByName('MCliente').Value    := 'NOTAFISCAL.CLIEA13ID = ''' + ComboCliente.Value  + '''';
     end
   else
     begin
@@ -656,12 +656,12 @@ begin
     begin
       case ComboTipoVenda.ItemIndex of
         0 : SQLVendas.MacrobyName('MTipoPadrao').Value := '0=0';
-        1 : SQLVendas.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = "CRT"';
-        2 : SQLVendas.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = "CHQP"';
-        3 : SQLVendas.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = "CHQV"';
-        4 : SQLVendas.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = "CNV"';
-        5 : SQLVendas.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = "CRD"';
-        6 : SQLVendas.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = "DIN"';
+        1 : SQLVendas.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = ''CRT''';
+        2 : SQLVendas.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = ''CHQP''';
+        3 : SQLVendas.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = ''CHQV''';
+        4 : SQLVendas.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = ''CNV''';
+        5 : SQLVendas.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = ''CRD''';
+        6 : SQLVendas.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = ''DIN''';
       end;
     end
   else
@@ -760,12 +760,12 @@ begin
   while not TblTemporaria.Eof do
     begin
       Aux := '';
-      Aux := SQLLocate('CLIENTE', 'CLIEA13ID', 'PROFA13ID', '"' + TblTemporariaCLIEA13ID.AsString + '"');
+      Aux := SQLLocate('CLIENTE', 'CLIEA13ID', 'PROFA13ID', '''' + TblTemporariaCLIEA13ID.AsString + '''');
       if (Aux = '') then
         TblTemporaria.Delete // Se nao achou profissional ligado ao cliente, apaga registro
       else
         begin
-          Aux := SQLLocate('PROFISSIONAL', 'PROFA13ID', 'PROFICODINTERNET', '"' + Aux + '"');
+          Aux := SQLLocate('PROFISSIONAL', 'PROFA13ID', 'PROFICODINTERNET', '''' + Aux + '''');
           if (Aux = '') then
             TblTemporaria.Delete // Se achou profissional mas nao tem cod.internet de ligacao ao cliente, apaga registro
           else

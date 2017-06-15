@@ -2804,7 +2804,7 @@ inherited FormCadastroCupom: TFormCadastroCupom
       '  CONTASRECEBER'
       'where'
       '  CUPOA13ID = :CUPOA13ID and'
-      '  CTRCA5TIPOPADRAO <> "CHQ"'
+      '  CTRCA5TIPOPADRAO <> ''CHQ'''
       'order by '
       '   CTRCINROPARC')
     Macros = <>

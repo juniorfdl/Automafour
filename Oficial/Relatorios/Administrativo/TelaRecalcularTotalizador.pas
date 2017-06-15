@@ -103,8 +103,8 @@ begin
   DM.SQLTemplate.Close ;
   DM.SQLTemplate.SQL.Clear ;
   DM.SQLTemplate.SQL.Add('Delete from TOTALIZADORDIARIOCAIXA') ;
-  DM.SQLTemplate.SQL.Add('where TODIDMOV >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '"') ;
-  DM.SQLTemplate.SQL.Add(' and TODIDMOV <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"') ;
+  DM.SQLTemplate.SQL.Add('where TODIDMOV >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + '''') ;
+  DM.SQLTemplate.SQL.Add(' and TODIDMOV <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''') ;
   DM.SQLTemplate.SQL.Add(' and EMPRICOD = ' + EmpresaPadrao);
   DM.SQLTemplate.SQL.Add(' and (TERMICOD = ' + ComboTerminal.Value);
   if ComboTerminal2.Value = '' then
@@ -167,8 +167,8 @@ begin
     end ;
 
   SQLMovimentoCaixa.Close ;
-  SQLMovimentoCaixa.MacroByName('MFiltro').Value    := 'MVCXDMOV >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                       'MVCXDMOV <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '" and ' +
+  SQLMovimentoCaixa.MacroByName('MFiltro').Value    := 'MVCXDMOV >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                       'MVCXDMOV <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + ''' and ' +
                                                        'EMPRICOD = ' + EmpresaPadrao ;
   if ComboTerminal2.Value = '' then
     SQLMovimentoCaixa.MacroByName('Terminal').Value := 'TERMICOD = ' + ComboTerminal.Value

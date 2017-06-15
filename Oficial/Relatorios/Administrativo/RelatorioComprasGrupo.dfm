@@ -42,7 +42,7 @@ inherited FormRelatorioComprasGrupo: TFormRelatorioComprasGrupo
         'EM.PRODICOD'
       '   inner join GRUPO GRUPO on GRUPO.GRUPICOD = PRODUTO.GRUPICOD'
       'where'
-      '  NOTACOMPRA.NOCPCSTATUS = "E" and'
+      '  NOTACOMPRA.NOCPCSTATUS = ''E'' and'
       '  (%MEmpresa) and'
       '  (%MData)'
       'group by'

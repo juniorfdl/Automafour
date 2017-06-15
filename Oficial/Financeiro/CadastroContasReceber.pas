@@ -549,7 +549,7 @@ begin
     if FormTelaDadosReplicacaoContasReceber.ModalResult = Mrok then
       begin
         SQLEspelhoNovoLanc.Close ;
-        SQLEspelhoNovoLanc.MacroByName('MFiltro').Value := 'CTRCA13ID = "' + SQLTemplateCTRCA13ID.Value + '"' ;
+        SQLEspelhoNovoLanc.MacroByName('MFiltro').Value := 'CTRCA13ID = ''' + SQLTemplateCTRCA13ID.Value + '''' ;
         SQLEspelhoNovoLanc.Open ;
 
         SQLTemplate.Append ;
@@ -647,13 +647,13 @@ begin
   inherited;
   Clausula := '';
   if ComboCliente.Value <> '' then
-    Clausula := 'CLIEA13ID = "' + ComboCliente.Value + '" ';
+    Clausula := 'CLIEA13ID = ''' + ComboCliente.Value + ''' ';
 
   if (ComboConta.Value <> '') and (Clausula <> '') then
-    Clausula := Clausula + ' AND PLCTA15COD = "' + ComboConta.Value + '"'
+    Clausula := Clausula + ' AND PLCTA15COD = ''' + ComboConta.Value + ''''
   else
     if (Clausula = '') and (ComboConta.Value <> '') then
-      Clausula := 'PLCTA15COD = "' + ComboConta.Value + '"';
+      Clausula := 'PLCTA15COD = ''' + ComboConta.Value + '''';
 
   if (ComboTipoDoc.Value <> '') and (Clausula <> '') then
     Clausula := Clausula + ' AND TPDCICOD = ' + ComboTipoDoc.Value
@@ -954,19 +954,19 @@ begin
      //Verifica e Estorna Recebimentos feitos com BANCO;
      SQLCount.Close;
      SQLCount.RequestLive := True;
-     SQLCount.SQL.Text := 'select * from MOVIMENTOBANCO where CTRCA13ID = "' + SQLTemplateCTRCA13ID.AsString + '" and ' +
-                          'MVBCDLANC = "' + FormatDateTime('mm/dd/yyyy', SQLRecebimentoRECEDRECTO.AsDateTime) + '"'; // and ' +
-                          //'(MVBCCSTATUS <> "E" or MVBCCSTATUS is Null) ';
+     SQLCount.SQL.Text := 'select * from MOVIMENTOBANCO where CTRCA13ID = ''' + SQLTemplateCTRCA13ID.AsString + ''' and ' +
+                          'MVBCDLANC = ''' + FormatDateTime('mm/dd/yyyy', SQLRecebimentoRECEDRECTO.AsDateTime) + ''''; // and ' +
+                          //'(MVBCCSTATUS <> ''E'' or MVBCCSTATUS is Null) ';
      SQLCount.Open;
 
      if SQLCount.RecordCount > 0 then
        begin
          if DM.SQLConfigFinanceiro.FieldByName('OPBCICODESTORNOCRD').IsNull then
-           InformaErro('É necessário Configurar uma Operação Bancária de Estorno "Crédito" para o Contas A Receber no Configurador', True, Nil);
+           InformaErro('É necessário Configurar uma Operação Bancária de Estorno ''Crédito'' para o Contas A Receber no Configurador', True, Nil);
 
-         if not Pergunta('Sim', 'Deseja Criar um Lançamento de Crédito no "MOVIMENTO BANCÁRIO" Valor de R$ ' +
-                     FormatFloat('#,##0.00', SQLCount.FieldByName('MVBCN2VLRCRED').AsFloat) + ' referente o Estorno do Recebimento de ID : "' + SQLRecebimentoCTRCA13ID.AsString + '"?' + #13 +
-                     'Clique "SIM" para Continuar e "NÃO" para Cancelar o Estorno.') then
+         if not Pergunta('Sim', 'Deseja Criar um Lançamento de Crédito no ''MOVIMENTO BANCÁRIO'' Valor de R$ ' +
+                     FormatFloat('#,##0.00', SQLCount.FieldByName('MVBCN2VLRCRED').AsFloat) + ' referente o Estorno do Recebimento de ID : ''' + SQLRecebimentoCTRCA13ID.AsString + '''?' + #13 +
+                     'Clique ''SIM'' para Continuar e ''NÃO'' para Cancelar o Estorno.') then
             Abort;
 
          LancaMovimentacaoBanco(SQLTemplateEMPRICOD.AsInteger, SQLCount.FieldByName('CTCRICOD').AsInteger,
@@ -992,19 +992,19 @@ begin
 
      //Verifica e Estorna Recebimentos feitos com CAIXA;
      SQLCount.Close;
-     SQLCount.SQL.Text := 'select * from TESOURARIA where CTRCA13ID = "' + SQLTemplateCTRCA13ID.AsString + '" and ' +
-                          'TESODMOV = "' + FormatDateTime('mm/dd/yyyy', SQLRecebimentoRECEDRECTO.AsDateTime) + '" and ' +
-                          '(TESOCSTATUS <> "E" or TESOCSTATUS is Null) ';
+     SQLCount.SQL.Text := 'select * from TESOURARIA where CTRCA13ID = ''' + SQLTemplateCTRCA13ID.AsString + ''' and ' +
+                          'TESODMOV = ''' + FormatDateTime('mm/dd/yyyy', SQLRecebimentoRECEDRECTO.AsDateTime) + ''' and ' +
+                          '(TESOCSTATUS <> ''E'' or TESOCSTATUS is Null) ';
      SQLCount.Open;
 
      if SQLCount.RecordCount > 0 then
        begin
          if DM.SQLConfigFinanceiro.FieldByName('OPTEICODESTORNOCRD').IsNull then
-           InformaErro('É necessário Configurar uma Operação Tesouraria para Estorno "Crédito" para o Contas A Receber no Configurador', True, Nil);
+           InformaErro('É necessário Configurar uma Operação Tesouraria para Estorno ''Crédito'' para o Contas A Receber no Configurador', True, Nil);
 
-         if not Pergunta('Sim', 'Deseja Criar um Lançamento de Crédito na "TESOURARIA/CAIXA" no valor de R$ ' +
-                         FormatFloat('#,##0.00', SQLCount.FieldByName('TESON2VLRCREDITO').AsFloat) + ' referennte o Estorno do Recebimento de ID : "' + SQLRecebimentoCTRCA13ID.AsString + '"?' + #13 +
-                         'Clique "SIM" para Continuar e "NÃO" para Cancelar o Estorno.') then
+         if not Pergunta('Sim', 'Deseja Criar um Lançamento de Crédito na ''TESOURARIA/CAIXA'' no valor de R$ ' +
+                         FormatFloat('#,##0.00', SQLCount.FieldByName('TESON2VLRCREDITO').AsFloat) + ' referennte o Estorno do Recebimento de ID : ''' + SQLRecebimentoCTRCA13ID.AsString + '''?' + #13 +
+                         'Clique ''SIM'' para Continuar e ''NÃO'' para Cancelar o Estorno.') then
             Abort;
 
          LancaMovimentacaoTesouraria(SQLTemplateEMPRICOD.AsInteger,
@@ -1037,17 +1037,17 @@ begin
       //Verifica e Estorna Recebimentos feitos com CREDITOS;
      if not SQLRecebimentoCTRCA13IDCREDITO.IsNull then
        begin
-         if not Pergunta('Sim', 'Deseja Estornar a Baixa do Lançamento de Crédito do Cliente "' + SQLTemplateClienteCalcField.AsString + '" ' +
+         if not Pergunta('Sim', 'Deseja Estornar a Baixa do Lançamento de Crédito do Cliente ''' + SQLTemplateClienteCalcField.AsString + ''' ' +
                          'no valor de R$ ' + FormatFloat('#,##0.00', SQLRecebimentoRECEN2VLRRECTO.AsFloat) +
-                         ' referennte o Estorno do Recebimento de ID : "' + SQLRecebimentoCTRCA13ID.AsString + '"?' + #13 +
-                         'Clique "SIM" para Continuar e "NÃO" para Cancelar o Estorno.') then
+                         ' referennte o Estorno do Recebimento de ID : ''' + SQLRecebimentoCTRCA13ID.AsString + '''?' + #13 +
+                         'Clique ''SIM'' para Continuar e ''NÃO'' para Cancelar o Estorno.') then
             Abort;
 
         try
           SQLCount.Close;
-          SQLCount.SQL.Text := 'Delete From RECEBIMENTO where CTRCA13ID = (select CTRCA13ID from RECEBIMENTO where CTRCA13IDCREDITO = "' + SQLRecebimentoCTRCA13IDCREDITO.AsString + '" and ' +
+          SQLCount.SQL.Text := 'Delete From RECEBIMENTO where CTRCA13ID = (select CTRCA13ID from RECEBIMENTO where CTRCA13IDCREDITO = ''' + SQLRecebimentoCTRCA13IDCREDITO.AsString + ''' and ' +
                                ' RECEN2VLRRECTO = ' + SQLRecebimentoRECEN2VLRRECTO.AsString + ') and ' +
-                               'CLIEA13ID = "' + SQLTemplateCLIEA13ID.AsString + '"' ;
+                               'CLIEA13ID = ''' + SQLTemplateCLIEA13ID.AsString + '''' ;
 
           SQLCount.ExecSQL;
 
@@ -1069,9 +1069,9 @@ begin
 
         try
           SQLCount.Close;
-          SQLCount.SQL.Text := 'delete from RECEBIMENTO where CTRCA13ID = "' + SQLRecebimentoCTRCA13IDCREDITO.AsString  + '" and ' +
+          SQLCount.SQL.Text := 'delete from RECEBIMENTO where CTRCA13ID = ''' + SQLRecebimentoCTRCA13IDCREDITO.AsString  + ''' and ' +
                                ' RECEN2VLRRECTO = ' + SQLRecebimentoRECEN2VLRRECTO.AsString + ' and ' +
-                               'CLIEA13ID = "' + SQLTemplateCLIEA13ID.AsString + '" and ' +
+                               'CLIEA13ID = ''' + SQLTemplateCLIEA13ID.AsString + ''' and ' +
                                'RECEN2VLRRECTO = ' + SQLRecebimentoRECEN2VLRRECTO.AsString;
           SQLCount.ExecSQL;
 
@@ -1095,7 +1095,7 @@ begin
 
       //Verifica e Estorna Recebimentos feitos com CHEQUES;
       SQLCount.Close;
-      SQLCount.SQL.Text := 'select * from CONTASRECEBER where CTRCA13CTRCAIDCHQ = "' + SQLTemplateCTRCA13ID.AsString + '"';
+      SQLCount.SQL.Text := 'select * from CONTASRECEBER where CTRCA13CTRCAIDCHQ = ''' + SQLTemplateCTRCA13ID.AsString + '''';
       SQLCount.Open;
 
       if not SQLCount.IsEmpty then
@@ -1256,7 +1256,7 @@ begin
           SQLTemplate.OnPostError  := SQLTemplatePostError;
 
           SQLTemplate.Close;
-          SQLTemplate.MacroByName('MFiltro').AsString := 'CLIEA13ID = "' + FormTelaAssistenteLancamentoContasReceber.ComboCliente.Value + '"';
+          SQLTemplate.MacroByName('MFiltro').AsString := 'CLIEA13ID = ''' + FormTelaAssistenteLancamentoContasReceber.ComboCliente.Value + '''';
           SQLTemplate.Open;
           PagePrincipal.ActivePage := TabSheetConsulta;
           SQLTemplate.EnableControls;
@@ -1370,9 +1370,9 @@ procedure TFormCadastroContasReceber.ppHeaderBand1BeforePrint(
 begin
   inherited;
   ppNomeCliente.Caption     := ComboClienteCad.Text;
-  ppCPFCliente.Caption      := SQLLocate('CLIENTE','CLIEA13ID','CLIEA11CPF','"'+SQLTemplateCLIEA13ID.AsString+'"');
+  ppCPFCliente.Caption      := SQLLocate('CLIENTE','CLIEA13ID','CLIEA11CPF',''''+SQLTemplateCLIEA13ID.AsString+'''');
   if ppCPFCliente.Caption = '' then
-    ppCPFCliente.Caption := SQLLocate('CLIENTE','CLIEA13ID','CLIEA14CGC','"'+SQLTemplateCLIEA13ID.AsString+'"');
+    ppCPFCliente.Caption := SQLLocate('CLIENTE','CLIEA13ID','CLIEA14CGC',''''+SQLTemplateCLIEA13ID.AsString+'''');
 
   ppNomeCNPJEmpresa.Caption := dm.SQLEmpresaEMPRA60RAZAOSOC.AsString +
                                ' CNPJ: '+ dm.SQLEmpresaEMPRA14CGC.AsString;
@@ -1480,12 +1480,12 @@ begin
   ppNomeClienteRecibo.Caption     := ComboClienteCad.Text;
   ppNomeClienteRecibo1.Caption    := ppNomeClienteRecibo.Caption;
 
-  ppCPFClienteRecibo.Caption      := 'CPF: '+SQLLocate('CLIENTE','CLIEA13ID','CLIEA11CPF','"'+SQLTemplateCLIEA13ID.AsString+'"');
+  ppCPFClienteRecibo.Caption      := 'CPF: '+SQLLocate('CLIENTE','CLIEA13ID','CLIEA11CPF',''''+SQLTemplateCLIEA13ID.AsString+'''');
   ppCPFClienteRecibo1.Caption     :=   ppCPFClienteRecibo.Caption;
 
   if ppCPFClienteRecibo.Caption = '' then
     begin
-      ppCPFClienteRecibo.Caption    := 'CNPJ: '+SQLLocate('CLIENTE','CLIEA13ID','CLIEA14CGC','"'+SQLTemplateCLIEA13ID.AsString+'"');
+      ppCPFClienteRecibo.Caption    := 'CNPJ: '+SQLLocate('CLIENTE','CLIEA13ID','CLIEA14CGC',''''+SQLTemplateCLIEA13ID.AsString+'''');
       ppCPFClienteRecibo1.Caption   :=   ppCPFClienteRecibo.Caption;
     end;
 
@@ -1528,7 +1528,7 @@ begin
       if sqltemplateCTRCN2TOTREC.Value > 0 then
         begin
           dm.SQLConsulta.close;
-          dm.SQLConsulta.sql.text := 'select CTRCA13ID from recebimento where CTRCA13ID = "' + sqltemplateCTRCA13ID.Value+ '"' ;
+          dm.SQLConsulta.sql.text := 'select CTRCA13ID from recebimento where CTRCA13ID = ''' + sqltemplateCTRCA13ID.Value+ '''' ;
           dm.SQLConsulta.Open;
           if dm.SQLConsulta.IsEmpty then
             begin

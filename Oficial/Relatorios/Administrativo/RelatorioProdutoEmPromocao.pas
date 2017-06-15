@@ -90,10 +90,10 @@ begin
   SQLProduto.MacroByName('MEmpresaSaldo').AsString := SQLDeLista(ComboEmpresa,ListaEmpresas,'','PRODUTOSALDO','EMPRICOD');
 
   if (DtaInicio.Date > 0) and (DtaFim.Date > 0) then
-    SQLProduto.MacroByName('MData').AsString := 'PRODUTO.PRODDINIPROMO >= "' + FormatDateTime('mm/dd/yyyy',DtaInicio.Date)  + '" AND ' +
-                                                'PRODUTO.PRODDFIMPROMO <= "' + FormatDateTime('mm/dd/yyyy',DtaFim.Date)   + '"';
+    SQLProduto.MacroByName('MData').AsString := 'PRODUTO.PRODDINIPROMO >= ''' + FormatDateTime('mm/dd/yyyy',DtaInicio.Date)  + ''' AND ' +
+                                                'PRODUTO.PRODDFIMPROMO <= ''' + FormatDateTime('mm/dd/yyyy',DtaFim.Date)   + '''';
   if (DtaInicio.Date > 0) and (DtaFim.Date = 0) then
-    SQLProduto.MacroByName('MData').AsString := 'PRODUTO.PRODDINIPROMO > "' + FormatDateTime('mm/dd/yyyy',DtaInicio.Date)  + '"';
+    SQLProduto.MacroByName('MData').AsString := 'PRODUTO.PRODDINIPROMO > ''' + FormatDateTime('mm/dd/yyyy',DtaInicio.Date)  + '''';
 
   if ComboGrupo.Value <> '' then
     SQLProduto.MacroByName('MGrupo').AsString := 'PRODUTO.GRUPICOD = ' + ComboGrupo.Value
@@ -116,32 +116,32 @@ begin
       Report.Formulas.Retrieve;
       //--------------------------------------------------------------------------\\
       Report.Formulas.Name         := 'Empresa';
-      Report.Formulas.Formula.Text := '"' + ComboEmpresa.Text + '"';
+      Report.Formulas.Formula.Text := '''' + ComboEmpresa.Text + '''';
       //--------------------------------------------------------------------------\\
       Report.Formulas.Name         := 'Emissao';
-      Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"';
+      Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''';
       //--------------------------------------------------------------------------\\
       Report.Formulas.Name         := 'PeriodoEmissao' ;
-      Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy', DtaInicio.Date) + ' até ' +
-                                            FormatDateTime('dd/mm/yyyy', DtaFim.Date)    + '"';
+      Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy', DtaInicio.Date) + ' até ' +
+                                            FormatDateTime('dd/mm/yyyy', DtaFim.Date)    + '''';
       //--------------------------------------------------------------------------\\
 {      Report.Formulas.Name         := 'Marca';
       if ComboMarca.Value <> '' then
-        Report.Formulas.Formula.Text := '"' + ComboMarca.Text + '"'
+        Report.Formulas.Formula.Text := '''' + ComboMarca.Text + ''''
       else
-        Report.Formulas.Formula.Text := '"Todas"';}
+        Report.Formulas.Formula.Text := '''Todas''';}
       //--------------------------------------------------------------------------\\
       Report.Formulas.Name         := 'Grupo';
       if ComboGrupo.Value <> '' then
-        Report.Formulas.Formula.Text := '"' + ComboGrupo.Text + '"'
+        Report.Formulas.Formula.Text := '''' + ComboGrupo.Text + ''''
       else
-        Report.Formulas.Formula.Text := '"Todos"';
+        Report.Formulas.Formula.Text := '''Todos''';
       //--------------------------------------------------------------------------\\
       Report.Formulas.Name         := 'SubGrupo';
       if ComboSubgrupo.Value <> '' then
-        Report.Formulas.Formula.Text := '"' + ComboSubGrupo.Text + '"'
+        Report.Formulas.Formula.Text := '''' + ComboSubGrupo.Text + ''''
       else
-        Report.Formulas.Formula.Text := '"Todos"';
+        Report.Formulas.Formula.Text := '''Todos''';
       //--------------------------------------------------------------------------\\
       Report.Formulas.Send;
       // AjustaCaminhoCrystal;

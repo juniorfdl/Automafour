@@ -1,7 +1,7 @@
 inherited FormRelatorioVendasColecao: TFormRelatorioVendasColecao
   Left = 420
   Top = 244
-  Caption = 'Relatório de Vendas Por Coleção'
+  Caption = 'Relat'#243'rio de Vendas Por Cole'#231#227'o'
   PixelsPerInch = 96
   TextHeight = 13
   inherited TblTemporaria: TTable
@@ -40,8 +40,8 @@ inherited FormRelatorioVendasColecao: TFormRelatorioVendasColecao
         '   inner join COLECAO COLECAO on COLECAO.COLEICOD = PRODUTO.COLE' +
         'ICOD'
       'where'
-      '  CUPOM.CUPOCSTATUS = "A" and'
-      '  CUPOMITEM.CPITCSTATUS <> "C" and'
+      '  CUPOM.CUPOCSTATUS = ''A'' and'
+      '  CUPOMITEM.CPITCSTATUS <> ''C'' and'
       '  (%MEmpresa) and'
       '  (%MData)'
       'group by'
@@ -71,8 +71,8 @@ inherited FormRelatorioVendasColecao: TFormRelatorioVendasColecao
         '   left outer join OPERACAOESTOQUE on NOTAFISCAL.OPESICOD = OPER' +
         'ACAOESTOQUE.OPESICOD'
       'where'
-      '  NOTAFISCAL.NOFICSTATUS = "E" and'
-      '  OPERACAOESTOQUE.OPESCGERAFINANCEIRO = "S" and'
+      '  NOTAFISCAL.NOFICSTATUS = ''E'' and'
+      '  OPERACAOESTOQUE.OPESCGERAFINANCEIRO = ''S'' and'
       '  (%MEmpresaNF) and'
       '  (%MDataNF)'
       'group by'

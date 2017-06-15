@@ -209,8 +209,8 @@ begin
   SQLProduto.MacrobyName('MEmpresa').Value := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'MOVIMENTOESTOQUE', '');
 
   if not CheckPeriodo.Checked then
-    SQLProduto.MacrobyName('MData').Value    := 'MOVIMENTOESTOQUE.MVESDMOV >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                'MOVIMENTOESTOQUE.MVESDMOV <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"'
+    SQLProduto.MacrobyName('MData').Value    := 'MOVIMENTOESTOQUE.MVESDMOV >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                'MOVIMENTOESTOQUE.MVESDMOV <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + ''''
 
   else
     SQLProduto.MacrobyName('MData').Value    := '0=0';
@@ -281,10 +281,10 @@ begin
                                                        'left outer join CUPOM on MOVIMENTOESTOQUE.CUPOA13ID            = CUPOM.CUPOA13ID '       +
                                                        'left outer join MOVIMENTODIVERSO on MOVIMENTOESTOQUE.MOVDA13ID = MOVIMENTODIVERSO.MOVDA13ID ';
 
-      SQLProduto.MacroByName('Cliente').Value :=' (NOTAFISCAL.CLIEA13ID = "' + ComboCliente.Value + '" or ' +
-                                                ' PEDIDOVENDA.CLIEA13ID = "' + ComboCliente.Value + '" or ' +
-                                                ' CUPOM.CLIEA13ID = "' + ComboCliente.Value       + '" or ' +
-                                                ' MOVIMENTODIVERSO.CLIEA13ID = "' + ComboCliente.Value + '")' ;
+      SQLProduto.MacroByName('Cliente').Value :=' (NOTAFISCAL.CLIEA13ID = ''' + ComboCliente.Value + ''' or ' +
+                                                ' PEDIDOVENDA.CLIEA13ID = ''' + ComboCliente.Value + ''' or ' +
+                                                ' CUPOM.CLIEA13ID = ''' + ComboCliente.Value       + ''' or ' +
+                                                ' MOVIMENTODIVERSO.CLIEA13ID = ''' + ComboCliente.Value + ''')' ;
 
     end
   else
@@ -320,16 +320,16 @@ begin
         TblTemporariaDOCUMENTO.asString := 'MD-'+SQLProdutoMOVDA13ID.asString;
       if SQLProdutoCUPOA13ID.asString<>'' then
         begin
-          Cupom := SQLLocate('CUPOM', 'CUPOA13ID', 'CUPOINRO',  '"' + SQLProdutoCUPOA13ID.asString + '"');
+          Cupom := SQLLocate('CUPOM', 'CUPOA13ID', 'CUPOINRO',  '''' + SQLProdutoCUPOA13ID.asString + '''');
           if Cupom<>'' then
             TblTemporariaDOCUMENTO.asString := 'CP-'+Cupom
           else
             TblTemporariaDOCUMENTO.asString := 'CP-'+SQLProdutoCUPOA13ID.asString;
         end;
       if SQLProdutoNOCPA13ID.asString<>'' then
-        TblTemporariaDOCUMENTO.asString := 'NC-'+SQLLocate('NOTACOMPRA', 'NOCPA13ID', 'NOCPA30NRO',  '"' + SQLProdutoNOCPA13ID.asString + '"');
+        TblTemporariaDOCUMENTO.asString := 'NC-'+SQLLocate('NOTACOMPRA', 'NOCPA13ID', 'NOCPA30NRO',  '''' + SQLProdutoNOCPA13ID.asString + '''');
       if SQLProdutoNOFIA13ID.asString<>'' then
-        TblTemporariaDOCUMENTO.asString := 'NF-'+SQLLocate('NOTAFISCAL', 'NOFIA13ID', 'NOFIINUMERO',  '"' + SQLProdutoNOFIA13ID.asString + '"');
+        TblTemporariaDOCUMENTO.asString := 'NF-'+SQLLocate('NOTAFISCAL', 'NOFIA13ID', 'NOFIINUMERO',  '''' + SQLProdutoNOFIA13ID.asString + '''');
       if SQLProdutoMOVDA13ID.asString<>'' then
         TblTemporariaDOCUMENTO.asString := 'MD-'+SQLProdutoMOVDA13ID.asString;
 
@@ -370,60 +370,60 @@ begin
   Report.Formulas.Retrieve ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Empresa' ;
-  Report.Formulas.Formula.Text := '"' + ComboEmpresa.Text + '"' ;
+  Report.Formulas.Formula.Text := '''' + ComboEmpresa.Text + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Emissao' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name := 'Grupo' ;
   if ComboGrupo.Text <> '' then
-    Report.Formulas.Formula.Text := '"' + ComboGrupo.Text + '"'
+    Report.Formulas.Formula.Text := '''' + ComboGrupo.Text + ''''
   else
-    Report.Formulas.Formula.Text := '"Todos"' ;
+    Report.Formulas.Formula.Text := '''Todos''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name := 'SubGrupo' ;
   if ComboSubGrupo.Text <> '' then
-    Report.Formulas.Formula.Text := '"' + ComboSubGrupo.Text + '"'
+    Report.Formulas.Formula.Text := '''' + ComboSubGrupo.Text + ''''
   else
-    Report.Formulas.Formula.Text := '"Todos"' ;
+    Report.Formulas.Formula.Text := '''Todos''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name := 'Variacao' ;
   if ComboVariacao.Text <> '' then
-    Report.Formulas.Formula.Text := '"' + ComboVariacao.Text + '"'
+    Report.Formulas.Formula.Text := '''' + ComboVariacao.Text + ''''
   else
-    Report.Formulas.Formula.Text := '"Todos"' ;
+    Report.Formulas.Formula.Text := '''Todos''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name := 'Marca' ;
   if ComboMarca.Text <> '' then
-    Report.Formulas.Formula.Text := '"' + ComboMarca.Text + '"'
+    Report.Formulas.Formula.Text := '''' + ComboMarca.Text + ''''
   else
-    Report.Formulas.Formula.Text := '"Todos"' ;
+    Report.Formulas.Formula.Text := '''Todos''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name := 'Grade' ;
   if ComboGrade.Text <> '' then
-    Report.Formulas.Formula.Text := '"' + ComboGrade.Text + '"'
+    Report.Formulas.Formula.Text := '''' + ComboGrade.Text + ''''
   else
-    Report.Formulas.Formula.Text := '"Todos"' ;
+    Report.Formulas.Formula.Text := '''Todos''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name := 'Unidade' ;
   if ComboUnidade.Text <> '' then
-    Report.Formulas.Formula.Text := '"' + ComboUnidade.Text + '"'
+    Report.Formulas.Formula.Text := '''' + ComboUnidade.Text + ''''
   else
-    Report.Formulas.Formula.Text := '"Todos"' ;
+    Report.Formulas.Formula.Text := '''Todos''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name := 'OrdemImpressao' ;
   if OrdemCodigo.Checked then
-    Report.Formulas.Formula.Text := '"Código"' ;
+    Report.Formulas.Formula.Text := '''Código''' ;
   if OrdemDescricao.Checked then
-    Report.Formulas.Formula.Text := '"Descrição"' ;
+    Report.Formulas.Formula.Text := '''Descrição''' ;
   if OrdemRef.Checked then
-    Report.Formulas.Formula.Text := '"Referência"' ;
+    Report.Formulas.Formula.Text := '''Referência''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name := 'Operacao' ;
   if ComboOperacaoEstoque.Text <> '' then
-    Report.Formulas.Formula.Text := '"' + ComboOperacaoEstoque.Text + '"'
+    Report.Formulas.Formula.Text := '''' + ComboOperacaoEstoque.Text + ''''
   else
-    Report.Formulas.Formula.Text := '"Todos"' ;
+    Report.Formulas.Formula.Text := '''Todos''' ;
   //--------------------------------------------------------------------------\\
 
   Report.Execute;

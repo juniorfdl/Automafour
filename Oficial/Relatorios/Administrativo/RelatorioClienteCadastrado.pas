@@ -137,13 +137,13 @@ begin
   SQLCliente.MacrobyName('MEmpresa').Value := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'CLIENTE', '') ;
 
   if not CheckPeriodo.Checked then
-    SQLCliente.MacrobyName('MData').Value := 'CLIEDCAD >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                             'CLIEDCAD <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"'
+    SQLCliente.MacrobyName('MData').Value := 'CLIEDCAD >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                             'CLIEDCAD <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + ''''
   else
     SQLCliente.MacrobyName('MData').Value := '0=0';
 
   if CheckInativos.Checked then
-    SQLCliente.MacrobyName('MInativos').Value := 'CLIECATIVO = "S"'
+    SQLCliente.MacrobyName('MInativos').Value := 'CLIECATIVO = ''S'''
   else
     SQLCliente.MacrobyName('MInativos').Value := '0=0';
 
@@ -160,7 +160,7 @@ begin
     SQLCliente.MacrobyName('MVendedor').Value := '0=0';
 
   if EditUF.Text <> '' then
-    SQLCliente.MacrobyName('MEstado').Value := 'CLIEA2UFRES = "' + EditUF.Text + '"'
+    SQLCliente.MacrobyName('MEstado').Value := 'CLIEA2UFRES = ''' + EditUF.Text + ''''
   else
     SQLCliente.MacrobyName('MEstado').Value := '0=0';
   case RadioOrdem.ItemIndex of
@@ -217,11 +217,11 @@ begin
   Report.Formulas.Retrieve;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Emissao';
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"';
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''';
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'PeriodoEmissao';
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
-                                  FormatDateTime('dd/mm/yyyy', Ate.Date) + '"';
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
+                                  FormatDateTime('dd/mm/yyyy', Ate.Date) + '''';
 
   Report.SectionFormat.Retrieve;
   if not CheckSimples.Checked then
@@ -286,7 +286,7 @@ begin
   if ListaRota.Items.Count = 0 then
   begin
     if (ComboRota.Text <> '') and (ComboRota.Text <> 'Todas')then
-      SQLRota := 'RotaIcod = ' + '"' + ComboRota.Value + '"'
+      SQLRota := 'RotaIcod = ' + '''' + ComboRota.Value + ''''
     else
       SQLRota := '0=0' ;
   end
@@ -295,9 +295,9 @@ begin
     for I:=0 To ListaRota.Items.Count-1 Do
     begin
       if I = ListaRota.Items.Count-1 Then
-        SQLRota := SQLRota + 'RotaIcod = ' + '"' + Copy(ListaRota.Items[I],1,Pos('-',ListaRota.Items[I]) - 1) + '"'
+        SQLRota := SQLRota + 'RotaIcod = ' + '''' + Copy(ListaRota.Items[I],1,Pos('-',ListaRota.Items[I]) - 1) + ''''
       else
-        SQLRota := SQLRota + 'RotaIcod = ' + '"' + Copy(ListaRota.Items[I],1,Pos('-',ListaRota.Items[I]) - 1) + '"' + ' or '
+        SQLRota := SQLRota + 'RotaIcod = ' + '''' + Copy(ListaRota.Items[I],1,Pos('-',ListaRota.Items[I]) - 1) + '''' + ' or '
     end ;
   end ;
 

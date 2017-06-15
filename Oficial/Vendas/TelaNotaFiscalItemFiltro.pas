@@ -184,7 +184,7 @@ begin
   dm.SQLTemplate.SQL.Clear;
   dm.SQLTemplate.SQL.Add('Select * from '+ TabelaCab +' where %mSerie and %mNumero and %mChave');
   if ComboSerie.Value <> '' then
-    dm.SQLTemplate.MacroByName('mSerie').Value := CampoSerie + '="' + ComboSerie.Value + '"'
+    dm.SQLTemplate.MacroByName('mSerie').Value := CampoSerie + '=''' + ComboSerie.Value + ''''
   else
     dm.SQLTemplate.MacroByName('mSerie').Value := '0=0';
   if EditNota.Text <> '' then
@@ -192,7 +192,7 @@ begin
   else
     dm.SQLTemplate.MacroByName('mNumero').Value := '0=0';
   if EditChave.Text <> '' then
-    dm.SQLTemplate.MacroByName('mChave').Value := CampoChave + '="' + EditChave.Text + '"'
+    dm.SQLTemplate.MacroByName('mChave').Value := CampoChave + '=''' + EditChave.Text + ''''
   else
     dm.SQLTemplate.MacroByName('mChave').Value := '0=0';
 
@@ -221,7 +221,7 @@ begin
       dm.SQLTemplate.Close;
       dm.SQLTemplate.SQL.Clear;
       dm.SQLTemplate.SQL.Add('Select * from '+ TabelaItem);
-      dm.SQLTemplate.SQL.Add('Where '+CampoID+'="'+ IDNota +'"');
+      dm.SQLTemplate.SQL.Add('Where '+CampoID+'='''+ IDNota +'''');
       dm.SQLTemplate.Open;
       if not dm.SQLTemplate.IsEmpty then
         begin

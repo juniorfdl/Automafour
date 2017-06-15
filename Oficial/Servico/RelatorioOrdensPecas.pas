@@ -43,13 +43,13 @@ begin
   begin
 
     txt:= '';
-    If CheckTodas.Checked       then txt := txt + ' and (o.Status <> "C") '
+    If CheckTodas.Checked       then txt := txt + ' and (o.Status <> ''C'') '
     else begin
-      if CheckAbertas.Checked     then txt := txt + ' and (o.Status = "A") ';
-      if CheckEncerradas.Checked  then txt := txt + ' and (o.Status = "E") ';
-      if CheckFinalizadas.Checked then txt := txt + ' and (o.Status = "F") ';
-      if CheckProntas.Checked     then txt := txt + ' and (o.Status = "P") ';
-      if CheckCanceladas.Checked  then txt := txt + ' and (o.Status = "C") ';
+      if CheckAbertas.Checked     then txt := txt + ' and (o.Status = ''A'') ';
+      if CheckEncerradas.Checked  then txt := txt + ' and (o.Status = ''E'') ';
+      if CheckFinalizadas.Checked then txt := txt + ' and (o.Status = ''F'') ';
+      if CheckProntas.Checked     then txt := txt + ' and (o.Status = ''P'') ';
+      if CheckCanceladas.Checked  then txt := txt + ' and (o.Status = ''C'') ';
     end;
 
     SQLOrdItens.SQL.Text := 'Select distinct(i.prodicod), sum(oritn3quant) , sum((i.oritn2vlrunit-i.oritn2vlrdesc) * i.oritn3quant) as Total, '+

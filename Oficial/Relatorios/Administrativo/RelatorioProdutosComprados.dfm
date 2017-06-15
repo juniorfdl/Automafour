@@ -508,7 +508,7 @@ inherited FormRelatorioProdutosComprados: TFormRelatorioProdutosComprados
         ' left outer join PRODUTO on NOTACOMPRAITEM.PRODICOD = PRODUTO.PR' +
         'ODICOD)'
       'where'
-      '  NOTACOMPRA.NOCPCSTATUS = "E" and'
+      '  NOTACOMPRA.NOCPCSTATUS = ''E'' and'
       '  NOTACOMPRAITEM.NOCIN3QTDEMBAL > 0 and'
       '  (%MFiltro)  and'
       '  (%MEmpresa) and'

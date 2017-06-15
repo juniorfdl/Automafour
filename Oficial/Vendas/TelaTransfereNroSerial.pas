@@ -66,7 +66,7 @@ procedure TFormTelaTransfereNroSerial.BTProcurarClick(Sender: TObject);
 begin
   inherited;
   SQLProdutoSerie.close;
-  SQLProdutoSerie.MacroByName('Filtro').Value := 'PRSEA60NROSERIE = "' + EditCodSerial.Text + '"';
+  SQLProdutoSerie.MacroByName('Filtro').Value := 'PRSEA60NROSERIE = ''' + EditCodSerial.Text + '''';
   SQLProdutoSerie.Open;
   if not SQLProdutoSerie.IsEmpty then
     EditDescProduto.Text := SQLProdutoSeriePRODICOD.AsString+'-'+ dm.SQLLocate('PRODUTO','PRODICOD','PRODA60DESCR',SQLProdutoSeriePRODICOD.AsString)

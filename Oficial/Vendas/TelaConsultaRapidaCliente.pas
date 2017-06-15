@@ -92,8 +92,8 @@ begin
               SQLCliente.Close ;
               SQLCliente.SQL.Clear ;
               SQLCliente.SQL.Add('select * from CLIENTE') ;
-              SQLCliente.SQL.Add('where CLIECATIVO="S" and ') ;
-              SQLCliente.SQL.Add('CLIEA13ID = "' + Valor.Text + '"') ;
+              SQLCliente.SQL.Add('where CLIECATIVO=''S'' and ') ;
+              SQLCliente.SQL.Add('CLIEA13ID = ''' + Valor.Text + '''') ;
               SQLCliente.SQL.Add('order by CLIEA60RAZAOSOC') ;
               SQLCliente.Open ;
               SQLCliente.First ;
@@ -105,11 +105,11 @@ begin
               SQLCliente.Close ;
               SQLCliente.SQL.Clear ;
               SQLCliente.SQL.Add('select * from CLIENTE') ;
-              SQLCliente.SQL.Add('where CLIECATIVO="S" and ') ;
+              SQLCliente.SQL.Add('where CLIECATIVO=''S'' and ') ;
               if Pos('*', Valor.Text) > 0 then
-                SQLCliente.SQL.Add('CLIEA60RAZAOSOC like "%' + Copy(Valor.Text, 2, Length(Valor.Text)) + '%"')
+                SQLCliente.SQL.Add('CLIEA60RAZAOSOC like ''%' + Copy(Valor.Text, 2, Length(Valor.Text)) + '%''')
               else
-                SQLCliente.SQL.Add('CLIEA60RAZAOSOC like "' + Valor.Text + '%"') ;
+                SQLCliente.SQL.Add('CLIEA60RAZAOSOC like ''' + Valor.Text + '%''') ;
               SQLCliente.SQL.Add('order by CLIEA60RAZAOSOC') ;
               SQLCliente.Open ;
 
@@ -119,11 +119,11 @@ begin
                 SQLCliente.Close ;
                 SQLCliente.SQL.Clear ;
                 SQLCliente.SQL.Add('select * from CLIENTE') ;
-                SQLCliente.SQL.Add('where CLIECATIVO="S" and ') ;
+                SQLCliente.SQL.Add('where CLIECATIVO=''S'' and ') ;
                 if Pos('*', Valor.Text) > 0 then
-                  SQLCliente.SQL.Add('CLIEA60NOMEFANT like "%' + Copy(Valor.Text, 2, Length(Valor.Text)) + '%"')
+                  SQLCliente.SQL.Add('CLIEA60NOMEFANT like ''%' + Copy(Valor.Text, 2, Length(Valor.Text)) + '%''')
                 else
-                  SQLCliente.SQL.Add('CLIEA60NOMEFANT like "' + Valor.Text + '%"') ;
+                  SQLCliente.SQL.Add('CLIEA60NOMEFANT like ''' + Valor.Text + '%''') ;
                 SQLCliente.SQL.Add('order by CLIEA60NOMEFANT') ;
                 SQLCliente.Open ;
               end ;
@@ -226,7 +226,7 @@ begin
       DM.SQLTemplate.Close ;
       DM.SQLTemplate.SQL.Clear ;
       DM.SQLTemplate.SQL.Add('select Count(*) as Contador from CartaPrimeiroAviso') ;
-      DM.SQLTemplate.SQL.Add('where CLIEA13ID = "' + SQLClienteCLIEA13ID.Value + '"') ;
+      DM.SQLTemplate.SQL.Add('where CLIEA13ID = ''' + SQLClienteCLIEA13ID.Value + '''') ;
       DM.SQLTemplate.Open ;
       if DM.SQLTemplate.FieldByName('Contador').Value > 0 then
         VerificarAviso := DM.SQLTemplate.FieldByName('Contador').AsString ;
@@ -236,7 +236,7 @@ begin
       DM.SQLTemplate.Close ;
       DM.SQLTemplate.SQL.Clear ;
       DM.SQLTemplate.SQL.Add('select Count(*) as Contador from CartaSegundoAviso') ;
-      DM.SQLTemplate.SQL.Add('where CLIEA13ID = "' + SQLClienteCLIEA13ID.Value + '"') ;
+      DM.SQLTemplate.SQL.Add('where CLIEA13ID = ''' + SQLClienteCLIEA13ID.Value + '''') ;
       DM.SQLTemplate.Open ;
       if DM.SQLTemplate.FieldByName('Contador').Value > 0 then
         VerificarAviso := DM.SQLTemplate.FieldByName('Contador').AsString ;
@@ -246,7 +246,7 @@ begin
       DM.SQLTemplate.Close ;
       DM.SQLTemplate.SQL.Clear ;
       DM.SQLTemplate.SQL.Add('select Count(*) as Contador from CartaAvisoSPC') ;
-      DM.SQLTemplate.SQL.Add('where CLIEA13ID = "' + SQLClienteCLIEA13ID.Value + '"') ;
+      DM.SQLTemplate.SQL.Add('where CLIEA13ID = ''' + SQLClienteCLIEA13ID.Value + '''') ;
       DM.SQLTemplate.Open ;
       if DM.SQLTemplate.FieldByName('Contador').Value > 0 then
         VerificarAviso := DM.SQLTemplate.FieldByName('Contador').AsString ;

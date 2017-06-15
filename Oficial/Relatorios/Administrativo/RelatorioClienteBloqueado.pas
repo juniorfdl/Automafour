@@ -74,12 +74,12 @@ begin
   Report.Formulas.Retrieve ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Emissao' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''' ;
   //--------------------------------------------------------------------------\\
   if ComboMotivo.Value <> '' then
     begin
       Report.Formulas.Name         := 'MotivoBloqueio' ;
-      Report.Formulas.Formula.Text := '"' + ComboMotivo.DisplayValue +'"' ;
+      Report.Formulas.Formula.Text := '''' + ComboMotivo.DisplayValue +'''' ;
     end;
   Report.Formulas.Send;
   Report.Execute ;

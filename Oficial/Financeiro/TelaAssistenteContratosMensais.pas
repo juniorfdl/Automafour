@@ -99,7 +99,7 @@ begin
     end;  }
 
   vdia := FormatDateTime('dd',edtVencimento.Date);
-  SQLCliente.MacroByName('MDia').Value := 'DIAVENCTO = "' + vdia + '"';
+  SQLCliente.MacroByName('MDia').Value := 'DIAVENCTO = ''' + vdia + '''';
 
   SQLCliente.Open;
   if SQLCliente.IsEmpty then

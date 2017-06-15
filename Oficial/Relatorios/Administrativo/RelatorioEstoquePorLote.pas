@@ -60,8 +60,8 @@ begin
   SQLEstoque.Close;
   if ((De.Date > 0) and (Ate.Date > 0)) and (not CheckPeriodo.Checked) then
     begin
-      SQLEstoque.MacroByName('Data').Value := 'MVESDMOV >= ' + '"' + FormatDateTime('mm/dd/yyyy',De.Date)  + '"' + ' and ' +
-                                              'MVESDMOV <= ' + '"' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '"';
+      SQLEstoque.MacroByName('Data').Value := 'MVESDMOV >= ' + '''' + FormatDateTime('mm/dd/yyyy',De.Date)  + '''' + ' and ' +
+                                              'MVESDMOV <= ' + '''' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '''';
     end
   else
     begin
@@ -69,7 +69,7 @@ begin
     end;
 
   if ComboLote.Value <> '' then
-    SQLEstoque.MacroByName('Lote').Value   := 'LOTEA30NRO = ' + '"' + ComboLote.Value + '"'
+    SQLEstoque.MacroByName('Lote').Value   := 'LOTEA30NRO = ' + '''' + ComboLote.Value + ''''
   else
     SQLEstoque.MacroByName('Lote').Value   := '0=0';
 

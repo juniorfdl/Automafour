@@ -57,9 +57,9 @@ begin
   sqlgeral.close;
   sqlgeral.SQL.add('Select EXTRACT(YEAR FROM CUPODEMIS) as ano, EXTRACT(MONTH FROM CUPODEMIS) as mes, sum(CUPON2TOTITENS+CUPON3CREDTAXA+CUPON2ACRESC-CUPON2DESC-CUPON3BONUSTROCA) as VendaTotal From Cupom');
   if ComboEmpresa.Value = '' then
-    sqlgeral.SQL.add('where CUPOCSTATUS = "A" and CUPOCTIPOPADRAO = "CRD" and CUPODEMIS >= "12/31/2008"')
+    sqlgeral.SQL.add('where CUPOCSTATUS = ''A'' and CUPOCTIPOPADRAO = ''CRD'' and CUPODEMIS >= ''12/31/2008''')
   else
-    sqlgeral.SQL.add('where CUPOCSTATUS = "A" and CUPOCTIPOPADRAO = "CRD" and CUPODEMIS >= "12/31/2008" and EMPRICOD='+ComboEmpresa.Value);
+    sqlgeral.SQL.add('where CUPOCSTATUS = ''A'' and CUPOCTIPOPADRAO = ''CRD'' and CUPODEMIS >= ''12/31/2008'' and EMPRICOD='+ComboEmpresa.Value);
   sqlgeral.SQL.add('group by EXTRACT(YEAR FROM CUPODEMIS), EXTRACT(MONTH FROM CUPODEMIS)');
   sqlgeral.Open;
   While Not sqlgeral.Eof Do
@@ -83,15 +83,15 @@ begin
   sqlgeral.sql.clear;
   sqlgeral.SQL.add('Select EXTRACT(YEAR FROM CTRCDVENC) as ano, EXTRACT(MONTH FROM CTRCDVENC) as mes, sum(CTRCN2VLR) as ValorAReceber, sum(CTRCN2TOTREC) as ValorRecebido From ContasReceber');
   if ComboEmpresa.Value = '' then
-    sqlgeral.SQL.add('where CTRCCSTATUS = "A" and CTRCA5TIPOPADRAO = "CRD" and CTRCDEMIS >= "12/31/2008"')
+    sqlgeral.SQL.add('where CTRCCSTATUS = ''A'' and CTRCA5TIPOPADRAO = ''CRD'' and CTRCDEMIS >= ''12/31/2008''')
   else
-    sqlgeral.SQL.add('where CTRCCSTATUS = "A" and CTRCA5TIPOPADRAO = "CRD" and CTRCDEMIS >= "12/31/2008" and EMPRICOD = ' + ComboEmpresa.Value);
+    sqlgeral.SQL.add('where CTRCCSTATUS = ''A'' and CTRCA5TIPOPADRAO = ''CRD'' and CTRCDEMIS >= ''12/31/2008'' and EMPRICOD = ' + ComboEmpresa.Value);
   sqlgeral.SQL.add('group by EXTRACT(YEAR FROM CTRCDVENC), EXTRACT(MONTH FROM CTRCDVENC)');
   sqlgeral.Open;
   While Not sqlgeral.Eof Do
     Begin
       sqlParadox.Close;
-      sqlParadox.macrobyname('MFiltro').Value := 'Ano="'+sqlgeral.fieldbyname('ano').AsString+'" and mes="'+sqlgeral.fieldbyname('mes').AsString+'"';
+      sqlParadox.macrobyname('MFiltro').Value := 'Ano='''+sqlgeral.fieldbyname('ano').AsString+''' and mes='''+sqlgeral.fieldbyname('mes').AsString+'''';
       sqlParadox.Open;
       if sqlParadox.IsEmpty then
          begin

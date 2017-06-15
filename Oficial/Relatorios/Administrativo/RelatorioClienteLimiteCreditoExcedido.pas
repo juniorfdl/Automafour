@@ -64,10 +64,10 @@ begin
 
       SQLParcelas.Close;
       SQLParcelas.SQL.Clear;
-      SQLParcelas.SQL.Add('Select sum(CTRCN2VLR-CTRCN2TOTREC) from CONTASRECEBER where CLIEA13ID = '+ '"' + SQLClienteGeralCLIEA13ID.Value + '"' +  ' AND CTRCN2VLR > CTRCN2TOTREC');
-      SQLParcelas.SQL.Add('AND (CTRCA5TIPOPADRAO NOT IN ("CRT","CONV") or CTRCA5TIPOPADRAO is null) ');
-      SQLParcelas.SQL.Add(' And (CTRCCSTATUS = "A" OR CTRCCSTATUS = "N")') ;
-      SQLParcelas.SQL.Add(' And (CTRCCTIPOREGISTRO = "N" OR CTRCCTIPOREGISTRO is Null) And (PDVDA13ID = "" OR PDVDA13ID is Null)') ;
+      SQLParcelas.SQL.Add('Select sum(CTRCN2VLR-CTRCN2TOTREC) from CONTASRECEBER where CLIEA13ID = '+ '''' + SQLClienteGeralCLIEA13ID.Value + '''' +  ' AND CTRCN2VLR > CTRCN2TOTREC');
+      SQLParcelas.SQL.Add('AND (CTRCA5TIPOPADRAO NOT IN (''CRT'',''CONV'') or CTRCA5TIPOPADRAO is null) ');
+      SQLParcelas.SQL.Add(' And (CTRCCSTATUS = ''A'' OR CTRCCSTATUS = ''N'')') ;
+      SQLParcelas.SQL.Add(' And (CTRCCTIPOREGISTRO = ''N'' OR CTRCCTIPOREGISTRO is Null) And (PDVDA13ID = '''' OR PDVDA13ID is Null)') ;
       SQLParcelas.Open;
       if not SQLParcelas.IsEmpty then
         Debito := SQLParcelas.FieldByName('SUM').AsFloat;

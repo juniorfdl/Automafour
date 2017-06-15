@@ -59,7 +59,7 @@ begin
      end;
    DM.SQLFechamentoCaixa.Close;
    DM.SQLFechamentoCaixa.SQL.Clear;
-   DM.SQLFechamentoCaixa.SQL.Add('SELECT * FROM FECHAMENTOCAIXA WHERE FECXDDATAMOV  = ' + '"' + FormatDateTime('mm/dd/yyyy',Dm.SQLTerminalAtivo.ParamByName('TERMDSTATUSCAIXA').AsDateTime)+ '"');
+   DM.SQLFechamentoCaixa.SQL.Add('SELECT * FROM FECHAMENTOCAIXA WHERE FECXDDATAMOV  = ' + '''' + FormatDateTime('mm/dd/yyyy',Dm.SQLTerminalAtivo.ParamByName('TERMDSTATUSCAIXA').AsDateTime)+ '''');
    DM.SQLFechamentoCaixa.Open;
 end;
 

@@ -278,7 +278,7 @@ begin
   if ReativarPedidoOrcamento then
   begin
     DM.SQLPedidoOrcamento.Close ;
-    DM.SQLPedidoOrcamento.MacroByName('MFiltro').Value := 'Pedido.PDVDCIMPORTADO = "S" or Pedido.PDVDCIMPORTADO is null' ;
+    DM.SQLPedidoOrcamento.MacroByName('MFiltro').Value := 'Pedido.PDVDCIMPORTADO = ''S'' or Pedido.PDVDCIMPORTADO is null' ;
     DM.SQLPedidoOrcamento.Open ;
 
     TblMemPedidoOrcamento.Open ;
@@ -303,7 +303,7 @@ begin
   end
   else begin
     DM.SQLPedidoOrcamento.Close;
-    DM.SQLPedidoOrcamento.MacroByName('MFiltro').Value := 'Pedido.PDVDCIMPORTADO <> "S" OR Pedido.PDVDCIMPORTADO IS NULL ';
+    DM.SQLPedidoOrcamento.MacroByName('MFiltro').Value := 'Pedido.PDVDCIMPORTADO <> ''S'' OR Pedido.PDVDCIMPORTADO IS NULL ';
     DM.SQLPedidoOrcamento.Open;
 
     TblMemPedidoOrcamento.Open;
@@ -388,8 +388,8 @@ begin
       DM.SQLTemplate.Close ;
       DM.SQLTemplate.SQL.Clear ;
       DM.SQLTemplate.SQL.Add('update PEDIDOVENDA') ;
-      DM.SQLTemplate.SQL.Add('set Pendente="S", PDVDCIMPORTADO = "S"') ;
-      DM.SQLTemplate.SQL.Add('where PDVDA13ID = ' + '"' + TblMemPedidoOrcamentoPDVDA13ID.AsString + '"') ;
+      DM.SQLTemplate.SQL.Add('set Pendente=''S'', PDVDCIMPORTADO = ''S''') ;
+      DM.SQLTemplate.SQL.Add('where PDVDA13ID = ' + '''' + TblMemPedidoOrcamentoPDVDA13ID.AsString + '''') ;
       DM.SQLTemplate.ExecSQL;
 
       TblMemPedidoOrcamento.Delete ;
@@ -413,8 +413,8 @@ begin
             DM.SQLTemplate.Close;
             DM.SQLTemplate.SQL.Clear;
             DM.SQLTemplate.SQL.Add('Update PEDIDOVENDA');
-            DM.SQLTemplate.SQL.Add('set Pendente="S", PDVDCIMPORTADO = "N"');
-            DM.SQLTemplate.SQL.Add('where PDVDA13ID = ' + '"' + TblMemPedidoOrcamentoPDVDA13ID.AsString + '"');
+            DM.SQLTemplate.SQL.Add('set Pendente=''S'', PDVDCIMPORTADO = ''N''');
+            DM.SQLTemplate.SQL.Add('where PDVDA13ID = ' + '''' + TblMemPedidoOrcamentoPDVDA13ID.AsString + '''');
             DM.SQLTemplate.ExecSQL;
           end;
 
@@ -440,7 +440,7 @@ begin
                   FormTelaItens.FormKeyDown(Sender, F2, [ssAlt]);
 
                 DM.SQLPedidoOrcamentoItem.Close;
-                DM.SQLPedidoOrcamentoItem.MacroByName('MFiltro').Value := 'PDVDA13ID = "' + TblMemPedidoOrcamentoPDVDA13ID.AsString + '"';
+                DM.SQLPedidoOrcamentoItem.MacroByName('MFiltro').Value := 'PDVDA13ID = ''' + TblMemPedidoOrcamentoPDVDA13ID.AsString + '''';
                 DM.SQLPedidoOrcamentoItem.Open;
                 //INCLUINDO OS ITENS DO PEDIDO
                 DM.SQLPedidoOrcamentoItem.First;
@@ -608,17 +608,17 @@ begin
           end;
 
         UFEmpresa := DM.SQLLocate('EMPRESA','EMPRICOD','EMPRA2UF',EmpresaPadrao);
-        UFCliente := DM.SQLLocate('CLIENTE','CLIEA13ID','CLIEA2UFRES','"'+TblMemPedidoOrcamentoCLIEA13ID.Value+ '"');
+        UFCliente := DM.SQLLocate('CLIENTE','CLIEA13ID','CLIEA2UFRES',''''+TblMemPedidoOrcamentoCLIEA13ID.Value+ '''');
         if UFCliente  = '' then
           begin
-            ShowMessage('Não foi cadastrado o Estado para o Cliente '+DM.SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC','"'+TblMemPedidoOrcamentoCLIEA13ID.Value+ '"')+
+            ShowMessage('Não foi cadastrado o Estado para o Cliente '+DM.SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC',''''+TblMemPedidoOrcamentoCLIEA13ID.Value+ '''')+
                         ', Verifique!');
             Abort;
           end;
         if UFEmpresa <> UFCliente then
           begin
             SQLICMSUF.Close;
-            SQLICMSUF.MacroByName('MFiltro').asString  := 'ICMUA2UF = '+'"'+UFCliente+'"';
+            SQLICMSUF.MacroByName('MFiltro').asString  := 'ICMUA2UF = '+''''+UFCliente+'''';
             SQLICMSUF.Open;
             if SQLICMSUF.IsEmpty then
               begin
@@ -637,7 +637,7 @@ begin
           end;
         // Abrir Pedido Corrente
         dm.SQLPedidoOrcamento.Close;
-        dm.SQLPedidoOrcamento.MacroByName('MFiltro').Value := 'PDVDA13ID = "' + TblMemPedidoOrcamentoPDVDA13ID.Value + '"';
+        dm.SQLPedidoOrcamento.MacroByName('MFiltro').Value := 'PDVDA13ID = ''' + TblMemPedidoOrcamentoPDVDA13ID.Value + '''';
         dm.SQLPedidoOrcamento.Open;
         PesoTotalBruto                        := 0;
         PesoTotalLiq                          := 0;
@@ -742,7 +742,7 @@ begin
         // Troca Status do Pedido pra FATURADO e Alimenta a Coluna Importado(SN)
         SQLPedido.Close;
         SQLPedido.Sql.Clear;
-        SQLPedido.Sql.Add('UPDATE PEDIDOVENDA SET Pendente="S", PDVDCIMPORTADO="S", PDVDCSTATUS="F" Where PDVDA13ID = "' + TblMemPedidoOrcamentoPDVDA13ID.Value + '"') ;
+        SQLPedido.Sql.Add('UPDATE PEDIDOVENDA SET Pendente=''S'', PDVDCIMPORTADO=''S'', PDVDCSTATUS=''F'' Where PDVDA13ID = ''' + TblMemPedidoOrcamentoPDVDA13ID.Value + '''') ;
         SQLPedido.ExecSql;
 
         // Atualizar o Nro da Prox Nota no cadastro de serie
@@ -786,7 +786,7 @@ begin
   SQLNotaFiscalItem.Close;
   SQLNotaFiscalItem.Open;
   DM.SQLPedidoOrcamentoItem.Close;
-  DM.SQLPedidoOrcamentoItem.MacroByName('MFiltro').Value := 'PDVDA13ID = "'+DM.SQLPedidoOrcamentoPDVDA13ID.Value+'"';
+  DM.SQLPedidoOrcamentoItem.MacroByName('MFiltro').Value := 'PDVDA13ID = '''+DM.SQLPedidoOrcamentoPDVDA13ID.Value+'''';
   DM.SQLPedidoOrcamentoItem.Open;
   DM.SQLPedidoOrcamentoItem.First;
   While not DM.SQLPedidoOrcamentoItem.Eof do
@@ -867,7 +867,7 @@ begin
             begin
               if CalculaICMS = 'S' then
                 begin
-                  SQLNotaFiscalItemNFITN2PERCICMS.AsString    := DM.SQLLocate('ICMSUF','ICMUA2UF','ICMUN2ALIQUOTA','"'+UFCliente+'"');
+                  SQLNotaFiscalItemNFITN2PERCICMS.AsString    := DM.SQLLocate('ICMSUF','ICMUA2UF','ICMUN2ALIQUOTA',''''+UFCliente+'''');
                   if SQLNotaFiscalItemNFITN2PERCICMS.AsString = '' then SQLNotaFiscalItemNFITN2PERCICMS.AsFloat := 0;
                   if SQLNotaFiscalItemNFITN2PERCICMS.AsFloat > 0 then
                     begin
@@ -921,7 +921,7 @@ Procedure TFormTelaImportarPedidoOrcamento.ImportaContasReceber;
 var VlrFreteParcela : Double;
 begin
   DM.SQLContasReceber.Close;
-  DM.SQLContasReceber.MacroByName('MFiltro').Value := 'PDVDA13ID = "'+DM.SQLPedidoOrcamentoPDVDA13ID.Value+'"';
+  DM.SQLContasReceber.MacroByName('MFiltro').Value := 'PDVDA13ID = '''+DM.SQLPedidoOrcamentoPDVDA13ID.Value+'''';
   DM.SQLContasReceber.Open;
   DM.SQLContasReceber.First;
   if not DM.SQLContasReceber.IsEmpty then

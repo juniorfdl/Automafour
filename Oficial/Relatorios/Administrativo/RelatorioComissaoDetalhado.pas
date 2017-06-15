@@ -85,8 +85,8 @@ var
 begin
   inherited;
   SQLComissao.Close;
-  SQLComissao.MacrobyName('MData').Value := 'VENDEDORCOMISSAO.VDCODEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                            'VENDEDORCOMISSAO.VDCODEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
+  SQLComissao.MacrobyName('MData').Value := 'VENDEDORCOMISSAO.VDCODEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                            'VENDEDORCOMISSAO.VDCODEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
 
   if ComboVendedor.Value <> '' then
     SQLComissao.MacrobyName('MVendedor').Value := 'VENDEDORCOMISSAO.VENDICOD = ' + ComboVendedor.Value
@@ -140,7 +140,7 @@ begin
       else
         if TblTemporariaVDCOA5TIPODOC.AsString = 'CP' then
           begin
-            TblTemporariaDocumento.AsString := SQLLocate('CUPOM','CUPOA13ID','CUPOINRO','"' + TblTemporariaCUPOA13ID.AsString + '"');
+            TblTemporariaDocumento.AsString := SQLLocate('CUPOM','CUPOA13ID','CUPOINRO','''' + TblTemporariaCUPOA13ID.AsString + '''');
             if (TblTemporariaDocumento.AsString='0') or (TblTemporariaDocumento.AsString='') then
               TblTemporariaDocumento.AsString := 'CP-' + TblTemporariaCUPOA13ID.AsString
             else
@@ -155,7 +155,7 @@ begin
               if not CKNroPedido.Checked then
                 TblTemporariaDocumento.AsString := 'PV - ' + TblTemporariaCUPOA13ID.AsString
               else
-                TblTemporariaDocumento.AsString := 'PV - ' + SQLLocate('PEDIDOVENDA','PDVDA13ID','PDVDINROTALAO','"' + TblTemporariaCUPOA13ID.AsString + '"');
+                TblTemporariaDocumento.AsString := 'PV - ' + SQLLocate('PEDIDOVENDA','PDVDA13ID','PDVDINROTALAO','''' + TblTemporariaCUPOA13ID.AsString + '''');
             end
           else
             if TblTemporariaVDCOA5TIPODOC.AsString = 'MN' then
@@ -174,17 +174,17 @@ begin
   Report.Formulas.Retrieve ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Emissao' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'PeriodoEmissao' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
-                                  FormatDateTime('dd/mm/yyyy', Ate.Date) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
+                                  FormatDateTime('dd/mm/yyyy', Ate.Date) + '''' ;
 
   Report.Formulas.Name         := 'Empresa' ;
   if ComboEmpresa.Value <> '' then
-    Report.Formulas.Formula.Text := '"' + ComboEmpresa.DisplayValue + '"'
+    Report.Formulas.Formula.Text := '''' + ComboEmpresa.DisplayValue + ''''
   else
-    Report.Formulas.Formula.Text := '"' + EmpresaAtualNome + '"';
+    Report.Formulas.Formula.Text := '''' + EmpresaAtualNome + '''';
     
   Report.Execute;
 

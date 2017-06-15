@@ -83,13 +83,13 @@ begin
 
   SQLTotaNumerario.Close ;
   SQLTotaNumerario.MacroByName('MFiltro').Value := 'MOVIMENTOCAIXA.TERMICOD = ' + IntToStr(TerminalAtual)+ ' and '+
-                                                   'MOVIMENTOCAIXA.MVCXDMOV = "' + FormatDateTime('mm/dd/yyyy', StrToDate(TerminalAtualData)) + '"' ;
+                                                   'MOVIMENTOCAIXA.MVCXDMOV = ''' + FormatDateTime('mm/dd/yyyy', StrToDate(TerminalAtualData)) + '''' ;
   SQLTotaNumerario.MacroByName('MOperador').Value := 'MOVIMENTOCAIXA.USUAICOD = ' + inttostr(UsuarioCorrente);
   SQLTotaNumerario.Open ;
 
   SQLTotalOperacao.Close ;
   SQLTotalOperacao.MacroByName('MFiltro').Value := 'MOVIMENTOCAIXA.TERMICOD = ' + IntToStr(TerminalAtual)+ ' and '+
-                                                   'MOVIMENTOCAIXA.MVCXDMOV = "' + FormatDateTime('mm/dd/yyyy', StrToDate(TerminalAtualData)) + '"' ;
+                                                   'MOVIMENTOCAIXA.MVCXDMOV = ''' + FormatDateTime('mm/dd/yyyy', StrToDate(TerminalAtualData)) + '''' ;
   SQLTotalOperacao.MacroByName('MOperador').Value := 'MOVIMENTOCAIXA.USUAICOD = ' + inttostr(UsuarioCorrente);
   SQLTotalOperacao.Open ;
 end;

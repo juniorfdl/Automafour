@@ -183,55 +183,55 @@ begin
   if chkPeriodoEmissao.Checked then
      begin
         if SQLExecutar = '0=0' then
-           SQLExecutar := ' TRANSFERENCIA.TRFEDEMISSAO >= Cast("' + FormatDateTime('mm/dd/yyyy', De.Date) + ' 00:00:00" as TimeStamp) and ' +
-                          ' TRANSFERENCIA.TRFEDEMISSAO <= Cast("' + FormatDateTime('mm/dd/yyyy', Ate.Date) + ' 23:59:59" as TimeStamp)'
+           SQLExecutar := ' TRANSFERENCIA.TRFEDEMISSAO >= Cast(''' + FormatDateTime('mm/dd/yyyy', De.Date) + ' 00:00:00'' as TimeStamp) and ' +
+                          ' TRANSFERENCIA.TRFEDEMISSAO <= Cast(''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + ' 23:59:59'' as TimeStamp)'
         else
            SQLExecutar := SQLExecutar + ' and ' +
-                          ' TRANSFERENCIA.TRFEDEMISSAO >= Cast("' + FormatDateTime('mm/dd/yyyy', De.Date) + ' 00:00:00" as TimeStamp) and ' +
-                          ' TRANSFERENCIA.TRFEDEMISSAO <= Cast("' + FormatDateTime('mm/dd/yyyy', Ate.Date) + ' 23:59:59" as TimeStamp)';
+                          ' TRANSFERENCIA.TRFEDEMISSAO >= Cast(''' + FormatDateTime('mm/dd/yyyy', De.Date) + ' 00:00:00'' as TimeStamp) and ' +
+                          ' TRANSFERENCIA.TRFEDEMISSAO <= Cast(''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + ' 23:59:59'' as TimeStamp)';
      end;
 
   if chkPeriodoRecebimento.Checked then
      begin
         if SQLExecutar = '0=0' then
-           SQLExecutar := ' TRANSFERENCIA.TRFEDRECEBIMENTO  >= Cast("' + FormatDateTime('mm/dd/yyyy', DeReceb.Date) + ' 00:00:00" as TimeStamp) and ' +
-                          ' TRANSFERENCIA.TRFEDRECEBIMENTO  <= Cast("' + FormatDateTime('mm/dd/yyyy', AteReceb.Date) + ' 23:59:59" as TimeStamp)'
+           SQLExecutar := ' TRANSFERENCIA.TRFEDRECEBIMENTO  >= Cast(''' + FormatDateTime('mm/dd/yyyy', DeReceb.Date) + ' 00:00:00'' as TimeStamp) and ' +
+                          ' TRANSFERENCIA.TRFEDRECEBIMENTO  <= Cast(''' + FormatDateTime('mm/dd/yyyy', AteReceb.Date) + ' 23:59:59'' as TimeStamp)'
         else
            SQLExecutar := SQLExecutar + ' and ' +
-                          ' TRANSFERENCIA.TRFEDRECEBIMENTO  >= Cast("' + FormatDateTime('mm/dd/yyyy', DeReceb.Date) + ' 00:00:00" as TimeStamp) and ' +
-                          ' TRANSFERENCIA.TRFEDRECEBIMENTO  <= Cast("' + FormatDateTime('mm/dd/yyyy', AteReceb.Date) + ' 23:59:59" as TimeStamp)';
+                          ' TRANSFERENCIA.TRFEDRECEBIMENTO  >= Cast(''' + FormatDateTime('mm/dd/yyyy', DeReceb.Date) + ' 00:00:00'' as TimeStamp) and ' +
+                          ' TRANSFERENCIA.TRFEDRECEBIMENTO  <= Cast(''' + FormatDateTime('mm/dd/yyyy', AteReceb.Date) + ' 23:59:59'' as TimeStamp)';
      end;
 
   if dblUsuarioEnvio.KeyValue <> Null then
      begin
         if SQLExecutar = '0=0' then
-           SQLExecutar := ' TRANSFERENCIA.TRFEA30USUENVIO  = "' + dblUsuarioEnvio.KeyValue + '"'
+           SQLExecutar := ' TRANSFERENCIA.TRFEA30USUENVIO  = ''' + dblUsuarioEnvio.KeyValue + ''''
         else
-           SQLExecutar := SQLExecutar + ' and TRANSFERENCIA.TRFEA30USUENVIO  = "' + dblUsuarioEnvio.KeyValue + '"';
+           SQLExecutar := SQLExecutar + ' and TRANSFERENCIA.TRFEA30USUENVIO  = ''' + dblUsuarioEnvio.KeyValue + '''';
      end;
 
   if dblUsuarioRecebimento.KeyValue <> Null then
      begin
         if SQLExecutar = '0=0' then
-           SQLExecutar := ' TRANSFERENCIA.TRFEA30USURECEB = "' + dblUsuarioRecebimento.KeyValue + '"'
+           SQLExecutar := ' TRANSFERENCIA.TRFEA30USURECEB = ''' + dblUsuarioRecebimento.KeyValue + ''''
         else
-           SQLExecutar := SQLExecutar + ' and TRANSFERENCIA.TRFEA30USURECEB = "' + dblUsuarioRecebimento.KeyValue + '"';
+           SQLExecutar := SQLExecutar + ' and TRANSFERENCIA.TRFEA30USURECEB = ''' + dblUsuarioRecebimento.KeyValue + '''';
      end;
 
   if chkSoRecebidos.State = cbChecked then
      begin
        if SQLExecutar = '0=0' then
-          SQLExecutar := ' TRFECRECEBIDO = "S"'
+          SQLExecutar := ' TRFECRECEBIDO = ''S'''
        else
-          SQLExecutar := SQLExecutar + ' and TRFECRECEBIDO = "S"'
+          SQLExecutar := SQLExecutar + ' and TRFECRECEBIDO = ''S'''
      end;
 
   if chkSoRecebidos.State = cbUnchecked then
      begin
        if SQLExecutar = '0=0' then
-          SQLExecutar := ' TRFECRECEBIDO = "N"'
+          SQLExecutar := ' TRFECRECEBIDO = ''N'''
        else
-          SQLExecutar := SQLExecutar + ' and TRFECRECEBIDO = "N"'
+          SQLExecutar := SQLExecutar + ' and TRFECRECEBIDO = ''N'''
      end;
 
   MontaTabelas(SQLExecutar);
@@ -269,8 +269,8 @@ begin
         for I := 0 to tblRelTransferencia.FieldCount - 1 do
            tblRelTransferencia.Fields.Fields[I].Value := SQLRelatorio.FieldByName(tblRelTransferencia.Fields.Fields[I].FieldName).Value;
         tblRelTransferencia.Post;
-        if IDTransferencias.IndexOf('"' + SQLRelatorioTRFEA13ID.AsString + '",') < 0 then
-           IDTransferencias.Add('"' + SQLRelatorioTRFEA13ID.AsString + '",');
+        if IDTransferencias.IndexOf('''' + SQLRelatorioTRFEA13ID.AsString + ''',') < 0 then
+           IDTransferencias.Add('''' + SQLRelatorioTRFEA13ID.AsString + ''',');
         SQLRelatorio.Next;
      end;
 

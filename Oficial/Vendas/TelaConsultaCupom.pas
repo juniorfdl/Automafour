@@ -100,7 +100,7 @@ begin
   Dm.PedidoObs:= '';
 
   if CheckFiltro.Checked then
-    SQLTemplate.MacroByName('MData').Value := 'CUPODEMIS = ' + '"' + FormatDateTime('mm/dd/yyyy',Now)+ '"'
+    SQLTemplate.MacroByName('MData').Value := 'CUPODEMIS = ' + '''' + FormatDateTime('mm/dd/yyyy',Now)+ ''''
   else
     SQLTemplate.MacroByName('MData').Value := '0=0';
   RxMemory.EmptyTable;
@@ -113,7 +113,7 @@ begin
   if (CheckFiltro.Checked) then
     begin
       SQLTemplate.Close;
-      SQLTemplate.MacroByName('Mdata').Value := 'CUPODEMIS = ' + '"' + FormatDateTime('mm/dd/yyyy',Now) + '"';
+      SQLTemplate.MacroByName('Mdata').Value := 'CUPODEMIS = ' + '''' + FormatDateTime('mm/dd/yyyy',Now) + '''';
       SQLTemplate.Open;
       Filtrou := False;
     end;
@@ -177,8 +177,8 @@ begin
   if (De.Text <> '  /  /    ') and (de.Date <= ate.date) then
     begin
       SQLTemplate.Close;
-      SQLTemplate.MacroByName('Mdata').Value := 'CUPODEMIS >= ' + '"' + FormatDateTime('mm/dd/yyyy',de.date) + '" '+
-      'and CUPODEMIS <= ' + '"' + FormatDateTime('mm/dd/yyyy',Ate.date) + '"';
+      SQLTemplate.MacroByName('Mdata').Value := 'CUPODEMIS >= ' + '''' + FormatDateTime('mm/dd/yyyy',de.date) + ''' '+
+      'and CUPODEMIS <= ' + '''' + FormatDateTime('mm/dd/yyyy',Ate.date) + '''';
     end else
       Showmessage('Verique o Intervalo de Datas');
 end;

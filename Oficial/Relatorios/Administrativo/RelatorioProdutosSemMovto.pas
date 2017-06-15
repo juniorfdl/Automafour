@@ -104,8 +104,8 @@ begin
   else
     SQLProduto.MacroByName('MEmpresa').Value := '0=0';
 
-  SQLProduto.MacrobyName('MData').Value    := 'MVESDMOV >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                              'MVESDMOV <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
+  SQLProduto.MacrobyName('MData').Value    := 'MVESDMOV >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                              'MVESDMOV <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
   if (ComboGrupo.Value <> '') then
     SQLProduto.MacroByName('MGrupo').Value := 'Produto.GRUPICOD = ' + ComboGrupo.Value
   else

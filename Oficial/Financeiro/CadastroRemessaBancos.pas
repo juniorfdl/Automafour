@@ -193,7 +193,7 @@ var
 begin
   Query := TQuery.Create(Application);
   Query.DatabaseName := 'DB';
-  PrepareQuery(Query,'SELECT RMBCICOD FROM REMESSABANCO WHERE RMBCDEMIS = "' + FormatDateTime('mm/dd/yyyy',Data) + '" AND BANCA5COD = "' + Banco + '"');
+  PrepareQuery(Query,'SELECT RMBCICOD FROM REMESSABANCO WHERE RMBCDEMIS = ''' + FormatDateTime('mm/dd/yyyy',Data) + ''' AND BANCA5COD = ''' + Banco + '''');
   Aux := Query.RecordCount;
   Inc(Aux);
   Result := IntToStr(Aux);
@@ -215,12 +215,12 @@ procedure TFormCadastroRemessaBancos.GerarRemessa();
 var
   Info : TRemessa;
 begin
-  PrepareQuery(SQLConfigRemessa,'SELECT * FROM CONFIGREMESSABANCO WHERE CFRBA13ID = "' + DsTemplate.DataSet.FieldByName('CFRBA13ID').AsString + '"');
+  PrepareQuery(SQLConfigRemessa,'SELECT * FROM CONFIGREMESSABANCO WHERE CFRBA13ID = ''' + DsTemplate.DataSet.FieldByName('CFRBA13ID').AsString + '''');
   {SETA AS INFORMAÇÕES DO HEADER}
   Info.CODIGOEMPRESA := SQLConfigRemessa.FieldByName('CFRBA20CODEMPRESA').AsString;
   Info.NOMEEMPRESA := SQLConfigRemessa.FieldByName('CFRBA30NOMEMPRESA').AsString;
   Info.NUMEROBANCO := SQLConfigRemessa.FieldByName('BANCA5COD').AsString;
-  PrepareQuery(QueryBanco,'SELECT * FROM BANCO WHERE BANCA5COD = "' + SQLConfigRemessa.FieldByName('BANCA5COD').AsString + '"');
+  PrepareQuery(QueryBanco,'SELECT * FROM BANCO WHERE BANCA5COD = ''' + SQLConfigRemessa.FieldByName('BANCA5COD').AsString + '''');
   Info.NOMEBANCO := QueryBanco.FieldByName('BANCA60NOME').AsString;
   Info.NUMEROREMESSA := DsTemplate.DataSet.FieldByName('RMBCICOD').AsString;
   Info.SEQUENCIALREGISTRO := 2;
@@ -237,7 +237,7 @@ begin
       Info.CODIGOAGENCIA := SQLConfigRemessa.FieldByName('CFRBA4CODAGENCIA').AsString;
       Info.CONTACORRENTE := SQLConfigRemessa.FieldByName('CFRBA6CONTACORRE').AsString;
       Info.CONTARECEBER := SQLTitulos.FieldByName('CTRCA13ID').AsString;
-      PrepareQuery(SQLContaReceber,'SELECT * FROM CONTASRECEBER WHERE CTRCA13ID = "' + Info.CONTARECEBER + '"');
+      PrepareQuery(SQLContaReceber,'SELECT * FROM CONTASRECEBER WHERE CTRCA13ID = ''' + Info.CONTARECEBER + '''');
       Info.DESCONTOBONIFICACAO := NoPointComma(SQLContaReceber.FieldByName('CTRCN2DESCFIN').AsFloat);
       if Trim(SQLConfigRemessa.FieldByName('CFRBA1RATEIOCRED').AsString) = 'S' then
         Info.RATEIOCREDITO := 'R'
@@ -251,7 +251,7 @@ begin
       Info.VALORDIAATRASO := NoPointComma(DsTemplate.DataSet.FieldByName('RMBCN2VLRDIAATRASO').AsFloat);
       Info.DATALIMITEDESCONTO := CorrectDate(DsTemplate.DataSet.FieldByName('RMBCDLIMDESCONTO').AsDateTime);
       Info.VALORDESCONTO := NoPointComma(DsTemplate.DataSet.FieldByName('RMBCN2VLRDESCONTO').AsFloat);
-      PrepareQuery(SQLCliente,'SELECT * FROM CLIENTE WHERE CLIEA13ID = "' + SQLContaReceber.FieldByName('CLIEA13ID').AsString + '"');
+      PrepareQuery(SQLCliente,'SELECT * FROM CLIENTE WHERE CLIEA13ID = ''' + SQLContaReceber.FieldByName('CLIEA13ID').AsString + '''');
       case SQLCliente.FieldByName('CLIEA5FISJURID').AsString[1] of
         'F' : begin
                 Info.NUMEROINSCRICAOSACADO := DocumentNumber(SQLCliente.FieldByName('CLIEA11CPF').AsString);
@@ -364,7 +364,7 @@ begin
               Else
                 Status:='';
               End;
-              DM.SQLTemplate.SQL.Text:='UPDATE REMESSABANCOCONTASRECEBER SET Pendente="S", RBCRDSTATUS="'+Data+'",RBCRA60STATUS="'+Status+'",PENDENTE="S",REGISTRO="'+FormatDateTime('mm/dd/yyyy hh:mm:ss',dm.DataBaseSistema)+'" WHERE CTRCA13ID="'+CTRCA13ID+'" AND (RBCRDSTATUS IS NULL OR RBCRDSTATUS<="'+Data+'")';
+              DM.SQLTemplate.SQL.Text:='UPDATE REMESSABANCOCONTASRECEBER SET Pendente=''S'', RBCRDSTATUS='''+Data+''',RBCRA60STATUS='''+Status+''',PENDENTE=''S'',REGISTRO='''+FormatDateTime('mm/dd/yyyy hh:mm:ss',dm.DataBaseSistema)+''' WHERE CTRCA13ID='''+CTRCA13ID+''' AND (RBCRDSTATUS IS NULL OR RBCRDSTATUS<='''+Data+''')';
               DM.SQLTemplate.ExecSQL;
             End;
         End;
@@ -395,7 +395,7 @@ procedure TFormCadastroRemessaBancos.SQLTemplateBeforePost(
 begin
   if DataSet.FieldByName('CFRBA13ID').AsVariant <> null then
     begin
-      PrepareQuery(SQLConfigRemessa,'SELECT * FROM CONFIGREMESSABANCO WHERE CFRBA13ID = "' + DataSet.FieldByName('CFRBA13ID').AsString + '"');
+      PrepareQuery(SQLConfigRemessa,'SELECT * FROM CONFIGREMESSABANCO WHERE CFRBA13ID = ''' + DataSet.FieldByName('CFRBA13ID').AsString + '''');
       DataSet.FieldByName('BANCA5COD').AsString := SQLConfigRemessa.FieldByName('BANCA5COD').AsString;
     end
   else
@@ -414,7 +414,7 @@ begin
   inherited;
   if DataSet.State in [DSInsert] then
     begin
-      PrepareQuery(QueryTemp,'SELECT MAX(RMBCICOD) AS NEXTCODE FROM REMESSABANCO WHERE BANCA5COD = "' + DataSet.FieldByName('BANCA5COD').AsString + '"');
+      PrepareQuery(QueryTemp,'SELECT MAX(RMBCICOD) AS NEXTCODE FROM REMESSABANCO WHERE BANCA5COD = ''' + DataSet.FieldByName('BANCA5COD').AsString + '''');
       if QueryTemp.FieldByName('NEXTCODE').AsInteger > 0 then
         DataSet.FieldByName('RMBCICOD').AsInteger := QueryTemp.FieldByName('NEXTCODE').AsInteger + 1
       else
@@ -441,7 +441,7 @@ begin
   //PALETA: GBSOFT                                                               //
   /////////////////////////////////////////////////////////////////////////////////
   gbCobranca.Titulos.Clear;
-  PrepareQuery(SQLConfigRemessa,'SELECT * FROM CONFIGREMESSABANCO WHERE CFRBA13ID = "' + DsTemplate.DataSet.FieldByName('CFRBA13ID').AsString + '"');
+  PrepareQuery(SQLConfigRemessa,'SELECT * FROM CONFIGREMESSABANCO WHERE CFRBA13ID = ''' + DsTemplate.DataSet.FieldByName('CFRBA13ID').AsString + '''');
   {SETA AS INFORMAÇÕES DO HEADER}
   if not SQLTitulos.Active then SQLTitulos.Open;
   MakeWindow(SQLTitulos.RecordCount,'Aguarde a geração do arquivo de remessa!');
@@ -529,7 +529,7 @@ begin
           {Dados do sacado do título}
           with Sacado do
             begin
-              PrepareQuery(SQLCliente,'SELECT * FROM CLIENTE WHERE CLIEA13ID = "' + SQLContaReceber.FieldByName('CLIEA13ID').AsString + '"');
+              PrepareQuery(SQLCliente,'SELECT * FROM CLIENTE WHERE CLIEA13ID = ''' + SQLContaReceber.FieldByName('CLIEA13ID').AsString + '''');
               case SQLCliente.FieldByName('CLIEA5FISJURID').AsString[1] of
                'F' : begin
                        NumeroCPFCGC  := DocumentNumber(SQLCliente.FieldByName('CLIEA11CPF').AsString);
@@ -633,7 +633,7 @@ begin
   try
     SQLTitulos.Open;
     MakeWindow(SQLTitulos.RecordCount,'Aguarde a geração do arquivo de remessa!');
-    PrepareQuery(SQLConfigRemessa,'SELECT * FROM CONFIGREMESSABANCO WHERE CFRBA13ID = "' + DsTemplate.DataSet.FieldByName('CFRBA13ID').AsString + '"');
+    PrepareQuery(SQLConfigRemessa,'SELECT * FROM CONFIGREMESSABANCO WHERE CFRBA13ID = ''' + DsTemplate.DataSet.FieldByName('CFRBA13ID').AsString + '''');
     AssignFile(Arq,SQLConfigRemessaCFRBTPATH.AsString + '\BANRISUL_' + FormatDateTime('ddmmyy hhnnss',Now) + '.TXT');
     ReWrite(Arq);
     SQLEmpresa.Close;
@@ -667,7 +667,7 @@ begin
 
         DM.ProcuraRegistro('CONTASRECEBER',['CTRCA13ID'],[SQLTitulos.FindField('CTRCA13ID').AsString],1);
 
-//          NF:=SQLLocate('NOTAFISCAL','NOFIA13ID','NOFIINUMERO','"'+DM.SQLTemplate.FindField('NOFIA13ID').asString+'"');
+//          NF:=SQLLocate('NOTAFISCAL','NOFIA13ID','NOFIINUMERO',''''+DM.SQLTemplate.FindField('NOFIA13ID').asString+'''');
 //          if NF <> '' then
 //            Insert('NOTA FISCAL N°:'+NF,Transacao,73)
 //          else

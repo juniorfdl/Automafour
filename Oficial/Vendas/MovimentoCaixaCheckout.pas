@@ -830,8 +830,8 @@ begin
        DM.SQLTemplate.SQL.Clear;
        DM.SQLTemplate.SQL.Add('update TERMINAL');
        DM.SQLTemplate.SQL.Add('set');
-       DM.SQLTemplate.SQL.Add('TERMCSTATUSCAIXA = "A",');
-       DM.SQLTemplate.SQL.Add('TERMDSTATUSCAIXA = "' + FormatDateTime('mm/dd/yyyy', EditData.Date) + '"');
+       DM.SQLTemplate.SQL.Add('TERMCSTATUSCAIXA = ''A'',');
+       DM.SQLTemplate.SQL.Add('TERMDSTATUSCAIXA = ''' + FormatDateTime('mm/dd/yyyy', EditData.Date) + '''');
        DM.SQLTemplate.SQL.Add('where');
        DM.SQLTemplate.SQL.Add('TERMICOD = ' + IntToStr(TerminalAtual));
        DM.SQLTemplate.ExecSQL;
@@ -938,7 +938,7 @@ begin
           //Abrir tela de consulta de cupom
           Application.CreateForm(TFormTelaConsultaRapidaCupom,FormTelaConsultaRapidaCupom);
           FormTelaConsultaRapidaCupom.SQLCupom.Close;
-          FormTelaConsultaRapidaCupom.SQLCupom.MacroByName('DataEmissao').Value := 'Cupom.CUPODEMIS = "' + FormatDateTime('mm/dd/yyyy',Now) + '"';
+          FormTelaConsultaRapidaCupom.SQLCupom.MacroByName('DataEmissao').Value := 'Cupom.CUPODEMIS = ''' + FormatDateTime('mm/dd/yyyy',Now) + '''';
           FormTelaConsultaRapidaCupom.SQLCupom.MacroByName('Empresa').Value     := 'Cupom.EMPRICOD  = ' + EmpresaPadrao;
           FormTelaConsultaRapidaCupom.SQLCupom.MacroByName('Terminal').Value    := 'Cupom.TERMICOD  = ' + IntToStr(TerminalAtual);
           FormTelaConsultaRapidaCupom.SQLCupom.MacroByName('MostraVendas').Value := '0=0';
@@ -975,7 +975,7 @@ begin
         DM.SQLTemplate.Close;
         DM.SQLTemplate.SQL.Clear;
         DM.SQLTemplate.SQL.Add('select * from CUPOM');
-        DM.SQLTemplate.SQL.Add('where CUPOA13ID = "' + Docum + '"');
+        DM.SQLTemplate.SQL.Add('where CUPOA13ID = ''' + Docum + '''');
         DM.SQLTemplate.Open;
         if DM.SQLTemplate.EOF then
         begin
@@ -986,7 +986,7 @@ begin
         if DM.SQLTemplate.Fieldbyname('TERMICOD').AsInteger <> TerminalAtual then
           begin
             Informa('Você está tentado cancelar um Documento que não foi emitido no terminal ativo.' + #13 +
-                    'Você deve cancelá-lo no terminal "' + SQLLocate('TERMINAL', 'TERMICOD', 'TERMA60DESCR', DM.SQLTemplate.Fieldbyname('TERMICOD').AsString) + '".');
+                    'Você deve cancelá-lo no terminal ''' + SQLLocate('TERMINAL', 'TERMICOD', 'TERMA60DESCR', DM.SQLTemplate.Fieldbyname('TERMICOD').AsString) + '''.');
             exit;
           end;
 
@@ -1035,7 +1035,7 @@ begin
                     dm.SQLConsulta.Close;
                     dm.SQLConsulta.RequestLive := False;
                     dm.SQLConsulta.SQL.Text    := 'Update CUPOM Set STNFE='+IntToStr(dm.ACBrNFe.WebServices.consulta.cStat)+
-                                                  ' Where CUPOA13ID ="'+DM.SQLTemplate.FieldByName('CUPOA13ID').AsString+'"';
+                                                  ' Where CUPOA13ID ='''+DM.SQLTemplate.FieldByName('CUPOA13ID').AsString+'''';
                     dm.SQLConsulta.ExecSQL;
                   end;
               end;
@@ -1062,7 +1062,7 @@ begin
 
             {grava na tabela CLIENTECREDITO}
             dm.sqlConsulta.Close;
-            dm.sqlConsulta.sql.text := 'select CUPOA13ID, CLIEA13ID, VALORDEBITO from CLIENTECREDITO where (VALORDEBITO>0) and CUPOA13ID="'+Docum+'"';
+            dm.sqlConsulta.sql.text := 'select CUPOA13ID, CLIEA13ID, VALORDEBITO from CLIENTECREDITO where (VALORDEBITO>0) and CUPOA13ID='''+Docum+'''';
             dm.sqlConsulta.Open;
             if not dm.sqlConsulta.IsEmpty then
               begin
@@ -1093,7 +1093,7 @@ begin
         SQLMovimentoCaixa.Close;
         SQLMovimentoCaixa.SQL.Clear;
         SQLMovimentoCaixa.SQL.Add('select * from MOVIMENTOCAIXA');
-        SQLMovimentoCaixa.SQL.Add('where MVCXA15DOCORIG = "' + Docum + '"');
+        SQLMovimentoCaixa.SQL.Add('where MVCXA15DOCORIG = ''' + Docum + '''');
 //        SQLMovimentoCaixa.SQL.Add(' and NUMEICOD > 0');
         SQLMovimentoCaixa.Open;
         while not SQLMovimentoCaixa.EOF do
@@ -1155,8 +1155,8 @@ begin
        DM.SQLTemplate.SQL.Clear ;
        DM.SQLTemplate.SQL.Add('update TERMINAL') ;
        DM.SQLTemplate.SQL.Add('set') ;
-       DM.SQLTemplate.SQL.Add('TERMCSTATUSCAIXA = "F"') ;
-       //DM.SQLTemplate.SQL.Add('TERMDSTATUSCAIXA = "' + FormatDateTime('mm/dd/yyyy', EditData.Date) + '"') ;
+       DM.SQLTemplate.SQL.Add('TERMCSTATUSCAIXA = ''F''') ;
+       //DM.SQLTemplate.SQL.Add('TERMDSTATUSCAIXA = ''' + FormatDateTime('mm/dd/yyyy', EditData.Date) + '''') ;
        DM.SQLTemplate.SQL.Add('where') ;
        DM.SQLTemplate.SQL.Add('TERMICOD = ' + IntToStr(TerminalAtual)) ;
        DM.SQLTemplate.ExecSQL ;
@@ -1264,10 +1264,10 @@ begin
     DM.SQLTemplate.SQL.Add('Values(') ;
     DM.SQLTemplate.SQL.Add(EmpresaPadrao + ', ') ;
     DM.SQLTemplate.SQL.Add(IntToStr(TerminalAtual) + ', ') ;
-    DM.SQLTemplate.SQL.Add('"' + FormatDateTime('mm/dd/yyyy', StrToDateTime(TerminalAtualData)) + '", ') ;
+    DM.SQLTemplate.SQL.Add('''' + FormatDateTime('mm/dd/yyyy', StrToDateTime(TerminalAtualData)) + ''', ') ;
     DM.SQLTemplate.SQL.Add(IntToStr(DM.UsuarioAtual) + ', ') ;
     DM.SQLTemplate.SQL.Add(SQLTotalizadorCaixaTOTAICOD.AsString + ', ') ;
-    DM.SQLTemplate.SQL.Add('0, 0, "S", "' + FormatDateTime('mm/dd/yyyy hh:nn:ss', Now) + '")' ) ;
+    DM.SQLTemplate.SQL.Add('0, 0, ''S'', ''' + FormatDateTime('mm/dd/yyyy hh:nn:ss', Now) + ''')' ) ;
     try
       DM.SQLTemplate.ExecSQL ;
     except
@@ -1303,16 +1303,16 @@ begin
 
   //SETAR A VARIÁVEL NUMDOC COM O ID DO CUPOM
   if Length(NumDoc) = 10 then
-    NumDoc := SQLLocate('CUPOM', 'CUPOA20CODANT', 'CUPOA13ID', '"' + NumDoc + '"') ;
+    NumDoc := SQLLocate('CUPOM', 'CUPOA20CODANT', 'CUPOA13ID', '''' + NumDoc + '''') ;
 
   if Length(NumDoc) = 13 then
     IDContasReceber := NumDoc;
 
   if Length(NumDoc) = 13 then
-    NumDoc := SQLLocate('CUPOM', 'CUPOA13ID', 'CUPOA13ID',  '"' + NumDoc + '"') ;
+    NumDoc := SQLLocate('CUPOM', 'CUPOA13ID', 'CUPOA13ID',  '''' + NumDoc + '''') ;
 
   if NumDoc = '' then
-    NumDoc := SQLLocate('CONTASRECEBER', 'CTRCA13ID', 'CTRCA13ID',  '"' + IDContasReceber + '"') ;
+    NumDoc := SQLLocate('CONTASRECEBER', 'CTRCA13ID', 'CTRCA13ID',  '''' + IDContasReceber + '''') ;
 
   if NumDoc = '' then
   begin
@@ -1323,7 +1323,7 @@ begin
   DM.SQLTemplate.Close ;
   DM.SQLTemplate.SQL.Clear ;
   DM.SQLTemplate.SQL.Add('select * from CONTASRECEBER') ;
-  DM.SQLTemplate.SQL.Add('where CUPOA13ID = "' + NumDoc + '"') ;
+  DM.SQLTemplate.SQL.Add('where CUPOA13ID = ''' + NumDoc + '''') ;
   DM.SQLTemplate.SQL.Add('and   CTRCINROPARC = ' + Parc) ;
   DM.SQLTemplate.Open ;
   if DM.SQLTemplate.EOF then
@@ -1332,7 +1332,7 @@ begin
     DM.SQLTemplate.Close ;
     DM.SQLTemplate.SQL.Clear ;
     DM.SQLTemplate.SQL.Add('select * from CONTASRECEBER') ;
-    DM.SQLTemplate.SQL.Add('where CTRCA13ID = "' + NumDoc + '"') ;
+    DM.SQLTemplate.SQL.Add('where CTRCA13ID = ''' + NumDoc + '''') ;
     DM.SQLTemplate.SQL.Add('and   CTRCINROPARC = ' + Parc) ;
     DM.SQLTemplate.Open ;
   end ;
@@ -1348,7 +1348,7 @@ begin
   DM.SQLTemplate.Close ;
   DM.SQLTemplate.SQL.Clear ;
   DM.SQLTemplate.SQL.Add('select * from RECEBIMENTO') ;
-  DM.SQLTemplate.SQL.Add('where CTRCA13ID = "' + NumDoc + '"') ;
+  DM.SQLTemplate.SQL.Add('where CTRCA13ID = ''' + NumDoc + '''') ;
   DM.SQLTemplate.Open ;
   if DM.SQLTemplate.EOF then
   begin
@@ -1378,14 +1378,14 @@ begin
       SQLEstornoCrediario.Close ;
       SQLEstornoCrediario.SQL.Clear ;
       SQLEstornoCrediario.SQL.Add('Select * from RECEBIMENTO') ;
-      SQLEstornoCrediario.SQL.Add('where CTRCA13ID = "' + NumDoc + '"') ;
+      SQLEstornoCrediario.SQL.Add('where CTRCA13ID = ''' + NumDoc + '''') ;
       SQLEstornoCrediario.SQL.Add('and   RECEICOD  = ' + CodRec) ;
       SQLEstornoCrediario.Open ;
 
       DM.SQLTemplate.Close ;
       DM.SQLTemplate.SQL.Clear ;
       DM.SQLTemplate.SQL.Add('delete from RECEBIMENTO') ;
-      DM.SQLTemplate.SQL.Add('where CTRCA13ID = "' + NumDoc + '"') ;
+      DM.SQLTemplate.SQL.Add('where CTRCA13ID = ''' + NumDoc + '''') ;
       DM.SQLTemplate.SQL.Add('and   RECEICOD  = ' + CodRec) ;
       DM.SQLTemplate.ExecSQL ;
 
@@ -1394,8 +1394,8 @@ begin
       DM.SQLTemplate.Close ;
       DM.SQLTemplate.SQL.Clear ;
       DM.SQLTemplate.SQL.Add('update CONTASRECEBER') ;
-      DM.SQLTemplate.SQL.Add('set Pendente="S", CTRCDESTORNO = "' + FormatDateTime('mm/dd/yyyy hh:mm:ss', Now) + '"');
-      DM.SQLTemplate.SQL.Add('where CTRCA13ID = "' + NumDoc + '"') ;
+      DM.SQLTemplate.SQL.Add('set Pendente=''S'', CTRCDESTORNO = ''' + FormatDateTime('mm/dd/yyyy hh:mm:ss', Now) + '''');
+      DM.SQLTemplate.SQL.Add('where CTRCA13ID = ''' + NumDoc + '''') ;
       DM.SQLTemplate.ExecSQL ;
 
       //LANCA NO CAIXA

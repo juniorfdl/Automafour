@@ -88,8 +88,8 @@ begin
   SQLNotasFiscais.Close;
   SQLNotasFiscais.MacrobyName('MEmpresa').Value     := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'NOTAFISCAL','');
   SQLNotasFiscais.MacrobyName('MCampoData').Value   := 'NOTAFISCAL.NOFIDEMIS';
-  SQLNotasFiscais.MacrobyName('MDataInicial').Value := '"' + FormatDateTime('mm/dd/yyyy',De.Date)  + '"';
-  SQLNotasFiscais.MacrobyName('MDataFinal').Value   := '"' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '"';
+  SQLNotasFiscais.MacrobyName('MDataInicial').Value := '''' + FormatDateTime('mm/dd/yyyy',De.Date)  + '''';
+  SQLNotasFiscais.MacrobyName('MDataFinal').Value   := '''' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '''';
 
   if ComboVendedor.Text <> '' then
     SQLNotasFiscais.MacroByName('MVendedor').Value   := 'NOTAFISCAL.VENDICOD = ' + IntToStr(ComboVendedor.KeyValue)
@@ -98,8 +98,8 @@ begin
 
   SQLVendas.MacrobyName('MEmpresa').Value     := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'CUPOM','');
   SQLVendas.MacrobyName('MCampoData').Value   := 'CUPOM.CUPODEMIS';
-  SQLVendas.MacrobyName('MDataInicial').Value := '"' + FormatDateTime('mm/dd/yyyy',De.Date)  + '"';
-  SQLVendas.MacrobyName('MDataFinal').Value   := '"' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '"';
+  SQLVendas.MacrobyName('MDataInicial').Value := '''' + FormatDateTime('mm/dd/yyyy',De.Date)  + '''';
+  SQLVendas.MacrobyName('MDataFinal').Value   := '''' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '''';
 
   if ComboVendedor.Text <> '' then
     SQLVendas.MacroByName('MVendedor').Value   := 'CUPOM.VENDICOD = ' + IntToStr(ComboVendedor.KeyValue)
@@ -152,16 +152,16 @@ begin
 
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Emissao' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'PeriodoEmissao' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
-                                  FormatDateTime('dd/mm/yyyy', Ate.Date) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
+                                  FormatDateTime('dd/mm/yyyy', Ate.Date) + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name := 'Vendedor' ;
 
   if ComboVendedor.Text <> '' then
-    Report.Formulas.Formula.Text := '"' + ComboVendedor.Text + '"';
+    Report.Formulas.Formula.Text := '''' + ComboVendedor.Text + '''';
 
   Report.ReportTitle       := 'Relatório de Vendas Por Vendedor com Apuração de Margem' ;
   Report.WindowStyle.Title := 'Relatório de Vendas Por Vendedor com Apuração de Margem' ;

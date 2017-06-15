@@ -74,7 +74,7 @@ inherited FormRelatorioEstoquePorGrade: TFormRelatorioEstoquePorGrade
           Top = 101
           Width = 49
           Height = 13
-          Caption = 'Variação'
+          Caption = 'Varia'#231#227'o'
           Font.Charset = ANSI_CHARSET
           Font.Color = 8404992
           Font.Height = -11
@@ -139,7 +139,7 @@ inherited FormRelatorioEstoquePorGrade: TFormRelatorioEstoquePorGrade
           Top = 218
           Width = 44
           Height = 13
-          Caption = 'Coleção'
+          Caption = 'Cole'#231#227'o'
           Font.Charset = ANSI_CHARSET
           Font.Color = 8404992
           Font.Height = -11
@@ -266,7 +266,7 @@ inherited FormRelatorioEstoquePorGrade: TFormRelatorioEstoquePorGrade
           Top = 16
           Width = 59
           Height = 17
-          Caption = 'Código'
+          Caption = 'C'#243'digo'
           Checked = True
           Font.Charset = ANSI_CHARSET
           Font.Color = 8404992
@@ -282,7 +282,7 @@ inherited FormRelatorioEstoquePorGrade: TFormRelatorioEstoquePorGrade
           Top = 41
           Width = 78
           Height = 17
-          Caption = 'Descrição'
+          Caption = 'Descri'#231#227'o'
           Font.Charset = ANSI_CHARSET
           Font.Color = 8404992
           Font.Height = -11
@@ -296,7 +296,7 @@ inherited FormRelatorioEstoquePorGrade: TFormRelatorioEstoquePorGrade
           Top = 16
           Width = 81
           Height = 17
-          Caption = 'Referência'
+          Caption = 'Refer'#234'ncia'
           Font.Charset = ANSI_CHARSET
           Font.Color = 8404992
           Font.Height = -11
@@ -370,7 +370,7 @@ inherited FormRelatorioEstoquePorGrade: TFormRelatorioEstoquePorGrade
         Top = 223
         Width = 195
         Height = 46
-        Caption = ' Ocultar Preço '
+        Caption = ' Ocultar Pre'#231'o '
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -412,7 +412,7 @@ inherited FormRelatorioEstoquePorGrade: TFormRelatorioEstoquePorGrade
         Top = 239
         Width = 219
         Height = 17
-        Caption = 'Exibir o relatório de forma sintética'
+        Caption = 'Exibir o relat'#243'rio de forma sint'#233'tica'
         Font.Charset = ANSI_CHARSET
         Font.Color = 8404992
         Font.Height = -11

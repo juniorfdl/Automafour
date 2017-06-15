@@ -568,7 +568,7 @@ begin
                           dm.SQLConsulta.Close;
                           dm.SQLConsulta.RequestLive := False;
                           dm.SQLConsulta.SQL.Text    := 'Update CUPOM Set STNFE='+IntToStr(dm.ACBrNFe.WebServices.consulta.cStat)+
-                                                        ' Where CUPOA13ID ="'+SQLTemplateCUPOA13ID.AsString+'"';
+                                                        ' Where CUPOA13ID ='''+SQLTemplateCUPOA13ID.AsString+'''';
                           dm.SQLConsulta.ExecSQL;
                         end;
                     end;
@@ -847,8 +847,8 @@ begin
               SQLImpressaoCupom.Close;
               SQLImpressaoCupom.RequestLive := False;
               SQLImpressaoCupom.SQL.Text := 'Update CUPOM Set STNFE='+IntToStr(dm.ACBrNFe.WebServices.consulta.cStat)+
-                                            ', PROTOCOLO="'+dm.ACBrNFe.WebServices.consulta.Protocolo +'"'+
-                                            ' Where CUPOA13ID ="'+SQLTemplateCUPOA13ID.Value+'"';
+                                            ', PROTOCOLO='''+dm.ACBrNFe.WebServices.consulta.Protocolo +''''+
+                                            ' Where CUPOA13ID ='''+SQLTemplateCUPOA13ID.Value+'''';
               SQLImpressaoCupom.ExecSQL;
 
               nfce_tentativa := 9;
@@ -1180,7 +1180,7 @@ begin
 
       dm.SQLConsulta.Close;
       dm.SQLConsulta.RequestLive := true;
-      dm.SQLConsulta.sql.text := 'select cupoa13id,termicod,registro,CPITN3QTD,CPITN3VLRUNIT,CPITN2DESC from cupomitem where cupoa13id="'+SQLTemplateCUPOA13ID.Value+'"';
+      dm.SQLConsulta.sql.text := 'select cupoa13id,termicod,registro,CPITN3QTD,CPITN3VLRUNIT,CPITN2DESC from cupomitem where cupoa13id='''+SQLTemplateCUPOA13ID.Value+'''';
       dm.SQLConsulta.Open;
       while not dm.SQLConsulta.eof do
         begin

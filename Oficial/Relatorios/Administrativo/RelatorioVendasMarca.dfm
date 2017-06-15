@@ -1,7 +1,7 @@
 inherited FormRelatorioVendasMarca: TFormRelatorioVendasMarca
   Left = 206
   Top = 132
-  Caption = 'Relatório de Vendas Por Marca'
+  Caption = 'Relat'#243'rio de Vendas Por Marca'
   PixelsPerInch = 96
   TextHeight = 13
   inherited TblTemporaria: TTable
@@ -39,7 +39,7 @@ inherited FormRelatorioVendasMarca: TFormRelatorioVendasMarca
       '   inner join MARCA MARCA on MARCA.MARCICOD = PRODUTO.MARCICOD'
       'where'
       
-        '  (CUPOM.CUPOCSTATUS = "A") and (CUPOMITEM.CPITCSTATUS <> "C" ) ' +
+        '  (CUPOM.CUPOCSTATUS = ''A'') and (CUPOMITEM.CPITCSTATUS <> ''C'' ) ' +
         'and'
       '  (%MEmpresa) and'
       '  (%MData)'
@@ -70,8 +70,8 @@ inherited FormRelatorioVendasMarca: TFormRelatorioVendasMarca
         '   left outer join OPERACAOESTOQUE on NOTAFISCAL.OPESICOD = OPER' +
         'ACAOESTOQUE.OPESICOD'
       'where'
-      '  NOTAFISCAL.NOFICSTATUS = "E" and'
-      '  OPERACAOESTOQUE.OPESCGERAFINANCEIRO = "S" and'
+      '  NOTAFISCAL.NOFICSTATUS = ''E'' and'
+      '  OPERACAOESTOQUE.OPESCGERAFINANCEIRO = ''S'' and'
       '  (%MEmpresaNF) and'
       '  (%MDataNF)'
       'group by'

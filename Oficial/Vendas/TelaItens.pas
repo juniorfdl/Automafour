@@ -489,7 +489,7 @@ begin
   VlrTroca       := 0;
   dm.sqlconsulta.close;
   dm.sqlconsulta.sql.clear;
-  dm.sqlconsulta.sql.text := 'Select CUPOINRO, CUPON2TOTITENS, CUPON2DESC, CUPON3BONUSTROCA, CLIENTECNPJ, CLIENTENOME, PLRCICOD from cupom where CUPOA13ID="'+idCupom+'"';
+  dm.sqlconsulta.sql.text := 'Select CUPOINRO, CUPON2TOTITENS, CUPON2DESC, CUPON3BONUSTROCA, CLIENTECNPJ, CLIENTENOME, PLRCICOD from cupom where CUPOA13ID='''+idCupom+'''';
   dm.sqlconsulta.open;
   xCliente   := dm.sqlconsulta.fieldbyname('CLIENTENOME').AsString ;
   xDocumento := dm.sqlconsulta.fieldbyname('CLIENTECNPJ').AsString ;
@@ -579,7 +579,7 @@ begin
        SQLImpressaoCupom.Close;
        SQLImpressaoCupom.RequestLive := False;
        SQLImpressaoCupom.SQL.Clear;
-       SQLImpressaoCupom.SQL.Add('Select i.* From CUPOMITEM i left join Produto p on p.prodicod = i.prodicod Where (CPITCSTATUS="A") and (CPITN3QTD>0) and CUPOA13ID ="'+idCupom+'"');
+       SQLImpressaoCupom.SQL.Add('Select i.* From CUPOMITEM i left join Produto p on p.prodicod = i.prodicod Where (CPITCSTATUS=''A'') and (CPITN3QTD>0) and CUPOA13ID ='''+idCupom+'''');
        SQLImpressaoCupom.SQL.Add('Order by i.CPITIPOS');
        SQLImpressaoCupom.Open;
        SQLImpressaoCupom.First;
@@ -756,7 +756,7 @@ begin
       SQLImpressaoCupom.Close;
       SQLImpressaoCupom.RequestLive := False;
       SQLImpressaoCupom.SQL.Clear;
-      SQLImpressaoCupom.SQL.Add('Select * From CUPOM Where CUPOA13ID = "'+idCupom+'"');
+      SQLImpressaoCupom.SQL.Add('Select * From CUPOM Where CUPOA13ID = '''+idCupom+'''');
       SQLImpressaoCupom.Open;
 
 //      Total.ICMSTot.vBC     := 0; //SQLImpressaoCupom.fieldbyname('CUPON2BASEICMS').AsFloat;
@@ -1497,7 +1497,7 @@ begin
           if (Length(EntradaDados.Text) = 13) and (copy(EntradaDados.Text,1,1)='2') then
             begin
               SQLBalanca.Close;
-              SQLBalanca.MacroByName('MFiltro').Value := 'CFBLA10BALID = "' + Copy(EntradaDados.Text, 1, 1) + '"';
+              SQLBalanca.MacroByName('MFiltro').Value := 'CFBLA10BALID = ''' + Copy(EntradaDados.Text, 1, 1) + '''';
               SQLBalanca.Open;
               if not SQLBalanca.Eof then
                 begin
@@ -2431,7 +2431,7 @@ begin
               DM.SQLTemplate.Close ;
               DM.SQLTemplate.SQL.Clear ;
               DM.SQLTemplate.SQL.Add('select PRODICOD from PRODUTO') ;
-              DM.SQLTemplate.SQL.Add('where PRODA60CODBAR = "' + EntradaDados.Text+'"') ;
+              DM.SQLTemplate.SQL.Add('where PRODA60CODBAR = ''' + EntradaDados.Text+'''') ;
               DM.SQLTemplate.Open ;
               if not DM.SQLTemplate.EOF then
                 EntradaDados.Text := 'C'+ DM.SQLTemplate.FieldByName('PRODICOD').AsString
@@ -2440,7 +2440,7 @@ begin
                   DM.SQLTemplate.Close ;
                   DM.SQLTemplate.SQL.Clear ;
                   DM.SQLTemplate.SQL.Add('select PRODICOD from PRODUTOBARRAS') ;
-                  DM.SQLTemplate.SQL.Add('where PRBAA15BARRAS = "' + EntradaDados.Text+'"') ;
+                  DM.SQLTemplate.SQL.Add('where PRBAA15BARRAS = ''' + EntradaDados.Text+'''') ;
                   DM.SQLTemplate.Open ;
                   if not DM.SQLTemplate.EOF then
                     EntradaDados.Text := 'C'+ DM.SQLTemplate.FieldByName('PRODICOD').AsString
@@ -2632,7 +2632,7 @@ begin
         FormTelaConsultaRapidaCliente.ShowModal ;
       end
       else begin
-        ClienteVenda := SQLLocate('CLIENTE', 'CLIEA10CODCONV' , 'CLIEA13ID', '"' + EntradaDados.Text + '"') ;
+        ClienteVenda := SQLLocate('CLIENTE', 'CLIEA10CODCONV' , 'CLIEA13ID', '''' + EntradaDados.Text + '''') ;
         if ClienteVenda = '' then
         begin
           InformaG('Códido do cliente não encontrado!') ;
@@ -2641,7 +2641,7 @@ begin
         end ;
       end ;
 
-      LblCLiente.Caption :=  'Cliente: ' + ClienteVenda + #13 + SQLLocate('CLIENTE', 'CLIEA13ID' , 'CLIEA60RAZAOSOC', '"' + ClienteVenda + '"') ;
+      LblCLiente.Caption :=  'Cliente: ' + ClienteVenda + #13 + SQLLocate('CLIENTE', 'CLIEA13ID' , 'CLIEA60RAZAOSOC', '''' + ClienteVenda + '''') ;
 
       EstadoPDVChk := InformandoItens ;
       PreparaEstadoBalcao(EstadoPDVChk) ;
@@ -2862,7 +2862,7 @@ begin
                   IniFile := TIniFile.Create (dm.PathAplicacao+'SolicitaCliente.txt');
                   IF IniFile.ReadString('VECONTAS','VERADICIONAIS','N') = 'S' then
                   begin
-                    ObsCliente := SQLLocate('CLIENTE','CLIEA13ID','CLIETOBS1','"' + ClienteVenda + '"');
+                    ObsCliente := SQLLocate('CLIENTE','CLIEA13ID','CLIETOBS1','''' + ClienteVenda + '''');
                     if Obscliente <> '' then
                       ShowMessage(obscliente);
                   end;
@@ -2874,15 +2874,15 @@ begin
                         vercontas;
                     end;
                   End;
-                  UsaPrecoVenda   := SQLLocate('CLIENTE','CLIEA13ID','CLIECTPPRCVENDA','"'+ClienteVenda+'"');
-                  rxClienteNome.caption := SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC','"'+ClienteVenda+'"');
+                  UsaPrecoVenda   := SQLLocate('CLIENTE','CLIEA13ID','CLIECTPPRCVENDA',''''+ClienteVenda+'''');
+                  rxClienteNome.caption := SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC',''''+ClienteVenda+'''');
                   rxClienteNome.update;
                   IniFile.Free;
                 end
               else
                 begin
                   ClienteVenda := dm.SQLTerminalAtivo.FieldByName('CLIEA13ID').Value;
-                  rxClienteNome.caption := SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC','"'+ClienteVenda+'"');
+                  rxClienteNome.caption := SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC',''''+ClienteVenda+'''');
                   rxClienteNome.update;
                 end;
 
@@ -3076,7 +3076,7 @@ begin
            end ;
      VK_F6:begin
              PreVendaRimp := InputBox('Re-Imprimir Pré-Venda', 'Informe o Cupom', '');
-             if SQLLocate('CUPOM', 'CUPOA13ID' , 'CUPOCSTATUS', '"' + PreVendaRimp + '"') = '' then
+             if SQLLocate('CUPOM', 'CUPOA13ID' , 'CUPOCSTATUS', '''' + PreVendaRimp + '''') = '' then
              begin
                VarValorTroco    := 0;
                VarValorRecebido := 0;
@@ -3401,7 +3401,7 @@ begin
                              DM.SQLTemplate.Close;
                              DM.SQLTemplate.SQL.Clear;
                              DM.SQLTemplate.SQL.Add('Update PREVENDA');
-                             DM.SQLTemplate.SQL.Add('Set PRVDCIMPORT = "C"');
+                             DM.SQLTemplate.SQL.Add('Set PRVDCIMPORT = ''C''');
                              DM.SQLTemplate.SQL.Add('Where');
                              DM.SQLTemplate.SQL.Add('TERMICOD = ' + FormTelaFechamentoVenda.TermCod + ' And ');
                              DM.SQLTemplate.SQL.Add('PRVDICOD = ' + FormTelaFechamentoVenda.PrvCod);
@@ -3674,7 +3674,7 @@ begin
                     {  DM.SQLTemplate.Close ;
                       DM.SQLTemplate.SQL.Clear ;
                       DM.SQLTemplate.SQL.Add('select OPCXICOD from OPERACAOCAIXA') ;
-                      DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = "ABGAV"') ;
+                      DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = ''ABGAV''') ;
                       DM.SQLTemplate.Open ;
 
                       if not DM.SQLTemplate.IsEmpty then
@@ -4107,7 +4107,7 @@ begin
                         Application.CreateForm(TFormTelaConsultaRapidaCupom,FormTelaConsultaRapidaCupom);
                         FormTelaConsultaRapidaCupom.de.Date := Now;
                         FormTelaConsultaRapidaCupom.SQLCupom.Close;
-                        FormTelaConsultaRapidaCupom.SQLCupom.MacroByName('DataEmissao').Value  := 'Cupom.CUPODEMIS = "' + FormatDateTime('mm/dd/yyyy',Now) + '"';
+                        FormTelaConsultaRapidaCupom.SQLCupom.MacroByName('DataEmissao').Value  := 'Cupom.CUPODEMIS = ''' + FormatDateTime('mm/dd/yyyy',Now) + '''';
                         FormTelaConsultaRapidaCupom.SQLCupom.MacroByName('Empresa').Value      := 'Cupom.EMPRICOD  = ' + EmpresaPadrao;
                         if FiltraTerminal = 'S' then
                           FormTelaConsultaRapidaCupom.SQLCupom.MacroByName('Terminal').Value   := 'Cupom.TERMICOD  = ' + dm.SQLTerminalAtivo.FieldByName('Termicod').AsString
@@ -4187,14 +4187,14 @@ begin
                     // Pegar Troco
                     SQLImpressaoCupom.close;
                     SQLImpressaoCupom.sql.Clear;
-                    SQLImpressaoCupom.SQL.Text := 'Select * From Cupom Where CUPOA13ID = "'+ IDReimprimir +'"';
+                    SQLImpressaoCupom.SQL.Text := 'Select * From Cupom Where CUPOA13ID = '''+ IDReimprimir +'''';
                     SQLImpressaoCupom.Open;
                     VarValorTroco := SQLImpressaoCupom.fieldbyname('TROCO').AsVariant;
 
                     // Imprimir Produtos
                     SQLImpressaoCupom.close;
                     SQLImpressaoCupom.sql.Clear;
-                    SQLImpressaoCupom.SQL.Text := 'Select * From CupomItem Where (CPITCSTATUS = "A") and CUPOA13ID = "'+ IDReimprimir +'" order by CPITIPOS';
+                    SQLImpressaoCupom.SQL.Text := 'Select * From CupomItem Where (CPITCSTATUS = ''A'') and CUPOA13ID = '''+ IDReimprimir +''' order by CPITIPOS';
                     SQLImpressaoCupom.Open;
                     SQLImpressaoCupom.First;
                     VlrBonusTroca := 0;
@@ -4269,7 +4269,7 @@ begin
                     VlrTotalSistema := 0;
                     SQLImpressaoCupom.Close;
                     SQLImpressaoCupom.sql.Clear;
-                    SQLImpressaoCupom.SQL.Text := 'Select * from CUPOMNUMERARIO where CUPOA13ID = "'+ IDReimprimir +'"';
+                    SQLImpressaoCupom.SQL.Text := 'Select * from CUPOMNUMERARIO where CUPOA13ID = '''+ IDReimprimir +'''';
                     SQLImpressaoCupom.Open;
                     SQLParcelasVistaVendaTemp.Close;
                     SQLParcelasVistaVendaTemp.MacroByName('MFiltro').Value := 'TERMICOD = '+ IntToStr(StrToInt(copy(IDReimprimir,4,3)));
@@ -4321,7 +4321,7 @@ begin
                     TemNumerarioPrazo := False;
                     SQLImpressaoCupom.close;
                     SQLImpressaoCupom.sql.Clear;
-                    SQLImpressaoCupom.SQL.Text := 'Select * from contasreceber where CUPOA13ID = "'+ IDReimprimir +'"';
+                    SQLImpressaoCupom.SQL.Text := 'Select * from contasreceber where CUPOA13ID = '''+ IDReimprimir +'''';
                     SQLImpressaoCupom.open;
                     SQLParcelasPrazoVendaTemp.Close;
                     SQLParcelasPrazoVendaTemp.MacroByName('MFiltro').Value := 'TERMICOD = '+ IntToStr(StrToInt(copy(IDReimprimir,4,3)));
@@ -4388,7 +4388,7 @@ begin
                     if (ProvedorCartao <> '') and (dm.TotalCartao > 0) then
                       begin
                         SQLProvedorCartao.Close;
-                        SQLProvedorCartao.MacroByName('Provedor').Value := 'PRCAA13ID = "'+ProvedorCartao+'"';
+                        SQLProvedorCartao.MacroByName('Provedor').Value := 'PRCAA13ID = '''+ProvedorCartao+'''';
                         SQLProvedorCartao.Open;
                         if not SQLProvedorCartao.IsEmpty then
                           begin
@@ -4401,7 +4401,7 @@ begin
                     FechouCupomFiscal := False;
                     SQLImpressaoCupom.close;
                     SQLImpressaoCupom.sql.Clear;
-                    SQLImpressaoCupom.SQL.Text := 'Select * from cupom where CUPOA13ID = "'+ IDReimprimir +'"';
+                    SQLImpressaoCupom.SQL.Text := 'Select * from cupom where CUPOA13ID = '''+ IDReimprimir +'''';
                     SQLImpressaoCupom.open;
 
                     // Testa se nao tem nenhum numerario a vista ou a prazo, lanca no dinheiro para nao trancar ecf
@@ -4493,7 +4493,7 @@ begin
 
                     // Gravar numero do Cupom Fiscal na Venda
                     dm.SQLCupom.close;
-                    dm.SQLCupom.macrobyname('MFiltro').Value := 'CUPOA13ID = "'+ IDReimprimir +'"';
+                    dm.SQLCupom.macrobyname('MFiltro').Value := 'CUPOA13ID = '''+ IDReimprimir +'''';
                     dm.SQLCupom.Open;
                     if not dm.SQLCupom.IsEmpty then
                       begin
@@ -4658,13 +4658,13 @@ begin
                   Application.CreateForm(TFormTelaConsultaRapidaCupom,FormTelaConsultaRapidaCupom);
                   FormTelaConsultaRapidaCupom.de.Date := Now;
                   FormTelaConsultaRapidaCupom.SQLCupom.Close;
-                  FormTelaConsultaRapidaCupom.SQLCupom.MacroByName('DataEmissao').Value  := 'Cupom.CUPODEMIS = "' + FormatDateTime('mm/dd/yyyy',Now) + '"';
+                  FormTelaConsultaRapidaCupom.SQLCupom.MacroByName('DataEmissao').Value  := 'Cupom.CUPODEMIS = ''' + FormatDateTime('mm/dd/yyyy',Now) + '''';
                   FormTelaConsultaRapidaCupom.SQLCupom.MacroByName('Empresa').Value      := 'Cupom.EMPRICOD  = ' + EmpresaPadrao;
                   if FiltraTerminal = 'S' then
                     FormTelaConsultaRapidaCupom.SQLCupom.MacroByName('Terminal').Value   := 'Cupom.TERMICOD  = ' + dm.SQLTerminalAtivo.FieldByName('Termicod').AsString
                   else
                     FormTelaConsultaRapidaCupom.SQLCupom.MacroByName('Terminal').Value   := '0=0';
-                  FormTelaConsultaRapidaCupom.SQLCupom.MacroByName('MostraVendas').Value := '(Cupom.CUPOINRO>0) and ((Cupom.STNFE is null) or (Cupom.STNFE=""))';
+                  FormTelaConsultaRapidaCupom.SQLCupom.MacroByName('MostraVendas').Value := '(Cupom.CUPOINRO>0) and ((Cupom.STNFE is null) or (Cupom.STNFE=''''))';
                   FormTelaConsultaRapidaCupom.SQLCupom.Open;
                   FormTelaConsultaRapidaCupom.ShowModal;
                   if FormTelaConsultaRapidaCupom.ModalResult = MrOk then
@@ -4714,8 +4714,8 @@ begin
                               SQLImpressaoCupom.Close;
                               SQLImpressaoCupom.RequestLive := False;
                               SQLImpressaoCupom.SQL.Text := 'Update CUPOM Set STNFE='+IntToStr(dm.ACBrNFe.WebServices.consulta.cStat)+
-                                                            ', PROTOCOLO="'+dm.ACBrNFe.WebServices.consulta.Protocolo +'"'+
-                                                            ' Where CUPOA13ID ="'+IDReimprimir+'"';
+                                                            ', PROTOCOLO='''+dm.ACBrNFe.WebServices.consulta.Protocolo +''''+
+                                                            ' Where CUPOA13ID ='''+IDReimprimir+'''';
                               SQLImpressaoCupom.ExecSQL;
 
                               LblInstrucoes.Caption := 'Imprimindo NFCe: '+intToStr(NumNFe) ;
@@ -4780,7 +4780,7 @@ begin
           DM.SQLTemplate.Close ;
           DM.SQLTemplate.SQL.Clear ;
           DM.SQLTemplate.SQL.Add('select OPCXICOD from OPERACAOCAIXA') ;
-          DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = "VDVIS"') ;
+          DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = ''VDVIS''') ;
           DM.SQLTemplate.Open ;
           if not DM.SQLTemplate.IsEmpty then
             GravaMovimentoCaixa(DM.SQLTotalizadorCaixa,
@@ -4806,7 +4806,7 @@ begin
           DM.SQLTemplate.Close ;
           DM.SQLTemplate.SQL.Clear ;
           DM.SQLTemplate.SQL.Add('select OPCXICOD from OPERACAOCAIXA') ;
-          DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = "CANCO"') ;
+          DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = ''CANCO''') ;
           DM.SQLTemplate.Open ;
           if not DM.SQLTemplate.IsEmpty then
             GravaMovimentoCaixa(DM.SQLTotalizadorCaixa,
@@ -4860,7 +4860,7 @@ begin
 
   SQLSubTotal.Close;
   SQLSubTotal.SQL.Clear;
-  SQLSubTotal.SQL.Add('Select Sum(VLRTOTAL) as SubTotal from '+TabelaMaisTerminal+' where TERMICOD = '+dm.SQLTerminalAtivo.FieldByName('TERMICOD').AsString+ ' and (TROCA <> "S" or TROCA is null) and CANCELADO <> "S"');
+  SQLSubTotal.SQL.Add('Select Sum(VLRTOTAL) as SubTotal from '+TabelaMaisTerminal+' where TERMICOD = '+dm.SQLTerminalAtivo.FieldByName('TERMICOD').AsString+ ' and (TROCA <> ''S'' or TROCA is null) and CANCELADO <> ''S''');
   SQLSubTotal.Open;
   if SQLSubTotal.FieldByName('SubTotal').Value > 0 then
     ValorTemp := SQLSubTotal.FieldByName('SubTotal').Value;
@@ -4870,7 +4870,7 @@ begin
   // Calcula Total Bonus Troca
   SQLSubTotal.Close;
   SQLSubTotal.SQL.Clear;
-  SQLSubTotal.SQL.add('Select Sum(VLRTOTAL) as SubTotal from '+TabelaMaisTerminal+' where TERMICOD = '+dm.SQLTerminalAtivo.FieldByName('TERMICOD').AsString+ ' and TROCA = "S"');
+  SQLSubTotal.SQL.add('Select Sum(VLRTOTAL) as SubTotal from '+TabelaMaisTerminal+' where TERMICOD = '+dm.SQLTerminalAtivo.FieldByName('TERMICOD').AsString+ ' and TROCA = ''S''');
   SQLSubTotal.Open;
   if SQLSubTotal.fieldbyname('SubTotal').Value > 0 then
     VlrBonusTroca := SQLSubTotal.fieldbyname('SubTotal').Value;
@@ -5543,7 +5543,7 @@ begin
           DM.MemCtRecParc.Open;
 
           SQLContasReceber.Close;
-          SQLContasReceber.MacroByName('MFiltro').AsString := ' CLIEA13ID = "' + ClienteVenda + '" and CTRCCSTATUS <> "C"' +
+          SQLContasReceber.MacroByName('MFiltro').AsString := ' CLIEA13ID = ''' + ClienteVenda + ''' and CTRCCSTATUS <> ''C''' +
                                                               ' AND CTRCN2VLR > CTRCN2TOTREC';
           SQLContasReceber.Open;
 
@@ -5668,7 +5668,7 @@ begin
   if (DM.SQLPopUP.FieldByName('CFGCCEXIBIRPOPTARE').AsString = 'S') and (EstadoPDVChk = AguardandoNovaVenda) then
     begin
       SQLAgendaVer.Close;
-      SQLAgendaVer.SQL.Text := 'Select Count(*) From TAREFA Where  USUAICODDEST = ' + IntToStr(UsuarioCorrente) + ' and TARECSTATUS <> "T"';
+      SQLAgendaVer.SQL.Text := 'Select Count(*) From TAREFA Where  USUAICODDEST = ' + IntToStr(UsuarioCorrente) + ' and TARECSTATUS <> ''T''';
       SQLAgendaVer.Open;
       if (SQLAgendaVer.FieldByName('Count').AsInteger > 0) then
         begin
@@ -5982,7 +5982,7 @@ begin
   SQLImpressaoCupom.Close;
   SQLImpressaoCupom.RequestLive := True;
   SQLImpressaoCupom.SQL.Clear;
-  SQLImpressaoCupom.SQL.Add('Select CUPOINRO, TROCO, CHAVEACESSO, PROTOCOLO, STNFE From CUPOM Where CUPOA13ID ="'+idCupom+'"');
+  SQLImpressaoCupom.SQL.Add('Select CUPOINRO, TROCO, CHAVEACESSO, PROTOCOLO, STNFE From CUPOM Where CUPOA13ID ='''+idCupom+'''');
   SQLImpressaoCupom.Open;
   VarValorTroco := SQLImpressaoCupom.fieldbyname('TROCO').Value;
   dm.ACBrNFe.DANFE.vTroco := VarValorTroco;
@@ -5993,7 +5993,7 @@ begin
   sTipoPadrao     := '' ;
   SQLImpressaoCupom.Close;
   SQLImpressaoCupom.SQL.clear;
-  SQLImpressaoCupom.SQL.Text := 'Select * from CUPOMNUMERARIO where CUPOA13ID = "'+ idCupom +'"';
+  SQLImpressaoCupom.SQL.Text := 'Select * from CUPOMNUMERARIO where CUPOA13ID = '''+ idCupom +'''';
   SQLImpressaoCupom.Open;
   while not SQLImpressaoCupom.eof do
     begin
@@ -6011,7 +6011,7 @@ begin
   // Abrir CONTASRECEBER para ver se tem algum registro e popular a tabela temporaria a prazo
   SQLImpressaoCupom.close;
   SQLImpressaoCupom.SQL.clear;
-  SQLImpressaoCupom.SQL.Text := 'Select * from CONTASRECEBER where CUPOA13ID = "'+ idCupom +'"';
+  SQLImpressaoCupom.SQL.Text := 'Select * from CONTASRECEBER where CUPOA13ID = '''+ idCupom +'''';
   SQLImpressaoCupom.open;
   while not SQLImpressaoCupom.eof do
     begin
@@ -6043,8 +6043,8 @@ begin
 
   SQLImpressaoCupom.Close;
   SQLImpressaoCupom.RequestLive := False;
-  SQLImpressaoCupom.SQL.Text := 'Update CUPOM Set CUPOINRO=' +IntToStr(NumNFe)+ ', CHAVEACESSO="'+chave +'"'+
-                                ' Where CUPOA13ID ="'+idCupom+'"';
+  SQLImpressaoCupom.SQL.Text := 'Update CUPOM Set CUPOINRO=' +IntToStr(NumNFe)+ ', CHAVEACESSO='''+chave +''''+
+                                ' Where CUPOA13ID ='''+idCupom+'''';
   SQLImpressaoCupom.ExecSQL;
 
   LblInstrucoes.Caption := 'Assinando NFCe.: '+inttostr(NumNFe) ;
@@ -6146,8 +6146,8 @@ begin
           SQLImpressaoCupom.Close;
           SQLImpressaoCupom.RequestLive := False;
           SQLImpressaoCupom.SQL.Text := 'Update CUPOM Set STNFE='+IntToStr(dm.ACBrNFe.WebServices.consulta.cStat)+
-                                        ', PROTOCOLO="'+dm.ACBrNFe.WebServices.consulta.Protocolo +'"'+
-                                        ' Where CUPOA13ID ="'+idCupom+'"';
+                                        ', PROTOCOLO='''+dm.ACBrNFe.WebServices.consulta.Protocolo +''''+
+                                        ' Where CUPOA13ID ='''+idCupom+'''';
           SQLImpressaoCupom.ExecSQL;
 
           if (ECFAtual = 'NFCE A4') then

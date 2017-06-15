@@ -150,7 +150,7 @@ begin
     begin
       Tipo_de_Quantidade := 'I';
       QuantEcf := IntToStr(Round(Int(Quantidade)));
-      // O Parametro abaixo "Casas Decimais" é somente para o Valor Unitario a ser passado
+      // O Parametro abaixo ''Casas Decimais'' é somente para o Valor Unitario a ser passado
       IntRet := Elgin_VendeItem(Codigo, Descricao, Aliquota, Tipo_de_Quantidade, QuantEcf, 2, ValorUnitarioECF, Tipo_de_Desconto, ValorDescontoEcf );
     end;
   if IntRet = 1 then

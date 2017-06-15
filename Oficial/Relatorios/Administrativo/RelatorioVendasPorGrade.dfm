@@ -45,7 +45,7 @@ inherited FormRelatorioVendasPorGrade: TFormRelatorioVendasPorGrade
           Top = 42
           Width = 75
           Height = 17
-          Caption = 'Sintético'
+          Caption = 'Sint'#233'tico'
           Font.Charset = ANSI_CHARSET
           Font.Color = 8404992
           Font.Height = -11
@@ -113,7 +113,7 @@ inherited FormRelatorioVendasPorGrade: TFormRelatorioVendasPorGrade
           Top = 94
           Width = 49
           Height = 13
-          Caption = 'Variação'
+          Caption = 'Varia'#231#227'o'
           Font.Charset = ANSI_CHARSET
           Font.Color = 8404992
           Font.Height = -11
@@ -249,7 +249,7 @@ inherited FormRelatorioVendasPorGrade: TFormRelatorioVendasPorGrade
           Top = 13
           Width = 45
           Height = 17
-          Caption = 'Cód'
+          Caption = 'C'#243'd'
           Checked = True
           Font.Charset = ANSI_CHARSET
           Font.Color = 8404992
@@ -294,7 +294,7 @@ inherited FormRelatorioVendasPorGrade: TFormRelatorioVendasPorGrade
         Top = 329
         Width = 162
         Height = 33
-        Caption = ' Ocultar Preço '
+        Caption = ' Ocultar Pre'#231'o '
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -721,7 +721,7 @@ inherited FormRelatorioVendasPorGrade: TFormRelatorioVendasPorGrade
       'from'
       
         '  CUPOMITEM inner join CUPOM  on CUPOMITEM.CUPOA13ID = CUPOM.CUP' +
-        'OA13ID and CUPOM.CUPOCSTATUS = "A" and CUPOMITEM.CPITN3QTD > 0 a' +
+        'OA13ID and CUPOM.CUPOCSTATUS = ''A'' and CUPOMITEM.CPITN3QTD > 0 a' +
         'nd (%MEmpresa) and (%MData)'
       
         '            inner join PRODUTO on CUPOMITEM.PRODICOD = PRODUTO.P' +
@@ -826,16 +826,12 @@ inherited FormRelatorioVendasPorGrade: TFormRelatorioVendasPorGrade
     end
     object SQLProdutoPRODN3VLRCUSTO: TFloatField
       FieldName = 'PRODN3VLRCUSTO'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoPRODN3VLRVENDA: TFloatField
       FieldName = 'PRODN3VLRVENDA'
     end
     object SQLProdutoSALDO: TFloatField
       FieldName = 'SALDO'
-      Precision = 15
-      Size = 3
     end
     object SQLProdutoGRUPICOD: TIntegerField
       FieldName = 'GRUPICOD'
@@ -1061,8 +1057,6 @@ inherited FormRelatorioVendasPorGrade: TFormRelatorioVendasPorGrade
     object SQLSaldoSALDO: TFloatField
       FieldName = 'SALDO'
       Origin = 'DB.PRODUTOSALDO.PSLDN3QTDE'
-      Precision = 15
-      Size = 3
     end
   end
 end

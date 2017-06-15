@@ -93,12 +93,12 @@ begin
   SQLRelComprasPorGrupo.Close;
   SQLRelSaldoPorGrupo.Close;
 
-  SQLRelVendasPorGrupo.MacroByName('MDataInicial').Value  := 'CP.CUPODEMIS >= ' + '"' + FormatDateTime('mm/dd/yyyy',De.Date) + '"';
-  SQLRelVendasPorGrupo.MacroByName('MDataFinal').Value    := 'CP.CUPODEMIS <= ' + '"' + FormatDateTime('mm/dd/yyyy',Ate.Date)+ '"';
+  SQLRelVendasPorGrupo.MacroByName('MDataInicial').Value  := 'CP.CUPODEMIS >= ' + '''' + FormatDateTime('mm/dd/yyyy',De.Date) + '''';
+  SQLRelVendasPorGrupo.MacroByName('MDataFinal').Value    := 'CP.CUPODEMIS <= ' + '''' + FormatDateTime('mm/dd/yyyy',Ate.Date)+ '''';
   SQLRelVendasPorGrupo.MacroByName('MEmpresa').Value      := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'CUPOM','') ;
 
-  SQLRelComprasPorGrupo.MacroByName('MDataInicial').Value := 'NC.NOCPDRECEBIMENTO >= ' + '"' + FormatDateTime('mm/dd/yyyy',De.Date)  + '"';
-  SQLRelComprasPorGrupo.MacroByName('MDataFinal').Value   := 'NC.NOCPDRECEBIMENTO <= ' + '"' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '"';
+  SQLRelComprasPorGrupo.MacroByName('MDataInicial').Value := 'NC.NOCPDRECEBIMENTO >= ' + '''' + FormatDateTime('mm/dd/yyyy',De.Date)  + '''';
+  SQLRelComprasPorGrupo.MacroByName('MDataFinal').Value   := 'NC.NOCPDRECEBIMENTO <= ' + '''' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '''';
   SQLRelComprasPorGrupo.MacroByName('MEmpresa').Value     := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'NOTACOMPRA','') ;
 
   SQLRelSaldoPorGrupo.MacroByName('MEmpresa').Value       := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'PRODUTOSALDO','') ;

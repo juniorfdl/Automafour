@@ -83,9 +83,9 @@ begin
   SQLTemplate.Close;
   SQLTemplate.macrobyname('MEmpresa').Value := 'EMPRICOD='+DM.SQLTerminalAtivo.FieldByName('EMPRICOD').AsString;
   if ckImportados.Checked then
-    SQLTemplate.macrobyname('MFiltro').Value := 'PRVDCIMPORT="S"'
+    SQLTemplate.macrobyname('MFiltro').Value := 'PRVDCIMPORT=''S'''
   else
-    SQLTemplate.macrobyname('MFiltro').Value := 'PRVDCIMPORT<>"S"';
+    SQLTemplate.macrobyname('MFiltro').Value := 'PRVDCIMPORT<>''S''';
   SQLTemplate.Open;
 end;
 
@@ -112,9 +112,9 @@ begin
   SQLTemplate.close;
   SQLTemplate.macrobyname('MEmpresa').Value := 'EMPRICOD='+DM.SQLTerminalAtivo.FieldByName('EMPRICOD').AsString;
   if ckImportados.Checked then
-    SQLTemplate.macrobyname('MFiltro').Value := 'PRVDCIMPORT="S"'
+    SQLTemplate.macrobyname('MFiltro').Value := 'PRVDCIMPORT=''S'''
   else
-    SQLTemplate.macrobyname('MFiltro').Value := 'PRVDCIMPORT<>"S"';
+    SQLTemplate.macrobyname('MFiltro').Value := 'PRVDCIMPORT<>''S''';
   SQLTemplate.Open;
 end;
 

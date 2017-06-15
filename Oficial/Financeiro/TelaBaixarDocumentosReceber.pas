@@ -386,14 +386,14 @@ begin
   SQLContasReceber.Close;
   if not CheckVencimento.Checked then
     begin
-      SQLContasReceber.MacroByName('MData').Value := 'CR.CTRCDVENC >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                     'CR.CTRCDVENC <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
+      SQLContasReceber.MacroByName('MData').Value := 'CR.CTRCDVENC >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                     'CR.CTRCDVENC <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
     end
   else
     SQLContasReceber.MacroByName('MData').Value := '0=0' ;
 
   if ComboCliente.Text <> '' then
-    SQLContasReceber.MacroByName('MCliente').Value   := 'CL.CLIEA13ID = "' + ComboCliente.Value + '"'
+    SQLContasReceber.MacroByName('MCliente').Value   := 'CL.CLIEA13ID = ''' + ComboCliente.Value + ''''
   else
     SQLContasReceber.MacroByName('MCliente').Value   := '0=0';
   if ComboEmpresa.Value <> '' then
@@ -696,7 +696,7 @@ begin
       if VlrTotal > 0 then
         begin
           SQLCliente.Close;
-          SQLCliente.MacroByName('Cliente').AsString := 'CLIEA13ID = "' + Cliente + '"';
+          SQLCliente.MacroByName('Cliente').AsString := 'CLIEA13ID = ''' + Cliente + '''';
           SQLCliente.Open;
           Application.CreateForm(TFormTelaBaixaDocumentosReceberRecebimento,FormTelaBaixaDocumentosReceberRecebimento);
           FormTelaBaixaDocumentosReceberRecebimento.Titular := SQLClienteCLIEA60RAZAOSOC.AsString;
@@ -1095,9 +1095,9 @@ begin
           Application.CreateForm(TFormCadastroRecibo,FormCadastroRecibo);
           FormCadastroRecibo.SQLTemplate.Close;
           IF ComboCliente.Value <> '' THEN
-            FormCadastroRecibo.SQLTemplate.MacroByName('MFiltro').AsString := 'RECICTIPO = "C" and CLIEA13ID ="'+ComboCliente.Value+'" and RECIDEMISSAO = "'+FormatDateTime('mm/dd/yyyy',DtBaixa.Date)+'"'
+            FormCadastroRecibo.SQLTemplate.MacroByName('MFiltro').AsString := 'RECICTIPO = ''C'' and CLIEA13ID ='''+ComboCliente.Value+''' and RECIDEMISSAO = '''+FormatDateTime('mm/dd/yyyy',DtBaixa.Date)+''''
           ELSE
-            FormCadastroRecibo.SQLTemplate.MacroByName('MFiltro').AsString := 'RECICTIPO = "C" and RECIDEMISSAO = "'+FormatDateTime('mm/dd/yyyy',DtBaixa.Date)+'"';
+            FormCadastroRecibo.SQLTemplate.MacroByName('MFiltro').AsString := 'RECICTIPO = ''C'' and RECIDEMISSAO = '''+FormatDateTime('mm/dd/yyyy',DtBaixa.Date)+'''';
           FormCadastroRecibo.SQLTemplate.Open;
           FormCadastroRecibo.Show;
         end
@@ -1238,9 +1238,9 @@ begin
       Application.CreateForm(TFormCadastroRecibo,FormCadastroRecibo);
       FormCadastroRecibo.SQLTemplate.Close;
       IF ComboCliente.Value <> '' THEN
-        FormCadastroRecibo.SQLTemplate.MacroByName('MFiltro').AsString := 'RECICTIPO = "C" and CLIEA13ID ="'+ComboCliente.Value+'" and RECIDEMISSAO = "'+FormatDateTime('mm/dd/yyyy',DtBaixa.Date)+'"'
+        FormCadastroRecibo.SQLTemplate.MacroByName('MFiltro').AsString := 'RECICTIPO = ''C'' and CLIEA13ID ='''+ComboCliente.Value+''' and RECIDEMISSAO = '''+FormatDateTime('mm/dd/yyyy',DtBaixa.Date)+''''
       ELSE
-        FormCadastroRecibo.SQLTemplate.MacroByName('MFiltro').AsString := 'RECICTIPO = "C" and RECIDEMISSAO = "'+FormatDateTime('mm/dd/yyyy',DtBaixa.Date)+'"';
+        FormCadastroRecibo.SQLTemplate.MacroByName('MFiltro').AsString := 'RECICTIPO = ''C'' and RECIDEMISSAO = '''+FormatDateTime('mm/dd/yyyy',DtBaixa.Date)+'''';
       FormCadastroRecibo.SQLTemplate.Open;
       FormCadastroRecibo.Show;
     end;
@@ -1660,7 +1660,7 @@ begin
               end;
               SQLContasReceber.Close;
               {coloquei o copy no nosso nro porque o banrisul trata diferente do sicredi esse campo}
-              SQLContasReceber.MacroByName('MDocumento').AsString := '(CR.CTRCA30NRODUPLICBANCO = "' + NossoNro + '") or (CR.CTRCA15NOSSONUMERO = "' + NossoNro + '")';
+              SQLContasReceber.MacroByName('MDocumento').AsString := '(CR.CTRCA30NRODUPLICBANCO = ''' + NossoNro + ''') or (CR.CTRCA15NOSSONUMERO = ''' + NossoNro + ''')';
               SQLContasReceber.Open;
               if not SQLContasReceber.IsEmpty then
                 begin
@@ -1712,7 +1712,7 @@ begin
           if IsNumeric(NossoNro,'INTEGER') then
             begin
               SQLContasReceber.Close;
-              SQLContasReceber.MacroByName('MDocumento').AsString := '(CR.CTRCA15NOSSONUMERO = "' + NossoNro + '")';
+              SQLContasReceber.MacroByName('MDocumento').AsString := '(CR.CTRCA15NOSSONUMERO = ''' + NossoNro + ''')';
               SQLContasReceber.Open;
               if not SQLContasReceber.IsEmpty then
                 begin

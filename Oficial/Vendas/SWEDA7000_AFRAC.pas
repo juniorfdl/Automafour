@@ -292,7 +292,7 @@ begin
   Sleep(1000);
   //IMPRIMIR DADOS DO CLIENTE
   if (Application.FindComponent('FormTelaFechamentoVenda') <> nil) and
-     (ImprimeDadosClienteCupom = 'S') and (NomeCli <> SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC','"'+DM.SQLTerminalAtivo.FieldByName('CLIEA13ID').AsString+'"')) then
+     (ImprimeDadosClienteCupom = 'S') and (NomeCli <> SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC',''''+DM.SQLTerminalAtivo.FieldByName('CLIEA13ID').AsString+'''')) then
     begin
       AFRAC_InformarMensagemCupom(PChar(Preenche('CUPOM(ID).: ' + IDCupom,'',40,2)));
       AFRAC_InformarMensagemCupom(PChar(Preenche('VENDEDOR..: ' + ConverteAcentos((Application.FindComponent('FormTelaFechamentoVenda').FindComponent('LblNomeVendedor') as TRxLabel).Caption),'',40,2)));
