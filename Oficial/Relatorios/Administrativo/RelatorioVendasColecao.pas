@@ -44,12 +44,12 @@ begin
   SQLVendaColecao.Close ;
   //CUPOM
   SQLVendaColecao.MacroByName('MEmpresa').Value := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'CUPOM', '') ;
-  SQLVendaColecao.MacrobyName('MData').Value    := 'CUPOM.CUPODEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                 'CUPOM.CUPODEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
+  SQLVendaColecao.MacrobyName('MData').Value    := 'CUPOM.CUPODEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                 'CUPOM.CUPODEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
   //NOTAFISCAL
   SQLVendaColecao.MacrobyName('MEmpresanf').Value := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'NOTAFISCAL', '') ;
-  SQLVendaColecao.MacrobyName('MDatanf').Value    := 'NOTAFISCAL.NOFIDEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                   'NOTAFISCAL.NOFIDEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
+  SQLVendaColecao.MacrobyName('MDatanf').Value    := 'NOTAFISCAL.NOFIDEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                   'NOTAFISCAL.NOFIDEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
   SQLVendaColecao.Open ;
   SQLVendaColecao.First;
 
@@ -87,8 +87,8 @@ begin
   Report.Formulas.Retrieve;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Periodo' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
-                                        FormatDateTime('dd/mm/yyyy', Ate.Date) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
+                                        FormatDateTime('dd/mm/yyyy', Ate.Date) + '''' ;
   Report.Formulas.Send;
   Report.Execute;
 end;

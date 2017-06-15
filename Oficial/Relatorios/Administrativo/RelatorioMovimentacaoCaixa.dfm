@@ -410,7 +410,7 @@ inherited FormRelatorioMovimentacaoCaixa: TFormRelatorioMovimentacaoCaixa
         '  left outer join TERMINAL      on MOVIMENTOCAIXA.TERMICOD = TER' +
         'MINAL.TERMICOD'
       'where'
-      '  OPERACAOCAIXA.OPCXCTOTALIZAREL = "S" and'
+      '  OPERACAOCAIXA.OPCXCTOTALIZAREL = ''S'' and'
       '  (%MEmpresa) and'
       '  (%MOperador) and'
       '  (%MTerminal) and'
@@ -544,7 +544,7 @@ inherited FormRelatorioMovimentacaoCaixa: TFormRelatorioMovimentacaoCaixa
     DatabaseName = 'DB'
     SQL.Strings = (
       'select * from OPERACAOCAIXA'
-      'where OPCXCTOTALIZAREL = "S"  and'
+      'where OPCXCTOTALIZAREL = ''S''  and'
       '(%CreditoDebito)'
       'order by OPCXA60DESCR')
     Macros = <
@@ -755,7 +755,7 @@ inherited FormRelatorioMovimentacaoCaixa: TFormRelatorioMovimentacaoCaixa
     DatabaseName = 'DB'
     SQL.Strings = (
       'select * from OPERACAOCAIXA'
-      'where OPCXCTOTALIZAREL = "S"  and'
+      'where OPCXCTOTALIZAREL = ''S''  and'
       '(%CreditoDebito)'
       'order by OPCXA60DESCR')
     Macros = <

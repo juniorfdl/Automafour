@@ -56,9 +56,9 @@ begin
           SQLVendedor.SQL.Add('select * from VENDEDOR') ;
           SQLVendedor.SQL.Add('where') ;
           if Pos('*', Valor.Text) > 0 then
-            SQLVendedor.SQL.Add('VENDA60NOME like "%' + Copy(Valor.Text, 2, Length(Valor.Text)) + '%"')
+            SQLVendedor.SQL.Add('VENDA60NOME like ''%' + Copy(Valor.Text, 2, Length(Valor.Text)) + '%''')
           else
-            SQLVendedor.SQL.Add('VENDA60NOME like "' + Valor.Text + '%"') ;
+            SQLVendedor.SQL.Add('VENDA60NOME like ''' + Valor.Text + '%''') ;
           SQLVendedor.Open ;
 
           SQLVendedor.First ;

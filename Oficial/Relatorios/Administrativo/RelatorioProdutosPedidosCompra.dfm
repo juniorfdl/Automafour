@@ -453,7 +453,7 @@ inherited FormRelatorioProdutosPedidosCompra: TFormRelatorioProdutosPedidosCompr
         ' left outer join PRODUTO on PEDIDOCOMPRAITEM.PRODICOD = PRODUTO.' +
         'PRODICOD)'
       'Where'
-      '  PEDIDOCOMPRA.PDCPCSTATUS = "E" and'
+      '  PEDIDOCOMPRA.PDCPCSTATUS = ''E'' and'
       '  PEDIDOCOMPRAITEM.PCITN3QTDEMBAL > 0 and'
       '  (%MFiltro)  and'
       '  (%MEmpresa) and'

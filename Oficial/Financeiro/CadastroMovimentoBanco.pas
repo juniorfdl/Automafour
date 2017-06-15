@@ -167,7 +167,7 @@ var
   Saldo : string ;
 begin
   inherited;
-  SQLTemplateBancoCalcField.AsString         := SQLLocate('BANCO', 'BANCA5COD', 'BANCA60NOME',     '"' + SQLLocate('CONTACORRENTE', 'CTCRICOD',  'BANCA5COD',  SQLTemplateCTCRICOD.AsString) + '"') ;
+  SQLTemplateBancoCalcField.AsString         := SQLLocate('BANCO', 'BANCA5COD', 'BANCA60NOME',     '''' + SQLLocate('CONTACORRENTE', 'CTCRICOD',  'BANCA5COD',  SQLTemplateCTCRICOD.AsString) + '''') ;
   SQLTemplateEmpresaCalcField.AsString       := SQLLocate('EMPRESA', 'EMPRICOD',   'EMPRA60RAZAOSOC', SQLTemplateEMPRICOD.AsString) ;
   SQLTemplateTitularCalcField.AsString       := SQLLocate('CONTACORRENTE', 'CTCRICOD',  'CTCRA60TITULAR',  SQLTemplateCTCRICOD.AsString) ;
   SQLTemplateOperacaoBancoCalcField.AsString := SQLLocate('OPERACAOBANCO', 'OPBCICOD',  'OPBCA60DESCR',    SQLTemplateOPBCICOD.AsString) ;

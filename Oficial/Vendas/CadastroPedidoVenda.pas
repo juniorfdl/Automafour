@@ -680,7 +680,7 @@ begin
   if (DM.SQLTerminalAtivo.ParamByName('TERMCTIPO').AsString <> '') then
     begin
       SQLPedidoItens.Close;
-      SQLPedidoItens.SQL.Text := 'Select * From PEDIDOVENDAITEM Where PDVDA13ID = "' + SQLTemplate.FieldByName('PDVDA13ID').AsString + '"' ;
+      SQLPedidoItens.SQL.Text := 'Select * From PEDIDOVENDAITEM Where PDVDA13ID = ''' + SQLTemplate.FieldByName('PDVDA13ID').AsString + '''' ;
       SQLPedidoItens.Open;
       if DM.SQLTerminalAtivo.ParamByName('TERMACTIPOIMPPEDORC').AsString <> '' then
         Case DM.SQLTerminalAtivo.ParamByName('TERMACTIPOIMPPEDORC').AsString[1] of
@@ -774,7 +774,7 @@ begin
   if (DM.SQLTerminalAtivo.ParamByName('TERMCTIPO').AsString <> '') then
     begin
       SQLPedidoItens.Close;
-      SQLPedidoItens.SQL.Text := 'Select * From PEDIDOVENDAITEM Where PDVDA13ID = "' + SQLTemplate.FieldByName('PDVDA13ID').AsString + '"' ;
+      SQLPedidoItens.SQL.Text := 'Select * From PEDIDOVENDAITEM Where PDVDA13ID = ''' + SQLTemplate.FieldByName('PDVDA13ID').AsString + '''' ;
       SQLPedidoItens.Open;
       Case DM.SQLTerminalAtivo.ParamByName('TERMACTIPOIMPPEDORC').AsString[1] of
         '0' : begin
@@ -868,7 +868,7 @@ procedure TFormCadastroPedidoVenda.GeraArquivoExternoParaImpOrcamento(IDOrcament
 begin
   if not SQLOrcamento.Active then SQLOrcamento.Open;
 {  SQLOrcamento.Close ;
-  SQLOrcamento.MacroByName('MFiltro').Value := 'PDVDA13ID = "' + IDOrcamento  + '"';
+  SQLOrcamento.MacroByName('MFiltro').Value := 'PDVDA13ID = ''' + IDOrcamento  + '''';
   SQLOrcamento.Open ;}
   if SQLOrcamento.IsEmpty then
     begin
@@ -1065,11 +1065,11 @@ begin
   inherited;
   Clausula := '';
   if RdAbertos.Checked then
-    Clausula := Clausula + ' and (PDVDCSTATUS = "A" or PDVDCSTATUS = "E" or PDVDCSTATUS = "P")';
+    Clausula := Clausula + ' and (PDVDCSTATUS = ''A'' or PDVDCSTATUS = ''E'' or PDVDCSTATUS = ''P'')';
   if RdFaturado.Checked then
-    Clausula := Clausula + ' and PDVDCSTATUS = "F"';
+    Clausula := Clausula + ' and PDVDCSTATUS = ''F''';
   if RdCanc.Checked then
-    Clausula := Clausula + ' and PDVDCSTATUS = "C"';
+    Clausula := Clausula + ' and PDVDCSTATUS = ''C''';
 
   EditProcura.Text := '';
   EditEntre.Text   := '';
@@ -1096,7 +1096,7 @@ begin
   inherited;
   if DBEdit6.Text <> '' then
     begin
-      MotBloq := DM.SQLLocate('CLIENTE','CLIEA13ID','MTBLICOD','"'+SQLTemplateCLIEA13ID.AsString+'"');
+      MotBloq := DM.SQLLocate('CLIENTE','CLIEA13ID','MTBLICOD',''''+SQLTemplateCLIEA13ID.AsString+'''');
       if MotBloq <> '' then
         begin
           MotBloq := DM.SQLLocate('MOTIVOBLOQUEIO','MTBLICOD','MTBLA60DESCR',MotBloq);
@@ -1218,7 +1218,7 @@ procedure TFormCadastroPedidoVenda.SQLPedidoVendaItemNewRecord(
 begin
   SQLPedidoVendaItemPDVDA13ID.Value   := SQLTemplatePDVDA13ID.Value;
   if SQLPedidoItens.Active then SQLPedidoItens.Close;
-  SQLPedidoItens.SQL.Text := 'Select Max(PVITIITEM) From PEDIDOVENDAITEM Where PDVDA13ID = "' + SQLTemplatePDVDA13ID.AsString + '"' ;
+  SQLPedidoItens.SQL.Text := 'Select Max(PVITIITEM) From PEDIDOVENDAITEM Where PDVDA13ID = ''' + SQLTemplatePDVDA13ID.AsString + '''' ;
   SQLPedidoItens.Open;
   if SQLPedidoItens.FieldByName('MAX').AsInteger = dm.SQLConfigVenda.Fieldbyname('CFVEINROITENSNF').Value then
     ShowMessage('Aviso!'+chr(13)+chr(13)+'Ultrapassou o número máximo de itens que a sua Nota Fiscal permite!');
@@ -1272,10 +1272,10 @@ begin
           DM.SQLTemplate.SQL.Add('select') ;
           DM.SQLTemplate.SQL.Add('Count(*) as NROPARCVENC') ;
           DM.SQLTemplate.SQL.Add('from CONTASRECEBER') ;
-          DM.SQLTemplate.SQL.Add('where CLIEA13ID = "' + SQLTemplateCLIEA13ID.AsString + '"') ;
+          DM.SQLTemplate.SQL.Add('where CLIEA13ID = ''' + SQLTemplateCLIEA13ID.AsString + '''') ;
           DM.SQLTemplate.SQL.Add(' and (CTRCN2VLR-CTRCN2TOTREC) > 0') ;
-          DM.SQLTemplate.SQL.Add(' and (CTRCCSTATUS = "A" OR CTRCCSTATUS = "N")') ;
-          DM.SQLTemplate.SQL.Add(' and (CTRCCTIPOREGISTRO = "N" OR CTRCCTIPOREGISTRO IS NULL)') ;
+          DM.SQLTemplate.SQL.Add(' and (CTRCCSTATUS = ''A'' OR CTRCCSTATUS = ''N'')') ;
+          DM.SQLTemplate.SQL.Add(' and (CTRCCTIPOREGISTRO = ''N'' OR CTRCCTIPOREGISTRO IS NULL)') ;
           DM.SQLTemplate.SQL.Add(' and (CTRCDVENC < :xDataVencimento)') ;
           Dm.SQLTemplate.ParamByName('xDataVencimento').asdate := date;
 
@@ -1414,7 +1414,7 @@ procedure TFormCadastroPedidoVenda.ComboVeiculoExit(Sender: TObject);
 begin
   inherited;
   if (ComboVeiculo.KeyValue <> null) and (SQLTemplate.State in dsEditModes) then
-    SQLTemplatePDVD8PLACAVEIC.AsString := DM.SQLLocate('VEICULO','VEICA13ID','VEICA7PLACA','"'+SQLTemplateVEICA13ID.Value+'"');
+    SQLTemplatePDVD8PLACAVEIC.AsString := DM.SQLLocate('VEICULO','VEICA13ID','VEICA7PLACA',''''+SQLTemplateVEICA13ID.Value+'''');
 end;
 
 procedure TFormCadastroPedidoVenda.BtnExcluirParcAtuaisClick(
@@ -1529,7 +1529,7 @@ begin
           // Lancar Cabecalho
           SQLGeral.Close;
           SQLGeral.sql.Clear;
-          SQLGeral.SQL.Add('Select * from PedidoVenda where PDVDA13ID = "'+FormTelaPedidoParcial.TblQtdePDVDA13ID.Value+'"');
+          SQLGeral.SQL.Add('Select * from PedidoVenda where PDVDA13ID = '''+FormTelaPedidoParcial.TblQtdePDVDA13ID.Value+'''');
           SQLGeral.Open;
           SQLTemplate.Append;
           IniciouVenda := False;
@@ -1577,7 +1577,7 @@ begin
                   // Corrige a Quantidade no pedido Original (Coluna=PVITN3QUANTVEND) usada para fazer o parcial
                   SQLGeral.Close;
                   SQLGeral.sql.Clear;
-                  SQLGeral.SQL.Add('Select * from PedidoVendaItem where PDVDA13ID = "'+FormTelaPedidoParcial.TblQtdePDVDA13ID.Value+'" and PRODICOD = '+
+                  SQLGeral.SQL.Add('Select * from PedidoVendaItem where PDVDA13ID = '''+FormTelaPedidoParcial.TblQtdePDVDA13ID.Value+''' and PRODICOD = '+
                                    FormTelaPedidoParcial.TblQtdePRODICOD.Asstring);
                   SQLGeral.Open;
                   SQLGeral.Edit;
@@ -1645,7 +1645,7 @@ begin
   if (DM.SQLTerminalAtivo.ParamByName('TERMCTIPO').AsString <> '') then
     begin
       SQLPedidoItens.Close;
-      SQLPedidoItens.SQL.Text := 'Select * From PEDIDOVENDAITEM Where PDVDA13ID = "' + SQLTemplate.FieldByName('PDVDA13ID').AsString + '"' ;
+      SQLPedidoItens.SQL.Text := 'Select * From PEDIDOVENDAITEM Where PDVDA13ID = ''' + SQLTemplate.FieldByName('PDVDA13ID').AsString + '''' ;
       SQLPedidoItens.Open;
       if DM.SQLTerminalAtivo.ParamByName('TERMACTIPOIMPPEDORC').AsString <> '' then
         Case DM.SQLTerminalAtivo.ParamByName('TERMACTIPOIMPPEDORC').AsString[1] of
@@ -1746,7 +1746,7 @@ procedure TFormCadastroPedidoVenda.CalculaTotal ;
 begin
   SQLTotal.Close;
   SQLTotal.SQL.Clear;
-  SQLTotal.SQL.Add('Select Sum(PVITN3TOTVENDITEM) as TotalGeral, Sum(PRODN3PESOBRUTO*(PVITN3QUANT+PVITN3QTDBONIF)) as PesoTotal from PedidoVendaItem where PDVDA13ID = "'+SQLTemplatePDVDA13ID.Value+'"');
+  SQLTotal.SQL.Add('Select Sum(PVITN3TOTVENDITEM) as TotalGeral, Sum(PRODN3PESOBRUTO*(PVITN3QUANT+PVITN3QTDBONIF)) as PesoTotal from PedidoVendaItem where PDVDA13ID = '''+SQLTemplatePDVDA13ID.Value+'''');
   SQLTotal.Prepare;
   SQLTotal.Open;
   try
@@ -1772,9 +1772,9 @@ procedure TFormCadastroPedidoVenda.SQLTemplateBeforeOpen(
   DataSet: TDataSet);
 begin
   inherited;
-  if RdAbertos.Checked then SQLtemplate.MacroByName('MSituacao').Value  := '(PDVDCSTATUS = "A" or PDVDCSTATUS = "E" or PDVDCSTATUS = "P")';
-  if RdFaturado.Checked then SQLtemplate.MacroByName('MSituacao').Value := '(PDVDCSTATUS = "F")';
-  if RdCanc.Checked then SQLtemplate.MacroByName('MSituacao').Value     := '(PDVDCSTATUS = "C")';
+  if RdAbertos.Checked then SQLtemplate.MacroByName('MSituacao').Value  := '(PDVDCSTATUS = ''A'' or PDVDCSTATUS = ''E'' or PDVDCSTATUS = ''P'')';
+  if RdFaturado.Checked then SQLtemplate.MacroByName('MSituacao').Value := '(PDVDCSTATUS = ''F'')';
+  if RdCanc.Checked then SQLtemplate.MacroByName('MSituacao').Value     := '(PDVDCSTATUS = ''C'')';
 end;
 
 procedure TFormCadastroPedidoVenda.MnTrocarStatusdoPedidoparaAbertoClick(
@@ -2282,11 +2282,11 @@ begin
           if not SQLTemplateCLIEA13ID.IsNull then
             begin
               SQLTemplate.edit;
-              SQLTemplateCLIENTENOME.Value    := SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC','"'+SQLTemplateCLIEA13ID.AsString+'"');
+              SQLTemplateCLIENTENOME.Value    := SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC',''''+SQLTemplateCLIEA13ID.AsString+'''');
               if SQLTemplateCLIENTEFONE.IsNull then
-                SQLTemplateCLIENTEFONE.Value  := SQLLocate('CLIENTE','CLIEA13ID','CLIEA15FONE1','"'+SQLTemplateCLIEA13ID.AsString+'"');
+                SQLTemplateCLIENTEFONE.Value  := SQLLocate('CLIENTE','CLIEA13ID','CLIEA15FONE1',''''+SQLTemplateCLIEA13ID.AsString+'''');
               if SQLTemplateCLIENTEEMAIL.IsNull then
-                SQLTemplateCLIENTEEMAIL.Value := SQLLocate('CLIENTE','CLIEA13ID','CLIEA60EMAIL','"'+SQLTemplateCLIEA13ID.AsString+'"');
+                SQLTemplateCLIENTEEMAIL.Value := SQLLocate('CLIENTE','CLIEA13ID','CLIEA60EMAIL',''''+SQLTemplateCLIEA13ID.AsString+'''');
               SQLTemplate.post;
             end;
         end;

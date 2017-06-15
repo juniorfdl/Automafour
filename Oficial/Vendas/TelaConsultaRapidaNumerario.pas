@@ -59,15 +59,15 @@ begin
           SQLNumerario.Close ;
 
           if Pos('*', Valor.Text) > 0 then
-            SQLNumerario.MacroByName('MLike').Value := 'NUMEA30DESCR like "%' + Copy(Valor.Text, 2, Length(Valor.Text)) + '%"'
+            SQLNumerario.MacroByName('MLike').Value := 'NUMEA30DESCR like ''%' + Copy(Valor.Text, 2, Length(Valor.Text)) + '%'''
           else
-            SQLNumerario.MacroByName('MLike').Value := 'NUMEA30DESCR like "' + Valor.Text + '%"' ;
+            SQLNumerario.MacroByName('MLike').Value := 'NUMEA30DESCR like ''' + Valor.Text + '%''' ;
 
 {          if EstadoFechVenda = TelaFechamentoVenda.InformandoNumerarioVista then
-            SQLNumerario.MacroByName('MTipo').Value := 'NUMECVISTAPRAZO = "V"' ;
+            SQLNumerario.MacroByName('MTipo').Value := 'NUMECVISTAPRAZO = ''V''' ;
 
           if EstadoFechVenda = TelaFechamentoVenda.InformandoNumerarioPrazo then
-            SQLNumerario.MacroByName('MTipo').Value := 'NUMECVISTAPRAZO = "P"' ;}
+            SQLNumerario.MacroByName('MTipo').Value := 'NUMECVISTAPRAZO = ''P''' ;}
 
           SQLNumerario.Open ;
 

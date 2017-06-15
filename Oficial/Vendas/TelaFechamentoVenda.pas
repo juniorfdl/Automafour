@@ -516,7 +516,7 @@ begin
         begin
           Application.CreateForm(TFormTelaConsultaRapidaNumerario, FormTelaConsultaRapidaNumerario) ;
           FormTelaConsultaRapidaNumerario.SQLNumerario.Close ;
-          FormTelaConsultaRapidaNumerario.SQLNumerario.MacroByName('MTipo').Value := 'NUMECVISTAPRAZO = "V" or NUMECVISTAPRAZO = "B"' ;
+          FormTelaConsultaRapidaNumerario.SQLNumerario.MacroByName('MTipo').Value := 'NUMECVISTAPRAZO = ''V'' or NUMECVISTAPRAZO = ''B''' ;
           FormTelaConsultaRapidaNumerario.SQLNumerario.Open ;
 
           FormTelaConsultaRapidaNumerario.ShowModal ;
@@ -528,7 +528,7 @@ begin
         begin
           Application.CreateForm(TFormTelaConsultaRapidaNumerario, FormTelaConsultaRapidaNumerario) ;
           FormTelaConsultaRapidaNumerario.SQLNumerario.Close ;
-          FormTelaConsultaRapidaNumerario.SQLNumerario.MacroByName('MTipo').Value := 'NUMECVISTAPRAZO = "P" or NUMECVISTAPRAZO = "B"' ;
+          FormTelaConsultaRapidaNumerario.SQLNumerario.MacroByName('MTipo').Value := 'NUMECVISTAPRAZO = ''P'' or NUMECVISTAPRAZO = ''B''' ;
           FormTelaConsultaRapidaNumerario.SQLNumerario.Open ;
 
           FormTelaConsultaRapidaNumerario.ShowModal ;
@@ -617,8 +617,8 @@ begin
               DM.SQLTemplate.Close ;
               DM.SQLTemplate.SQL.Clear ;
               DM.SQLTemplate.SQL.Add('select * from CLIENTE') ;
-              DM.SQLTemplate.SQL.Add('where CLIECATIVO="S" and ') ;
-              DM.SQLTemplate.SQL.Add('CLIEA35NROCARTCRED = "' + EntradaDados.text + '"') ;
+              DM.SQLTemplate.SQL.Add('where CLIECATIVO=''S'' and ') ;
+              DM.SQLTemplate.SQL.Add('CLIEA35NROCARTCRED = ''' + EntradaDados.text + '''') ;
               DM.SQLTemplate.Open ;
             end;
           if Length(EntradaDados.Text) = 11 then
@@ -626,8 +626,8 @@ begin
               DM.SQLTemplate.Close ;
               DM.SQLTemplate.SQL.Clear ;
               DM.SQLTemplate.SQL.Add('select * from CLIENTE') ;
-              DM.SQLTemplate.SQL.Add('where CLIECATIVO="S" and ') ;
-              DM.SQLTemplate.SQL.Add('CLIEA11CPF = "' + EntradaDados.text + '"') ;
+              DM.SQLTemplate.SQL.Add('where CLIECATIVO=''S'' and ') ;
+              DM.SQLTemplate.SQL.Add('CLIEA11CPF = ''' + EntradaDados.text + '''') ;
               DM.SQLTemplate.Open ;
             end;
           if Length(EntradaDados.Text) = 12 then
@@ -635,8 +635,8 @@ begin
               DM.SQLTemplate.Close ;
               DM.SQLTemplate.SQL.Clear ;
               DM.SQLTemplate.SQL.Add('select * from CLIENTE') ;
-              DM.SQLTemplate.SQL.Add('where CLIECATIVO="S" and ') ;
-              DM.SQLTemplate.SQL.Add('CLIEA13ID = "0' + EntradaDados.text + '"') ;
+              DM.SQLTemplate.SQL.Add('where CLIECATIVO=''S'' and ') ;
+              DM.SQLTemplate.SQL.Add('CLIEA13ID = ''0' + EntradaDados.text + '''') ;
               DM.SQLTemplate.Open ;
             end ;
           if Length(EntradaDados.Text) = 13 then
@@ -644,8 +644,8 @@ begin
               DM.SQLTemplate.Close ;
               DM.SQLTemplate.SQL.Clear ;
               DM.SQLTemplate.SQL.Add('select * from CLIENTE') ;
-              DM.SQLTemplate.SQL.Add('where CLIECATIVO="S" and  ') ;
-              DM.SQLTemplate.SQL.Add('CLIEA13ID = "' + EntradaDados.text + '"') ;
+              DM.SQLTemplate.SQL.Add('where CLIECATIVO=''S'' and  ') ;
+              DM.SQLTemplate.SQL.Add('CLIEA13ID = ''' + EntradaDados.text + '''') ;
               DM.SQLTemplate.Open ;
             end ;
           if Length(EntradaDados.Text) = 14 then
@@ -653,8 +653,8 @@ begin
               DM.SQLTemplate.Close ;
               DM.SQLTemplate.SQL.Clear ;
               DM.SQLTemplate.SQL.Add('select * from CLIENTE') ;
-              DM.SQLTemplate.SQL.Add('where CLIECATIVO="S" and ') ;
-              DM.SQLTemplate.SQL.Add('CLIEA14CGC = "' + EntradaDados.text + '"') ;
+              DM.SQLTemplate.SQL.Add('where CLIECATIVO=''S'' and ') ;
+              DM.SQLTemplate.SQL.Add('CLIEA14CGC = ''' + EntradaDados.text + '''') ;
               DM.SQLTemplate.Open ;
             end ;
 
@@ -789,9 +789,9 @@ begin
         begin
           if (EntradaDados.text = '') or (not IsNumeric(EntradaDados.Text, 'INTEGER')) then
             begin
-              if (not IsNumeric(EntradaDados.Text, 'INTEGER')) and (SQLLocate('VENDEDOR', 'VENDA60NOME', 'VENDICOD', '"' + EntradaDados.Text + '"') <> '') then
+              if (not IsNumeric(EntradaDados.Text, 'INTEGER')) and (SQLLocate('VENDEDOR', 'VENDA60NOME', 'VENDICOD', '''' + EntradaDados.Text + '''') <> '') then
                 begin
-                  EntradaDados.text := SQLLocate('VENDEDOR', 'VENDA60NOME', 'VENDICOD', '"' + EntradaDados.Text + '"') ;
+                  EntradaDados.text := SQLLocate('VENDEDOR', 'VENDA60NOME', 'VENDICOD', '''' + EntradaDados.Text + '''') ;
                 end
               else
                 begin
@@ -1199,15 +1199,15 @@ begin
         begin
           if (EntradaDados.text = '') or (not IsNumeric(EntradaDados.Text, 'INTEGER')) then
             begin
-              if (not IsNumeric(EntradaDados.Text, 'INTEGER')) and (SQLLocate('NUMERARIO', 'NUMEA30DESCR', 'NUMEICOD', '"' + EntradaDados.Text + '"') <> '') then
+              if (not IsNumeric(EntradaDados.Text, 'INTEGER')) and (SQLLocate('NUMERARIO', 'NUMEA30DESCR', 'NUMEICOD', '''' + EntradaDados.Text + '''') <> '') then
                 begin
-                  EntradaDados.text := SQLLocate('NUMERARIO', 'NUMEA30DESCR', 'NUMEICOD', '"' + EntradaDados.Text + '"') ;
+                  EntradaDados.text := SQLLocate('NUMERARIO', 'NUMEA30DESCR', 'NUMEICOD', '''' + EntradaDados.Text + '''') ;
                 end
               else
                 begin
                   Application.CreateForm(TFormTelaConsultaRapidaNumerario, FormTelaConsultaRapidaNumerario) ;
                   FormTelaConsultaRapidaNumerario.SQLNumerario.Close ;
-                  FormTelaConsultaRapidaNumerario.SQLNumerario.MacroByName('MTipo').Value := 'NUMECVISTAPRAZO = "V" or NUMECVISTAPRAZO = "B"' ;
+                  FormTelaConsultaRapidaNumerario.SQLNumerario.MacroByName('MTipo').Value := 'NUMECVISTAPRAZO = ''V'' or NUMECVISTAPRAZO = ''B''' ;
                   FormTelaConsultaRapidaNumerario.SQLNumerario.Open ;
 
                   FormTelaConsultaRapidaNumerario.ShowModal ;
@@ -1393,16 +1393,16 @@ begin
           if (EntradaDados.text = '') or (not IsNumeric(EntradaDados.Text, 'INTEGER')) then
             begin
               if (not IsNumeric(EntradaDados.Text, 'INTEGER')) and
-                 (SQLLocate('NUMERARIO', 'NUMEA30DESCR', 'NUMEICOD', '"' + EntradaDados.Text + '"') <> '') and
+                 (SQLLocate('NUMERARIO', 'NUMEA30DESCR', 'NUMEICOD', '''' + EntradaDados.Text + '''') <> '') and
                  (Key <> VK_Down) then
                 begin
-                  EntradaDados.text := SQLLocate('NUMERARIO', 'NUMEA30DESCR', 'NUMEICOD', '"' + EntradaDados.Text + '"') ;
+                  EntradaDados.text := SQLLocate('NUMERARIO', 'NUMEA30DESCR', 'NUMEICOD', '''' + EntradaDados.Text + '''') ;
                 end
               else
                 begin
                   Application.CreateForm(TFormTelaConsultaRapidaNumerario, FormTelaConsultaRapidaNumerario) ;
                   FormTelaConsultaRapidaNumerario.SQLNumerario.Close ;
-                  FormTelaConsultaRapidaNumerario.SQLNumerario.MacroByName('MTipo').Value := 'NUMECVISTAPRAZO = "P" or NUMECVISTAPRAZO = "B"' ;
+                  FormTelaConsultaRapidaNumerario.SQLNumerario.MacroByName('MTipo').Value := 'NUMECVISTAPRAZO = ''P'' or NUMECVISTAPRAZO = ''B''' ;
                   FormTelaConsultaRapidaNumerario.SQLNumerario.Open ;
                   FormTelaConsultaRapidaNumerario.ShowModal ;
                   EntradaDados.text := IntToStr(NumerarioAtual) ;
@@ -1836,9 +1836,9 @@ begin
 
                     dm.NumerarioCartao  := SQLParcelasVistaVendaTempNUMEICOD.AsString;
                     NomeNumerarioCartao := SQLParcelasVistaVendaTempNumerarioLookup.AsString;
-                    ProvedorCartao   := dm.SQLLocate('PROVEDORCARTAO','PRCAA13ID','PRCAA60CARTAO',  '"'+dm.SQLLocate('NUMERARIO','NUMEICOD','PRCAA13ID',dm.NumerarioCartao)+'"');
-                    SendDirectory    := dm.SQLLocate('PROVEDORCARTAO','PRCAA13ID','PRCATPATHENVIA', '"'+dm.SQLLocate('NUMERARIO','NUMEICOD','PRCAA13ID',dm.NumerarioCartao)+'"');
-                    ReceiveDirectory := dm.SQLLocate('PROVEDORCARTAO','PRCAA13ID','PRCATPATHRECEBE','"'+dm.SQLLocate('NUMERARIO','NUMEICOD','PRCAA13ID',dm.NumerarioCartao)+'"');
+                    ProvedorCartao   := dm.SQLLocate('PROVEDORCARTAO','PRCAA13ID','PRCAA60CARTAO',  ''''+dm.SQLLocate('NUMERARIO','NUMEICOD','PRCAA13ID',dm.NumerarioCartao)+'''');
+                    SendDirectory    := dm.SQLLocate('PROVEDORCARTAO','PRCAA13ID','PRCATPATHENVIA', ''''+dm.SQLLocate('NUMERARIO','NUMEICOD','PRCAA13ID',dm.NumerarioCartao)+'''');
+                    ReceiveDirectory := dm.SQLLocate('PROVEDORCARTAO','PRCAA13ID','PRCATPATHRECEBE',''''+dm.SQLLocate('NUMERARIO','NUMEICOD','PRCAA13ID',dm.NumerarioCartao)+'''');
                   end
                 else
                   begin
@@ -1988,9 +1988,9 @@ begin
                     ReceiveDirectory := SQLParcelasPrazoVendaTempPRCATPATHRECEBE.AsString;}
                     dm.NumerarioCartao := SQLParcelasPrazoVendaTempNUMEICOD.AsString;
                     NomeNumerarioCartao := SQLParcelasPrazoVendaTempNumerarioLookup.AsString;
-                    ProvedorCartao   := dm.SQLLocate('PROVEDORCARTAO','PRCAA13ID','PRCAA60CARTAO',  '"'+dm.SQLLocate('NUMERARIO','NUMEICOD','PRCAA13ID',dm.NumerarioCartao)+'"');
-                    SendDirectory    := dm.SQLLocate('PROVEDORCARTAO','PRCAA13ID','PRCATPATHENVIA', '"'+dm.SQLLocate('NUMERARIO','NUMEICOD','PRCAA13ID',dm.NumerarioCartao)+'"');
-                    ReceiveDirectory := dm.SQLLocate('PROVEDORCARTAO','PRCAA13ID','PRCATPATHRECEBE','"'+dm.SQLLocate('NUMERARIO','NUMEICOD','PRCAA13ID',dm.NumerarioCartao)+'"');
+                    ProvedorCartao   := dm.SQLLocate('PROVEDORCARTAO','PRCAA13ID','PRCAA60CARTAO',  ''''+dm.SQLLocate('NUMERARIO','NUMEICOD','PRCAA13ID',dm.NumerarioCartao)+'''');
+                    SendDirectory    := dm.SQLLocate('PROVEDORCARTAO','PRCAA13ID','PRCATPATHENVIA', ''''+dm.SQLLocate('NUMERARIO','NUMEICOD','PRCAA13ID',dm.NumerarioCartao)+'''');
+                    ReceiveDirectory := dm.SQLLocate('PROVEDORCARTAO','PRCAA13ID','PRCATPATHRECEBE',''''+dm.SQLLocate('NUMERARIO','NUMEICOD','PRCAA13ID',dm.NumerarioCartao)+'''');
                   end;
               end
             else
@@ -2409,7 +2409,7 @@ begin
                         end
                       else
                         begin
-                          Informa('O Indentificador de CNFV do Numerário "' + SQLParcelasPrazoVendaTempNumerarioLookup.AsString + '" não foi informado, não será possível emitir a confissão de dívida!') ;
+                          Informa('O Indentificador de CNFV do Numerário ''' + SQLParcelasPrazoVendaTempNumerarioLookup.AsString + ''' não foi informado, não será possível emitir a confissão de dívida!') ;
                         end ;
                     end;
                 end ;
@@ -3033,7 +3033,7 @@ begin
                         end
                       else
                         begin
-                          Informa('O Indentificador de CNFV do Numerário "' + SQLParcelasPrazoVendaTempNumerarioLookup.AsString + '" não foi informado, não será possível emitir a confissão de dívida!') ;
+                          Informa('O Indentificador de CNFV do Numerário ''' + SQLParcelasPrazoVendaTempNumerarioLookup.AsString + ''' não foi informado, não será possível emitir a confissão de dívida!') ;
                         end;
                     end;
                 end;
@@ -3279,9 +3279,9 @@ begin
                 DM.SQLTemplate.SQL.Clear;
                 DM.SQLTemplate.SQL.Add('Update PREVENDA');
                 if ContinuarPrevenda then
-                  DM.SQLTemplate.SQL.Add('Set PRVDCIMPORT = "C"')
+                  DM.SQLTemplate.SQL.Add('Set PRVDCIMPORT = ''C''')
                 else
-                  DM.SQLTemplate.SQL.Add('Set PRVDCIMPORT = "S"');
+                  DM.SQLTemplate.SQL.Add('Set PRVDCIMPORT = ''S''');
                 DM.SQLTemplate.SQL.Add('Where');
                 DM.SQLTemplate.SQL.Add('TERMICOD = ' + TermCod + ' And ');
                 DM.SQLTemplate.SQL.Add('PRVDICOD = ' + PrvCod);
@@ -3313,9 +3313,9 @@ begin
                 DM.SQLTemplate.Close;
                 DM.SQLTemplate.SQL.Clear;
                 DM.SQLTemplate.SQL.Add('Update PEDIDOVENDA');
-                DM.SQLTemplate.SQL.Add('Set Pendente="S", PDVDCIMPORTADO = "S"');
+                DM.SQLTemplate.SQL.Add('Set Pendente=''S'', PDVDCIMPORTADO = ''S''');
                 DM.SQLTemplate.SQL.Add('Where');
-                DM.SQLTemplate.SQL.Add('PDVDA13ID = "' + IDPedido + '"');
+                DM.SQLTemplate.SQL.Add('PDVDA13ID = ''' + IDPedido + '''');
                 DM.SQLTemplate.ExecSQL;
               end;
           end;
@@ -3326,8 +3326,8 @@ begin
           begin
             ValorEntradaAut := 0;
             SQLCupomNumerarioAut.Close;
-            SQLCupomNumerarioAut.MacroByName('MFiltro').Value := 'CUPOA13ID = "' + DM.CodNextCupom +
-                                                                 '" and CPNMCAUTENT is null';
+            SQLCupomNumerarioAut.MacroByName('MFiltro').Value := 'CUPOA13ID = ''' + DM.CodNextCupom +
+                                                                 ''' and CPNMCAUTENT is null';
             SQLCupomNumerarioAut.Open;
             if not SQLCupomNumerarioAut.EOF then
               while not SQLCupomNumerarioAut.Eof do
@@ -3778,7 +3778,7 @@ begin
                 if FinalizacaodeVenda then exit;
                 Application.CreateForm(TFormTelaConsultaRapidaDependente, FormTelaConsultaRapidaDependente);
                 FormTelaConsultaRapidaDependente.SQLDependentes.Close ;
-                FormTelaConsultaRapidaDependente.SQLDependentes.MacroByName('MFiltro').Value := 'CLIEA13ID = "'+ClienteVenda+'"' ;
+                FormTelaConsultaRapidaDependente.SQLDependentes.MacroByName('MFiltro').Value := 'CLIEA13ID = '''+ClienteVenda+'''' ;
                 FormTelaConsultaRapidaDependente.SQLDependentes.Open ;
                 FormTelaConsultaRapidaDependente.ShowModal;
                 if ClienteDependente <> '' then
@@ -4295,7 +4295,7 @@ begin
       // Se Cliente Tem Plano Vendas, USAR
       if (DM.SQLTerminalAtivo.FieldByName('CLIEA13ID').Value <> ClienteVenda) then
         begin
-          planoCliente := SQLLocate('CLIENTE','CLIEA13ID','PLRCICOD','"'+ClienteVenda+'"');
+          planoCliente := SQLLocate('CLIENTE','CLIEA13ID','PLRCICOD',''''+ClienteVenda+'''');
           if planoCliente <> '' then
             begin
               PlanoVenda := strToint(planoCliente);
@@ -4435,7 +4435,7 @@ begin
   DM.SQLTemplate.Close ;
   DM.SQLTemplate.SQL.Clear ;
   DM.SQLTemplate.SQL.Add('select * from OPERACAOCAIXA') ;
-  DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = "' + Sigla + '"') ;
+  DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = ''' + Sigla + '''') ;
   DM.SQLTemplate.Open ;
   if DM.SQLTemplate.IsEmpty then
     begin
@@ -4647,7 +4647,7 @@ begin
     DM.SQLTemplate.SQL.Add('Values (') ;
     DM.SQLTemplate.SQL.Add(IntToStr(TerminalAtual) + ',') ;//TERMICOD
     DM.SQLTemplate.SQL.Add(IntToStr(CodNextPreVenda) + ', ') ;//PRVDICOD
-    DM.SQLTemplate.SQL.Add('"' + ClienteVenda + '",') ;//CLIEA13ID
+    DM.SQLTemplate.SQL.Add('''' + ClienteVenda + ''',') ;//CLIEA13ID
     DM.SQLTemplate.SQL.Add(IntToStr(PlanoVenda) + ',') ;//PLRCICOD
     DM.SQLTemplate.SQL.Add(IntToStr(VendedorVenda) + ',') ;//VENDICOD
     if ConvenioVenda > 0 then
@@ -4664,41 +4664,41 @@ begin
     else
       DM.SQLTemplate.SQL.Add('0,') ;//PRVDN2ACRESC
     DM.SQLTemplate.SQL.Add('0,') ;//PRVDN2TOTITENSRET
-    DM.SQLTemplate.SQL.Add('"' + TipoPadrao + '",') ;//PRVDCTIPOPADRAO
+    DM.SQLTemplate.SQL.Add('''' + TipoPadrao + ''',') ;//PRVDCTIPOPADRAO
     DM.SQLTemplate.SQL.Add('0,') ;//PRVDN2CONVTAXA
     if NroOrdemCompraConvenio > 0 then
       DM.SQLTemplate.SQL.Add('null,') {PRVDINROORDCOMPRA}
     else
       DM.SQLTemplate.SQL.Add('null,') ;{PRVDINROORDCOMPRA}
-    DM.SQLTemplate.SQL.Add('"N",') ;{PRVDCIMPORT}
-    DM.SQLTemplate.SQL.Add('"N",') ;{PRVDCMARCADO}
-    DM.SQLTemplate.SQL.Add('"'+FormatDateTime('mm/dd/yyyy hh:mm:ss',Now)+'",') ;{DAtaHora Venda}
+    DM.SQLTemplate.SQL.Add('''N'',') ;{PRVDCIMPORT}
+    DM.SQLTemplate.SQL.Add('''N'',') ;{PRVDCMARCADO}
+    DM.SQLTemplate.SQL.Add(''''+FormatDateTime('mm/dd/yyyy hh:mm:ss',Now)+''',') ;{DAtaHora Venda}
 
     if NomeClienteVenda <> '' then
-      DM.SQLTemplate.SQL.Add('"'+copy(NomeClienteVenda,1,60)+'",') {nome do cliente}
+      DM.SQLTemplate.SQL.Add(''''+copy(NomeClienteVenda,1,60)+''',') {nome do cliente}
     else
       DM.SQLTemplate.SQL.Add('Null,') ;{vazio}
     if DocumentoClienteVenda <> '' then
-      DM.SQLTemplate.SQL.Add('"'+copy(DocumentoClienteVenda,1,20)+'",') {Documento do cliente}
+      DM.SQLTemplate.SQL.Add(''''+copy(DocumentoClienteVenda,1,20)+''',') {Documento do cliente}
     else
       DM.SQLTemplate.SQL.Add('Null,') ;{vazio}
     if EnderecoClienteVenda <> '' then
-      DM.SQLTemplate.SQL.Add('"'+copy(EnderecoClienteVenda,1,60)+'",') {endereco do cliente}
+      DM.SQLTemplate.SQL.Add(''''+copy(EnderecoClienteVenda,1,60)+''',') {endereco do cliente}
     else
       DM.SQLTemplate.SQL.Add('Null,') ;{vazio}
     if CidadeClienteVenda <> '' then
-      DM.SQLTemplate.SQL.Add('"'+copy(CidadeClienteVenda,1,30)+'",') {cidade do cliente}
+      DM.SQLTemplate.SQL.Add(''''+copy(CidadeClienteVenda,1,30)+''',') {cidade do cliente}
     else
       DM.SQLTemplate.SQL.Add('Null,') ;{vazio}
     if OBSImpressaoCupom <> '' then
-      DM.SQLTemplate.SQL.Add('"'+copy(OBSImpressaoCupom,1,60)+'",') {obs do cliente}
+      DM.SQLTemplate.SQL.Add(''''+copy(OBSImpressaoCupom,1,60)+''',') {obs do cliente}
     else
       DM.SQLTemplate.SQL.Add('Null,') ;{vazio}
 
-    DM.SQLTemplate.SQL.Add('"S",') ;{PDVCPRECONCLU}
+    DM.SQLTemplate.SQL.Add('''S'',') ;{PDVCPRECONCLU}
 
     if FoneClienteVenda <> '' then
-      DM.SQLTemplate.SQL.Add('"'+copy(FoneClienteVenda,1,15)+'",') {Fone do cliente}
+      DM.SQLTemplate.SQL.Add(''''+copy(FoneClienteVenda,1,15)+''',') {Fone do cliente}
     else
       DM.SQLTemplate.SQL.Add('Null,') ;{vazio}
 
@@ -4831,11 +4831,11 @@ begin
       DM.SQLTemplate.SQL.Add(IntToStr(CodNextPVContaRec) + ',') ; {PVCRICOD}
       DM.SQLTemplate.SQL.Add(IntToStr(TerminalAtual) + ', ') ; {TERMICOD}
       DM.SQLTemplate.SQL.Add(IntToStr(CodNextPreVenda) + ', ') ;{PRVDICOD}
-      DM.SQLTemplate.SQL.Add( '"' + ClienteVenda + '", ') ; {CLIEA13ID}
+      DM.SQLTemplate.SQL.Add( '''' + ClienteVenda + ''', ') ; {CLIEA13ID}
       DM.SQLTemplate.SQL.Add( 'null, ') ; {PORTICOD}
       DM.SQLTemplate.SQL.Add( SQLParcelasPrazoVendaTempNUMEICOD.AsString + ',') ; {NUMEICOD}
       DM.SQLTemplate.SQL.Add( SQLParcelasPrazoVendaTempNROPARCELA.AsString + ', ') ; {PVCRINROPARC}
-      DM.SQLTemplate.SQL.Add( '"' + FormatDateTime('mm/dd/yyyy', SQLParcelasPrazoVendaTempDATAVENCTO.Value) + '", ') ; {PVCRDVENC}
+      DM.SQLTemplate.SQL.Add( '''' + FormatDateTime('mm/dd/yyyy', SQLParcelasPrazoVendaTempDATAVENCTO.Value) + ''', ') ; {PVCRDVENC}
       DM.SQLTemplate.SQL.Add( ConvFloatToStr(SQLParcelasPrazoVendaTempVALORVENCTO.Value) + ',') ; {PVCRN2VLR}
       DM.SQLTemplate.SQL.Add( '0, ') ; {PVCRN2TXJURO}
       DM.SQLTemplate.SQL.Add( '0, ') ; {PVCRN2TXMULTA}
@@ -4887,15 +4887,15 @@ begin
       DM.SQLTemplate.SQL.Add('(CTRCA13ID, EMPRICOD, TERMICOD, CTRCICOD, CLIEA13ID, PDVDA13ID, NUMEICOD, CTRCINROPARC,') ;
       DM.SQLTemplate.SQL.Add('CTRCDVENC, CTRCN2VLR, CTRCN2TXJURO, CTRCN2TXMULTA, CTRCN2DESCFIN, CTRCCEMITIDOBOLETO)') ;
       DM.SQLTemplate.SQL.Add('values (') ;
-      DM.SQLTemplate.SQL.Add( '"' + CodNextContaRec + '", ') ; {CTRCA13ID}
+      DM.SQLTemplate.SQL.Add( '''' + CodNextContaRec + ''', ') ; {CTRCA13ID}
       DM.SQLTemplate.SQL.Add(IntToStr(EmpresaCorrente) + ', ') ; {EMPRICOD}
       DM.SQLTemplate.SQL.Add(IntToStr(TerminalAtual) + ', ') ; {TERMICOD}
       DM.SQLTemplate.SQL.Add(IntToStr(ProxCod) + ', ') ;{CTRCICOD}
-      DM.SQLTemplate.SQL.Add( '"' + ClienteVenda + '", ') ; {CLIEA13ID}
-      DM.SQLTemplate.SQL.Add( '"' + DM.CodNextOrc + '", ') ; {PDVDA13ID}
+      DM.SQLTemplate.SQL.Add( '''' + ClienteVenda + ''', ') ; {CLIEA13ID}
+      DM.SQLTemplate.SQL.Add( '''' + DM.CodNextOrc + ''', ') ; {PDVDA13ID}
       DM.SQLTemplate.SQL.Add( SQLParcelasPrazoVendaTempNUMEICOD.AsString + ',') ; {NUMEICOD}
       DM.SQLTemplate.SQL.Add( SQLParcelasPrazoVendaTempNROPARCELA.AsString + ', ') ; {PVCRINROPARC}
-      DM.SQLTemplate.SQL.Add( '"' + FormatDateTime('mm/dd/yyyy', SQLParcelasPrazoVendaTempDATAVENCTO.Value) + '", ') ; {PVCRDVENC}
+      DM.SQLTemplate.SQL.Add( '''' + FormatDateTime('mm/dd/yyyy', SQLParcelasPrazoVendaTempDATAVENCTO.Value) + ''', ') ; {PVCRDVENC}
       DM.SQLTemplate.SQL.Add( ConvFloatToStr(SQLParcelasPrazoVendaTempVALORVENCTO.Value) + ',') ; {PVCRN2VLR}
       if Dm.SQLConfigCrediario.FieldByName('CFCRN2PERCJURATRAS').AsFloat > 0 then
         DM.SQLTemplate.SQL.Add( ConvFloatToStr(Dm.SQLConfigCrediario.FieldByName('CFCRN2PERCJURATRAS').Value)+',')
@@ -4907,7 +4907,7 @@ begin
        DM.SQLTemplate.SQL.Add( '0,') ; {PVCRN2TXMULTA}
 
       DM.SQLTemplate.SQL.Add( '0,') ; {PVCRN2DESCFIN}
-      DM.SQLTemplate.SQL.Add( '"N")') ; {BoletosEmitidos}
+      DM.SQLTemplate.SQL.Add( '''N'')') ; {BoletosEmitidos}
       try
         DM.SQLTemplate.ExecSQL ;
         Gravou := true ;
@@ -5103,8 +5103,8 @@ begin
   try
     DM.SQLTemplate.Close;
     DM.SQLTemplate.SQL.Clear;
-    DM.SQLTemplate.SQL.Add('Update CLIENTE SET CLIEDPRICOMPRA = "'+FormatDateTime('mm/dd/yyyy',Date)+'"');
-    DM.SQLTemplate.SQL.Add('Where CLIEA13ID = "' + ClienteVenda + '" and CLIEDPRICOMPRA is Null');
+    DM.SQLTemplate.SQL.Add('Update CLIENTE SET CLIEDPRICOMPRA = '''+FormatDateTime('mm/dd/yyyy',Date)+'''');
+    DM.SQLTemplate.SQL.Add('Where CLIEA13ID = ''' + ClienteVenda + ''' and CLIEDPRICOMPRA is Null');
     DM.SQLTemplate.ExecSQL;
   except
     Application.ProcessMessages;
@@ -5112,8 +5112,8 @@ begin
   try
     DM.SQLTemplate.Close;
     DM.SQLTemplate.SQL.Clear;
-    DM.SQLTemplate.SQL.Add('Update CLIENTE SET CLIEDULTCOMPRA = "'+FormatDateTime('mm/dd/yyyy',Date)+'"');
-    DM.SQLTemplate.SQL.Add('Where CLIEA13ID = "' + ClienteVenda + '"');
+    DM.SQLTemplate.SQL.Add('Update CLIENTE SET CLIEDULTCOMPRA = '''+FormatDateTime('mm/dd/yyyy',Date)+'''');
+    DM.SQLTemplate.SQL.Add('Where CLIEA13ID = ''' + ClienteVenda + '''');
     DM.SQLTemplate.ExecSQL;
   except
     Application.ProcessMessages;
@@ -5313,7 +5313,7 @@ begin
           LblInstrucoes.Refresh;
           DM.SQLTemplate.Close ;
           DM.SQLTemplate.SQL.Clear ;
-          DM.SQLTemplate.SQL.Add('Update PRODUTO set Pendente="S", PRODDULTVENDA = "' + FormatDateTime('mm/dd/yyyy',Now)+'"');
+          DM.SQLTemplate.SQL.Add('Update PRODUTO set Pendente=''S'', PRODDULTVENDA = ''' + FormatDateTime('mm/dd/yyyy',Now)+'''');
           DM.SQLTemplate.SQL.Add('Where PRODICOD = ' + FormTelaItens.SQLItensVendaTempCODIGO.AsString) ;
           DM.SQLTemplate.ExecSQL;
         except
@@ -5388,7 +5388,7 @@ begin
             DM.SQLContasReceberCTRCINROPARC.Value      := 0;
             if Copy(SQLParcelasVistaVendaTempTIPOPADR.Value,1,4) = 'CRTF' then
               begin
-                DiaVctoCartaoCliente := SQLLocate('CLIENTE','CLIEA13ID','CLIEIDIAVCTOCARTAO','"' + ClienteVenda + '"');
+                DiaVctoCartaoCliente := SQLLocate('CLIENTE','CLIEA13ID','CLIEIDIAVCTOCARTAO','''' + ClienteVenda + '''');
                 if (DM.SQLConfigCrediario.FieldByName('CFCRIPRZMINCARTAO').AsVariant <> Null) and (DiaVctoCartaoCliente <> '') then
                   begin
                     DecodeDate(Date,Ano,Mes,Dia);
@@ -5616,7 +5616,7 @@ begin
               DM.SQLTemplate.Close ;
               DM.SQLTemplate.SQL.Clear ;
               DM.SQLTemplate.SQL.Add('select * from OPERACAOCAIXA') ;
-              DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = "EVPRZ"') ;
+              DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = ''EVPRZ''') ;
               DM.SQLTemplate.Open ;
               GravaMovimentoCaixa( DM.SQLTotalizadorCaixa,
                                    DM.SQLTotalizar,
@@ -5642,7 +5642,7 @@ begin
               DM.SQLTemplate.Close ;
               DM.SQLTemplate.SQL.Clear ;
               DM.SQLTemplate.SQL.Add('select * from OPERACAOCAIXA') ;
-              DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = "EVPRZ"') ;
+              DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = ''EVPRZ''') ;
               DM.SQLTemplate.Open ;
               GravaMovimentoCaixa( DM.SQLTotalizadorCaixa,
                                    DM.SQLTotalizar,
@@ -5670,7 +5670,7 @@ begin
           DM.SQLTemplate.Close ;
           DM.SQLTemplate.SQL.Clear ;
           DM.SQLTemplate.SQL.Add('select * from OPERACAOCAIXA') ;
-          DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = "EVCHP"') ;
+          DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = ''EVCHP''') ;
           DM.SQLTemplate.Open ;
           GravaMovimentoCaixa( DM.SQLTotalizadorCaixa,
                                DM.SQLTotalizar,
@@ -5696,7 +5696,7 @@ begin
           DM.SQLTemplate.Close ;
           DM.SQLTemplate.SQL.Clear ;
           DM.SQLTemplate.SQL.Add('select * from OPERACAOCAIXA') ;
-          DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = "EVCRT"') ;
+          DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = ''EVCRT''') ;
           DM.SQLTemplate.Open ;
           GravaMovimentoCaixa( DM.SQLTotalizadorCaixa,
                                DM.SQLTotalizar,
@@ -5753,7 +5753,7 @@ begin
       dm.sqlConsulta.Close;
       dm.sqlConsulta.sql.clear;
       dm.sqlConsulta.sql.add('select sum(VALORCREDITO-VALORDEBITO) as ValorSaldo from CLIENTECREDITO');
-      dm.SQLConsulta.sql.add('where CLIEA13ID = "'+ClienteVenda+'"');
+      dm.SQLConsulta.sql.add('where CLIEA13ID = '''+ClienteVenda+'''');
       dm.SQLConsulta.Open;
       if dm.SQLConsulta.findfield('ValorSaldo').IsNull then
         ValorCreditoCliente := 0
@@ -6207,14 +6207,14 @@ begin
   if ClienteVenda <> DM.SQLTerminalAtivo.FieldByName('CLIEA13ID').AsString then
     begin
       //TESTAR SE CLIENTE TEM ALGUMA OBS NO CADASTRO E MOSTRA-LA
-      if (SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIETOBS1', '"' + ClienteVenda + '"') <> '') then
+      if (SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIETOBS1', '''' + ClienteVenda + '''') <> '') then
         begin
-          ShowMessage(SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIETOBS1', '"' + ClienteVenda + '"'));
+          ShowMessage(SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIETOBS1', '''' + ClienteVenda + ''''));
         end;
 
 
       //TESTAR SE CLIENTE TEM PERMISSAO PRA VENDA CREDIARIO
-      if (TipoPadrao = 'CRD') and (SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIECVNDCRED', '"' + ClienteVenda + '"') <> 'S') then
+      if (TipoPadrao = 'CRD') and (SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIECVNDCRED', '''' + ClienteVenda + '''') <> 'S') then
         begin
           InformaG('Atenção! Cliente sem autorização para compras no Crédiario/Fatura!') ;
           Result := True ;
@@ -6222,7 +6222,7 @@ begin
         end;
 
       //TESTAR SE CLIENTE TEM PERMISSAO PRA VENDA CHEQUE PRE
-      if (TipoPadrao = 'CHQP') and (SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIECVNDCHEQ', '"' + ClienteVenda + '"') <> 'S') then
+      if (TipoPadrao = 'CHQP') and (SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIECVNDCHEQ', '''' + ClienteVenda + '''') <> 'S') then
         begin
           InformaG('Atenção! Cliente sem autorização para compras no Cheque Pré!') ;
           Result := True ;
@@ -6230,7 +6230,7 @@ begin
         end;
 
       //TESTAR SE CLIENTE TEM MOTIVO DE BLOQUEIO
-      MotivoBloqueio := SQLLocate('CLIENTE', 'CLIEA13ID', 'MTBLICOD', '"' + ClienteVenda + '"');
+      MotivoBloqueio := SQLLocate('CLIENTE', 'CLIEA13ID', 'MTBLICOD', '''' + ClienteVenda + '''');
       if MotivoBloqueio <> '' then
         if MotivoBloqueio <> '0' then
           TipoBloqueio := 1 ;
@@ -6239,7 +6239,7 @@ begin
       //TESTAR SE CLIENTE ESTA EM 1 AVISO
       if DM.SQLConfigCrediario.FieldByName('CFCRCBLOQVENDCLI1AV').Value = 'S' then
         begin
-          MotivoBloqueio := SQLLocate('CARTAPRIMEIROAVISO', 'CLIEA13ID', 'CLIEA13ID', '"' + ClienteVenda + '"');
+          MotivoBloqueio := SQLLocate('CARTAPRIMEIROAVISO', 'CLIEA13ID', 'CLIEA13ID', '''' + ClienteVenda + '''');
           if MotivoBloqueio <> '' then
             if MotivoBloqueio <> '0' then
               TipoBloqueio := 2 ;
@@ -6248,7 +6248,7 @@ begin
       //TESTAR SE CLIENTE ESTA EM 2 AVISO
       if DM.SQLConfigCrediario.FieldByName('CFCRCBLOQVENDCLI2AV').Value = 'S' then
         begin
-          MotivoBloqueio := SQLLocate('CARTASEGUNDOAVISO', 'CLIEA13ID', 'CLIEA13ID', '"' + ClienteVenda + '"');
+          MotivoBloqueio := SQLLocate('CARTASEGUNDOAVISO', 'CLIEA13ID', 'CLIEA13ID', '''' + ClienteVenda + '''');
             if MotivoBloqueio <> '' then
               if MotivoBloqueio <> '0' then
                 TipoBloqueio := 3 ;
@@ -6257,7 +6257,7 @@ begin
       //TESTAR SE CLIENTE ESTA EM SPC
       if DM.SQLConfigCrediario.FieldByName('CFCRCBLOQVENDCLI3AV').Value = 'S' then
         begin
-          MotivoBloqueio := SQLLocate('CARTAAVISOSPC', 'CLIEA13ID', 'CLIEA13ID', '"' + ClienteVenda + '"');
+          MotivoBloqueio := SQLLocate('CARTAAVISOSPC', 'CLIEA13ID', 'CLIEA13ID', '''' + ClienteVenda + '''');
             if MotivoBloqueio <> '' then
               if MotivoBloqueio <> '0' then
                 TipoBloqueio := 4 ;
@@ -6268,7 +6268,7 @@ begin
       DM.SQLTemplate.Close ;
       DM.SQLTemplate.SQL.Clear ;
       DM.SQLTemplate.SQL.Add('Select * From CONTASRECEBER') ;
-      DM.SQLTemplate.SQL.Add('Where ALINICOD > 0 and CTRCA20CGCCPFCHQ = "' + CPFCGCClienteVenda + '"') ;
+      DM.SQLTemplate.SQL.Add('Where ALINICOD > 0 and CTRCA20CGCCPFCHQ = ''' + CPFCGCClienteVenda + '''') ;
       {sqllocate('CLIENTE','CLIEA13ID','CLIEA11CPF',ClienteVenda)}
       DM.SQLTemplate.Open ;
       if not DM.SQLTemplate.IsEmpty then

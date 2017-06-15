@@ -13343,7 +13343,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
       'Select * From PLANODECONTAS Where '
       'PLCTCANALSINT = '#39'A'#39
       'and'
-      'PLCTCTIPOSALDO = "C"')
+      'PLCTCTIPOSALDO = ''C''')
     Macros = <>
     Left = 1059
     Top = 444

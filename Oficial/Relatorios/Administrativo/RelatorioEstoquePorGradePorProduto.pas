@@ -218,7 +218,7 @@ begin
     SQLProduto.MacroByName('MCor').Value := '0=0';
 
   if ComboRefer.Value <> '' then
-    SQLProduto.MacroByName('MRefer').Value := 'PRODUTO.PRODA60REFER = "' + ComboRefer.Value + '"'
+    SQLProduto.MacroByName('MRefer').Value := 'PRODUTO.PRODA60REFER = ''' + ComboRefer.Value + ''''
   else
     SQLProduto.MacroByName('MRefer').Value := '0=0';
 
@@ -293,46 +293,46 @@ begin
   Report.Formulas.Retrieve ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Empresa' ;
-  Report.Formulas.Formula.Text := '"' + ComboEmpresa.Text + '"' ;
+  Report.Formulas.Formula.Text := '''' + ComboEmpresa.Text + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Emissao' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name := 'Grupo' ;
   if ComboGrupo.Text <> '' then
-    Report.Formulas.Formula.Text := '"' + ComboGrupo.Text + '"'
+    Report.Formulas.Formula.Text := '''' + ComboGrupo.Text + ''''
   else
-    Report.Formulas.Formula.Text := '"Todos"' ;
+    Report.Formulas.Formula.Text := '''Todos''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name := 'SubGrupo' ;
   if ComboSubGrupo.Text <> '' then
-    Report.Formulas.Formula.Text := '"' + ComboSubGrupo.Text + '"'
+    Report.Formulas.Formula.Text := '''' + ComboSubGrupo.Text + ''''
   else
-    Report.Formulas.Formula.Text := '"Todos"' ;
+    Report.Formulas.Formula.Text := '''Todos''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name := 'Variacao' ;
   if ComboVariacao.Text <> '' then
-    Report.Formulas.Formula.Text := '"' + ComboVariacao.Text + '"'
+    Report.Formulas.Formula.Text := '''' + ComboVariacao.Text + ''''
   else
-    Report.Formulas.Formula.Text := '"Todos"' ;
+    Report.Formulas.Formula.Text := '''Todos''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name := 'Colecao' ;
   if ComboColecao.Text <> '' then
-    Report.Formulas.Formula.Text := '"' + ComboColecao.Text + '"'
+    Report.Formulas.Formula.Text := '''' + ComboColecao.Text + ''''
   else
-    Report.Formulas.Formula.Text := '"Todos"' ;
+    Report.Formulas.Formula.Text := '''Todos''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name := 'Marca' ;
   if ComboMarca.Text <> '' then
-    Report.Formulas.Formula.Text := '"' + ComboMarca.Text + '"'
+    Report.Formulas.Formula.Text := '''' + ComboMarca.Text + ''''
   else
-    Report.Formulas.Formula.Text := '"Todos"' ;
+    Report.Formulas.Formula.Text := '''Todos''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name := 'OrdemImpressao' ;
   if OrdemCodigo.Checked then
-    Report.Formulas.Formula.Text := '"Código"' ;
+    Report.Formulas.Formula.Text := '''Código''' ;
   if OrdemDescricao.Checked then
-    Report.Formulas.Formula.Text := '"Descrição"' ;
+    Report.Formulas.Formula.Text := '''Descrição''' ;
 
   Report.Execute;
 

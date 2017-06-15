@@ -108,11 +108,11 @@ begin
   SQLNotaCompras.MacrobyName('MEmpresa').Value := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'NOTACOMPRA','EMPRICODDESTCOMPRA') ;
 
   if EmissaoChk.Checked then
-    SQLNotaCompras.MacrobyName('MData').Value := 'NOTACOMPRA.NOCPDEMISSAO >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and '+
-                                                 'NOTACOMPRA.NOCPDEMISSAO <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"'
+    SQLNotaCompras.MacrobyName('MData').Value := 'NOTACOMPRA.NOCPDEMISSAO >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and '+
+                                                 'NOTACOMPRA.NOCPDEMISSAO <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + ''''
   else
-    SQLNotaCompras.MacrobyName('MData').Value := 'NOTACOMPRA.NOCPDRECEBIMENTO >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and '+
-                                                 'NOTACOMPRA.NOCPDRECEBIMENTO <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
+    SQLNotaCompras.MacrobyName('MData').Value := 'NOTACOMPRA.NOCPDRECEBIMENTO >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and '+
+                                                 'NOTACOMPRA.NOCPDRECEBIMENTO <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
   if ComboFornecedor.Text <> '' then
     SQLNotaCompras.MacrobyName('MFornecedor').Value := 'NOTACOMPRA.FORNICOD = ' + ComboFornecedor.Value
   else
@@ -124,19 +124,19 @@ begin
     SQLNotaCompras.MacroByName('OperEstoque').Value := '0=0';
 
   case RadioStatus.ItemIndex of
-    0 : SQLNotaCompras.MacroByName('Status').Value := 'NOTACOMPRA.NOCPCSTATUS = "A"';
-    1 : SQLNotaCompras.MacroByName('Status').Value := 'NOTACOMPRA.NOCPCSTATUS = "E"';
-    2 : SQLNotaCompras.MacroByName('Status').Value := 'NOTACOMPRA.NOCPCSTATUS = "C"';
+    0 : SQLNotaCompras.MacroByName('Status').Value := 'NOTACOMPRA.NOCPCSTATUS = ''A''';
+    1 : SQLNotaCompras.MacroByName('Status').Value := 'NOTACOMPRA.NOCPCSTATUS = ''E''';
+    2 : SQLNotaCompras.MacroByName('Status').Value := 'NOTACOMPRA.NOCPCSTATUS = ''C''';
     3 : SQLNotaCompras.MacroByName('Status').Value := '0=0';
   end;
 
   if ComboCFOP.Value <> '' then
-    SQLNotaCompras.MacroByName('CFOP').AsString := 'NOTACOMPRA.CFOPA5COD = "' + ComboCFOP.Value + '"'
+    SQLNotaCompras.MacroByName('CFOP').AsString := 'NOTACOMPRA.CFOPA5COD = ''' + ComboCFOP.Value + ''''
   else
     SQLNotaCompras.MacroByName('CFOP').AsString := '0=0';
 
   if ComboSerie.Value <> '' then
-    SQLNotaCompras.MacroByName('Serie').AsString := 'NOTACOMPRA.NOCPA5SERIE = "' + ComboSerie.Value + '"'
+    SQLNotaCompras.MacroByName('Serie').AsString := 'NOTACOMPRA.NOCPA5SERIE = ''' + ComboSerie.Value + ''''
   else
     SQLNotaCompras.MacroByName('Serie').AsString := '0=0';
 
@@ -166,11 +166,11 @@ begin
       SQLComprasItem.MacrobyName('MEmpresa').Value := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'NOTACOMPRA','') ;
 
       if EmissaoChk.Checked then
-        SQLComprasItem.MacrobyName('MData').Value := 'NOTACOMPRA.NOCPDEMISSAO >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and '+
-                                                     'NOTACOMPRA.NOCPDEMISSAO <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"'
+        SQLComprasItem.MacrobyName('MData').Value := 'NOTACOMPRA.NOCPDEMISSAO >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and '+
+                                                     'NOTACOMPRA.NOCPDEMISSAO <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + ''''
       else
-        SQLComprasItem.MacrobyName('MData').Value := 'NOTACOMPRA.NOCPDRECEBIMENTO >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and '+
-                                                     'NOTACOMPRA.NOCPDRECEBIMENTO <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
+        SQLComprasItem.MacrobyName('MData').Value := 'NOTACOMPRA.NOCPDRECEBIMENTO >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and '+
+                                                     'NOTACOMPRA.NOCPDRECEBIMENTO <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
 
       if ComboFornecedor.Text <> '' then
         SQLComprasItem.MacrobyName('MFornecedor').Value := 'NOTACOMPRA.FORNICOD = ' + ComboFornecedor.Value
@@ -183,19 +183,19 @@ begin
         SQLComprasItem.MacroByName('OperEstoque').Value := '0=0';
 
       case RadioStatus.ItemIndex of
-        0 : SQLComprasItem.MacroByName('Status').Value := 'NOTACOMPRA.NOCPCSTATUS = "A"';
-        1 : SQLComprasItem.MacroByName('Status').Value := 'NOTACOMPRA.NOCPCSTATUS = "E"';
-        2 : SQLComprasItem.MacroByName('Status').Value := 'NOTACOMPRA.NOCPCSTATUS = "C"';
+        0 : SQLComprasItem.MacroByName('Status').Value := 'NOTACOMPRA.NOCPCSTATUS = ''A''';
+        1 : SQLComprasItem.MacroByName('Status').Value := 'NOTACOMPRA.NOCPCSTATUS = ''E''';
+        2 : SQLComprasItem.MacroByName('Status').Value := 'NOTACOMPRA.NOCPCSTATUS = ''C''';
         3 : SQLComprasItem.MacroByName('Status').Value := '0=0';
       end;
 
       if ComboCFOP.Value <> '' then
-        SQLComprasItem.MacroByName('CFOP').AsString := 'NOTACOMPRA.CFOPA5COD = "' + ComboCFOP.Value + '"'
+        SQLComprasItem.MacroByName('CFOP').AsString := 'NOTACOMPRA.CFOPA5COD = ''' + ComboCFOP.Value + ''''
       else
         SQLComprasItem.MacroByName('CFOP').AsString := '0=0';
 
       if ComboSerie.Value <> '' then
-        SQLComprasItem.MacroByName('Serie').AsString := 'NOTACOMPRA.NOCPA5SERIE = "' + ComboSerie.Value + '"'
+        SQLComprasItem.MacroByName('Serie').AsString := 'NOTACOMPRA.NOCPA5SERIE = ''' + ComboSerie.Value + ''''
       else
         SQLComprasItem.MacroByName('Serie').AsString := '0=0';
 
@@ -248,7 +248,7 @@ begin
       if not TblTemporaria.Active then TblTemporaria.Open;
       while not TblTemporaria.eof do
         begin
-          NotaFinanceiro := dm.SQLLocate('CONTASPAGAR','NOCPA13ID','NOCPA13ID','"'+TblTemporariaNOCPA13ID.Value+'"');
+          NotaFinanceiro := dm.SQLLocate('CONTASPAGAR','NOCPA13ID','NOCPA13ID',''''+TblTemporariaNOCPA13ID.Value+'''');
           if NotaFinanceiro = '' then
             begin
               TblTemporaria.delete;
@@ -286,20 +286,20 @@ begin
 
   Report.Formulas.Retrieve;
   Report.Formulas.Name := 'Empresa';
-  Report.Formulas.Formula.Text := '"' + ComboEmpresa.text + '"';
+  Report.Formulas.Formula.Text := '''' + ComboEmpresa.text + '''';
   Report.Formulas.Name := 'Emissao';
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss',Now) + '"';
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss',Now) + '''';
   Report.Formulas.Name := 'PeriodoEmissao';
-  Report.Formulas.Formula.Text := '"' + De.Text + ' até ' + Ate.Text + '"';
+  Report.Formulas.Formula.Text := '''' + De.Text + ' até ' + Ate.Text + '''';
   if (ComboFornecedor.KeyValue <> null) and (ComboFornecedor.KeyValue > 0) then
     begin
       Report.Formulas.Name := 'Fornecedor';
-      Report.Formulas.Formula.Text := '"' + ComboFornecedor.DisplayValue + '"';
+      Report.Formulas.Formula.Text := '''' + ComboFornecedor.DisplayValue + '''';
     end;
    if (ComboOperEstoque.KeyValue <> null) and (ComboOperEstoque.KeyValue > 0) then
      begin
        Report.Formulas.Name := 'OperacaoEstoque';
-       Report.Formulas.Formula.Text := '"' + ComboOperEstoque.DisplayValue + '"';
+       Report.Formulas.Formula.Text := '''' + ComboOperEstoque.DisplayValue + '''';
      end;
   Report.SectionFormat.Retrieve;
   Report.GroupOptions.Retrieve;
@@ -308,7 +308,7 @@ begin
     begin
       Report.ReportTitle := 'Relatório de Notas de Compra Por Digitação' ;
       Report.Formulas.Name := 'FiltroData';
-      Report.Formulas.Formula.Text := '"' + 'Data de Digitação' + '"';
+      Report.Formulas.Formula.Text := '''' + 'Data de Digitação' + '''';
       Report.SectionFormat.Section  := 'GH2';
       Report.SectionFormat.Suppress := CTrue;
       Report.SectionFormat.Section  := 'GF2';
@@ -325,7 +325,7 @@ begin
     begin
       Report.ReportTitle := 'Relatório de Notas de Compra Por Emissão' ;
       Report.Formulas.Name := 'FiltroData';
-      Report.Formulas.Formula.Text := '"' + 'Data da Emissão' + '"';
+      Report.Formulas.Formula.Text := '''' + 'Data da Emissão' + '''';
       Report.SectionFormat.Section  := 'GH3';
       Report.SectionFormat.Suppress := CTrue;
       Report.SectionFormat.Section  := 'GF3';

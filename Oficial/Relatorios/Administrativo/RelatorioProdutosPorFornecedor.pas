@@ -110,14 +110,14 @@ begin
   Report.Formulas.Retrieve ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Empresa' ;
-  Report.Formulas.Formula.Text := '"' + ComboEmpresa.Text + '"' ;
+  Report.Formulas.Formula.Text := '''' + ComboEmpresa.Text + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Emissao' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''' ;
   //--------------------------------------------------------------------------\\
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Fornecedor' ;
-  Report.Formulas.Formula.Text := '"' + ComboFornecedor.Text + '"' ;
+  Report.Formulas.Formula.Text := '''' + ComboFornecedor.Text + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Send ;
   Report.Execute;  

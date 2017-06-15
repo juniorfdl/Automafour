@@ -203,7 +203,7 @@ begin
      SQLOS.Post;
      Close;
    except
-     raise Exception.Create('Não há valor para o produto "' + SQLProdutoPRODA60DESCR.AsString + '".' + char(#13) + 'Por favor edite este Produto e adicione o valor.');
+     raise Exception.Create('Não há valor para o produto ''' + SQLProdutoPRODA60DESCR.AsString + '''.' + char(#13) + 'Por favor edite este Produto e adicione o valor.');
    end;
 end;
 

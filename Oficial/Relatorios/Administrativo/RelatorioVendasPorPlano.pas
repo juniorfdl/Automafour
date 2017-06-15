@@ -99,11 +99,11 @@ begin
 
   SQLVendas.MacrobyName('MEmpresa').Value := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'CUPOM', '') ;
   SQLNotas.MacrobyName('MEmpresa').Value  := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'NOTAFISCAL', '') ;
-  SQLVendas.MacrobyName('MData').Value    := 'CUPOM.CUPODEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                             'CUPOM.CUPODEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
+  SQLVendas.MacrobyName('MData').Value    := 'CUPOM.CUPODEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                             'CUPOM.CUPODEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
 
-  SQLNotas.MacrobyName('MData').Value     := 'NOTAFISCAL.NOFIDEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                             'NOTAFISCAL.NOFIDEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
+  SQLNotas.MacrobyName('MData').Value     := 'NOTAFISCAL.NOFIDEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                             'NOTAFISCAL.NOFIDEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
 
   if ComboVendedor.Text <> '' then
     begin
@@ -140,20 +140,20 @@ begin
   Report.Formulas.Retrieve ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Empresa' ;
-  Report.Formulas.Formula.Text := '"' + ComboEmpresa.Text + '"' ;
+  Report.Formulas.Formula.Text := '''' + ComboEmpresa.Text + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Emissao' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'PeriodoEmissao' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
-                                        FormatDateTime('dd/mm/yyyy', Ate.Date) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
+                                        FormatDateTime('dd/mm/yyyy', Ate.Date) + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name := 'Vendedor' ;
   if ComboVendedor.Text <> '' then
-    Report.Formulas.Formula.Text := '"' + ComboVendedor.Text + '"'
+    Report.Formulas.Formula.Text := '''' + ComboVendedor.Text + ''''
   else
-    Report.Formulas.Formula.Text := '"Todos"' ;
+    Report.Formulas.Formula.Text := '''Todos''' ;
   Report.Execute ;
   
 end;

@@ -657,7 +657,7 @@ inherited FormRelatorioContasRecebidas: TFormRelatorioContasRecebidas
         ' left outer join PORTADOR        on CONTASRECEBER.PORTICOD  = PO' +
         'RTADOR.PORTICOD'
       'where'
-      '  (CONTASRECEBER.CTRCCSTATUS = "A") and'
+      '  (CONTASRECEBER.CTRCCSTATUS = ''A'') and'
       '  (%MEmpresa) and'
       '  (%MData) and'
       '  (%MDataVenc) and'
@@ -1106,12 +1106,12 @@ inherited FormRelatorioContasRecebidas: TFormRelatorioContasRecebidas
         '  left outer join CLIENTE             on CUPOM.CLIEA13ID        ' +
         '  = CLIENTE.CLIEA13ID'
       'where'
-      '  (CUPOM.CUPOCSTATUS = "A") and'
+      '  (CUPOM.CUPOCSTATUS = ''A'') and'
       '  (%MEmpresa) and'
       '  (%MData) and'
       '  (%MCliente) and'
       '  (%MNumerario) and'
-      '  (CUPOMNUMERARIO.CPNMCAUTENT = "S") and'
+      '  (CUPOMNUMERARIO.CPNMCAUTENT = ''S'') and'
       '  (%MTerminal) and'
       '  (%MCupom)')
     Macros = <

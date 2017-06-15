@@ -66,15 +66,15 @@ begin
   SQLCupom.Close;
   SQLCupom.MacroByName('Empresa').AsString := SQLDeLista(ComboEmpresa,ListaEmpresas,'','CUPOM','');
 
-  SQLCupom.MacroByName('Data').AsString    := 'CUPODEMIS >= "' + FormatDateTime('mm/dd/yyy',De.Date) + '" AND ' +
-                                              'CUPODEMIS <= "' + FormatDateTime('mm/dd/yyy',Ate.Date) + '"';
+  SQLCupom.MacroByName('Data').AsString    := 'CUPODEMIS >= ''' + FormatDateTime('mm/dd/yyy',De.Date) + ''' AND ' +
+                                              'CUPODEMIS <= ''' + FormatDateTime('mm/dd/yyy',Ate.Date) + '''';
 
   SQLCupom.MacroByName('Tipo').AsString    := '0=0' ;
 
   if CKApenasCanceladas.Checked then
-    SQLCupom.MacroByName('Tipo').AsString    := 'CUPOCSTATUS = "C"'
+    SQLCupom.MacroByName('Tipo').AsString    := 'CUPOCSTATUS = ''C'''
   else
-    SQLCupom.MacroByName('Tipo').AsString    := 'CUPOCSTATUS = "A"' ;
+    SQLCupom.MacroByName('Tipo').AsString    := 'CUPOCSTATUS = ''A''' ;
 
   SQLCupom.Open;
 
@@ -90,8 +90,8 @@ begin
       TblTemporaria.AddIndex('CUPOA13ID_Key','CUPOA13ID',[IxPrimary]);
       SQLCupomItem.Close;
       SQLCupomItem.MacroByName('Empresa').AsString := SQLDeLista(ComboEmpresa,ListaEmpresas,'','CUPOM','EMPRICOD');
-      SQLCupomItem.MacroByName('Data').AsString    := 'CUPOM.CUPODEMIS >= "' + FormatDateTime('mm/dd/yyy',De.Date) + '" AND ' +
-                                                      'CUPOM.CUPODEMIS <= "' + FormatDateTime('mm/dd/yyy',Ate.Date) + '"';
+      SQLCupomItem.MacroByName('Data').AsString    := 'CUPOM.CUPODEMIS >= ''' + FormatDateTime('mm/dd/yyy',De.Date) + ''' AND ' +
+                                                      'CUPOM.CUPODEMIS <= ''' + FormatDateTime('mm/dd/yyy',Ate.Date) + '''';
       SQLCupomItem.Open;
       RefazTabelaTemp(TblCupomItem,False);
       BatchExec(SQLCupomItem,TblCupomItem);
@@ -107,14 +107,14 @@ begin
   Report.Formulas.Retrieve ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Empresa';
-  Report.Formulas.Formula.Text := '"' + ComboEmpresa.Text + '"';
+  Report.Formulas.Formula.Text := '''' + ComboEmpresa.Text + '''';
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Emissao';
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"';
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''';
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'PeriodoEmissao';
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
-                                        FormatDateTime('dd/mm/yyyy', Ate.Date) + '"';
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
+                                        FormatDateTime('dd/mm/yyyy', Ate.Date) + '''';
   //--------------------------------------------------------------------------\\
   Report.Execute;
 end;

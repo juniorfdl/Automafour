@@ -65,14 +65,14 @@ begin
   inherited;
   SQLContasAReceber.Close;
   SQLContasAReceber.MacrobyName('MEmpresa').Value := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'CONTASRECEBER', '') ;
-  SQLContasAReceber.MacroByName('MData').Value    := 'CONTASRECEBER.CTRCDVENC >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                     'CONTASRECEBER.CTRCDVENC <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
+  SQLContasAReceber.MacroByName('MData').Value    := 'CONTASRECEBER.CTRCDVENC >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                     'CONTASRECEBER.CTRCDVENC <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
   SQLContasAReceber.Open;
 
   SQLContasRecebidas.Close;
   SQLContasRecebidas.MacrobyName('MEmpresa').Value := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'CONTASRECEBER', '') ;
-  SQLContasRecebidas.MacroByName('MData').Value    := 'CONTASRECEBER.CTRCDVENC >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                      'CONTASRECEBER.CTRCDVENC <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
+  SQLContasRecebidas.MacroByName('MData').Value    := 'CONTASRECEBER.CTRCDVENC >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                      'CONTASRECEBER.CTRCDVENC <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
   SQLContasRecebidas.Open;
 
   if (SQLContasAReceber.IsEmpty) and (SQLContasRecebidas.IsEmpty) then
@@ -116,8 +116,8 @@ begin
   Report.WindowStyle.Title := 'Relatório de Indice de Inadimplencia' ;
   Report.Formulas.Retrieve ;
   Report.Formulas.Name         := 'Periodo' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
-                                        FormatDateTime('dd/mm/yyyy', Ate.Date) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
+                                        FormatDateTime('dd/mm/yyyy', Ate.Date) + '''' ;
   Report.Execute ;
 end;
 

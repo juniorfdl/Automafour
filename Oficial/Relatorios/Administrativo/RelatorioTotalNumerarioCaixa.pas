@@ -69,8 +69,8 @@ begin
   inherited;
   SQLMovimentoCaixa.Close;
   SQLMovimentoCaixa.MacrobyName('MEmpresa').Value := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'MOVIMENTOCAIXA', '');
-  SQLMovimentoCaixa.MacrobyName('MData').Value    := 'MOVIMENTOCAIXA.MVCXDMOV >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                     'MOVIMENTOCAIXA.MVCXDMOV <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
+  SQLMovimentoCaixa.MacrobyName('MData').Value    := 'MOVIMENTOCAIXA.MVCXDMOV >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                     'MOVIMENTOCAIXA.MVCXDMOV <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
 
   if ComboTerminal.Value <> '' then
     SQLMovimentoCaixa.MacrobyName('MTerminal').Value := 'MOVIMENTOCAIXA.TERMICOD = ' + ComboTerminal.Value
@@ -110,20 +110,20 @@ begin
   Report.Formulas.Retrieve;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Empresa' ;
-  Report.Formulas.Formula.Text := '"' + ComboEmpresa.Text + '"' ;
+  Report.Formulas.Formula.Text := '''' + ComboEmpresa.Text + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Emissao' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'PeriodoEmissao' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
-                                  FormatDateTime('dd/mm/yyyy', Ate.Date) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
+                                  FormatDateTime('dd/mm/yyyy', Ate.Date) + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Terminal' ;
   if ComboTerminal.Text <> '' then
-    Report.Formulas.Formula.Text := '"' + ComboTerminal.Text + '"'
+    Report.Formulas.Formula.Text := '''' + ComboTerminal.Text + ''''
   else
-    Report.Formulas.Formula.Text := '"Todos"' ;
+    Report.Formulas.Formula.Text := '''Todos''' ;
   //--------------------------------------------------------------------------\\
   Report.Execute ;
 

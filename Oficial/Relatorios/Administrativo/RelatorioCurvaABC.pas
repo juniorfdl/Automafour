@@ -89,8 +89,8 @@ begin
   SQLNotaFiscal.Close;
   SQLNotaFiscal.MacrobyName('MEmpresa').Value  := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'NOTAFISCAL','');
 
-  SQLNotaFiscal.MacroByName('MDataNF').Value   := 'NotaFiscal.NOFIDEMIS >= "' + FormatDateTime('mm/dd/yyyy',De.Date) + '" and ' +
-                                                  'NotaFiscal.NOFIDEMIS <= "' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '"';
+  SQLNotaFiscal.MacroByName('MDataNF').Value   := 'NotaFiscal.NOFIDEMIS >= ''' + FormatDateTime('mm/dd/yyyy',De.Date) + ''' and ' +
+                                                  'NotaFiscal.NOFIDEMIS <= ''' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '''';
 
   sql := 'Select Sum(CupomItem.CPITN3QTD) as Quantidade, Sum((CupomItem.CPITN3VLRUNIT * CupomItem.CPITN3QTD) - CUPOMITEM.CPITN2DESC) as TotalItem, ' +
          'Sum(CupomItem.CPITN3VLRUNITLUCR * CupomItem.CPITN3QTD) as VlrLucroItem, CupomItem.PRODICOD from   Cupom inner join CupomItem on Cupom.CUPOA13ID = CupomItem.CUPOA13ID '+
@@ -308,38 +308,38 @@ begin
   Report.Formulas.Retrieve ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Empresa' ;
-  Report.Formulas.Formula.Text := '"' + ComboEmpresa.Text + '"' ;
+  Report.Formulas.Formula.Text := '''' + ComboEmpresa.Text + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Emissao' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'PeriodoEmissao' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
-                                  FormatDateTime('dd/mm/yyyy', Ate.Date) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
+                                  FormatDateTime('dd/mm/yyyy', Ate.Date) + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name := 'Grupo' ;
   if ComboGrupo.Text <> '' then
-    Report.Formulas.Formula.Text := '"' + ComboGrupo.Text + '"'
+    Report.Formulas.Formula.Text := '''' + ComboGrupo.Text + ''''
   else
-    Report.Formulas.Formula.Text := '"Todos"' ;
+    Report.Formulas.Formula.Text := '''Todos''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name := 'SubGrupo' ;
   if ComboSubGrupo.Text <> '' then
-    Report.Formulas.Formula.Text := '"' + ComboSubGrupo.Text + '"'
+    Report.Formulas.Formula.Text := '''' + ComboSubGrupo.Text + ''''
   else
-    Report.Formulas.Formula.Text := '"Todos"' ;
+    Report.Formulas.Formula.Text := '''Todos''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name := 'Variacao' ;
   if ComboVariacao.Text <> '' then
-    Report.Formulas.Formula.Text := '"' + ComboVariacao.Text + '"'
+    Report.Formulas.Formula.Text := '''' + ComboVariacao.Text + ''''
   else
-    Report.Formulas.Formula.Text := '"Todos"' ;
+    Report.Formulas.Formula.Text := '''Todos''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name := 'Marca' ;
   if ComboMarca.Text <> '' then
-    Report.Formulas.Formula.Text := '"' + ComboMarca.Text + '"'
+    Report.Formulas.Formula.Text := '''' + ComboMarca.Text + ''''
   else
-    Report.Formulas.Formula.Text := '"Todos"' ;
+    Report.Formulas.Formula.Text := '''Todos''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Send;
   Report.Execute;

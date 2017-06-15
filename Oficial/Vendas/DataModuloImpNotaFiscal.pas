@@ -293,7 +293,7 @@ implementation
 procedure TDMImpNotaFiscal.LocalizaConfigNFPadrao;
 begin
   SQLCount.Close;
-  SQLCount.SQL.Text := 'select CFIMIID from CONFIGIMPRESSAOPAPEL where CFIPCPADRAO = "S"';
+  SQLCount.SQL.Text := 'select CFIMIID from CONFIGIMPRESSAOPAPEL where CFIPCPADRAO = ''S''';
   SQLCount.Open;
 
   if SQLCount.RecordCount > 1 then

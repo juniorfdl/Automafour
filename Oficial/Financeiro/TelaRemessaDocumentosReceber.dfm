@@ -2,7 +2,7 @@ inherited FormTelaRemessaDocumentosReceber: TFormTelaRemessaDocumentosReceber
   Left = 6
   Top = 24
   Width = 800
-  Caption = 'Incluir Títulos'
+  Caption = 'Incluir T'#237'tulos'
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
@@ -65,7 +65,7 @@ inherited FormTelaRemessaDocumentosReceber: TFormTelaRemessaDocumentosReceber
             Top = 88
             Width = 43
             Height = 13
-            Caption = 'Período'
+            Caption = 'Per'#237'odo'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 8404992
             Font.Height = -11
@@ -78,7 +78,7 @@ inherited FormTelaRemessaDocumentosReceber: TFormTelaRemessaDocumentosReceber
             Top = 106
             Width = 19
             Height = 13
-            Caption = 'até'
+            Caption = 'at'#233
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 8404992
             Font.Height = -11
@@ -201,7 +201,7 @@ inherited FormTelaRemessaDocumentosReceber: TFormTelaRemessaDocumentosReceber
               Top = 16
               Width = 59
               Height = 17
-              Caption = 'Não'
+              Caption = 'N'#227'o'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 8404992
               Font.Height = -11
@@ -235,7 +235,7 @@ inherited FormTelaRemessaDocumentosReceber: TFormTelaRemessaDocumentosReceber
             Font.Style = [fsBold]
             ItemIndex = 0
             Items.Strings = (
-              'Emissão'
+              'Emiss'#227'o'
               'Vencimento')
             ParentFont = False
             TabOrder = 3
@@ -521,8 +521,8 @@ inherited FormTelaRemessaDocumentosReceber: TFormTelaRemessaDocumentosReceber
         'OD'
       'where'
       '  %MData   and'
-      '  ((CR.CTRCCSTATUS <> ''C'') or (CR.CTRCCSTATUS is null)) and'
-      '  (CR.CTRCA5TIPOPADRAO not in (''CHQ'',''CHQV'',''CHQP'')) and'
+      '  ((CR.CTRCCSTATUS <> '#39'C'#39') or (CR.CTRCCSTATUS is null)) and'
+      '  (CR.CTRCA5TIPOPADRAO not in ('#39'CHQ'#39','#39'CHQV'#39','#39'CHQP'#39')) and'
       
         '  ((Not CR.CUPOA13ID IS NULL) or (((Not CR.NOFIA13ID is NULL) or' +
         ' (CR.PDVDA13ID is NULL)) OR (Not CR.CUPOA13ID is NULL))) and'
@@ -593,18 +593,12 @@ inherited FormTelaRemessaDocumentosReceber: TFormTelaRemessaDocumentosReceber
     end
     object SQLContasReceberCTRCN2VLR: TFloatField
       FieldName = 'CTRCN2VLR'
-      Precision = 15
-      Size = 3
     end
     object SQLContasReceberCTRCN2DESCFIN: TFloatField
       FieldName = 'CTRCN2DESCFIN'
-      Precision = 15
-      Size = 3
     end
     object SQLContasReceberCTRCN2TOTREC: TFloatField
       FieldName = 'CTRCN2TOTREC'
-      Precision = 15
-      Size = 3
     end
     object SQLContasReceberCTRCDULTREC: TDateTimeField
       FieldName = 'CTRCDULTREC'
@@ -748,7 +742,7 @@ inherited FormTelaRemessaDocumentosReceber: TFormTelaRemessaDocumentosReceber
       Size = 13
     end
     object TblRecebimentoCLIEA13ID: TStringField
-      DisplayLabel = 'Código'
+      DisplayLabel = 'C'#243'digo'
       FieldName = 'CLIEA13ID'
       Size = 13
     end
@@ -808,7 +802,7 @@ inherited FormTelaRemessaDocumentosReceber: TFormTelaRemessaDocumentosReceber
       Size = 30
     end
     object TblRecebimentoDtEmissao: TDateTimeField
-      DisplayLabel = 'Dt. Emissão'
+      DisplayLabel = 'Dt. Emiss'#227'o'
       FieldName = 'DtEmissao'
     end
     object TblRecebimentoPortador: TStringField

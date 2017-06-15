@@ -101,7 +101,7 @@ inherited FormTelaTransfereNroSerial: TFormTelaTransfereNroSerial
     RequestLive = True
     SQL.Strings = (
       'Select * from ProdutoSerie'
-      'Where (%Filtro) and PRSECSTATUS = "D"')
+      'Where (%Filtro) and PRSECSTATUS = ''D''')
     Macros = <
       item
         DataType = ftString
@@ -207,7 +207,7 @@ inherited FormTelaTransfereNroSerial: TFormTelaTransfereNroSerial
       'from '
       'PRODUTO'
       'where'
-      'PRODCTEMNROSERIE = "S"'
+      'PRODCTEMNROSERIE = ''S'''
       'order by'
       'PRODICOD')
     Macros = <>

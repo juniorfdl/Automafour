@@ -67,8 +67,8 @@ begin
     0 : Begin
           SQLCupom.Close;
           SQLCupom.MacroByName('MEmpresa').Value  := 'CUPOM.EMPRICOD   = '  + ComboEmpresa.KeyValue;
-          SQLCupom.MacroByName('MData').AsString  := 'CUPOM.CUPODEMIS >= "' + FormatDateTime('mm/dd/yyyy',De.Date) + '" AND ' +
-                                                     'CUPOM.CUPODEMIS <= "' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '"';
+          SQLCupom.MacroByName('MData').AsString  := 'CUPOM.CUPODEMIS >= ''' + FormatDateTime('mm/dd/yyyy',De.Date) + ''' AND ' +
+                                                     'CUPOM.CUPODEMIS <= ''' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '''';
           if ComboTerminal.Value <> '' then
             SQLCupom.MacroByName('MTerminal').Value   := 'CUPOM.TERMICOD = '+ComboTerminal.KeyValue
           else
@@ -101,8 +101,8 @@ begin
     1 : Begin
           SQLNotas.Close;
           SQLNotas.MacroByName('MEmpresa').Value  := 'NOTAFISCAL.EMPRICOD  =   ' + ComboEmpresa.KeyValue;
-          SQLNotas.MacroByName('MData').AsString  := 'NOTAFISCAL.NOFIDEMIS >= "' + FormatDateTime('mm/dd/yyyy',De.Date) + '" AND ' +
-                                                     'NOTAFISCAL.NOFIDEMIS <= "' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '"';
+          SQLNotas.MacroByName('MData').AsString  := 'NOTAFISCAL.NOFIDEMIS >= ''' + FormatDateTime('mm/dd/yyyy',De.Date) + ''' AND ' +
+                                                     'NOTAFISCAL.NOFIDEMIS <= ''' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '''';
 
           SQLNotas.Open;
           if SQLNotas.IsEmpty then
@@ -131,8 +131,8 @@ begin
     2 : Begin
           SQLCupom.Close;
           SQLCupom.MacroByName('MEmpresa').Value  := 'CUPOM.EMPRICOD   = '  + ComboEmpresa.KeyValue;
-          SQLCupom.MacroByName('MData').AsString  := 'CUPOM.CUPODEMIS >= "' + FormatDateTime('mm/dd/yyyy',De.Date) + '" AND ' +
-                                                     'CUPOM.CUPODEMIS <= "' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '"';
+          SQLCupom.MacroByName('MData').AsString  := 'CUPOM.CUPODEMIS >= ''' + FormatDateTime('mm/dd/yyyy',De.Date) + ''' AND ' +
+                                                     'CUPOM.CUPODEMIS <= ''' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '''';
           if ComboTerminal.Value <> '' then
             SQLCupom.MacroByName('MTerminal').Value   := 'CUPOM.TERMICOD = '+ComboTerminal.KeyValue
           else
@@ -147,8 +147,8 @@ begin
 
           SQLNotas.Close;
           SQLNotas.MacroByName('MEmpresa').Value  := 'NOTAFISCAL.EMPRICOD  =   ' + ComboEmpresa.KeyValue;
-          SQLNotas.MacroByName('MData').AsString  := 'NOTAFISCAL.NOFIDEMIS >= "' + FormatDateTime('mm/dd/yyyy',De.Date) + '" AND ' +
-                                                     'NOTAFISCAL.NOFIDEMIS <= "' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '"';
+          SQLNotas.MacroByName('MData').AsString  := 'NOTAFISCAL.NOFIDEMIS >= ''' + FormatDateTime('mm/dd/yyyy',De.Date) + ''' AND ' +
+                                                     'NOTAFISCAL.NOFIDEMIS <= ''' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '''';
           SQLNotas.Open;
           if SQLNotas.IsEmpty then
             begin
@@ -200,14 +200,14 @@ begin
   Report.Formulas.Retrieve ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Empresa';
-  Report.Formulas.Formula.Text := '"' + ComboEmpresa.Text + '"';
+  Report.Formulas.Formula.Text := '''' + ComboEmpresa.Text + '''';
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Emissao';
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"';
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''';
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'PeriodoEmissao';
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
-                                        FormatDateTime('dd/mm/yyyy', Ate.Date) + '"';
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
+                                        FormatDateTime('dd/mm/yyyy', Ate.Date) + '''';
   //--------------------------------------------------------------------------\\
   Report.Execute;
 

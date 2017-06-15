@@ -44,12 +44,12 @@ begin
   SQLVendaGrupo.Close ;
   //CUPOM
   SQLVendaGrupo.MacrobyName('MEmpresa').Value := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'CUPOM', '') ;
-  SQLVendaGrupo.MacrobyName('MData').Value    := 'CUPOM.CUPODEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                 'CUPOM.CUPODEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
+  SQLVendaGrupo.MacrobyName('MData').Value    := 'CUPOM.CUPODEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                 'CUPOM.CUPODEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
   //NOTAFISCAL
   SQLVendaGrupo.MacrobyName('MEmpresanf').Value := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'NOTAFISCAL', '') ;
-  SQLVendaGrupo.MacrobyName('MDatanf').Value    := 'NOTAFISCAL.NOFIDEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                   'NOTAFISCAL.NOFIDEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
+  SQLVendaGrupo.MacrobyName('MDatanf').Value    := 'NOTAFISCAL.NOFIDEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                   'NOTAFISCAL.NOFIDEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
   SQLVendaGrupo.Open ;
   SQLVendaGrupo.First;
 
@@ -87,10 +87,10 @@ begin
   Report.Formulas.Retrieve;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Periodo' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
-                                        FormatDateTime('dd/mm/yyyy', Ate.Date) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
+                                        FormatDateTime('dd/mm/yyyy', Ate.Date) + '''' ;
   Report.Formulas.Name         := 'Empresa' ;
-  Report.Formulas.Formula.Text := '"' +ComboEmpresa.Text+'"';
+  Report.Formulas.Formula.Text := '''' +ComboEmpresa.Text+'''';
   Report.Formulas.Send;
   Report.Execute;                                
 end;

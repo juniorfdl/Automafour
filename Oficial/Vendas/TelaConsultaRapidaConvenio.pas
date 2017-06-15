@@ -49,9 +49,9 @@ begin
           SQLConvenio.Close ;
 
           if Pos('*', Valor.Text) > 0 then
-            SQLConvenio.MacroByName('MLike').Value := 'CONVA60DESCR like "%' + Copy(Valor.Text, 2, Length(Valor.Text)) + '%"'
+            SQLConvenio.MacroByName('MLike').Value := 'CONVA60DESCR like ''%' + Copy(Valor.Text, 2, Length(Valor.Text)) + '%'''
           else
-            SQLConvenio.MacroByName('MLike').Value := 'CONVA60DESCR like "' + Valor.Text + '%"' ;
+            SQLConvenio.MacroByName('MLike').Value := 'CONVA60DESCR like ''' + Valor.Text + '%''' ;
 
           SQLConvenio.Open ;
 

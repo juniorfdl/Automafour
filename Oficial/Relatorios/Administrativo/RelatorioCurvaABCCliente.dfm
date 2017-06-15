@@ -75,13 +75,13 @@ inherited FormRelatorioCurvaABCCliente: TFormRelatorioCurvaABCCliente
       ' (%MEmpresa) and'
       ' (%MDataCupom)'
       'and'
-      ' Cupom.CUPOCSTATUS <> ''C'''
+      ' Cupom.CUPOCSTATUS <> '#39'C'#39
       'and'
-      ' OperacaoEstoque.OPESCENTRADASAIDA  = ''S'''
+      ' OperacaoEstoque.OPESCENTRADASAIDA  = '#39'S'#39
       'and'
-      ' OperacaoEstoque.OPESCORIGEMDESTINO = ''C'''
+      ' OperacaoEstoque.OPESCORIGEMDESTINO = '#39'C'#39
       'and'
-      ' OperacaoEstoque.OPESCGERAFINANCEIRO = ''S'''
+      ' OperacaoEstoque.OPESCGERAFINANCEIRO = '#39'S'#39
       'Group By'
       ' Cupom.CLIEA13ID')
     Macros = <
@@ -124,13 +124,13 @@ inherited FormRelatorioCurvaABCCliente: TFormRelatorioCurvaABCCliente
       ' (%MEmpresa) and'
       ' (%MDataNF)'
       'and'
-      '  NotaFiscal.NOFICSTATUS = ''E'''
+      '  NotaFiscal.NOFICSTATUS = '#39'E'#39
       'and'
-      '  Operacaoestoque.OPESCENTRADASAIDA  = ''S'''
+      '  Operacaoestoque.OPESCENTRADASAIDA  = '#39'S'#39
       'and'
-      '  Operacaoestoque.OPESCORIGEMDESTINO = ''C'''
+      '  Operacaoestoque.OPESCORIGEMDESTINO = '#39'C'#39
       'and'
-      '  Operacaoestoque.OPESCGERAFINANCEIRO = ''S'''
+      '  Operacaoestoque.OPESCGERAFINANCEIRO = '#39'S'#39
       'and'
       '  NotaFiscal.CUPOA13ID is Null'
       'Group By'
@@ -204,7 +204,7 @@ inherited FormRelatorioCurvaABCCliente: TFormRelatorioCurvaABCCliente
     ParamFields.PLSortMethod = psmDefaultSort
     ParamFields.PLSortByDescription = cDefault
     Formulas.Formula.Strings = (
-      '''Variacao''')
+      #39'Variacao'#39)
     SectionFormat.BackgroundColor = clNone
     SectionHeight.Height = 0
     SQL.Params.ParamType = spChar

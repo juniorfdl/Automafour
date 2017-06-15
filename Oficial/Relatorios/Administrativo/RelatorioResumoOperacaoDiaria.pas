@@ -343,20 +343,20 @@ begin
   SQLResumo.Close;
   SQLResumo.SQL.Clear;
   SQLResumo.SQL.Add('SELECT COUNT(*) AS QTDEPEDIDO, SUM(PDVDN2TOTPED) AS TOTALPEDIDO FROM PEDIDOVENDA WHERE PDVDCSTATUS = %Status ' +
-                    'AND PDVDDEMISSAO = "' + FormatDateTime('mm/dd/yyyy',Dia.Date) + '"');
-  SQLResumo.MacroByName('Status').AsString := '"A"';
+                    'AND PDVDDEMISSAO = ''' + FormatDateTime('mm/dd/yyyy',Dia.Date) + '''');
+  SQLResumo.MacroByName('Status').AsString := '''A''';
   SQLResumo.Open;
   if SQLResumo.FieldByName('QTDEPEDIDO').AsInteger > 0 then
     GravaQuantidadeNaLegenda('PV','A',SQLResumo.FieldByName('QTDEPEDIDO').AsInteger,SQLResumo.FieldByName('TOTALPEDIDO').AsFloat);
 
   SQLResumo.Close;
-  SQLResumo.MacroByName('Status').AsString := '"E"';
+  SQLResumo.MacroByName('Status').AsString := '''E''';
   SQLResumo.Open;
   if SQLResumo.FieldByName('QTDEPEDIDO').AsInteger > 0 then
     GravaQuantidadeNaLegenda('PV','E',SQLResumo.FieldByName('QTDEPEDIDO').AsInteger,SQLResumo.FieldByName('TOTALPEDIDO').AsFloat);
 
   SQLResumo.Close;
-  SQLResumo.MacroByName('Status').AsString := '"C"';
+  SQLResumo.MacroByName('Status').AsString := '''C''';
   SQLResumo.Open;
   if SQLResumo.FieldByName('QTDEPEDIDO').AsInteger > 0 then
     GravaQuantidadeNaLegenda('PV','C',SQLResumo.FieldByName('QTDEPEDIDO').AsInteger,SQLResumo.FieldByName('TOTALPEDIDO').AsFloat);
@@ -365,20 +365,20 @@ begin
   SQLResumo.Close;
   SQLResumo.SQL.Clear;
   SQLResumo.SQL.Add('SELECT COUNT(*) AS QTDEPEDIDO, SUM(PDCPN2TOTITENS) AS TOTALPEDIDO FROM PEDIDOCOMPRA WHERE PDCPCSTATUS = %Status ' +
-                    'AND PDCPDEMIS = "' + FormatDateTime('mm/dd/yyyy',Dia.Date) + '"');
-  SQLResumo.MacroByName('Status').AsString := '"A"';
+                    'AND PDCPDEMIS = ''' + FormatDateTime('mm/dd/yyyy',Dia.Date) + '''');
+  SQLResumo.MacroByName('Status').AsString := '''A''';
   SQLResumo.Open;
   if SQLResumo.FieldByName('QTDEPEDIDO').AsInteger > 0 then
     GravaQuantidadeNaLegenda('PC','A',SQLResumo.FieldByName('QTDEPEDIDO').AsInteger,SQLResumo.FieldByName('TOTALPEDIDO').AsFloat);
 
   SQLResumo.Close;
-  SQLResumo.MacroByName('Status').AsString := '"E"';
+  SQLResumo.MacroByName('Status').AsString := '''E''';
   SQLResumo.Open;
   if SQLResumo.FieldByName('QTDEPEDIDO').AsInteger > 0 then
     GravaQuantidadeNaLegenda('PC','E',SQLResumo.FieldByName('QTDEPEDIDO').AsInteger,SQLResumo.FieldByName('TOTALPEDIDO').AsFloat);
 
   SQLResumo.Close;
-  SQLResumo.MacroByName('Status').AsString := '"C"';
+  SQLResumo.MacroByName('Status').AsString := '''C''';
   SQLResumo.Open;
   if SQLResumo.FieldByName('QTDEPEDIDO').AsInteger > 0 then
     GravaQuantidadeNaLegenda('PC','C',SQLResumo.FieldByName('QTDEPEDIDO').AsInteger,SQLResumo.FieldByName('TOTALPEDIDO').AsFloat);
@@ -392,20 +392,20 @@ begin
   SQLResumo.Close;
   SQLResumo.SQL.Clear;
   SQLResumo.SQL.Add('SELECT COUNT(*) AS QTDENF, SUM(NOFIN2VLRNOTA) AS TOTALNF FROM NOTAFISCAL WHERE NOFICSTATUS = %Status ' +
-                    'AND NOFIDEMIS = "' + FormatDateTime('mm/dd/yyyy',Dia.Date) + '"');
-  SQLResumo.MacroByName('Status').AsString := '"A"';
+                    'AND NOFIDEMIS = ''' + FormatDateTime('mm/dd/yyyy',Dia.Date) + '''');
+  SQLResumo.MacroByName('Status').AsString := '''A''';
   SQLResumo.Open;
   if SQLResumo.FieldByName('QTDENF').AsInteger > 0 then
     GravaQuantidadeNaLegenda('NF','A',SQLResumo.FieldByName('QTDENF').AsInteger,SQLResumo.FieldByName('TOTALNF').AsFloat);
 
   SQLResumo.Close;
-  SQLResumo.MacroByName('Status').AsString := '"E"';
+  SQLResumo.MacroByName('Status').AsString := '''E''';
   SQLResumo.Open;
   if SQLResumo.FieldByName('QTDENF').AsInteger > 0 then
     GravaQuantidadeNaLegenda('NF','E',SQLResumo.FieldByName('QTDENF').AsInteger,SQLResumo.FieldByName('TOTALNF').AsFloat);
 
   SQLResumo.Close;
-  SQLResumo.MacroByName('Status').AsString := '"C"';
+  SQLResumo.MacroByName('Status').AsString := '''C''';
   SQLResumo.Open;
   if SQLResumo.FieldByName('QTDENF').AsInteger > 0 then
     GravaQuantidadeNaLegenda('NF','C',SQLResumo.FieldByName('QTDENF').AsInteger,SQLResumo.FieldByName('TOTALNF').AsFloat);
@@ -414,20 +414,20 @@ begin
   SQLResumo.Close;
   SQLResumo.SQL.Clear;
   SQLResumo.SQL.Add('SELECT COUNT(*) AS QTDENF, SUM(NOCPN3VLRTOTNOTA) AS TOTALNF FROM NOTACOMPRA WHERE NOCPCSTATUS = %Status ' +
-                    'AND NOCPDRECEBIMENTO = "' + FormatDateTime('mm/dd/yyyy',Dia.Date) + '"');
-  SQLResumo.MacroByName('Status').AsString := '"A"';
+                    'AND NOCPDRECEBIMENTO = ''' + FormatDateTime('mm/dd/yyyy',Dia.Date) + '''');
+  SQLResumo.MacroByName('Status').AsString := '''A''';
   SQLResumo.Open;
   if SQLResumo.FieldByName('QTDENF').AsInteger > 0 then
     GravaQuantidadeNaLegenda('NC','A',SQLResumo.FieldByName('QTDENF').AsInteger,SQLResumo.FieldByName('TOTALNF').AsFloat);
 
   SQLResumo.Close;
-  SQLResumo.MacroByName('Status').AsString := '"E"';
+  SQLResumo.MacroByName('Status').AsString := '''E''';
   SQLResumo.Open;
   if SQLResumo.FieldByName('QTDENF').AsInteger > 0 then
     GravaQuantidadeNaLegenda('NC','E',SQLResumo.FieldByName('QTDENF').AsInteger,SQLResumo.FieldByName('TOTALNF').AsFloat);
 
   SQLResumo.Close;
-  SQLResumo.MacroByName('Status').AsString := '"C"';
+  SQLResumo.MacroByName('Status').AsString := '''C''';
   SQLResumo.Open;
   if SQLResumo.FieldByName('QTDENF').AsInteger > 0 then
     GravaQuantidadeNaLegenda('NC','C',SQLResumo.FieldByName('QTDENF').AsInteger,SQLResumo.FieldByName('TOTALNF').AsFloat);
@@ -441,14 +441,14 @@ begin
   SQLResumo.SQL.Add('SELECT COUNT(*) AS QTDENF, SUM(MOVIMENTODIVERSOITEM.MVDIN3QTD * PRODUTO.PRODN3VLRCUSTO) AS TOTALNF FROM MOVIMENTODIVERSO ');
   SQLResumo.SQL.Add('LEFT OUTER JOIN MOVIMENTODIVERSOITEM ON MOVIMENTODIVERSO.MOVDA13ID = MOVIMENTODIVERSOITEM.MOVDA13ID ');
   SQLResumo.SQL.Add('LEFT OUTER JOIN PRODUTO ON MOVIMENTODIVERSOITEM.PRODICOD = PRODUTO.PRODICOD ');
-  SQLResumo.SQL.Add('WHERE MOVDCCONLUIDO = %Status AND MOVDDMOVIMENTO = "' + FormatDateTime('mm/dd/yyyy',Dia.Date) + '"');
-  SQLResumo.MacroByName('Status').AsString := '"S"';
+  SQLResumo.SQL.Add('WHERE MOVDCCONLUIDO = %Status AND MOVDDMOVIMENTO = ''' + FormatDateTime('mm/dd/yyyy',Dia.Date) + '''');
+  SQLResumo.MacroByName('Status').AsString := '''S''';
   SQLResumo.Open;
   if SQLResumo.FieldByName('QTDENF').AsInteger > 0 then
     GravaQuantidadeNaLegenda('MD','A',SQLResumo.FieldByName('QTDENF').AsInteger,SQLResumo.FieldByName('TOTALNF').AsFloat);
 
   SQLResumo.Close;
-  SQLResumo.MacroByName('Status').AsString := '"N"';
+  SQLResumo.MacroByName('Status').AsString := '''N''';
   SQLResumo.Open;
   if SQLResumo.FieldByName('QTDENF').AsInteger > 0 then
     GravaQuantidadeNaLegenda('MD','E',SQLResumo.FieldByName('QTDENF').AsInteger,SQLResumo.FieldByName('TOTALNF').AsFloat);
@@ -460,57 +460,57 @@ begin
   AtualizaTabelasTemporarias;
 
   SQLPedidoVenda.Close;
-  SQLPedidoVenda.MacroByName('DataEmissao').AsString        := 'PDVDDEMISSAO = "' + FormatDateTime('mm/dd/yyyy',Dia.Date) + '"';
+  SQLPedidoVenda.MacroByName('DataEmissao').AsString        := 'PDVDDEMISSAO = ''' + FormatDateTime('mm/dd/yyyy',Dia.Date) + '''';
   SQLPedidoVenda.Open;
   if not SQLPedidoVenda.IsEmpty then
     BatchExec(SQLPedidoVenda,TblPedidosNotas);
 
   SQLNotaFiscal.Close;
-  SQLNotaFiscal.MacroByName('DataEmissao').AsString         := 'NOFIDEMIS = "' + FormatDateTime('mm/dd/yyyy',Dia.Date) + '"';
+  SQLNotaFiscal.MacroByName('DataEmissao').AsString         := 'NOFIDEMIS = ''' + FormatDateTime('mm/dd/yyyy',Dia.Date) + '''';
   SQLNotaFiscal.Open;
   TblPedidosNotas.Close;
   if not SQLNotaFiscal.IsEmpty then
     BatchExec(SQLNotaFiscal,TblPedidosNotas);
 
   SQLNotaFiscalitens.Close;
-  SQLNotaFiscalitens.MacroByName('DataEmissao').AsString    := 'NOTAFISCAL.NOFIDEMIS = "' + FormatDateTime('mm/dd/yyyy',Dia.Date) + '"';
+  SQLNotaFiscalitens.MacroByName('DataEmissao').AsString    := 'NOTAFISCAL.NOFIDEMIS = ''' + FormatDateTime('mm/dd/yyyy',Dia.Date) + '''';
   SQLNotaFiscalitens.Open;
   if not SQLNotaFiscalitens.IsEmpty then
     BatchExec(SQLNotaFiscalitens,TblResumoItens);
 
   SQLPedidoVendaItens.Close;
-  SQLPedidoVendaItens.MacroByName('DataEmissao').AsString   := 'PEDIDOVENDA.PDVDDEMISSAO = "' + FormatDateTime('mm/dd/yyyy',Dia.Date) + '"';
+  SQLPedidoVendaItens.MacroByName('DataEmissao').AsString   := 'PEDIDOVENDA.PDVDDEMISSAO = ''' + FormatDateTime('mm/dd/yyyy',Dia.Date) + '''';
   SQLPedidoVendaItens.Open;
   if not SQLPedidoVendaItens.IsEmpty then
     BatchExec(SQLPedidoVendaItens,TblResumoItens);
   /////////////////////////
 
   SQLNotaCompra.Close;
-  SQLNotaCompra.MacroByName('DataEmissao').AsString         := 'NOCPDRECEBIMENTO = "' + FormatDateTime('mm/dd/yyyy',Dia.Date) + '"';
+  SQLNotaCompra.MacroByName('DataEmissao').AsString         := 'NOCPDRECEBIMENTO = ''' + FormatDateTime('mm/dd/yyyy',Dia.Date) + '''';
   SQLNotaCompra.Open;
   if not SQLNotaCompra.IsEmpty then
     BatchExec(SQLNotaCompra,TblPedidosNotas);
 
   SQLNotaCompraitens.Close;
-  SQLNotaCompraitens.MacroByName('DataEmissao').AsString    := 'NOTACOMPRA.NOCPDRECEBIMENTO = "' + FormatDateTime('mm/dd/yyyy',Dia.Date) + '"';
+  SQLNotaCompraitens.MacroByName('DataEmissao').AsString    := 'NOTACOMPRA.NOCPDRECEBIMENTO = ''' + FormatDateTime('mm/dd/yyyy',Dia.Date) + '''';
   SQLNotaCompraitens.Open;
   if not SQLNotaCompraitens.IsEmpty then
     BatchExec(SQLNotaCompraitens,TblResumoItens);
 
   SQLPEDIDOCOMPRA.Close;
-  SQLPEDIDOCOMPRA.MacroByName('DataEmissao').AsString       := 'PDCPDEMIS = "' + FormatDateTime('mm/dd/yyyy',Dia.Date) + '"';
+  SQLPEDIDOCOMPRA.MacroByName('DataEmissao').AsString       := 'PDCPDEMIS = ''' + FormatDateTime('mm/dd/yyyy',Dia.Date) + '''';
   SQLPEDIDOCOMPRA.Open;
   if not SQLPEDIDOCOMPRA.IsEmpty then
     BatchExec(SQLPEDIDOCOMPRA,TblPedidosNotas);
 
   SQLMovDiverso.Close;
-  SQLMovDiverso.MacroByName('DataEmissao').AsString         := 'MOVDDMOVIMENTO = "' + FormatDateTime('mm/dd/yyyy',Dia.Date) + '"';
+  SQLMovDiverso.MacroByName('DataEmissao').AsString         := 'MOVDDMOVIMENTO = ''' + FormatDateTime('mm/dd/yyyy',Dia.Date) + '''';
   SQLMovDiverso.Open;
   if not SQLMovDiverso.IsEmpty then
     BatchExec(SQLMovDiverso,TblPedidosNotas);
 
   SQLMovDiversoItem.Close;
-  SQLMovDiversoItem.MacroByName('DataEmissao').AsString     := 'MOVDDMOVIMENTO = "' + FormatDateTime('mm/dd/yyyy',Dia.Date) + '"';
+  SQLMovDiversoItem.MacroByName('DataEmissao').AsString     := 'MOVDDMOVIMENTO = ''' + FormatDateTime('mm/dd/yyyy',Dia.Date) + '''';
   SQLMovDiversoItem.Open;
   if not SQLMovDiverso.IsEmpty then
     BatchExec(SQLMovDiversoItem,TblResumoItens);
@@ -518,7 +518,7 @@ begin
   // GRAVA VALORES INICIAIS DO DIA
   SQLSaldoDiario.Close;
   SQLSaldoDiario.MacroByName('Empresa').AsString            := SQLDeLista(ComboEmpresa,ListaEmpresas,'','PRODUTOSALDODIA','');
-  SQLSaldoDiario.MacroByName('Data').AsString               := 'PRODUTOSALDODIA.PSDIDDATA = "' + FormatDateTime('mm/dd/yyyy',Dia.Date) + '"';
+  SQLSaldoDiario.MacroByName('Data').AsString               := 'PRODUTOSALDODIA.PSDIDDATA = ''' + FormatDateTime('mm/dd/yyyy',Dia.Date) + '''';
   SQLSaldoDiario.Open;
   if not SQLSaldoDiario.IsEmpty then
     begin
@@ -547,29 +547,29 @@ begin
           SQLGeral.Close;
           SQLGeral.MacroByName('PRODUTO').AsString         := SQLProdutoReajuste.FieldByName('PRODICOD').AsString;
           if SQLProdutoReajuste.FieldByName('PRRJVLRVENDA').AsFloat > 0 then
-            SQLGeral.MacroByName('VLRVENDA').AsString        := '"' + ConvFloatToStr(SQLProdutoReajuste.FieldByName('PRRJVLRVENDA').AsFloat) + '"'
+            SQLGeral.MacroByName('VLRVENDA').AsString        := '''' + ConvFloatToStr(SQLProdutoReajuste.FieldByName('PRRJVLRVENDA').AsFloat) + ''''
           else
-            SQLGeral.MacroByName('VLRVENDA').AsString        := '"0.00"';
+            SQLGeral.MacroByName('VLRVENDA').AsString        := '''0.00''';
           if SQLProdutoReajuste.FieldByName('PRRJN2MARGEM').AsFloat > 0 then
-            SQLGeral.MacroByName('MARGEM').AsString          := '"' + ConvFloatToStr(SQLProdutoReajuste.FieldByName('PRRJN2MARGEM').AsFloat) + '"'
+            SQLGeral.MacroByName('MARGEM').AsString          := '''' + ConvFloatToStr(SQLProdutoReajuste.FieldByName('PRRJN2MARGEM').AsFloat) + ''''
           else
-            SQLGeral.MacroByName('MARGEM').AsString          := '"0.00"';
+            SQLGeral.MacroByName('MARGEM').AsString          := '''0.00''';
           if SQLProdutoReajuste.FieldByName('PRRJN2VLRCOMPRA').AsFloat > 0 then
-            SQLGeral.MacroByName('VLRCOMPRA').AsString       := '"' + ConvFloatToStr(SQLProdutoReajuste.FieldByName('PRRJN2VLRCOMPRA').AsFloat) + '"'
+            SQLGeral.MacroByName('VLRCOMPRA').AsString       := '''' + ConvFloatToStr(SQLProdutoReajuste.FieldByName('PRRJN2VLRCOMPRA').AsFloat) + ''''
           else
-            SQLGeral.MacroByName('VLRCOMPRA').AsString       := '"0.00"';
+            SQLGeral.MacroByName('VLRCOMPRA').AsString       := '''0.00''';
           if SQLProdutoReajuste.FieldByName('PRRJN3ULTCOMPRAMED').AsFloat > 0 then
-            SQLGeral.MacroByName('VLRCOMPRAMED').AsString    := '"' + ConvFloatToStr(SQLProdutoReajuste.FieldByName('PRRJN3ULTCOMPRAMED').AsFloat) + '"'
+            SQLGeral.MacroByName('VLRCOMPRAMED').AsString    := '''' + ConvFloatToStr(SQLProdutoReajuste.FieldByName('PRRJN3ULTCOMPRAMED').AsFloat) + ''''
           else
-            SQLGeral.MacroByName('VLRCOMPRAMED').AsString    := '"0.00"';
+            SQLGeral.MacroByName('VLRCOMPRAMED').AsString    := '''0.00''';
           if SQLProdutoReajuste.FieldByName('PRRJN3VLRCUSTO').AsFloat > 0 then
-            SQLGeral.MacroByName('VLRCUSTO').AsString        := '"' + ConvFloatToStr(SQLProdutoReajuste.FieldByName('PRRJN3VLRCUSTO').AsFloat)+ '"'
+            SQLGeral.MacroByName('VLRCUSTO').AsString        := '''' + ConvFloatToStr(SQLProdutoReajuste.FieldByName('PRRJN3VLRCUSTO').AsFloat)+ ''''
           else
-            SQLGeral.MacroByName('VLRCUSTO').AsString        := '"0.00"';
+            SQLGeral.MacroByName('VLRCUSTO').AsString        := '''0.00''';
           if SQLProdutoReajuste.FieldByName('PRRJN3ULTCUSTOMED').AsFloat > 0 then
-            SQLGeral.MacroByName('VLRCUSTOMED').AsString     := '"' + ConvFloatToStr(SQLProdutoReajuste.FieldByName('PRRJN3ULTCUSTOMED').AsFloat)+ '"'
+            SQLGeral.MacroByName('VLRCUSTOMED').AsString     := '''' + ConvFloatToStr(SQLProdutoReajuste.FieldByName('PRRJN3ULTCUSTOMED').AsFloat)+ ''''
           else
-            SQLGeral.MacroByName('VLRCUSTOMED').AsString     := '"0.00"';
+            SQLGeral.MacroByName('VLRCUSTOMED').AsString     := '''0.00''';
           try
             SQLGeral.ExecSQL;
           except

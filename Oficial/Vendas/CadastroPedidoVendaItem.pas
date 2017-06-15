@@ -424,7 +424,7 @@ begin
       begin
         Application.CreateForm(TFormTelaGeralModalCadastroProdutoNumeroSerie,FormTelaGeralModalCadastroProdutoNumeroSerie);
         FormTelaGeralModalCadastroProdutoNumeroSerie.SQLProdutoSerie.Close;
-        FormTelaGeralModalCadastroProdutoNumeroSerie.SQLProdutoSerie.MacroByName('MFiltro').AsString := 'PDVDA13ID = "' + SQLTemplatePDVDA13ID.AsString + '" AND PRODICOD = ' + SQLTemplatePRODICOD.AsString;
+        FormTelaGeralModalCadastroProdutoNumeroSerie.SQLProdutoSerie.MacroByName('MFiltro').AsString := 'PDVDA13ID = ''' + SQLTemplatePDVDA13ID.AsString + ''' AND PRODICOD = ' + SQLTemplatePRODICOD.AsString;
         FormTelaGeralModalCadastroProdutoNumeroSerie.SQLProdutoSerie.Open;
         FormTelaGeralModalCadastroProdutoNumeroSerie.CodProduto    := SQLTemplatePRODICOD.AsInteger;
         FormTelaGeralModalCadastroProdutoNumeroSerie.Destino       := 'C';
@@ -436,7 +436,7 @@ begin
         FormTelaGeralModalCadastroProdutoNumeroSerie.ShowModal;
       end;
   SQLTotalQdte.Close;
-  SQLTotalQdte.MacroByName('MPedidoVenda').AsString := 'PDVDA13ID = "' + DSMasterTemplate.DataSet.FieldByName('PDVDA13ID').AsString + '"';
+  SQLTotalQdte.MacroByName('MPedidoVenda').AsString := 'PDVDA13ID = ''' + DSMasterTemplate.DataSet.FieldByName('PDVDA13ID').AsString + '''';
   SQLTotalQdte.Open;
 end;
 
@@ -573,7 +573,7 @@ begin
   SQLTemplate.DataSource.DataSet.AutoCalcFields := True;
   DM.InserindoItemPV:=False;
   SQLTotalQdte.Close;
-  SQLTotalQdte.MacroByName('MPedidoVenda').AsString := 'PDVDA13ID = "' + DSMasterTemplate.DataSet.FieldByName('PDVDA13ID').AsString + '"';
+  SQLTotalQdte.MacroByName('MPedidoVenda').AsString := 'PDVDA13ID = ''' + DSMasterTemplate.DataSet.FieldByName('PDVDA13ID').AsString + '''';
   SQLTotalQdte.Open;
 end;
 
@@ -895,7 +895,7 @@ begin
       begin
         Application.CreateForm(TFormTelaGeralModalCadastroProdutoNumeroSerie,FormTelaGeralModalCadastroProdutoNumeroSerie);
         FormTelaGeralModalCadastroProdutoNumeroSerie.SQLProdutoSerie.Close;
-        FormTelaGeralModalCadastroProdutoNumeroSerie.SQLProdutoSerie.MacroByName('MFiltro').AsString := 'PDVDA13ID = "' + SQLTemplatePDVDA13ID.AsString + '" AND PRODICOD = ' + SQLTemplatePRODICOD.AsString;
+        FormTelaGeralModalCadastroProdutoNumeroSerie.SQLProdutoSerie.MacroByName('MFiltro').AsString := 'PDVDA13ID = ''' + SQLTemplatePDVDA13ID.AsString + ''' AND PRODICOD = ' + SQLTemplatePRODICOD.AsString;
         FormTelaGeralModalCadastroProdutoNumeroSerie.SQLProdutoSerie.Open;
         FormTelaGeralModalCadastroProdutoNumeroSerie.CodProduto    := SQLTemplatePRODICOD.AsInteger;
         FormTelaGeralModalCadastroProdutoNumeroSerie.Destino       := 'C';
@@ -912,7 +912,7 @@ procedure TFormCadastroPedidoVendaItem.SQLTemplateAfterOpen(
 begin
   inherited;
   SQLTotalQdte.Close;
-  SQLTotalQdte.MacroByName('MPedidoVenda').AsString := 'PDVDA13ID = "' + DSMasterTemplate.DataSet.FieldByName('PDVDA13ID').AsString + '"';
+  SQLTotalQdte.MacroByName('MPedidoVenda').AsString := 'PDVDA13ID = ''' + DSMasterTemplate.DataSet.FieldByName('PDVDA13ID').AsString + '''';
   SQLTotalQdte.Open;
 end;
 

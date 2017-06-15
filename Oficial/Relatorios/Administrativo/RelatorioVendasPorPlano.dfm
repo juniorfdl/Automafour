@@ -240,7 +240,7 @@ inherited FormRelatorioVendasPorPlano: TFormRelatorioVendasPorPlano
         ' left outer join PLANORECEBIMENTO PLANORECEBIMENTO on CUPOM.PLRC' +
         'ICOD = PLANORECEBIMENTO.PLRCICOD'
       'where'
-      '  CUPOM.CUPOCSTATUS = "A" and'
+      '  CUPOM.CUPOCSTATUS = ''A'' and'
       '  (%MEmpresa) and'
       '  (%MTerminal) and '
       '  (%MData) and'

@@ -114,8 +114,8 @@ begin
   SQLNotaFiscal.MacrobyName('Empresa').Value := SQLDeLista(ComboEmpresa, ListaEmpresas,'','NotaFiscal','') ;
 
   SQLNotaFiscal.MacroByName('CampoData').Value   := 'NotaFiscal.NOFIDEMIS';
-  SQLNotaFiscal.MacroByName('DataInicial').Value := ' "' + FormatDateTime('mm/dd/yyyy',De.Date)  + '" ';
-  SQLNotaFiscal.MacroByName('DataFinal').Value   := ' "' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '" ';
+  SQLNotaFiscal.MacroByName('DataInicial').Value := ' ''' + FormatDateTime('mm/dd/yyyy',De.Date)  + ''' ';
+  SQLNotaFiscal.MacroByName('DataFinal').Value   := ' ''' + FormatDateTime('mm/dd/yyyy',Ate.Date) + ''' ';
 
   if (ComboVendedor.KeyValue <> null) and (ComboVendedor.KeyValue > 0) then
     SQLNotaFiscal.MacroByName('Vendedor').Value := 'NOTAFISCAL.VENDICOD = ' + IntToStr(ComboVendedor.KeyValue)
@@ -125,13 +125,13 @@ begin
   SQLNotaFiscal.MacroByName('Status').Value := '0=0';
 
   Case ComboStatus.ItemIndex of
-    0 : SQLNotaFiscal.MacroByName('Status').Value := 'NotaFiscal.NOFICSTATUS = "A"';
-    1 : SQLNotaFiscal.MacroByName('Status').Value := 'NotaFiscal.NOFICSTATUS = "E"';
-    2 : SQLNotaFiscal.MacroByName('Status').Value := 'NotaFiscal.NOFICSTATUS = "C"';
+    0 : SQLNotaFiscal.MacroByName('Status').Value := 'NotaFiscal.NOFICSTATUS = ''A''';
+    1 : SQLNotaFiscal.MacroByName('Status').Value := 'NotaFiscal.NOFICSTATUS = ''E''';
+    2 : SQLNotaFiscal.MacroByName('Status').Value := 'NotaFiscal.NOFICSTATUS = ''C''';
   end;
 
   if ComboCFOP.Value <> '' then
-    SQLNotaFiscal.MacroByName('CFOP').Value := 'NotaFiscal.CFOPA5COD = "' + ComboCFOP.Value + '"'
+    SQLNotaFiscal.MacroByName('CFOP').Value := 'NotaFiscal.CFOPA5COD = ''' + ComboCFOP.Value + ''''
   else
     SQLNotaFiscal.MacroByName('CFOP').Value := '0=0';
 
@@ -165,33 +165,33 @@ begin
  Report.Formulas.Retrieve;
 
  Report.Formulas.Name := 'Empresa' ;
- Report.Formulas.Formula.Text := '"' + ComboEmpresa.Text + '"' ;
+ Report.Formulas.Formula.Text := '''' + ComboEmpresa.Text + '''' ;
 
  Report.Formulas.Name := 'Emissao';
- Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss',Now) + '"';
+ Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss',Now) + '''';
 
  Report.Formulas.Name := 'PeriodoEmissao';
- Report.Formulas.Formula.Text := '"' + De.Text + ' até ' + Ate.Text + '"';
+ Report.Formulas.Formula.Text := '''' + De.Text + ' até ' + Ate.Text + '''';
 
  Report.Formulas.Name := 'StatusFiltro';
- Report.Formulas.Formula.Text := '"' + ComboStatus.Text + '"';
+ Report.Formulas.Formula.Text := '''' + ComboStatus.Text + '''';
 
  if ComboCFOP.Value <> '' then
    begin
         Report.Formulas.Name := 'CFOP';
-     Report.Formulas.Formula.Text := '"' + ComboCFOP.DisplayValue + '"';
+     Report.Formulas.Formula.Text := '''' + ComboCFOP.DisplayValue + '''';
    end;
 
  if (ComboVendedor.KeyValue <> null) and (ComboVendedor.KeyValue > 0) then
    begin
      Report.Formulas.Name := 'Vendedor';
-     Report.Formulas.Formula.Text := '"' + ComboVendedor.DisplayValue + '"';
+     Report.Formulas.Formula.Text := '''' + ComboVendedor.DisplayValue + '''';
    end;
 
  if ComboPortador.Value <> '' then
    begin
      Report.Formulas.Name := 'Portador';
-     Report.Formulas.Formula.Text := '"' + ComboPortador.DisplayValue + '"';
+     Report.Formulas.Formula.Text := '''' + ComboPortador.DisplayValue + '''';
    end;
 
  Report.Formulas.Send;

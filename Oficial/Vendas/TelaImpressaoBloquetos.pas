@@ -221,7 +221,7 @@ begin
       TblDuplicatasCTRCDVENC.AsString             := SQLContasReceberCTRCDVENC.AsString;
       TblDuplicatasCTRCINROPARC.AsString          := SQLContasReceberCTRCINROPARC.AsString;
       TblDuplicatasCTRCN2DESCFIN.AsString         := SQLContasReceberCTRCN2DESCFIN.AsString;
-      TblDuplicatasCTRCA30NRODUPLICBANCO.AsString := dm.SQLLocate('NOTAFISCAL','NOFIA13ID','NOFIINUMERO','"'+SQLContasReceberNOFIA13ID.AsString+'"')+
+      TblDuplicatasCTRCA30NRODUPLICBANCO.AsString := dm.SQLLocate('NOTAFISCAL','NOFIA13ID','NOFIINUMERO',''''+SQLContasReceberNOFIA13ID.AsString+'''')+
                                                      '-'+SQLContasReceberCTRCINROPARC.AsString;
       TblDuplicatasCLIEA14CGC.AsString            := SQLContasReceberCLIEA14CGC.AsString;
       TblDuplicatasCLIEA20IE.AsString             := SQLContasReceberCLIEA20IE.AsString;
@@ -306,7 +306,7 @@ begin
   end;
 
   SQLDuplicatas.Close;
-  SQLDuplicatas.MacroByName('MFiltro').Value := 'DUPLA13ID = '+ '"' + SQLContasReceberDUPLA13ID.AsString + '"';
+  SQLDuplicatas.MacroByName('MFiltro').Value := 'DUPLA13ID = '+ '''' + SQLContasReceberDUPLA13ID.AsString + '''';
   SQLDuplicatas.Open;
 
   SQLContasReceber.First;
@@ -322,7 +322,7 @@ begin
       TblDuplicatasCTRCDVENC.AsString             := SQLContasReceberCTRCDVENC.AsString;
       TblDuplicatasCTRCINROPARC.AsString          := SQLContasReceberCTRCINROPARC.AsString;
       TblDuplicatasCTRCN2DESCFIN.AsString         := SQLContasReceberCTRCN2DESCFIN.AsString;
-      TblDuplicatasCTRCA30NRODUPLICBANCO.AsString := dm.SQLLocate('NOTAFISCAL','NOFIA13ID','NOFIINUMERO','"'+SQLContasReceberNOFIA13ID.AsString+'"')+
+      TblDuplicatasCTRCA30NRODUPLICBANCO.AsString := dm.SQLLocate('NOTAFISCAL','NOFIA13ID','NOFIINUMERO',''''+SQLContasReceberNOFIA13ID.AsString+'''')+
                                                      '-'+SQLContasReceberCTRCINROPARC.AsString;
       TblDuplicatasCLIEA14CGC.AsString            := SQLContasReceberCLIEA14CGC.AsString;
       TblDuplicatasCLIEA20IE.AsString             := SQLContasReceberCLIEA20IE.AsString;

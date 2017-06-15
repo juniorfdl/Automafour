@@ -293,7 +293,7 @@ begin
     End ;
 
   if (Application.FindComponent('FormTelaFechamentoVenda') <> nil) and
-     (ImprimeDadosClienteCupom = 'S') and (NomeCli <> SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC','"'+DM.SQLTerminalAtivo.FieldByName('CLIEA13ID').AsString+'"')) then
+     (ImprimeDadosClienteCupom = 'S') and (NomeCli <> SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC',''''+DM.SQLTerminalAtivo.FieldByName('CLIEA13ID').AsString+'''')) then
     begin
       // TOTALIZAR CUPOM
       s := chr(27) + '0L'+ 'CUPOM(ID).: ' + IDCupom + Chr(13) +

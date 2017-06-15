@@ -94,28 +94,28 @@ begin
       Report.Formulas.Retrieve;
       //--------------------------------------------------------------------------\\
       Report.Formulas.Name         := 'Empresa';
-      Report.Formulas.Formula.Text := '"' + ComboEmpresa.Text + '"';
+      Report.Formulas.Formula.Text := '''' + ComboEmpresa.Text + '''';
       //--------------------------------------------------------------------------\\
       Report.Formulas.Name         := 'Emissao';
-      Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"';
+      Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''';
       //--------------------------------------------------------------------------\\
       Report.Formulas.Name         := 'Marca';
       if ComboMarca.Value <> '' then
-        Report.Formulas.Formula.Text := '"' + ComboMarca.Text + '"'
+        Report.Formulas.Formula.Text := '''' + ComboMarca.Text + ''''
       else
-        Report.Formulas.Formula.Text := '"Todas"';
+        Report.Formulas.Formula.Text := '''Todas''';
       //--------------------------------------------------------------------------\\
       Report.Formulas.Name         := 'Grupo';
       if ComboGrupo.Value <> '' then
-        Report.Formulas.Formula.Text := '"' + ComboGrupo.Text + '"'
+        Report.Formulas.Formula.Text := '''' + ComboGrupo.Text + ''''
       else
-        Report.Formulas.Formula.Text := '"Todos"';
+        Report.Formulas.Formula.Text := '''Todos''';
       //--------------------------------------------------------------------------\\
       Report.Formulas.Name         := 'SubGrupo';
       if ComboSubgrupo.Value <> '' then
-        Report.Formulas.Formula.Text := '"' + ComboSubGrupo.Text + '"'
+        Report.Formulas.Formula.Text := '''' + ComboSubGrupo.Text + ''''
       else
-        Report.Formulas.Formula.Text := '"Todos"';
+        Report.Formulas.Formula.Text := '''Todos''';
       //--------------------------------------------------------------------------\\
       Report.Formulas.Send;
 //      AjustaCaminhoCrystal;

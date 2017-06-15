@@ -44,8 +44,8 @@ begin
   SQLCompraGrupo.Close ;
   //Nota Compra
   SQLCompraGrupo.MacroByName('MEmpresa').Value := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'NOTACOMPRA', 'EMPRICODDESTCOMPRA') ;
-  SQLCompraGrupo.MacrobyName('MData').Value    := 'NOTACOMPRA.NOCPDRECEBIMENTO >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                  'NOTACOMPRA.NOCPDRECEBIMENTO <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
+  SQLCompraGrupo.MacrobyName('MData').Value    := 'NOTACOMPRA.NOCPDRECEBIMENTO >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                  'NOTACOMPRA.NOCPDRECEBIMENTO <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
   SQLCompraGrupo.Open ;
 
   if SQLCompraGrupo.IsEmpty then
@@ -90,8 +90,8 @@ begin
   Report.Formulas.Retrieve;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Periodo' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
-                                        FormatDateTime('dd/mm/yyyy', Ate.Date) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
+                                        FormatDateTime('dd/mm/yyyy', Ate.Date) + '''' ;
   Report.Formulas.Send;
   Report.Execute;
 end;

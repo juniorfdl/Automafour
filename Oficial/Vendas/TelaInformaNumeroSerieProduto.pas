@@ -34,7 +34,7 @@ procedure TFormTelaInformaNumeroSerieProduto.BitBtn1Click(Sender: TObject);
 begin
   SQLConsulta.Close;
   SQLConsulta.SQL.Clear;
-  SQLConsulta.SQL.Add('SELECT * FROM PRODUTOSERIE WHERE PRSEA60NROSERIE = "' + EditNroSerie.Text + '"');
+  SQLConsulta.SQL.Add('SELECT * FROM PRODUTOSERIE WHERE PRSEA60NROSERIE = ''' + EditNroSerie.Text + '''');
   SQLConsulta.SQL.Add('and PRODICOD = ' + CodigoProduto);
   SQLConsulta.Open;
   if SQLConsulta.IsEmpty then

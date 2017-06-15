@@ -308,7 +308,7 @@ begin
       MyQuery.SQL.Add('where CTCRICOD = ' + Conta) ;
       if Operacao <> '' then
         MyQuery.SQL.Add('and   OPBCICOD = ' + Operacao) ;
-      MyQuery.SQL.Add('and   MVBCDLANC <= "' + Data + '"') ;
+      MyQuery.SQL.Add('and   MVBCDLANC <= ''' + Data + '''') ;
       MyQuery.Open ;
       if not MyQuery.EOF then
         begin
@@ -332,7 +332,7 @@ begin
       Data := FormatDateTime('mm/dd/yyyy', StrToDate(Data)) ;
       MyQuery.SQL.Clear ;
       MyQuery.SQL.Add('select sum(MVBCN2VLRDEB) as Debitos, sum(MVBCN2VLRCRED) as Creditos from MOVIMENTOBANCO') ;
-      MyQuery.SQL.Add('where MVBCDLANC <= "' + Data + '"') ;
+      MyQuery.SQL.Add('where MVBCDLANC <= ''' + Data + '''') ;
       MyQuery.Open ;
       if not MyQuery.EOF then
         begin
@@ -360,8 +360,8 @@ begin
   Query.DatabaseName := 'DB';
   DM.DB.StartTransaction;
   Query.SQL.Clear;
-  Query.SQL.Add('UPDATE CONTASRECEBER SET Pendente="S", CTRCN2TOTJUROREC = ' + ConvFloatToStr(VlrJuro));
-  Query.SQL.Add('WHERE CTRCA13ID = "' + IDContasReceber + '"');
+  Query.SQL.Add('UPDATE CONTASRECEBER SET Pendente=''S'', CTRCN2TOTJUROREC = ' + ConvFloatToStr(VlrJuro));
+  Query.SQL.Add('WHERE CTRCA13ID = ''' + IDContasReceber + '''');
   try
     Query.ExecSQL;
     DM.DB.Commit;
@@ -454,14 +454,14 @@ begin
         IDCheque := FormatFloat('000',Empresa) + FormatFloat('000',TerminalAtual) + FormatFloat('000000',ProximoCodigo);
         IDCheque := IDCheque + DigitVerifEAN(IDCheque);
 
-        SqlCheque.SQL.Add('"' + IDCheque +'"'+ ' , ');
+        SqlCheque.SQL.Add('''' + IDCheque +''''+ ' , ');
         SqlCheque.SQL.Add(IntToStr(Empresa)  + ' , ');
         SqlCheque.SQL.Add(IntToStr(TerminalAtual) + ' , ');
         SqlCheque.SQL.Add(FloatToStr(ProximoCodigo) + ' , ');
-        SqlCheque.SQL.Add('"' + Cliente + '" , ');
-        SqlCheque.SQL.Add('"A" , ');
+        SqlCheque.SQL.Add('''' + Cliente + ''' , ');
+        SqlCheque.SQL.Add('''A'' , ');
         SqlCheque.SQL.Add('Null , ');
-        SqlCheque.SQL.Add('"' + FormatDateTime('mm/dd/yyyy',DataVencimento)+'"' + ' , ');
+        SqlCheque.SQL.Add('''' + FormatDateTime('mm/dd/yyyy',DataVencimento)+'''' + ' , ');
         SqlCheque.SQL.Add(ConvFloatToStr(ValorCheque) + ' , ');
         SqlCheque.SQL.Add('Null , ');
         SqlCheque.SQL.Add(IntToStr(Numerario) + ' , ');
@@ -470,9 +470,9 @@ begin
         SqlCheque.SQL.Add('Null , ');
 
         if DataVencimento <> Now then
-          SqlCheque.SQL.Add('"CHQP" , ')
+          SqlCheque.SQL.Add('''CHQP'' , ')
         else
-          SqlCheque.SQL.Add('"CHQV" , ');
+          SqlCheque.SQL.Add('''CHQV'' , ');
 
         SqlCheque.SQL.Add('Null , '); // Data ult. recbto
         SqlCheque.SQL.Add('0 , '); // Total recbto
@@ -486,22 +486,22 @@ begin
         SqlCheque.SQL.Add('Null , '); // Plano Contas
         SqlCheque.SQL.Add('Null , '); // Nro. Duplic. Banco
         SqlCheque.SQL.Add('Null , '); // Id Nota Fiscal
-        SqlCheque.SQL.Add('"' + FormatDateTime('mm/dd/yyyy',Now)+ '"' + ' , ');
-        SqlCheque.SQL.Add('"S" , ');
-        SqlCheque.SQL.Add('"' + FormatDateTime('mm/dd/yyyy',Now)+ '"' +' , ');
+        SqlCheque.SQL.Add('''' + FormatDateTime('mm/dd/yyyy',Now)+ '''' + ' , ');
+        SqlCheque.SQL.Add('''S'' , ');
+        SqlCheque.SQL.Add('''' + FormatDateTime('mm/dd/yyyy',Now)+ '''' +' , ');
         SqlCheque.SQL.Add('Null , ');
         //Valores do cheque
-        SqlCheque.SQL.Add('"'+ Banco + '"'+' , ');
-        SqlCheque.SQL.Add('"'+ Agencia + '"'+' , ');
-        SqlCheque.SQL.Add('"'+ Conta + '"'+' , ');
-        SqlCheque.SQL.Add('"'+ NroChequeRecbto + '"'+' , ');
-        SqlCheque.SQL.Add('"'+ Titular + '"'+' , ');
-        SqlCheque.SQL.Add('"'+ CPFCGC + '"'+' , ');
+        SqlCheque.SQL.Add(''''+ Banco + ''''+' , ');
+        SqlCheque.SQL.Add(''''+ Agencia + ''''+' , ');
+        SqlCheque.SQL.Add(''''+ Conta + ''''+' , ');
+        SqlCheque.SQL.Add(''''+ NroChequeRecbto + ''''+' , ');
+        SqlCheque.SQL.Add(''''+ Titular + ''''+' , ');
+        SqlCheque.SQL.Add(''''+ CPFCGC + ''''+' , ');
         SqlCheque.SQL.Add('Null , '); // Data deposito
         SqlCheque.SQL.Add(IntToStr(Alinea) + ' , ');
         SqlCheque.SQL.Add('Null , '); // Id Pedido Venda
         SqlCheque.SQL.Add('Null ,'); // Dt. Estorno
-        SqlCheque.SQL.Add('"'+IdContaReceber+'")'); // ID CONTAS RECEBER
+        SqlCheque.SQL.Add(''''+IdContaReceber+''')'); // ID CONTAS RECEBER
         SqlCheque.ExecSQL;
         Dm.DB.Commit;
         LancaChequeRecebido := IDCheque;
@@ -531,16 +531,16 @@ begin
           begin
             Query.Close;
             Query.SQL.Clear;
-            Query.SQL.ADD('UPDATE CONTASRECEBER SET Pendente="S", PORTICOD = ' + NovoPortador);
-            Query.SQL.ADD(' WHERE CTRCA13ID = "' + IdContaReceber + '"');
+            Query.SQL.ADD('UPDATE CONTASRECEBER SET Pendente=''S'', PORTICOD = ' + NovoPortador);
+            Query.SQL.ADD(' WHERE CTRCA13ID = ''' + IdContaReceber + '''');
             Query.ExecSQL;
           end;
         if NovoTipoDoc <> '' then
           begin
             Query.Close;
             Query.SQL.Clear;
-            Query.SQL.ADD('UPDATE CONTASRECEBER SET Pendente="S", TPDCICOD = ' + NovoTipoDoc);
-            Query.SQL.ADD(' WHERE CTRCA13ID = "' + IdContaReceber + '"');
+            Query.SQL.ADD('UPDATE CONTASRECEBER SET Pendente=''S'', TPDCICOD = ' + NovoTipoDoc);
+            Query.SQL.ADD(' WHERE CTRCA13ID = ''' + IdContaReceber + '''');
             Query.ExecSQL;
           end;
         Query.Close;

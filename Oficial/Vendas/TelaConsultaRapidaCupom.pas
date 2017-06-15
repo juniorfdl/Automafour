@@ -65,7 +65,7 @@ begin
   if Key = VK_RETURN then
     begin
       SQLCupom.Close;
-      SQLCupom.MacroByName('DataEmissao').Value  := 'Cupom.CUPODEMIS = "' + FormatDateTime('mm/dd/yyyy',de.Date) + '"';
+      SQLCupom.MacroByName('DataEmissao').Value  := 'Cupom.CUPODEMIS = ''' + FormatDateTime('mm/dd/yyyy',de.Date) + '''';
       SQLCupom.MacroByName('Empresa').Value      := 'Cupom.EMPRICOD  = ' + EmpresaPadrao;
       SQLCupom.Open;
       DBGridLista.SetFocus;

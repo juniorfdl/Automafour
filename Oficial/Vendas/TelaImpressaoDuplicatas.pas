@@ -489,29 +489,29 @@ begin
   case RadioPeriodo.ItemIndex of
     0 : begin
           SqlContasReceber.MacroByName('CampoData').Value := 'CR.CTRCDEMIS';
-          SqlContasReceber.MacroByName('DataInicial').Value := '"' + FormatDateTime('mm/dd/yyyy',de.Date) + '"';
-          SqlContasReceber.MacroByName('DataFinal').Value := '"' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '"';
+          SqlContasReceber.MacroByName('DataInicial').Value := '''' + FormatDateTime('mm/dd/yyyy',de.Date) + '''';
+          SqlContasReceber.MacroByName('DataFinal').Value := '''' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '''';
 
           SQLTotais.MacroByName('CampoData').Value := 'CR.CTRCDEMIS';
-          SQLTotais.MacroByName('DataInicial').Value := '"' + FormatDateTime('mm/dd/yyyy',de.Date) + '"';
-          SQLTotais.MacroByName('DataFinal').Value := '"' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '"';
+          SQLTotais.MacroByName('DataInicial').Value := '''' + FormatDateTime('mm/dd/yyyy',de.Date) + '''';
+          SQLTotais.MacroByName('DataFinal').Value := '''' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '''';
         end;
 
     1 : begin
           SqlContasReceber.MacroByName('CampoData').Value := 'CR.CTRCDVENC';
-          SqlContasReceber.MacroByName('DataInicial').Value := '"' + FormatDateTime('mm/dd/yyyy',de.Date) + '"';
-          SqlContasReceber.MacroByName('DataFinal').Value := '"' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '"';
+          SqlContasReceber.MacroByName('DataInicial').Value := '''' + FormatDateTime('mm/dd/yyyy',de.Date) + '''';
+          SqlContasReceber.MacroByName('DataFinal').Value := '''' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '''';
 
           SQLTotais.MacroByName('CampoData').Value := 'CR.CTRCDVENC';
-          SQLTotais.MacroByName('DataInicial').Value := '"' + FormatDateTime('mm/dd/yyyy',de.Date) + '"';
-          SQLTotais.MacroByName('DataFinal').Value := '"' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '"';
+          SQLTotais.MacroByName('DataInicial').Value := '''' + FormatDateTime('mm/dd/yyyy',de.Date) + '''';
+          SQLTotais.MacroByName('DataFinal').Value := '''' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '''';
         end;
   end;
 
   if (ComboCliente.KeyValue <> null) and (ComboCliente.KeyValue > 0) then
     begin
-      SqlContasReceber.MacroByName('MCliente').Value := 'CR.CLIEA13ID = ' + '"'+ ComboCliente.KeyValue + '"';
-      SQLTotais.MacroByName('MCliente').Value := 'CR.CLIEA13ID = ' + '"'+ ComboCliente.KeyValue + '"';
+      SqlContasReceber.MacroByName('MCliente').Value := 'CR.CLIEA13ID = ' + ''''+ ComboCliente.KeyValue + '''';
+      SQLTotais.MacroByName('MCliente').Value := 'CR.CLIEA13ID = ' + ''''+ ComboCliente.KeyValue + '''';
     end
   else
     begin
@@ -539,8 +539,8 @@ begin
     end;
 
   case ComboEmitidos.ItemIndex of
-    0 : SqlContasReceber.MacroByName('MEmitidos').Value := 'CR.CTRCCEMITIDOBOLETO = "S"';
-    1 : SqlContasReceber.MacroByName('MEmitidos').Value := 'CR.CTRCCEMITIDOBOLETO = "N"';
+    0 : SqlContasReceber.MacroByName('MEmitidos').Value := 'CR.CTRCCEMITIDOBOLETO = ''S''';
+    1 : SqlContasReceber.MacroByName('MEmitidos').Value := 'CR.CTRCCEMITIDOBOLETO = ''N''';
     2 : SqlContasReceber.MacroByName('MEmitidos').Value := '0=0';
   end;
 
@@ -560,7 +560,7 @@ begin
       Parcelas := Parcelas + SQLTotais.FieldByName('NROPARCELAS').AsInteger;
       SQLTotais.Next;
     end;
-  TotalContasReceber.Text := FormatFloat('###0.00"',Total);
+  TotalContasReceber.Text := FormatFloat('###0.00''',Total);
   EditParcelas.Text := IntToStr(Parcelas);
 end;
 
@@ -682,7 +682,7 @@ begin
         TblDuplicatasTotalDocumento.AsFloat       := SQLContasReceberCTRCN2VLR.AsFloat;
 
       TblDuplicatasInstrucoes.AsString            := MemoInst.Lines.Text;
-      TblDuplicatasDocumentos.AsString            := SQLLocate('DUPLICATA','DUPLA13ID','DUPLA254DOCS','"' + SQLContasReceberDUPLA13ID.AsString + '"' );
+      TblDuplicatasDocumentos.AsString            := SQLLocate('DUPLICATA','DUPLA13ID','DUPLA254DOCS','''' + SQLContasReceberDUPLA13ID.AsString + '''' );
 
       TblDuplicatas.Post;
       SQLContasReceber.Next;
@@ -861,7 +861,7 @@ begin
       TblDuplicatasCTRCINROPARC.AsString          := SQLContasReceberCTRCINROPARC.AsString;
       TblDuplicatasCTRCN2DESCFIN.AsString         := SQLContasReceberCTRCN2DESCFIN.AsString;
       if (SQLContasReceberNOFIA13ID.AsString <> '') then
-        TblDuplicatasNumeroDocParc.AsString       := dm.SQLLocate('NOTAFISCAL','NOFIA13ID','NOFIINUMERO','"'+SQLContasReceberNOFIA13ID.AsString+'"') + '-' + SQLContasReceberCTRCINROPARC.AsString;
+        TblDuplicatasNumeroDocParc.AsString       := dm.SQLLocate('NOTAFISCAL','NOFIA13ID','NOFIINUMERO',''''+SQLContasReceberNOFIA13ID.AsString+'''') + '-' + SQLContasReceberCTRCINROPARC.AsString;
     {  if (SQLContasReceberCTRCA30NRODUPLICBANCO.AsString <> '') then
         TblDuplicatasCTRCA30NRODUPLICBANCO.AsString := SQLContasReceberCTRCA30NRODUPLICBANCO.AsString
       else }
@@ -896,10 +896,10 @@ begin
           DM.SQLTemplate.Close;
           DM.SQLTemplate.Sql.Clear;
           if SQLContaCorrenteBANCA5COD.Value = '041' then
-            DM.SQLTemplate.Sql.Add('UPDATE CONTASRECEBER SET CTRCA15NOSSONUMERO = "'+ IntToStr(vNossoNumero) +'" Where CTRCA13ID = "' + SQLContasReceberCTRCA13ID.Value + '"') ;
+            DM.SQLTemplate.Sql.Add('UPDATE CONTASRECEBER SET CTRCA15NOSSONUMERO = '''+ IntToStr(vNossoNumero) +''' Where CTRCA13ID = ''' + SQLContasReceberCTRCA13ID.Value + '''') ;
 
           if SQLContaCorrenteBANCA5COD.Value = '748' then
-            DM.SQLTemplate.Sql.Add('UPDATE CONTASRECEBER SET CTRCA15NOSSONUMERO = "'+ FormatDateTime('yy',Date) + '2' +Copy('00000'+IntToStr(vNossoNumero),length('00000'+IntToStr(vNossoNumero))-4,5)  +'" Where CTRCA13ID = "' + SQLContasReceberCTRCA13ID.Value + '"') ;
+            DM.SQLTemplate.Sql.Add('UPDATE CONTASRECEBER SET CTRCA15NOSSONUMERO = '''+ FormatDateTime('yy',Date) + '2' +Copy('00000'+IntToStr(vNossoNumero),length('00000'+IntToStr(vNossoNumero))-4,5)  +''' Where CTRCA13ID = ''' + SQLContasReceberCTRCA13ID.Value + '''') ;
           DM.SQLTemplate.ExecSql;
           DM.SQLTemplate.Close;
 
@@ -909,7 +909,7 @@ begin
           // Atualiza o proximo nosso numero sequencial da tabela contacorrente
           DM.SQLTemplate.Close;
           DM.SQLTemplate.Sql.Clear;
-          DM.SQLTemplate.Sql.Add('UPDATE CONTACORRENTE SET CTCRINOSSONUMERO = "'+IntToStr(vNossoNumero)+ '" where CTCRICOD = "'+SQLContaCorrenteCTCRICOD.AsString+ '"');
+          DM.SQLTemplate.Sql.Add('UPDATE CONTACORRENTE SET CTCRINOSSONUMERO = '''+IntToStr(vNossoNumero)+ ''' where CTCRICOD = '''+SQLContaCorrenteCTCRICOD.AsString+ '''');
           DM.SQLTemplate.ExecSql;
           DM.SQLTemplate.Close;
         end
@@ -929,7 +929,7 @@ begin
         TblDuplicatasInstrucoes.AsString      := SQLContasReceberCTRCA254HIST.Value;
 
       if SQLContasReceberDUPLA13ID.AsString <> '' then
-        TblDuplicatasDocumentos.AsString := SQLLocate('DUPLICATA','DUPLA13ID','DUPLA254DOCS','"' + SQLContasReceberDUPLA13ID.AsString + '"' );
+        TblDuplicatasDocumentos.AsString := SQLLocate('DUPLICATA','DUPLA13ID','DUPLA254DOCS','''' + SQLContasReceberDUPLA13ID.AsString + '''' );
 
       TblDuplicatas.Post;
 
@@ -965,7 +965,7 @@ begin
           begin
             DM.SQLTemplate.Close;
             DM.SQLTemplate.Sql.Clear;
-            DM.SQLTemplate.Sql.Add('UPDATE CONTASRECEBER SET Pendente="S", CTRCCEMITIDOBOLETO = "S"'+' Where CTRCA13ID = ' + '"' + SQLContasReceberCTRCA13ID.Value + '"') ;
+            DM.SQLTemplate.Sql.Add('UPDATE CONTASRECEBER SET Pendente=''S'', CTRCCEMITIDOBOLETO = ''S'''+' Where CTRCA13ID = ' + '''' + SQLContasReceberCTRCA13ID.Value + '''') ;
             DM.SQLTemplate.ExecSql;
             DM.SQLTemplate.Close;
             SQLContasReceber.Next;
@@ -1456,7 +1456,7 @@ begin
           {atualiza o contasreceber}
           DM.SQLTemplate.Close;
           DM.SQLTemplate.Sql.Clear;
-          DM.SQLTemplate.Sql.Add('UPDATE CONTASRECEBER SET LOTEREMESSABANCO='+IntToStr(NroRemessa)+' Where CTRCA13ID = ' + '"' + SQLContasReceberCTRCA13ID.Value + '"') ;
+          DM.SQLTemplate.Sql.Add('UPDATE CONTASRECEBER SET LOTEREMESSABANCO='+IntToStr(NroRemessa)+' Where CTRCA13ID = ' + '''' + SQLContasReceberCTRCA13ID.Value + '''') ;
           DM.SQLTemplate.ExecSql;
           DM.SQLTemplate.Close;
           SQLContasReceber.Next;

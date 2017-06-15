@@ -110,11 +110,11 @@ begin
   SQLMovimentoCaixa.MacrobyName('MEmpresa').Value := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'MOVIMENTOCAIXA', '') ;
 
   if (HoraInicial.Text = '') and (HoraInicial.Text = '') then
-    SQLMovimentoCaixa.MacrobyName('MData').Value    := 'MOVIMENTOCAIXA.MVCXDMOV >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                       'MOVIMENTOCAIXA.MVCXDMOV <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"'
+    SQLMovimentoCaixa.MacrobyName('MData').Value    := 'MOVIMENTOCAIXA.MVCXDMOV >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                       'MOVIMENTOCAIXA.MVCXDMOV <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + ''''
   else
-    SQLMovimentoCaixa.MacroByName('MData').Value := 'MOVIMENTOCAIXA.REGISTRO >= "' + FormatDateTime('mm/dd/yyyy ', De.Date) + HoraInicial.Text + '" and ' +
-                                                    'MOVIMENTOCAIXA.REGISTRO <= "' + FormatDateTime('mm/dd/yyyy ', Ate.Date)+ HoraFinal.Text   + '"';
+    SQLMovimentoCaixa.MacroByName('MData').Value := 'MOVIMENTOCAIXA.REGISTRO >= ''' + FormatDateTime('mm/dd/yyyy ', De.Date) + HoraInicial.Text + ''' and ' +
+                                                    'MOVIMENTOCAIXA.REGISTRO <= ''' + FormatDateTime('mm/dd/yyyy ', Ate.Date)+ HoraFinal.Text   + '''';
 
   //----------------------------------------------------------------------------
   if ComboOperador.Value <> '' then
@@ -178,20 +178,20 @@ begin
   Report.Formulas.Retrieve;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Empresa' ;
-  Report.Formulas.Formula.Text := '"' + ComboEmpresa.Text + '"' ;
+  Report.Formulas.Formula.Text := '''' + ComboEmpresa.Text + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Emissao' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'PeriodoEmissao' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
-                                  FormatDateTime('dd/mm/yyyy', Ate.Date) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
+                                  FormatDateTime('dd/mm/yyyy', Ate.Date) + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Terminal' ;
   if ComboTerminal.Text <> '' then
-    Report.Formulas.Formula.Text := '"' + ComboTerminal.Text + '"'
+    Report.Formulas.Formula.Text := '''' + ComboTerminal.Text + ''''
   else
-    Report.Formulas.Formula.Text := '"Todos"' ;
+    Report.Formulas.Formula.Text := '''Todos''' ;
   //--------------------------------------------------------------------------\\
   Report.Execute ;
 end;
@@ -204,7 +204,7 @@ begin
   SQLOperacaoCaixaAux.Open ;
 
   if FileExists(DM.PathAplicacao + 'Terminal.cfg') then
-    SQLTerminal.MacroByName('MFiltro').Value := 'TERMINAL.ECFA13ID <> " "'
+    SQLTerminal.MacroByName('MFiltro').Value := 'TERMINAL.ECFA13ID <> '' '''
   else
     SQLTerminal.MacroByName('MFiltro').Value := '0=0';
 
@@ -230,12 +230,12 @@ begin
         End;
     1 : Begin
           SQLOperacaoCaixa.Close;
-          SQLOperacaoCaixa.MacroByName('CreditoDebito').Value := 'OPCXCDEBITOCREDITO = '+'"C'+'"';
+          SQLOperacaoCaixa.MacroByName('CreditoDebito').Value := 'OPCXCDEBITOCREDITO = '+'''C'+'''';
           SQLOperacaoCaixa.Open;
         End;
     2 : Begin
           SQLOperacaoCaixa.Close;
-          SQLOperacaoCaixa.MacroByName('CreditoDebito').Value := 'OPCXCDEBITOCREDITO = '+'"D'+'"';
+          SQLOperacaoCaixa.MacroByName('CreditoDebito').Value := 'OPCXCDEBITOCREDITO = '+'''D'+'''';
           SQLOperacaoCaixa.Open;
         End;
    end;     

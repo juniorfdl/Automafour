@@ -849,8 +849,8 @@ Begin
           SQLReducaoZ.Close;
           SQLReducaoZ.MacroByName('MEmpresa').Value    := 'EMPRICOD  =  ' + ComboEmpresa.KeyValue ;
           SQLReducaoZ.MacroByName('CampoData').Value   := 'REDUDEMIS';
-          SQLReducaoZ.MacroByName('DataInicial').Value := '"' + FormatDateTime('mm/dd/yyyy',De.Date)  + '"';
-          SQLReducaoZ.MacroByName('DataFinal').Value   := '"' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '"';
+          SQLReducaoZ.MacroByName('DataInicial').Value := '''' + FormatDateTime('mm/dd/yyyy',De.Date)  + '''';
+          SQLReducaoZ.MacroByName('DataFinal').Value   := '''' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '''';
           SQLReducaoZ.Open;
           if not SQLReducaoZ.IsEmpty then
             begin

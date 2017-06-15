@@ -433,7 +433,7 @@ begin
     begin
       Tipo_de_Quantidade := 'I';
       QuantEcf := IntToStr(Round(Int(Quantidade)));
-      // O Parametro abaixo "Casas Decimais" é somente para o Valor Unitario a ser passado
+      // O Parametro abaixo ''Casas Decimais'' é somente para o Valor Unitario a ser passado
       IntRet := ECF_VendeItem(Codigo, Descricao, Aliquota, Tipo_de_Quantidade, QuantEcf, Casas_Decimais, ValorUnitarioECF, Tipo_de_Desconto, ValorDescontoEcf );
     end;
   if IntRet = 1 then

@@ -341,7 +341,7 @@ object FormTelaConsultaRapidaCliente: TFormTelaConsultaRapidaCliente
     DatabaseName = 'DB'
     SQL.Strings = (
       'select * from CLIENTE'
-      'where CLIECATIVO="S"'
+      'where CLIECATIVO=''S'''
       'order by CLIEA60RAZAOSOC')
     Macros = <>
     Left = 93

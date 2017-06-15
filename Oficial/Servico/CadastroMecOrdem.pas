@@ -1024,11 +1024,11 @@ begin
   RDPrint.ImpF(nlin, 1,'Endereco: ',[Negrito]);
   RDPrint.Imp (nlin,11,SQLTemplateClienteEndereco.AsString);
   RDPrint.ImpF(nlin,59,'Fone: ',[Negrito]);
-  RDPrint.Imp (nlin,65,SQLLocate('CLIENTE','CLIEA13ID','CLIEA15FONE1','"'+SQLTemplateCLIEA13ID.AsString+'"'));inc(nlin);
+  RDPrint.Imp (nlin,65,SQLLocate('CLIENTE','CLIEA13ID','CLIEA15FONE1',''''+SQLTemplateCLIEA13ID.AsString+''''));inc(nlin);
   RDPrint.ImpF(nlin, 1,'Cidade..: ',[Negrito]);
   RDPrint.Imp (nlin,11,SQLTemplateClienteCidade.AsString);
   RDPrint.ImpF(nlin,59,'Cel.: ',[Negrito]);
-  RDPrint.Imp (nlin,65,SQLLocate('CLIENTE','CLIEA13ID','CLIEA15FONE2','"'+SQLTemplateCLIEA13ID.AsString+'"'));inc(nLin);
+  RDPrint.Imp (nlin,65,SQLLocate('CLIENTE','CLIEA13ID','CLIEA15FONE2',''''+SQLTemplateCLIEA13ID.AsString+''''));inc(nLin);
   RDPrint.ImpF(nLin,1,'----------------------------------------------------------------------------------------------------------------------------------------------------------------',[Comp20]); Inc(nlin);
   RDPrint.ImpF(nlin, 1,'Descrição: '+SQLTemplateORDA50VEICULO.AsString,[Comp20]);inc(nlin);
   RDPrint.ImpF(nlin, 1,'Placa....: '+SQLTemplatePLACA.AsString,[Comp20]);
@@ -1127,16 +1127,16 @@ begin
   inherited;
   Clausula := '';
   if ComboBuscaCliente.Value <> '' then
-    Clausula := 'CLIEA13ID = "' + ComboBuscaCliente.Value + '" ';
+    Clausula := 'CLIEA13ID = ''' + ComboBuscaCliente.Value + ''' ';
   if (Clausula <> '') or (ComboBuscaCliente.Value <> '') then
     Clausula := Clausula + ' and ';
   case RadioStatus.ItemIndex of
     0 : Clausula := Clausula + ' (0 = 0)';
-    1 : Clausula := Clausula + ' (STATUS = "A" )';
-    2 : Clausula := Clausula + ' (STATUS = "C" )';
-    3 : Clausula := Clausula + ' (STATUS = "E" )';
-    4 : Clausula := Clausula + ' (STATUS = "F" )';
-    5 : Clausula := Clausula + ' (STATUS = "P" )';
+    1 : Clausula := Clausula + ' (STATUS = ''A'' )';
+    2 : Clausula := Clausula + ' (STATUS = ''C'' )';
+    3 : Clausula := Clausula + ' (STATUS = ''E'' )';
+    4 : Clausula := Clausula + ' (STATUS = ''F'' )';
+    5 : Clausula := Clausula + ' (STATUS = ''P'' )';
   end;
   EditProcura.Text := '';
   EditEntre.Text   := '';
@@ -1730,7 +1730,7 @@ begin
   // Gravar Data Primeira Compra e Data Ultima Compra
   Dm.SQLCliente.Close;
   Dm.SQLCliente.Sql.Clear;
-  Dm.SQLCliente.SQL.Add('UPDATE CLIENTE SET Pendente="S" , CLIEDPRICOMPRA = "' + FormatDateTime('mm/dd/yyyy',SQLNotaFiscalNOFIDEMIS.Value) + '", CLIEDULTCOMPRA = "' +FormatDateTime('mm/dd/yyyy',SQLNotaFiscalNOFIDEMIS.Value)+ '" Where CLIEA13ID = ' + '"' + SQLNotaFiscalCLIEA13ID.Value + '" and CLIEDPRICOMPRA is null') ;
+  Dm.SQLCliente.SQL.Add('UPDATE CLIENTE SET Pendente=''S'' , CLIEDPRICOMPRA = ''' + FormatDateTime('mm/dd/yyyy',SQLNotaFiscalNOFIDEMIS.Value) + ''', CLIEDULTCOMPRA = ''' +FormatDateTime('mm/dd/yyyy',SQLNotaFiscalNOFIDEMIS.Value)+ ''' Where CLIEA13ID = ' + '''' + SQLNotaFiscalCLIEA13ID.Value + ''' and CLIEDPRICOMPRA is null') ;
   Dm.SQLCliente.ExecSql;
 end;
 
@@ -1751,7 +1751,7 @@ begin
       FisJur := nCLIE.nCliPessoa
     Else if nOPES.nOpOrigemDestino = 'F' then // operacao vinculada a fornecedor
     begin
-      FisJur := SQLLocate('FORNECEDOR','FORNICOD','FORNCFISJURID','"'+SQLTemplateCLIEA13ID.AsString+'"')
+      FisJur := SQLLocate('FORNECEDOR','FORNICOD','FORNCFISJURID',''''+SQLTemplateCLIEA13ID.AsString+'''')
     end Else // se for vinculada a empresa sempre é juridica
       FisJur := 'J' ;
 
@@ -2360,7 +2360,7 @@ begin
   SQLSerieNF.Close;
   // Alterado pelo Judi
   SQLSerieNF.MacroByName('Empresa').value := 'EMPRICOD  = '+ DM.SQLTerminalAtivo.FieldByName('EMPRICOD').asstring;//ComboEmpresa.Value;
-  SQLSerieNF.MacroByName('Serie').Value   := 'SERIA5COD = "'+ SQLNotaFiscalSERIA5COD.asString+'"';
+  SQLSerieNF.MacroByName('Serie').Value   := 'SERIA5COD = '''+ SQLNotaFiscalSERIA5COD.asString+'''';
   SQLSerieNF.Open;
   Erro := True;
   if DataSet.State in [DSInsert] then

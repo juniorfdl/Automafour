@@ -73,15 +73,15 @@ begin
   SQLCustoMedioNota.MacroByName('MEmpresa').Value := SQLDeLista(ComboEmpresa,ListaEmpresas,'','NOTAFISCAL','EMPRICOD');
   SQLCupom.MacroByName('MEmpresa').Value      := SQLDeLista(ComboEmpresa,ListaEmpresas,'','','');
 
-  SQLNotaFiscal.MacroByName('MData').Value    := 'NOTAFISCAL.NOFIDEMIS >= "' + FormatDateTime('mm/dd/yyyy',De.Date) + '" AND ' +
-                                                 'NOTAFISCAL.NOFIDEMIS <= "' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '"';
+  SQLNotaFiscal.MacroByName('MData').Value    := 'NOTAFISCAL.NOFIDEMIS >= ''' + FormatDateTime('mm/dd/yyyy',De.Date) + ''' AND ' +
+                                                 'NOTAFISCAL.NOFIDEMIS <= ''' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '''';
 
-  SQLCustoMedioNota.MacroByName('MData').Value:= 'NOTAFISCAL.NOFIDEMIS >= "' + FormatDateTime('mm/dd/yyyy',De.Date) + '" AND ' +
-                                                 'NOTAFISCAL.NOFIDEMIS <= "' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '"';
+  SQLCustoMedioNota.MacroByName('MData').Value:= 'NOTAFISCAL.NOFIDEMIS >= ''' + FormatDateTime('mm/dd/yyyy',De.Date) + ''' AND ' +
+                                                 'NOTAFISCAL.NOFIDEMIS <= ''' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '''';
 
 
-  SQLCupom.MacroByName('MData').Value         := 'CUPODEMIS >= "' + FormatDateTime('mm/dd/yyyy',De.Date) + '" AND ' +
-                                                 'CUPODEMIS <= "' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '"';
+  SQLCupom.MacroByName('MData').Value         := 'CUPODEMIS >= ''' + FormatDateTime('mm/dd/yyyy',De.Date) + ''' AND ' +
+                                                 'CUPODEMIS <= ''' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '''';
 
 
   SQLEmpresaCusto.Close;
@@ -218,14 +218,14 @@ begin
   Report.Formulas.Retrieve ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Empresa' ;
-  Report.Formulas.Formula.Text := '"' + ComboEmpresa.Text + '"' ;
+  Report.Formulas.Formula.Text := '''' + ComboEmpresa.Text + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Emissao' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'PeriodoEmissao' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
-                                        FormatDateTime('dd/mm/yyyy', Ate.Date) + '"';
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
+                                        FormatDateTime('dd/mm/yyyy', Ate.Date) + '''';
   //--------------------------------------------------------------------------\\
 
   // AjustaCaminhoCrystal;

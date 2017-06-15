@@ -465,7 +465,7 @@ begin
     4 :begin
          if ValorSelCredito <= 0 then
            begin
-             Informa('Você selecionou a página "Créditos", mas não utilizou nenhum valor de crédito. Verifique!');
+             Informa('Você selecionou a página ''Créditos'', mas não utilizou nenhum valor de crédito. Verifique!');
              DBGridLista.SetFocus;
              Exit;
            end;
@@ -511,14 +511,14 @@ begin
         begin
           FormaPagamento := 'R';
           SQLSumCreditoCliente.Close;
-          SQLSumCreditoCliente.MacroByName('MCliente').AsString := 'CLIEA13ID = "' + IDCliente + '"';
+          SQLSumCreditoCliente.MacroByName('MCliente').AsString := 'CLIEA13ID = ''' + IDCliente + '''';
           SQLSumCreditoCliente.Open;
           if SQLSumCreditoCliente.FieldByName('SUM').AsFloat >= EditValorTotal.Value then
             begin
               EditTotCreditos.Value := SQLSumCreditoCliente.FieldByName('SUM').AsFloat;
-              EditNomeCliente.Text  := SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC','"' + IDCliente + '"');
+              EditNomeCliente.Text  := SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC','''' + IDCliente + '''');
               SQLCreditoCliente.Close;
-              SQLCreditoCliente.MacroByName('MCliente').AsString := 'CONTASRECEBER.CLIEA13ID = "' + IDCliente + '"';
+              SQLCreditoCliente.MacroByName('MCliente').AsString := 'CONTASRECEBER.CLIEA13ID = ''' + IDCliente + '''';
               SQLCreditoCliente.Open;
               if TblCreditoCliente.Active then
                 TblCreditoCliente.Close;

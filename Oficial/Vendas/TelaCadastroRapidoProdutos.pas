@@ -267,7 +267,7 @@ begin
     begin
        DM.SQLTemplate.Close;
        DM.SQLTemplate.SQL.Clear;
-       DM.SQLTemplate.SQl.Add('SELECT (PRODA60CODBAR) FROM PRODUTO WHERE PRODA60CODBAR = ' + '"' + SQLProduto.FieldByName('PRODA60CODBAR').AsString + '" AND PRODICOD <>'+SQLProduto.FieldByName('PRODICOD').asString);
+       DM.SQLTemplate.SQl.Add('SELECT (PRODA60CODBAR) FROM PRODUTO WHERE PRODA60CODBAR = ' + '''' + SQLProduto.FieldByName('PRODA60CODBAR').AsString + ''' AND PRODICOD <>'+SQLProduto.FieldByName('PRODICOD').asString);
        DM.SQLTemplate.Open;
        if DM.SQLTemplate.RecordCount > 0 then
          begin
@@ -285,7 +285,7 @@ begin
     begin
        DM.SQLTemplate.Close;
        DM.SQLTemplate.SQL.Clear;
-       DM.SQLTemplate.SQl.Add('SELECT (PRODA60REFER) FROM PRODUTO WHERE PRODA60REFER = ' + '"' +SQLProduto.FieldByName('PRODA60REFER').AsString + '" AND PRODICOD <>'+SQLProduto.FieldByName('PRODICOD').asString);
+       DM.SQLTemplate.SQl.Add('SELECT (PRODA60REFER) FROM PRODUTO WHERE PRODA60REFER = ' + '''' +SQLProduto.FieldByName('PRODA60REFER').AsString + ''' AND PRODICOD <>'+SQLProduto.FieldByName('PRODICOD').asString);
        DM.SQLTemplate.Open;
        if DM.SQLTemplate.RecordCount > 0 then
          begin

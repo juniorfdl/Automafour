@@ -92,9 +92,9 @@ begin
           DataSet.FieldByName('DataEmissaoLookUp').AsVariant   := DM.SQLTemplate.FindField('CTRCDEMIS').AsVariant;
           DataSet.FieldByName('ValorLookUp').AsVariant         := DM.SQLTemplate.FindField('CTRCN2VLR').AsVariant;
           If DM.SQLTemplate.FindField('CLIEA13ID').AsVariant <> Null Then
-            DataSet.FieldByName('ClienteLookUp').AsVariant       := SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC','"'+DM.SQLTemplate.FindField('CLIEA13ID').asString+'"');
+            DataSet.FieldByName('ClienteLookUp').AsVariant       := SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC',''''+DM.SQLTemplate.FindField('CLIEA13ID').asString+'''');
           If DM.SQLTemplate.FindField('NOFIA13ID').AsVariant <> Null Then
-            DataSet.FieldByName('NotaFiscalLookUp').AsVariant    := SQLLocate('NOTAFISCAL','NOFIA13ID','SERIA5COD','"'+DM.SQLTemplate.FindField('NOFIA13ID').asString+'"') + '-' + SQLLocate('NOTAFISCAL','NOFIA13ID','NOFIINUMERO','"'+DM.SQLTemplate.FindField('NOFIA13ID').asString+'"');
+            DataSet.FieldByName('NotaFiscalLookUp').AsVariant    := SQLLocate('NOTAFISCAL','NOFIA13ID','SERIA5COD',''''+DM.SQLTemplate.FindField('NOFIA13ID').asString+'''') + '-' + SQLLocate('NOTAFISCAL','NOFIA13ID','NOFIINUMERO',''''+DM.SQLTemplate.FindField('NOFIA13ID').asString+'''');
         End
       Else
         Begin

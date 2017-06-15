@@ -286,9 +286,9 @@ begin
     begin
       DM.SQLPreVenda.Close ;
       if NomeClienteVenda = '' then
-        DM.SQLPreVenda.MacroByName('MFiltro').Value := 'PRVDCIMPORT = "N" and PDVCPreConclu = "S"'
+        DM.SQLPreVenda.MacroByName('MFiltro').Value := 'PRVDCIMPORT = ''N'' and PDVCPreConclu = ''S'''
       else
-        DM.SQLPreVenda.MacroByName('MFiltro').Value := 'PRVDCIMPORT = "N" and PDVCPreConclu = "S" and CLIENTENOME Like "%'+NomeClienteVenda+'%"';
+        DM.SQLPreVenda.MacroByName('MFiltro').Value := 'PRVDCIMPORT = ''N'' and PDVCPreConclu = ''S'' and CLIENTENOME Like ''%'+NomeClienteVenda+'%''';
 
       DM.SQLPreVenda.MacroByName('Ordem').Value   := 'Order by '+ dm.sqlconfigvenda.ParamByName('CFVEA20ORDIMPVEND').AsString ;
       DM.SQLPreVenda.Open ;
@@ -365,9 +365,9 @@ begin
             DM.SQLTemplate.SQL.Add('Select') ;
             DM.SQLTemplate.SQL.Add('sum(CTRCN2VLR-CTRCN2TOTREC) as TOTALAPAGAR ') ;
             DM.SQLTemplate.SQL.Add('from CONTASRECEBER');
-            DM.SQLTemplate.SQL.Add('where CLIEA13ID = "' + DM.SQLPreVendaCLIEA13ID.AsString + '"') ;
-            DM.SQLTemplate.SQL.Add(' and (CTRCCSTATUS = "A" OR CTRCCSTATUS = "N")') ;
-            DM.SQLTemplate.SQL.Add(' and (CTRCCTIPOREGISTRO = "N" OR CTRCCTIPOREGISTRO IS NULL)') ;
+            DM.SQLTemplate.SQL.Add('where CLIEA13ID = ''' + DM.SQLPreVendaCLIEA13ID.AsString + '''') ;
+            DM.SQLTemplate.SQL.Add(' and (CTRCCSTATUS = ''A'' OR CTRCCSTATUS = ''N'')') ;
+            DM.SQLTemplate.SQL.Add(' and (CTRCCTIPOREGISTRO = ''N'' OR CTRCCTIPOREGISTRO IS NULL)') ;
             DM.SQLTemplate.Open ;
             if DM.SQLTemplate.FieldByName('TOTALAPAGAR').Value > 0 then
               TblMemPreVendaValorTotalComprasAberto.Value    := DM.SQLTemplate.FieldByName('TOTALAPAGAR').Value ;
@@ -376,8 +376,8 @@ begin
             DM.SQLTemplate.SQL.Clear ;
             DM.SQLTemplate.SQL.Add('select sum(CUPON2TOTITENS+CUPON3CREDTAXA+CUPON2ACRESC-CUPON2DESC-CUPON3BONUSTROCA) as TOTALCOMPRAS') ;
             DM.SQLTemplate.SQL.Add('from CUPOM') ;
-            DM.SQLTemplate.SQL.Add('where CLIEA13ID = "' + DM.SQLPreVendaCLIEA13ID.AsString + '"') ;
-            DM.SQLTemplate.SQL.Add(' and (CUPOCSTATUS = "A" or CUPOCSTATUS = "N") ') ;
+            DM.SQLTemplate.SQL.Add('where CLIEA13ID = ''' + DM.SQLPreVendaCLIEA13ID.AsString + '''') ;
+            DM.SQLTemplate.SQL.Add(' and (CUPOCSTATUS = ''A'' or CUPOCSTATUS = ''N'') ') ;
             DM.SQLTemplate.Open ;
             if DM.SQLTemplate.FieldByName('TOTALCOMPRAS').Value > 0 then
               TblMemPreVendaValorTotalCompras.Value := DM.SQLTemplate.FieldByName('TOTALCOMPRAS').Value ;
@@ -401,9 +401,9 @@ begin
     begin
       DM.SQLPreVenda.Close ;
       if NomeClienteVenda = '' then
-        DM.SQLPreVenda.MacroByName('MFiltro').Value := 'PRVDCIMPORT = "S"'
+        DM.SQLPreVenda.MacroByName('MFiltro').Value := 'PRVDCIMPORT = ''S'''
       else
-        DM.SQLPreVenda.MacroByName('MFiltro').Value := 'PRVDCIMPORT = "S" and CLIENTENOME Like "%'+NomeClienteVenda+'%"';
+        DM.SQLPreVenda.MacroByName('MFiltro').Value := 'PRVDCIMPORT = ''S'' and CLIENTENOME Like ''%'+NomeClienteVenda+'%''';
 
       DM.SQLPreVenda.MacroByName('Ordem').Value   := 'Order by '+ dm.sqlconfigvenda.ParamByName('CFVEA20ORDIMPVEND').AsString ;
       DM.SQLPreVenda.Open ;
@@ -459,18 +459,18 @@ begin
     begin
       DM.SQLPreVenda.Close ;
       if NomeClienteVenda = '' then
-        DM.SQLPreVenda.MacroByName('MFiltro').Value := 'PRVDCIMPORT = "N" and P.VENDICOD = ' + IntToStr(VendedorVenda)
+        DM.SQLPreVenda.MacroByName('MFiltro').Value := 'PRVDCIMPORT = ''N'' and P.VENDICOD = ' + IntToStr(VendedorVenda)
       else
-        DM.SQLPreVenda.MacroByName('MFiltro').Value := 'PRVDCIMPORT = "N" and P.VENDICOD = ' + IntToStr(VendedorVenda) +
-                                                       ' and CLIENTENOME Like "%'+NomeClienteVenda+'%"';
+        DM.SQLPreVenda.MacroByName('MFiltro').Value := 'PRVDCIMPORT = ''N'' and P.VENDICOD = ' + IntToStr(VendedorVenda) +
+                                                       ' and CLIENTENOME Like ''%'+NomeClienteVenda+'%''';
 
       DM.SQLPreVenda.MacroByName('Ordem').Value   := 'Order by '+ dm.sqlconfigvenda.ParamByName('CFVEA20ORDIMPVEND').AsString ;
       DM.SQLPreVenda.Open ;
 
       if VendedorVenda > 0 then
-        DM.SQLPreVenda.MacroByName('MFiltro').Value := 'PRVDCIMPORT = "N" and P.VENDICOD = ' + IntToStr(VendedorVenda)
+        DM.SQLPreVenda.MacroByName('MFiltro').Value := 'PRVDCIMPORT = ''N'' and P.VENDICOD = ' + IntToStr(VendedorVenda)
       else
-        DM.SQLPreVenda.MacroByName('MFiltro').Value := 'PRVDCIMPORT = "N"';
+        DM.SQLPreVenda.MacroByName('MFiltro').Value := 'PRVDCIMPORT = ''N''';
 
       DM.SQLPreVenda.MacroByName('Ordem').Value   := 'Order by '+ dm.sqlconfigvenda.ParamByName('CFVEA20ORDIMPVEND').AsString ;
       DM.SQLPreVenda.Open ;
@@ -614,7 +614,7 @@ begin
               DM.SQLTemplate.Close ;
               DM.SQLTemplate.SQL.Clear ;
               DM.SQLTemplate.SQL.Add('update PREVENDA') ;
-              DM.SQLTemplate.SQL.Add('set PRVDCIMPORT = "S"') ;
+              DM.SQLTemplate.SQL.Add('set PRVDCIMPORT = ''S''') ;
               DM.SQLTemplate.SQL.Add('where TERMICOD = ' + TblMemPrevendaTERMICOD.AsString) ;
               DM.SQLTemplate.SQL.Add('and   PRVDICOD = ' + TblMemPrevendaPRVDICOD.AsString) ;
               DM.SQLTemplate.ExecSQL ;
@@ -644,7 +644,7 @@ begin
                   DM.SQLTemplate.Close ;
                   DM.SQLTemplate.SQL.Clear ;
                   DM.SQLTemplate.SQL.Add('Update PREVENDA') ;
-                  DM.SQLTemplate.SQL.Add('set PRVDCIMPORT = "N"') ;
+                  DM.SQLTemplate.SQL.Add('set PRVDCIMPORT = ''N''') ;
                   DM.SQLTemplate.SQL.Add('where TERMICOD = ' + TblMemPrevendaTERMICOD.AsString) ;
                   DM.SQLTemplate.SQL.Add('and   PRVDICOD = ' + TblMemPrevendaPRVDICOD.AsString) ;
                   DM.SQLTemplate.ExecSQL ;

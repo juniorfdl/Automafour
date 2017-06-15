@@ -1,6 +1,6 @@
 inherited FormRelatorioEstoquePorGradePorProduto: TFormRelatorioEstoquePorGradePorProduto
   Tag = 2
-  Caption = 'Relatório de Estoque Por Grade Por Produto'
+  Caption = 'Relat'#243'rio de Estoque Por Grade Por Produto'
   PixelsPerInch = 96
   TextHeight = 13
   inherited ScrollBox: TScrollBox
@@ -35,7 +35,7 @@ inherited FormRelatorioEstoquePorGradePorProduto: TFormRelatorioEstoquePorGradeP
           Top = 16
           Width = 59
           Height = 17
-          Caption = 'Código'
+          Caption = 'C'#243'digo'
           Checked = True
           Font.Charset = ANSI_CHARSET
           Font.Color = 8404992
@@ -51,7 +51,7 @@ inherited FormRelatorioEstoquePorGradePorProduto: TFormRelatorioEstoquePorGradeP
           Top = 17
           Width = 78
           Height = 17
-          Caption = 'Descrição'
+          Caption = 'Descri'#231#227'o'
           Font.Charset = ANSI_CHARSET
           Font.Color = 8404992
           Font.Height = -11
@@ -65,7 +65,7 @@ inherited FormRelatorioEstoquePorGradePorProduto: TFormRelatorioEstoquePorGradeP
           Top = 16
           Width = 81
           Height = 17
-          Caption = 'Referência'
+          Caption = 'Refer'#234'ncia'
           Font.Charset = ANSI_CHARSET
           Font.Color = 8404992
           Font.Height = -11
@@ -119,7 +119,7 @@ inherited FormRelatorioEstoquePorGradePorProduto: TFormRelatorioEstoquePorGradeP
           Top = 89
           Width = 49
           Height = 13
-          Caption = 'Variação'
+          Caption = 'Varia'#231#227'o'
           Font.Charset = ANSI_CHARSET
           Font.Color = 8404992
           Font.Height = -11
@@ -158,7 +158,7 @@ inherited FormRelatorioEstoquePorGradePorProduto: TFormRelatorioEstoquePorGradeP
           Top = 199
           Width = 44
           Height = 13
-          Caption = 'Coleção'
+          Caption = 'Cole'#231#227'o'
           Font.Charset = ANSI_CHARSET
           Font.Color = 8404992
           Font.Height = -11
@@ -292,7 +292,7 @@ inherited FormRelatorioEstoquePorGradePorProduto: TFormRelatorioEstoquePorGradeP
         Top = 208
         Width = 408
         Height = 40
-        Caption = 'Referência'
+        Caption = 'Refer'#234'ncia'
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -11

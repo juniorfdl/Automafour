@@ -446,7 +446,7 @@ inherited FormRelatorioVendasPeriodoApuracaoMargem: TFormRelatorioVendasPeriodoA
         ' left outer join VENDEDOR VENDEDOR on CUPOM.VENDICOD = VENDEDOR.' +
         'VENDICOD'
       'where'
-      '  CUPOM.CUPOCSTATUS = "A" and'
+      '  CUPOM.CUPOCSTATUS = ''A'' and'
       '  (%MEmpresa) and'
       '  (%MCampoData between %MDataInicial and %MDataFinal) and'
       '  (%MVendedor)'

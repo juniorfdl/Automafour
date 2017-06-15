@@ -1301,7 +1301,7 @@ var
       Query := TQuery.Create(Application);
       Query.DatabaseName := DM.DB.DatabaseName;
       Query.SQL.Clear;
-      Query.SQL.Add('SELECT SUM(' + Field + ') AS TOTAL FROM NOTAFISCALITEM WHERE NOFIA13ID = "' + Key + '"');
+      Query.SQL.Add('SELECT SUM(' + Field + ') AS TOTAL FROM NOTAFISCALITEM WHERE NOFIA13ID = ''' + Key + '''');
       Query.Open;
       Result := Query.FieldByName('TOTAL').AsFloat;
       Query.Free;
@@ -1316,7 +1316,7 @@ var
       QueryServico.SQL.Clear;
       QueryServico.SQL.ADD('SELECT SUM(' + Field + ') AS TOTALSERVICO ');
       QueryServico.SQL.ADD('FROM NOTAFISCALITEM LEFT OUTER JOIN PRODUTO ON NOTAFISCALITEM.PRODICOD = PRODUTO.PRODICOD ');
-      QueryServico.SQL.ADD('WHERE PRODUTO.PRODCSERVICO = "S" and NOTAFISCALITEM.NOFIA13ID = "' + Key + '"');
+      QueryServico.SQL.ADD('WHERE PRODUTO.PRODCSERVICO = ''S'' and NOTAFISCALITEM.NOFIA13ID = ''' + Key + '''');
       QueryServico.Open;
       Result := QueryServico.FieldByName('TOTALSERVICO').AsFloat;
       QueryServico.Free;
@@ -1900,7 +1900,7 @@ begin
   if dm.VeiculoAtualPedidos <> '' then
     SQLTemplateVEICA13ID.Value := dm.VeiculoAtualPedidos;
   if SQLTemplateVEICA13ID.Value <> '' then
-    SQLTemplateNOFIA8PLACAVEIC.Value := dm.SQLLocate('VEICULO', 'VEICA13ID', 'VEICA7PLACA', '"' + SQLTemplateVEICA13ID.Value + '"');
+    SQLTemplateNOFIA8PLACAVEIC.Value := dm.SQLLocate('VEICULO', 'VEICA13ID', 'VEICA7PLACA', '''' + SQLTemplateVEICA13ID.Value + '''');
 
 
 
@@ -1969,7 +1969,7 @@ begin
   begin
     if SQLTemplate.FindField('NOFICSTATUS').asString <> 'A' then
     begin
-      Informa('Alterações só serão permitidas quando a nota estiver com status de "Aberta".');
+      Informa('Alterações só serão permitidas quando a nota estiver com status de ''Aberta''.');
       Abort;
     end;
  {   If SQLTemplate.FindField('NOFIA15PROTOCOLO').asString <> '' Then
@@ -1989,7 +1989,7 @@ procedure TFormCadastroNotaFiscal.SQLTemplateBeforeDelete(DataSet: TDataSet);
 begin
   if SQLTemplate.FindField('NOFICSTATUS').asString <> 'A' then
   begin
-    Informa('Você não pode excluir uma nota fiscal "Encerrada,Cancelada, Denegada ou Inutilizada"!');
+    Informa('Você não pode excluir uma nota fiscal ''Encerrada,Cancelada, Denegada ou Inutilizada''!');
     Abort;
   end;
   inherited;
@@ -2033,14 +2033,14 @@ begin
     if (StatusAnterior = '') and (StatusAnterior <> SQLTemplate.FindField('NOFICSTATUS').asString) then
       if (SQLTemplate.FindField('NOFICSTATUS').asString <> 'A') then
       begin
-        Informa('Status Permitido: "Aberta".');
+        Informa('Status Permitido: ''Aberta''.');
         EmpresaCorrente := BkpEmpresaCorrente;
         Abort;
       end;
     if (StatusAnterior = 'A') and (StatusAnterior <> SQLTemplate.FindField('NOFICSTATUS').asString) then
       if (SQLTemplate.FindField('NOFICSTATUS').asString <> 'E') then
       begin
-        Informa('Status Permitido: "Encerrada".');
+        Informa('Status Permitido: ''Encerrada''.');
         EmpresaCorrente := BkpEmpresaCorrente;
         Abort;
       end
@@ -2108,7 +2108,7 @@ begin
     if (StatusAnterior = 'E') and (StatusAnterior <> SQLTemplate.FindField('NOFICSTATUS').asString) then
       if (SQLTemplate.FindField('NOFICSTATUS').asString <> 'C') then
       begin
-        Informa('Status Permitido: "Cancelada".');
+        Informa('Status Permitido: ''Cancelada''.');
         EmpresaCorrente := BkpEmpresaCorrente;
         Abort;
       end;
@@ -2166,10 +2166,10 @@ begin
             DM.SQLTemplate.SQL.Add('select') ;
             DM.SQLTemplate.SQL.Add('Count(*) as NROPARCVENC') ;
             DM.SQLTemplate.SQL.Add('from CONTASRECEBER') ;
-            DM.SQLTemplate.SQL.Add('where CLIEA13ID = "' + SQLTemplateCLIEA13ID.AsString + '"') ;
+            DM.SQLTemplate.SQL.Add('where CLIEA13ID = ''' + SQLTemplateCLIEA13ID.AsString + '''') ;
             DM.SQLTemplate.SQL.Add(' and (CTRCN2VLR-CTRCN2TOTREC) > 0') ;
-            DM.SQLTemplate.SQL.Add(' and (CTRCCSTATUS = "A" OR CTRCCSTATUS = "N")') ;
-            DM.SQLTemplate.SQL.Add(' and (CTRCCTIPOREGISTRO = "N" OR CTRCCTIPOREGISTRO IS NULL)') ;
+            DM.SQLTemplate.SQL.Add(' and (CTRCCSTATUS = ''A'' OR CTRCCSTATUS = ''N'')') ;
+            DM.SQLTemplate.SQL.Add(' and (CTRCCTIPOREGISTRO = ''N'' OR CTRCCTIPOREGISTRO IS NULL)') ;
             DM.SQLTemplate.Open ;
             if DM.SQLTemplate.FieldByName('NROPARCVENC').Value > 0 then
               ShowMessage('Este cliente possui parcelas em aberto!');
@@ -2236,7 +2236,7 @@ begin
   EntradaSaida := SQLLocate('OPERACAOESTOQUE', 'OPESICOD', 'OPESCENTRADASAIDA', SQLTemplateOPESICOD.AsString);
   if (StatusNovo = 'E') and (EntradaSaida <> 'N') then
   begin
-    SQLNotaFiscalItens.SQL.Text := 'Select * From NOTAFISCALITEM Where NOFIA13ID = "' + DataSet.FindField('NOFIA13ID').AsString + '"';
+    SQLNotaFiscalItens.SQL.Text := 'Select * From NOTAFISCALITEM Where NOFIA13ID = ''' + DataSet.FindField('NOFIA13ID').AsString + '''';
     SQLNotaFiscalItens.Open;
     SQLNotaFiscalItens.First;
     MakeWindowMessage('Encerrando Nota Fiscal...');
@@ -2298,7 +2298,7 @@ begin
 //              begin
 //                Application.CreateForm(TFormTelaConsultaOperacaoTesouraria,FormTelaConsultaOperacaoTesouraria);
 //                FormTelaConsultaOperacaoTesouraria.SQLOperacaoTesouraria.Close;
-//                FormTelaConsultaOperacaoTesouraria.SQLOperacaoTesouraria.MacroByName('DebCred').AsString := 'OPTECDEBCRED = "C"';
+//                FormTelaConsultaOperacaoTesouraria.SQLOperacaoTesouraria.MacroByName('DebCred').AsString := 'OPTECDEBCRED = ''C''';
 //                FormTelaConsultaOperacaoTesouraria.SQLOperacaoTesouraria.Open;
 //                FormTelaConsultaOperacaoTesouraria.ComboOperacaoTes.KeyValue := dm.SQLConfigVendaCFVEIOPTESVENDNFNA.AsVariant;
 //                FormTelaConsultaOperacaoTesouraria.ShowModal;
@@ -2360,7 +2360,7 @@ begin
 //              begin
 //                Application.CreateForm(TFormTelaConsultaOperacaoTesouraria,FormTelaConsultaOperacaoTesouraria);
 //                FormTelaConsultaOperacaoTesouraria.SQLOperacaoTesouraria.Close;
-//                FormTelaConsultaOperacaoTesouraria.SQLOperacaoTesouraria.MacroByName('DebCred').AsString := 'OPTECDEBCRED = "C"';
+//                FormTelaConsultaOperacaoTesouraria.SQLOperacaoTesouraria.MacroByName('DebCred').AsString := 'OPTECDEBCRED = ''C''';
 //                FormTelaConsultaOperacaoTesouraria.SQLOperacaoTesouraria.Open;
 //                FormTelaConsultaOperacaoTesouraria.ComboOperacaoTes.KeyValue := dm.SQLConfigVendaCFVEIOPTESVENDNFNA.AsVariant;
 //                FormTelaConsultaOperacaoTesouraria.ShowModal;
@@ -2387,7 +2387,7 @@ begin
     begin
       Dm.SQLCliente.Close;
       Dm.SQLCliente.Sql.Clear;
-      Dm.SQLCliente.Sql.Add('UPDATE CLIENTE SET CLIEDPRICOMPRA = ' + '"' + FormatDateTime('mm/dd/yyyy', SQLTemplateNOFIDEMIS.Value) + '"' + ' Where CLIEA13ID = ' + '"' + SQLTemplateCLIEA13ID.AsString + '" and CLIEDPRICOMPRA is null');
+      Dm.SQLCliente.Sql.Add('UPDATE CLIENTE SET CLIEDPRICOMPRA = ' + '''' + FormatDateTime('mm/dd/yyyy', SQLTemplateNOFIDEMIS.Value) + '''' + ' Where CLIEA13ID = ' + '''' + SQLTemplateCLIEA13ID.AsString + ''' and CLIEDPRICOMPRA is null');
       Dm.SQLCliente.ExecSql;
     end;
       // Gravar Data Ultima Compra
@@ -2395,7 +2395,7 @@ begin
     begin
       Dm.SQLCliente.Close;
       Dm.SQLCliente.Sql.Clear;
-      Dm.SQLCliente.Sql.Add('UPDATE CLIENTE SET CLIEDULTCOMPRA = ' + '"' + FormatDateTime('mm/dd/yyyy', SQLTemplateNOFIDEMIS.Value) + '"' + ' Where CLIEA13ID = ' + '"' + SQLTemplateCLIEA13ID.AsString + '"');
+      Dm.SQLCliente.Sql.Add('UPDATE CLIENTE SET CLIEDULTCOMPRA = ' + '''' + FormatDateTime('mm/dd/yyyy', SQLTemplateNOFIDEMIS.Value) + '''' + ' Where CLIEA13ID = ' + '''' + SQLTemplateCLIEA13ID.AsString + '''');
       Dm.SQLCliente.ExecSql;
     end;
     if (DM.SQLConfigVenda.FieldByName('CFVECEXCLUIPEDFAT').asString = 'S') and (SQLTemplatePDVDA13ID.AsVariant <> Null) then
@@ -2415,7 +2415,7 @@ begin
   begin
     if (DM.SQLConfigVenda.FindField('CFVECMOVESTOQUENF').asString = 'S') and (TemMovimentoEstoqueNF(SQLTemplateNOFIA13ID.AsString)) and (EntradaSaida <> 'N') and (SQLTemplateNOFIN2VLRPRODUTO.Value > 0) then
     begin
-      SQLNotaFiscalItens.SQL.Text := 'Select * From NOTAFISCALITEM Where NOFIA13ID="' + DataSet.FindField('NOFIA13ID').AsString + '"';
+      SQLNotaFiscalItens.SQL.Text := 'Select * From NOTAFISCALITEM Where NOFIA13ID=''' + DataSet.FindField('NOFIA13ID').AsString + '''';
       SQLNotaFiscalItens.Open;
       SQLNotaFiscalItens.First;
       MakeWindowMessage('Cancelando Nota Fiscal...');
@@ -2461,7 +2461,7 @@ begin
         DM.SQLConfigVenda.Open;
         Application.CreateForm(TFormTelaConsultaOperacaoTesouraria, FormTelaConsultaOperacaoTesouraria);
         FormTelaConsultaOperacaoTesouraria.SQLOperacaoTesouraria.Close;
-        FormTelaConsultaOperacaoTesouraria.SQLOperacaoTesouraria.MacroByName('DebCred').AsString := 'OPTECDEBCRED = "D"';
+        FormTelaConsultaOperacaoTesouraria.SQLOperacaoTesouraria.MacroByName('DebCred').AsString := 'OPTECDEBCRED = ''D''';
         FormTelaConsultaOperacaoTesouraria.SQLOperacaoTesouraria.Open;
         if DM.SQLConfigVenda.FieldByName('CFVEIOPTESVENDANF').AsVariant <> Null then
           FormTelaConsultaOperacaoTesouraria.ComboOperacaoTes.Value := DM.SQLConfigVenda.FieldByName('CFVEIOPTESVENDANF').AsString;
@@ -2484,13 +2484,13 @@ begin
     if PedidoNovo <> '' then
     begin
       AtualizaContasReceberPV.Close;
-      AtualizaContasReceberPV.MacroByName('MDados').asString := 'NOFIA13ID = "' + SQLTemplateNOFIA13ID.AsString + '" , CTRCDEMIS = "' + FormatDateTime('mm/dd/yyyy', SQLTemplateNOFIDEMIS.Value) + '"';
+      AtualizaContasReceberPV.MacroByName('MDados').asString := 'NOFIA13ID = ''' + SQLTemplateNOFIA13ID.AsString + ''' , CTRCDEMIS = ''' + FormatDateTime('mm/dd/yyyy', SQLTemplateNOFIDEMIS.Value) + '''';
       if SQLTemplate.FindField('PLCTA15COD').asVariant <> Null then
-        AtualizaContasReceberPV.MacroByName('MConta').asString := ' , PLCTA15COD = "' + SQLTemplate.FindField('PLCTA15COD').asString + '"'
+        AtualizaContasReceberPV.MacroByName('MConta').asString := ' , PLCTA15COD = ''' + SQLTemplate.FindField('PLCTA15COD').asString + ''''
       else
         AtualizaContasReceberPV.MacroByName('MConta').asString := '';
 
-      AtualizaContasReceberPV.MacroByName('MPedido').asString := 'PDVDA13ID = "' + SQLTemplate.FindField('PDVDA13ID').AsString + '"';
+      AtualizaContasReceberPV.MacroByName('MPedido').asString := 'PDVDA13ID = ''' + SQLTemplate.FindField('PDVDA13ID').AsString + '''';
 
       Erro := True;
       while Erro do
@@ -2517,7 +2517,7 @@ end;
 
 procedure TFormCadastroNotaFiscal.BtnOperacaoEstoqueClick(Sender: TObject);
 begin
-  if SQLLocate('NOTAFISCALITEM', 'NOFIA13ID', 'NOFIA13ID', '"' + SQLTemplateNOFIA13ID.AsString + '"') <> '' then
+  if SQLLocate('NOTAFISCALITEM', 'NOFIA13ID', 'NOFIA13ID', '''' + SQLTemplateNOFIA13ID.AsString + '''') <> '' then
   begin
     Informa('Esta nota fiscal possui itens, portanto a operação de estoque não pode ser alterada!' + #13 + 'Você deve excluir todos os itens para alterar a operação ou lançar uma nova nota!');
     Exit;
@@ -3049,7 +3049,7 @@ end;
 
 procedure TFormCadastroNotaFiscal.SQLTemplateOPESICODChange(Sender: TField);
 begin
- { if SQLLocate('NOTAFISCALITEM','NOFIA13ID','NOFIA13ID','"' + SQLTemplateNOFIA13ID.AsString + '"') <> '' then
+ { if SQLLocate('NOTAFISCALITEM','NOFIA13ID','NOFIA13ID','''' + SQLTemplateNOFIA13ID.AsString + '''') <> '' then
     begin
       Informa('Esta nota fiscal possui itens, portanto a operação de estoque não pode ser alterada!' + #13 +
               'Você deve excluir todos os itens para alterar a operação ou lançar uma nova nota!');
@@ -3316,7 +3316,7 @@ begin
   {Troca status da prevenda pra importado}
   dm.sqlImportarPrevenda.Close;
   dm.sqlImportarPrevenda.SQL.Clear;
-  dm.sqlImportarPrevenda.SQL.add('update PREVENDA set PRVDCIMPORT="S" where TERMICOD=' + dm.PrevendaTerminalStr + ' and PRVDICOD=' + DM.PrevendaCodigoStr);
+  dm.sqlImportarPrevenda.SQL.add('update PREVENDA set PRVDCIMPORT=''S'' where TERMICOD=' + dm.PrevendaTerminalStr + ' and PRVDICOD=' + DM.PrevendaCodigoStr);
   dm.sqlImportarPrevenda.Prepare;
   dm.sqlImportarPrevenda.ExecSQL;
 
@@ -3346,7 +3346,7 @@ begin
     end;
 
     SQLCupomItem.Close;
-    SQLCupomItem.SQL.Text := 'Select * From CupomItem Where Cupoa13id in (' + Dm.Cupom + ') and CPITCSTATUS="A" Order By Prodicod';
+    SQLCupomItem.SQL.Text := 'Select * From CupomItem Where Cupoa13id in (' + Dm.Cupom + ') and CPITCSTATUS=''A'' Order By Prodicod';
     SQLCupomItem.Prepare;
     SQLCupomItem.Open;
 
@@ -3582,7 +3582,7 @@ begin
   Application.CreateForm(TFormTelaItensVendaConsignacao, FormTelaItensVendaConsignacao);
   FormTelaItensVendaConsignacao.Hide;
   SQLConsignacao.Close;
-  SQLConsignacao.MacroByName('NotaFiscal').Value := 'NOFIA13IDCONSIGNADA = ' + '"' + SQLNotaFiscalNOFIA13ID.AsString + '"';
+  SQLConsignacao.MacroByName('NotaFiscal').Value := 'NOFIA13IDCONSIGNADA = ' + '''' + SQLNotaFiscalNOFIA13ID.AsString + '''';
   SQLConsignacao.Open;
   FormTelaItensVendaConsignacao.TblItensVendaConsig.Open;
   while not SQLNotaFiscalItemConsig.Eof do
@@ -3788,7 +3788,7 @@ begin
   SQLMovimento := TRxQuery.Create(DM);
   SQLMovimento.DatabaseName := 'DB';
   SQLMovimento.Close;
-  SQLMovimento.SQL.Add('SELECT * FROM MOVIMENTOESTOQUE WHERE NOFIA13ID = "' + IDNotaFiscal + '"');
+  SQLMovimento.SQL.Add('SELECT * FROM MOVIMENTOESTOQUE WHERE NOFIA13ID = ''' + IDNotaFiscal + '''');
   SQLMovimento.Open;
   if not SQLMovimento.IsEmpty then
   begin
@@ -3983,7 +3983,7 @@ begin
   inherited;
   Clausula := '';
   if ComboCliente.Value <> '' then
-    Clausula := 'CLIEA13ID = "' + ComboCliente.Value + '" ';
+    Clausula := 'CLIEA13ID = ''' + ComboCliente.Value + ''' ';
   if ComboConsultaFornec.Value <> '' then
   begin
     if ComboCliente.Value <> '' then
@@ -3994,9 +3994,9 @@ begin
 
   if ComboSerieNF.Value <> '' then
     if Clausula = '' then
-      Clausula := ' SERIA5COD = "' + ComboSerieNF.Value + '"'
+      Clausula := ' SERIA5COD = ''' + ComboSerieNF.Value + ''''
     else
-      Clausula := Clausula + ' and SERIA5COD = "' + ComboSerieNF.Value + '"';
+      Clausula := Clausula + ' and SERIA5COD = ''' + ComboSerieNF.Value + '''';
   if EditNroNFInicial.Text <> '' then
     if Clausula = '' then
       Clausula := ' NOFIINUMERO >= ' + EditNroNFInicial.Text
@@ -4463,8 +4463,8 @@ begin
   Dm.ImportandoPedidoVenda := True;
   VlrBaseCalculoTotal := 0;
   VlrIcmsTotal := 0;
-  UFDest := dm.SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA2UFRES', '"' + SQLTemplate.FieldbyName('CLIEA13ID').AsString + '"');
-  AliquotaUF := StrToFloat(dm.SQLLocate('ICMSUF', 'ICMUA2UF', 'ICMUN2ALIQUOTA', '"' + UFDest + '"'));
+  UFDest := dm.SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA2UFRES', '''' + SQLTemplate.FieldbyName('CLIEA13ID').AsString + '''');
+  AliquotaUF := StrToFloat(dm.SQLLocate('ICMSUF', 'ICMUA2UF', 'ICMUN2ALIQUOTA', '''' + UFDest + ''''));
   SQLNotaFiscalItem.Close;
   SQLNotaFiscalItem.SQL.Clear;
   SQLNotaFiscalItem.SQL.Add('Select * From NotaFiscalItem Where NOFIA13ID =:NOFIA13ID');
@@ -4513,7 +4513,7 @@ begin
     try
       dm.SQLTemplate.Close;
       dm.SQLTemplate.sql.Clear;
-      dm.SQLTemplate.SQL.Add('Update NotaFiscal set NOFICSTATUS = "A" where NOFIA13ID = "' + SQLTemplateNOFIA13ID.Value + '"');
+      dm.SQLTemplate.SQL.Add('Update NotaFiscal set NOFICSTATUS = ''A'' where NOFIA13ID = ''' + SQLTemplateNOFIA13ID.Value + '''');
       dm.SQLTemplate.ExecSQL;
       Erro := False;
     except
@@ -4523,7 +4523,7 @@ begin
     end;
     if not Erro then
     begin
-      SQLNotaFiscalItens.SQL.Text := 'Select * From NOTAFISCALITEM Where NOFIA13ID = "' + SQLTemplateNOFIA13ID.Value + '"';
+      SQLNotaFiscalItens.SQL.Text := 'Select * From NOTAFISCALITEM Where NOFIA13ID = ''' + SQLTemplateNOFIA13ID.Value + '''';
       SQLNotaFiscalItens.Open;
       SQLNotaFiscalItens.First;
       MakeWindowMessage('Retornando Produtos ao Estoque...');
@@ -4656,7 +4656,7 @@ begin
     SQLTemplateNOFIN2PERCIR.Value := 1.5;
     SQLTemplateNOFIN2PERCCONTRSOCIAL.Value := 1;
     try
-      vISSQN := StrToFloat(SQLLocate('CIDADE', 'CIDAA60NOME', 'CIDAN3ISSQN', '"' + SQLTemplate.FieldbyName('CLIFORNEMPCIDADELOOKUP').AsString + '"'));
+      vISSQN := StrToFloat(SQLLocate('CIDADE', 'CIDAA60NOME', 'CIDAN3ISSQN', '''' + SQLTemplate.FieldbyName('CLIFORNEMPCIDADELOOKUP').AsString + ''''));
     except
       vISSQN := 0;
     end;
@@ -5431,7 +5431,7 @@ begin
     try
       dm.SQLTemplate.Close;
       dm.SQLTemplate.sql.Clear;
-      dm.SQLTemplate.SQL.Add('Update NotaFiscal set NOFICSTATUS = "A" where NOFIA13ID = "' + SQLTemplateNOFIA13ID.Value + '"');
+      dm.SQLTemplate.SQL.Add('Update NotaFiscal set NOFICSTATUS = ''A'' where NOFIA13ID = ''' + SQLTemplateNOFIA13ID.Value + '''');
       dm.SQLTemplate.ExecSQL;
     except
       Application.ProcessMessages;
@@ -5577,7 +5577,7 @@ begin
   inherited;
   VerificaDadosCliente;
 
-  if (SQLTemplateCLIEA13ID.Value <> '') and (SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEN2RENDA', '"' + SQLTemplateCLIEA13ID.asstring + '"') <> '0') then
+  if (SQLTemplateCLIEA13ID.Value <> '') and (SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEN2RENDA', '''' + SQLTemplateCLIEA13ID.asstring + '''') <> '0') then
     if VerificaLimiteCredito(SQLTemplateCLIEA13ID.asstring, SQLTemplateNOFIN2VLRNOTA.value, DM.SQLParcelas, DM.SQLCliente) = False then
     begin
       if SQLLocate('USUARIO', 'USUAICOD', 'USUACVENDCLIBLOQMOTIV', IntToStr(DM.UsuarioAtual)) <> 'S' then
@@ -5612,7 +5612,7 @@ begin
     try
         // Pegar o ultimo numero de nfe enviado e recebido ok e adicionar um
       { dm.sqltemplate.Close;
-        dm.sqltemplate.sql.text := 'select max(NOFIINUMERO) from NOTAFISCAL where SERIA5COD="'+sqltemplateSERIA5COD.Value+'" and NOFIA44CHAVEACESSO<>"" ';
+        dm.sqltemplate.sql.text := 'select max(NOFIINUMERO) from NOTAFISCAL where SERIA5COD='''+sqltemplateSERIA5COD.Value+''' and NOFIA44CHAVEACESSO<>'''' ';
         dm.sqltemplate.open;
         if not dm.sqltemplate.fieldbyname('MAX').IsNull then
           begin
@@ -5739,7 +5739,7 @@ begin
   if SQLTemplateEMPRICODDEST.AsString <> '' then
     Para := LowerCase(SQLLocate('EMPRESA', 'EMPRICOD', 'EMPRA60EMAIL', SQLTemplateEMPRICODDEST.AsString));
   if SQLTemplateCLIEA13ID.AsString <> '' then
-    Para := LowerCase(SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA60EMAIL', '"' + SQLTemplateCLIEA13ID.AsString + '"'));
+    Para := LowerCase(SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA60EMAIL', '''' + SQLTemplateCLIEA13ID.AsString + ''''));
   if SQLTemplateFORNICOD.AsString <> '' then
     Para := LowerCase(SQLLocate('FORNECEDOR', 'FORNICOD', 'FORNA60EMAIL', SQLTemplateFORNICOD.AsString));
 
@@ -5757,7 +5757,7 @@ begin
   if SQLTemplateEMPRICODDEST.AsString <> '' then
     para := LowerCase(SQLLocate('EMPRESA', 'EMPRICOD', 'EMPRA60EMAIL', SQLTemplateEMPRICODDEST.AsString));
   if SQLTemplateCLIEA13ID.AsString <> '' then
-    para := LowerCase(SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA60EMAIL', '"' + SQLTemplateCLIEA13ID.AsString + '"'));
+    para := LowerCase(SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA60EMAIL', '''' + SQLTemplateCLIEA13ID.AsString + ''''));
   if SQLTemplateFORNICOD.AsString <> '' then
     para := LowerCase(SQLLocate('FORNECEDOR', 'FORNICOD', 'FORNA60EMAIL', SQLTemplateFORNICOD.AsString));
 
@@ -5939,7 +5939,7 @@ begin
     if not CancelandoNota then
       if SQLTemplate.FindField('NOFICSTATUS').asString <> 'A' then
       begin
-        Informa('Alterações só serão permitidas quando a nota estiver com status de "Aberta".');
+        Informa('Alterações só serão permitidas quando a nota estiver com status de ''Aberta''.');
         SQLTemplate.Cancel;
         SQLTemplate.BeforeEdit := SQLTemplateBeforeEdit;
         Abort;
@@ -6286,7 +6286,7 @@ begin
   with ACBrNFe1.NotasFiscais.Add.NFe do
   begin
     infNFe.ID := sqltemplate.fieldbyname('NOFIA13ID').asstring;
-    Ide.natOp := ComboOPEstoque.Text; // SQLLocate('CFOP','CFOPA5COD','CFOPA60DESCR','"'+CFOP+'"');
+    Ide.natOp := ComboOPEstoque.Text; // SQLLocate('CFOP','CFOPA5COD','CFOPA60DESCR',''''+CFOP+'''');
     Ide.nNF := sqltemplate.fieldbyname('NOFIINUMERO').AsInteger;
     Ide.cNF := sqltemplate.fieldbyname('NOFIINUMERO').AsInteger;
     Ide.modelo := 55;
@@ -6442,7 +6442,7 @@ begin
     // dados do destinatario
     nEmail := '';
     if SQLTemplateOrigemDestinoLookUp.AsString[1] = 'C' then
-      nEmail := SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA60EMAIL', '"' + SQLTemplate.FieldByName('CLIEA13ID').AsString + '"')
+      nEmail := SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA60EMAIL', '''' + SQLTemplate.FieldByName('CLIEA13ID').AsString + '''')
     else if SQLTemplateOrigemDestinoLookUp.AsString[1] = 'F' then
       nEmail := SQLLocate('FORNECEDOR', 'FORNICOD', 'FORNA60EMAIL', SQLTemplate.FieldByName('FORNICOD').AsString);
 
@@ -6724,9 +6724,9 @@ begin
             ICMSUFDest.pFCPUFDest := 0.00;
                     {Alíquota adotada nas operações internas na UF de destino para o produto / mercadoria. A alíquota do Fundo de Combate a Pobreza, se existente para o produto / mercadoria, deve ser informada no campo próprio (pFCPUFDest) não devendo ser somada à essa alíquota interna.}
             ICMSUFDest.pICMSUFDest := SQLNotaFiscalItemNFITN2PERCICMS.Value;
-                    {"Alíquota interestadual das UF envolvidas: - 4% alíquota interestadual para produtos importados; - 7% para os Estados de origem do Sul e Sudeste (exceto ES), destinado para os Estados do Norte, Nordeste, Centro- Oeste e Espírito Santo - 12% para os demais casos." }
+                    {''Alíquota interestadual das UF envolvidas: - 4% alíquota interestadual para produtos importados; - 7% para os Estados de origem do Sul e Sudeste (exceto ES), destinado para os Estados do Norte, Nordeste, Centro- Oeste e Espírito Santo - 12% para os demais casos.'' }
             ICMSUFDest.pICMSInter := SQLNotaFiscalItemNFITN2PERCICMS.Value;
-                    {"Percentual de ICMS Interestadual para a UF de destino: - 40% em 2016; - 60% em 2017; - 80% em 2018; - 100% a partir de 2019." }
+                    {''Percentual de ICMS Interestadual para a UF de destino: - 40% em 2016; - 60% em 2017; - 80% em 2018; - 100% a partir de 2019.'' }
             if FormatDateTime('yyyy', sqltemplateNOFIDEMIS.Value) = '2016' then
               ICMSUFDest.pICMSInterPart := 40;
             if FormatDateTime('yyyy', sqltemplateNOFIDEMIS.Value) = '2017' then
@@ -7114,7 +7114,7 @@ begin
     Transp.retTransp.CFOP := ''; // X16 - CFOP (Utilizar Tabela de CFOP)
     Transp.retTransp.cMunFG := 0;  // X17 - Código do município de ocorrência do fato gerador do ICMS do transporte (Tabela do IBGE)
 
-     //Não criar o grupo "veicTransp" caso não tenha placa senão entra na validação do SEFAZ
+     //Não criar o grupo ''veicTransp'' caso não tenha placa senão entra na validação do SEFAZ
     if Trim(SQLTemplateNOFIA8PLACAVEIC.AsString) <> EmptyStr then
     begin
       Transp.veicTransp.placa := SQLTemplateNOFIA8PLACAVEIC.AsString;

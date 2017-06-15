@@ -58,7 +58,7 @@ var
 implementation
 
 //****************************************************************************//
-// MÉTODO QUE "LIMPA" A STRING PASSADA DOS CARACTERES "SUJOS" CONTIDOS NELA   //
+// MÉTODO QUE ''LIMPA'' A STRING PASSADA DOS CARACTERES ''SUJOS'' CONTIDOS NELA   //
 //****************************************************************************//
 function CleanString(Clean : string; Dirty : array of string) : string;
 var

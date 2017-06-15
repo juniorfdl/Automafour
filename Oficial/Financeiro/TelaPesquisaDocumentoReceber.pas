@@ -140,10 +140,10 @@ begin
       SQLContasReceber.Close;
       if ckBanrisul.Checked then  {16203465}
         begin
-          SQLContasReceber.MacroByName('MDocumento').AsString := '(CR.CTRCA15NOSSONUMERO = "' + EditDocumento.Text + '") or (CR.CTRCA15NOSSONUMERO = "1520' + EditDocumento.Text + '") or (CR.CTRCA15NOSSONUMERO = "1620' + EditDocumento.Text + '")';
+          SQLContasReceber.MacroByName('MDocumento').AsString := '(CR.CTRCA15NOSSONUMERO = ''' + EditDocumento.Text + ''') or (CR.CTRCA15NOSSONUMERO = ''1520' + EditDocumento.Text + ''') or (CR.CTRCA15NOSSONUMERO = ''1620' + EditDocumento.Text + ''')';
         end
       else
-        SQLContasReceber.MacroByName('MDocumento').AsString := '(CR.CTRCA30NRODUPLICBANCO = "' + EditDocumento.Text + '") or (CR.CTRCA15NOSSONUMERO = "' + EditDocumento.Text + '")' ;
+        SQLContasReceber.MacroByName('MDocumento').AsString := '(CR.CTRCA30NRODUPLICBANCO = ''' + EditDocumento.Text + ''') or (CR.CTRCA15NOSSONUMERO = ''' + EditDocumento.Text + ''')' ;
 
       SQLContasReceber.Open;
       if SQLContasReceber.IsEmpty then

@@ -268,13 +268,13 @@ begin
 
   if (EditDataFimEncerramento.Text <> '  /  /    ') then
     begin
-      SQLInventario.MacroByName('MDataFim1').Value := 'MOVIMENTOESTOQUE.MVESDMOV > "' + FormatDateTime('MM/DD/YYYY',EditDataFimEncerramento.Date) + '"';
-      SQLInventario.MacroByName('MDataFim2').Value := 'MOVIMENTOESTOQUE.MVESDMOV > "' + FormatDateTime('MM/DD/YYYY',EditDataFimEncerramento.Date) + '"';
+      SQLInventario.MacroByName('MDataFim1').Value := 'MOVIMENTOESTOQUE.MVESDMOV > ''' + FormatDateTime('MM/DD/YYYY',EditDataFimEncerramento.Date) + '''';
+      SQLInventario.MacroByName('MDataFim2').Value := 'MOVIMENTOESTOQUE.MVESDMOV > ''' + FormatDateTime('MM/DD/YYYY',EditDataFimEncerramento.Date) + '''';
     end
   else
     begin
-      SQLInventario.MacroByName('MDataFim1').Value := 'MOVIMENTOESTOQUE.MVESDMOV > "' + FormatDateTime('MM/DD/YYYY',now) + '"';
-      SQLInventario.MacroByName('MDataFim2').Value := 'MOVIMENTOESTOQUE.MVESDMOV > "' + FormatDateTime('MM/DD/YYYY',now) + '"';
+      SQLInventario.MacroByName('MDataFim1').Value := 'MOVIMENTOESTOQUE.MVESDMOV > ''' + FormatDateTime('MM/DD/YYYY',now) + '''';
+      SQLInventario.MacroByName('MDataFim2').Value := 'MOVIMENTOESTOQUE.MVESDMOV > ''' + FormatDateTime('MM/DD/YYYY',now) + '''';
     end;
 
   // Ordem

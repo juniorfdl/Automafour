@@ -155,13 +155,13 @@ begin
   if ComboTipoCliente.Value <> '' then
     SQLCliente.MacroByName('TipoCliente').Value := 'TPCLICOD = ' + ComboTipoCliente.KeyValue ;
   if ComboCidade.Value <> '' then
-    SQLCliente.MacroByName('Cidade').Value := 'CLIEA60CIDRES = ' + '"' + ComboCIDADE.Value + '"';
+    SQLCliente.MacroByName('Cidade').Value := 'CLIEA60CIDRES = ' + '''' + ComboCIDADE.Value + '''';
   if ComboEstado.ItemIndex <> -1 then
-    SQLCliente.MacroByName('Estado').Value := 'CLIEA2UFRES = ' + '"' + ComboEstado.Text + '"' ;
+    SQLCliente.MacroByName('Estado').Value := 'CLIEA2UFRES = ' + '''' + ComboEstado.Text + '''' ;
 
   if (DataRevisaoINI.Text <> '  /  /    ') and (DataRevisaoFim.Text <> '  /  /    ') then
-    SQLCliente.MacrobyName('DataRevisao').Value := 'CLIEDREVISAO >= "' + FormatDateTime('mm/dd/yyyy', DataRevisaoINI.Date) + '" and ' +
-                                                   'CLIEDREVISAO <= "' + FormatDateTime('mm/dd/yyyy', DataRevisaoFim.Date) ;
+    SQLCliente.MacrobyName('DataRevisao').Value := 'CLIEDREVISAO >= ''' + FormatDateTime('mm/dd/yyyy', DataRevisaoINI.Date) + ''' and ' +
+                                                   'CLIEDREVISAO <= ''' + FormatDateTime('mm/dd/yyyy', DataRevisaoFim.Date) ;
 
   case RadioOrdem.ItemIndex of
     0 : SQLCliente.MacroByName('ORDEM').Value := 'CLIEA13ID';
@@ -212,7 +212,7 @@ begin
   if ListaRota.Items.Count = 0 then
   begin
     if (ComboRota.Text <> '') and (ComboRota.Text <> 'Todas')then
-      SQLRota := 'Cliente.RotaIcod = ' + '"' + ComboRota.Value + '"'
+      SQLRota := 'Cliente.RotaIcod = ' + '''' + ComboRota.Value + ''''
     else
       SQLRota := '0=0' ;
   end
@@ -221,9 +221,9 @@ begin
     for I:=0 To ListaRota.Items.Count-1 Do
     begin
       if I = ListaRota.Items.Count-1 Then
-        SQLRota := SQLRota + 'Cliente.RotaIcod = ' + '"' + Copy(ListaRota.Items[I],1,Pos('-',ListaRota.Items[I]) - 1) + '"'
+        SQLRota := SQLRota + 'Cliente.RotaIcod = ' + '''' + Copy(ListaRota.Items[I],1,Pos('-',ListaRota.Items[I]) - 1) + ''''
       else
-        SQLRota := SQLRota + 'Cliente.RotaIcod = ' + '"' + Copy(ListaRota.Items[I],1,Pos('-',ListaRota.Items[I]) - 1) + '"' + ' or '
+        SQLRota := SQLRota + 'Cliente.RotaIcod = ' + '''' + Copy(ListaRota.Items[I],1,Pos('-',ListaRota.Items[I]) - 1) + '''' + ' or '
     end ;
   end ;
 

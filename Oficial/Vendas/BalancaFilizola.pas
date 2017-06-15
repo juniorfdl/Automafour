@@ -97,37 +97,37 @@ uses UnitLibrary, TelaItens, DataModulo;
 //----------------------------------------------------------------//
 {                   INICIO FUNCOES DA DLL PcScale                  }
 //----------------------------------------------------------------//
-{Declara a função ConfiguraBalanca existente na DLL "PcScale.dll"}
+{Declara a função ConfiguraBalanca existente na DLL ''PcScale.dll''}
 function ConfiguraBalanca(Balanca: Integer; Aplicativo: THandle): Boolean;
              stdcall; external PcScale;
 
-{Declara a função InicializaLeitura existente na DLL "PcScale.dll"}
+{Declara a função InicializaLeitura existente na DLL ''PcScale.dll''}
 function InicializaLeitura(Balanca: Integer): Boolean;
              stdcall; external PcScale;
 
-{Declara a função ObtemInformacao existente na DLL "PcScale.dll"}
+{Declara a função ObtemInformacao existente na DLL ''PcScale.dll''}
 function ObtemInformacao(Balanca: Integer; Campo: Integer): double;
              stdcall; external PcScale;
 
-{Declara a função FinalizaLeitura existente na DLL "PcScale.dll"}
+{Declara a função FinalizaLeitura existente na DLL ''PcScale.dll''}
 function FinalizaLeitura(Balanca: Integer) : Boolean;
              stdcall; external PcScale;
 
-{Declara a função ExibeMsgErro existente na DLL "PcScale.dll"}
+{Declara a função ExibeMsgErro existente na DLL ''PcScale.dll''}
 function EnviaPrecoCS(Balanca : integer; Preco : double) : Boolean;
              stdcall; external PcScale;
 
-{Declara a função FinalizaLeitura existente na DLL "PcScale.dll"}
+{Declara a função FinalizaLeitura existente na DLL ''PcScale.dll''}
 function ObtemParametrosBalanca(Balanca: Integer; Modelo: PInteger;
                              Porta: PInteger; BaudRate: PInteger
                              ): Boolean
              stdcall; external PcScale;
 
-{Declara a função ObtemNomeBalanca existente na DLL "PcScale.dll"}
+{Declara a função ObtemNomeBalanca existente na DLL ''PcScale.dll''}
 Procedure ObtemNomeBalanca(Modelo: Integer; Ret: PChar);
              stdcall; external PcScale;
 
-{Declara a função ExibeMsgErro existente na DLL "PcScale.dll"}
+{Declara a função ExibeMsgErro existente na DLL ''PcScale.dll''}
 Procedure ExibeMsgErro(Aplicativo : THandle);
              stdcall; external PcScale;
 

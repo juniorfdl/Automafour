@@ -508,7 +508,7 @@ end;
 procedure TFormTelaReceituario.FormCreate(Sender: TObject);
 begin
   SQLClienteReceituario.Close ;
-  SQLClienteReceituario.MacroByName('MFiltro').Value :=  'CLIEA13ID = "' + ClienteVenda + '"' ;
+  SQLClienteReceituario.MacroByName('MFiltro').Value :=  'CLIEA13ID = ''' + ClienteVenda + '''' ;
   SQLClienteReceituario.Open ;
 end ;
 
@@ -604,11 +604,11 @@ end;
 procedure TFormTelaReceituario.SQLClienteReceituarioCalcFields(
   DataSet: TDataSet);
 begin
-  SQLClienteReceituarioClienteCalcField.Value  := SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA60RAZAOSOC', '"' + DataSet.FieldByName('CLIEA13ID').AsString + '"') + ' ' +
-                                                  SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA10CODANT', '"' + DataSet.FieldByName('CLIEA13ID').AsString + '"') ;
-  SQLClienteReceituarioEndCliCalcField.Value   := SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA60ENDRES', '"' + DataSet.FieldByName('CLIEA13ID').AsString + '"') ;
-  SQLClienteReceituarioFoneCliCalcField.Value  := SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA15FONE1', '"' + DataSet.FieldByName('CLIEA13ID').AsString + '"') ;
-  SQLClienteReceituarioBairroCliCalcField.Value:= SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA60BAIRES', '"' + DataSet.FieldByName('CLIEA13ID').AsString + '"') ;
+  SQLClienteReceituarioClienteCalcField.Value  := SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA60RAZAOSOC', '''' + DataSet.FieldByName('CLIEA13ID').AsString + '''') + ' ' +
+                                                  SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA10CODANT', '''' + DataSet.FieldByName('CLIEA13ID').AsString + '''') ;
+  SQLClienteReceituarioEndCliCalcField.Value   := SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA60ENDRES', '''' + DataSet.FieldByName('CLIEA13ID').AsString + '''') ;
+  SQLClienteReceituarioFoneCliCalcField.Value  := SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA15FONE1', '''' + DataSet.FieldByName('CLIEA13ID').AsString + '''') ;
+  SQLClienteReceituarioBairroCliCalcField.Value:= SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA60BAIRES', '''' + DataSet.FieldByName('CLIEA13ID').AsString + '''') ;
   SQLClienteReceituarioVendedorCalcField.Value := SQLLocate('VENDEDOR', 'VENDICOD', 'VENDA60NOME', DataSet.FieldByName('VENDICOD').AsString) ;
 end;
 
@@ -969,7 +969,7 @@ begin
   if CodigoOS > 0 then
     begin
       SQLClienteReceituario.Close ;
-      SQLClienteReceituario.MacroByName('MFiltro').Value :=  'CLRCICOD = "' + IntToStr(CodigoOS) + '"' ;
+      SQLClienteReceituario.MacroByName('MFiltro').Value :=  'CLRCICOD = ''' + IntToStr(CodigoOS) + '''' ;
       SQLClienteReceituario.Open ;
     end;
 end;

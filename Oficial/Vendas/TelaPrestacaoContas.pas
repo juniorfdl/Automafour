@@ -119,7 +119,7 @@ uses DataModulo, UnitLibrary, ECFCheckout, UnitCheckoutLibrary,
 Function TFormTelaPrestacaoContas.RetornaVendaBomba(Bomba : Integer) : Real;
 begin
   SQLItensVendidos.Close;
-  SQLItensVendidos.MacroByName('MDATA').Value := 'CUPODEMIS = "' + FormatDateTime('mm/dd/yyyy',StrtoDatetime(TerminalAtualData)) + '"';
+  SQLItensVendidos.MacroByName('MDATA').Value := 'CUPODEMIS = ''' + FormatDateTime('mm/dd/yyyy',StrtoDatetime(TerminalAtualData)) + '''';
   SQLItensVendidos.MacroByName('MEmpresa').Value := 'EMPRICOD  = ' + EmpresaPadrao;
   SQLItensVendidos.MacroByName('MBomba').Value := 'BOMBICOD = ' + InttoStr(Bomba);
   SQLItensVendidos.Open;
@@ -200,7 +200,7 @@ procedure TFormTelaPrestacaoContas.FormShow(Sender: TObject);
 begin
   SQLEncerranteDiario.Close;
   SQLEncerranteDiario.MacroByName('MEmpresa').Value := 'EMPRICOD  = ' + EmpresaPadrao;
-  SQLEncerranteDiario.MacroByName('MData').Value    := 'ENDIDDATA = "' + FormatDateTime('mm/dd/yyyy',StrtoDatetime(TerminalAtualData)) + '"';
+  SQLEncerranteDiario.MacroByName('MData').Value    := 'ENDIDDATA = ''' + FormatDateTime('mm/dd/yyyy',StrtoDatetime(TerminalAtualData)) + '''';
   SQLEncerranteDiario.MacroByName('MUsuario').Value := 'USUAICOD  = ' + IntToStr(DM.UsuarioAtual);
   SQLEncerranteDiario.Open;
   if SQLEncerranteDiario.IsEmpty then
@@ -227,14 +227,14 @@ begin
       end;
       SQLEncerranteDiario.Close;
       SQLEncerranteDiario.MacroByName('MEmpresa').Value := 'EMPRICOD  = ' + EmpresaPadrao;
-      SQLEncerranteDiario.MacroByName('MData').Value    := 'ENDIDDATA = "' + FormatDateTime('mm/dd/yyyy',StrtoDatetime(TerminalAtualData)) + '"';
+      SQLEncerranteDiario.MacroByName('MData').Value    := 'ENDIDDATA = ''' + FormatDateTime('mm/dd/yyyy',StrtoDatetime(TerminalAtualData)) + '''';
       SQLEncerranteDiario.MacroByName('MUsuario').Value := 'USUAICOD  = ' + IntToStr(DM.UsuarioAtual);
       SQLEncerranteDiario.Open;
     end;
   end;
   SQLPrestaContas.Close;
   SQLPrestaContas.MacroByName('MEmpresa').Value := 'EMPRICOD  = ' + EmpresaPadrao;
-  SQLPrestaContas.MacroByName('MData').Value    := 'PRECODATA = "' + FormatDateTime('mm/dd/yyyy',StrtoDatetime(TerminalAtualData)) + '"';
+  SQLPrestaContas.MacroByName('MData').Value    := 'PRECODATA = ''' + FormatDateTime('mm/dd/yyyy',StrtoDatetime(TerminalAtualData)) + '''';
   SQLPrestaContas.MacroByName('MUsuario').Value := 'USUAICOD  = ' + IntToStr(DM.UsuarioAtual);
   SQLPrestaContas.Open;
 end;

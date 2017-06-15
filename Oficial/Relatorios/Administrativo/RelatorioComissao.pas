@@ -49,8 +49,8 @@ procedure TFormRelatorioComissao.ExecutarBtnClick(Sender: TObject);
 begin
   inherited;
   SQLVendedorComissao.Close ;
-  SQLVendedorComissao.MacrobyName('MData').Value := 'VENDEDORCOMISSAO.VDCODEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                    'VENDEDORCOMISSAO.VDCODEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
+  SQLVendedorComissao.MacrobyName('MData').Value := 'VENDEDORCOMISSAO.VDCODEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                    'VENDEDORCOMISSAO.VDCODEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
   SQLVendedorComissao.Open ;
   if SQLVendedorComissao.IsEmpty then
     begin
@@ -67,11 +67,11 @@ begin
   Report.Formulas.Retrieve ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Emissao' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'PeriodoEmissao' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
-                                  FormatDateTime('dd/mm/yyyy', Ate.Date) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
+                                  FormatDateTime('dd/mm/yyyy', Ate.Date) + '''' ;
   Report.Execute ;
 end;
 

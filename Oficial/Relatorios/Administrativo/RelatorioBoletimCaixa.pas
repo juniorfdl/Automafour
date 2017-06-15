@@ -126,7 +126,7 @@ begin
   SQLTerminal.Close;
 
   if FileExists(DM.PathAplicacao + 'Terminal.cfg') then
-    SQLTerminal.MacroByName('MFiltro').Value := 'TERMINAL.ECFA13ID <> " "'
+    SQLTerminal.MacroByName('MFiltro').Value := 'TERMINAL.ECFA13ID <> '' '''
   else
     SQLTerminal.MacroByName('MFiltro').Value := '0=0';
 
@@ -159,8 +159,8 @@ begin
 
   SQLBoletim.Close ;
   SQLBoletim.MacrobyName('MEmpresa').Value := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'TOTALIZADORDIARIOCAIXA', '') ;
-  SQLBoletim.MacrobyName('MData').Value    := 'TOTALIZADORDIARIOCAIXA.TODIDMOV >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                              'TOTALIZADORDIARIOCAIXA.TODIDMOV <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
+  SQLBoletim.MacrobyName('MData').Value    := 'TOTALIZADORDIARIOCAIXA.TODIDMOV >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                              'TOTALIZADORDIARIOCAIXA.TODIDMOV <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
   if ComboTerminal.text <> '' then
     SQLBoletim.MacrobyName('MTerminal').Value := 'TOTALIZADORDIARIOCAIXA.TERMICOD = ' + ComboTerminal.Value ;
 
@@ -177,8 +177,8 @@ begin
     begin
       SQLBoletimAux.Close;
       SQLBoletimAux.MacroByName('MEmpresaAux').Value   := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'TOTALIZADORDIARIOCAIXA', '') ;
-      SQLBoletimAux.MacrobyName('MDataAux').Value      := 'TOTALIZADORDIARIOCAIXA.TODIDMOV >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
-                                                       'TOTALIZADORDIARIOCAIXA.TODIDMOV <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
+      SQLBoletimAux.MacrobyName('MDataAux').Value      := 'TOTALIZADORDIARIOCAIXA.TODIDMOV >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
+                                                       'TOTALIZADORDIARIOCAIXA.TODIDMOV <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
       SQLBoletimAux.MacrobyName('MTerminalAux').Value  := 'TOTALIZADORDIARIOCAIXA.TERMICOD = ' + ComboTerminalAux.Value ;
 
       SQLBoletimAux.Open;
@@ -200,8 +200,8 @@ begin
   //Valores de Fechamento do Caixa
 
   SQLFechamentoCaixa.Close;
-  SQLFechamentoCaixa.MacroByName('Mdata').Value := 'FECXDDATAMOV >= "' + FormatDateTime('mm/dd/yyyy',De.Date) + '" and ' +
-                                                   'FECXDDATAMOV <= "' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '"';
+  SQLFechamentoCaixa.MacroByName('Mdata').Value := 'FECXDDATAMOV >= ''' + FormatDateTime('mm/dd/yyyy',De.Date) + ''' and ' +
+                                                   'FECXDDATAMOV <= ''' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '''';
 
   if ComboTerminal.Value <> '' then
     SQLFechamentoCaixa.MacroByName('MTerminal').Value := 'TERMICOD = ' + ComboTerminal.Value
@@ -235,8 +235,8 @@ begin
   if ComboTerminalAux.Value <> '' then
     begin
       SQLFechamentoCaixaAux.Close;
-      SQLFechamentoCaixaAux.MacroByName('MdataAux').Value := 'FECXDDATAMOV >= "' + FormatDateTime('mm/dd/yyyy',De.Date) + '" and ' +
-                                                             'FECXDDATAMOV <= "' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '"';
+      SQLFechamentoCaixaAux.MacroByName('MdataAux').Value := 'FECXDDATAMOV >= ''' + FormatDateTime('mm/dd/yyyy',De.Date) + ''' and ' +
+                                                             'FECXDDATAMOV <= ''' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '''';
 
       if ComboTerminalAux.Value <> '' then
         SQLFechamentoCaixaAux.MacroByName('MTerminalAux').Value := 'TERMICOD = ' + ComboTerminalAux.Value
@@ -266,17 +266,17 @@ begin
   Report.Formulas.Retrieve;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Emissao' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'PeriodoEmissao' ;
-  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
-                                  FormatDateTime('dd/mm/yyyy', Ate.Date) + '"' ;
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
+                                  FormatDateTime('dd/mm/yyyy', Ate.Date) + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Terminal' ;
   if ComboTerminal.Text <> '' then
-    Report.Formulas.Formula.Text := '"' + ComboTerminal.Text + '  '+ ComboTerminalAux.Text + '"'
+    Report.Formulas.Formula.Text := '''' + ComboTerminal.Text + '  '+ ComboTerminalAux.Text + ''''
   else
-    Report.Formulas.Formula.Text := '"Todos"' ;
+    Report.Formulas.Formula.Text := '''Todos''' ;
   //--------------------------------------------------------------------------\\
   if not CkBobina.Checked then
     Report.Execute

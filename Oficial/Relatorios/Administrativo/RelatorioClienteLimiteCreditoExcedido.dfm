@@ -1,5 +1,5 @@
 inherited FormRelatorioClienteLimiteCreditoExcedido: TFormRelatorioClienteLimiteCreditoExcedido
-  Caption = 'Limite de Crédito por Cliente'
+  Caption = 'Limite de Cr'#233'dito por Cliente'
   PixelsPerInch = 96
   TextHeight = 13
   inherited ScrollBox: TScrollBox

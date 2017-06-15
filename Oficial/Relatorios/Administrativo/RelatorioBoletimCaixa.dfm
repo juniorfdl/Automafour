@@ -1,7 +1,7 @@
 inherited FormRelatorioBoletimCaixa: TFormRelatorioBoletimCaixa
   Left = -16
   Top = 83
-  Caption = 'Relatório Boletim de Caixa'
+  Caption = 'Relat'#243'rio Boletim de Caixa'
   PixelsPerInch = 96
   TextHeight = 13
   inherited ScrollBox: TScrollBox
@@ -11,9 +11,9 @@ inherited FormRelatorioBoletimCaixa: TFormRelatorioBoletimCaixa
       Width = 208
       Height = 65
       Caption = 
-        '* Não esqueca de efetuar o '#13#10'  o Recalculo dos Totalizadores'#13#10'  ' +
-        'do Caixa, para que sejam '#13#10'  atualizados todos os lançamentos'#13#10' ' +
-        ' realizados no período selecionado.'
+        '* N'#227'o esqueca de efetuar o '#13#10'  o Recalculo dos Totalizadores'#13#10'  ' +
+        'do Caixa, para que sejam '#13#10'  atualizados todos os lan'#231'amentos'#13#10' ' +
+        ' realizados no per'#237'odo selecionado.'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clRed
       Font.Height = -11
@@ -103,7 +103,7 @@ inherited FormRelatorioBoletimCaixa: TFormRelatorioBoletimCaixa
         Top = 296
         Width = 163
         Height = 17
-        Caption = 'Imprime em bobina não fiscal'
+        Caption = 'Imprime em bobina n'#227'o fiscal'
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -130,13 +130,9 @@ inherited FormRelatorioBoletimCaixa: TFormRelatorioBoletimCaixa
     end
     object TblTemporariaTODIN2VLRDEBITO: TFloatField
       FieldName = 'TODIN2VLRDEBITO'
-      Precision = 15
-      Size = 3
     end
     object TblTemporariaTODIN2VLRCREDITO: TFloatField
       FieldName = 'TODIN2VLRCREDITO'
-      Precision = 15
-      Size = 3
     end
     object TblTemporariaUSUAICOD: TIntegerField
       FieldName = 'USUAICOD'
@@ -244,13 +240,9 @@ inherited FormRelatorioBoletimCaixa: TFormRelatorioBoletimCaixa
     end
     object SQLBoletimTODIN2VLRDEBITO: TFloatField
       FieldName = 'TODIN2VLRDEBITO'
-      Precision = 15
-      Size = 3
     end
     object SQLBoletimTODIN2VLRCREDITO: TFloatField
       FieldName = 'TODIN2VLRCREDITO'
-      Precision = 15
-      Size = 3
     end
     object SQLBoletimUSUAICOD: TIntegerField
       FieldName = 'USUAICOD'
@@ -472,8 +464,6 @@ inherited FormRelatorioBoletimCaixa: TFormRelatorioBoletimCaixa
     object SQLFechamentoCaixaFECXN2VALOR: TFloatField
       FieldName = 'FECXN2VALOR'
       Origin = 'DB.FECHAMENTOCAIXA.FECXN2VALOR'
-      Precision = 15
-      Size = 3
     end
     object SQLFechamentoCaixaUSUAICOD: TIntegerField
       FieldName = 'USUAICOD'
@@ -505,8 +495,6 @@ inherited FormRelatorioBoletimCaixa: TFormRelatorioBoletimCaixa
     object TblFechamentoCaixaFECXN2VALOR: TFloatField
       FieldName = 'FECXN2VALOR'
       Origin = 'DB.FECHAMENTOCAIXA.FECXN2VALOR'
-      Precision = 15
-      Size = 3
     end
     object TblFechamentoCaixaUSUAICOD: TIntegerField
       FieldName = 'USUAICOD'
@@ -637,13 +625,9 @@ inherited FormRelatorioBoletimCaixa: TFormRelatorioBoletimCaixa
     end
     object SQLBoletimAuxTODIN2VLRDEBITO: TFloatField
       FieldName = 'TODIN2VLRDEBITO'
-      Precision = 15
-      Size = 3
     end
     object SQLBoletimAuxTODIN2VLRCREDITO: TFloatField
       FieldName = 'TODIN2VLRCREDITO'
-      Precision = 15
-      Size = 3
     end
     object SQLBoletimAuxUSUAICOD: TIntegerField
       FieldName = 'USUAICOD'
@@ -702,8 +686,6 @@ inherited FormRelatorioBoletimCaixa: TFormRelatorioBoletimCaixa
     object SQLFechamentoCaixaAuxFECXN2VALOR: TFloatField
       FieldName = 'FECXN2VALOR'
       Origin = 'DB.FECHAMENTOCAIXA.FECXN2VALOR'
-      Precision = 15
-      Size = 3
     end
     object SQLFechamentoCaixaAuxUSUAICOD: TIntegerField
       FieldName = 'USUAICOD'

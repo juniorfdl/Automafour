@@ -780,7 +780,7 @@ inherited FormTelaBaixaContasReceberAVista: TFormTelaBaixaContasReceberAVista
       'FROM '
       'OPERACAOTESOURARIA '
       'WHERE '
-      'OPTECDEBCRED <> "D"')
+      'OPTECDEBCRED <> ''D''')
     Left = 239
     Top = 4
     object SQLOperacaoTesourariaOPTEICOD: TIntegerField
@@ -823,7 +823,7 @@ inherited FormTelaBaixaContasReceberAVista: TFormTelaBaixaContasReceberAVista
   object SQLNumerario: TQuery
     DatabaseName = 'DB'
     SQL.Strings = (
-      'SELECT * from NUMERARIO where NUMEA5TIPO = "DIN"')
+      'SELECT * from NUMERARIO where NUMEA5TIPO = ''DIN''')
     Left = 296
     Top = 4
     object SQLNumerarioNUMEICOD: TIntegerField

@@ -382,14 +382,14 @@ begin
                     EntradaDados.Text := '0' + EntradaDados.Text;
 
                   SQLCupom.Close;
-                  SQLCupom.MacroByName('MFiltro').Value := 'CUPOA13ID = "' + EntradaDados.Text + '"';
+                  SQLCupom.MacroByName('MFiltro').Value := 'CUPOA13ID = ''' + EntradaDados.Text + '''';
                   SQLCupom.Open;
                   if not SQLCupom.EOF then
                     Entra := true
                   else
                     begin
                       SQLCupom.Close;
-                      SQLCupom.MacroByName('MFiltro').Value := 'CUPOA20CODANT = "' + Copy(EntradaDados.Text, 1, 10) + '"';
+                      SQLCupom.MacroByName('MFiltro').Value := 'CUPOA20CODANT = ''' + Copy(EntradaDados.Text, 1, 10) + '''';
                       SQLCupom.Open;
                       if not SQLCupom.IsEmpty then
                         Entra := true;
@@ -398,7 +398,7 @@ begin
               else
                 begin
                   SQLCupom.Close;
-                  SQLCupom.MacroByName('MFiltro').Value := 'CUPOA20CODANT = "' + EntradaDados.Text + '"';
+                  SQLCupom.MacroByName('MFiltro').Value := 'CUPOA20CODANT = ''' + EntradaDados.Text + '''';
                   SQLCupom.Open;
                   if not SQLCupom.EOF then
                     Entra := true;
@@ -425,7 +425,7 @@ begin
           else
             begin
               SQLContasReceber.Close;
-              SQLContasReceber.MacroByName('MFiltro').AsString := ' CTRCA13ID = "' + EntradaDados.Text + '" and (CTRCCSTATUS = "A" or CTRCCSTATUS = "N")';
+              SQLContasReceber.MacroByName('MFiltro').AsString := ' CTRCA13ID = ''' + EntradaDados.Text + ''' and (CTRCCSTATUS = ''A'' or CTRCCSTATUS = ''N'')';
               SQLContasReceber.Open;
               if not SQLContasReceber.IsEmpty then
                 Entra := True
@@ -436,7 +436,7 @@ begin
           if (not ParcelaAvulsa) and (Entra) then
             begin
               SQLContasReceber.Close;
-              SQLContasReceber.MacroByName('MFiltro').AsString := ' CUPOA13ID = "' + SQLCupomCUPOA13ID.AsString + '" and (CTRCCSTATUS = "A" or CTRCCSTATUS = "N")';
+              SQLContasReceber.MacroByName('MFiltro').AsString := ' CUPOA13ID = ''' + SQLCupomCUPOA13ID.AsString + ''' and (CTRCCSTATUS = ''A'' or CTRCCSTATUS = ''N'')';
               SQLContasReceber.Open;
             end;
 
@@ -446,14 +446,14 @@ begin
             begin
               // VERIFICAR SE EXISTE ALGUMA OBS PARA O CLIENTE EM QUESTAO
               try
-                ObsCliente := SQLLocate('CLIENTE','CLIEA13ID','CLIETOBS1','"' + SQLContasReceberCLIEA13ID.AsString + '"');
+                ObsCliente := SQLLocate('CLIENTE','CLIEA13ID','CLIETOBS1','''' + SQLContasReceberCLIEA13ID.AsString + '''');
                 if ObsCliente <> '' then
                   begin
                     ListBoxAvisos.Items.Add('****** OBSERVAÇÕES NORMAIS ******');
                     ListBoxAvisos.Items.Add(ObsCliente);
                     TemObs := True;
                   end;
-                ObsCliente := SQLLocate('CLIENTE','CLIEA13ID','CLIETOBSCOB','"' + SQLContasReceberCLIEA13ID.AsString + '"');
+                ObsCliente := SQLLocate('CLIENTE','CLIEA13ID','CLIETOBSCOB','''' + SQLContasReceberCLIEA13ID.AsString + '''');
                 if ObsCliente <> '' then
                   begin
                     ListBoxAvisos.Items.Add('****** OBSERVAÇÕES REF.COBRANÇA ******');
@@ -476,10 +476,10 @@ begin
                    SQLSegundoAviso.Close;
                    SQLSPC.Close;
                    SQLAvisoCobranca.Close;
-                   SQLPrimeiroAviso.MacroByName('Cupom').Value := 'CUPOA13ID = "' + SQLCupomCUPOA13ID.AsString + '"';
-                   SQLSegundoAviso.MacroByName('Cupom').Value  := 'CUPOA13ID = "' + SQLCupomCUPOA13ID.AsString + '"';
-                   SQLSPC.MacroByName('Cupom').Value           := 'CUPOA13ID = "' + SQLCupomCUPOA13ID.AsString + '"';
-                   SQLAvisoCobranca.MacroByName('Cupom').Value := 'CUPOA13ID = "' + SQLCupomCUPOA13ID.AsString + '"';
+                   SQLPrimeiroAviso.MacroByName('Cupom').Value := 'CUPOA13ID = ''' + SQLCupomCUPOA13ID.AsString + '''';
+                   SQLSegundoAviso.MacroByName('Cupom').Value  := 'CUPOA13ID = ''' + SQLCupomCUPOA13ID.AsString + '''';
+                   SQLSPC.MacroByName('Cupom').Value           := 'CUPOA13ID = ''' + SQLCupomCUPOA13ID.AsString + '''';
+                   SQLAvisoCobranca.MacroByName('Cupom').Value := 'CUPOA13ID = ''' + SQLCupomCUPOA13ID.AsString + '''';
                    SQLPrimeiroAviso.Open;
                    SQLSegundoAviso.Open;
                    SQLSPC.Open;
@@ -566,7 +566,7 @@ begin
                   DM.SQLTemplate.Close;
                   DM.SQLTemplate.SQL.Clear;
                   DM.SQLTemplate.SQL.Add('select CTRCA13ID,INROPARC from PARCELASRECEBERTEMP');
-                  DM.SQLTemplate.SQL.Add('where CTRCA13ID = "' + SQLContasReceberCTRCA13ID.AsString + '"');
+                  DM.SQLTemplate.SQL.Add('where CTRCA13ID = ''' + SQLContasReceberCTRCA13ID.AsString + '''');
                   DM.SQLTemplate.SQL.Add('and   INROPARC  = ' + SQLContasReceberCTRCINROPARC.AsSTring);
                   DM.SQLTemplate.SQL.Add('and   TERMICOD  = ' + IntToStr(TerminalAtual));
                   DM.SQLTemplate.Open;
@@ -604,7 +604,7 @@ begin
 
                           SQLParcelasReceberTempA13NRODOC.Value   := SQLContasReceberCUPOA13ID.AsString;
                           SQLParcelasReceberTempCLIEA13ID.Value   := SQLContasReceberCLIEA13ID.AsString;
-                          SQLParcelasReceberTempNOMECLIENTE.Value := SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA60RAZAOSOC', '"' + SQLContasReceberCLIEA13ID.AsString + '"');
+                          SQLParcelasReceberTempNOMECLIENTE.Value := SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA60RAZAOSOC', '''' + SQLContasReceberCLIEA13ID.AsString + '''');
                           SQLParcelasReceberTempCTRCA13ID.Value   := SQLContasReceberCTRCA13ID.AsString;
                           SQLParcelasReceberTempINROPARC.Value    := SQLContasReceberCTRCINROPARC.Value;
                           SQLParcelasReceberTempDVENC.Value       := SQLContasReceberCTRCDVENC.Value;
@@ -687,8 +687,8 @@ begin
               if (not SemParcelaAberta) and (not ParcelaAvulsa) and (SQLParcelasReceberTempA13CUPOID.AsString <> '') then
                 begin
                   SQLHistorico.Close;
-                  SQLHistorico.MacroByName('MFiltro').Value   := 'CUPOA13ID = "' + SQLParcelasReceberTempA13CUPOID.AsString + '" AND ' +
-                                                                 'CTRCA13ID = "' + SQLParcelasReceberTempCTRCA13ID.AsString + '" AND ' +
+                  SQLHistorico.MacroByName('MFiltro').Value   := 'CUPOA13ID = ''' + SQLParcelasReceberTempA13CUPOID.AsString + ''' AND ' +
+                                                                 'CTRCA13ID = ''' + SQLParcelasReceberTempCTRCA13ID.AsString + ''' AND ' +
                                                                  'CTRCINROPARC = ' + SQLParcelasReceberTempINROPARC.AsString;
                   SQLHistorico.Open;
                 end;
@@ -764,7 +764,7 @@ begin
               DM.MemCtRecParc.Open;
 
               SQLContasReceber.Close;
-              SQLContasReceber.MacroByName('MFiltro').AsString := ' CLIEA13ID = "' + EntradaDados.Text + '" and (CTRCCSTATUS = "A" or CTRCCSTATUS = "N")' +
+              SQLContasReceber.MacroByName('MFiltro').AsString := ' CLIEA13ID = ''' + EntradaDados.Text + ''' and (CTRCCSTATUS = ''A'' or CTRCCSTATUS = ''N'')' +
                                                                   ' AND (CTRCN2VLR > CTRCN2TOTREC)';
               SQLContasReceber.Open;
 
@@ -1065,7 +1065,7 @@ begin
               FormTelaConsultaRapidaNumerario.LblTituloTela.Refresh ;
 
               FormTelaConsultaRapidaNumerario.SQLNumerario.Close ;
-              FormTelaConsultaRapidaNumerario.SQLNumerario.MacroByName('MTipo').Value := 'NUMEA5TIPO <> "CRD"' ;
+              FormTelaConsultaRapidaNumerario.SQLNumerario.MacroByName('MTipo').Value := 'NUMEA5TIPO <> ''CRD''' ;
               FormTelaConsultaRapidaNumerario.SQLNumerario.Open ;
               FormTelaConsultaRapidaNumerario.ShowModal ;
               EntradaDados.text := IntToStr(NumerarioAtual) ;
@@ -1178,7 +1178,7 @@ begin
               SQLParcelasPrazoVendaTemp.Open;
 
               SQLProvedorCartao.Close;
-              SQLProvedorCartao.MacroByName('MFiltro').Value := 'PRCAA13ID = "'+ProvedorCartao+'"';
+              SQLProvedorCartao.MacroByName('MFiltro').Value := 'PRCAA13ID = '''+ProvedorCartao+'''';
               SQLProvedorCartao.Open;
               if not SQLProvedorCartao.IsEmpty then
                 begin
@@ -1388,7 +1388,7 @@ begin
           DM.SQLTemplate.Close ;
           DM.SQLTemplate.SQL.Clear ;
           DM.SQLTemplate.SQL.Add('select OPCXICOD from OPERACAOCAIXA') ;
-          DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = "RCCRD"') ;
+          DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = ''RCCRD''') ;
           DM.SQLTemplate.Open ;
           if DM.SQLTemplate.Eof then
             Informa('Não foi encontrada nenhuma operação de caixa para RECEBIMENTO de CREDIÁRIO. O valores do seu caixa não serão informados corretamente !') ;
@@ -1396,7 +1396,7 @@ begin
           DM.SQLTemplate.Close ;
           DM.SQLTemplate.SQL.Clear ;
           DM.SQLTemplate.SQL.Add('select OPCXICOD from OPERACAOCAIXA') ;
-          DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = "JURRC"') ;
+          DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = ''JURRC''') ;
           DM.SQLTemplate.Open ;
           if DM.SQLTemplate.Eof then
             Informa('Não foi encontrada nenhuma operação de caixa para JUROS REC.PARCELA CREDIÁRIO. O valores do seu caixa não serão informados corretamente !') ;
@@ -1404,7 +1404,7 @@ begin
           DM.SQLTemplate.Close ;
           DM.SQLTemplate.SQL.Clear ;
           DM.SQLTemplate.SQL.Add('select OPCXICOD from OPERACAOCAIXA') ;
-          DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = "MULRC"') ;
+          DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = ''MULRC''') ;
           DM.SQLTemplate.Open ;
           if DM.SQLTemplate.Eof then
             Informa('Não foi encontrada nenhuma operação de caixa para MULTA REC.PARCELA CREDIÁRIO. O valores do seu caixa não serão informados corretamente !') ;
@@ -1412,7 +1412,7 @@ begin
           DM.SQLTemplate.Close ;
           DM.SQLTemplate.SQL.Clear ;
           DM.SQLTemplate.SQL.Add('select OPCXICOD from OPERACAOCAIXA') ;
-          DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = "DESRC"') ;
+          DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = ''DESRC''') ;
           DM.SQLTemplate.Open ;
           if DM.SQLTemplate.Eof then
             Informa('Não foi encontrada nenhuma operação de caixa para DESCONTO REC.PARCELA CREDIÁRIO. O valores do seu caixa não serão informados corretamente !') ;
@@ -1452,8 +1452,8 @@ begin
               { MakeWindowMessage('Consultando Recebimento...');
               DM.SQLTemplate.Close ;
               DM.SQLTemplate.SQL.Clear ;
-              DM.SQLTemplate.SQL.Add('select CTRCA13ID from RECEBIMENTO where CTRCA13ID = "' + SQLParcelasReceberTempCTRCA13ID.Value + '"');
-              DM.SQLTemplate.SQL.Add(' and RECEDRECTO = "' + FormatDateTime('mm/dd/yyyy',DataBaixa) + '"');
+              DM.SQLTemplate.SQL.Add('select CTRCA13ID from RECEBIMENTO where CTRCA13ID = ''' + SQLParcelasReceberTempCTRCA13ID.Value + '''');
+              DM.SQLTemplate.SQL.Add(' and RECEDRECTO = ''' + FormatDateTime('mm/dd/yyyy',DataBaixa) + '''');
               DM.SQLTemplate.Open;
               DestroyWindow;
               if not DM.SQLTemplate.Eof then
@@ -1474,7 +1474,7 @@ begin
                   DM.SQLTemplate.Close ;
                   DM.SQLTemplate.SQL.Clear ;
                   DM.SQLTemplate.SQL.Add('select Max(RECEICOD) as Contador from RECEBIMENTO') ;
-                  DM.SQLTemplate.SQL.Add('where CTRCA13ID = "' + SQLParcelasReceberTempCTRCA13ID.Value + '"') ;
+                  DM.SQLTemplate.SQL.Add('where CTRCA13ID = ''' + SQLParcelasReceberTempCTRCA13ID.Value + '''') ;
                   DM.SQLTemplate.Open ;
                   if DM.SQLTemplate.FieldByName('Contador').Value > 0 then
                     ProxCodRec := DM.SQLTemplate.FieldByName('Contador').Value + 1
@@ -1535,7 +1535,7 @@ begin
                       DM.SQLTemplate.Close ;
                       DM.SQLTemplate.SQL.Clear ;
                       DM.SQLTemplate.SQL.Add('select OPCXICOD from OPERACAOCAIXA') ;
-                      DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = "RCCRD"') ;
+                      DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = ''RCCRD''') ;
                       DM.SQLTemplate.Open ;
                       if not DM.SQLTemplate.EOF then
                         begin
@@ -1570,7 +1570,7 @@ begin
                           DM.SQLTemplate.Close ;
                           DM.SQLTemplate.SQL.Clear ;
                           DM.SQLTemplate.SQL.Add('select OPCXICOD from OPERACAOCAIXA') ;
-                          DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = "JURRC"') ;
+                          DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = ''JURRC''') ;
                           DM.SQLTemplate.Open ;
                           if not DM.SQLTemplate.EOF then
                             GravaMovimentoCaixa( DM.SQLTotalizadorCaixa,
@@ -1599,7 +1599,7 @@ begin
                           DM.SQLTemplate.Close ;
                           DM.SQLTemplate.SQL.Clear ;
                           DM.SQLTemplate.SQL.Add('select OPCXICOD from OPERACAOCAIXA') ;
-                          DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = "MULRC"') ;
+                          DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = ''MULRC''') ;
                           DM.SQLTemplate.Open ;
                           if not DM.SQLTemplate.Eof then
                             GravaMovimentoCaixa( DM.SQLTotalizadorCaixa,
@@ -1628,7 +1628,7 @@ begin
                           DM.SQLTemplate.Close ;
                           DM.SQLTemplate.SQL.Clear ;
                           DM.SQLTemplate.SQL.Add('select OPCXICOD from OPERACAOCAIXA') ;
-                          DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = "DESRC"') ;
+                          DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = ''DESRC''') ;
                           DM.SQLTemplate.Open ;
                           if not DM.SQLTemplate.Eof then
                             GravaMovimentoCaixa( DM.SQLTotalizadorCaixa,
@@ -1825,7 +1825,7 @@ begin
                                                   RDPrint.Abrir;
                                                   RDPrint.Imp(1,1,DateToStr(Date)+ ' ' +
                                                   'R$ '+StrTm(FormatFloat('###,##0.00',TotalRecbto),12,' ',0)+ ' '+
-                                                  SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC','"' + SQLParcelasReceberTempCLIEA13ID.asstring + '"'));
+                                                  SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC','''' + SQLParcelasReceberTempCLIEA13ID.asstring + ''''));
                                                   RDPrint.Novapagina;
                                                   RDPrint.Fechar;
                                                   RDPrint.OpcoesPreview.Preview := False;
@@ -1873,7 +1873,7 @@ begin
                       DM.SQLTemplate.Close ;
                       DM.SQLTemplate.SQL.Clear ;
                       DM.SQLTemplate.SQL.Add('select OPCXICOD from OPERACAOCAIXA') ;
-                      DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = " JURRC"') ;
+                      DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = '' JURRC''') ;
                       DM.SQLTemplate.Open ;
                     end ;
                   //GRAVAR MOVIMENTO CAIXA VALOR MULTA
@@ -1882,7 +1882,7 @@ begin
                       DM.SQLTemplate.Close ;
                       DM.SQLTemplate.SQL.Clear ;
                       DM.SQLTemplate.SQL.Add('select OPCXICOD from OPERACAOCAIXA') ;
-                      DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = " MULRC"') ;
+                      DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = '' MULRC''') ;
                       DM.SQLTemplate.Open ;
                     end ;
                   //GRAVAR MOVIMENTO CAIXA VALOR DESCONTO
@@ -1891,7 +1891,7 @@ begin
                       DM.SQLTemplate.Close ;
                       DM.SQLTemplate.SQL.Clear ;
                       DM.SQLTemplate.SQL.Add('select OPCXICOD from OPERACAOCAIXA') ;
-                      DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = " MULRC"') ;
+                      DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = '' MULRC''') ;
                       DM.SQLTemplate.Open ;
                     end ;   }
                 end
@@ -1901,8 +1901,8 @@ begin
                   DM.SQLTemplate.Close ;
                   DM.SQLTemplate.SQL.Clear ;
                   DM.SQLTemplate.SQL.Add('update CUPOMNUMERARIO') ;
-                  DM.SQLTemplate.SQL.Add('set Pendente="S", CPNMCAUTENT = "S"') ;
-                  DM.SQLTemplate.SQL.Add('where CUPOA13ID = "' + SQLParcelasReceberTempA13CUPOID.AsString + '"') ;
+                  DM.SQLTemplate.SQL.Add('set Pendente=''S'', CPNMCAUTENT = ''S''') ;
+                  DM.SQLTemplate.SQL.Add('where CUPOA13ID = ''' + SQLParcelasReceberTempA13CUPOID.AsString + '''') ;
                   DM.SQLTemplate.ExecSQL ;
 
                   if (Dm.SQLTerminalAtivo.FieldByName('TERMCAUTENTIMPMATRI').AsString <> 'S') and
@@ -2014,7 +2014,7 @@ begin
                         begin
                           Repeat
                             TxtReciboECF := #13+#10+ '-----------    R  E  C  I  B  O   -------------' +#13+#10+ #13+#10+
-                                            'Recebi de: '+ SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC','"' + SQLParcelasReceberTempCLIEA13ID.asstring + '"') +#13+#10+
+                                            'Recebi de: '+ SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC','''' + SQLParcelasReceberTempCLIEA13ID.asstring + '''') +#13+#10+
                                             'O Valor de R$ : '+FormatFloat('##0.00',TotalPagar.Value) +#13+#10+
                                             'Ref. Pagamento de Compras Efetuadas a Prazo. ';
 
@@ -2101,7 +2101,7 @@ begin
                           RDPrint.Imp(4,1,'Terminal.: '  + TerminalAtualNome);
                           RDPrint.Imp(5,1,'Usuario..: '  + UsuarioAtualNome);
                           RDPrint.Imp(6,1,'Data.....: '  + DateToStr(Date));
-                          RDPrint.Imp(7,1,'Cliente..: '  + SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC','"' + SQLParcelasReceberTempCLIEA13ID.asstring + '"'));
+                          RDPrint.Imp(7,1,'Cliente..: '  + SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC','''' + SQLParcelasReceberTempCLIEA13ID.asstring + ''''));
                           RDPrint.Imp(9,1,'Valor Total R$ '+StrTm(FormatFloat('###,##0.00',TotalRecbto),12,' ',0));
                           RDPrint.Imp(12,1,'-----------------------------------------------');
                           RDPrint.Fechar;
@@ -2137,7 +2137,7 @@ begin
                         RDPrint.ImpF(nLin,1,'RECIBO DE PAGAMENTO',[EXPANDIDO,NEGRITO]); inc(nlin,2);
                         RDPrint.ImpF(nLin,1,DM.SQLEmpresaEMPRA60RAZAOSOC.AsString,[EXPANDIDO,NEGRITO]); inc(nlin);
                         RDPrint.Imp(nLin,1,Trim(DM.SQLEmpresaEMPRA60END.AsString)+' - '+Trim(dm.SQLEmpresaEMPRA60BAI.asstring)+' - '+ Trim(DM.SQLEmpresaEMPRA60CID.AsString)+' - Fone: '+Trim(dm.SQLEmpresaEMPRA20FONE.asstring)); inc(nlin,2);
-                        RDPrint.Imp (nLin,1, 'NOME CLIENTE..: '+ SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC','"' + SQLParcelasReceberTempCLIEA13ID.asstring + '"')); inc(nLin,2);
+                        RDPrint.Imp (nLin,1, 'NOME CLIENTE..: '+ SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC','''' + SQLParcelasReceberTempCLIEA13ID.asstring + '''')); inc(nLin,2);
                         RDPrint.Imp (nLin,1, 'DATA PAGAMENTO: '+DateToStr(DATE)); inc(nLin);
                         ValorExtenso(VExt,TotalRecbto, '', '', 1, 254, '*', 3);
                         RDPrint.Imp (nLin,1,'PAGO O VALOR DE: '+VExt[0]);Inc(nLin);
@@ -2185,7 +2185,7 @@ begin
                         RDPrint.ImpF(nLin,1,DM.SQLEmpresaEMPRA60RAZAOSOC.AsString,[EXPANDIDO,NEGRITO]); inc(nlin);
                         RDPrint.Imp(nLin,1,Trim(DM.SQLEmpresaEMPRA60END.AsString)); INC(NLIN);
                         RDPrint.Imp(nLin,1,Trim(DM.SQLEmpresaEMPRA60CID.AsString)+' - Fone: '+Trim(dm.SQLEmpresaEMPRA20FONE.asstring)); inc(nlin,2);
-                        RDPrint.Imp (nLin,1, 'NOME CLIENTE..: '+ SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC','"' + SQLParcelasReceberTempCLIEA13ID.asstring + '"')); inc(nLin,2);
+                        RDPrint.Imp (nLin,1, 'NOME CLIENTE..: '+ SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC','''' + SQLParcelasReceberTempCLIEA13ID.asstring + '''')); inc(nLin,2);
                         RDPrint.Imp (nLin,1, 'DATA PAGAMENTO: '+DateToStr(DATE)); inc(nLin);
                         ValorExtenso(VExt,TotalRecbto, '', '', 1, 254, '*', 3);
                         RDPrint.Imp (nLin,1,'PAGO O VALOR DE: '+VExt[0]);Inc(nLin);
@@ -2224,22 +2224,22 @@ begin
 
                         RDPrint.Abrir;
                         nLin:= 2;
-                        RDPrint.ImpF(1,6, SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC','"' + SQLParcelasReceberTempCLIEA13ID.asstring + '"'),[Expandido,Negrito]);inc(nLin);
+                        RDPrint.ImpF(1,6, SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC','''' + SQLParcelasReceberTempCLIEA13ID.asstring + ''''),[Expandido,Negrito]);inc(nLin);
                         RDPrint.ImpF(4,19, StrTm(FormatFloat('###,##0.00',TotalRecbto),12,' ',0),[Expandido,Negrito]);inc(nLin);
                         RDPrint.ImpF(7,19, StrTm(FormatFloat('###,##0.00',TotalCliente-TotalRecbto),12,' ',0),[Expandido,Negrito]);inc(nLin);
                         RDPrint.ImpF(9,8, FormatDateTime('dd/mm/yyyy HH:MM',Now),[Expandido,Negrito]);inc(nLin);
 
                         RDPrint.ImpF(22,7,DateTimeToStr(Now),[Expandido,Negrito]);inc(nLin);
-                        RDPrint.ImpF(25,2,Copy(SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC','"' + SQLParcelasReceberTempCLIEA13ID.asstring + '"'),0,25),[Expandido,Negrito]);inc(nLin);
+                        RDPrint.ImpF(25,2,Copy(SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC','''' + SQLParcelasReceberTempCLIEA13ID.asstring + ''''),0,25),[Expandido,Negrito]);inc(nLin);
                         RDPrint.ImpF(28,19,StrTm(FormatFloat('###,##0.00',TotalRecbto),12,' ',0),[Expandido,Negrito]);inc(nLin);
                         RDPrint.ImpF(30,19, StrTm(FormatFloat('###,##0.00',TotalCliente - TotalRecbto),12,' ',0),[Expandido,Negrito]);inc(nLin);
 
-                        IF SQLLocate('CLIENTE','CLIEA13ID','CLIEDNASC','"' + SQLParcelasReceberTempCLIEA13ID.asstring + '"') <> '' Then
+                        IF SQLLocate('CLIENTE','CLIEA13ID','CLIEDNASC','''' + SQLParcelasReceberTempCLIEA13ID.asstring + '''') <> '' Then
                         begin
-                          if (Dayof(StrToDate(SQLLocate('CLIENTE','CLIEA13ID','CLIEDNASC','"' + SQLParcelasReceberTempCLIEA13ID.asstring + '"'))) >= Dayof(Date-5)) and
-                          (Dayof(StrToDate(SQLLocate('CLIENTE','CLIEA13ID','CLIEDNASC','"' + SQLParcelasReceberTempCLIEA13ID.asstring + '"')))  <= Dayof(date+5)) and
-                          (Monthof(StrToDate(SQLLocate('CLIENTE','CLIEA13ID','CLIEDNASC','"' + SQLParcelasReceberTempCLIEA13ID.asstring + '"'))) >= MonthOf(Date)) and
-                          (Monthof(StrToDate(SQLLocate('CLIENTE','CLIEA13ID','CLIEDNASC','"' + SQLParcelasReceberTempCLIEA13ID.asstring + '"'))) <= MonthOf(Date)) Then
+                          if (Dayof(StrToDate(SQLLocate('CLIENTE','CLIEA13ID','CLIEDNASC','''' + SQLParcelasReceberTempCLIEA13ID.asstring + ''''))) >= Dayof(Date-5)) and
+                          (Dayof(StrToDate(SQLLocate('CLIENTE','CLIEA13ID','CLIEDNASC','''' + SQLParcelasReceberTempCLIEA13ID.asstring + '''')))  <= Dayof(date+5)) and
+                          (Monthof(StrToDate(SQLLocate('CLIENTE','CLIEA13ID','CLIEDNASC','''' + SQLParcelasReceberTempCLIEA13ID.asstring + ''''))) >= MonthOf(Date)) and
+                          (Monthof(StrToDate(SQLLocate('CLIENTE','CLIEA13ID','CLIEDNASC','''' + SQLParcelasReceberTempCLIEA13ID.asstring + ''''))) <= MonthOf(Date)) Then
                           begin
                             RDPrint.ImpF(33,8, 'Feliz Aniversário',[Expandido,Negrito]);
                           end;
@@ -2270,7 +2270,7 @@ begin
                           RDPrint.ImpF(nLin,1,DM.SQLEmpresaEMPRA60RAZAOSOC.AsString,[EXPANDIDO,NEGRITO]); inc(nlin);
                           RDPrint.Imp(nLin,1,Trim(DM.SQLEmpresaEMPRA60END.AsString)); INC(NLIN);
                           RDPrint.Imp(nLin,1,Trim(DM.SQLEmpresaEMPRA60CID.AsString)+' - Fone: '+Trim(dm.SQLEmpresaEMPRA20FONE.asstring)); inc(nlin,2);
-                          RDPrint.Imp (nLin,1, 'NOME CLIENTE..: '+ SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC','"' + SQLParcelasReceberTempCLIEA13ID.asstring + '"')); inc(nLin,2);
+                          RDPrint.Imp (nLin,1, 'NOME CLIENTE..: '+ SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC','''' + SQLParcelasReceberTempCLIEA13ID.asstring + '''')); inc(nLin,2);
                           RDPrint.Imp (nLin,1, 'DATA PAGAMENTO: '+DateToStr(DATE)); inc(nLin);
                           ValorExtenso(VExt,TotalRecbto, '', '', 1, 254, ' ',3);
                           RDPrint.Imp (nLin,1, 'PAGO O VALOR DE: '+VExt[0]);Inc(nLin);
@@ -2527,7 +2527,7 @@ begin
   DM.SQLTemplate.Close ;
   DM.SQLTemplate.SQL.Clear ;
   DM.SQLTemplate.SQL.Add('select OPCXICOD from OPERACAOCAIXA') ;
-  DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = "RCCRD"') ;
+  DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = ''RCCRD''') ;
   DM.SQLTemplate.Open ;
   if DM.SQLTemplate.EOF then
   begin
@@ -2539,7 +2539,7 @@ begin
   DM.SQLTemplate.Close ;
   DM.SQLTemplate.SQL.Clear ;
   DM.SQLTemplate.SQL.Add('select OPCXICOD from OPERACAOCAIXA') ;
-  DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = "JURRC"') ;
+  DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = ''JURRC''') ;
   DM.SQLTemplate.Open ;
   if DM.SQLTemplate.EOF then
   begin
@@ -2551,7 +2551,7 @@ begin
   DM.SQLTemplate.Close ;
   DM.SQLTemplate.SQL.Clear ;
   DM.SQLTemplate.SQL.Add('select OPCXICOD from OPERACAOCAIXA') ;
-  DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = "MULRC"') ;
+  DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = ''MULRC''') ;
   DM.SQLTemplate.Open ;
   if DM.SQLTemplate.EOF then
   begin
@@ -2563,7 +2563,7 @@ begin
   DM.SQLTemplate.Close ;
   DM.SQLTemplate.SQL.Clear ;
   DM.SQLTemplate.SQL.Add('select OPCXICOD from OPERACAOCAIXA') ;
-  DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = "DESRC"') ;
+  DM.SQLTemplate.SQL.Add('where OPCXA5SIGLA = ''DESRC''') ;
   DM.SQLTemplate.Open ;
   if DM.SQLTemplate.EOF then
   begin
@@ -2590,8 +2590,8 @@ begin
   TemEntrada := False ;
 
   SQLlCupomNumerario.Close ;
-  SQLlCupomNumerario.MacroByName('MFiltro').Value := 'CUPOA13ID = "' + Documento +
-                                                     '" and (CPNMCAUTENT is null or CPNMCAUTENT = "")' ;
+  SQLlCupomNumerario.MacroByName('MFiltro').Value := 'CUPOA13ID = ''' + Documento +
+                                                     ''' and (CPNMCAUTENT is null or CPNMCAUTENT = '''')' ;
   SQLlCupomNumerario.Open ;
   if not SQLlCupomNumerario.Eof then
   begin
@@ -2609,7 +2609,7 @@ begin
       SQLParcelasReceberTempA13CUPOID.Value   := SQLlCupomNumerarioCUPOA13ID.AsString ;
       SQLParcelasReceberTempA13NRODOC.Value   := SQLlCupomNumerarioCUPOA13ID.AsString ;
       SQLParcelasReceberTempCLIEA13ID.Value   := SQLCupomCLIEA13ID.AsString ;
-      SQLParcelasReceberTempNOMECLIENTE.Value := SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA60RAZAOSOC', '"' + SQLCupomCLIEA13ID.AsString + '"') ;
+      SQLParcelasReceberTempNOMECLIENTE.Value := SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA60RAZAOSOC', '''' + SQLCupomCLIEA13ID.AsString + '''') ;
       SQLParcelasReceberTempCTRCA13ID.Value   := 'Entrada' ;
       SQLParcelasReceberTempINROPARC.Value    := 0 ;
       SQLParcelasReceberTempDVENC.Value       := Date ;
@@ -2697,7 +2697,7 @@ begin
     ImprimeTextoFormatado_NAOFISCAL(ImpNaoFiscalAtual,Chr(10),1,0,0,0,0);
     ImprimeTextoFormatado_NAOFISCAL(ImpNaoFiscalAtual,Chr(10),1,0,0,0,0);
 
-    Informa('Aguarde o Final da Impressão, Posicione o Papel na Impressora e Após Pressione "OK" para Autenticar!');
+    Informa('Aguarde o Final da Impressão, Posicione o Papel na Impressora e Após Pressione ''OK'' para Autenticar!');
     Sleep(5000);
     Sair := False;
     while not Sair do
@@ -2812,7 +2812,7 @@ begin
     case Upcase(Char(Key)) of
       'A':begin //RECEBER CONTRATOS ANTIGOS
             DocAnt := InputBox('Receber Contratos Antigos', 'Informe Documento Antigo', '');
-            DocAnt := SQLLocate('CUPOM', 'CUPOA20CODANT', 'CUPOA13ID', '"' + Copy(DocAnt, 1, 10) + '"') ;
+            DocAnt := SQLLocate('CUPOM', 'CUPOA20CODANT', 'CUPOA13ID', '''' + Copy(DocAnt, 1, 10) + '''') ;
             if DocAnt = '' then
             begin
               Informa('Documento não encontrado') ;
@@ -2969,7 +2969,7 @@ var xTextConta:String;
 begin
   xTextConta := '';
   SQLPesquisa.Close;
-  SQLPesquisa.MacroByName('MFiltro').AsString := ' CLIEA13ID = "' + SQLContasReceberCLIEA13ID.AsString + '" and (CTRCCSTATUS = "A" or CTRCCSTATUS = "N")' +
+  SQLPesquisa.MacroByName('MFiltro').AsString := ' CLIEA13ID = ''' + SQLContasReceberCLIEA13ID.AsString + ''' and (CTRCCSTATUS = ''A'' or CTRCCSTATUS = ''N'')' +
                                                  ' AND (CTRCN2VLR > CTRCN2TOTREC)';
 
   SQLPesquisa.Open;

@@ -227,9 +227,9 @@ begin
 
       SQLEstoqueRetroativo.MacroByName('MEmpresaSaldo').Value := SQLDeLista(ComboEmpresa,ListaEmpresas,'','PRODUTOSALDO','EMPRICOD');
 
-      SQLEstoqueRetroativo.MacroByName('Mes').AsString   := 'PSMEA2MES = "'   + RetornaMes[ComboMes.ItemIndex] + '"';
+      SQLEstoqueRetroativo.MacroByName('Mes').AsString   := 'PSMEA2MES = '''   + RetornaMes[ComboMes.ItemIndex] + '''';
 
-      SQLEstoqueRetroativo.MacroByName('Ano').AsString   := 'PSMEA4ANO = "' + FormatDateTime('yyyy', ComboAno.Date) + '"';
+      SQLEstoqueRetroativo.MacroByName('Ano').AsString   := 'PSMEA4ANO = ''' + FormatDateTime('yyyy', ComboAno.Date) + '''';
 
       SQLEstoqueRetroativo.Open;
       if (SQLEstoqueRetroativo.IsEmpty) then

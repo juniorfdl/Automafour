@@ -47,11 +47,11 @@ inherited FormRelatorioIndiceInadimplenciaCrediario: TFormRelatorioIndiceInadimp
       'where'
       '  (%MEmpresa) and '
       '  (%Mdata) and'
-      '  (CONTASRECEBER.CTRCCSTATUS = "A") and'
-      '  (CONTASRECEBER.CTRCA5TIPOPADRAO = "CRD") or'
-      '  (CONTASRECEBER.CTRCA5TIPOPADRAO = "CHQV") or'
-      '  (CONTASRECEBER.CTRCA5TIPOPADRAO = "CHQP") or'
-      '  (CONTASRECEBER.CTRCA5TIPOPADRAO = "CHQ")  ')
+      '  (CONTASRECEBER.CTRCCSTATUS = ''A'') and'
+      '  (CONTASRECEBER.CTRCA5TIPOPADRAO = ''CRD'') or'
+      '  (CONTASRECEBER.CTRCA5TIPOPADRAO = ''CHQV'') or'
+      '  (CONTASRECEBER.CTRCA5TIPOPADRAO = ''CHQP'') or'
+      '  (CONTASRECEBER.CTRCA5TIPOPADRAO = ''CHQ'')  ')
     Macros = <
       item
         DataType = ftString
@@ -133,11 +133,11 @@ inherited FormRelatorioIndiceInadimplenciaCrediario: TFormRelatorioIndiceInadimp
       'where'
       '  (%MEmpresa) and'
       '  (%Mdata) and'
-      '  (CONTASRECEBER.CTRCCSTATUS = "A") and'
-      '  (CONTASRECEBER.CTRCA5TIPOPADRAO = "CRD") or'
-      '  (CONTASRECEBER.CTRCA5TIPOPADRAO = "CHQV") or'
-      '  (CONTASRECEBER.CTRCA5TIPOPADRAO = "CHQP") or'
-      '  (CONTASRECEBER.CTRCA5TIPOPADRAO = "CHQ")   and'
+      '  (CONTASRECEBER.CTRCCSTATUS = ''A'') and'
+      '  (CONTASRECEBER.CTRCA5TIPOPADRAO = ''CRD'') or'
+      '  (CONTASRECEBER.CTRCA5TIPOPADRAO = ''CHQV'') or'
+      '  (CONTASRECEBER.CTRCA5TIPOPADRAO = ''CHQP'') or'
+      '  (CONTASRECEBER.CTRCA5TIPOPADRAO = ''CHQ'')   and'
       '  (CONTASRECEBER.CTRCN2VLR-CONTASRECEBER.CTRCN2TOTREC)= 0 ')
     Macros = <
       item

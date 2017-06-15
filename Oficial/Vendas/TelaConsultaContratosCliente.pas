@@ -139,7 +139,7 @@ begin
   if ClienteRecto <> '' then
     begin
       try
-        NomeCliente := SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC','"' + ClienteRecto + '"');
+        NomeCliente := SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC','''' + ClienteRecto + '''');
         LabelCliente.Text := ClienteRecto +'-'+NomeCliente;
       except
         LabelCliente.Text := 'Cliente Não Encontrado!';

@@ -832,7 +832,7 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       '  CUPOM.CLIEA13ID,'
       '  CUPOMITEM.CPITN2VLRQDEVERIAVENDER,'
       '  CUPOM.CUPOA8PLACAVEIC,'
-      '  "CP"||"-"|| Cast(CUPOM.CUPOINRO as CHAR(13)) as IDVENDA'
+      '  ''CP''||''-''|| Cast(CUPOM.CUPOINRO as CHAR(13)) as IDVENDA'
       'from'
       
         '  ((CUPOMITEM inner join CUPOM  on CUPOMITEM.CUPOA13ID = CUPOM.C' +
@@ -841,9 +841,9 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
         ' left outer join PRODUTO on CUPOMITEM.PRODICOD = PRODUTO.PRODICO' +
         'D)'
       'where'
-      '  CUPOM.CUPOCSTATUS = "A" and'
+      '  CUPOM.CUPOCSTATUS = ''A'' and'
       '  CUPOMITEM.CPITN3QTD > 0 and'
-      '  CUPOMITEM.CPITCSTATUS <> "C" and'
+      '  CUPOMITEM.CPITCSTATUS <> ''C'' and'
       '  (%MECF)  and'
       '  (%MFiltro)  and'
       '  (%MEmpresa) and'
@@ -889,8 +889,8 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       '  NOTAFISCAL.NOFIA13ID AS CUPOA13ID,'
       '  NOTAFISCAL.CLIEA13ID,'
       '  0.0 AS CPITN2VLRQDEVERIAVENDER,'
-      '  Cast(" " AS CHAR(8)) AS CUPOA8PLACAVEIC,'
-      '  "NF"||"-"||Cast(NOTAFISCAL.NOFIINUMERO as CHAR(13)) AS IDVENDA'
+      '  Cast('' '' AS CHAR(8)) AS CUPOA8PLACAVEIC,'
+      '  ''NF''||''-''||Cast(NOTAFISCAL.NOFIINUMERO as CHAR(13)) AS IDVENDA'
       'from'
       
         '  ((NOTAFISCALITEM inner join NOTAFISCAL on NOTAFISCALITEM.NOFIA' +
@@ -902,7 +902,7 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
         ' left outer join OPERACAOESTOQUE on NOTAFISCAL.OPESICOD = OPERAC' +
         'AOESTOQUE.OPESICOD'
       'where'
-      '  NOTAFISCAL.NOFICSTATUS = "E"   and'
+      '  NOTAFISCAL.NOFICSTATUS = ''E''   and'
       '  NOTAFISCALITEM.NFITN3QUANT > 0 and'
       '  (%MFiltro1)   and'
       '  (%MEmpresa1) and'

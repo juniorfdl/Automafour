@@ -309,7 +309,7 @@ begin
   //IMPRIMIR DADOS DO CLIENTE
 
   if (Application.FindComponent('FormTelaFechamentoVenda') <> nil) and
-     (ImprimeDadosClienteCupom = 'S') and (NomeCli <> SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC','"'+DM.SQLTerminalAtivo.FieldByName('CLIEA13ID').AsString+'"')) then
+     (ImprimeDadosClienteCupom = 'S') and (NomeCli <> SQLLocate('CLIENTE','CLIEA13ID','CLIEA60RAZAOSOC',''''+DM.SQLTerminalAtivo.FieldByName('CLIEA13ID').AsString+'''')) then
        IdComprador(ConverteAcentos(NomeCli),
                    '0',
                    ConverteAcentos(DocumentoCli) + ' VD: ' + Vendedor +
