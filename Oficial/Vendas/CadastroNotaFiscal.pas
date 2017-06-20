@@ -4444,10 +4444,10 @@ begin
 
   PagePrincipal.ActivePage := PaginaFinanceiro;
 
-  ComboTipoDoc.KeyValue := dm.SQLConfigVenda.FieldByName('TPDCICOD').Value;
-  ComboPortador.KeyValue := dm.SQLConfigVenda.FieldByName('PORTICOD').Value;
-  ComboNumerarioVista.KeyValue := dm.SQLConfigVenda.FieldByName('NUMEVISTA').Value;
-  ComboNumerarioPrazo.KeyValue := dm.SQLConfigVenda.FieldByName('NUMEPRAZO').Value;
+  ComboTipoDoc.KeyValue := dm.SQLConfigVenda.FieldByName('TPDCICOD').AsInteger;
+  ComboPortador.KeyValue := dm.SQLConfigVenda.FieldByName('PORTICOD').AsInteger;
+  ComboNumerarioVista.KeyValue := dm.SQLConfigVenda.FieldByName('NUMEVISTA').AsInteger;
+  ComboNumerarioPrazo.KeyValue := dm.SQLConfigVenda.FieldByName('NUMEPRAZO').AsInteger;
   ComboPlanoRecto.Value := '';
   ComboPlanoRecto.SetFocus;
 

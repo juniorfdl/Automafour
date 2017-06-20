@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   PrincipalTemplate, Menus, ExtCtrls, jpeg, ComCtrls, ToolWin, VarSys, EWall, DB,
   ImgList, StdCtrls, DBTables, AdvGlowButton, XPMan, AdvOfficeStatusBar,
-  AdvOfficeStatusBarStylers, dxGDIPlusClasses, RXCtrls, FormResources;
+  AdvOfficeStatusBarStylers, dxGDIPlusClasses, RXCtrls, FormResources, rlconsts;
 
 type
   TFormPrincipal = class(TFormPrincipalTemplate)
@@ -361,7 +361,6 @@ type
     procedure MnADMUtilitariosApagarPreVendasImportadasClick(Sender: TObject);
     procedure ApagarOramento30Dias1Click(Sender: TObject);
     procedure MnFINPagarBaixarDocumentosClick(Sender: TObject);
-    procedure NotaFiscal1Click(Sender: TObject);
     procedure MnExportaparaBalancasClick(Sender: TObject);
     procedure MnADMRelVendasPorPeriodoClick(Sender: TObject);
     procedure MnADMRelVendasPorPerodocomApuraodeMargemClick(
@@ -667,10 +666,10 @@ end;
 procedure TFormPrincipal.FATUMnVendasNotasFiscaisClick(Sender: TObject);
 begin
   inherited;
-  {if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     CriaFormulario(TFormCadastroNotaFiscal, 'FormCadastroNotaFiscal',False,False,False,'')
   else
-    SoundPlay('Acesso Negado.wav',Sender);  }
+    SoundPlay('Acesso Negado.wav',Sender);
 end;
 
 procedure TFormPrincipal.FATUMnCadastroSerieClick(Sender: TObject);
@@ -1878,15 +1877,6 @@ begin
       SoundPlay('Acesso Negado.wav',Sender);
 end;
 
-procedure TFormPrincipal.NotaFiscal1Click(Sender: TObject);
-begin
-  inherited;
-  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
-    CriaFormulario(TFormCadastroNotaFiscal, 'FormCadastroNotaFiscal',False,False,False,'')
-  else
-    SoundPlay('Acesso Negado.wav',Sender);
-end;
-
 procedure TFormPrincipal.MnExportaparaBalancasClick(Sender: TObject);
 begin
   inherited;
@@ -2884,6 +2874,9 @@ begin
   else
     SoundPlay('Acesso Negado.wav',Sender);
 end;
+
+initialization
+  rlconsts.setversion(3, 72, 'B');
 
 end.
 

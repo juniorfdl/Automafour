@@ -559,6 +559,9 @@ begin
   inherited;
   TABELA := 'NOTACOMPRA';
   TblEmpresa.Open;
+
+  if not DM.SQLConfigCompra.Active then
+    DM.SQLConfigCompra.Open;
 end;
 
 procedure TFormCadastroNotaCompra.Button1Click(Sender: TObject);

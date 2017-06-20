@@ -9,7 +9,7 @@ inherited FormPrincipal: TFormPrincipal
   PixelsPerInch = 96
   TextHeight = 13
   inherited RodapePrincipal: TStatusBar
-    Top = 667
+    Top = 666
     Width = 1366
   end
   inherited ptopo: TAdvOfficeStatusBar
@@ -3663,7 +3663,7 @@ inherited FormPrincipal: TFormPrincipal
       end
       object FATUMnVendasNotasFiscais: TMenuItem
         Caption = 'Nota Fiscal'
-        OnClick = NotaFiscal1Click
+        OnClick = FATUMnVendasNotasFiscaisClick
       end
     end
     object Servio1: TMenuItem [6]
