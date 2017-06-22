@@ -55,6 +55,7 @@ begin
   TblTemporaria.Open;
   {SQL Venda Total ultimos meses}
   sqlgeral.close;
+  sqlgeral.SQL.Clear;
   sqlgeral.SQL.add('Select EXTRACT(YEAR FROM CUPODEMIS) as ano, EXTRACT(MONTH FROM CUPODEMIS) as mes, sum(CUPON2TOTITENS+CUPON3CREDTAXA+CUPON2ACRESC-CUPON2DESC-CUPON3BONUSTROCA) as VendaTotal From Cupom');
   if ComboEmpresa.Value = '' then
     sqlgeral.SQL.add('where CUPOCSTATUS = ''A'' and CUPOCTIPOPADRAO = ''CRD'' and CUPODEMIS >= ''12/31/2008''')

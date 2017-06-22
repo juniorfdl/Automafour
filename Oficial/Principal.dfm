@@ -9,7 +9,7 @@ inherited FormPrincipal: TFormPrincipal
   PixelsPerInch = 96
   TextHeight = 13
   inherited RodapePrincipal: TStatusBar
-    Top = 666
+    Top = 667
     Width = 1366
   end
   inherited ptopo: TAdvOfficeStatusBar

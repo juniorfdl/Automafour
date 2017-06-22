@@ -2875,8 +2875,8 @@ begin
     SoundPlay('Acesso Negado.wav',Sender);
 end;
 
-initialization
-  rlconsts.setversion(3, 72, 'B');
+{initialization
+  rlconsts.setversion(3, 72, 'B');}
 
 end.
 
