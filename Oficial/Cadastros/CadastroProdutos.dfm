@@ -2111,7 +2111,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
               end
               object PageControl1: TPageControl
                 Left = 3
-                Top = 299
+                Top = 292
                 Width = 652
                 Height = 177
                 ActivePage = TabSheet1
@@ -2120,7 +2120,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   Caption = 'Tributa'#231#227'o ICMS'
                   object Label34: TLabel
                     Left = 126
-                    Top = 3
+                    Top = 0
                     Width = 151
                     Height = 13
                     Caption = 'Al'#237'quota do ICMS de Venda'
@@ -2133,7 +2133,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   end
                   object AcessaICMS: TSpeedButton
                     Left = 256
-                    Top = 17
+                    Top = 14
                     Width = 22
                     Height = 21
                     Hint = 'Acessa Icms'
@@ -2167,7 +2167,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   end
                   object Label13: TLabel
                     Left = 9
-                    Top = 3
+                    Top = 0
                     Width = 108
                     Height = 13
                     Caption = 'Origem Mercadoria'
@@ -2180,7 +2180,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   end
                   object Label68: TLabel
                     Left = 289
-                    Top = 3
+                    Top = 0
                     Width = 246
                     Height = 13
                     Caption = 'CST ICMS => Situa'#231#227'o Tribut'#225'ria para ICMS'
@@ -2193,7 +2193,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   end
                   object Label105: TLabel
                     Left = 10
-                    Top = 40
+                    Top = 34
                     Width = 219
                     Height = 13
                     Caption = 'Determina'#231#227'o da Base de C'#225'lculo ICMS'
@@ -2206,7 +2206,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   end
                   object Label103: TLabel
                     Left = 309
-                    Top = 40
+                    Top = 34
                     Width = 129
                     Height = 13
                     Caption = 'Determ. BC do ICMS ST'
@@ -2219,7 +2219,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   end
                   object Label120: TLabel
                     Left = 11
-                    Top = 77
+                    Top = 67
                     Width = 99
                     Height = 13
                     Caption = 'Tabela Fiscal NCM'
@@ -2232,7 +2232,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   end
                   object AcessaNCM: TSpeedButton
                     Left = 608
-                    Top = 90
+                    Top = 80
                     Width = 22
                     Height = 21
                     Hint = 'Acessa Tabela NCM'
@@ -2266,7 +2266,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   end
                   object Label18: TLabel
                     Left = 11
-                    Top = 114
+                    Top = 100
                     Width = 88
                     Height = 13
                     Caption = 'Codigo CEST -> '
@@ -2279,7 +2279,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   end
                   object AcessaCEST: TSpeedButton
                     Left = 608
-                    Top = 127
+                    Top = 113
                     Width = 22
                     Height = 21
                     Hint = 'Acessa Tabela CEST'
@@ -2313,7 +2313,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   end
                   object ComboICMS: TRxDBLookupCombo
                     Left = 125
-                    Top = 17
+                    Top = 14
                     Width = 132
                     Height = 21
                     DropDownCount = 8
@@ -2334,7 +2334,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   end
                   object ComboOrigem: TRxDBComboBox
                     Left = 6
-                    Top = 17
+                    Top = 14
                     Width = 112
                     Height = 21
                     Style = csDropDownList
@@ -2360,7 +2360,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   end
                   object ComboSitTrib: TRxDBComboBox
                     Left = 285
-                    Top = 17
+                    Top = 14
                     Width = 349
                     Height = 21
                     Style = csDropDownList
@@ -2442,7 +2442,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   end
                   object ComboDetBaseCalcICM: TRxDBComboBox
                     Left = 6
-                    Top = 54
+                    Top = 48
                     Width = 294
                     Height = 21
                     Style = csDropDownList
@@ -2470,7 +2470,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   end
                   object ComboDetBaseCalcICMST: TRxDBComboBox
                     Left = 305
-                    Top = 54
+                    Top = 48
                     Width = 328
                     Height = 21
                     Style = csDropDownList
@@ -2503,7 +2503,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   end
                   object ComboNCM1: TRxDBLookupCombo
                     Left = 7
-                    Top = 91
+                    Top = 81
                     Width = 105
                     Height = 21
                     DropDownCount = 8
@@ -2527,7 +2527,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   end
                   object ComboNCM2: TRxDBLookupCombo
                     Left = 113
-                    Top = 91
+                    Top = 81
                     Width = 491
                     Height = 21
                     DropDownCount = 8
@@ -2551,7 +2551,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   end
                   object ComboCEST1: TRxDBLookupCombo
                     Left = 7
-                    Top = 129
+                    Top = 115
                     Width = 105
                     Height = 20
                     DropDownCount = 8
@@ -2575,7 +2575,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   end
                   object ComboCEST2: TRxDBLookupCombo
                     Left = 113
-                    Top = 128
+                    Top = 114
                     Width = 491
                     Height = 21
                     DropDownCount = 8
@@ -5584,7 +5584,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
               end
               object PageControlValores: TPageControl
                 Left = 344
-                Top = 12
+                Top = 6
                 Width = 329
                 Height = 285
                 ActivePage = TabReais

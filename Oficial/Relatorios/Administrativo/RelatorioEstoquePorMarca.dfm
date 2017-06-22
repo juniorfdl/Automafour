@@ -1,6 +1,6 @@
 inherited FormRelatorioEstoquePorMarca: TFormRelatorioEstoquePorMarca
-  Left = 72
-  Top = 97
+  Left = 357
+  Top = 99
   Caption = 'Relat'#243'rio de Estoque Por Marca'
   PixelsPerInch = 96
   TextHeight = 13
@@ -320,7 +320,11 @@ inherited FormRelatorioEstoquePorMarca: TFormRelatorioEstoquePorMarca
     Top = 5
   end
   object SQLGeral: TQuery
+<<<<<<< HEAD
     DatabaseName = 'Easy_Temp'
+=======
+    DatabaseName = 'Easy_Gestao'
+>>>>>>> origin/master
     SQL.Strings = (
       'DELETE FROM SaldoPorMarca WHERE SALDO <= 0')
     Left = 619

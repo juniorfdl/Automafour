@@ -2875,8 +2875,13 @@ begin
     SoundPlay('Acesso Negado.wav',Sender);
 end;
 
+<<<<<<< HEAD
 //initialization
 //  rlconsts.setversion(3, 72, 'B');
+=======
+{initialization
+  rlconsts.setversion(3, 72, 'B');}
+>>>>>>> origin/master
 
 end.
 

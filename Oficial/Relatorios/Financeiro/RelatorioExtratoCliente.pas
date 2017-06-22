@@ -180,7 +180,7 @@ begin
                                                                                TblTemporariaCTRCDVENC.Value,
                                                                                Date,
                                                                                0,
-                                                                               DM.SQLConfigCrediario.Fieldbyname('CFCRINRODIASTOLJUR').Value,
+                                                                               DM.SQLConfigCrediario.FieldByName('CFCRINRODIASTOLJUR').Value,
                                                                                'Juro',
                                                                                TblTemporariaCUPOA13ID.AsString,
                                                                                TblTemporariaCTRCINROPARC.AsString) ;
@@ -278,9 +278,13 @@ begin
   inherited;
   SQLCliente.Open ;
   SQLNumerario.Open;
+<<<<<<< HEAD
   
   if not dm.SQLConfigCrediario.Active then
     dm.SQLConfigCrediario.Open;
+=======
+  DM.SQLConfigCrediario.Open;
+>>>>>>> origin/master
 end;
 
 end.
