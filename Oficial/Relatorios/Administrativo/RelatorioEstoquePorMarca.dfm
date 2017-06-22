@@ -320,11 +320,7 @@ inherited FormRelatorioEstoquePorMarca: TFormRelatorioEstoquePorMarca
     Top = 5
   end
   object SQLGeral: TQuery
-<<<<<<< HEAD
-    DatabaseName = 'Easy_Temp'
-=======
     DatabaseName = 'Easy_Gestao'
->>>>>>> origin/master
     SQL.Strings = (
       'DELETE FROM SaldoPorMarca WHERE SALDO <= 0')
     Left = 619
