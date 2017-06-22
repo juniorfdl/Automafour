@@ -938,6 +938,9 @@ begin
 
   MontaBancoMala ;
 
+  if not dm.SQLConfigGeral.Active then
+    dm.SQLConfigGeral.Open;  
+
   if Dm.SQLConfigCrediario.fieldbyname('CFCRA254PATHMALADIRETA').AsString <> '' then
     begin
       if FileExists(Dm.SQLConfigCrediario.fieldbyname('CFCRA254PATHMALADIRETA').AsString) then

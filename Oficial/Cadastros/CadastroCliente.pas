@@ -1122,6 +1122,9 @@ begin
   SQLPortador.Open;
   SQLPlanoConta.Open;
   PageControlEndercos.ActivePageIndex := 0;
+
+  if not dm.SQLConfigGeral.Active then
+    dm.SQLConfigGeral.Open;
 end;
 
 procedure TFormCadastroCliente.MontaDadosCompra ;

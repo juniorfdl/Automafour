@@ -278,6 +278,9 @@ begin
   inherited;
   SQLCliente.Open ;
   SQLNumerario.Open;
+  
+  if not dm.SQLConfigCrediario.Active then
+    dm.SQLConfigCrediario.Open;
 end;
 
 end.

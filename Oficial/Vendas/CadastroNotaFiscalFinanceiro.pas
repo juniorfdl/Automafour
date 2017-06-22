@@ -177,6 +177,9 @@ begin
   inherited;
   TABELA := 'CONTASRECEBER';
   if not TblNotaFiscal.Active then TblNotaFiscal.Open;
+
+  if not dm.SQLConfigGeral.Active then
+    dm.SQLConfigGeral.Open;
 end;
 
 procedure TFormCadastroNotaFiscalFinanceiro.SQLTemplateNewRecord(

@@ -2252,8 +2252,8 @@ inherited FormTelaBaixarDocumentosReceber: TFormTelaBaixarDocumentosReceber
     SQL.Strings = (
       'select * from NUMERARIO'
       
-        'where NUMECATIVO = ''S'' and NUMEA5TIPO <> ''CHQ'' and NUMEA5TIPO <>' +
-        ' ''CHQV'' and NUMEA5TIPO <> ''CHQP'' and NUMEA5TIPO <> ''DIN'''
+        'where NUMECATIVO = '#39'S'#39' and NUMEA5TIPO <> '#39'CHQ'#39' and NUMEA5TIPO <>' +
+        ' '#39'CHQV'#39' and NUMEA5TIPO <> '#39'CHQP'#39' and NUMEA5TIPO <> '#39'DIN'#39
       'order by NUMEA30DESCR')
     Left = 499
     Top = 157

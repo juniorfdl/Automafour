@@ -405,6 +405,10 @@ begin
   SQLTipoDocumento.Open;
   SQLPortador.Open;
   Replicando := False;
+
+  if not dm.SQLConfigGeral.Active then
+    dm.SQLConfigGeral.Open;
+
 end;
 
 procedure TFormCadastroContasReceber.SQLTemplateCalcFields(

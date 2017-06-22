@@ -2431,7 +2431,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
       'Select * From PLANODECONTAS Where '
       'PLCTCANALSINT = '#39'A'#39
       'and'
-      'PLCTCTIPOSALDO = ''C''')
+      'PLCTCTIPOSALDO = '#39'C'#39)
     Macros = <>
     Left = 48
     Top = 224

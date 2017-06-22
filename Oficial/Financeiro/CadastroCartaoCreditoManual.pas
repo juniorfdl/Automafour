@@ -244,6 +244,10 @@ procedure TFormCadastroCartaoCreditoManual.SQLTemplateNewRecord(
   DataSet: TDataSet);
 begin
   inherited;
+  if not dm.SQLConfigGeral.Active then
+    dm.SQLConfigGeral.Open;
+
+
   SQLTemplateCUPOCSTATUS.Value          := 'A';
   SQLTemplateCUPOCTIPOPADRAO.Value      := 'CRT';
   SQLTemplateCUPON2TOTITENS.Value       := 0;

@@ -13892,6 +13892,9 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
     MAIL = ACBrMail1
     OnStatusChange = ACBrNFe1StatusChange
     Configuracoes.Geral.SSLLib = libCapicom
+    Configuracoes.Geral.SSLCryptLib = cryCapicom
+    Configuracoes.Geral.SSLHttpLib = httpWinINet
+    Configuracoes.Geral.SSLXmlSignLib = xsMsXmlCapicom
     Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
     Configuracoes.Geral.AtualizarXMLCancelado = True
     Configuracoes.Geral.IncluirQRCodeXMLNFCe = False
@@ -13958,6 +13961,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
     QuebraLinhaEmDetalhamentoEspecifico = True
     ExibeCampoFatura = False
     ImprimirUnQtVlComercial = iuComercial
+    ImprimirDadosDocReferenciados = True
     Left = 1016
     Top = 557
   end

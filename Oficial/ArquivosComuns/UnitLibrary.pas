@@ -4323,6 +4323,9 @@ var
   hMutex :THandle;
   Aplicativo :THandle;
 begin
+  if not dm.SQLConfigGeral.Active then
+    dm.SQLConfigGeral.Open; 
+
   {Testa pra ver se esta rodando nessa maquina. Se achou é pq usa PDV Off e tem que procurar o limite no banco Servidor}
   Aplicativo := FindWindow(nil, pchar('IntegradorPDVs'));
   if Aplicativo = 0 then {Consulta no Banco do PDV}

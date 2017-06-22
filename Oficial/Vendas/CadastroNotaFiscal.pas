@@ -1818,6 +1818,10 @@ begin
   DM.GerarNovaNota := False;
   if not SQLAvalista.Active then
     SQLAvalista.Open;
+
+  if not dm.SQLConfigGeral.Active then
+    dm.SQLConfigGeral.Open;
+      
 end;
 
 procedure TFormCadastroNotaFiscal.SQLTemplateNewRecord(DataSet: TDataSet);

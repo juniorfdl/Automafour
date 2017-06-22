@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   PrincipalTemplate, Menus, ExtCtrls, jpeg, ComCtrls, ToolWin, VarSys, EWall, DB,
   ImgList, StdCtrls, DBTables, AdvGlowButton, XPMan, AdvOfficeStatusBar,
-  AdvOfficeStatusBarStylers, dxGDIPlusClasses, RXCtrls, FormResources, rlconsts;
+  AdvOfficeStatusBarStylers, dxGDIPlusClasses, RXCtrls, FormResources;
 
 type
   TFormPrincipal = class(TFormPrincipalTemplate)
@@ -2875,8 +2875,8 @@ begin
     SoundPlay('Acesso Negado.wav',Sender);
 end;
 
-initialization
-  rlconsts.setversion(3, 72, 'B');
+//initialization
+//  rlconsts.setversion(3, 72, 'B');
 
 end.
 

@@ -431,6 +431,9 @@ begin
   LblNomePlano.Caption      := '' ;
   LblInstrucoes.Caption     := '' ;
   EstadoFechVendaAnt        := '' ;
+
+  if not dm.SQLConfigGeral.Active then
+    dm.SQLConfigGeral.Open;
 end ;
 
 procedure TFormTelaFechamentoVenda.FormClose(Sender: TObject;

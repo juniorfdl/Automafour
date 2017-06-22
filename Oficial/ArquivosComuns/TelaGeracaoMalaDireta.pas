@@ -464,6 +464,10 @@ begin
              ppCarteiraCliente.Print;
          end;
      7 : begin
+           if not dm.SQLConfigGeral.Active then
+            dm.SQLConfigGeral.Open;
+
+
            ppTexto.LoadFromFile(DM.SQLConfigCrediario.fieldbyname('CFCRA255PATHCARTPE').Value) ;
            ReportCartas.Print ;
          end;

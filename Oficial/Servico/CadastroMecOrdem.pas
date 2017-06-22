@@ -706,6 +706,10 @@ begin
   Tabela := 'ORD_MECANICA';
   NovaOrdem := False;
   SQLFinaliza.Open;
+
+  if not dm.SQLConfigGeral.Active then
+    dm.SQLConfigGeral.Open;
+
 end;
 
 

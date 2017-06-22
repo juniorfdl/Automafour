@@ -786,6 +786,9 @@ begin
     DBCheckBox15.Enabled    := False;
   end;
   SQLFinaliza.Open;
+
+  if not dm.SQLConfigGeral.Active then
+    dm.SQLConfigGeral.Open;
 end;
 
 

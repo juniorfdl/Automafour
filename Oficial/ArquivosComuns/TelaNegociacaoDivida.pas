@@ -847,6 +847,9 @@ begin
        Abort;
      end;
   TabelaTemp.Open;
+
+  if not dm.SQLConfigGeral.Active then
+    dm.SQLConfigGeral.Open;
 end;
 
 procedure TFormTelaNegociacaoDivida.RefazTabelaTemp(Tabela : TTable);

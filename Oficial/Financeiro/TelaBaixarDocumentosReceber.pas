@@ -381,6 +381,10 @@ begin
   Mensagem.Caption := 'Verificando contas pendentes...' ;
   Mensagem.Refresh ;
 
+  if not dm.SQLConfigGeral.Active then
+    dm.SQLConfigGeral.Open;
+
+
   PreparaTabelaParadox;
 
   SQLContasReceber.Close;
