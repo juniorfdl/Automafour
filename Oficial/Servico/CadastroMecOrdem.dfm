@@ -1,6 +1,6 @@
 inherited FormCadastroMecOrdem: TFormCadastroMecOrdem
-  Left = 296
-  Top = 24
+  Left = 233
+  Top = 28
   Caption = 'Ordens de Servi'#231'o'
   ClientHeight = 651
   ClientWidth = 842

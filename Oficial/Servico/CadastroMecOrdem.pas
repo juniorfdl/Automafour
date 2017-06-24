@@ -4,52 +4,31 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, CadastroTEMPLATE, DBTables, DBActns, ActnList, DB, RxQuery,
-  Menus, StdCtrls, Mask, Grids, DBGrids, ComCtrls, RXCtrls, Buttons,
-  ExtCtrls, RxLookup, DBCtrls, FormResources, VarSys,RxDBComb, RDprint,
-  CurrEdit, ToolEdit, RXDBCtrl, AdvOfficeStatusBar, Inifiles,
-  AdvOfficeStatusBarStylers, AdvPanel, ACBrBase, ACBrPosPrinter;
+  Dialogs, CadastroTEMPLATE, DBTables, DBActns, ActnList, DB, RxQuery, Menus,
+  StdCtrls, Mask, Grids, DBGrids, ComCtrls, RXCtrls, Buttons, ExtCtrls, RxLookup,
+  DBCtrls, FormResources, VarSys, RxDBComb, RDprint, CurrEdit, ToolEdit,
+  RXDBCtrl, AdvOfficeStatusBar, Inifiles, AdvOfficeStatusBarStylers, AdvPanel,
+  ACBrBase, ACBrPosPrinter;
 
-Type
- TCLIE = Record
-    nCliUF,
-    nCliNome,
-    nCliPessoa,
-    nCliRegime:String;
+type
+  TCLIE = record
+    nCliUF, nCliNome, nCliPessoa, nCliRegime: string;
   end;
 
-  TICMSUF = Record
-    nICMS,
-    nRED_ICMS,
-    nICMS_INTERNO,
-    nMVA : Double;
-    nSTFisica:String;
-    nSTJuridica:String;
+  TICMSUF = record
+    nICMS, nRED_ICMS, nICMS_INTERNO, nMVA: Double;
+    nSTFisica: string;
+    nSTJuridica: string;
   end;
 
-  TOPERACAO_ID = Record
-    nOpOrigemDestino,
-    nOpCalcIPI,
-    nOpCalcICMS,
-    nOpCalcST,
-    nOpCalcIPIFis,
-    nOpCalcICMSFis,
-    nOpCalcSTFis,
-    nOpCFOPnoUF,
-    nOpCFOPForaUF,
-    nOpPCTACred: String;
+  TOPERACAO_ID = record
+    nOpOrigemDestino, nOpCalcIPI, nOpCalcICMS, nOpCalcST, nOpCalcIPIFis, nOpCalcICMSFis, nOpCalcSTFis, nOpCFOPnoUF, nOpCFOPForaUF, nOpPCTACred: string;
   end;
 
-  TPRODUTO_ID = Record
-    nProdVlrCmpra,
-    nProdPercIPI,
-    nProdPesoBruto,
-    nProdPesoLiq:Double;
-    nProdIcmsICOD,
-    nProdServico,
-    nProdSitTrib:String;
+  TPRODUTO_ID = record
+    nProdVlrCmpra, nProdPercIPI, nProdPesoBruto, nProdPesoLiq: Double;
+    nProdIcmsICOD, nProdServico, nProdSitTrib: string;
   end;
-
 
 type
   TFormCadastroMecOrdem = class(TFormCadastroTEMPLATE)
@@ -599,14 +578,12 @@ type
     MnRemoverIfemdasplacas: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure BtnClienteClick(Sender: TObject);
-    procedure DBEdit6KeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
+    procedure DBEdit6KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure SQLTemplateNewRecord(DataSet: TDataSet);
     procedure Button3Click(Sender: TObject);
     procedure BtnVeiculosClick(Sender: TObject);
     procedure edtPlacaExit(Sender: TObject);
-    procedure edtPlacaKeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
+    procedure edtPlacaKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure DBComboBoxVeiculoExit(Sender: TObject);
     procedure DBComboBoxVeiculoChange(Sender: TObject);
     procedure SQLTemplateBeforePost(DataSet: TDataSet);
@@ -617,10 +594,9 @@ type
     procedure OrdensdeServioemBRANCO1Click(Sender: TObject);
     procedure impOrdemdeServioA4Click(Sender: TObject);
     procedure OrdensdeServioemSequncia1Click(Sender: TObject);
-    Procedure ImprimeOrdem;
+    procedure ImprimeOrdem;
     procedure BTNLocalizarClick(Sender: TObject);
-    procedure DBGridListaDrawColumnCell(Sender: TObject; const Rect: TRect;
-      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure DBGridListaDrawColumnCell(Sender: TObject; const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure ConcluirOrdem1Click(Sender: TObject);
     procedure InformarEntregadoVeiculoEquipamento1Click(Sender: TObject);
     procedure FinalizareEmitirNotaFiscal1Click(Sender: TObject);
@@ -630,37 +606,20 @@ type
     procedure BitBtn2Click(Sender: TObject);
     procedure SQLTemplateBeforeDelete(DataSet: TDataSet);
     procedure CriaContasReceber;
-
-    Function BuscaIcmsUf(nCodProduto:Integer; varUF:String; varPessoa:String; varRegime:String):TICMSUF;
-    Function BuscaIcms(nCodProduto:Integer; nCodICMS:String; SitTributaria:String):TICMSUF;
-    Function BuscaDadosProduto(nCodProduto:Integer):TPRODUTO_ID;
-    Function BuscaDadosOperacao(nCodOp:String):TOPERACAO_ID;
-    Function BuscaDadosCliente: TCLIE;
-
-    procedure ImportaItensPedidoVenda(nOPES:TOPERACAO_ID; nCLIE:TCLIE);
-    Function  GerarNF:Integer;
-    Function  CriaParcelasVariaveis(SQLParcelasPrazo,
-                  SQLPlnRec,
-                  SQLPlnRecParc : TQuery;
-                  Entrada,
-                  Desconto,
-                  Valor:Double;
-                  Plano:integer;
-                  Data : TDateTime ;
-                  TpRecVistaTel,
-                  TpRecPrazoTel,
-                  TpRecVistaPDV,
-                  TpRecPrazoPDV,
-                  Documento: string ;
-                  DiminuiAcresc : double ;
-                  var ValorJuro, Acrescimo, EntradaCalc, TaxaCred:Double ) : Variant ;
+    function BuscaIcmsUf(nCodProduto: Integer; varUF: string; varPessoa: string; varRegime: string): TICMSUF;
+    function BuscaIcms(nCodProduto: Integer; nCodICMS: string; SitTributaria: string): TICMSUF;
+    function BuscaDadosProduto(nCodProduto: Integer): TPRODUTO_ID;
+    function BuscaDadosOperacao(nCodOp: string): TOPERACAO_ID;
+    function BuscaDadosCliente: TCLIE;
+    procedure ImportaItensPedidoVenda(nOPES: TOPERACAO_ID; nCLIE: TCLIE);
+    function GerarNF: Integer;
+    function CriaParcelasVariaveis(SQLParcelasPrazo, SQLPlnRec, SQLPlnRecParc: TQuery; Entrada, Desconto, Valor: Double; Plano: integer; Data: TDateTime; TpRecVistaTel, TpRecPrazoTel, TpRecVistaPDV, TpRecPrazoPDV, Documento: string; DiminuiAcresc: double; var ValorJuro, Acrescimo, EntradaCalc, TaxaCred: Double): Variant;
     procedure SQLTemplatePARCELASChange(Sender: TField);
     procedure PnlEntregaExit(Sender: TObject);
     procedure SQLNotaFiscalBeforePost(DataSet: TDataSet);
     procedure SQLContasReceberBeforePost(DataSet: TDataSet);
     procedure SQLContasReceberNewRecord(DataSet: TDataSet);
-    procedure SQLContasReceberPostError(DataSet: TDataSet;
-      E: EDatabaseError; var Action: TDataAction);
+    procedure SQLContasReceberPostError(DataSet: TDataSet; E: EDatabaseError; var Action: TDataAction);
     procedure ExclurirRegistrodeFinalizao1Click(Sender: TObject);
     procedure RelatoriodeOrdensListadas1Click(Sender: TObject);
     procedure RelatoriodeServiosPorMecanico1Click(Sender: TObject);
@@ -668,35 +627,31 @@ type
     procedure MenuItem10Click(Sender: TObject);
     procedure AplicarDesconto1Click(Sender: TObject);
     procedure CheckPercentualClick(Sender: TObject);
-    Procedure AplicarDescontos;
+    procedure AplicarDescontos;
     procedure MenuItem8Click(Sender: TObject);
     procedure impOrdemdeServioBobinaClick(Sender: TObject);
     procedure MnRemoverIfemdasplacasClick(Sender: TObject);
-
   private
     { Private declarations }
-    TotalPedidos, Reducao, TotNFProd, TotNFGeral, TotNFFrete, TotNFOutrasDesp, TotBaseCalcICMS, TotVlrICMS, TotBaseCalcICMSSubst,
-    TotVlrICMSSubst, TotVlrISSQN, AliquotaISSQN, PesoTotalBruto, PesoTotalLiq, QtdeTotal: Double;
-    UFEmpresa, UFCliente : String;
-
+    TotalPedidos, Reducao, TotNFProd, TotNFGeral, TotNFFrete, TotNFOutrasDesp, TotBaseCalcICMS, TotVlrICMS, TotBaseCalcICMSSubst, TotVlrICMSSubst, TotVlrISSQN, AliquotaISSQN, PesoTotalBruto, PesoTotalLiq, QtdeTotal: Double;
+    UFEmpresa, UFCliente: string;
   public
     { Public declarations }
-    ContasReceberCliente,ContasReceberID:String;
-
+    ContasReceberCliente, ContasReceberID: string;
   end;
 
 var
   FormCadastroMecOrdem: TFormCadastroMecOrdem;
-  NovaOrdem : Boolean;
+  NovaOrdem: Boolean;
 
 implementation
 
-uses CadastroCliente, CadastroMecOrdemItens,
-  CadastroMecExecutaEm, CadastroMecanicos,  UnitLibrary,
-  DataModulo, CadastroClienteVeiculos, TelaConfigPedidos,
-  CadastroNotaFiscal, TelaParcelasVariaveis, RelatorioOrdensListadas,
-  RelatorioOrdensPorMecanico, RelatorioOrdensPorExecucao,
-  RelatorioOrdensPecas, FormRelatorioServicosPorTipo;
+uses
+  CadastroCliente, CadastroMecOrdemItens, CadastroMecExecutaEm,
+  CadastroMecanicos, UnitLibrary, DataModulo, CadastroClienteVeiculos,
+  TelaConfigPedidos, CadastroNotaFiscal, TelaParcelasVariaveis,
+  RelatorioOrdensListadas, RelatorioOrdensPorMecanico,
+  RelatorioOrdensPorExecucao, RelatorioOrdensPecas, FormRelatorioServicosPorTipo;
 
 {$R *.dfm}
 
@@ -712,12 +667,10 @@ begin
 
 end;
 
-
-procedure TFormCadastroMecOrdem.DBEdit6KeyDown(Sender: TObject;
-  var Key: Word; Shift: TShiftState);
+procedure TFormCadastroMecOrdem.DBEdit6KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   inherited;
-  If Key=VK_F2 Then
+  if Key = VK_F2 then
     BtnCliente.Click;
 end;
 
@@ -725,16 +678,16 @@ procedure TFormCadastroMecOrdem.SQLTemplateNewRecord(DataSet: TDataSet);
 begin
   inherited;
   NovaOrdem := False;
-  SQLTemplateDATA.AsDateTime  := Now;
-  SQLTemplateSTATUS.AsString  := 'A';
-  SQLTemplateEMPRICOD.Value   := EmpresaCorrente;
+  SQLTemplateDATA.AsDateTime := Now;
+  SQLTemplateSTATUS.AsString := 'A';
+  SQLTemplateEMPRICOD.Value := EmpresaCorrente;
 end;
 
 procedure TFormCadastroMecOrdem.Button3Click(Sender: TObject);
 begin
   inherited;
   DSMasterSys := DsTemplate;
-  CriaFormulario(TFormCadastroMecOrdemItem,'FormCadastroMecOrdemItem',True,False,True,'Ordem Nº ' + SQLTemplateORDID.AsString);
+  CriaFormulario(TFormCadastroMecOrdemItem, 'FormCadastroMecOrdemItem', True, False, True, 'Ordem Nº ' + SQLTemplateORDID.AsString);
 end;
 
 procedure TFormCadastroMecOrdem.BtnVeiculosClick(Sender: TObject);
@@ -742,19 +695,19 @@ begin
   inherited;
   edtPlaca.SetFocus;
   FieldLookup := DsTemplate.DataSet.FieldByName('PLACA');
-  FieldOrigem := 'VICLA15PLACA' ;
+  FieldOrigem := 'VICLA15PLACA';
   DataSetLookup := SQLCliente;
   DSMasterSys := DSTemplate;
-  CriaFormulario(TFormCadastroClienteVeiculos,'FormCadastroClienteVeiculos',False,True,True,'Veiculos do Cliente: ' + SQLTemplateCliente.asString);
+  CriaFormulario(TFormCadastroClienteVeiculos, 'FormCadastroClienteVeiculos', False, True, True, 'Veiculos do Cliente: ' + SQLTemplateCliente.asString);
 end;
 
 procedure TFormCadastroMecOrdem.BtnClienteClick(Sender: TObject);
 begin
   inherited;
-  FieldLookup   := DsTemplate.DataSet.FieldByName('CLIEA13ID');
-  FieldOrigem   := 'CLIEA13ID';
+  FieldLookup := DsTemplate.DataSet.FieldByName('CLIEA13ID');
+  FieldOrigem := 'CLIEA13ID';
   DataSetLookup := SQLCliente;
-  CriaFormulario(TFormCadastroCliente,'FormCadastroCliente',False,True,False,'');
+  CriaFormulario(TFormCadastroCliente, 'FormCadastroCliente', False, True, False, '');
 end;
 
 procedure TFormCadastroMecOrdem.edtPlacaExit(Sender: TObject);
@@ -762,55 +715,51 @@ begin
   inherited;
 //  if (copy(SQLTemplatePLACA.AsString,4,1) <> '-') And (SQLTemplatePLACA.AsString <> '') And (SQLTemplate.State in ([dsEdit, dsInsert])) then
   //  MessageDlg('Atenção... O 4º Digito da PLACA não é (-) hífem.'+#13+#10+''+#13+#10+'Se estiver digitando uma PLACA digite no formato XXX-9999', mtWarning, [mbOK], 0);
-
   SQLVeiculos.Close;
   SQLVeiculos.Open;
   DBComboBoxVeiculo.Items.Clear;
-  While Not SQLVeiculos.Eof do
+  while not SQLVeiculos.Eof do
   begin
     DBComboBoxVeiculo.Items.Add(SQLVeiculos.Fieldbyname('VICLA40MODELO').asstring);
     SQLVeiculos.Next;
   end;
 
-  If SQLTemplate.State in ([dsInsert, dsEdit]) then
+  if SQLTemplate.State in ([dsInsert, dsEdit]) then
   begin
-    If SQLVeiculos.Locate('VICLA15PLACA',edtPlaca.Text,[]) then
+    if SQLVeiculos.Locate('VICLA15PLACA', edtPlaca.Text, []) then
     begin
-      DBComboBoxVeiculo.Text              := SQLVeiculos.FieldbyName('VICLA40MODELO').AsString;
-      SQLTemplateORDA50VEICULO.AsString   := SQLVeiculos.FieldbyName('VICLA40MODELO').AsString;
-      SQLTemplateANO_MODELO.AsString      := SQLVeiculos.Fieldbyname('VICLA9ANOMODELO').asstring;
-      SQLTemplateCOMBUSTIVEL.AsString     := SQLVeiculos.Fieldbyname('VICLA1COMBUSTIVEL').asstring;
-      SQLTemplateORDA10COR.AsString       := SQLVeiculos.Fieldbyname('VICLA15COR').asstring;
-      SQLTemplateMARCAA30.AsString        := SQLVeiculos.Fieldbyname('VICLA25MARCA').asstring;
-      SQLTemplatePLACA.AsString           := SQLVeiculos.Fieldbyname('VICLA15PLACA').asstring;
-    End;
+      DBComboBoxVeiculo.Text := SQLVeiculos.FieldbyName('VICLA40MODELO').AsString;
+      SQLTemplateORDA50VEICULO.AsString := SQLVeiculos.FieldbyName('VICLA40MODELO').AsString;
+      SQLTemplateANO_MODELO.AsString := SQLVeiculos.Fieldbyname('VICLA9ANOMODELO').asstring;
+      SQLTemplateCOMBUSTIVEL.AsString := SQLVeiculos.Fieldbyname('VICLA1COMBUSTIVEL').asstring;
+      SQLTemplateORDA10COR.AsString := SQLVeiculos.Fieldbyname('VICLA15COR').asstring;
+      SQLTemplateMARCAA30.AsString := SQLVeiculos.Fieldbyname('VICLA25MARCA').asstring;
+      SQLTemplatePLACA.AsString := SQLVeiculos.Fieldbyname('VICLA15PLACA').asstring;
+    end;
   end;
 end;
 
-
-procedure TFormCadastroMecOrdem.edtPlacaKeyDown(Sender: TObject;
-  var Key: Word; Shift: TShiftState);
+procedure TFormCadastroMecOrdem.edtPlacaKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   inherited;
-  If Key=VK_F2 Then
+  if Key = VK_F2 then
     BtnVeiculos.Click;
 end;
-
 
 procedure TFormCadastroMecOrdem.DBComboBoxVeiculoExit(Sender: TObject);
 begin
   inherited;
-  if SQLTemplate.State in ([dsEdit,dsInsert]) then
+  if SQLTemplate.State in ([dsEdit, dsInsert]) then
   begin
-    if SQLVeiculos.Locate('VICLA40MODELO',DBComboBoxVeiculo.Text,[]) then
+    if SQLVeiculos.Locate('VICLA40MODELO', DBComboBoxVeiculo.Text, []) then
     begin
-      DBComboBoxVeiculo.Text              := SQLVeiculos.FieldbyName('VICLA40MODELO').AsString;
-      SQLTemplateORDA50VEICULO.AsString   := SQLVeiculos.FieldbyName('VICLA40MODELO').AsString;
-      SQLTemplateANO_MODELO.AsString      := SQLVeiculos.Fieldbyname('VICLA9ANOMODELO').asstring;
-      SQLTemplateCOMBUSTIVEL.AsString     := SQLVeiculos.Fieldbyname('VICLA1COMBUSTIVEL').asstring;
-      SQLTemplateORDA10COR.AsString       := SQLVeiculos.Fieldbyname('VICLA15COR').asstring;
-      SQLTemplateMARCAA30.AsString        := SQLVeiculos.Fieldbyname('VICLA25MARCA').asstring;
-      SQLTemplatePLACA.AsString           := SQLVeiculos.Fieldbyname('VICLA15PLACA').asstring;
+      DBComboBoxVeiculo.Text := SQLVeiculos.FieldbyName('VICLA40MODELO').AsString;
+      SQLTemplateORDA50VEICULO.AsString := SQLVeiculos.FieldbyName('VICLA40MODELO').AsString;
+      SQLTemplateANO_MODELO.AsString := SQLVeiculos.Fieldbyname('VICLA9ANOMODELO').asstring;
+      SQLTemplateCOMBUSTIVEL.AsString := SQLVeiculos.Fieldbyname('VICLA1COMBUSTIVEL').asstring;
+      SQLTemplateORDA10COR.AsString := SQLVeiculos.Fieldbyname('VICLA15COR').asstring;
+      SQLTemplateMARCAA30.AsString := SQLVeiculos.Fieldbyname('VICLA25MARCA').asstring;
+      SQLTemplatePLACA.AsString := SQLVeiculos.Fieldbyname('VICLA15PLACA').asstring;
     end;
   end;
 end;
@@ -845,14 +794,13 @@ begin
   inherited;
 end;
 
-procedure TFormCadastroMecOrdem.TabSheetDadosPrincipaisEnter(
-  Sender: TObject);
+procedure TFormCadastroMecOrdem.TabSheetDadosPrincipaisEnter(Sender: TObject);
 begin
   inherited;
-  If not SQLVeiculos.Active then
+  if not SQLVeiculos.Active then
     SQLVeiculos.Open;
   DBComboBoxVeiculo.Items.Clear;
-  While Not SQLVeiculos.Eof do
+  while not SQLVeiculos.Eof do
   begin
     DBComboBoxVeiculo.Items.Add(SQLVeiculos.Fieldbyname('VICLA40MODELO').asstring);
     SQLVeiculos.Next;
@@ -864,7 +812,7 @@ begin
   inherited;
   if NovaOrdem then
   begin
-    NovaOrdem:= False;
+    NovaOrdem := False;
     Button3.Click;
   end;
 end;
@@ -878,112 +826,165 @@ end;
 procedure TFormCadastroMecOrdem.SQLTemplateCalcFields(DataSet: TDataSet);
 begin
   inherited;
-  DataSet.FieldByName('valortotal').value    := DataSet.FieldByName('ORITN2VLRPRODUTO').value + DataSet.FieldByName('ORITN2VLRSERVICO').value;
-  If DataSet.FieldByName('CLIEA13ID').AsVariant <> null then
-  Begin
-    If DM.ProcuraRegistro('CLIENTE',['CLIEA13ID'],[SQLTemplateCLIEA13ID.asString],1) Then
-      Begin
-        if DM.SQLTemplate.FindField('PLRCICOD').AsVariant <> null then
-          DataSet.FieldByName('PlanoClienteLookUp').AsVariant          := DM.SQLTemplate.FindField('PLRCICOD').AsVariant;
+  DataSet.FieldByName('valortotal').value := DataSet.FieldByName('ORITN2VLRPRODUTO').value + DataSet.FieldByName('ORITN2VLRSERVICO').value;
+  if DataSet.FieldByName('CLIEA13ID').AsVariant <> null then
+  begin
+    if DM.ProcuraRegistro('CLIENTE', ['CLIEA13ID'], [SQLTemplateCLIEA13ID.asString], 1) then
+    begin
+      if DM.SQLTemplate.FindField('PLRCICOD').AsVariant <> null then
+        DataSet.FieldByName('PlanoClienteLookUp').AsVariant := DM.SQLTemplate.FindField('PLRCICOD').AsVariant;
 
-
-        DataSet.FieldByName('CliFornEmpLookup').AsVariant            := DM.SQLTemplate.FindField('CLIEA60RAZAOSOC').AsVariant;
-        DataSet.FieldByName('CliFornEmpEnderecoLookUp').AsVariant    := DM.SQLTemplate.FindField('CLIEA60ENDRES').AsVariant;
-        DataSet.FieldByName('CliFornEmpEstadoLookUp').AsVariant      := DM.SQLTemplate.FindField('CLIEA2UFRES').AsVariant;
-        DataSet.FieldByName('CliFornEmpCEPLookUp').AsVariant         := DM.SQLTemplate.FindField('CLIEA8CEPRES').AsVariant;
-        DataSet.FieldByName('CliFornEmpCidadeLookUp').AsVariant      := DM.SQLTemplate.FindField('CLIEA60CIDRES').AsVariant;
-        DataSet.FieldByName('CliFornEmpBairroLookUp').AsVariant      := DM.SQLTemplate.FindField('CLIEA60BAIRES').AsVariant;
-        DataSet.FieldByName('CliFornEmpFoneLookUp').AsVariant        := DM.SQLTemplate.FindField('CLIEA15FONE1').AsVariant;
-        DataSet.FieldByName('CliFornEmpTabelaPrecoLookUp').AsVariant := DM.SQLTemplate.FindField('TPRCICOD').AsVariant;
-        If DM.SQLTemplate.FindField('CLIEA5FISJURID').asString = 'F' Then
-          Begin
-            DataSet.FieldByName('CliFornEmpCGCCPFLookUp').AsVariant    := DM.SQLTemplate.FindField('CLIEA11CPF').AsVariant;
-            DataSet.FieldByName('CliFornEmpIERGLookUp').AsVariant      := DM.SQLTemplate.FindField('CLIEA10RG').AsVariant;
-           // DataSet.FieldByName('CliFornEmpCGCCPFLookUp').EditMask     := '000.000.000-00;0;_';
-          End
-        Else
-          Begin
-            DataSet.FieldByName('CliFornEmpCGCCPFLookUp').AsVariant    := DM.SQLTemplate.FindField('CLIEA14CGC').AsVariant;
-            DataSet.FieldByName('CliFornEmpIERGLookUp').AsVariant      := DM.SQLTemplate.FindField('CLIEA20IE').AsVariant;
-           // DataSet.FieldByName('CliFornEmpCGCCPFLookUp').EditMask     := '00.000.000/0000-00;0;_';
-          End;
-      End
-    Else
+      DataSet.FieldByName('CliFornEmpLookup').AsVariant := DM.SQLTemplate.FindField('CLIEA60RAZAOSOC').AsVariant;
+      DataSet.FieldByName('CliFornEmpEnderecoLookUp').AsVariant := DM.SQLTemplate.FindField('CLIEA60ENDRES').AsVariant;
+      DataSet.FieldByName('CliFornEmpEstadoLookUp').AsVariant := DM.SQLTemplate.FindField('CLIEA2UFRES').AsVariant;
+      DataSet.FieldByName('CliFornEmpCEPLookUp').AsVariant := DM.SQLTemplate.FindField('CLIEA8CEPRES').AsVariant;
+      DataSet.FieldByName('CliFornEmpCidadeLookUp').AsVariant := DM.SQLTemplate.FindField('CLIEA60CIDRES').AsVariant;
+      DataSet.FieldByName('CliFornEmpBairroLookUp').AsVariant := DM.SQLTemplate.FindField('CLIEA60BAIRES').AsVariant;
+      DataSet.FieldByName('CliFornEmpFoneLookUp').AsVariant := DM.SQLTemplate.FindField('CLIEA15FONE1').AsVariant;
+      DataSet.FieldByName('CliFornEmpTabelaPrecoLookUp').AsVariant := DM.SQLTemplate.FindField('TPRCICOD').AsVariant;
+      if DM.SQLTemplate.FindField('CLIEA5FISJURID').asString = 'F' then
       begin
-        DataSet.FieldByName('CliFornEmpLookup').asString     := MensagemLookUp;
+        DataSet.FieldByName('CliFornEmpCGCCPFLookUp').AsVariant := DM.SQLTemplate.FindField('CLIEA11CPF').AsVariant;
+        DataSet.FieldByName('CliFornEmpIERGLookUp').AsVariant := DM.SQLTemplate.FindField('CLIEA10RG').AsVariant;
+           // DataSet.FieldByName('CliFornEmpCGCCPFLookUp').EditMask     := '000.000.000-00;0;_';
+      end
+      else
+      begin
+        DataSet.FieldByName('CliFornEmpCGCCPFLookUp').AsVariant := DM.SQLTemplate.FindField('CLIEA14CGC').AsVariant;
+        DataSet.FieldByName('CliFornEmpIERGLookUp').AsVariant := DM.SQLTemplate.FindField('CLIEA20IE').AsVariant;
+           // DataSet.FieldByName('CliFornEmpCGCCPFLookUp').EditMask     := '00.000.000/0000-00;0;_';
       end;
-  End
+    end
+    else
+    begin
+      DataSet.FieldByName('CliFornEmpLookup').asString := MensagemLookUp;
+    end;
+  end
 end;
 
-procedure TFormCadastroMecOrdem.OrdensdeServioemBRANCO1Click(
-  Sender: TObject);
-  var nlin:Integer;
+procedure TFormCadastroMecOrdem.OrdensdeServioemBRANCO1Click(Sender: TObject);
+var
+  nlin: Integer;
 begin
   inherited;
   RDPrint.Abrir;
   nLin := 1;
-  RDPrint.ImpF(nLin,1,'Ordem de Serviço No.:',[Negrito,Expandido]); inc(nlin,2);
-  RDPrint.ImpF(nlin, 1,'Cliente.: ',[Negrito]);  inc(nLin);
-  RDPrint.ImpF(nlin, 1,'Endereco: ',[Negrito]);
-  RDPrint.ImpF(nlin,59,'Fone: ',[Negrito]);     inc(nLin);
-  RDPrint.ImpF(nlin, 1,'Cidade..: ',[Negrito]);
-  RDPrint.ImpF(nlin,59,'Cel.: ',[Negrito]);  inc(nLin,2);
-  RDPrint.ImpF(nlin,1,'Descrição:',[Comp20]);inc(nlin);
-  RDPrint.ImpF(nlin,1,'Placa....:                      Ano\Modelo:                    Cor:',[Comp20]);inc(nlin);
-  RDPrint.ImpF(nlin,1,'Entrada..:                      Hora......:                     Km:               R$ Previsto:',[Comp20]);inc(nlin);
-  RDPrint.ImpF(nlin,1,'Prometido:                      Data Saída:                   Hora:                        Km:',[Comp20]);inc(nlin);
-  RDPrint.ImpF(nLin,1,'----------------------------------------------------------------------------------------------------------------------------------------------------------------',[Comp20]); Inc(nlin);
-  RDPrint.Imp (nLin,1,'P R O B L E M A');Inc(nLin,4);
-  RDPrint.Imp (nLin,1,'O B S E R V A Ç Õ E S');Inc(nLin,4);
-  RDPrint.ImpF(nLin,1,'----------------------------------------------------------------------------------------------------------------------------------------------------------------',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,' Gas e Solta                                           |   Silicone                                |  Lubrificante                                              ',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'----------------------------------------------------------------------------------------------------------------------------------------------------------------',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,' Material de Limpeza                                   |   Ferro                                   |  Trava Rosca                                               ',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'----------------------------------------------------------------------------------------------------------------------------------------------------------------',[Comp20]); Inc(nlin);
-  RDPrint.Imp (nLin,1,'Peças e Serviços Prestados');Inc(nLin);
-  RDPrint.ImpF(nLin,1,'----------------------------------------------------------------------------------------------------------------------------------------------------------------',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'  Qtd     |    Cod.    | Descricao Peca ou Servico                                                                                 |  R$ Unitario |     R$ Total',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'----------+------------+-----------------------------------------------------------------------------------------------------------+--------------+-------------',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'          |            |                                                                                                           |              |             ',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'----------+------------+-----------------------------------------------------------------------------------------------------------+--------------+-------------',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'          |            |                                                                                                           |              |             ',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'----------+------------+-----------------------------------------------------------------------------------------------------------+--------------+-------------',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'          |            |                                                                                                           |              |             ',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'----------+------------+-----------------------------------------------------------------------------------------------------------+--------------+-------------',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'          |            |                                                                                                           |              |             ',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'----------+------------+-----------------------------------------------------------------------------------------------------------+--------------+-------------',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'          |            |                                                                                                           |              |             ',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'----------|------------|-----------------------------------------------------------------------------------------------------------|--------------|-------------',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'          |            |                                                                                                           |              |             ',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'----------|------------|-----------------------------------------------------------------------------------------------------------|--------------|-------------',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'          |            |                                                                                                           |              |             ',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'----------|------------|-----------------------------------------------------------------------------------------------------------|--------------|-------------',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'          |            |                                                                                                           |              |             ',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'----------|------------|-----------------------------------------------------------------------------------------------------------|--------------|-------------',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'          |            |                                                                                                           |              |             ',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'----------|------------|-----------------------------------------------------------------------------------------------------------|--------------|-------------',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'          |            |                                                                                                           |              |             ',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'----------|------------|-----------------------------------------------------------------------------------------------------------|--------------|-------------',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'          |            |                                                                                                           |              |             ',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'----------|------------|-----------------------------------------------------------------------------------------------------------|--------------|-------------',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'          |            |                                                                                                           |              |             ',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'----------|------------|-----------------------------------------------------------------------------------------------------------|--------------|-------------',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'          |            |                                                                                                           |              |             ',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'----------|------------|-----------------------------------------------------------------------------------------------------------|--------------|-------------',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'          |            |                                                                                                           |              |             ',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'----------|------------|-----------------------------------------------------------------------------------------------------------|--------------|-------------',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'          |            |                                                                                                           |              |             ',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'----------|------------|-----------------------------------------------------------------------------------------------------------|--------------|-------------',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'          |            |                                                                                                           |              |             ',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'----------|------------|-----------------------------------------------------------------------------------------------------------|--------------|-------------',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'          |            |                                                                                                           |              |             ',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'----------+------------+-----------------------------------------------------------------------------------------------------------+--------------+-------------',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'Nao nos responsabilizamos por mercadoria nao retirada no prazo de 60 dias.                                   R$ Peças    ->             ',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'                                                                                                             R$ Servicos ->             ',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'--------------------------------------------         ----------------------------------------                R$ Total    ->             ',[Comp20]);
+  RDPrint.ImpF(nLin, 1, 'Ordem de Serviço No.:', [Negrito, Expandido]);
+  inc(nlin, 2);
+  RDPrint.ImpF(nlin, 1, 'Cliente.: ', [Negrito]);
+  inc(nLin);
+  RDPrint.ImpF(nlin, 1, 'Endereco: ', [Negrito]);
+  RDPrint.ImpF(nlin, 59, 'Fone: ', [Negrito]);
+  inc(nLin);
+  RDPrint.ImpF(nlin, 1, 'Cidade..: ', [Negrito]);
+  RDPrint.ImpF(nlin, 59, 'Cel.: ', [Negrito]);
+  inc(nLin, 2);
+  RDPrint.ImpF(nlin, 1, 'Descrição:', [Comp20]);
+  inc(nlin);
+  RDPrint.ImpF(nlin, 1, 'Placa....:                      Ano\Modelo:                    Cor:', [Comp20]);
+  inc(nlin);
+  RDPrint.ImpF(nlin, 1, 'Entrada..:                      Hora......:                     Km:               R$ Previsto:', [Comp20]);
+  inc(nlin);
+  RDPrint.ImpF(nlin, 1, 'Prometido:                      Data Saída:                   Hora:                        Km:', [Comp20]);
+  inc(nlin);
+  RDPrint.ImpF(nLin, 1, '----------------------------------------------------------------------------------------------------------------------------------------------------------------', [Comp20]);
+  Inc(nlin);
+  RDPrint.Imp(nLin, 1, 'P R O B L E M A');
+  Inc(nLin, 4);
+  RDPrint.Imp(nLin, 1, 'O B S E R V A Ç Õ E S');
+  Inc(nLin, 4);
+  RDPrint.ImpF(nLin, 1, '----------------------------------------------------------------------------------------------------------------------------------------------------------------', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, ' Gas e Solta                                           |   Silicone                                |  Lubrificante                                              ', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '----------------------------------------------------------------------------------------------------------------------------------------------------------------', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, ' Material de Limpeza                                   |   Ferro                                   |  Trava Rosca                                               ', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '----------------------------------------------------------------------------------------------------------------------------------------------------------------', [Comp20]);
+  Inc(nlin);
+  RDPrint.Imp(nLin, 1, 'Peças e Serviços Prestados');
+  Inc(nLin);
+  RDPrint.ImpF(nLin, 1, '----------------------------------------------------------------------------------------------------------------------------------------------------------------', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '  Qtd     |    Cod.    | Descricao Peca ou Servico                                                                                 |  R$ Unitario |     R$ Total', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '----------+------------+-----------------------------------------------------------------------------------------------------------+--------------+-------------', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '          |            |                                                                                                           |              |             ', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '----------+------------+-----------------------------------------------------------------------------------------------------------+--------------+-------------', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '          |            |                                                                                                           |              |             ', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '----------+------------+-----------------------------------------------------------------------------------------------------------+--------------+-------------', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '          |            |                                                                                                           |              |             ', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '----------+------------+-----------------------------------------------------------------------------------------------------------+--------------+-------------', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '          |            |                                                                                                           |              |             ', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '----------+------------+-----------------------------------------------------------------------------------------------------------+--------------+-------------', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '          |            |                                                                                                           |              |             ', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '----------|------------|-----------------------------------------------------------------------------------------------------------|--------------|-------------', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '          |            |                                                                                                           |              |             ', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '----------|------------|-----------------------------------------------------------------------------------------------------------|--------------|-------------', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '          |            |                                                                                                           |              |             ', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '----------|------------|-----------------------------------------------------------------------------------------------------------|--------------|-------------', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '          |            |                                                                                                           |              |             ', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '----------|------------|-----------------------------------------------------------------------------------------------------------|--------------|-------------', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '          |            |                                                                                                           |              |             ', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '----------|------------|-----------------------------------------------------------------------------------------------------------|--------------|-------------', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '          |            |                                                                                                           |              |             ', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '----------|------------|-----------------------------------------------------------------------------------------------------------|--------------|-------------', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '          |            |                                                                                                           |              |             ', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '----------|------------|-----------------------------------------------------------------------------------------------------------|--------------|-------------', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '          |            |                                                                                                           |              |             ', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '----------|------------|-----------------------------------------------------------------------------------------------------------|--------------|-------------', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '          |            |                                                                                                           |              |             ', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '----------|------------|-----------------------------------------------------------------------------------------------------------|--------------|-------------', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '          |            |                                                                                                           |              |             ', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '----------|------------|-----------------------------------------------------------------------------------------------------------|--------------|-------------', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '          |            |                                                                                                           |              |             ', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '----------|------------|-----------------------------------------------------------------------------------------------------------|--------------|-------------', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '          |            |                                                                                                           |              |             ', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '----------|------------|-----------------------------------------------------------------------------------------------------------|--------------|-------------', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '          |            |                                                                                                           |              |             ', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '----------+------------+-----------------------------------------------------------------------------------------------------------+--------------+-------------', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, 'Nao nos responsabilizamos por mercadoria nao retirada no prazo de 60 dias.                                   R$ Peças    ->             ', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '                                                                                                             R$ Servicos ->             ', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '--------------------------------------------         ----------------------------------------                R$ Total    ->             ', [Comp20]);
   RDPrint.Fechar;
-
-
 
 end;
 
@@ -995,12 +996,11 @@ begin
   RDPrint.Fechar;
 end;
 
-procedure TFormCadastroMecOrdem.OrdensdeServioemSequncia1Click(
-  Sender: TObject);
+procedure TFormCadastroMecOrdem.OrdensdeServioemSequncia1Click(Sender: TObject);
 begin
   inherited;
   RDPrint.Abrir;
-  While not SQLTemplate.Eof do
+  while not SQLTemplate.Eof do
   begin
     ImprimeOrdem;
     RDprint.Novapagina;
@@ -1010,123 +1010,148 @@ begin
 end;
 
 procedure TFormCadastroMecOrdem.ImprimeOrdem;
-var nLin, x, xi:Integer;
-    ValorPecas, ValorServico: Extended;
+var
+  nLin, x, xi: Integer;
+  ValorPecas, ValorServico: Extended;
 begin
   // abre o SQL dos itens da ordem
   SQLOrdItens.Close;
   SQLOrdItens.Prepare;
-  SQLORDItens.ParambyName('MFiltro').AsString := SQLTemplate.FindField('ORDID').AsString ;
+  SQLORDItens.ParambyName('MFiltro').AsString := SQLTemplate.FindField('ORDID').AsString;
   SQLOrdItens.Open;
   SQLOrdItens.First;
   // inicia o relatorio
-
   nLin := 1;
-  RDPrint.ImpF(nLin, 1,'Ordem de Serviço No.: '+SQLTemplateORDID.AsString,[Negrito,Expandido]); inc(nlin,2);
-  RDPrint.ImpF(nlin, 1,'Cliente.: ',[Negrito]);
-  RDPrint.Imp (nlin,11,SQLTemplateCliente.asstring);inc(nlin);
-  RDPrint.ImpF(nlin, 1,'Endereco: ',[Negrito]);
-  RDPrint.Imp (nlin,11,SQLTemplateClienteEndereco.AsString);
-  RDPrint.ImpF(nlin,59,'Fone: ',[Negrito]);
-  RDPrint.Imp (nlin,65,SQLLocate('CLIENTE','CLIEA13ID','CLIEA15FONE1',''''+SQLTemplateCLIEA13ID.AsString+''''));inc(nlin);
-  RDPrint.ImpF(nlin, 1,'Cidade..: ',[Negrito]);
-  RDPrint.Imp (nlin,11,SQLTemplateClienteCidade.AsString);
-  RDPrint.ImpF(nlin,59,'Cel.: ',[Negrito]);
-  RDPrint.Imp (nlin,65,SQLLocate('CLIENTE','CLIEA13ID','CLIEA15FONE2',''''+SQLTemplateCLIEA13ID.AsString+''''));inc(nLin);
-  RDPrint.ImpF(nLin,1,'----------------------------------------------------------------------------------------------------------------------------------------------------------------',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nlin, 1,'Descrição: '+SQLTemplateORDA50VEICULO.AsString,[Comp20]);inc(nlin);
-  RDPrint.ImpF(nlin, 1,'Placa....: '+SQLTemplatePLACA.AsString,[Comp20]);
-  RDPrint.ImpF(nlin,18,'Ano\Modelo: '+SQLTemplateANO_MODELO.AsString,[Comp20]);
-  RDPrint.ImpF(nlin,38,'Cor: '+SQLTemplateORDA10COR.AsString,[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nlin, 1,'Entrada..: '+Copy(SQLTemplateDATA.AsString,0,10),[Comp20]);
-  RDPrint.ImpF(nlin,18,'Hora......: '+Copy(SQLTemplateData.AsString,11,10),[Comp20]);
-  RDPrint.ImpF(nlin,38,' Km: '+SQLTemplateKM_ENTRADA.AsString,[Comp20]);
-  RDPrint.ImpF(nlin,58,'R$ Previsto: '+FormatFloat(',0.00',SQLTemplateVALOR.value),[Comp20]);inc(nLin);
-  RDPrint.ImpF(nlin, 1,'Prometido: '+SQLTemplateDATA_ENTREGA.AsString,[Comp20]);
-  RDPrint.ImpF(nlin,18,'Data Saída: '+Copy(SQLTemplateFinalizado.AsString,0,10),[Comp20]);
-  RDPrint.ImpF(nlin,37,' Hora: '+Copy(SQLTemplateFinalizado.AsString,11,10),[Comp20]);
-  RDPrint.ImpF(nlin,58,'R$ Total...: '+FormatFloat(',0.00',SQLTemplateVALOR.value),[Comp20]);inc(nLin);
+  RDPrint.ImpF(nLin, 1, 'Ordem de Serviço No.: ' + SQLTemplateORDID.AsString, [Negrito, Expandido]);
+  inc(nlin, 2);
+  RDPrint.ImpF(nlin, 1, 'Cliente.: ', [Negrito]);
+  RDPrint.Imp(nlin, 11, SQLTemplateCliente.asstring);
+  inc(nlin);
+  RDPrint.ImpF(nlin, 1, 'Endereco: ', [Negrito]);
+  RDPrint.Imp(nlin, 11, SQLTemplateClienteEndereco.AsString);
+  RDPrint.ImpF(nlin, 59, 'Fone: ', [Negrito]);
+  RDPrint.Imp(nlin, 65, SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA15FONE1', '''' + SQLTemplateCLIEA13ID.AsString + ''''));
+  inc(nlin);
+  RDPrint.ImpF(nlin, 1, 'Cidade..: ', [Negrito]);
+  RDPrint.Imp(nlin, 11, SQLTemplateClienteCidade.AsString);
+  RDPrint.ImpF(nlin, 59, 'Cel.: ', [Negrito]);
+  RDPrint.Imp(nlin, 65, SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA15FONE2', '''' + SQLTemplateCLIEA13ID.AsString + ''''));
+  inc(nLin);
+  RDPrint.ImpF(nLin, 1, '----------------------------------------------------------------------------------------------------------------------------------------------------------------', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nlin, 1, 'Descrição: ' + SQLTemplateORDA50VEICULO.AsString, [Comp20]);
+  inc(nlin);
+  RDPrint.ImpF(nlin, 1, 'Placa....: ' + SQLTemplatePLACA.AsString, [Comp20]);
+  RDPrint.ImpF(nlin, 18, 'Ano\Modelo: ' + SQLTemplateANO_MODELO.AsString, [Comp20]);
+  RDPrint.ImpF(nlin, 38, 'Cor: ' + SQLTemplateORDA10COR.AsString, [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nlin, 1, 'Entrada..: ' + Copy(SQLTemplateDATA.AsString, 0, 10), [Comp20]);
+  RDPrint.ImpF(nlin, 18, 'Hora......: ' + Copy(SQLTemplateData.AsString, 11, 10), [Comp20]);
+  RDPrint.ImpF(nlin, 38, ' Km: ' + SQLTemplateKM_ENTRADA.AsString, [Comp20]);
+  RDPrint.ImpF(nlin, 58, 'R$ Previsto: ' + FormatFloat(',0.00', SQLTemplateVALOR.value), [Comp20]);
+  inc(nLin);
+  RDPrint.ImpF(nlin, 1, 'Prometido: ' + SQLTemplateDATA_ENTREGA.AsString, [Comp20]);
+  RDPrint.ImpF(nlin, 18, 'Data Saída: ' + Copy(SQLTemplateFinalizado.AsString, 0, 10), [Comp20]);
+  RDPrint.ImpF(nlin, 37, ' Hora: ' + Copy(SQLTemplateFinalizado.AsString, 11, 10), [Comp20]);
+  RDPrint.ImpF(nlin, 58, 'R$ Total...: ' + FormatFloat(',0.00', SQLTemplateVALOR.value), [Comp20]);
+  inc(nLin);
 
-  RDPrint.ImpF(nLin,1,'----------------------------------------------------------------------------------------------------------------------------------------------------------------',[Comp20]); Inc(nlin);
-  RDPrint.Imp (nLin,1,'P R O B L E M A');inc(nLin);
-  x:= 119;
-  xi:= 0;
-  ValorPecas  := 0;
-  ValorServico:= 0;
+  RDPrint.ImpF(nLin, 1, '----------------------------------------------------------------------------------------------------------------------------------------------------------------', [Comp20]);
+  Inc(nlin);
+  RDPrint.Imp(nLin, 1, 'P R O B L E M A');
+  inc(nLin);
+  x := 119;
+  xi := 0;
+  ValorPecas := 0;
+  ValorServico := 0;
 
-  while x-119 < length(SQLTemplate.Fieldbyname('PROBLEMA').asstring) do
+  while x - 119 < length(SQLTemplate.Fieldbyname('PROBLEMA').asstring) do
   begin
-     RDPrint.ImpF(nLin,1,'                  '+Copy(SQLTemplate.FieldbyName('PROBLEMA').asstring,(119*xi)+1,119),[Comp20]);
-     inc(x,119);
-     inc(xi);
-     inc(nLin);
+    RDPrint.ImpF(nLin, 1, '                  ' + Copy(SQLTemplate.FieldbyName('PROBLEMA').asstring, (119 * xi) + 1, 119), [Comp20]);
+    inc(x, 119);
+    inc(xi);
+    inc(nLin);
   end;
-  x:= 119;
-  xi:= 0;
-  If SQLTemplate.FieldbyName('Obs_Entrega').asstring <> '' then
-    RDPrint.Imp (nLin,1,'O B S E R V A Ç A O');inc(nLin);
-  while x-119 < length(SQLTemplate.FieldbyName('Obs_Entrega').asstring) do
+  x := 119;
+  xi := 0;
+  if SQLTemplate.FieldbyName('Obs_Entrega').asstring <> '' then
+    RDPrint.Imp(nLin, 1, 'O B S E R V A Ç A O');
+  inc(nLin);
+  while x - 119 < length(SQLTemplate.FieldbyName('Obs_Entrega').asstring) do
   begin
-     RDPrint.ImpF(nLin,1,'                  '+Copy(SQLTemplate.FieldbyName('obs_entrega').asstring,(119*xi)+1,119),[Comp20]);
-     inc(x,119);
-     inc(xi);
-     inc(nLin);
+    RDPrint.ImpF(nLin, 1, '                  ' + Copy(SQLTemplate.FieldbyName('obs_entrega').asstring, (119 * xi) + 1, 119), [Comp20]);
+    inc(x, 119);
+    inc(xi);
+    inc(nLin);
   end;
 
-  RDPrint.ImpF(nLin,1,'----------------------------------------------------------------------------------------------------------------------------------------------------------------',[Comp20]); Inc(nlin);
-  RDPrint.Imp (nLin,1,'Peças e Serviços Prestados');Inc(nLin);
-  RDPrint.ImpF(nLin,1,'----------------------------------------------------------------------------------------------------------------------------------------------------------------',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'  Qtd     |   Cod.     | Descricao Peca ou Servico                                                                                 |  R$ Unitario |     R$ Total',[Comp20]); Inc(nlin);
-  RDPrint.ImpF(nLin,1,'----------+------------+-----------------------------------------------------------------------------------------------------------+--------------+-------------',[Comp20]); Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '----------------------------------------------------------------------------------------------------------------------------------------------------------------', [Comp20]);
+  Inc(nlin);
+  RDPrint.Imp(nLin, 1, 'Peças e Serviços Prestados');
+  Inc(nLin);
+  RDPrint.ImpF(nLin, 1, '----------------------------------------------------------------------------------------------------------------------------------------------------------------', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '  Qtd     |   Cod.     | Descricao Peca ou Servico                                                                                 |  R$ Unitario |     R$ Total', [Comp20]);
+  Inc(nlin);
+  RDPrint.ImpF(nLin, 1, '----------+------------+-----------------------------------------------------------------------------------------------------------+--------------+-------------', [Comp20]);
+  Inc(nlin);
 
-  While not SQLOrdItens.Eof do
+  while not SQLOrdItens.Eof do
   begin
-    While (not SQLOrdItens.Eof) and (nLin < 60) do
+    while (not SQLOrdItens.Eof) and (nLin < 60) do
     begin
-      RDPrint.ImpF(nLin,1,'          |            |                                                                                                           |              |             ',[Comp20]);
-      RDPrint.ImpVal(nLin, 1,'###,##0.00',SQLOrdItensORITN3QUANT.Value,[Comp20]);
-      RDPrint.ImpF(nLin, 8,SQLOrdItensPRODICOD.AsString,[Comp20]);
-      RDPrint.ImpF(nLin,14,SQLOrdItensPRODA60DESCR.AsString,[Comp20]);
-      RDPrint.ImpVal(nLin,69,'###,##0.00',SQLOrdItensORITN2VLRUNIT.value,[Comp20]);
-      RDPrint.ImpVal(nLin,76,'###,##0.00',(SQLOrdItensORITN2VLRUNIT.value*SQLOrdItensORITN3QUANT.Value)-SQLOrdItensORITN2VLRDESC.Value,[Comp20]);inc(nLin);
-      RDPrint.ImpF(nLin, 1,'----------|------------|-----------------------------------------------------------------------------------------------------------|--------------|-------------',[Comp20]); Inc(nlin);
+      RDPrint.ImpF(nLin, 1, '          |            |                                                                                                           |              |             ', [Comp20]);
+      RDPrint.ImpVal(nLin, 1, '###,##0.00', SQLOrdItensORITN3QUANT.Value, [Comp20]);
+      RDPrint.ImpF(nLin, 8, SQLOrdItensPRODICOD.AsString, [Comp20]);
+      RDPrint.ImpF(nLin, 14, SQLOrdItensPRODA60DESCR.AsString, [Comp20]);
+      RDPrint.ImpVal(nLin, 69, '###,##0.00', SQLOrdItensORITN2VLRUNIT.value, [Comp20]);
+      RDPrint.ImpVal(nLin, 76, '###,##0.00', (SQLOrdItensORITN2VLRUNIT.value * SQLOrdItensORITN3QUANT.Value) - SQLOrdItensORITN2VLRDESC.Value, [Comp20]);
+      inc(nLin);
+      RDPrint.ImpF(nLin, 1, '----------|------------|-----------------------------------------------------------------------------------------------------------|--------------|-------------', [Comp20]);
+      Inc(nlin);
       // Totaliza a ordem
-      if SQLOrdItensPRODCSERVICO.AsString = 'S' Then
-        ValorServico := ValorServico + (SQLOrdItensORITN2VLRUNIT.value*SQLOrdItensORITN3QUANT.Value)-SQLOrdItensORITN2VLRDESC.Value
+      if SQLOrdItensPRODCSERVICO.AsString = 'S' then
+        ValorServico := ValorServico + (SQLOrdItensORITN2VLRUNIT.value * SQLOrdItensORITN3QUANT.Value) - SQLOrdItensORITN2VLRDESC.Value
       else
-        ValorPecas   := ValorPecas   + (SQLOrdItensORITN2VLRUNIT.value*SQLOrdItensORITN3QUANT.Value)-SQLOrdItensORITN2VLRDESC.Value;
+        ValorPecas := ValorPecas + (SQLOrdItensORITN2VLRUNIT.value * SQLOrdItensORITN3QUANT.Value) - SQLOrdItensORITN2VLRDESC.Value;
 
       SQLOrdItens.Next;
     end;
     if nLin >= 60 then
     begin
-      RDPrint.ImpF(nLin,1,'Continua na proxima página...',[Comp20]);
+      RDPrint.ImpF(nLin, 1, 'Continua na proxima página...', [Comp20]);
       RDPrint.Novapagina;
       nLin := 1;
-      RDPrint.ImpF(nLin,1,'----------------------------------------------------------------------------------------------------------------------------------------------------------------',[Comp20]); Inc(nlin);
-      RDPrint.ImpF(nLin,1,'  Qtd     |      Cod.  | Descricao Peca ou Servico                                                                                 |  R$ Unitario |     R$ Total',[Comp20]); Inc(nlin);
-      RDPrint.ImpF(nLin,1,'----------+------------+-----------------------------------------------------------------------------------------------------------+--------------+-------------',[Comp20]); Inc(nlin);
+      RDPrint.ImpF(nLin, 1, '----------------------------------------------------------------------------------------------------------------------------------------------------------------', [Comp20]);
+      Inc(nlin);
+      RDPrint.ImpF(nLin, 1, '  Qtd     |      Cod.  | Descricao Peca ou Servico                                                                                 |  R$ Unitario |     R$ Total', [Comp20]);
+      Inc(nlin);
+      RDPrint.ImpF(nLin, 1, '----------+------------+-----------------------------------------------------------------------------------------------------------+--------------+-------------', [Comp20]);
+      Inc(nlin);
     end;
   end;
-  While nLin < 60 do
+  while nLin < 60 do
   begin
-    RDPrint.ImpF(nLin, 1,'          |            |                                                                                                           |              |             ',[Comp20]); inc(nlin);
-    RDPrint.ImpF(nLin, 1,'----------|------------|-----------------------------------------------------------------------------------------------------------|--------------|-------------',[Comp20]); Inc(nlin);
+    RDPrint.ImpF(nLin, 1, '          |            |                                                                                                           |              |             ', [Comp20]);
+    inc(nlin);
+    RDPrint.ImpF(nLin, 1, '----------|------------|-----------------------------------------------------------------------------------------------------------|--------------|-------------', [Comp20]);
+    Inc(nlin);
   end;
-  RDPrint.ImpF(nLin,1,'Nao nos responsabilizamos por veiculos nao retirados no prazo de 60 dias.                                    R$ Peças    ->             ',[Comp20]);
-  RDPrint.ImpVal(nLin,76,'###,##0.00',ValorPecas,[Comp20]);inc(nLin);
-  RDPrint.ImpF(nLin,1,'                                                                                                             R$ Servicos ->             ',[Comp20]);
-  RDPrint.ImpVal(nLin,76,'###,##0.00',ValorServico,[Comp20]);inc(nLin);
-  RDPrint.ImpF(nLin,1,'--------------------------------------------         ----------------------------------------                R$ Total    ->             ',[Comp20]);
-  RDPrint.ImpVal(nLin,76,'###,##0.00',ValorPecas+ValorServico,[Comp20]);
+  RDPrint.ImpF(nLin, 1, 'Nao nos responsabilizamos por veiculos nao retirados no prazo de 60 dias.                                    R$ Peças    ->             ', [Comp20]);
+  RDPrint.ImpVal(nLin, 76, '###,##0.00', ValorPecas, [Comp20]);
+  inc(nLin);
+  RDPrint.ImpF(nLin, 1, '                                                                                                             R$ Servicos ->             ', [Comp20]);
+  RDPrint.ImpVal(nLin, 76, '###,##0.00', ValorServico, [Comp20]);
+  inc(nLin);
+  RDPrint.ImpF(nLin, 1, '--------------------------------------------         ----------------------------------------                R$ Total    ->             ', [Comp20]);
+  RDPrint.ImpVal(nLin, 76, '###,##0.00', ValorPecas + ValorServico, [Comp20]);
   SQLOrdItens.Close;
 end;
 
-
 procedure TFormCadastroMecOrdem.BTNLocalizarClick(Sender: TObject);
 var
-Clausula : String;
-CampoOrdem : TField;
+  Clausula: string;
+  CampoOrdem: TField;
 begin
   inherited;
   Clausula := '';
@@ -1135,43 +1160,47 @@ begin
   if (Clausula <> '') or (ComboBuscaCliente.Value <> '') then
     Clausula := Clausula + ' and ';
   case RadioStatus.ItemIndex of
-    0 : Clausula := Clausula + ' (0 = 0)';
-    1 : Clausula := Clausula + ' (STATUS = ''A'' )';
-    2 : Clausula := Clausula + ' (STATUS = ''C'' )';
-    3 : Clausula := Clausula + ' (STATUS = ''E'' )';
-    4 : Clausula := Clausula + ' (STATUS = ''F'' )';
-    5 : Clausula := Clausula + ' (STATUS = ''P'' )';
+    0:
+      Clausula := Clausula + ' (0 = 0)';
+    1:
+      Clausula := Clausula + ' (STATUS = ''A'' )';
+    2:
+      Clausula := Clausula + ' (STATUS = ''C'' )';
+    3:
+      Clausula := Clausula + ' (STATUS = ''E'' )';
+    4:
+      Clausula := Clausula + ' (STATUS = ''F'' )';
+    5:
+      Clausula := Clausula + ' (STATUS = ''P'' )';
   end;
   EditProcura.Text := '';
-  EditEntre.Text   := '';
-  EditE.Text       := '';
-  CampoOrdem := SQLTemplate.FindField(DM.LocateByDisplayLabel(SQLTemplate,ComboOrder.Text));
+  EditEntre.Text := '';
+  EditE.Text := '';
+  CampoOrdem := SQLTemplate.FindField(DM.LocateByDisplayLabel(SQLTemplate, ComboOrder.Text));
   if Clausula <> '' then
+  begin
+    SQLTemplate.Close;
+    if Pos('ORDER BY', TRxQuery(SQLTemplate).SQL.Text) <> 0 then
     begin
-      SQLTemplate.Close;
-      if Pos('ORDER BY',TRxQuery(SQLTemplate).SQL.Text) <> 0 Then
-        begin
-          TRxQuery(SQLTemplate).SQL.Text := Trim(Copy(TRxQuery(SQLTemplate).SQL.Text,1,Pos('ORDER BY',TRxQuery(SQLTemplate).SQL.Text)-1));
-        end;
-      SQLTemplate.MacroByName('MFiltro').AsString := Clausula;
-      SQLTemplate.SQL.Add(' ORDER BY ' + CampoOrdem.FieldName);
-      SQLTemplate.Open;
-    end
+      TRxQuery(SQLTemplate).SQL.Text := Trim(Copy(TRxQuery(SQLTemplate).SQL.Text, 1, Pos('ORDER BY', TRxQuery(SQLTemplate).SQL.Text) - 1));
+    end;
+    SQLTemplate.MacroByName('MFiltro').AsString := Clausula;
+    SQLTemplate.SQL.Add(' ORDER BY ' + CampoOrdem.FieldName);
+    SQLTemplate.Open;
+  end
   else
     Informa('Pesquisa incomleta, verifique!');
 end;
 
-procedure TFormCadastroMecOrdem.DBGridListaDrawColumnCell(Sender: TObject;
-  const Rect: TRect; DataCol: Integer; Column: TColumn;
-  State: TGridDrawState);
+procedure TFormCadastroMecOrdem.DBGridListaDrawColumnCell(Sender: TObject; const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
 begin
   if SQLTemplateSTATUS.AsString = 'F' then
     DBGridLista.Canvas.Font.Color := clBlue
-  Else if SQLTemplateSTATUS.AsString = 'E' then
+  else if SQLTemplateSTATUS.AsString = 'E' then
     DBGridLista.Canvas.Font.Color := clGreen
-  Else if SQLTemplateSTATUS.AsString = 'C' then
+  else if SQLTemplateSTATUS.AsString = 'C' then
     DBGridLista.Canvas.Font.Color := clRed
-  Else if SQLTemplateStatus.AsString = 'R' then
+  else if SQLTemplateStatus.AsString = 'R' then
     DBGridLista.Canvas.Font.Color := clYellow;
   inherited;
 end;
@@ -1182,90 +1211,88 @@ begin
   Panel7.Visible := True;
   Panel9.Visible := False;
   if SQLTemplateSTATUS.asstring = 'A' then
+  begin
+    if MessageDlg('Confirma a Efetivação desta Ordem?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
     begin
-      IF MessageDlg('Confirma a Efetivação desta Ordem?', mtConfirmation, [mbYes,mbNo], 0) = mrYes then
-      begin
-        SQLTemplate.BeforeEdit := nil;
-        SQLTemplate.Edit;
-        SQLTemplateSTATUS.AsString := 'F';
-        SQLTemplate.Post;
-        SQLTemplate.BeforeEdit := SQLTemplateBeforeEdit;
-        Button1.Click;
-      end;
-    end
+      SQLTemplate.BeforeEdit := nil;
+      SQLTemplate.Edit;
+      SQLTemplateSTATUS.AsString := 'F';
+      SQLTemplate.Post;
+      SQLTemplate.BeforeEdit := SQLTemplateBeforeEdit;
+      Button1.Click;
+    end;
+  end
   else
     Showmessage('Para Confirmar Entrega o Status deve ser ABERTA');
 end;
 
-procedure TFormCadastroMecOrdem.InformarEntregadoVeiculoEquipamento1Click(
-  Sender: TObject);
+procedure TFormCadastroMecOrdem.InformarEntregadoVeiculoEquipamento1Click(Sender: TObject);
 begin
   inherited;
   Panel7.Visible := True;
   Panel9.Visible := False;
-  Panel6.Caption          := '  Informe Data da Entrega' ;
-  LookupPlano.visible     := True;
-  Label24.visible         := True;
+  Panel6.Caption := '  Informe Data da Entrega';
+  LookupPlano.visible := True;
+  Label24.visible := True;
   SQLPlano.Open;
   SQLFinanceiro.Open;
-  SQLTemplate.BeforeEdit  := Nil;
+  SQLTemplate.BeforeEdit := Nil;
   SQLTemplate.Edit;
-  PnlEntrega.Visible      := True;
-  LabelVlrCobrar.Visible  := True;
-  LabelVlrCobrar.Value    := SQLTemplateVALORTOTAL.Value;
+  PnlEntrega.Visible := True;
+  LabelVlrCobrar.Visible := True;
+  LabelVlrCobrar.Value := SQLTemplateVALORTOTAL.Value;
   DBDateEdit3.Date := Now;
   DBDateEdit3.SetFocus;
 end;
 
-procedure TFormCadastroMecOrdem.FinalizareEmitirNotaFiscal1Click(
-  Sender: TObject);
+procedure TFormCadastroMecOrdem.FinalizareEmitirNotaFiscal1Click(Sender: TObject);
 begin
   inherited;
   Panel7.Visible := True;
   Panel9.Visible := False;
-  Panel6.Caption        := '  Informe Data da Finalização';
-  LookupPlano.visible     := True;
-  Label24.visible         := True;
+  Panel6.Caption := '  Informe Data da Finalização';
+  LookupPlano.visible := True;
+  Label24.visible := True;
   SQLPlano.Open;
   SQLFinanceiro.Open;
   SQLTemplate.BeforeEdit := Nil;
   SQLTemplate.Edit;
   SQLTemplateFINALIZADO.AsDateTime := nOW;
   PnlEntrega.Visible := True;
-  LabelVlrCobrar.Value    := SQLTemplateVALORTOTAL.Value;
+  LabelVlrCobrar.Value := SQLTemplateVALORTOTAL.Value;
   DBDateEdit3.SetFocus;
   SQLFinaliza.Append;
   SQLFinalizaDATA.AsDateTime := Date;
-  SQLFinalizaORDNUM.Value    := SQLTemplateORDID.Value;
+  SQLFinalizaORDNUM.Value := SQLTemplateORDID.Value;
 end;
 
-procedure TFormCadastroMecOrdem.CancelarOrdemdeServio1Click(
-  Sender: TObject);
-  var motivo:String;
+procedure TFormCadastroMecOrdem.CancelarOrdemdeServio1Click(Sender: TObject);
+var
+  motivo: string;
 begin
   inherited;
-  If SQLTemplateSTATUS.asstring = 'F' then
+  if SQLTemplateSTATUS.asstring = 'F' then
   begin
-    if MessageDlg('Confirma o CANCELAMENTO da Ordem de Serviço Atual ?', mtConfirmation, [mbYes,mbNo], 0) = mrYes then
+    if MessageDlg('Confirma o CANCELAMENTO da Ordem de Serviço Atual ?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
     begin
-      Motivo := InputBox('Motivo do Cancelamento','Informe:','');
+      Motivo := InputBox('Motivo do Cancelamento', 'Informe:', '');
       SQLTemplate.BeforeEdit := nil;
       SQLTemplate.Edit;
       SQLTemplateSTATUS.AsString := 'C';
-      SQLTemplateOBS_ENTREGA.AsString    := SQLTemplateOBS_ENTREGA.AsString + #13+#10+ Motivo;
+      SQLTemplateOBS_ENTREGA.AsString := SQLTemplateOBS_ENTREGA.AsString + #13 + #10 + Motivo;
       SQLTemplate.Post;
       SQLTemplate.BeforeEdit := SQLTemplateBeforeEdit;
       ShowMessage('Cancelamento Efetuado com Sucesso.');
     end;
-  end else
+  end
+  else
     ShowMessage('Somente é Permitido Cancelamento de Ordens Finalizadas');
 end;
 
-procedure TFormCadastroMecOrdem.AlterarStatusparaABERTO1Click(
-  Sender: TObject);
+procedure TFormCadastroMecOrdem.AlterarStatusparaABERTO1Click(Sender: TObject);
 begin
   inherited;
-  if Pergunta('SIM','Confirma a reabertura desta Ordem de Serviço?') then
+  if Pergunta('SIM', 'Confirma a reabertura desta Ordem de Serviço?') then
   begin
     SQLTemplate.BeforeEdit := nil;
     SQLTemplate.Edit;
@@ -1276,26 +1303,28 @@ begin
 end;
 
 procedure TFormCadastroMecOrdem.BitBtn1Click(Sender: TObject);
-var NumNF:Integer;
-    Form : TObject;
+var
+  NumNF: Integer;
+  Form: TObject;
 begin
   inherited;
   if Panel6.Caption = '  Informe Desconto Concedido' then
   begin
-    if Pergunta('SIM','Confirma o Desconto Informado ?') then
+    if Pergunta('SIM', 'Confirma o Desconto Informado ?') then
       AplicarDescontos;
     PnlEntrega.Visible := False;
-  end else
+  end
+  else
   begin
-    Try
+    try
       if SQLNotafiscal.State in ([dsInsert, dsEdit]) then
         SQLNotafiscal.Post;
-    Except
+    except
       SQLNotafiscal.Cancel;
     end;
     SQLNotafiscal.Close;
 
-    if (SQLTemplateFinalizado.asdatetime+Time) < (SQLTemplateDATA.asdatetime) then
+    if (SQLTemplateFinalizado.asdatetime + Time) < (SQLTemplateDATA.asdatetime) then
     begin
       ShowMessage('Data Informada Menor que Data da Inclusão da Ordem');
       DBDateEdit3.SetFocus;
@@ -1304,7 +1333,8 @@ begin
 
     if Panel6.Caption = '  Informe Data da Finalização' then
       SQLTemplateSTATUS.AsString := 'F'  // Finalizado
-    else begin
+    else
+    begin
       SQLTemplateSTATUS.AsString := 'E'; // Entregue
     end;
 
@@ -1320,33 +1350,33 @@ begin
 
     if SQLTemplateSTATUS.AsString = 'F' then
     begin
-      if Pergunta('SIM','Confirma a Geração da Nota Fiscal a partir desta Ordem de Serviço?') then
+      if Pergunta('SIM', 'Confirma a Geração da Nota Fiscal a partir desta Ordem de Serviço?') then
       begin
         NumNF := GerarNF;
 
         if NumNF > 0 then
         begin
           SQLFinaliza.First;
-          While not SQLFinaliza.Eof do
+          while not SQLFinaliza.Eof do
           begin
-            if (SQLFinalizaNOTAFISCAL.IsNull) or (SQLFinalizaNOTAFISCAL.Value = 0 ) then
+            if (SQLFinalizaNOTAFISCAL.IsNull) or (SQLFinalizaNOTAFISCAL.Value = 0) then
             begin
               SQLFinaliza.Edit;
               SQLFinalizaNOTAFISCAL.Value := NumNF;
               SQLFinaliza.Post;
-            End;
+            end;
             SQLFinaliza.Next;
-          End;
+          end;
 
-          CriaFormulario(TFormCadastroNotaFiscal, 'FormCadastroNotaFiscal',False,False,False,'') ;
+          CriaFormulario(TFormCadastroNotaFiscal, 'FormCadastroNotaFiscal', False, False, False, '');
           Form := Application.FindComponent('FormCadastroNotaFiscal');
           ((Form as TForm).FindComponent('ComboSerieNF') as TRxDBLookupCombo).KeyValue := dm.SerieAtualPedidos;
-          ((Form as TForm).FindComponent('EditNroNFInicial') as TMaskEdit).Text        := IntToStr(NumNF);
-          ((Form as TForm).FindComponent('EditNroNFFinal') as TMaskEdit).Text          := IntToStr(NumNF);
+          ((Form as TForm).FindComponent('EditNroNFInicial') as TMaskEdit).Text := IntToStr(NumNF);
+          ((Form as TForm).FindComponent('EditNroNFFinal') as TMaskEdit).Text := IntToStr(NumNF);
           ((Form as TForm).FindComponent('BTNLocalizar') as TSpeedButton).Click;
           //((Form as TForm).FindComponent('NotaFiscalEletrnicaListadas1') as TMenuItem).Click;
-        End;
-      End;
+        end;
+      end;
     end;
     PnlEntrega.Visible := False;
 
@@ -1361,7 +1391,7 @@ end;
 procedure TFormCadastroMecOrdem.BitBtn2Click(Sender: TObject);
 begin
   inherited;
-  if SQLFinaliza.State in ([dsInsert,dsEdit]) then
+  if SQLFinaliza.State in ([dsInsert, dsEdit]) then
     SQLFinaliza.Cancel;
 
   if SQLTemplate.State = dsEdit then
@@ -1371,7 +1401,7 @@ end;
 
 procedure TFormCadastroMecOrdem.SQLTemplateBeforeDelete(DataSet: TDataSet);
 begin
-  If SQLTemplateSTATUS.AsString <> 'A' then
+  if SQLTemplateSTATUS.AsString <> 'A' then
   begin
     ShowMessage('Somente é permitido excluir ordens com Status ABERTO');
     Abort;
@@ -1379,80 +1409,85 @@ begin
   inherited;
 end;
 
-
-Function TFormCadastroMecOrdem.BuscaDadosCliente:TCLIE;
-var nLocal:TCLIE;
+function TFormCadastroMecOrdem.BuscaDadosCliente: TCLIE;
+var
+  nLocal: TCLIE;
 begin
-  Try
+  try
     SQLBuscas.Close;
-    SQLBuscas.SQL.Text := 'Select CLIEA2UFRES, CLIEA60RAZAOSOC, CLIEA5FISJURID, CLIECENQUADRAMENTO '+
-    'From CLIENTE where CLIEA13ID = :xCLI';
+    SQLBuscas.SQL.Text := 'Select CLIEA2UFRES, CLIEA60RAZAOSOC, CLIEA5FISJURID, CLIECENQUADRAMENTO ' + 'From CLIENTE where CLIEA13ID = :xCLI';
     SQLBuscas.Prepare;
-    SQLBuscas.ParamByName('xCLI').AsString := SQLTemplateCLIEA13ID.AsString;;
+    SQLBuscas.ParamByName('xCLI').AsString := SQLTemplateCLIEA13ID.AsString;
+    ;
     SQLBuscas.Open;
 
     if not SQLBuscas.IsEmpty then
     begin
-      nLocal.nCliUF           := SQLBuscas.fieldByName('CLIEA2UFRES').AsString;
-      nLocal.nCliNome         := SQLBuscas.fieldByName('CLIEA60RAZAOSOC').AsString;
-      nLocal.nCliPessoa       := SQLBuscas.fieldByName('CLIEA5FISJURID').AsString;
-      nLocal.nCliRegime       := SQLBuscas.fieldByName('CLIECENQUADRAMENTO').AsString;
-    end else
+      nLocal.nCliUF := SQLBuscas.fieldByName('CLIEA2UFRES').AsString;
+      nLocal.nCliNome := SQLBuscas.fieldByName('CLIEA60RAZAOSOC').AsString;
+      nLocal.nCliPessoa := SQLBuscas.fieldByName('CLIEA5FISJURID').AsString;
+      nLocal.nCliRegime := SQLBuscas.fieldByName('CLIECENQUADRAMENTO').AsString;
+    end
+    else
     begin
-      nLocal.nCliUF           := '';
-      nLocal.nCliNome         := '';
-      nLocal.nCliPessoa       := '';
-      nLocal.nCliRegime       := '';
+      nLocal.nCliUF := '';
+      nLocal.nCliNome := '';
+      nLocal.nCliPessoa := '';
+      nLocal.nCliRegime := '';
     end;
 
     Result := nLocal;
-  Except on e:Exception do
-  begin
-    ShowMessage('Falha ao encontar dados do Cliente - '+e.message);
-  end; end;
+  except
+    on e: Exception do
+    begin
+      ShowMessage('Falha ao encontar dados do Cliente - ' + e.message);
+    end;
+  end;
 end;
 
-
-Function TFormCadastroMecOrdem.BuscaIcms(nCodProduto:Integer; nCodICMS:String; SitTributaria:String):TICMSUF;
-var nLocal : TICMSUF;
+function TFormCadastroMecOrdem.BuscaIcms(nCodProduto: Integer; nCodICMS: string; SitTributaria: string): TICMSUF;
+var
+  nLocal: TICMSUF;
 begin
   SQLBuscas.Close;
-  SQLBuscas.SQL.Text :=  'Select * From ICMS Where ICMSICOD= :ICMSICOD';
+  SQLBuscas.SQL.Text := 'Select * From ICMS Where ICMSICOD= :ICMSICOD';
   SQLBuscas.ParamByName('ICMSICOD').AsString := nCodICMS;
   SQLBuscas.Open;
 
   if SQLBuscas.IsEmpty then
   begin
-    ShowMessage('ATENÇÃO...'+#13#10+#13#10+'Alíquota de ICMS não Foi Especificada para o produto '+IntToStr(nCodProduto));
-    nLocal.nICMS          := 0;
-    nLocal.nRED_ICMS      := 0;
-    nLocal.nICMS_INTERNO  := 0;
-    nLocal.nMVA           := 0;
-    nLocal.nSTFisica      := '';
-    nLocal.nSTJuridica    := '';
-  end else
+    ShowMessage('ATENÇÃO...' + #13#10 + #13#10 + 'Alíquota de ICMS não Foi Especificada para o produto ' + IntToStr(nCodProduto));
+    nLocal.nICMS := 0;
+    nLocal.nRED_ICMS := 0;
+    nLocal.nICMS_INTERNO := 0;
+    nLocal.nMVA := 0;
+    nLocal.nSTFisica := '';
+    nLocal.nSTJuridica := '';
+  end
+  else
   begin
-    nLocal.nICMS          := SQLBuscas.FindField('ICMSN2ICMSM1').asFloat;
-    nLocal.nRED_ICMS      := SQLBuscas.FindField('ICMSN2REDBASEICMS').asFloat;
-    nLocal.nICMS_INTERNO  := SQLBuscas.FindField('ICMSN2ICMSM1').asFloat;
-    nLocal.nMVA           := SQLBuscas.FindField('ICMSN2PERCSUBSTSAI').asFloat;
-    nLocal.nSTFisica      := SitTributaria;
-    nLocal.nSTJuridica    := SitTributaria;
-  End;
+    nLocal.nICMS := SQLBuscas.FindField('ICMSN2ICMSM1').asFloat;
+    nLocal.nRED_ICMS := SQLBuscas.FindField('ICMSN2REDBASEICMS').asFloat;
+    nLocal.nICMS_INTERNO := SQLBuscas.FindField('ICMSN2ICMSM1').asFloat;
+    nLocal.nMVA := SQLBuscas.FindField('ICMSN2PERCSUBSTSAI').asFloat;
+    nLocal.nSTFisica := SitTributaria;
+    nLocal.nSTJuridica := SitTributaria;
+  end;
   Result := nLocal;
 end;
 
-Function TFormCadastroMecOrdem.BuscaIcmsUf(nCodProduto:Integer; varUF:String; varPessoa:String; varRegime:String):TICMSUF;
-var SQLText : String;
-    nProduto: Integer;
-    nLocal : TICMSUF;
+function TFormCadastroMecOrdem.BuscaIcmsUf(nCodProduto: Integer; varUF: string; varPessoa: string; varRegime: string): TICMSUF;
+var
+  SQLText: string;
+  nProduto: Integer;
+  nLocal: TICMSUF;
 begin
 
-  nProduto:= 0;
+  nProduto := 0;
   // Pesquisa o UF + Cod.Produto para ver se existe algum registro especifico ao Cod Produto digitado
   SQLBuscas.Close;
   SQLBuscas.SQL.Text := 'Select * From ICMSUF Where ICMUA2UF = :ICMUA2UF AND PRODICOD = :pPRODICOD';
-  SQLBuscas.ParamByName('ICMUA2UF').asString   := varUF;
+  SQLBuscas.ParamByName('ICMUA2UF').asString := varUF;
   SQLBuscas.ParamByName('pPRODICOD').AsInteger := nCodProduto;
   SQLBuscas.Open;
 
@@ -1462,28 +1497,27 @@ begin
 
   // Fecha e cria o novo SQL de Pesquisa
   SQLBuscas.Close;
-  SQLBuscas.SQL.Text := 'Select * From ICMSUF Where PRODICOD = :pPRODICOD AND '+
-  'ICMUA2UF =:ICMUA2UF AND TIPOPESSOA = :pPESSOA AND ENQUADRAMENTO = :pREGIME';
+  SQLBuscas.SQL.Text := 'Select * From ICMSUF Where PRODICOD = :pPRODICOD AND ' + 'ICMUA2UF =:ICMUA2UF AND TIPOPESSOA = :pPESSOA AND ENQUADRAMENTO = :pREGIME';
 
   // Se o Resultado for em branco, busca somente pelo UF + Tipo Pessoa (Fis/Jur) + Regime (Enquadramento)
   if SQLBuscas.IsEmpty then
   begin
     SQLBuscas.Close;
-    SQLBuscas.ParamByName('ICMUA2UF').asString  := varUF;
-    SQLBuscas.ParamByName('pPESSOA').AsString   := varPessoa;
-    SQLBuscas.ParamByName('pRegime').AsString   := varRegime;
-    SQLBuscas.ParamByName('pPRODICOD').AsInteger:= nCodProduto;
+    SQLBuscas.ParamByName('ICMUA2UF').asString := varUF;
+    SQLBuscas.ParamByName('pPESSOA').AsString := varPessoa;
+    SQLBuscas.ParamByName('pRegime').AsString := varRegime;
+    SQLBuscas.ParamByName('pPRODICOD').AsInteger := nCodProduto;
     SQLBuscas.Open;
-  End;
+  end;
 
   // Se o Resultado for em branco, busca somente pelo UF + Tipo Pessoa (Fis/Jur)
   if SQLBuscas.IsEmpty then
   begin
     SQLBuscas.Close;
-    SQLBuscas.ParamByName('ICMUA2UF').asString  := varUF;
-    SQLBuscas.ParamByName('pPESSOA').AsString   := varPessoa;
-    SQLBuscas.ParamByName('pRegime').AsString   := 'A'; // Ambas
-    SQLBuscas.ParamByName('pPRODICOD').AsInteger:= nCodProduto;
+    SQLBuscas.ParamByName('ICMUA2UF').asString := varUF;
+    SQLBuscas.ParamByName('pPESSOA').AsString := varPessoa;
+    SQLBuscas.ParamByName('pRegime').AsString := 'A'; // Ambas
+    SQLBuscas.ParamByName('pPRODICOD').AsInteger := nCodProduto;
     SQLBuscas.Open;
   end;
 
@@ -1491,70 +1525,73 @@ begin
   if SQLBuscas.IsEmpty then
   begin
     SQLBuscas.Close;
-    SQLBuscas.ParamByName('ICMUA2UF').asString  := varUF;
-    SQLBuscas.ParamByName('pPESSOA').AsString   := 'A';
-    SQLBuscas.ParamByName('pRegime').AsString   := 'A'; // Ambas
-    SQLBuscas.ParamByName('pPRODICOD').AsInteger:= nCodProduto;
+    SQLBuscas.ParamByName('ICMUA2UF').asString := varUF;
+    SQLBuscas.ParamByName('pPESSOA').AsString := 'A';
+    SQLBuscas.ParamByName('pRegime').AsString := 'A'; // Ambas
+    SQLBuscas.ParamByName('pPRODICOD').AsInteger := nCodProduto;
     SQLBuscas.Open;
   end;
   if SQLBuscas.IsEmpty then
   begin
-    ShowMessage('ATENÇÃO...'+#13#10+#13#10+'Alíquota de ICMS para o Estado '+VarUF+' não Foi Especificada'+#13#10+'Código do Produto: '+IntToStr(nCodProduto));
-    nLocal.nICMS          := 0;
-    nLocal.nRED_ICMS      := 0;
-    nLocal.nICMS_INTERNO  := 0;
-    nLocal.nMVA           := 0;
-    nLocal.nSTFisica      := '';
-    nLocal.nSTJuridica    := '';
-  end else
+    ShowMessage('ATENÇÃO...' + #13#10 + #13#10 + 'Alíquota de ICMS para o Estado ' + VarUF + ' não Foi Especificada' + #13#10 + 'Código do Produto: ' + IntToStr(nCodProduto));
+    nLocal.nICMS := 0;
+    nLocal.nRED_ICMS := 0;
+    nLocal.nICMS_INTERNO := 0;
+    nLocal.nMVA := 0;
+    nLocal.nSTFisica := '';
+    nLocal.nSTJuridica := '';
+  end
+  else
   begin
-    nLocal.nICMS          := SQLBuscas.FindField('ICMUN2ALIQUOTA').asFloat;
-    nLocal.nRED_ICMS      := SQLBuscas.FindField('ICMUN3REDBASECALC').asFloat;
-    nLocal.nICMS_INTERNO  := SQLBuscas.FindField('ICMUN2ALIQUOTAINTERNA').asFloat;
-    nLocal.nMVA           := SQLBuscas.FindField('ICMUN3MVA').asFloat;
-    nLocal.nSTFisica      := SQLBuscas.FindField('ICMUISITTRIB').AsString;
-    nLocal.nSTJuridica    := SQLBuscas.FindField('ICMUISITTRIBJURIDICA').AsString;
+    nLocal.nICMS := SQLBuscas.FindField('ICMUN2ALIQUOTA').asFloat;
+    nLocal.nRED_ICMS := SQLBuscas.FindField('ICMUN3REDBASECALC').asFloat;
+    nLocal.nICMS_INTERNO := SQLBuscas.FindField('ICMUN2ALIQUOTAINTERNA').asFloat;
+    nLocal.nMVA := SQLBuscas.FindField('ICMUN3MVA').asFloat;
+    nLocal.nSTFisica := SQLBuscas.FindField('ICMUISITTRIB').AsString;
+    nLocal.nSTJuridica := SQLBuscas.FindField('ICMUISITTRIBJURIDICA').AsString;
   end;
 
   Result := nLocal;
 
 end;
 
-Function TFormCadastroMecOrdem.BuscaDadosProduto(nCodProduto:Integer):TPRODUTO_ID;
-var nLocal:TPRODUTO_ID;
+function TFormCadastroMecOrdem.BuscaDadosProduto(nCodProduto: Integer): TPRODUTO_ID;
+var
+  nLocal: TPRODUTO_ID;
 begin
   SQLBuscas.Close;
-  SQLBuscas.SQL.Text := 'Select PRODN3VLRCOMPRA, PRODCSERVICO, PRODN3PERCIPI, ICMSICOD, '+
-  'PRODN3PESOBRUTO, PRODN3PESOLIQ, PRODISITTRIB From PRODUTO where PRODICOD = :xPRODI';
+  SQLBuscas.SQL.Text := 'Select PRODN3VLRCOMPRA, PRODCSERVICO, PRODN3PERCIPI, ICMSICOD, ' + 'PRODN3PESOBRUTO, PRODN3PESOLIQ, PRODISITTRIB From PRODUTO where PRODICOD = :xPRODI';
   SQLBuscas.Prepare;
-  SQLBuscas.ParamByName('xPRODI').AsInteger:= nCodProduto;
+  SQLBuscas.ParamByName('xPRODI').AsInteger := nCodProduto;
   SQLBuscas.Open;
 
   if not SQLBuscas.IsEmpty then
   begin
     nLocal.nProdVlrCmpra := SQLBuscas.FieldByName('PRODN3VLRCOMPRA').Value;
-    nLocal.nProdPercIPI  := SQLBuscas.FieldByName('PRODN3PERCIPI').Value;
-    nLocal.nProdPesoBruto:= SQLBuscas.FieldByName('PRODN3PESOBRUTO').Value;
-    nLocal.nProdPesoLiq  := SQLBuscas.FieldByName('PRODN3PESOLIQ').Value;
-    nLocal.nProdServico  := SQLBuscas.FieldByName('PRODCSERVICO').AsString;
+    nLocal.nProdPercIPI := SQLBuscas.FieldByName('PRODN3PERCIPI').Value;
+    nLocal.nProdPesoBruto := SQLBuscas.FieldByName('PRODN3PESOBRUTO').Value;
+    nLocal.nProdPesoLiq := SQLBuscas.FieldByName('PRODN3PESOLIQ').Value;
+    nLocal.nProdServico := SQLBuscas.FieldByName('PRODCSERVICO').AsString;
     nLocal.nProdIcmsICOD := SQLBuscas.FieldByName('ICMSICOD').AsString;
-    nLocal.nProdSitTrib  := SQLBuscas.FieldByName('PRODISITTRIB').AsString;
-  end else
+    nLocal.nProdSitTrib := SQLBuscas.FieldByName('PRODISITTRIB').AsString;
+  end
+  else
   begin
     nLocal.nProdVlrCmpra := 0;
-    nLocal.nProdPercIPI  := 0;
-    nLocal.nProdPesoBruto:= 0;
-    nLocal.nProdPesoLiq  := 0;
-    nLocal.nProdServico  := '';
+    nLocal.nProdPercIPI := 0;
+    nLocal.nProdPesoBruto := 0;
+    nLocal.nProdPesoLiq := 0;
+    nLocal.nProdServico := '';
     nLocal.nProdIcmsICOD := '';
-    nLocal.nProdSitTrib  := '';
+    nLocal.nProdSitTrib := '';
   end;
 
   Result := nLocal;
 end;
 
-Function TFormCadastroMecOrdem.BuscaDadosOperacao(nCodOp:String):TOPERACAO_ID;
-var nLocal:TOPERACAO_ID;
+function TFormCadastroMecOrdem.BuscaDadosOperacao(nCodOp: string): TOPERACAO_ID;
+var
+  nLocal: TOPERACAO_ID;
 begin
   try
     SQLBuscas.Close;
@@ -1566,67 +1603,69 @@ begin
     if not SQLBuscas.IsEmpty then
     begin
       nLocal.nOpOrigemDestino := SQLBuscas.fieldByName('OPESCORIGEMDESTINO').AsString;
-      nLocal.nOpCalcIPI       := SQLBuscas.fieldByName('OPESCCALCIPI').AsString;
-      nLocal.nOpCalcICMS      := SQLBuscas.fieldByName('OPESCCALCICMS').AsString;
-      nLocal.nOpCalcST        := SQLBuscas.fieldByName('OPESCCALCSUBST').AsString;
-      nLocal.nOpCalcIPIFis    := SQLBuscas.fieldByName('OPESCCALCIPIFIS').AsString;
-      nLocal.nOpCalcICMSFis   := SQLBuscas.fieldByName('OPESCCALCICMSFIS').AsString;
-      nLocal.nOpCalcSTFis     := SQLBuscas.fieldByName('OPESCCALCSUBSTFIS').AsString;
-      nLocal.nOpCFOPnoUF      := SQLBuscas.fieldByName('CFOPA5CODDENTROUF').AsString;
-      nLocal.nOpCFOPForaUF    := SQLBuscas.fieldByName('CFOPA5CODFORAUF').AsString;
-      nLocal.nOpPCTACred      := SQLBuscas.fieldByName('PLCTA15CODCRED').AsString;
-    end else
+      nLocal.nOpCalcIPI := SQLBuscas.fieldByName('OPESCCALCIPI').AsString;
+      nLocal.nOpCalcICMS := SQLBuscas.fieldByName('OPESCCALCICMS').AsString;
+      nLocal.nOpCalcST := SQLBuscas.fieldByName('OPESCCALCSUBST').AsString;
+      nLocal.nOpCalcIPIFis := SQLBuscas.fieldByName('OPESCCALCIPIFIS').AsString;
+      nLocal.nOpCalcICMSFis := SQLBuscas.fieldByName('OPESCCALCICMSFIS').AsString;
+      nLocal.nOpCalcSTFis := SQLBuscas.fieldByName('OPESCCALCSUBSTFIS').AsString;
+      nLocal.nOpCFOPnoUF := SQLBuscas.fieldByName('CFOPA5CODDENTROUF').AsString;
+      nLocal.nOpCFOPForaUF := SQLBuscas.fieldByName('CFOPA5CODFORAUF').AsString;
+      nLocal.nOpPCTACred := SQLBuscas.fieldByName('PLCTA15CODCRED').AsString;
+    end
+    else
     begin
       nLocal.nOpOrigemDestino := '';
-      nLocal.nOpCalcIPI       := '';
-      nLocal.nOpCalcICMS      := '';
-      nLocal.nOpCalcST        := '';
-      nLocal.nOpCalcIPIFis    := '';
-      nLocal.nOpCalcICMSFis   := '';
-      nLocal.nOpCalcSTFis     := '';
-      nLocal.nOpCFOPnoUF      := '';
-      nLocal.nOpCFOPForaUF    := '';
-      nLocal.nOpPCTACred      := '';
+      nLocal.nOpCalcIPI := '';
+      nLocal.nOpCalcICMS := '';
+      nLocal.nOpCalcST := '';
+      nLocal.nOpCalcIPIFis := '';
+      nLocal.nOpCalcICMSFis := '';
+      nLocal.nOpCalcSTFis := '';
+      nLocal.nOpCFOPnoUF := '';
+      nLocal.nOpCFOPForaUF := '';
+      nLocal.nOpPCTACred := '';
     end;
 
     Result := nLocal;
-  except on E:Exception do
-  begin
-    ShowMessage('Falha ao encontar dados da OPERACAO DE ESTOQUE - '+E.Message);
-  End; End;
+  except
+    on E: Exception do
+    begin
+      ShowMessage('Falha ao encontar dados da OPERACAO DE ESTOQUE - ' + E.Message);
+    end;
+  end;
 end;
 
-
-Function TFormCadastroMecOrdem.GerarNF:Integer;
-Var nCLIE : TCLIE;
-    nOPES:TOPERACAO_ID;
-
+function TFormCadastroMecOrdem.GerarNF: Integer;
+var
+  nCLIE: TCLIE;
+  nOPES: TOPERACAO_ID;
 begin
   SQLNotaFiscal.Open;
   SQLTransportadora.Open;
   SQLNotaFiscalItem.Open;
 
-  UFEmpresa := SQLLocate('EMPRESA','EMPRICOD','EMPRA2UF',DM.SQLTerminalAtivo.FieldByName('EMPRICOD').AsString);
-  nCLIE     := BuscaDadosCliente;
+  UFEmpresa := SQLLocate('EMPRESA', 'EMPRICOD', 'EMPRA2UF', DM.SQLTerminalAtivo.FieldByName('EMPRICOD').AsString);
+  nCLIE := BuscaDadosCliente;
 
   UFCliente := nCLIE.nCliUF;
 
-  if UFCliente  = '' then
-    begin
-      ShowMessage('Não foi cadastrado o Estado para o Cliente '+nCLIE.nCliNome+', Verifique!');
-      Result := 0;
-      Abort;
-    end;
+  if UFCliente = '' then
+  begin
+    ShowMessage('Não foi cadastrado o Estado para o Cliente ' + nCLIE.nCliNome + ', Verifique!');
+    Result := 0;
+    Abort;
+  end;
 
-  FormTelaConfigPedidos:= TFormTelaConfigPedidos.Create(Self);
-  FormTelaConfigPedidos.Label4.Caption        := '  Informe Dados Necessários para Emissão da Nota Fiscal';
+  FormTelaConfigPedidos := TFormTelaConfigPedidos.Create(Self);
+  FormTelaConfigPedidos.Label4.Caption := '  Informe Dados Necessários para Emissão da Nota Fiscal';
   if PnlEntrega.Visible then
-    FormTelaConfigPedidos.DataEmissao.Date      := DBDateEdit3.Date
+    FormTelaConfigPedidos.DataEmissao.Date := DBDateEdit3.Date
   else
-    FormTelaConfigPedidos.DataEmissao.Date      := Date;
-  FormTelaConfigPedidos.Label14.Visible       := False;
+    FormTelaConfigPedidos.DataEmissao.Date := Date;
+  FormTelaConfigPedidos.Label14.Visible := False;
   FormTelaConfigPedidos.ComboVendedor.Visible := False;
-  FormTelaConfigPedidos.ComboFrete.ItemIndex  := 0;
+  FormTelaConfigPedidos.ComboFrete.ItemIndex := 0;
 
   if FormTelaConfigPedidos.ShowModal = mrCancel then
   begin
@@ -1634,68 +1673,68 @@ begin
     Abort;
   end;
 
-  PesoTotalBruto                        := 0;
-  PesoTotalLiq                          := 0;
-  QtdeTotal                             := 0;
+  PesoTotalBruto := 0;
+  PesoTotalLiq := 0;
+  QtdeTotal := 0;
   SQLNotaFiscal.Append;
-  SQLNotaFiscalEMPRICOD.Value           := DM.SQLTerminalAtivo.FieldByName('EMPRICOD').Value;
-  SQLNotaFiscalCLIEA13ID.Value          := SQLTemplateCLIEA13ID.Value;
-  SQLNotaFiscalNOFICSTATUS.Value        := 'A';
-  SQLNotaFiscalNOFIDEMIS.Value          := DM.DataEmissaoPedidos;
-  SQLNotaFiscalNOFIDSAIDAENTRADA.Value  := DM.DataEntregaPedidos;
-  SQLNotaFiscalVENDICOD.AsString        := '';
-  SQLNotaFiscalSERIA5COD.Value          := DM.SerieAtualPedidos;
+  SQLNotaFiscalEMPRICOD.Value := DM.SQLTerminalAtivo.FieldByName('EMPRICOD').Value;
+  SQLNotaFiscalCLIEA13ID.Value := SQLTemplateCLIEA13ID.Value;
+  SQLNotaFiscalNOFICSTATUS.Value := 'A';
+  SQLNotaFiscalNOFIDEMIS.Value := DM.DataEmissaoPedidos;
+  SQLNotaFiscalNOFIDSAIDAENTRADA.Value := DM.DataEntregaPedidos;
+  SQLNotaFiscalVENDICOD.AsString := '';
+  SQLNotaFiscalSERIA5COD.Value := DM.SerieAtualPedidos;
   SQLNotaFiscalNOFICFRETEPORCONTA.Value := DM.FretePorConta;
-  SQLNotaFiscalTRANICOD.Value           := DM.TranspAtualPedidos;
-  SQLNotaFiscalVEICA13ID.Value          := DM.VeiculoAtualPedidos;
-  SQLNotaFiscalNOFIA8PLACAVEIC.Value    := DM.VeiculoAtualPedidos;
+  SQLNotaFiscalTRANICOD.Value := DM.TranspAtualPedidos;
+  SQLNotaFiscalVEICA13ID.Value := DM.VeiculoAtualPedidos;
+  SQLNotaFiscalNOFIA8PLACAVEIC.Value := DM.VeiculoAtualPedidos;
 
   // Alimenta a Operação de Estoque Buscando do Configurador
   SQLConfigOrdem.Open;
-  SQLNotaFiscalOPESICOD.AsString      := SQLConfigOrdemOP_EMITENOTA.AsString;
+  SQLNotaFiscalOPESICOD.AsString := SQLConfigOrdemOP_EMITENOTA.AsString;
   SQLConfigOrdem.Close;
   // Busca dados da Operacao de Estoque e carrega Array nOPES
   nOPES := BuscaDadosOperacao(SQLNotaFiscalOPESICOD.AsString);
 
   if UFEmpresa = UFCliente then
-    SQLNotaFiscalCFOPA5COD.AsString      := nOPES.nOpCFOPnoUF
+    SQLNotaFiscalCFOPA5COD.AsString := nOPES.nOpCFOPnoUF
   else
-    SQLNotaFiscalCFOPA5COD.AsString      := nOPES.nOpCFOPForaUF;
+    SQLNotaFiscalCFOPA5COD.AsString := nOPES.nOpCFOPForaUF;
 
-  SQLNotaFiscalPLCTA15CODCRED.AsString   := nOPES.nOpPCTACred;
-  SQLNotaFiscalNOFIN2VLRPRODUTO.Value    := SQLTemplateORITN2VLRPRODUTO.Value;
-  SQLNotaFiscalNOFIN2VLRDESCPROM.Value   := 0;
+  SQLNotaFiscalPLCTA15CODCRED.AsString := nOPES.nOpPCTACred;
+  SQLNotaFiscalNOFIN2VLRPRODUTO.Value := SQLTemplateORITN2VLRPRODUTO.Value;
+  SQLNotaFiscalNOFIN2VLRDESCPROM.Value := 0;
   SQLNotaFiscalNOFIN2VLROUTRASDESP.Value := 0;
-  SQLNotaFiscalNOFIN2VLRNOTA.Value       := SQLTemplateVALORTOTAL.Value ;
-  SQLNotaFiscalNOFIN2VLRFRETE.Value      := 0;
-  SQLNotaFiscalNOFIN2BASCALCCIPI.Value   := 0;
-  SQLNotaFiscalNOFIN2BASCALCICMS.Value   := 0;
-  SQLNotaFiscalNOFIN2BASCALCSUBS.Value   := 0;
-  SQLNotaFiscalNOFIN2VLRDESC.Value       := SQLTemplateORITN2VLRDESC.Value;
-  SQLNotaFiscalNOFIN2VLRICMS.Value       := 0;
-  SQLNotaFiscalNOFIN2VLRICMSFRETE.Value  := 0;
-  SQLNotaFiscalNOFIN2VLRIPI.Value        := 0;
-  SQLNotaFiscalNOFIN2VLRISSQN.Value      := 0;
-  SQLNotaFiscalNOFIN2VLRSERVICO.Value    := SQLTemplateORITN2VLRSERVICO.value;
-  SQLNotaFiscalNOFIN2VLRSEGURO.Value     := 0;
-  SQLNotaFiscalNOFIN2VLRSUBS.Value       := 0;
-  SQLNotaFiscalNOFIN3QUANT.Value         := 0;
-  SQLNotaFiscalNOFICFINALIDADE.value     := '1';
-  SQLNotaFiscalPLRCICOD.Value            := SQLTemplatePARCELAS.AsInteger;
-  SQLNotaFiscalPENDENTE.Value            := 'S';
-  SQLNotaFiscalREGISTRO.Value            := Now;
-  SQLNotaFiscalUSUAICOD.Value            := dm.UsuarioAtual;
-  SQLNotaFiscalNOFIN3PESBRUT.Asstring    := Dm.PedidoPesoB;
-  SQLNotaFiscalNOFIN3PESLIQ.AsString     := Dm.PedidoPesoL;
-  SQLNotaFiscalNOFIA15MARCA.AsString     := Dm.PedidoMarca;
-  SQLNotaFiscalNOFIA20ESPECIE.AsString   := Dm.PedidoEspecie;
-  SQLNotaFiscalNOFIA255OBS.AsString      := Dm.PedidoObs + 'Veiculo: '+edtPlaca.Text + ' - '+DBComboBoxVeiculo.Text;
+  SQLNotaFiscalNOFIN2VLRNOTA.Value := SQLTemplateVALORTOTAL.Value;
+  SQLNotaFiscalNOFIN2VLRFRETE.Value := 0;
+  SQLNotaFiscalNOFIN2BASCALCCIPI.Value := 0;
+  SQLNotaFiscalNOFIN2BASCALCICMS.Value := 0;
+  SQLNotaFiscalNOFIN2BASCALCSUBS.Value := 0;
+  SQLNotaFiscalNOFIN2VLRDESC.Value := SQLTemplateORITN2VLRDESC.Value;
+  SQLNotaFiscalNOFIN2VLRICMS.Value := 0;
+  SQLNotaFiscalNOFIN2VLRICMSFRETE.Value := 0;
+  SQLNotaFiscalNOFIN2VLRIPI.Value := 0;
+  SQLNotaFiscalNOFIN2VLRISSQN.Value := 0;
+  SQLNotaFiscalNOFIN2VLRSERVICO.Value := SQLTemplateORITN2VLRSERVICO.value;
+  SQLNotaFiscalNOFIN2VLRSEGURO.Value := 0;
+  SQLNotaFiscalNOFIN2VLRSUBS.Value := 0;
+  SQLNotaFiscalNOFIN3QUANT.Value := 0;
+  SQLNotaFiscalNOFICFINALIDADE.value := '1';
+  SQLNotaFiscalPLRCICOD.Value := SQLTemplatePARCELAS.AsInteger;
+  SQLNotaFiscalPENDENTE.Value := 'S';
+  SQLNotaFiscalREGISTRO.Value := Now;
+  SQLNotaFiscalUSUAICOD.Value := dm.UsuarioAtual;
+  SQLNotaFiscalNOFIN3PESBRUT.Asstring := Dm.PedidoPesoB;
+  SQLNotaFiscalNOFIN3PESLIQ.AsString := Dm.PedidoPesoL;
+  SQLNotaFiscalNOFIA15MARCA.AsString := Dm.PedidoMarca;
+  SQLNotaFiscalNOFIA20ESPECIE.AsString := Dm.PedidoEspecie;
+  SQLNotaFiscalNOFIA255OBS.AsString := Dm.PedidoObs + 'Veiculo: ' + edtPlaca.Text + ' - ' + DBComboBoxVeiculo.Text;
   SQLNotaFiscal.Post;
 
   Result := SQLNotaFiscalNOFIINUMERO.Value;
 
   // Importa os Itens da Ordem
-  ImportaItensPedidoVenda(nOPES,nCLIE);
+  ImportaItensPedidoVenda(nOPES, nCLIE);
 
   // Alimenta o Contas a Receber
   CriaContasReceber;
@@ -1704,183 +1743,185 @@ begin
   SQLNotaFiscal.Edit;
   // Base e Valor IPI
   SQLNotaFiscalNOFIN2BASCALCCIPI.Value := 0;
-  SQLNotaFiscalNOFIN2VLRIPI.Value      := 0;
+  SQLNotaFiscalNOFIN2VLRIPI.Value := 0;
   // Base e Valor Total ICMS
   SQLNotaFiscalNOFIN2BASCALCICMS.Value := TotBaseCalcICMS;
-  SQLNotaFiscalNOFIN2VLRICMS.Value     := TotVlrICMS;
+  SQLNotaFiscalNOFIN2VLRICMS.Value := TotVlrICMS;
   // Base e Valor Total ICMS Subst
   SQLNotaFiscalNOFIN2BASCALCSUBS.Value := TotBaseCalcICMSSubst;
-  SQLNotaFiscalNOFIN2VLRSUBS.Value     := TotVlrICMSSubst;
+  SQLNotaFiscalNOFIN2VLRSUBS.Value := TotVlrICMSSubst;
   // Aliquota e Valor ISSQN
-  SQLNotaFiscalNOFIN2VLRISSQN.Value    := TotVlrISSQN;
+  SQLNotaFiscalNOFIN2VLRISSQN.Value := TotVlrISSQN;
   //  Peso Bruto, Liq e Quantidade
-  SQLNotaFiscalNOFIN3PESBRUT.Asstring  := Dm.PedidoPesoB;
-  SQLNotaFiscalNOFIN3PESLIQ.AsString   := Dm.PedidoPesoL;
+  SQLNotaFiscalNOFIN3PESBRUT.Asstring := Dm.PedidoPesoB;
+  SQLNotaFiscalNOFIN3PESLIQ.AsString := Dm.PedidoPesoL;
 //  SQLNotaFiscalNOFIN3QUANT.Value       := QtdeTotal;
-  Try
-    SQLNotaFiscalNOFIN3QUANT.Value     := StrToFloat(Dm.PedidoVolume);
-  Except
-    SQLNotaFiscalNOFIN3QUANT.Value       := QtdeTotal;
-  End;
-
+  try
+    SQLNotaFiscalNOFIN3QUANT.Value := StrToFloat(Dm.PedidoVolume);
+  except
+    SQLNotaFiscalNOFIN3QUANT.Value := QtdeTotal;
+  end;
 
   if DM.SQLConfigVenda.FieldByName('CFVETOBSPADRAONF').AsString <> '' then
-    SQLNotaFiscalNOFIA255OBS.AsString := DM.SQLConfigVenda.FieldByName('CFVETOBSPADRAONF').AsString+ '  '+Dm.PedidoObs;
+    SQLNotaFiscalNOFIA255OBS.AsString := DM.SQLConfigVenda.FieldByName('CFVETOBSPADRAONF').AsString + '  ' + Dm.PedidoObs;
 
-  SQLNotaFiscalNOFIN2VLRNOTA.Value     := (SQLNotaFiscalNOFIN2VLRNOTA.Value+SQLNotaFiscalNOFIN2VLRFRETE.Value+SQLNotaFiscalNOFIN2VLROUTRASDESP.Value+SQLNotaFiscalNOFIN2VLRSUBS.Value)-SQLNotaFiscalNOFIN2VLRDESCPROM.Value;
+  SQLNotaFiscalNOFIN2VLRNOTA.Value := (SQLNotaFiscalNOFIN2VLRNOTA.Value + SQLNotaFiscalNOFIN2VLRFRETE.Value + SQLNotaFiscalNOFIN2VLROUTRASDESP.Value + SQLNotaFiscalNOFIN2VLRSUBS.Value) - SQLNotaFiscalNOFIN2VLRDESCPROM.Value;
 
   SQLNotaFiscal.Post;
 
   // Gravar Data Primeira Compra e Data Ultima Compra
   Dm.SQLCliente.Close;
   Dm.SQLCliente.Sql.Clear;
-  Dm.SQLCliente.SQL.Add('UPDATE CLIENTE SET Pendente=''S'' , CLIEDPRICOMPRA = ''' + FormatDateTime('mm/dd/yyyy',SQLNotaFiscalNOFIDEMIS.Value) + ''', CLIEDULTCOMPRA = ''' +FormatDateTime('mm/dd/yyyy',SQLNotaFiscalNOFIDEMIS.Value)+ ''' Where CLIEA13ID = ' + '''' + SQLNotaFiscalCLIEA13ID.Value + ''' and CLIEDPRICOMPRA is null') ;
+  Dm.SQLCliente.SQL.Add('UPDATE CLIENTE SET Pendente=''S'' , CLIEDPRICOMPRA = ''' + FormatDateTime('mm/dd/yyyy', SQLNotaFiscalNOFIDEMIS.Value) + ''', CLIEDULTCOMPRA = ''' + FormatDateTime('mm/dd/yyyy', SQLNotaFiscalNOFIDEMIS.Value) + ''' Where CLIEA13ID = ' + '''' + SQLNotaFiscalCLIEA13ID.Value + ''' and CLIEDPRICOMPRA is null');
   Dm.SQLCliente.ExecSql;
 end;
 
-Procedure TFormCadastroMecOrdem.ImportaItensPedidoVenda(nOPES:TOPERACAO_ID; nCLIE:TCLIE);
-var CalculaSubst, CalculaIPI, CalculaICMS, FisJur, Situacao: String;
-    nPRODS:TPRODUTO_ID;
-    nICMS:TICMSUF;
-    nIten:Integer;
+procedure TFormCadastroMecOrdem.ImportaItensPedidoVenda(nOPES: TOPERACAO_ID; nCLIE: TCLIE);
+var
+  CalculaSubst, CalculaIPI, CalculaICMS, FisJur, Situacao: string;
+  nPRODS: TPRODUTO_ID;
+  nICMS: TICMSUF;
+  nIten: Integer;
 begin
-    TotBaseCalcICMS      := 0;
-    TotBaseCalcICMSSubst := 0;
-    TotVlrICMS           := 0;
-    TotVlrICMSSubst      := 0;
-    TotVlrISSQN          := 0;
+  TotBaseCalcICMS := 0;
+  TotBaseCalcICMSSubst := 0;
+  TotVlrICMS := 0;
+  TotVlrICMSSubst := 0;
+  TotVlrISSQN := 0;
 
       // verifica a quem a operacao de estoque esta vinculada
-    if nOPES.nOpOrigemDestino = 'C' then // se operação vinculada a clientes
-      FisJur := nCLIE.nCliPessoa
-    Else if nOPES.nOpOrigemDestino = 'F' then // operacao vinculada a fornecedor
-    begin
-      FisJur := SQLLocate('FORNECEDOR','FORNICOD','FORNCFISJURID',''''+SQLTemplateCLIEA13ID.AsString+'''')
-    end Else // se for vinculada a empresa sempre é juridica
-      FisJur := 'J' ;
+  if nOPES.nOpOrigemDestino = 'C' then // se operação vinculada a clientes
+    FisJur := nCLIE.nCliPessoa
+  else if nOPES.nOpOrigemDestino = 'F' then // operacao vinculada a fornecedor
+  begin
+    FisJur := SQLLocate('FORNECEDOR', 'FORNICOD', 'FORNCFISJURID', '''' + SQLTemplateCLIEA13ID.AsString + '''')
+  end
+  else // se for vinculada a empresa sempre é juridica
+    FisJur := 'J';
 
-    SQLOrdItens.Close;
-    SQLOrdItens.Prepare;
-    SQLORDItens.ParambyName('MFiltro').AsString :=  SQLTemplate.FindField('ORDID').AsString ;
-    SQLOrdItens.Open;
-    SQLOrdItens.First;
-    nIten:= 1;
+  SQLOrdItens.Close;
+  SQLOrdItens.Prepare;
+  SQLORDItens.ParambyName('MFiltro').AsString := SQLTemplate.FindField('ORDID').AsString;
+  SQLOrdItens.Open;
+  SQLOrdItens.First;
+  nIten := 1;
 
-    While Not SQLOrdItens.Eof do
-    begin
+  while not SQLOrdItens.Eof do
+  begin
 
-      nPRODS  := BuscaDadosProduto(SQLOrdItensPRODICOD.AsInteger);
+    nPRODS := BuscaDadosProduto(SQLOrdItensPRODICOD.AsInteger);
 
-      SQLNotaFiscalItem.Append;
-      SQLNotaFiscalItemNOFIA13ID.Value          := SQLNotaFiscalNOFIA13ID.AsString;
-      SQLNotaFiscalItemNFITIITEM.Value          := nIten; inc(nIten);
-      SQLNotaFiscalItemPRODICOD.Value           := SQLOrdItensPRODICOD.AsInteger;
-      SQLNotaFiscalItemNFITA254OBS.Value        := SQLOrdItensORITA254OBS.Value;
-      SQLNotaFiscalItemNFITN3QUANT.Value        := SQLOrdItensORITN3QUANT.Value;
-      SQLNotaFiscalItemNFITN2VLRUNIT.Value      := SQLOrdItensORITN2VLRUNIT.value;
-      SQLNotaFiscalItemNFITN2PERCDESC.value     := SQLOrdItensORITN2PERCDESC.Value;
-      SQLNotaFiscalItemNFITN2VLRDESC.value      := SQLOrdItensORITN2VLRDESC.Value;
-      SQLNotaFiscalItemNFITN2VLRLUCRO.asFloat   := 0;
-      SQLNotaFiscalItemNFITN3TOTVEND.Value      := SQLOrdItensORITN3TOTVEND.Value;
-      SQLNotaFiscalItemNFITN2PERCCOMIS.AsFloat  := SQLOrdItensORITN2PERCCOMIS.AsFloat;
+    SQLNotaFiscalItem.Append;
+    SQLNotaFiscalItemNOFIA13ID.Value := SQLNotaFiscalNOFIA13ID.AsString;
+    SQLNotaFiscalItemNFITIITEM.Value := nIten;
+    inc(nIten);
+    SQLNotaFiscalItemPRODICOD.Value := SQLOrdItensPRODICOD.AsInteger;
+    SQLNotaFiscalItemNFITA254OBS.Value := SQLOrdItensORITA254OBS.Value;
+    SQLNotaFiscalItemNFITN3QUANT.Value := SQLOrdItensORITN3QUANT.Value;
+    SQLNotaFiscalItemNFITN2VLRUNIT.Value := SQLOrdItensORITN2VLRUNIT.value;
+    SQLNotaFiscalItemNFITN2PERCDESC.value := SQLOrdItensORITN2PERCDESC.Value;
+    SQLNotaFiscalItemNFITN2VLRDESC.value := SQLOrdItensORITN2VLRDESC.Value;
+    SQLNotaFiscalItemNFITN2VLRLUCRO.asFloat := 0;
+    SQLNotaFiscalItemNFITN3TOTVEND.Value := SQLOrdItensORITN3TOTVEND.Value;
+    SQLNotaFiscalItemNFITN2PERCCOMIS.AsFloat := SQLOrdItensORITN2PERCCOMIS.AsFloat;
       // Produto é Servico
-      if nPRODS.nProdServico = 'S' then
-        begin
-          SQLNotaFiscalItemNFITN2PERCISSQN.asFloat  := DM.SQLConfigVenda.FieldByName('CFVEN3ALIQISSQN').asFloat;
-          SQLNotaFiscalItemNFITN2VLRISSQN.asFloat   := ((SQLOrdItensORITN2VLRUNIT.value )*SQLOrdItensORITN3QUANT.asFloat)-SQLOrdItensORITN2VLRDESC.asFloat*(SQLNotaFiscalItemNFITN2PERCISSQN.asFloat / 100);
-        end
-      else
-        begin
+    if nPRODS.nProdServico = 'S' then
+    begin
+      SQLNotaFiscalItemNFITN2PERCISSQN.asFloat := DM.SQLConfigVenda.FieldByName('CFVEN3ALIQISSQN').asFloat;
+      SQLNotaFiscalItemNFITN2VLRISSQN.asFloat := ((SQLOrdItensORITN2VLRUNIT.value) * SQLOrdItensORITN3QUANT.asFloat) - SQLOrdItensORITN2VLRDESC.asFloat * (SQLNotaFiscalItemNFITN2PERCISSQN.asFloat / 100);
+    end
+    else
+    begin
           // se a op.estoque estiver marcada para calcular IPI e o campo Perc IPI no cad.produtos for maior que zero.
-          if FisJur = 'J' then
-          begin
-            CalculaIPI  := nOPES.nOpCalcIPI;
-            CalculaICMS := nOPES.nOpCalcICMS;
-            CalculaSubst:= nOPES.nOpCalcST;
-          end else
-          begin
-            CalculaIPI  := nOPES.nOpCalcIPIFis;
-            CalculaICMS := nOPES.nOpCalcICMSFis;
-            CalculaSubst:= nOPES.nOpCalcSTFis;
-          end;
+      if FisJur = 'J' then
+      begin
+        CalculaIPI := nOPES.nOpCalcIPI;
+        CalculaICMS := nOPES.nOpCalcICMS;
+        CalculaSubst := nOPES.nOpCalcST;
+      end
+      else
+      begin
+        CalculaIPI := nOPES.nOpCalcIPIFis;
+        CalculaICMS := nOPES.nOpCalcICMSFis;
+        CalculaSubst := nOPES.nOpCalcSTFis;
+      end;
 
-          if CalculaIPI = 'S' then
-            SQLNotaFiscalItemNFITN2PERCIPI.Value   := nPRODS.nProdPercIPI
-          else
-            SQLNotaFiscalItemNFITN2PERCIPI.Value   := 0;
+      if CalculaIPI = 'S' then
+        SQLNotaFiscalItemNFITN2PERCIPI.Value := nPRODS.nProdPercIPI
+      else
+        SQLNotaFiscalItemNFITN2PERCIPI.Value := 0;
 
-          if (CalculaIPI = 'S') and (SQLNotaFiscalItemNFITN2PERCIPI.AsFloat > 0) then
+      if (CalculaIPI = 'S') and (SQLNotaFiscalItemNFITN2PERCIPI.AsFloat > 0) then
 
-            SQLNotaFiscalItemNFITN2VLRIPI.asFloat     := ((SQLOrdItensORITN2VLRUNIT.value)*SQLOrdItensORITN3QUANT.asFloat)-SQLOrdItensORITN2VLRDESC.asFloat*
-                                                         (SQLNotaFiscalItemNFITN2PERCIPI.asFloat/100);
+        SQLNotaFiscalItemNFITN2VLRIPI.asFloat := ((SQLOrdItensORITN2VLRUNIT.value) * SQLOrdItensORITN3QUANT.asFloat) - SQLOrdItensORITN2VLRDESC.asFloat * (SQLNotaFiscalItemNFITN2PERCIPI.asFloat / 100);
 
          // Busca as Aliquotas de ICMS
-          if UFEmpresa = UFCliente then
-            nICMS := BuscaIcms(SQLOrdItensPRODICOD.AsInteger, nPRODS.nProdIcmsICOD, nPRODS.nProdSitTrib)
-          else
-            nICMS := BuscaIcmsUf(SQLOrdItensPRODICOD.AsInteger, UFCliente, FisJur, nCLIE.nCliRegime);
+      if UFEmpresa = UFCliente then
+        nICMS := BuscaIcms(SQLOrdItensPRODICOD.AsInteger, nPRODS.nProdIcmsICOD, nPRODS.nProdSitTrib)
+      else
+        nICMS := BuscaIcmsUf(SQLOrdItensPRODICOD.AsInteger, UFCliente, FisJur, nCLIE.nCliRegime);
 
-          If FisJur = 'F' then
-            Situacao := nICMS.nSTFisica
-          else
-            Situacao := nICMS.nSTJuridica;
+      if FisJur = 'F' then
+        Situacao := nICMS.nSTFisica
+      else
+        Situacao := nICMS.nSTJuridica;
           // caso nenhuma situação tenha sido encontrada, pega a do Produto
-          if Situacao = '' then
-            Situacao := nPRODS.nProdSitTrib;
+      if Situacao = '' then
+        Situacao := nPRODS.nProdSitTrib;
 
-          SQLNotaFiscalItemNFITICST.AsString := Situacao;
+      SQLNotaFiscalItemNFITICST.AsString := Situacao;
 
-          if CalculaICMS = 'S' then
-          begin
-            if (Situacao='0') or (Situacao='10') or (Situacao='20') or (Situacao='51') or (Situacao='70') or (Situacao='90') or (Situacao='900') then
-            begin
-              SQLNotaFiscalItemNFITN2PERCICMS.Value    := nICMS.nICMS; //DM.SQLLocate('ICMS','ICMSICOD','ICMSN2ICMSM1',DM.SQLLocate('PRODUTO','PRODICOD','ICMSICOD',SQLNotaFiscalItemPRODICOD.AsString));
-              SQLNotaFiscalItemNFITN2PERCREDUCAO.Value := nICMS.nRED_ICMS;  //DM.SQLLocate('ICMS','ICMSICOD','ICMSN2REDBASEICMS',DM.SQLLocate('PRODUTO','PRODICOD','ICMSICOD',SQLNotaFiscalItemPRODICOD.AsString));
-
-              SQLNotaFiscalItemNFITN2BASEICMS.AsFloat  := ((SQLOrdItensORITN2VLRUNIT.Value)*SQLOrdItensORITN3QUANT.asFloat)-SQLOrdItensORITN2VLRDESC.asFloat;
+      if CalculaICMS = 'S' then
+      begin
+        if (Situacao = '0') or (Situacao = '10') or (Situacao = '20') or (Situacao = '51') or (Situacao = '70') or (Situacao = '90') or (Situacao = '900') then
+        begin
+          SQLNotaFiscalItemNFITN2PERCICMS.Value := nICMS.nICMS; //DM.SQLLocate('ICMS','ICMSICOD','ICMSN2ICMSM1',DM.SQLLocate('PRODUTO','PRODICOD','ICMSICOD',SQLNotaFiscalItemPRODICOD.AsString));
+          SQLNotaFiscalItemNFITN2PERCREDUCAO.Value := nICMS.nRED_ICMS;  //DM.SQLLocate('ICMS','ICMSICOD','ICMSN2REDBASEICMS',DM.SQLLocate('PRODUTO','PRODICOD','ICMSICOD',SQLNotaFiscalItemPRODICOD.AsString));
+          SQLNotaFiscalItemNFITN2BASEICMS.AsFloat := ((SQLOrdItensORITN2VLRUNIT.Value) * SQLOrdItensORITN3QUANT.asFloat) - SQLOrdItensORITN2VLRDESC.asFloat;
               // Calcula a Reduçao de Base de Calculo - utilizar variavel para quando a oper.estoq. calsula somente Subst.Tribut.
-              if (SQLNotaFiscalItemNFITN2PERCREDUCAO.Value > 0) then
-                  SQLNotaFiscalItemNFITN2BASEICMS.asFloat := (SQLNotaFiscalItemNFITN2BASEICMS.AsFloat) * (SQLNotaFiscalItemNFITN2PERCREDUCAO.Value / 100);
-              SQLNotaFiscalItemNFITN2VLRICMS.asFloat := SQLNotaFiscalItemNFITN2BASEICMS.asFloat * (nICMS.nICMS / 100);
-            end;
-          end;
+          if (SQLNotaFiscalItemNFITN2PERCREDUCAO.Value > 0) then
+            SQLNotaFiscalItemNFITN2BASEICMS.asFloat := (SQLNotaFiscalItemNFITN2BASEICMS.AsFloat) * (SQLNotaFiscalItemNFITN2PERCREDUCAO.Value / 100);
+          SQLNotaFiscalItemNFITN2VLRICMS.asFloat := SQLNotaFiscalItemNFITN2BASEICMS.asFloat * (nICMS.nICMS / 100);
+        end;
+      end;
 
           // Calcula a substituicao tributaria
-          If (CalculaSubst = 'S') Then
-          Begin
-            if (Situacao='10') or (Situacao='30') or (Situacao='70') or (Situacao='90') or (Situacao='201') or (Situacao='202') or (Situacao='203') or (Situacao='900') then
-            begin
+      if (CalculaSubst = 'S') then
+      begin
+        if (Situacao = '10') or (Situacao = '30') or (Situacao = '70') or (Situacao = '90') or (Situacao = '201') or (Situacao = '202') or (Situacao = '203') or (Situacao = '900') then
+        begin
                 // se a aliquotainterna nao foi especificada pega o percentual de icms normal (aliquota icms)
-              if (FloatToSTr(nICMS.nICMS_INTERNO) = '') or (FloatToSTr(nICMS.nICMS_INTERNO) = '0') then
-                nICMS.nICMS_INTERNO := nICMS.nICMS;
+          if (FloatToSTr(nICMS.nICMS_INTERNO) = '') or (FloatToSTr(nICMS.nICMS_INTERNO) = '0') then
+            nICMS.nICMS_INTERNO := nICMS.nICMS;
 
-              If SQLNotaFiscalItemNFITN2PERCSUBS.asFloat > 0 Then
-              Begin
-                SQLNotaFiscalItemNFITN2BASESUBS.asFloat   := (((SQLNotaFiscalItemNFITN2BASEICMS.value + SQLNotaFiscalItemNFITN2VLRIPI.value + SQLNotaFiscalItemNFITN2VLRFRETE.value)+(SQLNotaFiscalItemNFITN2BASEICMS.value + SQLNotaFiscalItemNFITN2VLRIPI.value + SQLNotaFiscalItemNFITN2VLRFRETE.value) * (SQLNotaFiscalItemNFITN2PERCSUBS.asFloat/100)) ) ;
-                SQLNotaFiscalItemNFITN2VLRSUBS.asFloat    := (SQLNotaFiscalItemNFITN2BASESUBS.asFloat  * (SQLNotaFiscalItemNFITN2PERCICMS.asFloat / 100)) - SQLNotaFiscalItemNFITN2VLRICMS.asFloat;
-              End Else
-              Begin
-                SQLNotaFiscalItemNFITN2BASESUBS.asFloat   := 0;
-                SQLNotaFiscalItemNFITN2VLRSUBS.asFloat    := 0;
-              End;
-            End;
-          End;
-
-          QtdeTotal      := QtdeTotal      + SQLNotaFiscalItemNFITN3QUANT.asFloat;
-          PesoTotalBruto := PesoTotalBruto + StrToFloat(DM.SQLLocate('PRODUTO','PRODICOD','PRODN3PESOBRUTO',SQLNotaFiscalItemPRODICOD.AsString)) * SQLNotaFiscalItemNFITN3QUANT.asFloat;
-          PesoTotalLiq   := PesoTotalLiq   + StrToFloat(DM.SQLLocate('PRODUTO','PRODICOD','PRODN3PESOLIQ',SQLNotaFiscalItemPRODICOD.AsString)) * SQLNotaFiscalItemNFITN3QUANT.asFloat;
+          if SQLNotaFiscalItemNFITN2PERCSUBS.asFloat > 0 then
+          begin
+            SQLNotaFiscalItemNFITN2BASESUBS.asFloat := (((SQLNotaFiscalItemNFITN2BASEICMS.value + SQLNotaFiscalItemNFITN2VLRIPI.value + SQLNotaFiscalItemNFITN2VLRFRETE.value) + (SQLNotaFiscalItemNFITN2BASEICMS.value + SQLNotaFiscalItemNFITN2VLRIPI.value + SQLNotaFiscalItemNFITN2VLRFRETE.value) * (SQLNotaFiscalItemNFITN2PERCSUBS.asFloat / 100)));
+            SQLNotaFiscalItemNFITN2VLRSUBS.asFloat := (SQLNotaFiscalItemNFITN2BASESUBS.asFloat * (SQLNotaFiscalItemNFITN2PERCICMS.asFloat / 100)) - SQLNotaFiscalItemNFITN2VLRICMS.asFloat;
+          end
+          else
+          begin
+            SQLNotaFiscalItemNFITN2BASESUBS.asFloat := 0;
+            SQLNotaFiscalItemNFITN2VLRSUBS.asFloat := 0;
+          end;
         end;
-      SQLNotaFiscalItem.Post;
-      // alimenta variaveis com totais de impostos por item
-      TotBaseCalcICMS := TotBaseCalcICMS + SQLNotaFiscalItemNFITN2BASEICMS.AsFloat;
-      TotVlrICMS      := TotVlrICMS + SQLNotaFiscalItemNFITN2VLRICMS.AsFloat;
-      TotBaseCalcICMSSubst := TotBaseCalcICMSSubst + SQLNotaFiscalItemNFITN2BASESUBS.AsFloat;
-      TotVlrICMSSubst      := TotVlrICMSSubst + SQLNotaFiscalItemNFITN2VLRSUBS.AsFloat;
-      TotVlrISSQN          := SQLNotaFiscalItemNFITN2VLRISSQN.asFloat;
-      AliquotaISSQN        := SQLNotaFiscalItemNFITN2PERCISSQN.asFloat;
+      end;
 
-      SQLOrdItens.Next;
-    End;
+      QtdeTotal := QtdeTotal + SQLNotaFiscalItemNFITN3QUANT.asFloat;
+      PesoTotalBruto := PesoTotalBruto + StrToFloat(DM.SQLLocate('PRODUTO', 'PRODICOD', 'PRODN3PESOBRUTO', SQLNotaFiscalItemPRODICOD.AsString)) * SQLNotaFiscalItemNFITN3QUANT.asFloat;
+      PesoTotalLiq := PesoTotalLiq + StrToFloat(DM.SQLLocate('PRODUTO', 'PRODICOD', 'PRODN3PESOLIQ', SQLNotaFiscalItemPRODICOD.AsString)) * SQLNotaFiscalItemNFITN3QUANT.asFloat;
+    end;
+    SQLNotaFiscalItem.Post;
+      // alimenta variaveis com totais de impostos por item
+    TotBaseCalcICMS := TotBaseCalcICMS + SQLNotaFiscalItemNFITN2BASEICMS.AsFloat;
+    TotVlrICMS := TotVlrICMS + SQLNotaFiscalItemNFITN2VLRICMS.AsFloat;
+    TotBaseCalcICMSSubst := TotBaseCalcICMSSubst + SQLNotaFiscalItemNFITN2BASESUBS.AsFloat;
+    TotVlrICMSSubst := TotVlrICMSSubst + SQLNotaFiscalItemNFITN2VLRSUBS.AsFloat;
+    TotVlrISSQN := SQLNotaFiscalItemNFITN2VLRISSQN.asFloat;
+    AliquotaISSQN := SQLNotaFiscalItemNFITN2PERCISSQN.asFloat;
+
+    SQLOrdItens.Next;
+  end;
 {    GravaMovimentoEstoque(DM.SQLProduto,
                           DM.SQLProdutoFilho,
                           DM.SQLProdutoSaldo,
@@ -1897,294 +1938,236 @@ begin
 }
 end;
 
-Procedure TFormCadastroMecOrdem.CriaContasReceber;
-Var
+procedure TFormCadastroMecOrdem.CriaContasReceber;
+var
   Valor, DiminuiAcresc, ValorJuro, Acrescimo, EntradaCalc, TaxaCred: Double;
-  Erro      : Boolean;
-  ValorBase : Double;
-  I         : Integer;
+  Erro: Boolean;
+  ValorBase: Double;
+  I: Integer;
 begin
   inherited;
   DiminuiAcresc := 0;
-  Acrescimo     := 0;
-  EntradaCalc   := 0;
-  TaxaCred      := 0;
+  Acrescimo := 0;
+  EntradaCalc := 0;
+  TaxaCred := 0;
 
-  if (SQLTemplatePARCELAS.Value <> '') and (SQLNotaFiscalNOFIN2VLRNOTA.AsFloat > 0) and (SQLNotaFiscalNOFICSTATUS.Value = 'A') Then
-  Begin
-    DM.SQLTemplate.Close ;
-    DM.SQLTemplate.SQL.Clear ;
-    DM.SQLTemplate.SQL.Add('delete from PARCELASPRAZOVENDATEMP') ;
-    DM.SQLTemplate.SQL.Add('where TERMICOD = ' + IntToStr(TerminalAtual)) ;
-    DM.SQLTemplate.ExecSQL ;
+  if (SQLTemplatePARCELAS.Value <> '') and (SQLNotaFiscalNOFIN2VLRNOTA.AsFloat > 0) and (SQLNotaFiscalNOFICSTATUS.Value = 'A') then
+  begin
+    DM.SQLTemplate.Close;
+    DM.SQLTemplate.SQL.Clear;
+    DM.SQLTemplate.SQL.Add('delete from PARCELASPRAZOVENDATEMP');
+    DM.SQLTemplate.SQL.Add('where TERMICOD = ' + IntToStr(TerminalAtual));
+    DM.SQLTemplate.ExecSQL;
 
-    SQLParcelasPrazoVendaTemp.Close ;
-    SQLParcelasPrazoVendaTemp.SQL.Clear ;
-    SQLParcelasPrazoVendaTemp.SQL.Add('select * from PARCELASPRAZOVENDATEMP') ;
-    SQLParcelasPrazoVendaTemp.SQL.Add('where TERMICOD = ' + IntToStr(TerminalAtual)) ;
-    SQLParcelasPrazoVendaTemp.SQL.Add('order by NROPARCELA') ;
-    SQLParcelasPrazoVendaTemp.Open ;
+    SQLParcelasPrazoVendaTemp.Close;
+    SQLParcelasPrazoVendaTemp.SQL.Clear;
+    SQLParcelasPrazoVendaTemp.SQL.Add('select * from PARCELASPRAZOVENDATEMP');
+    SQLParcelasPrazoVendaTemp.SQL.Add('where TERMICOD = ' + IntToStr(TerminalAtual));
+    SQLParcelasPrazoVendaTemp.SQL.Add('order by NROPARCELA');
+    SQLParcelasPrazoVendaTemp.Open;
 
     SQLPlano.Close;
     SQLPlano.ParamByName('PLRCICOD').AsInteger := SQLTemplatePARCELAS.AsInteger;
     SQLPlano.Open;
     SQLPlano.First;
     if not SQLPlano.Eof then
-      Begin
-        SQLPlanoParcela.Close;
-        SQLPlanoParcela.ParamByName('PLRCICOD').AsInteger := SQLTemplatePARCELAS.AsInteger;
-        SQLPlanoParcela.Open;
-        SQLPlanoParcela.First;
-        ValorJuro := SQLPlanoPLRCN2TXJURO.AsFloat;
-        if SQLLocate('PLANORECEBIMENTO','PLRCICOD', 'PLRCCDFIX',SQLTemplatePARCELAS.AsString) = 'V' Then
-          CriaParcelasVariaveis(SQLParcelasPrazoVendaTemp,
-                     SQLPlano,
-                     SQLPlanoParcela,
-                     0, // Entrada
-                     0, // Desconto
-                     SQLNotaFiscal.FindField('NOFIN2VLRNOTA').asFloat,
-                     SQLTemplatePARCELAS.AsInteger,
-                     SQLNotaFiscal.FindField('NOFIDEMIS').asDateTime,
-                     dm.SQLTerminalAtivo.FieldByName('TERMINUMEVISTA').AsString,
-                     dm.SQLTerminalAtivo.FieldByName('TERMINUMEPRAZO').AsString,
-                     dm.SQLTerminalAtivo.FieldByName('TERMINUMEVISTA').AsString,
-                     dm.SQLTerminalAtivo.FieldByName('TERMINUMEPRAZO').AsString,
-                     SQLNotaFiscal.FindField('NOFIA13ID').asString,
-                     DiminuiAcresc,
-                     ValorJuro,
-                     Acrescimo,
-                     EntradaCalc,
-                     TaxaCred)
-        else
-          CriaParcelas(SQLParcelasPrazoVendaTemp,
-                     SQLPlano,
-                     SQLPlanoParcela,
-                     0, // Entrada
-                     0, // Desconto
-                     SQLNotaFiscal.FindField('NOFIN2VLRNOTA').asFloat,
-                     SQLTemplatePARCELAS.AsInteger,
-                     SQLNotaFiscal.FindField('NOFIDEMIS').asDateTime,
-                     dm.SQLTerminalAtivo.FieldByName('TERMINUMEVISTA').AsString,
-                     dm.SQLTerminalAtivo.FieldByName('TERMINUMEPRAZO').AsString,
-                     dm.SQLTerminalAtivo.FieldByName('TERMINUMEVISTA').AsString,
-                     dm.SQLTerminalAtivo.FieldByName('TERMINUMEPRAZO').AsString,
-                     SQLNotaFiscal.FindField('NOFIA13ID').asString,
-                     DiminuiAcresc,
-                     ValorJuro,
-                     Acrescimo,
-                     EntradaCalc,
-                     TaxaCred);
+    begin
+      SQLPlanoParcela.Close;
+      SQLPlanoParcela.ParamByName('PLRCICOD').AsInteger := SQLTemplatePARCELAS.AsInteger;
+      SQLPlanoParcela.Open;
+      SQLPlanoParcela.First;
+      ValorJuro := SQLPlanoPLRCN2TXJURO.AsFloat;
+      if SQLLocate('PLANORECEBIMENTO', 'PLRCICOD', 'PLRCCDFIX', SQLTemplatePARCELAS.AsString) = 'V' then
+        CriaParcelasVariaveis(SQLParcelasPrazoVendaTemp, SQLPlano, SQLPlanoParcela, 0, // Entrada
+          0, // Desconto
+          SQLNotaFiscal.FindField('NOFIN2VLRNOTA').asFloat, SQLTemplatePARCELAS.AsInteger, SQLNotaFiscal.FindField('NOFIDEMIS').asDateTime, dm.SQLTerminalAtivo.FieldByName('TERMINUMEVISTA').AsString, dm.SQLTerminalAtivo.FieldByName('TERMINUMEPRAZO').AsString, dm.SQLTerminalAtivo.FieldByName('TERMINUMEVISTA').AsString, dm.SQLTerminalAtivo.FieldByName('TERMINUMEPRAZO').AsString, SQLNotaFiscal.FindField('NOFIA13ID').asString, DiminuiAcresc, ValorJuro, Acrescimo, EntradaCalc, TaxaCred)
+      else
+        CriaParcelas(SQLParcelasPrazoVendaTemp, SQLPlano, SQLPlanoParcela, 0, // Entrada
+          0, // Desconto
+          SQLNotaFiscal.FindField('NOFIN2VLRNOTA').asFloat, SQLTemplatePARCELAS.AsInteger, SQLNotaFiscal.FindField('NOFIDEMIS').asDateTime, dm.SQLTerminalAtivo.FieldByName('TERMINUMEVISTA').AsString, dm.SQLTerminalAtivo.FieldByName('TERMINUMEPRAZO').AsString, dm.SQLTerminalAtivo.FieldByName('TERMINUMEVISTA').AsString, dm.SQLTerminalAtivo.FieldByName('TERMINUMEPRAZO').AsString, SQLNotaFiscal.FindField('NOFIA13ID').asString, DiminuiAcresc, ValorJuro, Acrescimo, EntradaCalc, TaxaCred);
 
-        SQLPlanoParcela.Close;
-      End;
+      SQLPlanoParcela.Close;
+    end;
     SQLPlano.Close;
-  End;
+  end;
 
   // Lancar Contas a Receber
-  if (SQLTemplatePARCELAS.Value <> '') and (SQLNotaFiscalNOFIN2VLRNOTA.AsFloat > 0) and (SQLNotaFiscalNOFICSTATUS.Value = 'A') Then
+  if (SQLTemplatePARCELAS.Value <> '') and (SQLNotaFiscalNOFIN2VLRNOTA.AsFloat > 0) and (SQLNotaFiscalNOFICSTATUS.Value = 'A') then
   begin
     SQLContasReceber.Close;
     SQLContasReceber.ParamByName('NOFIA13ID').AsString := SQLNotaFiscalNOFIA13ID.AsString;
     SQLContasReceber.Open;
     SQLContasReceber.First;
-    While Not SQLContasReceber.Eof Do
+    while not SQLContasReceber.Eof do
       SQLContasReceber.Delete;
 
     SQLContasReceber.Close;
     SQLContasReceber.ParamByName('NOFIA13ID').AsString := SQLNotaFiscalNOFIA13ID.AsString;
     SQLContasReceber.Open;
 
-    if not SQLParcelasPrazoVendaTemp.Active then SQLParcelasPrazoVendaTemp.Open;
+    if not SQLParcelasPrazoVendaTemp.Active then
+      SQLParcelasPrazoVendaTemp.Open;
     SQLParcelasPrazoVendaTemp.First;
-    While Not SQLParcelasPrazoVendaTemp.Eof Do
-      Begin
-        SQLContasReceber.Append;
-        SQLContasReceberCTRCCSTATUS.Value      := 'A';
-        SQLContasReceberNOFIA13ID.AsString     := SQLNotaFiscal.FindField('NOFIA13ID').AsString;
-        SQLContasReceberCTRCINROPARC.Value     := SQLParcelasPrazoVendaTempNROPARCELA.Value;
-        SQLContasReceberCTRCDEMIS.Value        := SQLNotaFiscal.FindField('NOFIDEMIS').Value;
-        SQLContasReceberCLIEA13ID.AsString     := SQLNotaFiscal.FindField('CLIEA13ID').AsString;
-        SQLContasReceberCTRCDVENC.Value        := SQLParcelasPrazoVendaTempDATAVENCTO.Value;
-        SQLContasReceberCTRCN2VLR.Value        := SQLParcelasPrazoVendaTempVALORVENCTO.Value;
-        SQLContasReceberCTRCA5TIPOPADRAO.Value := SQLParcelasPrazoVendaTempTipoPadrao.Value;
-        if SQLContasReceberCTRCA5TIPOPADRAO.Value = '' then
-          SQLContasReceberCTRCA5TIPOPADRAO.Value := 'CRD';
-        SQLContasReceberTPDCICOD.AsVariant     := dm.SQLConfigVenda.FieldByName('TPDCICOD').AsString;
-        SQLContasReceberPORTICOD.asVariant     := dm.SQLConfigVenda.FieldByName('PORTICOD').AsString;
-        SQLContasReceberCTRCA30NRODUPLICBANCO.AsString := FormatFloat('######000000',SQLNotaFiscalNOFIINUMERO.Value)+'-'+SQLParcelasPrazoVendaTempNROPARCELA.AsString;
-        SQLContasReceberCTRCCEMITIDOBOLETO.Value := 'N';
-        SQLContasReceberNUMEICOD.Value         := SQLParcelasPrazoVendaTempNUMEICOD.Value;
+    while not SQLParcelasPrazoVendaTemp.Eof do
+    begin
+      SQLContasReceber.Append;
+      SQLContasReceberCTRCCSTATUS.Value := 'A';
+      SQLContasReceberNOFIA13ID.AsString := SQLNotaFiscal.FindField('NOFIA13ID').AsString;
+      SQLContasReceberCTRCINROPARC.Value := SQLParcelasPrazoVendaTempNROPARCELA.Value;
+      SQLContasReceberCTRCDEMIS.Value := SQLNotaFiscal.FindField('NOFIDEMIS').Value;
+      SQLContasReceberCLIEA13ID.AsString := SQLNotaFiscal.FindField('CLIEA13ID').AsString;
+      SQLContasReceberCTRCDVENC.Value := SQLParcelasPrazoVendaTempDATAVENCTO.Value;
+      SQLContasReceberCTRCN2VLR.Value := SQLParcelasPrazoVendaTempVALORVENCTO.Value;
+      SQLContasReceberCTRCA5TIPOPADRAO.Value := SQLParcelasPrazoVendaTempTipoPadrao.Value;
+      if SQLContasReceberCTRCA5TIPOPADRAO.Value = '' then
+        SQLContasReceberCTRCA5TIPOPADRAO.Value := 'CRD';
+      SQLContasReceberTPDCICOD.AsVariant := dm.SQLConfigVenda.FieldByName('TPDCICOD').AsString;
+      SQLContasReceberPORTICOD.asVariant := dm.SQLConfigVenda.FieldByName('PORTICOD').AsString;
+      SQLContasReceberCTRCA30NRODUPLICBANCO.AsString := FormatFloat('######000000', SQLNotaFiscalNOFIINUMERO.Value) + '-' + SQLParcelasPrazoVendaTempNROPARCELA.AsString;
+      SQLContasReceberCTRCCEMITIDOBOLETO.Value := 'N';
+      SQLContasReceberNUMEICOD.Value := SQLParcelasPrazoVendaTempNUMEICOD.Value;
 
         // PLANO DE CONTAS Busca do Numerario
-        if SQLParcelasPrazoVendaTempNUMEICOD.AsVariant <> Null then
-          begin
-            SQLContasReceberPLCTA15COD.AsString       := SQLLocate('NUMERARIO','NUMEICOD','PLCTA15CODCRED',SQLParcelasPrazoVendaTempNUMEICOD.AsString);
-            SQLContasReceberPLCTA15CODDEBITO.AsString := SQLLocate('NUMERARIO','NUMEICOD','PLCTA15CODDEB',SQLParcelasPrazoVendaTempNUMEICOD.AsString);
-          end;
-
-        SQLContasReceberCTRCA254HIST.AsString := 'OS '+SQLTemplateORDID.AsString;
-
-        SQLContasReceberTERMICOD.AsInteger      := TerminalCorrente;
-        SQLContasReceberPENDENTE.Value          := 'S' ;
-        SQLContasReceberREGISTRO.Value          := Now ;
-
-        SQLContasReceber.Post;
-        SQLParcelasPrazoVendaTemp.Next;
+      if SQLParcelasPrazoVendaTempNUMEICOD.AsVariant <> Null then
+      begin
+        SQLContasReceberPLCTA15COD.AsString := SQLLocate('NUMERARIO', 'NUMEICOD', 'PLCTA15CODCRED', SQLParcelasPrazoVendaTempNUMEICOD.AsString);
+        SQLContasReceberPLCTA15CODDEBITO.AsString := SQLLocate('NUMERARIO', 'NUMEICOD', 'PLCTA15CODDEB', SQLParcelasPrazoVendaTempNUMEICOD.AsString);
       end;
+
+      SQLContasReceberCTRCA254HIST.AsString := 'OS ' + SQLTemplateORDID.AsString;
+
+      SQLContasReceberTERMICOD.AsInteger := TerminalCorrente;
+      SQLContasReceberPENDENTE.Value := 'S';
+      SQLContasReceberREGISTRO.Value := Now;
+
+      SQLContasReceber.Post;
+      SQLParcelasPrazoVendaTemp.Next;
+    end;
     SQLParcelasPrazoVendaTemp.Close;
-  End;
+  end;
   SQLContasReceber.Close;
   SQLContasReceber.ParamByName('NOFIA13ID').AsString := SQLNotaFiscalNOFIA13ID.AsString;
   SQLContasReceber.Open;
 
-End;
-
+end;
 
 procedure TFormCadastroMecOrdem.SQLTemplatePARCELASChange(Sender: TField);
 begin
   inherited;
 
-  If (SQLLocate('PLANORECEBIMENTO','PLRCICOD','PLRCCDFIX',SQLTemplatePARCELAS.AsString) = 'V')  Then
+  if (SQLLocate('PLANORECEBIMENTO', 'PLRCICOD', 'PLRCCDFIX', SQLTemplatePARCELAS.AsString) = 'V') then
   begin
     TelaGraficaVariavel := TTelaGraficaVariavel.Create(Self);
     if TelaGraficaVariavel.ShowModal <> mrOK then
-    Begin
+    begin
       Abort;
       Exit;
     end;
     SQLTemplatePARCELASVARIAVEIS.AsString := TelaGraficaVariavel.Retorno;
     TelaGraficaVariavel.Free;
-  end else
-      SQLTemplatePARCELASVARIAVEIS.AsString := '';
+  end
+  else
+    SQLTemplatePARCELASVARIAVEIS.AsString := '';
 
 end;
 
-
-function TFormCadastroMecOrdem.CriaParcelasVariaveis(SQLParcelasPrazo,
-                      SQLPlnRec,
-                      SQLPlnRecParc : TQuery;
-                      Entrada,
-                      Desconto,
-                      Valor:Double;
-                      Plano:integer;
-                      Data : TDateTime ;
-                      TpRecVistaTel,
-                      TpRecPrazoTel,
-                      TpRecVistaPDV,
-                      TpRecPrazoPDV,
-                      Documento: string ;
-                      DiminuiAcresc : double ;
-                      var ValorJuro, Acrescimo, EntradaCalc, TaxaCred:Double ) : Variant ;
+function TFormCadastroMecOrdem.CriaParcelasVariaveis(SQLParcelasPrazo, SQLPlnRec, SQLPlnRecParc: TQuery; Entrada, Desconto, Valor: Double; Plano: integer; Data: TDateTime; TpRecVistaTel, TpRecPrazoTel, TpRecVistaPDV, TpRecPrazoPDV, Documento: string; DiminuiAcresc: double; var ValorJuro, Acrescimo, EntradaCalc, TaxaCred: Double): Variant;
 var
-  OffSet,
-  NumeroParcelas,
-  I, n             : Integer;
-  TotParc,
-  Acumulado,
-  ValorDevido,
-  Arredondamento   : Double;
-  DiasAnterior     : TDateTime;
-  VarAno,
-  VarMes,
-  VarDia,
-  VarDiaOficial    : Word;
-  Erro             : Boolean;
+  OffSet, NumeroParcelas, I, n: Integer;
+  TotParc, Acumulado, ValorDevido, Arredondamento: Double;
+  DiasAnterior: TDateTime;
+  VarAno, VarMes, VarDia, VarDiaOficial: Word;
+  Erro: Boolean;
   nVenctos: array of Integer;
-  nDias, diasVencto: String;
+  nDias, diasVencto: string;
   nnVenctos: Variant;
 begin
-  DM.SQLTemplate.Close ;
-  DM.SQLTemplate.SQL.Clear ;
-  DM.SQLTemplate.SQL.Add('delete from PARCELASPRAZOVENDATEMP') ;
-  DM.SQLTemplate.SQL.Add('where TERMICOD = ' + IntToStr(TerminalAtual)) ;
-  DM.SQLTemplate.ExecSQL ;
+  DM.SQLTemplate.Close;
+  DM.SQLTemplate.SQL.Clear;
+  DM.SQLTemplate.SQL.Add('delete from PARCELASPRAZOVENDATEMP');
+  DM.SQLTemplate.SQL.Add('where TERMICOD = ' + IntToStr(TerminalAtual));
+  DM.SQLTemplate.ExecSQL;
 
-  SQLParcelasPrazo.Close ;
-  SQLParcelasPrazo.Open ;
-  SQLParcelasPrazo.DisableControls ;
+  SQLParcelasPrazo.Close;
+  SQLParcelasPrazo.Open;
+  SQLParcelasPrazo.DisableControls;
 
-  n:= 1;
+  n := 1;
   diasVencto := Trim(SQLTemplatePARCELASVARIAVEIS.AsString);
 
-  Insert(' ',diasVencto,length(diasVencto)+1);
+  Insert(' ', diasVencto, length(diasVencto) + 1);
 
-  for i:= 1 to Length(diasVencto) do
+  for i := 1 to Length(diasVencto) do
   begin
-    if diasVencto[i] <> ' ' Then
+    if diasVencto[i] <> ' ' then
       nDias := nDias + diasVencto[i]
-    else begin
-      Try
+    else
+    begin
+      try
         SetLength(nVenctos, n);
-        nVenctos[n-1]:= StrToInt(nDias);
+        nVenctos[n - 1] := StrToInt(nDias);
         inc(n);
         nDias := '';
       except
-        Showmessage('Falha ao processar vencimentos do plano Variavel. Verifique!'+#13#10+
-        'A Nota será gerada sem Faturamento.  Ajuste os vencimentos antes de Imprimi-la');
+        Showmessage('Falha ao processar vencimentos do plano Variavel. Verifique!' + #13#10 + 'A Nota será gerada sem Faturamento.  Ajuste os vencimentos antes de Imprimi-la');
         Exit;
       end;
     end;
   end;
 
-
-  For i:= 0 to Length(nVenctos)-1 do
+  for i := 0 to Length(nVenctos) - 1 do
   begin
-    SQLParcelasPrazo.Append ;
-    SQLParcelasPrazo.FieldByName('TERMICOD').Value   := TerminalAtual ;
+    SQLParcelasPrazo.Append;
+    SQLParcelasPrazo.FieldByName('TERMICOD').Value := TerminalAtual;
     SQLParcelasPrazo.FieldByName('NROPARCELA').Value := nVenctos[i];
-    if (nVenctos[i] mod 30 = 0) and
-       (nVenctos[i] > 0) and
-       (ConvenioVenda > 0) then
-      begin
-        nnVenctos := nVenctos[i];
-        SQLParcelasPrazo.FieldByName('DATAVENCTO').Value := IncMonth(Data, nnVenctos / 30)
-      end
+    if (nVenctos[i] mod 30 = 0) and (nVenctos[i] > 0) and (ConvenioVenda > 0) then
+    begin
+      nnVenctos := nVenctos[i];
+      SQLParcelasPrazo.FieldByName('DATAVENCTO').Value := IncMonth(Data, nnVenctos / 30)
+    end
     else
-      SQLParcelasPrazo.FieldByName('DATAVENCTO').Value := Data +
-                                                          nVenctos[i];
+      SQLParcelasPrazo.FieldByName('DATAVENCTO').Value := Data + nVenctos[i];
 
     SQLParcelasPrazo.Post;
     SQLPlnRecParc.Next;
-  end ;
-
+  end;
 
   SQLParcelasPrazo.Close;
   SQLParcelasPrazo.Open;
   SQLParcelasPrazo.First;
 
-
   NumeroParcelas := Length(nVenctos);
-  ValorDevido := Valor ;
+  ValorDevido := Valor;
 
-  TaxaCred  := 0;
+  TaxaCred := 0;
 
   Acrescimo := 0;
 
   if NumeroParcelas > 0 then
   begin
-    Acumulado    := 0;
+    Acumulado := 0;
     DiasAnterior := Data;
     Valor := ValorDevido / NumeroParcelas;
-    for I := 1 To NumeroParcelas Do
-      begin
-        ValorJuro    := 0;
-        DiasAnterior := SQLParcelasPrazo.FieldByName('DATAVENCTO').Value;
-        Acrescimo    := Acrescimo + ValorJuro;
-        Acumulado    := Acumulado + Valor + ValorJuro;
-        ValorDevido  := ValorDevido - Valor;
+    for I := 1 to NumeroParcelas do
+    begin
+      ValorJuro := 0;
+      DiasAnterior := SQLParcelasPrazo.FieldByName('DATAVENCTO').Value;
+      Acrescimo := Acrescimo + ValorJuro;
+      Acumulado := Acumulado + Valor + ValorJuro;
+      ValorDevido := ValorDevido - Valor;
 
-        if NumeroParcelas <> 1 then
-          SQLParcelasPrazo.Next;
-      end ;
+      if NumeroParcelas <> 1 then
+        SQLParcelasPrazo.Next;
+    end;
 
     Acrescimo := Acrescimo - DiminuiAcresc;
     Acumulado := Acumulado - DiminuiAcresc;
 
-    For I := 1 To NumeroParcelas-1 do
-     SQLParcelasPrazo.Prior;
+    for I := 1 to NumeroParcelas - 1 do
+      SQLParcelasPrazo.Prior;
 
     Valor := Acumulado / NumeroParcelas;
-    while Not SQLParcelasPrazo.EOF do
+    while not SQLParcelasPrazo.EOF do
     begin
       SQLParcelasPrazo.Edit;
       if (Entrada > 0) and (SQLParcelasPrazo.FieldByName('NROPARCELA').Value = 0) then
@@ -2194,140 +2177,127 @@ begin
       SQLParcelasPrazo.Post;
 
       SQLParcelasPrazo.Next;
-    end ;
-    if not DM.SQLConfigVenda.Active then DM.SQLConfigVenda.Open;
+    end;
+    if not DM.SQLConfigVenda.Active then
+      DM.SQLConfigVenda.Open;
     if (TipoPadrao <> 'CRT') then
     begin
       Arredondamento := 0;
       if DM.SQLConfigVenda.Fieldbyname('CFVECARREDPARCELA').AsString = '' then
-        begin
-          Informa('Você deve configurar o tipo de arredondamento, nas configurações de venda do sistema ! Operação Cancelada !');
-          Abort;
-        end;
+      begin
+        Informa('Você deve configurar o tipo de arredondamento, nas configurações de venda do sistema ! Operação Cancelada !');
+        Abort;
+      end;
 
       case DM.SQLConfigVenda.Fieldbyname('CFVECARREDPARCELA').AsString[1] of
-        'P'://Arrendondamentos para a Primeira Parcela
+        'P': //Arrendondamentos para a Primeira Parcela
+          begin
+            SQLParcelasPrazo.First;
+            Arredondamento := 0;
+            while not SQLParcelasPrazo.EOF do
             begin
-              SQLParcelasPrazo.First;
-              Arredondamento := 0;
-              while not SQLParcelasPrazo.EOF do
-              begin
               {  Arredondamento := Arredondamento +
                                   Frac(SQLParcelasPrazo.FieldByName('VALORVENCTO').Value);
                }
-
-                SQLParcelasPrazo.Edit;
-                if (Entrada > 0) and (SQLParcelasPrazo.FieldByName('NROPARCELA').Value = 0) then
-                  SQLParcelasPrazo.FieldByName('VALORVENCTO').Value := Entrada
-                else
-                  SQLParcelasPrazo.FieldByName('VALORVENCTO').Value := SQLParcelasPrazo.FieldByName('VALORVENCTO').Value -
-                                                                       Frac(SQLParcelasPrazo.FieldByName('VALORVENCTO').Value) ;
-                SQLParcelasPrazo.Post;
-                Arredondamento := Arredondamento + SQLParcelasPrazo.FieldByName('VALORVENCTO').Value;
-                SQLParcelasPrazo.Next;
-              end;
-
-              SQLParcelasPrazo.First;
               SQLParcelasPrazo.Edit;
+              if (Entrada > 0) and (SQLParcelasPrazo.FieldByName('NROPARCELA').Value = 0) then
+                SQLParcelasPrazo.FieldByName('VALORVENCTO').Value := Entrada
+              else
+                SQLParcelasPrazo.FieldByName('VALORVENCTO').Value := SQLParcelasPrazo.FieldByName('VALORVENCTO').Value - Frac(SQLParcelasPrazo.FieldByName('VALORVENCTO').Value);
+              SQLParcelasPrazo.Post;
+              Arredondamento := Arredondamento + SQLParcelasPrazo.FieldByName('VALORVENCTO').Value;
+              SQLParcelasPrazo.Next;
+            end;
+
+            SQLParcelasPrazo.First;
+            SQLParcelasPrazo.Edit;
               {SQLParcelasPrazo.FieldByName('VALORVENCTO').Value := SQLParcelasPrazo.FieldByName('VALORVENCTO').Value +
                                                                    Arredondamento;}
-              SQLParcelasPrazo.FieldByName('VALORVENCTO').Value := (Acumulado+SQLParcelasPrazo.FieldByName('VALORVENCTO').Value) - Arredondamento;
-              SQLParcelasPrazo.Post;
+            SQLParcelasPrazo.FieldByName('VALORVENCTO').Value := (Acumulado + SQLParcelasPrazo.FieldByName('VALORVENCTO').Value) - Arredondamento;
+            SQLParcelasPrazo.Post;
 
               //CALCULAR TOTAL DAS PARCELAS
-              TotParc := 0 ;
-              SQLParcelasPrazo.First;
-              while not SQLParcelasPrazo.EOF do
-              begin
-                TotParc := TotParc + SQLParcelasPrazo.FieldByName('VALORVENCTO').Value;
-                SQLParcelasPrazo.Next;
-              end ;
-              TotParc := StrToFloat(FloatToStr(Acumulado+Entrada)) -
-                         StrToFloat(FloatToStr(TotParc));
+            TotParc := 0;
+            SQLParcelasPrazo.First;
+            while not SQLParcelasPrazo.EOF do
+            begin
+              TotParc := TotParc + SQLParcelasPrazo.FieldByName('VALORVENCTO').Value;
+              SQLParcelasPrazo.Next;
+            end;
+            TotParc := StrToFloat(FloatToStr(Acumulado + Entrada)) - StrToFloat(FloatToStr(TotParc));
 
-              SQLParcelasPrazo.First;
+            SQLParcelasPrazo.First;
               //ESTA LINHA FOI COLOCADA PARA GRAVAR O RESTANTE NA PRIMEIRA PARACELA A PRAZO
               //SE TIVER ENTRADA
-              if (Entrada > 0) then
-                begin
-                  SQLParcelasPrazo.Next;
-
-                  SQLParcelasPrazo.Edit;
-                  if TotParc > 0 then
-                    SQLParcelasPrazo.FieldByName('VALORVENCTO').Value := (SQLParcelasPrazo.FieldByName('VALORVENCTO').Value +
-                                                                          Arredondamento) +
-                                                                          ABS(TotParc)
-                  else
-                    SQLParcelasPrazo.FieldByName('VALORVENCTO').Value := (SQLParcelasPrazo.FieldByName('VALORVENCTO').Value +
-                                                                          Arredondamento) -
-                                                                          ABS(TotParc);
-
-                  SQLParcelasPrazo.Post;
-                end;
-            end;
-        'U'://Arrendondamentos para a Última Parcela
+            if (Entrada > 0) then
             begin
-              SQLParcelasPrazo.Last;
-              SQLParcelasPrazo.Prior;
-              while not SQLParcelasPrazo.Bof do
-              begin
-                Arredondamento := Arredondamento +
-                                  Frac(SQLParcelasPrazo.FieldByName('VALORVENCTO').Value) ;
-                SQLParcelasPrazo.Edit;
-                if (Entrada > 0) and (SQLParcelasPrazo.FieldByName('NROPARCELA').Value = 0) then
-                  SQLParcelasPrazo.FieldByName('VALORVENCTO').Value := Entrada
-                else
-                  SQLParcelasPrazo.FieldByName('VALORVENCTO').Value := SQLParcelasPrazo.FieldByName('VALORVENCTO').Value -
-                                                                       Frac(SQLParcelasPrazo.FieldByName('VALORVENCTO').Value) ;
-                SQLParcelasPrazo.Post;
-                SQLParcelasPrazo.Prior;
-              end;
-              SQLParcelasPrazo.Last;
+              SQLParcelasPrazo.Next;
+
               SQLParcelasPrazo.Edit;
-              SQLParcelasPrazo.FieldByName('VALORVENCTO').Value := SQLParcelasPrazo.FieldByName('VALORVENCTO').Value +
-                                                                   Arredondamento;
+              if TotParc > 0 then
+                SQLParcelasPrazo.FieldByName('VALORVENCTO').Value := (SQLParcelasPrazo.FieldByName('VALORVENCTO').Value + Arredondamento) + ABS(TotParc)
+              else
+                SQLParcelasPrazo.FieldByName('VALORVENCTO').Value := (SQLParcelasPrazo.FieldByName('VALORVENCTO').Value + Arredondamento) - ABS(TotParc);
+
               SQLParcelasPrazo.Post;
+            end;
+          end;
+        'U': //Arrendondamentos para a Última Parcela
+          begin
+            SQLParcelasPrazo.Last;
+            SQLParcelasPrazo.Prior;
+            while not SQLParcelasPrazo.Bof do
+            begin
+              Arredondamento := Arredondamento + Frac(SQLParcelasPrazo.FieldByName('VALORVENCTO').Value);
+              SQLParcelasPrazo.Edit;
+              if (Entrada > 0) and (SQLParcelasPrazo.FieldByName('NROPARCELA').Value = 0) then
+                SQLParcelasPrazo.FieldByName('VALORVENCTO').Value := Entrada
+              else
+                SQLParcelasPrazo.FieldByName('VALORVENCTO').Value := SQLParcelasPrazo.FieldByName('VALORVENCTO').Value - Frac(SQLParcelasPrazo.FieldByName('VALORVENCTO').Value);
+              SQLParcelasPrazo.Post;
+              SQLParcelasPrazo.Prior;
+            end;
+            SQLParcelasPrazo.Last;
+            SQLParcelasPrazo.Edit;
+            SQLParcelasPrazo.FieldByName('VALORVENCTO').Value := SQLParcelasPrazo.FieldByName('VALORVENCTO').Value + Arredondamento;
+            SQLParcelasPrazo.Post;
 
               //CALCULAR TOTAL DAS PARCELAS
-              TotParc := 0;
-              SQLParcelasPrazo.First;
-              while not SQLParcelasPrazo.EOF do
-              begin
-                TotParc := TotParc + SQLParcelasPrazo.FieldByName('VALORVENCTO').Value;
-
-                SQLParcelasPrazo.Next;
-              end ;
-              TotParc := StrToFloat(FloatToStr(Acumulado+Entrada)) -
-                         StrToFloat(FloatToStr(TotParc));
-              SQLParcelasPrazo.Last;
-              SQLParcelasPrazo.Edit;
-              SQLParcelasPrazo.FieldByName('VALORVENCTO').Value := SQLParcelasPrazo.FieldByName('VALORVENCTO').Value +
-                                                                   TotParc;
-              SQLParcelasPrazo.Post;
-            end;
-        'N'://Sem Arrendondamentos
+            TotParc := 0;
+            SQLParcelasPrazo.First;
+            while not SQLParcelasPrazo.EOF do
             begin
+              TotParc := TotParc + SQLParcelasPrazo.FieldByName('VALORVENCTO').Value;
+
+              SQLParcelasPrazo.Next;
+            end;
+            TotParc := StrToFloat(FloatToStr(Acumulado + Entrada)) - StrToFloat(FloatToStr(TotParc));
+            SQLParcelasPrazo.Last;
+            SQLParcelasPrazo.Edit;
+            SQLParcelasPrazo.FieldByName('VALORVENCTO').Value := SQLParcelasPrazo.FieldByName('VALORVENCTO').Value + TotParc;
+            SQLParcelasPrazo.Post;
+          end;
+        'N': //Sem Arrendondamentos
+          begin
               //CALCULAR TOTAL DAS PARCELAS
               {if OffSet = 0 then
                 begin}
-                  TotParc := 0 ;
-                  SQLParcelasPrazo.First;
-                  while not SQLParcelasPrazo.EOF do
-                  begin
-                    TotParc := TotParc + SQLParcelasPrazo.FieldByName('VALORVENCTO').AsFloat;
+            TotParc := 0;
+            SQLParcelasPrazo.First;
+            while not SQLParcelasPrazo.EOF do
+            begin
+              TotParc := TotParc + SQLParcelasPrazo.FieldByName('VALORVENCTO').AsFloat;
 
-                    SQLParcelasPrazo.Next;
-                  end ;
-                  TotParc := StrToFloat(FloatToStr(Acumulado+Entrada)) -
-                             StrToFloat(FloatToStr(TotParc));
-
-                  SQLParcelasPrazo.Last;
-                  SQLParcelasPrazo.Edit;
-                  SQLParcelasPrazo.FieldByName('VALORVENCTO').Value := SQLParcelasPrazo.FieldByName('VALORVENCTO').Value +
-                                                                       TotParc;
-                  SQLParcelasPrazo.Post;
-                //end ;
+              SQLParcelasPrazo.Next;
             end;
+            TotParc := StrToFloat(FloatToStr(Acumulado + Entrada)) - StrToFloat(FloatToStr(TotParc));
+
+            SQLParcelasPrazo.Last;
+            SQLParcelasPrazo.Edit;
+            SQLParcelasPrazo.FieldByName('VALORVENCTO').Value := SQLParcelasPrazo.FieldByName('VALORVENCTO').Value + TotParc;
+            SQLParcelasPrazo.Post;
+                //end ;
+          end;
       end;
     end;
   end;
@@ -2339,7 +2309,8 @@ begin
     EntradaCalc := SQLParcelasPrazo.FieldByName('VALORVENCTO').AsFloat;
     SQLParcelasPrazo.Delete;
   end
-  else EntradaCalc := 0;
+  else
+    EntradaCalc := 0;
 
   SQLParcelasPrazo.Close;
   SQLParcelasPrazo.Open;
@@ -2354,144 +2325,141 @@ begin
 end;
 
 procedure TFormCadastroMecOrdem.SQLNotaFiscalBeforePost(DataSet: TDataSet);
-var Erro : Boolean;
+var
+  Erro: Boolean;
 begin
   inherited;
   // Gerar o ID da Nota
   if DataSet.State in [DSInsert] then
-    DM.CodigoAutomatico('NOTAFISCAL',Nil,DataSet,2,0);
+    DM.CodigoAutomatico('NOTAFISCAL', Nil, DataSet, 2, 0);
   // Gerar o Nro da Nota Fiscal
   SQLSerieNF.Close;
   // Alterado pelo Judi
-  SQLSerieNF.MacroByName('Empresa').value := 'EMPRICOD  = '+ DM.SQLTerminalAtivo.FieldByName('EMPRICOD').asstring;//ComboEmpresa.Value;
-  SQLSerieNF.MacroByName('Serie').Value   := 'SERIA5COD = '''+ SQLNotaFiscalSERIA5COD.asString+'''';
+  SQLSerieNF.MacroByName('Empresa').value := 'EMPRICOD  = ' + DM.SQLTerminalAtivo.FieldByName('EMPRICOD').asstring; //ComboEmpresa.Value;
+  SQLSerieNF.MacroByName('Serie').Value := 'SERIA5COD = ''' + SQLNotaFiscalSERIA5COD.asString + '''';
   SQLSerieNF.Open;
   Erro := True;
   if DataSet.State in [DSInsert] then
-    begin
-      while Erro do
-        try
+  begin
+    while Erro do
+    try
           // Pega o nro atual
-          SQLNotaFiscalNOFIINUMERO.Value := SQLSerieNFSERIINRONF.Value;
+      SQLNotaFiscalNOFIINUMERO.Value := SQLSerieNFSERIINRONF.Value;
           // Cria o prox numero de NF
-          SQLSerieNF.Edit;
-          SQLSerieNFSERIINRONF.Value       := SQLSerieNFSERIINRONF.asInteger + 1;
-          SQLSerieNFPENDENTE.asString      := 'S';
-          SQLSerieNFREGISTRO.asDateTime    := Now;
-          SQLSerieNF.Post;
-          Erro := False;
-        except
-          If SQLSerieNF.State in DsEditModes Then SQLSerieNF.Cancel;
-          Erro:=True;
-        end;
+      SQLSerieNF.Edit;
+      SQLSerieNFSERIINRONF.Value := SQLSerieNFSERIINRONF.asInteger + 1;
+      SQLSerieNFPENDENTE.asString := 'S';
+      SQLSerieNFREGISTRO.asDateTime := Now;
+      SQLSerieNF.Post;
+      Erro := False;
+    except
+      if SQLSerieNF.State in DsEditModes then
+        SQLSerieNF.Cancel;
+      Erro := True;
     end;
+  end;
 end;
 
-procedure TFormCadastroMecOrdem.SQLContasReceberBeforePost(
-  DataSet: TDataSet);
+procedure TFormCadastroMecOrdem.SQLContasReceberBeforePost(DataSet: TDataSet);
 begin
   inherited;
-  If DataSet.FindField('REGISTRO') <> Nil Then
-    DataSet.FindField('REGISTRO').AsDateTime := Now ;
-  If DataSet.FindField('PENDENTE')<> Nil Then
-    DataSet.FindField('PENDENTE').AsString := 'S' ;
-  If DataSet.FindField('EMPRICOD')<>Nil Then
-    DataSet.FindField('EMPRICOD').Value := EmpresaCorrente ;
-  If DataSet.FindField('TERMICOD')<>Nil Then
-    DataSet.FindField('TERMICOD').Value := TerminalCorrente ;
-  Case DataSet.State Of
-    DsInsert: DM.CodigoAutomatico('CONTASRECEBER', DSSQLContasReceber, DataSet, 3, 0);
+  if DataSet.FindField('REGISTRO') <> Nil then
+    DataSet.FindField('REGISTRO').AsDateTime := Now;
+  if DataSet.FindField('PENDENTE') <> Nil then
+    DataSet.FindField('PENDENTE').AsString := 'S';
+  if DataSet.FindField('EMPRICOD') <> Nil then
+    DataSet.FindField('EMPRICOD').Value := EmpresaCorrente;
+  if DataSet.FindField('TERMICOD') <> Nil then
+    DataSet.FindField('TERMICOD').Value := TerminalCorrente;
+  case DataSet.State of
+    DsInsert:
+      DM.CodigoAutomatico('CONTASRECEBER', DSSQLContasReceber, DataSet, 3, 0);
   end;
-  ContasReceberID      := SQLContasReceberCTRCA13ID.asString;
+  ContasReceberID := SQLContasReceberCTRCA13ID.asString;
   ContasReceberCliente := SQLContasReceberCLIEA13ID.asString;
 
 end;
 
-procedure TFormCadastroMecOrdem.SQLContasReceberNewRecord(
-  DataSet: TDataSet);
+procedure TFormCadastroMecOrdem.SQLContasReceberNewRecord(DataSet: TDataSet);
 begin
   inherited;
-  DataSet.FindField('NOFIA13ID').Value           := SQLNotaFiscal.FindField('NOFIA13ID').Value;
-  DataSet.FindField('CTRCINROPARC').Value        := 0 ;
-  DataSet.FindField('CTRCN2DESCFIN').Value       := 0 ;
+  DataSet.FindField('NOFIA13ID').Value := SQLNotaFiscal.FindField('NOFIA13ID').Value;
+  DataSet.FindField('CTRCINROPARC').Value := 0;
+  DataSet.FindField('CTRCN2DESCFIN').Value := 0;
   if Dm.SQLConfigCrediario.FieldByName('CFCRN2PERCMULATRAS').AsFloat > 0 then
-    DataSet.FindField('CTRCN2TXMULTA').Value     := Dm.SQLConfigCrediario.FieldByName('CFCRN2PERCMULATRAS').Value
+    DataSet.FindField('CTRCN2TXMULTA').Value := Dm.SQLConfigCrediario.FieldByName('CFCRN2PERCMULATRAS').Value
   else
-    DataSet.FindField('CTRCN2TXMULTA').Value     := 0 ;
+    DataSet.FindField('CTRCN2TXMULTA').Value := 0;
 
   if Dm.SQLConfigCrediario.FieldByName('CFCRN2PERCJURATRAS').Value > 0 then
-    DataSet.FindField('CTRCN2TXJURO').Value      := Dm.SQLConfigCrediario.FieldByName('CFCRN2PERCJURATRAS').Value
+    DataSet.FindField('CTRCN2TXJURO').Value := Dm.SQLConfigCrediario.FieldByName('CFCRN2PERCJURATRAS').Value
   else
-    DataSet.FindField('CTRCN2TXJURO').Value      := 0 ;
-  DataSet.FindField('CTRCN2TOTREC').Value        := 0 ;
-  DataSet.FindField('CTRCN2TOTJUROREC').Value    := 0 ;
-  DataSet.FindField('CTRCN2TOTMULTAREC').Value   := 0 ;
-  DataSet.FindField('CTRCN2TOTDESCREC').Value    := 0 ;
-  DataSet.FindField('CTRCCEMITIDOBOLETO').Value  := 'N' ;
+    DataSet.FindField('CTRCN2TXJURO').Value := 0;
+  DataSet.FindField('CTRCN2TOTREC').Value := 0;
+  DataSet.FindField('CTRCN2TOTJUROREC').Value := 0;
+  DataSet.FindField('CTRCN2TOTMULTAREC').Value := 0;
+  DataSet.FindField('CTRCN2TOTDESCREC').Value := 0;
+  DataSet.FindField('CTRCCEMITIDOBOLETO').Value := 'N';
   // Tipo de Registro no Contas a Receber -> N = Normal C = Credito D = Debito;
-  DataSet.FindField('CTRCCTIPOREGISTRO').Value   := 'N';
+  DataSet.FindField('CTRCCTIPOREGISTRO').Value := 'N';
 
 end;
 
-procedure TFormCadastroMecOrdem.SQLContasReceberPostError(
-  DataSet: TDataSet; E: EDatabaseError; var Action: TDataAction);
+procedure TFormCadastroMecOrdem.SQLContasReceberPostError(DataSet: TDataSet; E: EDatabaseError; var Action: TDataAction);
 var
-ID : String;
+  ID: string;
 begin
   inherited;
-  Case DataSet.State Of
-    DsInsert: begin
-                DataSet.FieldByName('CTRCICOD').AsInteger:=DataSet.FieldByName('CTRCICOD').AsInteger + 1;
-                ID := Format('%.3d',[EmpresaCorrente])+Format('%.3d',[TerminalCorrente])+Format('%.6d',[DataSet.FieldByName('CTRCICOD').asInteger]);
-                DataSet.FieldByName('CTRCA13ID').asString:=ID+DM.DigitVerifEAN(ID);
-              end;
+  case DataSet.State of
+    DsInsert:
+      begin
+        DataSet.FieldByName('CTRCICOD').AsInteger := DataSet.FieldByName('CTRCICOD').AsInteger + 1;
+        ID := Format('%.3d', [EmpresaCorrente]) + Format('%.3d', [TerminalCorrente]) + Format('%.6d', [DataSet.FieldByName('CTRCICOD').asInteger]);
+        DataSet.FieldByName('CTRCA13ID').asString := ID + DM.DigitVerifEAN(ID);
+      end;
 
   end;
   Action := DaRetry;
 end;
 
-procedure TFormCadastroMecOrdem.ExclurirRegistrodeFinalizao1Click(
-  Sender: TObject);
+procedure TFormCadastroMecOrdem.ExclurirRegistrodeFinalizao1Click(Sender: TObject);
 begin
   inherited;
   if not SQLFinalizaNOTAFISCAL.IsNull then
-    Showmessage('Atenção'+#13#10+'A Nota Fiscal NÃO Será Cancelada');
-  if Pergunta('SIM','Excluir o Registro de Entrega?') then
+    Showmessage('Atenção' + #13#10 + 'A Nota Fiscal NÃO Será Cancelada');
+  if Pergunta('SIM', 'Excluir o Registro de Entrega?') then
     SQLFinaliza.Delete;
   if SQLFinaliza.IsEmpty then
   begin
-    if Pergunta('SIM','Deseja Alterar o Status da Ordem para Aberto?') then
+    if Pergunta('SIM', 'Deseja Alterar o Status da Ordem para Aberto?') then
       AlterarStatusparaABERTO1Click(Sender);
   end;
 end;
 
-procedure TFormCadastroMecOrdem.RelatoriodeOrdensListadas1Click(
-  Sender: TObject);
+procedure TFormCadastroMecOrdem.RelatoriodeOrdensListadas1Click(Sender: TObject);
 begin
   inherited;
-  FormListagemOrdemMecanica:= TFormListagemOrdemMecanica.Create(Self);
+  FormListagemOrdemMecanica := TFormListagemOrdemMecanica.Create(Self);
   FormListagemOrdemMecanica.QuickListagemOrdens.Preview;
   FormListagemOrdemMecanica.Free;
 
 end;
 
-procedure TFormCadastroMecOrdem.RelatoriodeServiosPorMecanico1Click(
-  Sender: TObject);
+procedure TFormCadastroMecOrdem.RelatoriodeServiosPorMecanico1Click(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
-    CriaFormulario(TRelatorioOrdPorMecanico, 'RelatorioOrdPorMecanico',False,False,True,'')
+    CriaFormulario(TRelatorioOrdPorMecanico, 'RelatorioOrdPorMecanico', False, False, True, '')
   else
     ShowMessage('Acesso Negado.wav');
 
 end;
 
-procedure TFormCadastroMecOrdem.RelatoriodeServiosxExecuo1Click(
-  Sender: TObject);
+procedure TFormCadastroMecOrdem.RelatoriodeServiosxExecuo1Click(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
-    CriaFormulario(TRelatorioOrdPorExecucao, 'RelatorioOrdPorExecucao',False,False,True,'')
+    CriaFormulario(TRelatorioOrdPorExecucao, 'RelatorioOrdPorExecucao', False, False, True, '')
   else
     ShowMessage('Acesso Negado.wav');
 
@@ -2501,7 +2469,7 @@ procedure TFormCadastroMecOrdem.MenuItem10Click(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
-    CriaFormulario(TFormRelatorioOrdPecas, 'FormRelatorioOrdPecas',False,False,True,'')
+    CriaFormulario(TFormRelatorioOrdPecas, 'FormRelatorioOrdPecas', False, False, True, '')
   else
     ShowMessage('Acesso Negado.wav');
 
@@ -2521,18 +2489,19 @@ procedure TFormCadastroMecOrdem.CheckPercentualClick(Sender: TObject);
 begin
   inherited;
   CheckPercentual.Checked := not CheckValor.Checked;
-  CheckValor.Checked      := not CheckPercentual.Checked;
+  CheckValor.Checked := not CheckPercentual.Checked;
 end;
 
-Procedure TFormCadastroMecOrdem.AplicarDescontos;
-var nItens:Integer;
-    nPerc :Extended;
-    nConcedido: Extended;
-    nTotalDesc: Extended;
+procedure TFormCadastroMecOrdem.AplicarDescontos;
+var
+  nItens: Integer;
+  nPerc: Extended;
+  nConcedido: Extended;
+  nTotalDesc: Extended;
 begin
   // conta o numero de itens da ordem
   SQLOrdItens.Close;
-  SQLORDItens.ParambyName('MFiltro').AsString :=  SQLTemplate.FindField('ORDID').AsString ;
+  SQLORDItens.ParambyName('MFiltro').AsString := SQLTemplate.FindField('ORDID').AsString;
   SQLOrdItens.Prepare;
   SQLOrdItens.Open;
   SQLOrdItens.Last;
@@ -2541,21 +2510,18 @@ begin
 
   if CheckValor.Checked then
     // Calcula o percentual de desconto que insidira em cada item
-    nPerc :=(edtDescto.value /(SQLTemplateVALORTOTAL.AsFloat * nItens)) * 100
+    nPerc := (edtDescto.value / (SQLTemplateVALORTOTAL.AsFloat * nItens)) * 100
   else
     nPerc := edtDescto.Value;
 
   nConcedido := 0;
   SQLBuscas.Close;
-  SqlBuscas.SQL.Text := 'update ORD_MEC_ITENS SET '+
-                       'ORITN2PERCDESC = :nORITN2PERCDESC, '+
-                       'ORITN2VLRDESC = :nORITN2VLRDESC '+
-                       'Where ORDITENSID = :nItem';
-  While Not SQLOrdItens.Eof do
+  SqlBuscas.SQL.Text := 'update ORD_MEC_ITENS SET ' + 'ORITN2PERCDESC = :nORITN2PERCDESC, ' + 'ORITN2VLRDESC = :nORITN2VLRDESC ' + 'Where ORDITENSID = :nItem';
+  while not SQLOrdItens.Eof do
   begin
     SQLBUSCAS.ParamByName('nORITN2PERCDESC').value := nPerc;
-    SQLBUSCAS.ParamByName('nORITN2VLRDESC').value  := (SQLOrdItensORITN2VLRUNIT.AsFloat * SQLOrdItensORITN3QUANT.asFloat) * (nPerc / 100);
-    SQLBUSCAS.ParamByName('nItem').value           := SQLOrdItensORDITENSID.Value;
+    SQLBUSCAS.ParamByName('nORITN2VLRDESC').value := (SQLOrdItensORITN2VLRUNIT.AsFloat * SQLOrdItensORITN3QUANT.asFloat) * (nPerc / 100);
+    SQLBUSCAS.ParamByName('nItem').value := SQLOrdItensORDITENSID.Value;
     SQLBUSCAS.ExecSQL;
     nConcedido := nConcedido + SQLBUSCAS.ParamByName('nORITN2VLRDESC').value;
     SQLOrdItens.Next;
@@ -2565,31 +2531,28 @@ begin
   // ajusta total da Ordem
   SQLBuscas.RequestLive := False;
   SQLBuscas.Close;
-  SQLBuscas.SQL.Text := 'Select p.prodicod, P.PRODCSERVICO , o.ORITN2VLRDESC, '+
-  '((o.ORITN2VLRUNIT * o.ORITN3QUANT)- o.ORITN2VLRDESC)  AS SOMAITENS '+
-  'FROM ORD_MEC_ITENS o LEFT OUTER JOIN PRODUTO P ON P.PRODICOD = o.PRODICOD '+
-  'WHERE o.ORDID = :nOrdem';
+  SQLBuscas.SQL.Text := 'Select p.prodicod, P.PRODCSERVICO , o.ORITN2VLRDESC, ' + '((o.ORITN2VLRUNIT * o.ORITN3QUANT)- o.ORITN2VLRDESC)  AS SOMAITENS ' + 'FROM ORD_MEC_ITENS o LEFT OUTER JOIN PRODUTO P ON P.PRODICOD = o.PRODICOD ' + 'WHERE o.ORDID = :nOrdem';
   SQLBuscas.Prepare;
-  SQLBuscas.ParamByName('nOrdem').AsString       := SQLTemplate.FindField('ORDID').AsString ;
+  SQLBuscas.ParamByName('nOrdem').AsString := SQLTemplate.FindField('ORDID').AsString;
   SQLBuscas.Open;
 
-  nPerc      := 0; // recebe o valor dos servicos
+  nPerc := 0; // recebe o valor dos servicos
   nConcedido := 0; // recebe o valor dos produtos
   nTotalDesc := 0; // recebe o total de descontos
-  While not SQLBuscas.Eof do
+  while not SQLBuscas.Eof do
   begin
     if SQLBuscas.FieldByName('PRODCSERVICO').asstring = 'S' then
       nPerc := nPerc + SQLBuscas.FieldbyName('SomaItens').value
-    Else
+    else
       nConcedido := nConcedido + SQLBuscas.FieldbyName('SomaItens').value;
-    nTotalDesc:= nTotalDesc + SQLBuscas.FieldbyName('ORITN2VLRDESC').value;
+    nTotalDesc := nTotalDesc + SQLBuscas.FieldbyName('ORITN2VLRDESC').value;
     SQLBuscas.Next;
   end;
   // Ajusta Total dos Serviços e Servicos
   SQLTemplate.Edit;
   SQLTemplateORITN2VLRSERVICO.Value := nPerc;
   SQLTemplateORITN2VLRPRODUTO.Value := nConcedido;
-  SQLTemplateORITN2VLRDESC.Value    := nTotalDesc;
+  SQLTemplateORITN2VLRDESC.Value := nTotalDesc;
   SQLTemplate.Post;
 
   SQLOrdItens.Close;
@@ -2597,21 +2560,22 @@ begin
   SQLBuscas.RequestLive := True;
 end;
 
-
 procedure TFormCadastroMecOrdem.MenuItem8Click(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
-    CriaFormulario(TFormRelatorioOrdPorTipoServico, 'FormRelatorioOrdPorTipoServico',False,False,True,'')
+    CriaFormulario(TFormRelatorioOrdPorTipoServico, 'FormRelatorioOrdPorTipoServico', False, False, True, '')
   else
     ShowMessage('Acesso Negado.wav');
 end;
 
-procedure TFormCadastroMecOrdem.impOrdemdeServioBobinaClick(
-  Sender: TObject);
-var Inifile: TInifile;
-var CodCliente, NroReduzido, ImpMarca, ImpCaixaPorta, ImpCaixaVeloc : String;
-var ValorPecas, ValorServico: Extended;
+procedure TFormCadastroMecOrdem.impOrdemdeServioBobinaClick(Sender: TObject);
+var
+  Inifile: TInifile;
+var
+  CodCliente, NroReduzido, ImpMarca, ImpCaixaPorta, ImpCaixaVeloc: string;
+var
+  ValorPecas, ValorServico: Extended;
 begin
   inherited;
   ACBrPosPrinter.Desativar;
@@ -2620,37 +2584,41 @@ begin
   // abre o SQL dos itens da ordem
   SQLOrdItens.Close;
   SQLOrdItens.Prepare;
-  SQLORDItens.ParambyName('MFiltro').AsString := SQLTemplate.FindField('ORDID').AsString ;
+  SQLORDItens.ParambyName('MFiltro').AsString := SQLTemplate.FindField('ORDID').AsString;
   SQLOrdItens.Open;
 
-  IniFile        := TIniFile.Create('C:\Easy2Solutions\Gestao\Parceiro.ini');
-  ImpMarca       := IniFile.ReadString('Restaurante','ImpMarca','');
-  ImpCaixaPorta  := IniFile.ReadString('Restaurante','ImpCaixaPorta','');
-  ImpCaixaVeloc  := IniFile.ReadString('Restaurante','ImpCaixaVeloc','9600');
+  IniFile := TIniFile.Create('C:\Easy2Solutions\Gestao\Parceiro.ini');
+  ImpMarca := IniFile.ReadString('Restaurante', 'ImpMarca', '');
+  ImpCaixaPorta := IniFile.ReadString('Restaurante', 'ImpCaixaPorta', '');
+  ImpCaixaVeloc := IniFile.ReadString('Restaurante', 'ImpCaixaVeloc', '9600');
   IniFile.Free;
 
-  if ImpMarca = 'EPSON'    then ACBrPosPrinter.Modelo := ppEscPosEpson;
-  if ImpMarca = 'BEMATECH' then ACBrPosPrinter.Modelo := ppEscBematech;
-  if ImpMarca = 'ELGIN'    then ACBrPosPrinter.Modelo := ppEscElgin;
-  if ImpMarca = 'DR700'    then ACBrPosPrinter.Modelo := ppEscDaruma;
+  if ImpMarca = 'EPSON' then
+    ACBrPosPrinter.Modelo := ppEscPosEpson;
+  if ImpMarca = 'BEMATECH' then
+    ACBrPosPrinter.Modelo := ppEscBematech;
+  if ImpMarca = 'ELGIN' then
+    ACBrPosPrinter.Modelo := ppEscElgin;
+  if ImpMarca = 'DR700' then
+    ACBrPosPrinter.Modelo := ppEscDaruma;
 
   ACBrPosPrinter.Device.Porta := ImpCaixaPorta;
-  ACBrPosPrinter.Device.Baud  := StrToint(ImpCaixaVeloc);
+  ACBrPosPrinter.Device.Baud := StrToint(ImpCaixaVeloc);
 
-  memoImpressao.Lines.Add('</ce><e>'  +dm.SQLEmpresaEMPRA60NOMEFANT.Value+'</e>');
-  memoImpressao.Lines.Add('</fn></ce>'+dm.SQLEmpresaEMPRA60END.Value);
-  memoImpressao.Lines.Add('</fn></ce>'+dm.SQLEmpresaEMPRA60CID.Value);
-  memoImpressao.Lines.Add('</fn></ce>'+dm.SQLEmpresaEMPRA20FONE.Value);
+  memoImpressao.Lines.Add('</ce><e>' + dm.SQLEmpresaEMPRA60NOMEFANT.Value + '</e>');
+  memoImpressao.Lines.Add('</fn></ce>' + dm.SQLEmpresaEMPRA60END.Value);
+  memoImpressao.Lines.Add('</fn></ce>' + dm.SQLEmpresaEMPRA60CID.Value);
+  memoImpressao.Lines.Add('</fn></ce>' + dm.SQLEmpresaEMPRA20FONE.Value);
   memoImpressao.Lines.Add('</fn>------------------------------------------------');
-  memoImpressao.Lines.Add('<ce><e>OS Nro: '+sqltemplateORDID.AsString+'</e></ce>');
+  memoImpressao.Lines.Add('<ce><e>OS Nro: ' + sqltemplateORDID.AsString + '</e></ce>');
   memoImpressao.Lines.Add('</fn>------------------------------------------------');
   memoImpressao.Lines.Add('</ae><e>DADOS DO CLIENTE</e>');
   memoImpressao.Lines.Add('</fn>------------------------------------------------');
-  memoImpressao.Lines.Add('</ae><e>'+ComboCliente.Text);
+  memoImpressao.Lines.Add('</ae><e>' + ComboCliente.Text);
   if sqltemplateCliFornEmpFoneLookUp.AsString <> '' then
     memoImpressao.Lines.Add(sqltemplateCliFornEmpFoneLookUp.Asstring);
   if sqltemplateClienteEndereco.AsString <> '' then
-    memoImpressao.Lines.Add(sqltemplateClienteEndereco.Asstring+','+SQLTemplateClienteEnderecoNro.AsString);
+    memoImpressao.Lines.Add(sqltemplateClienteEndereco.Asstring + ',' + SQLTemplateClienteEnderecoNro.AsString);
   if SQLTemplateClienteBairro.AsString <> '' then
     memoImpressao.Lines.Add(SQLTemplateClienteBairro.Asstring);
   if SQLTemplateClienteCidade.AsString <> '' then
@@ -2658,49 +2626,47 @@ begin
   memoImpressao.Lines.Add('</fn>------------------------------------------------');
   memoImpressao.Lines.Add('</ae><e>DADOS DO VEICULO</e>');
   memoImpressao.Lines.Add('</fn>------------------------------------------------');
-  memoImpressao.Lines.Add('</ae>Descrição: '+SQLTemplateORDA50VEICULO.AsString);
-  memoImpressao.Lines.Add('</ae>Placa....: '+SQLTemplatePLACA.AsString);
-  memoImpressao.Lines.Add('</ae>Ano\Modelo: '+SQLTemplateANO_MODELO.AsString);
-  memoImpressao.Lines.Add('</ae>Cor: '+SQLTemplateORDA10COR.AsString);
-  memoImpressao.Lines.Add('</ae>Entrada..: '+SQLTemplateDATA.AsString);
-  memoImpressao.Lines.Add('</ae>Km: '+SQLTemplateKM_ENTRADA.AsString);
-  memoImpressao.Lines.Add('</ae>Prometido: '+SQLTemplateDATA_ENTREGA.AsString);
-  memoImpressao.Lines.Add('</ae>Data Saída: '+Copy(SQLTemplateFinalizado.AsString,0,10));
-  memoImpressao.Lines.Add('</ae>Hora Saida: '+Copy(SQLTemplateFinalizado.AsString,11,10));
+  memoImpressao.Lines.Add('</ae>Descrição: ' + SQLTemplateORDA50VEICULO.AsString);
+  memoImpressao.Lines.Add('</ae>Placa....: ' + SQLTemplatePLACA.AsString);
+  memoImpressao.Lines.Add('</ae>Ano\Modelo: ' + SQLTemplateANO_MODELO.AsString);
+  memoImpressao.Lines.Add('</ae>Cor: ' + SQLTemplateORDA10COR.AsString);
+  memoImpressao.Lines.Add('</ae>Entrada..: ' + SQLTemplateDATA.AsString);
+  memoImpressao.Lines.Add('</ae>Km: ' + SQLTemplateKM_ENTRADA.AsString);
+  memoImpressao.Lines.Add('</ae>Prometido: ' + SQLTemplateDATA_ENTREGA.AsString);
+  memoImpressao.Lines.Add('</ae>Data Saída: ' + Copy(SQLTemplateFinalizado.AsString, 0, 10));
+  memoImpressao.Lines.Add('</ae>Hora Saida: ' + Copy(SQLTemplateFinalizado.AsString, 11, 10));
   memoImpressao.Lines.Add('</fn>------------------------------------------------');
   memoImpressao.Lines.Add('</ae><e>PROBLEMA</e>');
-  memoImpressao.Lines.Add('</ae>'+SQLTemplate.FieldbyName('PROBLEMA').asstring);
+  memoImpressao.Lines.Add('</ae>' + SQLTemplate.FieldbyName('PROBLEMA').asstring);
   memoImpressao.Lines.Add('</fn>------------------------------------------------');
   memoImpressao.Lines.Add('</ae><e>OBS ENTREGA</e>');
-  memoImpressao.Lines.Add('</ae>'+SQLTemplate.FieldbyName('Obs_Entrega').asstring);
+  memoImpressao.Lines.Add('</ae>' + SQLTemplate.FieldbyName('Obs_Entrega').asstring);
   memoImpressao.Lines.Add('</fn>------------------------------------------------');
   memoImpressao.Lines.Add('</ae><e>ACESSORIOS</e>');
-  memoImpressao.Lines.Add('</ae>'+SQLTemplate.FieldbyName('ACESSORIOS').asstring);
+  memoImpressao.Lines.Add('</ae>' + SQLTemplate.FieldbyName('ACESSORIOS').asstring);
   memoImpressao.Lines.Add('</fn>------------------------------------------------');
-  memoImpressao.Lines.Add('</ae>Valor Previsto R$ '+FormatFloat(',0.00',SQLTemplateVALOR.value));
+  memoImpressao.Lines.Add('</ae>Valor Previsto R$ ' + FormatFloat(',0.00', SQLTemplateVALOR.value));
   memoImpressao.Lines.Add('</fn>------------------------------------------------');
   memoImpressao.Lines.Add('</ae>Pecas e Servicos                                ');
   memoImpressao.Lines.Add('</ae>       Quantidade     Valor Unit       Vlr.Total');
   memoImpressao.Lines.Add('</fn>------------------------------------------------');
   SQLOrdItens.First;
-  While not SQLOrdItens.Eof do
-    begin
-      memoImpressao.Lines.Add('</ae>'+SQLOrdItensPRODICOD.AsString + '-' + SQLOrdItensPRODA60DESCR.AsString);
-      memoImpressao.Lines.Add('</ad>'+FormatFloat('##00.00',SQLOrdItensORITN3QUANT.Value)+'     '+
-                                      FormatFloat('R$ ##0.00',SQLOrdItensORITN2VLRUNIT.value)+'     '+
-                                      FormatFloat('R$ ##0.00',(SQLOrdItensORITN2VLRUNIT.value*SQLOrdItensORITN3QUANT.Value)-SQLOrdItensORITN2VLRDESC.Value)+'   ');
+  while not SQLOrdItens.Eof do
+  begin
+    memoImpressao.Lines.Add('</ae>' + SQLOrdItensPRODICOD.AsString + '-' + SQLOrdItensPRODA60DESCR.AsString);
+    memoImpressao.Lines.Add('</ad>' + FormatFloat('##00.00', SQLOrdItensORITN3QUANT.Value) + '     ' + FormatFloat('R$ ##0.00', SQLOrdItensORITN2VLRUNIT.value) + '     ' + FormatFloat('R$ ##0.00', (SQLOrdItensORITN2VLRUNIT.value * SQLOrdItensORITN3QUANT.Value) - SQLOrdItensORITN2VLRDESC.Value) + '   ');
       // Totaliza a ordem
-      if SQLOrdItensPRODCSERVICO.AsString = 'S' Then
-        ValorServico := ValorServico + (SQLOrdItensORITN2VLRUNIT.value*SQLOrdItensORITN3QUANT.Value)-SQLOrdItensORITN2VLRDESC.Value
-      else
-        ValorPecas   := ValorPecas   + (SQLOrdItensORITN2VLRUNIT.value*SQLOrdItensORITN3QUANT.Value)-SQLOrdItensORITN2VLRDESC.Value;
+    if SQLOrdItensPRODCSERVICO.AsString = 'S' then
+      ValorServico := ValorServico + (SQLOrdItensORITN2VLRUNIT.value * SQLOrdItensORITN3QUANT.Value) - SQLOrdItensORITN2VLRDESC.Value
+    else
+      ValorPecas := ValorPecas + (SQLOrdItensORITN2VLRUNIT.value * SQLOrdItensORITN3QUANT.Value) - SQLOrdItensORITN2VLRDESC.Value;
 
-      SQLOrdItens.Next;
-    end;
+    SQLOrdItens.Next;
+  end;
   memoImpressao.Lines.Add('</fn>------------------------------------------------');
-  MemoImpressao.Lines.Add('</ce><e><n>Pecas    ' + FormatFloat('R$ ##0.00',ValorPecas) + '</n></e>');
-  MemoImpressao.Lines.Add('</ce><e><n>Servicos ' + FormatFloat('R$ ##0.00',ValorServico) + '</n></e>');
-  MemoImpressao.Lines.Add('</ce><e><n>TOTAL    ' + FormatFloat('R$ ##0.00',SQLTemplateVALORTOTAL.Value) + '</n></e>');
+  MemoImpressao.Lines.Add('</ce><e><n>Pecas    ' + FormatFloat('R$ ##0.00', ValorPecas) + '</n></e>');
+  MemoImpressao.Lines.Add('</ce><e><n>Servicos ' + FormatFloat('R$ ##0.00', ValorServico) + '</n></e>');
+  MemoImpressao.Lines.Add('</ce><e><n>TOTAL    ' + FormatFloat('R$ ##0.00', SQLTemplateVALORTOTAL.Value) + '</n></e>');
   memoImpressao.Lines.Add(' ');
   memoImpressao.Lines.Add(' ');
   memoImpressao.Lines.Add(' ');
@@ -2714,32 +2680,32 @@ begin
   ACBrPosPrinter.Desativar;
 end;
 
-procedure TFormCadastroMecOrdem.MnRemoverIfemdasplacasClick(
-  Sender: TObject);
-var xplaca : string;
+procedure TFormCadastroMecOrdem.MnRemoverIfemdasplacasClick(Sender: TObject);
+var
+  xplaca: string;
 begin
   inherited;
   sqltemplate.first;
   while not sqltemplate.Eof do
-    begin
-      sqltemplate.Edit;
-      xplaca := SQLTemplatePLACA.Value ;
-      try
-        while pos('-',xplaca) > 0 do
-          delete(xplaca,pos('-', xplaca),1);
-        while pos(' ',xplaca) > 0 do
-          delete(xplaca,pos(' ',xplaca),1);
-        SQLTemplatePLACA.Value := xplaca ;
-        sqltemplate.post;
-      except
-        sqltemplate.cancel;
-        Application.ProcessMessages;
-      end;
-
-
-      sqltemplate.Next;
+  begin
+    sqltemplate.Edit;
+    xplaca := SQLTemplatePLACA.Value;
+    try
+      while pos('-', xplaca) > 0 do
+        delete(xplaca, pos('-', xplaca), 1);
+      while pos(' ', xplaca) > 0 do
+        delete(xplaca, pos(' ', xplaca), 1);
+      SQLTemplatePLACA.Value := xplaca;
+      sqltemplate.post;
+    except
+      sqltemplate.cancel;
+      Application.ProcessMessages;
     end;
+
+    sqltemplate.Next;
+  end;
   showmessage('Concluido!');
 end;
 
 end.
+

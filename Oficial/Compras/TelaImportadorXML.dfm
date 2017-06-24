@@ -11,19 +11,19 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
   TextHeight = 13
   inherited ScrollBoxFundo: TScrollBox
     Width = 1086
-    Height = 648
+    Height = 649
     inherited PanelCentral: TPanel
       Width = 1082
-      Height = 564
+      Height = 565
       inherited PanelBarra: TPanel
         Width = 1
-        Height = 564
+        Height = 565
       end
       object pnlImportador: TPanel
         Left = 1
         Top = 0
         Width = 1081
-        Height = 564
+        Height = 565
         Align = alClient
         Caption = 'pnlImportador'
         Color = 16249066
@@ -32,7 +32,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
           Left = 1
           Top = 1
           Width = 1079
-          Height = 397
+          Height = 398
           ActivePage = tsXMLs
           Align = alClient
           TabOrder = 0
@@ -44,14 +44,14 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
               Left = 0
               Top = 0
               Width = 353
-              Height = 369
+              Height = 370
               Align = alLeft
               TabOrder = 0
               object cxGrid4: TcxGrid
                 Left = 1
                 Top = 177
                 Width = 351
-                Height = 191
+                Height = 192
                 Align = alClient
                 TabOrder = 0
                 object cxGrid4DBTableView1: TcxGridDBTableView
@@ -294,7 +294,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
               Left = 353
               Top = 0
               Width = 648
-              Height = 369
+              Height = 370
               Align = alLeft
               Caption = 'Dados da Nota Fiscal'
               TabOrder = 1
@@ -302,7 +302,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
                 Left = 2
                 Top = 100
                 Width = 644
-                Height = 267
+                Height = 268
                 Align = alClient
                 TabOrder = 0
                 object cxGridDBTableViewVis: TcxGridDBTableView
@@ -640,7 +640,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
             OnShow = tsInfoNfeShow
             DesignSize = (
               1071
-              369)
+              370)
             object Label27: TLabel
               Left = 13
               Top = 181
@@ -1668,7 +1668,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
             OnShow = tsFaturamentoShow
             DesignSize = (
               1071
-              369)
+              370)
             object Label25: TLabel
               Left = 8
               Top = 110
@@ -2184,7 +2184,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
         end
         object pgcValidacoes: TPageControl
           Left = 1
-          Top = 398
+          Top = 399
           Width = 1079
           Height = 165
           ActivePage = tsValidacoes
@@ -2375,6 +2375,9 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
   end
   object ACBrNFe: TACBrNFe
     Configuracoes.Geral.SSLLib = libCapicomDelphiSoap
+    Configuracoes.Geral.SSLCryptLib = cryCapicom
+    Configuracoes.Geral.SSLHttpLib = httpIndy
+    Configuracoes.Geral.SSLXmlSignLib = xsMsXmlCapicom
     Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
     Configuracoes.Geral.ValidarDigest = False
     Configuracoes.Geral.IncluirQRCodeXMLNFCe = False
@@ -3035,27 +3038,6 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
     Left = 486
     Top = 363
   end
-  object zProduto: TZQuery
-    SQL.Strings = (
-      'Select * from Produto where prodicod is null')
-    Params = <>
-    Left = 800
-    Top = 97
-  end
-  object zProdutoFornecedor: TZQuery
-    SQL.Strings = (
-      'Select * from ProdutoFornecedor where prodicod is null')
-    Params = <>
-    Left = 829
-    Top = 97
-  end
-  object zNcm: TZQuery
-    SQL.Strings = (
-      'Select * from NCM where ncmicod is null')
-    Params = <>
-    Left = 860
-    Top = 97
-  end
   object SQLProdutoEditar: TRxQuery
     DatabaseName = 'DB'
     RequestLive = True
@@ -3249,12 +3231,5 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
     DataSet = SQLNFSEFAZ
     Left = 782
     Top = 325
-  end
-  object zCest: TZQuery
-    SQL.Strings = (
-      'Select * from CESTNCM')
-    Params = <>
-    Left = 893
-    Top = 96
   end
 end

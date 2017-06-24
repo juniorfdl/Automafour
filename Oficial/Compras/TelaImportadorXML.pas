@@ -17,7 +17,15 @@ uses
   cxImageComboBox, ImgList, IniFiles, ShellAPI, Gauges, ZAbstractRODataset,
   ZAbstractDataset, ZDataset, 
   AdvOfficeStatusBar, AdvOfficeStatusBarStylers, ACBrBase, ACBrDFe, pcnConversaoNFe,
-  Grids, DBGrids;
+  Grids, DBGrids, dxSkinBlack, dxSkinBlue, dxSkinCaramel, dxSkinCoffee,
+  dxSkinDarkRoom, dxSkinDarkSide, dxSkinFoggy, dxSkinGlassOceans,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinPumpkin, dxSkinSeven, dxSkinSharp,
+  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
+  dxSkinsDefaultPainters, dxSkinValentine, dxSkinXmas2008Blue,
+  dxSkinscxPCPainter;
 
 type
   TTipoInconsistencia = (tiCritica, tiInformacao, tiErro);

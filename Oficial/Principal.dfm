@@ -1,7 +1,7 @@
 inherited FormPrincipal: TFormPrincipal
   Tag = 4
-  Left = 2
-  Top = 79
+  Left = -8
+  Top = -8
   Width = 1382
   Height = 744
   Caption = 'Advanced Control'
@@ -9,15 +9,15 @@ inherited FormPrincipal: TFormPrincipal
   PixelsPerInch = 96
   TextHeight = 13
   inherited RodapePrincipal: TStatusBar
-    Top = 666
+    Top = 667
     Width = 1366
   end
   inherited ptopo: TAdvOfficeStatusBar
     Width = 1366
-    Height = 86
+    Height = 92
     inherited logo_parceiro: TImage
       Left = 1051
-      Height = 86
+      Height = 92
     end
     object RxLabel5: TRxLabel
       Left = 11
@@ -38,9 +38,9 @@ inherited FormPrincipal: TFormPrincipal
     end
     object bClientes: TAdvGlowButton
       Left = 1
-      Top = 1
-      Width = 102
-      Height = 84
+      Top = 0
+      Width = 95
+      Height = 89
       Hint = 'Cadastro de Clientes'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
@@ -386,10 +386,10 @@ inherited FormPrincipal: TFormPrincipal
       Layout = blGlyphTop
     end
     object bProdutos: TAdvGlowButton
-      Left = 102
-      Top = 1
-      Width = 102
-      Height = 88
+      Left = 104
+      Top = 0
+      Width = 95
+      Height = 89
       Hint = 'Cadastro de Produtos'
       NotesFont.Charset = DEFAULT_CHARSET
       NotesFont.Color = clWindowText
@@ -955,9 +955,9 @@ inherited FormPrincipal: TFormPrincipal
     end
     object bEmitirNFE: TAdvGlowButton
       Left = 216
-      Top = 1
-      Width = 102
-      Height = 87
+      Top = 0
+      Width = 95
+      Height = 89
       Hint = 'Emitir Nota Fiscal Eletronica'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
@@ -1091,9 +1091,9 @@ inherited FormPrincipal: TFormPrincipal
     end
     object AdvGlowButton1: TAdvGlowButton
       Left = 322
-      Top = 1
-      Width = 105
-      Height = 87
+      Top = 0
+      Width = 95
+      Height = 89
       Hint = 'Contas a Pagar'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
@@ -1430,9 +1430,9 @@ inherited FormPrincipal: TFormPrincipal
     end
     object AdvGlowButton2: TAdvGlowButton
       Left = 424
-      Top = 1
-      Width = 105
-      Height = 87
+      Top = 0
+      Width = 95
+      Height = 89
       Hint = 'Fornecedores'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
@@ -1683,9 +1683,9 @@ inherited FormPrincipal: TFormPrincipal
     end
     object AdvGlowButton3: TAdvGlowButton
       Left = 531
-      Top = 1
-      Width = 105
-      Height = 85
+      Top = 0
+      Width = 95
+      Height = 89
       Hint = 'Pedido de Compra'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
@@ -2030,9 +2030,9 @@ inherited FormPrincipal: TFormPrincipal
     end
     object AdvGlowButton4: TAdvGlowButton
       Left = 643
-      Top = 1
-      Width = 105
-      Height = 87
+      Top = 0
+      Width = 95
+      Height = 89
       Hint = 'Contas a Receber'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
@@ -2351,9 +2351,9 @@ inherited FormPrincipal: TFormPrincipal
     end
     object AdvGlowButton5: TAdvGlowButton
       Left = 743
-      Top = 1
-      Width = 105
-      Height = 87
+      Top = 0
+      Width = 95
+      Height = 89
       Hint = 'Movimenta'#231#245'es Diversas'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
@@ -2652,9 +2652,9 @@ inherited FormPrincipal: TFormPrincipal
     end
     object AdvGlowButton6: TAdvGlowButton
       Left = 845
-      Top = 1
-      Width = 105
-      Height = 87
+      Top = 0
+      Width = 95
+      Height = 89
       Hint = 'Etiquetas'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
@@ -3045,9 +3045,9 @@ inherited FormPrincipal: TFormPrincipal
     end
     object AdvGlowButton7: TAdvGlowButton
       Left = 950
-      Top = 1
-      Width = 100
-      Height = 87
+      Top = 0
+      Width = 95
+      Height = 89
       Hint = 'SPED Fiscal'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
