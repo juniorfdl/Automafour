@@ -1,0 +1,10 @@
+* Resumo Financeiro - Não abre
+* Financeiro - Receber 
+ - Lançamento de contas a receber - SQLConfigCrediario: field 'CFCRN2PERCMULATRAS' 
+ - Baixa de Contas a Receber - SQLConfigCrediario: Field 'CFCRINRODIASTOLJUR'
+ - Lançamentos de Cartões/Crediário - SQLConfigCrediario: Field 'CFCRN2PERCJURATRAS' 
+ - Conta Corrente - SQLTerminalAtivo: Parameter 'VENDICOD'
+* Faturamento - Pedido de Venda - SQLTerminalAtivo: Parameter 'VENDICOD' 
+ - 
+
+
