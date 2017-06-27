@@ -17,15 +17,7 @@ uses
   cxImageComboBox, ImgList, IniFiles, ShellAPI, Gauges, ZAbstractRODataset,
   ZAbstractDataset, ZDataset, 
   AdvOfficeStatusBar, AdvOfficeStatusBarStylers, ACBrBase, ACBrDFe, pcnConversaoNFe,
-  Grids, DBGrids, dxSkinBlack, dxSkinBlue, dxSkinCaramel, dxSkinCoffee,
-  dxSkinDarkRoom, dxSkinDarkSide, dxSkinFoggy, dxSkinGlassOceans,
-  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
-  dxSkinMcSkin, dxSkinMoneyTwins, dxSkinOffice2007Black,
-  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
-  dxSkinOffice2007Silver, dxSkinPumpkin, dxSkinSeven, dxSkinSharp,
-  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
-  dxSkinsDefaultPainters, dxSkinValentine, dxSkinXmas2008Blue,
-  dxSkinscxPCPainter;
+  Grids, DBGrids;
 
 type
   TTipoInconsistencia = (tiCritica, tiInformacao, tiErro);
@@ -2162,7 +2154,7 @@ end;
 
 function TFormTelaImportadorXML.CriaNCM(aNCM: String): Integer;
 begin
-  Dm.SQLConsulta.Close;
+{  Dm.SQLConsulta.Close;
   Dm.SQLConsulta.SQL.Clear;
   Dm.SQLConsulta.SQL.Add('select NCMICOD from NCM');
   Dm.SQLConsulta.SQL.Add('where NCMA30CODIGO = :NCMA30CODIGO');
@@ -2184,17 +2176,17 @@ begin
       zNcm.fieldbyname('REGISTRO').AsDateTime      :=  now;
       try
         zncm.post;
-      except                                        
+      except
         zncm.cancel;
       end;
     end;
-  Dm.SQLConsulta.close;
+  Dm.SQLConsulta.close;}
 end;
 
 function TFormTelaImportadorXML.CriaCEST(aCEST, aNCM: String): String;
 begin
-  dm.SQLConsulta.close;
-  dm.SQLConsulta.SQL.Clear;  
+  {dm.SQLConsulta.close;
+  dm.SQLConsulta.SQL.Clear;
   dm.SQLConsulta.SQL.Add('select CEST from CESTNCM');
   dm.SQLConsulta.SQL.Add('where NCM ='''+aNCM+''' and ');
   dm.SQLConsulta.SQL.Add(' CEST='''+aCEST+'''');
@@ -2215,7 +2207,7 @@ begin
         zCest.cancel;
       end;
     end;
-  dm.SQLConsulta.close;
+  dm.SQLConsulta.close;}
 end;
 
 procedure TFormTelaImportadorXML.tsInfoNfeShow(Sender: TObject);

@@ -4,7 +4,7 @@ object FormTelaFechamentoVenda: TFormTelaFechamentoVenda
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'acbr'
-  ClientHeight = 742
+  ClientHeight = 741
   ClientWidth = 1362
   Color = 14731440
   Font.Charset = DEFAULT_CHARSET
@@ -26,7 +26,7 @@ object FormTelaFechamentoVenda: TFormTelaFechamentoVenda
     Left = 150
     Top = 0
     Width = 1022
-    Height = 742
+    Height = 741
     Align = alLeft
     BorderStyle = bsNone
     Color = 10053171
@@ -3409,7 +3409,7 @@ object FormTelaFechamentoVenda: TFormTelaFechamentoVenda
     Left = 0
     Top = 0
     Width = 150
-    Height = 742
+    Height = 741
     Align = alLeft
     BevelInner = bvNone
     BevelOuter = bvNone
@@ -3422,7 +3422,7 @@ object FormTelaFechamentoVenda: TFormTelaFechamentoVenda
     Left = 1172
     Top = 0
     Width = 190
-    Height = 742
+    Height = 741
     Align = alClient
     BorderStyle = bsNone
     Color = 10053171
