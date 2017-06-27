@@ -175,7 +175,6 @@ type
     SQLIcmsICMSA60DESCR: TStringField;
     SQLIcmsICMSN2ALIQUOTA: TFloatField;
     SQLIcmsICMSICODSITTRIB: TIntegerField;
-    zProdutoFornecedor: TZQuery;
     DSSQLMarca: TDataSource;
     SQLMarca: TRxQuery;
     SQLMarcaMARCICOD: TIntegerField;
@@ -211,6 +210,7 @@ type
     SQLTemplatePRODN2MGVENDA2835D: TFloatField;
     SQLTemplateTABCEST: TStringField;
     SQLProdutoPdvs: TRxQuery;
+    sqlProdutoFornecedor: TRxQuery;
     procedure FormCreate(Sender: TObject);
     procedure SQLTemplateNewRecord(DataSet: TDataSet);
     procedure SQLTemplateBeforePost(DataSet: TDataSet);
@@ -245,7 +245,7 @@ var
 
 implementation
 
-uses DataModulo ;
+uses DataModulo , UnitLibrary;
 
 {$R *.dfm}
 
@@ -394,19 +394,20 @@ begin
               SQLProdutoSaldoNovoPSLDN3QTDMAX.asFloat := 0;
               SQLProdutoSaldoNovoPSLDN3QTDMIN.asFloat := 0;
               SQLProdutoSaldoNovo.Post;
-            end;  
+            end;
           SQLEmpresa.Next;
         End;
 
-      zProdutoFornecedor.Close;
-      zProdutoFornecedor.Open;
-      zProdutoFornecedor.Append;
-      zProdutoFornecedor.fieldbyname('PRODICOD').AsString          := sqltemplatePRODICOD.AsString;
-      zProdutoFornecedor.fieldbyname('FORNICOD').AsString          := CdFornec;
-      zProdutoFornecedor.fieldbyname('PRFOA30REFERENCIA').AsString := CdReferencia;
-      zProdutoFornecedor.fieldbyname('PENDENTE').AsString          := 'S';
-      zProdutoFornecedor.fieldbyname('REGISTRO').AsDateTime        :=  now;
-      zProdutoFornecedor.Post;
+      sqlProdutoFornecedor.Close;
+      sqlProdutoFornecedor.Open;
+      sqlProdutoFornecedor.Append;
+      sqlProdutoFornecedor.fieldbyname('PRODICOD').AsString          := sqltemplatePRODICOD.AsString;
+      sqlProdutoFornecedor.fieldbyname('FORNICOD').AsString          := CdFornec;
+      sqlProdutoFornecedor.fieldbyname('PRFOA30REFERENCIA').AsString := CdReferencia;
+      sqlProdutoFornecedor.fieldbyname('PENDENTE').AsString          := 'S';
+      sqlProdutoFornecedor.fieldbyname('REGISTRO').AsDateTime        :=  now;
+      sqlProdutoFornecedor.Post;
+
     end;
 
   Close;

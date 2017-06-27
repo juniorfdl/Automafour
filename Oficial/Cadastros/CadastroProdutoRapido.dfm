@@ -1770,13 +1770,6 @@ object FormCadastroProdutoRapido: TFormCadastroProdutoRapido
       Origin = 'DB.ICMS.ICMSICODSITTRIB'
     end
   end
-  object zProdutoFornecedor: TZQuery
-    SQL.Strings = (
-      'Select * from ProdutoFornecedor where prodicod is null')
-    Params = <>
-    Left = 453
-    Top = 1
-  end
   object DSSQLMarca: TDataSource
     DataSet = SQLMarca
     Left = 257
@@ -1908,5 +1901,15 @@ object FormCadastroProdutoRapido: TFormCadastroProdutoRapido
       end>
     Left = 543
     Top = 3
+  end
+  object sqlProdutoFornecedor: TRxQuery
+    Tag = 1
+    DatabaseName = 'DB'
+    RequestLive = True
+    SQL.Strings = (
+      'Select * from ProdutoFornecedor where prodicod is null')
+    Macros = <>
+    Left = 336
+    Top = 49
   end
 end
