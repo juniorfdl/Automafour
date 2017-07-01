@@ -5,8 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, EDBNum, RxLookup, StdCtrls, Mask, DBCtrls, Buttons, Math,
-  AdvOfficeStatusBar, ExtCtrls, AdvOfficeStatusBarStylers, DB, DBTables,
-  RxQuery, ZAbstractRODataset, ZAbstractDataset, ZDataset;
+  AdvOfficeStatusBar, ExtCtrls, AdvOfficeStatusBarStylers, DB, DBTables, RxQuery,
+  ZAbstractRODataset, ZAbstractDataset, ZDataset;
 
 type
   TFormCadastroProdutoRapido = class(TForm)
@@ -219,25 +219,22 @@ type
     procedure SQLTemplatePRODN3VLRCOMPRAChange(Sender: TField);
     procedure SQLTemplatePRODN3PERCMGLVFIXAChange(Sender: TField);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure ComboMarcaKeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
-    procedure ComboGrupoKeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
+    procedure ComboMarcaKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure ComboGrupoKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure lbMarcaAddClick(Sender: TObject);
     procedure lbGrupoAddClick(Sender: TObject);
     procedure ComboICMSExit(Sender: TObject);
     procedure SQLTemplatePRODN3CAPACEMBALChange(Sender: TField);
-    procedure FormKeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
     { Private declarations }
-    function EnviaProdutoPDVs(Tipo : string) : boolean;
+    function EnviaProdutoPDVs(Tipo: string): boolean;
     procedure addMarca;
     procedure addGrupo;
   public
     { Public declarations }
-    CdFornec, CdReferencia : string;
-    vCompraEmbalagem, vDescEmbalagem : Double;
+    CdFornec, CdReferencia: string;
+    vCompraEmbalagem, vDescEmbalagem: Double;
   end;
 
 var
@@ -245,7 +242,8 @@ var
 
 implementation
 
-uses DataModulo , UnitLibrary;
+uses
+  DataModulo, UnitLibrary;
 
 {$R *.dfm}
 
@@ -259,113 +257,112 @@ begin
   SQLTemplate.Append;
 end;
 
-procedure TFormCadastroProdutoRapido.SQLTemplateNewRecord(
-  DataSet: TDataSet);
+procedure TFormCadastroProdutoRapido.SQLTemplateNewRecord(DataSet: TDataSet);
 begin
-  SQLTemplatePRODCATIVO.asString          := 'S';
-  SQLTemplatePRODCPERMITETROCA.asString   := 'S';
-  SQLTemplatePRODCGERACOMIS.asString      := 'S';
-  SQLTemplatePRODCIMPETIQCDBAR.AsString   := 'S';
-  SQLTemplatePRODCSERVICO.asString        := 'N';
-  SQLTemplatePRODCTIPOBAIXA.asString      := 'P';
-  SQLTemplatePRODCTEMNROSERIE.AsString    := 'N';
-  SQLTemplatePRODA1TIPO.AsString          := '0';
-  SQLTemplatePRODN2DESCMAX.asFloat        := 0;
-  SQLTemplatePRODN3QTDEBAIXA.asFloat      := 0;
-  SQLTemplatePRODN3PESOBRUTO.asFloat      := 0;
-  SQLTemplatePRODN3PESOLIQ.asFloat        := 0;
-  SQLTemplatePRODN3CAPACEMBAL.asFloat     := 1;
-  SQLTemplatePRODN3VLRCOMPRA.asFloat      := 0;
-  SQLTemplatePRODN3VLRCOMPRAMED.asFloat   := 0;
-  SQLTemplatePRODN3VLRCUSTO.asFloat       := 0;
-  SQLTemplatePRODN3VLRCUSTOMED.asFloat    := 0;
-  SQLTemplatePRODN3VLRVENDA.asFloat       := 0;
-  SQLTemplatePRODN3VLRVENDA2.asFloat      := 0;
-  SQLTemplatePRODN2VLRVENDA2835D.asFloat  := 0;
-  SQLTemplatePRODN2VLRVENDA283542D.asFloat:= 0;
-  SQLTemplatePRODN3VLRVENDAPROM.asFloat   := 0;
-  SQLTemplatePRODN3PERCMARGLUCR.asFloat   := 0;
-  SQLTemplatePRODN3PERCMARGLUC2.asFloat   := 0;
-  SQLTemplatePRODN3PERCMGLVFIXA.asFloat   := 0;
-  SQLTemplatePRODN3PERCMGLAFIXA.asFloat   := 0;
-  SQLTemplatePRODN2MGVENDA2835D.asFloat   := 0;
+  SQLTemplatePRODCATIVO.asString := 'S';
+  SQLTemplatePRODCPERMITETROCA.asString := 'S';
+  SQLTemplatePRODCGERACOMIS.asString := 'S';
+  SQLTemplatePRODCIMPETIQCDBAR.AsString := 'S';
+  SQLTemplatePRODCSERVICO.asString := 'N';
+  SQLTemplatePRODCTIPOBAIXA.asString := 'P';
+  SQLTemplatePRODCTEMNROSERIE.AsString := 'N';
+  SQLTemplatePRODA1TIPO.AsString := '0';
+  SQLTemplatePRODN2DESCMAX.asFloat := 0;
+  SQLTemplatePRODN3QTDEBAIXA.asFloat := 0;
+  SQLTemplatePRODN3PESOBRUTO.asFloat := 0;
+  SQLTemplatePRODN3PESOLIQ.asFloat := 0;
+  SQLTemplatePRODN3CAPACEMBAL.asFloat := 1;
+  SQLTemplatePRODN3VLRCOMPRA.asFloat := 0;
+  SQLTemplatePRODN3VLRCOMPRAMED.asFloat := 0;
+  SQLTemplatePRODN3VLRCUSTO.asFloat := 0;
+  SQLTemplatePRODN3VLRCUSTOMED.asFloat := 0;
+  SQLTemplatePRODN3VLRVENDA.asFloat := 0;
+  SQLTemplatePRODN3VLRVENDA2.asFloat := 0;
+  SQLTemplatePRODN2VLRVENDA2835D.asFloat := 0;
+  SQLTemplatePRODN2VLRVENDA283542D.asFloat := 0;
+  SQLTemplatePRODN3VLRVENDAPROM.asFloat := 0;
+  SQLTemplatePRODN3PERCMARGLUCR.asFloat := 0;
+  SQLTemplatePRODN3PERCMARGLUC2.asFloat := 0;
+  SQLTemplatePRODN3PERCMGLVFIXA.asFloat := 0;
+  SQLTemplatePRODN3PERCMGLAFIXA.asFloat := 0;
+  SQLTemplatePRODN2MGVENDA2835D.asFloat := 0;
   SQLTemplatePRODN2MGVENDA283542D.asFloat := 0;
-  sqltemplatePRODN2PERCIPIENTRADA.value   := 0;
-  SQLTemplatePRODN3PERCIPI.asFloat        := 0;
-  SQLTemplatePRODN2COMISVISTA.asFloat     := 0;
-  SQLTemplatePRODN2COMISPRAZO.asFloat     := 0;
+  sqltemplatePRODN2PERCIPIENTRADA.value := 0;
+  SQLTemplatePRODN3PERCIPI.asFloat := 0;
+  SQLTemplatePRODN2COMISVISTA.asFloat := 0;
+  SQLTemplatePRODN2COMISPRAZO.asFloat := 0;
   SQLTemplatePRODITIPOPRODBALAN.AsInteger := 0;
-  SQLTemplatePRODN2PERCDESP.Value         := 0;
-  SQLTemplatePRODN2PERCDIFICM.Value       := 0;
-  SQLTemplatePRODN2PERCSUBST.Value        := 0;
-  SQLTemplatePRODN2PERCFRETE.Value        := 0;
-  SQLTemplatePRODN3QTDVOLUME.Value        := 1;
-  SQLTemplatePRODDCAD.asDateTime          := Date;
-  SQLTemplatePRODCMIX.Value               := 'D';
-  SQLTemplatePRODCCOFINS.Value            := 'N';
-  SQLTemplatePRODCVDESTNEG.Value          := 'S';
-  SQLTemplatePRODA2TIPOITEM.AsString      := '00';
-  SQLTemplatePENDENTE.AsString            := 'S';
-  SQLTemplateREGISTRO.AsDateTime          :=  now;
-  SQLTemplatePRODA255DESCRTEC.AsString    :=  'Cadastro incluído automaticamente, através de arquivo XML (NFe). Remover essa informação após revisar esse cadastro.';
+  SQLTemplatePRODN2PERCDESP.Value := 0;
+  SQLTemplatePRODN2PERCDIFICM.Value := 0;
+  SQLTemplatePRODN2PERCSUBST.Value := 0;
+  SQLTemplatePRODN2PERCFRETE.Value := 0;
+  SQLTemplatePRODN3QTDVOLUME.Value := 1;
+  SQLTemplatePRODDCAD.asDateTime := Date;
+  SQLTemplatePRODCMIX.Value := 'D';
+  SQLTemplatePRODCCOFINS.Value := 'N';
+  SQLTemplatePRODCVDESTNEG.Value := 'S';
+  SQLTemplatePRODA2TIPOITEM.AsString := '00';
+  SQLTemplatePENDENTE.AsString := 'S';
+  SQLTemplateREGISTRO.AsDateTime := now;
+  SQLTemplatePRODA255DESCRTEC.AsString := 'Cadastro incluído automaticamente, através de arquivo XML (NFe). Remover essa informação após revisar esse cadastro.';
 
   if DM.SQLEmpresa.fieldbyname('EMPRA3CRT').value <> '3' then
-    begin
+  begin
       {Empresas do Simples}
-      sqltemplatePRODIORIGEM.Value                 := 0;
-      sqltemplatePRODISITTRIB.value                := 102;
-      sqltemplatePRODA1MODBC.asstring              := '0';
-      sqltemplatePRODA1MODBCST.asstring            := '4';
-      sqltemplatePRODA2CSTIPI.asstring             := '52';
-      sqltemplatePRODA3CSTIPIENTRADA.asstring      := '02';
-      sqltemplatePRODN3PERCIPI.value               := 0;
-      sqltemplatePRODN2PERCIPIENTRADA.value        := 0;
-      sqltemplatePRODA2CSTPIS.asstring             := '49';
-      sqltemplatePRODA3CSTPISENTRADA.asstring      := '99';
-      sqltemplatePRODN2ALIQPIS.value               := 0;
-      sqltemplatePRODA2CSTCOFINS.asstring          := '49';
-      sqltemplatePRODA3CSTCOFINSENTRADA.asstring   := '99';
-      sqltemplatePRODN2ALIQCOFINS.value            := 0;
-      sqltemplatePRODA1TIPO.asstring               := '0';
-      sqltemplatePRODA2TIPOITEM.asstring           := '00';
-    end;
+    sqltemplatePRODIORIGEM.Value := 0;
+    sqltemplatePRODISITTRIB.value := 102;
+    sqltemplatePRODA1MODBC.asstring := '0';
+    sqltemplatePRODA1MODBCST.asstring := '4';
+    sqltemplatePRODA2CSTIPI.asstring := '52';
+    sqltemplatePRODA3CSTIPIENTRADA.asstring := '02';
+    sqltemplatePRODN3PERCIPI.value := 0;
+    sqltemplatePRODN2PERCIPIENTRADA.value := 0;
+    sqltemplatePRODA2CSTPIS.asstring := '49';
+    sqltemplatePRODA3CSTPISENTRADA.asstring := '99';
+    sqltemplatePRODN2ALIQPIS.value := 0;
+    sqltemplatePRODA2CSTCOFINS.asstring := '49';
+    sqltemplatePRODA3CSTCOFINSENTRADA.asstring := '99';
+    sqltemplatePRODN2ALIQCOFINS.value := 0;
+    sqltemplatePRODA1TIPO.asstring := '0';
+    sqltemplatePRODA2TIPOITEM.asstring := '00';
+  end;
 end;
 
-procedure TFormCadastroProdutoRapido.SQLTemplateBeforePost(
-  DataSet: TDataSet);
+procedure TFormCadastroProdutoRapido.SQLTemplateBeforePost(DataSet: TDataSet);
 begin
   DM.CodigoAutomatico('PRODUTO', DSTemplate, SQLTemplate, 0, 0);
   SQLTemplatePRODIAGRUPGRADE.Value := SQLTemplatePRODICOD.Value;
-  SQLTemplatePRODIPRINCIPAL.Value  := SQLTemplatePRODICOD.Value;
+  SQLTemplatePRODIPRINCIPAL.Value := SQLTemplatePRODICOD.Value;
 end;
 
 procedure TFormCadastroProdutoRapido.LabelGravarClick(Sender: TObject);
-var erro : boolean;
+var
+  erro: boolean;
 begin
   SQLTemplatePRODN3PERCMARGLUCR.Value := sqltemplatePRODN3PERCMGLVFIXA.Value;
 
   if ComboUnidade.Value = '' then
-    begin
-      showmessage('Unidade de Venda não informada!');
-      exit;
-    end;
+  begin
+    showmessage('Unidade de Venda não informada!');
+    exit;
+  end;
   if ComboICMS.Value = '' then
-    begin
-      showmessage('ICMS de Venda não informado!');
-      exit;
-    end;
+  begin
+    showmessage('ICMS de Venda não informado!');
+    exit;
+  end;
 
   if (SQLTemplatePRODN3CAPACEMBAL.IsNull) or (SQLTemplatePRODN3CAPACEMBAL.Value = 0) then
-    begin
-      showmessage('Capacidade da Embalagem deve ser maior que zero');
-      exit;
-    end;
+  begin
+    showmessage('Capacidade da Embalagem deve ser maior que zero');
+    exit;
+  end;
 
   if (SQLTemplatePRODISITTRIB.IsNull) then
-    begin
-      showmessage('CST Icms campo obrigatorio!');
-      exit;
-    end;
+  begin
+    showmessage('CST Icms campo obrigatorio!');
+    exit;
+  end;
 
   try
     sqltemplate.Post;
@@ -377,38 +374,40 @@ begin
   end;
 
   if not erro then
+  begin
+    EnviaProdutoPDVs('N');
+
+    if not SQLEmpresa.Active then
+      SQLEmpresa.Open;
+    if not SQLProdutoSaldoNovo.Active then
+      SQLProdutoSaldoNovo.Open;
+    SQLEmpresa.First;
+    while not SQLEmpresa.Eof do
     begin
-      EnviaProdutoPDVs('N');
-
-      If Not SQLEmpresa.Active Then SQLEmpresa.Open;
-      If Not SQLProdutoSaldoNovo.Active Then SQLProdutoSaldoNovo.Open;
-      SQLEmpresa.First;
-      While Not SQLEmpresa.Eof Do
-        Begin
-          if SQLEmpresaEMPRICOD.asInteger > 0 then
-            begin
-              SQLProdutoSaldoNovo.Append;
-              SQLProdutoSaldoNovoEMPRICOD.asInteger   := SQLEmpresaEMPRICOD.asInteger;
-              SQLProdutoSaldoNovoPRODICOD.asInteger   := sqltemplateprodicod.AsInteger;
-              SQLProdutoSaldoNovoPSLDN3QTDE.asFloat   := 0;
-              SQLProdutoSaldoNovoPSLDN3QTDMAX.asFloat := 0;
-              SQLProdutoSaldoNovoPSLDN3QTDMIN.asFloat := 0;
-              SQLProdutoSaldoNovo.Post;
-            end;
-          SQLEmpresa.Next;
-        End;
-
-      sqlProdutoFornecedor.Close;
-      sqlProdutoFornecedor.Open;
-      sqlProdutoFornecedor.Append;
-      sqlProdutoFornecedor.fieldbyname('PRODICOD').AsString          := sqltemplatePRODICOD.AsString;
-      sqlProdutoFornecedor.fieldbyname('FORNICOD').AsString          := CdFornec;
-      sqlProdutoFornecedor.fieldbyname('PRFOA30REFERENCIA').AsString := CdReferencia;
-      sqlProdutoFornecedor.fieldbyname('PENDENTE').AsString          := 'S';
-      sqlProdutoFornecedor.fieldbyname('REGISTRO').AsDateTime        :=  now;
-      sqlProdutoFornecedor.Post;
-
+      if SQLEmpresaEMPRICOD.asInteger > 0 then
+      begin
+        SQLProdutoSaldoNovo.Append;
+        SQLProdutoSaldoNovoEMPRICOD.asInteger := SQLEmpresaEMPRICOD.asInteger;
+        SQLProdutoSaldoNovoPRODICOD.asInteger := sqltemplateprodicod.AsInteger;
+        SQLProdutoSaldoNovoPSLDN3QTDE.asFloat := 0;
+        SQLProdutoSaldoNovoPSLDN3QTDMAX.asFloat := 0;
+        SQLProdutoSaldoNovoPSLDN3QTDMIN.asFloat := 0;
+        SQLProdutoSaldoNovo.Post;
+      end;
+      SQLEmpresa.Next;
     end;
+
+    sqlProdutoFornecedor.Close;
+    sqlProdutoFornecedor.Open;
+    sqlProdutoFornecedor.Append;
+    sqlProdutoFornecedor.fieldbyname('PRODICOD').AsString := sqltemplatePRODICOD.AsString;
+    sqlProdutoFornecedor.fieldbyname('FORNICOD').AsString := CdFornec;
+    sqlProdutoFornecedor.fieldbyname('PRFOA30REFERENCIA').AsString := CdReferencia;
+    sqlProdutoFornecedor.fieldbyname('PENDENTE').AsString := 'S';
+    sqlProdutoFornecedor.fieldbyname('REGISTRO').AsDateTime := now;
+    sqlProdutoFornecedor.Post;
+
+  end;
 
   Close;
 end;
@@ -418,87 +417,85 @@ begin
   Close;
 end;
 
-procedure TFormCadastroProdutoRapido.SQLTemplatePRODN3VLRCOMPRAChange(
-  Sender: TField);
-var somanocusto, CustoIPI, CustoST, CustoFrete, CustoDespesas, CustoDifIcms, CustoEncargos : Extended;
+procedure TFormCadastroProdutoRapido.SQLTemplatePRODN3VLRCOMPRAChange(Sender: TField);
+var
+  somanocusto, CustoIPI, CustoST, CustoFrete, CustoDespesas, CustoDifIcms, CustoEncargos: Extended;
 begin
-  If (DM.SQLConfigCompra.fieldbyname('CFCOCTOTPRCVENPROD').Value='U') Then
+  if (DM.SQLConfigCompra.fieldbyname('CFCOCTOTPRCVENPROD').Value = 'U') then
+  begin
+    if Dm.SQLConfigGeral.fieldbyname('CFGECTIPOMARGLUCRO').AsString = 'L' then
     begin
-      if Dm.SQLConfigGeral.fieldbyname('CFGECTIPOMARGLUCRO').AsString = 'L' then
-        begin
-          if Dm.SQLConfigVenda.FieldByName('CFVEN2PERCENCARG').AsFloat > 0 then
-            CustoEncargos := SQLTemplate.FindField('PRODN3VLRCOMPRA').AsFloat * (Dm.SQLConfigVenda.FieldByName('CFVEN2PERCENCARG').AsFloat/100)
-          else
-            CustoEncargos := 0;
-
-          if SQLTemplate.FindField('PRODN2PERCSUBST').asFloat > 0 then
-            CustoST       := SQLTemplate.FindField('PRODN3VLRCOMPRA').AsFloat * (SQLTemplate.FindField('PRODN2PERCSUBST').asFloat/100)
-          else
-            CustoST       := 0;
-
-          if SQLTemplate.FindField('PRODN2PERCIPIENTRADA').asFloat > 0 then
-            CustoIPI      := SQLTemplate.FindField('PRODN3VLRCOMPRA').AsFloat * (SQLTemplate.FindField('PRODN2PERCIPIENTRADA').asFloat/100)
-          else
-            CustoIPI      := 0;
-
-          if SQLTemplate.FindField('PRODN2PERCFRETE').asFloat > 0 then
-            CustoFrete    := SQLTemplate.FindField('PRODN3VLRCOMPRA').AsFloat * (SQLTemplate.FindField('PRODN2PERCFRETE').asFloat/100)
-          else
-            CustoFrete    := 0;
-
-          if SQLTemplate.FindField('PRODN2PERCDESP').asFloat > 0 then
-            CustoDespesas := SQLTemplate.FindField('PRODN3VLRCOMPRA').AsFloat * (SQLTemplate.FindField('PRODN2PERCDESP').asFloat/100)
-          else
-            CustoDespesas := 0;
-
-          if SQLTemplate.FindField('PRODN2PERCDIFICM').asFloat > 0 then
-            CustoDifIcms  := SQLTemplate.FindField('PRODN3VLRCOMPRA').AsFloat * (SQLTemplate.FindField('PRODN2PERCDIFICM').asFloat/100)
-          else
-           CustoDifIcms  := 0;
-
-          SQLTemplate.FindField('PRODN3VLRCUSTO').asFloat := SQLTemplate.FindField('PRODN3VLRCOMPRA').AsFloat +
-                                                             CustoST + CustoIPI + CustoFrete + CustoDespesas + CustoDifIcms + CustoEncargos;
-         {NAO Entra no calculo do Custo do Produto nem o PIS nem o Cofins}
-
-          SQLTemplate.FindField('PRODN3VLRVENDA').asFloat := SQLTemplate.FindField('PRODN3VLRCUSTO').asFloat *
-                                                             (1+(SQLTemplate.FindField('PRODN3PERCMGLVFIXA').asFloat/100));
-        end
+      if Dm.SQLConfigVenda.FieldByName('CFVEN2PERCENCARG').AsFloat > 0 then
+        CustoEncargos := SQLTemplate.FindField('PRODN3VLRCOMPRA').AsFloat * (Dm.SQLConfigVenda.FieldByName('CFVEN2PERCENCARG').AsFloat / 100)
       else
-        begin
-          SQLTemplate.FieldByName('PRODN3VLRVENDA').asFloat := RoundTo(SQLTemplate.FindField('PRODN3VLRCUSTO').AsFloat * (1+(SQLTemplate.FindField('PRODN3PERCMGLVFIXA').asFloat/100)), -2);
-        end;
+        CustoEncargos := 0;
+
+      if SQLTemplate.FindField('PRODN2PERCSUBST').asFloat > 0 then
+        CustoST := SQLTemplate.FindField('PRODN3VLRCOMPRA').AsFloat * (SQLTemplate.FindField('PRODN2PERCSUBST').asFloat / 100)
+      else
+        CustoST := 0;
+
+      if SQLTemplate.FindField('PRODN2PERCIPIENTRADA').asFloat > 0 then
+        CustoIPI := SQLTemplate.FindField('PRODN3VLRCOMPRA').AsFloat * (SQLTemplate.FindField('PRODN2PERCIPIENTRADA').asFloat / 100)
+      else
+        CustoIPI := 0;
+
+      if SQLTemplate.FindField('PRODN2PERCFRETE').asFloat > 0 then
+        CustoFrete := SQLTemplate.FindField('PRODN3VLRCOMPRA').AsFloat * (SQLTemplate.FindField('PRODN2PERCFRETE').asFloat / 100)
+      else
+        CustoFrete := 0;
+
+      if SQLTemplate.FindField('PRODN2PERCDESP').asFloat > 0 then
+        CustoDespesas := SQLTemplate.FindField('PRODN3VLRCOMPRA').AsFloat * (SQLTemplate.FindField('PRODN2PERCDESP').asFloat / 100)
+      else
+        CustoDespesas := 0;
+
+      if SQLTemplate.FindField('PRODN2PERCDIFICM').asFloat > 0 then
+        CustoDifIcms := SQLTemplate.FindField('PRODN3VLRCOMPRA').AsFloat * (SQLTemplate.FindField('PRODN2PERCDIFICM').asFloat / 100)
+      else
+        CustoDifIcms := 0;
+
+      SQLTemplate.FindField('PRODN3VLRCUSTO').asFloat := SQLTemplate.FindField('PRODN3VLRCOMPRA').AsFloat + CustoST + CustoIPI + CustoFrete + CustoDespesas + CustoDifIcms + CustoEncargos;
+         {NAO Entra no calculo do Custo do Produto nem o PIS nem o Cofins}
+      if SQLTemplate.FindField('PRODN3PERCMGLVFIXA').AsFloat > 0 then
+        SQLTemplate.FindField('PRODN3VLRVENDA').asFloat := SQLTemplate.FindField('PRODN3VLRCUSTO').asFloat * (1 + (SQLTemplate.FindField('PRODN3PERCMGLVFIXA').asFloat / 100));
+    end
+    else
+    begin
+      SQLTemplate.FieldByName('PRODN3VLRVENDA').asFloat := RoundTo(SQLTemplate.FindField('PRODN3VLRCUSTO').AsFloat * (1 + (SQLTemplate.FindField('PRODN3PERCMGLVFIXA').asFloat / 100)), -2);
     end;
+  end;
 end;
 
-procedure TFormCadastroProdutoRapido.SQLTemplatePRODN3PERCMGLVFIXAChange(
-  Sender: TField);
+procedure TFormCadastroProdutoRapido.SQLTemplatePRODN3PERCMGLVFIXAChange(Sender: TField);
 begin
-  if Dm.SQLConfigGeralCFGECALCPRECOAUTOM.AsString = 'N' then Exit;
+  if Dm.SQLConfigGeralCFGECALCPRECOAUTOM.AsString = 'N' then
+    Exit;
+  if SQLTemplate.FindField('PRODN3PERCMGLVFIXA').AsFloat > 0 then
+    SQLTemplate.FindField('PRODN3VLRVENDA').asFloat := SQLTemplate.FindField('PRODN3VLRCUSTO').asFloat * (1 + (SQLTemplate.FindField('PRODN3PERCMGLVFIXA').asFloat / 100));
 
-  SQLTemplate.FindField('PRODN3VLRVENDA').asFloat := SQLTemplate.FindField('PRODN3VLRCUSTO').asFloat *
-                                                             (1+(SQLTemplate.FindField('PRODN3PERCMGLVFIXA').asFloat/100));
-
-  If (DM.SQLConfigCompra.fieldbyname('CFCOCTOTPRCVENPROD').Value='M') AND (SQLTemplate.FindField('PRODN3VLRCUSTOMEDIO').asFloat>0) Then
-    begin
-      SQLTemplate.FindField('PRODN3PERCMARGLUCR').asFloat := ((SQLTemplate.FindField('PRODN3VLRVENDA').asFloat / SQLTemplate.FieldByName('PRODN3VLRCUSTOMEDIO').asFloat) - 1) * 100;
-    end;
-  If (DM.SQLConfigCompra.fieldbyname('CFCOCTOTPRCVENPROD').Value='U') AND (Sender.DataSet.FindField('PRODN3VLRCUSTO').asFloat>0) Then
-    begin
-      SQLTemplate.FindField('PRODN3PERCMARGLUCR').asFloat := ((SQLTemplate.FindField('PRODN3VLRVENDA').asFloat / SQLTemplate.FieldByName('PRODN3VLRCUSTO').asFloat) - 1) * 100;
-    end;
+  if (DM.SQLConfigCompra.fieldbyname('CFCOCTOTPRCVENPROD').Value = 'M') and (SQLTemplate.FindField('PRODN3VLRCUSTOMEDIO').asFloat > 0) then
+  begin
+    SQLTemplate.FindField('PRODN3PERCMARGLUCR').asFloat := ((SQLTemplate.FindField('PRODN3VLRVENDA').asFloat / SQLTemplate.FieldByName('PRODN3VLRCUSTOMEDIO').asFloat) - 1) * 100;
+  end;
+  if (DM.SQLConfigCompra.fieldbyname('CFCOCTOTPRCVENPROD').Value = 'U') and (Sender.DataSet.FindField('PRODN3VLRCUSTO').asFloat > 0) then
+  begin
+    SQLTemplate.FindField('PRODN3PERCMARGLUCR').asFloat := ((SQLTemplate.FindField('PRODN3VLRVENDA').asFloat / SQLTemplate.FieldByName('PRODN3VLRCUSTO').asFloat) - 1) * 100;
+  end;
 end;
 
-procedure TFormCadastroProdutoRapido.FormClose(Sender: TObject;
-  var Action: TCloseAction);
+procedure TFormCadastroProdutoRapido.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Action := CaFree;
 end;
 
 procedure TFormCadastroProdutoRapido.addMarca;
-var cod: integer;
-var Marca : string;
+var
+  cod: integer;
+var
+  Marca: string;
 begin
-  Marca := UpperCase(InputBox('Adiciona Marca','Marca',Marca));
+  Marca := UpperCase(InputBox('Adiciona Marca', 'Marca', Marca));
   sqlmax.Close;
   sqlmax.SQL.clear;
   sqlmax.SQL.Text := 'Select Max(MARCICOD) from marca';
@@ -509,7 +506,7 @@ begin
     cod := 1;
   end;
   sqlmarca.Append;
-  SQLMarcaMARCICOD.Value     := cod;
+  SQLMarcaMARCICOD.Value := cod;
   SQLMarcaMARCA60DESCR.Value := Marca;
   sqlmarca.post;
   sqlmarca.close;
@@ -519,10 +516,12 @@ begin
 end;
 
 procedure TFormCadastroProdutoRapido.addGrupo;
-var cod: integer;
-var Grupo : string;
+var
+  cod: integer;
+var
+  Grupo: string;
 begin
-  Grupo := UpperCase(InputBox('Adiciona Grupo','Grupo',Grupo));
+  Grupo := UpperCase(InputBox('Adiciona Grupo', 'Grupo', Grupo));
   sqlmax.Close;
   sqlmax.SQL.clear;
   sqlmax.SQL.Text := 'Select Max(grupicod) from grupo';
@@ -533,7 +532,7 @@ begin
     cod := 1;
   end;
   sqlGrupo.Append;
-  SQLGrupoGRUPICOD.Value     := cod;
+  SQLGrupoGRUPICOD.Value := cod;
   SQLGrupoGRUPA60DESCR.Value := Grupo;
   SQLGrupo.post;
   SQLGrupo.close;
@@ -542,24 +541,24 @@ begin
   ComboGrupo.SetFocus;
 end;
 
-procedure TFormCadastroProdutoRapido.ComboMarcaKeyDown(Sender: TObject;
-  var Key: Word; Shift: TShiftState);
+procedure TFormCadastroProdutoRapido.ComboMarcaKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
-  if key = 43 then addMarca;
+  if key = 43 then
+    addMarca;
   if Key = 13 then
+  begin
+    if ComboMarca.IsDropDown then
     begin
-      If ComboMarca.IsDropDown Then
-        Begin
-          ComboMarca.CloseUp(True);
-          Application.ProcessMessages;
-        End;
+      ComboMarca.CloseUp(True);
+      Application.ProcessMessages;
     end;
+  end;
 end;
 
-procedure TFormCadastroProdutoRapido.ComboGrupoKeyDown(Sender: TObject;
-  var Key: Word; Shift: TShiftState);
+procedure TFormCadastroProdutoRapido.ComboGrupoKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
-  if key = 43 then addGrupo;
+  if key = 43 then
+    addGrupo;
 end;
 
 procedure TFormCadastroProdutoRapido.lbMarcaAddClick(Sender: TObject);
@@ -575,24 +574,23 @@ end;
 procedure TFormCadastroProdutoRapido.ComboICMSExit(Sender: TObject);
 begin
   if not SQLIcmsICMSICODSITTRIB.IsNull then
-     SQLTemplatePRODISITTRIB.Value := SQLIcmsICMSICODSITTRIB.Value ;
+    SQLTemplatePRODISITTRIB.Value := SQLIcmsICMSICODSITTRIB.Value;
 end;
 
-procedure TFormCadastroProdutoRapido.SQLTemplatePRODN3CAPACEMBALChange(
-  Sender: TField);
+procedure TFormCadastroProdutoRapido.SQLTemplatePRODN3CAPACEMBALChange(Sender: TField);
 begin
-  SQLTemplatePRODN3VLRCOMPRA.AsFloat := (vCompraEmbalagem/SQLTemplatePRODN3CAPACEMBAL.Value) - (vDescEmbalagem/SQLTemplatePRODN3CAPACEMBAL.Value);
+  SQLTemplatePRODN3VLRCOMPRA.AsFloat := (vCompraEmbalagem / SQLTemplatePRODN3CAPACEMBAL.Value) - (vDescEmbalagem / SQLTemplatePRODN3CAPACEMBAL.Value);
 end;
 
-procedure TFormCadastroProdutoRapido.FormKeyDown(Sender: TObject;
-  var Key: Word; Shift: TShiftState);
+procedure TFormCadastroProdutoRapido.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   if Key = 13 then
-    Perform(Wm_NextDlgCtl,0,0);
+    Perform(Wm_NextDlgCtl, 0, 0);
 end;
 
-function TFormCadastroProdutoRapido.EnviaProdutoPDVs(Tipo : string) : boolean ;
-var i : integer;
+function TFormCadastroProdutoRapido.EnviaProdutoPDVs(Tipo: string): boolean;
+var
+  i: integer;
 begin
   {Atualiza a tabela ProdutoPDVs}
 
@@ -602,28 +600,28 @@ begin
   dm.sqlconsulta.sql.Text := 'Select Termicod from Terminal where TERMCTIPO = ''C''';
   dm.sqlconsulta.Open;
   if not dm.sqlconsulta.IsEmpty then
+  begin
+    while not dm.sqlconsulta.eof do
     begin
-      while not dm.sqlconsulta.eof do
-        begin
-          SQLProdutoPdvs.close;
-          SQLProdutoPdvs.MacroByName('MFiltro').Value := 'PRODICOD='+SQLTemplatePRODICOD.AsString+' and TERMICOD='+dm.sqlconsulta.fieldbyname('TERMICOD').AsString;
-          SQLProdutoPdvs.Open;
-          if SQLProdutoPdvs.IsEmpty then
-            SQLProdutoPdvs.append
-          else
-            SQLProdutoPdvs.edit;
+      SQLProdutoPdvs.close;
+      SQLProdutoPdvs.MacroByName('MFiltro').Value := 'PRODICOD=' + SQLTemplatePRODICOD.AsString + ' and TERMICOD=' + dm.sqlconsulta.fieldbyname('TERMICOD').AsString;
+      SQLProdutoPdvs.Open;
+      if SQLProdutoPdvs.IsEmpty then
+        SQLProdutoPdvs.append
+      else
+        SQLProdutoPdvs.edit;
 
           {Alimenta Campos}
-          SQLProdutoPdvs.FieldByName('TERMICOD').AsString := dm.SQLConsulta.fieldbyname('TERMICOD').AsString;
-          SQLProdutoPdvs.FieldByName('PRODICOD').AsString := SQLTemplatePRODICOD.AsString;
-          SQLProdutoPdvs.FieldByName('EXCLUIR').AsString  := Tipo;
+      SQLProdutoPdvs.FieldByName('TERMICOD').AsString := dm.SQLConsulta.fieldbyname('TERMICOD').AsString;
+      SQLProdutoPdvs.FieldByName('PRODICOD').AsString := SQLTemplatePRODICOD.AsString;
+      SQLProdutoPdvs.FieldByName('EXCLUIR').AsString := Tipo;
 
-          SQLProdutoPdvs.Post;
+      SQLProdutoPdvs.Post;
 
           {PULA Terminal}
-          dm.sqlconsulta.next;
-        end;
+      dm.sqlconsulta.next;
     end;
+  end;
 
   {fecha terminal}
   dm.sqlconsulta.Close;
