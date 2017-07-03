@@ -432,37 +432,45 @@ uses
   RelatorioNotaFiscalEmitida in 'Relatorios\Financeiro\RelatorioNotaFiscalEmitida.pas' {FormRelatorioNotaFiscalEmitida},
   RelatorioNotaFiscalEmitidaPorICMS in 'Relatorios\Financeiro\RelatorioNotaFiscalEmitidaPorICMS.pas' {FormRelatorioNotaEmitidaPorICMS},
   RelatorioItensNotaFiscal in 'Relatorios\Financeiro\RelatorioItensNotaFiscal.pas' {FormRelatorioItensNotaFiscal},
-  RelatorioNotaFiscalItensCobrancaFrete in 'Relatorios\Financeiro\RelatorioNotaFiscalItensCobrancaFrete.pas' {FormRelatorioNotaFiscalItensCobrancaFrete};
+  RelatorioNotaFiscalItensCobrancaFrete in 'Relatorios\Financeiro\RelatorioNotaFiscalItensCobrancaFrete.pas' {FormRelatorioNotaFiscalItensCobrancaFrete},
+  TelaAtivacao in 'TelaAtivacao.pas' {FormTelaAtivacao};
 
 {$R *.res}
 
+
+
 begin
-  Application.Initialize ;
-  VersaoSistema := '3.2' ;
+  Application.Initialize;
+  VersaoSistema := '3.2';
   bRetaguarda := true;
   Application.Title := 'Gestão Empresarial - Módulo Faturamento';
 
   Application.CreateForm(TDM, DM);
   if dm.SQLConfigGeralCFGECBLOQ.AsString = 'S' then
-    begin
-      ShowMessage('Sistema Bloqueado!!! Ligue para a Suporte');
-      application.terminate;
-    end
+  begin
+    FormTelaAtivacao := TFormTelaAtivacao.Create(Application);
+    FormTelaAtivacao.ShowModal;
+//    dm.Zdb.Connected := False;
+    application.terminate;
+//    ShowMessage('Sistema Bloqueado!!! Ligue para a Suporte');
+//    application.terminate;
+  end
   else
+  begin
+    FormTelaLogin := TFormTelaLogin.Create(Application);
+    FormTelaLogin.Caption := 'Bem Vindo ao Gestão Empresarial - Módulo Faturamento';
+
+    if FormTelaLogin.ShowModal <> idOk then
     begin
-      FormTelaLogin := TFormTelaLogin.Create(Application);
-      FormTelaLogin.Caption := 'Bem Vindo ao Gestão Empresarial - Módulo Faturamento' ;
-
-      if FormTelaLogin.ShowModal <> idOk then
-        begin
-          application.terminate;
-        end;
-
-      Application.CreateForm(TFormPrincipal, FormPrincipal);
-      FormPrincipal.RodapePrincipal.Panels[0].Text := 'Empresa: ' +DM.SQLConfigGeralEmpresaPadraoCalcField.Value;
-      FormPrincipal.RodapePrincipal.Panels[1].Text := 'Terminal: '+Dm.SQLTerminalAtivo.fieldbyname('TERMA60DESCR').AsString;
-      FormPrincipal.RodapePrincipal.Panels[2].Text := 'Usuário: ' +DM.SQLUsuario.fieldbyname('USUAA60LOGIN').Value;
-      FormPrincipal.RodapePrincipal.Panels[4].Text := 'Validade da Licença: ' +DM.SQLConfigGeralCFGEDBLOQ.AsString;
-      Application.Run;
+      application.terminate;
     end;
+
+    Application.CreateForm(TFormPrincipal, FormPrincipal);
+    FormPrincipal.RodapePrincipal.Panels[0].Text := 'Empresa: ' + DM.SQLConfigGeralEmpresaPadraoCalcField.Value;
+    FormPrincipal.RodapePrincipal.Panels[1].Text := 'Terminal: ' + Dm.SQLTerminalAtivo.fieldbyname('TERMA60DESCR').AsString;
+    FormPrincipal.RodapePrincipal.Panels[2].Text := 'Usuário: ' + DM.SQLUsuario.fieldbyname('USUAA60LOGIN').Value;
+    FormPrincipal.RodapePrincipal.Panels[4].Text := 'Validade da Licença: ' + DM.SQLConfigGeralCFGEDBLOQ.AsString;
+    Application.Run;
+  end;
 end.
+
