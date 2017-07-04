@@ -240,6 +240,7 @@ type
     AdvGlowButton6: TAdvGlowButton;
     AdvGlowButton7: TAdvGlowButton;
     AdvGlowButton8: TAdvGlowButton;
+    Sobre1: TMenuItem;
     procedure FATUMnCadastroClientesCadastroClick(Sender: TObject);
     procedure FATUMnCadastroClientesTipodeClienteClick(Sender: TObject);
     procedure FATUMnCadastroBancosClick(Sender: TObject);
@@ -473,6 +474,7 @@ type
     procedure MnFINRelFluxodeCaixaDiarioClick(Sender: TObject);
     procedure MnFINRelPosicaoFinanceiraConsolidadaClick(Sender: TObject);
     procedure AdvGlowButton8Click(Sender: TObject);
+    procedure Sobre1Click(Sender: TObject);
   private
     procedure ApagarOrcamentos;
     procedure ApagarPreVendas;
@@ -554,7 +556,7 @@ uses
   RelatorioPosicaoFinanceiraConsolidada, RelatorioPedidoVenda,
   RelatorioItensPedidoVenda, RelatorioNotaFiscalEmitida,
   RelatorioNotaFiscalEmitidaPorICMS, RelatorioItensNotaFiscal,
-  RelatorioNotaFiscalItensCobrancaFrete;
+  RelatorioNotaFiscalItensCobrancaFrete, uSobre;
 
 
 
@@ -2808,6 +2810,13 @@ procedure TFormPrincipal.AdvGlowButton8Click(Sender: TObject);
 begin
   inherited;
   ImportaXMLDelphi.Click;
+end;
+
+procedure TFormPrincipal.Sobre1Click(Sender: TObject);
+begin
+  inherited;
+  CriaFormulario(TfSobre, 'fSobre', False, False, false, '');
+
 end;
 
 end.

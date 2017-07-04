@@ -1,7 +1,6 @@
 inherited FormPrincipal: TFormPrincipal
   Tag = 4
-  Left = 19
-  Top = 14
+  Top = 0
   Width = 1382
   Height = 744
   Caption = 'Advanced Control'
@@ -9,7 +8,7 @@ inherited FormPrincipal: TFormPrincipal
   PixelsPerInch = 96
   TextHeight = 13
   inherited RodapePrincipal: TStatusBar
-    Top = 667
+    Top = 666
     Width = 1366
   end
   inherited ptopo: TAdvOfficeStatusBar
@@ -3015,6 +3014,10 @@ inherited FormPrincipal: TFormPrincipal
           end
         end
       end
+    end
+    object Sobre1: TMenuItem [9]
+      Caption = 'Sobre'
+      OnClick = Sobre1Click
     end
   end
   object TimeLembrete: TTimer

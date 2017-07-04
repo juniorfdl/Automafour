@@ -433,7 +433,8 @@ uses
   RelatorioNotaFiscalEmitidaPorICMS in 'Relatorios\Financeiro\RelatorioNotaFiscalEmitidaPorICMS.pas' {FormRelatorioNotaEmitidaPorICMS},
   RelatorioItensNotaFiscal in 'Relatorios\Financeiro\RelatorioItensNotaFiscal.pas' {FormRelatorioItensNotaFiscal},
   RelatorioNotaFiscalItensCobrancaFrete in 'Relatorios\Financeiro\RelatorioNotaFiscalItensCobrancaFrete.pas' {FormRelatorioNotaFiscalItensCobrancaFrete},
-  TelaAtivacao in 'TelaAtivacao.pas' {FormTelaAtivacao};
+  TelaAtivacao in 'TelaAtivacao.pas' {FormTelaAtivacao},
+  uSobre in 'uSobre.pas' {fSobre};
 
 {$R *.res}
 
