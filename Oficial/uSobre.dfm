@@ -1,38 +1,45 @@
 inherited fSobre: TfSobre
+  Width = 659
   Caption = 'Retaguarda - Sobre'
   OldCreateOrder = True
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   inherited ScrollBoxFundo: TScrollBox
+    Width = 643
     inherited PanelCentral: TPanel
+      Width = 639
       object SpeedButton1: TSpeedButton [0]
-        Left = 373
-        Top = 3
+        Left = 5
+        Top = 9
         Width = 160
         Height = 28
         Caption = 'Verificar Atualiza'#231#245'es'
         OnClick = SpeedButton1Click
       end
       object SpeedButton2: TSpeedButton [1]
-        Left = 373
-        Top = 33
+        Left = 5
+        Top = 39
         Width = 160
         Height = 28
         Caption = 'Atualizar'
         OnClick = SpeedButton2Click
       end
       inherited PanelBarra: TPanel
-        Left = 369
         Width = 0
         Visible = False
       end
       object cxGrid1: TcxGrid
-        Left = 0
+        Left = 270
         Top = 0
         Width = 369
+<<<<<<< HEAD
         Height = 268
         Align = alLeft
+=======
+        Height = 267
+        Align = alRight
+>>>>>>> origin/master
         TabOrder = 1
         object cxGrid1DBTableView1: TcxGridDBTableView
           NavigatorButtons.ConfirmDelete = False
@@ -59,6 +66,18 @@ inherited fSobre: TfSobre
         end
         object cxGrid1Level1: TcxGridLevel
           GridView = cxGrid1DBTableView1
+        end
+      end
+    end
+    inherited ScrollBoxTopo: TScrollBox
+      Width = 639
+      inherited PanelCabecalho: TPanel
+        Width = 639
+        inherited PanelNavigator: TPanel
+          Width = 639
+          inherited AdvPanelNavigator: TAdvOfficeStatusBar
+            Width = 639
+          end
         end
       end
     end
