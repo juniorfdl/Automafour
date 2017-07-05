@@ -107,7 +107,7 @@ end;
 procedure TFormTelaEntradaRapidaEstoque.LabelGravarClick(Sender: TObject);
 begin
   if EditQtdeComprada.value <= 0 then
-    if Not Pergunta('Nï¿½o','Quantidade Entrada <= Zero.  Confirma?') then
+    if Not Pergunta('Não','Quantidade Entrada <= Zero.  Confirma?') then
     begin
       ModalResult := mrNone;
       EditQtdeComprada.SetFocus;

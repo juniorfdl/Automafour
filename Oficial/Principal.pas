@@ -6,7 +6,8 @@ uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   PrincipalTemplate, Menus, ExtCtrls, jpeg, ComCtrls, ToolWin, VarSys, EWall, DB,
   ImgList, StdCtrls, DBTables, AdvGlowButton, XPMan, AdvOfficeStatusBar,
-  AdvOfficeStatusBarStylers, dxGDIPlusClasses, RXCtrls, FormResources;
+  AdvOfficeStatusBarStylers, dxGDIPlusClasses, RXCtrls, FormResources, IniFiles,
+  Buttons;
 
 type
   TFormPrincipal = class(TFormPrincipalTemplate)
@@ -241,6 +242,7 @@ type
     AdvGlowButton7: TAdvGlowButton;
     AdvGlowButton8: TAdvGlowButton;
     Sobre1: TMenuItem;
+    AdvGlowButton9: TAdvGlowButton;
     procedure FATUMnCadastroClientesCadastroClick(Sender: TObject);
     procedure FATUMnCadastroClientesTipodeClienteClick(Sender: TObject);
     procedure FATUMnCadastroBancosClick(Sender: TObject);
@@ -475,6 +477,9 @@ type
     procedure MnFINRelPosicaoFinanceiraConsolidadaClick(Sender: TObject);
     procedure AdvGlowButton8Click(Sender: TObject);
     procedure Sobre1Click(Sender: TObject);
+    procedure AdvGlowButton6Click(Sender: TObject);
+    procedure AdvGlowButton9Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     procedure ApagarOrcamentos;
     procedure ApagarPreVendas;
@@ -888,6 +893,7 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormRelatorioPedidoVendaEntrega, 'FormRelatorioPedidoVendaEntrega',False,False,True,'')
+
   else
     SoundPlay('Acesso Negado.wav', Sender);
 end;
@@ -906,6 +912,7 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormCadastroVeiculo, 'FormCadastroVeiculo',False,False,True,'')
+
   else
     SoundPlay('Acesso Negado.wav', Sender);
 end;
@@ -915,6 +922,7 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormTelaGeracaoNotasFiscais, 'FormTelaGeracaoNotasFiscais',False,False,True,'')
+
   else
     SoundPlay('Acesso Negado.wav', Sender);
 end;
@@ -924,6 +932,7 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormCadastroVisita, 'FormCadastroVisita',False,False,False,'')
+
   else
     SoundPlay('Acesso Negado.wav', Sender);
 end;
@@ -933,6 +942,7 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormCadastroRoteiro, 'FormCadastroRoteiro',False,False,True,'')
+
   else
     SoundPlay('Acesso Negado.wav', Sender);
 end;
@@ -942,6 +952,7 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormTelaGeracaoRoteiro, 'FormTelaGeracaoRoteiro',False,False,True,'')
+
   else
     SoundPlay('Acesso Negado.wav', Sender);
 end;
@@ -951,6 +962,7 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormCadastroDecreto, 'FormCadastroDecreto',False,False,True,'')
+
   else
     SoundPlay('Acesso Negado.wav', Sender);
 end;
@@ -960,6 +972,7 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormTelaConfiguracaoLayOutNF, 'FormTelaConfiguracaoLayOutNF',False,False,True,'')
+
   else
     SoundPlay('Acesso Negado.wav', Sender);
 end;
@@ -978,6 +991,7 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormCadastroOperacoesEstoque, 'FormCadastroOperacoesEstoque',False,False,True,'')
+
   else
     SoundPlay('Acesso Negado.wav', Sender);
 end;
@@ -987,6 +1001,7 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormCadastroPedidoVendaComGrade, 'FormCadastroPedidoVendaComGrade',False,False,False,'')
+
   else
     SoundPlay('Acesso Negado.wav', Sender);
 end;
@@ -996,6 +1011,7 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormCadastroAgendaTelefonica,'FormCadastroAgendaTelefonica',False,False,False,'')
+
   else
     SoundPlay('Acesso Negado.wav', Sender);
 end;
@@ -1023,6 +1039,7 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormCadastroMecOrdem,'FormCadastroMecOrdem',False,False,False,'')
+
   else
     SoundPlay('Acesso Negado.wav', Sender);
 end;
@@ -1051,6 +1068,7 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormCadastroMecanicos,'FormCadastroMecanicos',False,False,False,'')
+
   else
     SoundPlay('Acesso Negado.wav', Sender);
 end;
@@ -1158,6 +1176,7 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormCadastroGraficaOrdem, 'FormCadastroGraficaOrdem',False,False,False,'')
+
   else
     SoundPlay('Acesso Negado.wav', Sender);
 end;
@@ -1167,6 +1186,7 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TCadastroCSTPisCofinsConverte, 'CadastroCSTPisCofinsConverte',False,False,True,'')
+
   else
     SoundPlay('Acesso Negado.wav', Sender);
 end;
@@ -1176,6 +1196,7 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TCadastroConhecimentos, 'CadastroConhecimentos',False,False,False,'')
+
   else
     SoundPlay('Acesso Negado.wav', Sender);
 end;
@@ -1185,6 +1206,7 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TCadastroCSTConverterIPI, 'CadastroCSTConverterIPI',False,False,True,'')
+
   else
     SoundPlay('Acesso Negado.wav', Sender);
 end;
@@ -1194,6 +1216,7 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormCadastroFreteCTE, 'FormCadastroFreteCTE',False,False,True,'')
+
   else
     SoundPlay('Acesso Negado.wav', Sender);
 end;
@@ -1273,6 +1296,7 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormRelatorioMovimentoCaixaFaturamento, 'RelatorioMovimentoCaixaFaturamento',False,False,False,'')
+
   else
     SoundPlay('Acesso Negado.wav', Sender);
 end;
@@ -1962,7 +1986,6 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     //CriaFormulario(TFormRelatorioPrevendas,'FormRelatorioPrevendas',False,False,False,'')
-
   else
     SoundPlay('Acesso Negado.wav', Sender);
 end;
@@ -2817,6 +2840,34 @@ begin
   inherited;
   CriaFormulario(TfSobre, 'fSobre', False, False, false, '');
 
+end;
+
+procedure TFormPrincipal.AdvGlowButton6Click(Sender: TObject);
+begin
+  inherited;
+  MnADMEmissaoEtiquetas.Click;
+end;
+
+procedure TFormPrincipal.AdvGlowButton9Click(Sender: TObject);
+begin
+  inherited;
+  try
+    WinExec(Pchar(ParceiroPath), sw_Show);
+  except
+    Application.ProcessMessages;
+  end;
+end;
+
+procedure TFormPrincipal.FormShow(Sender: TObject);
+var
+  arqFile: TIniFile;
+  caminhoArq: string;
+
+begin
+  inherited;
+  caminhoArq := ExtractFilePath(Application.ExeName)+'parceiro.ini';
+  arqFile := TIniFile.Create(caminhoArq);
+  ParceiroPath := arqFile.ReadString('IB_SOFTWARE', 'LinhaD', '');
 end;
 
 end.

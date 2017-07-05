@@ -976,6 +976,7 @@ type
     btCorrigeProdutossemoCodigoCEST: TMenuItem;
     AcessaCEST: TSpeedButton;
     SQLSaldoEmpresaAtualEmpresaLookup: TStringField;
+    Report: TCrpe;
     procedure FormCreate(Sender: TObject);
     procedure RxComboComissaoChange(Sender: TObject);
     procedure AcessaMarcaClick(Sender: TObject);
@@ -2933,9 +2934,9 @@ begin
   Progresso.Position := 0;
   Progresso.Update;
   TblTemporaria.Close;
-  {eport.ReportName        := DM.SQLConfigGeralCFGEA255PATHREPORT.AsString + '\Historico por Produto.rpt';
-  Report.ReportTitle       := 'Relatï¿½rio de Histï¿½rico por Produto';
-  Report.WindowStyle.Title := 'Relatï¿½rio de Histï¿½rico por Produto';
+  Report.ReportName        := DM.SQLConfigGeralCFGEA255PATHREPORT.AsString + '\Historico por Produto.rpt';
+  Report.ReportTitle       := 'Relatório de Histórico por Produto';
+  Report.WindowStyle.Title := 'Relatório de Histórico por Produto';
   Report.Formulas.Retrieve ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Empresa' ;
@@ -2945,7 +2946,7 @@ begin
   Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'PeriodoEmissao' ;
-  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy', De.Date) + ' atï¿½ ' +
+  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
                                   FormatDateTime('dd/mm/yyyy', Ate.Date) + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Produto' ;
@@ -2955,7 +2956,7 @@ begin
   Report.Formulas.Formula.Text := ''''+ SQLTemplatePRODA60REFER.AsString + '''' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Send;
-  Report.Execute;}
+  Report.Execute;
 end;
 procedure TFormCadastroProduto.BtnVisualizarClick(Sender: TObject);
 begin
@@ -3942,7 +3943,7 @@ begin
   Progresso.Position := 0;
   Progresso.Update;
   TblTemporaria2.Close;
-  {eport.ReportName        := DM.SQLConfigGeralCFGEA255PATHREPORT.AsString + '\Movimentacao Produto.rpt';
+  Report.ReportName        := DM.SQLConfigGeralCFGEA255PATHREPORT.AsString + '\Movimentacao Produto.rpt';
   Report.ReportTitle       := 'Relatório de Movimentacão de Produto';
   Report.WindowStyle.Title := 'Relatório de Movimentacão de Produto';
   Report.Formulas.Retrieve ;
@@ -3970,7 +3971,6 @@ begin
 //--------------------------------------------------------------------------\\
   Report.Formulas.Send;
   Report.Execute;
-}
 end;
 
 procedure TFormCadastroProduto.DBEdit2Exit(Sender: TObject);
