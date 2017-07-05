@@ -33,6 +33,7 @@ type
     { Private declarations }
     procedure VerificarAtualizacoes;
     procedure LerIni(CaminhoArq:String);
+    function GetFileVersion(const FileName: string): string;
   public
     { Public declarations }
   end;
@@ -125,8 +126,42 @@ begin
     cdsDados.InsertRecord(['Observação', F.ReadString('versao', 'obs', '')]);
   end;
   F.Free;
-  
+
 end;
+
+function TfSobre.GetFileVersion(const FileName: string): string;
+var
+  Zero: DWORD; // set to 0 by GetFileVersionInfoSize
+  VersionInfoSize: DWORD;
+  PVersionData: pointer;
+  PFixedFileInfo: PVSFixedFileInfo;
+  FixedFileInfoLength: UINT;
+  Major, Minor, Release, Build: Integer;
+begin
+  VersionInfoSize := GetFileVersionInfoSize(pChar(FileName), Zero);
+  if VersionInfoSize = 0 then
+    exit;
+  PVersionData := AllocMem(VersionInfoSize);
+  try
+    if GetFileVersionInfo(pChar(FileName), 0, VersionInfoSize, PVersionData) = False then
+      exit;
+//      raise Exception.Create('Não pude recuperar informação sobre versão');
+    if VerQueryValue(PVersionData, '', pointer(PFixedFileInfo), FixedFileInfoLength) = False then
+      exit;
+    Major := PFixedFileInfo^.dwFileVersionMS shr 16;
+    Minor := PFixedFileInfo^.dwFileVersionMS and $FFFF;
+    Release := PFixedFileInfo^.dwFileVersionLS shr 16;
+    Build := PFixedFileInfo^.dwFileVersionLS and $FFFF;
+  finally
+    FreeMem(PVersionData);
+  end;
+  if (Major or Minor or Release or Build) <> 0 then
+     // result := IntToStr(Major) + '.' + IntToStr(Minor) + '.' + IntToStr(Release) + '.' + IntToStr(Build)
+    result := IntToStr(Minor) + '.' + IntToStr(Release) + '.' + IntToStr(Build)
+  else
+    Result := '0';
+end;
+
 
 end.
 
