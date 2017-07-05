@@ -33,13 +33,8 @@ inherited fSobre: TfSobre
         Left = 270
         Top = 0
         Width = 369
-<<<<<<< HEAD
-        Height = 268
-        Align = alLeft
-=======
         Height = 267
         Align = alRight
->>>>>>> origin/master
         TabOrder = 1
         object cxGrid1DBTableView1: TcxGridDBTableView
           NavigatorButtons.ConfirmDelete = False
