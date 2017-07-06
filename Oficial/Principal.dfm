@@ -1,7 +1,7 @@
 inherited FormPrincipal: TFormPrincipal
   Tag = 4
-  Left = -49
-  Top = 8
+  Left = -36
+  Top = 43
   Width = 1382
   Height = 744
   Caption = 'Advanced Control'
@@ -2813,6 +2813,10 @@ inherited FormPrincipal: TFormPrincipal
       object MnADMUtilitariosManutenodeCupons: TMenuItem
         Caption = 'Manuten'#231#227'o de Cupom'
         OnClick = MnADMUtilitariosManutenodeCuponsClick
+      end
+      object ConsultaCupom1: TMenuItem
+        Caption = 'Consulta Cupom'
+        OnClick = MnADMUtilitariosConsultadeCuponsClick
       end
       object Comisso1: TMenuItem
         Caption = 'Comiss'#227'o'

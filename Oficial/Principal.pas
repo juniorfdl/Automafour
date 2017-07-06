@@ -243,6 +243,7 @@ type
     AdvGlowButton8: TAdvGlowButton;
     Sobre1: TMenuItem;
     AdvGlowButton9: TAdvGlowButton;
+    ConsultaCupom1: TMenuItem;
     procedure FATUMnCadastroClientesCadastroClick(Sender: TObject);
     procedure FATUMnCadastroClientesTipodeClienteClick(Sender: TObject);
     procedure FATUMnCadastroBancosClick(Sender: TObject);
@@ -480,6 +481,7 @@ type
     procedure AdvGlowButton6Click(Sender: TObject);
     procedure AdvGlowButton9Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure MnADMUtilitariosConsultadeCuponsClick(Sender: TObject);
   private
     procedure ApagarOrcamentos;
     procedure ApagarPreVendas;
@@ -561,7 +563,7 @@ uses
   RelatorioPosicaoFinanceiraConsolidada, RelatorioPedidoVenda,
   RelatorioItensPedidoVenda, RelatorioNotaFiscalEmitida,
   RelatorioNotaFiscalEmitidaPorICMS, RelatorioItensNotaFiscal,
-  RelatorioNotaFiscalItensCobrancaFrete, uSobre;
+  RelatorioNotaFiscalItensCobrancaFrete, uSobre, CadastroCupom;
 
 
 
@@ -2868,6 +2870,16 @@ begin
   caminhoArq := ExtractFilePath(Application.ExeName)+'parceiro.ini';
   arqFile := TIniFile.Create(caminhoArq);
   ParceiroPath := arqFile.ReadString('IB_SOFTWARE', 'LinhaD', '');
+end;
+
+procedure TFormPrincipal.MnADMUtilitariosConsultadeCuponsClick(
+  Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario( TFormCadastroCupom, 'FormCadastroCupom',False,False,False, '')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
 end;
 
 end.
