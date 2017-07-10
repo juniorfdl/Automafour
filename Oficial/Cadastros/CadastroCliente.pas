@@ -1122,6 +1122,8 @@ begin
   SQLPortador.Open;
   SQLPlanoConta.Open;
   PageControlEndercos.ActivePageIndex := 0;
+  if not dm.SQLConfigCrediario.Active then
+    DM.SQLConfigCrediario.Open;
 
   if not dm.SQLConfigGeral.Active then
     dm.SQLConfigGeral.Open;
