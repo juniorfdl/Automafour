@@ -138,6 +138,9 @@ begin
       If SQLConfigBalancaLayoutArq.IsEmpty Then
         Begin
           ShowMessage('Esta Balança não está configurada para gerar arquivo!');
+          CloseFile(Arquivo);
+          CopyFile(Pchar(ArqTemp), Pchar(ArqOficial), False);
+          DeleteFile(PChar(ArqTemp));
           Abort;
         End;
       ArqTemp    := SQLConfigBalanca.FieldByName('CFBLA254NOMEARQTXT').Value+'.tmp';
@@ -157,6 +160,15 @@ begin
       SQLProduto.Last;
       SQLProduto.First;
       ProgressBar.Min:=1;
+      if SQLProduto.RecordCount = 0 then
+        begin
+          ShowMessage('Nenhum produto encontrado para importação!');
+          CloseFile(Arquivo);
+          {Troca Nome do arquivo para o correto}
+          CopyFile(Pchar(ArqTemp), Pchar(ArqOficial), False);
+          DeleteFile(PChar(ArqTemp));
+          exit;
+        end;
       ProgressBar.Max:=SQLProduto.RecordCount;
       ProgressBar.Update;
       ProgressBar.Position:=1;

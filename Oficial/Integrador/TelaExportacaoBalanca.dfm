@@ -7,9 +7,9 @@ inherited FormTelaExportacaoBalanca: TFormTelaExportacaoBalanca
   PixelsPerInch = 96
   TextHeight = 13
   inherited ScrollBoxFundo: TScrollBox
-    Height = 533
+    Height = 534
     inherited PanelCentral: TPanel
-      Height = 449
+      Height = 450
       object Label3: TLabel [0]
         Left = 13
         Top = 17
@@ -53,7 +53,7 @@ inherited FormTelaExportacaoBalanca: TFormTelaExportacaoBalanca
       end
       inherited PanelBarra: TPanel
         Width = 0
-        Height = 449
+        Height = 450
       end
       object ComboBalanca: TRxDBLookupCombo
         Left = 11
