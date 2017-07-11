@@ -3512,9 +3512,9 @@ begin
 
 
       if FormTelaEntradaRapidaEstoque.EditQtdeComprada.Value > 0 then
-        GravaMovimentoEstoque(TRxQuery.Create(nil),
-                              TRxQuery.Create(nil),
-                              TRxQuery.Create(nil),
+        GravaMovimentoEstoque(DM.SQLProduto,
+                              DM.SQLProdutoFilho,
+                              DM.SQLProdutoSaldo,
                               EmpresaCorrente,//Empresa
                               SQLTemplate.FindField('PRODICOD').asInteger, //Produto
                               DM.SQLConfigCompra.fieldbyname('CFCOITIPMOVNFE').Value,

@@ -447,7 +447,7 @@ begin
   Application.Title := 'Gestão Empresarial - Módulo Faturamento';
 
   Application.CreateForm(TDM, DM);
-  if dm.SQLConfigGeralCFGECBLOQ.AsString = 'S' then
+  if (dm.SQLConfigGeralCFGECBLOQ.AsString = 'S')and(not DelphiAberto) then
   begin
     FormTelaAtivacao := TFormTelaAtivacao.Create(Application);
     FormTelaAtivacao.ShowModal;

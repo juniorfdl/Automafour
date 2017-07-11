@@ -289,10 +289,16 @@ function LancaChequeRecebido(Empresa,Terminal,Numerario,Portador,Alinea:Integer;
 procedure LancaValorJuroContasReceber(IDContasReceber : String; VlrJuro : Double);
 function SaldoContaCorrente(Conta, Operacao, Data : string) : double ;
 procedure RefazTabelaTemp(Tabela: TTable; Abrir: Boolean);
+function DelphiAberto: Boolean;
 
 implementation
 
 uses DataModulo, TelaAutenticaUsuario, TelaAvisoDebito;
+
+function DelphiAberto: Boolean;
+begin
+  Result := FindWindow('TAppBuilder', nil) > 0;
+end;
 
 function SaldoContaCorrente(Conta, Operacao, Data : string) : double ;
 var
