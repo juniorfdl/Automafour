@@ -144,6 +144,7 @@ type
     Label9: TLabel;
     Label10: TLabel;
     ComboColecao: TRxDBLookupCombo;
+    RadioSituacao: TRadioGroup;
     procedure ExecutarBtnClick(Sender: TObject);
     procedure ReportRelStartPage(Sender: TObject);
     procedure ppHeaderBand1AfterGenerate(Sender: TObject);
@@ -210,6 +211,12 @@ begin
       case RadioOrdem.ItemIndex of
         0 : SQLEstoque.MacroByName('CampoOrdem').Value := 'Produto.PRODICOD';
         1 : SQLEstoque.MacroByName('CampoOrdem').Value := 'Produto.PRODA60DESCR';
+      end;
+
+      case RadioSituacao.ItemIndex of
+        0: SQLEstoque.MacroByName('MAtivos').Value := 'PRODUTO.PRODCATIVO = ''S''';
+        1: SQLEstoque.MacroByName('MAtivos').Value := 'PRODUTO.PRODCATIVO = ''N''';
+        2: SQLEstoque.MacroByName('MAtivos').Value := '0=0';
       end;
 
       SQLEstoque.Open;
