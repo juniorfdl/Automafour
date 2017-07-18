@@ -282,7 +282,7 @@ uses DataModulo, WaitWindow, TelaPedidoCompraHistoricoComprasVendasProduto,
 {$R *.dfm}
 
 procedure TFormTelaPedidoCompraItemFiltro.BTFiltrarClick(Sender: TObject);
-var Item, vtamanho, I : integer;
+var Item, vtamanho, I, vRecord : integer;
     Clausula, vProduto, SQL : String;
 begin
   inherited;
@@ -352,7 +352,8 @@ begin
   zProdutos.sql.Clear;
   zProdutos.sql.Add(sql);
   zProdutos.Open;
- 
+  vRecord := zProdutos.RowsAffected;
+
   if zProdutos.IsEmpty then
     begin
       ShowMessage('Nenhum Produto Encontrado! Verifique Filtros!');
@@ -366,7 +367,7 @@ begin
   Item := 1;
   DSTblTemporaria.OnDataChange := nil;
   TblTemporaria.DisableControls;
-  MakeWindow(zProdutos.RecordCount, 'Aguarde, Executando Filtro!');
+  MakeWindow(vRecord, 'Aguarde, Executando Filtro!');
   while not zProdutos.Eof do
     begin
       Application.ProcessMessages;

@@ -371,6 +371,8 @@ begin
   DM.SQLConfigFinanceiro.Open;
   if DM.SQLConfigFinanceiro.fieldbyname('CGFIUSATESOURARIA').AsString <> 'S' then
     BtnBaixarDocIntegrado.Enabled := False;
+  if not (dm.SQLConfigCrediario.Active) then
+    DM.SQLConfigCrediario.Open;
 end;
 
 procedure TFormTelaBaixarDocumentosReceber.BtnSelecionarDocClick(

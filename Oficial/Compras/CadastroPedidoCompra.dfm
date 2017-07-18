@@ -1,35 +1,35 @@
 inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
-  Left = 467
-  Top = 93
+  Left = 295
+  Top = 69
   Caption = 'Pedido de Compra'
   ClientHeight = 558
-  ClientWidth = 780
+  ClientWidth = 1037
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
   inherited ScrollBoxFundo: TScrollBox
-    Width = 780
+    Width = 1037
     Height = 558
     inherited PanelCabecalho: TPanel
-      Width = 778
+      Width = 1035
       inherited ScrollBoxPanelCabecalho: TScrollBox
-        Width = 778
+        Width = 1035
         inherited Panel1: TPanel
-          Width = 776
+          Width = 1033
           inherited PanelNavigator: TPanel
-            Width = 776
+            Width = 1033
             inherited AdvPanelNavigator: TAdvOfficeStatusBar
-              Width = 776
+              Width = 1033
             end
           end
           inherited PanelLeft: TPanel
-            Left = 319
+            Left = 576
           end
         end
       end
     end
     inherited PanelCentral: TPanel
-      Width = 778
+      Width = 1035
       Height = 484
       inherited PanelBarra: TPanel
         Height = 484
@@ -123,7 +123,7 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
           BiDiMode = bdRightToLeftNoAlign
           ParentBiDiMode = False
           GroupIndex = 1
-          Caption = '&5 Statísticas'
+          Caption = '&5 Stat'#237'sticas'
           Flat = True
           Font.Charset = ANSI_CHARSET
           Font.Color = clBlack
@@ -222,18 +222,18 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
         end
       end
       inherited PanelFundoDados: TPanel
-        Width = 648
+        Width = 905
         Height = 484
         inherited Panel5: TPanel
-          Width = 648
+          Width = 905
           Height = 484
           inherited PagePrincipal: TPageControl
-            Width = 648
+            Width = 905
             Height = 402
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Top = 66
-                Width = 640
+                Width = 897
                 Height = 310
                 Columns = <
                   item
@@ -263,7 +263,7 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
                   item
                     Expanded = False
                     FieldName = 'PDCPDEMIS'
-                    Title.Caption = 'Data Emissão'
+                    Title.Caption = 'Data Emiss'#227'o'
                     Width = 80
                     Visible = True
                   end
@@ -280,22 +280,22 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
                   end>
               end
               inherited PanelProcura: TPanel
-                Width = 640
+                Width = 897
                 Height = 66
                 inherited PanelBetween: TPanel
-                  Width = 246
+                  Width = 503
                   Height = 39
                   inherited AdvPanel1: TAdvPanel
-                    Width = 246
+                    Width = 503
                     Height = 39
                     FullHeight = 0
                   end
                 end
                 inherited PanelEditProcura: TPanel
-                  Width = 246
+                  Width = 503
                   Height = 39
                   inherited AdvPanelEditProcura: TAdvPanel
-                    Width = 246
+                    Width = 503
                     Height = 39
                     FullHeight = 0
                   end
@@ -310,7 +310,7 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
                 object PanelPesquisa: TPanel
                   Left = 0
                   Top = 39
-                  Width = 640
+                  Width = 897
                   Height = 27
                   Align = alBottom
                   BevelOuter = bvNone
@@ -355,10 +355,10 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
                     Width = 396
                     Height = 21
                     Hint = 
-                      'Esta é uma pesquisa avançada, os dados inclusos na pesquisa acim' +
-                      'a não '#13#10'serão considerados na pesquisa atual...'
+                      'Esta '#233' uma pesquisa avan'#231'ada, os dados inclusos na pesquisa acim' +
+                      'a n'#227'o '#13#10'ser'#227'o considerados na pesquisa atual...'
                     DropDownCount = 8
-                    DisplayEmpty = 'Procura Fornecedor pela Razão Social'
+                    DisplayEmpty = 'Procura Fornecedor pela Raz'#227'o Social'
                     LookupField = 'FORNICOD'
                     LookupDisplay = 'FORNA60RAZAOSOC'
                     LookupSource = DSTblFornecedor
@@ -414,7 +414,7 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
                 Top = 198
                 Width = 96
                 Height = 13
-                Caption = 'Previsão Entrega'
+                Caption = 'Previs'#227'o Entrega'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = 8404992
                 Font.Height = -11
@@ -492,7 +492,7 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
                 Top = 279
                 Width = 73
                 Height = 13
-                Caption = 'Observações'
+                Caption = 'Observa'#231#245'es'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = 8404992
                 Font.Height = -11
@@ -640,7 +640,7 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
                 ItemHeight = 13
                 Items.Strings = (
                   'Emitente (CIF)'
-                  'Destinatário (FOB)')
+                  'Destinat'#225'rio (FOB)')
                 TabOrder = 7
                 Values.Strings = (
                   'C'
@@ -905,7 +905,7 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
               end
             end
             object TabStatisticas: TTabSheet
-              Caption = 'Statísticas'
+              Caption = 'Stat'#237'sticas'
               ImageIndex = 2
               object Label24: TLabel
                 Left = 15
@@ -949,7 +949,7 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
               object Panel4: TPanel
                 Left = 0
                 Top = 0
-                Width = 640
+                Width = 897
                 Height = 26
                 Align = alTop
                 BevelOuter = bvNone
@@ -962,7 +962,7 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
                 ParentFont = False
                 TabOrder = 0
                 object Panel6: TPanel
-                  Left = 288
+                  Left = 545
                   Top = 23
                   Width = 352
                   Height = 3
@@ -974,7 +974,7 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
                 object Panel7: TPanel
                   Left = 0
                   Top = 0
-                  Width = 640
+                  Width = 897
                   Height = 23
                   Align = alTop
                   BevelOuter = bvNone
@@ -984,9 +984,9 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
                     Left = 0
                     Top = 0
                     Width = 426
-                    Height = 25
+                    Height = 23
                     Align = alLeft
-                    Caption = '         ***     Estatísticas do Período    ***'
+                    Caption = '         ***     Estat'#237'sticas do Per'#237'odo    ***'
                     Font.Charset = ANSI_CHARSET
                     Font.Color = clWhite
                     Font.Height = -21
@@ -1001,7 +1001,7 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
                 Top = 39
                 Width = 232
                 Height = 53
-                Caption = ' Período para Análise '
+                Caption = ' Per'#237'odo para An'#225'lise '
                 TabOrder = 1
                 object Label21: TLabel
                   Left = 10
@@ -1021,7 +1021,7 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
                   Top = 26
                   Width = 19
                   Height = 13
-                  Caption = 'até'
+                  Caption = 'at'#233
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clNavy
                   Font.Height = -11
@@ -1237,10 +1237,10 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
             end
           end
           inherited PanelMaster: TPanel
-            Width = 648
+            Width = 905
           end
           inherited PanelCodigoDescricao: TPanel
-            Width = 648
+            Width = 905
             object LBCodPedido: TLabel
               Left = 9
               Top = 3
@@ -1273,7 +1273,7 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
               Top = 3
               Width = 46
               Height = 13
-              Caption = 'Emissão'
+              Caption = 'Emiss'#227'o'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 8404992
               Font.Height = -11
@@ -1489,7 +1489,7 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
       OnClick = MnCancelarPedidodeCompraClick
     end
     object MnAlterarObs: TMenuItem
-      Caption = 'Alterar Observações'
+      Caption = 'Alterar Observa'#231#245'es'
       OnClick = MnAlterarObsClick
     end
   end
@@ -1502,7 +1502,7 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
       Caption = '-'
     end
     object EtiquetasdeCodigodeBarras1: TMenuItem
-      Caption = '&Etiquetas de Código de Barras'
+      Caption = '&Etiquetas de C'#243'digo de Barras'
       OnClick = EtiquetasdeCodigodeBarras1Click
     end
   end
@@ -1528,23 +1528,23 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
       Visible = False
     end
     object SQLTemplateEMPRICOD: TIntegerField
-      DisplayLabel = 'Cód.Emp'
+      DisplayLabel = 'C'#243'd.Emp'
       FieldName = 'EMPRICOD'
       Origin = 'DB.PEDIDOCOMPRA.EMPRICOD'
     end
     object SQLTemplateEMPRICODDEST: TIntegerField
-      DisplayLabel = 'Cód.Emp.Dest.'
+      DisplayLabel = 'C'#243'd.Emp.Dest.'
       FieldName = 'EMPRICODDEST'
       Origin = 'DB.PEDIDOCOMPRA.EMPRICODDEST'
     end
     object SQLTemplateFORNICOD: TIntegerField
-      DisplayLabel = 'Cód.Fornec'
+      DisplayLabel = 'C'#243'd.Fornec'
       FieldName = 'FORNICOD'
       Origin = 'DB.PEDIDOCOMPRA.FORNICOD'
     end
     object SQLTemplatePDCPDEMIS: TDateTimeField
       ConstraintErrorMessage = '1'
-      DisplayLabel = 'Dt.Emissão'
+      DisplayLabel = 'Dt.Emiss'#227'o'
       FieldName = 'PDCPDEMIS'
       Origin = 'DB.PEDIDOCOMPRA.PDCPDEMIS'
       DisplayFormat = 'dd/mm/yyyy'
@@ -1614,7 +1614,7 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
       Size = 255
     end
     object SQLTemplateTRANICOD: TIntegerField
-      DisplayLabel = 'Cód.Transp'
+      DisplayLabel = 'C'#243'd.Transp'
       FieldName = 'TRANICOD'
       Origin = 'DB.PEDIDOCOMPRA.TRANICOD'
     end
@@ -2560,7 +2560,7 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
       'FROM'
       '  PEDIDOCOMPRA'
       'WHERE'
-      '  PDCPCSTATUS = ''A''  and (%MFiltro)')
+      '  PDCPCSTATUS = '#39'A'#39'  and (%MFiltro)')
     Macros = <
       item
         DataType = ftString
@@ -2589,7 +2589,7 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
       'FROM'
       '  PEDIDOCOMPRA'
       'WHERE'
-      '  PDCPCSTATUS = ''E''  and (%MFiltro)')
+      '  PDCPCSTATUS = '#39'E'#39'  and (%MFiltro)')
     Macros = <
       item
         DataType = ftString
@@ -2618,7 +2618,7 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
       'FROM'
       '  PEDIDOCOMPRA'
       'WHERE'
-      '  PDCPCSTATUS = ''F''  and (%MFiltro)')
+      '  PDCPCSTATUS = '#39'F'#39'  and (%MFiltro)')
     Macros = <
       item
         DataType = ftString
@@ -2649,10 +2649,10 @@ inherited FormCadastroPedidoCompra: TFormCadastroPedidoCompra
       'MovimentoDiversoItem.MOVDA13ID = MovimentoDiverso.MOVDA13ID and'
       'MovimentoDiverso.FORNICOD = Fornecedor.FORNICOD and'
       'MovimentoDiversoItem.PRODICOD = Produto.PRODICOD and'
-      'MovimentoDiverso.MOVDCTROCA = ''S'' and'
+      'MovimentoDiverso.MOVDCTROCA = '#39'S'#39' and'
       
-        '(MovimentoDiverso.MOVDCTROCASTAT = ''S'' or MovimentoDiverso.MOVDC' +
-        'TROCASTAT = ''E'')'
+        '(MovimentoDiverso.MOVDCTROCASTAT = '#39'S'#39' or MovimentoDiverso.MOVDC' +
+        'TROCASTAT = '#39'E'#39')'
       'order by'
       'MovimentoDiverso.MOVDDMOVIMENTO')
     Macros = <
