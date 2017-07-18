@@ -7,7 +7,8 @@ uses
   Dialogs, DataModuloTemplate, DB, DBTables, DBLists, RxQuery, UCrpe32,
   ppStrtch, ppMemo, ppBands, ppCtrls, ppPrnabl, ppClass, ppCache, ppProd,
   ppReport, ppComm, ppRelatv, ppDB, ppDBPipe, ppDBBDE, ACBrNFeDANFEClass,
-  ACBrNFeDANFeESCPOS, ACBrDFe, ACBrNFe, ACBrBase, ACBrPosPrinter, MemTable;
+  ACBrNFeDANFeESCPOS, ACBrDFe, ACBrNFe, ACBrBase, ACBrPosPrinter, MemTable,
+  RestClient, RestUtils, DBClient;
 
 type
   TDM = class(TDMTemplate)
@@ -568,7 +569,7 @@ type
     MemCtRecParcCTRCN2VLRTXCOBR: TFloatField;
     MemCtRecParcCTRCDULTREC: TDateField;
     MemCtRecParcValorOrigem: TFloatField;
-    
+
     DSMemCtRecParc: TDataSource;
     SQLContasReceber: TRxQuery;
     SQLContasReceberCTRCA13ID: TStringField;
@@ -786,10 +787,18 @@ type
     SQLCupomCHAVEACESSO: TStringField;
     SQLCupomPROTOCOLO: TStringField;
     DBRel: TDatabase;
+    RestClient: TRestClient;
+    cdsAPIAutorizacao: TClientDataSet;
+    cdsAPIAutorizacaoDATA_AUTORIZACAO: TStringField;
+    cdsAPIAutorizacaoOBS_AUTORIZACAO: TStringField;
+    TblAPIAutorizacao: TTable;
+    TblAPIAutorizacaoOBS_AUTORIZACAO: TStringField;
+    TblAPIAutorizacaoDATA_AUTORIZACAO: TDateField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DBAfterConnect(Sender: TObject);
   private
     { Private declarations }
+    procedure GetDataValidadeSistema;
   public
     { Public declarations }
     {CodTarefa, SerieAtualPedidos,  FretePorConta, PedidoVolume,  VeiculoAtualPedidos,
@@ -801,17 +810,18 @@ type
     DataEntregaPedidos, DataEmissaoPedidos:TDateTime;
      }
     Cupom, CodTarefa, SerieAtualPedidos, VeiculoAtualPedidos, FretePorConta, PedidoVolume, PedidoEspecie, PedidoMarca, PedidoPesoB, PedidoPesoL,
-    PedidoObs, SubTotal_ECF, NumerarioCartao, CodNextOrc, CodNextCupom,  ID_NotaFiscal_Boleto, PrevendaCodigoStr, PrevendaTerminalStr : string;
+      PedidoObs, SubTotal_ECF, NumerarioCartao, CodNextOrc, CodNextCupom, ID_NotaFiscal_Boleto, PrevendaCodigoStr, PrevendaTerminalStr: string;
     ImportandoPedidoVenda, ImportandoColetor, GerarNovaNota, GerandoNotaFiscal,
-    GerandoPedidoVenda, InserindoItemPV, GerandoPedidoCompra, InserindoItemPC,
-    GerandoNotaCompra, IncluindoGrade, ImportandoPedidoCompra, InserindoItemNC,
-    ProcurandoProduto, TrocarStatusPedidoParaFaturado, InserindoItemNV,
-    GerandoMovtoDiverso, AceitaMotivoNaoAtend : Boolean;
+      GerandoPedidoVenda, InserindoItemPV, GerandoPedidoCompra, InserindoItemPC,
+      GerandoNotaCompra, IncluindoGrade, ImportandoPedidoCompra, InserindoItemNC,
+      ProcurandoProduto, TrocarStatusPedidoParaFaturado, InserindoItemNV,
+      GerandoMovtoDiverso, AceitaMotivoNaoAtend: Boolean;
     ConfigEtiqueta, VendedorAtualPedidos, RotaAtualPedidos, TranspAtualPedidos, SeqItemCompra, CodigoProdutoCompra: Integer;
     DataEntregaPedidos, DataEmissaoPedidos: TDate;
-    TotalCartao : Double;
-    TemClienteDiferente:Boolean;
-    function ConectaServidor : boolean ;
+    TotalCartao: Double;
+    TemClienteDiferente: Boolean;
+    DataAutorizacao, OBSAutorizacao: string;
+    function ConectaServidor: boolean;
 
   end;
 
@@ -820,7 +830,7 @@ var
 
 implementation
 
-uses TelaSplash;
+uses TelaSplash, JsonToDataSetConverter, DateUtils;
 
 {$R *.dfm}
 
@@ -837,16 +847,16 @@ procedure TDM.DataModuleCreate(Sender: TObject);
 begin
   inherited;
   FormSplash.lbDados.Caption := 'Abrindo Tabela de Usuarios...'; FormSplash.lbDados.Update;
-  SQLUsuario.Open ;
+  SQLUsuario.Open;
 
-  FormSplash.lbDados.Caption := 'Licença de uso Válida até => '+FormatDateTime('dd/mm/yyyy',SQLConfigGeralCFGEDBLOQ.Value) ; FormSplash.lbDados.Update;
+  FormSplash.lbDados.Caption := 'Licença de uso Válida até => ' + FormatDateTime('dd/mm/yyyy', SQLConfigGeralCFGEDBLOQ.Value); FormSplash.lbDados.Update;
   Sleep(1000);
   FormSplash.close;
 end;
 
 procedure TDM.DBAfterConnect(Sender: TObject);
 begin
-  inherited;   
+  inherited;
 
   Dm.SQLConfigGeral.Close;
   Dm.SQLConfigGeral.Open;
@@ -857,6 +867,95 @@ begin
   Dm.SQLTerminalAtivo.Close;
   Dm.SQLTerminalAtivo.Open;
 
+  GetDataValidadeSistema;
+
+end;
+
+procedure TDM.GetDataValidadeSistema;
+var
+  Data: TDateTime;
+begin
+
+  try
+    try
+      TblAPIAutorizacao.close;
+      TblAPIAutorizacao.Open;
+
+      if TblAPIAutorizacaoDATA_AUTORIZACAO.AsDateTime > (DateOf(Now) + 5) then
+      begin
+        DataAutorizacao := tblAPIAutorizacaoDATA_AUTORIZACAO.AsString;
+
+        if tblAPIAutorizacaoDATA_AUTORIZACAO.AsDateTime >= (DateOf(Now) - 5) then
+          OBSAutorizacao := ' - ' + TblAPIAutorizacaoOBS_AUTORIZACAO.AsString
+        else
+          OBSAutorizacao := '';
+
+        exit;
+      end;
+
+    except
+    end;
+
+    if not Dm.SQLEmpresa.Active then
+      Dm.SQLEmpresa.Open;
+
+    cdsAPIAutorizacao.Close;
+    cdsAPIAutorizacao.CreateDataSet;
+    RestClient.Resource('http://200.98.202.84/Automafour/api/cad_pessoa/documento/'
+      + Dm.SQLEmpresaEMPRA14CGC.AsString).Accept(RestUtils.MediaType_Json).GetAsDataSet(cdsAPIAutorizacao);
+
+    if cdsAPIAutorizacao.Active then
+    begin
+      if cdsAPIAutorizacaoDATA_AUTORIZACAO.AsString <> '' then
+      begin
+        try
+          Data := StrToDate(copy(cdsAPIAutorizacaoDATA_AUTORIZACAO.value, 9, 2) + '/' + copy(cdsAPIAutorizacaoDATA_AUTORIZACAO.value, 6, 2)
+            + '/' + copy(cdsAPIAutorizacaoDATA_AUTORIZACAO.value, 1, 4));
+
+          Dm.SQLConfigGeral.Edit;
+          Dm.SQLConfigGeralCFGEDBLOQ.Value := Data;
+          Dm.SQLConfigGeral.Post;
+
+          try
+            TblAPIAutorizacao.CreateTable;
+          except
+          end;
+
+          TblAPIAutorizacao.Open;
+          TblAPIAutorizacao.Edit;
+          TblAPIAutorizacaoDATA_AUTORIZACAO.AsDateTime := Data;
+          TblAPIAutorizacaoOBS_AUTORIZACAO.AsString := cdsAPIAutorizacaoOBS_AUTORIZACAO.AsString;
+          TblAPIAutorizacao.Post;
+
+          if Data >= (DateOf(Now) - 3) then
+            OBSAutorizacao := ' - ' + cdsAPIAutorizacaoOBS_AUTORIZACAO.AsString
+          else
+            OBSAutorizacao := '';
+
+          DataAutorizacao := DateToStr(Data);
+        except
+        end;
+      end
+      else if SQLConfigGeralCFGEDBLOQ.AsString <> '' then
+      begin
+        DataAutorizacao := SQLConfigGeralCFGEDBLOQ.AsString;
+        OBSAutorizacao := '';
+      end;
+    end;
+
+  finally
+     if DataAutorizacao <> '' then
+     begin
+        Dm.SQLConfigGeral.Edit;
+        if StrToDate(DataAutorizacao) < DateOf(now) then
+          Dm.SQLConfigGeralCFGECBLOQ.Value := 'S'
+        else
+          Dm.SQLConfigGeralCFGECBLOQ.Value := '';
+        Dm.SQLConfigGeral.Post;
+     end;
+  end;
+
 end;
 
 end.
+

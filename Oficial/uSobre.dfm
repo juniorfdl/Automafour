@@ -33,7 +33,7 @@ inherited fSobre: TfSobre
         Left = 270
         Top = 0
         Width = 369
-        Height = 268
+        Height = 267
         Align = alRight
         TabOrder = 1
         object cxGrid1DBTableView1: TcxGridDBTableView

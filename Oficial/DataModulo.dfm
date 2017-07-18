@@ -1,12 +1,11 @@
 inherited DM: TDM
   OldCreateOrder = True
-  Left = 195
-  Top = 55
+  Left = 89
+  Top = 44
   Height = 600
   Width = 1200
   inherited DB: TDatabase
     AliasName = 'Easy_Gestao'
-    Connected = False
     AfterConnect = DBAfterConnect
   end
   object SQLConfigGeral: TRxQuery
@@ -5347,8 +5346,8 @@ inherited DM: TDM
         ParamType = ptInput
         Value = '0=0'
       end>
-    Left = 944
-    Top = 92
+    Left = 920
+    Top = 124
     object SQLCupomCUPOA13ID: TStringField
       Tag = 2
       FieldName = 'CUPOA13ID'
@@ -5651,5 +5650,38 @@ inherited DM: TDM
     SessionName = 'Default'
     Left = 869
     Top = 16
+  end
+  object RestClient: TRestClient
+    ConnectionType = hctIndy
+    EnabledCompression = False
+    Left = 992
+    Top = 312
+  end
+  object cdsAPIAutorizacao: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 984
+    Top = 360
+    object cdsAPIAutorizacaoDATA_AUTORIZACAO: TStringField
+      FieldName = 'DATA_AUTORIZACAO'
+      Size = 15
+    end
+    object cdsAPIAutorizacaoOBS_AUTORIZACAO: TStringField
+      FieldName = 'OBS_AUTORIZACAO'
+      Size = 250
+    end
+  end
+  object TblAPIAutorizacao: TTable
+    DatabaseName = 'Easy_Temp'
+    TableName = 'APIAutorizacao.DB'
+    Left = 1072
+    Top = 360
+    object TblAPIAutorizacaoDATA_AUTORIZACAO: TDateField
+      FieldName = 'DATA_AUTORIZACAO'
+    end
+    object TblAPIAutorizacaoOBS_AUTORIZACAO: TStringField
+      FieldName = 'OBS_AUTORIZACAO'
+      Size = 250
+    end
   end
 end

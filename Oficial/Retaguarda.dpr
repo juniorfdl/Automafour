@@ -434,7 +434,8 @@ uses
   RelatorioItensNotaFiscal in 'Relatorios\Financeiro\RelatorioItensNotaFiscal.pas' {FormRelatorioItensNotaFiscal},
   RelatorioNotaFiscalItensCobrancaFrete in 'Relatorios\Financeiro\RelatorioNotaFiscalItensCobrancaFrete.pas' {FormRelatorioNotaFiscalItensCobrancaFrete},
   TelaAtivacao in 'TelaAtivacao.pas' {FormTelaAtivacao},
-  uSobre in 'uSobre.pas' {fSobre};
+  uSobre in 'uSobre.pas' {fSobre},
+  JsonToDataSetConverter in '..\..\..\Program Files (x86)\Borland\Componentes\rest-client-api\src\JsonToDataSetConverter.pas';
 
 {$R *.res}
 
@@ -447,7 +448,7 @@ begin
   Application.Title := 'Gestão Empresarial - Módulo Faturamento';
 
   Application.CreateForm(TDM, DM);
-  if (dm.SQLConfigGeralCFGECBLOQ.AsString = 'S')and(not DelphiAberto) then
+  if (dm.SQLConfigGeralCFGECBLOQ.AsString = 'S') and(not DelphiAberto) then
   begin
     FormTelaAtivacao := TFormTelaAtivacao.Create(Application);
     FormTelaAtivacao.ShowModal;
@@ -469,8 +470,8 @@ begin
     Application.CreateForm(TFormPrincipal, FormPrincipal);
     FormPrincipal.RodapePrincipal.Panels[0].Text := 'Empresa: ' + DM.SQLConfigGeralEmpresaPadraoCalcField.Value;
     FormPrincipal.RodapePrincipal.Panels[1].Text := 'Terminal: ' + Dm.SQLTerminalAtivo.fieldbyname('TERMA60DESCR').AsString;
-    FormPrincipal.RodapePrincipal.Panels[2].Text := 'Usuário: ' + DM.SQLUsuario.fieldbyname('USUAA60LOGIN').Value;
-    FormPrincipal.RodapePrincipal.Panels[4].Text := 'Validade da Licença: ' + DM.SQLConfigGeralCFGEDBLOQ.AsString;
+    FormPrincipal.RodapePrincipal.Panels[2].Text := 'Usuário: ' + DM.SQLUsuario.fieldbyname('USUAA60LOGIN').Value;  
+    FormPrincipal.RodapePrincipal.Panels[4].Text := 'Validade da Licença: ' + DM.DataAutorizacao + DM.OBSAutorizacao;
     Application.Run;
   end;
 end.
