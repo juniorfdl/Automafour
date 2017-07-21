@@ -1,8 +1,8 @@
 object FormTelaAtivacao: TFormTelaAtivacao
-  Left = 236
-  Top = 222
+  Left = 347
+  Top = 204
   Width = 818
-  Height = 196
+  Height = 192
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -22,10 +22,10 @@ object FormTelaAtivacao: TFormTelaAtivacao
     Color = 12572888
     TabOrder = 0
     object RxLabel1: TRxLabel
-      Left = 13
-      Top = 25
-      Width = 489
-      Height = 33
+      Left = 109
+      Top = 11
+      Width = 488
+      Height = 32
       Caption = 'Entre em contato com o suporte'
       Color = 32767
       Font.Charset = ANSI_CHARSET
@@ -147,6 +147,24 @@ object FormTelaAtivacao: TFormTelaAtivacao
         0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C}
       ParentFont = False
       OnClick = BtnFecharTelaClick
+    end
+    object RxLabel5: TRxLabel
+      Left = 100
+      Top = 45
+      Width = 515
+      Height = 23
+      Caption = 'Fone: (51) 3438-5051 / Whats: (51) 9 8205-9990'
+      Color = 32767
+      Font.Charset = ANSI_CHARSET
+      Font.Color = 10053171
+      Font.Height = 22
+      Font.Name = 'Verdana'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      ShadowColor = clBlack
+      ShadowPos = spRightBottom
+      Transparent = True
     end
     object Vlr01: TMaskEdit
       Left = 39

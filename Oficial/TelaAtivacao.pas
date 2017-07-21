@@ -19,6 +19,7 @@ type
     Panel1: TPanel;
     RxLabel4: TRxLabel;
     BtnFecharTela: TSpeedButton;
+    RxLabel5: TRxLabel;
     procedure BtnFecharTelaClick(Sender: TObject);
   private
     { Private declarations }

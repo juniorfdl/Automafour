@@ -229,7 +229,9 @@ var
 implementation
 
 uses DataModulo,  UnitLibrary, WaitWindow, TelaConsultaPagamento,
-  TelaAssistenteLancamentoContasPagar, TelaBaixaContasPagarAVista;
+  TelaAssistenteLancamentoContasPagar, TelaBaixaContasPagarAVista,
+  TelaConsultaEmpresa, CadastroTipoDocumento, CadastroPortador,
+  TelaConsultaPlanoContas, CadastroFornecedor, CadastroHistoricoPadrao;
 
   //CadastroPortador, CadastroTipoDocumento, CadastroFornecedor,  CadastroPlanodeContas, TelaConsultaEmpresa,
   //TelaConsultaPlanoContas, CadastroHistoricoPadrao, TelaConsultaPagamento,   #ver
@@ -391,7 +393,7 @@ begin
   FieldLookup := DsTemplate.DataSet.FieldByName('FORNICOD');
   DataSetLookup := SQLFornecedor;
   FieldOrigem := 'FORNICOD' ;
-  //CriaFormulario(TFormCadastroFornecedor, 'FormCadastroFornecedor',False,True,False,'');
+  CriaFormulario(TFormCadastroFornecedor, 'FormCadastroFornecedor',False,True,False,'');
 end;
 
 procedure TFormCadastroContasPagar.RetornaTipoDocumentoClick(Sender: TObject);
@@ -400,7 +402,7 @@ begin
   FieldLookup := DsTemplate.DataSet.FieldByName('TPDCICOD');
   DataSetLookup := SQLTipoDocumento;
   FieldOrigem := 'TPDCICOD' ;
-  //CriaFormulario(TFormCadastroTipoDocumento, 'FormCadastroTipoDocumento',False,True,True,'');
+  CriaFormulario(TFormCadastroTipoDocumento, 'FormCadastroTipoDocumento',False,True,True,'');
 end;
 
 procedure TFormCadastroContasPagar.RetornaPortadorClick(Sender: TObject);
@@ -409,7 +411,7 @@ begin
   FieldLookup := DsTemplate.DataSet.FieldByName('PORTICOD');
   DataSetLookup := SQLPortador;
   FieldOrigem := 'PORTICOD' ;
-  //CriaFormulario(TFormCadastroPortador, 'FormCadastroPortador',False,True,True,'');
+  CriaFormulario(TFormCadastroPortador, 'FormCadastroPortador',False,True,True,'');
 end;
 
 procedure TFormCadastroContasPagar.DBEdit1KeyDown(Sender: TObject;
@@ -517,7 +519,7 @@ begin
   inherited;
   FieldLookup := SQLTemplate.FieldByName('EMPRICOD');
   FieldOrigem := 'EMPRICOD';
-  //CriaFormulario(TFormTelaConsultaEmpresa,'FormTelaConsultaEmpresa',False,True,True,'');
+  CriaFormulario(TFormTelaConsultaEmpresa,'FormTelaConsultaEmpresa',False,True,True,'');
 
 end;
 
@@ -641,7 +643,7 @@ begin
   FieldLookup := DsTemplate.DataSet.FieldByName('HTPDICOD');
   FieldOrigem := 'HTPDICOD';
   TipoHistoricoPadrao := 'D';
-  //CriaFormulario(TFormCadastroHistoricoPadrao, 'FormCadastroHistoricoPadrao', False, True,True, 'Contas � Receber');
+  CriaFormulario(TFormCadastroHistoricoPadrao, 'FormCadastroHistoricoPadrao', False, True,True, 'Contas a Receber');
 end;
 
 procedure TFormCadastroContasPagar.DBEditHistoricoPadraoKeyDown(
@@ -667,7 +669,7 @@ begin
   FieldLookup := DsTemplate.DataSet.FieldByName('PLCTA15COD');
   FieldOrigem := 'PLCTA15COD';
   TipoPlanoContas := 'D';
-  //CriaFormulario(TFormTelaConsultaPlanoContas, 'FormTelaConsultaPlanoContas', False,True,True, 'Contas � Pagar');
+  CriaFormulario(TFormTelaConsultaPlanoContas, 'FormTelaConsultaPlanoContas', False,True,True, 'Contas � Pagar');
 end;
 
 procedure TFormCadastroContasPagar.DBGrid1DblClick(Sender: TObject);

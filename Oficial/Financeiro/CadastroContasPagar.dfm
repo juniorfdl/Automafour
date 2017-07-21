@@ -44,6 +44,7 @@ inherited FormCadastroContasPagar: TFormCadastroContasPagar
             Top = 225
             Width = 845
             Height = 269
+            ActivePage = TabSheetDadosPrincipais
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Top = 94
@@ -452,8 +453,8 @@ inherited FormCadastroContasPagar: TFormCadastroContasPagar
               object GroupBox1: TGroupBox
                 Left = 0
                 Top = 79
-                Width = 686
-                Height = 119
+                Width = 837
+                Height = 164
                 Align = alClient
                 Caption = ' Hist'#243'rico de Pagamentos '
                 Font.Charset = DEFAULT_CHARSET
@@ -466,8 +467,8 @@ inherited FormCadastroContasPagar: TFormCadastroContasPagar
                 object DBGrid1: TDBGrid
                   Left = 2
                   Top = 15
-                  Width = 682
-                  Height = 102
+                  Width = 833
+                  Height = 147
                   Hint = 
                     'Para ver maiores detalhes sobre um pagamento d'#234' um duplo clique ' +
                     'sobre o registro...'
@@ -548,7 +549,7 @@ inherited FormCadastroContasPagar: TFormCadastroContasPagar
               object Panel4: TPanel
                 Left = 0
                 Top = 0
-                Width = 686
+                Width = 837
                 Height = 79
                 Align = alTop
                 ParentColor = True
