@@ -1,36 +1,19 @@
 [Closed Files]
-File_0=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\TelaFechamentoVenda.pas',0,1,3153,12,3155,1,0
-File_1=SourceModule,'C:\Program Files (x86)\Borland\Componentes\rest-client-api\src\JsonToDataSetConverter.pas',0,1,21,1,36,0,0
-File_2=SourceModule,'C:\Program Files (x86)\Borland\Componentes\rest-client-api\src\RestClient.pas',0,1,903,1,922,0,0
-File_3=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\CadastroPedidoVenda.pas',0,1,867,20,882,1,0
-File_4=SourceModule,'C:\projetos\Automafour\Oficial\Principal.pas',0,1,480,28,485,3,0
-File_5=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\UnitCheckoutLibrary.pas',0,1,770,18,782,0,0
-File_6=SourceModule,'C:\projetos\Automafour\Oficial\uSobre.pas',0,1,85,56,80,0,0
-File_7=SourceModule,'C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrNFe\PCNNFe\pcnNFe.pas',0,1,188,67,199,0,0
-File_8=SourceModule,'C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrNFe\DANFE\ACBrNFeDANFEClass.pas',0,1,155,21,168,0,0
+File_0=SourceModule,'C:\Program Files (x86)\Borland\Componentes\rest-client-api\src\JsonToDataSetConverter.pas',0,1,1,104,7,0,0
+File_1=SourceModule,'C:\Program Files (x86)\Borland\Componentes\rest-client-api\src\RestClient.pas',0,1,10,46,16,0,0
+File_2=SourceModule,'C:\projetos\Automafour\Oficial\DataModulo.pas',0,1,878,1,881,0,0
+File_3=SourceModule,'C:\projetos\Automafour\Oficial\TelaAtivacao.pas',0,1,32,40,36,1,0
+File_4=SourceModule,'C:\projetos\Automafour\Template\CadastroTEMPLATE.pas',0,1,1,42,3,1,0
+File_5=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\TelaItens.pas',0,1,4682,34,4697,0,0
+File_6=SourceModule,'C:\projetos\Automafour\Oficial\Compras\TelaImportadorXML.pas',0,1,2300,29,2302,1,0
+File_7=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\TelaFechamentoVenda.pas',0,1,3153,12,3155,1,0
+File_8=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\CadastroPedidoVenda.pas',0,1,867,20,882,1,0
+File_9=SourceModule,'C:\projetos\Automafour\Oficial\Principal.pas',0,1,480,28,485,3,0
 
 [Modules]
-Module0=C:\projetos\Automafour\Oficial\DataModulo.pas
-Module1=C:\projetos\Automafour\Oficial\Compras\TelaImportadorXML.pas
-Module2=C:\projetos\Automafour\Oficial\Vendas\TelaItens.pas
-Module3=C:\projetos\Automafour\Oficial\Retaguarda.dpr
-Count=4
+Module0=C:\projetos\Automafour\Oficial\Retaguarda.dpr
+Count=1
 EditWindowCount=1
-
-[C:\projetos\Automafour\Oficial\DataModulo.pas]
-ModuleType=SourceModule
-FormState=0
-FormOnTop=0
-
-[C:\projetos\Automafour\Oficial\Compras\TelaImportadorXML.pas]
-ModuleType=SourceModule
-FormState=1
-FormOnTop=0
-
-[C:\projetos\Automafour\Oficial\Vendas\TelaItens.pas]
-ModuleType=SourceModule
-FormState=1
-FormOnTop=0
 
 [C:\projetos\Automafour\Oficial\Retaguarda.dpr]
 ModuleType=SourceModule
@@ -41,29 +24,10 @@ FormOnTop=0
 FormState=0
 FormOnTop=0
 
-[C:\projetos\Automafour\Template\PrincipalTemplate.pas]
-FormState=0
-FormOnTop=0
-
-[C:\projetos\Automafour\Template\DataModuloTemplate.pas]
-FormState=0
-FormOnTop=0
-
-[C:\projetos\Automafour\Template\CadastroTEMPLATE.pas]
-FormState=0
-FormOnTop=0
-
-[C:\projetos\Automafour\Template\TelaGeralTEMPLATE.pas]
-FormState=0
-FormOnTop=0
-
 [EditWindow0]
-ViewCount=4
-CurrentView=1
+ViewCount=1
+CurrentView=0
 View0=0
-View1=1
-View2=2
-View3=3
 CodeExplorer=CodeExplorer@EditWindow0
 MessageView=MessageView@EditWindow0
 Create=1
@@ -83,36 +47,15 @@ LeftPanelSize=0
 LeftPanelClients=CodeExplorer@EditWindow0
 LeftPanelData=00000400010000000C000000436F64654578706C6F726572000000000000000000000000000000000001000000000000000000000000FFFFFFFF
 RightPanelSize=0
-BottomPanelSize=0
+BottomPanelSize=85
 BottomPanelClients=MessageView@EditWindow0
-BottomPanelData=00000400010000000B0000004D6573736167655669657700000000000000000000000000000000000100000000000000000B0000004D65737361676556696577FFFFFFFF
+BottomPanelData=00000400000000005605000000000000025500000000000000010000000000000000000000000100000000560500000000000001000000005605000000000000010000000056050000000000000100000000560500000B0000004D65737361676556696577FFFFFFFF
 
 [View0]
 Module=C:\projetos\Automafour\Oficial\Retaguarda.dpr
-CursorX=31
-CursorY=434
-TopLine=429
-LeftCol=1
-
-[View1]
-Module=C:\projetos\Automafour\Oficial\DataModulo.pas
-CursorX=36
-CursorY=907
-TopLine=888
-LeftCol=1
-
-[View2]
-Module=C:\projetos\Automafour\Oficial\Vendas\TelaItens.pas
-CursorX=34
-CursorY=4697
-TopLine=4682
-LeftCol=1
-
-[View3]
-Module=C:\projetos\Automafour\Oficial\Compras\TelaImportadorXML.pas
-CursorX=29
-CursorY=2302
-TopLine=2300
+CursorX=81
+CursorY=439
+TopLine=432
 LeftCol=1
 
 [Watches]
@@ -137,8 +80,7 @@ LRDockWidth=426
 Dockable=1
 
 [Breakpoints]
-Count=1
-Breakpoint0='C:\projetos\Automafour\Oficial\DataModulo.pas',923,'',0,1,'',1,0,0,'',1,'','',''
+Count=0
 
 [AddressBreakpoints]
 Count=0
@@ -235,7 +177,7 @@ LRDockWidth=190
 Dockable=1
 SplitPos=85
 ArrangeBy=Name
-SelectedItem=Caption
+SelectedItem=
 ExpandedItems=
 HiddenCategories=
 
@@ -471,7 +413,7 @@ Dockable=1
 
 [MessageView@EditWindow0]
 Create=1
-Visible=0
+Visible=1
 State=0
 Left=12
 Top=0

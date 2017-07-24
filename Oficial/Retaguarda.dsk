@@ -1,39 +1,32 @@
 [Closed Files]
-File_0=SourceModule,'C:\projetos\Automafour\Template\DataModuloTemplate.pas',0,1,892,1,912,0,0
-File_1=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\TelaItens.pas',0,1,4682,34,4697,0,0
-File_2=SourceModule,'C:\projetos\Automafour\Oficial\Compras\TelaImportadorXML.pas',0,1,2300,29,2302,1,0
-File_3=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\TelaFechamentoVenda.pas',0,1,3153,12,3155,1,0
-File_4=SourceModule,'C:\Program Files (x86)\Borland\Componentes\rest-client-api\src\JsonToDataSetConverter.pas',0,1,21,1,36,0,0
-File_5=SourceModule,'C:\Program Files (x86)\Borland\Componentes\rest-client-api\src\RestClient.pas',0,1,903,1,922,0,0
-File_6=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\CadastroPedidoVenda.pas',0,1,867,20,882,1,0
-File_7=SourceModule,'C:\projetos\Automafour\Oficial\Principal.pas',0,1,480,28,485,3,0
-File_8=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\UnitCheckoutLibrary.pas',0,1,770,18,782,0,0
-File_9=SourceModule,'C:\projetos\Automafour\Oficial\uSobre.pas',0,1,85,56,80,0,0
+File_0=SourceModule,'C:\projetos\Automafour\Template\DataModuloTemplate.pas',0,1,883,1,898,0,0
+File_1=SourceModule,'C:\projetos\Automafour\Oficial\ArquivosComuns\UnitLibrary.pas',0,1,1,1,1,0,0
+File_2=SourceModule,'c:\program files (x86)\borland\delphi7\source\rtl\common\Math.pas',0,1,881,1,881,0,0
+File_3=SourceModule,'C:\Program Files (x86)\Borland\Componentes\rest-client-api\src\JsonToDataSetConverter.pas',0,1,1,104,7,0,0
+File_4=SourceModule,'C:\Program Files (x86)\Borland\Componentes\rest-client-api\src\RestClient.pas',0,1,10,46,16,0,0
+File_5=SourceModule,'C:\projetos\Automafour\Template\CadastroTEMPLATE.pas',0,1,1,42,3,1,0
+File_6=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\TelaItens.pas',0,1,4682,34,4697,0,0
+File_7=SourceModule,'C:\projetos\Automafour\Oficial\Compras\TelaImportadorXML.pas',0,1,2300,29,2302,1,0
+File_8=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\TelaFechamentoVenda.pas',0,1,3153,12,3155,1,0
 
 [Modules]
-Module0=C:\projetos\Automafour\Oficial\Retaguarda.dpr
-Module1=C:\projetos\Automafour\Oficial\DataModulo.pas
+Module0=C:\projetos\Automafour\Oficial\DataModulo.pas
+Module1=C:\projetos\Automafour\Oficial\Retaguarda.dpr
 Module2=C:\projetos\Automafour\Oficial\TelaAtivacao.pas
-Module3=C:\projetos\Automafour\Template\CadastroTEMPLATE.pas
-Count=4
+Count=3
 EditWindowCount=1
-
-[C:\projetos\Automafour\Oficial\Retaguarda.dpr]
-ModuleType=SourceModule
-FormState=0
-FormOnTop=0
 
 [C:\projetos\Automafour\Oficial\DataModulo.pas]
 ModuleType=SourceModule
 FormState=0
 FormOnTop=0
 
-[C:\projetos\Automafour\Oficial\TelaAtivacao.pas]
+[C:\projetos\Automafour\Oficial\Retaguarda.dpr]
 ModuleType=SourceModule
-FormState=1
+FormState=0
 FormOnTop=0
 
-[C:\projetos\Automafour\Template\CadastroTEMPLATE.pas]
+[C:\projetos\Automafour\Oficial\TelaAtivacao.pas]
 ModuleType=SourceModule
 FormState=1
 FormOnTop=0
@@ -46,17 +39,12 @@ FormOnTop=0
 FormState=0
 FormOnTop=0
 
-[C:\projetos\Automafour\Template\TelaGeralTEMPLATE.pas]
-FormState=0
-FormOnTop=0
-
 [EditWindow0]
-ViewCount=4
-CurrentView=0
+ViewCount=3
+CurrentView=2
 View0=0
 View1=1
 View2=2
-View3=3
 CodeExplorer=CodeExplorer@EditWindow0
 MessageView=MessageView@EditWindow0
 Create=1
@@ -78,34 +66,27 @@ LeftPanelData=00000400010000000C000000436F64654578706C6F726572000000000000000000
 RightPanelSize=0
 BottomPanelSize=0
 BottomPanelClients=MessageView@EditWindow0
-BottomPanelData=00000400010000000B0000004D657373616765566965775605000000000000025500000000000000010000000000000000000000000100000000560500000B0000004D65737361676556696577FFFFFFFF
+BottomPanelData=00000400010000000B0000004D657373616765566965775605000000000000025500000000000000010000000000000000000000000100000000560500000000000001000000005605000000000000010000000056050000000000000100000000560500000B0000004D65737361676556696577FFFFFFFF
 
 [View0]
 Module=C:\projetos\Automafour\Oficial\Retaguarda.dpr
-CursorX=50
-CursorY=451
-TopLine=432
+CursorX=34
+CursorY=453
+TopLine=446
 LeftCol=1
 
 [View1]
 Module=C:\projetos\Automafour\Oficial\TelaAtivacao.pas
-CursorX=40
-CursorY=36
-TopLine=32
-LeftCol=1
-
-[View2]
-Module=C:\projetos\Automafour\Template\CadastroTEMPLATE.pas
-CursorX=42
-CursorY=3
+CursorX=48
+CursorY=9
 TopLine=1
 LeftCol=1
 
-[View3]
+[View2]
 Module=C:\projetos\Automafour\Oficial\DataModulo.pas
-CursorX=1
-CursorY=881
-TopLine=878
+CursorX=34
+CursorY=891
+TopLine=886
 LeftCol=1
 
 [Watches]
@@ -227,7 +208,7 @@ LRDockWidth=190
 Dockable=1
 SplitPos=85
 ArrangeBy=Name
-SelectedItem=Caption
+SelectedItem=Name
 ExpandedItems=
 HiddenCategories=
 
@@ -415,7 +396,7 @@ Dockable=1
 
 [fmGrepResults]
 Create=1
-Visible=1
+Visible=0
 State=0
 Left=396
 Top=2

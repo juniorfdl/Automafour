@@ -246,6 +246,9 @@ inherited DM: TDM
       FieldName = 'CFGEDBLOQ'
       Origin = 'DB.CONFIGGERAL.CFGEDBLOQ'
     end
+    object SQLConfigGeralDIAS_AVISO: TIntegerField
+      FieldName = 'DIAS_AVISO'
+    end
   end
   object SQLUsuario: TQuery
     DatabaseName = 'DB'
@@ -5670,6 +5673,10 @@ inherited DM: TDM
       FieldName = 'OBS_AUTORIZACAO'
       Size = 250
     end
+    object cdsAPIAutorizacaoDIAS_AVISO: TStringField
+      FieldName = 'DIAS_AVISO'
+      Size = 15
+    end
   end
   object TblAPIAutorizacao: TTable
     DatabaseName = 'Easy_Temp'
@@ -5682,6 +5689,10 @@ inherited DM: TDM
     object TblAPIAutorizacaoOBS_AUTORIZACAO: TStringField
       FieldName = 'OBS_AUTORIZACAO'
       Size = 250
+    end
+    object TblAPIAutorizacaoDIAS_AVISO: TStringField
+      FieldName = 'DIAS_AVISO'
+      Size = 15
     end
   end
 end

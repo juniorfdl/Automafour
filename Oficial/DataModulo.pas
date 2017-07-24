@@ -794,11 +794,15 @@ type
     TblAPIAutorizacao: TTable;
     TblAPIAutorizacaoOBS_AUTORIZACAO: TStringField;
     TblAPIAutorizacaoDATA_AUTORIZACAO: TDateField;
+    SQLConfigGeralDIAS_AVISO: TIntegerField;
+    cdsAPIAutorizacaoDIAS_AVISO: TStringField;
+    TblAPIAutorizacaoDIAS_AVISO: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DBAfterConnect(Sender: TObject);
   private
     { Private declarations }
     procedure GetDataValidadeSistema;
+    procedure GetDataValidadeSistemaWebApi;
   public
     { Public declarations }
     {CodTarefa, SerieAtualPedidos,  FretePorConta, PedidoVolume,  VeiculoAtualPedidos,
@@ -820,7 +824,7 @@ type
     DataEntregaPedidos, DataEmissaoPedidos: TDate;
     TotalCartao: Double;
     TemClienteDiferente: Boolean;
-    DataAutorizacao, OBSAutorizacao: string;
+    OBSAutorizacao: string;
     function ConectaServidor: boolean;
 
   end;
@@ -830,7 +834,7 @@ var
 
 implementation
 
-uses TelaSplash, JsonToDataSetConverter, DateUtils;
+uses TelaSplash, JsonToDataSetConverter, DateUtils, Math;
 
 {$R *.dfm}
 
@@ -874,9 +878,39 @@ end;
 procedure TDM.GetDataValidadeSistema;
 var
   Data: TDateTime;
+  DiasVencimento:integer;
 begin
 
-  try
+  OBSAutorizacao := '';
+  if Dm.SQLConfigGeralCFGEDBLOQ.AsDateTime < DateOf(Now) then
+  begin
+    GetDataValidadeSistemaWebApi;
+  end;
+
+  Dm.SQLConfigGeral.Edit;
+  if Dm.SQLConfigGeralCFGEDBLOQ.AsDateTime < DateOf(Now) then
+    Dm.SQLConfigGeralCFGECBLOQ.Value := 'S'
+  else begin
+    Dm.SQLConfigGeralCFGECBLOQ.Value := '';
+
+    if Dm.SQLConfigGeralDIAS_AVISO.Value > 0 then
+    begin
+      DiasVencimento := DaysBetween(Dm.SQLConfigGeralCFGEDBLOQ.AsDateTime, DateOf(Now));
+
+      if Dm.SQLConfigGeralDIAS_AVISO.Value >= DiasVencimento then
+      begin
+        if DiasVencimento = 1 then
+          OBSAutorizacao := ' - Falta 01 dia para o vencimento'
+        else
+          OBSAutorizacao := ' - Falta '+FormatFloat('00', DiasVencimento)+' dias para o vencimento';
+      end;
+    end;
+
+  end;
+  Dm.SQLConfigGeral.Post;
+
+
+  {try
     try
       TblAPIAutorizacao.close;
       TblAPIAutorizacao.Open;
@@ -953,6 +987,44 @@ begin
           Dm.SQLConfigGeralCFGECBLOQ.Value := '';
         Dm.SQLConfigGeral.Post;
      end;
+  end;}
+
+end;
+
+procedure TDM.GetDataValidadeSistemaWebApi;
+var
+ Data: TDate;
+ xhttp:String;
+begin
+  if not Dm.SQLEmpresa.Active then
+    Dm.SQLEmpresa.Open;
+
+  cdsAPIAutorizacao.Close;
+  cdsAPIAutorizacao.CreateDataSet;
+
+  xhttp:= 'http://200.98.202.84/Automafour/api/cad_pessoa/documento/'
+      + Dm.SQLEmpresaEMPRA14CGC.AsString;
+
+  //xhttp:= 'http://localhost:51308/api/cad_pessoa/documento/83125841020';
+
+  try
+    RestClient.Resource(xhttp).Accept(RestUtils.MediaType_Json).GetAsDataSet(cdsAPIAutorizacao);
+  except
+    exit;
+  end;
+
+  if cdsAPIAutorizacao.Active then
+  begin
+    if cdsAPIAutorizacaoDATA_AUTORIZACAO.AsString <> '' then
+    begin
+      Data := StrToDate(copy(cdsAPIAutorizacaoDATA_AUTORIZACAO.value, 9, 2) + '/' + copy(cdsAPIAutorizacaoDATA_AUTORIZACAO.value, 6, 2)
+        + '/' + copy(cdsAPIAutorizacaoDATA_AUTORIZACAO.value, 1, 4));
+
+      Dm.SQLConfigGeral.Edit;
+      Dm.SQLConfigGeralCFGEDBLOQ.Value := Data;
+      Dm.SQLConfigGeralDIAS_AVISO.AsInteger := StrToIntDef(cdsAPIAutorizacaoDIAS_AVISO.AsString,0);
+      Dm.SQLConfigGeral.Post;
+    end
   end;
 
 end;

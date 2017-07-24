@@ -114,7 +114,7 @@ IncludeVerInfo=1
 AutoIncBuild=0
 MajorVer=2017
 MinorVer=7
-Release=17
+Release=22
 Build=0
 Debug=0
 PreRelease=0
@@ -126,7 +126,7 @@ CodePage=1252
 [Version Info Keys]
 CompanyName=
 FileDescription=
-FileVersion=2017.7.17.0
+FileVersion=2017.7.22.0
 InternalName=
 LegalCopyright=
 LegalTrademarks=
