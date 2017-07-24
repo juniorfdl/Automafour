@@ -11,6 +11,7 @@ object FormTelaAtivacao: TFormTelaAtivacao
   Font.Style = []
   OldCreateOrder = False
   Position = poDesktopCenter
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object PanelDadosCliente: TPanel
@@ -151,8 +152,8 @@ object FormTelaAtivacao: TFormTelaAtivacao
     object RxLabel5: TRxLabel
       Left = 100
       Top = 45
-      Width = 515
-      Height = 23
+      Width = 514
+      Height = 22
       Caption = 'Fone: (51) 3438-5051 / Whats: (51) 9 8205-9990'
       Color = 32767
       Font.Charset = ANSI_CHARSET
@@ -217,7 +218,7 @@ object FormTelaAtivacao: TFormTelaAtivacao
     BevelWidth = 2
     Color = 12572888
     TabOrder = 1
-    object RxLabel4: TRxLabel
+    object lblMensagem: TRxLabel
       Left = 7
       Top = 7
       Width = 773

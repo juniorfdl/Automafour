@@ -834,7 +834,7 @@ var
 
 implementation
 
-uses TelaSplash, JsonToDataSetConverter, DateUtils, Math;
+uses TelaSplash, JsonToDataSetConverter, DateUtils, Math, TelaAtivacao;
 
 {$R *.dfm}
 
@@ -878,7 +878,7 @@ end;
 procedure TDM.GetDataValidadeSistema;
 var
   Data: TDateTime;
-  DiasVencimento:integer;
+  DiasVencimento: integer;
 begin
 
   OBSAutorizacao := '';
@@ -900,9 +900,9 @@ begin
       if Dm.SQLConfigGeralDIAS_AVISO.Value >= DiasVencimento then
       begin
         if DiasVencimento = 1 then
-          OBSAutorizacao := ' - Falta 01 dia para o vencimento'
+          OBSAutorizacao := '01 dia'
         else
-          OBSAutorizacao := ' - Falta '+FormatFloat('00', DiasVencimento)+' dias para o vencimento';
+          OBSAutorizacao := FormatFloat('00', DiasVencimento) + ' dias '; // - Falta '+FormatFloat('00', DiasVencimento)+' dias;
       end;
     end;
 
@@ -993,8 +993,8 @@ end;
 
 procedure TDM.GetDataValidadeSistemaWebApi;
 var
- Data: TDate;
- xhttp:String;
+  Data: TDate;
+  xhttp: string;
 begin
   if not Dm.SQLEmpresa.Active then
     Dm.SQLEmpresa.Open;
@@ -1002,29 +1002,42 @@ begin
   cdsAPIAutorizacao.Close;
   cdsAPIAutorizacao.CreateDataSet;
 
-  xhttp:= 'http://200.98.202.84/Automafour/api/cad_pessoa/documento/'
-      + Dm.SQLEmpresaEMPRA14CGC.AsString;
+  xhttp := 'http://200.98.202.84/Automafour/api/cad_pessoa/documento/'
+    + Dm.SQLEmpresaEMPRA14CGC.AsString;
 
   //xhttp:= 'http://localhost:51308/api/cad_pessoa/documento/83125841020';
 
   try
-    RestClient.Resource(xhttp).Accept(RestUtils.MediaType_Json).GetAsDataSet(cdsAPIAutorizacao);
-  except
-    exit;
-  end;
+    try
+      RestClient.Resource(xhttp).Accept(RestUtils.MediaType_Json).GetAsDataSet(cdsAPIAutorizacao);
+    except
+      exit;
+    end;
 
-  if cdsAPIAutorizacao.Active then
-  begin
-    if cdsAPIAutorizacaoDATA_AUTORIZACAO.AsString <> '' then
+    if cdsAPIAutorizacao.Active then
     begin
-      Data := StrToDate(copy(cdsAPIAutorizacaoDATA_AUTORIZACAO.value, 9, 2) + '/' + copy(cdsAPIAutorizacaoDATA_AUTORIZACAO.value, 6, 2)
-        + '/' + copy(cdsAPIAutorizacaoDATA_AUTORIZACAO.value, 1, 4));
+      if cdsAPIAutorizacaoDATA_AUTORIZACAO.AsString <> '' then
+      begin
+        Data := StrToDate(copy(cdsAPIAutorizacaoDATA_AUTORIZACAO.value, 9, 2) + '/' + copy(cdsAPIAutorizacaoDATA_AUTORIZACAO.value, 6, 2)
+          + '/' + copy(cdsAPIAutorizacaoDATA_AUTORIZACAO.value, 1, 4));
 
-      Dm.SQLConfigGeral.Edit;
-      Dm.SQLConfigGeralCFGEDBLOQ.Value := Data;
-      Dm.SQLConfigGeralDIAS_AVISO.AsInteger := StrToIntDef(cdsAPIAutorizacaoDIAS_AVISO.AsString,0);
-      Dm.SQLConfigGeral.Post;
-    end
+        Dm.SQLConfigGeral.Edit;
+        Dm.SQLConfigGeralCFGEDBLOQ.Value := Data;
+        Dm.SQLConfigGeralDIAS_AVISO.AsInteger := StrToIntDef(cdsAPIAutorizacaoDIAS_AVISO.AsString, 0);
+        Dm.SQLConfigGeral.Post;
+      end
+    end;
+
+  finally
+    if (not cdsAPIAutorizacao.Active)or(cdsAPIAutorizacaoDATA_AUTORIZACAO.AsString = '') then
+    begin
+      FormTelaAtivacao := TFormTelaAtivacao.Create(Application);
+      FormTelaAtivacao.lblMensagem.Font.Size := 17; 
+      FormTelaAtivacao.lblMensagem.Caption := 'Cadastro não encontrado na Base de Dados da Automafour!';
+      FormTelaAtivacao.ShowModal;
+      Application.terminate;
+      Abort;
+    end;
   end;
 
 end;

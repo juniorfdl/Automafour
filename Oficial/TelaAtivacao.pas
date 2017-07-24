@@ -17,10 +17,11 @@ type
     RxLabel2: TRxLabel;
     RxLabel3: TRxLabel;
     Panel1: TPanel;
-    RxLabel4: TRxLabel;
+    lblMensagem: TRxLabel;
     BtnFecharTela: TSpeedButton;
     RxLabel5: TRxLabel;
     procedure BtnFecharTelaClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -39,6 +40,12 @@ uses DataModulo;
 procedure TFormTelaAtivacao.BtnFecharTelaClick(Sender: TObject);
 begin
   close;
+end;
+
+procedure TFormTelaAtivacao.FormCreate(Sender: TObject);
+begin
+  if (dm.SQLConfigGeralCFGECBLOQ.AsString <> 'S') then
+   lblMensagem.Caption := 'Licença de Uso Expira em ' + DM.OBSAutorizacao;
 end;
 
 end.

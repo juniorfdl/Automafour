@@ -447,32 +447,38 @@ begin
   bRetaguarda := true;
   Application.Title := 'Gestão Empresarial - Módulo Faturamento';
 
-  Application.CreateForm(TDM, DM);
-  if (dm.SQLConfigGeralCFGECBLOQ.AsString = 'S') then //and(not DelphiAberto) then
+  Application.CreateForm(TDM, DM);    
+
+  if (DM.OBSAutorizacao <> '') then //and(not DelphiAberto) then
   begin
     FormTelaAtivacao := TFormTelaAtivacao.Create(Application);
     FormTelaAtivacao.ShowModal;
-//    dm.Zdb.Connected := False;
-    application.terminate;
-//    ShowMessage('Sistema Bloqueado!!! Ligue para a Suporte');
-//    application.terminate;
-  end
-  else
-  begin
-    FormTelaLogin := TFormTelaLogin.Create(Application);
-    FormTelaLogin.Caption := 'Bem Vindo ao Gestão Empresarial - Módulo Faturamento';
 
-    if FormTelaLogin.ShowModal <> idOk then
+    if (dm.SQLConfigGeralCFGECBLOQ.AsString = 'S') then
     begin
-      application.terminate;
+      Application.terminate;
+      Exit;
     end;
-
-    Application.CreateForm(TFormPrincipal, FormPrincipal);
-    FormPrincipal.RodapePrincipal.Panels[0].Text := 'Empresa: ' + DM.SQLConfigGeralEmpresaPadraoCalcField.Value;
-    FormPrincipal.RodapePrincipal.Panels[1].Text := 'Terminal: ' + Dm.SQLTerminalAtivo.fieldbyname('TERMA60DESCR').AsString;
-    FormPrincipal.RodapePrincipal.Panels[2].Text := 'Usuário: ' + DM.SQLUsuario.fieldbyname('USUAA60LOGIN').Value;  
-    FormPrincipal.RodapePrincipal.Panels[4].Text := 'Validade da Licença: ' + Dm.SQLConfigGeralCFGEDBLOQ.AsString + DM.OBSAutorizacao;
-    Application.Run;
   end;
+
+  FormTelaLogin := TFormTelaLogin.Create(Application);
+  FormTelaLogin.Caption := 'Bem Vindo ao Gestão Empresarial - Módulo Faturamento';
+
+  if FormTelaLogin.ShowModal <> idOk then
+  begin
+    application.terminate;
+  end;
+
+  Application.CreateForm(TFormPrincipal, FormPrincipal);
+  FormPrincipal.RodapePrincipal.Panels[0].Text := 'Empresa: ' + DM.SQLConfigGeralEmpresaPadraoCalcField.Value;
+  FormPrincipal.RodapePrincipal.Panels[1].Text := 'Terminal: ' + Dm.SQLTerminalAtivo.fieldbyname('TERMA60DESCR').AsString;
+  FormPrincipal.RodapePrincipal.Panels[2].Text := 'Usuário: ' + DM.SQLUsuario.fieldbyname('USUAA60LOGIN').Value;
+
+  if DM.OBSAutorizacao <> '' then
+    FormPrincipal.RodapePrincipal.Panels[4].Text := 'Validade da Licença: ' + Dm.SQLConfigGeralCFGEDBLOQ.AsString+' - Falta '+DM.OBSAutorizacao+' para o vencimento'
+  else
+    FormPrincipal.RodapePrincipal.Panels[4].Text := 'Validade da Licença: ' + Dm.SQLConfigGeralCFGEDBLOQ.AsString;
+    
+  Application.Run;
 end.
 
