@@ -449,7 +449,7 @@ begin
 
   Application.CreateForm(TDM, DM);    
 
-  if (DM.OBSAutorizacao <> '') then //and(not DelphiAberto) then
+  if (DM.OBSAutorizacao <> '')or(dm.SQLConfigGeralCFGECBLOQ.AsString = 'S') then //and(not DelphiAberto) then
   begin
     FormTelaAtivacao := TFormTelaAtivacao.Create(Application);
     FormTelaAtivacao.ShowModal;

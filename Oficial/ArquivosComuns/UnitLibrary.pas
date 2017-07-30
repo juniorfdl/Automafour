@@ -1793,8 +1793,8 @@ Var
 begin
   PrecoOk := False;
 
-  if trim(TabelaPrecoCliente) = '' then
-    TabelaPrecoCliente := '0';
+  //if trim(TabelaPrecoCliente) = '' then
+  //  TabelaPrecoCliente := TabelaPrecoEmpresa;
 
   SQLPreco := TQuery.Create(nil);
   SQLPreco.DatabaseName := 'DB';

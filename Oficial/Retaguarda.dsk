@@ -1,21 +1,22 @@
 [Closed Files]
-File_0=SourceModule,'C:\projetos\Automafour\Oficial\ArquivosComuns\UnitLibrary.pas',0,1,1,1,1,0,0
-File_1=SourceModule,'c:\program files (x86)\borland\delphi7\source\rtl\common\Math.pas',0,1,881,1,881,0,0
-File_2=SourceModule,'C:\Program Files (x86)\Borland\Componentes\rest-client-api\src\JsonToDataSetConverter.pas',0,1,1,104,7,0,0
-File_3=SourceModule,'C:\Program Files (x86)\Borland\Componentes\rest-client-api\src\RestClient.pas',0,1,10,46,16,0,0
-File_4=SourceModule,'C:\projetos\Automafour\Template\CadastroTEMPLATE.pas',0,1,1,42,3,1,0
-File_5=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\TelaItens.pas',0,1,4682,34,4697,0,0
-File_6=SourceModule,'C:\projetos\Automafour\Oficial\Compras\TelaImportadorXML.pas',0,1,2300,29,2302,1,0
-File_7=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\TelaFechamentoVenda.pas',0,1,3153,12,3155,1,0
+File_0=SourceModule,'c:\program files (x86)\borland\delphi7\source\rtl\common\Math.pas',0,1,881,1,881,0,0
+File_1=SourceModule,'C:\Program Files (x86)\Borland\Componentes\rest-client-api\src\JsonToDataSetConverter.pas',0,1,1,104,7,0,0
+File_2=SourceModule,'C:\Program Files (x86)\Borland\Componentes\rest-client-api\src\RestClient.pas',0,1,10,46,16,0,0
+File_3=SourceModule,'C:\projetos\Automafour\Template\CadastroTEMPLATE.pas',0,1,1,42,3,1,0
+File_4=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\TelaItens.pas',0,1,4682,34,4697,0,0
+File_5=SourceModule,'C:\projetos\Automafour\Oficial\Compras\TelaImportadorXML.pas',0,1,2300,29,2302,1,0
+File_6=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\TelaFechamentoVenda.pas',0,1,3153,12,3155,1,0
 
 [Modules]
-Module0=C:\projetos\Automafour\Oficial\DataModulo.pas
+Module0=C:\projetos\Automafour\Oficial\TelaAtivacao.pas
 Module1=C:\projetos\Automafour\Oficial\Retaguarda.dpr
-Module2=C:\projetos\Automafour\Oficial\TelaAtivacao.pas
-Count=3
+Module2=C:\projetos\Automafour\Oficial\ArquivosComuns\UnitLibrary.pas
+Module3=C:\projetos\Automafour\Template\DataModuloTemplate.pas
+Module4=C:\projetos\Automafour\Oficial\DataModulo.pas
+Count=5
 EditWindowCount=1
 
-[C:\projetos\Automafour\Oficial\DataModulo.pas]
+[C:\projetos\Automafour\Oficial\TelaAtivacao.pas]
 ModuleType=SourceModule
 FormState=1
 FormOnTop=0
@@ -25,25 +26,33 @@ ModuleType=SourceModule
 FormState=0
 FormOnTop=0
 
-[C:\projetos\Automafour\Oficial\TelaAtivacao.pas]
+[C:\projetos\Automafour\Oficial\ArquivosComuns\UnitLibrary.pas]
 ModuleType=SourceModule
-FormState=1
+FormState=0
+FormOnTop=0
+
+[C:\projetos\Automafour\Template\DataModuloTemplate.pas]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
+
+[C:\projetos\Automafour\Oficial\DataModulo.pas]
+ModuleType=SourceModule
+FormState=0
 FormOnTop=0
 
 [C:\Program Files (x86)\Borland\Delphi7\Projects\ProjectGroup1.bpg]
 FormState=0
 FormOnTop=0
 
-[C:\projetos\Automafour\Template\DataModuloTemplate.pas]
-FormState=0
-FormOnTop=0
-
 [EditWindow0]
-ViewCount=3
-CurrentView=2
+ViewCount=5
+CurrentView=1
 View0=0
 View1=1
 View2=2
+View3=3
+View4=4
 CodeExplorer=CodeExplorer@EditWindow0
 MessageView=MessageView@EditWindow0
 Create=1
@@ -65,27 +74,41 @@ LeftPanelData=00000400010000000C000000436F64654578706C6F726572000000000000000000
 RightPanelSize=0
 BottomPanelSize=0
 BottomPanelClients=MessageView@EditWindow0
-BottomPanelData=00000400010000000B0000004D65737361676556696577560500000000000002550000000000000001000000000000000000000000010000000056050000000000000100000000560500000000000001000000005605000000000000010000000056050000000000000100000000560500000B0000004D65737361676556696577FFFFFFFF
+BottomPanelData=00000400010000000B0000004D65737361676556696577560500000000000002550000000000000001000000000000000000000000010000000056050000000000000100000000560500000000000001000000005605000000000000010000000056050000000000000100000000560500000000000001000000005605000000000000FFFFFFFF
 
 [View0]
 Module=C:\projetos\Automafour\Oficial\Retaguarda.dpr
-CursorX=7
-CursorY=459
-TopLine=459
+CursorX=139
+CursorY=460
+TopLine=446
 LeftCol=1
 
 [View1]
 Module=C:\projetos\Automafour\Oficial\TelaAtivacao.pas
-CursorX=36
-CursorY=51
-TopLine=45
+CursorX=52
+CursorY=18
+TopLine=6
 LeftCol=1
 
 [View2]
 Module=C:\projetos\Automafour\Oficial\DataModulo.pas
-CursorX=56
-CursorY=1023
-TopLine=1014
+CursorX=1
+CursorY=885
+TopLine=868
+LeftCol=1
+
+[View3]
+Module=C:\projetos\Automafour\Template\DataModuloTemplate.pas
+CursorX=1
+CursorY=898
+TopLine=886
+LeftCol=1
+
+[View4]
+Module=C:\projetos\Automafour\Oficial\ArquivosComuns\UnitLibrary.pas
+CursorX=17
+CursorY=1
+TopLine=1
 LeftCol=1
 
 [Watches]
@@ -207,7 +230,7 @@ LRDockWidth=190
 Dockable=1
 SplitPos=85
 ArrangeBy=Name
-SelectedItem=Font.Size
+SelectedItem=Caption
 ExpandedItems=Font
 HiddenCategories=
 

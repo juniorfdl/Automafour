@@ -8,7 +8,7 @@ uses
   ppStrtch, ppMemo, ppBands, ppCtrls, ppPrnabl, ppClass, ppCache, ppProd,
   ppReport, ppComm, ppRelatv, ppDB, ppDBPipe, ppDBBDE, ACBrNFeDANFEClass,
   ACBrNFeDANFeESCPOS, ACBrDFe, ACBrNFe, ACBrBase, ACBrPosPrinter, MemTable,
-  RestClient, RestUtils, DBClient;
+  RestClient, RestUtils, DBClient, UnitLibrary;
 
 type
   TDM = class(TDMTemplate)
@@ -821,7 +821,7 @@ type
       ProcurandoProduto, TrocarStatusPedidoParaFaturado, InserindoItemNV,
       GerandoMovtoDiverso, AceitaMotivoNaoAtend: Boolean;
     ConfigEtiqueta, VendedorAtualPedidos, RotaAtualPedidos, TranspAtualPedidos, SeqItemCompra, CodigoProdutoCompra: Integer;
-    DataEntregaPedidos, DataEmissaoPedidos: TDate;
+    DataEntregaPedidos, DataEmissaoPedidos, DataSistema: TDate;
     TotalCartao: Double;
     TemClienteDiferente: Boolean;
     OBSAutorizacao: string;
@@ -871,8 +871,9 @@ begin
   Dm.SQLTerminalAtivo.Close;
   Dm.SQLTerminalAtivo.Open;
 
+  DataSistema := ExecSql('select current_timestamp from rdb$relations').fieldbyname('current_timestamp').AsDateTime;
+  DataSistema := StrToDate(FormatDateTime('dd/mm/yyyy', DataSistema));
   GetDataValidadeSistema;
-
 end;
 
 procedure TDM.GetDataValidadeSistema;
@@ -882,20 +883,20 @@ var
 begin
 
   OBSAutorizacao := '';
-  if Dm.SQLConfigGeralCFGEDBLOQ.AsDateTime < DateOf(Now) then
+  if Dm.SQLConfigGeralCFGEDBLOQ.AsDateTime < DataSistema then
   begin
     GetDataValidadeSistemaWebApi;
   end;
 
   Dm.SQLConfigGeral.Edit;
-  if Dm.SQLConfigGeralCFGEDBLOQ.AsDateTime < DateOf(Now) then
+  if Dm.SQLConfigGeralCFGEDBLOQ.AsDateTime < DataSistema then
     Dm.SQLConfigGeralCFGECBLOQ.Value := 'S'
   else begin
     Dm.SQLConfigGeralCFGECBLOQ.Value := '';
 
     if Dm.SQLConfigGeralDIAS_AVISO.Value > 0 then
     begin
-      DiasVencimento := DaysBetween(Dm.SQLConfigGeralCFGEDBLOQ.AsDateTime, DateOf(Now));
+      DiasVencimento := DaysBetween(Dm.SQLConfigGeralCFGEDBLOQ.AsDateTime, DataSistema);
 
       if Dm.SQLConfigGeralDIAS_AVISO.Value >= DiasVencimento then
       begin
@@ -908,87 +909,6 @@ begin
 
   end;
   Dm.SQLConfigGeral.Post;
-
-
-  {try
-    try
-      TblAPIAutorizacao.close;
-      TblAPIAutorizacao.Open;
-
-      if TblAPIAutorizacaoDATA_AUTORIZACAO.AsDateTime > (DateOf(Now) + 5) then
-      begin
-        DataAutorizacao := tblAPIAutorizacaoDATA_AUTORIZACAO.AsString;
-
-        if tblAPIAutorizacaoDATA_AUTORIZACAO.AsDateTime >= (DateOf(Now) - 5) then
-          OBSAutorizacao := ' - ' + TblAPIAutorizacaoOBS_AUTORIZACAO.AsString
-        else
-          OBSAutorizacao := '';
-
-        exit;
-      end;
-
-    except
-    end;
-
-    if not Dm.SQLEmpresa.Active then
-      Dm.SQLEmpresa.Open;
-
-    cdsAPIAutorizacao.Close;
-    cdsAPIAutorizacao.CreateDataSet;
-    RestClient.Resource('http://200.98.202.84/Automafour/api/cad_pessoa/documento/'
-      + Dm.SQLEmpresaEMPRA14CGC.AsString).Accept(RestUtils.MediaType_Json).GetAsDataSet(cdsAPIAutorizacao);
-
-    if cdsAPIAutorizacao.Active then
-    begin
-      if cdsAPIAutorizacaoDATA_AUTORIZACAO.AsString <> '' then
-      begin
-        try
-          Data := StrToDate(copy(cdsAPIAutorizacaoDATA_AUTORIZACAO.value, 9, 2) + '/' + copy(cdsAPIAutorizacaoDATA_AUTORIZACAO.value, 6, 2)
-            + '/' + copy(cdsAPIAutorizacaoDATA_AUTORIZACAO.value, 1, 4));
-
-          Dm.SQLConfigGeral.Edit;
-          Dm.SQLConfigGeralCFGEDBLOQ.Value := Data;
-          Dm.SQLConfigGeral.Post;
-
-          try
-            TblAPIAutorizacao.CreateTable;
-          except
-          end;
-
-          TblAPIAutorizacao.Open;
-          TblAPIAutorizacao.Edit;
-          TblAPIAutorizacaoDATA_AUTORIZACAO.AsDateTime := Data;
-          TblAPIAutorizacaoOBS_AUTORIZACAO.AsString := cdsAPIAutorizacaoOBS_AUTORIZACAO.AsString;
-          TblAPIAutorizacao.Post;
-
-          if Data >= (DateOf(Now) - 3) then
-            OBSAutorizacao := ' - ' + cdsAPIAutorizacaoOBS_AUTORIZACAO.AsString
-          else
-            OBSAutorizacao := '';
-
-          DataAutorizacao := DateToStr(Data);
-        except
-        end;
-      end
-      else if SQLConfigGeralCFGEDBLOQ.AsString <> '' then
-      begin
-        DataAutorizacao := SQLConfigGeralCFGEDBLOQ.AsString;
-        OBSAutorizacao := '';
-      end;
-    end;
-
-  finally
-     if DataAutorizacao <> '' then
-     begin
-        Dm.SQLConfigGeral.Edit;
-        if StrToDate(DataAutorizacao) < DateOf(now) then
-          Dm.SQLConfigGeralCFGECBLOQ.Value := 'S'
-        else
-          Dm.SQLConfigGeralCFGECBLOQ.Value := '';
-        Dm.SQLConfigGeral.Post;
-     end;
-  end;}
-
 end;
 
 procedure TDM.GetDataValidadeSistemaWebApi;
@@ -1029,10 +949,10 @@ begin
     end;
 
   finally
-    if (not cdsAPIAutorizacao.Active)or(cdsAPIAutorizacaoDATA_AUTORIZACAO.AsString = '') then
+    if (not cdsAPIAutorizacao.Active) or (cdsAPIAutorizacaoDATA_AUTORIZACAO.AsString = '') then
     begin
       FormTelaAtivacao := TFormTelaAtivacao.Create(Application);
-      FormTelaAtivacao.lblMensagem.Font.Size := 17; 
+      FormTelaAtivacao.lblMensagem.Font.Size := 17;
       FormTelaAtivacao.lblMensagem.Caption := 'Cadastro não encontrado na Base de Dados da Automafour!';
       FormTelaAtivacao.ShowModal;
       Application.terminate;
