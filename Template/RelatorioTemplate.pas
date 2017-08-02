@@ -205,7 +205,10 @@ begin
   begin
     TblTemporaria.Close ;
     try
+      try
       TblTemporaria.DeleteTable ;
+      except
+      end;
       TblTemporaria.CreateTable ;
     except
       on E:Exception do

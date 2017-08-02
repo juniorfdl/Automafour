@@ -76,9 +76,9 @@ LocaleToUnicode=1
 ImagebaseMultiple=1
 SuspiciousTypecast=1
 PrivatePropAccessor=1
-UnsafeType=1
-UnsafeCode=1
-UnsafeCast=1
+UnsafeType=0
+UnsafeCode=0
+UnsafeCast=0
 [Linker]
 MapFile=0
 OutputObjs=0
@@ -108,13 +108,13 @@ DebugCWD=
 [Language]
 ActiveLang=
 ProjectLang=
-RootDir=
+RootDir=C:\Program Files (x86)\Borland\Delphi7\Bin\
 [Version Info]
-IncludeVerInfo=1
+IncludeVerInfo=0
 AutoIncBuild=0
-MajorVer=2017
-MinorVer=7
-Release=30
+MajorVer=1
+MinorVer=0
+Release=0
 Build=0
 Debug=0
 PreRelease=0
@@ -126,13 +126,14 @@ CodePage=1252
 [Version Info Keys]
 CompanyName=
 FileDescription=
-FileVersion=2017.7.30.0
+FileVersion=1.0.0.0
 InternalName=
 LegalCopyright=
 LegalTrademarks=
 OriginalFilename=
 ProductName=
 ProductVersion=1.0.0.0
+Comments=
 [Excluded Packages]
 C:\Program Files (x86)\Borland\Delphi7\Projects\Bpl\ZParseSql70.bpl=Zeos SQL Parsing Classes and Interfaces
 C:\Program Files (x86)\Borland\Delphi7\Projects\Bpl\ZDbc70.bpl=Zeos Low Level Database API

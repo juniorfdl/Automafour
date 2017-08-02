@@ -529,14 +529,20 @@ inherited FormRelatorioContasRecebidas: TFormRelatorioContasRecebidas
     object TblTemporariaRECEDRECTO: TDateTimeField
       FieldName = 'RECEDRECTO'
     end
-    object TblTemporariaRECEN2DESC: TFloatField
+    object TblTemporariaRECEN2DESC: TBCDField
       FieldName = 'RECEN2DESC'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaRECEN2VLRJURO: TFloatField
+    object TblTemporariaRECEN2VLRJURO: TBCDField
       FieldName = 'RECEN2VLRJURO'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaRECEN2VLRMULTA: TFloatField
+    object TblTemporariaRECEN2VLRMULTA: TBCDField
       FieldName = 'RECEN2VLRMULTA'
+      Precision = 15
+      Size = 3
     end
     object TblTemporariaRECEN2VLRRECTO: TFloatField
       FieldName = 'RECEN2VLRRECTO'
@@ -570,8 +576,10 @@ inherited FormRelatorioContasRecebidas: TFormRelatorioContasRecebidas
       FixedChar = True
       Size = 13
     end
-    object TblTemporariaCTRCN2VLR: TFloatField
+    object TblTemporariaCTRCN2VLR: TBCDField
       FieldName = 'CTRCN2VLR'
+      Precision = 15
+      Size = 3
     end
     object TblTemporariaEMPRICODULTREC: TIntegerField
       FieldName = 'EMPRICODULTREC'
@@ -657,7 +665,7 @@ inherited FormRelatorioContasRecebidas: TFormRelatorioContasRecebidas
         ' left outer join PORTADOR        on CONTASRECEBER.PORTICOD  = PO' +
         'RTADOR.PORTICOD'
       'where'
-      '  (CONTASRECEBER.CTRCCSTATUS = ''A'') and'
+      '  (CONTASRECEBER.CTRCCSTATUS = "A") and'
       '  (%MEmpresa) and'
       '  (%MData) and'
       '  (%MDataVenc) and'
@@ -756,18 +764,6 @@ inherited FormRelatorioContasRecebidas: TFormRelatorioContasRecebidas
     object SQLContasReceberRECEDRECTO: TDateTimeField
       FieldName = 'RECEDRECTO'
     end
-    object SQLContasReceberRECEN2DESC: TFloatField
-      FieldName = 'RECEN2DESC'
-    end
-    object SQLContasReceberRECEN2VLRJURO: TFloatField
-      FieldName = 'RECEN2VLRJURO'
-    end
-    object SQLContasReceberRECEN2VLRMULTA: TFloatField
-      FieldName = 'RECEN2VLRMULTA'
-    end
-    object SQLContasReceberRECEN2VLRRECTO: TFloatField
-      FieldName = 'RECEN2VLRRECTO'
-    end
     object SQLContasReceberEMPRICOD: TIntegerField
       FieldName = 'EMPRICOD'
     end
@@ -797,9 +793,6 @@ inherited FormRelatorioContasRecebidas: TFormRelatorioContasRecebidas
       FixedChar = True
       Size = 13
     end
-    object SQLContasReceberCTRCN2VLR: TFloatField
-      FieldName = 'CTRCN2VLR'
-    end
     object SQLContasReceberEMPRICODULTREC: TIntegerField
       FieldName = 'EMPRICODULTREC'
     end
@@ -827,6 +820,21 @@ inherited FormRelatorioContasRecebidas: TFormRelatorioContasRecebidas
     object SQLContasReceberCTRCA15NOSSONUMERO: TStringField
       FieldName = 'CTRCA15NOSSONUMERO'
       Size = 15
+    end
+    object SQLContasReceberRECEN2DESC: TFloatField
+      FieldName = 'RECEN2DESC'
+    end
+    object SQLContasReceberRECEN2VLRJURO: TFloatField
+      FieldName = 'RECEN2VLRJURO'
+    end
+    object SQLContasReceberRECEN2VLRMULTA: TFloatField
+      FieldName = 'RECEN2VLRMULTA'
+    end
+    object SQLContasReceberRECEN2VLRRECTO: TFloatField
+      FieldName = 'RECEN2VLRRECTO'
+    end
+    object SQLContasReceberCTRCN2VLR: TFloatField
+      FieldName = 'CTRCN2VLR'
     end
   end
   object SQLCliente: TQuery
@@ -1106,12 +1114,12 @@ inherited FormRelatorioContasRecebidas: TFormRelatorioContasRecebidas
         '  left outer join CLIENTE             on CUPOM.CLIEA13ID        ' +
         '  = CLIENTE.CLIEA13ID'
       'where'
-      '  (CUPOM.CUPOCSTATUS = ''A'') and'
+      '  (CUPOM.CUPOCSTATUS = "A") and'
       '  (%MEmpresa) and'
       '  (%MData) and'
       '  (%MCliente) and'
       '  (%MNumerario) and'
-      '  (CUPOMNUMERARIO.CPNMCAUTENT = ''S'') and'
+      '  (CUPOMNUMERARIO.CPNMCAUTENT = "S") and'
       '  (%MTerminal) and'
       '  (%MCupom)')
     Macros = <
@@ -1173,9 +1181,6 @@ inherited FormRelatorioContasRecebidas: TFormRelatorioContasRecebidas
     object SQLCupomNumerarioRECEN2VLRMULTA: TFloatField
       FieldName = 'RECEN2VLRMULTA'
     end
-    object SQLCupomNumerarioRECEN2VLRRECTO: TFloatField
-      FieldName = 'RECEN2VLRRECTO'
-    end
     object SQLCupomNumerarioEMPRICOD: TIntegerField
       FieldName = 'EMPRICOD'
     end
@@ -1205,9 +1210,6 @@ inherited FormRelatorioContasRecebidas: TFormRelatorioContasRecebidas
       FixedChar = True
       Size = 13
     end
-    object SQLCupomNumerarioCTRCN2VLR: TFloatField
-      FieldName = 'CTRCN2VLR'
-    end
     object SQLCupomNumerarioEMPRICODULTREC: TIntegerField
       FieldName = 'EMPRICODULTREC'
     end
@@ -1231,6 +1233,12 @@ inherited FormRelatorioContasRecebidas: TFormRelatorioContasRecebidas
       FieldName = 'PORTA60DESCR'
       FixedChar = True
       Size = 60
+    end
+    object SQLCupomNumerarioCTRCN2VLR: TFloatField
+      FieldName = 'CTRCN2VLR'
+    end
+    object SQLCupomNumerarioRECEN2VLRRECTO: TFloatField
+      FieldName = 'RECEN2VLRRECTO'
     end
   end
 end

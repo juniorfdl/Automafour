@@ -18,9 +18,9 @@ type
     Report: TCrpe;
     TblTemporariaEMPRICODREC: TIntegerField;
     TblTemporariaRECEDRECTO: TDateTimeField;
-    TblTemporariaRECEN2DESC: TFloatField;
-    TblTemporariaRECEN2VLRJURO: TFloatField;
-    TblTemporariaRECEN2VLRMULTA: TFloatField;
+    TblTemporariaRECEN2DESC: TBCDField;
+    TblTemporariaRECEN2VLRJURO: TBCDField;
+    TblTemporariaRECEN2VLRMULTA: TBCDField;
     TblTemporariaEMPRICOD: TIntegerField;
     TblTemporariaCTRCDVENC: TDateTimeField;
     TblTemporariaCTRCINROPARC: TIntegerField;
@@ -28,7 +28,7 @@ type
     TblTemporariaNOFIA13ID: TStringField;
     TblTemporariaPDVDA13ID: TStringField;
     TblTemporariaCLIEA13ID: TStringField;
-    TblTemporariaCTRCN2VLR: TFloatField;
+    TblTemporariaCTRCN2VLR: TBCDField;
     TblTemporariaEMPRICODULTREC: TIntegerField;
     TblTemporariaSALDO: TFloatField;
     TblTemporariaNUMEICOD: TIntegerField;
@@ -58,9 +58,6 @@ type
     CheckPortTipoDoc: TCheckBox;
     SQLContasReceberEMPRICODREC: TIntegerField;
     SQLContasReceberRECEDRECTO: TDateTimeField;
-    SQLContasReceberRECEN2DESC: TFloatField;
-    SQLContasReceberRECEN2VLRJURO: TFloatField;
-    SQLContasReceberRECEN2VLRMULTA: TFloatField;
     SQLContasReceberEMPRICOD: TIntegerField;
     SQLContasReceberCTRCDVENC: TDateTimeField;
     SQLContasReceberCTRCINROPARC: TIntegerField;
@@ -68,7 +65,6 @@ type
     SQLContasReceberNOFIA13ID: TStringField;
     SQLContasReceberPDVDA13ID: TStringField;
     SQLContasReceberCLIEA13ID: TStringField;
-    SQLContasReceberCTRCN2VLR: TFloatField;
     SQLContasReceberEMPRICODULTREC: TIntegerField;
     SQLContasReceberSALDO: TFloatField;
     SQLContasReceberNUMEICOD: TIntegerField;
@@ -98,7 +94,6 @@ type
     SQLCupomNumerarioRECEN2DESC: TFloatField;
     SQLCupomNumerarioRECEN2VLRJURO: TFloatField;
     SQLCupomNumerarioRECEN2VLRMULTA: TFloatField;
-    SQLCupomNumerarioRECEN2VLRRECTO: TFloatField;
     SQLCupomNumerarioEMPRICOD: TIntegerField;
     SQLCupomNumerarioCTRCDVENC: TDateTimeField;
     SQLCupomNumerarioCTRCINROPARC: TIntegerField;
@@ -106,7 +101,6 @@ type
     SQLCupomNumerarioNOFIA13ID: TStringField;
     SQLCupomNumerarioPDVDA13ID: TStringField;
     SQLCupomNumerarioCLIEA13ID: TStringField;
-    SQLCupomNumerarioCTRCN2VLR: TFloatField;
     SQLCupomNumerarioEMPRICODULTREC: TIntegerField;
     SQLCupomNumerarioSALDO: TFloatField;
     SQLCupomNumerarioNUMEICOD: TIntegerField;
@@ -127,7 +121,13 @@ type
     CheckNossoNumero: TCheckBox;
     SQLContasReceberCTRCA15NOSSONUMERO: TStringField;
     TblTemporariaCTRCA15NOSSONUMERO: TStringField;
+    SQLContasReceberRECEN2DESC: TFloatField;
+    SQLContasReceberRECEN2VLRJURO: TFloatField;
+    SQLContasReceberRECEN2VLRMULTA: TFloatField;
     SQLContasReceberRECEN2VLRRECTO: TFloatField;
+    SQLContasReceberCTRCN2VLR: TFloatField;
+    SQLCupomNumerarioCTRCN2VLR: TFloatField;
+    SQLCupomNumerarioRECEN2VLRRECTO: TFloatField;
     procedure FormCreate(Sender: TObject);
     procedure ExecutarBtnClick(Sender: TObject);
     procedure ComboEmpresaChange(Sender: TObject);
@@ -171,6 +171,10 @@ var
   NroDuplic, NroDocumento : String;
   i : integer ;
 begin
+
+  if not Dm.SQLConfigGeral.Active then
+    Dm.SQLConfigGeral.Open;
+
   inherited;
   SQLContasReceber.Close ;
   SQLCupomNumerario.Close ;
@@ -187,27 +191,27 @@ begin
   if ckIncluiVendasVista.Checked then
     SQLCupomNumerario.MacrobyName('MEmpresa').Value := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'CUPOM', '') ;
 
-  SQLContasReceber.MacrobyName('MData').Value     := 'RECEBIMENTO.RECEDRECTO >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
-                                                     'RECEBIMENTO.RECEDRECTO <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
+  SQLContasReceber.MacrobyName('MData').Value     := 'RECEBIMENTO.RECEDRECTO >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
+                                                     'RECEBIMENTO.RECEDRECTO <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
   if ckIncluiVendasVista.Checked then
-    SQLCupomNumerario.MacrobyName('MData').Value    := 'CUPOM.CUPODEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
-                                                       'CUPOM.CUPODEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
+    SQLCupomNumerario.MacrobyName('MData').Value    := 'CUPOM.CUPODEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
+                                                       'CUPOM.CUPODEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
 
   if (DeVenc.Text = '  /  /    ') and (AteVenc.Text = '  /  /    ') then
     SQLContasReceber.MacrobyName('MDataVenc').Value   := '0=0'
   else
     begin
       SQLContasReceber.MacrobyName('MData').Value   := '0=0';
-      SQLContasReceber.MacrobyName('MDataVenc').Value := 'CONTASRECEBER.CTRCDVENC >= ''' + FormatDateTime('mm/dd/yyyy', DeVenc.Date) + ''' and ' +
-                                                         'CONTASRECEBER.CTRCDVENC <= ''' + FormatDateTime('mm/dd/yyyy', AteVenc.Date) + '''' ;
+      SQLContasReceber.MacrobyName('MDataVenc').Value := 'CONTASRECEBER.CTRCDVENC >= "' + FormatDateTime('mm/dd/yyyy', DeVenc.Date) + '" and ' +
+                                                         'CONTASRECEBER.CTRCDVENC <= "' + FormatDateTime('mm/dd/yyyy', AteVenc.Date) + '"' ;
     end;
 
   if (EmissInicial.Text = '  /  /    ') and (EmissFinal.Text = '  /  /    ') then
     SQLContasReceber.MacrobyName('MDataEmiss').Value   := '0=0'
   else
     begin
-      SQLContasReceber.MacrobyName('MDataEmiss').Value := 'CONTASRECEBER.CTRCDEMIS >= ''' + FormatDateTime('mm/dd/yyyy', EmissInicial.Date) + ''' and ' +
-                                                          'CONTASRECEBER.CTRCDEMIS <= ''' + FormatDateTime('mm/dd/yyyy', EmissFinal.Date) + '''' ;
+      SQLContasReceber.MacrobyName('MDataEmiss').Value := 'CONTASRECEBER.CTRCDEMIS >= "' + FormatDateTime('mm/dd/yyyy', EmissInicial.Date) + '" and ' +
+                                                          'CONTASRECEBER.CTRCDEMIS <= "' + FormatDateTime('mm/dd/yyyy', EmissFinal.Date) + '"' ;
     end;
 
 
@@ -235,9 +239,9 @@ begin
     end;
   if ComboCliente.text <> '' then
   begin
-    SQLContasReceber.MacrobyName('MCliente').Value  := 'RECEBIMENTO.CLIEA13ID = ''' + ComboCliente.Value + '''' ;
+    SQLContasReceber.MacrobyName('MCliente').Value  := 'RECEBIMENTO.CLIEA13ID = "' + ComboCliente.Value + '"' ;
     if ckIncluiVendasVista.Checked then
-      SQLCupomNumerario.MacrobyName('MCliente').Value := 'CUPOM.CLIEA13ID = ''' + ComboCliente.Value + '''' ;
+      SQLCupomNumerario.MacrobyName('MCliente').Value := 'CUPOM.CLIEA13ID = "' + ComboCliente.Value + '"' ;
   end ;
 
   if ComboNumerario.text <> '' then
@@ -266,7 +270,7 @@ begin
         SQLCupomNumerario.MacrobyName('MTerminal').Value  := '0=0';
     end;
   if ComboConta.Value <> '' then
-    SQLContasReceber.MacrobyName('MConta').Value := 'CONTASRECEBER.PLCTA15COD = '''+ ComboConta.Value + ''''
+    SQLContasReceber.MacrobyName('MConta').Value := 'CONTASRECEBER.PLCTA15COD = "'+ ComboConta.Value + '"'
   else
     SQLContasReceber.MacrobyName('MConta').Value := '0=0';
 
@@ -309,8 +313,8 @@ begin
     begin
       TblTemporaria.Edit ;
       if (TblTemporariaNOFIA13ID.AsString <> '') AND (NOT CheckNossoNumero.Checked) THEN
-        TblTemporariaCTRCA13ID.AsString := SQLLocate('NOTAFISCAL', 'NOFIA13ID','SERIA5COD', '''' + TblTemporariaNOFIA13ID.AsString + '''') + '-' +
-                                           SQLLocate('NOTAFISCAL', 'NOFIA13ID','NOFIINUMERO', '''' + TblTemporariaNOFIA13ID.AsString + '''') ;
+        TblTemporariaCTRCA13ID.AsString := SQLLocate('NOTAFISCAL', 'NOFIA13ID','SERIA5COD', '"' + TblTemporariaNOFIA13ID.AsString + '"') + '-' +
+                                           SQLLocate('NOTAFISCAL', 'NOFIA13ID','NOFIINUMERO', '"' + TblTemporariaNOFIA13ID.AsString + '"') ;
 
       if TblTemporariaCTRCA13ID.AsString = '' then
         TblTemporariaCTRCA13ID.AsString := SQLContasReceberCTRCA13ID.AsString;
@@ -320,7 +324,7 @@ begin
         begin
           if not CkImprimeIDCupom.Checked then
             begin
-              NroDocumento := SQLLocate('CUPOM','CUPOA13ID','CUPOINRO',''''+TblTemporariaCUPOA13ID.AsString+'''');
+              NroDocumento := SQLLocate('CUPOM','CUPOA13ID','CUPOINRO','"'+TblTemporariaCUPOA13ID.AsString+'"');
               if NroDocumento <> '' then
                 TblTemporariaCTRCA13ID.AsString := 'CP.' + NroDocumento
               else
@@ -334,13 +338,13 @@ begin
 
       if CheckNroDuplic.Checked then
         begin
-           NroDuplic := SQLLocate('CONTASRECEBER','CTRCA13ID','CTRCA30NRODUPLICBANCO','''' + TblTemporariaCTRCA13ID.AsString + '''');
+           NroDuplic := SQLLocate('CONTASRECEBER','CTRCA13ID','CTRCA30NRODUPLICBANCO','"' + TblTemporariaCTRCA13ID.AsString + '"');
           if NroDuplic <> '' then
             TblTemporariaCTRCA13ID.AsString := NroDuplic;
         end;
       if CheckNossoNumero.Checked then
         begin
-           NroDuplic := SQLLocate('CONTASRECEBER','CTRCA13ID','CTRCA15NOSSONUMERO','''' + TblTemporariaCTRCA13ID.AsString + '''');
+           NroDuplic := SQLLocate('CONTASRECEBER','CTRCA13ID','CTRCA15NOSSONUMERO','"' + TblTemporariaCTRCA13ID.AsString + '"');
           if NroDuplic <> '' then
             TblTemporariaCTRCA13ID.AsString := NroDuplic;
         end;
@@ -363,24 +367,24 @@ begin
   Report.Formulas.Retrieve;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Empresa' ;
-  Report.Formulas.Formula.Text := '''' + ComboEmpresa.Text + '''' ;
+  Report.Formulas.Formula.Text := '"' + ComboEmpresa.Text + '"' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Emissao' ;
-  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''' ;
+  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"' ;
 
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'PeriodoEmissao' ;
   if (DeVenc.Text = '  /  /    ') and (AteVenc.Text = '  /  /    ') then
     begin
       // Por Data Recebimento
-      Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
-                                            FormatDateTime('dd/mm/yyyy', Ate.Date) + '''' ;
+      Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
+                                            FormatDateTime('dd/mm/yyyy', Ate.Date) + '"' ;
     end
   else
     begin
       // Por Data de Vencimento
-      Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy', DeVenc.Date) + ' até ' +
-                                            FormatDateTime('dd/mm/yyyy', AteVenc.Date) + '''' ;
+      Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy', DeVenc.Date) + ' até ' +
+                                            FormatDateTime('dd/mm/yyyy', AteVenc.Date) + '"' ;
     end;
 
   if CheckOrdemContrato.Checked then

@@ -20,17 +20,17 @@ type
 //****************************************************************************//
 // MÉTODOS DE COMUNICAÇÃO PELA PORTA PARALELA                                 //
 //****************************************************************************//
-function habilita_paralela(si : PChar) : boolean; far; stdcall external 'PertoChekPar.dll';
-function desabilita_paralela : boolean; far; stdcall external 'PertoChekPar.dll';
-function transmite(si : PChar) : integer; far; stdcall external 'PertoChekPar.dll';
-function recebe(t : integer; bufrx : PChar) : integer; far; stdcall external 'PertoChekPar.dll';
+//function habilita_paralela(si : PChar) : boolean; far; stdcall external 'PertoChekPar.dll';
+//function desabilita_paralela : boolean; far; stdcall external 'PertoChekPar.dll';
+//function transmite(si : PChar) : integer; far; stdcall external 'PertoChekPar.dll';
+//function recebe(t : integer; bufrx : PChar) : integer; far; stdcall external 'PertoChekPar.dll';
 //****************************************************************************//
 // MÉTODOS DE COMUNICAÇÃO PELA PORTA SERIAL                                   //
 //****************************************************************************//
-function IniComm(si : PChar) : boolean; far; stdcall external 'pertochekser.dll';
-function EndComm : boolean; far; stdcall external 'pertochekser.dll';
-function EnvComm(si : PChar) : integer; far; stdcall external 'pertochekser.dll';
-function RecComm(t : integer; bufrx : PChar) : integer; far; stdcall external 'pertochekser.dll';
+//function IniComm(si : PChar) : boolean; far; stdcall external 'pertochekser.dll';
+//function EndComm : boolean; far; stdcall external 'pertochekser.dll';
+//function EnvComm(si : PChar) : integer; far; stdcall external 'pertochekser.dll';
+//function RecComm(t : integer; bufrx : PChar) : integer; far; stdcall external 'pertochekser.dll';
 //****************************************************************************//
 // MÉTODOS GERADOS COM INTUITO DE NÃO HAVER RESTRIÇÕES QUANTO AO TIPO DE      //
 // COMUNICAÇÃO                                                                //
@@ -56,7 +56,7 @@ function HabilitaPorta(Porta : string) : boolean;
 var
   Envio : array [0..255] of char;
 begin
-  Result := True;
+  {Result := True;
   if Pos('LPT',UpperCase(Porta)) > 0 then
     begin
       StrPCopy(Envio,Porta);
@@ -69,32 +69,32 @@ begin
         StrPCopy(Envio,UpperCase(Porta) + ':4800,N,8,1');
         if not IniComm(Envio) then
           Result := False;
-      end;
+      end;}
 end;
 
 function DesabilitaPorta(Porta : string) : boolean;
 begin
-  if Pos('LPT',UpperCase(Porta)) > 0 then
+  {if Pos('LPT',UpperCase(Porta)) > 0 then
     Result := desabilita_paralela()
   else
     if Pos('COM',UpperCase(Porta)) > 0 then
-      Result := EndComm();
+      Result := EndComm();}
 end;
 
 function EnviaDados(Porta,Texto : string) : integer;
 begin
-  Result := 0;
+  {Result := 0;
   if Pos('LPT',UpperCase(Porta)) > 0 then
     Result := transmite(PChar(Texto))
   else
     if Pos('COM',UpperCase(Porta)) > 0 then
       Result := EnvComm(PChar(Texto));
-  LastError := Result;
+  LastError := Result;}
 end;
 
 function RecebeDados(Porta : string; TimeOut : integer; var Resposta : array of char) : integer;
 begin
-  Result := 0;
+ { Result := 0;
   if Pos('LPT',UpperCase(Porta)) > 0 then
     Result := recebe(TimeOut,Resposta)
   else
@@ -105,12 +105,12 @@ begin
     begin
       Application.MessageBox('Detectamos que o cheque está trancado na impressora, o sistema tentará destrancá-lo automaticamente! #13 Caso o cheque não seja ejetado você terá que removê-lo manualmente.','Informa', MB_OK + MB_SYSTEMMODAL + MB_SETFOREGROUND + MB_ICONINFORMATION);
       EnviaComando(Porta,'>',TimeOut,Resposta);
-    end;
+    end;  }
 end;
 
 function EnviaComando(Porta,Texto : string; TimeOut : integer; var Resposta : array of char) : boolean;
 begin
-  Result := True;
+  {Result := True;
   if HabilitaPorta(Porta) then
     begin
       if (EnviaDados(Porta,Texto) > 0) then
@@ -124,7 +124,7 @@ begin
   else
     Result := False;
   if not DesabilitaPorta(Porta) then
-    Result := False;
+    Result := False;  }
 end;
 
 function LeituraCMC7(Porta : string; TimeOut : integer; var Resposta : array of char) : boolean;

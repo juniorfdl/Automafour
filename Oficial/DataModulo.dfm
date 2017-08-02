@@ -6,6 +6,7 @@ inherited DM: TDM
   Width = 1200
   inherited DB: TDatabase
     AliasName = 'Easy_Gestao'
+    Connected = False
     AfterConnect = DBAfterConnect
   end
   object SQLConfigGeral: TRxQuery
@@ -5650,6 +5651,8 @@ inherited DM: TDM
   object DBRel: TDatabase
     AliasName = 'Easy_Temp'
     DatabaseName = 'DBRelat'
+    Params.Strings = (
+      'USER NAME=sysdba')
     SessionName = 'Default'
     Left = 869
     Top = 16
