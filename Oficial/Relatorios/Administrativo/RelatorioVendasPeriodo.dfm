@@ -507,23 +507,33 @@ inherited FormRelatorioVendasPeriodo: TFormRelatorioVendasPeriodo
     object TblTemporariaCUPODEMIS: TDateTimeField
       FieldName = 'CUPODEMIS'
     end
-    object TblTemporariaCUPON2TOTITENS: TFloatField
+    object TblTemporariaCUPON2TOTITENS: TBCDField
       FieldName = 'CUPON2TOTITENS'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaCUPON2ACRESC: TFloatField
+    object TblTemporariaCUPON2ACRESC: TBCDField
       FieldName = 'CUPON2ACRESC'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaCUPON2DESC: TFloatField
+    object TblTemporariaCUPON2DESC: TBCDField
       FieldName = 'CUPON2DESC'
+      Precision = 15
+      Size = 3
     end
     object TblTemporariaTOTAL: TFloatField
       FieldName = 'TOTAL'
     end
-    object TblTemporariaCUPON3BONUSTROCA: TFloatField
+    object TblTemporariaCUPON3BONUSTROCA: TBCDField
       FieldName = 'CUPON3BONUSTROCA'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaNROITENS: TFloatField
+    object TblTemporariaNROITENS: TBCDField
       FieldName = 'NROITENS'
+      Precision = 15
+      Size = 3
     end
     object TblTemporariaEMPRICOD: TIntegerField
       FieldName = 'EMPRICOD'
@@ -634,7 +644,7 @@ inherited FormRelatorioVendasPeriodo: TFormRelatorioVendasPeriodo
         '.VENDICOD'
       'where'
       '  (%MStatus) and'
-      '  CUPOM.CUPOCCONSIG <> ''S'' and'
+      '  CUPOM.CUPOCCONSIG <> '#39'S'#39' and'
       '  (%MEmpresa) and'
       '  (%MTerminal) and'
       '  (%MData) and'
@@ -986,14 +996,20 @@ inherited FormRelatorioVendasPeriodo: TFormRelatorioVendasPeriodo
     object TblVendaConsigCUPODEMIS: TDateTimeField
       FieldName = 'CUPODEMIS'
     end
-    object TblVendaConsigCUPON2TOTITENS: TFloatField
+    object TblVendaConsigCUPON2TOTITENS: TBCDField
       FieldName = 'CUPON2TOTITENS'
+      Precision = 15
+      Size = 3
     end
-    object TblVendaConsigCUPON2ACRESC: TFloatField
+    object TblVendaConsigCUPON2ACRESC: TBCDField
       FieldName = 'CUPON2ACRESC'
+      Precision = 15
+      Size = 3
     end
-    object TblVendaConsigCUPON2DESC: TFloatField
+    object TblVendaConsigCUPON2DESC: TBCDField
       FieldName = 'CUPON2DESC'
+      Precision = 15
+      Size = 3
     end
     object TblVendaConsigTOTAL: TFloatField
       FieldName = 'TOTAL'
@@ -1052,8 +1068,8 @@ inherited FormRelatorioVendasPeriodo: TFormRelatorioVendasPeriodo
         '  inner join VENDEDOR VENDEDOR on CUPOM.VENDICOD = VENDEDOR.VEND' +
         'ICOD'
       'where'
-      '  CUPOM.CUPOCSTATUS = ''A'' and'
-      '  CUPOM.CUPOCCONSIG = ''S'' and'
+      '  CUPOM.CUPOCSTATUS = '#39'A'#39' and'
+      '  CUPOM.CUPOCCONSIG = '#39'S'#39' and'
       '  %MEmpresa and'
       '  %MData and'
       '  %MVendedor'
@@ -1166,10 +1182,10 @@ inherited FormRelatorioVendasPeriodo: TFormRelatorioVendasPeriodo
         '  CONTASRECEBER CONTASRECEBER inner join CLIENTE CLIENTE on CONT' +
         'ASRECEBER.CLIEA13ID = CLIENTE.CLIEA13ID'
       'where'
-      '  CONTASRECEBER.CTRCCSTATUS = ''A'' and'
-      '  ((CONTASRECEBER.CTRCA5TIPOPADRAO = ''CHQ'') or'
-      '   (CONTASRECEBER.CTRCA5TIPOPADRAO = ''CHQP'') or'
-      '   CONTASRECEBER.CTRCA5TIPOPADRAO = ''CHQV'') and'
+      '  CONTASRECEBER.CTRCCSTATUS = '#39'A'#39' and'
+      '  ((CONTASRECEBER.CTRCA5TIPOPADRAO = '#39'CHQ'#39') or'
+      '   (CONTASRECEBER.CTRCA5TIPOPADRAO = '#39'CHQP'#39') or'
+      '   CONTASRECEBER.CTRCA5TIPOPADRAO = '#39'CHQV'#39') and'
       '  (%MEmpresa) and'
       '  (%MData)'
       'order by'
@@ -1352,9 +1368,11 @@ inherited FormRelatorioVendasPeriodo: TFormRelatorioVendasPeriodo
       FieldName = 'CTRCDVENC'
       Origin = 'DB.CONTASRECEBER.CTRCDVENC'
     end
-    object TblVendaChequesCTRCN2VLR: TFloatField
+    object TblVendaChequesCTRCN2VLR: TBCDField
       FieldName = 'CTRCN2VLR'
       Origin = 'DB.CONTASRECEBER.CTRCN2VLR'
+      Precision = 15
+      Size = 3
     end
     object TblVendaChequesCLIEA60RAZAOSOC: TStringField
       FieldName = 'CLIEA60RAZAOSOC'
@@ -1458,9 +1476,11 @@ inherited FormRelatorioVendasPeriodo: TFormRelatorioVendasPeriodo
       FixedChar = True
       Size = 13
     end
-    object TblVendasPeriodoRecConsigRECEN2VLRRECTO: TFloatField
+    object TblVendasPeriodoRecConsigRECEN2VLRRECTO: TBCDField
       FieldName = 'RECEN2VLRRECTO'
       Origin = 'DB.RECEBIMENTO.RECEN2VLRRECTO'
+      Precision = 15
+      Size = 3
     end
     object TblVendasPeriodoRecConsigCliente: TStringField
       FieldName = 'Cliente'

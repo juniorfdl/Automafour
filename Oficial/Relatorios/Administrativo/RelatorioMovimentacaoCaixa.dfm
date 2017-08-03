@@ -299,20 +299,30 @@ inherited FormRelatorioMovimentacaoCaixa: TFormRelatorioMovimentacaoCaixa
     object TblTemporariaMVCXINROCUPOM: TIntegerField
       FieldName = 'MVCXINROCUPOM'
     end
-    object TblTemporariaMVCXN2VLRCRED: TFloatField
+    object TblTemporariaMVCXN2VLRCRED: TBCDField
       FieldName = 'MVCXN2VLRCRED'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaMVCXN2VLRDEB: TFloatField
+    object TblTemporariaMVCXN2VLRDEB: TBCDField
       FieldName = 'MVCXN2VLRDEB'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaMVCXN2VLRJURO: TFloatField
+    object TblTemporariaMVCXN2VLRJURO: TBCDField
       FieldName = 'MVCXN2VLRJURO'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaMVCXN2VLRMULTA: TFloatField
+    object TblTemporariaMVCXN2VLRMULTA: TBCDField
       FieldName = 'MVCXN2VLRMULTA'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaMVCXN2VLRDESC: TFloatField
+    object TblTemporariaMVCXN2VLRDESC: TBCDField
       FieldName = 'MVCXN2VLRDESC'
+      Precision = 15
+      Size = 3
     end
     object TblTemporariaNUMEICOD: TIntegerField
       FieldName = 'NUMEICOD'
@@ -410,7 +420,7 @@ inherited FormRelatorioMovimentacaoCaixa: TFormRelatorioMovimentacaoCaixa
         '  left outer join TERMINAL      on MOVIMENTOCAIXA.TERMICOD = TER' +
         'MINAL.TERMICOD'
       'where'
-      '  OPERACAOCAIXA.OPCXCTOTALIZAREL = ''S'' and'
+      '  OPERACAOCAIXA.OPCXCTOTALIZAREL = '#39'S'#39' and'
       '  (%MEmpresa) and'
       '  (%MOperador) and'
       '  (%MTerminal) and'
@@ -544,7 +554,7 @@ inherited FormRelatorioMovimentacaoCaixa: TFormRelatorioMovimentacaoCaixa
     DatabaseName = 'DB'
     SQL.Strings = (
       'select * from OPERACAOCAIXA'
-      'where OPCXCTOTALIZAREL = ''S''  and'
+      'where OPCXCTOTALIZAREL = '#39'S'#39'  and'
       '(%CreditoDebito)'
       'order by OPCXA60DESCR')
     Macros = <
@@ -755,7 +765,7 @@ inherited FormRelatorioMovimentacaoCaixa: TFormRelatorioMovimentacaoCaixa
     DatabaseName = 'DB'
     SQL.Strings = (
       'select * from OPERACAOCAIXA'
-      'where OPCXCTOTALIZAREL = ''S''  and'
+      'where OPCXCTOTALIZAREL = '#39'S'#39'  and'
       '(%CreditoDebito)'
       'order by OPCXA60DESCR')
     Macros = <

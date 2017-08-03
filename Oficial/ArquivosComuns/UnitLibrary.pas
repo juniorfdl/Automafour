@@ -290,10 +290,27 @@ procedure LancaValorJuroContasReceber(IDContasReceber : String; VlrJuro : Double
 function SaldoContaCorrente(Conta, Operacao, Data : string) : double ;
 procedure RefazTabelaTemp(Tabela: TTable; Abrir: Boolean);
 function DelphiAberto: Boolean;
+procedure CopyQueryTable(Query:TQuery; Table:TTable);
 
 implementation
 
 uses DataModulo, TelaAutenticaUsuario, TelaAvisoDebito;
+
+procedure CopyQueryTable(Query:TQuery; Table:TTable);
+var
+ i:Integer;
+begin
+  while not Query.Eof do
+    begin
+      Table.Append;
+      for i := 0 to Query.FieldCount-1 do
+        if Query.Fields[i].AsString <> '' then
+          Table.FieldByName(Query.Fields[i].FieldName).AsVariant := Query.Fields[i].AsVariant;
+
+      Table.Post;
+      Query.Next;
+    end;
+end;
 
 function DelphiAberto: Boolean;
 begin

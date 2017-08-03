@@ -45,26 +45,6 @@ type
     SQLMovimentoCaixaUSUAA60LOGIN: TStringField;
     SQLMovimentoCaixaTERMA60DESCR: TStringField;
     SQLMovimentoCaixaOPCXA60DESCR: TStringField;
-    TblTemporariaEMPRICOD: TIntegerField;
-    TblTemporariaMVCXA15DOCORIG: TStringField;
-    TblTemporariaMVCXA255HIST: TStringField;
-    TblTemporariaMVCXDMOV: TDateTimeField;
-    TblTemporariaMVCXICOD: TIntegerField;
-    TblTemporariaMVCXINROCUPOM: TIntegerField;
-    TblTemporariaMVCXN2VLRCRED: TFloatField;
-    TblTemporariaMVCXN2VLRDEB: TFloatField;
-    TblTemporariaMVCXN2VLRJURO: TFloatField;
-    TblTemporariaMVCXN2VLRMULTA: TFloatField;
-    TblTemporariaMVCXN2VLRDESC: TFloatField;
-    TblTemporariaNUMEICOD: TIntegerField;
-    TblTemporariaOPCXICOD: TIntegerField;
-    TblTemporariaPENDENTE: TStringField;
-    TblTemporariaREGISTRO: TDateTimeField;
-    TblTemporariaTERMICOD: TIntegerField;
-    TblTemporariaUSUAICOD: TIntegerField;
-    TblTemporariaUSUAA60LOGIN: TStringField;
-    TblTemporariaTERMA60DESCR: TStringField;
-    TblTemporariaOPCXA60DESCR: TStringField;
     Report: TCrpe;
     SQLOperacaoCaixaOPCXICOD: TIntegerField;
     SQLOperacaoCaixaOPCXA60DESCR: TStringField;
@@ -83,6 +63,26 @@ type
     StringField2: TStringField;
     StringField3: TStringField;
     dsSQLOperacaoCaixaAux: TDataSource;
+    TblTemporariaEMPRICOD: TIntegerField;
+    TblTemporariaMVCXA15DOCORIG: TStringField;
+    TblTemporariaMVCXA255HIST: TStringField;
+    TblTemporariaMVCXDMOV: TDateTimeField;
+    TblTemporariaMVCXICOD: TIntegerField;
+    TblTemporariaMVCXINROCUPOM: TIntegerField;
+    TblTemporariaMVCXN2VLRCRED: TBCDField;
+    TblTemporariaMVCXN2VLRDEB: TBCDField;
+    TblTemporariaMVCXN2VLRJURO: TBCDField;
+    TblTemporariaMVCXN2VLRMULTA: TBCDField;
+    TblTemporariaMVCXN2VLRDESC: TBCDField;
+    TblTemporariaNUMEICOD: TIntegerField;
+    TblTemporariaOPCXICOD: TIntegerField;
+    TblTemporariaPENDENTE: TStringField;
+    TblTemporariaREGISTRO: TDateTimeField;
+    TblTemporariaTERMICOD: TIntegerField;
+    TblTemporariaUSUAICOD: TIntegerField;
+    TblTemporariaUSUAA60LOGIN: TStringField;
+    TblTemporariaTERMA60DESCR: TStringField;
+    TblTemporariaOPCXA60DESCR: TStringField;
     procedure ExecutarBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure RBCreditoDebitoClick(Sender: TObject);
@@ -103,6 +103,8 @@ uses DataModulo, UnitLibrary;
 
 procedure TFormRelatorioMovimentacaoCaixa.ExecutarBtnClick(
   Sender: TObject);
+var
+ i:Integer;  
 begin
   inherited;
 
@@ -169,7 +171,19 @@ begin
       Abort;
     end;
   //----------------------------------------------------------------------------
-  BatchExec(SQLMovimentoCaixa, TblTemporaria) ;
+  //BatchExec(SQLMovimentoCaixa, TblTemporaria) ;// antigo
+  CopyQueryTable(SQLMovimentoCaixa, TblTemporaria); //novo
+
+  {while not SQLMovimentoCaixa.Eof do
+    begin
+      TblTemporaria.Append;
+      for i := 0 to SQLMovimentoCaixa.FieldCount-1 do
+        if SQLMovimentoCaixa.Fields[i].AsString <> '' then
+          TblTemporaria.FieldByName(SQLMovimentoCaixa.Fields[i].FieldName).AsVariant := SQLMovimentoCaixa.Fields[i].AsVariant;
+      TblTemporaria.Post;
+      SQLMovimentoCaixa.Next;
+    end;  }
+
   //----------------------------------------------------------------------------
   Report.ReportName        := DM.SQLConfigGeralCFGEA255PATHREPORT.Value + '\Movimentacao Caixa.rpt' ;
   Report.ReportTitle       := 'Relatório de Movimentação do Caixa' ;
