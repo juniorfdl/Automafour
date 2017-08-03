@@ -18,7 +18,7 @@ type
     TblTemporariaPRODICOD: TIntegerField;
     TblTemporariaPRODA60DESCR: TStringField;
     TblTemporariaCPITTOBS: TStringField;
-    TblTemporariaCPITN3QTD: TFloatField;
+    TblTemporariaCPITN3QTD: TBCDField;
     TblTemporariaVENDICOD: TIntegerField;
     TblTemporariaVendedorNome: TStringField;
     TblTemporariaCLIEA13ID: TStringField;
@@ -36,13 +36,13 @@ type
     SQLVendasGRADICOD: TIntegerField;
     SQLVendasGRTMICOD: TIntegerField;
     SQLVendasCORICOD: TIntegerField;
-    SQLVendasCPITN3QTD: TFloatField;
     SQLVendasVENDICOD: TIntegerField;
     SQLVendasCLIEA13ID: TStringField;
     SQLVendasCPITTOBS: TStringField;
     TblTemporariaTamanho: TStringField;
     SQLVendasCLIENTENOME: TStringField;
     Report: TCrpe;
+    SQLVendasCPITN3QTD: TFloatField;
     procedure ExecutarBtnClick(Sender: TObject);
   private
     { Private declarations }
@@ -66,8 +66,8 @@ begin
   inherited;
   SQLVendas.Close ;
   SQLVendas.MacrobyName('MEmpresa').Value := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'CUPOM', '') ;
-  SQLVendas.MacrobyName('MData').Value    := 'CUPOM.CUPODEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
-                                             'CUPOM.CUPODEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
+  SQLVendas.MacrobyName('MData').Value    := 'CUPOM.CUPODEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
+                                             'CUPOM.CUPODEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
 
   SQLVendas.Open ;
   if SQLVendas.IsEmpty then
@@ -103,14 +103,14 @@ begin
   Report.Formulas.Retrieve ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Empresa' ;
-  Report.Formulas.Formula.Text := '''' + ComboEmpresa.Text + '''' ;
+  Report.Formulas.Formula.Text := '"' + ComboEmpresa.Text + '"' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Emissao' ;
-  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''' ;
+  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'PeriodoEmissao' ;
-  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
-                                  FormatDateTime('dd/mm/yyyy', Ate.Date) + '''' ;
+  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
+                                  FormatDateTime('dd/mm/yyyy', Ate.Date) + '"' ;
   //--------------------------------------------------------------------------\\
 
   Report.Formulas.Send;

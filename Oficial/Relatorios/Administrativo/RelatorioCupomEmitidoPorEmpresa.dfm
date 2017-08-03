@@ -34,8 +34,10 @@ inherited FormRelatorioCupomEmitidoPorEmpresa: TFormRelatorioCupomEmitidoPorEmpr
       FieldName = 'CPITTOBS'
       Size = 200
     end
-    object TblTemporariaCPITN3QTD: TFloatField
+    object TblTemporariaCPITN3QTD: TBCDField
       FieldName = 'CPITN3QTD'
+      Precision = 15
+      Size = 3
     end
     object TblTemporariaVENDICOD: TIntegerField
       FieldName = 'VENDICOD'
@@ -93,9 +95,9 @@ inherited FormRelatorioCupomEmitidoPorEmpresa: TFormRelatorioCupomEmitidoPorEmpr
         ' left outer join PRODUTO on CUPOMITEM.PRODICOD = PRODUTO.PRODICO' +
         'D)'
       'where'
-      '  CUPOM.CUPOCSTATUS = ''A'' and'
+      '  CUPOM.CUPOCSTATUS = "A" and'
       '  CUPOMITEM.CPITN3QTD > 0 and'
-      '  CUPOMITEM.CPITCSTATUS <> ''C'' and'
+      '  CUPOMITEM.CPITCSTATUS <> "C" and'
       '  (%MEmpresa) and'
       '  (%MData)'
       '')
@@ -149,9 +151,6 @@ inherited FormRelatorioCupomEmitidoPorEmpresa: TFormRelatorioCupomEmitidoPorEmpr
     object SQLVendasCORICOD: TIntegerField
       FieldName = 'CORICOD'
     end
-    object SQLVendasCPITN3QTD: TFloatField
-      FieldName = 'CPITN3QTD'
-    end
     object SQLVendasVENDICOD: TIntegerField
       FieldName = 'VENDICOD'
     end
@@ -164,6 +163,9 @@ inherited FormRelatorioCupomEmitidoPorEmpresa: TFormRelatorioCupomEmitidoPorEmpr
       FieldName = 'CLIENTENOME'
       FixedChar = True
       Size = 60
+    end
+    object SQLVendasCPITN3QTD: TFloatField
+      FieldName = 'CPITN3QTD'
     end
   end
   object Report: TCrpe

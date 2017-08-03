@@ -706,14 +706,20 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       FixedChar = True
       Size = 60
     end
-    object TblTemporariaPRODN3VLRCUSTO: TFloatField
+    object TblTemporariaPRODN3VLRCUSTO: TBCDField
       FieldName = 'PRODN3VLRCUSTO'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaPRODN3VLRVENDA: TFloatField
+    object TblTemporariaPRODN3VLRVENDA: TBCDField
       FieldName = 'PRODN3VLRVENDA'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaCPITN3QTD: TFloatField
+    object TblTemporariaCPITN3QTD: TBCDField
       FieldName = 'CPITN3QTD'
+      Precision = 15
+      Size = 3
     end
     object TblTemporariaVLRTOTALITEM: TFloatField
       FieldName = 'VLRTOTALITEM'
@@ -740,8 +746,10 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
     object TblTemporariaMARGEMVLR: TFloatField
       FieldName = 'MARGEMVLR'
     end
-    object TblTemporariaCPITN3QTDTROCA: TFloatField
+    object TblTemporariaCPITN3QTDTROCA: TBCDField
       FieldName = 'CPITN3QTDTROCA'
+      Precision = 15
+      Size = 3
     end
     object TblTemporariaVENDICOD: TIntegerField
       FieldName = 'VENDICOD'
@@ -759,8 +767,10 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       FieldName = 'ClienteNome'
       Size = 60
     end
-    object TblTemporariaCPITN2VLRQDEVERIAVENDER: TFloatField
+    object TblTemporariaCPITN2VLRQDEVERIAVENDER: TBCDField
       FieldName = 'CPITN2VLRQDEVERIAVENDER'
+      Precision = 15
+      Size = 2
     end
     object TblTemporariaCOLEICOD: TIntegerField
       FieldName = 'COLEICOD'
@@ -1121,11 +1131,15 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
     object SQLVendasVLRTOTALITEM: TFloatField
       FieldName = 'VLRTOTALITEM'
     end
-    object SQLVendasPRODN3VLRCUSTO: TFloatField
+    object SQLVendasPRODN3VLRCUSTO: TBCDField
       FieldName = 'PRODN3VLRCUSTO'
+      Precision = 15
+      Size = 3
     end
-    object SQLVendasPRODN3VLRVENDA: TFloatField
+    object SQLVendasPRODN3VLRVENDA: TBCDField
       FieldName = 'PRODN3VLRVENDA'
+      Precision = 15
+      Size = 3
     end
     object SQLVendasGRUPICOD: TIntegerField
       FieldName = 'GRUPICOD'
@@ -1145,8 +1159,10 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
     object SQLVendasMARGEMVLR: TFloatField
       FieldName = 'MARGEMVLR'
     end
-    object SQLVendasCPITN3QTD: TFloatField
+    object SQLVendasCPITN3QTD: TBCDField
       FieldName = 'CPITN3QTD'
+      Precision = 15
+      Size = 3
     end
     object SQLVendasVENDICOD: TIntegerField
       FieldName = 'VENDICOD'
@@ -1161,8 +1177,10 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       FixedChar = True
       Size = 13
     end
-    object SQLVendasCPITN2VLRQDEVERIAVENDER: TFloatField
+    object SQLVendasCPITN2VLRQDEVERIAVENDER: TBCDField
       FieldName = 'CPITN2VLRQDEVERIAVENDER'
+      Precision = 15
+      Size = 2
     end
     object SQLVendasCOLEICOD: TIntegerField
       FieldName = 'COLEICOD'
@@ -1791,11 +1809,15 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       FixedChar = True
       Size = 60
     end
-    object SQLTrocasPRODN3VLRCUSTO: TFloatField
+    object SQLTrocasPRODN3VLRCUSTO: TBCDField
       FieldName = 'PRODN3VLRCUSTO'
+      Precision = 15
+      Size = 3
     end
-    object SQLTrocasPRODN3VLRVENDA: TFloatField
+    object SQLTrocasPRODN3VLRVENDA: TBCDField
       FieldName = 'PRODN3VLRVENDA'
+      Precision = 15
+      Size = 3
     end
     object SQLTrocasGRUPICOD: TIntegerField
       FieldName = 'GRUPICOD'
@@ -1815,11 +1837,15 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
     object SQLTrocasMARGEMPERC: TFloatField
       FieldName = 'MARGEMPERC'
     end
-    object SQLTrocasCPITN3QTD: TFloatField
+    object SQLTrocasCPITN3QTD: TBCDField
       FieldName = 'CPITN3QTD'
+      Precision = 15
+      Size = 3
     end
-    object SQLTrocasCPITN3QTDTROCA: TFloatField
+    object SQLTrocasCPITN3QTDTROCA: TBCDField
       FieldName = 'CPITN3QTDTROCA'
+      Precision = 15
+      Size = 3
     end
     object SQLTrocasVENDICOD: TIntegerField
       FieldName = 'VENDICOD'
@@ -1834,8 +1860,10 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       FixedChar = True
       Size = 13
     end
-    object SQLTrocasCPITN2VLRQDEVERIAVENDER: TFloatField
+    object SQLTrocasCPITN2VLRQDEVERIAVENDER: TBCDField
       FieldName = 'CPITN2VLRQDEVERIAVENDER'
+      Precision = 15
+      Size = 2
     end
     object SQLTrocasVLRTOTALITEMTROCA: TFloatField
       FieldName = 'VLRTOTALITEMTROCA'

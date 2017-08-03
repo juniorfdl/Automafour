@@ -66,14 +66,20 @@ inherited FormRelatorioVendasPeriodoApuracaoMargem: TFormRelatorioVendasPeriodoA
     object TblTemporariaNOFIDEMIS: TDateTimeField
       FieldName = 'NOFIDEMIS'
     end
-    object TblTemporariaNOFIN2VLRPRODUTO: TFloatField
+    object TblTemporariaNOFIN2VLRPRODUTO: TBCDField
       FieldName = 'NOFIN2VLRPRODUTO'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaTOTAL: TFloatField
+    object TblTemporariaTOTAL: TBCDField
       FieldName = 'TOTAL'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaNOFIN2VLRDESC: TFloatField
+    object TblTemporariaNOFIN2VLRDESC: TBCDField
       FieldName = 'NOFIN2VLRDESC'
+      Precision = 15
+      Size = 3
     end
     object TblTemporariaVENDICOD: TIntegerField
       FieldName = 'VENDICOD'
@@ -93,14 +99,18 @@ inherited FormRelatorioVendasPeriodoApuracaoMargem: TFormRelatorioVendasPeriodoA
       FixedChar = True
       Size = 60
     end
-    object TblTemporariaVLRLUCRO: TFloatField
+    object TblTemporariaVLRLUCRO: TBCDField
       FieldName = 'VLRLUCRO'
+      Precision = 15
+      Size = 3
     end
     object TblTemporariaDOC: TIntegerField
       FieldName = 'DOC'
     end
-    object TblTemporariaCOMISSAO: TFloatField
+    object TblTemporariaCOMISSAO: TBCDField
       FieldName = 'COMISSAO'
+      Precision = 15
+      Size = 3
     end
   end
   object SQLNotasFiscais: TRxQuery
@@ -209,15 +219,6 @@ inherited FormRelatorioVendasPeriodoApuracaoMargem: TFormRelatorioVendasPeriodoA
     object SQLNotasFiscaisNOFIDEMIS: TDateTimeField
       FieldName = 'NOFIDEMIS'
     end
-    object SQLNotasFiscaisNOFIN2VLRPRODUTO: TFloatField
-      FieldName = 'NOFIN2VLRPRODUTO'
-    end
-    object SQLNotasFiscaisTOTAL: TFloatField
-      FieldName = 'TOTAL'
-    end
-    object SQLNotasFiscaisNOFIN2VLRDESC: TFloatField
-      FieldName = 'NOFIN2VLRDESC'
-    end
     object SQLNotasFiscaisVENDICOD: TIntegerField
       FieldName = 'VENDICOD'
     end
@@ -236,11 +237,20 @@ inherited FormRelatorioVendasPeriodoApuracaoMargem: TFormRelatorioVendasPeriodoA
       FixedChar = True
       Size = 60
     end
-    object SQLNotasFiscaisVLRLUCRO: TFloatField
-      FieldName = 'VLRLUCRO'
-    end
     object SQLNotasFiscaisDOC: TIntegerField
       FieldName = 'DOC'
+    end
+    object SQLNotasFiscaisNOFIN2VLRPRODUTO: TFloatField
+      FieldName = 'NOFIN2VLRPRODUTO'
+    end
+    object SQLNotasFiscaisTOTAL: TFloatField
+      FieldName = 'TOTAL'
+    end
+    object SQLNotasFiscaisNOFIN2VLRDESC: TFloatField
+      FieldName = 'NOFIN2VLRDESC'
+    end
+    object SQLNotasFiscaisVLRLUCRO: TFloatField
+      FieldName = 'VLRLUCRO'
     end
     object SQLNotasFiscaisCOMISSAO: TFloatField
       FieldName = 'COMISSAO'
@@ -446,7 +456,7 @@ inherited FormRelatorioVendasPeriodoApuracaoMargem: TFormRelatorioVendasPeriodoA
         ' left outer join VENDEDOR VENDEDOR on CUPOM.VENDICOD = VENDEDOR.' +
         'VENDICOD'
       'where'
-      '  CUPOM.CUPOCSTATUS = ''A'' and'
+      '  CUPOM.CUPOCSTATUS = "A" and'
       '  (%MEmpresa) and'
       '  (%MCampoData between %MDataInicial and %MDataFinal) and'
       '  (%MVendedor)'
@@ -507,14 +517,8 @@ inherited FormRelatorioVendasPeriodoApuracaoMargem: TFormRelatorioVendasPeriodoA
     object SQLVendasNOFIDEMIS: TDateTimeField
       FieldName = 'NOFIDEMIS'
     end
-    object SQLVendasNOFIN2VLRPRODUTO: TFloatField
-      FieldName = 'NOFIN2VLRPRODUTO'
-    end
     object SQLVendasTOTAL: TFloatField
       FieldName = 'TOTAL'
-    end
-    object SQLVendasNOFIN2VLRDESC: TFloatField
-      FieldName = 'NOFIN2VLRDESC'
     end
     object SQLVendasVENDICOD: TIntegerField
       FieldName = 'VENDICOD'
@@ -534,11 +538,17 @@ inherited FormRelatorioVendasPeriodoApuracaoMargem: TFormRelatorioVendasPeriodoA
       FixedChar = True
       Size = 60
     end
-    object SQLVendasVLRLUCRO: TFloatField
-      FieldName = 'VLRLUCRO'
-    end
     object SQLVendasDOC: TIntegerField
       FieldName = 'DOC'
+    end
+    object SQLVendasNOFIN2VLRPRODUTO: TFloatField
+      FieldName = 'NOFIN2VLRPRODUTO'
+    end
+    object SQLVendasNOFIN2VLRDESC: TFloatField
+      FieldName = 'NOFIN2VLRDESC'
+    end
+    object SQLVendasVLRLUCRO: TFloatField
+      FieldName = 'VLRLUCRO'
     end
     object SQLVendasCOMISSAO: TFloatField
       FieldName = 'COMISSAO'

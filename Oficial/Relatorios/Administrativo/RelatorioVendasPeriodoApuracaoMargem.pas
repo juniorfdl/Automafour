@@ -22,46 +22,46 @@ type
     SQLNotasFiscaisCLIEA13ID: TStringField;
     SQLNotasFiscaisSERIE: TStringField;
     SQLNotasFiscaisNOFIDEMIS: TDateTimeField;
-    SQLNotasFiscaisNOFIN2VLRPRODUTO: TFloatField;
-    SQLNotasFiscaisTOTAL: TFloatField;
-    SQLNotasFiscaisNOFIN2VLRDESC: TFloatField;
     SQLNotasFiscaisVENDICOD: TIntegerField;
     SQLNotasFiscaisNOFICSTATUS: TStringField;
     SQLNotasFiscaisCLIEA60RAZAOSOC: TStringField;
     SQLNotasFiscaisVENDA60NOME: TStringField;
-    SQLNotasFiscaisVLRLUCRO: TFloatField;
     SQLNotasFiscaisDOC: TIntegerField;
-    SQLNotasFiscaisCOMISSAO: TFloatField;
     SQLVendasNOFIA13ID: TStringField;
     SQLVendasEMPRICOD: TIntegerField;
     SQLVendasCLIEA13ID: TStringField;
     SQLVendasSERIE: TStringField;
     SQLVendasNOFIDEMIS: TDateTimeField;
-    SQLVendasNOFIN2VLRPRODUTO: TFloatField;
     SQLVendasTOTAL: TFloatField;
-    SQLVendasNOFIN2VLRDESC: TFloatField;
     SQLVendasVENDICOD: TIntegerField;
     SQLVendasNOFICSTATUS: TStringField;
     SQLVendasCLIEA60RAZAOSOC: TStringField;
     SQLVendasVENDA60NOME: TStringField;
-    SQLVendasVLRLUCRO: TFloatField;
     SQLVendasDOC: TIntegerField;
-    SQLVendasCOMISSAO: TFloatField;
     TblTemporariaNOFIA13ID: TStringField;
     TblTemporariaEMPRICOD: TIntegerField;
     TblTemporariaCLIEA13ID: TStringField;
     TblTemporariaSERIE: TStringField;
     TblTemporariaNOFIDEMIS: TDateTimeField;
-    TblTemporariaNOFIN2VLRPRODUTO: TFloatField;
-    TblTemporariaTOTAL: TFloatField;
-    TblTemporariaNOFIN2VLRDESC: TFloatField;
+    TblTemporariaNOFIN2VLRPRODUTO: TBCDField;
+    TblTemporariaTOTAL: TBCDField;
+    TblTemporariaNOFIN2VLRDESC: TBCDField;
     TblTemporariaVENDICOD: TIntegerField;
     TblTemporariaNOFICSTATUS: TStringField;
     TblTemporariaCLIEA60RAZAOSOC: TStringField;
     TblTemporariaVENDA60NOME: TStringField;
-    TblTemporariaVLRLUCRO: TFloatField;
+    TblTemporariaVLRLUCRO: TBCDField;
     TblTemporariaDOC: TIntegerField;
-    TblTemporariaCOMISSAO: TFloatField;
+    TblTemporariaCOMISSAO: TBCDField;
+    SQLVendasNOFIN2VLRPRODUTO: TFloatField;
+    SQLVendasNOFIN2VLRDESC: TFloatField;
+    SQLVendasVLRLUCRO: TFloatField;
+    SQLVendasCOMISSAO: TFloatField;
+    SQLNotasFiscaisNOFIN2VLRPRODUTO: TFloatField;
+    SQLNotasFiscaisTOTAL: TFloatField;
+    SQLNotasFiscaisNOFIN2VLRDESC: TFloatField;
+    SQLNotasFiscaisVLRLUCRO: TFloatField;
+    SQLNotasFiscaisCOMISSAO: TFloatField;
     procedure ExecutarBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
@@ -88,8 +88,8 @@ begin
   SQLNotasFiscais.Close;
   SQLNotasFiscais.MacrobyName('MEmpresa').Value     := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'NOTAFISCAL','');
   SQLNotasFiscais.MacrobyName('MCampoData').Value   := 'NOTAFISCAL.NOFIDEMIS';
-  SQLNotasFiscais.MacrobyName('MDataInicial').Value := '''' + FormatDateTime('mm/dd/yyyy',De.Date)  + '''';
-  SQLNotasFiscais.MacrobyName('MDataFinal').Value   := '''' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '''';
+  SQLNotasFiscais.MacrobyName('MDataInicial').Value := '"' + FormatDateTime('mm/dd/yyyy',De.Date)  + '"';
+  SQLNotasFiscais.MacrobyName('MDataFinal').Value   := '"' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '"';
 
   if ComboVendedor.Text <> '' then
     SQLNotasFiscais.MacroByName('MVendedor').Value   := 'NOTAFISCAL.VENDICOD = ' + IntToStr(ComboVendedor.KeyValue)
@@ -98,8 +98,8 @@ begin
 
   SQLVendas.MacrobyName('MEmpresa').Value     := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'CUPOM','');
   SQLVendas.MacrobyName('MCampoData').Value   := 'CUPOM.CUPODEMIS';
-  SQLVendas.MacrobyName('MDataInicial').Value := '''' + FormatDateTime('mm/dd/yyyy',De.Date)  + '''';
-  SQLVendas.MacrobyName('MDataFinal').Value   := '''' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '''';
+  SQLVendas.MacrobyName('MDataInicial').Value := '"' + FormatDateTime('mm/dd/yyyy',De.Date)  + '"';
+  SQLVendas.MacrobyName('MDataFinal').Value   := '"' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '"';
 
   if ComboVendedor.Text <> '' then
     SQLVendas.MacroByName('MVendedor').Value   := 'CUPOM.VENDICOD = ' + IntToStr(ComboVendedor.KeyValue)
@@ -152,16 +152,16 @@ begin
 
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Emissao' ;
-  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''' ;
+  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'PeriodoEmissao' ;
-  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
-                                  FormatDateTime('dd/mm/yyyy', Ate.Date) + '''' ;
+  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
+                                  FormatDateTime('dd/mm/yyyy', Ate.Date) + '"' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name := 'Vendedor' ;
 
   if ComboVendedor.Text <> '' then
-    Report.Formulas.Formula.Text := '''' + ComboVendedor.Text + '''';
+    Report.Formulas.Formula.Text := '"' + ComboVendedor.Text + '"';
 
   Report.ReportTitle       := 'Relatório de Vendas Por Vendedor com Apuração de Margem' ;
   Report.WindowStyle.Title := 'Relatório de Vendas Por Vendedor com Apuração de Margem' ;

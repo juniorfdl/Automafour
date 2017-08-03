@@ -190,11 +190,15 @@ inherited FormRelatorioApuracaoMargemPorProduto: TFormRelatorioApuracaoMargemPor
     object TblTemporariaVLRTOTALITEM: TFloatField
       FieldName = 'VLRTOTALITEM'
     end
-    object TblTemporariaPRODN3VLRCUSTO: TFloatField
+    object TblTemporariaPRODN3VLRCUSTO: TBCDField
       FieldName = 'PRODN3VLRCUSTO'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaPRODN3VLRVENDA: TFloatField
+    object TblTemporariaPRODN3VLRVENDA: TBCDField
       FieldName = 'PRODN3VLRVENDA'
+      Precision = 15
+      Size = 3
     end
     object TblTemporariaGRUPICOD: TIntegerField
       FieldName = 'GRUPICOD'
@@ -214,8 +218,10 @@ inherited FormRelatorioApuracaoMargemPorProduto: TFormRelatorioApuracaoMargemPor
     object TblTemporariaMARGEMVLR: TFloatField
       FieldName = 'MARGEMVLR'
     end
-    object TblTemporariaCPITN3QTD: TFloatField
+    object TblTemporariaCPITN3QTD: TBCDField
       FieldName = 'CPITN3QTD'
+      Precision = 15
+      Size = 3
     end
     object TblTemporariaCUPOA13ID: TStringField
       FieldName = 'CUPOA13ID'
@@ -435,7 +441,7 @@ inherited FormRelatorioApuracaoMargemPorProduto: TFormRelatorioApuracaoMargemPor
         ' left outer join PRODUTO on CUPOMITEM.PRODICOD = PRODUTO.PRODICO' +
         'D)'
       'where'
-      '  CUPOM.CUPOCSTATUS <> ''C'' and'
+      '  CUPOM.CUPOCSTATUS <> "C" and'
       '  CUPOMITEM.CPITN3QTD > 0 and'
       '  (%MFiltro)  and'
       '  (%MEmpresa) and'
@@ -482,7 +488,7 @@ inherited FormRelatorioApuracaoMargemPorProduto: TFormRelatorioApuracaoMargemPor
         ' left outer join OPERACAOESTOQUE on NOTAFISCAL.OPESICOD = OPERAC' +
         'AOESTOQUE.OPESICOD'
       'where'
-      '  NOTAFISCAL.NOFICSTATUS = ''E''   and'
+      '  NOTAFISCAL.NOFICSTATUS = "E"   and'
       '  NOTAFISCALITEM.NFITN3QUANT > 0 and'
       '  (%MFiltro1)   and'
       '  (%MEmpresa1) and'
@@ -609,12 +615,6 @@ inherited FormRelatorioApuracaoMargemPorProduto: TFormRelatorioApuracaoMargemPor
     object SQLVendasVLRTOTALITEM: TFloatField
       FieldName = 'VLRTOTALITEM'
     end
-    object SQLVendasPRODN3VLRCUSTO: TFloatField
-      FieldName = 'PRODN3VLRCUSTO'
-    end
-    object SQLVendasPRODN3VLRVENDA: TFloatField
-      FieldName = 'PRODN3VLRVENDA'
-    end
     object SQLVendasGRUPICOD: TIntegerField
       FieldName = 'GRUPICOD'
     end
@@ -632,9 +632,6 @@ inherited FormRelatorioApuracaoMargemPorProduto: TFormRelatorioApuracaoMargemPor
     end
     object SQLVendasMARGEMVLR: TFloatField
       FieldName = 'MARGEMVLR'
-    end
-    object SQLVendasCPITN3QTD: TFloatField
-      FieldName = 'CPITN3QTD'
     end
     object SQLVendasCUPOA13ID: TStringField
       FieldName = 'CUPOA13ID'
@@ -655,6 +652,15 @@ inherited FormRelatorioApuracaoMargemPorProduto: TFormRelatorioApuracaoMargemPor
     end
     object SQLVendasCORICOD: TIntegerField
       FieldName = 'CORICOD'
+    end
+    object SQLVendasPRODN3VLRCUSTO: TFloatField
+      FieldName = 'PRODN3VLRCUSTO'
+    end
+    object SQLVendasPRODN3VLRVENDA: TFloatField
+      FieldName = 'PRODN3VLRVENDA'
+    end
+    object SQLVendasCPITN3QTD: TFloatField
+      FieldName = 'CPITN3QTD'
     end
   end
   object SQLGrupo: TRxQuery
