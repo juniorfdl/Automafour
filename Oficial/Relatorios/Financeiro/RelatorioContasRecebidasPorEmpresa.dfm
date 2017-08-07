@@ -1,4 +1,6 @@
 inherited FormRelatorioContasRecebidasPorEmpresa: TFormRelatorioContasRecebidasPorEmpresa
+  Left = 512
+  Top = 115
   Caption = 
     'Relat'#243'rio de Contas Recebidas Por Empresa (Origem x Recebimento)' +
     ' '
@@ -222,14 +224,20 @@ inherited FormRelatorioContasRecebidasPorEmpresa: TFormRelatorioContasRecebidasP
     object TblTemporariaRECEDRECTO: TDateTimeField
       FieldName = 'RECEDRECTO'
     end
-    object TblTemporariaRECEN2DESC: TFloatField
+    object TblTemporariaRECEN2DESC: TBCDField
       FieldName = 'RECEN2DESC'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaRECEN2VLRJURO: TFloatField
+    object TblTemporariaRECEN2VLRJURO: TBCDField
       FieldName = 'RECEN2VLRJURO'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaRECEN2VLRMULTA: TFloatField
+    object TblTemporariaRECEN2VLRMULTA: TBCDField
       FieldName = 'RECEN2VLRMULTA'
+      Precision = 15
+      Size = 3
     end
     object TblTemporariaRECEN2VLRRECTO: TFloatField
       FieldName = 'RECEN2VLRRECTO'
@@ -263,8 +271,10 @@ inherited FormRelatorioContasRecebidasPorEmpresa: TFormRelatorioContasRecebidasP
       FixedChar = True
       Size = 13
     end
-    object TblTemporariaCTRCN2VLR: TFloatField
+    object TblTemporariaCTRCN2VLR: TBCDField
       FieldName = 'CTRCN2VLR'
+      Precision = 15
+      Size = 3
     end
     object TblTemporariaSALDO: TFloatField
       FieldName = 'SALDO'

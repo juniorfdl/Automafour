@@ -27,16 +27,6 @@ type
     SQLContasPagarFORNA60NOMEFANT: TStringField;
     SQLContasPagarTPDCA60DESCR: TStringField;
     SQLContasPagarPORTA60DESCR: TStringField;
-    TblTemporariaEMPRICOD: TIntegerField;
-    TblTemporariaCTPGDVENC: TDateTimeField;
-    TblTemporariaCTPGA20DOCORIG: TStringField;
-    TblTemporariaCTPGINROPARC: TIntegerField;
-    TblTemporariaCTPGN3VLR: TFloatField;
-    TblTemporariaSALDO: TFloatField;
-    TblTemporariaCTPGN2DESCPROMO: TFloatField;
-    TblTemporariaFORNA60NOMEFANT: TStringField;
-    TblTemporariaTPDCA60DESCR: TStringField;
-    TblTemporariaPORTA60DESCR: TStringField;
     RadioPrevReal: TRadioGroup;
     Report: TCrpe;
     ComboFornecedor: TDBLookupComboBox;
@@ -52,6 +42,16 @@ type
     Label7: TLabel;
     Label8: TLabel;
     CkTotalizarPorFornec: TCheckBox;
+    TblTemporariaEMPRICOD: TIntegerField;
+    TblTemporariaCTPGDVENC: TDateTimeField;
+    TblTemporariaCTPGA20DOCORIG: TStringField;
+    TblTemporariaCTPGINROPARC: TIntegerField;
+    TblTemporariaCTPGN3VLR: TBCDField;
+    TblTemporariaSALDO: TFloatField;
+    TblTemporariaCTPGN2DESCPROMO: TBCDField;
+    TblTemporariaFORNA60NOMEFANT: TStringField;
+    TblTemporariaTPDCA60DESCR: TStringField;
+    TblTemporariaPORTA60DESCR: TStringField;
     procedure ExecutarBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure ComboFornecedorKeyDown(Sender: TObject; var Key: Word;
@@ -103,7 +103,8 @@ begin
 
   SQLContasPagar.Open ;
 
-  BatchExec(SQLContasPagar, TblTemporaria) ;
+//  BatchExec(SQLContasPagar, TblTemporaria) ;
+  CopyQueryTable(SQLContasPagar,TblTemporaria);
 
   if not CkTotalizarPorFornec.Checked then
     Report.ReportName := DM.SQLConfigGeralCFGEA255PATHREPORT.Value + '\Contas A PAGAR.rpt'

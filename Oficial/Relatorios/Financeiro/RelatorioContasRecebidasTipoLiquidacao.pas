@@ -41,12 +41,17 @@ type
     CheckNroDuplic: TCheckBox;
     Report: TCrpe;
     SQLContasReceberTPLQA60DESCR: TStringField;
+    SQLUpdate: TRxQuery;
+    SQLContasReceberTERMICODREC: TIntegerField;
+    SQLContasReceberUSUAICOD: TIntegerField;
     TblTemporariaCTRCA13ID: TStringField;
     TblTemporariaEMPRICODREC: TIntegerField;
+    TblTemporariaTERMICODREC: TIntegerField;
+    TblTemporariaUSUAICOD: TIntegerField;
     TblTemporariaRECEDRECTO: TDateTimeField;
-    TblTemporariaRECEN2DESC: TFloatField;
-    TblTemporariaRECEN2VLRJURO: TFloatField;
-    TblTemporariaRECEN2VLRMULTA: TFloatField;
+    TblTemporariaRECEN2DESC: TBCDField;
+    TblTemporariaRECEN2VLRJURO: TBCDField;
+    TblTemporariaRECEN2VLRMULTA: TBCDField;
     TblTemporariaRECEN2VLRRECTO: TFloatField;
     TblTemporariaEMPRICOD: TIntegerField;
     TblTemporariaCTRCDVENC: TDateTimeField;
@@ -55,7 +60,7 @@ type
     TblTemporariaNOFIA13ID: TStringField;
     TblTemporariaPDVDA13ID: TStringField;
     TblTemporariaCLIEA13ID: TStringField;
-    TblTemporariaCTRCN2VLR: TFloatField;
+    TblTemporariaCTRCN2VLR: TBCDField;
     TblTemporariaEMPRICODULTREC: TIntegerField;
     TblTemporariaSALDO: TFloatField;
     TblTemporariaNUMEICOD: TIntegerField;
@@ -63,11 +68,6 @@ type
     TblTemporariaTPDCA60DESCR: TStringField;
     TblTemporariaPORTA60DESCR: TStringField;
     TblTemporariaTPLQA60DESCR: TStringField;
-    SQLUpdate: TRxQuery;
-    SQLContasReceberTERMICODREC: TIntegerField;
-    SQLContasReceberUSUAICOD: TIntegerField;
-    TblTemporariaTERMICODREC: TIntegerField;
-    TblTemporariaUSUAICOD: TIntegerField;
     procedure ExecutarBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
@@ -105,7 +105,8 @@ begin
   SQLContasReceber.Open ;
   if not SQLContasReceber.IsEmpty then
     begin
-      BatchExec(SQLContasReceber, TblTemporaria) ;
+//    BatchExec(SQLContasReceber, TblTemporaria) ;
+      CopyQueryTable(SQLContasReceber,TblTemporaria);
       SQLUpdate.Close;
       SQLUpdate.ExecSQL;
     end;

@@ -50,11 +50,11 @@ type
     SQLContasPagarPORTA60DESCR: TStringField;
     SQLContasPagarTPLQA60DESCR: TStringField;
     TblTemporariaCTPGA13ID: TStringField;
-    TblTemporariaPAGAN3VLRPAGTO: TFloatField;
-    TblTemporariaSALDO: TFloatField;
-    TblTemporariaPAGAN3VLRJURO: TFloatField;
-    TblTemporariaPAGAN3VLRMULTA: TFloatField;
-    TblTemporariaPAGAN3VLRDESC: TFloatField;
+    TblTemporariaPAGAN3VLRPAGTO: TBCDField;
+    TblTemporariaSALDO: TBCDField;
+    TblTemporariaPAGAN3VLRJURO: TBCDField;
+    TblTemporariaPAGAN3VLRMULTA: TBCDField;
+    TblTemporariaPAGAN3VLRDESC: TBCDField;
     TblTemporariaPAGADPAGTO: TDateTimeField;
     TblTemporariaNOCPA13ID: TStringField;
     TblTemporariaPDCPA13ID: TStringField;
@@ -62,7 +62,7 @@ type
     TblTemporariaCTPGDVENC: TDateTimeField;
     TblTemporariaCTPGA20DOCORIG: TStringField;
     TblTemporariaCTPGINROPARC: TIntegerField;
-    TblTemporariaCTPGN3VLR: TFloatField;
+    TblTemporariaCTPGN3VLR: TBCDField;
     TblTemporariaPORTICOD: TIntegerField;
     TblTemporariaFORNA60NOMEFANT: TStringField;
     TblTemporariaTPDCA60DESCR: TStringField;
@@ -114,7 +114,8 @@ begin
   
   if not SQLContasPagar.IsEmpty then
     begin
-      BatchExec(SQLContasPagar, TblTemporaria);
+//    BatchExec(SQLContasPagar, TblTemporaria);
+      CopyQueryTable(SQLContasPagar, TblTemporaria);
       SQLUpdate.Close;
       SQLUpdate.ExecSQL;
     end;

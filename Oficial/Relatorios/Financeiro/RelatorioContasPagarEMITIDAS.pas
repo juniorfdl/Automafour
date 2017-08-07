@@ -20,15 +20,6 @@ type
     SQLContasPagarCTPGN3VLR: TFloatField;
     SQLContasPagarFORNA60NOMEFANT: TStringField;
     SQLContasPagarTPDCA60DESCR: TStringField;
-    TblTemporariaCTPGA13ID: TStringField;
-    TblTemporariaCTPGDTEMIS: TDateTimeField;
-    TblTemporariaPAGAN3VLRPAGTO: TFloatField;
-    TblTemporariaCTPGDVENC: TDateTimeField;
-    TblTemporariaCTPGA20DOCORIG: TStringField;
-    TblTemporariaCTPGINROPARC: TIntegerField;
-    TblTemporariaCTPGN3VLR: TFloatField;
-    TblTemporariaFORNA60NOMEFANT: TStringField;
-    TblTemporariaTPDCA60DESCR: TStringField;
     Report: TCrpe;
     SQLFornecedor: TRxQuery;
     DSSQLFornecedor: TDataSource;
@@ -55,11 +46,20 @@ type
     SQLPlanoContasPLCTA15COD: TStringField;
     SQLPlanoContasPLCTA60DESCR: TStringField;
     SQLContasPagarPLCTA15COD: TStringField;
-    TblTemporariaPLCTA15COD: TStringField;
     CKAgrupConta: TCheckBox;
     SQLContasPagarPLCTA60DESCR: TStringField;
-    TblTemporariaPLCTA60DESCR: TStringField;
     RadioVencto: TRadioButton;
+    TblTemporariaCTPGA13ID: TStringField;
+    TblTemporariaCTPGDTEMIS: TDateTimeField;
+    TblTemporariaPAGAN3VLRPAGTO: TBCDField;
+    TblTemporariaCTPGDVENC: TDateTimeField;
+    TblTemporariaCTPGA20DOCORIG: TStringField;
+    TblTemporariaCTPGINROPARC: TIntegerField;
+    TblTemporariaCTPGN3VLR: TBCDField;
+    TblTemporariaFORNA60NOMEFANT: TStringField;
+    TblTemporariaTPDCA60DESCR: TStringField;
+    TblTemporariaPLCTA15COD: TStringField;
+    TblTemporariaPLCTA60DESCR: TStringField;
     procedure ExecutarBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure ComboFornecedorKeyDown(Sender: TObject; var Key: Word;
@@ -75,7 +75,7 @@ var
 
 implementation
 
-uses DataModulo;
+uses DataModulo, UnitLibrary;
 
 {$R *.dfm}
 
@@ -118,7 +118,9 @@ begin
 
   SQLContasPagar.Open;
 
-  BatchExec(SQLContasPagar, TblTemporaria) ;
+//  BatchExec(SQLContasPagar, TblTemporaria) ;
+  CopyQueryTable(SQLContasPagar,TblTemporaria);
+
 
   if not CKAgrupConta.Checked then
     Report.ReportName        := DM.SQLConfigGeralCFGEA255PATHREPORT.Value + '\Contas Pagar Emitidas.rpt'

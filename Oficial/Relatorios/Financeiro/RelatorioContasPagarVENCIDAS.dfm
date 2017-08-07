@@ -1,6 +1,6 @@
 inherited FormRelatorioContasPagarVENCIDAS: TFormRelatorioContasPagarVENCIDAS
-  Left = 112
-  Top = 141
+  Left = 674
+  Top = 149
   Caption = 'Relat'#243'rio Contas '#224' Pagar VENCIDAS'
   ClientHeight = 474
   PixelsPerInch = 96
@@ -134,8 +134,10 @@ inherited FormRelatorioContasPagarVENCIDAS: TFormRelatorioContasPagarVENCIDAS
       FixedChar = True
       Size = 60
     end
-    object TblTemporariaCTPGN3VLR: TFloatField
+    object TblTemporariaCTPGN3VLR: TBCDField
       FieldName = 'CTPGN3VLR'
+      Precision = 15
+      Size = 2
     end
     object TblTemporariaTPDCA60DESCR: TStringField
       FieldName = 'TPDCA60DESCR'

@@ -1,15 +1,15 @@
 inherited FormRelatorioContasPagarAPAGAR: TFormRelatorioContasPagarAPAGAR
-  Left = 236
-  Top = 116
+  Left = 456
+  Top = 132
   Caption = 'Relat'#243'rio de Contas '#192' PAGAR'
-  ClientHeight = 485
+  ClientHeight = 474
   PixelsPerInch = 96
   TextHeight = 13
   inherited Progresso: TProgressBar
-    Top = 469
+    Top = 458
   end
   inherited ScrollBox: TScrollBox
-    Height = 469
+    Height = 458
     HorzScrollBar.Range = 0
     VertScrollBar.Range = 0
     AutoScroll = False
@@ -193,14 +193,18 @@ inherited FormRelatorioContasPagarAPAGAR: TFormRelatorioContasPagarAPAGAR
     object TblTemporariaCTPGINROPARC: TIntegerField
       FieldName = 'CTPGINROPARC'
     end
-    object TblTemporariaCTPGN3VLR: TFloatField
+    object TblTemporariaCTPGN3VLR: TBCDField
       FieldName = 'CTPGN3VLR'
+      Precision = 15
+      Size = 2
     end
     object TblTemporariaSALDO: TFloatField
       FieldName = 'SALDO'
     end
-    object TblTemporariaCTPGN2DESCPROMO: TFloatField
+    object TblTemporariaCTPGN2DESCPROMO: TBCDField
       FieldName = 'CTPGN2DESCPROMO'
+      Precision = 15
+      Size = 3
     end
     object TblTemporariaFORNA60NOMEFANT: TStringField
       FieldName = 'FORNA60NOMEFANT'

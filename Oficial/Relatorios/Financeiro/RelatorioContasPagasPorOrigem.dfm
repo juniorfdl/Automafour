@@ -1,4 +1,6 @@
 inherited FormRelatorioContasPagasPorOrigem: TFormRelatorioContasPagasPorOrigem
+  Left = 527
+  Top = 144
   Caption = 'Relat'#243'rio de Contas Pagas Por Origem'
   ClientWidth = 796
   PixelsPerInch = 96
@@ -130,14 +132,20 @@ inherited FormRelatorioContasPagasPorOrigem: TFormRelatorioContasPagasPorOrigem
     object TblTemporariaSALDO: TFloatField
       FieldName = 'SALDO'
     end
-    object TblTemporariaPAGAN3VLRJURO: TFloatField
+    object TblTemporariaPAGAN3VLRJURO: TBCDField
       FieldName = 'PAGAN3VLRJURO'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaPAGAN3VLRMULTA: TFloatField
+    object TblTemporariaPAGAN3VLRMULTA: TBCDField
       FieldName = 'PAGAN3VLRMULTA'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaPAGAN3VLRDESC: TFloatField
+    object TblTemporariaPAGAN3VLRDESC: TBCDField
       FieldName = 'PAGAN3VLRDESC'
+      Precision = 15
+      Size = 3
     end
     object TblTemporariaPAGADPAGTO: TDateTimeField
       FieldName = 'PAGADPAGTO'
@@ -168,8 +176,10 @@ inherited FormRelatorioContasPagasPorOrigem: TFormRelatorioContasPagasPorOrigem
     object TblTemporariaCTPGINROPARC: TIntegerField
       FieldName = 'CTPGINROPARC'
     end
-    object TblTemporariaCTPGN3VLR: TFloatField
+    object TblTemporariaCTPGN3VLR: TBCDField
       FieldName = 'CTPGN3VLR'
+      Precision = 15
+      Size = 2
     end
     object TblTemporariaPORTICOD: TIntegerField
       FieldName = 'PORTICOD'

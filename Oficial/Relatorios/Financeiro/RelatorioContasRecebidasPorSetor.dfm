@@ -1,6 +1,6 @@
 inherited FormRelatorioContasRecebidasPorSetor: TFormRelatorioContasRecebidasPorSetor
-  Left = 222
-  Top = 106
+  Left = 578
+  Top = 96
   Caption = 'Relat'#243'rio Contas Recebidas Por Origem'
   ClientWidth = 815
   PixelsPerInch = 96
@@ -148,17 +148,25 @@ inherited FormRelatorioContasRecebidasPorSetor: TFormRelatorioContasRecebidasPor
     object TblTemporariaRECEDRECTO: TDateTimeField
       FieldName = 'RECEDRECTO'
     end
-    object TblTemporariaRECEN2DESC: TFloatField
+    object TblTemporariaRECEN2DESC: TBCDField
       FieldName = 'RECEN2DESC'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaRECEN2VLRJURO: TFloatField
+    object TblTemporariaRECEN2VLRJURO: TBCDField
       FieldName = 'RECEN2VLRJURO'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaRECEN2VLRMULTA: TFloatField
+    object TblTemporariaRECEN2VLRMULTA: TBCDField
       FieldName = 'RECEN2VLRMULTA'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaRECEN2VLRRECTO: TFloatField
+    object TblTemporariaRECEN2VLRRECTO: TBCDField
       FieldName = 'RECEN2VLRRECTO'
+      Precision = 15
+      Size = 3
     end
     object TblTemporariaEMPRICOD: TIntegerField
       FieldName = 'EMPRICOD'
@@ -174,8 +182,10 @@ inherited FormRelatorioContasRecebidasPorSetor: TFormRelatorioContasRecebidasPor
       FixedChar = True
       Size = 13
     end
-    object TblTemporariaCTRCN2VLR: TFloatField
+    object TblTemporariaCTRCN2VLR: TBCDField
       FieldName = 'CTRCN2VLR'
+      Precision = 15
+      Size = 3
     end
     object TblTemporariaEMPRICODULTREC: TIntegerField
       FieldName = 'EMPRICODULTREC'
