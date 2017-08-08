@@ -309,6 +309,7 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
           Width = 135
           Height = 21
           ItemHeight = 13
+          ItemIndex = 1
           TabOrder = 10
           Text = 'N'#250'mero da Duplicata'
           Items.Strings = (

@@ -826,6 +826,7 @@ begin
   if SQLContaCorrenteBANCA5COD.Value = '748' then
     begin
       ACBrBoleto1.banco.TipoCobranca := cobSicred;
+
     end;
 
   ACBrBoleto1.cedente.Agencia       := SQLContaCorrenteCTCRA15AGENCIA.Value;
@@ -1273,6 +1274,11 @@ var
 begin
   inherited;
 
+  if not dm.SQLConfigCrediario.Active then
+  begin
+    dm.SQLConfigCrediario.Open;
+  end;
+
   erro := False;
 
   if ComboContaCorrente.Text = '' then
@@ -1391,9 +1397,16 @@ begin
             end;
           ValorDocumento    := SQLContasReceberCTRCN2VLR.Value;
           ValorAbatimento   := 0.00;
-          ValorMoraJuros    := 0.00;
-          ValorDesconto     := 0.00;
+
+          ValorMoraJuros    := 0;
+          ValorDesconto     := 0;
           ValorAbatimento   := 0.00;
+
+          if (dm.SQLConfigCrediario.fieldbyname('CFCRN2PERCMULATRAS').AsCurrency > 0) then
+          begin
+            PercentualMulta   := dm.SQLConfigCrediario.fieldbyname('CFCRN2PERCMULATRAS').AsCurrency;
+            CodigoMoraJuros   := cjValorDia;
+          end;
 
          { DataMoraJuros     := ;
           DataDesconto      := ;
