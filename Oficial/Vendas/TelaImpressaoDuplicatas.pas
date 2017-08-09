@@ -10,7 +10,7 @@ uses
   ppCtrls, ppPrnabl, ppClass, ppCache, ppBands, ppProd, ppReport, ppDB,
   ppComm, ppRelatv, ppDBPipe, ppviewr, ppStrtch, ppMemo,
   AdvOfficeStatusBar, AdvOfficeStatusBarStylers, ACBrBoleto,
-  ACBrBoletoFCFortesFr, ACBrBase, ACBrMail;
+  ACBrBoletoFCFortesFr, ACBrBase, ACBrMail, ACBrUtil;
 
 
 type
@@ -430,6 +430,8 @@ type
     pEmpresaNome: TppLabel;
     SQLContaCorrenteLOTEREMESSABANCO: TIntegerField;
     ckSemLote: TCheckBox;
+    cbVisualizarImpressao: TCheckBox;
+    cbImprimirMensagensPadroes: TCheckBox;
     procedure BtnSelecionarDocClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure MnDuplicatasClick(Sender: TObject);
@@ -472,7 +474,7 @@ var
 
 implementation
 
-uses ExtensoLib, DataModulo, TypInfo;
+uses ExtensoLib, DataModulo, TypInfo, Math;
 
 {$R *.dfm}
 
@@ -480,6 +482,7 @@ procedure TFormTelaImpressaoDuplicata.BtnSelecionarDocClick(
   Sender: TObject);
 begin
   inherited;
+    
   SQLContasReceber.Close;
   SQLTotais.Close;
 
@@ -583,6 +586,11 @@ begin
 
   De.Date  := Date;
   Ate.Date := Date;
+
+  if not dm.SQLConfigCrediario.Active then
+  begin
+    dm.SQLConfigCrediario.Open;
+  end;
 end;
 
 procedure TFormTelaImpressaoDuplicata.MnDuplicatasClick(Sender: TObject);
@@ -1043,6 +1051,25 @@ begin
       DataProtesto      := ;
       PercentualMulta   := StrToCurrDef(edtMulta.Text,0); }
 
+      if (dm.SQLConfigCrediario.fieldbyname('CFCRN2PERCMULATRAS').AsCurrency > 0) then
+          begin
+            DataMoraJuros         := TblDuplicatasCTRCDVENC.AsDateTime;
+            ValorMoraJuros   := dm.SQLConfigCrediario.fieldbyname('CFCRN2PERCMULATRAS').AsCurrency;
+            CodigoMoraJuros   := cjTaxaMensal;
+
+            if ACBrBoleto1.banco.TipoCobranca = cobSicred then
+            begin
+               CodigoMora := 'B';
+               ACBrBoleto1.ImprimirMensagemPadrao := false;
+               Mensagem.Add(ACBrStr('Cobrar juros de '+
+                            FloatToStr(ValorMoraJuros) + '%' +
+                             ' por dia de atraso para pagamento a partir de ' +
+                             FormatDateTime('dd/mm/yyyy',DataMoraJuros)));
+            end
+            else
+              CodigoMora := '2';
+          end;
+
      { OcorrenciaOriginal.Tipo := toRemessaBaixar; }
 
       Sacado.NomeSacado := TblDuplicatasCLIEA60RAZAOSOC.AsString;
@@ -1078,6 +1105,12 @@ end;
 procedure TFormTelaImpressaoDuplicata.ImprimeBoletoAcbr;
 begin
   {Imprimir Boleto}
+
+  if ACBrBoleto1.banco.TipoCobranca <> cobSicred then
+    ACBrBoleto1.ImprimirMensagemPadrao := cbImprimirMensagensPadroes.Checked;
+    
+  ACBrBoletoFCFortes1.MostrarPreview := cbVisualizarImpressao.Checked;
+
   if radioTipoImpressao.ItemIndex = 0 then  {Imprimir Apenas}
     ACBrBoleto1.Imprimir;
 
@@ -1272,12 +1305,7 @@ var
   controle, sContaCorrente : string;
   erro : boolean;
 begin
-  inherited;
-
-  if not dm.SQLConfigCrediario.Active then
-  begin
-    dm.SQLConfigCrediario.Open;
-  end;
+  inherited;   
 
   erro := False;
 
@@ -1404,8 +1432,22 @@ begin
 
           if (dm.SQLConfigCrediario.fieldbyname('CFCRN2PERCMULATRAS').AsCurrency > 0) then
           begin
-            PercentualMulta   := dm.SQLConfigCrediario.fieldbyname('CFCRN2PERCMULATRAS').AsCurrency;
-            CodigoMoraJuros   := cjValorDia;
+            DataMoraJuros         := TblDuplicatasCTRCDVENC.AsDateTime;
+            ValorMoraJuros   := dm.SQLConfigCrediario.fieldbyname('CFCRN2PERCMULATRAS').AsCurrency;
+            CodigoMoraJuros   := cjTaxaMensal;
+            
+            if ACBrBoleto1.banco.TipoCobranca = cobSicred then
+            begin
+               CodigoMora := 'B';               
+               ACBrBoleto1.ImprimirMensagemPadrao := false;  
+               Mensagem.Add(ACBrStr('Cobrar juros de '+
+                            FloatToStr(ValorMoraJuros) + '%' +
+                             ' por dia de atraso para pagamento a partir de ' +
+                             FormatDateTime('dd/mm/yyyy',DataMoraJuros)));
+            end
+            else
+              CodigoMora := '2';
+
           end;
 
          { DataMoraJuros     := ;

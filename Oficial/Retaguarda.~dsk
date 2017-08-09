@@ -1,25 +1,36 @@
 [Closed Files]
-File_0=SourceModule,'D:\Automafour\CheckOut\UnitCheckout\DataModulo.pas',0,1,1258,83,1271,0,0
-File_1=SourceModule,'C:\projetos\Automafour\Oficial\Relatorios\Fiscais\RelatorioCupomEmitido.pas',0,1,1,46,15,1,0
-File_2=SourceModule,'C:\projetos\Automafour\Oficial\Relatorios\Administrativo\RelatorioResumoCaixa.pas',0,1,1,14,6,1,0
-File_3=SourceModule,'C:\projetos\Automafour\Oficial\ArquivosComuns\PertoCheque.pas',0,1,207,1,111,0,0
-File_4=SourceModule,'C:\projetos\Automafour\Oficial\Financeiro\TelaBaixarDocumentosReceberRecebimento.pas',0,1,324,23,339,1,0
-File_5=SourceModule,'C:\projetos\Automafour\Oficial\Financeiro\TelaBaixarDocumentosPagarPagamento.pas',0,1,287,55,299,1,0
-File_6=SourceModule,'C:\projetos\Automafour\Template\TelaGeralTEMPLATE.pas',0,1,1,1,1,0,0
-File_7=SourceModule,'C:\projetos\Automafour\Oficial\ArquivosComuns\TelaConsultaProdutoGeral.pas',0,1,172,161,183,1,0
-File_8=SourceModule,'C:\projetos\Automafour\Oficial\Compras\TelaEmissaoEtiquetasCodigoBarras.pas',0,1,363,1,378,1,0
+File_0=SourceModule,'C:\projetos\Automafour\Oficial\Relatorios\Fiscais\RelatorioContasRecebidas.pas',0,1,389,1,401,1,0
+File_1=SourceModule,'D:\Automafour\RelatorioContasRecebidas.pas',0,1,1,1,1,0,0
+File_2=SourceModule,'D:\Automafour\Desenv\GestaoOficial\UnitFinanceiro\RelatorioContasRecebidas.pas',0,1,1,139,5,1,0
+File_3=SourceModule,'C:\projetos\Automafour\Oficial\DataModulo.pas',0,1,861,75,871,0,0
+File_4=SourceModule,'D:\Automafour\CheckOut\UnitCheckout\DataModulo.pas',0,1,1258,83,1271,0,0
+File_5=SourceModule,'C:\projetos\Automafour\Oficial\Relatorios\Fiscais\RelatorioCupomEmitido.pas',0,1,1,46,15,1,0
+File_6=SourceModule,'C:\projetos\Automafour\Oficial\Relatorios\Administrativo\RelatorioResumoCaixa.pas',0,1,1,14,6,1,0
+File_7=SourceModule,'C:\projetos\Automafour\Oficial\ArquivosComuns\PertoCheque.pas',0,1,207,1,111,0,0
+File_8=SourceModule,'C:\projetos\Automafour\Oficial\Financeiro\TelaBaixarDocumentosReceberRecebimento.pas',0,1,324,23,339,1,0
 
 [Modules]
-Module0=C:\projetos\Automafour\Oficial\Relatorios\Fiscais\RelatorioContasRecebidas.pas
-Module1=C:\projetos\Automafour\Oficial\Relatorios\Administrativo\RelatorioClienteCadastrado.pas
-Module2=C:\projetos\Automafour\Oficial\DataModulo.pas
-Module3=C:\projetos\Automafour\Template\RelatorioTemplate.pas
+Module0=C:\Acbr\trunk2\Fontes\ACBrBoleto\ACBrBoleto.pas
+Module1=C:\Acbr\trunk2\Fontes\ACBrBoleto\FC\Fortes\ACBrBoletoFCFortesFr.pas
+Module2=C:\projetos\Automafour\Oficial\Vendas\TelaImpressaoDuplicatas.pas
+Module3=C:\projetos\Automafour\Oficial\Relatorios\Administrativo\RelatorioClienteCadastrado.pas
 Module4=C:\projetos\Automafour\Oficial\Principal.pas
-Module5=C:\projetos\Automafour\Oficial\Retaguarda.dpr
-Count=6
+Module5=c:\acbr\trunk2\Fontes\ACBrBoleto\ACBrBancoSicredi.pas
+Module6=C:\projetos\Automafour\Oficial\Retaguarda.dpr
+Count=7
 EditWindowCount=1
 
-[C:\projetos\Automafour\Oficial\Relatorios\Fiscais\RelatorioContasRecebidas.pas]
+[C:\Acbr\trunk2\Fontes\ACBrBoleto\ACBrBoleto.pas]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Acbr\trunk2\Fontes\ACBrBoleto\FC\Fortes\ACBrBoletoFCFortesFr.pas]
+ModuleType=SourceModule
+FormState=1
+FormOnTop=0
+
+[C:\projetos\Automafour\Oficial\Vendas\TelaImpressaoDuplicatas.pas]
 ModuleType=SourceModule
 FormState=1
 FormOnTop=0
@@ -27,19 +38,14 @@ FormOnTop=0
 [C:\projetos\Automafour\Oficial\Relatorios\Administrativo\RelatorioClienteCadastrado.pas]
 ModuleType=SourceModule
 FormState=1
-FormOnTop=1
-
-[C:\projetos\Automafour\Oficial\DataModulo.pas]
-ModuleType=SourceModule
-FormState=0
-FormOnTop=0
-
-[C:\projetos\Automafour\Template\RelatorioTemplate.pas]
-ModuleType=SourceModule
-FormState=0
 FormOnTop=0
 
 [C:\projetos\Automafour\Oficial\Principal.pas]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
+
+[c:\acbr\trunk2\Fontes\ACBrBoleto\ACBrBancoSicredi.pas]
 ModuleType=SourceModule
 FormState=0
 FormOnTop=0
@@ -53,7 +59,7 @@ FormOnTop=0
 FormState=0
 FormOnTop=0
 
-[C:\projetos\Automafour\Template\DataModuloTemplate.pas]
+[C:\projetos\Automafour\Template\RelatorioTemplate.pas]
 FormState=0
 FormOnTop=0
 
@@ -61,22 +67,27 @@ FormOnTop=0
 FormState=0
 FormOnTop=0
 
+[C:\projetos\Automafour\Template\TelaGeralTEMPLATE.pas]
+FormState=0
+FormOnTop=0
+
 [EditWindow0]
-ViewCount=6
-CurrentView=3
+ViewCount=7
+CurrentView=4
 View0=0
 View1=1
 View2=2
 View3=3
 View4=4
 View5=5
+View6=6
 CodeExplorer=CodeExplorer@EditWindow0
 MessageView=MessageView@EditWindow0
 Create=1
 Visible=1
 State=2
-Left=278
-Top=148
+Left=269
+Top=254
 Width=1088
 Height=485
 MaxLeft=-8
@@ -89,9 +100,9 @@ LeftPanelSize=0
 LeftPanelClients=CodeExplorer@EditWindow0
 LeftPanelData=00000400010000000C000000436F64654578706C6F726572000000000000000000000000000000000001000000000000000000000000FFFFFFFF
 RightPanelSize=0
-BottomPanelSize=0
+BottomPanelSize=85
 BottomPanelClients=MessageView@EditWindow0
-BottomPanelData=00000400010000000B0000004D6573736167655669657756050000000000000255000000000000000100000000000000000000000001000000005605000000000000FFFFFFFF
+BottomPanelData=000004000000000056050000000000000255000000000000000100000000000000000000000001000000005605000000000000010000000056050000000000000100000000560500000B0000004D65737361676556696577FFFFFFFF
 
 [View0]
 Module=C:\projetos\Automafour\Oficial\Retaguarda.dpr
@@ -109,30 +120,37 @@ LeftCol=1
 
 [View2]
 Module=C:\projetos\Automafour\Oficial\Relatorios\Administrativo\RelatorioClienteCadastrado.pas
-CursorX=59
-CursorY=231
-TopLine=222
+CursorX=75
+CursorY=192
+TopLine=183
 LeftCol=1
 
 [View3]
-Module=C:\projetos\Automafour\Oficial\Relatorios\Fiscais\RelatorioContasRecebidas.pas
-CursorX=48
-CursorY=399
-TopLine=391
+Module=C:\projetos\Automafour\Oficial\Vendas\TelaImpressaoDuplicatas.pas
+CursorX=1
+CursorY=1084
+TopLine=1072
 LeftCol=1
 
 [View4]
-Module=C:\projetos\Automafour\Template\RelatorioTemplate.pas
-CursorX=74
-CursorY=207
-TopLine=197
+Module=C:\Acbr\trunk2\Fontes\ACBrBoleto\ACBrBoleto.pas
+CursorX=25
+CursorY=1462
+TopLine=1450
 LeftCol=1
 
 [View5]
-Module=C:\projetos\Automafour\Oficial\DataModulo.pas
-CursorX=75
-CursorY=871
-TopLine=861
+Module=C:\Acbr\trunk2\Fontes\ACBrBoleto\FC\Fortes\ACBrBoletoFCFortesFr.pas
+CursorX=68
+CursorY=611
+TopLine=605
+LeftCol=1
+
+[View6]
+Module=c:\acbr\trunk2\Fontes\ACBrBoleto\ACBrBancoSicredi.pas
+CursorX=51
+CursorY=174
+TopLine=387
 LeftCol=1
 
 [Watches]
@@ -158,8 +176,8 @@ Dockable=1
 
 [Breakpoints]
 Count=2
-Breakpoint0='C:\projetos\Automafour\Oficial\Relatorios\Fiscais\RelatorioContasRecebidas.pas',406,'',0,1,'',1,0,0,'',1,'','',''
-Breakpoint1='C:\projetos\Automafour\Oficial\Relatorios\Fiscais\RelatorioContasRecebidas.pas',353,'',0,1,'',1,0,0,'',1,'','',''
+Breakpoint0='C:\projetos\Automafour\Oficial\Relatorios\Fiscais\RelatorioContasRecebidas.pas',346,'',0,1,'',1,0,0,'',1,'','',''
+Breakpoint1='C:\Acbr\trunk2\Fontes\ACBrBoleto\FC\Fortes\ACBrBoletoFCFortesFr.pas',617,'',0,1,'',1,0,0,'',1,'','',''
 
 [AddressBreakpoints]
 Count=0
@@ -241,7 +259,7 @@ ClientHeight=60
 
 [PropertyInspector]
 Create=1
-Visible=0
+Visible=1
 State=0
 Left=0
 Top=29
@@ -256,8 +274,8 @@ LRDockWidth=190
 Dockable=1
 SplitPos=118
 ArrangeBy=Name
-SelectedItem=Caption
-ExpandedItems=Connect,DataSource,Font
+SelectedItem=Name
+ExpandedItems=Connect,DataSource
 HiddenCategories=
 
 [BreakpointWindow]
@@ -444,7 +462,7 @@ Dockable=1
 
 [fmGrepResults]
 Create=1
-Visible=0
+Visible=1
 State=0
 Left=396
 Top=2
@@ -492,7 +510,7 @@ Dockable=1
 
 [MessageView@EditWindow0]
 Create=1
-Visible=0
+Visible=1
 State=0
 Left=12
 Top=0

@@ -204,7 +204,7 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
           end
           object Label1: TLabel
             Left = 548
-            Top = 45
+            Top = 47
             Width = 118
             Height = 13
             Caption = 'Layout de impress'#227'o'
@@ -219,12 +219,12 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
             Left = 79
             Top = 3
             Width = 458
-            Height = 77
+            Height = 79
             TabOrder = 0
           end
           object ckImprimeMesReferencia: TCheckBox
-            Left = 545
-            Top = 11
+            Left = 548
+            Top = 1
             Width = 242
             Height = 17
             Caption = 'Imprimir Mes Anterior como Referencia'
@@ -237,8 +237,8 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
             TabOrder = 1
           end
           object cbxLayOut: TComboBox
-            Left = 545
-            Top = 59
+            Left = 548
+            Top = 61
             Width = 138
             Height = 21
             ItemHeight = 13
@@ -249,6 +249,34 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
             Items.Strings = (
               'Fatura'
               'Carne')
+          end
+          object cbVisualizarImpressao: TCheckBox
+            Left = 548
+            Top = 17
+            Width = 242
+            Height = 17
+            Caption = 'Visualizar Impress'#227'o'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentFont = False
+            TabOrder = 3
+          end
+          object cbImprimirMensagensPadroes: TCheckBox
+            Left = 548
+            Top = 32
+            Width = 242
+            Height = 17
+            Caption = 'Imprimir Mensagens Padr'#245'es'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentFont = False
+            TabOrder = 4
           end
         end
         object EditParcelas: TEdit
@@ -1455,7 +1483,9 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
       'De.Text'
       'Ate.Text'
       'MemoInst.Lines'
-      'ComboEmitidos.ItemIndex')
+      'ComboEmitidos.ItemIndex'
+      'cbImprimirMensagensPadroes.Checked'
+      'cbVisualizarImpressao.Checked')
     StoredValues = <>
     Left = 464
     Top = 16
@@ -1598,7 +1628,7 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
     DataSource = DSSQLEmpresa
     UserName = 'PipelEmpresa'
     Left = 640
-    Top = 97
+    Top = 73
     object PipelEmpresappField1: TppField
       Alignment = taRightJustify
       FieldAlias = 'EMPRICOD'
@@ -1770,8 +1800,8 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
   object PipeDuplicatas: TppDBPipeline
     DataSource = DSTblDuplicatas
     UserName = 'PipeDuplicatas'
-    Left = 640
-    Top = 125
+    Left = 776
+    Top = 69
   end
   object ReportDuplicatasServico: TppReport
     AutoStop = False
@@ -1798,8 +1828,8 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
     OutlineSettings.Visible = False
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = False
-    Left = 668
-    Top = 125
+    Left = 740
+    Top = 77
     Version = '10.06'
     mmColumnWidth = 209650
     DataPipelineName = 'PipeDuplicatas'
@@ -3510,8 +3540,8 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
     OutlineSettings.Visible = False
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = False
-    Left = 668
-    Top = 97
+    Left = 660
+    Top = 73
     Version = '10.06'
     mmColumnWidth = 209650
     DataPipelineName = 'PipeDuplicatas'
@@ -5400,8 +5430,8 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
     OutlineSettings.Visible = False
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = False
-    Left = 712
-    Top = 97
+    Left = 696
+    Top = 73
     Version = '10.06'
     mmColumnWidth = 203650
     DataPipelineName = 'PipeDuplicatas'
