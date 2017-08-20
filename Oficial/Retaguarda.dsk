@@ -1,22 +1,28 @@
 [Closed Files]
-File_0=SourceModule,'C:\projetos\Automafour\Oficial\Relatorios\Administrativo\RelatorioClienteCadastrado.pas',0,1,219,47,196,1,0
-File_1=SourceModule,'c:\acbr\trunk2\Fontes\ACBrBoleto\ACBrBancoSicredi.pas',0,1,80,24,93,0,0
-File_2=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\TelaImpressaoDuplicatas.pas',0,1,1053,33,1070,1,0
-File_3=SourceModule,'C:\Acbr\trunk2\Fontes\ACBrBoleto\FC\Fortes\ACBrBoletoFCFortesFr.pas',0,1,606,59,622,1,0
-File_4=SourceModule,'C:\Acbr\trunk2\Fontes\ACBrBoleto\ACBrBoleto.pas',0,1,1883,1,1895,0,0
-File_5=SourceModule,'c:\program files (x86)\borland\delphi7\source\rtl\common\Math.pas',0,1,1321,1,1333,0,0
-File_6=SourceModule,'C:\Acbr\trunk2\Fontes\ACBrComum\ACBrUtil.pas',0,1,31,14,45,0,0
-File_7=SourceModule,'C:\projetos\Automafour\Oficial\Relatorios\Fiscais\RelatorioContasRecebidas.pas',0,1,389,1,401,1,0
-File_8=SourceModule,'D:\Automafour\RelatorioContasRecebidas.pas',0,1,1,1,1,0,0
-File_9=SourceModule,'D:\Automafour\Desenv\GestaoOficial\UnitFinanceiro\RelatorioContasRecebidas.pas',0,1,1,139,5,1,0
+File_0=SourceModule,'c:\program files (x86)\borland\delphi7\source\rtl\Sys\sysutils.pas',0,1,2684,27,2699,0,0
+File_1=SourceModule,'C:\projetos\Automafour\Oficial\Cadastros\CadastroProdutos.pas',0,1,3464,18,3482,1,0
+File_2=SourceModule,'C:\projetos\Automafour\Oficial\ArquivosComuns\TelaEntradaRapidaEstoque.pas',0,1,77,43,84,1,0
+File_3=SourceModule,'C:\projetos\Automafour\Oficial\DataModulo.pas',0,1,1,1,1,1,0
+File_4=SourceModule,'C:\Acbr\trunk2\Fontes\ACBrBoleto\FC\Fortes\ACBrBoletoFCFortesFr.pas',0,1,506,1,523,0,0
+File_5=SourceModule,'C:\Acbr\trunk2\Fontes\ACBrBoleto\ACBrBoleto.pas',0,1,1700,1,1725,0,0
+File_6=SourceModule,'c:\acbr\trunk2\Fontes\ACBrBoleto\ACBrBancoSicredi.pas',0,1,327,11,353,0,0
+File_7=SourceModule,'C:\projetos\Automafour\Oficial\Cadastros\CadastroBanco.pas',0,1,16,38,13,0,0
+File_8=SourceModule,'C:\projetos\Automafour\Oficial\ArquivosComuns\TelaDadosTeleEntrega.pas',0,1,369,1,342,1,0
+File_9=SourceModule,'C:\projetos\Automafour\Oficial\Cadastros\TelaCadastroTarefa.pas',0,1,1,1,1,1,0
 
 [Modules]
-Module0=C:\projetos\Automafour\Oficial\Principal.pas
-Module1=C:\projetos\Automafour\Oficial\Retaguarda.dpr
-Count=2
+Module0=C:\projetos\Automafour\Oficial\Vendas\TelaImpressaoDuplicatas.pas
+Module1=C:\projetos\Automafour\Oficial\Vendas\udlgConfEmailBoleto.pas
+Module2=C:\projetos\Automafour\Oficial\Retaguarda.dpr
+Count=3
 EditWindowCount=1
 
-[C:\projetos\Automafour\Oficial\Principal.pas]
+[C:\projetos\Automafour\Oficial\Vendas\TelaImpressaoDuplicatas.pas]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
+
+[C:\projetos\Automafour\Oficial\Vendas\udlgConfEmailBoleto.pas]
 ModuleType=SourceModule
 FormState=0
 FormOnTop=0
@@ -34,54 +40,54 @@ FormOnTop=0
 FormState=0
 FormOnTop=0
 
-[C:\projetos\Automafour\Template\RelatorioTemplate.pas]
-FormState=0
-FormOnTop=0
-
-[C:\projetos\Automafour\Template\PrincipalTemplate.pas]
-FormState=0
-FormOnTop=0
-
 [EditWindow0]
-ViewCount=2
+ViewCount=3
 CurrentView=1
 View0=0
 View1=1
+View2=2
 CodeExplorer=CodeExplorer@EditWindow0
 MessageView=MessageView@EditWindow0
 Create=1
 Visible=1
 State=2
-Left=269
-Top=254
-Width=1097
+Left=297
+Top=140
+Width=1069
 Height=485
 MaxLeft=-8
-MaxTop=115
+MaxTop=107
 MaxWidth=1382
-MaxHeight=621
+MaxHeight=629
 ClientWidth=1366
-ClientHeight=582
+ClientHeight=590
 LeftPanelSize=0
 LeftPanelClients=CodeExplorer@EditWindow0
 LeftPanelData=00000400010000000C000000436F64654578706C6F726572000000000000000000000000000000000001000000000000000000000000FFFFFFFF
 RightPanelSize=0
 BottomPanelSize=0
 BottomPanelClients=MessageView@EditWindow0
-BottomPanelData=00000400010000000B0000004D6573736167655669657756050000000000000255000000000000000100000000000000000000000001000000005605000000000000010000000056050000000000000100000000560500000B0000004D65737361676556696577FFFFFFFF
+BottomPanelData=00000400010000000B0000004D6573736167655669657756050000000000000255000000000000000100000000000000000000000001000000005605000000000000FFFFFFFF
 
 [View0]
 Module=C:\projetos\Automafour\Oficial\Retaguarda.dpr
-CursorX=32
-CursorY=441
-TopLine=430
+CursorX=35
+CursorY=451
+TopLine=441
 LeftCol=1
 
 [View1]
-Module=C:\projetos\Automafour\Oficial\Principal.pas
-CursorX=80
-CursorY=2667
-TopLine=2663
+Module=C:\projetos\Automafour\Oficial\Vendas\TelaImpressaoDuplicatas.pas
+CursorX=1
+CursorY=1154
+TopLine=1129
+LeftCol=1
+
+[View2]
+Module=C:\projetos\Automafour\Oficial\Vendas\udlgConfEmailBoleto.pas
+CursorX=11
+CursorY=39
+TopLine=31
 LeftCol=1
 
 [Watches]
@@ -106,11 +112,12 @@ LRDockWidth=426
 Dockable=1
 
 [Breakpoints]
-Count=4
-Breakpoint0='C:\projetos\Automafour\Oficial\Relatorios\Fiscais\RelatorioContasRecebidas.pas',346,'',0,1,'',1,0,0,'',1,'','',''
-Breakpoint1='C:\Acbr\trunk2\Fontes\ACBrBoleto\FC\Fortes\ACBrBoletoFCFortesFr.pas',618,'',0,1,'',1,0,0,'',1,'','',''
-Breakpoint2='C:\Acbr\trunk2\Fontes\ACBrBoleto\ACBrBoleto.pas',1821,'',0,1,'',1,0,0,'',1,'','',''
-Breakpoint3='C:\Acbr\trunk2\Fontes\ACBrBoleto\ACBrBoleto.pas',1859,'',0,1,'',1,0,0,'',1,'','',''
+Count=5
+Breakpoint0='C:\projetos\Automafour\Oficial\Vendas\TelaImpressaoDuplicatas.pas',1377,'',0,1,'',1,0,0,'',1,'','',''
+Breakpoint1='c:\acbr\trunk2\Fontes\ACBrBoleto\ACBrBancoSicredi.pas',342,'',0,1,'',1,0,0,'',1,'','',''
+Breakpoint2='c:\acbr\trunk2\Fontes\ACBrBoleto\ACBrBancoSicredi.pas',628,'',0,1,'',1,0,0,'',1,'','',''
+Breakpoint3='c:\acbr\trunk2\Fontes\ACBrBoleto\ACBrBancoSicredi.pas',206,'',0,1,'',1,0,0,'',1,'','',''
+Breakpoint4='C:\projetos\Automafour\Oficial\Vendas\TelaImpressaoDuplicatas.pas',1528,'',0,1,'',1,0,0,'',1,'','',''
 
 [AddressBreakpoints]
 Count=0
@@ -118,28 +125,30 @@ Count=0
 [Main Window]
 Create=1
 Visible=1
-State=0
+State=2
 Left=0
-Top=0
+Top=2
 Width=1366
 Height=123
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=1350
+MaxWidth=1382
+MaxHeight=123
+ClientWidth=1366
 ClientHeight=84
 
 [ProjectManager]
 Create=1
 Visible=0
 State=0
-Left=369
-Top=372
-Width=446
-Height=318
+Left=1141
+Top=117
+Width=213
+Height=605
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=430
-ClientHeight=279
+ClientWidth=197
+ClientHeight=566
 TBDockHeight=318
 LRDockWidth=446
 Dockable=1
@@ -194,21 +203,21 @@ ClientHeight=60
 Create=1
 Visible=1
 State=0
-Left=0
-Top=29
-Width=380
-Height=700
+Left=-2
+Top=101
+Width=286
+Height=567
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=364
-ClientHeight=661
-TBDockHeight=364
-LRDockWidth=190
+ClientWidth=270
+ClientHeight=528
+TBDockHeight=628
+LRDockWidth=866
 Dockable=1
-SplitPos=118
+SplitPos=119
 ArrangeBy=Name
 SelectedItem=
-ExpandedItems=Connect,DataSource
+ExpandedItems=DataBinding,DataController,DataController.DataSource,DataSource.DataSet,DataSource.DataSet.MasterSource,DataSource.DataSet.MasterSource.DataSet,Font.Style,ListSource.DataSet,LookupDataSet,Options,PreviewOptions,Style.Font,Title
 HiddenCategories=
 
 [BreakpointWindow]
@@ -235,7 +244,7 @@ Column5Width=75
 
 [CallStackWindow]
 Create=1
-Visible=0
+Visible=1
 State=0
 Left=536
 Top=303
@@ -271,10 +280,10 @@ Column3Width=250
 
 [ObjectTree]
 Create=1
-Visible=1
+Visible=0
 State=0
-Left=0
-Top=123
+Left=387
+Top=41
 Width=190
 Height=240
 MaxLeft=-1
@@ -405,8 +414,8 @@ MaxLeft=-1
 MaxTop=-1
 ClientWidth=866
 ClientHeight=640
-TBDockHeight=679
-LRDockWidth=882
+TBDockHeight=628
+LRDockWidth=866
 Dockable=1
 
 [fmToDo]

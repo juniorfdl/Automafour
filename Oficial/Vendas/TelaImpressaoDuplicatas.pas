@@ -432,6 +432,7 @@ type
     ckSemLote: TCheckBox;
     cbVisualizarImpressao: TCheckBox;
     cbImprimirMensagensPadroes: TCheckBox;
+    ConfigurarEMail1: TMenuItem;
     procedure BtnSelecionarDocClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure MnDuplicatasClick(Sender: TObject);
@@ -460,6 +461,7 @@ type
     procedure CarnePagamentoAvulso1Click(Sender: TObject);
     procedure ppDetailBand3BeforePrint(Sender: TObject);
     procedure ReportCarneAvulsoPreviewFormCreate(Sender: TObject);
+    procedure ConfigurarEMail1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -474,7 +476,7 @@ var
 
 implementation
 
-uses ExtensoLib, DataModulo, TypInfo, Math;
+uses ExtensoLib, DataModulo, TypInfo, Math, udlgConfEmailBoleto;
 
 {$R *.dfm}
 
@@ -1126,9 +1128,28 @@ end;
 
 procedure TFormTelaImpressaoDuplicata.EnviaEmailAcbr;
 var xbody, xAnexo, xCopia : TStringList;
+  MENSAGEM, ASSUNTO, Email:String;
 begin
    if TblDuplicatasCLIEA60EMAIL.value <> '' then
      begin
+       Email := TblDuplicatasCLIEA60EMAIL.value;
+
+       with ExecSql(' select ASSUNTO, MENSAGEM from CONFIGEMAIL ') do
+       begin
+         ASSUNTO := FieldByName('ASSUNTO').AsString;
+         MENSAGEM := FieldByName('MENSAGEM').AsString;
+       end;
+
+       if (MENSAGEM <> '') then
+       begin
+          MENSAGEM := StringReplace(MENSAGEM,'<NOME>',TblDuplicatasCLIEA60RAZAOSOC.AsString,[rfReplaceAll, rfIgnoreCase]);
+          MENSAGEM := StringReplace(MENSAGEM,'<FANTASIA>',TblDuplicatasCLIEA60NOMEFANT.AsString,[rfReplaceAll, rfIgnoreCase]);
+          MENSAGEM := StringReplace(MENSAGEM,'<CIDADE>',TblDuplicatasCLIEA60CIDRES.AsString,[rfReplaceAll, rfIgnoreCase]);
+          MENSAGEM := StringReplace(MENSAGEM,'<BAIRRO>',TblDuplicatasCLIEA60BAIRES.AsString,[rfReplaceAll, rfIgnoreCase]);
+          MENSAGEM := StringReplace(MENSAGEM,'<VALOR>',FormatFloat('0.,00',TblDuplicatasTotalDocumento.AsFloat),[rfReplaceAll, rfIgnoreCase]);
+          MENSAGEM := StringReplace(MENSAGEM,'<VENCIMENTO>',TblDuplicatasCTRCDVENC.AsString,[rfReplaceAll, rfIgnoreCase]);
+       end;
+
        {Setar nome arquivo e caminho que sera gerado o pdf}
        if SQLContaCorrenteBANCA5COD.Value = '041' then
          ACBrBoletoFCFortes1.NomeArquivo := 'Cobranca\Banrisul\Boletos\Boleto_Banrisul_'+TblDuplicatasCLIEA60RAZAOSOC.Value+'_'+TblDuplicatasCTRCA13ID.Value+'.pdf';
@@ -1146,7 +1167,11 @@ begin
          ACBrMail1.IsHTML    := True;
 
          xbody := TStringList.Create; //Instanciando objeto TStringList
-         xbody.Add('Segue em anexo o Boleto para Pagamento!');
+
+         if MENSAGEM = '' then
+           xbody.Add('Segue em anexo o Boleto para Pagamento!')
+         else
+           xbody.Text := MENSAGEM;  
 
          xCopia := TStringList.Create; //Instanciando objeto TStringList
          xAnexo := TStringList.Create; //Instanciando objeto TStringList
@@ -1161,9 +1186,12 @@ begin
          else
            ACBrMail1.SetTLS := False;
 
+         if ASSUNTO = '' then
+           ASSUNTO := 'Boleto de Cobrança.';
+
          { o acbr gera o pdf e anexa ao chamar a funcao EnviarEmail }
-         ACBrBoleto1.EnviarEmail(TblDuplicatasCLIEA60EMAIL.value, {para}
-                                 'Boleto de Cobrança.', {assunto}
+         ACBrBoleto1.EnviarEmail(Email, {para}
+                                 ASSUNTO, {assunto}
                                  xbody,   {body}
                                  True,   {envia pdf}
                                  xCopia,  {copia carbono}
@@ -1569,6 +1597,17 @@ procedure TFormTelaImpressaoDuplicata.ReportCarneAvulsoPreviewFormCreate(
 begin
   inherited;
   ReportCarneAvulso.PreviewForm.WindowState := wsMaximized;
+end;
+
+procedure TFormTelaImpressaoDuplicata.ConfigurarEMail1Click(
+  Sender: TObject);
+var
+  fdlgConfEmailBoleto: TfdlgConfEmailBoleto;
+begin
+  inherited;
+  fdlgConfEmailBoleto:= TfdlgConfEmailBoleto.Create(self);
+  fdlgConfEmailBoleto.ShowModal;
+  FreeAndNil(fdlgConfEmailBoleto);
 end;
 
 end.

@@ -1,8 +1,8 @@
 object FormTelaCadastroDadosVenda: TFormTelaCadastroDadosVenda
   Left = 245
   Top = 105
-  Width = 458
-  Height = 490
+  Width = 510
+  Height = 508
   Caption = 'Cadastro Dados da Venda'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -22,8 +22,8 @@ object FormTelaCadastroDadosVenda: TFormTelaCadastroDadosVenda
   object Shape4: TShape
     Left = 0
     Top = 0
-    Width = 432
-    Height = 455
+    Width = 494
+    Height = 469
     Align = alClient
     Pen.Color = 14531001
     Pen.Width = 2

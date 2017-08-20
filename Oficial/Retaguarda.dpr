@@ -435,7 +435,8 @@ uses
   RelatorioNotaFiscalItensCobrancaFrete in 'Relatorios\Financeiro\RelatorioNotaFiscalItensCobrancaFrete.pas' {FormRelatorioNotaFiscalItensCobrancaFrete},
   TelaAtivacao in 'TelaAtivacao.pas' {FormTelaAtivacao},
   uSobre in 'uSobre.pas' {fSobre},
-  JsonToDataSetConverter in '..\..\..\Program Files (x86)\Borland\Componentes\rest-client-api\src\JsonToDataSetConverter.pas';
+  JsonToDataSetConverter in '..\..\..\Program Files (x86)\Borland\Componentes\rest-client-api\src\JsonToDataSetConverter.pas',
+  udlgConfEmailBoleto in 'Vendas\udlgConfEmailBoleto.pas' {fdlgConfEmailBoleto};
 
 {$R *.res}
 
@@ -447,8 +448,7 @@ begin
   bRetaguarda := true;
   Application.Title := 'Gestão Empresarial - Módulo Faturamento';
 
-  Application.CreateForm(TDM, DM);    
-
+  Application.CreateForm(TDM, DM);
   if (DM.OBSAutorizacao <> '')or(dm.SQLConfigGeralCFGECBLOQ.AsString = 'S') then //and(not DelphiAberto) then
   begin
     FormTelaAtivacao := TFormTelaAtivacao.Create(Application);

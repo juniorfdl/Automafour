@@ -1592,6 +1592,10 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
       Caption = 'Duplicata de Servi'#231'o'
       OnClick = MnDuplicatasClick
     end
+    object ConfigurarEMail1: TMenuItem
+      Caption = 'Configurar E-Mail'
+      OnClick = ConfigurarEMail1Click
+    end
   end
   object MenuOptions: TPopupMenu
     Left = 288
