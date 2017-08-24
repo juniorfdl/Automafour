@@ -1,7 +1,7 @@
 inherited FormPrincipal: TFormPrincipal
   Tag = 4
-  Left = -11
-  Top = 0
+  Left = 13
+  Top = 101
   Width = 1382
   Height = 744
   Caption = 'Advanced Control'
@@ -10,7 +10,7 @@ inherited FormPrincipal: TFormPrincipal
   PixelsPerInch = 96
   TextHeight = 13
   inherited RodapePrincipal: TStatusBar
-    Top = 666
+    Top = 667
     Width = 1366
   end
   inherited ptopo: TAdvOfficeStatusBar
@@ -2842,6 +2842,13 @@ inherited FormPrincipal: TFormPrincipal
         object ApagarOramento30Dias1: TMenuItem
           Caption = 'Apagar Or'#231'amento 30 Dias'
           OnClick = ApagarOramento30Dias1Click
+        end
+      end
+      object Especiais1: TMenuItem
+        Caption = 'Especiais'
+        object AtualizaodoEstoquedasVendasdosPDVs1: TMenuItem
+          Caption = 'Atualiza'#231#227'o do Estoque das Vendas dos PDVs'
+          OnClick = MnAtualizaodeEstoquedasVendasdosPDVsClick
         end
       end
     end

@@ -149,20 +149,30 @@ inherited FormRelatorioExtratoCliente: TFormRelatorioExtratoCliente
     object TblTemporariaCTRCDVENC: TDateTimeField
       FieldName = 'CTRCDVENC'
     end
-    object TblTemporariaCTRCN2VLR: TFloatField
+    object TblTemporariaCTRCN2VLR: TBCDField
       FieldName = 'CTRCN2VLR'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaCTRCN2TXJURO: TFloatField
+    object TblTemporariaCTRCN2TXJURO: TBCDField
       FieldName = 'CTRCN2TXJURO'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaCTRCN2TXMULTA: TFloatField
+    object TblTemporariaCTRCN2TXMULTA: TBCDField
       FieldName = 'CTRCN2TXMULTA'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaCTRCN2TOTMULTACOBR: TFloatField
+    object TblTemporariaCTRCN2TOTMULTACOBR: TBCDField
       FieldName = 'CTRCN2TOTMULTACOBR'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaCTRCN2TOTREC: TFloatField
+    object TblTemporariaCTRCN2TOTREC: TBCDField
       FieldName = 'CTRCN2TOTREC'
+      Precision = 15
+      Size = 3
     end
     object TblTemporariaSALDO: TFloatField
       FieldName = 'SALDO'

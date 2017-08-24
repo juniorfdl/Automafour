@@ -32,6 +32,8 @@ type
     SQLMovimentoCaixaOPCXA60DESCR: TStringField;
     SQLMovimentoCaixaNUMEA30DESCR: TStringField;
     SQLMovimentoCaixaUSUAA60LOGIN: TStringField;
+    RadioTipo: TRadioGroup;
+    SQLMovimentoCaixaCREDITO: TFloatField;
     TblTemporariaEMPRICOD: TIntegerField;
     TblTemporariaTERMICOD: TIntegerField;
     TblTemporariaNUMEICOD: TIntegerField;
@@ -39,14 +41,12 @@ type
     TblTemporariaOPCXICOD: TIntegerField;
     TblTemporariaUSUAICOD: TIntegerField;
     TblTemporariaMVCXA15DOCORIG: TStringField;
-    TblTemporariaDEBITO: TFloatField;
+    TblTemporariaDEBITO: TBCDField;
+    TblTemporariaCREDITO: TBCDField;
     TblTemporariaMVCXA255HIST: TStringField;
     TblTemporariaOPCXA60DESCR: TStringField;
     TblTemporariaNUMEA30DESCR: TStringField;
     TblTemporariaUSUAA60LOGIN: TStringField;
-    RadioTipo: TRadioGroup;
-    SQLMovimentoCaixaCREDITO: TFloatField;
-    TblTemporariaCREDITO: TFloatField;
     procedure ExecutarBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
@@ -60,7 +60,7 @@ var
 
 implementation
 
-uses DataModulo;
+uses DataModulo, UnitLibrary;
 
 {$R *.dfm}
 
@@ -83,7 +83,8 @@ begin
     SQLMovimentoCaixa.MacrobyName('MNumerario').Value := '0=0' ;
 
   SQLMovimentoCaixa.Open;
-  BatchExec(SQLMovimentoCaixa, TblTemporaria);
+  CopyQueryTable(SQLMovimentoCaixa,TblTemporaria);
+//BatchExec(SQLMovimentoCaixa, TblTemporaria);
   //----------------------------------------------------------------------------------------------------------
   Report.ReportName        := DM.SQLConfigGeralCFGEA255PATHREPORT.Value + '\Totais por Numerario do Caixa.rpt';
   Report.ReportTitle       := 'Relatório Totais por Numerário do Caixa';
