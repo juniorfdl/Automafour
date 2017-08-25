@@ -712,6 +712,15 @@ begin
                 LblNomeCliente.Caption := DM.SQLTemplate.FieldByName('CLIEA60NOMEFANT').AsString;
 
               if ImportandoPreVenda then
+              begin
+                if NomeClienteVenda <> '' then
+                  LblNomeCliente.Caption := NomeClienteVenda;
+              end;
+
+              if trim(NomeClienteVenda) = '' then
+                NomeClienteVenda := LblNomeCliente.Caption;
+
+              if trim(LblNomeCliente.Caption) = '' then
                 LblNomeCliente.Caption := NomeClienteVenda;
 
             end
@@ -2338,6 +2347,8 @@ begin
                                               LinhaTextoLivre(ECFAtual, PortaECFAtual, '--------------------------------------------');
                                             end;
                                         end;
+                                        
+                                      {ver aqui}
                                       LinhaTextoLivre(ECFAtual, PortaECFAtual, 'DECLARO PARA OS DEVIDOS FINS QUE RECEBI A(S)    ' +
                                                                                'MERCADORIA(S) CONSTANTE(S) NO PRESENTE CUPOM    ' +
                                                                                'FISCAL DE PAGAMENTO(S) PREVISTO(S), BEM COMO    ' +
@@ -2360,6 +2371,7 @@ begin
                             end
                           else
                             begin
+                              {ver aqui}
                               if ECFAtual = 'CORISCO CT7000 V3' then
                                 EmiteCNFV_Corisco(ECFAtual,PortaECFAtual,'CONFISSAO DE DIVIDA' + Chr(13),'DECLARO PARA OS DEVIDOS FINS QUE RECEBI A(S)    '  + Chr(10) +
                                                                         'MERCADORIA(S) CONSTANTE(S) NO PRESENTE CUPOM    ' + Chr(10) +
