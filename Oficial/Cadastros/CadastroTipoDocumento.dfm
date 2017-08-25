@@ -1,6 +1,5 @@
 inherited FormCadastroTipoDocumento: TFormCadastroTipoDocumento
-  Left = 286
-  Top = 230
+  Left = 329
   Caption = 'Cadastro de Tipos de Documentos'
   OldCreateOrder = True
   PixelsPerInch = 96
@@ -63,9 +62,23 @@ inherited FormCadastroTipoDocumento: TFormCadastroTipoDocumento
             object Label2: TLabel
               Left = 75
               Top = 3
-              Width = 55
+              Width = 112
               Height = 13
-              Caption = 'Descri'#231#227'o'
+              Caption = 'Valor Taxa Banc'#225'ria'
+              FocusControl = DBEdit2
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = 8404992
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
+            object Label3: TLabel
+              Left = 530
+              Top = 3
+              Width = 112
+              Height = 13
+              Caption = 'Valor Taxa Banc'#225'ria'
               FocusControl = DBEdit2
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 8404992
@@ -91,6 +104,15 @@ inherited FormCadastroTipoDocumento: TFormCadastroTipoDocumento
               DataField = 'TPDCA60DESCR'
               DataSource = DSTemplate
               TabOrder = 1
+            end
+            object DBEdit3: TDBEdit
+              Left = 530
+              Top = 16
+              Width = 127
+              Height = 21
+              DataField = 'VLRTAXA'
+              DataSource = DSTemplate
+              TabOrder = 2
             end
           end
         end
@@ -126,6 +148,10 @@ inherited FormCadastroTipoDocumento: TFormCadastroTipoDocumento
       FieldName = 'REGISTRO'
       Origin = 'DB.TIPODOCUMENTO.REGISTRO'
       Visible = False
+    end
+    object SQLTemplateVLRTAXA: TFloatField
+      FieldName = 'VLRTAXA'
+      Origin = 'EASY_GESTAO.TIPODOCUMENTO.VLRTAXA'
     end
   end
 end

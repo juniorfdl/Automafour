@@ -1,6 +1,6 @@
 inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
-  Left = 361
-  Top = 123
+  Left = 208
+  Top = 125
   Width = 847
   Height = 507
   Caption = 'Emiss'#227'o de Boletos e Duplicatas'
@@ -9,10 +9,10 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
   TextHeight = 13
   inherited ScrollBoxFundo: TScrollBox
     Width = 831
-    Height = 468
+    Height = 469
     inherited PanelCentral: TPanel
       Width = 827
-      Height = 384
+      Height = 385
       inherited PanelBarra: TPanel
         Width = 827
         Height = 255
@@ -409,7 +409,7 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
         Left = 0
         Top = 255
         Width = 827
-        Height = 129
+        Height = 130
         Hint = 
           'Clique com o bot'#227'o direito do mouse para visualizar outras fun'#231#245 +
           'es...'
@@ -789,10 +789,12 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
       '  CL.CLIEA2UFCOB,'
       '  CL.CLIEA8CEPCOB,'
       '  CL.CLIEA60EMAIL,'
-      '  CL.CLIEA5NROENDRES'
+      '  CL.CLIEA5NROENDRES,'
+      '  TP.VLRTAXA'
       'from'
       '  CONTASRECEBER CR'
       '  LEFT OUTER JOIN CLIENTE CL ON CR.CLIEA13ID = CL.CLIEA13ID'
+      '  LEFT OUTER JOIN TIPODOCUMENTO TP ON TP.TPDCICOD = CR.TPDCICOD'
       'where'
       '  ((CR.CTRCCSTATUS <> '#39'C'#39') or (CR.CTRCCSTATUS is null)) and'
       '  (CR.CTRCA5TIPOPADRAO not in ('#39'CHQ'#39','#39'CHQV'#39','#39'CHQP'#39')) and'
@@ -1088,6 +1090,9 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
       FieldName = 'CTRCA254HIST'
       FixedChar = True
       Size = 254
+    end
+    object SQLContasReceberVLRTAXA: TFloatField
+      FieldName = 'VLRTAXA'
     end
   end
   object SQLCliente: TRxQuery

@@ -19,6 +19,9 @@ type
     DBEdit1: TDBEdit;
     Label2: TLabel;
     DBEdit2: TDBEdit;
+    DBEdit3: TDBEdit;
+    Label3: TLabel;
+    SQLTemplateVLRTAXA: TFloatField;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }

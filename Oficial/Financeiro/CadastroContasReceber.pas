@@ -316,6 +316,9 @@ type
     DBEdit5: TDBEdit;
     CorrigeTotalRecebidoSafe1: TMenuItem;
     SQLTemplateLOTEREMESSABANCO: TIntegerField;
+    DBEdit6: TDBEdit;
+    Label20: TLabel;
+    SQLTemplateCTRCN2VLRTAXA: TFloatField;
     procedure FormCreate(Sender: TObject);
     procedure SQLTemplateCalcFields(DataSet: TDataSet);
     procedure BtnClienteClick(Sender: TObject);
@@ -372,6 +375,7 @@ type
     procedure MnReciboClick(Sender: TObject);
     procedure ppHeaderBand2BeforePrint(Sender: TObject);
     procedure CorrigeTotalRecebidoSafe1Click(Sender: TObject);
+    procedure ComboTipoDocCadExit(Sender: TObject);
   private
     Replicando : Boolean;
     function Estorna: Boolean;
@@ -1546,6 +1550,12 @@ begin
       application.ProcessMessages;
       sqltemplate.Next;
     end;
+end;
+
+procedure TFormCadastroContasReceber.ComboTipoDocCadExit(Sender: TObject);
+begin
+  inherited;
+  SQLTemplateCTRCN2VLRTAXA.AsFloat := SQLTipoDocumento.FieldByname('VLRTAXA').AsFloat;
 end;
 
 end.

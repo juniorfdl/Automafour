@@ -211,7 +211,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
               ParentFont = False
             end
             object Label8: TLabel
-              Left = 222
+              Left = 264
               Top = 109
               Width = 50
               Height = 13
@@ -224,7 +224,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
               ParentFont = False
             end
             object RetornaPortador: TSpeedButton
-              Left = 403
+              Left = 418
               Top = 122
               Width = 21
               Height = 20
@@ -257,7 +257,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
               OnClick = RetornaPortadorClick
             end
             object RetornaTipoDoc: TSpeedButton
-              Left = 197
+              Left = 162
               Top = 122
               Width = 21
               Height = 20
@@ -303,7 +303,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
               ParentFont = False
             end
             object Label19: TLabel
-              Left = 429
+              Left = 449
               Top = 108
               Width = 134
               Height = 13
@@ -317,7 +317,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
               ParentFont = False
             end
             object Label6: TLabel
-              Left = 586
+              Left = 594
               Top = 108
               Width = 81
               Height = 13
@@ -408,6 +408,19 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
               Width = 80
               Height = 13
               Caption = 'Remessa Lote'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clNavy
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
+            object Label20: TLabel
+              Left = 188
+              Top = 109
+              Width = 66
+              Height = 13
+              Caption = 'Tx Banc'#225'ria'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clNavy
               Font.Height = -11
@@ -545,9 +558,9 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
               TabOrder = 2
             end
             object ComboPortadorCad: TRxDBLookupCombo
-              Left = 250
+              Left = 296
               Top = 122
-              Width = 152
+              Width = 121
               Height = 21
               Cursor = crHandPoint
               DropDownCount = 8
@@ -563,7 +576,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
             object ComboTipoDocCad: TRxDBLookupCombo
               Left = 36
               Top = 122
-              Width = 160
+              Width = 127
               Height = 21
               Cursor = crHandPoint
               DropDownCount = 8
@@ -574,12 +587,13 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
               LookupDisplay = 'TPDCA60DESCR'
               LookupSource = DSSQLTipoDocumento
               TabOrder = 12
+              OnExit = ComboTipoDocCadExit
               OnKeyDown = ComboTipoDocCadKeyDown
             end
             object ComboCompetenciaMes: TRxDBComboBox
-              Left = 427
+              Left = 446
               Top = 121
-              Width = 98
+              Width = 92
               Height = 21
               Style = csDropDownList
               DataField = 'CTRCA2MESCOMP'
@@ -615,7 +629,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
                 '12')
             end
             object ComboAno: TRxDBComboBox
-              Left = 528
+              Left = 541
               Top = 121
               Width = 50
               Height = 21
@@ -665,7 +679,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
               TabOrder = 11
             end
             object DBEdit11: TDBEdit
-              Left = 220
+              Left = 264
               Top = 122
               Width = 29
               Height = 21
@@ -674,9 +688,9 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
               TabOrder = 13
             end
             object RxDBComboBox1: TRxDBComboBox
-              Left = 584
+              Left = 596
               Top = 121
-              Width = 92
+              Width = 78
               Height = 21
               Color = 16249066
               DataField = 'CTRCCEMITIDOBOLETO'
@@ -772,6 +786,15 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
               ParentFont = False
               ReadOnly = True
               TabOrder = 20
+            end
+            object DBEdit6: TDBEdit
+              Left = 188
+              Top = 122
+              Width = 71
+              Height = 21
+              DataField = 'CTRCN2VLRTAXA'
+              DataSource = DSTemplate
+              TabOrder = 21
             end
           end
           inherited PagePrincipal: TPageControl [1]
@@ -1920,6 +1943,10 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
       FieldName = 'LOTEREMESSABANCO'
       Origin = 'DB.CONTASRECEBER.LOTEREMESSABANCO'
     end
+    object SQLTemplateCTRCN2VLRTAXA: TFloatField
+      FieldName = 'CTRCN2VLRTAXA'
+      Origin = 'DB.CONTASRECEBER.CTRCN2VLRTAXA'
+    end
   end
   inherited UpdateSQLTemplate: TUpdateSQL
     ModifySQL.Strings = (
@@ -2414,7 +2441,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
   object SQLTipoDocumento: TRxQuery
     DatabaseName = 'DB'
     SQL.Strings = (
-      'SELECT TPDCICOD, TPDCA60DESCR FROM TIPODOCUMENTO'
+      'SELECT TPDCICOD, TPDCA60DESCR,VLRTAXA FROM TIPODOCUMENTO'
       'ORDER BY TPDCA60DESCR')
     Macros = <>
     Left = 48

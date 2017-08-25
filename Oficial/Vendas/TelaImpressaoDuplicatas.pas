@@ -433,6 +433,7 @@ type
     cbVisualizarImpressao: TCheckBox;
     cbImprimirMensagensPadroes: TCheckBox;
     ConfigurarEMail1: TMenuItem;
+    SQLContasReceberVLRTAXA: TFloatField;
     procedure BtnSelecionarDocClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure MnDuplicatasClick(Sender: TObject);
