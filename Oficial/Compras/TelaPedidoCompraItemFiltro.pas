@@ -230,6 +230,12 @@ type
     zComprasQTDCompra: TFloatField;
     zComprasOPESA60DESCR: TStringField;
     zComprasNOCPA30NRO: TStringField;
+    sqlEmpresa: TRxQuery;
+    dsEmpresa: TDataSource;
+    sqlEmpresaEMPRICOD: TIntegerField;
+    sqlEmpresaEMPRA60NOMEFANT: TStringField;
+    Label34: TLabel;
+    RxDBLookupCombo1: TRxDBLookupCombo;
     procedure BTFiltrarClick(Sender: TObject);
     procedure BtnFecharTelaClick(Sender: TObject);
     procedure BtSugestaoClick(Sender: TObject);
@@ -263,6 +269,7 @@ type
     procedure ppDetailBand1BeforePrint(Sender: TObject);
     procedure ppHeaderBand1BeforePrint(Sender: TObject);
     procedure ppListagemPreviewFormCreate(Sender: TObject);
+    procedure RxDBLookupCombo1Change(Sender: TObject);
   private
     { Private declarations }
   public
@@ -749,6 +756,8 @@ begin
   SQLGrupo.Open;
   SQLSubGrupo.Open;
   SQLFornecedor.Open;
+  sqlEmpresa.Open;
+  RxDBLookupCombo1.Value := sqlEmpresaEMPRICOD.AsString;
 end;
 
 procedure TFormTelaPedidoCompraItemFiltro.DSTblTemporariaDataChange(
@@ -970,6 +979,14 @@ begin
   inherited;
   ppListagem.PreviewForm.WindowState := wsMaximized;
   TppViewer(ppListagem.PreviewForm.Viewer).ZoomPercentage := 100;
+end;
+
+procedure TFormTelaPedidoCompraItemFiltro.RxDBLookupCombo1Change(
+  Sender: TObject);
+begin
+  inherited;
+  EmpresaPadraoPedidosCompra := sqlEmpresaEMPRICOD.AsString;
+
 end;
 
 end.

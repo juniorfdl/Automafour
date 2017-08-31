@@ -60,11 +60,15 @@ type
     SQLTempQUANTIDADE: TFloatField;
     SQLTempVLRLUCROITEM: TFloatField;
     Label6: TLabel;
+    SQLSubgrupoSUBGA60DESCR: TStringField;
+    SQLSubgrupoSUBGICOD: TIntegerField;
     procedure ExecutarBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
     procedure ComboGrupoKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure ComboGrupoChange(Sender: TObject);
+    procedure ComboSubGrupoChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -348,9 +352,7 @@ end;
 procedure TFormRelatorioCurvaABC.FormCreate(Sender: TObject);
 begin
   inherited;
-  SQLGrupo.Open ;
-  SQLSubGrupo.Open ;
-  SQLVariacao.Open ;
+  SQLGrupo.Open ; 
   SQLMarca.Open ;
 end;
 
@@ -376,6 +378,25 @@ begin
   if key = Vk_Return then
   if ((sender as trxdblookupcombo).Value = '')  or ((sender as trxdblookupcombo).Value <> (sender as trxdblookupcombo).LookupSource.DataSet.FieldByName((sender as trxdblookupcombo).LookupField).Value) then
       (sender as trxdblookupcombo).KeyValue := (sender as trxdblookupcombo).LookupSource.DataSet.FieldByName((sender as trxdblookupcombo).LookupField).Value;
+end;
+
+procedure TFormRelatorioCurvaABC.ComboGrupoChange(Sender: TObject);
+begin
+  inherited;
+  SQLSubGrupo.Close;
+  SQLSubgrupo.SQL.Text := ' Select * from Subgrupo where GRUPICOD = ' +
+    IntToStr(SQLGrupo.fieldbyname('GRUPICOD').AsInteger);
+  SQLSubGrupo.Open;
+end;
+
+procedure TFormRelatorioCurvaABC.ComboSubGrupoChange(Sender: TObject);
+begin
+  inherited;
+
+  SQLVariacao.Close;
+  SQLVariacao.SQL.Text := ' Select * from Variacao where GRUPICOD = '+IntToStr(SQLGrupo.fieldbyname('GRUPICOD').AsInteger)
+    +' and SUBGICOD =  '+ inttostr(SQLSubgrupo.fieldbyname('SUBGICOD').AsInteger)
+  SQLVariacao.Open;   
 end;
 
 end.

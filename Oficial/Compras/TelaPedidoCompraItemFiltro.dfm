@@ -17,7 +17,7 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       Left = 0
       Top = 0
       Width = 1366
-      Height = 124
+      Height = 141
       Align = alTop
       Color = 16249066
       Font.Charset = ANSI_CHARSET
@@ -30,7 +30,7 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       TabOrder = 0
       object Label5: TLabel
         Left = 393
-        Top = 53
+        Top = 43
         Width = 34
         Height = 13
         Caption = 'Grupo'
@@ -43,7 +43,7 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object Label6: TLabel
         Left = 557
-        Top = 53
+        Top = 43
         Width = 55
         Height = 13
         Caption = 'SubGrupo'
@@ -56,7 +56,7 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object Label7: TLabel
         Left = 721
-        Top = 53
+        Top = 43
         Width = 64
         Height = 13
         Caption = 'Fornecedor'
@@ -69,7 +69,7 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object Label8: TLabel
         Left = 853
-        Top = 17
+        Top = 7
         Width = 35
         Height = 13
         Caption = 'Marca'
@@ -82,7 +82,7 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object Label9: TLabel
         Left = 392
-        Top = 17
+        Top = 7
         Width = 154
         Height = 13
         Caption = 'Descri'#231#227'o Principal Produto'
@@ -95,7 +95,7 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object Label50: TLabel
         Left = 614
-        Top = 30
+        Top = 20
         Width = 13
         Height = 19
         Caption = '+'
@@ -108,7 +108,7 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object Label49: TLabel
         Left = 634
-        Top = 17
+        Top = 7
         Width = 63
         Height = 13
         Caption = 'Ref.F'#225'brica'
@@ -121,7 +121,7 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object lbSimples: TLabel
         Left = 784
-        Top = 92
+        Top = 82
         Width = 198
         Height = 14
         Caption = 'Aten'#231#227'o! Fornecedor no Simples'
@@ -135,7 +135,7 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object Label25: TLabel
         Left = 737
-        Top = 30
+        Top = 20
         Width = 13
         Height = 19
         Caption = '+'
@@ -148,7 +148,7 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object Label26: TLabel
         Left = 756
-        Top = 17
+        Top = 7
         Width = 67
         Height = 13
         Caption = 'Cod.Interno'
@@ -161,7 +161,7 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object Label3: TLabel
         Left = 834
-        Top = 30
+        Top = 20
         Width = 13
         Height = 19
         Caption = '+'
@@ -174,7 +174,7 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object Label22: TLabel
         Left = 540
-        Top = 66
+        Top = 56
         Width = 13
         Height = 19
         Caption = '+'
@@ -187,7 +187,7 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object Label23: TLabel
         Left = 704
-        Top = 66
+        Top = 56
         Width = 13
         Height = 19
         Caption = '+'
@@ -198,9 +198,22 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
         Font.Style = [fsBold]
         ParentFont = False
       end
+      object Label34: TLabel
+        Left = 7
+        Top = 103
+        Width = 49
+        Height = 13
+        Caption = 'Empresa'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
       object ComboGrupo: TRxDBLookupCombo
         Left = 389
-        Top = 66
+        Top = 56
         Width = 150
         Height = 21
         DropDownCount = 8
@@ -218,7 +231,7 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object ComboSubGrupo: TRxDBLookupCombo
         Left = 553
-        Top = 66
+        Top = 56
         Width = 150
         Height = 21
         DropDownCount = 8
@@ -236,7 +249,7 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object ComboFornecedor: TRxDBLookupCombo
         Left = 718
-        Top = 66
+        Top = 56
         Width = 304
         Height = 21
         DropDownCount = 8
@@ -254,7 +267,7 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object ComboMarca: TRxDBLookupCombo
         Left = 849
-        Top = 30
+        Top = 20
         Width = 174
         Height = 21
         DropDownCount = 8
@@ -274,7 +287,7 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object GroupBox1: TGroupBox
         Left = 6
-        Top = 24
+        Top = 14
         Width = 376
         Height = 44
         Caption = ' Vendidos nos Ultimos 30 dias '
@@ -346,7 +359,7 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object EditProduto: TEdit
         Left = 388
-        Top = 30
+        Top = 20
         Width = 225
         Height = 21
         CharCase = ecUpperCase
@@ -360,7 +373,7 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object EditReferencia: TEdit
         Left = 630
-        Top = 30
+        Top = 20
         Width = 107
         Height = 21
         CharCase = ecUpperCase
@@ -374,7 +387,7 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object CKNegativo: TCheckBox
         Left = 391
-        Top = 106
+        Top = 96
         Width = 314
         Height = 15
         Caption = 'Mostrar Apenas com Saldo igual a Zero ou Negativo'
@@ -388,7 +401,7 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object CKOrdemMarcaDescr: TCheckBox
         Left = 391
-        Top = 91
+        Top = 81
         Width = 191
         Height = 17
         Caption = 'Ordenar por Marca+Descri'#231#227'o'
@@ -402,7 +415,7 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object EditCdPrincipal: TEdit
         Left = 752
-        Top = 30
+        Top = 20
         Width = 80
         Height = 21
         CharCase = ecUpperCase
@@ -416,7 +429,7 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object GroupBox2: TGroupBox
         Left = 7
-        Top = 69
+        Top = 58
         Width = 375
         Height = 44
         Caption = ' Comprados nos Ultimos 30 dias '
@@ -486,12 +499,31 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
           TabOrder = 2
         end
       end
+      object RxDBLookupCombo1: TRxDBLookupCombo
+        Left = 7
+        Top = 117
+        Width = 376
+        Height = 21
+        DropDownCount = 8
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        LookupField = 'EMPRICOD'
+        LookupDisplay = 'EMPRA60NOMEFANT'
+        LookupSource = dsEmpresa
+        ParentFont = False
+        TabOrder = 11
+        OnChange = RxDBLookupCombo1Change
+        OnKeyDown = ComboGrupoKeyDown
+      end
     end
     object Panel3: TPanel
       Left = 0
-      Top = 124
+      Top = 141
       Width = 1366
-      Height = 524
+      Height = 507
       Align = alClient
       Color = 16249066
       TabOrder = 1
@@ -499,7 +531,7 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
         Left = 1
         Top = 1
         Width = 1364
-        Height = 257
+        Height = 240
         Align = alClient
         BevelInner = bvRaised
         BevelOuter = bvNone
@@ -841,7 +873,7 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object Panel1: TPanel
         Left = 1
-        Top = 287
+        Top = 270
         Width = 1364
         Height = 236
         Align = alBottom
@@ -1180,7 +1212,7 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object Panel5: TPanel
         Left = 1
-        Top = 258
+        Top = 241
         Width = 1364
         Height = 29
         Align = alBottom
@@ -3004,5 +3036,28 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       FieldName = 'NOCPA30NRO'
       Size = 30
     end
+  end
+  object sqlEmpresa: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'select EMPRICOD, EMPRA60NOMEFANT from empresa'
+      'order by EMPRA60NOMEFANT ')
+    Macros = <>
+    Left = 1056
+    Top = 157
+    object sqlEmpresaEMPRICOD: TIntegerField
+      FieldName = 'EMPRICOD'
+    end
+    object sqlEmpresaEMPRA60NOMEFANT: TStringField
+      FieldName = 'EMPRA60NOMEFANT'
+      Size = 100
+    end
+  end
+  object dsEmpresa: TDataSource
+    AutoEdit = False
+    DataSet = sqlEmpresa
+    OnDataChange = DSSQLFornecedorDataChange
+    Left = 1028
+    Top = 157
   end
 end

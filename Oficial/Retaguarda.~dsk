@@ -1,37 +1,19 @@
 [Closed Files]
-File_0=SourceModule,'c:\program files (x86)\borland\delphi7\source\rtl\Sys\sysutils.pas',0,1,2684,27,2699,0,0
-File_1=SourceModule,'C:\projetos\Automafour\Oficial\Cadastros\CadastroProdutos.pas',0,1,3464,18,3482,1,0
-File_2=SourceModule,'C:\projetos\Automafour\Oficial\ArquivosComuns\TelaEntradaRapidaEstoque.pas',0,1,77,43,84,1,0
-File_3=SourceModule,'C:\projetos\Automafour\Oficial\DataModulo.pas',0,1,1,1,1,1,0
-File_4=SourceModule,'C:\Acbr\trunk2\Fontes\ACBrBoleto\FC\Fortes\ACBrBoletoFCFortesFr.pas',0,1,506,1,523,0,0
-File_5=SourceModule,'C:\Acbr\trunk2\Fontes\ACBrBoleto\ACBrBoleto.pas',0,1,1700,1,1725,0,0
-File_6=SourceModule,'c:\acbr\trunk2\Fontes\ACBrBoleto\ACBrBancoSicredi.pas',0,1,327,11,353,0,0
-File_7=SourceModule,'C:\projetos\Automafour\Oficial\Cadastros\CadastroBanco.pas',0,1,16,38,13,0,0
-File_8=SourceModule,'C:\projetos\Automafour\Oficial\ArquivosComuns\TelaDadosTeleEntrega.pas',0,1,369,1,342,1,0
-File_9=SourceModule,'C:\projetos\Automafour\Oficial\Cadastros\TelaCadastroTarefa.pas',0,1,1,1,1,1,0
+File_0=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\TelaFechamentoVenda.pas',0,1,2362,82,2378,0,0
+File_1=SourceModule,'C:\projetos\Automafour\Oficial\ArquivosComuns\UnitLibrary.pas',0,1,1,1,1,0,0
+File_2=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\TelaImpressaoDuplicatas.pas',0,1,1129,1,1154,0,0
+File_3=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\udlgConfEmailBoleto.pas',0,1,31,11,39,0,0
+File_4=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.pas',0,1,8,26,11,0,0
+File_5=SourceModule,'c:\program files (x86)\borland\delphi7\source\rtl\Sys\sysutils.pas',0,1,2684,27,2699,0,0
+File_6=SourceModule,'C:\projetos\Automafour\Oficial\Cadastros\CadastroProdutos.pas',0,1,3464,18,3482,1,0
+File_7=SourceModule,'C:\projetos\Automafour\Oficial\ArquivosComuns\TelaEntradaRapidaEstoque.pas',0,1,77,43,84,1,0
+File_8=SourceModule,'C:\projetos\Automafour\Oficial\DataModulo.pas',0,1,1,1,1,1,0
+File_9=SourceModule,'C:\Acbr\trunk2\Fontes\ACBrBoleto\FC\Fortes\ACBrBoletoFCFortesFr.pas',0,1,506,1,523,0,0
 
 [Modules]
-Module0=C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.pas
-Module1=C:\projetos\Automafour\Oficial\Vendas\TelaImpressaoDuplicatas.pas
-Module2=C:\projetos\Automafour\Oficial\Vendas\udlgConfEmailBoleto.pas
-Module3=C:\projetos\Automafour\Oficial\Retaguarda.dpr
-Count=4
+Module0=C:\projetos\Automafour\Oficial\Retaguarda.dpr
+Count=1
 EditWindowCount=1
-
-[C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.pas]
-ModuleType=SourceModule
-FormState=0
-FormOnTop=0
-
-[C:\projetos\Automafour\Oficial\Vendas\TelaImpressaoDuplicatas.pas]
-ModuleType=SourceModule
-FormState=0
-FormOnTop=0
-
-[C:\projetos\Automafour\Oficial\Vendas\udlgConfEmailBoleto.pas]
-ModuleType=SourceModule
-FormState=0
-FormOnTop=0
 
 [C:\projetos\Automafour\Oficial\Retaguarda.dpr]
 ModuleType=SourceModule
@@ -42,21 +24,18 @@ FormOnTop=0
 FormState=0
 FormOnTop=0
 
-[C:\projetos\Automafour\Template\TelaGeralTEMPLATE.pas]
-FormState=0
-FormOnTop=0
-
 [C:\projetos\Automafour\Template\CadastroTEMPLATE.pas]
 FormState=0
 FormOnTop=0
 
+[C:\projetos\Automafour\Template\TelaGeralTEMPLATE.pas]
+FormState=0
+FormOnTop=0
+
 [EditWindow0]
-ViewCount=4
-CurrentView=2
+ViewCount=1
+CurrentView=0
 View0=0
-View1=1
-View2=2
-View3=3
 CodeExplorer=CodeExplorer@EditWindow0
 MessageView=MessageView@EditWindow0
 Create=1
@@ -67,45 +46,24 @@ Top=140
 Width=1069
 Height=485
 MaxLeft=-8
-MaxTop=114
+MaxTop=107
 MaxWidth=1382
-MaxHeight=622
+MaxHeight=629
 ClientWidth=1366
-ClientHeight=583
+ClientHeight=590
 LeftPanelSize=0
 LeftPanelClients=CodeExplorer@EditWindow0
 LeftPanelData=00000400010000000C000000436F64654578706C6F726572000000000000000000000000000000000001000000000000000000000000FFFFFFFF
 RightPanelSize=0
-BottomPanelSize=0
+BottomPanelSize=85
 BottomPanelClients=MessageView@EditWindow0
-BottomPanelData=00000400010000000B0000004D65737361676556696577560500000000000002550000000000000001000000000000000000000000010000000056050000000000000100000000560500000B0000004D65737361676556696577FFFFFFFF
+BottomPanelData=000004000000000056050000000000000255000000000000000100000000000000000000000001000000005605000000000000010000000056050000000000000100000000560500000B0000004D65737361676556696577FFFFFFFF
 
 [View0]
 Module=C:\projetos\Automafour\Oficial\Retaguarda.dpr
-CursorX=35
-CursorY=451
+CursorX=63
+CursorY=446
 TopLine=441
-LeftCol=1
-
-[View1]
-Module=C:\projetos\Automafour\Oficial\Vendas\TelaImpressaoDuplicatas.pas
-CursorX=1
-CursorY=1154
-TopLine=1129
-LeftCol=1
-
-[View2]
-Module=C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.pas
-CursorX=26
-CursorY=11
-TopLine=8
-LeftCol=1
-
-[View3]
-Module=C:\projetos\Automafour\Oficial\Vendas\udlgConfEmailBoleto.pas
-CursorX=11
-CursorY=39
-TopLine=31
 LeftCol=1
 
 [Watches]
@@ -262,7 +220,7 @@ Column5Width=75
 
 [CallStackWindow]
 Create=1
-Visible=1
+Visible=0
 State=0
 Left=536
 Top=303
@@ -470,7 +428,7 @@ Dockable=1
 
 [MessageView@EditWindow0]
 Create=1
-Visible=0
+Visible=1
 State=0
 Left=12
 Top=0
