@@ -295,12 +295,9 @@ type
     btnCopiarDuplicatasNF: TSpeedButton;
     actCopiarDuplicatasNF: TAction;
     AdicionarProdutoRapido: TMenuItem;
-    zProduto: TZQuery;
     cdsItenseantrib: TStringField;
     btnCadFornecedor: TSpeedButton;
-    zProdutoFornecedor: TZQuery;
     cdsItensaliquota_icms_st: TFloatField;
-    zNcm: TZQuery;
     N3: TMenuItem;
     btTransfImportados: TSpeedButton;
     btnGravarDados: TSpeedButton;
@@ -358,8 +355,9 @@ type
     btnDownLoadXML: TSpeedButton;
     SQLNFSEFAZSituacaoNota: TStringField;
     cdsItenscest: TStringField;
-    zCest: TZQuery;
     cxgrdbclmnGrid1DBTableView1cest: TcxGridDBColumn;
+    sqlCest: TRxQuery;
+    sqlNCM: TRxQuery;
     procedure FormCreate(Sender: TObject);
     procedure actSelecionarArquivoExecute(Sender: TObject);
     procedure seNParcelasChange(Sender: TObject);
@@ -2154,7 +2152,7 @@ end;
 
 function TFormTelaImportadorXML.CriaNCM(aNCM: String): Integer;
 begin
-{  Dm.SQLConsulta.Close;
+  Dm.SQLConsulta.Close;
   Dm.SQLConsulta.SQL.Clear;
   Dm.SQLConsulta.SQL.Add('select NCMICOD from NCM');
   Dm.SQLConsulta.SQL.Add('where NCMA30CODIGO = :NCMA30CODIGO');
@@ -2162,52 +2160,52 @@ begin
   Dm.SQLConsulta.Open;
   if Dm.SQLConsulta.IsEmpty then
     begin
-      zncm.close;
-      zncm.open;
-      zncm.append;
-      zNcm.fieldbyname('NCMICOD').AsInteger        := SQLMax('NCM','NCMICOD','NCMICOD IS NOT NULL');
-      zNcm.fieldbyname('NCMA30CODIGO').AsString    := aNCM;
-      zNcm.fieldbyname('NCMA100DESCR').AsString    := 'NCM INCLUIDO AUTOMATICAMENTE';
-      zNcm.fieldbyname('ALIQUOTAINTERNA').AsString := '0';
-      zNcm.fieldbyname('MVA').AsString             := '0';
-      zNcm.fieldbyname('NCMN2ALIQNAC').AsString    := '0';
-      zNcm.fieldbyname('NCMN2ALIQIMP').AsString    := '0';
-      zNcm.fieldbyname('PENDENTE').AsString        := 'S';
-      zNcm.fieldbyname('REGISTRO').AsDateTime      :=  now;
+      sqlNCM.close;
+      sqlNCM.open;
+      sqlNCM.append;
+      sqlNCM.fieldbyname('NCMICOD').AsInteger        := SQLMax('NCM','NCMICOD','NCMICOD IS NOT NULL');
+      sqlNCM.fieldbyname('NCMA30CODIGO').AsString    := aNCM;
+      sqlNCM.fieldbyname('NCMA100DESCR').AsString    := 'NCM INCLUIDO AUTOMATICAMENTE';
+      sqlNCM.fieldbyname('ALIQUOTAINTERNA').AsString := '0';
+      sqlNCM.fieldbyname('MVA').AsString             := '0';
+      sqlNCM.fieldbyname('NCMN2ALIQNAC').AsString    := '0';
+      sqlNCM.fieldbyname('NCMN2ALIQIMP').AsString    := '0';
+      sqlNCM.fieldbyname('PENDENTE').AsString        := 'S';
+      sqlNCM.fieldbyname('REGISTRO').AsDateTime      :=  now;
       try
-        zncm.post;
+        sqlNCM.post;
       except
-        zncm.cancel;
+        sqlNCM.cancel;
       end;
     end;
-  Dm.SQLConsulta.close;}
+  Dm.SQLConsulta.close;
 end;
 
 function TFormTelaImportadorXML.CriaCEST(aCEST, aNCM: String): String;
 begin
-  {dm.SQLConsulta.close;
+  dm.SQLConsulta.close;
   dm.SQLConsulta.SQL.Clear;
   dm.SQLConsulta.SQL.Add('select CEST from CESTNCM');
-  dm.SQLConsulta.SQL.Add('where NCM ='''+aNCM+''' and ');
-  dm.SQLConsulta.SQL.Add(' CEST='''+aCEST+'''');
+  dm.SQLConsulta.SQL.Add('where NCM ="'+aNCM+'" and ');
+  dm.SQLConsulta.SQL.Add(' CEST="'+aCEST+'"');
   dm.SQLConsulta.Open;
   if dm.SQLConsulta.IsEmpty then
     begin
-      zCest.close;
-      zCest.open;
-      zCest.append;
-      zCest.fieldbyname('CEST').AsString        := aCEST;
-      zCest.fieldbyname('NCM').AsString         := aNCM;
-      zCest.fieldbyname('DESCRICAO').AsString   := 'CEST INCLUIDO AUTOMATICAMENTE';
-      zCest.fieldbyname('PENDENTE').AsString    := 'S';
-      zCest.fieldbyname('REGISTRO').AsDateTime  := now;
+      sqlCest.close;
+      sqlCest.open;
+      sqlCest.append;
+      sqlCest.fieldbyname('CEST').AsString        := aCEST;
+      sqlCest.fieldbyname('NCM').AsString         := aNCM;
+      sqlCest.fieldbyname('DESCRICAO').AsString   := 'CEST INCLUIDO AUTOMATICAMENTE';
+      sqlCest.fieldbyname('PENDENTE').AsString    := 'S';
+      sqlCest.fieldbyname('REGISTRO').AsDateTime  := now;
       try
-        zCest.post;
+        sqlCest.post;
       except
-        zCest.cancel;
+        sqlCest.cancel;
       end;
     end;
-  dm.SQLConsulta.close;}
+  dm.SQLConsulta.close;
 end;
 
 procedure TFormTelaImportadorXML.tsInfoNfeShow(Sender: TObject);

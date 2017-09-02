@@ -3038,27 +3038,6 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
     Left = 486
     Top = 363
   end
-  object zProduto: TZQuery
-    SQL.Strings = (
-      'Select * from Produto where prodicod is null')
-    Params = <>
-    Left = 800
-    Top = 97
-  end
-  object zProdutoFornecedor: TZQuery
-    SQL.Strings = (
-      'Select * from ProdutoFornecedor where prodicod is null')
-    Params = <>
-    Left = 829
-    Top = 97
-  end
-  object zNcm: TZQuery
-    SQL.Strings = (
-      'Select * from NCM where ncmicod is null')
-    Params = <>
-    Left = 860
-    Top = 97
-  end
   object SQLProdutoEditar: TRxQuery
     DatabaseName = 'DB'
     RequestLive = True
@@ -3253,11 +3232,24 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
     Left = 782
     Top = 325
   end
-  object zCest: TZQuery
+  object sqlCest: TRxQuery
+    DatabaseName = 'DB'
+    RequestLive = True
     SQL.Strings = (
-      'Select * from CESTNCM')
-    Params = <>
-    Left = 893
-    Top = 96
+      'Select * from CESTNCM'
+      'where'
+      '  0=1')
+    Macros = <>
+    Left = 731
+    Top = 145
+  end
+  object sqlNCM: TRxQuery
+    DatabaseName = 'DB'
+    RequestLive = True
+    SQL.Strings = (
+      'Select * from NCM where ncmicod is null')
+    Macros = <>
+    Left = 659
+    Top = 145
   end
 end

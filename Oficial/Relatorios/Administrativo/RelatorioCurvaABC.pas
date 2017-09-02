@@ -391,11 +391,10 @@ end;
 
 procedure TFormRelatorioCurvaABC.ComboSubGrupoChange(Sender: TObject);
 begin
-  inherited;
-
+  inherited;  
   SQLVariacao.Close;
   SQLVariacao.SQL.Text := ' Select * from Variacao where GRUPICOD = '+IntToStr(SQLGrupo.fieldbyname('GRUPICOD').AsInteger)
-    +' and SUBGICOD =  '+ inttostr(SQLSubgrupo.fieldbyname('SUBGICOD').AsInteger)
+    +' and SUBGICOD =  '+ inttostr(SQLSubgrupo.fieldbyname('SUBGICOD').AsInteger);
   SQLVariacao.Open;   
 end;
 
