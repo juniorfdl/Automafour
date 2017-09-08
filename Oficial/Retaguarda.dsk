@@ -1,38 +1,22 @@
 [Closed Files]
-File_0=SourceModule,'C:\projetos\Automafour\Template\RelatorioTemplate.pas',0,1,108,1,108,0,0
-File_1=SourceModule,'C:\projetos\Automafour\Oficial\Compras\TelaPedidoCompraItemFiltro.pas',0,1,741,30,757,1,0
-File_2=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\TelaItens.pas',0,1,1,1,1,0,0
-File_3=SourceModule,'C:\projetos\Automafour\Oficial\Compras\CadastroPedidoCompraItem.pas',0,1,591,90,606,1,0
-File_4=SourceModule,'C:\projetos\Automafour\Oficial\ArquivosComuns\UnitLibrary.pas',0,1,47,29,59,0,0
-File_5=SourceModule,'C:\projetos\Automafour\Oficial\Compras\CadastroPedidoCompra.pas',0,1,468,35,481,1,0
-File_6=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\TelaFechamentoVenda.pas',0,1,2362,82,2378,0,0
-File_7=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\TelaImpressaoDuplicatas.pas',0,1,1129,1,1154,0,0
-File_8=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\udlgConfEmailBoleto.pas',0,1,31,11,39,0,0
-File_9=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.pas',0,1,8,26,11,0,0
+File_0=SourceModule,'C:\projetos\Automafour\Oficial\Principal.pas',0,1,2339,49,2343,1,0
+File_1=SourceModule,'C:\projetos\Automafour\Oficial\Relatorios\Administrativo\RelatorioCurvaABC.pas',0,1,380,20,385,1,0
+File_2=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\TelaImpressaoDuplicatas.dfm',0,1,5385,103,5398,0,0
+File_3=SourceModule,'C:\projetos\Automafour\Oficial\Compras\TelaPedidoCompraItemFiltro.pas',0,1,741,30,757,1,0
+File_4=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\TelaItens.pas',0,1,1,1,1,0,0
+File_5=SourceModule,'C:\projetos\Automafour\Oficial\Compras\CadastroPedidoCompraItem.pas',0,1,591,90,606,1,0
+File_6=SourceModule,'C:\projetos\Automafour\Oficial\ArquivosComuns\UnitLibrary.pas',0,1,47,29,59,0,0
+File_7=SourceModule,'C:\projetos\Automafour\Oficial\Compras\CadastroPedidoCompra.pas',0,1,468,35,481,1,0
+File_8=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\TelaFechamentoVenda.pas',0,1,2362,82,2378,0,0
+File_9=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\TelaImpressaoDuplicatas.pas',0,1,1129,1,1154,0,0
 
 [Modules]
-Module0=C:\projetos\Automafour\Oficial\Relatorios\Administrativo\RelatorioCurvaABC.pas
-Module1=C:\projetos\Automafour\Oficial\Principal.pas
-Module2=C:\projetos\Automafour\Oficial\Retaguarda.dpr
-Count=3
+Module0=C:\projetos\Automafour\Oficial\Retaguarda.dpr
+Count=1
 EditWindowCount=1
-
-[C:\projetos\Automafour\Oficial\Relatorios\Administrativo\RelatorioCurvaABC.pas]
-ModuleType=SourceModule
-FormState=1
-FormOnTop=0
-
-[C:\projetos\Automafour\Oficial\Principal.pas]
-ModuleType=SourceModule
-FormState=1
-FormOnTop=1
 
 [C:\projetos\Automafour\Oficial\Retaguarda.dpr]
 ModuleType=SourceModule
-FormState=0
-FormOnTop=0
-
-[C:\projetos\Automafour\Template\RelatorioTemplate.pas]
 FormState=0
 FormOnTop=0
 
@@ -40,11 +24,7 @@ FormOnTop=0
 FormState=0
 FormOnTop=0
 
-[C:\projetos\Automafour\Template\TelaGeralModalTemplate.pas]
-FormState=0
-FormOnTop=0
-
-[C:\projetos\Automafour\Template\CadastroTEMPLATE.pas]
+[C:\projetos\Automafour\Template\RelatorioTemplate.pas]
 FormState=0
 FormOnTop=0
 
@@ -53,11 +33,9 @@ FormState=0
 FormOnTop=0
 
 [EditWindow0]
-ViewCount=3
-CurrentView=2
+ViewCount=1
+CurrentView=0
 View0=0
-View1=1
-View2=2
 CodeExplorer=CodeExplorer@EditWindow0
 MessageView=MessageView@EditWindow0
 Create=1
@@ -83,23 +61,9 @@ BottomPanelData=0000040000000000560500000000000002550000000000000001000000000000
 
 [View0]
 Module=C:\projetos\Automafour\Oficial\Retaguarda.dpr
-CursorX=63
-CursorY=446
+CursorX=33
+CursorY=468
 TopLine=468
-LeftCol=1
-
-[View1]
-Module=C:\projetos\Automafour\Oficial\Principal.pas
-CursorX=49
-CursorY=2343
-TopLine=2339
-LeftCol=1
-
-[View2]
-Module=C:\projetos\Automafour\Oficial\Relatorios\Administrativo\RelatorioCurvaABC.pas
-CursorX=117
-CursorY=396
-TopLine=380
 LeftCol=1
 
 [Watches]
@@ -124,15 +88,13 @@ LRDockWidth=426
 Dockable=1
 
 [Breakpoints]
-Count=8
+Count=6
 Breakpoint0='C:\projetos\Automafour\Oficial\Vendas\TelaImpressaoDuplicatas.pas',1377,'',0,1,'',1,0,0,'',1,'','',''
 Breakpoint1='c:\acbr\trunk2\Fontes\ACBrBoleto\ACBrBancoSicredi.pas',342,'',0,1,'',1,0,0,'',1,'','',''
 Breakpoint2='c:\acbr\trunk2\Fontes\ACBrBoleto\ACBrBancoSicredi.pas',628,'',0,1,'',1,0,0,'',1,'','',''
 Breakpoint3='c:\acbr\trunk2\Fontes\ACBrBoleto\ACBrBancoSicredi.pas',206,'',0,1,'',1,0,0,'',1,'','',''
 Breakpoint4='C:\projetos\Automafour\Oficial\Vendas\TelaImpressaoDuplicatas.pas',1528,'',0,1,'',1,0,0,'',1,'','',''
 Breakpoint5='C:\projetos\Automafour\Oficial\Relatorios\Administrativo\RelatorioCurvaABC.pas',355,'',0,1,'',1,0,0,'',1,'','',''
-Breakpoint6='C:\projetos\Automafour\Oficial\Relatorios\Administrativo\RelatorioCurvaABC.pas',387,'',0,1,'',1,0,0,'',1,'','',''
-Breakpoint7='C:\projetos\Automafour\Oficial\Relatorios\Administrativo\RelatorioCurvaABC.pas',395,'',0,1,'',1,0,0,'',1,'','',''
 
 [AddressBreakpoints]
 Count=0
@@ -145,8 +107,8 @@ Left=0
 Top=2
 Width=1366
 Height=123
-MaxLeft=-8
-MaxTop=-8
+MaxLeft=-1
+MaxTop=-1
 MaxWidth=1382
 MaxHeight=123
 ClientWidth=1366
@@ -231,7 +193,7 @@ LRDockWidth=866
 Dockable=1
 SplitPos=119
 ArrangeBy=Name
-SelectedItem=DataField
+SelectedItem=
 ExpandedItems=DataBinding,DataController,DataController.DataSource,DataSource.DataSet,DataSource.DataSet.MasterSource,DataSource.DataSet.MasterSource.DataSet,Font.Style,ListSource.DataSet,LookupDataSet,Options,PreviewOptions,Style.Font,Title
 HiddenCategories=
 
@@ -419,7 +381,7 @@ Dockable=1
 
 [fmGrepResults]
 Create=1
-Visible=1
+Visible=0
 State=0
 Left=396
 Top=2

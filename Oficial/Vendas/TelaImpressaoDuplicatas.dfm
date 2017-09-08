@@ -5395,7 +5395,7 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
     DirLogo = 'Bmp\Bancos\Colorido'
     MostrarPreview = False
     MostrarSetup = False
-    SoftwareHouse = 'Gerado pelo sistema Easy2Solutions 51 8411.0414'
+    SoftwareHouse = 'Gerado por AutomaFour Soluções em Informática - (51) 3438-5051 / (51) 9 8205-9990'
     Left = 354
     Top = 95
   end
