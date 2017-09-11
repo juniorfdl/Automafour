@@ -1,8 +1,11 @@
 inherited FormTelaBaixarDocumentosPlanoConta: TFormTelaBaixarDocumentosPlanoConta
+  Left = 420
+  Top = 98
   Caption = 'Baixa de Contas - Detalhamento'
   ClientHeight = 397
   ClientWidth = 451
   OldCreateOrder = True
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   inherited PanelCentral: TPanel
@@ -364,11 +367,11 @@ inherited FormTelaBaixarDocumentosPlanoConta: TFormTelaBaixarDocumentosPlanoCont
       'FROM'
       'PLANODECONTAS'
       'WHERE'
-      '(PLCTCTIPOSALDO = ''C'''
+      '(PLCTCTIPOSALDO = '#39'C'#39
       'or'
-      'PLCTCTIPOSALDO = ''A'')'
+      'PLCTCTIPOSALDO = '#39'A'#39')'
       'AND'
-      'PLCTCANALSINT = ''A'' ')
+      'PLCTCANALSINT = '#39'A'#39' ')
     Macros = <>
     Left = 320
     Top = 20
@@ -404,11 +407,11 @@ inherited FormTelaBaixarDocumentosPlanoConta: TFormTelaBaixarDocumentosPlanoCont
       'FROM'
       'PLANODECONTAS'
       'WHERE'
-      '(PLCTCTIPOSALDO = ''D'''
+      '(PLCTCTIPOSALDO = '#39'D'#39
       'or'
-      'PLCTCTIPOSALDO = ''A'')'
+      'PLCTCTIPOSALDO = '#39'A'#39')'
       'AND'
-      'PLCTCANALSINT = ''A'' ')
+      'PLCTCANALSINT = '#39'A'#39' ')
     Macros = <>
     Left = 376
     Top = 20

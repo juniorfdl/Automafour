@@ -757,7 +757,8 @@ begin
   SQLSubGrupo.Open;
   SQLFornecedor.Open;
   sqlEmpresa.Open;
-  RxDBLookupCombo1.Value := sqlEmpresaEMPRICOD.AsString;
+  RxDBLookupCombo1.Value := 'Todas';
+//  RxDBLookupCombo1.Value := sqlEmpresaEMPRICOD.AsString;
 end;
 
 procedure TFormTelaPedidoCompraItemFiltro.DSTblTemporariaDataChange(
@@ -986,7 +987,6 @@ procedure TFormTelaPedidoCompraItemFiltro.RxDBLookupCombo1Change(
 begin
   inherited;
   EmpresaPadraoPedidosCompra := sqlEmpresaEMPRICOD.AsString;
-
 end;
 
 end.

@@ -1,9 +1,9 @@
 inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
-  Left = -8
-  Top = -8
+  Left = 0
+  Top = 0
   Caption = 'Assistente para Filtrar Produtos para Compra'
-  ClientHeight = 706
-  ClientWidth = 1366
+  ClientHeight = 690
+  ClientWidth = 1350
   OldCreateOrder = True
   WindowState = wsMaximized
   OnShow = FormShow
@@ -11,12 +11,12 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
   TextHeight = 13
   inherited PanelCentral: TPanel
     Top = 58
-    Width = 1366
-    Height = 648
+    Width = 1350
+    Height = 632
     object GroupFiltro: TGroupBox
       Left = 0
       Top = 0
-      Width = 1366
+      Width = 1350
       Height = 141
       Align = alTop
       Color = 16249066
@@ -505,6 +505,8 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
         Width = 376
         Height = 21
         DropDownCount = 8
+        DisplayEmpty = 'Todas'
+        EmptyValue = 'Todas'
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -522,16 +524,16 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
     object Panel3: TPanel
       Left = 0
       Top = 141
-      Width = 1366
-      Height = 507
+      Width = 1350
+      Height = 491
       Align = alClient
       Color = 16249066
       TabOrder = 1
       object Panel2: TPanel
         Left = 1
         Top = 1
-        Width = 1364
-        Height = 240
+        Width = 1348
+        Height = 224
         Align = alClient
         BevelInner = bvRaised
         BevelOuter = bvNone
@@ -873,8 +875,8 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object Panel1: TPanel
         Left = 1
-        Top = 270
-        Width = 1364
+        Top = 254
+        Width = 1348
         Height = 236
         Align = alBottom
         Color = 16249066
@@ -1069,7 +1071,7 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
         object Panel4: TPanel
           Left = 1
           Top = 192
-          Width = 1362
+          Width = 1346
           Height = 43
           Align = alBottom
           Color = 16249066
@@ -1212,8 +1214,8 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       object Panel5: TPanel
         Left = 1
-        Top = 241
-        Width = 1364
+        Top = 225
+        Width = 1348
         Height = 29
         Align = alBottom
         Color = 16249066
@@ -1432,10 +1434,10 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
     end
   end
   inherited ScrollBoxTopo: TScrollBox
-    Width = 1366
+    Width = 1350
     Height = 58
     inherited PanelCabecalho: TPanel
-      Width = 1366
+      Width = 1350
       Height = 57
       object Label19: TLabel [1]
         Left = 525
@@ -1463,7 +1465,7 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
       end
       inherited PanelNavigator: TPanel
         Top = 25
-        Width = 1366
+        Width = 1350
         object Label14: TLabel [0]
           Left = 464
           Top = 3
@@ -1491,7 +1493,7 @@ inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
           ParentFont = False
         end
         inherited AdvPanelNavigator: TAdvOfficeStatusBar
-          Width = 1366
+          Width = 1350
           inherited BtnFecharTela: TSpeedButton
             Left = 840
           end

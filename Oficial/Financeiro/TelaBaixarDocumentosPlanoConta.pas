@@ -51,11 +51,13 @@ type
     procedure BtnFecharTelaClick(Sender: TObject);
     procedure ButtongerarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
-  PlanoContas : TIniFile;    
+  PlanoContas : TIniFile;
+  ItemCombo : Integer;
   end;
 
 var
@@ -126,6 +128,12 @@ begin
       end;
   end;
 
+end;
+
+procedure TFormTelaBaixarDocumentosPlanoConta.FormShow(Sender: TObject);
+begin
+  inherited;
+  ComboTipoLiquidacao.KeyValue := ItemCombo;
 end;
 
 end.
