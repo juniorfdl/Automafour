@@ -1,6 +1,6 @@
 inherited FormTelaBaixarDocumentosPagar: TFormTelaBaixarDocumentosPagar
-  Left = 348
-  Top = 125
+  Left = 159
+  Top = 111
   Width = 800
   Height = 572
   Caption = 'Baixa de documentos '#224' pagar'

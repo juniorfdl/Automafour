@@ -277,6 +277,7 @@ type
   public
     { Public declarations }
     EmiteRecibo : Boolean;
+    itemCombo : Integer;
     Anexo : String;
   end;
 
@@ -1469,6 +1470,15 @@ begin
   if DM.SQLConfigFinanceiro.fieldbyname('CGFICINFPLCTBXSIMP').AsString = 'S' then
     begin
       Application.CreateForm(TFormTelaBaixarDocumentosPlanoConta,FormTelaBaixarDocumentosPlanoConta);
+      if DtBaixa.Date = TblRecebimentoDtVencimento.AsDateTime then
+        FormTelaBaixarDocumentosPlanoConta.ItemCombo := 1
+      else
+      if DtBaixa.Date < TblRecebimentoDtVencimento.AsDateTime then
+        FormTelaBaixarDocumentosPlanoConta.ItemCombo := 2
+      else
+      if DtBaixa.Date > TblRecebimentoDtVencimento.AsDateTime then
+        FormTelaBaixarDocumentosPlanoConta.ItemCombo := 3;
+
       FormTelaBaixarDocumentosPlanoConta.ShowModal;
     end;
   Progress.Position := 0;

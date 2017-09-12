@@ -1056,9 +1056,9 @@ begin
 
       if (dm.SQLConfigCrediario.fieldbyname('CFCRN2PERCMULATRAS').AsCurrency > 0) then
           begin
-            DataMoraJuros         := TblDuplicatasCTRCDVENC.AsDateTime;
+            DataMoraJuros    := TblDuplicatasCTRCDVENC.AsDateTime;
             ValorMoraJuros   := dm.SQLConfigCrediario.fieldbyname('CFCRN2PERCMULATRAS').AsCurrency;
-            CodigoMoraJuros   := cjTaxaMensal;
+            CodigoMoraJuros  := cjTaxaMensal;
 
             if ACBrBoleto1.banco.TipoCobranca = cobSicred then
             begin
@@ -1458,12 +1458,14 @@ begin
           ValorMoraJuros    := 0;
           ValorDesconto     := 0;
           ValorAbatimento   := 0.00;
+          PercentualMulta   := 0.00;
 
-          if (dm.SQLConfigCrediario.fieldbyname('CFCRN2PERCMULATRAS').AsCurrency > 0) then
+          if (dm.SQLConfigCrediario.fieldbyname('CFCRN2PERCJURATRAS').AsCurrency > 0) then
           begin
-            DataMoraJuros         := TblDuplicatasCTRCDVENC.AsDateTime;
-            ValorMoraJuros   := dm.SQLConfigCrediario.fieldbyname('CFCRN2PERCMULATRAS').AsCurrency;
-            CodigoMoraJuros   := cjTaxaMensal;
+            DataMoraJuros    := TblDuplicatasCTRCDVENC.AsDateTime;
+            ValorMoraJuros   := DM.SQLConfigCrediario.FieldByName('CFCRN2PERCJURATRAS').AsCurrency;
+            CodigoMoraJuros  := cjTaxaMensal;
+            PercentualMulta  := DM.SQLConfigCrediario.FieldByName('CFCRN2PERCMULATRAS').AsCurrency;
             
             if ACBrBoleto1.banco.TipoCobranca = cobSicred then
             begin

@@ -5395,7 +5395,9 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
     DirLogo = 'Bmp\Bancos\Colorido'
     MostrarPreview = False
     MostrarSetup = False
-    SoftwareHouse = 'Gerado por AutomaFour Soluções em Informática - (51) 3438-5051 / (51) 9 8205-9990'
+    SoftwareHouse = 
+      'Gerado por AutomaFour Solu'#231#245'es em Inform'#225'tica - (51) 3438-5051 /' +
+      ' (51) 9 8205-9990'
     Left = 354
     Top = 95
   end

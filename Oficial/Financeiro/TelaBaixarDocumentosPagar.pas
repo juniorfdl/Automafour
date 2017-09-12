@@ -479,14 +479,14 @@ begin
   if DM.SQLConfigFinanceiro.FieldByName('CGFICINFPLCTBXSIMP').AsString = 'S' then
     begin
       Application.CreateForm(TFormTelaBaixarDocumentosPlanoConta,FormTelaBaixarDocumentosPlanoConta);
-      if DtBaixa.Date > Date then
-        FormTelaBaixarDocumentosPlanoConta.ItemCombo := 3
-      else
-      if DtBaixa.Date = Date then
+      if DtBaixa.Date = TblPagtosTempVencimento.AsDateTime then
         FormTelaBaixarDocumentosPlanoConta.ItemCombo := 1
       else
-      if DtBaixa.Date < Date then
-        FormTelaBaixarDocumentosPlanoConta.ItemCombo := 2;
+      if DtBaixa.Date < TblPagtosTempVencimento.AsDateTime then
+        FormTelaBaixarDocumentosPlanoConta.ItemCombo := 2
+      else
+      if DtBaixa.Date > TblPagtosTempVencimento.AsDateTime then
+        FormTelaBaixarDocumentosPlanoConta.ItemCombo := 3;
       FormTelaBaixarDocumentosPlanoConta.ShowModal;
     end;
 
