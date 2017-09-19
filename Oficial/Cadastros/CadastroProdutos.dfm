@@ -8006,7 +8006,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
               object Label92: TLabel
                 Left = 0
                 Top = 209
-                Width = 1019
+                Width = 131
                 Height = 19
                 Align = alTop
                 Alignment = taCenter

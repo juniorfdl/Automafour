@@ -1,34 +1,34 @@
 [Closed Files]
-File_0=SourceModule,'C:\projetos\Automafour\Oficial\Principal.pas',0,1,2339,49,2343,1,0
-File_1=SourceModule,'C:\projetos\Automafour\Oficial\Relatorios\Administrativo\RelatorioCurvaABC.pas',0,1,380,20,385,1,0
-File_2=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\TelaImpressaoDuplicatas.dfm',0,1,5385,103,5398,0,0
-File_3=SourceModule,'C:\projetos\Automafour\Oficial\Compras\TelaPedidoCompraItemFiltro.pas',0,1,741,30,757,1,0
-File_4=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\TelaItens.pas',0,1,1,1,1,0,0
-File_5=SourceModule,'C:\projetos\Automafour\Oficial\Compras\CadastroPedidoCompraItem.pas',0,1,591,90,606,1,0
-File_6=SourceModule,'C:\projetos\Automafour\Oficial\ArquivosComuns\UnitLibrary.pas',0,1,47,29,59,0,0
-File_7=SourceModule,'C:\projetos\Automafour\Oficial\Compras\CadastroPedidoCompra.pas',0,1,468,35,481,1,0
-File_8=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\TelaFechamentoVenda.pas',0,1,2362,82,2378,0,0
-File_9=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\TelaImpressaoDuplicatas.pas',0,1,1129,1,1154,0,0
+File_0=SourceModule,'C:\sgr\SGR.dpr',0,1,1,97,7,0,0
+File_1=SourceModule,'C:\sgr\uAtivo.pas',0,1,2572,24,2587,0,0
+File_2=SourceModule,'C:\sgr\ufunctions.pas',0,1,1902,46,1909,0,0
+File_3=SourceModule,'C:\sgr\uRelAnaliseCampanha.pas',0,1,230,5,242,0,0
+File_4=SourceModule,'C:\sgr\SIP\UAsterisk.pas',0,1,185,79,196,0,0
+File_5=SourceModule,'c:\program files (x86)\borland\delphi7\source\vcl\OleCtrls.pas',0,1,580,1,593,0,0
+File_6=SourceModule,'C:\sgr\uReceptivo.pas',0,1,1,1,1,0,0
+File_7=SourceModule,'C:\projetos\Automafour\Oficial\Principal.pas',0,1,2339,49,2343,1,0
+File_8=SourceModule,'C:\projetos\Automafour\Oficial\Relatorios\Administrativo\RelatorioCurvaABC.pas',0,1,380,20,385,1,0
+File_9=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\TelaImpressaoDuplicatas.dfm',0,1,5385,103,5398,0,0
 
 [Modules]
-Module0=C:\projetos\Automafour\Oficial\Retaguarda.dpr
+Module0=C:\projetos\Automafour\Oficial\Cadastros\CadastroProdutos.pas
 Count=1
 EditWindowCount=1
 
-[C:\projetos\Automafour\Oficial\Retaguarda.dpr]
+[C:\projetos\Automafour\Oficial\Cadastros\CadastroProdutos.pas]
 ModuleType=SourceModule
-FormState=0
+FormState=1
 FormOnTop=0
 
 [C:\Program Files (x86)\Borland\Delphi7\Projects\ProjectGroup1.bpg]
 FormState=0
 FormOnTop=0
 
-[C:\projetos\Automafour\Template\RelatorioTemplate.pas]
+[C:\projetos\Automafour\Oficial\Retaguarda.dpr]
 FormState=0
 FormOnTop=0
 
-[C:\projetos\Automafour\Template\PrincipalTemplate.pas]
+[C:\projetos\Automafour\Template\CadastroTEMPLATE.pas]
 FormState=0
 FormOnTop=0
 
@@ -55,15 +55,15 @@ LeftPanelSize=0
 LeftPanelClients=CodeExplorer@EditWindow0
 LeftPanelData=00000400010000000C000000436F64654578706C6F726572000000000000000000000000000000000001000000000000000000000000FFFFFFFF
 RightPanelSize=0
-BottomPanelSize=85
+BottomPanelSize=0
 BottomPanelClients=MessageView@EditWindow0
-BottomPanelData=000004000000000056050000000000000255000000000000000100000000000000000000000001000000005605000000000000010000000056050000000000000100000000560500000B0000004D65737361676556696577FFFFFFFF
+BottomPanelData=00000400010000000B0000004D6573736167655669657756050000000000000255000000000000000100000000000000000000000001000000005605000000000000010000000056050000000000000100000000560500000B0000004D65737361676556696577FFFFFFFF
 
 [View0]
-Module=C:\projetos\Automafour\Oficial\Retaguarda.dpr
-CursorX=33
-CursorY=468
-TopLine=468
+Module=C:\projetos\Automafour\Oficial\Cadastros\CadastroProdutos.pas
+CursorX=132
+CursorY=4705
+TopLine=4692
 LeftCol=1
 
 [Watches]
@@ -116,7 +116,7 @@ ClientHeight=84
 
 [ProjectManager]
 Create=1
-Visible=0
+Visible=1
 State=0
 Left=1141
 Top=117
@@ -178,7 +178,7 @@ ClientHeight=60
 
 [PropertyInspector]
 Create=1
-Visible=1
+Visible=0
 State=0
 Left=3
 Top=101
@@ -193,7 +193,7 @@ LRDockWidth=866
 Dockable=1
 SplitPos=119
 ArrangeBy=Name
-SelectedItem=
+SelectedItem=DataSource
 ExpandedItems=DataBinding,DataController,DataController.DataSource,DataSource.DataSet,DataSource.DataSet.MasterSource,DataSource.DataSet.MasterSource.DataSet,Font.Style,ListSource.DataSet,LookupDataSet,Options,PreviewOptions,Style.Font,Title
 HiddenCategories=
 
@@ -429,7 +429,7 @@ Dockable=1
 
 [MessageView@EditWindow0]
 Create=1
-Visible=1
+Visible=0
 State=0
 Left=12
 Top=0
