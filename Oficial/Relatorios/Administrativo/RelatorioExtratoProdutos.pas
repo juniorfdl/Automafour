@@ -78,17 +78,6 @@ type
     SQLProdutoGradePRODICOD: TIntegerField;
     SQLProdutoGradePRODIAGRUPGRADE: TIntegerField;
     SQLProdutoGradePRODA60DESCR: TStringField;
-    TblTemporariaEMPRICOD: TIntegerField;
-    TblTemporariaMVESDMOV: TDateTimeField;
-    TblTemporariaMVESICOD: TIntegerField;
-    TblTemporariaPRODICOD: TIntegerField;
-    TblTemporariaMVESN3QTDENTRADA: TFloatField;
-    TblTemporariaMVESN3QTDSAIDA: TFloatField;
-    TblTemporariaPRODA60DESCR: TStringField;
-    TblTemporariaPRODA60REFER: TStringField;
-    TblTemporariaCORA30DESCR: TStringField;
-    TblTemporariaGRTMA5DESCR: TStringField;
-    TblTemporariaDOCUMENTO: TStringField;
     Report: TCrpe;
     SQLOperacaoEstoque: TRxQuery;
     DSSQLOperacaoEstoque: TDataSource;
@@ -98,7 +87,6 @@ type
     SQLOperacaoEstoqueOPESA60DESCR: TStringField;
     CheckPeriodo: TCheckBox;
     SQLProdutoOPESA60DESCR: TStringField;
-    TblTemporariaOPESA60DESCR: TStringField;
     GroupCliente: TGroupBox;
     ComboCliente: TRxDBLookupCombo;
     DSSQLCliente: TDataSource;
@@ -122,6 +110,18 @@ type
     SQLProdutoUNIDA5DESCR: TStringField;
     ckTotOperacao: TCheckBox;
     ckMostraCusto: TCheckBox;
+    TblTemporariaEMPRICOD: TIntegerField;
+    TblTemporariaMVESDMOV: TDateTimeField;
+    TblTemporariaMVESICOD: TIntegerField;
+    TblTemporariaPRODICOD: TIntegerField;
+    TblTemporariaDOCUMENTO: TStringField;
+    TblTemporariaMVESN3QTDENTRADA: TBCDField;
+    TblTemporariaMVESN3QTDSAIDA: TBCDField;
+    TblTemporariaPRODA60DESCR: TStringField;
+    TblTemporariaPRODA60REFER: TStringField;
+    TblTemporariaCORA30DESCR: TStringField;
+    TblTemporariaGRTMA5DESCR: TStringField;
+    TblTemporariaOPESA60DESCR: TStringField;
     TblTemporariaValorCusto: TCurrencyField;
     procedure FormCreate(Sender: TObject);
     procedure ComboGrupoChange(Sender: TObject);
@@ -267,11 +267,13 @@ begin
     SQLProduto.MacroByName('Produto').Value := '0=0';
     
   if OrdemCodigo.Checked then
-    SQLProduto.MacroByName('MOrdem').Value := 'MOVIMENTOESTOQUE.MVESDMOV,MOVIMENTOESTOQUE.MVESICOD,PRODUTO.PRODICOD';
+    SQLProduto.MacroByName('MOrdem').Value := 'MOVIMENTOESTOQUE.MVESDMOV,PRODUTO.PRODICOD';
+//    SQLProduto.MacroByName('MOrdem').Value := 'MOVIMENTOESTOQUE.MVESDMOV,MOVIMENTOESTOQUE.MVESICOD,PRODUTO.PRODICOD';
+
   if OrdemDescricao.Checked then
-    SQLProduto.MacroByName('MOrdem').Value := 'MOVIMENTOESTOQUE.MVESDMOV,MOVIMENTOESTOQUE.MVESICOD,PRODUTO.PRODA60DESCR';
+    SQLProduto.MacroByName('MOrdem').Value := 'MOVIMENTOESTOQUE.MVESDMOV,PRODUTO.PRODA60DESCR';
   If OrdemRef.Checked then
-    SQLProduto.MacroByName('MOrdem').Value := 'MOVIMENTOESTOQUE.MVESDMOV,MOVIMENTOESTOQUE.MVESICOD,PRODUTO.PRODA60REFER';
+    SQLProduto.MacroByName('MOrdem').Value := 'MOVIMENTOESTOQUE.MVESDMOV,PRODUTO.PRODA60REFER';
 
   if ComboCliente.Value <> '' then
     begin

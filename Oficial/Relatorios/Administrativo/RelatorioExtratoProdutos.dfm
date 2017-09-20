@@ -491,11 +491,15 @@ inherited FormRelatorioExtratoProdutos: TFormRelatorioExtratoProdutos
       FieldName = 'DOCUMENTO'
       Size = 30
     end
-    object TblTemporariaMVESN3QTDENTRADA: TFloatField
+    object TblTemporariaMVESN3QTDENTRADA: TBCDField
       FieldName = 'MVESN3QTDENTRADA'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaMVESN3QTDSAIDA: TFloatField
+    object TblTemporariaMVESN3QTDSAIDA: TBCDField
       FieldName = 'MVESN3QTDSAIDA'
+      Precision = 15
+      Size = 3
     end
     object TblTemporariaPRODA60DESCR: TStringField
       FieldName = 'PRODA60DESCR'
