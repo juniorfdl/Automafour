@@ -1,6 +1,6 @@
 inherited FormCadastroProduto: TFormCadastroProduto
-  Left = 273
-  Top = 14
+  Left = 111
+  Top = 15
   Caption = 'Cadastro de Produtos'
   ClientHeight = 682
   ClientWidth = 1159
