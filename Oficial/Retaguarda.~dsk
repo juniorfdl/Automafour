@@ -1,21 +1,62 @@
 [Closed Files]
-File_0=SourceModule,'C:\sgr\uAtivo.pas',0,1,2572,24,2587,0,0
-File_1=SourceModule,'C:\sgr\ufunctions.pas',0,1,1902,46,1909,0,0
-File_2=SourceModule,'C:\sgr\uRelAnaliseCampanha.pas',0,1,230,5,242,0,0
-File_3=SourceModule,'C:\sgr\SIP\UAsterisk.pas',0,1,185,79,196,0,0
-File_4=SourceModule,'c:\program files (x86)\borland\delphi7\source\vcl\OleCtrls.pas',0,1,580,1,593,0,0
-File_5=SourceModule,'C:\sgr\uReceptivo.pas',0,1,1,1,1,0,0
-File_6=SourceModule,'C:\projetos\Automafour\Oficial\Principal.pas',0,1,2339,49,2343,1,0
-File_7=SourceModule,'C:\projetos\Automafour\Oficial\Relatorios\Administrativo\RelatorioCurvaABC.pas',0,1,380,20,385,1,0
-File_8=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\TelaImpressaoDuplicatas.dfm',0,1,5385,103,5398,0,0
-File_9=SourceModule,'C:\projetos\Automafour\Oficial\Compras\TelaPedidoCompraItemFiltro.pas',0,1,741,30,757,1,0
+File_0=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.pas',0,1,4,42,19,0,0
+File_1=SourceModule,'C:\sgr\SGR.dpr',0,1,1,97,7,0,0
+File_2=SourceModule,'C:\sgr\uAtivo.pas',0,1,2572,24,2587,0,0
+File_3=SourceModule,'C:\sgr\ufunctions.pas',0,1,1902,46,1909,0,0
+File_4=SourceModule,'C:\sgr\uRelAnaliseCampanha.pas',0,1,230,5,242,0,0
+File_5=SourceModule,'C:\sgr\SIP\UAsterisk.pas',0,1,185,79,196,0,0
+File_6=SourceModule,'c:\program files (x86)\borland\delphi7\source\vcl\OleCtrls.pas',0,1,580,1,593,0,0
+File_7=SourceModule,'C:\sgr\uReceptivo.pas',0,1,1,1,1,0,0
+File_8=SourceModule,'C:\projetos\Automafour\Oficial\Principal.pas',0,1,2339,49,2343,1,0
 
 [Modules]
-Module0=C:\sgr\SGR.dpr
-Count=1
+Module0=C:\projetos\Automafour\Template\CadastroTEMPLATE.pas
+Module1=C:\projetos\Automafour\Oficial\Cadastros\CadastroProdutos.pas
+Module2=C:\Program Files (x86)\Borland\Componentes\RxLib\units\RxQuery.pas
+Module3=C:\Program Files (x86)\Borland\Componentes\RxLib\units\RxLookup.pas
+Module4=C:\Program Files (x86)\Borland\Componentes\RxLib\units\RxDBComb.pas
+Module5=C:\Program Files (x86)\Borland\Componentes\RxLib\units\RXDBCtrl.pas
+Module6=C:\Program Files (x86)\Borland\Componentes\TCFComps\EDBNum.pas
+Module7=C:\projetos\Automafour\Oficial\ArquivosComuns\UnitLibrary.pas
+Count=8
 EditWindowCount=1
 
-[C:\sgr\SGR.dpr]
+[C:\projetos\Automafour\Template\CadastroTEMPLATE.pas]
+ModuleType=SourceModule
+FormState=1
+FormOnTop=0
+
+[C:\projetos\Automafour\Oficial\Cadastros\CadastroProdutos.pas]
+ModuleType=SourceModule
+FormState=1
+FormOnTop=0
+
+[C:\Program Files (x86)\Borland\Componentes\RxLib\units\RxQuery.pas]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Program Files (x86)\Borland\Componentes\RxLib\units\RxLookup.pas]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Program Files (x86)\Borland\Componentes\RxLib\units\RxDBComb.pas]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Program Files (x86)\Borland\Componentes\RxLib\units\RXDBCtrl.pas]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Program Files (x86)\Borland\Componentes\TCFComps\EDBNum.pas]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
+
+[C:\projetos\Automafour\Oficial\ArquivosComuns\UnitLibrary.pas]
 ModuleType=SourceModule
 FormState=0
 FormOnTop=0
@@ -29,9 +70,16 @@ FormState=0
 FormOnTop=0
 
 [EditWindow0]
-ViewCount=1
-CurrentView=0
+ViewCount=8
+CurrentView=6
 View0=0
+View1=1
+View2=2
+View3=3
+View4=4
+View5=5
+View6=6
+View7=7
 CodeExplorer=CodeExplorer@EditWindow0
 MessageView=MessageView@EditWindow0
 Create=1
@@ -42,24 +90,73 @@ Top=140
 Width=1069
 Height=485
 MaxLeft=-8
-MaxTop=114
+MaxTop=107
 MaxWidth=1382
-MaxHeight=622
+MaxHeight=629
 ClientWidth=1366
-ClientHeight=583
+ClientHeight=590
 LeftPanelSize=0
 LeftPanelClients=CodeExplorer@EditWindow0
 LeftPanelData=00000400010000000C000000436F64654578706C6F726572000000000000000000000000000000000001000000000000000000000000FFFFFFFF
 RightPanelSize=0
 BottomPanelSize=85
 BottomPanelClients=MessageView@EditWindow0
-BottomPanelData=000004000000000056050000000000000255000000000000000100000000000000000000000001000000005605000000000000010000000056050000000000000100000000560500000B0000004D65737361676556696577FFFFFFFF
+BottomPanelData=00000400000000005605000000000000025500000000000000010000000000000000000000000100000000560500000000000001000000005605000000000000010000000056050000000000000100000000560500000B0000004D65737361676556696577FFFFFFFF
 
 [View0]
-Module=C:\sgr\SGR.dpr
-CursorX=97
-CursorY=7
-TopLine=1
+Module=C:\projetos\Automafour\Oficial\Cadastros\CadastroProdutos.pas
+CursorX=50
+CursorY=1840
+TopLine=1830
+LeftCol=1
+
+[View1]
+Module=C:\projetos\Automafour\Oficial\ArquivosComuns\UnitLibrary.pas
+CursorX=58
+CursorY=2619
+TopLine=2605
+LeftCol=1
+
+[View2]
+Module=C:\Program Files (x86)\Borland\Componentes\TCFComps\EDBNum.pas
+CursorX=1
+CursorY=602
+TopLine=588
+LeftCol=1
+
+[View3]
+Module=C:\Program Files (x86)\Borland\Componentes\RxLib\units\RXDBCtrl.pas
+CursorX=1
+CursorY=2965
+TopLine=2953
+LeftCol=1
+
+[View4]
+Module=C:\Program Files (x86)\Borland\Componentes\RxLib\units\RxDBComb.pas
+CursorX=1
+CursorY=230
+TopLine=213
+LeftCol=1
+
+[View5]
+Module=C:\Program Files (x86)\Borland\Componentes\RxLib\units\RxLookup.pas
+CursorX=1
+CursorY=681
+TopLine=668
+LeftCol=1
+
+[View6]
+Module=C:\projetos\Automafour\Template\CadastroTEMPLATE.pas
+CursorX=36
+CursorY=1097
+TopLine=1087
+LeftCol=1
+
+[View7]
+Module=C:\Program Files (x86)\Borland\Componentes\RxLib\units\RxQuery.pas
+CursorX=1
+CursorY=370
+TopLine=355
 LeftCol=1
 
 [Watches]
@@ -103,8 +200,8 @@ Left=0
 Top=2
 Width=1366
 Height=123
-MaxLeft=-8
-MaxTop=-8
+MaxLeft=-1
+MaxTop=-1
 MaxWidth=1382
 MaxHeight=123
 ClientWidth=1366
@@ -189,8 +286,8 @@ LRDockWidth=866
 Dockable=1
 SplitPos=119
 ArrangeBy=Name
-SelectedItem=
-ExpandedItems=DataBinding,DataController,DataController.DataSource,DataSource.DataSet,DataSource.DataSet.MasterSource,DataSource.DataSet.MasterSource.DataSet,Font.Style,ListSource.DataSet,LookupDataSet,Options,PreviewOptions,Style.Font,Title
+SelectedItem=Caption
+ExpandedItems=Action.DataSource,DataBinding,DataController,DataController.DataSource,DataSource,DataSource.DataSet.MasterSource,DataSource.DataSet.MasterSource.DataSet,Font.Style,ListSource.DataSet,LookupDataSet,Options,PreviewOptions,Style.Font,Title
 HiddenCategories=
 
 [BreakpointWindow]

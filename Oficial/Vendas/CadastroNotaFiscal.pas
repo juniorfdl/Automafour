@@ -5738,6 +5738,7 @@ var
   PathPastaMensal, sXML, Danfe, Para, emailCopia, Titulo: string;
   stl: TStringList;
   xSSL, xTSL: Boolean;
+  CC: Tstrings;
 begin
   inherited;
   // Para - Destinatario
@@ -5757,15 +5758,7 @@ begin
   Inicia_NFe;
 
   Titulo := 'Nota Fiscal Eletronica Emitida!';
-
-  // Para - Destinatario
-  if SQLTemplateEMPRICODDEST.AsString <> '' then
-    para := LowerCase(SQLLocate('EMPRESA', 'EMPRICOD', 'EMPRA60EMAIL', SQLTemplateEMPRICODDEST.AsString));
-  if SQLTemplateCLIEA13ID.AsString <> '' then
-    para := LowerCase(SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEA60EMAIL', '''' + SQLTemplateCLIEA13ID.AsString + ''''));
-  if SQLTemplateFORNICOD.AsString <> '' then
-    para := LowerCase(SQLLocate('FORNECEDOR', 'FORNICOD', 'FORNA60EMAIL', SQLTemplateFORNICOD.AsString));
-
+  
   PathPastaMensal := FormatDateTime('yyyymm', sqlTemplate.FieldByName('NOFIDEMIS').Value);
 
   sXML := SQLEmpresaEMPRA100CAMINHOXML.Value + '\' + PathPastaMensal + '\' + SQLTemplateNOFIA44CHAVEACESSO.asstring + '-NFe.xml';
@@ -5817,21 +5810,40 @@ begin
       ACBrMail1.Username := sqlempresaEMPRA75EMAILUSUARIO.AsString;
       ACBrMail1.Password := sqlempresaEMPRA50EMAILSENHA.AsString;
       ACBrMail1.Port := sqlempresaEMPRIEMAILPORTA.AsString;
+      ACBrMail1.UseThread := False;           //Aguarda Envio do Email(não usa thread)
       ACBrMail1.AddAddress(Para, '');
+
+      //CC:=TstringList.Create;
       if emailCopia <> '' then
-        ACBrMail1.AddCC(emailCopia, '');
+       //CC.Add(emailCopia);
+      ACBrMail1.AddCC(emailCopia);
 
         // mensagem principal do e-mail. pode ser html ou texto puro
       ACBrMail1.Body.Text := stl.Text;
-
       ACBrMail1.SetSSL := xSSL;              // SSL - Conex�o Segura
       ACBrMail1.SetTLS := xTSL;              // TLS - Crypografia, para hotmail obrigatorio
       if FileExists(sXML) then
         ACBrMail1.AddAttachment(sXML, '');       // um_nome_opcional
-      if FileExists(Danfe) then
-        ACBrMail1.AddAttachment(Danfe, '');      // um_nome_opcional
-      ACBrMail1.Send;
 
+      if FileExists(Danfe) then
+        ACBrMail1.AddAttachment(Danfe, '')     // um_nome_opcional
+      else begin
+        if ACBrNFe1.NotasFiscais.Count > 0 then
+        begin
+          Danfe := PathWithDelim(ACBrNFeDANFeRL1.PathPDF) + ACBrNFe1.NotasFiscais.Items[0].NumID + '-nfe.pdf';
+
+          if FileExists(Danfe) then
+            ACBrMail1.AddAttachment(Danfe, '');      // um_nome_opcional
+        end;
+      end; 
+
+      ACBrMail1.Send;
+      {ACBrNFe1.NotasFiscais.Items[0].EnviarEmail( Para, Titulo,
+                                               stl
+                                               , True  // Enviar PDF junto
+                                               , CC   // Lista com emails que serão enviado cópias - TStrings
+                                               , nil); // Lista de anexos - TStrings
+       }
     finally
       stl.Free;
     end;
