@@ -1,62 +1,68 @@
 [Closed Files]
-File_0=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.pas',0,1,4,42,19,0,0
-File_1=SourceModule,'C:\sgr\SGR.dpr',0,1,1,97,7,0,0
-File_2=SourceModule,'C:\sgr\uAtivo.pas',0,1,2572,24,2587,0,0
-File_3=SourceModule,'C:\sgr\ufunctions.pas',0,1,1902,46,1909,0,0
-File_4=SourceModule,'C:\sgr\uRelAnaliseCampanha.pas',0,1,230,5,242,0,0
-File_5=SourceModule,'C:\sgr\SIP\UAsterisk.pas',0,1,185,79,196,0,0
-File_6=SourceModule,'c:\program files (x86)\borland\delphi7\source\vcl\OleCtrls.pas',0,1,580,1,593,0,0
-File_7=SourceModule,'C:\sgr\uReceptivo.pas',0,1,1,1,1,0,0
-File_8=SourceModule,'C:\projetos\Automafour\Oficial\Principal.pas',0,1,2339,49,2343,1,0
+File_0=SourceModule,'C:\Acbr\trunk2\Fontes\ACBrComum\ACBrUtil.pas',0,1,1898,1,1921,0,0
+File_1=SourceModule,'C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrNFe\DANFE\ACBrNFeDANFEClass.pas',0,1,323,1,338,0,0
+File_2=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\TelaItens.pas',0,1,1,1,1,1,0
+File_3=SourceModule,'C:\projetos\Automafour\Oficial\ArquivosComuns\UnitLibrary.pas',0,1,2605,58,2619,0,0
+File_4=SourceModule,'C:\Program Files (x86)\Borland\Componentes\TCFComps\EDBNum.pas',0,1,588,1,602,0,0
+File_5=SourceModule,'C:\Program Files (x86)\Borland\Componentes\RxLib\units\RXDBCtrl.pas',0,1,2953,1,2965,0,0
+File_6=SourceModule,'C:\Program Files (x86)\Borland\Componentes\RxLib\units\RxDBComb.pas',0,1,213,1,230,0,0
+File_7=SourceModule,'C:\Program Files (x86)\Borland\Componentes\RxLib\units\RxLookup.pas',0,1,668,1,681,0,0
+File_8=SourceModule,'C:\Program Files (x86)\Borland\Componentes\RxLib\units\RxQuery.pas',0,1,355,1,370,0,0
 
 [Modules]
-Module0=C:\projetos\Automafour\Template\CadastroTEMPLATE.pas
-Module1=C:\projetos\Automafour\Oficial\Cadastros\CadastroProdutos.pas
-Module2=C:\Program Files (x86)\Borland\Componentes\RxLib\units\RxQuery.pas
-Module3=C:\Program Files (x86)\Borland\Componentes\RxLib\units\RxLookup.pas
-Module4=C:\Program Files (x86)\Borland\Componentes\RxLib\units\RxDBComb.pas
-Module5=C:\Program Files (x86)\Borland\Componentes\RxLib\units\RXDBCtrl.pas
-Module6=C:\Program Files (x86)\Borland\Componentes\TCFComps\EDBNum.pas
-Module7=C:\projetos\Automafour\Oficial\ArquivosComuns\UnitLibrary.pas
-Count=8
+Module0=c:\acbr\trunk2\Exemplos\ACBrDFe\ACBrNFe\Delphi\Unit1.pas
+Module1=C:\projetos\Automafour\Oficial\Principal.pas
+Module2=C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.pas
+Module3=C:\projetos\Automafour\Oficial\Cadastros\CadastroProdutos.pas
+Module4=C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrNFe\DANFE\NFe\Fortes\ACBrNFeDANFeRLClass.pas
+Module5=C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrDFe.pas
+Module6=C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrNFe\ACBrNFe.pas
+Module7=C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrNFe\ACBrNFeNotasFiscais.pas
+Module8=C:\projetos\Automafour\Oficial\Retaguarda.dpr
+Count=9
 EditWindowCount=1
 
-[C:\projetos\Automafour\Template\CadastroTEMPLATE.pas]
+[c:\acbr\trunk2\Exemplos\ACBrDFe\ACBrNFe\Delphi\Unit1.pas]
 ModuleType=SourceModule
 FormState=1
+FormOnTop=0
+
+[C:\projetos\Automafour\Oficial\Principal.pas]
+ModuleType=SourceModule
+FormState=1
+FormOnTop=1
+
+[C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.pas]
+ModuleType=SourceModule
+FormState=0
 FormOnTop=0
 
 [C:\projetos\Automafour\Oficial\Cadastros\CadastroProdutos.pas]
 ModuleType=SourceModule
-FormState=1
+FormState=0
 FormOnTop=0
 
-[C:\Program Files (x86)\Borland\Componentes\RxLib\units\RxQuery.pas]
+[C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrNFe\DANFE\NFe\Fortes\ACBrNFeDANFeRLClass.pas]
 ModuleType=SourceModule
 FormState=0
 FormOnTop=0
 
-[C:\Program Files (x86)\Borland\Componentes\RxLib\units\RxLookup.pas]
+[C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrDFe.pas]
 ModuleType=SourceModule
 FormState=0
 FormOnTop=0
 
-[C:\Program Files (x86)\Borland\Componentes\RxLib\units\RxDBComb.pas]
+[C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrNFe\ACBrNFe.pas]
 ModuleType=SourceModule
 FormState=0
 FormOnTop=0
 
-[C:\Program Files (x86)\Borland\Componentes\RxLib\units\RXDBCtrl.pas]
+[C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrNFe\ACBrNFeNotasFiscais.pas]
 ModuleType=SourceModule
 FormState=0
 FormOnTop=0
 
-[C:\Program Files (x86)\Borland\Componentes\TCFComps\EDBNum.pas]
-ModuleType=SourceModule
-FormState=0
-FormOnTop=0
-
-[C:\projetos\Automafour\Oficial\ArquivosComuns\UnitLibrary.pas]
+[C:\projetos\Automafour\Oficial\Retaguarda.dpr]
 ModuleType=SourceModule
 FormState=0
 FormOnTop=0
@@ -65,13 +71,17 @@ FormOnTop=0
 FormState=0
 FormOnTop=0
 
-[C:\projetos\Automafour\Oficial\Retaguarda.dpr]
+[C:\projetos\Automafour\Template\CadastroTEMPLATE.pas]
+FormState=0
+FormOnTop=0
+
+[C:\projetos\Automafour\Template\PrincipalTemplate.pas]
 FormState=0
 FormOnTop=0
 
 [EditWindow0]
-ViewCount=8
-CurrentView=6
+ViewCount=9
+CurrentView=7
 View0=0
 View1=1
 View2=2
@@ -80,6 +90,7 @@ View4=4
 View5=5
 View6=6
 View7=7
+View8=8
 CodeExplorer=CodeExplorer@EditWindow0
 MessageView=MessageView@EditWindow0
 Create=1
@@ -99,64 +110,71 @@ LeftPanelSize=0
 LeftPanelClients=CodeExplorer@EditWindow0
 LeftPanelData=00000400010000000C000000436F64654578706C6F726572000000000000000000000000000000000001000000000000000000000000FFFFFFFF
 RightPanelSize=0
-BottomPanelSize=85
+BottomPanelSize=0
 BottomPanelClients=MessageView@EditWindow0
-BottomPanelData=00000400000000005605000000000000025500000000000000010000000000000000000000000100000000560500000000000001000000005605000000000000010000000056050000000000000100000000560500000B0000004D65737361676556696577FFFFFFFF
+BottomPanelData=00000400010000000B0000004D6573736167655669657756050000000000000255000000000000000100000000000000000000000001000000005605000000000000010000000056050000000000000100000000560500000000000001000000005605000000000000FFFFFFFF
 
 [View0]
+Module=C:\projetos\Automafour\Oficial\Retaguarda.dpr
+CursorX=50
+CursorY=473
+TopLine=464
+LeftCol=1
+
+[View1]
+Module=C:\projetos\Automafour\Oficial\Principal.pas
+CursorX=38
+CursorY=669
+TopLine=665
+LeftCol=1
+
+[View2]
+Module=C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.pas
+CursorX=38
+CursorY=5826
+TopLine=5812
+LeftCol=1
+
+[View3]
+Module=C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrNFe\ACBrNFeNotasFiscais.pas
+CursorX=22
+CursorY=1231
+TopLine=1208
+LeftCol=1
+
+[View4]
+Module=C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrNFe\ACBrNFe.pas
+CursorX=1
+CursorY=257
+TopLine=238
+LeftCol=1
+
+[View5]
+Module=C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrDFe.pas
+CursorX=39
+CursorY=217
+TopLine=217
+LeftCol=1
+
+[View6]
+Module=C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrNFe\DANFE\NFe\Fortes\ACBrNFeDANFeRLClass.pas
+CursorX=1
+CursorY=304
+TopLine=304
+LeftCol=1
+
+[View7]
+Module=c:\acbr\trunk2\Exemplos\ACBrDFe\ACBrNFe\Delphi\Unit1.pas
+CursorX=32
+CursorY=1387
+TopLine=1377
+LeftCol=1
+
+[View8]
 Module=C:\projetos\Automafour\Oficial\Cadastros\CadastroProdutos.pas
 CursorX=50
 CursorY=1840
 TopLine=1830
-LeftCol=1
-
-[View1]
-Module=C:\projetos\Automafour\Oficial\ArquivosComuns\UnitLibrary.pas
-CursorX=58
-CursorY=2619
-TopLine=2605
-LeftCol=1
-
-[View2]
-Module=C:\Program Files (x86)\Borland\Componentes\TCFComps\EDBNum.pas
-CursorX=1
-CursorY=602
-TopLine=588
-LeftCol=1
-
-[View3]
-Module=C:\Program Files (x86)\Borland\Componentes\RxLib\units\RXDBCtrl.pas
-CursorX=1
-CursorY=2965
-TopLine=2953
-LeftCol=1
-
-[View4]
-Module=C:\Program Files (x86)\Borland\Componentes\RxLib\units\RxDBComb.pas
-CursorX=1
-CursorY=230
-TopLine=213
-LeftCol=1
-
-[View5]
-Module=C:\Program Files (x86)\Borland\Componentes\RxLib\units\RxLookup.pas
-CursorX=1
-CursorY=681
-TopLine=668
-LeftCol=1
-
-[View6]
-Module=C:\projetos\Automafour\Template\CadastroTEMPLATE.pas
-CursorX=36
-CursorY=1097
-TopLine=1087
-LeftCol=1
-
-[View7]
-Module=C:\Program Files (x86)\Borland\Componentes\RxLib\units\RxQuery.pas
-CursorX=1
-CursorY=370
-TopLine=355
 LeftCol=1
 
 [Watches]
@@ -181,13 +199,17 @@ LRDockWidth=426
 Dockable=1
 
 [Breakpoints]
-Count=6
+Count=10
 Breakpoint0='C:\projetos\Automafour\Oficial\Vendas\TelaImpressaoDuplicatas.pas',1377,'',0,1,'',1,0,0,'',1,'','',''
 Breakpoint1='c:\acbr\trunk2\Fontes\ACBrBoleto\ACBrBancoSicredi.pas',342,'',0,1,'',1,0,0,'',1,'','',''
 Breakpoint2='c:\acbr\trunk2\Fontes\ACBrBoleto\ACBrBancoSicredi.pas',628,'',0,1,'',1,0,0,'',1,'','',''
 Breakpoint3='c:\acbr\trunk2\Fontes\ACBrBoleto\ACBrBancoSicredi.pas',206,'',0,1,'',1,0,0,'',1,'','',''
 Breakpoint4='C:\projetos\Automafour\Oficial\Vendas\TelaImpressaoDuplicatas.pas',1528,'',0,1,'',1,0,0,'',1,'','',''
 Breakpoint5='C:\projetos\Automafour\Oficial\Relatorios\Administrativo\RelatorioCurvaABC.pas',355,'',0,1,'',1,0,0,'',1,'','',''
+Breakpoint6='C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.pas',6278,'',0,1,'',1,0,0,'',1,'','',''
+Breakpoint7='C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.pas',5753,'',0,1,'',1,0,0,'',1,'','',''
+Breakpoint8='C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrNFe\ACBrNFeNotasFiscais.pas',1230,'',0,1,'',1,0,0,'',1,'','',''
+Breakpoint9='C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.pas',5775,'',0,1,'',1,0,0,'',1,'','',''
 
 [AddressBreakpoints]
 Count=0
@@ -287,7 +309,7 @@ Dockable=1
 SplitPos=119
 ArrangeBy=Name
 SelectedItem=Caption
-ExpandedItems=Action.DataSource,DataBinding,DataController,DataController.DataSource,DataSource,DataSource.DataSet.MasterSource,DataSource.DataSet.MasterSource.DataSet,Font.Style,ListSource.DataSet,LookupDataSet,Options,PreviewOptions,Style.Font,Title
+ExpandedItems=Action.DataSource,Configuracoes,DataBinding,DataController,DataController.DataSource,DataSource,DataSource.DataSet.MasterSource,DataSource.DataSet.MasterSource.DataSet,Font.Style,ListSource.DataSet,LookupDataSet,Options,PreviewOptions,Style.Font,Title
 HiddenCategories=
 
 [BreakpointWindow]
@@ -474,7 +496,7 @@ Dockable=1
 
 [fmGrepResults]
 Create=1
-Visible=0
+Visible=1
 State=0
 Left=396
 Top=2
@@ -522,7 +544,7 @@ Dockable=1
 
 [MessageView@EditWindow0]
 Create=1
-Visible=1
+Visible=0
 State=0
 Left=12
 Top=0

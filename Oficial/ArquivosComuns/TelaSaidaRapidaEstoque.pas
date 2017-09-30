@@ -4,7 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Buttons, jpeg, ExtCtrls, StdCtrls, Mask, ToolEdit, CurrEdit, VarSys;
+  Dialogs, Buttons, jpeg, ExtCtrls, StdCtrls, Mask, ToolEdit, CurrEdit, VarSys,
+  AdvOfficeStatusBar, AdvOfficeStatusBarStylers;
 
 type
   TFormTelaSaidaRapidaEstoque = class(TForm)
@@ -28,18 +29,20 @@ type
     EditMargemAtacado: TCurrencyEdit;
     EditSaldoEstoqueatual: TCurrencyEdit;
     GroupNovosValores: TGroupBox;
-    PanelCabecalho: TPanel;
-    LabelTitulo: TLabel;
-    PanelNavigator: TPanel;
-    Image1: TImage;
-    BtnFecharTela: TSpeedButton;
     Label9: TLabel;
     EditQtdeSaida: TCurrencyEdit;
-    LabelGravar: TSpeedButton;
     Label18: TLabel;
     EditDespesa: TCurrencyEdit;
     Label21: TLabel;
     editCusto: TCurrencyEdit;
+    ScrollBoxTopo: TScrollBox;
+    PanelCabecalho: TPanel;
+    LabelTitulo: TLabel;
+    PanelNavigator: TPanel;
+    AdvPanelNavigator: TAdvOfficeStatusBar;
+    BtnFecharTela: TSpeedButton;
+    LabelGravar: TSpeedButton;
+    AdvOfficeStatusBarOfficeStyler1: TAdvOfficeStatusBarOfficeStyler;
     procedure BtnFecharTelaClick(Sender: TObject);
     procedure LabelGravarClick(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
