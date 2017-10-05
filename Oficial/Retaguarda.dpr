@@ -457,8 +457,11 @@ begin
 
     if (dm.SQLConfigGeralCFGECBLOQ.AsString = 'S') then
     begin
-      Application.terminate;
-      Exit;
+      if not DelphiAberto then
+      begin
+        Application.terminate;
+        Exit;
+      end;  
     end;
   end;
 

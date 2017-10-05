@@ -430,6 +430,7 @@ type
     procedure DBEditNomeClienteKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure CorrigeNomesdeClientesVazios1Click(Sender: TObject);
+    procedure DSSQLPedidoVendaItemStateChange(Sender: TObject);
   private
     { Private declarations }
     StatusNovo, StatusAnterior:String;
@@ -438,6 +439,7 @@ type
     ContasReceberID:String;
     BkpEmpresaCorrente : Integer;
     procedure CalculaTotal ;
+    procedure HabilitaItens(sn: Boolean);
   public
     { Public declarations }
   end;
@@ -508,6 +510,15 @@ begin
     BtnCliente.Click;
 end;
 
+procedure TFormCadastroPedidoVenda.HabilitaItens(sn:Boolean);
+begin
+  EditCdProduto.ReadOnly    := not sn;
+  DBEditQuantidade.ReadOnly := not sn;
+  ComboUnidade.ReadOnly     := not sn;
+  DBEditUnitario.ReadOnly   := not sn;
+  DBEditObs.ReadOnly        := not sn;
+end;
+
 procedure TFormCadastroPedidoVenda.SQLTemplateNewRecord(DataSet: TDataSet);
 begin
   inherited;
@@ -550,7 +561,7 @@ begin
   SQLTemplatePDVDN2PERCOMIS.Value   := 0;
   if DM.SQLConfigVenda.Fieldbyname('CFVETOBSPADRAOPED').AsString <> '' then
     SQLTemplatePDVDTOBS.AsString := DM.SQLConfigVenda.Fieldbyname('CFVETOBSPADRAOPED').AsString;
-  if DM.SQLTerminalAtivo.ParamByName('VENDICOD').AsInteger > 0 then
+  if DM.SQLTerminalAtivo.Fieldbyname('VENDICOD').AsInteger > 0 then
     SQLTemplateVENDICOD.AsInteger := DM.SQLTerminalAtivo.Fieldbyname('VENDICOD').AsInteger;
   if dm.RotaAtualPedidos > 0 then
     SQLTemplateRotaIcod.Value := dm.RotaAtualPedidos;
@@ -677,13 +688,13 @@ procedure TFormCadastroPedidoVenda.ImprimirPedidodeVenda1Click(
   Sender: TObject);
 begin
   inherited;
-  if (DM.SQLTerminalAtivo.ParamByName('TERMCTIPO').AsString <> '') then
+  if (DM.SQLTerminalAtivo.Fieldbyname('TERMCTIPO').AsString <> '') then
     begin
       SQLPedidoItens.Close;
       SQLPedidoItens.SQL.Text := 'Select * From PEDIDOVENDAITEM Where PDVDA13ID = ''' + SQLTemplate.FieldByName('PDVDA13ID').AsString + '''' ;
       SQLPedidoItens.Open;
-      if DM.SQLTerminalAtivo.ParamByName('TERMACTIPOIMPPEDORC').AsString <> '' then
-        Case DM.SQLTerminalAtivo.ParamByName('TERMACTIPOIMPPEDORC').AsString[1] of
+      if DM.SQLTerminalAtivo.Fieldbyname('TERMACTIPOIMPPEDORC').AsString <> '' then
+        Case DM.SQLTerminalAtivo.FieldByName('TERMACTIPOIMPPEDORC').AsString[1] of
           '0' : begin
                   // Prepara Impressão de Pedido/Orçamento
                   // Padrao 80 Colunas bobina;
@@ -698,10 +709,10 @@ begin
                       DM.Report.ReportName          := DM.SQLConfigGeralCFGEA255PATHREPORT.Value + '\Pedido Orcamento.rpt';
                       DM.Report.ReportTitle         := 'Orçamento';
                       DM.Report.WindowStyle.Title   := 'Orçamento';
-                      if Dm.SQLTerminalAtivo.ParamByName('TERMA60IMPPEDIDO').AsString <> '' then
+                      if Dm.SQLTerminalAtivo.FieldByName('TERMA60IMPPEDIDO').AsString <> '' then
                         begin
                           DM.Report.Output          := toPrinter;
-                          DM.Report.Printer.Name    := Dm.SQLTerminalAtivo.ParamByName('TERMA60IMPPEDIDO').AsString;
+                          DM.Report.Printer.Name    := Dm.SQLTerminalAtivo.FieldByName('TERMA60IMPPEDIDO').AsString;
                         end
                       else
                         DM.Report.Output            := toWindow;
@@ -713,16 +724,16 @@ begin
                 end;
           '2' : begin
                   // Personalizado
-                  if FileExists(DM.SQLTerminalAtivo.ParamByName('TERMTPATHPEDORC').AsString) then
+                  if FileExists(DM.SQLTerminalAtivo.FieldByName('TERMTPATHPEDORC').AsString) then
                     begin
                       DM.Report.DiscardSavedData    := True;
-                      DM.Report.ReportName          := DM.SQLTerminalAtivo.ParamByName('TERMTPATHPEDORC').Value;
+                      DM.Report.ReportName          := DM.SQLTerminalAtivo.FieldByName('TERMTPATHPEDORC').Value;
                       DM.Report.ReportTitle         := 'Orçamento';
                       DM.Report.WindowStyle.Title   := 'Orçamento';
-                      if Dm.SQLTerminalAtivo.ParamByName('TERMA60IMPPEDIDO').AsString <> '' then
+                      if Dm.SQLTerminalAtivo.FieldByName('TERMA60IMPPEDIDO').AsString <> '' then
                         begin
                           DM.Report.Output          := toPrinter;
-                          DM.Report.Printer.Name    := Dm.SQLTerminalAtivo.ParamByName('TERMA60IMPPEDIDO').AsString;
+                          DM.Report.Printer.Name    := Dm.SQLTerminalAtivo.FieldByName('TERMA60IMPPEDIDO').AsString;
                         end
                       else
                         DM.Report.Output            := toWindow;
@@ -748,10 +759,10 @@ begin
               DM.Report.ReportName          := DM.SQLConfigGeralCFGEA255PATHREPORT.Value + '\Pedido Orcamento.rpt';
               DM.Report.ReportTitle         := 'Orçamento';
               DM.Report.WindowStyle.Title   := 'Orçamento';
-              if Dm.SQLTerminalAtivo.ParamByName('TERMA60IMPPEDIDO').AsString <> '' then
+              if Dm.SQLTerminalAtivo.FieldByName('TERMA60IMPPEDIDO').AsString <> '' then
                 begin
                   DM.Report.Output          := toPrinter;
-                  DM.Report.Printer.Name    := Dm.SQLTerminalAtivo.ParamByName('TERMA60IMPPEDIDO').AsString;
+                  DM.Report.Printer.Name    := Dm.SQLTerminalAtivo.FieldByName('TERMA60IMPPEDIDO').AsString;
                 end
               else
                 DM.Report.Output            := toWindow;
@@ -771,12 +782,12 @@ end;
 procedure TFormCadastroPedidoVenda.OrdemdeServio1Click(Sender: TObject);
 begin
   inherited;
-  if (DM.SQLTerminalAtivo.ParamByName('TERMCTIPO').AsString <> '') then
+  if (DM.SQLTerminalAtivo.FieldByName('TERMCTIPO').AsString <> '') then
     begin
       SQLPedidoItens.Close;
       SQLPedidoItens.SQL.Text := 'Select * From PEDIDOVENDAITEM Where PDVDA13ID = ''' + SQLTemplate.FieldByName('PDVDA13ID').AsString + '''' ;
       SQLPedidoItens.Open;
-      Case DM.SQLTerminalAtivo.ParamByName('TERMACTIPOIMPPEDORC').AsString[1] of
+      Case DM.SQLTerminalAtivo.FieldByName('TERMACTIPOIMPPEDORC').AsString[1] of
         '0' : begin
                 // Prepara Impressão de Pedido/Orçamento
                 // Padrao 80 Colunas bobina;
@@ -791,10 +802,10 @@ begin
                     DM.Report.ReportName          := DM.SQLConfigGeralCFGEA255PATHREPORT.Value + '\Pedido Orcamento.rpt';
                     DM.Report.ReportTitle         := 'Orçamento';
                     DM.Report.WindowStyle.Title   := 'Orçamento';
-                    if Dm.SQLTerminalAtivo.ParamByName('TERMA60IMPPEDIDO').AsString <> '' then
+                    if Dm.SQLTerminalAtivo.FieldByName('TERMA60IMPPEDIDO').AsString <> '' then
                       begin
                         DM.Report.Output          := toPrinter;
-                        DM.Report.Printer.Name    := Dm.SQLTerminalAtivo.ParamByName('TERMA60IMPPEDIDO').AsString;
+                        DM.Report.Printer.Name    := Dm.SQLTerminalAtivo.FieldByName('TERMA60IMPPEDIDO').AsString;
                       end
                     else
                       DM.Report.Output            := toWindow;
@@ -806,15 +817,15 @@ begin
               end;
         '2' : begin
                 // Personalizado
-                if FileExists(DM.SQLTerminalAtivo.ParamByName('TERMTPATHPEDORC').AsString) then
+                if FileExists(DM.SQLTerminalAtivo.FieldByName('TERMTPATHPEDORC').AsString) then
                   begin
-                    DM.Report.ReportName          := DM.SQLTerminalAtivo.ParamByName('TERMTPATHPEDORC').Value;
+                    DM.Report.ReportName          := DM.SQLTerminalAtivo.FieldByName('TERMTPATHPEDORC').Value;
                     DM.Report.ReportTitle         := 'Orçamento';
                     DM.Report.WindowStyle.Title   := 'Orçamento';
-                    if Dm.SQLTerminalAtivo.ParamByName('TERMA60IMPPEDIDO').AsString <> '' then
+                    if Dm.SQLTerminalAtivo.FieldByName('TERMA60IMPPEDIDO').AsString <> '' then
                       begin
                         DM.Report.Output          := toPrinter;
-                        DM.Report.Printer.Name    := Dm.SQLTerminalAtivo.ParamByName('TERMA60IMPPEDIDO').AsString;
+                        DM.Report.Printer.Name    := Dm.SQLTerminalAtivo.FieldByName('TERMA60IMPPEDIDO').AsString;
                       end
                     else
                       DM.Report.Output            := toWindow;
@@ -1048,6 +1059,9 @@ begin
      mnGerarOS.Enabled := True
   else
      mnGerarOS.Enabled := False;
+
+  HabilitaItens(((SQLTemplate.State in dsEditModes) or (SQLPedidoVendaItem.State in dsEditModes)));
+
 end;
 
 procedure TFormCadastroPedidoVenda.FormClose(Sender: TObject;
@@ -1148,11 +1162,11 @@ begin
       SaldoAtual.Update;
 
       // Liberar Campos dos itens
-      EditCdProduto.ReadOnly    := False;
+      {EditCdProduto.ReadOnly    := False;
       DBEditQuantidade.ReadOnly := False;
       ComboUnidade.ReadOnly     := False;
       DBEditUnitario.ReadOnly   := False;
-      DBEditObs.ReadOnly        := False;
+      DBEditObs.ReadOnly        := False;}
 
       EditCdProduto.Clear;
       EditCdProduto.SetFocus;
@@ -1199,11 +1213,11 @@ begin
       CalculaTotal;
 
       // Liberar Campos dos itens
-      EditCdProduto.ReadOnly    := True;
+      {EditCdProduto.ReadOnly    := True;
       DBEditQuantidade.ReadOnly := True;
       ComboUnidade.ReadOnly     := True;
       DBEditUnitario.ReadOnly   := True;
-      DBEditObs.ReadOnly        := True;
+      DBEditObs.ReadOnly        := True;}
 
       SaldoAtual.Visible := True;
       SaldoAtual.Update;
@@ -1642,13 +1656,13 @@ procedure TFormCadastroPedidoVenda.MnVisualizarPedidoOrcamentoAtualClick(
   Sender: TObject);
 begin
   inherited;
-  if (DM.SQLTerminalAtivo.ParamByName('TERMCTIPO').AsString <> '') then
+  if (DM.SQLTerminalAtivo.FieldByName('TERMCTIPO').AsString <> '') then
     begin
       SQLPedidoItens.Close;
       SQLPedidoItens.SQL.Text := 'Select * From PEDIDOVENDAITEM Where PDVDA13ID = ''' + SQLTemplate.FieldByName('PDVDA13ID').AsString + '''' ;
       SQLPedidoItens.Open;
-      if DM.SQLTerminalAtivo.ParamByName('TERMACTIPOIMPPEDORC').AsString <> '' then
-        Case DM.SQLTerminalAtivo.ParamByName('TERMACTIPOIMPPEDORC').AsString[1] of
+      if DM.SQLTerminalAtivo.FieldByName('TERMACTIPOIMPPEDORC').AsString <> '' then
+        Case DM.SQLTerminalAtivo.FieldByName('TERMACTIPOIMPPEDORC').AsString[1] of
           '0' : begin
                   // Prepara Impressão de Pedido/Orçamento
                   // Padrao 80 Colunas bobina;
@@ -1663,9 +1677,9 @@ begin
                       DM.Report.ReportName          := DM.SQLConfigGeralCFGEA255PATHREPORT.Value + '\Pedido Orcamento.rpt';
                       DM.Report.ReportTitle         := 'Orçamento';
                       DM.Report.WindowStyle.Title   := 'Orçamento';
-                      if Dm.SQLTerminalAtivo.ParamByName('TERMA60IMPPEDIDO').AsString <> '' then
+                      if Dm.SQLTerminalAtivo.FieldByName('TERMA60IMPPEDIDO').AsString <> '' then
                         begin
-                          DM.Report.Printer.Name    := Dm.SQLTerminalAtivo.ParamByName('TERMA60IMPPEDIDO').AsString;
+                          DM.Report.Printer.Name    := Dm.SQLTerminalAtivo.FieldByName('TERMA60IMPPEDIDO').AsString;
                           DM.Report.Output          := toWindow;
                         end;
 
@@ -1676,16 +1690,16 @@ begin
                 end;
           '2' : begin
                   // Personalizado
-                  if FileExists(DM.SQLTerminalAtivo.ParamByName('TERMTPATHPEDORC').AsString) then
+                  if FileExists(DM.SQLTerminalAtivo.FieldByName('TERMTPATHPEDORC').AsString) then
                     begin
                       DM.Report.DiscardSavedData    := True;
-                      DM.Report.ReportName          := DM.SQLTerminalAtivo.ParamByName('TERMTPATHPEDORC').Value;
+                      DM.Report.ReportName          := DM.SQLTerminalAtivo.FieldByName('TERMTPATHPEDORC').Value;
                       DM.Report.ReportTitle         := 'Orçamento';
                       DM.Report.WindowStyle.Title   := 'Orçamento';
-                      if Dm.SQLTerminalAtivo.ParamByName('TERMA60IMPPEDIDO').AsString <> '' then
+                      if Dm.SQLTerminalAtivo.FieldByName('TERMA60IMPPEDIDO').AsString <> '' then
                         begin
                           DM.Report.Output          := toWindow;
-                          DM.Report.Printer.Name    := Dm.SQLTerminalAtivo.ParamByName('TERMA60IMPPEDIDO').AsString;
+                          DM.Report.Printer.Name    := Dm.SQLTerminalAtivo.FieldByName('TERMA60IMPPEDIDO').AsString;
                         end;
 
                       DM.Report.Execute;
@@ -1713,10 +1727,10 @@ begin
               DM.Report.ReportName          := DM.SQLConfigGeralCFGEA255PATHREPORT.Value + '\Pedido Orcamento.rpt';
               DM.Report.ReportTitle         := 'Orçamento';
               DM.Report.WindowStyle.Title   := 'Orçamento';
-              if Dm.SQLTerminalAtivo.ParamByName('TERMA60IMPPEDIDO').AsString <> '' then
+              if Dm.SQLTerminalAtivo.FieldByName('TERMA60IMPPEDIDO').AsString <> '' then
                 begin
                   DM.Report.Output          := toPrinter;
-                  DM.Report.Printer.Name    := Dm.SQLTerminalAtivo.ParamByName('TERMA60IMPPEDIDO').AsString;
+                  DM.Report.Printer.Name    := Dm.SQLTerminalAtivo.FieldByName('TERMA60IMPPEDIDO').AsString;
                 end
               else
                 DM.Report.Output            := toWindow;
@@ -2294,6 +2308,13 @@ begin
       Application.ProcessMessages;
     end;
   showmessage('Rotina Finalizada com Sucesso!');
+end;
+
+procedure TFormCadastroPedidoVenda.DSSQLPedidoVendaItemStateChange(
+  Sender: TObject);
+begin
+  inherited;
+  HabilitaItens(((SQLTemplate.State in dsEditModes) or (SQLPedidoVendaItem.State in dsEditModes)));
 end;
 
 end.

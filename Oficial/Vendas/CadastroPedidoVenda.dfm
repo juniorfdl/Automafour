@@ -237,6 +237,7 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
             Top = 222
             Width = 796
             Height = 223
+            ActivePage = TabItens
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Top = 75
@@ -727,7 +728,7 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
                 Left = 0
                 Top = 0
                 Width = 788
-                Height = 121
+                Height = 114
                 Align = alTop
                 BevelWidth = 3
                 Color = 16249066
@@ -739,8 +740,8 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
                 ParentFont = False
                 TabOrder = 0
                 object Label13: TLabel
-                  Left = 10
-                  Top = 39
+                  Left = 6
+                  Top = 31
                   Width = 170
                   Height = 13
                   Caption = 'C'#243'digo / Descri'#231#227'o do Produto'
@@ -753,7 +754,7 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
                 end
                 object Label18: TLabel
                   Left = 446
-                  Top = 39
+                  Top = 31
                   Width = 27
                   Height = 13
                   Caption = 'Qtde'
@@ -766,7 +767,7 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
                 end
                 object AcessaProduto: TSpeedButton
                   Left = 54
-                  Top = 52
+                  Top = 44
                   Width = 24
                   Height = 22
                   Hint = 'Acessa Cadastro de Produtos'
@@ -784,7 +785,7 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
                 end
                 object Label9: TLabel
                   Left = 507
-                  Top = 39
+                  Top = 31
                   Width = 46
                   Height = 13
                   Caption = 'Unidade'
@@ -797,7 +798,7 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
                 end
                 object DBEditQuantidade: TDBEdit
                   Left = 436
-                  Top = 53
+                  Top = 45
                   Width = 52
                   Height = 21
                   Ctl3D = True
@@ -815,7 +816,7 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
                 end
                 object DBEditUnitario: TDBEdit
                   Left = 589
-                  Top = 53
+                  Top = 45
                   Width = 66
                   Height = 21
                   Ctl3D = True
@@ -833,7 +834,7 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
                 end
                 object BTItemNovo: TBitBtn
                   Left = 658
-                  Top = 38
+                  Top = 30
                   Width = 125
                   Height = 28
                   Caption = 'Novo Item'
@@ -848,7 +849,7 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
                 end
                 object BtItemGravar: TBitBtn
                   Left = 658
-                  Top = 65
+                  Top = 57
                   Width = 62
                   Height = 29
                   Caption = 'Gravar Item'
@@ -863,7 +864,7 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
                 end
                 object BtItemExcluir: TBitBtn
                   Left = 721
-                  Top = 65
+                  Top = 57
                   Width = 62
                   Height = 29
                   Caption = 'Excluir Item'
@@ -880,7 +881,7 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
                   Left = 3
                   Top = 3
                   Width = 782
-                  Height = 33
+                  Height = 27
                   Align = alTop
                   Alignment = taLeftJustify
                   BevelInner = bvLowered
@@ -898,7 +899,7 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
                     Left = 2
                     Top = 2
                     Width = 778
-                    Height = 29
+                    Height = 23
                     AnchorHint = False
                     Align = alClient
                     Panels = <
@@ -933,8 +934,8 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
                     Version = '1.3.0.2'
                     object SaldoAtual: TLabel
                       Left = 627
-                      Top = 7
-                      Width = 10
+                      Top = 2
+                      Width = 52
                       Height = 19
                       Alignment = taRightJustify
                       Caption = '0'
@@ -948,8 +949,8 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
                     end
                     object LSaldo: TLabel
                       Left = 501
-                      Top = 10
-                      Width = 78
+                      Top = 5
+                      Width = 83
                       Height = 13
                       Caption = 'Estoque Atual'
                       Font.Charset = DEFAULT_CHARSET
@@ -962,9 +963,9 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
                     end
                     object DBText1: TDBText
                       Left = 375
-                      Top = 9
-                      Width = 43
-                      Height = 17
+                      Top = 5
+                      Width = 52
+                      Height = 13
                       DataField = 'PDVDN2PERCMIX'
                       DataSource = DSTemplate
                       Font.Charset = ANSI_CHARSET
@@ -977,8 +978,8 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
                     end
                     object Label16: TLabel
                       Left = 421
-                      Top = 10
-                      Width = 13
+                      Top = 5
+                      Width = 52
                       Height = 13
                       Caption = '%'
                       Font.Charset = DEFAULT_CHARSET
@@ -991,7 +992,7 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
                     end
                     object Label14: TLabel
                       Left = 314
-                      Top = 10
+                      Top = 5
                       Width = 52
                       Height = 13
                       Caption = 'Mix Total'
@@ -1005,7 +1006,7 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
                     end
                     object LblNomeSistema: TRxLabel
                       Left = 8
-                      Top = 2
+                      Top = 0
                       Width = 165
                       Height = 23
                       Caption = 'Lan'#231'amento de Itens'
@@ -1023,7 +1024,7 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
                 end
                 object EditCdProduto: TEdit
                   Left = 5
-                  Top = 53
+                  Top = 45
                   Width = 48
                   Height = 21
                   Hint = 'Informe o Codigo ou F2 para  abrir cadastro Produto'
@@ -1041,7 +1042,7 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
                 end
                 object DBEditObs: TDBEdit
                   Left = 5
-                  Top = 93
+                  Top = 89
                   Width = 431
                   Height = 21
                   Ctl3D = True
@@ -1059,7 +1060,7 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
                 end
                 object ComboUnidade: TRxDBLookupCombo
                   Left = 489
-                  Top = 53
+                  Top = 45
                   Width = 99
                   Height = 21
                   DropDownCount = 8
@@ -1081,7 +1082,7 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
                 end
                 object DBEdit14: TDBEdit
                   Left = 80
-                  Top = 53
+                  Top = 45
                   Width = 355
                   Height = 21
                   TabStop = False
@@ -1100,8 +1101,8 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
                   TabOrder = 10
                 end
                 object ckObsItens: TCheckBox
-                  Left = 8
-                  Top = 80
+                  Left = 5
+                  Top = 76
                   Width = 121
                   Height = 11
                   TabStop = False
@@ -1117,7 +1118,7 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
                 end
                 object DBEditBonificacao: TDBEdit
                   Left = 437
-                  Top = 93
+                  Top = 89
                   Width = 93
                   Height = 21
                   Ctl3D = True
@@ -1134,7 +1135,7 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
                 end
                 object ckBonificacao: TCheckBox
                   Left = 437
-                  Top = 80
+                  Top = 76
                   Width = 96
                   Height = 11
                   TabStop = False
@@ -1150,7 +1151,7 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
                 end
                 object btCalcMix: TBitBtn
                   Left = 658
-                  Top = 94
+                  Top = 86
                   Width = 125
                   Height = 22
                   Caption = 'Calcular Mix'
@@ -1165,7 +1166,7 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
                 end
                 object ckVendaUnit: TCheckBox
                   Left = 589
-                  Top = 40
+                  Top = 32
                   Width = 57
                   Height = 11
                   TabStop = False
@@ -1182,9 +1183,9 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
               end
               object DBGridItens: TDBGrid
                 Left = 0
-                Top = 121
+                Top = 114
                 Width = 788
-                Height = 76
+                Height = 83
                 Align = alClient
                 BorderStyle = bsNone
                 Color = clWhite
@@ -2912,8 +2913,8 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
   object SQLEmpresa: TTable
     DatabaseName = 'DB'
     TableName = 'EMPRESA'
-    Left = 875
-    Top = 292
+    Left = 867
+    Top = 164
   end
   object DSSQLVendedor: TDataSource
     DataSet = SQLVendedor
@@ -3167,8 +3168,8 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
       'Select * from ROTA'
       'Order by ROTAA60NOME')
     Macros = <>
-    Left = 801
-    Top = 292
+    Left = 785
+    Top = 164
     object SQLRotaROTAICOD: TIntegerField
       FieldName = 'ROTAICOD'
       Origin = 'DB.ROTA.ROTAICOD'
@@ -3182,8 +3183,8 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
   end
   object DSSQLRota: TDataSource
     DataSet = SQLRota
-    Left = 829
-    Top = 292
+    Left = 813
+    Top = 164
   end
   object SQLPlanoRecebimento: TRxQuery
     DatabaseName = 'DB'
@@ -3191,8 +3192,8 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
       'Select * From PlanoRecebimento'
       'Order by PLRCA60DESCR')
     Macros = <>
-    Left = 864
-    Top = 348
+    Left = 856
+    Top = 220
     object SQLPlanoRecebimentoPLRCICOD: TIntegerField
       FieldName = 'PLRCICOD'
       Origin = 'DB.PLANORECEBIMENTO.PLRCICOD'
@@ -3284,8 +3285,8 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
   end
   object DSSQLPlanoRecebimento: TDataSource
     DataSet = SQLPlanoRecebimento
-    Left = 893
-    Top = 348
+    Left = 885
+    Top = 220
   end
   object SQLPedidoVendaItem: TRxQuery
     OnCalcFields = SQLPedidoVendaItemCalcFields
@@ -3418,8 +3419,8 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
     end
   end
   object DSSQLPedidoVendaItem: TDataSource
-    AutoEdit = False
     DataSet = SQLPedidoVendaItem
+    OnStateChange = DSSQLPedidoVendaItemStateChange
     Left = 94
     Top = 428
   end
@@ -3445,8 +3446,8 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
     SQL.Strings = (
       'Select * from Serie')
     Macros = <>
-    Left = 801
-    Top = 320
+    Left = 785
+    Top = 192
     object SQLSerieSERIA5COD: TStringField
       FieldName = 'SERIA5COD'
       Origin = 'DB.SERIE.SERIA5COD'
@@ -3456,16 +3457,16 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
   end
   object DSSQLSerie: TDataSource
     DataSet = SQLSerie
-    Left = 829
-    Top = 320
+    Left = 813
+    Top = 192
   end
   object SQLTransportadora: TRxQuery
     DatabaseName = 'DB'
     SQL.Strings = (
       'Select * from Transportadora')
     Macros = <>
-    Left = 801
-    Top = 348
+    Left = 785
+    Top = 220
     object SQLTransportadoraTRANICOD: TIntegerField
       FieldName = 'TRANICOD'
       Origin = 'DB.TRANSPORTADORA.TRANICOD'
@@ -3479,16 +3480,16 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
   end
   object DSSQLTransportadora: TDataSource
     DataSet = SQLTransportadora
-    Left = 829
-    Top = 348
+    Left = 813
+    Top = 220
   end
   object SQLVeiculo: TRxQuery
     DatabaseName = 'DB'
     SQL.Strings = (
       'Select * from Veiculo')
     Macros = <>
-    Left = 801
-    Top = 376
+    Left = 785
+    Top = 248
     object SQLVeiculoVEICA13ID: TStringField
       FieldName = 'VEICA13ID'
       Origin = 'DB.VEICULO.VEICA13ID'
@@ -3516,8 +3517,8 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
   end
   object DSSQLVeiculo: TDataSource
     DataSet = SQLVeiculo
-    Left = 829
-    Top = 376
+    Left = 813
+    Top = 248
   end
   object SQLContasReceber: TRxQuery
     Tag = 3
@@ -3907,8 +3908,8 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
       '(NUMEA5TIPO = '#39'CHQP'#39') or'
       '(NUMEA5TIPO = '#39'CRD'#39')')
     Macros = <>
-    Left = 894
-    Top = 376
+    Left = 886
+    Top = 248
     object SQLNumerarioNUMEICOD: TIntegerField
       FieldName = 'NUMEICOD'
       Origin = 'DB.NUMERARIO.NUMEICOD'
@@ -3940,7 +3941,7 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
   end
   object DSSQLNumerario: TDataSource
     DataSet = SQLNumerario
-    Left = 866
-    Top = 376
+    Left = 858
+    Top = 248
   end
 end
