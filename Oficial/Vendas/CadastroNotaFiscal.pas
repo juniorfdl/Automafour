@@ -14,7 +14,7 @@ uses
   Serial, AdvGlowButton, FMTBcd, DBClient, Provider,
   SqlExpr, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
   cxContainer, cxEdit, dxSkinsCore, cxTextEdit,
-  cxDBEdit, 
+  cxDBEdit,
   AdvOfficeStatusBar, AdvOfficeStatusBarStylers, AdvPanel, ACBrBase,
   ACBrMail, ACBrNFeDANFeRLClass, ACBrDFe;
 
@@ -959,7 +959,7 @@ type
     SQLContaPLCTA60DESCR: TStringField;
     SQLContaPLCTCANALSINT: TStringField;
     SQLContaPLCTCTIPOSALDO: TStringField;
-    AdvGlowButton1: TAdvGlowButton;
+    btnTransmitirNfe: TAdvGlowButton;
     AdvGlowButton2: TAdvGlowButton;
     AdvGlowButton3: TAdvGlowButton;
     AdvGlowButton4: TAdvGlowButton;
@@ -972,7 +972,7 @@ type
     SQLUnidadeUNIDN3FATORCONV: TFloatField;
     SQLNotaFiscalItemUNIDICOD: TIntegerField;
     SQLPedidoVendaItemUNIDICOD: TIntegerField;
-    AdvGlowButton5: TAdvGlowButton;
+    btnTransmitirNfe2: TAdvGlowButton;
     AdvGlowButton6: TAdvGlowButton;
     AdvGlowButton7: TAdvGlowButton;
     AdvGlowButton8: TAdvGlowButton;
@@ -1086,6 +1086,9 @@ type
     SQLEmpresaEMPRA1TSL: TStringField;
     SQLEmpresaEMPRA75EMAILUSUARIO: TStringField;
     AdvGlowButton9: TAdvGlowButton;
+    btnEncerrar: TAdvGlowButton;
+    DBEdit44: TDBEdit;
+    btnEncerrar2: TAdvGlowButton;
     function TabelaNFE_123(Produto, Situacao: string): string;
     procedure FormCreate(Sender: TObject);
     procedure SQLTemplateNewRecord(DataSet: TDataSet);
@@ -1197,6 +1200,8 @@ type
     procedure MnImportarDadosdoPedidodeVendaClick(Sender: TObject);
     procedure MnGerarBoletosClick(Sender: TObject);
     procedure AdvGlowButton9Click(Sender: TObject);
+    procedure btnEncerrarClick(Sender: TObject);
+    procedure DBEdit44Change(Sender: TObject);
   private
     Config: string;
 
@@ -1206,6 +1211,7 @@ type
     ValorEntrada, ValorFrete, ValorIcmsFrete, ValorVista: Double;
     ContasReceberCliente, ContasReceberID: string;
     BkpEmpresaCorrente: Integer;
+    procedure EncerrarNota;
     function RetornaPais(nPais: Integer): string;
     function FaltamDadosNasParcelas: Boolean;
     function GeraNotaVendaConsignada: Boolean;
@@ -1249,7 +1255,7 @@ uses
   CadastroOperacoesEstoque, CadastroTransportadora, CadastroFornecedor,
   CadastroCliente, TelaConsultaEmpresa, TelaEmissaoEtiquetasCodigoBarras,
   CadastroVendedor,
-  {TelaImpressaoDuplicatas} TelaConsultaCupom, TelaItensVendaConsignacao,
+  {TelaImpressaoDuplicatas}TelaConsultaCupom, TelaItensVendaConsignacao,
   TelaConsultaPlanoRecebimento, WaitWindow, DataModuloImpNotaFiscal,
   DataModuloTemplate, TelaConsultaPlanoContas, TelaDadosCheque, WindowsLibrary,
   ExtensoLib, CadastroAvalista, TelaConsultaOperacaoTesouraria,
@@ -1821,7 +1827,7 @@ begin
 
   if not dm.SQLConfigGeral.Active then
     dm.SQLConfigGeral.Open;
-      
+
 end;
 
 procedure TFormCadastroNotaFiscal.SQLTemplateNewRecord(DataSet: TDataSet);
@@ -1840,7 +1846,7 @@ begin
     SQLTemplateNOFICFRETEPORCONTA.Value := dm.sqlconfigvenda.FieldByName('CFVECFRETEPADRAO').Value
   else
     SQLTemplateNOFICFRETEPORCONTA.Value := 'C';
-    
+
   SQLTemplateNOFIN2BASCALCCIPI.Value := 0;
   SQLTemplateNOFIN2BASCALCICMS.Value := 0;
   SQLTemplateNOFIN2BASCALCSUBS.Value := 0;
@@ -2212,12 +2218,12 @@ begin
       CancelandoNota := False;
     end;
   end
-  else
+  {else
   begin
     Informa('Você não tem autorização para cancelar vendas!');
     Abort;
     Exit;
-  end;
+  end;}
 end;
 
 procedure TFormCadastroNotaFiscal.SQLTemplateAfterPost(DataSet: TDataSet);
@@ -2480,7 +2486,7 @@ begin
         begin
           Informa('O lançamento de estorno na tesouraria não será efetuado!');
         end;
-        if Application.FindComponent('FormTelaConsultaOperacaoTesouraria') <> Nil then
+        if Application.FindComponent('FormTelaConsultaOperacaoTesouraria') <> nil then
           FormTelaConsultaOperacaoTesouraria.Destroy;
       end;
     end;
@@ -2721,7 +2727,7 @@ begin
               DataSet.FieldByName('CliFornEmpTabelaPrecoLookUp').AsVariant := Null;
               DataSet.FieldByName('CliFornEmpFisicaJuridica').AsVariant := 'J';
               if DM.SQLTemplate.FindField('EMPRA3CRT').AsString = '3' then
-                DataSet.FieldByName('CliFornEmpRegime').AsVariant := 'N'  // Regime Normal
+                DataSet.FieldByName('CliFornEmpRegime').AsVariant := 'N' // Regime Normal
               else
                 DataSet.FieldByName('CliFornEmpRegime').AsVariant := 'S'; // Optante pelo Simples
               if DM.SQLTemplate.FindField('EMPRCFISJURID').asString = 'F' then
@@ -2828,13 +2834,13 @@ end;
 procedure TFormCadastroNotaFiscal.SQLContasReceberBeforePost(DataSet: TDataSet);
 begin
   inherited;
-  if DataSet.FindField('REGISTRO') <> Nil then
+  if DataSet.FindField('REGISTRO') <> nil then
     DataSet.FindField('REGISTRO').AsDateTime := Now;
-  if DataSet.FindField('PENDENTE') <> Nil then
+  if DataSet.FindField('PENDENTE') <> nil then
     DataSet.FindField('PENDENTE').AsString := 'S';
-  if DataSet.FindField('EMPRICOD') <> Nil then
+  if DataSet.FindField('EMPRICOD') <> nil then
     DataSet.FindField('EMPRICOD').Value := EmpresaCorrente;
-  if DataSet.FindField('TERMICOD') <> Nil then
+  if DataSet.FindField('TERMICOD') <> nil then
     DataSet.FindField('TERMICOD').Value := TerminalCorrente;
   case DataSet.State of
     DsInsert:
@@ -3108,7 +3114,7 @@ begin
   BtnVendedor.Enabled := SQLTemplate.FieldByName('NOFICSTATUS').AsString = 'A';
   BtnTransportadora.Enabled := SQLTemplate.FieldByName('NOFICSTATUS').AsString = 'A';
 
-  if (Field = Nil) or (Field.FieldName = 'OPESICOD') then
+  if (Field = nil) or (Field.FieldName = 'OPESICOD') then
   begin
     if (SQLTemplateOrigemDestinoLookUp.asVariant <> null) and (SQLTemplateOrigemDestinoLookUp.AsString <> '') then
       case SQLTemplateOrigemDestinoLookUp.AsString[1] of
@@ -3192,7 +3198,7 @@ end;
 procedure TFormCadastroNotaFiscal.FormActivate(Sender: TObject);
 begin
   inherited;
-  if Application.FindComponent('FormTelaConsultaCupom') <> Nil then
+  if Application.FindComponent('FormTelaConsultaCupom') <> nil then
 
     if (DM.Cupom <> '') and (not InserindoCupomFiscal) then
       ImportarCupom;
@@ -3622,7 +3628,7 @@ begin
         FormCadastroNotaFiscalItem.SQLTemplate.Append;
         for I := 0 to SQLNotaFiscalItemConsig.FieldCount - 1 do
         begin
-          if (FormCadastroNotaFiscalItem.SQLTemplate.FindField(SQLNotaFiscalItemConsig.Fields[I].FieldName) <> Nil) and (FormCadastroNotaFiscalItem.SQLTemplate.FindField(SQLNotaFiscalItemConsig.Fields[I].FieldName).FieldName <> 'NFITN3QUANT') then
+          if (FormCadastroNotaFiscalItem.SQLTemplate.FindField(SQLNotaFiscalItemConsig.Fields[I].FieldName) <> nil) and (FormCadastroNotaFiscalItem.SQLTemplate.FindField(SQLNotaFiscalItemConsig.Fields[I].FieldName).FieldName <> 'NFITN3QUANT') then
           begin
             FormCadastroNotaFiscalItem.SQLTemplate.FindField(SQLNotaFiscalItemConsig.Fields[I].FieldName).AsVariant := SQLNotaFiscalItemConsig.Fields[I].AsVariant;
           end;
@@ -3938,7 +3944,7 @@ procedure TFormCadastroNotaFiscal.FormClose(Sender: TObject; var Action: TCloseA
 begin
   inherited;
   if DataSetLookup <> nil then
-    DataSetLookup := Nil;
+    DataSetLookup := nil;
 
   Action := CaFree;
 end;
@@ -4634,12 +4640,12 @@ begin
       end;
     end;
 
-    getDir(0, dir);  //armazena diretório atual
-    ChDir('c:\Migrate\GNFe');  //altera diretório de execução
+    getDir(0, dir); //armazena diretório atual
+    ChDir('c:\Migrate\GNFe'); //altera diretório de execução
     getdir(0, DirExec);
     WinExec(PChar('GNFeExportador.exe ' + Trim(Dm.SQLTerminalAtivo.FieldByName('EMPRICOD').AsString) + ' ' + Datainicial + ' ' + DataFinal + ' C:\Unit\NotaExporta 3'), SW_SHOW);
 
-    ChDir(dir);  //retorna ao diretório do sistema
+    ChDir(dir); //retorna ao diretório do sistema
   end
   else
     Showmessage('Não Foi Possivel encontrar o arquivo C:\MIGRATE\GNFE\GNFeEXPORTADOR.EXE');
@@ -5758,7 +5764,7 @@ begin
   Inicia_NFe;
 
   Titulo := 'Nota Fiscal Eletronica Emitida!';
-  
+
   PathPastaMensal := FormatDateTime('yyyymm', sqlTemplate.FieldByName('NOFIDEMIS').Value);
 
   sXML := SQLEmpresaEMPRA100CAMINHOXML.Value + '\' + PathPastaMensal + '\' + SQLTemplateNOFIA44CHAVEACESSO.asstring + '-NFe.xml';
@@ -5802,40 +5808,40 @@ begin
       stl.Add('* A NF-e ficara disponivel para consulta por 180 dias, a partir da data de emissao. *');
 
         // Carrega parametros para enviar email
-      ACBrMail1.Subject := Titulo;       // assunto
-      ACBrMail1.IsHTML := True;         // define que a mensagem é html
+      ACBrMail1.Subject := Titulo; // assunto
+      ACBrMail1.IsHTML := True; // define que a mensagem é html
       ACBrMail1.From := sqlempresaEMPRA75EMAILUSUARIO.AsString;
       ACBrMail1.FromName := sqlempresaEMPRA60NOMEFANT.AsString;
       ACBrMail1.Host := sqlempresaEMPRA50EMAILHOST.AsString;
       ACBrMail1.Username := sqlempresaEMPRA75EMAILUSUARIO.AsString;
       ACBrMail1.Password := sqlempresaEMPRA50EMAILSENHA.AsString;
       ACBrMail1.Port := sqlempresaEMPRIEMAILPORTA.AsString;
-      ACBrMail1.UseThread := False;           //Aguarda Envio do Email(nÃ£o usa thread)
+      ACBrMail1.UseThread := False; //Aguarda Envio do Email(nÃ£o usa thread)
       ACBrMail1.AddAddress(Para, '');
 
       //CC:=TstringList.Create;
       if emailCopia <> '' then
        //CC.Add(emailCopia);
-      ACBrMail1.AddCC(emailCopia);
+        ACBrMail1.AddCC(emailCopia);
 
         // mensagem principal do e-mail. pode ser html ou texto puro
       ACBrMail1.Body.Text := stl.Text;
-      ACBrMail1.SetSSL := xSSL;              // SSL - Conexão Segura
-      ACBrMail1.SetTLS := xTSL;              // TLS - Crypografia, para hotmail obrigatorio
+      ACBrMail1.SetSSL := xSSL; // SSL - Conexão Segura
+      ACBrMail1.SetTLS := xTSL; // TLS - Crypografia, para hotmail obrigatorio
       if FileExists(sXML) then
-        ACBrMail1.AddAttachment(sXML, '');       // um_nome_opcional
+        ACBrMail1.AddAttachment(sXML, ''); // um_nome_opcional
 
       if FileExists(Danfe) then
-        ACBrMail1.AddAttachment(Danfe, '')     // um_nome_opcional
+        ACBrMail1.AddAttachment(Danfe, '') // um_nome_opcional
       else begin
         if ACBrNFe1.NotasFiscais.Count > 0 then
         begin
           Danfe := PathWithDelim(ACBrNFeDANFeRL1.PathPDF) + ACBrNFe1.NotasFiscais.Items[0].NumID + '-nfe.pdf';
 
           if FileExists(Danfe) then
-            ACBrMail1.AddAttachment(Danfe, '');      // um_nome_opcional
+            ACBrMail1.AddAttachment(Danfe, ''); // um_nome_opcional
         end;
-      end; 
+      end;
 
       ACBrMail1.Send;
       {ACBrNFe1.NotasFiscais.Items[0].EnviarEmail( Para, Titulo,
@@ -5908,7 +5914,7 @@ begin
         InfEvento.detEvento.nProt := sqltemplateNOFIA15PROTOCOLO.Value;
     end;
       // Envia o Cancelamento
-    ACBrNFe1.EnviarEvento(StrToInt(idLote));    {trunk2}
+    ACBrNFe1.EnviarEvento(StrToInt(idLote)); {trunk2}
 
       // Le Retorno da Sefaz
     sXMLCancelamento := ACBrNFe1.WebServices.EnvEvento.EventoRetorno.retEvento.Items[0].RetInfEvento.XML;
@@ -5948,36 +5954,7 @@ end;
 procedure TFormCadastroNotaFiscal.EncerrarNotaFiscalJava1Click(Sender: TObject);
 begin
   inherited;
-  try
-    SQLTemplate.BeforeEdit := nil;
-
-    SQLTemplate.Edit;
-
-    if not CancelandoNota then
-      if SQLTemplate.FindField('NOFICSTATUS').asString <> 'A' then
-      begin
-        Informa('Alterações só serão permitidas quando a nota estiver com status de ''Aberta''.');
-        SQLTemplate.Cancel;
-        SQLTemplate.BeforeEdit := SQLTemplateBeforeEdit;
-        Abort;
-      end;
-
-    StatusAnterior := SQLTemplate.FindField('NOFICSTATUS').Value;
-    PlanoAnterior := SQLTemplate.FindField('PLRCICOD').asString;
-    PedidoAnterior := SQLTemplate.FindField('PDVDA13ID').asString;
-    ValorFrete := SQLTemplate.FindField('NOFIN2VLRFRETE').AsFloat;
-    ValorIcmsFrete := SQLTemplate.FindField('NOFIN2VLRICMSFRETE').AsFloat;
-    SQLTemplateNOFICSTATUS.AsString := 'E';
-    LabelGravar.Click;
-    SQLTemplate.BeforeEdit := SQLTemplateBeforeEdit;
-  except
-    on e: exception do
-    begin
-      Showmessage('Falha ao Encerrar a Nota Fiscal: ' + e.Message);
-      if SQLTemplate.State in ([dsEdit]) then
-        SQLTemplate.Cancel;
-    end;
-  end;
+  EncerrarNota;
 end;
 
 function TFormCadastroNotaFiscal.ExecAndWait(Comando: string; WindowState: word): boolean;
@@ -5991,16 +5968,16 @@ begin
   with SUInfo do
   begin
     cb := 2048;
-    lpReserved := NIL;
-    lpDesktop := NIL;
-    lpTitle := NIL;
+    lpReserved := nil;
+    lpDesktop := nil;
+    lpTitle := nil;
     dwFlags := STARTF_USESHOWWINDOW;
     wShowWindow := SW_SHOWNORMAL; //SW_Hide; //para não aparecer na tela (background)!
     cbReserved2 := 0;
-    lpReserved2 := NIL;
+    lpReserved2 := nil;
   end;
 
-  Result := CreateProcess(NIL, PChar(Comando), NIL, NIL, False, 0, NIL, nil, SUInfo, ProcInfo);
+  Result := CreateProcess(nil, PChar(Comando), nil, nil, False, 0, nil, nil, SUInfo, ProcInfo);
   { Wait for it to finish. }
   if Result then
     WaitForSingleObject(ProcInfo.hProcess, INFINITE);
@@ -6030,7 +6007,7 @@ begin
   inherited;
   try
     SQLTemplate.BeforeEdit := nil;
-    SQLTemplate.BeforePost := Nil;
+    SQLTemplate.BeforePost := nil;
     SQLTemplate.Edit;
     SQLTemplateNOFIA44CHAVEACESSO.AsString := edtChave.Text;
     SQLTemplate.Post;
@@ -6095,12 +6072,12 @@ procedure TFormCadastroNotaFiscal.Inicia_NFe();
 var
   Ok: Boolean;
 begin
-  {$IFDEF ACBrNFeOpenSSL}
+{$IFDEF ACBrNFeOpenSSL}
   ACBrNFe1.Configuracoes.Certificados.Certificado := sqlEmpresaEMPRA100CERTIFSERIE.AsString;
   ACBrNFe1.Configuracoes.Certificados.Senha := sqlEmpresaEMPRA35CERTIFSENHA.AsString;
-  {$ELSE}
+{$ELSE}
   ACBrNFe1.Configuracoes.Certificados.NumeroSerie := SQLEmpresaEMPRA100CERTIFSERIE.AsString;
-  {$ENDIF}
+{$ENDIF}
   ACBrNFe1.Configuracoes.Geral.FormaEmissao := StrToTpEmis(OK, IntToStr(sqlEmpresaEMPRIFORMAEMISNFE.AsInteger + 1));
 
   ACBrNFe1.Configuracoes.Arquivos.PathSalvar := sqlEmpresaEMPRA100CAMINHOXML.AsString;
@@ -6767,7 +6744,7 @@ begin
                 {Difal Fim}
           case iCRT of
             1:
-              begin  // Linhas para o simples nacional
+              begin // Linhas para o simples nacional
                 if SQLNotaFiscalItemNFITICST.asstring = '101' then
                   ICMS.CSOSN := csosn101;
                 if SQLNotaFiscalItemNFITICST.asstring = '102' then
@@ -7121,15 +7098,15 @@ begin
       Transp.Transporta.UF := SQLTemplateTransportadoraEstadoLookUp.asstring;
 
     Transp.retTransp.vServ := RoundTo(0.0, -2);
-    ;  // X12 - Valor do Serviço
+    ; // X12 - Valor do Serviço
     Transp.retTransp.vBCRet := RoundTo(0.0, -2);
-    ;  // X13 - BC da Retenção do ICMS
+    ; // X13 - BC da Retenção do ICMS
     Transp.retTransp.pICMSRet := RoundTo(0.0, -2);
-    ;  // X14 - Alíquota da Retenção
+    ; // X14 - Alíquota da Retenção
     Transp.retTransp.vICMSRet := RoundTo(0.0, -2);
-    ;  // X15 - Valor do ICMS Retido
+    ; // X15 - Valor do ICMS Retido
     Transp.retTransp.CFOP := ''; // X16 - CFOP (Utilizar Tabela de CFOP)
-    Transp.retTransp.cMunFG := 0;  // X17 - Código do município de ocorrência do fato gerador do ICMS do transporte (Tabela do IBGE)
+    Transp.retTransp.cMunFG := 0; // X17 - Código do município de ocorrência do fato gerador do ICMS do transporte (Tabela do IBGE)
 
      //Não criar o grupo ''veicTransp'' caso não tenha placa senão entra na validação do SEFAZ
     if Trim(SQLTemplateNOFIA8PLACAVEIC.AsString) <> EmptyStr then
@@ -7258,7 +7235,7 @@ begin
 
     Application.ProcessMessages;
     SQLTemplate.BeforeEdit := nil;
-    SQLTemplate.BeforePost := Nil;
+    SQLTemplate.BeforePost := nil;
     SQLTemplate.Edit;
     SQLTemplateNOFIA15PROTOCOLO.AsString := ACBrNFe1.WebServices.Consulta.Protocolo;
     SQLTemplate.Post;
@@ -7313,6 +7290,62 @@ begin
     ACBrNFe1.NotasFiscais.Validar;
     ACBrNFe1.NotasFiscais.Imprimir;
   end;
+end;
+
+procedure TFormCadastroNotaFiscal.EncerrarNota;
+begin
+  try
+    try
+      SQLTemplate.BeforeEdit := nil;
+
+      SQLTemplate.Edit;
+
+      if not CancelandoNota then
+        if SQLTemplate.FindField('NOFICSTATUS').asString <> 'A' then
+        begin
+          Informa('Alterações só serão permitidas quando a nota estiver com status de ''Aberta''.');
+          SQLTemplate.Cancel;
+          SQLTemplate.BeforeEdit := SQLTemplateBeforeEdit;
+          Abort;
+        end;
+
+      StatusAnterior := SQLTemplate.FindField('NOFICSTATUS').Value;
+      PlanoAnterior := SQLTemplate.FindField('PLRCICOD').asString;
+      PedidoAnterior := SQLTemplate.FindField('PDVDA13ID').asString;
+      ValorFrete := SQLTemplate.FindField('NOFIN2VLRFRETE').AsFloat;
+      ValorIcmsFrete := SQLTemplate.FindField('NOFIN2VLRICMSFRETE').AsFloat;
+      SQLTemplateNOFICSTATUS.AsString := 'E';
+      LabelGravar.Click;
+
+    finally
+      SQLTemplate.BeforeEdit := SQLTemplateBeforeEdit;
+    end;
+  except
+    on e: exception do
+    begin
+      Showmessage('Falha ao Encerrar a Nota Fiscal: ' + e.Message);
+      if SQLTemplate.State in ([dsEdit]) then
+        SQLTemplate.Cancel;
+    end;
+  end;
+end;
+
+procedure TFormCadastroNotaFiscal.btnEncerrarClick(Sender: TObject);
+begin
+  inherited;
+  EncerrarNota;
+end;
+
+procedure TFormCadastroNotaFiscal.DBEdit44Change(Sender: TObject);
+begin
+  inherited;
+
+  if not SQLTemplate.Active then exit;
+
+  btnTransmitirNfe.Enabled := SQLTemplate.FindField('NOFICSTATUS').Value = 'E';
+  btnEncerrar.Enabled := SQLTemplate.FindField('NOFICSTATUS').Value <> 'E';
+  btnTransmitirNfe2.Enabled := SQLTemplate.FindField('NOFICSTATUS').Value = 'E';
+  btnEncerrar2.Enabled := SQLTemplate.FindField('NOFICSTATUS').Value <> 'E';
 end;
 
 end.

@@ -1,21 +1,27 @@
 [Closed Files]
-File_0=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\CadastroPedidoVenda.pas',0,1,1164,1,1166,1,0
-File_1=SourceModule,'C:\projetos\Automafour\Template\DataModuloTemplate.pas',0,1,1,1,1,1,0
-File_2=SourceModule,'C:\projetos\Automafour\Oficial\DataModulo.pas',0,1,1,2,9,1,0
-File_3=SourceModule,'C:\projetos\Automafour\Oficial\Faturamento\DataModuloFaturamento.pas',0,1,1,1,1,0,0
-File_4=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\TelaItens.pas',0,1,1,1,1,0,0
-File_5=SourceModule,'C:\projetos\Automafour\Oficial\Compras\CadastroPedidoCompraItem.pas',0,1,1,26,4,1,0
-File_6=SourceModule,'C:\projetos\Automafour\Oficial\Compras\TelaPedidoCompraItemFiltro.pas',0,1,1,1,1,1,0
-File_7=SourceModule,'C:\projetos\Automafour\Oficial\Compras\TelaPedidoCompraHistoricoComprasVendasProduto.pas',0,1,1,12,6,1,0
-File_8=SourceModule,'C:\projetos\Automafour\Oficial\Compras\CadastroPedidoCompra.pas',0,1,474,27,478,1,0
+File_0=SourceModule,'C:\projetos\Automafour\Oficial\Principal.pas',0,1,665,68,669,1,0
+File_1=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\CadastroPedidoVenda.pas',0,1,2313,58,2320,1,0
+File_2=SourceModule,'C:\projetos\Automafour\Oficial\Compras\CadastroNotaCompra.pas',0,1,1,14,6,1,0
+File_3=SourceModule,'C:\projetos\Automafour\Oficial\DataModulo.pas',0,1,1,8,11,0,0
+File_4=SourceModule,'c:\program files (x86)\borland\delphi7\source\vcl\DB.pas',0,1,2169,14,2184,0,0
+File_5=SourceModule,'C:\projetos\Automafour\Oficial\Faturamento\DataModuloFaturamento.pas',0,1,1,1,1,0,0
+File_6=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\TelaItens.pas',0,1,1,1,1,0,0
+File_7=SourceModule,'C:\projetos\Automafour\Oficial\Compras\CadastroPedidoCompraItem.pas',0,1,1,26,4,1,0
+File_8=SourceModule,'C:\projetos\Automafour\Oficial\Compras\TelaPedidoCompraItemFiltro.pas',0,1,1,1,1,1,0
 
 [Modules]
-Module0=C:\projetos\Automafour\Oficial\Principal.pas
-Module1=C:\projetos\Automafour\Oficial\Retaguarda.dpr
-Count=2
+Module0=C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.pas
+Module1=C:\projetos\Automafour\Oficial\ArquivosComuns\UnitLibrary.pas
+Module2=C:\projetos\Automafour\Oficial\Retaguarda.dpr
+Count=3
 EditWindowCount=1
 
-[C:\projetos\Automafour\Oficial\Principal.pas]
+[C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.pas]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
+
+[C:\projetos\Automafour\Oficial\ArquivosComuns\UnitLibrary.pas]
 ModuleType=SourceModule
 FormState=0
 FormOnTop=0
@@ -29,23 +35,24 @@ FormOnTop=0
 FormState=0
 FormOnTop=0
 
-[C:\projetos\Automafour\Template\PrincipalTemplate.pas]
+[C:\projetos\Automafour\Template\CadastroTEMPLATE.pas]
 FormState=0
 FormOnTop=0
 
 [EditWindow0]
-ViewCount=2
+ViewCount=3
 CurrentView=1
 View0=0
 View1=1
+View2=2
 CodeExplorer=CodeExplorer@EditWindow0
 MessageView=MessageView@EditWindow0
 Create=1
 Visible=1
 State=2
-Left=297
-Top=140
-Width=1069
+Left=366
+Top=147
+Width=926
 Height=485
 MaxLeft=-8
 MaxTop=107
@@ -53,26 +60,33 @@ MaxWidth=1382
 MaxHeight=629
 ClientWidth=1366
 ClientHeight=590
-LeftPanelSize=0
+LeftPanelSize=140
 LeftPanelClients=CodeExplorer@EditWindow0
-LeftPanelData=00000400010000000C000000436F64654578706C6F726572000000000000000000000000000000000001000000000000000000000000FFFFFFFF
+LeftPanelData=000004000000000000000000000000000000000000000000000100000000000000000C000000436F64654578706C6F726572FFFFFFFF
 RightPanelSize=0
 BottomPanelSize=0
 BottomPanelClients=MessageView@EditWindow0
-BottomPanelData=00000400010000000B0000004D657373616765566965775605000000000000025500000000000000010000000000000000000000000100000000560500000000000001000000005605000000000000010000000056050000000000000100000000560500000000000001000000005605000000000000FFFFFFFF
+BottomPanelData=00000400010000000B0000004D657373616765566965770000000000000000000000000000000000FFFFFFFF
 
 [View0]
 Module=C:\projetos\Automafour\Oficial\Retaguarda.dpr
-CursorX=13
-CursorY=474
-TopLine=464
+CursorX=58
+CursorY=10
+TopLine=1
 LeftCol=1
 
 [View1]
-Module=C:\projetos\Automafour\Oficial\Principal.pas
-CursorX=28
-CursorY=496
-TopLine=482
+Module=C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.pas
+CursorX=37
+CursorY=2248
+TopLine=2236
+LeftCol=1
+
+[View2]
+Module=C:\projetos\Automafour\Oficial\ArquivosComuns\UnitLibrary.pas
+CursorX=1
+CursorY=2235
+TopLine=2206
 LeftCol=1
 
 [Watches]
@@ -191,10 +205,10 @@ ClientHeight=60
 
 [PropertyInspector]
 Create=1
-Visible=1
+Visible=0
 State=0
-Left=540
-Top=88
+Left=75
+Top=68
 Width=281
 Height=567
 MaxLeft=-1
@@ -206,7 +220,7 @@ LRDockWidth=866
 Dockable=1
 SplitPos=119
 ArrangeBy=Name
-SelectedItem=
+SelectedItem=Caption
 ExpandedItems=Action.DataSource,Configuracoes,DataBinding,DataController,DataController.DataSource,DataSource,DataSource.DataSet.MasterSource,DataSource.DataSet.MasterSource.DataSet,Font.Style,ListSource.DataSet,LookupDataSet,Options,PreviewOptions,Style.Font,Title
 HiddenCategories=
 
@@ -394,7 +408,7 @@ Dockable=1
 
 [fmGrepResults]
 Create=1
-Visible=1
+Visible=0
 State=0
 Left=396
 Top=2
@@ -426,16 +440,16 @@ Dockable=1
 
 [CodeExplorer@EditWindow0]
 Create=1
-Visible=0
+Visible=1
 State=0
 Left=0
 Top=12
 Width=140
-Height=434
+Height=578
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=140
-ClientHeight=434
+ClientHeight=578
 TBDockHeight=305
 LRDockWidth=140
 Dockable=1
@@ -444,13 +458,13 @@ Dockable=1
 Create=1
 Visible=0
 State=0
-Left=12
-Top=0
-Width=1354
+Left=-176
+Top=-517
+Width=443
 Height=85
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=1354
+ClientWidth=443
 ClientHeight=85
 TBDockHeight=85
 LRDockWidth=443
