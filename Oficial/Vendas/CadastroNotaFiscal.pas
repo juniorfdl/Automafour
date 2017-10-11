@@ -1207,7 +1207,7 @@ type
 
     { Private declarations }
     IDNOTAIMP, PedidoAnterior, PedidoNovo, PlanoAnterior, StatusAnterior, StatusNovo: string;
-    CriandoNota, PlanoDoCliente, ClienteDoPedido, CancelandoNota, TrocaEntrada, AtivarFinanceiro, CalculandoFrete: Boolean;
+    CriandoNota, PlanoDoCliente, ClienteDoPedido, CancelandoNota, TrocaEntrada, AtivarFinanceiro, CalculandoFrete, bEnviandoNFE: Boolean;
     ValorEntrada, ValorFrete, ValorIcmsFrete, ValorVista: Double;
     ContasReceberCliente, ContasReceberID: string;
     BkpEmpresaCorrente: Integer;
@@ -1976,19 +1976,15 @@ end;
 procedure TFormCadastroNotaFiscal.SQLTemplateBeforeEdit(DataSet: TDataSet);
 begin
   inherited;
-  if not CancelandoNota then
+  if (not CancelandoNota)and(not bEnviandoNFE) then
   begin
     if SQLTemplate.FindField('NOFICSTATUS').asString <> 'A' then
     begin
       Informa('Alterações só serão permitidas quando a nota estiver com status de ''Aberta''.');
       Abort;
     end;
- {   If SQLTemplate.FindField('NOFIA15PROTOCOLO').asString <> '' Then
-      Begin
-        Informa('Não são permitidas Alterações em Notas Fiscais EFETIVADAS.');
-        Abort;
-      End; }
   end;
+  
   StatusAnterior := SQLTemplate.FindField('NOFICSTATUS').Value;
   PlanoAnterior := SQLTemplate.FindField('PLRCICOD').asString;
   PedidoAnterior := SQLTemplate.FindField('PDVDA13ID').asString;
@@ -2264,135 +2260,6 @@ begin
     end;
     SQLNotaFiscalItens.Close;
 
-      // RECEBER PARCELA A VISTA DO CONTASRECEBER E GERAR MOVTO CAIXA
-//      if not SQLContasReceber.Active then
-//        SQLContasReceber.Open;
-//      SQLContasReceber.First;
-//      if SQLContasReceberCTRCDEMIS.Value = SQLContasReceberCTRCDVENC.Value then
-//        if Pergunta('NÃO','A Nota atual possui um valor À VISTA. Deseja quitar automaticamente?') Then
-//          Begin
-//            If Not SQLRecebimento.Active Then
-//              SQLRecebimento.Open;
-//            if SQLRecebimento.IsEmpty then
-//              begin
-//                SQLRecebimento.Append;
-//                SQLRecebimentoCTRCA13ID.Value          := SQLContasReceberCTRCA13ID.Value;
-//                SQLRecebimentoTERMICODREC.Value        := TerminalCorrente;
-//                SQLRecebimentoRECEDRECTO.AsString      := FormatDateTime('dd/mm/yyyy',SQLContasReceberCTRCDEMIS.Value);
-//                SQLRecebimentoRECEDDATAMOV.AsString    := FormatDateTime('dd/mm/yyyy',SQLContasReceberCTRCDEMIS.Value);
-//                SQLRecebimentoRECEICOD.Value           := 1;
-//                SQLRecebimentoRECEN2VLRRECTO.Value     := SQLContasReceberCTRCN2VLR.Value;
-//                SQLRecebimentoRECEN2VLRMULTA.Value     := 0;
-//                SQLRecebimentoRECEN2VLRJURO.Value      := 0;
-//                SQLRecebimentoRECEN2MULTACOBR.Value    := 0;
-//                SQLRecebimentoRECEN2DESC.Value         := 0;
-//                SQLRecebimentoEMPRICODREC.Value        := EmpresaCorrente;
-//                SQLRecebimentoCLIEA13ID.Value          := SQLTemplate.FieldByName('CLIEA13ID').Value;
-//                SQLRecebimentoRECEA254HISTORICO.Value  := 'ENTRADA DE VENDA NF NRO.: ' + SQLTemplateNOFIINUMERO.AsString;
-//                SQLRecebimentoPENDENTE.Value           := 'S';
-//                SQLRecebimentoREGISTRO.Value           := now;
-//                SQLRecebimento.Post;
-//                SQLContasReceber.Edit;
-//                SQLContasReceberCTRCN2TOTREC.Value       := SQLContasReceberCTRCN2VLR.Value;
-//                SQLContasReceberCTRCDULTREC.AsString     := FormatDateTime('dd/mm/yyyy',SQLContasReceberCTRCDVENC.Value);
-//                SQLContasReceberEMPRICODULTREC.Value     := SQLContasReceberEMPRICOD.Value;
-//                SQLContasReceberCTRCN2TOTDESCREC.Value   := 0;
-//                SQLContasReceberCTRCN2TOTJUROREC.Value   := 0;
-//                SQLContasReceberCTRCN2TOTMULTACOBR.Value := 0;
-//                SQLContasReceberCTRCN2TOTMULTAREC.Value  := 0;
-//                SQLContasReceber.Post;
-//              end;
-//            // LANCAR NO CAIXA SE O CLIENTE QUIZER
-//            Dm.SQLConfigFinanceiro.Close;
-//            Dm.SQLConfigFinanceiro.Open;
-//            if Dm.SQLConfigFinanceiroCGFIUSATESOURARIA.AsString = 'S' then
-//              begin
-//                Application.CreateForm(TFormTelaConsultaOperacaoTesouraria,FormTelaConsultaOperacaoTesouraria);
-//                FormTelaConsultaOperacaoTesouraria.SQLOperacaoTesouraria.Close;
-//                FormTelaConsultaOperacaoTesouraria.SQLOperacaoTesouraria.MacroByName('DebCred').AsString := 'OPTECDEBCRED = ''C''';
-//                FormTelaConsultaOperacaoTesouraria.SQLOperacaoTesouraria.Open;
-//                FormTelaConsultaOperacaoTesouraria.ComboOperacaoTes.KeyValue := dm.SQLConfigVendaCFVEIOPTESVENDNFNA.AsVariant;
-//                FormTelaConsultaOperacaoTesouraria.ShowModal;
-//                if FormTelaConsultaOperacaoTesouraria.ModalResult = MrOK then
-//                  LancaMovimentacaoTesouraria(SQLTemplateEMPRICOD.AsInteger,
-//                                              TerminalCorrente,
-//                                              ComboNumerarioVista.KeyValue,
-//                                              FormTelaConsultaOperacaoTesouraria.ComboOperacaoTes.KeyValue,
-//                                              SQLContasReceberCTRCN2VLR.Value,
-//                                              'VENDA NOTA FISCAL NRO.: ' + SQLTemplateNOFIINUMERO.AsString,
-//                                              '',
-//                                              '',
-//                                              '',
-//                                              '',
-//                                              SQLTemplateNOFIDEMIS.AsDateTime,
-//                                              'NF-' + SQLTemplateNOFIINUMERO.AsString,
-//                                              SQLTemplatePLCTA15CODCRED.asString);
-//                FormTelaConsultaOperacaoTesouraria.Close;
-//                FormTelaConsultaOperacaoTesouraria.Free;
-//              end;
-//          End;
-//        //if Pergunta('NÃO','A Nota atual possui um valor À VISTA. Deseja quitar automaticamente?') Then
-          //Begin
-//            If Not SQLRecebimento.Active Then
-//              SQLRecebimento.Open;
-//            if SQLRecebimento.IsEmpty then
-//              begin
-//                SQLRecebimento.Append;
-//                SQLRecebimentoCTRCA13ID.Value          := SQLContasReceberCTRCA13ID.Value;
-//                SQLRecebimentoTERMICODREC.Value        := TerminalCorrente;
-//                SQLRecebimentoRECEDRECTO.AsString      := FormatDateTime('dd/mm/yyyy',SQLContasReceberCTRCDEMIS.Value);
-//                SQLRecebimentoRECEDDATAMOV.AsString    := FormatDateTime('dd/mm/yyyy',SQLContasReceberCTRCDEMIS.Value);
-//                SQLRecebimentoRECEICOD.Value           := 1;
-//                SQLRecebimentoRECEN2VLRRECTO.Value     := SQLContasReceberCTRCN2VLR.Value;
-//                SQLRecebimentoRECEN2VLRMULTA.Value     := 0;
-//                SQLRecebimentoRECEN2VLRJURO.Value      := 0;
-//                SQLRecebimentoRECEN2MULTACOBR.Value    := 0;
-//                SQLRecebimentoRECEN2DESC.Value         := 0;
-//                SQLRecebimentoEMPRICODREC.Value        := EmpresaCorrente;
-//                SQLRecebimentoCLIEA13ID.Value          := SQLTemplate.FieldByName('CLIEA13ID').Value;
-//                SQLRecebimentoRECEA254HISTORICO.Value  := 'ENTRADA DE VENDA NF NRO.: ' + SQLTemplateNOFIINUMERO.AsString;
-//                SQLRecebimentoPENDENTE.Value           := 'S';
-//                SQLRecebimentoREGISTRO.Value           := now;
-//                SQLRecebimento.Post;
-//                SQLContasReceber.Edit;
-//                SQLContasReceberCTRCN2TOTREC.Value       := SQLContasReceberCTRCN2VLR.Value;
-//                SQLContasReceberCTRCDULTREC.AsString     := FormatDateTime('dd/mm/yyyy',SQLContasReceberCTRCDVENC.Value);
-//                SQLContasReceberEMPRICODULTREC.Value     := SQLContasReceberEMPRICOD.Value;
-//                SQLContasReceberCTRCN2TOTDESCREC.Value   := 0;
-//                SQLContasReceberCTRCN2TOTJUROREC.Value   := 0;
-//                SQLContasReceberCTRCN2TOTMULTACOBR.Value := 0;
-//                SQLContasReceberCTRCN2TOTMULTAREC.Value  := 0;
-//                SQLContasReceber.Post;
-//              end;
-//            // LANCAR NO CAIXA SE O CLIENTE QUIZER
-//            Dm.SQLConfigFinanceiro.Close;
-//            Dm.SQLConfigFinanceiro.Open;
-//            if Dm.SQLConfigFinanceiroCGFIUSATESOURARIA.AsString = 'S' then
-//              begin
-//                Application.CreateForm(TFormTelaConsultaOperacaoTesouraria,FormTelaConsultaOperacaoTesouraria);
-//                FormTelaConsultaOperacaoTesouraria.SQLOperacaoTesouraria.Close;
-//                FormTelaConsultaOperacaoTesouraria.SQLOperacaoTesouraria.MacroByName('DebCred').AsString := 'OPTECDEBCRED = ''C''';
-//                FormTelaConsultaOperacaoTesouraria.SQLOperacaoTesouraria.Open;
-//                FormTelaConsultaOperacaoTesouraria.ComboOperacaoTes.KeyValue := dm.SQLConfigVendaCFVEIOPTESVENDNFNA.AsVariant;
-//                FormTelaConsultaOperacaoTesouraria.ShowModal;
-//                if FormTelaConsultaOperacaoTesouraria.ModalResult = MrOK then
-//                  LancaMovimentacaoTesouraria(SQLTemplateEMPRICOD.AsInteger,
-//                                              TerminalCorrente,
-//                                              ComboNumerarioVista.KeyValue,
-//                                              FormTelaConsultaOperacaoTesouraria.ComboOperacaoTes.KeyValue,
-//                                              SQLContasReceberCTRCN2VLR.Value,
-//                                              'VENDA NOTA FISCAL NRO.: ' + SQLTemplateNOFIINUMERO.AsString,
-//                                              '',
-//                                              '',
-//                                              '',
-//                                              '',
-//                                              SQLTemplateNOFIDEMIS.AsDateTime,
-//                                              'NF-' + SQLTemplateNOFIINUMERO.AsString,
-//                                              SQLTemplatePLCTA15CODCRED.asString);
-//                FormTelaConsultaOperacaoTesouraria.Close;
-//                FormTelaConsultaOperacaoTesouraria.Free;
-//              end;
-          //End;
       // Gravar Data Primeira Compra
     if (SQLTemplateNOFIN2VLRPRODUTO.Value > 0) and (SQLTemplateCLIEA13ID.Value <> '') then
     begin
@@ -5605,114 +5472,111 @@ begin
   if not Pergunta('Nao', 'Gerar Notas Fiscais Eletrônicas?') then
     Exit;
 
+  try
+    bEnviandoNFE := true;
   {Inicio Rotina usando ACBR NFE, por Adilson}
 
-  if SQLTemplateNOFICSTATUS.Value = 'C' then
-  begin
-    ShowMessage('Erro! Nota Fiscal Nro.' + SQLTemplateNOFIINUMERO.AsString + ' CANCELADA, não pode ser Enviada!');
-    Abort;
-    Exit;
-  end;
+    if SQLTemplateNOFICSTATUS.Value = 'C' then
+    begin
+      ShowMessage('Erro! Nota Fiscal Nro.' + SQLTemplateNOFIINUMERO.AsString + ' CANCELADA, não pode ser Enviada!');
+      Abort;
+      Exit;
+    end;
 
-  if ((not SQLTemplateNOFICSTNFE.IsNull) and (not (SQLTemplateNOFICSTNFE.asstring = '0')) and (not (SQLTemplateNOFICSTNFE.asstring = '6'))) or (SQLTemplateNOFICSTATUS.Value = 'C') then
-  begin
-    ShowMessage('Nota Eletronica NFe Nº ' + SQLTemplateNOFIINUMERO.AsString + ' já enviada.' + #13 + #10 + '' + #13 + #10 + 'Processamento ignorado.');
-  end
-  else
-  begin
-    try
+    if ((not SQLTemplateNOFICSTNFE.IsNull) and (not (SQLTemplateNOFICSTNFE.asstring = '0')) and (not (SQLTemplateNOFICSTNFE.asstring = '6'))) or (SQLTemplateNOFICSTATUS.Value = 'C') then
+    begin
+      ShowMessage('Nota Eletronica NFe Nº ' + SQLTemplateNOFIINUMERO.AsString + ' já enviada.' + #13 + #10 + '' + #13 + #10 + 'Processamento ignorado.');
+    end
+    else
+    begin
+      try
         // Pegar o ultimo numero de nfe enviado e recebido ok e adicionar um
-      { dm.sqltemplate.Close;
-        dm.sqltemplate.sql.text := 'select max(NOFIINUMERO) from NOTAFISCAL where SERIA5COD='''+sqltemplateSERIA5COD.Value+''' and NOFIA44CHAVEACESSO<>'''' ';
-        dm.sqltemplate.open;
-        if not dm.sqltemplate.fieldbyname('MAX').IsNull then
-          begin
-            nfeNumeroNovo := dm.sqltemplate.fieldbyname('MAX').value;
-            sqltemplate.edit;
-            sqltemplateNOFIINUMERO.Value := nfeNumeroNovo + 1;
-            sqltemplate.post;
-          end; }
 
         // Pega Configs Iniciais
-      Inicia_NFe;
-      Application.ProcessMessages;
-
-        // Cria o arquivo XML
-      sXML := Gerar_XMLACBr;
-      Application.ProcessMessages;
-
-      if FileExists(sXML) then
-      begin
-            // Grava Chave no Banco
-        SQLTemplate.BeforeEdit := SQLTemplateBeforeEdit;
-        SQLTemplate.BeforePost := SQLTemplateBeforePost;
-        sqltemplate.Edit;
-        sqltemplateNOFIA44CHAVEACESSO.Value := copy(ACBrNFe1.NotasFiscais.Items[0].NFe.infNFe.ID, (length(ACBrNFe1.NotasFiscais.Items[0].NFe.infNFe.ID) - 44) + 1, 44);
-        SQLTemplate.BeforeEdit := nil;
-        SQLTemplate.BeforePost := nil;
-
-            // Envia NFe
-        ACBrNFe1.NotasFiscais.Assinar;
-        ACBrNFe1.NotasFiscais.Validar;
-        ACBrNFe1.Enviar('1', False, False);
-
-            //Le novamente o xml para poder pegar o retorno correto
-        ACBrNFe1.NotasFiscais.Clear;
-        ACBrNFe1.NotasFiscais.LoadFromFile(sXML);
+        Inicia_NFe;
         Application.ProcessMessages;
 
+        // Cria o arquivo XML
+        sXML := Gerar_XMLACBr;
+        Application.ProcessMessages;
+
+        if FileExists(sXML) then
+        begin
+            // Grava Chave no Banco
+          SQLTemplate.BeforeEdit := SQLTemplateBeforeEdit;
+          SQLTemplate.BeforePost := SQLTemplateBeforePost;
+          sqltemplate.Edit;
+          sqltemplateNOFIA44CHAVEACESSO.Value := copy(ACBrNFe1.NotasFiscais.Items[0].NFe.infNFe.ID, (length(ACBrNFe1.NotasFiscais.Items[0].NFe.infNFe.ID) - 44) + 1, 44);
+          SQLTemplate.BeforeEdit := nil;
+          SQLTemplate.BeforePost := nil;
+
+            // Envia NFe
+          ACBrNFe1.NotasFiscais.Assinar;
+          ACBrNFe1.NotasFiscais.Validar;
+          ACBrNFe1.Enviar('1', False, False);
+
+            //Le novamente o xml para poder pegar o retorno correto
+          ACBrNFe1.NotasFiscais.Clear;
+          ACBrNFe1.NotasFiscais.LoadFromFile(sXML);
+          Application.ProcessMessages;
+
             // Grava Retorno da Sefaz
-        sqltemplate.Edit;
-        sqltemplateNOFIA44CHAVEACESSO.Value := copy(ACBrNFe1.NotasFiscais.Items[0].NFe.infNFe.ID, (length(ACBrNFe1.NotasFiscais.Items[0].NFe.infNFe.ID) - 44) + 1, 44);
-        sqltemplateNOFIA5CODRETORNO.Value := IntToStr(ACBrNFe1.WebServices.Retorno.cStat);
-        sqltemplateNOFITRETORNO.Value := ACBrNFe1.WebServices.Retorno.xMotivo;
-        sqltemplateNOFIA15PROTOCOLO.Value := ACBrNFe1.WebServices.Retorno.Protocolo;
-        sqltemplateNOFIA15RECIBO.Value := ACBrNFe1.WebServices.Retorno.Recibo;
-        sqltemplate.Post;
+          sqltemplate.Edit;
+          sqltemplateNOFIA44CHAVEACESSO.Value := copy(ACBrNFe1.NotasFiscais.Items[0].NFe.infNFe.ID, (length(ACBrNFe1.NotasFiscais.Items[0].NFe.infNFe.ID) - 44) + 1, 44);
+          sqltemplateNOFIA5CODRETORNO.Value := IntToStr(ACBrNFe1.WebServices.Retorno.cStat);
+          sqltemplateNOFITRETORNO.Value := ACBrNFe1.WebServices.Retorno.xMotivo;
+          sqltemplateNOFIA15PROTOCOLO.Value := ACBrNFe1.WebServices.Retorno.Protocolo;
+          sqltemplateNOFIA15RECIBO.Value := ACBrNFe1.WebServices.Retorno.Recibo;
+          sqltemplate.Post;
 
             // Se retorno = 100, NFe foi autorizada imprime Danfe
-        if (ACBrNFe1.WebServices.Retorno.cStat = 100) or (ACBrNFe1.WebServices.Retorno.cStat = 104) then
-        begin
-          ACBrNFe1.NotasFiscais.Imprimir;
-          ACBrNFe1.NotasFiscais.ImprimirPDF;
-        end;
+          if (ACBrNFe1.WebServices.Retorno.cStat = 100) or (ACBrNFe1.WebServices.Retorno.cStat = 104) then
+          begin
+            ACBrNFe1.NotasFiscais.Imprimir;
+            ACBrNFe1.NotasFiscais.ImprimirPDF;
+          end;
 
             // Realimenta os eventos abaixo:
-        SQLTemplate.BeforeEdit := SQLTemplateBeforeEdit;
-        SQLTemplate.BeforePost := SQLTemplateBeforePost;
+          SQLTemplate.BeforeEdit := SQLTemplateBeforeEdit;
+          SQLTemplate.BeforePost := SQLTemplateBeforePost;
 
-        if (ACBrNFe1.WebServices.Retorno.cStat = 100) or (ACBrNFe1.WebServices.Retorno.cStat = 104) then
-        begin
-          SQLTemplate.Edit;
-          sqltemplateNOFICSTATUS.Value := 'E';
-          sqltemplate.post;
-        end;
+          if (ACBrNFe1.WebServices.Retorno.cStat = 100) or (ACBrNFe1.WebServices.Retorno.cStat = 104) then
+          begin
+            SQLTemplate.Edit;
+            sqltemplateNOFICSTATUS.Value := 'E';
+            sqltemplate.post;
+          end;
 
             // Se retorno = 100, NFe foi autorizada envia email
-        if (ACBrNFe1.WebServices.Retorno.cStat = 100) or (ACBrNFe1.WebServices.Retorno.cStat = 104) then
-          ReenviarEmail1Click(Self);
+          if (ACBrNFe1.WebServices.Retorno.cStat = 100) or (ACBrNFe1.WebServices.Retorno.cStat = 104) then
+            ReenviarEmail1Click(Self);
 
             // Limpa a nota do componente ACBr
-        ACBrNFe1.NotasFiscais.Clear;
-      end
-      else
-      begin
-        Application.MessageBox('Arquivo XML não encontrado!', 'Erro', mb_ok + mb_iconerror);
-        SQLTemplate.BeforeEdit := SQLTemplateBeforeEdit;
-        SQLTemplate.BeforePost := SQLTemplateBeforePost;
+          ACBrNFe1.NotasFiscais.Clear;
+        end
+        else
+        begin
+          Application.MessageBox('Arquivo XML não encontrado!', 'Erro', mb_ok + mb_iconerror);
+          SQLTemplate.BeforeEdit := SQLTemplateBeforeEdit;
+          SQLTemplate.BeforePost := SQLTemplateBeforePost;
             // Limpa a nota do componente ACBr
-        ACBrNFe1.NotasFiscais.Clear;
+          ACBrNFe1.NotasFiscais.Clear;
 
-        Exit;
-      end;
-    except
-      on e: exception do
-      begin
-        ShowMessage('Falha ao Gerar Nota Fiscal: ' + e.message);
-        ACBrNFe1.NotasFiscais.Clear;
+          Exit;
+        end;
+      except
+        on e: exception do
+        begin
+          ShowMessage('Falha ao Gerar Nota Fiscal: ' + e.message);
+          ACBrNFe1.NotasFiscais.Clear;
+        end;
       end;
     end;
+
+  finally
+    bEnviandoNFE := false;
   end;
+
 end;
 
 procedure TFormCadastroNotaFiscal.ReimprimirDANFE1Click(Sender: TObject);
