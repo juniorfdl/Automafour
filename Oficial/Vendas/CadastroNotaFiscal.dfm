@@ -17812,7 +17812,6 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
     QuebraLinhaEmDetalhamentoEspecifico = True
     ExibeCampoFatura = False
     ImprimirUnQtVlComercial = iuComercial
-    ImprimirDadosDocReferenciados = True
     Left = 1016
     Top = 557
   end

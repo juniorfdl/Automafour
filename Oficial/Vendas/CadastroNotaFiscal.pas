@@ -16,7 +16,15 @@ uses
   cxContainer, cxEdit, dxSkinsCore, cxTextEdit,
   cxDBEdit,
   AdvOfficeStatusBar, AdvOfficeStatusBarStylers, AdvPanel, ACBrBase,
-  ACBrMail, ACBrNFeDANFeRLClass, ACBrDFe;
+  ACBrMail, ACBrNFeDANFeRLClass, ACBrDFe, dxSkinBlack, dxSkinBlue,
+  dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky,
+  dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinPumpkin, dxSkinSeven,
+  dxSkinSharp, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinXmas2008Blue;
 
 type
   TFormCadastroNotaFiscal = class(TFormCadastroTEMPLATE)

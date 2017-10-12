@@ -1054,18 +1054,18 @@ begin
       DataProtesto      := ;
       PercentualMulta   := StrToCurrDef(edtMulta.Text,0); }
 
-      if (dm.SQLConfigCrediario.fieldbyname('CFCRN2PERCMULATRAS').AsCurrency > 0) then
+      if (dm.SQLConfigCrediario.fieldbyname('CFCRN2PERCJURATRAS').AsCurrency > 0) then
           begin
             DataMoraJuros    := TblDuplicatasCTRCDVENC.AsDateTime;
-            ValorMoraJuros   := dm.SQLConfigCrediario.fieldbyname('CFCRN2PERCMULATRAS').AsCurrency;
+            ValorMoraJuros   := dm.SQLConfigCrediario.fieldbyname('CFCRN2PERCJURATRAS').AsCurrency / 100 * TblDuplicatasCTRCN2VLR.Value;
             CodigoMoraJuros  := cjTaxaMensal;
 
             if ACBrBoleto1.banco.TipoCobranca = cobSicred then
             begin
-               CodigoMora := 'B';
+               CodigoMora := 'A';
                ACBrBoleto1.ImprimirMensagemPadrao := false;
                Mensagem.Add(ACBrStr('Cobrar juros de '+
-                            FloatToStr(ValorMoraJuros) + '%' +
+                            FormatCurr('R$ #,##0.00',ValorMoraJuros) +
                              ' por dia de atraso para pagamento a partir de ' +
                              FormatDateTime('dd/mm/yyyy',DataMoraJuros)));
             end
@@ -1463,14 +1463,14 @@ begin
           if (dm.SQLConfigCrediario.fieldbyname('CFCRN2PERCJURATRAS').AsCurrency > 0) then
           begin
             DataMoraJuros    := TblDuplicatasCTRCDVENC.AsDateTime;
-            ValorMoraJuros   := DM.SQLConfigCrediario.FieldByName('CFCRN2PERCJURATRAS').AsCurrency;
+            ValorMoraJuros   := DM.SQLConfigCrediario.FieldByName('CFCRN2PERCJURATRAS').AsCurrency / 100 * SQLContasReceberCTRCN2VLR.Value;
             CodigoMoraJuros  := cjTaxaMensal;
             PercentualMulta  := DM.SQLConfigCrediario.FieldByName('CFCRN2PERCMULATRAS').AsCurrency;
             
             if ACBrBoleto1.banco.TipoCobranca = cobSicred then
             begin
-               CodigoMora := 'B';               
-               ACBrBoleto1.ImprimirMensagemPadrao := false;  
+               CodigoMora := 'A';
+               ACBrBoleto1.ImprimirMensagemPadrao := false;
                Mensagem.Add(ACBrStr('Cobrar juros de '+
                             FloatToStr(ValorMoraJuros) + '%' +
                              ' por dia de atraso para pagamento a partir de ' +
