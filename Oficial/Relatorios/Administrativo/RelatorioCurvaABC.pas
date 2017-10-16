@@ -22,7 +22,6 @@ type
     DSSQLVariacao: TDataSource;
     Report: TCrpe;
     SQLNotaFiscal: TRxQuery;
-    TblTemporariaTOTALITEM: TFloatField;
     TblTemporariaPRODICOD: TIntegerField;
     TblTemporariaPRODA60DESCR: TStringField;
     TblTemporariaVALORUNITARIO: TFloatField;
@@ -62,6 +61,7 @@ type
     Label6: TLabel;
     SQLSubgrupoSUBGA60DESCR: TStringField;
     SQLSubgrupoSUBGICOD: TIntegerField;
+    TblTemporariaTOTALITEM: TBCDField;
     procedure ExecutarBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
