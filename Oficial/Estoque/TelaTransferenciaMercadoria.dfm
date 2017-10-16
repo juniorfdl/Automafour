@@ -1,8 +1,8 @@
 inherited FormTelaTransferencia: TFormTelaTransferencia
-  Left = 357
-  Top = 33
+  Left = 197
+  Top = 57
   Width = 880
-  Height = 579
+  Height = 587
   Caption = 'Transfer'#234'ncia Produtos'
   OldCreateOrder = True
   Position = poDesktopCenter
@@ -10,17 +10,17 @@ inherited FormTelaTransferencia: TFormTelaTransferencia
   TextHeight = 13
   inherited ScrollBoxFundo: TScrollBox
     Width = 864
-    Height = 540
+    Height = 549
     Color = 15461355
     inherited PanelCentral: TPanel
       Top = 73
       Width = 860
-      Height = 463
+      Height = 472
       object PageControl: TPageControl [0]
         Left = 130
         Top = 0
         Width = 730
-        Height = 463
+        Height = 472
         ActivePage = TabSheetGerarTransferencia
         Align = alClient
         Font.Charset = ANSI_CHARSET
@@ -61,7 +61,7 @@ inherited FormTelaTransferencia: TFormTelaTransferencia
             Left = 0
             Top = 25
             Width = 722
-            Height = 429
+            Height = 438
             Align = alClient
             BevelInner = bvLowered
             Font.Charset = ANSI_CHARSET
@@ -76,7 +76,7 @@ inherited FormTelaTransferencia: TFormTelaTransferencia
               Left = 441
               Top = 204
               Width = 4
-              Height = 223
+              Height = 232
               Beveled = True
             end
             object Splitter2: TSplitter
@@ -168,7 +168,7 @@ inherited FormTelaTransferencia: TFormTelaTransferencia
               Left = 2
               Top = 204
               Width = 439
-              Height = 223
+              Height = 232
               Align = alLeft
               BorderStyle = bsNone
               Color = clWhite
@@ -274,7 +274,7 @@ inherited FormTelaTransferencia: TFormTelaTransferencia
               Left = 445
               Top = 204
               Width = 275
-              Height = 223
+              Height = 232
               Align = alClient
               BevelKind = bkFlat
               BorderStyle = bsNone
@@ -347,7 +347,7 @@ inherited FormTelaTransferencia: TFormTelaTransferencia
           end
           object gboPesquisaProduto: TGroupBox
             Left = 0
-            Top = 384
+            Top = 393
             Width = 722
             Height = 70
             Align = alBottom
@@ -508,7 +508,7 @@ inherited FormTelaTransferencia: TFormTelaTransferencia
             Left = 0
             Top = 81
             Width = 722
-            Height = 303
+            Height = 312
             Align = alClient
             BevelInner = bvLowered
             Font.Charset = ANSI_CHARSET
@@ -523,7 +523,7 @@ inherited FormTelaTransferencia: TFormTelaTransferencia
               Left = 2
               Top = 2
               Width = 718
-              Height = 299
+              Height = 308
               Align = alClient
               BorderStyle = bsNone
               Color = clWhite
@@ -643,7 +643,7 @@ inherited FormTelaTransferencia: TFormTelaTransferencia
             Left = 0
             Top = 25
             Width = 722
-            Height = 429
+            Height = 438
             Align = alClient
             BevelInner = bvLowered
             Font.Charset = ANSI_CHARSET
@@ -658,7 +658,7 @@ inherited FormTelaTransferencia: TFormTelaTransferencia
               Left = 441
               Top = 204
               Width = 4
-              Height = 223
+              Height = 232
               Beveled = True
             end
             object Splitter4: TSplitter
@@ -749,7 +749,7 @@ inherited FormTelaTransferencia: TFormTelaTransferencia
               Left = 2
               Top = 204
               Width = 439
-              Height = 223
+              Height = 232
               Align = alLeft
               BorderStyle = bsNone
               Color = clWhite
@@ -854,7 +854,7 @@ inherited FormTelaTransferencia: TFormTelaTransferencia
               Left = 445
               Top = 204
               Width = 275
-              Height = 223
+              Height = 232
               Align = alClient
               BevelKind = bkFlat
               BorderStyle = bsNone
@@ -869,7 +869,7 @@ inherited FormTelaTransferencia: TFormTelaTransferencia
         end
       end
       inherited PanelBarra: TPanel
-        Height = 463
+        Height = 472
         TabOrder = 1
         object Button2: TRxSpeedButton
           Tag = 2

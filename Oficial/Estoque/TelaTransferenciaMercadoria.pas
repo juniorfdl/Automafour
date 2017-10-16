@@ -1015,7 +1015,7 @@ procedure TFormTelaTransferencia.edQtdeProdutoKeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);
 begin
   inherited;
-  if Key = Enter then
+  if Key = 13 then
      begin
        IncluiProduto;
        lblDescrProduto.Caption := 'Descrição do Produto';

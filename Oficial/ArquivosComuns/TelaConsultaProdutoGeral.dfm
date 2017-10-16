@@ -1,6 +1,6 @@
 inherited FormTelaConsultaProdutoGeral: TFormTelaConsultaProdutoGeral
-  Left = 298
-  Top = 155
+  Left = 242
+  Top = 133
   Caption = 'Consulta de Produtos'
   ClientHeight = 497
   ClientWidth = 972

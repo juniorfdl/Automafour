@@ -142,13 +142,15 @@ begin
           SQLProduto.Close ;
           SQLProduto.SQL.Clear ;
           SQLProduto.SQL.Add('Select * from PRODUTO') ;
-          SQLProduto.SQL.Add('Where PRODCATIVO = ''S'' and ') ;
+          SQLProduto.SQL.Add('Where PRODCATIVO = ''S'' ') ;
           if EditDescr.Text <> '' then
             begin
+
+
               if Pos('*', EditDescr.Text) > 0 then
-                SQLProduto.SQL.Add('PRODA60DESCR like ''%' + Copy(EditDescr.Text, 2, Length(EditDescr.Text)) + '%''')
+                SQLProduto.SQL.Add('and PRODA60DESCR like ''%' + Copy(EditDescr.Text, 2, Length(EditDescr.Text)) + '%''')
               else
-                SQLProduto.SQL.Add('PRODA60DESCR like ''' + EditDescr.Text + '%''') ;
+                SQLProduto.SQL.Add('and PRODA60DESCR like ''' + EditDescr.Text + '%''') ;
             end;
           if (EditRef.Text <> '') then
             begin
@@ -162,13 +164,13 @@ begin
               else
                 begin
                   if Pos('*', EditRef.Text) > 0 then
-                    SQLProduto.SQL.Add('PRODA60REFER like ''%' + Copy(EditRef.Text, 2, Length(EditRef.Text)) + '%''')
+                    SQLProduto.SQL.Add('and PRODA60REFER like ''%' + Copy(EditRef.Text, 2, Length(EditRef.Text)) + '%''')
                   else
-                    SQLProduto.SQL.Add('PRODA60REFER like ''' + EditRef.Text + '%''') ;
+                    SQLProduto.SQL.Add('and PRODA60REFER like ''' + EditRef.Text + '%''') ;
                 end
             end;
 
-          SQLProduto.SQL.Add('order by PRODA60DESCR, PRODA60REFER') ;
+          SQLProduto.SQL.Add('order by PRODA60DESCR, PRODA60REFER');
           SQLProduto.Open ;
         end;
    end;
