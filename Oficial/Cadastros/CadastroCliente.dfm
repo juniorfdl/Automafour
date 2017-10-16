@@ -754,6 +754,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
             Top = 42
             Width = 960
             Height = 556
+            ActivePage = TabSheetDadosPrincipais
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Width = 952
@@ -6959,6 +6960,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
       Caption = 'Produtos com Desconto por Cliente'
       OnClick = MnProdutoscomDescontoporClienteClick
     end
+    object ConsultaClienteSefaz1: TMenuItem
+      Caption = 'Consulta Cliente Sefaz'
+      OnClick = ConsultaClienteSefaz1Click
+    end
   end
   inherited PopupMenuImpressao: TPopupMenu
     object ImprimirCarneAvulso: TMenuItem
@@ -9401,9 +9406,8 @@ inherited FormCadastroCliente: TFormCadastroCliente
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 0
     PrinterSetup.mmPaperWidth = 0
-    PrinterSetup.PaperSize = 177
+    PrinterSetup.PaperSize = 139
     DeviceType = 'Screen'
-    EmailSettings.ReportFormat = 'PDF'
     OutlineSettings.CreateNode = True
     OutlineSettings.CreatePageNodes = True
     OutlineSettings.Enabled = False
@@ -9412,28 +9416,24 @@ inherited FormCadastroCliente: TFormCadastroCliente
     TextSearchSettings.Enabled = False
     Left = 708
     Top = 2
-    Version = '10.06'
+    Version = '7.04'
     mmColumnWidth = 0
     DataPipelineName = 'PipeCliente'
     object ppHeaderBand1: TppHeaderBand
       mmBottomOffset = 0
-      mmHeight = 59434002
+      mmHeight = -1454592045
       mmPrintPosition = 0
       object ppShape9: TppShape
         UserName = 'ppShape9'
-        mmHeight = 8750582
-        mmLeft = 769939
-        mmTop = 629974
-        mmWidth = 52153448
+        mmHeight = -1979704533
+        mmLeft = 203713433
+        mmTop = 166680953
+        mmWidth = 914058700
         BandType = 0
       end
       object ppLabel1: TppLabel
         UserName = 'ppLabel1'
         AutoSize = False
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
         Caption = 'Planinlha de Vendas'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -9442,18 +9442,14 @@ inherited FormCadastroCliente: TFormCadastroCliente
         Font.Style = [fsBold]
         TextAlignment = taCentered
         Transparent = True
-        mmHeight = 1470028
-        mmLeft = 910168
-        mmTop = 700089
-        mmWidth = 52083333
+        mmHeight = 388945683
+        mmLeft = 240815763
+        mmTop = 185232250
+        mmWidth = 895507138
         BandType = 0
       end
       object ppLabel2: TppLabel
         UserName = 'ppLabel2'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
         Caption = 'Cliente:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -9461,19 +9457,15 @@ inherited FormCadastroCliente: TFormCadastroCliente
         Font.Size = 10
         Font.Style = [fsBold]
         Transparent = True
-        mmHeight = 1073417
-        mmLeft = 910168
-        mmTop = 2310082
-        mmWidth = 3192204
+        mmHeight = 284008813
+        mmLeft = 240815763
+        mmTop = 611210413
+        mmWidth = 844605656
         BandType = 0
       end
       object ppDBText1: TppDBText
         UserName = 'ppDBText1'
         AutoSize = True
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
         DataPipeline = PipeCliente
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -9483,17 +9475,13 @@ inherited FormCadastroCliente: TFormCadastroCliente
         Transparent = True
         DataPipelineName = 'PipeCliente'
         mmHeight = 4106
-        mmLeft = 4270384
-        mmTop = 2310082
+        mmLeft = 1129874683
+        mmTop = 611210413
         mmWidth = 17060
         BandType = 0
       end
       object ppLabel3: TppLabel
         UserName = 'ppLabel3'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
         Caption = 'End.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -9501,19 +9489,15 @@ inherited FormCadastroCliente: TFormCadastroCliente
         Font.Size = 10
         Font.Style = [fsBold]
         Transparent = True
-        mmHeight = 1050133
-        mmLeft = 910168
-        mmTop = 3430330
-        mmWidth = 2170117
+        mmHeight = 277848243
+        mmLeft = 240815763
+        mmTop = 907609953
+        mmWidth = 574177933
         BandType = 0
       end
       object ppDBText2: TppDBText
         UserName = 'ppDBText2'
         AutoSize = True
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
         DataPipeline = PipeCliente
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -9523,17 +9507,13 @@ inherited FormCadastroCliente: TFormCadastroCliente
         Transparent = True
         DataPipelineName = 'PipeCliente'
         mmHeight = 4106
-        mmLeft = 4270384
-        mmTop = 3430330
+        mmLeft = 1129874683
+        mmTop = 907609953
         mmWidth = 17060
         BandType = 0
       end
       object ppLabel4: TppLabel
         UserName = 'ppLabel4'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
         Caption = 'Bairro:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -9541,19 +9521,15 @@ inherited FormCadastroCliente: TFormCadastroCliente
         Font.Size = 10
         Font.Style = [fsBold]
         Transparent = True
-        mmHeight = 1050133
-        mmLeft = 910168
-        mmTop = 4620428
-        mmWidth = 2940320
+        mmHeight = 277848243
+        mmLeft = 240815763
+        mmTop = 1222490675
+        mmWidth = 777961215
         BandType = 0
       end
       object ppDBText3: TppDBText
         UserName = 'ppDBText3'
         AutoSize = True
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
         DataPipeline = PipeCliente
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -9563,17 +9539,13 @@ inherited FormCadastroCliente: TFormCadastroCliente
         Transparent = True
         DataPipelineName = 'PipeCliente'
         mmHeight = 4106
-        mmLeft = 4270384
-        mmTop = 4620428
+        mmLeft = 1129874683
+        mmTop = 1222490675
         mmWidth = 17060
         BandType = 0
       end
       object ppLabel5: TppLabel
         UserName = 'ppLabel5'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
         Caption = 'Cidade:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -9581,19 +9553,15 @@ inherited FormCadastroCliente: TFormCadastroCliente
         Font.Size = 10
         Font.Style = [fsBold]
         Transparent = True
-        mmHeight = 1050133
-        mmLeft = 910168
-        mmTop = 5810262
-        mmWidth = 3150135
+        mmHeight = 277848243
+        mmLeft = 240815763
+        mmTop = 1537301548
+        mmWidth = 833474878
         BandType = 0
       end
       object ppDBText4: TppDBText
         UserName = 'ppDBText4'
         AutoSize = True
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
         DataPipeline = PipeCliente
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -9603,17 +9571,13 @@ inherited FormCadastroCliente: TFormCadastroCliente
         Transparent = True
         DataPipelineName = 'PipeCliente'
         mmHeight = 4106
-        mmLeft = 4270384
-        mmTop = 5810262
+        mmLeft = 1129874683
+        mmTop = 1537301548
         mmWidth = 17060
         BandType = 0
       end
       object ppLabel6: TppLabel
         UserName = 'ppLabel6'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
         Caption = 'CGC:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -9621,19 +9585,15 @@ inherited FormCadastroCliente: TFormCadastroCliente
         Font.Size = 10
         Font.Style = [fsBold]
         Transparent = True
-        mmHeight = 1050133
-        mmLeft = 910168
-        mmTop = 6930510
-        mmWidth = 2380196
+        mmHeight = 277848243
+        mmLeft = 240815763
+        mmTop = 1833701088
+        mmWidth = 629761445
         BandType = 0
       end
       object ppDBText5: TppDBText
         UserName = 'ppDBText5'
         AutoSize = True
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
         DataPipeline = PipeCliente
         DisplayFormat = '##.###.###/####-##;0;_'
         Font.Charset = DEFAULT_CHARSET
@@ -9643,18 +9603,14 @@ inherited FormCadastroCliente: TFormCadastroCliente
         Font.Style = [fsBold]
         Transparent = True
         DataPipelineName = 'PipeCliente'
-        mmHeight = 4106
-        mmLeft = 4270384
-        mmTop = 6930510
-        mmWidth = 17060
+        mmHeight = 1086381
+        mmLeft = 1129874683
+        mmTop = 1833701088
+        mmWidth = 4513801
         BandType = 0
       end
       object ppLabel7: TppLabel
         UserName = 'ppLabel7'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
         Caption = 'Fones:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -9662,18 +9618,14 @@ inherited FormCadastroCliente: TFormCadastroCliente
         Font.Size = 10
         Font.Style = [fsBold]
         Transparent = True
-        mmHeight = 1050133
-        mmLeft = 910168
-        mmTop = 8050493
-        mmWidth = 2590276
+        mmHeight = 277848243
+        mmLeft = 240815763
+        mmTop = 2130030513
+        mmWidth = 685345223
         BandType = 0
       end
       object ppDBText6: TppDBText
         UserName = 'ppDBText6'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
         DataPipeline = PipeCliente
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -9682,18 +9634,14 @@ inherited FormCadastroCliente: TFormCadastroCliente
         Font.Style = [fsBold]
         Transparent = True
         DataPipelineName = 'PipeCliente'
-        mmHeight = 1050133
-        mmLeft = 4270384
-        mmTop = 8050493
-        mmWidth = 13160930
+        mmHeight = 277848243
+        mmLeft = 1129874683
+        mmTop = 2130030513
+        mmWidth = -812797635
         BandType = 0
       end
       object ppDBText7: TppDBText
         UserName = 'ppDBText7'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
         DataPipeline = PipeCliente
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -9702,74 +9650,74 @@ inherited FormCadastroCliente: TFormCadastroCliente
         Font.Style = [fsBold]
         Transparent = True
         DataPipelineName = 'PipeCliente'
-        mmHeight = 1050133
-        mmLeft = 17571279
-        mmTop = 8050493
-        mmWidth = 13160930
+        mmHeight = 277848243
+        mmLeft = 354109793
+        mmTop = 2130030513
+        mmWidth = -812797635
         BandType = 0
       end
       object ppShape1: TppShape
         UserName = 'ppShape1'
-        mmHeight = 12530956
-        mmLeft = 769939
-        mmTop = 9450671
-        mmWidth = 25971816
+        mmHeight = -979478587
+        mmLeft = 203713433
+        mmTop = -1794472283
+        mmWidth = -1718211262
         BandType = 0
       end
       object ppShape2: TppShape
         UserName = 'ppShape2'
-        mmHeight = 12530956
-        mmLeft = 26811870
-        mmTop = 9450671
-        mmWidth = 26111781
+        mmHeight = -979478587
+        mmLeft = -1495946532
+        mmTop = -1794472283
+        mmWidth = -1681179046
         BandType = 0
       end
       object ppShape3: TppShape
         UserName = 'ppShape3'
-        mmHeight = 12530956
-        mmLeft = 769939
-        mmTop = 22051477
-        mmWidth = 25971816
+        mmHeight = -979478587
+        mmLeft = 203713433
+        mmTop = 1539497344
+        mmWidth = -1718211262
         BandType = 0
       end
       object ppShape4: TppShape
         UserName = 'ppShape4'
-        mmHeight = 12530956
-        mmLeft = 26811870
-        mmTop = 22051477
-        mmWidth = 26111781
+        mmHeight = -979478587
+        mmLeft = -1495946532
+        mmTop = 1539497344
+        mmWidth = -1681179046
         BandType = 0
       end
       object ppShape5: TppShape
         UserName = 'ppShape5'
-        mmHeight = 12530956
-        mmLeft = 769939
-        mmTop = 34652284
-        mmWidth = 25971816
+        mmHeight = -979478587
+        mmLeft = 203713433
+        mmTop = 578500469
+        mmWidth = -1718211262
         BandType = 0
       end
       object ppShape6: TppShape
         UserName = 'ppShape6'
-        mmHeight = 12530956
-        mmLeft = 26811870
-        mmTop = 34652284
-        mmWidth = 26111781
+        mmHeight = -979478587
+        mmLeft = -1495946532
+        mmTop = 578500469
+        mmWidth = -1681179046
         BandType = 0
       end
       object ppShape7: TppShape
         UserName = 'ppShape7'
-        mmHeight = 12530956
-        mmLeft = 769939
-        mmTop = 47253090
-        mmWidth = 25971816
+        mmHeight = -979478587
+        mmLeft = 203713433
+        mmTop = -382497465
+        mmWidth = -1718211262
         BandType = 0
       end
       object ppShape8: TppShape
         UserName = 'ppShape8'
-        mmHeight = 12530956
-        mmLeft = 26811870
-        mmTop = 47253090
-        mmWidth = 26111781
+        mmHeight = -979478587
+        mmLeft = -1495946532
+        mmTop = -382497465
+        mmWidth = -1681179046
         BandType = 0
       end
     end
@@ -12370,9 +12318,8 @@ inherited FormCadastroCliente: TFormCadastroCliente
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 0
     PrinterSetup.mmPaperWidth = 0
-    PrinterSetup.PaperSize = 177
+    PrinterSetup.PaperSize = 139
     DeviceType = 'Screen'
-    EmailSettings.ReportFormat = 'PDF'
     OutlineSettings.CreateNode = True
     OutlineSettings.CreatePageNodes = True
     OutlineSettings.Enabled = False
@@ -12381,27 +12328,23 @@ inherited FormCadastroCliente: TFormCadastroCliente
     TextSearchSettings.Enabled = False
     Left = 764
     Top = 2
-    Version = '10.06'
+    Version = '7.04'
     mmColumnWidth = 0
     DataPipelineName = 'PipeCliente'
     object ppDetailBand8: TppDetailBand
       PrintHeight = phDynamic
-      mmBottomOffset = 139965
-      mmHeight = 69444532
+      mmBottomOffset = 37031157
+      mmHeight = 1194032095
       mmPrintPosition = 0
       object ppTexto: TppRichText
         UserName = 'ppTexto'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
         Caption = 'ppTexto'
         MailMerge = True
         Stretch = True
-        mmHeight = 69304567
+        mmHeight = 1157000938
         mmLeft = 0
         mmTop = 0
-        mmWidth = 52573342
+        mmWidth = 1025156404
         BandType = 4
         mmBottomOffset = 0
         mmOverFlowOffset = 0
@@ -12695,7 +12638,6 @@ inherited FormCadastroCliente: TFormCadastroCliente
     PrinterSetup.mmPaperWidth = 0
     PrinterSetup.PaperSize = 9
     DeviceType = 'Screen'
-    EmailSettings.ReportFormat = 'PDF'
     OnPreviewFormCreate = ppExtratoCreditoResumidoPreviewFormCreate
     OutlineSettings.CreateNode = True
     OutlineSettings.CreatePageNodes = True
@@ -12705,19 +12647,15 @@ inherited FormCadastroCliente: TFormCadastroCliente
     TextSearchSettings.Enabled = False
     Left = 739
     Top = 612
-    Version = '10.06'
+    Version = '7.04'
     mmColumnWidth = 0
     DataPipelineName = 'PipeExtratoCreditoResumido'
     object ppHeaderBand2: TppHeaderBand
       mmBottomOffset = 0
-      mmHeight = 6790545
+      mmHeight = 1796668608
       mmPrintPosition = 0
       object ppLabel8: TppLabel
         UserName = 'ppLabel8'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
         Caption = 'Extrato de Creditos e Debitos'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -12725,18 +12663,14 @@ inherited FormCadastroCliente: TFormCadastroCliente
         Font.Size = 16
         Font.Style = []
         Transparent = True
-        mmHeight = 1713710
-        mmLeft = 3360215
-        mmTop = 1050133
-        mmWidth = 19478135
+        mmHeight = 453420007
+        mmLeft = 889058655
+        mmTop = 277848243
+        mmWidth = 858633114
         BandType = 0
       end
       object ppLabel9: TppLabel
         UserName = 'ppLabel9'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
         Caption = 'Data'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -12744,18 +12678,14 @@ inherited FormCadastroCliente: TFormCadastroCliente
         Font.Size = 9
         Font.Style = []
         Transparent = True
-        mmHeight = 951973
-        mmLeft = 3290100
-        mmTop = 4830243
-        mmWidth = 1780914
+        mmHeight = 251876691
+        mmLeft = 870507358
+        mmTop = 1278004338
+        mmWidth = 471201101
         BandType = 0
       end
       object ppLabel10: TppLabel
         UserName = 'ppLabel10'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
         Caption = 'Historico'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -12763,18 +12693,14 @@ inherited FormCadastroCliente: TFormCadastroCliente
         Font.Size = 9
         Font.Style = []
         Transparent = True
-        mmHeight = 951973
-        mmLeft = 10570654
-        mmTop = 4760393
-        mmWidth = 3293011
+        mmHeight = 251876691
+        mmLeft = -1498142857
+        mmTop = 1259523155
+        mmWidth = 871277562
         BandType = 0
       end
       object ppLabel11: TppLabel
         UserName = 'ppLabel11'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
         Caption = 'Creditos'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -12782,18 +12708,14 @@ inherited FormCadastroCliente: TFormCadastroCliente
         Font.Size = 9
         Font.Style = []
         Transparent = True
-        mmHeight = 951973
-        mmLeft = 37032480
-        mmTop = 4760393
-        mmWidth = 3147490
+        mmHeight = 251876691
+        mmLeft = 1208261914
+        mmTop = 1259523155
+        mmWidth = 832775054
         BandType = 0
       end
       object ppLabel12: TppLabel
         UserName = 'ppLabel12'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
         Caption = 'Debitos'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -12801,31 +12723,23 @@ inherited FormCadastroCliente: TFormCadastroCliente
         Font.Size = 9
         Font.Style = []
         Transparent = True
-        mmHeight = 951973
-        mmLeft = 44943008
-        mmTop = 4760393
-        mmWidth = 2867295
+        mmHeight = 251876691
+        mmLeft = -993707348
+        mmTop = 1259523155
+        mmWidth = 758639979
         BandType = 0
       end
       object ppLine1: TppLine
         UserName = 'ppLine1'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
         Weight = 0.750000000000000000
-        mmHeight = 70115
-        mmLeft = 3010171
-        mmTop = 5950491
-        mmWidth = 45362903
+        mmHeight = 18551297
+        mmLeft = 796442663
+        mmTop = 1574403878
+        mmWidth = -882609644
         BandType = 0
       end
       object ppLbClienteExtratoCredito: TppLabel
         UserName = 'ppLbClienteExtratoCredito'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
         Caption = 'Cliente'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -12833,23 +12747,19 @@ inherited FormCadastroCliente: TFormCadastroCliente
         Font.Size = 9
         Font.Style = []
         Transparent = True
-        mmHeight = 951973
-        mmLeft = 3290100
-        mmTop = 3570295
-        mmWidth = 2632080
+        mmHeight = 251876691
+        mmLeft = 870507358
+        mmTop = 944642433
+        mmWidth = 696405886
         BandType = 0
       end
     end
     object ppDetailBand2: TppDetailBand
       mmBottomOffset = 0
-      mmHeight = 1119983
+      mmHeight = 296329425
       mmPrintPosition = 0
       object ppDBText8: TppDBText
         UserName = 'ppDBText8'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
         DataPipeline = PipeExtratoCreditoResumido
         DisplayFormat = 'dd/mm/yyyy'
         Font.Charset = DEFAULT_CHARSET
@@ -12859,18 +12769,14 @@ inherited FormCadastroCliente: TFormCadastroCliente
         Font.Style = []
         Transparent = True
         DataPipelineName = 'PipeExtratoCreditoResumido'
-        mmHeight = 951973
-        mmLeft = 3290100
-        mmTop = 70115
-        mmWidth = 4550313
+        mmHeight = 251876691
+        mmLeft = 870507358
+        mmTop = 18551297
+        mmWidth = 1203939378
         BandType = 4
       end
       object ppDBText9: TppDBText
         UserName = 'ppDBText9'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
         DataPipeline = PipeExtratoCreditoResumido
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -12879,18 +12785,14 @@ inherited FormCadastroCliente: TFormCadastroCliente
         Font.Style = []
         Transparent = True
         DataPipelineName = 'PipeExtratoCreditoResumido'
-        mmHeight = 980019
-        mmLeft = 10570654
-        mmTop = 70115
-        mmWidth = 23731585
+        mmHeight = 259297210
+        mmLeft = -1498142857
+        mmTop = 18551297
+        mmWidth = 1984026804
         BandType = 4
       end
       object ppDBText10: TppDBText
         UserName = 'ppDBText10'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
         DataPipeline = PipeExtratoCreditoResumido
         DisplayFormat = '##0.00'
         Font.Charset = DEFAULT_CHARSET
@@ -12901,18 +12803,14 @@ inherited FormCadastroCliente: TFormCadastroCliente
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'PipeExtratoCreditoResumido'
-        mmHeight = 951973
-        mmLeft = 35912496
-        mmTop = 70115
-        mmWidth = 4550313
+        mmHeight = 251876691
+        mmLeft = 911932224
+        mmTop = 18551297
+        mmWidth = 1203939378
         BandType = 4
       end
       object ppDBText11: TppDBText
         UserName = 'ppDBText11'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
         DataPipeline = PipeExtratoCreditoResumido
         DisplayFormat = '##0.00'
         Font.Charset = DEFAULT_CHARSET
@@ -12923,10 +12821,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'PipeExtratoCreditoResumido'
-        mmHeight = 951973
-        mmLeft = 43262901
-        mmTop = 70115
-        mmWidth = 4550313
+        mmHeight = 251876691
+        mmLeft = -1438236808
+        mmTop = 18551297
+        mmWidth = 1203939378
         BandType = 4
       end
     end
@@ -12937,14 +12835,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
     end
     object ppSummaryBand1: TppSummaryBand
       mmBottomOffset = 0
-      mmHeight = 6650315
+      mmHeight = 1759566013
       mmPrintPosition = 0
       object ppDBCalc1: TppDBCalc
         UserName = 'ppDBCalc1'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
         DataPipeline = PipeExtratoCreditoResumido
         DisplayFormat = '##0.00'
         Font.Charset = DEFAULT_CHARSET
@@ -12955,18 +12849,14 @@ inherited FormCadastroCliente: TFormCadastroCliente
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'PipeExtratoCreditoResumido'
-        mmHeight = 980019
-        mmLeft = 34372354
-        mmTop = 1330063
-        mmWidth = 6090456
+        mmHeight = 259297210
+        mmLeft = 504434980
+        mmTop = 351913203
+        mmWidth = 1611436358
         BandType = 7
       end
       object ppDBCalc2: TppDBCalc
         UserName = 'ppDBCalc2'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
         DataPipeline = PipeExtratoCreditoResumido
         DisplayFormat = '##0.00'
         Font.Charset = DEFAULT_CHARSET
@@ -12977,31 +12867,23 @@ inherited FormCadastroCliente: TFormCadastroCliente
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'PipeExtratoCreditoResumido'
-        mmHeight = 980019
-        mmLeft = 41722758
-        mmTop = 1330063
-        mmWidth = 6090456
+        mmHeight = 259297210
+        mmLeft = -1845732995
+        mmTop = 351913203
+        mmWidth = 1611436358
         BandType = 7
       end
       object ppLine2: TppLine
         UserName = 'ppLine2'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
         Weight = 0.750000000000000000
-        mmHeight = 210080
-        mmLeft = 3010171
-        mmTop = 210080
-        mmWidth = 45362903
+        mmHeight = 55583777
+        mmLeft = 796442663
+        mmTop = 55583777
+        mmWidth = -882609644
         BandType = 7
       end
       object ppLBSaldo: TppLabel
         UserName = 'ppLBSaldo'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
         Caption = 'Saldo'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -13010,10 +12892,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
         Font.Style = [fsBold]
         TextAlignment = taRightJustified
         Transparent = True
-        mmHeight = 1008065
-        mmLeft = 37757704
-        mmTop = 3080285
-        mmWidth = 2296059
+        mmHeight = 266717729
+        mmLeft = 1400144480
+        mmTop = 814993695
+        mmWidth = 607500153
         BandType = 7
       end
     end

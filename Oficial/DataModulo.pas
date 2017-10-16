@@ -803,6 +803,7 @@ type
     { Private declarations }
     procedure GetDataValidadeSistema;
     procedure GetDataValidadeSistemaWebApi;
+
   public
     { Public declarations }
     {CodTarefa, SerieAtualPedidos,  FretePorConta, PedidoVolume,  VeiculoAtualPedidos,
@@ -826,6 +827,7 @@ type
     TemClienteDiferente: Boolean;
     OBSAutorizacao: string;
     function ConectaServidor: boolean;
+    procedure Inicia_NFe;
 
   end;
 
@@ -858,18 +860,61 @@ begin
   FormSplash.close;
 end;
 
+procedure TDM.Inicia_NFe();
+begin
+  {$IFDEF ACBrNFeOpenSSL}
+    ACBrNFe.Configuracoes.Certificados.ArquivoPFX  := sqlEmpresa.FieldByName('EMPRA100CERTIFSERIE').AsString;
+    ACBrNFe.Configuracoes.Certificados.Certificado := sqlEmpresa.FieldByName('EMPRA100CERTIFSERIE').AsString;
+    ACBrNFe.Configuracoes.Certificados.Senha       := sqlEmpresa.FieldByName('EMPRA35CERTIFSENHA').AsString;
+  {$ELSE}
+    ACBrNFe.Configuracoes.Certificados.NumeroSerie  := sqlEmpresa.FieldByName('EMPRA100CERTIFSERIE').AsString;
+    ACBrNFe.Configuracoes.Certificados.Senha        := sqlEmpresa.FieldByName('EMPRA35CERTIFSENHA').AsString;
+  {$ENDIF}
+
+  if sqlEmpresa.FindField('idTOKEN') <> nil then
+  begin
+    ACBrNFe.Configuracoes.Geral.IdCSC  := sqlEmpresa.FieldByName('idTOKEN').AsString;
+    ACBrNFe.Configuracoes.Geral.CSC    := sqlEmpresa.FieldByName('TOKEN').AsString;
+  end;
+
+  ACBrNFe.DANFE.ViaConsumidor := True;
+  ACBrNFe.DANFE.ImprimirItens := True;
+
+  if (ECFAtual = 'NFCE A4')       then  ACBrPosPrinter.Modelo := ppTexto;
+  if (ECFAtual = 'NFCE EPSON')    then  ACBrPosPrinter.Modelo := ppEscPosEpson;
+  if (ECFAtual = 'NFCE BEMATECH') then  ACBrPosPrinter.Modelo := ppEscBematech;
+  if (ECFAtual = 'NFCE ELGIN')    then  ACBrPosPrinter.Modelo := ppEscElgin;
+  if (ECFAtual = 'NFCE DR700')    then  ACBrPosPrinter.Modelo := ppEscDaruma;
+  if (ECFAtual = 'NFCE DR800') then
+    begin
+      ACBrPosPrinter.Modelo := ppEscDaruma;
+      ACBrPosPrinter.ControlePorta := False;
+    end;
+
+  if SQLTerminalAtivo.FieldByName('TERMA5ECFPORTACOM').Value <> 'USB' then
+    ACBrPosPrinter.Device.Porta := SQLTerminalAtivo.FieldByName('TERMA5ECFPORTACOM').Value
+  else
+    ACBrPosPrinter.Device.Porta := '\\localhost\nfce' ;
+
+  if not SQLTerminalAtivo.FieldByName('ECF_VELOC').IsNull then
+    ACBrPosPrinter.Device.Baud  := SQLTerminalAtivo.FieldByName('ECF_VELOC').Value;
+
+  ACBrNFeDANFeESCPOS.ImprimeEmUmaLinha     := False;
+  ACBrNFeDANFeESCPOS.ImprimeDescAcrescItem := True;
+end;
+
 procedure TDM.DBAfterConnect(Sender: TObject);
 begin
   inherited;
 
-  Dm.SQLConfigGeral.Close;
-  Dm.SQLConfigGeral.Open;
-  Dm.SQLConfigVenda.Close;
-  Dm.SQLConfigVenda.Open;
-  Dm.SQLUsuario.Close;
-  Dm.SQLUsuario.Open;
-  Dm.SQLTerminalAtivo.Close;
-  Dm.SQLTerminalAtivo.Open;
+  SQLConfigGeral.Close;
+  SQLConfigGeral.Open;
+  SQLConfigVenda.Close;
+  SQLConfigVenda.Open;
+  SQLUsuario.Close;
+  SQLUsuario.Open;
+  SQLTerminalAtivo.Close;
+  SQLTerminalAtivo.Open;
 
   DataSistema := ExecSql('select current_timestamp from rdb$relations').fieldbyname('current_timestamp').AsDateTime;
   DataSistema := StrToDate(FormatDateTime('dd/mm/yyyy', DataSistema));
@@ -883,22 +928,22 @@ var
 begin
 
   OBSAutorizacao := '';
-  if Dm.SQLConfigGeralCFGEDBLOQ.AsDateTime < DataSistema then
+  if SQLConfigGeralCFGEDBLOQ.AsDateTime < DataSistema then
   begin
     GetDataValidadeSistemaWebApi;
   end;
 
-  Dm.SQLConfigGeral.Edit;
-  if Dm.SQLConfigGeralCFGEDBLOQ.AsDateTime < DataSistema then
-    Dm.SQLConfigGeralCFGECBLOQ.Value := 'S'
+  SQLConfigGeral.Edit;
+  if SQLConfigGeralCFGEDBLOQ.AsDateTime < DataSistema then
+    SQLConfigGeralCFGECBLOQ.Value := 'S'
   else begin
-    Dm.SQLConfigGeralCFGECBLOQ.Value := '';
+    SQLConfigGeralCFGECBLOQ.Value := '';
 
-    if Dm.SQLConfigGeralDIAS_AVISO.Value > 0 then
+    if SQLConfigGeralDIAS_AVISO.Value > 0 then
     begin
-      DiasVencimento := DaysBetween(Dm.SQLConfigGeralCFGEDBLOQ.AsDateTime, DataSistema);
+      DiasVencimento := DaysBetween(SQLConfigGeralCFGEDBLOQ.AsDateTime, DataSistema);
 
-      if Dm.SQLConfigGeralDIAS_AVISO.Value >= DiasVencimento then
+      if SQLConfigGeralDIAS_AVISO.Value >= DiasVencimento then
       begin
         if DiasVencimento = 1 then
           OBSAutorizacao := '01 dia'
@@ -908,7 +953,7 @@ begin
     end;
 
   end;
-  Dm.SQLConfigGeral.Post;
+  SQLConfigGeral.Post;
 end;
 
 procedure TDM.GetDataValidadeSistemaWebApi;
@@ -916,14 +961,14 @@ var
   Data: TDate;
   xhttp: string;
 begin
-  if not Dm.SQLEmpresa.Active then
-    Dm.SQLEmpresa.Open;
+  if not SQLEmpresa.Active then
+    SQLEmpresa.Open;
 
   cdsAPIAutorizacao.Close;
   cdsAPIAutorizacao.CreateDataSet;
 
   xhttp := 'http://200.98.202.84/Automafour/api/cad_pessoa/documento/'
-    + Dm.SQLEmpresaEMPRA14CGC.AsString;
+    + SQLEmpresaEMPRA14CGC.AsString;
 
   //xhttp:= 'http://localhost:51308/api/cad_pessoa/documento/83125841020';
 
@@ -941,10 +986,10 @@ begin
         Data := StrToDate(copy(cdsAPIAutorizacaoDATA_AUTORIZACAO.value, 9, 2) + '/' + copy(cdsAPIAutorizacaoDATA_AUTORIZACAO.value, 6, 2)
           + '/' + copy(cdsAPIAutorizacaoDATA_AUTORIZACAO.value, 1, 4));
 
-        Dm.SQLConfigGeral.Edit;
-        Dm.SQLConfigGeralCFGEDBLOQ.Value := Data;
-        Dm.SQLConfigGeralDIAS_AVISO.AsInteger := StrToIntDef(cdsAPIAutorizacaoDIAS_AVISO.AsString, 0);
-        Dm.SQLConfigGeral.Post;
+        SQLConfigGeral.Edit;
+        SQLConfigGeralCFGEDBLOQ.Value := Data;
+        SQLConfigGeralDIAS_AVISO.AsInteger := StrToIntDef(cdsAPIAutorizacaoDIAS_AVISO.AsString, 0);
+        SQLConfigGeral.Post;
       end
     end;
 
