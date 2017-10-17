@@ -797,6 +797,7 @@ type
     SQLConfigGeralDIAS_AVISO: TIntegerField;
     cdsAPIAutorizacaoDIAS_AVISO: TStringField;
     TblAPIAutorizacaoDIAS_AVISO: TStringField;
+    ACBrNFeCad: TACBrNFe;
     procedure DataModuleCreate(Sender: TObject);
     procedure DBAfterConnect(Sender: TObject);
   private
@@ -828,6 +829,7 @@ type
     OBSAutorizacao: string;
     function ConectaServidor: boolean;
     procedure Inicia_NFe;
+    procedure Inicia_NFeCAD;
 
   end;
 
@@ -1004,6 +1006,19 @@ begin
       Abort;
     end;
   end;
+
+end;
+
+procedure TDM.Inicia_NFeCAD;
+begin
+ {$IFDEF ACBrNFeOpenSSL}
+    ACBrNFeCad.Configuracoes.Certificados.ArquivoPFX  := sqlEmpresa.FieldByName('EMPRA100CERTIFSERIE').AsString;
+    ACBrNFeCad.Configuracoes.Certificados.Certificado := sqlEmpresa.FieldByName('EMPRA100CERTIFSERIE').AsString;
+    ACBrNFeCad.Configuracoes.Certificados.Senha       := sqlEmpresa.FieldByName('EMPRA35CERTIFSENHA').AsString;
+  {$ELSE}
+    ACBrNFeCad.Configuracoes.Certificados.NumeroSerie  := sqlEmpresa.FieldByName('EMPRA100CERTIFSERIE').AsString;
+    ACBrNFeCad.Configuracoes.Certificados.Senha        := sqlEmpresa.FieldByName('EMPRA35CERTIFSENHA').AsString;
+  {$ENDIF}
 
 end;
 

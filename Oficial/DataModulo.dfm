@@ -5508,4 +5508,19 @@ inherited DM: TDM
       Size = 15
     end
   end
+  object ACBrNFeCad: TACBrNFe
+    Configuracoes.Geral.SSLLib = libCapicom
+    Configuracoes.Geral.SSLCryptLib = cryCapicom
+    Configuracoes.Geral.SSLHttpLib = httpWinINet
+    Configuracoes.Geral.SSLXmlSignLib = xsMsXmlCapicom
+    Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
+    Configuracoes.Geral.AtualizarXMLCancelado = True
+    Configuracoes.WebServices.UF = 'RS'
+    Configuracoes.WebServices.AguardarConsultaRet = 15000
+    Configuracoes.WebServices.AjustaAguardaConsultaRet = True
+    Configuracoes.WebServices.TimeOut = 20000
+    Configuracoes.WebServices.QuebradeLinha = '|'
+    Left = 957
+    Top = 49
+  end
 end

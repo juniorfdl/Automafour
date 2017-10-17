@@ -10,7 +10,7 @@ uses
   EDBNum, OleCtrls, RxLookup, UCrpe32, Placemnt, ExtDlgs, ppDB, ppDBPipe,
   ppComm, ppRelatv, ppProd, ppClass, ppReport, ppCtrls, ppPrnabl, ppBands,
   ppCache, UnSoundPlay, ppStrtch, ppRichTx, Serial, AdvOfficeStatusBar, ppViewr,
-  AdvOfficeStatusBarStylers, AdvPanel, ppDBBDE, XMLDoc,XMLIntf;
+  AdvOfficeStatusBarStylers, AdvPanel, ppDBBDE, XMLDoc, XMLIntf;
 
 type
   TProtectDBGrid = class(TDBGrid);
@@ -1085,7 +1085,7 @@ type
     function EnviaClientePDVs(Tipo: string): boolean;
     procedure MontaDadosCompra;
     procedure MontaDadosCheque;
-    function consultarCadastro(UF, Documento: string): string; stdcall;
+    function consultarCadastro(UF, Documento: string): string;
   public
     Produto: string;
 
@@ -2575,32 +2575,38 @@ procedure TFormCadastroCliente.SQLTemplateCLIEA14CGCChange(Sender: TField);
 begin
   inherited;
   CGCAlterado := True;
+  if SQLTemplateCLIEA14CGC.AsString <> '' then
+    consultarCadastro(dm.sqlEmpresa.FieldByName('empra2uf').AsString,SQLTemplateCLIEA14CGC.AsString) 
 end;
 
-function TFormCadastroCliente.consultarCadastro(UF, Documento: string): string; stdcall;
+function TFormCadastroCliente.consultarCadastro(UF, Documento: string): string;
 var
-  Node1, Node2: IXMLNode;
+  Node1, Node2, ender: IXMLNode;
   XMLDocument1: TXMLDocument;
-  MemoResp,msg:WideString;
+  MemoResp, msg: WideString;
+  xNome, xFant, IE, CNPJ, CNAE, xLgr, nro, xCpl, xBairro, xMun, CEP: string;
 begin
-
-  dm.Inicia_NFe;
+  dm.Inicia_NFeCad;
   XMLDocument1 := TXMLDocument.Create(XMLDocument1);
-  dm.ACBrNFe.WebServices.ConsultaCadastro.UF := UpperCase(UF);
-  dm.ACBrNFe.WebServices.ConsultaCadastro.CNPJ := Documento;
+  dm.ACBrNFeCad.WebServices.ConsultaCadastro.UF := UpperCase(UF);
 
-  dm.ACBrNFe.WebServices.ConsultaCadastro.Executar;
+  if Length(Documento) > 11 then
+    dm.ACBrNFeCad.WebServices.ConsultaCadastro.CNPJ := Documento
+  else
+    dm.ACBrNFeCad.WebServices.ConsultaCadastro.CPF := Documento;
 
-  if dm.ACBrNFe.WebServices.ConsultaCadastro.xMotivo <> 'Rejeicao: CNPJ da consulta nao cadastrado como contribuinte na UF' then
+  dm.ACBrNFeCad.WebServices.ConsultaCadastro.Executar;
+
+  if dm.ACBrNFeCad.WebServices.ConsultaCadastro.xMotivo <> 'Rejeicao: CNPJ da consulta nao cadastrado como contribuinte na UF' then
   begin
-    MemoResp := UTF8Encode(dm.ACBrNFe.WebServices.ConsultaCadastro.RetWS);
+    MemoResp := UTF8Encode(dm.ACBrNFeCad.WebServices.ConsultaCadastro.RetWS);
     XMLDocument1.Active := False;
     XMLDocument1.XML.Clear;
     XMLDocument1.XML.Text := memoResp;
     try
       XMLDocument1.Active := True;
     except
-      ShowMessage('Não foi possível verificar o estado. Espaços em branco no XML!');
+      //ShowMessage('Não foi possível verificar o estado. Espaços em branco no XML!');
       Exit;
     end;
 
@@ -2615,35 +2621,59 @@ begin
       Node2 := Node1.ChildNodes.FindNode('infCad');
 
       if Node2.ChildNodes.FindNode('xNome') <> nil then
+        xNome := Node2.ChildNodes['xNome'].Text;
+
+      if Node2.ChildNodes.FindNode('xFant') <> nil then
+        xFant := Node2.ChildNodes['xFant'].Text;
+
+      if Node2.ChildNodes.FindNode('IE') <> nil then
+        IE := Node2.ChildNodes['IE'].Text;
+
+      if Node2.ChildNodes.FindNode('CNPJ') <> nil then
+        CNPJ := Node2.ChildNodes['CNPJ'].Text;
+
+      if Node2.ChildNodes.FindNode('CNAE') <> nil then
+        CNAE := Node2.ChildNodes['CNAE'].Text;
+
+      if Node2.ChildNodes.FindNode('ender') <> nil then
       begin
-        msg := 'CLIENTE: ' + Node2.ChildNodes['xNome'].Text;
+        ender := Node2.ChildNodes.FindNode('ender');
+
+        if ender.ChildNodes.FindNode('xLgr') <> nil then
+          xLgr := ender.ChildNodes['xLgr'].Text;
+
+        if ender.ChildNodes.FindNode('nro') <> nil then
+          nro := ender.ChildNodes['nro'].Text;
+
+        if ender.ChildNodes.FindNode('xCpl') <> nil then
+          xCpl := ender.ChildNodes['xCpl'].Text;
+
+        if ender.ChildNodes.FindNode('xBairro') <> nil then
+          xBairro := ender.ChildNodes['xBairro'].Text;
+
+        if ender.ChildNodes.FindNode('xMun') <> nil then
+          xMun := ender.ChildNodes['xMun'].Text;
+
+        if ender.ChildNodes.FindNode('CEP') <> nil then
+          CEP := ender.ChildNodes['CEP'].Text;
       end;
-    end;
 
-    if Node1.ChildNodes.FindNode('infCad') <> nil then
-    begin
-      Node2 := nil;
-      Node2 := Node1.ChildNodes.FindNode('infCad');
-
-      if Node2.ChildNodes.FindNode('cSit') <> nil then
+      if SQLTemplate.State in dsEditModes then
       begin
-        if (Node2.ChildNodes['cSit'].Text) = '1' then
+        if xNome <> '' then
         begin
-          Result := 'Habilitado';
-          msg := msg + chr(13) + 'ENCONTRA-SE HABILITADO.';
-          ShowMessage(msg);
-        end
-        else
-        begin
-          Result := 'Denegado';
-          msg := msg + chr(13) + 'ENCONTRA-SE DENEGADO.';
-          ShowMessage(msg);
+          SQLTemplateCLIEA60RAZAOSOC.AsString := xNome;
+          SQLTemplateCLIEA60NOMEFANT.AsString := xFant;
+          SQLTemplateCLIEA20IE.AsString := IE;
+          SQLTemplateCLIEA8CEPRES.AsString := CEP;
+          SQLTemplateCLIEA5NROENDRES.AsString := nro;
         end;
-      end;
+      end;     
     end;
+
   end
   else
-    ShowMessage(dm.ACBrNFe.WebServices.ConsultaCadastro.xMotivo); 
+    ShowMessage(dm.ACBrNFeCad.WebServices.ConsultaCadastro.xMotivo);
 end;
 
 procedure TFormCadastroCliente.DBGrid2DrawColumnCell(Sender: TObject;
@@ -3713,12 +3743,12 @@ end;
 
 procedure TFormCadastroCliente.ConsultaClienteSefaz1Click(Sender: TObject);
 var
- UF, DOC:String;
+  UF, DOC: string;
 begin
   inherited;
 
   InputQuery('Informe um Estado', 'UF:', UF);
-  InputQuery('Informe um Documento', 'CPF/CNPJ:', DOC); 
+  InputQuery('Informe um Documento', 'CPF/CNPJ:', DOC);
   consultarCadastro(UF, DOC);
 end;
 
