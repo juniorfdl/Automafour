@@ -962,6 +962,7 @@ type
     ppLBSaldo: TppLabel;
     btCancelaCredito: TSpeedButton;
     ConsultaClienteSefaz1: TMenuItem;
+    RxSpeedButton1: TRxSpeedButton;
     procedure FormCreate(Sender: TObject);
     procedure AcessaVendedorClick(Sender: TObject);
     procedure SQLTemplateNewRecord(DataSet: TDataSet);
@@ -1070,6 +1071,7 @@ type
     procedure btCancelaCreditoClick(Sender: TObject);
     procedure ListagemPersonalizada1Click(Sender: TObject);
     procedure ConsultaClienteSefaz1Click(Sender: TObject);
+    procedure RxSpeedButton1Click(Sender: TObject);
   private
     { Private declarations }
     VlrSaldo,
@@ -1082,6 +1084,7 @@ type
       CalcTot: boolean;
     DataBase: TDateTime;
     NroCupom: string;
+    procedure BuscarCep;
     function EnviaClientePDVs(Tipo: string): boolean;
     procedure MontaDadosCompra;
     procedure MontaDadosCheque;
@@ -2575,8 +2578,6 @@ procedure TFormCadastroCliente.SQLTemplateCLIEA14CGCChange(Sender: TField);
 begin
   inherited;
   CGCAlterado := True;
-  if SQLTemplateCLIEA14CGC.AsString <> '' then
-    consultarCadastro(dm.sqlEmpresa.FieldByName('empra2uf').AsString,SQLTemplateCLIEA14CGC.AsString) 
 end;
 
 function TFormCadastroCliente.consultarCadastro(UF, Documento: string): string;
@@ -2610,7 +2611,7 @@ begin
       Exit;
     end;
 
-    XMLDocument1.SaveToFile('consultacadastro.xml');
+    //XMLDocument1.SaveToFile('consultacadastro.xml');
 
     Node1 := nil;
     Node1 := XMLDocument1.DocumentElement.ChildNodes.FindNode('infCons');
@@ -2665,7 +2666,11 @@ begin
           SQLTemplateCLIEA60RAZAOSOC.AsString := xNome;
           SQLTemplateCLIEA60NOMEFANT.AsString := xFant;
           SQLTemplateCLIEA20IE.AsString := IE;
-          SQLTemplateCLIEA8CEPRES.AsString := CEP;
+          if CEP <> '' then
+          begin
+            SQLTemplateCLIEA8CEPRES.AsString := CEP;
+            BuscarCep;
+          end;
           SQLTemplateCLIEA5NROENDRES.AsString := nro;
         end;
       end;     
@@ -3377,22 +3382,7 @@ end;
 procedure TFormCadastroCliente.DBEdit20Exit(Sender: TObject);
 begin
   inherited;
-  if DBEdit20.Text <> '' then
-  begin
-    SQLCidades.SQL.Text := 'Select * FROM CEP WHERE CEPA8CEP = :xCep';
-    SQLCidades.Prepare;
-    SQLCidades.ParamByName('xCep').asstring := DBEdit20.Text;
-    SQLCidades.Open;
-    if SQLCidades.FieldByName('CEPA8CEP').AsString <> '' then
-    begin
-      SQLTemplateCLIEA60ENDRES.AsString := SQLCidades.FieldByName('CEPA60LOGRADOURO').AsString;
-      SQLTemplateCLIEA60BAIRES.AsString := SQLCidades.FieldByName('CEPA60BAIRRO1').AsString;
-      SQLTemplateCLIEA60CIDRES.AsString := SQLCidades.FieldByName('CEPA60CIDADE').AsString;
-      SQLTemplateCLIEA2UFRES.AsString := SQLCidades.FieldByName('CEPA2ESTADO').AsString;
-      SQLTemplateCLIEIMUNICODFED.AsInteger := SQLCidades.FieldByName('CEPICODMUNICIPIO').AsInteger;
-    end;
-    SQLCidades.Close;
-  end;
+  BuscarCep;
 end;
 
 procedure TFormCadastroCliente.DBGridDadosCompraDblClick(Sender: TObject);
@@ -3750,6 +3740,33 @@ begin
   InputQuery('Informe um Estado', 'UF:', UF);
   InputQuery('Informe um Documento', 'CPF/CNPJ:', DOC);
   consultarCadastro(UF, DOC);
+end;
+
+procedure TFormCadastroCliente.RxSpeedButton1Click(Sender: TObject);
+begin
+  inherited;
+  if SQLTemplateCLIEA14CGC.AsString <> '' then
+    consultarCadastro(dm.sqlEmpresa.FieldByName('empra2uf').AsString,SQLTemplateCLIEA14CGC.AsString);
+end;
+
+procedure TFormCadastroCliente.BuscarCep;
+begin
+ if DBEdit20.Text <> '' then
+  begin
+    SQLCidades.SQL.Text := 'Select * FROM CEP WHERE CEPA8CEP = :xCep';
+    SQLCidades.Prepare;
+    SQLCidades.ParamByName('xCep').asstring := DBEdit20.Text;
+    SQLCidades.Open;
+    if SQLCidades.FieldByName('CEPA8CEP').AsString <> '' then
+    begin
+      SQLTemplateCLIEA60ENDRES.AsString := SQLCidades.FieldByName('CEPA60LOGRADOURO').AsString;
+      SQLTemplateCLIEA60BAIRES.AsString := SQLCidades.FieldByName('CEPA60BAIRRO1').AsString;
+      SQLTemplateCLIEA60CIDRES.AsString := SQLCidades.FieldByName('CEPA60CIDADE').AsString;
+      SQLTemplateCLIEA2UFRES.AsString := SQLCidades.FieldByName('CEPA2ESTADO').AsString;
+      SQLTemplateCLIEIMUNICODFED.AsInteger := SQLCidades.FieldByName('CEPICODMUNICIPIO').AsInteger;
+    end;
+    SQLCidades.Close;
+  end;
 end;
 
 end.

@@ -1063,14 +1063,14 @@ inherited FormCadastroCliente: TFormCadastroCliente
                 object PanelDocJur: TPanel
                   Left = 147
                   Top = 4
-                  Width = 505
+                  Width = 537
                   Height = 38
                   BevelOuter = bvNone
                   ParentColor = True
                   TabOrder = 1
                   Visible = False
                   object LabelCgc_CPF: TLabel
-                    Left = 103
+                    Left = 98
                     Top = 3
                     Width = 27
                     Height = 13
@@ -1084,7 +1084,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                     ParentFont = False
                   end
                   object LabelIE_RG: TLabel
-                    Left = 216
+                    Left = 234
                     Top = 3
                     Width = 80
                     Height = 13
@@ -1098,7 +1098,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                     ParentFont = False
                   end
                   object Label11: TLabel
-                    Left = 317
+                    Left = 334
                     Top = 3
                     Width = 59
                     Height = 13
@@ -1112,7 +1112,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                     ParentFont = False
                   end
                   object Label77: TLabel
-                    Left = 417
+                    Left = 433
                     Top = 2
                     Width = 54
                     Height = 13
@@ -1138,8 +1138,87 @@ inherited FormCadastroCliente: TFormCadastroCliente
                     Font.Style = [fsBold]
                     ParentFont = False
                   end
+                  object RxSpeedButton1: TRxSpeedButton
+                    Left = 208
+                    Top = 13
+                    Width = 25
+                    Height = 25
+                    Cursor = crHandPoint
+                    Hint = 'Pesquisar Cliente Sefaz'
+                    Flat = True
+                    Font.Charset = ANSI_CHARSET
+                    Font.Color = clBlack
+                    Font.Height = -11
+                    Font.Name = 'Tahoma'
+                    Font.Style = []
+                    Glyph.Data = {
+                      F6060000424DF606000000000000360000002800000018000000180000000100
+                      180000000000C0060000330B0000330B00000000000000000000FF00FFFF00FF
+                      FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+                      FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF183D60646873FF
+                      00FFFF00FFCF6C6C7F3F3F7F3F3F7F3F3F7F3F3F7F3F3F26708B293E4D293E4D
+                      283C4C273C4B273C4B273948FF00FFFF00FFFF00FFFF00FFFF00FFFF00FF183D
+                      604D5A91467BCB646873FF00FFCF6C6CE48789E38183E27E80E27E807F3F3F26
+                      708B3D879F39839C2D779026708B26708B26586E273C4BFF00FFFF00FFFF00FF
+                      FF00FF183D604D5A91467BCB4CA5EF5192C6FF00FFCF6C6CAE6565AE6565AE65
+                      657F3F3F7F3F3F26708B2F4D5E2F4D5E2F4D5E2F4D5E2F4D5E28354328354328
+                      3543FF00FFFF00FF183D604D5A91467BCB4BA9F598D8F83C98E4FF00FFCF6C6C
+                      C67A7BC37677BD6E6FB465667F3F3F26708B428094457F923E748837687B2F58
+                      6C2A485A283543287590283543183D604D5A91467BCB4AA5F298D8F83C98E4FF
+                      00FFFF00FFCF6C6CE99798E89193E68C8EE5888A7F3F3F26708B5AA4B867A3B2
+                      73909E93858AB4A097A78E8A7461644A7C906D66764D5A91467BCB4BA9F598D8
+                      F83C98E4FF00FFFF00FFFF00FFCF6C6CB97171B66D6EAE65657F3F3F7F3F3F29
+                      708B5F7B87A18C89DDC4ADEEE0BFFEFBCDFAF1CA9BD1DDC8ACA2957F7D768BAA
+                      51A7EF98D8F83C98E4FF00FFFF00FFFF00FFFF00FFCF6C6CE29899E09394DC8D
+                      8ED987898040404C768AAB9A98E9DBC6FFEDBEFFEBBBFFF1D1FFFAE2B1DDE7F8
+                      F0D2CDB9AAAA928D6D66763C98E4FF00FFFF00FFFF00FFFF00FFFF00FFCF6C6C
+                      F0A8A9EEA2A3EC9D9EEA989A925A5AB0ABAEFBF5D7FFE6B7FFE0AFFFEECFFFF2
+                      DEFFF4E5B1DDE7FFFFF9FBF5D7CAA69C414954FF00FFFF00FFFF00FFFF00FFFF
+                      00FFFF00FFCF6C6CF3AEAFF0A8A9EFA3A4ED9FA091585AD7BFB2FFF4CBFFDAA3
+                      FFE5BCFFF0D9FFF0D5FFF5E8B1DDE7FFFEFBFFF4CBE8D5C07E6768FF00FFFF00
+                      FFFF00FFFF00FFFF00FFFF00FFCF6C6CF4B3B4F3AEAFF1A9AAEFA5A6894C4CB9
+                      9D8FFFEBBCFFD79FFFDFB2FFEFD8FFEDD6FFF0D9B1DDE7FFF3DFFCF0C3FBF7DC
+                      B99D8FFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFCF6C6CF5B5B6F4B3B4F3B0
+                      B1F1ABAC894D4DB99D8FFFEABCFFD79FFFD8A3FFDFB5FFEFDAFFEED7B1DDE7FF
+                      E4B7FEEFBDFDFAE1B99D8FFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFCF6C6C
+                      F5B6B7F5B5B6F4B4B5F3B1B2844646B1A59DFFFADBFFF2E1FFEFD9FFDBA7FFDD
+                      ACFFE8C49BD1DDFFE0A8FFFADBECDAC3846A6BFF00FFFF00FFFF00FFFF00FFFF
+                      00FFFF00FFCF6C6CD99494D79292C986867F3F3F8142427A848CFBF9EAFFFFFF
+                      FFF8F0FFDEB2FFD69CFFD89E9BD1DDFEF0C5FBF9EADAB5A74A515AFF00FFFF00
+                      FFFF00FFFF00FFFF00FFFF00FFCF6C6CEDACADECABACE8A8A8E1A1A28244446E
+                      8B9AC1A6A1FCF9EEFFFAE3FFE9BAFFE2B1FFE9BBB1DDE7FCF9EEE3CDBE9CA1A6
+                      2A4050FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFCF6C6CF5B6B7F5B6B7F5B6
+                      B7F5B6B780414147849ABFCACDC4A9A0CFB7A7F2E9CDFFF9DDFBF7D89BD1DDDB
+                      BFAF9CA7AA57ACC62B4151FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFCF6C6C
+                      EEAAAAEEAAAAEEAAAAEEAAAA7F3F3F27718B8ACBD8A9D2DACBC1C2B68E89B99D
+                      8FB99D8FA2847E73ABBB55B8D34BB8D82B4251FF00FFFF00FFFF00FFFF00FFFF
+                      00FFFF00FFCF6C6CCA7E7BCF6C6CCF6C6CCF6C6CCF6C6C26708B26708B26708B
+                      26708B26708B26708B26708B2835434DBEDD4DBEDD4DBEDD2B4252FF00FFFF00
+                      FFFF00FFFF00FFFF00FFFF00FFCF6C6CB7A293DCD4CDF8F7F6F7F5F4E1BBB9CF
+                      6C6C26708BB7A293CFC3B9F2F0EEFAF9F8BEBEBF28354347A8C44DBEDD4DBEDD
+                      2B4252FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFCF6C6CB7A293DBD2
+                      CBF8F6F5F7F6F4E1BDBBCF6C6C26708BB7A293CEC2B8F1EEECFAF9F8BEBEC028
+                      354347A8C54DBEDD2B4252FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+                      FF00FFCF6C6CB7A293DAD1CAF8F7F6F8F7F6E1C2C0CF6C6C26708BB7A293CDC1
+                      B7F0EDEAFAF9F8C2C3C328354348ACC92B4252FF00FFFF00FFFF00FFFF00FFFF
+                      00FFFF00FFFF00FFFF00FFFF00FFCF6C6CB7A293D5CBC3D9D2CBD9D2CBD7BCB6
+                      CF6C6C26708BB7A293CDC0B6D9D2CBD9D2CBBCB8B5283543283846FF00FFFF00
+                      FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFCF6C6CCF6C6CFF
+                      00FFFF00FFFF00FFFF00FFCF6C6C26708B338AA6FF00FFFF00FFFF00FFFF00FF
+                      283543FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+                      FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
+                      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+                    GrayedInactive = False
+                    Layout = blGlyphLeft
+                    Margin = 0
+                    MarkDropDown = False
+                    ParentFont = False
+                    Transparent = True
+                    WordWrap = True
+                    OnClick = RxSpeedButton1Click
+                  end
                   object DBEditCgc: TDBEdit
-                    Left = 101
+                    Left = 98
                     Top = 16
                     Width = 109
                     Height = 21
@@ -1148,7 +1227,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                     TabOrder = 1
                   end
                   object DBEditIE: TDBEdit
-                    Left = 214
+                    Left = 234
                     Top = 16
                     Width = 98
                     Height = 21
@@ -1157,7 +1236,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                     TabOrder = 2
                   end
                   object DBEdit7: TDBEdit
-                    Left = 314
+                    Left = 334
                     Top = 16
                     Width = 96
                     Height = 21
@@ -1166,7 +1245,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                     TabOrder = 3
                   end
                   object DBDateEdit8: TDBDateEdit
-                    Left = 413
+                    Left = 433
                     Top = 15
                     Width = 91
                     Height = 21
