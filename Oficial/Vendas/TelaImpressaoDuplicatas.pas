@@ -434,6 +434,7 @@ type
     cbImprimirMensagensPadroes: TCheckBox;
     ConfigurarEMail1: TMenuItem;
     SQLContasReceberVLRTAXA: TFloatField;
+    TblDuplicatasVLRTAXA: TFloatField;
     procedure BtnSelecionarDocClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure MnDuplicatasClick(Sender: TObject);
@@ -679,6 +680,7 @@ begin
       TblDuplicatasCLIEA2UFCOB.AsString           := SQLContasReceberCLIEA2UFCOB.AsString;
       TblDuplicatasCLIEA8CEPCOB.AsString          := SQLContasReceberCLIEA8CEPCOB.AsString;
       TblDuplicatasCLIEA60EMAIL.AsString          := SQLContasReceberCLIEA60EMAIL.AsString;
+      TblDuplicatasVLRTAXA.AsFloat                := SQLContasReceberVLRTAXA.AsFloat;
 
       if CheckEndCob.Checked then
         TblDuplicatasEndPagto.AsString            := SQLContasReceberCLIEA60ENDCOB.AsString + '-' + SQLContasReceberCLIEA60BAICOB.AsString + ' - ' + SQLContasReceberCLIEA8CEPCOB.AsString;
@@ -899,6 +901,7 @@ begin
       TblDuplicatasCLIEA60CIDCOB.AsString         := SQLContasReceberCLIEA60CIDCOB.AsString;
       TblDuplicatasCLIEA2UFCOB.AsString           := SQLContasReceberCLIEA2UFCOB.AsString;
       TblDuplicatasCLIEA8CEPCOB.AsString          := SQLContasReceberCLIEA8CEPCOB.AsString;
+      TblDuplicatasVLRTAXA.AsFloat                := SQLContasReceberVLRTAXA.AsFloat;
 
       if SQLContasReceberCTRCA15NOSSONUMERO.AsString = '' then
         begin
@@ -937,8 +940,8 @@ begin
       else
         TblDuplicatasTotalDocumento.AsFloat := SQLContasReceberCTRCN2VLR.AsFloat;
 
-      if SQLContasReceberCTRCA254HIST.Value <> '' then
-        TblDuplicatasInstrucoes.AsString      := SQLContasReceberCTRCA254HIST.Value;
+{      if SQLContasReceberCTRCA254HIST.Value <> '' then
+        TblDuplicatasInstrucoes.AsString      := SQLContasReceberCTRCA254HIST.Value;}
 
       if SQLContasReceberDUPLA13ID.AsString <> '' then
         TblDuplicatasDocumentos.AsString := SQLLocate('DUPLICATA','DUPLA13ID','DUPLA254DOCS','''' + SQLContasReceberDUPLA13ID.AsString + '''' );
@@ -1002,7 +1005,10 @@ begin
       Mensagem.Add(MemoInst.Text);
 
       if not ckImprimeMesReferencia.Checked then
-        Mensagem.Add(controle)
+        begin
+        if controle <> '' then
+          Mensagem.Add(controle)
+        end
       else
         begin
           mes := strToInt(FormatDateTime('MM',TblDuplicatasCTRCDVENC.Value));
@@ -1043,7 +1049,7 @@ begin
           DataDocumento  := now;
           LocalPagamento := 'PAGÁVEL PREFENCIALMENTE NAS COOPERATIVAS DE CRÉDITO DO SICREDI';
         end;
-      ValorDocumento    := TblDuplicatasCTRCN2VLR.Value;
+      ValorDocumento    := TblDuplicatasCTRCN2VLR.Value + TblDuplicatasVLRTAXA.Value;
       ValorAbatimento   := 0.00;
       ValorMoraJuros    := 0.00;
       ValorDesconto     := 0.00;
@@ -1052,12 +1058,13 @@ begin
       DataDesconto      := ;
       DataAbatimento    := ;
       DataProtesto      := ;
-      PercentualMulta   := StrToCurrDef(edtMulta.Text,0); }
+      PercentualMulta   := StrToCurrDef(edtMulta.Text,0);}
 
       if (dm.SQLConfigCrediario.fieldbyname('CFCRN2PERCJURATRAS').AsCurrency > 0) then
           begin
             DataMoraJuros    := TblDuplicatasCTRCDVENC.AsDateTime;
             ValorMoraJuros   := dm.SQLConfigCrediario.fieldbyname('CFCRN2PERCJURATRAS').AsCurrency / 100 * TblDuplicatasCTRCN2VLR.Value;
+            PercentualMulta  := DM.SQLConfigCrediario.FieldByName('CFCRN2PERCMULATRAS').AsCurrency;
             CodigoMoraJuros  := cjTaxaMensal;
 
             if ACBrBoleto1.banco.TipoCobranca = cobSicred then
@@ -1066,12 +1073,17 @@ begin
                ACBrBoleto1.ImprimirMensagemPadrao := false;
                Mensagem.Add(ACBrStr('Cobrar juros de '+
                             FormatCurr('R$ #,##0.00',ValorMoraJuros) +
-                             ' por dia de atraso para pagamento a partir de ' +
+                             ' por dia de atraso p/ pgto a partir de ' +
                              FormatDateTime('dd/mm/yyyy',DataMoraJuros)));
+               Mensagem.Add(ACBrStr('Após o vencimento cobrar multa de '+
+                            FormatCurr('0.00',PercentualMulta) + '%'));
             end
             else
               CodigoMora := '2';
           end;
+      if TblDuplicatasVLRTAXA.AsFloat > 0 then
+         Mensagem.Add(ACBrStr('Taxa Bancária de '+
+                      FormatCurr('R$ #,##0.00',TblDuplicatasVLRTAXA.AsFloat) + '. Não obrigatória'));
 
      { OcorrenciaOriginal.Tipo := toRemessaBaixar; }
 
@@ -1111,7 +1123,7 @@ begin
 
   if ACBrBoleto1.banco.TipoCobranca <> cobSicred then
     ACBrBoleto1.ImprimirMensagemPadrao := cbImprimirMensagensPadroes.Checked;
-    
+
   ACBrBoletoFCFortes1.MostrarPreview := cbVisualizarImpressao.Checked;
 
   if radioTipoImpressao.ItemIndex = 0 then  {Imprimir Apenas}
@@ -1466,7 +1478,7 @@ begin
             ValorMoraJuros   := DM.SQLConfigCrediario.FieldByName('CFCRN2PERCJURATRAS').AsCurrency / 100 * SQLContasReceberCTRCN2VLR.Value;
             CodigoMoraJuros  := cjTaxaMensal;
             PercentualMulta  := DM.SQLConfigCrediario.FieldByName('CFCRN2PERCMULATRAS').AsCurrency;
-            
+
             if ACBrBoleto1.banco.TipoCobranca = cobSicred then
             begin
                CodigoMora := 'A';
@@ -1475,11 +1487,15 @@ begin
                             FloatToStr(ValorMoraJuros) + '%' +
                              ' por dia de atraso para pagamento a partir de ' +
                              FormatDateTime('dd/mm/yyyy',DataMoraJuros)));
+               Mensagem.Add(ACBrStr('Após o vencimento cobrar multa de '+
+                            FormatCurr('0.00',PercentualMulta) + '%'));
             end
             else
               CodigoMora := '2';
-
           end;
+        if TblDuplicatasVLRTAXA.AsFloat > 0 then
+           Mensagem.Add(ACBrStr('Taxa Bancária de '+
+                        FormatCurr('R$ #,##0.00',TblDuplicatasVLRTAXA.AsFloat) + '. Não obrigatória'));
 
          { DataMoraJuros     := ;
           DataDesconto      := ;

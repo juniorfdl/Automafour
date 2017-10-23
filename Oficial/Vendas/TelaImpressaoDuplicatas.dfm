@@ -1,6 +1,6 @@
 inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
-  Left = 208
-  Top = 125
+  Left = 277
+  Top = 105
   Width = 847
   Height = 507
   Caption = 'Emiss'#227'o de Boletos e Duplicatas'
@@ -1476,6 +1476,9 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
     object TblDuplicatasNOSSONUMERO: TStringField
       FieldName = 'NOSSONUMERO'
       Size = 5
+    end
+    object TblDuplicatasVLRTAXA: TFloatField
+      FieldName = 'VLRTAXA'
     end
   end
   object FormStorage: TFormStorage
