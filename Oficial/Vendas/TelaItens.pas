@@ -829,7 +829,9 @@ begin
         InfAdic.infCpl     := InfAdic.infCpl + SQLImpressaoCupom.fieldbyname('CLIENTEENDE').AsString +', ' ;
       if SQLImpressaoCupom.fieldbyname('CLIENTEBAIRRO').AsString <> '' then
         InfAdic.infCpl     := InfAdic.infCpl + SQLImpressaoCupom.fieldbyname('CLIENTEBAIRRO').AsString ;
-
+                   
+      if Obs_Venda <> '' then
+        InfAdic.infCpl     := InfAdic.infCpl +#13+ Obs_Venda;
       // Gerar XML
       SQLImpressaoCupom.Close;
       dm.ACBrNFe.NotasFiscais.GerarNFe;
@@ -990,7 +992,7 @@ begin
   NroViasImpVenda         := IniFile.ReadString('IB_SOFTWARE','NroViasImpVenda','');
   Servidor_HostName       := IniFile.ReadString('SERVIDOR','HostName','');
   Servidor_Database       := IniFile.ReadString('SERVIDOR','Database','');
-
+  Obs_Venda       := IniFile.ReadString('IB_SOFTWARE','Obs_Venda','');
   IniFile.Free;
 
   TabelaMaisTerminal := 'ItensVendaTemp_' + FormatFloat('###000', TerminalAtual);

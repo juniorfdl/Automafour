@@ -119,7 +119,7 @@ var
     TipoEtiqueta,
     OBSImpressaoCupom,
     MensagemVenda,
-    TipoPlanoContas, TxtReciboECF, CodMotoboy, UsaTablet, ImpressoraCaixaPath, Enter_Vazio, TeleQuitado, TabInicial, F2_AUTOMATICO, DetalhesVenda, ParceiroNome, ParceiroPath, MostraCodigoBarras,
+    TipoPlanoContas, TxtReciboECF, CodMotoboy, UsaTablet, ImpressoraCaixaPath, Enter_Vazio, TeleQuitado, TabInicial, F2_AUTOMATICO, DetalhesVenda, ParceiroNome, Obs_Venda, ParceiroPath, MostraCodigoBarras,
     NotaGaucha, GravarDisplaySequencial, GravarCupomCancelado, TipoHistoricoPadrao, ImprimeDadosClienteCupom, DataAniversario, Porta, TabelaMaisTerminal, IDReimprimir, ProdutoComplemento, SolicitaDataEntrega,
     OrdemGrupo, OrdemProduto, FiltraTerminal, Servidor_HostName, Servidor_Database, NroViasImpVenda: string;
   PercDesqMaxUsario, PercDesqMaxUsarioAutenticado, VlrDescPromoImportado,
