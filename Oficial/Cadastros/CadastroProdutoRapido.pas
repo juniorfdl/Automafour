@@ -211,6 +211,8 @@ type
     SQLTemplateTABCEST: TStringField;
     SQLProdutoPdvs: TRxQuery;
     sqlProdutoFornecedor: TRxQuery;
+    EvDBNumEdit1: TEvDBNumEdit;
+    Label18: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure SQLTemplateNewRecord(DataSet: TDataSet);
     procedure SQLTemplateBeforePost(DataSet: TDataSet);
