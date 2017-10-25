@@ -718,6 +718,7 @@ begin
         cdsItens.FieldByName('base_icms_st').AsFloat  := ACBrNFe.NotasFiscais.Items[0].NFe.Det.Items[i].Imposto.ICMS.vBCST;
         cdsItens.FieldByName('aliquota_icms_st').AsFloat := ACBrNFe.NotasFiscais.Items[0].NFe.Det.Items[i].Imposto.ICMS.pICMSST;
         cdsItens.FieldByName('valor_icms_st').AsFloat := ACBrNFe.NotasFiscais.Items[0].NFe.Det.Items[i].Imposto.ICMS.vICMSST;
+
         {IPI}
         cdsItens.FieldByName('cst_ipi').AsString := getCSTConversao(tiIpi, CSTIPIToStr(ACBrNFe.NotasFiscais.Items[0].Nfe.Det.Items[i].Imposto.IPI.CST));
         cdsItens.FieldByName('valor_ipi').AsFloat := ACBrNFe.NotasFiscais.Items[0].NFe.Det.Items[i].Imposto.IPI.vIPI;
@@ -2601,6 +2602,19 @@ begin
   FormCadastroProdutoRapido.vCompraEmbalagem                        := cdsItensvalor_unitario.Value;
   FormCadastroProdutoRapido.vDescEmbalagem                          := cdsItensvalor_desconto.AsFloat;
   FormCadastroProdutoRapido.SQLTemplatePRODN3VLRCOMPRA.AsFloat      := (cdsItensvalor_unitario.Value/cdsItensquantidade_emb.Value)-(FormCadastroProdutoRapido.vDescEmbalagem/cdsItensquantidade_emb.Value);
+
+  //FormCadastroProdutoRapido.SQLTemplatePRODN2PERCSUBST.AsFloat      := cdsItensaliquota_icms_st.AsFloat;
+  if (cdsItens.FieldByName('valor_icms_st').AsFloat > 0)and(cdsItens.FieldByName('quantidade').AsFloat > 0)  then
+  begin
+    FormCadastroProdutoRapido.SQLTemplatePRODN2PERCSUBST.AsFloat :=
+     ((cdsItens.FieldByName('valor_icms_st').AsFloat / cdsItens.FieldByName('quantidade').AsFloat) / cdsItens.FieldByName('valor_unitario').AsFloat) * 100;
+  end;
+
+  if (cdsItens.FieldByName('valor_desconto').AsFloat > 0)and(cdsItens.FieldByName('quantidade').AsFloat > 0) then
+  begin
+    FormCadastroProdutoRapido.SQLTemplatePRODN2PERCDESP.AsFloat :=
+    ((cdsItens.FieldByName('valor_desconto').AsFloat / cdsItens.FieldByName('quantidade').AsFloat) / cdsItens.FieldByName('valor_unitario').AsFloat) * 100;
+  end;
 
   if (cdsItensvalor_icms_st.Value>0) and (cdsItenstotal_item.Value>0) then
     FormCadastroProdutoRapido.SQLTemplatePRODN2PERCSUBST.asFloat  := (cdsItensvalor_icms_st.Value/cdsItenstotal_item.Value) * 100

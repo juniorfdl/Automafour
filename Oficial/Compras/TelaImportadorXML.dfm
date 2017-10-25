@@ -33,7 +33,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
           Top = 1
           Width = 1079
           Height = 397
-          ActivePage = tsItens
+          ActivePage = tsInfoNfe
           Align = alClient
           TabOrder = 0
           object tsXMLs: TTabSheet
@@ -3050,8 +3050,8 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
         ParamType = ptInput
         Value = '0=0'
       end>
-    Left = 753
-    Top = 257
+    Left = 849
+    Top = 233
   end
   object SQLNota: TRxQuery
     DatabaseName = 'DB'
@@ -3065,8 +3065,8 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
         ParamType = ptInput
         Value = '0=0'
       end>
-    Left = 667
-    Top = 265
+    Left = 931
+    Top = 273
   end
   object sqlContaDespesa: TRxQuery
     DatabaseName = 'DB'
@@ -3240,8 +3240,8 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
       'where'
       '  0=1')
     Macros = <>
-    Left = 731
-    Top = 145
+    Left = 883
+    Top = 153
   end
   object sqlNCM: TRxQuery
     DatabaseName = 'DB'
@@ -3249,7 +3249,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
     SQL.Strings = (
       'Select * from NCM where ncmicod is null')
     Macros = <>
-    Left = 659
-    Top = 145
+    Left = 819
+    Top = 169
   end
 end
