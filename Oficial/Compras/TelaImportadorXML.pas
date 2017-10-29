@@ -2600,7 +2600,7 @@ begin
   FormCadastroProdutoRapido.SQLTemplatePRODIORIGEM.AsString         := cdsItensorigem_produto.Value;
   FormCadastroProdutoRapido.SQLTemplatePRODISITTRIB.AsString        := cdsItenscst_icms.Value;
   FormCadastroProdutoRapido.vCompraEmbalagem                        := cdsItensvalor_unitario.Value;
-  FormCadastroProdutoRapido.vDescEmbalagem                          := cdsItensvalor_desconto.AsFloat;
+  FormCadastroProdutoRapido.vDescEmbalagem                          := cdsItensvalor_desconto.AsFloat / cdsItensquantidade.AsFloat;
   FormCadastroProdutoRapido.SQLTemplatePRODN3VLRCOMPRA.AsFloat      := (cdsItensvalor_unitario.Value/cdsItensquantidade_emb.Value)-(FormCadastroProdutoRapido.vDescEmbalagem/cdsItensquantidade_emb.Value);
 
   //FormCadastroProdutoRapido.SQLTemplatePRODN2PERCSUBST.AsFloat      := cdsItensaliquota_icms_st.AsFloat;

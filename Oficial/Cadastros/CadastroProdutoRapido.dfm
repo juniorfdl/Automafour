@@ -990,7 +990,7 @@ object FormCadastroProdutoRapido: TFormCadastroProdutoRapido
     Height = 21
     DataField = 'PRODISITTRIB'
     DataSource = DSTemplate
-    TabOrder = 18
+    TabOrder = 17
   end
   object EvDBNumEdit1: TEvDBNumEdit
     Left = 395

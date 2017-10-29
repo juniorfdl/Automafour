@@ -1,19 +1,55 @@
 [Closed Files]
-File_0=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.pas',0,1,2193,1,2198,1,0
-File_1=SourceModule,'C:\projetos\Automafour\Oficial\ArquivosComuns\UnitLibrary.pas',0,1,2369,1,2394,0,0
-File_2=SourceModule,'C:\projetos\Automafour\Oficial\Principal.pas',0,1,665,1,668,1,0
-File_3=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\CadastroPedidoVenda.pas',0,1,2313,58,2320,1,0
-File_4=SourceModule,'C:\projetos\Automafour\Oficial\Compras\CadastroNotaCompra.pas',0,1,1,14,6,1,0
-File_5=SourceModule,'C:\projetos\Automafour\Oficial\DataModulo.pas',0,1,1,8,11,0,0
-File_6=SourceModule,'c:\program files (x86)\borland\delphi7\source\vcl\DB.pas',0,1,2169,14,2184,0,0
-File_7=SourceModule,'C:\projetos\Automafour\Oficial\Faturamento\DataModuloFaturamento.pas',0,1,1,1,1,0,0
-File_8=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\TelaItens.pas',0,1,1,1,1,0,0
-File_9=SourceModule,'C:\projetos\Automafour\Oficial\Compras\CadastroPedidoCompraItem.pas',0,1,1,26,4,1,0
+File_0=SourceModule,'C:\projetos\Automafour\Oficial\Principal.pas',0,1,1319,62,1323,1,0
+File_1=SourceModule,'C:\projetos\Automafour\Oficial\Compras\CadastroNotaCompra.pas',0,1,1010,42,1025,1,0
+File_2=SourceModule,'C:\projetos\Automafour\Oficial\ArquivosComuns\UnitLibrary.pas',0,1,2277,1,2299,0,0
+File_3=SourceModule,'C:\projetos\Automafour\Oficial\Cadastros\CadastroProdutos.pas',0,1,3552,43,3565,0,0
+File_4=SourceModule,'C:\Program Files (x86)\Borland\Componentes\RxLib\units\CurrEdit.pas',0,1,625,1,640,0,0
+File_5=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.pas',0,1,2193,1,2198,1,0
+File_6=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\CadastroPedidoVenda.pas',0,1,2313,58,2320,1,0
+File_7=SourceModule,'C:\projetos\Automafour\Oficial\DataModulo.pas',0,1,1,8,11,0,0
+File_8=SourceModule,'c:\program files (x86)\borland\delphi7\source\vcl\DB.pas',0,1,2169,14,2184,0,0
+File_9=SourceModule,'C:\projetos\Automafour\Oficial\Faturamento\DataModuloFaturamento.pas',0,1,1,1,1,0,0
 
 [Modules]
-Module0=C:\projetos\Automafour\Oficial\Retaguarda.dpr
-Count=1
+Module0=C:\projetos\Automafour\Oficial\Integrador\TelaExportacaoSPED.pas
+Module1=c:\acbr\trunk2\Exemplos\ACBrSerial\ACBrECF\Delphi\ECFTeste1.pas
+Module2=c:\acbr\trunk2\Fontes\ACBrSerial\ACBrRFD.pas
+Module3=c:\acbr\trunk2\Exemplos\ACBrSerial\ACBrECF\Firemonkey\ECFTeste1.pas
+Module4=C:\projetos\Automafour\Oficial\Vendas\Daruma_Framework_FISCAL.pas
+Module5=C:\projetos\Automafour\Oficial\Vendas\Sweda_Termica.pas
+Module6=C:\projetos\Automafour\Oficial\Retaguarda.dpr
+Count=7
 EditWindowCount=1
+
+[C:\projetos\Automafour\Oficial\Integrador\TelaExportacaoSPED.pas]
+ModuleType=SourceModule
+FormState=1
+FormOnTop=0
+
+[c:\acbr\trunk2\Exemplos\ACBrSerial\ACBrECF\Delphi\ECFTeste1.pas]
+ModuleType=SourceModule
+FormState=1
+FormOnTop=0
+
+[c:\acbr\trunk2\Fontes\ACBrSerial\ACBrRFD.pas]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
+
+[c:\acbr\trunk2\Exemplos\ACBrSerial\ACBrECF\Firemonkey\ECFTeste1.pas]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
+
+[C:\projetos\Automafour\Oficial\Vendas\Daruma_Framework_FISCAL.pas]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
+
+[C:\projetos\Automafour\Oficial\Vendas\Sweda_Termica.pas]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
 
 [C:\projetos\Automafour\Oficial\Retaguarda.dpr]
 ModuleType=SourceModule
@@ -24,18 +60,20 @@ FormOnTop=0
 FormState=0
 FormOnTop=0
 
-[C:\projetos\Automafour\Template\CadastroTEMPLATE.pas]
-FormState=0
-FormOnTop=0
-
-[C:\projetos\Automafour\Template\PrincipalTemplate.pas]
+[C:\projetos\Automafour\Template\TelaGeralTEMPLATE.pas]
 FormState=0
 FormOnTop=0
 
 [EditWindow0]
-ViewCount=1
-CurrentView=0
+ViewCount=7
+CurrentView=6
 View0=0
+View1=1
+View2=2
+View3=3
+View4=4
+View5=5
+View6=6
 CodeExplorer=CodeExplorer@EditWindow0
 MessageView=MessageView@EditWindow0
 Create=1
@@ -46,24 +84,66 @@ Top=147
 Width=1000
 Height=485
 MaxLeft=-8
-MaxTop=107
+MaxTop=114
 MaxWidth=1382
-MaxHeight=629
+MaxHeight=622
 ClientWidth=1366
-ClientHeight=590
+ClientHeight=583
 LeftPanelSize=0
 LeftPanelClients=CodeExplorer@EditWindow0
-LeftPanelData=00000400010000000C000000436F64654578706C6F72657200000000000000000000000000000000000100000000000000000C000000436F64654578706C6F726572FFFFFFFF
+LeftPanelData=00000400010000000C000000436F64654578706C6F726572000000000000000000000000000000000001000000000000000000000000FFFFFFFF
 RightPanelSize=0
 BottomPanelSize=0
 BottomPanelClients=MessageView@EditWindow0
-BottomPanelData=00000400010000000B0000004D6573736167655669657700000000000000000000000000000000000100000000000000000B0000004D65737361676556696577FFFFFFFF
+BottomPanelData=00000400010000000B0000004D6573736167655669657756050000000000000255000000000000000100000000000000000000000001000000005605000000000000FFFFFFFF
 
 [View0]
 Module=C:\projetos\Automafour\Oficial\Retaguarda.dpr
-CursorX=58
+CursorX=26
 CursorY=10
 TopLine=1
+LeftCol=1
+
+[View1]
+Module=C:\projetos\Automafour\Oficial\Vendas\Sweda_Termica.pas
+CursorX=18
+CursorY=256
+TopLine=241
+LeftCol=1
+
+[View2]
+Module=C:\projetos\Automafour\Oficial\Vendas\Daruma_Framework_FISCAL.pas
+CursorX=26
+CursorY=244
+TopLine=229
+LeftCol=1
+
+[View3]
+Module=c:\acbr\trunk2\Exemplos\ACBrSerial\ACBrECF\Delphi\ECFTeste1.pas
+CursorX=20
+CursorY=3813
+TopLine=3798
+LeftCol=1
+
+[View4]
+Module=c:\acbr\trunk2\Fontes\ACBrSerial\ACBrRFD.pas
+CursorX=14
+CursorY=941
+TopLine=926
+LeftCol=1
+
+[View5]
+Module=c:\acbr\trunk2\Exemplos\ACBrSerial\ACBrECF\Firemonkey\ECFTeste1.pas
+CursorX=37
+CursorY=3809
+TopLine=3794
+LeftCol=1
+
+[View6]
+Module=C:\projetos\Automafour\Oficial\Integrador\TelaExportacaoSPED.pas
+CursorX=15
+CursorY=2571
+TopLine=2563
 LeftCol=1
 
 [Watches]
@@ -88,7 +168,7 @@ LRDockWidth=426
 Dockable=1
 
 [Breakpoints]
-Count=10
+Count=11
 Breakpoint0='C:\projetos\Automafour\Oficial\Vendas\TelaImpressaoDuplicatas.pas',1377,'',0,1,'',1,0,0,'',1,'','',''
 Breakpoint1='c:\acbr\trunk2\Fontes\ACBrBoleto\ACBrBancoSicredi.pas',342,'',0,1,'',1,0,0,'',1,'','',''
 Breakpoint2='c:\acbr\trunk2\Fontes\ACBrBoleto\ACBrBancoSicredi.pas',628,'',0,1,'',1,0,0,'',1,'','',''
@@ -99,6 +179,7 @@ Breakpoint6='C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrNFe\ACBrNFeNotasFiscais.pas',1230
 Breakpoint7='C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.pas',7299,'',0,1,'',1,0,0,'',1,'','',''
 Breakpoint8='C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.pas',2234,'',0,1,'',1,0,0,'',1,'','',''
 Breakpoint9='C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.pas',2425,'',0,1,'',1,0,0,'',1,'','',''
+Breakpoint10='C:\projetos\Automafour\Oficial\ArquivosComuns\UnitLibrary.pas',2289,'',0,1,'',1,0,0,'',1,'','',''
 
 [AddressBreakpoints]
 Count=0
@@ -120,7 +201,7 @@ ClientHeight=84
 
 [ProjectManager]
 Create=1
-Visible=1
+Visible=0
 State=0
 Left=0
 Top=137
@@ -182,7 +263,7 @@ ClientHeight=60
 
 [PropertyInspector]
 Create=1
-Visible=1
+Visible=0
 State=0
 Left=68
 Top=137
@@ -197,7 +278,7 @@ LRDockWidth=866
 Dockable=1
 SplitPos=119
 ArrangeBy=Name
-SelectedItem=
+SelectedItem=Name
 ExpandedItems=Action.DataSource,Configuracoes,DataBinding,DataController,DataController.DataSource,DataSource,DataSource.DataSet.MasterSource,DataSource.DataSet.MasterSource.DataSet,Font.Style,ListSource.DataSet,LookupDataSet,Options,PreviewOptions,Style.Font,Title
 HiddenCategories=
 
@@ -385,7 +466,7 @@ Dockable=1
 
 [fmGrepResults]
 Create=1
-Visible=0
+Visible=1
 State=0
 Left=396
 Top=2
