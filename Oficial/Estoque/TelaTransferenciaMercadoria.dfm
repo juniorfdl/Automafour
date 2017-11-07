@@ -1,6 +1,6 @@
 inherited FormTelaTransferencia: TFormTelaTransferencia
-  Left = 197
-  Top = 57
+  Left = 403
+  Top = 65
   Width = 880
   Height = 587
   Caption = 'Transfer'#234'ncia Produtos'
@@ -603,7 +603,6 @@ inherited FormTelaTransferencia: TFormTelaTransferencia
               Width = 501
               Height = 20
               DropDownCount = 8
-              DisplayAllFields = True
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
               Font.Height = -11

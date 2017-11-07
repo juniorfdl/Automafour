@@ -442,7 +442,7 @@ begin
 
   SQLEmpresaRemetente.Close;
  { if MatrizFilial = 'F' then  }
-    SQLEmpresaRemetente.SQL.Text := 'select * from EMPRESA where EMPRICOD = ' + IntToStr(EmpresaCorrente);
+    SQLEmpresaRemetente.SQL.Text := 'select * from EMPRESA';// where EMPRICOD = ' + IntToStr(EmpresaCorrente);
   SQLEmpresaRemetente.Open;
 
   if not SQLEmpresaDestino.Active then SQLEmpresaDestino.Active := True;
