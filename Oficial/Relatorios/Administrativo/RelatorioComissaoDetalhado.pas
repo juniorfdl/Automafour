@@ -11,6 +11,34 @@ uses
 type
   TFormRelatorioComissaoDetalhado = class(TFormRelatorioTEMPLATE)
     SQLComissao: TRxQuery;
+    TblTemporariaVENDICOD: TIntegerField;
+    TblTemporariaCUPOA13ID: TStringField;
+    TblTemporariaVDCOICOD: TIntegerField;
+    TblTemporariaVDCON2TOTVENDVISTA: TBCDField;
+    TblTemporariaVDCON2TOTVENDPRAZO: TBCDField;
+    TblTemporariaVDCOINROVEND: TIntegerField;
+    TblTemporariaVDCON2VENDMEDIA: TBCDField;
+    TblTemporariaVDCON3QTDVEND: TBCDField;
+    TblTemporariaVDCON2VLRCOMISS: TBCDField;
+    TblTemporariaVDCODEMIS: TDateTimeField;
+    TblTemporariaPENDENTE: TStringField;
+    TblTemporariaREGISTRO: TDateTimeField;
+    TblTemporariaVDCODESTORNO: TDateTimeField;
+    TblTemporariaVDCON3VLRESTORNO: TBCDField;
+    TblTemporariaCLIEA13ID: TStringField;
+    TblTemporariaVDCOA5TIPODOC: TStringField;
+    TblTemporariaVDCOCDEBCRED: TStringField;
+    TblTemporariaVDCON2PERCOMISSAO: TBCDField;
+    TblTemporariaCLIEA60RAZAOSOC: TStringField;
+    TblTemporariaVENDA60NOME: TStringField;
+    TblTemporariaDocumento: TStringField;
+    Report: TCrpe;
+    TblTemporariaVENDN2PERCIRRF: TBCDField;
+    GroupBox2: TGroupBox;
+    SQLVendedor: TRxQuery;
+    DSSQLVendedor: TDataSource;
+    ComboVendedor: TRxDBLookupCombo;
+    CKNroPedido: TCheckBox;
     SQLComissaoVENDICOD: TIntegerField;
     SQLComissaoCUPOA13ID: TStringField;
     SQLComissaoVDCOICOD: TIntegerField;
@@ -23,43 +51,15 @@ type
     SQLComissaoVDCODEMIS: TDateTimeField;
     SQLComissaoPENDENTE: TStringField;
     SQLComissaoREGISTRO: TDateTimeField;
-    SQLComissaoVDCODESTORNO: TDateTimeField;
-    SQLComissaoVDCON3VLRESTORNO: TFloatField;
     SQLComissaoCLIEA13ID: TStringField;
     SQLComissaoVDCOA5TIPODOC: TStringField;
     SQLComissaoVDCOCDEBCRED: TStringField;
+    SQLComissaoVDCODESTORNO: TDateTimeField;
     SQLComissaoVDCON2PERCOMISSAO: TFloatField;
+    SQLComissaoVDCON3VLRESTORNO: TFloatField;
     SQLComissaoCLIEA60RAZAOSOC: TStringField;
     SQLComissaoVENDA60NOME: TStringField;
-    TblTemporariaVENDICOD: TIntegerField;
-    TblTemporariaCUPOA13ID: TStringField;
-    TblTemporariaVDCOICOD: TIntegerField;
-    TblTemporariaVDCON2TOTVENDVISTA: TFloatField;
-    TblTemporariaVDCON2TOTVENDPRAZO: TFloatField;
-    TblTemporariaVDCOINROVEND: TIntegerField;
-    TblTemporariaVDCON2VENDMEDIA: TFloatField;
-    TblTemporariaVDCON3QTDVEND: TFloatField;
-    TblTemporariaVDCON2VLRCOMISS: TFloatField;
-    TblTemporariaVDCODEMIS: TDateTimeField;
-    TblTemporariaPENDENTE: TStringField;
-    TblTemporariaREGISTRO: TDateTimeField;
-    TblTemporariaVDCODESTORNO: TDateTimeField;
-    TblTemporariaVDCON3VLRESTORNO: TFloatField;
-    TblTemporariaCLIEA13ID: TStringField;
-    TblTemporariaVDCOA5TIPODOC: TStringField;
-    TblTemporariaVDCOCDEBCRED: TStringField;
-    TblTemporariaVDCON2PERCOMISSAO: TFloatField;
-    TblTemporariaCLIEA60RAZAOSOC: TStringField;
-    TblTemporariaVENDA60NOME: TStringField;
-    TblTemporariaDocumento: TStringField;
-    Report: TCrpe;
     SQLComissaoVENDN2PERCIRRF: TFloatField;
-    TblTemporariaVENDN2PERCIRRF: TFloatField;
-    GroupBox2: TGroupBox;
-    SQLVendedor: TRxQuery;
-    DSSQLVendedor: TDataSource;
-    ComboVendedor: TRxDBLookupCombo;
-    CKNroPedido: TCheckBox;
     procedure ExecutarBtnClick(Sender: TObject);
     procedure ComboVendedorKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -85,8 +85,8 @@ var
 begin
   inherited;
   SQLComissao.Close;
-  SQLComissao.MacrobyName('MData').Value := 'VENDEDORCOMISSAO.VDCODEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
-                                            'VENDEDORCOMISSAO.VDCODEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
+  SQLComissao.MacrobyName('MData').Value := 'VENDEDORCOMISSAO.VDCODEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
+                                            'VENDEDORCOMISSAO.VDCODEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
 
   if ComboVendedor.Value <> '' then
     SQLComissao.MacrobyName('MVendedor').Value := 'VENDEDORCOMISSAO.VENDICOD = ' + ComboVendedor.Value
@@ -140,7 +140,7 @@ begin
       else
         if TblTemporariaVDCOA5TIPODOC.AsString = 'CP' then
           begin
-            TblTemporariaDocumento.AsString := SQLLocate('CUPOM','CUPOA13ID','CUPOINRO','''' + TblTemporariaCUPOA13ID.AsString + '''');
+            TblTemporariaDocumento.AsString := SQLLocate('CUPOM','CUPOA13ID','CUPOINRO','"' + TblTemporariaCUPOA13ID.AsString + '"');
             if (TblTemporariaDocumento.AsString='0') or (TblTemporariaDocumento.AsString='') then
               TblTemporariaDocumento.AsString := 'CP-' + TblTemporariaCUPOA13ID.AsString
             else
@@ -155,7 +155,7 @@ begin
               if not CKNroPedido.Checked then
                 TblTemporariaDocumento.AsString := 'PV - ' + TblTemporariaCUPOA13ID.AsString
               else
-                TblTemporariaDocumento.AsString := 'PV - ' + SQLLocate('PEDIDOVENDA','PDVDA13ID','PDVDINROTALAO','''' + TblTemporariaCUPOA13ID.AsString + '''');
+                TblTemporariaDocumento.AsString := 'PV - ' + SQLLocate('PEDIDOVENDA','PDVDA13ID','PDVDINROTALAO','"' + TblTemporariaCUPOA13ID.AsString + '"');
             end
           else
             if TblTemporariaVDCOA5TIPODOC.AsString = 'MN' then
@@ -174,17 +174,17 @@ begin
   Report.Formulas.Retrieve ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Emissao' ;
-  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''' ;
+  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'PeriodoEmissao' ;
-  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
-                                  FormatDateTime('dd/mm/yyyy', Ate.Date) + '''' ;
+  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
+                                  FormatDateTime('dd/mm/yyyy', Ate.Date) + '"' ;
 
   Report.Formulas.Name         := 'Empresa' ;
   if ComboEmpresa.Value <> '' then
-    Report.Formulas.Formula.Text := '''' + ComboEmpresa.DisplayValue + ''''
+    Report.Formulas.Formula.Text := '"' + ComboEmpresa.DisplayValue + '"'
   else
-    Report.Formulas.Formula.Text := '''' + EmpresaAtualNome + '''';
+    Report.Formulas.Formula.Text := '"' + EmpresaAtualNome + '"';
     
   Report.Execute;
 

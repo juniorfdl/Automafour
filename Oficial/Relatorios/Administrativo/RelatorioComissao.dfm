@@ -1,6 +1,6 @@
 inherited FormRelatorioComissao: TFormRelatorioComissao
-  Left = 227
-  Top = 130
+  Left = 368
+  Top = 134
   Caption = 'Relat'#243'rio de Comiss'#245'es'
   PixelsPerInch = 96
   TextHeight = 13
@@ -11,13 +11,17 @@ inherited FormRelatorioComissao: TFormRelatorioComissao
       FieldName = 'VENDICOD'
       Origin = 'DB.VENDEDORCOMISSAO.VENDICOD'
     end
-    object TblTemporariaVENDAVISTA: TFloatField
+    object TblTemporariaVENDAVISTA: TBCDField
       FieldName = 'VENDAVISTA'
       Origin = 'DB.VENDEDORCOMISSAO.VDCON2TOTVENDVISTA'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaVENDAPRAZO: TFloatField
+    object TblTemporariaVENDAPRAZO: TBCDField
       FieldName = 'VENDAPRAZO'
       Origin = 'DB.VENDEDORCOMISSAO.VDCON2TOTVENDPRAZO'
+      Precision = 15
+      Size = 3
     end
     object TblTemporariaTOTALVENDA: TFloatField
       FieldName = 'TOTALVENDA'
@@ -27,13 +31,17 @@ inherited FormRelatorioComissao: TFormRelatorioComissao
       FieldName = 'NROVENDAS'
       Origin = 'DB.VENDEDORCOMISSAO.VDCOINROVEND'
     end
-    object TblTemporariaNTOITENS: TFloatField
+    object TblTemporariaNTOITENS: TBCDField
       FieldName = 'NTOITENS'
       Origin = 'DB.VENDEDORCOMISSAO.VDCON3QTDVEND'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaVALORCOMISSAO: TFloatField
+    object TblTemporariaVALORCOMISSAO: TBCDField
       FieldName = 'VALORCOMISSAO'
       Origin = 'DB.VENDEDORCOMISSAO.VDCON2VLRCOMISS'
+      Precision = 15
+      Size = 3
     end
     object TblTemporariaVENDA60NOME: TStringField
       FieldName = 'VENDA60NOME'

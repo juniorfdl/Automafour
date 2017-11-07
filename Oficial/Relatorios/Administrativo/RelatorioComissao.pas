@@ -11,23 +11,23 @@ uses
 type
   TFormRelatorioComissao = class(TFormRelatorioTEMPLATE)
     SQLVendedorComissao: TRxQuery;
+    TblTemporariaVENDICOD: TIntegerField;
+    TblTemporariaVENDAVISTA: TBCDField;
+    TblTemporariaVENDAPRAZO: TBCDField;
+    TblTemporariaTOTALVENDA: TFloatField;
+    TblTemporariaNROVENDAS: TIntegerField;
+    TblTemporariaNTOITENS: TBCDField;
+    TblTemporariaVALORCOMISSAO: TBCDField;
+    TblTemporariaVENDA60NOME: TStringField;
+    Report: TCrpe;
     SQLVendedorComissaoVENDICOD: TIntegerField;
     SQLVendedorComissaoVENDAVISTA: TFloatField;
     SQLVendedorComissaoVENDAPRAZO: TFloatField;
+    SQLVendedorComissaoTOTALVENDA: TFloatField;
     SQLVendedorComissaoNROVENDAS: TIntegerField;
     SQLVendedorComissaoNTOITENS: TFloatField;
     SQLVendedorComissaoVALORCOMISSAO: TFloatField;
     SQLVendedorComissaoVENDA60NOME: TStringField;
-    SQLVendedorComissaoTOTALVENDA: TFloatField;
-    TblTemporariaVENDICOD: TIntegerField;
-    TblTemporariaVENDAVISTA: TFloatField;
-    TblTemporariaVENDAPRAZO: TFloatField;
-    TblTemporariaTOTALVENDA: TFloatField;
-    TblTemporariaNROVENDAS: TIntegerField;
-    TblTemporariaNTOITENS: TFloatField;
-    TblTemporariaVALORCOMISSAO: TFloatField;
-    TblTemporariaVENDA60NOME: TStringField;
-    Report: TCrpe;
     procedure ExecutarBtnClick(Sender: TObject);
     procedure TblTemporariaNewRecord(DataSet: TDataSet);
   private
@@ -41,7 +41,7 @@ var
 
 implementation
 
-uses DataModulo;
+uses DataModulo, UnitLibrary;
 
 {$R *.DFM}
 
@@ -49,8 +49,8 @@ procedure TFormRelatorioComissao.ExecutarBtnClick(Sender: TObject);
 begin
   inherited;
   SQLVendedorComissao.Close ;
-  SQLVendedorComissao.MacrobyName('MData').Value := 'VENDEDORCOMISSAO.VDCODEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
-                                                    'VENDEDORCOMISSAO.VDCODEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
+  SQLVendedorComissao.MacrobyName('MData').Value := 'VENDEDORCOMISSAO.VDCODEMIS >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
+                                                    'VENDEDORCOMISSAO.VDCODEMIS <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"' ;
   SQLVendedorComissao.Open ;
   if SQLVendedorComissao.IsEmpty then
     begin
@@ -58,7 +58,8 @@ begin
       Abort;
     end;
 
-  BatchExec(SQLVendedorComissao, TblTemporaria) ;
+  //BatchExec(SQLVendedorComissao, TblTemporaria);
+  CopyQueryTable(SQLVendedorComissao,TblTemporaria);
 
   Report.ReportName := DM.SQLConfigGeralCFGEA255PATHREPORT.Value + '\Comissao Vendedor.rpt' ;
 
@@ -67,11 +68,11 @@ begin
   Report.Formulas.Retrieve ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Emissao' ;
-  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''' ;
+  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'PeriodoEmissao' ;
-  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
-                                  FormatDateTime('dd/mm/yyyy', Ate.Date) + '''' ;
+  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy', De.Date) + ' até ' +
+                                  FormatDateTime('dd/mm/yyyy', Ate.Date) + '"' ;
   Report.Execute ;
 end;
 
