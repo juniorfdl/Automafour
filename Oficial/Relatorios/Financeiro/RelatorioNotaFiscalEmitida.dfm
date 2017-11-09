@@ -312,23 +312,33 @@ inherited FormRelatorioNotaFiscalEmitida: TFormRelatorioNotaFiscalEmitida
       FieldName = 'NOFIDEMIS'
       Origin = 'DB.NOTAFISCAL.NOFIDEMIS'
     end
-    object TblTemporariaNOFIN2VLRICMS: TFloatField
+    object TblTemporariaNOFIN2VLRICMS: TBCDField
       FieldName = 'NOFIN2VLRICMS'
       Origin = 'DB.NOTAFISCAL.NOFIN2VLRICMS'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaNOFIN2VLRNOTA: TFloatField
+    object TblTemporariaNOFIN2VLRNOTA: TBCDField
       FieldName = 'NOFIN2VLRNOTA'
       Origin = 'DB.NOTAFISCAL.NOFIN2VLRNOTA'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaNOFIN2VLRSUBS: TFloatField
+    object TblTemporariaNOFIN2VLRSUBS: TBCDField
       FieldName = 'NOFIN2VLRSUBS'
       Origin = 'DB.NOTAFISCAL.NOFIN2VLRSUBS'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaNOFIN3VLRCOFINS: TFloatField
+    object TblTemporariaNOFIN3VLRCOFINS: TBCDField
       FieldName = 'NOFIN3VLRCOFINS'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaNOFIN3VLRPIS: TFloatField
+    object TblTemporariaNOFIN3VLRPIS: TBCDField
       FieldName = 'NOFIN3VLRPIS'
+      Precision = 15
+      Size = 3
     end
   end
   object SQLNotaFiscal: TRxQuery
@@ -357,6 +367,7 @@ inherited FormRelatorioNotaFiscalEmitida: TFormRelatorioNotaFiscalEmitida
       
         'left outer join Fornecedor on NotaFiscal.FORNICOD = Fornecedor.F' +
         'ORNICOD'
+      ''
       'Where'
       '%Empresa'
       'and'
@@ -378,8 +389,7 @@ inherited FormRelatorioNotaFiscalEmitida: TFormRelatorioNotaFiscalEmitida
       ''
       'ORDER BY'
       ''
-      '%MOrdem'
-      '')
+      '%MOrdem')
     Macros = <
       item
         DataType = ftString
@@ -457,74 +467,55 @@ inherited FormRelatorioNotaFiscalEmitida: TFormRelatorioNotaFiscalEmitida
     Top = 5
     object SQLNotaFiscalEMPRICOD: TIntegerField
       FieldName = 'EMPRICOD'
-      Origin = 'DB.NOTAFISCAL.EMPRICOD'
     end
     object SQLNotaFiscalCLIEA13ID: TStringField
       FieldName = 'CLIEA13ID'
-      Origin = 'DB.NOTAFISCAL.CLIEA13ID'
       FixedChar = True
       Size = 13
     end
     object SQLNotaFiscalCLIEA60RAZAOSOC: TStringField
       FieldName = 'CLIEA60RAZAOSOC'
-      Origin = 'DB.CLIENTE.CLIEA60RAZAOSOC'
       FixedChar = True
-      Size = 60
-    end
-    object SQLNotaFiscalFORNA60RAZAOSOC: TStringField
-      FieldName = 'FORNA60RAZAOSOC'
       Size = 60
     end
     object SQLNotaFiscalSERIA5COD: TStringField
       FieldName = 'SERIA5COD'
-      Origin = 'DB.NOTAFISCAL.SERIA5COD'
       FixedChar = True
       Size = 5
     end
     object SQLNotaFiscalOPESICOD: TIntegerField
       FieldName = 'OPESICOD'
-      Origin = 'DB.NOTAFISCAL.OPESICOD'
-    end
-    object SQLNotaFiscalOperacaoLookup: TStringField
-      FieldKind = fkLookup
-      FieldName = 'OperacaoLookup'
-      LookupDataSet = SQLOperEstoque
-      LookupKeyFields = 'OPESICOD'
-      LookupResultField = 'OPESA60DESCR'
-      KeyFields = 'OPESICOD'
-      Size = 60
-      Lookup = True
     end
     object SQLNotaFiscalNOFIINUMERO: TIntegerField
       FieldName = 'NOFIINUMERO'
-      Origin = 'DB.NOTAFISCAL.NOFIINUMERO'
     end
     object SQLNotaFiscalNOFICSTATUS: TStringField
       FieldName = 'NOFICSTATUS'
-      Origin = 'DB.NOTAFISCAL.NOFICSTATUS'
       FixedChar = True
       Size = 1
     end
     object SQLNotaFiscalNOFIDEMIS: TDateTimeField
       FieldName = 'NOFIDEMIS'
-      Origin = 'DB.NOTAFISCAL.NOFIDEMIS'
-    end
-    object SQLNotaFiscalNOFIN2VLRNOTA: TFloatField
-      FieldName = 'NOFIN2VLRNOTA'
-      Origin = 'DB.NOTAFISCAL.NOFIN2VLRNOTA'
     end
     object SQLNotaFiscalNOFIN2VLRICMS: TFloatField
       FieldName = 'NOFIN2VLRICMS'
     end
+    object SQLNotaFiscalNOFIN2VLRNOTA: TFloatField
+      FieldName = 'NOFIN2VLRNOTA'
+    end
     object SQLNotaFiscalNOFIN2VLRSUBS: TFloatField
       FieldName = 'NOFIN2VLRSUBS'
-      Origin = 'DB.NOTAFISCAL.NOFIN2VLRSUBS'
     end
     object SQLNotaFiscalNOFIN3VLRPIS: TFloatField
       FieldName = 'NOFIN3VLRPIS'
     end
     object SQLNotaFiscalNOFIN3VLRCOFINS: TFloatField
       FieldName = 'NOFIN3VLRCOFINS'
+    end
+    object SQLNotaFiscalFORNA60RAZAOSOC: TStringField
+      FieldName = 'FORNA60RAZAOSOC'
+      FixedChar = True
+      Size = 60
     end
   end
   object SQLOperEstoque: TRxQuery

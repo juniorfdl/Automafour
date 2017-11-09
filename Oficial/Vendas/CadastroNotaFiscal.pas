@@ -6146,7 +6146,7 @@ begin
     infNFe.ID := sqltemplate.fieldbyname('NOFIA13ID').asstring;
     Ide.natOp := ComboOPEstoque.Text; // SQLLocate('CFOP','CFOPA5COD','CFOPA60DESCR',''''+CFOP+'''');
     Ide.nNF := sqltemplate.fieldbyname('NOFIINUMERO').AsInteger;
-    Ide.cNF := sqltemplate.fieldbyname('NOFIA13ID').AsInteger;
+    Ide.cNF := -1;
     Ide.modelo := 55;
     Ide.serie := StrToInt(sqltemplate.fieldbyname('SERIA5COD').AsString);
     Ide.dEmi := sqltemplate.fieldbyname('NOFIDEMIS').AsDateTime;
