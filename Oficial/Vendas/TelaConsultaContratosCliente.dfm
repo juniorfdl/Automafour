@@ -298,7 +298,7 @@ object FormTelaConsultaContratosCliente: TFormTelaConsultaContratosCliente
     object RxLabel1: TRxLabel
       Left = 131
       Top = 6
-      Width = 93
+      Width = 92
       Height = 16
       Caption = 'Valor '#224' &Quitar'
       Font.Charset = ANSI_CHARSET
@@ -312,7 +312,7 @@ object FormTelaConsultaContratosCliente: TFormTelaConsultaContratosCliente
     object RxLabel2: TRxLabel
       Left = 9
       Top = 6
-      Width = 84
+      Width = 83
       Height = 16
       Caption = 'Valor Devido'
       Font.Charset = ANSI_CHARSET
