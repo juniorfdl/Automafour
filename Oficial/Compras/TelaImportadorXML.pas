@@ -12,7 +12,7 @@ uses
   cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
   cxDBData, cxGridLevel, cxClasses, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
-  AdvGlowButton, RzEdit, RzDBEdit, RzDBSpin, Spin, pcnConversao, DBClient,
+  AdvGlowButton,  Spin, pcnConversao, DBClient,
   Menus, DBCtrls, FMTBcd, SqlExpr, Provider, VarSYS, FormResources,
   cxImageComboBox, ImgList, IniFiles, ShellAPI, Gauges, ZAbstractRODataset,
   ZAbstractDataset, ZDataset, 
