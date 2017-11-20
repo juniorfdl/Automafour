@@ -1,6 +1,6 @@
 inherited FormTelaTransferencia: TFormTelaTransferencia
-  Left = 403
-  Top = 65
+  Left = 264
+  Top = 66
   Width = 880
   Height = 587
   Caption = 'Transfer'#234'ncia Produtos'
