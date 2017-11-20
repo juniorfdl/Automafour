@@ -307,7 +307,7 @@ begin
                   ShellExecute(0, 'open', PChar('mailto:suporte@multistorers.com.br ?Subject=Relatorio de erros &Body=' + Email),'','', SW_SHOWNORMAL);
                   Informa('O Sistema criou um e-mail de erro para você, por favor anexe o arquivo ''' + ImagemArquivo + ''' ao e-mail e envie-o assim que puder.');
                end;
-         end; } 
+         end; }
 end;
 
 //

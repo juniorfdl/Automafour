@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, RXCtrls, AdvOfficeStatusBar, dxGDIPlusClasses, ExtCtrls,
-  AdvOfficeStatusBarStylers, RzPrgres;
+  AdvOfficeStatusBarStylers;//, RzPrgres;
 
 type
   TFormSplash = class(TForm)

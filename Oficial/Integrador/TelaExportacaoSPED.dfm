@@ -1,6 +1,6 @@
 inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
-  Left = 248
-  Top = 78
+  Left = 338
+  Top = 51
   Width = 816
   Height = 632
   Caption = 'Gera'#231#227'o Arquivo SPED Fiscal'
@@ -2147,62 +2147,72 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
     Left = 448
     Top = 7
   end
-  object ZRegC490: TZQuery
-    Params = <>
-    Left = 556
-    Top = 333
+  object zPesquisa: TRxQuery
+    DatabaseName = 'DB'
+    Macros = <>
+    Left = 565
+    Top = 184
   end
-  object zInventario: TZQuery
-    Params = <>
-    Left = 591
-    Top = 334
+  object zPesquisa3: TRxQuery
+    DatabaseName = 'DB'
+    Macros = <>
+    Left = 669
+    Top = 184
   end
-  object z0200: TZQuery
-    Params = <>
-    Left = 462
-    Top = 334
+  object zPesquisa1: TRxQuery
+    DatabaseName = 'DB'
+    Macros = <>
+    Left = 605
+    Top = 184
   end
-  object z0190: TZQuery
-    SQL.Strings = (
-      'Select * from SPED_0190')
-    Params = <>
-    Left = 434
-    Top = 334
+  object zPesquisa2: TRxQuery
+    DatabaseName = 'DB'
+    Macros = <>
+    Left = 629
+    Top = 176
   end
-  object zPesquisa3: TZQuery
-    ParamCheck = False
-    Params = <>
-    Left = 499
-    Top = 273
+  object zSerie: TRxQuery
+    DatabaseName = 'DB'
+    Macros = <>
+    Left = 677
+    Top = 232
   end
-  object zPesquisa2: TZQuery
-    ParamCheck = False
-    Params = <>
-    Left = 470
-    Top = 273
-  end
-  object zPesquisa1: TZQuery
-    ParamCheck = False
-    Params = <>
-    Left = 439
-    Top = 273
-  end
-  object zPesquisa: TZQuery
-    ParamCheck = False
-    Params = <>
-    Left = 408
-    Top = 273
-  end
-  object z0150: TZQuery
+  object z0150: TRxQuery
+    DatabaseName = 'DB'
     SQL.Strings = (
       'Select * from SPED_0150')
-    Params = <>
-    Left = 406
-    Top = 334
+    Macros = <>
+    Left = 413
+    Top = 280
   end
-  object ZSerie: TZQuery
-    Params = <>
-    Left = 588
-    Top = 275
+  object z0190: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'Select * from SPED_0190')
+    Macros = <>
+    Left = 453
+    Top = 288
+  end
+  object z0200: TRxQuery
+    DatabaseName = 'DB'
+    Macros = <>
+    Left = 517
+    Top = 296
+  end
+  object ZRegC490: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'Select * from SPED_0190')
+    Macros = <>
+    Left = 581
+    Top = 280
+  end
+  object zInventario: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'Select * from SPED_0190')
+    Macros = <>
+    Left = 629
+    Top = 280
   end
 end

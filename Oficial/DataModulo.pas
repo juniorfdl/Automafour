@@ -996,7 +996,7 @@ begin
     end;
 
   finally
-    if (not cdsAPIAutorizacao.Active) or (cdsAPIAutorizacaoDATA_AUTORIZACAO.AsString = '') then
+    if ((not cdsAPIAutorizacao.Active) or (cdsAPIAutorizacaoDATA_AUTORIZACAO.AsString = ''))and(not DelphiAberto) then
     begin
       FormTelaAtivacao := TFormTelaAtivacao.Create(Application);
       FormTelaAtivacao.lblMensagem.Font.Size := 17;
