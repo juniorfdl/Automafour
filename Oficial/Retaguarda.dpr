@@ -471,7 +471,7 @@ begin
   end;
 
   Application.CreateForm(TFormPrincipal, FormPrincipal);
-  FormPrincipal.RodapePrincipal.Panels[0].Text := 'Empresa: ' + DM.SQLConfigGeralEmpresaPadraoCalcField.Value;
+  FormPrincipal.RodapePrincipal.Panels[0].Text := 'Empresa: ' + DM.SQLEmpresa.FieldByName('EMPRA60NOMEFANT').AsString;
   FormPrincipal.RodapePrincipal.Panels[1].Text := 'Terminal: ' + Dm.SQLTerminalAtivo.fieldbyname('TERMA60DESCR').AsString;
   FormPrincipal.RodapePrincipal.Panels[2].Text := 'Usuário: ' + DM.SQLUsuario.fieldbyname('USUAA60LOGIN').Value;
 
