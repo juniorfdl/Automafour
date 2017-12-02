@@ -854,6 +854,9 @@ end;
 procedure TDM.DataModuleCreate(Sender: TObject);
 begin
   inherited;
+  FormSplash.lbDados.Caption := 'Abrindo Tabela de Filiais...'; FormSplash.lbDados.Update;
+  SQLEmpresa.Open ;
+
   FormSplash.lbDados.Caption := 'Abrindo Tabela de Usuarios...'; FormSplash.lbDados.Update;
   SQLUsuario.Open;
 
