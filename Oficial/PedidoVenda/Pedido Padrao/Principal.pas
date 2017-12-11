@@ -234,18 +234,15 @@ type
     SQLTemplateClienteEndereco_nro: TStringField;
     procedure SQLTemplateCalcFields(DataSet: TDataSet);
     procedure SQLPedidoItemCalcFields(DataSet: TDataSet);
-    procedure ImpPedidoVendaWindowClose(Sender: TObject);
-    procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
     procedure AbrirDados;
   public
     { Public declarations }
+    class function Imprimir:Boolean;
   end;
 
-var
-  FormPrincipal: TFormPrincipal;
 
 implementation
 
@@ -331,33 +328,6 @@ begin
     DataSet.FieldByName('ReferenciaLookup').AsVariant := NULL;
     DataSet.FieldByName('UnidadeLookUp').AsVariant := NULL;
     DataSet.FieldByName('BarrasLookup').AsVariant := NULL;
-  end;
-end;
-
-procedure TFormPrincipal.ImpPedidoVendaWindowClose(Sender: TObject);
-begin
-  Application.Terminate;
-end;
-
-procedure TFormPrincipal.FormActivate(Sender: TObject);
-var Cont: Integer;
-begin
-  try
-    db.Connected := True;
-    ImpPedidoVenda.ReportName := 'c:\easy2solutions\gestao\PedidoVenda\Pedido Orcamento.rpt';
-    try
-
-      AbrirDados;
-      ImpPedidoVenda.Execute;
-    except
-      on E: Exception do
-      begin
-        ShowMessage(E.Message);
-      end;
-    end;
-  finally
-    db.Connected := False;
-    Halt(0);
   end;
 end;
 
@@ -469,10 +439,32 @@ begin
     on E: Exception do
     begin
       ShowMessage(E.Message);
-      Halt(0);
     end;
   end;
 
+end;
+
+class function TFormPrincipal.Imprimir: Boolean;
+var Cont: Integer;
+  FormPrincipal: TFormPrincipal;
+begin
+  try
+    FormPrincipal:= TFormPrincipal.Create(nil);
+    FormPrincipal.db.Connected := True;
+    FormPrincipal.ImpPedidoVenda.ReportName := ExtractFilePath(Application.ExeName) + '\gestao\PedidoVenda\Pedido Orcamento.rpt';
+    try
+      FormPrincipal.AbrirDados;
+      FormPrincipal.ImpPedidoVenda.Execute;
+    except
+      on E: Exception do
+      begin
+        ShowMessage(E.Message);
+      end;
+    end;
+  finally
+    FormPrincipal.db.Connected := False;
+    Application.Terminate;
+  end;
 end;
 
 end.
