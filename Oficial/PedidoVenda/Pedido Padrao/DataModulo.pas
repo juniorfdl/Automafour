@@ -1,0 +1,240 @@
+unit DataModulo;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DataModuloTemplate, DB, DBTables, DBLists, RxQuery, DBXpress,
+  ZConnection, SqlExpr, IdComponent, IdTCPConnection, IdTCPClient,
+  IdMessageClient, IdSMTP, IdBaseComponent, IdMessage, ZAbstractRODataset,
+  ZAbstractDataset, ZDataset;
+
+type
+  TDM = class(TDMTemplate)
+    SQLConfigGeral: TRxQuery;
+    SQLConfigGeralCFGEA255PATHREPORT: TStringField;
+    SQLConfigVenda: TRxQuery;
+    SQLConfigVendaCFVEN2PERCLIMCRED: TBCDField;
+    SQLConfigVendaCFVEN3MAXLIMCRED: TBCDField;
+    SQLConfigVendaCFVECTIPOLIMCRED: TStringField;
+    SQLConfigVendaCFVECRENDCONJNOLIM: TStringField;
+    SQLConfigVendaCFVECARREDPARCELA: TStringField;
+    SQLConfigVendaCFVECVENDAESTNEGAT: TStringField;
+    SQLConfigVendaCFVECTIPOIMPPED: TStringField;
+    SQLConfigVendaCFVECDADOSCHQPDV: TStringField;
+    SQLConfigVendaCFVECUSADEBCREDCLI: TStringField;
+    SQLConfigVendaCGVECTESTAITENSNF: TStringField;
+    SQLConfigVendaCFVEN3ALIQISSQN: TBCDField;
+    SQLConfigVendaCFVECIMPLEGPEDVENF: TStringField;
+    SQLConfigVendaCFVEN3PERCICMFRETE: TBCDField;
+    SQLConfigVendaCFVEA255OBSPADNF: TStringField;
+    SQLConfigVendaCFVEITEMPOCONSPROD: TIntegerField;
+    SQLConfigVendaCFVECQUITARPARCHQ: TStringField;
+    SQLConfigVendaCFVEA255OBSPADRPED: TStringField;
+    SQLConfigVendaOPESICODCUPOM: TIntegerField;
+    SQLConfigVendaOPESICODCANCCUPOM: TIntegerField;
+    SQLConfigVendaOPESICODNF: TIntegerField;
+    SQLConfigVendaOPESICODCANCNF: TIntegerField;
+    SQLConfigVendaOPESICODRETORNO: TIntegerField;
+    SQLConfigVendaOPESICODCANCTROCA: TIntegerField;
+    SQLConfigVendaOPESICODTROCA: TIntegerField;
+    SQLConfigVendaCFVECINFDADOVENDA: TStringField;
+    SQLConfigVendaCFVEIQTDPADRPDV: TIntegerField;
+    SQLConfigVendaCFVECPARC0ENTRBAIX: TStringField;
+    SQLConfigVendaCFVEA250MSGBLOQ: TStringField;
+    SQLConfigVendaTPRCICOD: TIntegerField;
+    SQLConfigVendaCFVECFAZVENDCONSIG: TStringField;
+    SQLConfigVendaOPESICODDEVOL: TIntegerField;
+    SQLConfigVendaMTBLICODVENDCONSIG: TIntegerField;
+    SQLConfigVendaCFVECIMPPREVDCOD: TStringField;
+    SQLConfigVendaCFVECFINVENDADPREVD: TStringField;
+    SQLConfigVendaCFVECFINDPRODPORDESCR: TStringField;
+    SQLConfigVendaOPESICODCANCPED: TIntegerField;
+    SQLConfigVendaCFVECMOVESTOQUENF: TStringField;
+    SQLConfigVendaCFVECMOVESTOQUEPED: TStringField;
+    SQLConfigVendaCFVEICMSFRETECOD: TIntegerField;
+    SQLConfigVendaOPESICODPED: TIntegerField;
+    SQLConfigVendaCFVEINROITENSNF: TIntegerField;
+    SQLConfigVendaTPDCICOD: TIntegerField;
+    SQLConfigVendaPORTICOD: TIntegerField;
+    SQLConfigVendaCFVECPEDEVLRPRODUTO: TStringField;
+    SQLConfigVendaCFVECTESTALIMTCRED: TStringField;
+    SQLConfigVendaCFVECSUBDEBNOLIMITE: TStringField;
+    SQLConfigVendaCFVETOBSPADRAONF: TStringField;
+    SQLConfigVendaCFVETOBSPADRAOPED: TStringField;
+    SQLConfigVendaCFVECQUITAPARCONV: TStringField;
+    SQLConfigVendaCFVECFARREDVLRVEND: TStringField;
+    SQLConfigVendaCFVEINROCASASDEC: TIntegerField;
+    SQLConfigVendaCFVECUSALIBERCRED: TStringField;
+    SQLConfigVendaCFVECEXCLUIPEDFAT: TStringField;
+    SQLConfigVendaCFVECALTPEDIMPORT: TStringField;
+    SQLConfigVendaOPESICODIMPCUPOM: TIntegerField;
+    SQLConfigVendaOPESICODVENDCONSIG: TIntegerField;
+    SQLConfigVendaCFVEN2PERCCOFINS: TBCDField;
+    SQLConfigVendaCFVEN2PERCENCARG: TBCDField;
+    SQLConfigVendaCFVEN2PERCICMS: TBCDField;
+    SQLConfigVendaCFVEN2PERCPIS: TBCDField;
+    SQLConfigVendaCFVECSOLSENHAALTVLR: TStringField;
+    SQLConfigVendaCFVECIMPDESCRPRINF: TStringField;
+    SQLConfigVendaCFVECCONTPEDVDAUSU: TStringField;
+    SQLConfigVendaCFVECINFPRODSUBTRI: TStringField;
+    SQLConfigVendaCFVECQUITAPARCRT: TStringField;
+    SQLConfigVendaCFVECFRETEPADRAO: TStringField;
+    SQLProdutoOrdemPesquisa: TRxQuery;
+    SQLProdutoOrdemPesquisaPDOPIORDEM: TIntegerField;
+    SQLProdutoOrdemPesquisaPDOPA30CAMPO: TStringField;
+    SQLProduto: TRxQuery;
+    SQLProdutoFilho: TRxQuery;
+    SQLProdutoSaldo: TRxQuery;
+    SQLProdutoSaldoEMPRICOD: TIntegerField;
+    SQLProdutoSaldoPRODICOD: TIntegerField;
+    SQLProdutoSaldoPSLDN3QTDE: TBCDField;
+    SQLPreco: TRxQuery;
+    SQLConfigCrediario: TRxQuery;
+    BCDField1: TBCDField;
+    BCDField2: TBCDField;
+    StringField1: TStringField;
+    StringField2: TStringField;
+    StringField3: TStringField;
+    StringField4: TStringField;
+    StringField5: TStringField;
+    StringField6: TStringField;
+    StringField7: TStringField;
+    StringField8: TStringField;
+    BCDField3: TBCDField;
+    StringField9: TStringField;
+    BCDField4: TBCDField;
+    StringField10: TStringField;
+    IntegerField1: TIntegerField;
+    StringField11: TStringField;
+    StringField12: TStringField;
+    IntegerField2: TIntegerField;
+    IntegerField3: TIntegerField;
+    IntegerField4: TIntegerField;
+    IntegerField5: TIntegerField;
+    IntegerField6: TIntegerField;
+    IntegerField7: TIntegerField;
+    IntegerField8: TIntegerField;
+    StringField13: TStringField;
+    IntegerField9: TIntegerField;
+    StringField14: TStringField;
+    StringField15: TStringField;
+    IntegerField10: TIntegerField;
+    StringField16: TStringField;
+    IntegerField11: TIntegerField;
+    IntegerField12: TIntegerField;
+    StringField17: TStringField;
+    StringField18: TStringField;
+    StringField19: TStringField;
+    IntegerField13: TIntegerField;
+    StringField20: TStringField;
+    StringField21: TStringField;
+    IntegerField14: TIntegerField;
+    IntegerField15: TIntegerField;
+    IntegerField16: TIntegerField;
+    IntegerField17: TIntegerField;
+    IntegerField18: TIntegerField;
+    StringField22: TStringField;
+    StringField23: TStringField;
+    StringField24: TStringField;
+    StringField25: TStringField;
+    StringField26: TStringField;
+    StringField27: TStringField;
+    StringField28: TStringField;
+    IntegerField19: TIntegerField;
+    StringField29: TStringField;
+    StringField30: TStringField;
+    StringField31: TStringField;
+    IntegerField20: TIntegerField;
+    IntegerField21: TIntegerField;
+    BCDField5: TBCDField;
+    BCDField6: TBCDField;
+    BCDField7: TBCDField;
+    BCDField8: TBCDField;
+    StringField32: TStringField;
+    StringField33: TStringField;
+    StringField34: TStringField;
+    StringField35: TStringField;
+    StringField36: TStringField;
+    StringField37: TStringField;
+    SQLTerminalAtivo: TRxQuery;
+    BCDField9: TBCDField;
+    BCDField10: TBCDField;
+    StringField38: TStringField;
+    StringField39: TStringField;
+    StringField40: TStringField;
+    StringField41: TStringField;
+    StringField42: TStringField;
+    StringField43: TStringField;
+    StringField44: TStringField;
+    StringField45: TStringField;
+    BCDField11: TBCDField;
+    StringField46: TStringField;
+    BCDField12: TBCDField;
+    StringField47: TStringField;
+    IntegerField22: TIntegerField;
+    StringField48: TStringField;
+    StringField49: TStringField;
+    IntegerField23: TIntegerField;
+    IntegerField24: TIntegerField;
+    IntegerField25: TIntegerField;
+    IntegerField26: TIntegerField;
+    IntegerField27: TIntegerField;
+    IntegerField28: TIntegerField;
+    IntegerField29: TIntegerField;
+    StringField50: TStringField;
+    IntegerField30: TIntegerField;
+    StringField51: TStringField;
+    StringField52: TStringField;
+    IntegerField31: TIntegerField;
+    StringField53: TStringField;
+    IntegerField32: TIntegerField;
+    IntegerField33: TIntegerField;
+    StringField54: TStringField;
+    StringField55: TStringField;
+    StringField56: TStringField;
+    IntegerField34: TIntegerField;
+    StringField57: TStringField;
+    StringField58: TStringField;
+    IntegerField35: TIntegerField;
+    IntegerField36: TIntegerField;
+    IntegerField37: TIntegerField;
+    IntegerField38: TIntegerField;
+    IntegerField39: TIntegerField;
+    StringField59: TStringField;
+    StringField60: TStringField;
+    StringField61: TStringField;
+    StringField62: TStringField;
+    StringField63: TStringField;
+    StringField64: TStringField;
+    StringField65: TStringField;
+    IntegerField40: TIntegerField;
+    StringField66: TStringField;
+    StringField67: TStringField;
+    StringField68: TStringField;
+    IntegerField41: TIntegerField;
+    IntegerField42: TIntegerField;
+    BCDField13: TBCDField;
+    BCDField14: TBCDField;
+    BCDField15: TBCDField;
+    BCDField16: TBCDField;
+    StringField69: TStringField;
+    StringField70: TStringField;
+    StringField71: TStringField;
+    StringField72: TStringField;
+    StringField73: TStringField;
+    StringField74: TStringField;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DM: TDM;
+
+implementation
+
+{$R *.dfm}
+
+end.
