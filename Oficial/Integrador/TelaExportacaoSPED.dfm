@@ -9,10 +9,10 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
   TextHeight = 13
   inherited ScrollBoxFundo: TScrollBox
     Width = 800
-    Height = 593
+    Height = 594
     inherited PanelCentral: TPanel
       Width = 796
-      Height = 509
+      Height = 510
       object Label6: TLabel [0]
         Left = 10
         Top = 163
@@ -106,7 +106,7 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
       end
       inherited PanelBarra: TPanel
         Width = 3
-        Height = 509
+        Height = 510
       end
       object GroupBox3: TGroupBox
         Left = 6
@@ -1996,7 +1996,9 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
     end
   end
   object SQLC400: TRxQuery
+    CachedUpdates = True
     DatabaseName = 'DB'
+    RequestLive = True
     SQL.Strings = (
       'SELECT * FROM SPED_C400')
     Macros = <>
@@ -2004,7 +2006,9 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
     Top = 52
   end
   object SQLC405: TRxQuery
+    CachedUpdates = True
     DatabaseName = 'DB'
+    RequestLive = True
     SQL.Strings = (
       'SELECT * FROM SPED_C405'
       '')
@@ -2013,7 +2017,9 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
     Top = 52
   end
   object SQLC420: TRxQuery
+    CachedUpdates = True
     DatabaseName = 'DB'
+    RequestLive = True
     SQL.Strings = (
       'SELECT * FROM SPED_C420 WHERE'
       ' NUMEROSERIEECF = :xSerieECF   AND DATAREDUCAO = :xDataRDZ'
@@ -2034,7 +2040,9 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
       end>
   end
   object SQLC460: TRxQuery
+    CachedUpdates = True
     DatabaseName = 'DB'
+    RequestLive = True
     SQL.Strings = (
       
         'SELECT * FROM SPED_C460  WHERE  NUMEROSERIEECF = :xSerie_ECF  AN' +
@@ -2056,7 +2064,9 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
       end>
   end
   object SQLC470: TRxQuery
+    CachedUpdates = True
     DatabaseName = 'DB'
+    RequestLive = True
     SQL.Strings = (
       'SELECT * FROM SPED_C470 WHERE '
       'NUMEROSERIEECF = :xSerie_ECF  '
@@ -2083,7 +2093,10 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
       end>
   end
   object SQLC490: TRxQuery
+    CachedUpdates = True
+    AfterPost = SQLC490AfterPost
     DatabaseName = 'DB'
+    RequestLive = True
     SQL.Strings = (
       'SELECT * FROM SPED_C490 WHERE'
       'NUMEROSERIEECF = :xSerie_ECF  AND DATAREDUCAO = :xDataRDZ'
@@ -2106,7 +2119,9 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
       end>
   end
   object SQLC410: TRxQuery
+    CachedUpdates = True
     DatabaseName = 'DB'
+    RequestLive = True
     SQL.Strings = (
       ''
       '')
@@ -2147,62 +2162,157 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
     Left = 448
     Top = 7
   end
-  object ZRegC490: TZQuery
-    Params = <>
-    Left = 556
-    Top = 333
+  object zPesquisa: TRxQuery
+    DatabaseName = 'DB'
+    Macros = <>
+    Left = 624
   end
-  object zInventario: TZQuery
-    Params = <>
-    Left = 591
-    Top = 334
+  object zPesquisa1: TRxQuery
+    DatabaseName = 'DB'
+    Macros = <>
+    Left = 592
   end
-  object z0200: TZQuery
-    Params = <>
-    Left = 462
-    Top = 334
+  object zPesquisa2: TRxQuery
+    DatabaseName = 'DB'
+    Macros = <>
+    Left = 560
   end
-  object z0190: TZQuery
+  object zPesquisa3: TRxQuery
+    DatabaseName = 'DB'
+    Macros = <>
+    Left = 528
+  end
+  object zInventario: TRxQuery
+    CachedUpdates = True
+    DatabaseName = 'DB'
+    RequestLive = True
+    Macros = <>
+    Left = 544
+    Top = 24
+  end
+  object z0190: TRxQuery
+    CachedUpdates = True
+    AfterPost = z0190AfterPost
+    DatabaseName = 'DB'
+    RequestLive = True
     SQL.Strings = (
-      'Select * from SPED_0190')
-    Params = <>
-    Left = 434
-    Top = 334
+      'SELECT * FROM SPED_0190')
+    Macros = <>
+    Left = 608
+    Top = 24
+    object z0190UND_SIGLA: TStringField
+      FieldName = 'UND_SIGLA'
+      Origin = 'EASY_GESTAO.SPED_0190.UND_SIGLA'
+      Size = 6
+    end
+    object z0190UND_DESCR: TStringField
+      FieldName = 'UND_DESCR'
+      Origin = 'EASY_GESTAO.SPED_0190.UND_DESCR'
+      Size = 60
+    end
   end
-  object zPesquisa3: TZQuery
-    ParamCheck = False
-    Params = <>
-    Left = 499
-    Top = 273
-  end
-  object zPesquisa2: TZQuery
-    ParamCheck = False
-    Params = <>
-    Left = 470
-    Top = 273
-  end
-  object zPesquisa1: TZQuery
-    ParamCheck = False
-    Params = <>
-    Left = 439
-    Top = 273
-  end
-  object zPesquisa: TZQuery
-    ParamCheck = False
-    Params = <>
-    Left = 408
-    Top = 273
-  end
-  object z0150: TZQuery
+  object z0150: TRxQuery
+    CachedUpdates = True
+    AfterPost = z0150AfterPost
+    DatabaseName = 'DB'
+    RequestLive = True
     SQL.Strings = (
-      'Select * from SPED_0150')
-    Params = <>
-    Left = 406
-    Top = 334
+      'SELECT * FROM SPED_0150')
+    Macros = <>
+    Left = 640
+    Top = 24
+    object z0150COD_PART: TStringField
+      FieldName = 'COD_PART'
+      Origin = 'EASY_GESTAO.SPED_0150.COD_PART'
+      Size = 13
+    end
+    object z0150NOME: TStringField
+      FieldName = 'NOME'
+      Origin = 'EASY_GESTAO.SPED_0150.NOME'
+      Size = 60
+    end
+    object z0150COD_PAIS: TStringField
+      FieldName = 'COD_PAIS'
+      Origin = 'EASY_GESTAO.SPED_0150.COD_PAIS'
+      Size = 4
+    end
+    object z0150CNPJ: TStringField
+      FieldName = 'CNPJ'
+      Origin = 'EASY_GESTAO.SPED_0150.CNPJ'
+      Size = 14
+    end
+    object z0150CPF: TStringField
+      FieldName = 'CPF'
+      Origin = 'EASY_GESTAO.SPED_0150.CPF'
+      Size = 11
+    end
+    object z0150IE: TStringField
+      FieldName = 'IE'
+      Origin = 'EASY_GESTAO.SPED_0150.IE'
+    end
+    object z0150COD_MUN: TStringField
+      FieldName = 'COD_MUN'
+      Origin = 'EASY_GESTAO.SPED_0150.COD_MUN'
+      Size = 7
+    end
+    object z0150COD_SUFRAMA: TStringField
+      FieldName = 'COD_SUFRAMA'
+      Origin = 'EASY_GESTAO.SPED_0150.COD_SUFRAMA'
+      Size = 9
+    end
+    object z0150ENDERECO: TStringField
+      FieldName = 'ENDERECO'
+      Origin = 'EASY_GESTAO.SPED_0150.ENDERECO'
+      Size = 60
+    end
+    object z0150END_NUM: TStringField
+      FieldName = 'END_NUM'
+      Origin = 'EASY_GESTAO.SPED_0150.END_NUM'
+      Size = 10
+    end
+    object z0150COMPLEMENTO: TStringField
+      FieldName = 'COMPLEMENTO'
+      Origin = 'EASY_GESTAO.SPED_0150.COMPLEMENTO'
+      Size = 60
+    end
+    object z0150BAIRRO: TStringField
+      FieldName = 'BAIRRO'
+      Origin = 'EASY_GESTAO.SPED_0150.BAIRRO'
+      Size = 60
+    end
+    object z0150COD_FORN: TIntegerField
+      FieldName = 'COD_FORN'
+      Origin = 'EASY_GESTAO.SPED_0150.COD_FORN'
+    end
+    object z0150COD_TRANSP: TIntegerField
+      FieldName = 'COD_TRANSP'
+      Origin = 'EASY_GESTAO.SPED_0150.COD_TRANSP'
+    end
   end
-  object ZSerie: TZQuery
-    Params = <>
-    Left = 588
-    Top = 275
+  object ZSerie: TRxQuery
+    CachedUpdates = True
+    DatabaseName = 'DB'
+    RequestLive = True
+    Macros = <>
+    Left = 672
+    Top = 24
+  end
+  object ZRegC490: TRxQuery
+    CachedUpdates = True
+    AfterPost = ZRegC490AfterPost
+    DatabaseName = 'DB'
+    RequestLive = True
+    Macros = <>
+    Left = 560
+    Top = 48
+  end
+  object z0200: TRxQuery
+    CachedUpdates = True
+    AfterPost = z0200AfterPost
+    DatabaseName = 'DB'
+    RequestLive = True
+    Macros = <>
+    Left = 576
+    Top = 24
   end
 end

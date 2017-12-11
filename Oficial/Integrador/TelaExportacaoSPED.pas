@@ -249,27 +249,48 @@ type
     GroupBox6: TGroupBox;
     EditCodEmpresa: TEdit;
     ckC100: TCheckBox;
-    ZRegC490: TZQuery;
     chkGeraInventario: TCheckBox;
     ckdtEmissao: TCheckBox;
     RadioInventario: TRadioGroup;
-    zInventario: TZQuery;
-    z0200: TZQuery;
-    z0190: TZQuery;
-    zPesquisa3: TZQuery;
-    zPesquisa2: TZQuery;
-    zPesquisa1: TZQuery;
-    zPesquisa: TZQuery;
-    z0150: TZQuery;
     BtExecutar: TSpeedButton;
-    ZSerie: TZQuery;
     btExportaCadastros: TSpeedButton;
+    zPesquisa: TRxQuery;
+    zPesquisa1: TRxQuery;
+    zPesquisa2: TRxQuery;
+    zPesquisa3: TRxQuery;
+    zInventario: TRxQuery;
+    z0190: TRxQuery;
+    z0150: TRxQuery;
+    ZSerie: TRxQuery;
+    ZRegC490: TRxQuery;
+    z0150COD_PART: TStringField;
+    z0150NOME: TStringField;
+    z0150COD_PAIS: TStringField;
+    z0150CNPJ: TStringField;
+    z0150CPF: TStringField;
+    z0150IE: TStringField;
+    z0150COD_MUN: TStringField;
+    z0150COD_SUFRAMA: TStringField;
+    z0150ENDERECO: TStringField;
+    z0150END_NUM: TStringField;
+    z0150COMPLEMENTO: TStringField;
+    z0150BAIRRO: TStringField;
+    z0150COD_FORN: TIntegerField;
+    z0150COD_TRANSP: TIntegerField;
+    z0190UND_SIGLA: TStringField;
+    z0190UND_DESCR: TStringField;
+    z0200: TRxQuery;
     procedure FormCreate(Sender: TObject);
     procedure BtExecutarClick(Sender: TObject);
     function  MontaLinhaProduto4 : String;
     function  MontaLinhaProduto5 : String;
     function  PreencheValor(STRI, FloodStr:String; TAM:Integer ; JUST : Integer):String ;
     procedure btExportaCadastrosClick(Sender: TObject);
+    procedure z0200AfterPost(DataSet: TDataSet);
+    procedure z0190AfterPost(DataSet: TDataSet);
+    procedure SQLC490AfterPost(DataSet: TDataSet);
+    procedure ZRegC490AfterPost(DataSet: TDataSet);
+    procedure z0150AfterPost(DataSet: TDataSet);
   private
     { Private declarations }
     Function  Registro_Bloco_Zero:Boolean;
@@ -898,7 +919,7 @@ Begin
       zInventario.SQL.Add('(iv.INVDDATA = '''+FormatDateTime('mm/dd/yyyy',DataInventario.Date)+''') and ');
       zInventario.SQL.Add('(p.PRODA2TIPOITEM <= 1) and (p.PRODCSERVICO = ''N'') and (p.PRODCATIVO = ''S'') ');
       zInventario.Open;
-      Progress.Max := zInventario.RecordCount;
+      //Progress.Max := zInventario.RecordCount;
       Progress.Position := 0;
       Progress.Update;
       While Not zInventario.Eof do
@@ -916,10 +937,10 @@ Begin
     end;
 
   // Se nao estiver checked é para lancar os produtos no 0200
-  if not ckC400.Checked then
-    begin
+  //if not ckC400.Checked then
+  //  begin
       {Verificar Itens das NFCes do Periodo}
-      zPesquisa.Close;
+      {zPesquisa.Close;
       zPesquisa.SQL.Text :=
       'Select DISTINCT I.PRODICOD from CUPOMITEM I ' +
       'WHERE I.CUPOA13ID IN (Select N.CUPOA13ID FROM CUPOM N ' +
@@ -936,7 +957,7 @@ Begin
               zPesquisa.next;
             end;
         end;
-    end;
+    end;}
 
   if not ckC100.Checked then
     begin
@@ -1093,7 +1114,7 @@ Begin
     End;
 
   z0200.close;
-  //z0200.RequestLive := False;
+  z0200.RequestLive := False;
   z0200.SQL.Text := 'Select distinct sped_0200.cod_item, '+
   'produto.proda60descr, produto.proda60codbar, produto.prodcservico, produto.proda2tipoitem, '+
   'produto.proda1tipo, produto.prodn3capacembal, produto.PRODIORIGEM, produto.PRODISITTRIB, produto.TABCEST, '  +
@@ -1108,7 +1129,7 @@ Begin
   'Where sped_0200.selecionado = ''S'''  ;
   z0200.Open;
   z0200.last;
-  Progress.Max := z0200.Fieldbyname('COD_ITEM').AsInteger;
+  //Progress.Max := z0200.Fieldbyname('COD_ITEM').AsInteger;
 
   if not z0200.IsEmpty then
     begin
@@ -1131,10 +1152,10 @@ Begin
          (z0200.FieldByName('PRODA2CSTPIS').AsString='') or
          (z0200.FieldByName('PRODA3CSTPISENTRADA').AsString='') then
         begin
-          ShowMessage('Produto: '+z0200.Fieldbyname('COD_ITEM').AsString+' Revisar Cadastro!');
+          {ShowMessage('Produto: '+z0200.Fieldbyname('COD_ITEM').AsString+' Revisar Cadastro!');
           z0200.last;
           Abort;
-          Exit;
+          Exit;}
         end;
 
       EditTabela.Text := 'Criando Registro 0200 - '+IntToStr(Progress.Position)+' de '+IntToStr(Progress.Max); EditTabela.Update;
@@ -1228,7 +1249,7 @@ Begin
       Progress.Position := Progress.Position + 1;
     end;
   z0200.Close;
-  //z0200.RequestLive := True;
+  z0200.RequestLive := True;
   Progress.Position:= 0;
   Progress.Update;
 
@@ -1460,7 +1481,7 @@ begin
         // ESTA POR ORDEM DE TERMINAL E DEPOIS DATA MOVTO
         SQLReducaoZ.Open;
         SQLReducaoZ.Last;
-        Progress.Max := SQLReducaoZ.RecordCount;
+        //Progress.Max := SQLReducaoZ.RecordCount;
         SQLReducaoZ.First;
         if not SQLReducaoZ.IsEmpty then
         begin
@@ -1874,7 +1895,7 @@ begin
   SQLCupom.Open;
   SQLCupom.Last;
   Progress.position := 0;
-  Progress.Max := SQLCupom.RecordCount;
+  //Progress.Max := SQLCupom.RecordCount;
   Progress.Update;
   SQLCupom.First;
   while not SQLCupom.Eof do
@@ -1953,7 +1974,7 @@ begin
   if not zPesquisa.IsEmpty then
     begin
       Progress.position := 0;
-      Progress.Max := zPesquisa.RecordCount;
+      //Progress.Max := zPesquisa.RecordCount;
       Progress.Update;
       while not zPesquisa.eof do
         begin
@@ -2264,7 +2285,7 @@ begin
   SQLCupom.MacroByName('MData').Value      := 'CUPOM.CUPODEMIS = ''' + FormatDateTime('mm/dd/yyyy',SQLReducaoZREDUDEMIS.Value)  + ''' ';
   SQLCupom.Open;
   SQLCupom.Last;
-  Progress.Max := SQLCupom.RecordCount;
+  //Progress.Max := SQLCupom.RecordCount;
   SQLCupom.First;
   while not SQLCupom.Eof do
     begin
@@ -2312,7 +2333,7 @@ begin
   EditTabela.Update;
 
   SQLCupom.Last;
-  Progress.Max := SQLCupom.RecordCount;
+  //Progress.Max := SQLCupom.RecordCount;
   SQLCupom.First;
   while not SQLCupom.Eof do
     begin
@@ -2395,7 +2416,7 @@ begin
       zInventario.SQL.Add('(iv.INVDDATA = '''+FormatDateTime('mm/dd/yyyy',DataInventario.Date)+''') and ');
       zInventario.SQL.Add('(p.PRODCATIVO = ''S'') and (p.PRODA2TIPOITEM=''00'') and (p.PRODCSERVICO <> ''M'') ');
       zInventario.Open;
-      Progress.Max := zInventario.RecordCount;
+      //Progress.Max := zInventario.RecordCount;
 
       EditTabela.Text := 'Calculando Total do Inventário ';
 
@@ -2429,7 +2450,7 @@ begin
       zInventario.SQL.Add('left join unidade u on u.unidicod = p.unidicod where (iv.EMPRICOD = '+ComboEmpresa.Value+') and ');
       zInventario.SQL.Add('(p.PRODA2TIPOITEM <= 1) and (p.PRODCSERVICO = ''N'') ');
       zInventario.Open;
-      Progress.Max := zInventario.RecordCount;
+      //Progress.Max := zInventario.RecordCount;
 
       EditTabela.Text := 'Calculando Total do Inventário ';
 
@@ -2672,6 +2693,7 @@ begin
       z0200.FieldByName('COD_ITEM').AsString    := Produto;
       z0200.FieldByName('SELECIONADO').AsString := 'S';
       z0200.Post;
+      //z0200.ApplyUpdates;
       Application.ProcessMessages;
       // Inclui a unidade de medida
       Inclui_0190(Produto);
@@ -2700,7 +2722,10 @@ begin
     '(N.EMPRICOD='+ComboEmpresa.Value+') and (N.NOFICSTATUS = ''E'')';
     // Removido Adilson  or N.NOFICSTATUS = ''C'' , Nao devo informar Participante para notas canceladas conforme manual SPED
     zPesquisa.Open;
-    Progress.Max := zPesquisa.RecordCount;
+
+    if zPesquisa.RecordCount > 0 then
+      Progress.Max := zPesquisa.RecordCount;
+
     EditTabela.Text := 'Criando - BLOCO 0150 - Clientes NOTA FISCAL'; EditTabela.Update;
     n0150 := 0;
 
@@ -2795,7 +2820,7 @@ begin
           Try
             //Registro 0150 - ABERTURA DO REGISTRO 0150 - DADOS DOS PARTICIPANTES (EMPRESAS)
             z0150.Append;
-            z0150.FieldByName('COD_PART').AsString      := 'E'+zPesquisa.FieldByName('EMPRICOD').AsString;
+            z0150.FieldByName('COD_PART').AsString      := zPesquisa.FieldByName('EMPRICOD').AsString;
             z0150.FieldByName('NOME').AsString          := Trim(zPesquisa.FieldByName('EMPRA60RAZAOSOC').AsString) ;
             z0150.FieldByName('COD_PAIS').AsString      := '1058';
             z0150.FieldByName('CNPJ').AsString          := zPesquisa.FieldByName('EMPRA14CGC').AsString;
@@ -2837,7 +2862,10 @@ begin
     '(N.FORNICOD IS NOT NULL) and (N.Empricod ='+ComboEmpresa.Value+') and (N.NOFICSTATUS = ''E'') ';
     // Removido Adilson  or N.NOFICSTATUS = ''C'' , Nao devo informar Participante para notas canceladas conforme manual SPED
     zPesquisa.Open;
-    Progress.Max := zPesquisa.RecordCount;
+
+    if zPesquisa.RecordCount > 0 then
+      Progress.Max := zPesquisa.RecordCount;
+      
     EditTabela.Text := 'Criando - BLOCO 0150 - Fornecedores NOTA FISCAL'; EditTabela.Update;
     z0150.close;
     z0150.Open;
@@ -2847,13 +2875,13 @@ begin
           //Registro 0150 - ABERTURA DO REGISTRO 0150 - DADOS DOS PARTICIPANTES (CLIENTES E FORNECEDORES)
           Achou:= 'N';
           z0150.First;
-          if z0150.Locate('COD_FORN','E'+zPesquisa.FieldByName('FORNICOD').AsString,[]) then
+          if z0150.Locate('COD_FORN',zPesquisa.FieldByName('FORNICOD').AsString,[]) then
             Achou := 'S';
 
           If Achou = 'N' then
           Begin
             z0150.Append;
-            z0150.FieldByName('COD_PART').AsString      := 'F' + zPesquisa.FieldByName('FORNICOD').AsString;
+            z0150.FieldByName('COD_PART').AsString      := zPesquisa.FieldByName('FORNICOD').AsString;
             z0150.FieldByName('COD_FORN').AsString      := zPesquisa.Fieldbyname('FORNICOD').AsString;
             z0150.FieldByName('NOME').AsString          := Trim(zPesquisa.FieldByName('FORNA60RAZAOSOC').AsString) ;
             z0150.FieldByName('COD_PAIS').AsString      := zPesquisa.FieldByName('FORNICODPAIS').AsString;
@@ -2944,7 +2972,10 @@ begin
     // Removido Adilson  or N.NOCPCSTATUS = ''C'' , Nao devo informar Participante para notas canceladas conforme manual SPED
 
     zPesquisa.Open;
-    Progress.Max := zPesquisa.RecordCount;
+
+    if zPesquisa.RecordCount > 0 then
+      Progress.Max := zPesquisa.RecordCount;
+      
     EditTabela.Text := 'Criando - BLOCO 0150 - Fornecedores NOTA COMPRA'; EditTabela.Update;
     z0150.close;
     z0150.Open;
@@ -2975,7 +3006,7 @@ begin
           If Achou = 'N' then
           Begin
             z0150.Append;
-            z0150.FieldByName('COD_PART').AsString      := 'F' + zPesquisa.FieldByName('FORNICOD').AsString;
+            z0150.FieldByName('COD_PART').AsString      := zPesquisa.FieldByName('FORNICOD').AsString;
             z0150.FieldByName('COD_FORN').AsString      := zPesquisa.Fieldbyname('FORNICOD').AsString;
             z0150.FieldByName('NOME').AsString          := Trim(zPesquisa.FieldByName('FORNA60RAZAOSOC').AsString);
             z0150.FieldByName('COD_PAIS').AsString      := zPesquisa.FieldByName('FORNICODPAIS').AsString;
@@ -3206,7 +3237,10 @@ begin
     '(C.DT_AQUIS <='''+FormatDateTime('dd/dd/yyyy',ate.Date)+''')';
     zPesquisa.Open;
     zPesquisa.Last;
-    Progress.Max := zPesquisa.RecordCount;
+
+    if zPesquisa.RecordCount > 0 then
+      Progress.Max := zPesquisa.RecordCount;
+      
     zPesquisa.First;
     EditTabela.Text := 'Criando - BLOCO 0150 - Transp. CONHECIMENTOS'; EditTabela.Update;
     z0150.Close;
@@ -3340,8 +3374,12 @@ begin
     z0150.Close;
     z0150.Open;
     Progress.Position := 0;
-    Progress.Max      := z0150.RecordCount;
+
+    if z0150.RecordCount > 0 then
+      Progress.Max := z0150.RecordCount;
+
     EditTabela.Text := 'Criando - BLOCO 0150 - Gravando COD_PART'; EditTabela.Update;
+    z0150.First;
     While not z0150.EOF do
       begin
         Try
@@ -3407,10 +3445,10 @@ Begin
                             'N.EMPRICOD='+ComboEmpresa.Value+' AND (N.CUPOCSTATUS = ''A'' or N.CUPOCSTATUS = ''C'') AND N.CHAVEACESSO is not null' ;
       zPesquisa.Open;
 
-      Progress.Max := zPesquisa.RecordCount;
+      //Progress.Max := zPesquisa.RecordCount;
       Progress.Position := 1;
       zPesquisa.First;
-
+                                                            
       nC100 := 0;
       nC140 := 0;
       While not zPesquisa.EOF do
@@ -3434,7 +3472,7 @@ Begin
             '65'                                                  + '|'; // 05 COD_MOD Código do modelo do documento fiscal, conforme a Tabela  4.1.1   C 002* - S
           Linha := Linha + '02|';  // Documento Cancelado
 
-          Linha := Linha +                                          '|'+ // 07 SER Série do documento fiscal C 003 - OC OC
+          Linha := Linha + Copy(zPesquisa.FieldByName('TERMICOD').AsString,0,3) + '|'+ // 07 SER Série do documento fiscal C 003 - OC OC
           NroDocumento                                            + '|'+ // 08 NUM_DOC Número do documento fiscal N 009 - O O
           Chave                                                   + '|'+ // 09 CHV_NFE Chave da Nota Fiscal Eletrônica N 044* - O O
                                                                     '|'+ // 10 DT_DOC Data da emissão do documento fiscal N 008* - O O
@@ -3522,14 +3560,14 @@ Begin
 
                 FormatFloat('0.00',xVL_BC_ICMS)                             + '|'+ // 21 VL_BC_ICMS Valor da base de cálculo do ICMS N - 02 N
                 FormatFloat('0.00',xVL_ICMS)                                + '|'+ // 22 VL_ICMS Valor do ICMS N - 02 N
-                FormatFloat('0.00',xVL_BC_ICMS_ST)                          + '|'+ // 23 VL_BC_ICMS_ST Valor da base de cálculo do ICMS substituição tributária N - 02 N
-                FormatFloat('0.00',xVL_ICMS_ST)                             + '|'+ // 24 VL_ICMS_ST Valor do ICMS retido por substituição tributária N - 02 N
+                {FormatFloat('0.00',xVL_BC_ICMS_ST)}''                      + '|'+ // 23 VL_BC_ICMS_ST Valor da base de cálculo do ICMS substituição tributária N - 02 N
+                {FormatFloat('0.00',xVL_ICMS_ST)}''                         + '|'+ // 24 VL_ICMS_ST Valor do ICMS retido por substituição tributária N - 02 N
 
-                FormatFloat('0.00',0)                                       + '|'+ //25 VL_IPI Valor total do IPI N - 02 N
-                FormatFloat('0.00',0)                                       + '|'+ //26 VL_PIS Valor total do PIS N - 02 N
-                FormatFloat('0.00',0)                                       + '|'+ //27 VL_COFINS Valor total da COFINS N - 02 N
-                                                                             '0|'+ //28 VL_PIS_ST Valor total do PIS retido por substituição tributária N - 02 N
-                                                                             '0|'; //29 VL_COFINS_ST Valor total da COFINS retido por substituição tributária N - 02 N
+                {FormatFloat('0.00',0)}''                                   + '|'+ //25 VL_IPI Valor total do IPI N - 02 N
+                {FormatFloat('0.00',0)}''                                   + '|'+ //26 VL_PIS Valor total do PIS N - 02 N
+                {FormatFloat('0.00',0)}''                                   + '|'+ //27 VL_COFINS Valor total da COFINS N - 02 N
+                                                                              '|'+ //28 VL_PIS_ST Valor total do PIS retido por substituição tributária N - 02 N
+                                                                              '|'; //29 VL_COFINS_ST Valor total da COFINS retido por substituição tributária N - 02 N
                 VL_TOT_DEBITOS := VL_TOT_DEBITOS + xVL_ICMS;
               end
             else
@@ -3542,11 +3580,11 @@ Begin
         ProgressGeral.Position := 60;
 
         // REGISTRO C170: ITENS DO DOCUMENTO (CÓDIGO 01, 1B, 04, 55 e 65).
-        if StatusNF = 'A' then
+        {if StatusNF = 'A' then
           begin
             EditTabela.Text := 'Criando - BLOCO C170 - ITENS DO DOCUMENTO'; EditTabela.Update;
             if Not RegistroC170 Then Begin Result := False; Exit; End;
-          end;
+          end;}
 
         // REGISTRO C190: REGISTRO ANALÍTICO DO DOCUMENTO (CÓDIGO 01, 1B, 04E 55 E 65).
         EditTabela.Text := 'Criando - BLOCO C190 - REGISTRO ANALITICO'; EditTabela.Update;
@@ -3569,12 +3607,12 @@ Begin
                         'N.EMPRICOD='+ComboEmpresa.Value+' AND N.NOFICSTATUS <> ''A'' ' ;
   zPesquisa.Open;
 
-  Progress.Max := zPesquisa.RecordCount;
+  //Progress.Max := zPesquisa.RecordCount;
   Progress.Position := 1;
   zPesquisa.First;
 
-  nC100 := 0;
-  nC140 := 0;
+  //nC100 := 0;
+  //nC140 := 0;
   EditTabela.Text := 'Criando - BLOCO C100 - NOTAS FISCAIS EMITIDAS'; EditTabela.Update;
   While not zPesquisa.EOF do
   begin
@@ -3676,7 +3714,7 @@ Begin
         Begin
           Showmessage('Não Foi Localizado Codigo do Participante para a NF '+zPesquisa.FieldByName('NOFIINUMERO').AsString);
           Result := False;
-          Abort;
+          //Abort;
         End;
 
         Linha := Linha + vCodParticipante + '|';
@@ -3843,11 +3881,11 @@ Begin
       end; }
 
     // REGISTRO C170: ITENS DO DOCUMENTO (CÓDIGO 01, 1B, 04 e 55).
-    if StatusNF = 'E' then
+    {if StatusNF = 'E' then
       begin
         EditTabela.Text := 'Criando - BLOCO C170 - ITENS DO DOCUMENTO'; EditTabela.Update;
         if Not RegistroC170 Then Begin Result := False; Exit; End;
-      end;
+      end;}
 
     // REGISTRO C172: OPERAÇÕES COM ISSQN (CÓDIGO 01)
     // Adilson Verificar com Judi se teremos que lancar as Notas de Servico na Entrada
@@ -3889,8 +3927,9 @@ Begin
 
   zPesquisa.Open;
 
-  Progress.Max := zPesquisa.RecordCount;
+  //Progress.Max := zPesquisa.RecordCount;
   Progress.Position := 1;
+  zPesquisa.First;
 
   EditTabela.Text := 'Criando - BLOCO C100 - NOTAS FISCAIS DE COMPRAS'; EditTabela.Update;
   While not zPesquisa.EOF do
@@ -3906,13 +3945,13 @@ Begin
       // Pesquisa na tabela fornecedor o cnpj do participante
       vCodParticipante := DM.SQLLocate('SPED_0150','COD_FORN','COD_PART',zPesquisa.FieldByName('FORNICOD').AsString);
 
-      if vCodParticipante = '' then
+      {if vCodParticipante = '' then
       begin
         Showmessage('Codigo do Participante Não Encontrado!'+#13+#10+'Nota Compra: '+NroDocumento);
         Result := False;
         Exit;
-      end;
-
+      end;}
+    begin
       if zPesquisa.FieldByName('NOFIA44CHAVEACESSO').AsString <> '' then
         Chave := zPesquisa.FieldByName('NOFIA44CHAVEACESSO').AsString
       else
@@ -4084,13 +4123,14 @@ Begin
       if Not RegistroC170 Then Begin Result := False; Exit; End;
 
       // REGISTRO C172: OPERAÇÕES COM ISSQN (CÓDIGO 01)
-     { na entrada não apresentar
+      {na entrada não apresentar
      EditTabela.Text := 'Criando - BLOCO C172 -  OPERAÇÕES COM ISSQN (CÓDIGO 01) NF COMPRA '+ zPesquisa.FieldByName('NOCPA30NRO').AsString; EditTabela.Update;
-      if Not RegistroC172 Then Begin Result := False; Exit; End;      }
+      if Not RegistroC172 Then Begin Result := False; Exit; End;}
 
       // REGISTRO C190: REGISTRO ANALÍTICO DO DOCUMENTO (CÓDIGO 01, 1B, 04E 55).
       EditTabela.Text := 'Criando - BLOCO C190 - REGISTRO ANALITICO'; EditTabela.Update;
       if Not RegistroC190 Then Begin Result := False; Exit; End;
+    end;
 
     zPesquisa.Next;
     Progress.Position := Progress.Position + 1;
@@ -4406,11 +4446,11 @@ Begin
 
   if Pos('NOTAFISCAL',zPesquisa.SQL.Text) > 0 Then // Nota de Venda da Tabela Notafiscal
     begin
-      if (not chkItensNFe.Checked) Then
+      {if (not chkItensNFe.Checked) Then
       begin
         Result := True;
         Exit; // se for nota eletronica propria não precisa referenciar os produtos, a não ser que o Contador solicite
-      End;
+      End;}
 
       EditTabela.Text := 'Criando Registro C170 - Abrindo Tabela NOTAFISCALITEM'; EditTabela.Update;
       zPesquisa1.close;
@@ -4577,11 +4617,11 @@ Begin
   // Nota de Compra da tabela NotaCompra
   if Pos('NOTACOMPRA',zPesquisa.SQL.Text) > 0 Then // Nota de Venda da Tabela Notafiscal
     begin
-      if (not chkItensNFe.Checked) Then
+      {if (not chkItensNFe.Checked) Then
       begin
         Result := True;
         Exit; // se for nota eletronica propria não precisa referenciar os produtos, a não ser que o Contador solicite
-      End;
+      End;}
 
       EditTabela.Text := 'Criando Registro C170 - Abrindo tabela NOTACOMPRAITEM'; EditTabela.Update;
       zPesquisa1.close;
@@ -5426,7 +5466,7 @@ begin
       EditTabela.Text := 'Criando Registro C410 - TOTAIS DE PIS E COFINS DO DIA '+FormatDateTime('dd/mm/yyyy',SQLReducaoZREDUDEMIS.Value); EditTabela.Update;
       SQLCupomC410.Open;
       SQLCupomC410.Last;
-      Progress.Max := SQLCupomC410.RecordCount;
+      //Progress.Max := SQLCupomC410.RecordCount;
       Progress.position := 0;
       SQLCupomC410.First;
       while not SQLCupomC410.Eof do
@@ -5892,7 +5932,7 @@ var vCodTransp:String;
 Begin
   EditTabela.Text := 'Gravando Registro D100 - Conhecimento Transportes';
   zPesquisa.Last;
-  Progress.Max := zPesquisa.RecordCount;
+  //Progress.Max := zPesquisa.RecordCount;
   Progress.Position := 0;
   Progress.Update;
   zPesquisa.First;
@@ -6132,7 +6172,7 @@ Begin
   begin
     EditTabela.Text := 'Registrando LMC do Estabelecimento';
     zPesquisa.Last;
-    Progress.Max := zPesquisa.RecordCount;
+    //Progress.Max := zPesquisa.RecordCount;
     Progress.Position := 0;
     Progress.Update;
     zPesquisa.First;
@@ -7158,11 +7198,11 @@ begin
   zPesquisa.Close;
   zPesquisa.SQL.Text := 'SELECT * FROM CLIENTE WHERE CLIECATIVO=''S'' ';
   zPesquisa.Open;
-  Progress.Max := zPesquisa.RecordCount;
+  //Progress.Max := zPesquisa.RecordCount;
   EditTabela.Text := 'Criando - BLOCO 0150 - Todos Clientes'; EditTabela.Update;
 
-  z0150.Close;
-  z0150.Open;
+  //z0150.Close;
+  //z0150.Open;
   While not zPesquisa.EOF do
     begin
       Try
@@ -7210,7 +7250,7 @@ begin
       Progress.Position := Progress.Position + 1;
       Progress.Update;
     end;
-  z0150.Close;
+  //z0150.Close;
   ProgressGeral.Position := 30;
   {Fim Todos Clientes}
 
@@ -7219,10 +7259,10 @@ begin
   zPesquisa.SQL.Text := 'SELECT * FROM FORNECEDOR';
   zPesquisa.Open;
   Progress.Position := 0;
-  Progress.Max := zPesquisa.RecordCount;
+  //Progress.Max := zPesquisa.RecordCount;
   EditTabela.Text := 'Criando - BLOCO 0150 - Todos Fornecedores'; EditTabela.Update;
-  z0150.close;
-  z0150.Open;
+  //z0150.close;
+  //z0150.Open;
   While not zPesquisa.EOF do
     begin
       Try
@@ -7275,10 +7315,10 @@ begin
   {Fim Todos Fornecedores}
 
   {Gravar no arquivo Participantes pegando da tabela sped_150}
-  z0150.Close;
-  z0150.Open;
+  //z0150.Close;
+  //z0150.Open;
   Progress.Position := 0;
-  Progress.Max      := z0150.RecordCount;
+  //Progress.Max      := z0150.RecordCount;
   EditTabela.Text := 'Criando - BLOCO 0150 - Gravando COD_PART'; EditTabela.Update;
   While not z0150.EOF do
     begin
@@ -7319,7 +7359,7 @@ begin
   z0190.SQL.Text := 'SELECT * FROM UNIDADE';
   z0190.Open;
   Progress.Position := 0;
-  Progress.Max := z0190.RecordCount;
+  //Progress.Max := z0190.RecordCount;
   While not z0190.Eof Do
     begin
       Linha :=   '|0190|'                                                 + // 01-Registro 0190
@@ -7352,7 +7392,7 @@ begin
   zPesquisa.SQL.Text := 'SELECT PRODICOD FROM PRODUTO WHERE PRODCATIVO=''S'' ';
   zPesquisa.Open;
   Progress.Position := 0;
-  Progress.Max := zPesquisa.RecordCount;
+  //Progress.Max := zPesquisa.RecordCount;
   while not zPesquisa.eof do
     begin
       z0200.Append;
@@ -7383,7 +7423,7 @@ begin
   'Where sped_0200.selecionado = ''S'''                                                        ;
   z0200.open;
   Progress.Position := 0;
-  Progress.Max := z0200.RecordCount;
+  //Progress.Max := z0200.RecordCount;
   while not z0200.Eof do
     begin
       CodProd       := z0200.Fieldbyname('COD_ITEM').AsString;
@@ -7441,6 +7481,36 @@ begin
   ate.Enabled := True;
 
   ShowMessage('Geração Concluida!');
+end;
+
+procedure TFormTelaExportacaoSped.z0200AfterPost(DataSet: TDataSet);
+begin
+  inherited;
+  z0200.ApplyUpdates;
+end;
+
+procedure TFormTelaExportacaoSped.z0190AfterPost(DataSet: TDataSet);
+begin
+  inherited;
+  z0190.ApplyUpdates;
+end;
+
+procedure TFormTelaExportacaoSped.SQLC490AfterPost(DataSet: TDataSet);
+begin
+  inherited;
+  SQLC490.ApplyUpdates;
+end;
+
+procedure TFormTelaExportacaoSped.ZRegC490AfterPost(DataSet: TDataSet);
+begin
+  inherited;
+  ZRegC490.ApplyUpdates;
+end;
+
+procedure TFormTelaExportacaoSped.z0150AfterPost(DataSet: TDataSet);
+begin
+  inherited;
+  z0150.ApplyUpdates;
 end;
 
 end.
