@@ -289,7 +289,7 @@ implementation
 uses CadastroCliente, DataModulo, UnitLibrary,
   TelaBaixarDocumentosReceberRecebimento, CadastroRecibo,
   TelaPesquisaDocumentoReceber, TelaBaixarDocumentosReceberPlanoConta,
-  TelaBaixarDocumentosPlanoConta;
+  TelaBaixarDocumentosPlanoConta, TelaMovimentoRetornoSicredi;
 {$R *.DFM}
 
 procedure TFormTelaBaixarDocumentosReceber.GeraRecibo;
@@ -1609,9 +1609,11 @@ end;
 
 procedure TFormTelaBaixarDocumentosReceber.ImportarRetornoBanco(NomeBanco, Arquivo : string);
 var Origem, Destino : string;
-var Info, Identificador, NossoNro, PathBanco, NomeArquivo, ValorTitulo : String;
+var Info, Identificador, NossoNro, PathBanco, NomeArquivo, ValorTitulo, Ocorrencia : String;
     Texto : TextFile;
     NroLinhas : integer;
+    FormMovRetornoSicredi: TFormTelaMovimentoRetornoSicredi;
+    ListaNossoNumero, ListaOcorrencias: TStrings;
 begin
   inherited;
   ValorTitulo := '0,00';
@@ -1637,11 +1639,47 @@ begin
   AssignFile( Texto, PathBanco+NomeArquivo);
   Reset(Texto);
 
-  {Pega o Total de linhas}
-  while not EOF(Texto) do
-  begin
-    Readln(Texto,info);
-    NroLinhas := NroLinhas + 1;
+  try
+    ListaNossoNumero := TStringList.Create;
+    ListaOcorrencias := TStringList.Create;
+
+    {Le linha 1 pra identificar o Banco na coluna 77}
+    Readln(Texto,Info);
+    Identificador := Copy(Info, 77, 3);
+    
+    {Pega o Total de linhas}
+    while not EOF(Texto) do
+    begin                                                                                                           
+      Readln(Texto,info);
+      if Identificador = '748' then
+      begin
+        NossoNro := Copy(Info, 48, 8);
+        
+        if NossoNro = '          ' then NossoNro := '';
+        if NossoNro = '0000000000' then NossoNro := '';
+
+        if IsNumeric(NossoNro,'INTEGER') then
+        begin
+          Ocorrencia := Copy(Info, 109, 2);
+          ListaNossoNumero.Add(NossoNro);
+          ListaOcorrencias.Add(Ocorrencia);
+        end;
+      end;
+
+      NroLinhas := NroLinhas + 1;
+    end;
+
+    if Identificador = '748' then
+      NroLinhas := NroLinhas - 1;
+
+    FormMovRetornoSicredi                   := TFormTelaMovimentoRetornoSicredi.Create(Self);
+    FormMovRetornoSicredi.fListaOcorrencias := ListaOcorrencias;
+    FormMovRetornoSicredi.fListaNossoNumero := ListaNossoNumero;
+    FormMovRetornoSicredi.ShowModal;
+  finally
+    FreeAndNil(FormMovRetornoSicredi);
+    ListaNossoNumero.Free;
+    ListaOcorrencias.Free;
   end;
   Progress.Position := 0;
   Progress.Max      := NroLinhas;
@@ -1657,121 +1695,121 @@ begin
 
   TblRecebimento.Open;
   while not EOF(Texto) do
-    begin
-      Readln(Texto,Info);
-      Progress.Position := Progress.Position + 1 ;
+  begin
+    Readln(Texto,Info);
+    Progress.Position := Progress.Position + 1 ;
 
-      if Identificador = '041' then {Banrisul}
-        begin
-          NossoNro := Copy(Info, 63, 10) ;
-          if NossoNro = '          ' then NossoNro := '';
-          if NossoNro = '0000000000' then NossoNro := '';
-          if NossoNro <> '' then
-            begin
-              try
-                {tenta converter apenas numeros pois o banrisul retorna o nosso nro com zeros na frente e no banco estou gravando sem zeros}
-                NossoNro := IntToStr(StrToInt(NossoNro));
-              except
-                Application.ProcessMessages;
+    if Identificador = '041' then {Banrisul}
+      begin
+        NossoNro := Copy(Info, 63, 10) ;
+        if NossoNro = '          ' then NossoNro := '';
+        if NossoNro = '0000000000' then NossoNro := '';
+        if NossoNro <> '' then
+          begin
+            try
+              {tenta converter apenas numeros pois o banrisul retorna o nosso nro com zeros na frente e no banco estou gravando sem zeros}
+              NossoNro := IntToStr(StrToInt(NossoNro));
+            except
+              Application.ProcessMessages;
+            end;
+            SQLContasReceber.Close;
+            {coloquei o copy no nosso nro porque o banrisul trata diferente do sicredi esse campo}
+            SQLContasReceber.MacroByName('MDocumento').AsString := '(CR.CTRCA30NRODUPLICBANCO = ''' + NossoNro + ''') or (CR.CTRCA15NOSSONUMERO = ''' + NossoNro + ''')';
+            SQLContasReceber.Open;
+            if not SQLContasReceber.IsEmpty then
+              begin
+                {Alimenta Tabela Temp Recebimento}
+                TblRecebimento.Append;
+                TblRecebimento.FieldByName('CTRCA13ID').AsString      := SQLContasReceber.FieldByName('CTRCA13ID').AsString;
+                TblRecebimento.FieldByName('CLIEA13ID').AsString      := SQLContasReceber.FieldByName('CLIEA13ID').AsString;
+                TblRecebimento.FieldByName('DtVencimento').AsDateTime := SQLContasReceber.FieldByName('CTRCDVENC').AsDateTime;
+                TblRecebimento.FieldByName('ClienteNome').AsString    := SQLContasReceber.FieldByName('CLIEA60RAZAOSOC').AsString;
+                TblRecebimento.FieldByName('Parcela').Value           := SQLContasReceber.FieldByName('CTRCINROPARC').Value;
+                TblRecebimento.FieldByName('Valor').AsFloat           := SQLContasReceber.FieldByName('Saldo').AsFloat;
+                TblRecebimento.FieldByName('ValorOriginal').AsFloat   := SQLContasReceber.FieldByName('CTRCN2VLR').AsFloat;
+                TblRecebimento.FieldByName('ValorDesconto').AsFloat   := SQLContasReceber.FieldByName('CTRCN2DESCFIN').AsFloat;
+                TblRecebimento.FieldByName('ValorTotal').AsFloat      := SQLContasReceber.FieldByName('CTRCN2VLR').AsFloat;
+                TblRecebimento.FieldByName('Emissao').AsFloat         := SQLContasReceber.FieldByName('CTRCDEMIS').AsFloat;
+
+                if SQLContasReceber.FieldByName('NOFIA13ID').asVariant <> Null Then
+                  begin
+                    if DM.ProcuraRegistro('NOTAFISCAL',['NOFIA13ID'],[SQLContasReceber.FieldByName('NOFIA13ID').asString],1) Then
+                      TblRecebimento.FieldByName('Documento').asString := DM.SQLTemplate.FindField('NOFIINUMERO').asString;
+                  end
+                else
+                  begin
+                    if SQLContasReceber.FieldByName('CUPOA13ID').AsVariant <> Null then
+                      TblRecebimento.FieldByName('Documento').AsString := SQLContasReceber.FieldByName('CUPOA13ID').asString
+                    else
+                      TblRecebimento.FieldByName('Documento').AsString := SQLContasReceber.FieldByName('CTRCA13ID').asString;
+                  end;
+                TblRecebimento.FieldByName('NroDuplicBanco').AsString  := SQLContasReceber.FieldByName('CTRCA30NRODUPLICBANCO').AsString;
+                if SQLContasReceber.FieldByName('CTRCA15NOSSONUMERO').AsString <> '' then
+                  TblRecebimentoNroDuplicBanco.Value := SQLContasReceber.FieldByName('CTRCA15NOSSONUMERO').AsString;
+                TblRecebimento.FieldByName('Baixar').Value := True;
+
+                TblRecebimento.Post;
+              end
+            else
+              begin {Se nao achou, salvar no disco os titulos nao achados}
+                TitulosNaoEncontrados.lines.Add('-> Titulo Numero: '+NossoNro);
               end;
-              SQLContasReceber.Close;
-              {coloquei o copy no nosso nro porque o banrisul trata diferente do sicredi esse campo}
-              SQLContasReceber.MacroByName('MDocumento').AsString := '(CR.CTRCA30NRODUPLICBANCO = ''' + NossoNro + ''') or (CR.CTRCA15NOSSONUMERO = ''' + NossoNro + ''')';
-              SQLContasReceber.Open;
-              if not SQLContasReceber.IsEmpty then
-                begin
-                  {Alimenta Tabela Temp Recebimento}
-                  TblRecebimento.Append;
-                  TblRecebimento.FieldByName('CTRCA13ID').AsString      := SQLContasReceber.FieldByName('CTRCA13ID').AsString;
-                  TblRecebimento.FieldByName('CLIEA13ID').AsString      := SQLContasReceber.FieldByName('CLIEA13ID').AsString;
-                  TblRecebimento.FieldByName('DtVencimento').AsDateTime := SQLContasReceber.FieldByName('CTRCDVENC').AsDateTime;
-                  TblRecebimento.FieldByName('ClienteNome').AsString    := SQLContasReceber.FieldByName('CLIEA60RAZAOSOC').AsString;
-                  TblRecebimento.FieldByName('Parcela').Value           := SQLContasReceber.FieldByName('CTRCINROPARC').Value;
-                  TblRecebimento.FieldByName('Valor').AsFloat           := SQLContasReceber.FieldByName('Saldo').AsFloat;
-                  TblRecebimento.FieldByName('ValorOriginal').AsFloat   := SQLContasReceber.FieldByName('CTRCN2VLR').AsFloat;
-                  TblRecebimento.FieldByName('ValorDesconto').AsFloat   := SQLContasReceber.FieldByName('CTRCN2DESCFIN').AsFloat;
-                  TblRecebimento.FieldByName('ValorTotal').AsFloat      := SQLContasReceber.FieldByName('CTRCN2VLR').AsFloat;
-                  TblRecebimento.FieldByName('Emissao').AsFloat         := SQLContasReceber.FieldByName('CTRCDEMIS').AsFloat;
+          end;
+      end;
 
-                  if SQLContasReceber.FieldByName('NOFIA13ID').asVariant <> Null Then
-                    begin
-                      if DM.ProcuraRegistro('NOTAFISCAL',['NOFIA13ID'],[SQLContasReceber.FieldByName('NOFIA13ID').asString],1) Then
-                        TblRecebimento.FieldByName('Documento').asString := DM.SQLTemplate.FindField('NOFIINUMERO').asString;
-                    end
-                  else
-                    begin
-                      if SQLContasReceber.FieldByName('CUPOA13ID').AsVariant <> Null then
-                        TblRecebimento.FieldByName('Documento').AsString := SQLContasReceber.FieldByName('CUPOA13ID').asString
-                      else
-                        TblRecebimento.FieldByName('Documento').AsString := SQLContasReceber.FieldByName('CTRCA13ID').asString;
-                    end;
-                  TblRecebimento.FieldByName('NroDuplicBanco').AsString  := SQLContasReceber.FieldByName('CTRCA30NRODUPLICBANCO').AsString;
-                  if SQLContasReceber.FieldByName('CTRCA15NOSSONUMERO').AsString <> '' then
-                    TblRecebimentoNroDuplicBanco.Value := SQLContasReceber.FieldByName('CTRCA15NOSSONUMERO').AsString;
-                  TblRecebimento.FieldByName('Baixar').Value := True;
+    if Identificador = '748' then {Sicredi}
+      begin
+        NossoNro   := Copy(Info, 48, 8);
+        if NossoNro = '          ' then NossoNro := '';
+        if NossoNro = '0000000000' then NossoNro := '';
 
-                  TblRecebimento.Post;
-                end
-              else
-                begin {Se nao achou, salvar no disco os titulos nao achados}
-                  TitulosNaoEncontrados.lines.Add('-> Titulo Numero: '+NossoNro);
-                end;
-            end;
-        end;
+        if IsNumeric(NossoNro,'INTEGER') then
+          begin
+            SQLContasReceber.Close;
+            SQLContasReceber.MacroByName('MDocumento').AsString := '(CR.CTRCA15NOSSONUMERO = ''' + NossoNro + ''')';
+            SQLContasReceber.Open;
+            if not SQLContasReceber.IsEmpty then
+              begin
+                {Alimenta Tabela Temp Recebimento}
+                TblRecebimento.Append;
+                TblRecebimento.FieldByName('CTRCA13ID').AsString      := SQLContasReceber.FieldByName('CTRCA13ID').AsString;
+                TblRecebimento.FieldByName('CLIEA13ID').AsString      := SQLContasReceber.FieldByName('CLIEA13ID').AsString;
+                TblRecebimento.FieldByName('DtVencimento').AsDateTime := SQLContasReceber.FieldByName('CTRCDVENC').AsDateTime;
+                TblRecebimento.FieldByName('ClienteNome').AsString    := SQLContasReceber.FieldByName('CLIEA60RAZAOSOC').AsString;
+                TblRecebimento.FieldByName('Parcela').Value           := SQLContasReceber.FieldByName('CTRCINROPARC').Value;
+                TblRecebimento.FieldByName('Valor').AsFloat           := SQLContasReceber.FieldByName('Saldo').AsFloat;
+                TblRecebimento.FieldByName('ValorOriginal').AsFloat   := SQLContasReceber.FieldByName('CTRCN2VLR').AsFloat;
+                TblRecebimento.FieldByName('ValorDesconto').AsFloat   := SQLContasReceber.FieldByName('CTRCN2DESCFIN').AsFloat;
+                TblRecebimento.FieldByName('ValorTotal').AsFloat      := SQLContasReceber.FieldByName('CTRCN2VLR').AsFloat;
+                TblRecebimento.FieldByName('Emissao').AsFloat         := SQLContasReceber.FieldByName('CTRCDEMIS').AsFloat;
 
-      if Identificador = '748' then {Sicredi}
-        begin
-          NossoNro := Copy(Info, 48, 8) ;
-          if NossoNro = '          ' then NossoNro := '';
-          if NossoNro = '0000000000' then NossoNro := '';
+                if SQLContasReceber.FieldByName('NOFIA13ID').asVariant <> Null Then
+                  begin
+                    if DM.ProcuraRegistro('NOTAFISCAL',['NOFIA13ID'],[SQLContasReceber.FieldByName('NOFIA13ID').asString],1) Then
+                      TblRecebimento.FieldByName('Documento').asString := DM.SQLTemplate.FindField('NOFIINUMERO').asString;
+                  end
+                else
+                  begin
+                    if SQLContasReceber.FieldByName('CUPOA13ID').AsVariant <> Null then
+                      TblRecebimento.FieldByName('Documento').AsString := SQLContasReceber.FieldByName('CUPOA13ID').asString
+                    else
+                      TblRecebimento.FieldByName('Documento').AsString := SQLContasReceber.FieldByName('CTRCA13ID').asString;
+                  end;
+                TblRecebimento.FieldByName('NroDuplicBanco').AsString  := SQLContasReceber.FieldByName('CTRCA30NRODUPLICBANCO').AsString;
+                if SQLContasReceber.FieldByName('CTRCA15NOSSONUMERO').AsString <> '' then
+                  TblRecebimentoNroDuplicBanco.Value := SQLContasReceber.FieldByName('CTRCA15NOSSONUMERO').AsString;
+                TblRecebimento.FieldByName('Baixar').Value := True;
 
-          if IsNumeric(NossoNro,'INTEGER') then
-            begin
-              SQLContasReceber.Close;
-              SQLContasReceber.MacroByName('MDocumento').AsString := '(CR.CTRCA15NOSSONUMERO = ''' + NossoNro + ''')';
-              SQLContasReceber.Open;
-              if not SQLContasReceber.IsEmpty then
-                begin
-                  {Alimenta Tabela Temp Recebimento}
-                  TblRecebimento.Append;
-                  TblRecebimento.FieldByName('CTRCA13ID').AsString      := SQLContasReceber.FieldByName('CTRCA13ID').AsString;
-                  TblRecebimento.FieldByName('CLIEA13ID').AsString      := SQLContasReceber.FieldByName('CLIEA13ID').AsString;
-                  TblRecebimento.FieldByName('DtVencimento').AsDateTime := SQLContasReceber.FieldByName('CTRCDVENC').AsDateTime;
-                  TblRecebimento.FieldByName('ClienteNome').AsString    := SQLContasReceber.FieldByName('CLIEA60RAZAOSOC').AsString;
-                  TblRecebimento.FieldByName('Parcela').Value           := SQLContasReceber.FieldByName('CTRCINROPARC').Value;
-                  TblRecebimento.FieldByName('Valor').AsFloat           := SQLContasReceber.FieldByName('Saldo').AsFloat;
-                  TblRecebimento.FieldByName('ValorOriginal').AsFloat   := SQLContasReceber.FieldByName('CTRCN2VLR').AsFloat;
-                  TblRecebimento.FieldByName('ValorDesconto').AsFloat   := SQLContasReceber.FieldByName('CTRCN2DESCFIN').AsFloat;
-                  TblRecebimento.FieldByName('ValorTotal').AsFloat      := SQLContasReceber.FieldByName('CTRCN2VLR').AsFloat;
-                  TblRecebimento.FieldByName('Emissao').AsFloat         := SQLContasReceber.FieldByName('CTRCDEMIS').AsFloat;
-
-                  if SQLContasReceber.FieldByName('NOFIA13ID').asVariant <> Null Then
-                    begin
-                      if DM.ProcuraRegistro('NOTAFISCAL',['NOFIA13ID'],[SQLContasReceber.FieldByName('NOFIA13ID').asString],1) Then
-                        TblRecebimento.FieldByName('Documento').asString := DM.SQLTemplate.FindField('NOFIINUMERO').asString;
-                    end
-                  else
-                    begin
-                      if SQLContasReceber.FieldByName('CUPOA13ID').AsVariant <> Null then
-                        TblRecebimento.FieldByName('Documento').AsString := SQLContasReceber.FieldByName('CUPOA13ID').asString
-                      else
-                        TblRecebimento.FieldByName('Documento').AsString := SQLContasReceber.FieldByName('CTRCA13ID').asString;
-                    end;
-                  TblRecebimento.FieldByName('NroDuplicBanco').AsString  := SQLContasReceber.FieldByName('CTRCA30NRODUPLICBANCO').AsString;
-                  if SQLContasReceber.FieldByName('CTRCA15NOSSONUMERO').AsString <> '' then
-                    TblRecebimentoNroDuplicBanco.Value := SQLContasReceber.FieldByName('CTRCA15NOSSONUMERO').AsString;
-                  TblRecebimento.FieldByName('Baixar').Value := True;
-
-                  TblRecebimento.Post;
-                end
-              else
-                begin {Se nao achou, salvar no disco os titulos nao achados}
-                  TitulosNaoEncontrados.lines.Add('-> Titulo Numero: '+NossoNro + ' Valor Pago R$ ' + ValorTitulo);
-                end;
-            end;
-          Readln(Texto,Info); {Coloquei aqui novamente Pq no txt do Sicredi repete na prox linha a mesma operacao, para outros bancos ver melhor}
-        end;
-    end;
+                TblRecebimento.Post;
+              end
+            else
+              begin {Se nao achou, salvar no disco os titulos nao achados}
+                TitulosNaoEncontrados.lines.Add('-> Titulo Numero: '+NossoNro + ' Valor Pago R$ ' + ValorTitulo);
+              end;
+          end;
+        Readln(Texto,Info); {Coloquei aqui novamente Pq no txt do Sicredi repete na prox linha a mesma operacao, para outros bancos ver melhor}
+      end;
+  end;
   CloseFile(Texto);
 
   {mover para importado}
