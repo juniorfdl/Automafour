@@ -235,9 +235,12 @@ type
     procedure SQLTemplateCalcFields(DataSet: TDataSet);
     procedure SQLPedidoItemCalcFields(DataSet: TDataSet);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure ImpPedidoVendawOnCloseBtnClick(WindowHandle: HWND;
+      ViewIndex: Word; var Cancel: Boolean);
   private
     { Private declarations }
     procedure AbrirDados;
+    procedure OnCrpeViewerResize(Sender: TObject);
   public
     { Public declarations }
     class function Imprimir:Boolean;
@@ -451,10 +454,14 @@ begin
   try
     FormPrincipal:= TFormPrincipal.Create(nil);
     FormPrincipal.db.Connected := True;
-    FormPrincipal.ImpPedidoVenda.ReportName := ExtractFilePath(Application.ExeName) + '\gestao\PedidoVenda\Pedido Orcamento.rpt';
+    FormPrincipal.ImpPedidoVenda.ReportName := ExtractFilePath(Application.ExeName) + '\gestao\Pedido Orcamento.rpt';
     try
       FormPrincipal.AbrirDados;
+      //FormPrincipal.bordericons:= [bisystemmenu];
+      //FormPrincipal.OnResize:= FormPrincipal.OnCrpeViewerResize;
+      //FormPrincipal.ImpPedidoVenda.WindowParent:= FormPrincipal;
       FormPrincipal.ImpPedidoVenda.Execute;
+      FormPrincipal.ShowModal;
     except
       on E: Exception do
       begin
@@ -465,6 +472,26 @@ begin
     FormPrincipal.db.Connected := False;
     Application.Terminate;
   end;
+end;
+
+procedure TFormPrincipal.OnCrpeViewerResize(Sender: TObject);
+ begin
+   if (sender is TForm) then
+   begin
+     SetWindowPos(ImpPedidoVenda.ReportWindowHandle,
+                  HWND_TOP,
+                  0,
+                  0,
+                  TForm(Sender).ClientWidth,
+                  TForm(Sender).ClientHeight,
+                  SWP_NOZORDER);
+   end;
+ end;
+
+procedure TFormPrincipal.ImpPedidoVendawOnCloseBtnClick(WindowHandle: HWND;
+  ViewIndex: Word; var Cancel: Boolean);
+begin
+  self.close;
 end;
 
 end.
