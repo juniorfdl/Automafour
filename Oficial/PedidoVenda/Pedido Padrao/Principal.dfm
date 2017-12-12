@@ -269,6 +269,7 @@ object FormPrincipal: TFormPrincipal
     DiscardSavedData = True
     ProgressDialog = False
     WindowEvents = True
+    wOnCloseBtnClick = ImpPedidoVendawOnCloseBtnClick
     PrintDate.Day = 0
     PrintDate.Month = 0
     PrintDate.Year = 0
