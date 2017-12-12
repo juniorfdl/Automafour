@@ -237,6 +237,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ImpPedidoVendawOnCloseBtnClick(WindowHandle: HWND;
       ViewIndex: Word; var Cancel: Boolean);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
     procedure AbrirDados;
@@ -456,11 +457,7 @@ begin
     FormPrincipal.db.Connected := True;
     FormPrincipal.ImpPedidoVenda.ReportName := ExtractFilePath(Application.ExeName) + '\gestao\Pedido Orcamento.rpt';
     try
-      FormPrincipal.AbrirDados;
-      //FormPrincipal.bordericons:= [bisystemmenu];
-      //FormPrincipal.OnResize:= FormPrincipal.OnCrpeViewerResize;
-      //FormPrincipal.ImpPedidoVenda.WindowParent:= FormPrincipal;
-      FormPrincipal.ImpPedidoVenda.Execute;
+      FormPrincipal.AbrirDados; 
       FormPrincipal.ShowModal;
     except
       on E: Exception do
@@ -492,6 +489,11 @@ procedure TFormPrincipal.ImpPedidoVendawOnCloseBtnClick(WindowHandle: HWND;
   ViewIndex: Word; var Cancel: Boolean);
 begin
   self.close;
+end;
+
+procedure TFormPrincipal.FormShow(Sender: TObject);
+begin
+  ImpPedidoVenda.Execute;
 end;
 
 end.
