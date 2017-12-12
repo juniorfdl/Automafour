@@ -1,6 +1,6 @@
 inherited FormTelaBaixarDocumentosReceber: TFormTelaBaixarDocumentosReceber
-  Left = 273
-  Top = 96
+  Left = 79
+  Top = 101
   Width = 1197
   Height = 572
   Caption = 'Baixar Documentos '#224' Receber'
@@ -1521,7 +1521,7 @@ inherited FormTelaBaixarDocumentosReceber: TFormTelaBaixarDocumentosReceber
     Top = 6
   end
   object SQLTotal: TRxQuery
-    DatabaseName = 'Easy_Temp'
+    DatabaseName = 'DB'
     SQL.Strings = (
       'select '
       '  Sum(ValorTotal)  as Total '
@@ -2179,7 +2179,7 @@ inherited FormTelaBaixarDocumentosReceber: TFormTelaBaixarDocumentosReceber
     Top = 33
   end
   object SQLTotalSelecionado: TRxQuery
-    DatabaseName = 'Easy_Temp'
+    DatabaseName = 'DB'
     SQL.Strings = (
       'select '
       '  Sum(ValorTotal)  as Total'

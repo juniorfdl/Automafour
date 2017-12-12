@@ -437,7 +437,8 @@ uses
   uSobre in 'uSobre.pas' {fSobre},
   JsonToDataSetConverter in '..\..\..\Program Files (x86)\Borland\Componentes\rest-client-api\src\JsonToDataSetConverter.pas',
   udlgConfEmailBoleto in 'Vendas\udlgConfEmailBoleto.pas' {fdlgConfEmailBoleto},
-  TelaAtualizaEstoquePDVs in 'Utilitarios\TelaAtualizaEstoquePDVs.pas' {FormTelaAtualizaEstoquePDVs};
+  TelaAtualizaEstoquePDVs in 'Utilitarios\TelaAtualizaEstoquePDVs.pas' {FormTelaAtualizaEstoquePDVs},
+  TelaMovimentoRetornoSicredi in 'Financeiro\TelaMovimentoRetornoSicredi.pas' {FormTelaMovimentoRetornoSicredi};
 
 {$R *.res}
 

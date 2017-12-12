@@ -2094,6 +2094,7 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
   end
   object SQLC490: TRxQuery
     CachedUpdates = True
+    AfterPost = SQLC490AfterPost
     DatabaseName = 'DB'
     RequestLive = True
     SQL.Strings = (
@@ -2191,6 +2192,7 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
   end
   object z0190: TRxQuery
     CachedUpdates = True
+    AfterPost = z0190AfterPost
     DatabaseName = 'DB'
     RequestLive = True
     SQL.Strings = (
@@ -2211,6 +2213,7 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
   end
   object z0150: TRxQuery
     CachedUpdates = True
+    AfterPost = z0150AfterPost
     DatabaseName = 'DB'
     RequestLive = True
     SQL.Strings = (
@@ -2296,6 +2299,7 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
   end
   object ZRegC490: TRxQuery
     CachedUpdates = True
+    AfterPost = ZRegC490AfterPost
     DatabaseName = 'DB'
     RequestLive = True
     Macros = <>
@@ -2304,6 +2308,7 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
   end
   object z0200: TRxQuery
     CachedUpdates = True
+    AfterPost = z0200AfterPost
     DatabaseName = 'DB'
     RequestLive = True
     Macros = <>
