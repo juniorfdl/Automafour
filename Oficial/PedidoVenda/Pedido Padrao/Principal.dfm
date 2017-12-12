@@ -12,8 +12,8 @@ object FormPrincipal: TFormPrincipal
   Font.Style = []
   OldCreateOrder = False
   Position = poDesktopCenter
+  OnActivate = FormActivate
   OnClose = FormClose
-  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object TblPedido: TTable
@@ -270,7 +270,7 @@ object FormPrincipal: TFormPrincipal
     DiscardSavedData = True
     ProgressDialog = False
     WindowEvents = True
-    wOnCloseBtnClick = ImpPedidoVendawOnCloseBtnClick
+    wOnCloseWindow = ImpPedidoVendawOnCloseWindow
     PrintDate.Day = 0
     PrintDate.Month = 0
     PrintDate.Year = 0

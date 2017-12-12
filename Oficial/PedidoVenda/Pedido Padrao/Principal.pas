@@ -235,9 +235,9 @@ type
     procedure SQLTemplateCalcFields(DataSet: TDataSet);
     procedure SQLPedidoItemCalcFields(DataSet: TDataSet);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure ImpPedidoVendawOnCloseBtnClick(WindowHandle: HWND;
-      ViewIndex: Word; var Cancel: Boolean);
-    procedure FormShow(Sender: TObject);
+    procedure ImpPedidoVendawOnCloseWindow(WindowHandle: HWND;
+      var Cancel: Boolean);
+    procedure FormActivate(Sender: TObject);
   private
     { Private declarations }
     procedure AbrirDados;
@@ -455,7 +455,7 @@ begin
   try
     FormPrincipal:= TFormPrincipal.Create(nil);
     FormPrincipal.db.Connected := True;
-    FormPrincipal.ImpPedidoVenda.ReportName := ExtractFilePath(Application.ExeName) + '\gestao\Pedido Orcamento.rpt';
+    FormPrincipal.ImpPedidoVenda.ReportName := ExtractFilePath(Application.ExeName) + '\gestao\relatorios\Pedido Orcamento.rpt';
     try
       FormPrincipal.AbrirDados; 
       FormPrincipal.ShowModal;
@@ -485,13 +485,13 @@ procedure TFormPrincipal.OnCrpeViewerResize(Sender: TObject);
    end;
  end;
 
-procedure TFormPrincipal.ImpPedidoVendawOnCloseBtnClick(WindowHandle: HWND;
-  ViewIndex: Word; var Cancel: Boolean);
+procedure TFormPrincipal.ImpPedidoVendawOnCloseWindow(WindowHandle: HWND;
+  var Cancel: Boolean);
 begin
-  self.close;
+  Close;
 end;
 
-procedure TFormPrincipal.FormShow(Sender: TObject);
+procedure TFormPrincipal.FormActivate(Sender: TObject);
 begin
   ImpPedidoVenda.Execute;
 end;
