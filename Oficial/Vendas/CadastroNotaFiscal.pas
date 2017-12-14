@@ -6592,14 +6592,18 @@ begin
                     {''Alíquota interestadual das UF envolvidas: - 4% alíquota interestadual para produtos importados; - 7% para os Estados de origem do Sul e Sudeste (exceto ES), destinado para os Estados do Norte, Nordeste, Centro- Oeste e Espírito Santo - 12% para os demais casos.'' }
             ICMSUFDest.pICMSInter := SQLNotaFiscalItemNFITN2PERCICMS.Value;
                     {''Percentual de ICMS Interestadual para a UF de destino: - 40% em 2016; - 60% em 2017; - 80% em 2018; - 100% a partir de 2019.'' }
-            if FormatDateTime('yyyy', sqltemplateNOFIDEMIS.Value) = '2016' then
-              ICMSUFDest.pICMSInterPart := 40;
-            if FormatDateTime('yyyy', sqltemplateNOFIDEMIS.Value) = '2017' then
-              ICMSUFDest.pICMSInterPart := 60;
-            if FormatDateTime('yyyy', sqltemplateNOFIDEMIS.Value) = '2018' then
-              ICMSUFDest.pICMSInterPart := 80;
-            if FormatDateTime('yyyy', sqltemplateNOFIDEMIS.Value) = '2019' then
-              ICMSUFDest.pICMSInterPart := 100;
+            {nao gerar para valores zerado}
+            if (SQLNotaFiscalItemNFITN2PERCICMS.value <> 0) then
+            begin
+              if FormatDateTime('yyyy', sqltemplateNOFIDEMIS.Value) = '2016' then
+                ICMSUFDest.pICMSInterPart := 40;
+              if FormatDateTime('yyyy', sqltemplateNOFIDEMIS.Value) = '2017' then
+                ICMSUFDest.pICMSInterPart := 60;
+              if FormatDateTime('yyyy', sqltemplateNOFIDEMIS.Value) = '2018' then
+                ICMSUFDest.pICMSInterPart := 80;
+              if FormatDateTime('yyyy', sqltemplateNOFIDEMIS.Value) = '2019' then
+                ICMSUFDest.pICMSInterPart := 100;
+            end;
                     {Valor do ICMS relativo ao Fundo de Combate à Pobreza (FCP) da UF de destino.}
             ICMSUFDest.vFCPUFDest := 0.00;
                     {Valor do ICMS Interestadual para a UF de destino, já considerando o valor do ICMS relativo ao Fundo de Combate à Pobreza naquela UF.}
