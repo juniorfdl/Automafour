@@ -1,6 +1,6 @@
 object FormPrincipal: TFormPrincipal
-  Left = 366
-  Top = 191
+  Left = 718
+  Top = 168
   Width = 705
   Height = 190
   Caption = 'Pedido de Venda'
@@ -260,9 +260,6 @@ object FormPrincipal: TFormPrincipal
     DesignControls = 'Design-Time Window Controls'
     Version.Major = 0
     Version.Minor = 0
-    ReportName = 
-      'C:\Desenv\GestaoOficial\PedidoVenda\ObraeCia\Pedido de Venda Obr' +
-      'aeCia.rpt'
     Margins.Left = -1
     Margins.Right = -1
     Margins.Top = -1
@@ -1413,7 +1410,6 @@ object FormPrincipal: TFormPrincipal
   end
   object DB: TDatabase
     AliasName = 'Easy_Gestao'
-    Connected = True
     DatabaseName = 'DB'
     LoginPrompt = False
     Params.Strings = (

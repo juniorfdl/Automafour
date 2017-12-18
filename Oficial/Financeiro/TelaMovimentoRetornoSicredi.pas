@@ -44,6 +44,10 @@ type
     SQLContasReceberCTRCA254HIST: TStringField;
     SQLContasReceberCTRCN2TXJURO: TFloatField;
     SQLContasReceberCTRCA15NOSSONUMERO: TStringField;
+    TempOcorrenciasValor: TFloatField;
+    TempOcorrenciasValorJuros: TFloatField;
+    TempOcorrenciasValorMulta: TFloatField;
+    TempOcorrenciasValorRecebido: TFloatField;
     procedure FormShow(Sender: TObject);
     procedure TempOcorrenciasCODIGOOCORRENCIAChange(Sender: TField);
     procedure TempOcorrenciasTITULOChange(Sender: TField);
@@ -51,7 +55,7 @@ type
     { Private declarations }
   public
     { Public declarations }
-    fListaNossoNumero, fListaOcorrencias: TStrings;
+    fListaNossoNumero, fListaOcorrencias, fListaValorJuros, FListaValorDocumento, fListaValorMulta : TStrings;
   end;
 
 var
@@ -75,6 +79,12 @@ begin
     TempOcorrencias.Append;
     TempOcorrenciasTITULO.AsString           := fListaNossoNumero.Strings[I];
     TempOcorrenciasCODIGOOCORRENCIA.AsString := fListaOcorrencias.Strings[I];
+    if (fListaValorJuros.Strings[I] <> '0000000000000') then
+      TempOcorrenciasValorJuros.AsFloat        := StrToFloat(fListaValorJuros.Strings[I]) / 100;
+    if (fListaValorMulta.Strings[I] <> '0000000000000') then
+      TempOcorrenciasValorMulta.AsFloat        := StrToFloat(fListaValorMulta.Strings[I]) / 100;
+    if (FListaValorDocumento.Strings[I] <> '0000000000000') then
+      TempOcorrenciasValorRecebido.AsFloat     := StrToFloat(FListaValorDocumento.Strings[I]) / 100;
     TempOcorrencias.Post;
   end;
 end;
@@ -101,6 +111,7 @@ begin
     TempOcorrenciasDtVencimento.AsDateTime := SQLContasReceber.FieldByName('CTRCDVENC').AsDateTime;
     TempOcorrenciasClienteNome.AsString    := SQLContasReceber.FieldByName('CLIEA60RAZAOSOC').AsString;
     TempOcorrenciasEmissao.AsFloat         := SQLContasReceber.FieldByName('CTRCDEMIS').AsFloat;
+    TempOcorrenciasValor.AsFloat           := SQLContasReceber.FieldByName('CTRCN2VLR').AsFloat;
   end;
 end;
 

@@ -1609,11 +1609,11 @@ end;
 
 procedure TFormTelaBaixarDocumentosReceber.ImportarRetornoBanco(NomeBanco, Arquivo : string);
 var Origem, Destino : string;
-var Info, Identificador, NossoNro, PathBanco, NomeArquivo, ValorTitulo, Ocorrencia : String;
+var Info, Identificador, NossoNro, PathBanco, NomeArquivo, ValorTitulo, Ocorrencia, Valor : String;
     Texto : TextFile;
     NroLinhas : integer;
     FormMovRetornoSicredi: TFormTelaMovimentoRetornoSicredi;
-    ListaNossoNumero, ListaOcorrencias: TStrings;
+    ListaNossoNumero, ListaOcorrencias, ListaValorJuros, ListaValorDocumento, ListaValorMulta: TStrings;
 begin
   inherited;
   ValorTitulo := '0,00';
@@ -1642,6 +1642,9 @@ begin
   try
     ListaNossoNumero := TStringList.Create;
     ListaOcorrencias := TStringList.Create;
+    ListaValorJuros  := TStringList.Create;
+    ListaValorDocumento := TStringList.Create;
+    ListaValorMulta  := TStringList.Create;
 
     {Le linha 1 pra identificar o Banco na coluna 77}
     Readln(Texto,Info);
@@ -1649,12 +1652,12 @@ begin
     
     {Pega o Total de linhas}
     while not EOF(Texto) do
-    begin                                                                                                           
+    begin
       Readln(Texto,info);
       if Identificador = '748' then
       begin
         NossoNro := Copy(Info, 48, 8);
-        
+
         if NossoNro = '          ' then NossoNro := '';
         if NossoNro = '0000000000' then NossoNro := '';
 
@@ -1663,6 +1666,15 @@ begin
           Ocorrencia := Copy(Info, 109, 2);
           ListaNossoNumero.Add(NossoNro);
           ListaOcorrencias.Add(Ocorrencia);
+          //Valor Efetivamente Pago
+          valor :=  Copy(Info,254,13);
+          ListaValorDocumento.Add(Valor);
+          // ValorJuros
+          valor :=  Copy(Info,267,13);
+          ListaValorJuros.Add(Valor);
+          // Valor Multa
+          Valor := Copy(Info,280,13);
+          ListaValorMulta.Add(Valor);
         end;
       end;
 
@@ -1675,6 +1687,9 @@ begin
     FormMovRetornoSicredi                   := TFormTelaMovimentoRetornoSicredi.Create(Self);
     FormMovRetornoSicredi.fListaOcorrencias := ListaOcorrencias;
     FormMovRetornoSicredi.fListaNossoNumero := ListaNossoNumero;
+    FormMovRetornoSicredi.fListaValorJuros  := ListaValorJuros;
+    FormMovRetornoSicredi.FListaValorDocumento := ListaValorDocumento;
+    FormMovRetornoSicredi.fListaValorMulta  := ListaValorMulta;
     FormMovRetornoSicredi.ShowModal;
   finally
     FreeAndNil(FormMovRetornoSicredi);

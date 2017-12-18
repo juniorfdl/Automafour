@@ -1,19 +1,21 @@
 inherited FormTelaMovimentoRetornoSicredi: TFormTelaMovimentoRetornoSicredi
-  Left = 235
-  Top = 207
+  Left = 36
+  Top = 141
   Caption = 'Ocorr'#234'ncias do Retorno Sicredi'
-  ClientWidth = 955
+  ClientHeight = 497
+  ClientWidth = 1291
   OldCreateOrder = True
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   inherited PanelCentral: TPanel
-    Width = 955
+    Width = 1291
+    Height = 417
     object DBGridLista: TDBGrid
       Left = 0
       Top = 0
-      Width = 955
-      Height = 321
+      Width = 1291
+      Height = 417
       Align = alClient
       BorderStyle = bsNone
       Color = clWhite
@@ -52,9 +54,8 @@ inherited FormTelaMovimentoRetornoSicredi: TFormTelaMovimentoRetornoSicredi
         end
         item
           Expanded = False
-          FieldName = 'CODIGOOCORRENCIA'
-          Title.Caption = 'C'#243'digo Movimento'
-          Width = 107
+          FieldName = 'ClienteNome'
+          Width = 266
           Visible = True
         end
         item
@@ -71,20 +72,45 @@ inherited FormTelaMovimentoRetornoSicredi: TFormTelaMovimentoRetornoSicredi
         end
         item
           Expanded = False
-          FieldName = 'ClienteNome'
-          Width = 266
+          FieldName = 'CODIGOOCORRENCIA'
+          Title.Caption = 'C'#243'digo Movimento'
+          Width = 107
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'Valor'
+          Title.Caption = 'Valor Documento'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'ValorJuros'
+          Title.Caption = 'Valor Juros'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'ValorMulta'
+          Title.Caption = 'Valor Multa'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'ValorRecebido'
+          Title.Caption = 'Valor Recebido'
           Visible = True
         end>
     end
   end
   inherited ScrollBoxTopo: TScrollBox
-    Width = 955
+    Width = 1291
     inherited PanelCabecalho: TPanel
-      Width = 955
+      Width = 1291
       inherited PanelNavigator: TPanel
-        Width = 955
+        Width = 1291
         inherited AdvPanelNavigator: TAdvOfficeStatusBar
-          Width = 955
+          Width = 1291
           inherited BtnFecharTela: TSpeedButton
             Left = 880
           end
@@ -128,15 +154,35 @@ inherited FormTelaMovimentoRetornoSicredi: TFormTelaMovimentoRetornoSicredi
       FieldName = 'ClienteNome'
       Size = 60
     end
+    object TempOcorrenciasEmissao: TDateField
+      DisplayLabel = 'Emiss'#227'o'
+      FieldName = 'Emissao'
+    end
     object TempOcorrenciasDtVencimento: TDateTimeField
       DisplayLabel = 'Dt. Vcto'
       FieldName = 'DtVencimento'
       DisplayFormat = 'dd/mm/yyyy'
       EditMask = '!99/99/0000;1;_'
     end
-    object TempOcorrenciasEmissao: TDateField
-      DisplayLabel = 'Emiss'#227'o'
-      FieldName = 'Emissao'
+    object TempOcorrenciasValor: TFloatField
+      FieldName = 'Valor'
+      DisplayFormat = '0.,00'
+      EditFormat = '0.00'
+    end
+    object TempOcorrenciasValorJuros: TFloatField
+      FieldName = 'ValorJuros'
+      DisplayFormat = '0.,00'
+      EditFormat = '0.00'
+    end
+    object TempOcorrenciasValorMulta: TFloatField
+      FieldName = 'ValorMulta'
+      DisplayFormat = '0.,00'
+      EditFormat = '0.00'
+    end
+    object TempOcorrenciasValorRecebido: TFloatField
+      FieldName = 'ValorRecebido'
+      DisplayFormat = '0.,00'
+      EditFormat = '0.00'
     end
   end
   object SQLContasReceber: TRxQuery

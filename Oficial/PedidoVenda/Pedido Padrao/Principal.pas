@@ -455,7 +455,7 @@ begin
   try
     FormPrincipal:= TFormPrincipal.Create(nil);
     FormPrincipal.db.Connected := True;
-    FormPrincipal.ImpPedidoVenda.ReportName := ExtractFilePath(Application.ExeName) + '\gestao\relatorios\Pedido Orcamento.rpt';
+    FormPrincipal.ImpPedidoVenda.ReportName := 'C:\Easy2Solutions\Gestao\PedidoVenda\Pedido Orcamento.rpt';
     try
       FormPrincipal.AbrirDados; 
       FormPrincipal.ShowModal;
