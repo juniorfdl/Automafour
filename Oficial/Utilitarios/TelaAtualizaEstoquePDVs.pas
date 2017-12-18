@@ -45,6 +45,12 @@ type
     DtBaseImp: TDateEdit;
     Memo1: TMemo;
     EditCaminho: TDirectoryEdit;
+    RxDBLookupCombo1: TRxDBLookupCombo;
+    SQLTerminal: TRxQuery;
+    SQLTerminalTERMICOD: TIntegerField;
+    SQLTerminalTERMA60DESCR: TStringField;
+    dsTerminal: TDataSource;
+    Label1: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormDestroy(Sender: TObject);
     procedure BtnFecharTelaClick(Sender: TObject);
@@ -53,6 +59,7 @@ type
     procedure FormActivate(Sender: TObject);
     procedure BtnDesfazDesfazClick(Sender: TObject);
     procedure BtMadameMixClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -108,9 +115,10 @@ begin
 
   SQLCupomItem.Close;
   SQLCupomItem.SQL.Clear;
-  SQLCupomItem.Sql.Add('Select CUPOMITEM.PRODICOD, Sum(CUPOMITEM.CPITN3QTD) as Qtde, Sum(CUPOMITEM.CPITN3QTDTROCA) as QtdeTroca, Sum(CUPOMITEM.CPITN3VLRUNIT) as CustoUnitario ');
-  SQLCupomItem.Sql.Add('From CUPOMITEM Where CUPOMITEM.EMPRICOD = '+EmpresaPadrao+' and CUPOMITEM.REGISTRO >= "'+FormatDateTime('mm/dd/yy 00:01:01', DtBaseImp.Date)+'" and CUPOMITEM.REGISTRO <= "'+FormatDateTime('mm/dd/yy 23:59:59', DtBaseImp.Date) +'" and (CUPOMITEM.CPITCSTATUS = "A" or CUPOMITEM.CPITCSTATUS = "C")');
-  SQLCupomItem.Sql.Add('Group by CUPOMITEM.PRODICOD');
+  SQLCupomItem.Sql.Add('Select CUPOMITEM.PRODICOD, CUPOM.TERMICOD, Sum(CUPOMITEM.CPITN3QTD) as Qtde, Sum(CUPOMITEM.CPITN3QTDTROCA) as QtdeTroca, Sum(CUPOMITEM.CPITN3VLRUNIT) as CustoUnitario ');
+  SQLCupomItem.Sql.Add('From CUPOMITEM inner join CUPOM ON CUPOMITEM.CUPOA13ID = CUPOM.CUPOA13ID ' );
+  SQLCupomItem.SQL.Add('Where CUPOM.TERMICOD = '+ QuotedStr(SQLTerminalTERMICOD.AsString) + ' and CUPOMITEM.EMPRICOD = '+EmpresaPadrao+' and CUPOMITEM.REGISTRO >= "'+FormatDateTime('mm/dd/yy 00:01:01', DtBaseImp.Date)+'" and CUPOMITEM.REGISTRO <= "'+FormatDateTime('mm/dd/yy 23:59:59', DtBaseImp.Date) +'" and (CUPOMITEM.CPITCSTATUS = "A" or CUPOMITEM.CPITCSTATUS = "C")');
+  SQLCupomItem.Sql.Add('Group by CUPOMITEM.PRODICOD,CUPOM.TERMICOD');
   SQLCupomItem.Open;
   if SQLCupomItem.IsEmpty then
     begin
@@ -279,7 +287,7 @@ begin
             Memo1.Lines.Add(Info);
           end;
         CloseFile(Arquivo);
-      except Application.ProcessMessages; end;  
+      except Application.ProcessMessages; end;
     end;
 end;
 
@@ -373,6 +381,12 @@ begin
   EditHoraTermino.Update;
   SQLmov.Close;
   SQLProdutoSaldo.Close;
+end;
+
+procedure TFormTelaAtualizaEstoquePDVs.FormShow(Sender: TObject);
+begin
+  if not SQLTerminal.Active then
+    SQLTerminal.open;
 end;
 
 end.

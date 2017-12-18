@@ -451,31 +451,28 @@ begin
   Application.Title := 'Gestão Empresarial - Módulo Faturamento';
 
   Application.CreateForm(TDM, DM);
-  if (DM.OBSAutorizacao <> '')or(dm.SQLConfigGeralCFGECBLOQ.AsString = 'S') then //and(not DelphiAberto) then
+  if ((DM.OBSAutorizacao <> '')or(dm.SQLConfigGeralCFGECBLOQ.AsString = 'S')) and(not DelphiAberto) then
   begin
     FormTelaAtivacao := TFormTelaAtivacao.Create(Application);
     FormTelaAtivacao.ShowModal;
 
     if (dm.SQLConfigGeralCFGECBLOQ.AsString = 'S') then
     begin
-      if not DelphiAberto then
-      begin
         Application.terminate;
         Exit;
-      end;  
     end;
   end;
 
   FormTelaLogin := TFormTelaLogin.Create(Application);
   FormTelaLogin.Caption := 'Bem Vindo ao Gestão Empresarial - Módulo Faturamento';
 
-  if FormTelaLogin.ShowModal <> idOk then
+  if (FormTelaLogin.ShowModal <> idOk)and(not DelphiAberto)  then
   begin
     application.terminate;
   end;
 
   Application.CreateForm(TFormPrincipal, FormPrincipal);
-  FormPrincipal.RodapePrincipal.Panels[0].Text := 'Empresa: ' + DM.SQLConfigGeralEmpresaPadraoCalcField.Value;
+  FormPrincipal.RodapePrincipal.Panels[0].Text := 'Empresa: ' + DM.SQLEmpresa.FieldByName('EMPRA60NOMEFANT').AsString;
   FormPrincipal.RodapePrincipal.Panels[1].Text := 'Terminal: ' + Dm.SQLTerminalAtivo.fieldbyname('TERMA60DESCR').AsString;
   FormPrincipal.RodapePrincipal.Panels[2].Text := 'Usuário: ' + DM.SQLUsuario.fieldbyname('USUAA60LOGIN').Value;
 

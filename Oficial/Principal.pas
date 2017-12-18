@@ -2589,9 +2589,81 @@ begin
 end;
 
 procedure TFormPrincipal.erminaldeConsulta1Click(Sender: TObject);
+var CaminhoNomeArquivo, Linha, PrecoStr : String;
+    Arquivo : TextFile;
+    Preco : Double;
 begin
   inherited;
- //
+  if Pergunta('Nao','Deseja gerar na pasta ..\BuscaPreco o arquivo para o Pricetab.txt?') then
+    begin
+      CaminhoNomeArquivo := dm.PathAplicacao + '\BuscaPreco\Pricetab.txt';
+      AssignFile(Arquivo,CaminhoNomeArquivo);
+      Rewrite(Arquivo);
+      Reset(Arquivo);
+      Append(Arquivo);
+      dm.SQLTemplate.Close;
+      dm.SQLTemplate.sql.Clear;
+      dm.SQLTemplate.sql.Add('Select * from Produto Where PRODCSERVICO = "N" and PRODCATIVO = "S"');
+      dm.SQLTemplate.Open;
+      dm.SQLTemplate.First;
+      Linha := '';
+      // Criar Proximas Linhas
+      While not dm.SQLTemplate.Eof Do
+        begin
+          try
+            if (((dm.SQLTemplate.FieldByName('PRODDINIPROMO').AsDateTime <= Now) and (dm.SQLTemplate.FieldByName('PRODDFIMPROMO').AsDateTime >= Now)) or
+               ((dm.SQLTemplate.FieldByName('PRODDINIPROMO').AsDateTime <= Now) and (dm.SQLTemplate.FieldByName('PRODDFIMPROMO').AsString = ''))) and (dm.SQLTemplate.FieldByName('PRODN3VLRVENDAPROM').AsFloat > 0) then
+               Preco := dm.SQLTemplate.FieldByName('PRODN3VLRVENDAPROM').Value
+            else
+               Preco := dm.SQLTemplate.fieldbyname('PRODN3VLRVENDA').Value;
+
+            PrecoSTR := FormatFloat('##0.00', Preco);
+            if dm.SQLTemplate.fieldbyname('PRODA60CODBAR').AsString <> '' then
+              Linha := dm.SQLTemplate.fieldbyname('PRODA60CODBAR').AsString +'|'+
+                       Copy(dm.SQLTemplate.fieldbyname('PRODA30ADESCRREDUZ').AsString,1,20) +'|'+
+                       PrecoSTR +'|';
+            Writeln(Arquivo,Linha);
+          except
+            ShowMessage('Cód.Produto com Erro = ' +dm.SQLTemplate.fieldbyname('PRODICOD').AsString +CHR(13)+
+                        'Valor R$ '+ FloatToStr(Preco));
+          end;
+          dm.SQLTemplate.Next;
+        end;
+
+      // Loop no Cd.Barras Aux
+      dm.SQLTemplate.Close;
+      dm.SQLTemplate.sql.Clear;
+      dm.SQLTemplate.sql.Add('Select PRODUTOBARRAS.PRODICOD,PRODUTOBARRAS.PRBAA15BARRAS,PRODUTO.PRODICOD,PRODUTO.PRODA30ADESCRREDUZ, PRODUTO.PRODN3VLRVENDAPROM,PRODUTO.PRODN3VLRVENDA,PRODUTO.PRODDINIPROMO,PRODUTO.PRODDFIMPROMO');
+      dm.SQLTemplate.sql.Add('From ProdutoBarras inner join Produto  on ProdutoBarras.PRODICOD = Produto.PRODICOD');
+      dm.SQLTemplate.Open;
+      dm.SQLTemplate.First;
+      Linha := '';
+      // Criar Proximas Linhas
+      While not dm.SQLTemplate.Eof Do
+        begin
+          try
+            if (((dm.SQLTemplate.FieldByName('PRODDINIPROMO').AsDateTime <= Now) and (dm.SQLTemplate.FieldByName('PRODDFIMPROMO').AsDateTime >= Now)) or
+               ((dm.SQLTemplate.FieldByName('PRODDINIPROMO').AsDateTime <= Now) and (dm.SQLTemplate.FieldByName('PRODDFIMPROMO').AsString = ''))) and (dm.SQLTemplate.FieldByName('PRODN3VLRVENDAPROM').AsFloat > 0) then
+               Preco := dm.SQLTemplate.FieldByName('PRODN3VLRVENDAPROM').Value
+            else
+               Preco := dm.SQLTemplate.fieldbyname('PRODN3VLRVENDA').Value;
+
+            PrecoSTR := FormatFloat('##0.00', Preco);
+            if dm.SQLTemplate.fieldbyname('PRBAA15BARRAS').AsString <> '' then
+              Linha := dm.SQLTemplate.fieldbyname('PRBAA15BARRAS').AsString +'|'+
+                       Copy(dm.SQLTemplate.fieldbyname('PRODA30ADESCRREDUZ').AsString,1,20) +'|'+
+                       PrecoSTR +'|';
+            Writeln(Arquivo,Linha);
+          except
+            ShowMessage('Cód.Produto com Erro = ' +dm.SQLTemplate.fieldbyname('PRODICOD').AsString +CHR(13)+
+                        'Valor R$ '+ FloatToStr(Preco));
+          end;
+          dm.SQLTemplate.Next;
+        end;
+      // Fechar Arquivo
+      CloseFile(Arquivo);
+      ShowMessage('Concluído com Sucesso!');
+    end;
 end;
 
 procedure TFormPrincipal.SPEDFiscal1Click(Sender: TObject);

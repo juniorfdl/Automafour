@@ -471,7 +471,10 @@ begin
   SQLUnidade.Open;
 
   if not DM.SQLConfigCompra.Active then DM.SQLConfigCompra.Active := true;
-  vEncargos := DM.SQLConfigVenda.fieldbyname('CFVEN2PERCENCARG').Value;
+  if not (DM.SQLConfigVenda.fieldbyname('CFVEN2PERCENCARG').IsNull) then
+    vEncargos := DM.SQLConfigVenda.fieldbyname('CFVEN2PERCENCARG').Value
+  else
+    vEncargos := 0;
  { vPis      := DM.SQLConfigVendaCFVEN2PERCPIS.Value;
   vCofins   := DM.SQLConfigVendaCFVEN2PERCCOFINS.Value; }
 end;

@@ -1,7 +1,7 @@
 inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
   Left = 141
   Top = 0
-  Caption = 'Lançamento de Itens'
+  Caption = 'Lan'#231'amento de Itens'
   ClientHeight = 664
   ClientWidth = 1105
   OldCreateOrder = True
@@ -77,7 +77,7 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
           Top = 200
           Width = 99
           Height = 13
-          Caption = 'Vlr Médio Compra'
+          Caption = 'Vlr M'#233'dio Compra'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clNavy
           Font.Height = -11
@@ -90,7 +90,7 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
           Top = 258
           Width = 84
           Height = 13
-          Caption = '% Lucro Médio'
+          Caption = '% Lucro M'#233'dio'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clNavy
           Font.Height = -11
@@ -130,7 +130,7 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
           Top = 228
           Width = 87
           Height = 13
-          Caption = 'Qtde.Méd Itens'
+          Caption = 'Qtde.M'#233'd Itens'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clNavy
           Font.Height = -11
@@ -143,7 +143,7 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
           Top = 289
           Width = 87
           Height = 13
-          Caption = 'Alterou o Preço'
+          Caption = 'Alterou o Pre'#231'o'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 8404992
           Font.Height = -11
@@ -359,8 +359,8 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
           Font.Style = [fsBold]
           ItemIndex = 0
           Items.Strings = (
-            'Códigos'
-            'Cód.Fornecedor')
+            'C'#243'digos'
+            'C'#243'd.Fornecedor')
           ParentFont = False
           TabOrder = 0
           OnClick = RadioPesquisaClick
@@ -722,7 +722,7 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
                   item
                     Expanded = False
                     FieldName = 'NOCIN3VLRUNIT'
-                    Title.Caption = 'Vlr.Unitário'
+                    Title.Caption = 'Vlr.Unit'#225'rio'
                     Width = 66
                     Visible = True
                   end
@@ -819,7 +819,7 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
                   item
                     Expanded = False
                     FieldName = 'NOCIN2QTDENF'
-                    Title.Caption = 'Qtde.Média'
+                    Title.Caption = 'Qtde.M'#233'dia'
                     Width = 72
                     Visible = True
                   end
@@ -968,7 +968,7 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
                 Top = 77
                 Width = 167
                 Height = 13
-                Caption = 'Descrição do CFOP de Compra'
+                Caption = 'Descri'#231#227'o do CFOP de Compra'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = 8404992
                 Font.Height = -11
@@ -1275,7 +1275,7 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
                 ActivePage = TabSheet1
                 TabOrder = 9
                 object TabSheet1: TTabSheet
-                  Caption = 'Informações Tributária '
+                  Caption = 'Informa'#231#245'es Tribut'#225'ria '
                   object Button5: TButton
                     Left = 779
                     Top = 111
@@ -1348,7 +1348,7 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
                       Top = 12
                       Width = 65
                       Height = 13
-                      Caption = '% Redução'
+                      Caption = '% Redu'#231#227'o'
                       Font.Charset = DEFAULT_CHARSET
                       Font.Color = 8404992
                       Font.Height = -11
@@ -1361,7 +1361,7 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
                       Top = 12
                       Width = 108
                       Height = 13
-                      Caption = 'Situação Tributária'
+                      Caption = 'Situa'#231#227'o Tribut'#225'ria'
                       Font.Charset = DEFAULT_CHARSET
                       Font.Color = 8404992
                       Font.Height = -11
@@ -1670,42 +1670,42 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
                       Items.Strings = (
                         '00   - Tributada integralmente'
                         
-                          '10   - Tributada e com cobrança do ICMS por substituição tributá' +
+                          '10   - Tributada e com cobran'#231'a do ICMS por substitui'#231#227'o tribut'#225 +
                           'ria'
-                        '20   - Com redução de base de cálculo'
+                        '20   - Com redu'#231#227'o de base de c'#225'lculo'
                         
-                          '30   - Isenta ou não tributada e com cobrança do ICMS por substi' +
-                          'tuição tributária'
+                          '30   - Isenta ou n'#227'o tributada e com cobran'#231'a do ICMS por substi' +
+                          'tui'#231#227'o tribut'#225'ria'
                         '40   - Isenta'
-                        '41   - Não tributada'
-                        '50   - Suspensão'
+                        '41   - N'#227'o tributada'
+                        '50   - Suspens'#227'o'
                         '51   - Diferimento'
-                        '60   - ICMS cobrado anteriormente por substituição tributária'
+                        '60   - ICMS cobrado anteriormente por substitui'#231#227'o tribut'#225'ria'
                         
-                          '70   - Com redução de base de cálculo e cobrança do ICMS por sub' +
-                          'stituição tributária'
+                          '70   - Com redu'#231#227'o de base de c'#225'lculo e cobran'#231'a do ICMS por sub' +
+                          'stitui'#231#227'o tribut'#225'ria'
                         '90   - Outros '
                         
-                          '101 - Tributada pelo Simples Nacional com permissão de crédito. ' +
+                          '101 - Tributada pelo Simples Nacional com permiss'#227'o de cr'#233'dito. ' +
                           '(v.2.0) '
-                        '102 - Tributada pelo Simples Nacional sem permissão de crédito.'
+                        '102 - Tributada pelo Simples Nacional sem permiss'#227'o de cr'#233'dito.'
                         
-                          '103 - Isenção do ICMS no Simples Nacional para faixa de receita ' +
+                          '103 - Isen'#231#227'o do ICMS no Simples Nacional para faixa de receita ' +
                           'bruta.'
                         '300 - Imune.'
-                        '400 - Não tributada pelo Simples Nacional (v.2.0)'
+                        '400 - N'#227'o tributada pelo Simples Nacional (v.2.0)'
                         
-                          '201 - Tributada pelo Simples Nacional com permissão de crédito e' +
-                          ' com cobrança do ICMS por Substituição Tributária;'
+                          '201 - Tributada pelo Simples Nacional com permiss'#227'o de cr'#233'dito e' +
+                          ' com cobran'#231'a do ICMS por Substitui'#231#227'o Tribut'#225'ria;'
                         
-                          '202 - Tributada pelo Simples Nacional sem permissão de crédito e' +
-                          ' com cobrança do ICMS por Substituição Tributária;'
+                          '202 - Tributada pelo Simples Nacional sem permiss'#227'o de cr'#233'dito e' +
+                          ' com cobran'#231'a do ICMS por Substitui'#231#227'o Tribut'#225'ria;'
                         
-                          '203 - Isenção do ICMS nos Simples Nacional para faixa de receita' +
-                          ' bruta e com cobrança do ICMS por Substituição Tributária;'
+                          '203 - Isen'#231#227'o do ICMS nos Simples Nacional para faixa de receita' +
+                          ' bruta e com cobran'#231'a do ICMS por Substitui'#231#227'o Tribut'#225'ria;'
                         
-                          '500 - ICMS cobrado anteriormente por substituição tributária (su' +
-                          'bstituído) ou por antecipação; '
+                          '500 - ICMS cobrado anteriormente por substitui'#231#227'o tribut'#225'ria (su' +
+                          'bstitu'#237'do) ou por antecipa'#231#227'o; '
                         '900 - Outros')
                       ParentFont = False
                       ParentShowHint = False
@@ -2122,7 +2122,7 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
                       Top = 13
                       Width = 203
                       Height = 13
-                      Caption = 'Código da Situação Tributária do IPI'
+                      Caption = 'C'#243'digo da Situa'#231#227'o Tribut'#225'ria do IPI'
                       Font.Charset = DEFAULT_CHARSET
                       Font.Color = 8404992
                       Font.Height = -11
@@ -2268,12 +2268,12 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
                       Font.Style = []
                       ItemHeight = 13
                       Items.Strings = (
-                        '00-Entrada c/ recup. de crédito'
-                        '01-Entrada tributada com alíquota zero'
+                        '00-Entrada c/ recup. de cr'#233'dito'
+                        '01-Entrada tributada com al'#237'quota zero'
                         '02-Entrada isenta'
-                        '03-Entrada não-tributada'
+                        '03-Entrada n'#227'o-tributada'
                         '04-Entrada imune'
-                        '05-Entrada com suspensão'
+                        '05-Entrada com suspens'#227'o'
                         '49-Outras entradas')
                       ParentFont = False
                       ParentShowHint = False
@@ -2835,7 +2835,7 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
                   end
                 end
                 object TabSheet2: TTabSheet
-                  Caption = 'Ajuste de Preço e Custo'
+                  Caption = 'Ajuste de Pre'#231'o e Custo'
                   ImageIndex = 4
                   object Label23: TLabel
                     Left = 367
@@ -3216,7 +3216,7 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
                     Height = 17
                     BevelWidth = 2
                     BorderWidth = 1
-                    Caption = 'Informações Atuais'
+                    Caption = 'Informa'#231#245'es Atuais'
                     Color = 10053171
                     Font.Charset = DEFAULT_CHARSET
                     Font.Color = clWhite
@@ -3438,7 +3438,7 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
               Top = 4
               Width = 29
               Height = 13
-              Caption = 'Série'
+              Caption = 'S'#233'rie'
               FocusControl = DBEdit4
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 8404992
@@ -3730,7 +3730,7 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
               Top = 0
               Width = 323
               Height = 13
-              Caption = 'Procura por Códigos ou pela Descrição ou  [F2 - Cadastro]'
+              Caption = 'Procura por C'#243'digos ou pela Descri'#231#227'o ou  [F2 - Cadastro]'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clRed
               Font.Height = -11
@@ -3797,7 +3797,7 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
               Top = 38
               Width = 141
               Height = 13
-              Caption = 'Referência no Fabricante'
+              Caption = 'Refer'#234'ncia no Fabricante'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 8404992
               Font.Height = -11
@@ -3810,7 +3810,7 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
               Top = 38
               Width = 191
               Height = 13
-              Caption = 'Descrição do Produto Selecionado'
+              Caption = 'Descri'#231#227'o do Produto Selecionado'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 8404992
               Font.Height = -11
@@ -3875,7 +3875,7 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
               Top = 0
               Width = 63
               Height = 13
-              Caption = 'Ref.Fábrica'
+              Caption = 'Ref.F'#225'brica'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clRed
               Font.Height = -11
@@ -4203,7 +4203,7 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
   end
   inherited PopupMenuDiversos: TPopupMenu
     object MnNumerosdeSerie: TMenuItem
-      Caption = 'Número(s) de Série'
+      Caption = 'N'#250'mero(s) de S'#233'rie'
     end
   end
   inherited SQLTemplate: TRxQuery
@@ -4239,7 +4239,7 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
     end
     object SQLTemplatePRODICOD: TIntegerField
       ConstraintErrorMessage = '1'
-      DisplayLabel = 'Código'
+      DisplayLabel = 'C'#243'digo'
       FieldName = 'PRODICOD'
       Origin = 'DB.NOTACOMPRAITEM.PRODICOD'
       OnChange = SQLTemplatePRODICODChange
@@ -5023,9 +5023,9 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
     SQL.Strings = (
       'SELECT* FROM CFOP'
       'WHERE '
-      'CFOPA5COD STARTING WITH ''1'' OR '
-      'CFOPA5COD STARTING WITH ''2''  OR '
-      'CFOPA5COD STARTING WITH ''3'''
+      'CFOPA5COD STARTING WITH '#39'1'#39' OR '
+      'CFOPA5COD STARTING WITH '#39'2'#39'  OR '
+      'CFOPA5COD STARTING WITH '#39'3'#39
       'Order by CFOPA5COD')
     Macros = <>
     Left = 44

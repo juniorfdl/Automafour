@@ -1,6 +1,6 @@
 object FormTelaAtualizaEstoquePDVs: TFormTelaAtualizaEstoquePDVs
-  Left = 309
-  Top = 128
+  Left = 359
+  Top = 96
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Atualiza'#231#227'o de Estoque'
@@ -17,6 +17,7 @@ object FormTelaAtualizaEstoquePDVs: TFormTelaAtualizaEstoquePDVs
   OnActivate = FormActivate
   OnClose = FormClose
   OnDestroy = FormDestroy
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object PanelCabecalho: TPanel
@@ -287,7 +288,7 @@ object FormTelaAtualizaEstoquePDVs: TFormTelaAtualizaEstoquePDVs
       end
       object Label7: TLabel
         Left = 14
-        Top = 55
+        Top = 15
         Width = 308
         Height = 13
         Caption = 'Atualizar Estoque com os movimentos de Venda do dia'
@@ -661,6 +662,19 @@ object FormTelaAtualizaEstoquePDVs: TFormTelaAtualizaEstoquePDVs
         Visible = False
         OnClick = BtMadameMixClick
       end
+      object Label1: TLabel
+        Left = 14
+        Top = 56
+        Width = 50
+        Height = 13
+        Caption = 'Terminal'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = 8404992
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
       object EditHoraInicio: TEdit
         Left = 18
         Top = 179
@@ -682,8 +696,8 @@ object FormTelaAtualizaEstoquePDVs: TFormTelaAtualizaEstoquePDVs
         TabOrder = 1
       end
       object DtBaseImp: TDateEdit
-        Left = 121
-        Top = 71
+        Left = 14
+        Top = 29
         Width = 90
         Height = 21
         Font.Charset = ANSI_CHARSET
@@ -720,6 +734,17 @@ object FormTelaAtualizaEstoquePDVs: TFormTelaAtualizaEstoquePDVs
         ParentCtl3D = False
         ParentFont = False
         TabOrder = 4
+      end
+      object RxDBLookupCombo1: TRxDBLookupCombo
+        Left = 14
+        Top = 70
+        Width = 209
+        Height = 21
+        DropDownCount = 8
+        LookupField = 'TERMICOD'
+        LookupDisplay = 'TERMA60DESCR'
+        LookupSource = dsTerminal
+        TabOrder = 5
       end
     end
   end
@@ -840,5 +865,29 @@ object FormTelaAtualizaEstoquePDVs: TFormTelaAtualizaEstoquePDVs
     PanelAppearanceDark.TextStyle = []
     Left = 447
     Top = 4
+  end
+  object SQLTerminal: TRxQuery
+    DatabaseName = 'DB'
+    RequestLive = True
+    SQL.Strings = (
+      'SELECT * FROM TERMINAL')
+    Macros = <>
+    Left = 552
+    Top = 5
+    object SQLTerminalTERMICOD: TIntegerField
+      FieldName = 'TERMICOD'
+      Origin = 'DB.TERMINAL.TERMICOD'
+    end
+    object SQLTerminalTERMA60DESCR: TStringField
+      FieldName = 'TERMA60DESCR'
+      Origin = 'DB.TERMINAL.TERMA60DESCR'
+      FixedChar = True
+      Size = 60
+    end
+  end
+  object dsTerminal: TDataSource
+    DataSet = SQLTerminal
+    Left = 582
+    Top = 5
   end
 end

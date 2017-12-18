@@ -18,7 +18,7 @@ object FormSplash: TFormSplash
   object ptopo: TAdvOfficeStatusBar
     Left = 0
     Top = 0
-    Width = 686
+    Width = 669
     Height = 30
     AnchorHint = False
     Panels = <

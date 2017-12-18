@@ -1,0 +1,1 @@
+alter table OPERACAOCAIXA add IMPRIMIR_RESUMO char(1);

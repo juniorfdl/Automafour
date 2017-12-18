@@ -854,6 +854,9 @@ end;
 procedure TDM.DataModuleCreate(Sender: TObject);
 begin
   inherited;
+  FormSplash.lbDados.Caption := 'Abrindo Tabela de Filiais...'; FormSplash.lbDados.Update;
+  SQLEmpresa.Open ;
+
   FormSplash.lbDados.Caption := 'Abrindo Tabela de Usuarios...'; FormSplash.lbDados.Update;
   SQLUsuario.Open;
 
@@ -996,7 +999,7 @@ begin
     end;
 
   finally
-    if (not cdsAPIAutorizacao.Active) or (cdsAPIAutorizacaoDATA_AUTORIZACAO.AsString = '') then
+    if ((not cdsAPIAutorizacao.Active) or (cdsAPIAutorizacaoDATA_AUTORIZACAO.AsString = ''))and(not DelphiAberto) then
     begin
       FormTelaAtivacao := TFormTelaAtivacao.Create(Application);
       FormTelaAtivacao.lblMensagem.Font.Size := 17;

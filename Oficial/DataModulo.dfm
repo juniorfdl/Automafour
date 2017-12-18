@@ -1913,7 +1913,7 @@ inherited DM: TDM
     DataPipelineName = 'PipePedVdIt'
     object ppHeaderBand1: TppHeaderBand
       mmBottomOffset = 0
-      mmHeight = 613406209
+      mmHeight = -911374947
       mmPrintPosition = 0
       object ppDBText6: TppDBText
         UserName = 'ppDBText6'
@@ -1932,8 +1932,8 @@ inherited DM: TDM
         Transparent = True
         DataPipelineName = 'PipePedVd'
         mmHeight = 4022
-        mmLeft = -3360215
-        mmTop = 111167290
+        mmLeft = -889058655
+        mmTop = -651700900
         mmWidth = 17230
         BandType = 0
       end
@@ -1952,10 +1952,10 @@ inherited DM: TDM
         ParentDataPipeline = False
         Transparent = True
         DataPipelineName = 'PipePedVd'
-        mmHeight = 296329425
+        mmHeight = 1094575758
         mmLeft = 0
-        mmTop = 907609953
-        mmWidth = 2021129399
+        mmTop = -379215575
+        mmWidth = -2112708473
         BandType = 0
       end
       object ppDBText8: TppDBText
@@ -1973,10 +1973,10 @@ inherited DM: TDM
         ParentDataPipeline = False
         Transparent = True
         DataPipelineName = 'PipePedVd'
-        mmHeight = 296329425
+        mmHeight = 1094575758
         mmLeft = 0
-        mmTop = 1222490675
-        mmWidth = 2021129399
+        mmTop = 1328740992
+        mmWidth = -2112708473
         BandType = 0
       end
       object ppDBText9: TppDBText
@@ -1994,10 +1994,10 @@ inherited DM: TDM
         ParentDataPipeline = False
         Transparent = True
         DataPipelineName = 'PipePedVd'
-        mmHeight = 296329425
+        mmHeight = 1094575758
         mmLeft = 0
-        mmTop = 1537301548
-        mmWidth = 2021059549
+        mmTop = -1276727107
+        mmWidth = -2131165843
         BandType = 0
       end
       object ppDBText10: TppDBText
@@ -2015,10 +2015,10 @@ inherited DM: TDM
         ParentDataPipeline = False
         Transparent = True
         DataPipelineName = 'PipePedVd'
-        mmHeight = 296329425
+        mmHeight = 1094575758
         mmLeft = 0
-        mmTop = 1852182271
-        mmWidth = 2021059549
+        mmTop = 431263327
+        mmWidth = -2131165843
         BandType = 0
       end
       object ppLabel1: TppLabel
@@ -2035,10 +2035,10 @@ inherited DM: TDM
         Font.Size = 10
         Font.Style = []
         Transparent = True
-        mmHeight = 296329425
+        mmHeight = 1094575758
         mmLeft = 0
-        mmTop = -1961153235
-        mmWidth = 1611436358
+        mmTop = 801537813
+        mmWidth = 1158304892
         BandType = 0
       end
       object ppLabel2: TppLabel
@@ -2055,10 +2055,10 @@ inherited DM: TDM
         Font.Size = 10
         Font.Style = []
         Transparent = True
-        mmHeight = 296329425
+        mmHeight = 1094575758
         mmLeft = 0
-        mmTop = -1646342627
-        mmWidth = 1611436358
+        mmTop = -1803998019
+        mmWidth = 1158304892
         BandType = 0
       end
       object ppLabel3: TppLabel
@@ -2075,10 +2075,10 @@ inherited DM: TDM
         Font.Size = 10
         Font.Style = []
         Transparent = True
-        mmHeight = 296329425
+        mmHeight = 1094575758
         mmLeft = 0
-        mmTop = -1331461640
-        mmWidth = 1611436358
+        mmTop = -95939852
+        mmWidth = 1158304892
         BandType = 0
       end
       object ppLabel4: TppLabel
@@ -2095,10 +2095,10 @@ inherited DM: TDM
         Font.Size = 10
         Font.Style = []
         Transparent = True
-        mmHeight = 296329425
+        mmHeight = 1094575758
         mmLeft = 0
-        mmTop = -1016580917
-        mmWidth = 1611436358
+        mmTop = 1612033649
+        mmWidth = 1158304892
         BandType = 0
       end
       object ppLabel5: TppLabel
@@ -2115,10 +2115,10 @@ inherited DM: TDM
         Font.Size = 10
         Font.Style = []
         Transparent = True
-        mmHeight = 296329425
+        mmHeight = 1094575758
         mmLeft = 0
-        mmTop = -701700195
-        mmWidth = 1611436358
+        mmTop = -974960147
+        mmWidth = 1158304892
         BandType = 0
       end
       object ppLabel6: TppLabel
@@ -2134,10 +2134,10 @@ inherited DM: TDM
         Font.Size = 10
         Font.Style = []
         Transparent = True
-        mmHeight = 296329425
+        mmHeight = 1094575758
         mmLeft = 0
-        mmTop = 168877278
-        mmWidth = 889058655
+        mmTop = 1732529660
+        mmWidth = -992638717
         BandType = 0
       end
       object ppDBText12: TppDBText
@@ -2155,10 +2155,10 @@ inherited DM: TDM
         ParentDataPipeline = False
         Transparent = True
         DataPipelineName = 'PipePedVd'
-        mmHeight = 296329425
-        mmLeft = 1611436358
-        mmTop = -1961153235
-        mmWidth = 2021059549
+        mmHeight = 1094575758
+        mmLeft = 1158304892
+        mmTop = 801537813
+        mmWidth = -2131165843
         BandType = 0
       end
       object ppDBText13: TppDBText
@@ -2176,10 +2176,10 @@ inherited DM: TDM
         ParentDataPipeline = False
         Transparent = True
         DataPipelineName = 'PipePedVd'
-        mmHeight = 296329425
-        mmLeft = 1611436358
-        mmTop = -1646342627
-        mmWidth = 2021059549
+        mmHeight = 1094575758
+        mmLeft = 1158304892
+        mmTop = -1803998019
+        mmWidth = -2131165843
         BandType = 0
       end
       object ppDBText14: TppDBText
@@ -2197,10 +2197,10 @@ inherited DM: TDM
         ParentDataPipeline = False
         Transparent = True
         DataPipelineName = 'PipePedVd'
-        mmHeight = 296329425
-        mmLeft = 1611436358
-        mmTop = -1331461640
-        mmWidth = 2021059549
+        mmHeight = 1094575758
+        mmLeft = 1158304892
+        mmTop = -95939852
+        mmWidth = -2131165843
         BandType = 0
       end
       object ppDBText15: TppDBText
@@ -2218,10 +2218,10 @@ inherited DM: TDM
         ParentDataPipeline = False
         Transparent = True
         DataPipelineName = 'PipePedVd'
-        mmHeight = 296329425
-        mmLeft = 1611436358
-        mmTop = -701700195
-        mmWidth = 2021059549
+        mmHeight = 1094575758
+        mmLeft = 1158304892
+        mmTop = -974960147
+        mmWidth = -2131165843
         BandType = 0
       end
       object ppDBText16: TppDBText
@@ -2239,10 +2239,10 @@ inherited DM: TDM
         ParentDataPipeline = False
         Transparent = True
         DataPipelineName = 'PipePedVd'
-        mmHeight = 296329425
-        mmLeft = 1611436358
-        mmTop = -386819472
-        mmWidth = 2021059549
+        mmHeight = 1094575758
+        mmLeft = 1158304892
+        mmTop = 733030287
+        mmWidth = -2131165843
         BandType = 0
       end
       object ppDBText17: TppDBText
@@ -2260,10 +2260,10 @@ inherited DM: TDM
         ParentDataPipeline = False
         Transparent = True
         DataPipelineName = 'PipePedVd'
-        mmHeight = 296329425
-        mmLeft = 1611436358
-        mmTop = -1016580917
-        mmWidth = 2021059549
+        mmHeight = 1094575758
+        mmLeft = 1158304892
+        mmTop = 1612033649
+        mmWidth = -2131165843
         BandType = 0
       end
       object ppLabel13: TppLabel
@@ -2280,10 +2280,10 @@ inherited DM: TDM
         Font.Size = 10
         Font.Style = []
         Transparent = True
-        mmHeight = 296329425
+        mmHeight = 1094575758
         mmLeft = 0
-        mmTop = -386819472
-        mmWidth = 1611506208
+        mmTop = 733030287
+        mmWidth = 1176762262
         BandType = 0
       end
       object ppLabel14: TppLabel
@@ -2300,10 +2300,10 @@ inherited DM: TDM
         Font.Size = 10
         Font.Style = []
         Transparent = True
-        mmHeight = 296329425
-        mmLeft = 1555852581
-        mmTop = 168877278
-        mmWidth = -1051417072
+        mmHeight = 1094575758
+        mmLeft = -663388632
+        mmTop = 1732529660
+        mmWidth = 984882558
         BandType = 0
       end
       object ppLabel25: TppLabel
@@ -2320,10 +2320,10 @@ inherited DM: TDM
         Font.Size = 10
         Font.Style = []
         Transparent = True
-        mmHeight = 296329425
-        mmLeft = 763732454
-        mmTop = 187358461
-        mmWidth = 1278004338
+        mmHeight = 1094575758
+        mmLeft = 207824704
+        mmTop = -1967581931
+        mmWidth = -1163091751
         BandType = 0
       end
       object ppLabel26: TppLabel
@@ -2341,10 +2341,10 @@ inherited DM: TDM
         Font.Style = []
         TextAlignment = taRightJustified
         Transparent = True
-        mmHeight = 296329425
-        mmLeft = -1956900549
-        mmTop = 187358461
-        mmWidth = 1278004338
+        mmHeight = 1094575758
+        mmLeft = 1926726187
+        mmTop = -1967581931
+        mmWidth = -1163091751
         BandType = 0
       end
       object ppLabel27: TppLabel
@@ -2362,10 +2362,10 @@ inherited DM: TDM
         Font.Style = []
         TextAlignment = taRightJustified
         Transparent = True
-        mmHeight = 296329425
-        mmLeft = -475113458
-        mmTop = 187358461
-        mmWidth = 1278004338
+        mmHeight = 1094575758
+        mmLeft = -1153304807
+        mmTop = -1967581931
+        mmWidth = -1163091751
         BandType = 0
       end
       object ppLine1: TppLine
@@ -2377,10 +2377,10 @@ inherited DM: TDM
         Pen.Style = psDot
         ParentWidth = True
         Weight = 0.750000000000000000
-        mmHeight = 18551297
-        mmLeft = -3360215
-        mmTop = 539271928
-        mmWidth = -3360215
+        mmHeight = 613406209
+        mmLeft = -889058655
+        mmTop = 948729684
+        mmWidth = -889058655
         BandType = 0
       end
       object ppLine3: TppLine
@@ -2392,10 +2392,10 @@ inherited DM: TDM
         Pen.Style = psDot
         ParentWidth = True
         Weight = 0.750000000000000000
-        mmHeight = 18551297
-        mmLeft = -3360215
-        mmTop = -2072320525
-        mmWidth = -3360215
+        mmHeight = 613406209
+        mmLeft = -889058655
+        mmTop = 1453253530
+        mmWidth = -889058655
         BandType = 0
       end
       object ppLabel28: TppLabel
@@ -2412,10 +2412,10 @@ inherited DM: TDM
         Font.Size = 10
         Font.Style = []
         Transparent = True
-        mmHeight = 296329425
+        mmHeight = 1094575758
         mmLeft = 0
-        mmTop = 463080493
-        mmWidth = -2016737013
+        mmTop = -2030430665
+        mmWidth = -1020121843
         BandType = 0
       end
       object ppDBText24: TppDBText
@@ -2435,15 +2435,15 @@ inherited DM: TDM
         Transparent = True
         DataPipelineName = 'PipePedVd'
         mmHeight = 4022
-        mmLeft = -3360215
-        mmTop = 463080493
+        mmLeft = -889058655
+        mmTop = -2030430665
         mmWidth = 19177
         BandType = 0
       end
     end
     object ppDetailBand1: TppDetailBand
       mmBottomOffset = 0
-      mmHeight = 296329425
+      mmHeight = 1094575758
       mmPrintPosition = 0
       object ppDBText1: TppDBText
         UserName = 'ppDBText1'
@@ -2459,10 +2459,10 @@ inherited DM: TDM
         Font.Style = []
         Transparent = True
         DataPipelineName = 'PipePedVdIt'
-        mmHeight = 296329425
-        mmLeft = 37032480
+        mmHeight = 1094575758
+        mmLeft = 1208261914
         mmTop = 0
-        mmWidth = 1240971858
+        mmWidth = 1923622097
         BandType = 4
       end
       object ppDBText2: TppDBText
@@ -2481,7 +2481,7 @@ inherited DM: TDM
         Transparent = True
         DataPipelineName = 'PipePedVdIt'
         mmHeight = 4022
-        mmLeft = -3360215
+        mmLeft = -889058655
         mmTop = 0
         mmWidth = 17230
         BandType = 4
@@ -2501,10 +2501,10 @@ inherited DM: TDM
         Font.Style = []
         Transparent = True
         DataPipelineName = 'PipePedVdIt'
-        mmHeight = 296329425
-        mmLeft = 763732454
+        mmHeight = 1094575758
+        mmLeft = 207824704
         mmTop = 0
-        mmWidth = 1277934223
+        mmWidth = -1181650721
         BandType = 4
       end
       object ppDBText4: TppDBText
@@ -2523,10 +2523,10 @@ inherited DM: TDM
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'PipePedVdIt'
-        mmHeight = 296329425
-        mmLeft = -1956900549
+        mmHeight = 1094575758
+        mmLeft = 1926726187
         mmTop = 0
-        mmWidth = 1277934223
+        mmWidth = -1181650721
         BandType = 4
       end
       object ppDBText5: TppDBText
@@ -2545,21 +2545,21 @@ inherited DM: TDM
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'PipePedVdIt'
-        mmHeight = 296329425
-        mmLeft = -475113458
+        mmHeight = 1094575758
+        mmLeft = -1153304807
         mmTop = 0
-        mmWidth = 1277934223
+        mmWidth = -1181650721
         BandType = 4
       end
     end
     object ppFooterBand1: TppFooterBand
       mmBottomOffset = 0
-      mmHeight = 351913203
+      mmHeight = -1378723415
       mmPrintPosition = 0
     end
     object ppSummaryBand1: TppSummaryBand
       mmBottomOffset = 0
-      mmHeight = -775765155
+      mmHeight = 903483321
       mmPrintPosition = 0
       object ppDBText18: TppDBText
         UserName = 'ppDBText18'
@@ -2576,10 +2576,10 @@ inherited DM: TDM
         ParentDataPipeline = False
         Transparent = True
         DataPipelineName = 'PipePedVd'
-        mmHeight = 296329425
-        mmLeft = 1611436358
-        mmTop = 111167290
-        mmWidth = 2021059549
+        mmHeight = 1094575758
+        mmLeft = 1158304892
+        mmTop = -651700900
+        mmWidth = -2131165843
         BandType = 7
       end
       object ppLabel16: TppLabel
@@ -2596,10 +2596,10 @@ inherited DM: TDM
         Font.Size = 10
         Font.Style = []
         Transparent = True
-        mmHeight = 296329425
+        mmHeight = 1094575758
         mmLeft = 0
-        mmTop = 111167290
-        mmWidth = 1611506208
+        mmTop = -651700900
+        mmWidth = 1176762262
         BandType = 7
       end
       object ppLabel17: TppLabel
@@ -2617,10 +2617,10 @@ inherited DM: TDM
         Font.Style = []
         TextAlignment = taCentered
         Transparent = True
-        mmHeight = 296329425
-        mmLeft = 18481183
-        mmTop = 1037258425
-        mmWidth = -766218425
+        mmHeight = 1094575758
+        mmLeft = 594855705
+        mmTop = -436067120
+        mmWidth = -865567480
         BandType = 7
       end
       object ppLabel18: TppLabel
@@ -2638,10 +2638,10 @@ inherited DM: TDM
         Font.Style = []
         TextAlignment = taCentered
         Transparent = True
-        mmHeight = 296329425
-        mmLeft = 18481183
-        mmTop = -1905639573
-        mmWidth = -766218425
+        mmHeight = 1094575758
+        mmLeft = 594855705
+        mmTop = -1690294930
+        mmWidth = -865567480
         BandType = 7
       end
       object ppLabel19: TppLabel
@@ -2658,10 +2658,10 @@ inherited DM: TDM
         Font.Size = 10
         Font.Style = []
         Transparent = True
-        mmHeight = 296329425
+        mmHeight = 1094575758
         mmLeft = 0
-        mmTop = 425978163
-        mmWidth = 1611506208
+        mmTop = 1037800414
+        mmWidth = 1176762262
         BandType = 7
       end
       object ppDBText19: TppDBText
@@ -2679,10 +2679,10 @@ inherited DM: TDM
         ParentDataPipeline = False
         Transparent = True
         DataPipelineName = 'PipePedVd'
-        mmHeight = 296329425
-        mmLeft = 1611436358
-        mmTop = 425978163
-        mmWidth = 2021059549
+        mmHeight = 1094575758
+        mmLeft = 1158304892
+        mmTop = 1037800414
+        mmWidth = -2131165843
         BandType = 7
       end
       object ppLabel21: TppLabel
@@ -2699,10 +2699,10 @@ inherited DM: TDM
         Font.Size = 10
         Font.Style = []
         Transparent = True
-        mmHeight = 296329425
-        mmLeft = 763732454
-        mmTop = 111167290
-        mmWidth = 1926317081
+        mmHeight = 1094575758
+        mmLeft = 207824704
+        mmTop = -651700900
+        mmWidth = -1428705837
         BandType = 7
       end
       object ppDBText20: TppDBText
@@ -2722,10 +2722,10 @@ inherited DM: TDM
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'PipePedVd'
-        mmHeight = 296329425
-        mmLeft = -475113458
-        mmTop = 111167290
-        mmWidth = 1278004338
+        mmHeight = 1094575758
+        mmLeft = -1153304807
+        mmTop = -651700900
+        mmWidth = -1163091751
         BandType = 7
       end
       object ppLabel22: TppLabel
@@ -2742,10 +2742,10 @@ inherited DM: TDM
         Font.Size = 10
         Font.Style = []
         Transparent = True
-        mmHeight = 296329425
-        mmLeft = 763732454
-        mmTop = 425978163
-        mmWidth = 1926317081
+        mmHeight = 1094575758
+        mmLeft = 207824704
+        mmTop = 1037800414
+        mmWidth = -1428705837
         BandType = 7
       end
       object ppDBText21: TppDBText
@@ -2765,10 +2765,10 @@ inherited DM: TDM
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'PipePedVd'
-        mmHeight = 296329425
-        mmLeft = -475113458
-        mmTop = 425978163
-        mmWidth = 1278004338
+        mmHeight = 1094575758
+        mmLeft = -1153304807
+        mmTop = 1037800414
+        mmWidth = -1163091751
         BandType = 7
       end
       object ppDBText22: TppDBText
@@ -2788,10 +2788,10 @@ inherited DM: TDM
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'PipePedVd'
-        mmHeight = 296329425
-        mmLeft = -475113458
-        mmTop = 740858885
-        mmWidth = 1277934223
+        mmHeight = 1094575758
+        mmLeft = -1153304807
+        mmTop = -1549193382
+        mmWidth = -1181650721
         BandType = 7
       end
       object ppLabel23: TppLabel
@@ -2808,10 +2808,10 @@ inherited DM: TDM
         Font.Size = 10
         Font.Style = []
         Transparent = True
-        mmHeight = 296329425
-        mmLeft = 763732454
-        mmTop = 740858885
-        mmWidth = 1926317081
+        mmHeight = 1094575758
+        mmLeft = 207824704
+        mmTop = -1549193382
+        mmWidth = -1428705837
         BandType = 7
       end
       object ppLabel24: TppLabel
@@ -2828,10 +2828,10 @@ inherited DM: TDM
         Font.Size = 10
         Font.Style = []
         Transparent = True
-        mmHeight = 296329425
-        mmLeft = 763732454
-        mmTop = 1055739608
-        mmWidth = 1926317081
+        mmHeight = 1094575758
+        mmLeft = 207824704
+        mmTop = 158780119
+        mmWidth = -1428705837
         BandType = 7
       end
       object ppDBMemo1: TppDBMemo
@@ -2850,10 +2850,10 @@ inherited DM: TDM
         ParentDataPipeline = False
         Transparent = True
         DataPipelineName = 'PipePedVd'
-        mmHeight = 666793925
-        mmLeft = 18481183
-        mmTop = -1590758850
-        mmWidth = -766218425
+        mmHeight = 329250086
+        mmLeft = 594855705
+        mmTop = 17661637
+        mmWidth = -865567480
         BandType = 7
         mmBottomOffset = 0
         mmOverFlowOffset = 0
@@ -2869,10 +2869,10 @@ inherited DM: TDM
         Pen.Style = psDot
         ParentWidth = True
         Weight = 0.750000000000000000
-        mmHeight = 18551297
-        mmLeft = -3360215
+        mmHeight = 613406209
+        mmLeft = -889058655
         mmTop = 0
-        mmWidth = -3360215
+        mmWidth = -889058655
         BandType = 7
       end
       object ppDBText23: TppDBText
@@ -2892,10 +2892,10 @@ inherited DM: TDM
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'PipePedVd'
-        mmHeight = 296329425
-        mmLeft = -475113458
-        mmTop = 1055739608
-        mmWidth = 1278004338
+        mmHeight = 1094575758
+        mmLeft = -1153304807
+        mmTop = 158780119
+        mmWidth = -1163091751
         BandType = 7
       end
     end

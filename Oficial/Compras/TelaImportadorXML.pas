@@ -12,12 +12,9 @@ uses
   cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
   cxDBData, cxGridLevel, cxClasses, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
-  AdvGlowButton, pcnConversao, DBClient,
-  Menus, DBCtrls, FMTBcd, SqlExpr, Provider, VarSYS, FormResources,
-  cxImageComboBox, ImgList, IniFiles, ShellAPI, Gauges, ZAbstractRODataset,
-  ZAbstractDataset, ZDataset, 
-  AdvOfficeStatusBar, AdvOfficeStatusBarStylers, ACBrBase, ACBrDFe, pcnConversaoNFe,
-  Grids, DBGrids, Spin;
+  cxImageComboBox, ImgList, Menus, DBClient, ACBrBase, ACBrDFe, Grids,
+  DBGrids, Spin, DBCtrls, AdvOfficeStatusBar, AdvOfficeStatusBarStylers, IniFiles, pcnConversao,
+  VarSYS, ShellAPI, pcnConversaoNFe;
 
 type
   TTipoInconsistencia = (tiCritica, tiInformacao, tiErro);
