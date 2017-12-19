@@ -734,6 +734,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
               Height = 21
               DataField = 'CTRCA15NOSSONUMERO'
               DataSource = DSTemplate
+              ReadOnly = True
               TabOrder = 6
             end
             object DBEdit7: TDBEdit

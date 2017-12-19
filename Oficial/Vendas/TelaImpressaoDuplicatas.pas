@@ -950,6 +950,13 @@ begin
 
       IncluiBoletoAcbr;
 
+      //Atualiza campo CODIGOBARRAS na tabela CONTASRECEBER
+      DM.SQLTemplate.Close;
+      DM.SQLTemplate.Sql.Clear;
+      DM.SQLTemplate.Sql.Add('UPDATE CONTASRECEBER SET CODIGOBARRA = ''' + ACBrBoleto1.Banco.MontarCodigoBarras(Titulo) + ''' Where CTRCA13ID = ''' + SQLContasReceberCTRCA13ID.Value + '''') ;
+      DM.SQLTemplate.ExecSql;
+      DM.SQLTemplate.Close;
+
       if cbxLayOut.ItemIndex = 0 then {Modo Fatura}
         ImprimeBoletoAcbr;
 
