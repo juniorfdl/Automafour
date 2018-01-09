@@ -798,6 +798,7 @@ type
     cdsAPIAutorizacaoDIAS_AVISO: TStringField;
     TblAPIAutorizacaoDIAS_AVISO: TStringField;
     ACBrNFeCad: TACBrNFe;
+    SQLConfigGeralDATA_INI_SEM_NET: TDateTimeField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DBAfterConnect(Sender: TObject);
   private
@@ -815,6 +816,7 @@ type
     TranspAtualPedidos:Integer;
     DataEntregaPedidos, DataEmissaoPedidos:TDateTime;
      }
+    vSEM_INTERNET:Boolean; 
     Cupom, CodTarefa, SerieAtualPedidos, VeiculoAtualPedidos, FretePorConta, PedidoVolume, PedidoEspecie, PedidoMarca, PedidoPesoB, PedidoPesoL,
       PedidoObs, SubTotal_ECF, NumerarioCartao, CodNextOrc, CodNextCupom, ID_NotaFiscal_Boleto, PrevendaCodigoStr, PrevendaTerminalStr: string;
     ImportandoPedidoVenda, ImportandoColetor, GerarNovaNota, GerandoNotaFiscal,
@@ -854,6 +856,7 @@ end;
 procedure TDM.DataModuleCreate(Sender: TObject);
 begin
   inherited;
+  vSEM_INTERNET := False;
   FormSplash.lbDados.Caption := 'Abrindo Tabela de Filiais...'; FormSplash.lbDados.Update;
   SQLEmpresa.Open ;
 
@@ -939,6 +942,14 @@ begin
   end;
 
   SQLConfigGeral.Edit;
+
+  if not vSEM_INTERNET then
+    Dm.SQLConfigGeralDATA_INI_SEM_NET.Clear
+  else begin
+    if Dm.SQLConfigGeralDATA_INI_SEM_NET.IsNull then
+      Dm.SQLConfigGeralDATA_INI_SEM_NET.AsDateTime := DataSistema;
+  end;
+
   if SQLConfigGeralCFGEDBLOQ.AsDateTime < DataSistema then
     SQLConfigGeralCFGECBLOQ.Value := 'S'
   else begin
@@ -981,7 +992,12 @@ begin
     try
       RestClient.Resource(xhttp).Accept(RestUtils.MediaType_Json).GetAsDataSet(cdsAPIAutorizacao);
     except
-      exit;
+      on E: Exception do
+      begin         
+        // E.message
+        vSEM_INTERNET := True;
+        exit;
+      end;
     end;
 
     if cdsAPIAutorizacao.Active then
@@ -999,6 +1015,7 @@ begin
     end;
 
   finally
+    if not((DM.vSEM_INTERNET)and((DM.DataSistema-DM.SQLConfigGeralDATA_INI_SEM_NET.AsDateTime) <= 7)) then
     if ((not cdsAPIAutorizacao.Active) or (cdsAPIAutorizacaoDATA_AUTORIZACAO.AsString = ''))and(not DelphiAberto) then
     begin
       FormTelaAtivacao := TFormTelaAtivacao.Create(Application);

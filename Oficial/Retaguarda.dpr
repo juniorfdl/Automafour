@@ -456,17 +456,21 @@ begin
     FormTelaAtivacao := TFormTelaAtivacao.Create(Application);
     FormTelaAtivacao.ShowModal;
 
+    if (DM.vSEM_INTERNET)and((DM.DataSistema-DM.SQLConfigGeralDATA_INI_SEM_NET.AsDateTime) <= 7) then
+    begin
+    end
+    else
     if (dm.SQLConfigGeralCFGECBLOQ.AsString = 'S') then
     begin
-        Application.terminate;
-        Exit;
+      Application.terminate;
+      Exit;
     end;
   end;
 
   FormTelaLogin := TFormTelaLogin.Create(Application);
   FormTelaLogin.Caption := 'Bem Vindo ao Gestão Empresarial - Módulo Faturamento';
 
-  if (FormTelaLogin.ShowModal <> idOk)and(not DelphiAberto)  then
+  if (FormTelaLogin.ShowModal <> idOk)  then
   begin
     application.terminate;
   end;
