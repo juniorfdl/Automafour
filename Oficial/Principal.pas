@@ -246,6 +246,7 @@ type
     ConsultaCupom1: TMenuItem;
     Especiais1: TMenuItem;
     AtualizaodoEstoquedasVendasdosPDVs1: TMenuItem;
+    ConfernciadoFechamentodeCaixa1: TMenuItem;
     procedure FATUMnCadastroClientesCadastroClick(Sender: TObject);
     procedure FATUMnCadastroClientesTipodeClienteClick(Sender: TObject);
     procedure FATUMnCadastroBancosClick(Sender: TObject);
@@ -485,6 +486,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure MnADMUtilitariosConsultadeCuponsClick(Sender: TObject);
     procedure MnAtualizaodeEstoquedasVendasdosPDVsClick(Sender: TObject);
+    procedure ConfernciadoFechamentodeCaixa1Click(Sender: TObject);
   private
     procedure ApagarOrcamentos;
     procedure ApagarPreVendas;
@@ -567,7 +569,7 @@ uses
   RelatorioItensPedidoVenda, RelatorioNotaFiscalEmitida,
   RelatorioNotaFiscalEmitidaPorICMS, RelatorioItensNotaFiscal,
   RelatorioNotaFiscalItensCobrancaFrete, uSobre, CadastroCupom,
-  TelaAtualizaEstoquePDVs;
+  TelaAtualizaEstoquePDVs, RelatorioConferenciaFechamentoCaixa;
 
 
 
@@ -2966,6 +2968,16 @@ begin
     CriaFormulario(TFormTelaAtualizaEstoquePDVs,'FormTelaAtualizaEstoquePDVs',False,False,False,'')
   else
     SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.ConfernciadoFechamentodeCaixa1Click(
+  Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormConferenciaFechamentoCaixa, 'FormConferenciaFechamentoCaixa', False, False, True, '')
+  else
+    SoundPlay('Acesso Negado.wav', Sender);
 end;
 
 end.

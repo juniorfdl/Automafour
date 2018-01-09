@@ -3334,6 +3334,10 @@ inherited FormPrincipal: TFormPrincipal
             Caption = 'Movimenta'#231#227'o de Caixa'
             OnClick = MnFINRelCaixaMovimentacaodeCaixaClick
           end
+          object ConfernciadoFechamentodeCaixa1: TMenuItem
+            Caption = 'Confer'#234'ncia do Fechamento de Caixa'
+            OnClick = ConfernciadoFechamentodeCaixa1Click
+          end
         end
         object esourariaSaldo1: TMenuItem
           Caption = 'Tesouraria - Saldo'
