@@ -2382,6 +2382,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
     Configuracoes.Geral.ValidarDigest = False
     Configuracoes.Geral.IncluirQRCodeXMLNFCe = False
     Configuracoes.Arquivos.AdicionarLiteral = True
+    Configuracoes.Arquivos.OrdenacaoPath = <>
     Configuracoes.Arquivos.EmissaoPathNFe = True
     Configuracoes.Arquivos.PathNFe = 'C:\Easy2Solutions\NFe\Recebidos'
     Configuracoes.Arquivos.PathInu = 'C:\Easy2Solutions\NFe\Recebidos'

@@ -478,41 +478,44 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
     DatabaseName = 'DB'
     SQL.Strings = (
       
-        'SELECT NUMEICOD, NUMEA30DESCR, VlrCredito, VlrDebito, (VlrCredit' +
-        'o - VlrDebito) as Saldo,'
+        'SELECT NUMEICOD, NUMEA30DESCR, VLRCREDITO, VLRDEBITO, (VLRCREDIT' +
+        'O - VLRDEBITO) AS SALDO,'
       
-        '       VALOR_DIGITADO, (VALOR_DIGITADO - (VlrCredito - VlrDebito' +
-        ')) as DIFERENCA'
-      'FROM(select'
-      '  B.NUMEICOD,'
-      '  A.NUMEA30DESCR,'
-      '  sum(B.MVCXN2VLRCRED) as VlrCredito,'
-      '  sum(B.MVCXN2VLRDEB)  as VlrDebito,'
-      '  SUM(C.VALOR) AS VALOR_DIGITADO'
-      'from NUMERARIO A'
+        '       VALOR_DIGITADO, (VALOR_DIGITADO - IIF((VLRCREDITO - VLRDE' +
+        'BITO) < 0, (VLRCREDITO - VLRDEBITO) * -1, (VLRCREDITO - VLRDEBIT' +
+        'O))) AS DIFERENCA'
       
-        'LEFT JOIN MOVIMENTOCAIXA B ON B.NUMEICOD = A.NUMEICOD AND (%MDat' +
-        'a)'
-      'LEFT JOIN CUPOM_FECHAMENTO_ITEM C ON C.COD_CPRZ = A.NUMEICOD'
+        'FROM(SELECT A.NUMEICOD, B.NUMEA30DESCR, SUM(A.MVCXN2VLRCRED) AS ' +
+        'VLRCREDITO,'
+      '       SUM(A.MVCXN2VLRDEB) AS VLRDEBITO,'
+      '       SUM(A.MVCXN2VLRCRED - A.MVCXN2VLRDEB) AS SALDO,'
+      '       (SELECT SUM(D.VALOR) AS VALOR_DIGITADO'
+      '        FROM CUPOM_FECHAMENTO C'
       
-        'LEFT JOIN CUPOM_FECHAMENTO D ON D.COD_CUPOM_FECHAMENTO = C.COD_C' +
-        'UPOM_FECHAMENTO AND (D.OPERACAO_CAIXA = 2) AND (%FData)'
-      'where'
+        '        INNER JOIN CUPOM_FECHAMENTO_ITEM D ON D.COD_CUPOM_FECHAM' +
+        'ENTO = C.COD_CUPOM_FECHAMENTO'
+      '        WHERE D.COD_CPRZ = A.NUMEICOD'
+      '        AND C.OPERACAO_CAIXA = 2'
+      '        AND C.STATUS = '#39'F'#39
+      '        AND (%FData)) AS VALOR_DIGITADO'
+      'FROM MOVIMENTOCAIXA A'
+      'INNER JOIN NUMERARIO B ON A.NUMEICOD = B.NUMEICOD'
+      'where (%MData) and'
       '  (%MEmpresa)  and'
       '  (%MTerminal) and'
       '  (%MOperador)'
       'group by'
-      '  B.NUMEICOD, A.NUMEA30DESCR)')
+      '  A.NUMEICOD, B.NUMEA30DESCR)')
     Macros = <
       item
         DataType = ftString
-        Name = 'MData'
+        Name = 'FData'
         ParamType = ptInput
         Value = '0=0'
       end
       item
         DataType = ftString
-        Name = 'FData'
+        Name = 'MData'
         ParamType = ptInput
         Value = '0=0'
       end
