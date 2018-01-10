@@ -1,6 +1,6 @@
 inherited FormTelaAssistenteLancamentoContasPagar: TFormTelaAssistenteLancamentoContasPagar
-  Left = 165
-  Top = 153
+  Left = 289
+  Top = 97
   Caption = 'Assistente de Lan'#231'amentos - Contas '#224' Pagar'
   ClientHeight = 503
   ClientWidth = 604

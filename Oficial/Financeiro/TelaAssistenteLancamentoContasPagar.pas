@@ -636,7 +636,7 @@ end;
 
 procedure TFormTelaAssistenteLancamentoContasPagar.BtnFimClick(
   Sender: TObject);
-var VlrSoma : Double;
+var VlrSoma : Real;
 begin
   inherited;
   if edtDocum.Text = '' then  edtDocum.Text := '0';
@@ -663,7 +663,7 @@ begin
     end;
   if EditNFNro.Text = '' then
     begin
-      ShowMessage('é necessário informar o Nï¿½mero da Nota');
+      ShowMessage('é necessário informar o Número da Nota');
       EditNFNro.SetFocus;
     end;
   RxTable.First;
@@ -673,7 +673,7 @@ begin
       VlrSoma := VlrSoma + RxTableVALOR.Value;
       RxTable.Next;
     end;
-  if (VlrSoma = edtTotal.Value) or (VlrSoma < edtTotal.Value) then
+  if (FormatFloat('0.00',VlrSoma) = FormatFloat('0.00',edtTotal.Value)) or (VlrSoma < edtTotal.Value) then
      ModalResult := MrOK
   else
     begin

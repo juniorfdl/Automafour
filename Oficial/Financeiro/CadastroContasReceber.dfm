@@ -1,40 +1,48 @@
 inherited FormCadastroContasReceber: TFormCadastroContasReceber
-  Left = 240
-  Top = 101
+  Left = -44
+  Top = 110
   Caption = 'Cadastro de Documentos '#224' Receber'
-  ClientWidth = 878
+  ClientHeight = 706
+  ClientWidth = 1366
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
   inherited ScrollBoxFundo: TScrollBox
-    Width = 878
+    Width = 1366
+    Height = 706
     inherited PanelCabecalho: TPanel
-      Width = 876
+      Width = 1364
       inherited ScrollBoxPanelCabecalho: TScrollBox
-        Width = 876
+        Width = 1364
         inherited Panel1: TPanel
-          Width = 874
+          Width = 1362
           inherited PanelNavigator: TPanel
-            Width = 874
+            Width = 1362
             inherited AdvPanelNavigator: TAdvOfficeStatusBar
-              Width = 874
+              Width = 1362
             end
           end
           inherited PanelLeft: TPanel
-            Left = 417
+            Left = 905
           end
         end
       end
     end
     inherited PanelCentral: TPanel
-      Width = 876
+      Width = 1364
+      Height = 632
+      inherited PanelBarra: TPanel
+        Height = 632
+      end
       inherited PanelFundoDados: TPanel
-        Width = 746
+        Width = 1234
+        Height = 632
         inherited Panel5: TPanel
-          Width = 746
+          Width = 1234
+          Height = 632
           inherited PanelCodigoDescricao: TPanel [0]
-            Width = 746
-            Height = 180
+            Width = 1234
+            Height = 213
             object Label1: TLabel
               Left = 103
               Top = 3
@@ -428,6 +436,19 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
               Font.Style = [fsBold]
               ParentFont = False
             end
+            object Label21: TLabel
+              Left = 9
+              Top = 178
+              Width = 95
+              Height = 13
+              Caption = 'C'#243'digo de Barras'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clNavy
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
             object DBEdit3: TDBEdit
               Left = 6
               Top = 16
@@ -732,6 +753,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
               Top = 87
               Width = 114
               Height = 21
+              Color = clSilver
               DataField = 'CTRCA15NOSSONUMERO'
               DataSource = DSTemplate
               ReadOnly = True
@@ -797,16 +819,26 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
               DataSource = DSTemplate
               TabOrder = 21
             end
+            object DBEdit10: TDBEdit
+              Left = 6
+              Top = 191
+              Width = 409
+              Height = 21
+              DataField = 'CODIGOBARRA'
+              DataSource = DSTemplate
+              TabOrder = 22
+              OnKeyDown = DBEdit7KeyDown
+            end
           end
           inherited PagePrincipal: TPageControl [1]
-            Top = 180
-            Width = 746
-            Height = 269
+            Top = 213
+            Width = 1234
+            Height = 419
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Top = 93
-                Width = 738
-                Height = 64
+                Width = 1226
+                Height = 214
                 Options = [dgTitles, dgColumnResize, dgColLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
                 Columns = <
                   item
@@ -923,22 +955,22 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
                   end>
               end
               inherited PanelProcura: TPanel
-                Width = 738
+                Width = 1226
                 Height = 41
                 inherited PanelEditProcura: TPanel [0]
-                  Width = 344
+                  Width = 832
                   Height = 41
                   inherited AdvPanelEditProcura: TAdvPanel
-                    Width = 344
+                    Width = 832
                     Height = 41
                     FullHeight = 0
                   end
                 end
                 inherited PanelBetween: TPanel [1]
-                  Width = 344
+                  Width = 832
                   Height = 41
                   inherited AdvPanel1: TAdvPanel
-                    Width = 344
+                    Width = 832
                     Height = 41
                     FullHeight = 0
                   end
@@ -973,7 +1005,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
               object PanelPesquisa: TPanel
                 Left = 0
                 Top = 41
-                Width = 738
+                Width = 1226
                 Height = 52
                 Align = alTop
                 BevelOuter = bvNone
@@ -1093,8 +1125,8 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
               end
               object Panel7: TPanel
                 Left = 0
-                Top = 157
-                Width = 738
+                Top = 307
+                Width = 1226
                 Height = 86
                 Align = alBottom
                 Color = 12572888
@@ -1102,7 +1134,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
                 object GroupBox2: TGroupBox
                   Left = 1
                   Top = 1
-                  Width = 736
+                  Width = 1224
                   Height = 84
                   Align = alClient
                   Caption = ' Hist'#243'rico de Recebimentos da Conta Selecionada '
@@ -1119,7 +1151,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
                   object DBGrid2: TDBGrid
                     Left = 2
                     Top = 15
-                    Width = 732
+                    Width = 1220
                     Height = 67
                     TabStop = False
                     Align = alClient
@@ -1472,8 +1504,8 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
             end
           end
           inherited PanelMaster: TPanel [2]
-            Top = 180
-            Width = 746
+            Top = 213
+            Width = 1234
             Height = 0
           end
         end
@@ -1947,6 +1979,11 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
     object SQLTemplateCTRCN2VLRTAXA: TFloatField
       FieldName = 'CTRCN2VLRTAXA'
       Origin = 'DB.CONTASRECEBER.CTRCN2VLRTAXA'
+    end
+    object SQLTemplateCODIGOBARRA: TStringField
+      FieldName = 'CODIGOBARRA'
+      Origin = 'DB.CONTASRECEBER.CODIGOBARRA'
+      Size = 46
     end
   end
   inherited UpdateSQLTemplate: TUpdateSQL
@@ -2740,6 +2777,11 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
       Origin = 'DB.CONTASRECEBER.CTRCCTIPOREGISTRO'
       FixedChar = True
       Size = 1
+    end
+    object SQLContasReceberCODIGOBARRA: TStringField
+      FieldName = 'CODIGOBARRA'
+      Origin = 'DB.CONTASRECEBER.CODIGOBARRA'
+      Size = 46
     end
   end
   object DSSQLContasReceber: TDataSource
