@@ -2886,6 +2886,10 @@ inherited FormPrincipal: TFormPrincipal
           Caption = 'Emiss'#227'o de Boletos'
           OnClick = MnFINReceberEmissaoBoletosDuplicatasClick
         end
+        object LanamentodeChequesRecebidos1: TMenuItem
+          Caption = 'Lan'#231'amento de Cheques Recebidos'
+          OnClick = MnFINChequesRecebidosLancamentosClick
+        end
       end
       object ContaCorrent1: TMenuItem
         Caption = 'Conta Corrente'

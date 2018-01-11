@@ -1900,8 +1900,9 @@ inherited DM: TDM
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 0
     PrinterSetup.mmPaperWidth = 0
-    PrinterSetup.PaperSize = 0
+    PrinterSetup.PaperSize = 9
     DeviceType = 'Screen'
+    EmailSettings.ReportFormat = 'PDF'
     OutlineSettings.CreateNode = True
     OutlineSettings.CreatePageNodes = True
     OutlineSettings.Enabled = False
@@ -1910,7 +1911,7 @@ inherited DM: TDM
     TextSearchSettings.Enabled = False
     Left = 399
     Top = 360
-    Version = '7.04'
+    Version = '10.06'
     mmColumnWidth = 0
     DataPipelineName = 'PipePedVdIt'
     object ppHeaderBand1: TppHeaderBand
@@ -1920,6 +1921,10 @@ inherited DM: TDM
       object ppDBText6: TppDBText
         UserName = 'ppDBText6'
         AutoSize = True
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1937,6 +1942,10 @@ inherited DM: TDM
       end
       object ppDBText7: TppDBText
         UserName = 'ppDBText7'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1954,6 +1963,10 @@ inherited DM: TDM
       end
       object ppDBText8: TppDBText
         UserName = 'ppDBText8'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1971,6 +1984,10 @@ inherited DM: TDM
       end
       object ppDBText9: TppDBText
         UserName = 'ppDBText9'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1988,6 +2005,10 @@ inherited DM: TDM
       end
       object ppDBText10: TppDBText
         UserName = 'ppDBText10'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2006,6 +2027,10 @@ inherited DM: TDM
       object ppLabel1: TppLabel
         UserName = 'ppLabel1'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'NOME.....:'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2022,6 +2047,10 @@ inherited DM: TDM
       object ppLabel2: TppLabel
         UserName = 'ppLabel2'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'ENDERE'#199'O.:'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2038,6 +2067,10 @@ inherited DM: TDM
       object ppLabel3: TppLabel
         UserName = 'ppLabel3'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'BAIRRO...:'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2054,6 +2087,10 @@ inherited DM: TDM
       object ppLabel4: TppLabel
         UserName = 'ppLabel4'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'CIDADE...:'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2070,6 +2107,10 @@ inherited DM: TDM
       object ppLabel5: TppLabel
         UserName = 'ppLabel5'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'CPF/C.G.C:'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2085,6 +2126,10 @@ inherited DM: TDM
       end
       object ppLabel6: TppLabel
         UserName = 'ppLabel6'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Codigo'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2100,6 +2145,10 @@ inherited DM: TDM
       end
       object ppDBText12: TppDBText
         UserName = 'ppDBText12'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2117,6 +2166,10 @@ inherited DM: TDM
       end
       object ppDBText13: TppDBText
         UserName = 'ppDBText13'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2134,6 +2187,10 @@ inherited DM: TDM
       end
       object ppDBText14: TppDBText
         UserName = 'ppDBText14'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2151,6 +2208,10 @@ inherited DM: TDM
       end
       object ppDBText15: TppDBText
         UserName = 'ppDBText15'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2168,6 +2229,10 @@ inherited DM: TDM
       end
       object ppDBText16: TppDBText
         UserName = 'ppDBText16'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2185,6 +2250,10 @@ inherited DM: TDM
       end
       object ppDBText17: TppDBText
         UserName = 'ppDBText17'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2203,6 +2272,10 @@ inherited DM: TDM
       object ppLabel13: TppLabel
         UserName = 'ppLabel13'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'FONE.....:'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2219,6 +2292,10 @@ inherited DM: TDM
       object ppLabel14: TppLabel
         UserName = 'ppLabel14'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Descri'#231#227'o'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2235,6 +2312,10 @@ inherited DM: TDM
       object ppLabel25: TppLabel
         UserName = 'ppLabel25'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Quant.'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2251,6 +2332,10 @@ inherited DM: TDM
       object ppLabel26: TppLabel
         UserName = 'ppLabel26'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Unit'#225'rio'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2268,6 +2353,10 @@ inherited DM: TDM
       object ppLabel27: TppLabel
         UserName = 'ppLabel27'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Total'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2284,6 +2373,10 @@ inherited DM: TDM
       end
       object ppLine1: TppLine
         UserName = 'ppLine1'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Pen.Style = psDot
         ParentWidth = True
         Weight = 0.750000000000000000
@@ -2295,6 +2388,10 @@ inherited DM: TDM
       end
       object ppLine3: TppLine
         UserName = 'ppLine3'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Pen.Style = psDot
         ParentWidth = True
         Weight = 0.750000000000000000
@@ -2307,6 +2404,10 @@ inherited DM: TDM
       object ppLabel28: TppLabel
         UserName = 'ppLabel28'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'OR'#199'AMENTO NRO:'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2323,6 +2424,10 @@ inherited DM: TDM
       object ppDBText24: TppDBText
         UserName = 'ppDBText24'
         AutoSize = True
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2345,6 +2450,10 @@ inherited DM: TDM
       mmPrintPosition = 0
       object ppDBText1: TppDBText
         UserName = 'ppDBText1'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVdIt
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2362,6 +2471,10 @@ inherited DM: TDM
       object ppDBText2: TppDBText
         UserName = 'ppDBText2'
         AutoSize = True
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVdIt
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2378,6 +2491,10 @@ inherited DM: TDM
       end
       object ppDBText3: TppDBText
         UserName = 'ppDBText3'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVdIt
         DisplayFormat = '#,##0.00'
         Font.Charset = ANSI_CHARSET
@@ -2395,6 +2512,10 @@ inherited DM: TDM
       end
       object ppDBText4: TppDBText
         UserName = 'ppDBText4'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVdIt
         DisplayFormat = '#,##0.00'
         Font.Charset = ANSI_CHARSET
@@ -2413,6 +2534,10 @@ inherited DM: TDM
       end
       object ppDBText5: TppDBText
         UserName = 'ppDBText5'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVdIt
         DisplayFormat = '#,##0.00'
         Font.Charset = ANSI_CHARSET
@@ -2441,6 +2566,10 @@ inherited DM: TDM
       mmPrintPosition = 0
       object ppDBText18: TppDBText
         UserName = 'ppDBText18'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2459,6 +2588,10 @@ inherited DM: TDM
       object ppLabel16: TppLabel
         UserName = 'ppLabel16'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'PLANO....:'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2475,6 +2608,10 @@ inherited DM: TDM
       object ppLabel17: TppLabel
         UserName = 'ppLabel17'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'P A R C E L A S '
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2492,6 +2629,10 @@ inherited DM: TDM
       object ppLabel18: TppLabel
         UserName = 'ppLabel18'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'O B S E R V A '#199' '#213' E S'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2509,6 +2650,10 @@ inherited DM: TDM
       object ppLabel19: TppLabel
         UserName = 'ppLabel19'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'VENDEDOR.:'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2524,6 +2669,10 @@ inherited DM: TDM
       end
       object ppDBText19: TppDBText
         UserName = 'ppDBText19'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2542,6 +2691,10 @@ inherited DM: TDM
       object ppLabel21: TppLabel
         UserName = 'ppLabel21'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'TOTAL ITENS'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2557,6 +2710,10 @@ inherited DM: TDM
       end
       object ppDBText20: TppDBText
         UserName = 'ppDBText20'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         DisplayFormat = '#,##0.00'
         Font.Charset = ANSI_CHARSET
@@ -2577,6 +2734,10 @@ inherited DM: TDM
       object ppLabel22: TppLabel
         UserName = 'ppLabel22'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'TOTAL FRETE'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2592,6 +2753,10 @@ inherited DM: TDM
       end
       object ppDBText21: TppDBText
         UserName = 'ppDBText21'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         DisplayFormat = '#,##0.00'
         Font.Charset = ANSI_CHARSET
@@ -2611,6 +2776,10 @@ inherited DM: TDM
       end
       object ppDBText22: TppDBText
         UserName = 'ppDBText22'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         DisplayFormat = '#,##0.00'
         Font.Charset = ANSI_CHARSET
@@ -2631,6 +2800,10 @@ inherited DM: TDM
       object ppLabel23: TppLabel
         UserName = 'ppLabel23'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'TOTAL DESC.'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2647,6 +2820,10 @@ inherited DM: TDM
       object ppLabel24: TppLabel
         UserName = 'ppLabel24'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'TOTAL GERAL'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2662,6 +2839,10 @@ inherited DM: TDM
       end
       object ppDBMemo1: TppDBMemo
         UserName = 'ppDBMemo1'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         CharWrap = False
         DataPipeline = PipePedVd
         Font.Charset = ANSI_CHARSET
@@ -2684,6 +2865,10 @@ inherited DM: TDM
       end
       object ppLine2: TppLine
         UserName = 'ppLine2'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Pen.Style = psDot
         ParentWidth = True
         Weight = 0.750000000000000000
@@ -2695,6 +2880,10 @@ inherited DM: TDM
       end
       object ppDBText23: TppDBText
         UserName = 'ppDBText23'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipePedVd
         DisplayFormat = '#,##0.00'
         Font.Charset = ANSI_CHARSET
@@ -2751,6 +2940,7 @@ inherited DM: TDM
     Configuracoes.Geral.ModeloDF = moNFCe
     Configuracoes.Geral.AtualizarXMLCancelado = True
     Configuracoes.Arquivos.PathSalvar = 'c:\easy2solutions\nfce\'
+    Configuracoes.Arquivos.OrdenacaoPath = <>
     Configuracoes.Arquivos.SepararPorMes = True
     Configuracoes.Arquivos.PathNFe = 'c:\easy2solutions\nfce\'
     Configuracoes.Arquivos.PathInu = 'c:\easy2solutions\nfce\'
@@ -2761,6 +2951,7 @@ inherited DM: TDM
     Configuracoes.WebServices.Tentativas = 1
     Configuracoes.WebServices.AjustaAguardaConsultaRet = True
     Configuracoes.WebServices.QuebradeLinha = '|'
+    Configuracoes.WebServices.TimeoutIntegrador = 0
     DANFE = ACBrNFeDANFeESCPOS
     Left = 545
     Top = 5
@@ -2801,7 +2992,6 @@ inherited DM: TDM
     LogoemCima = False
     TamanhoFonteEndereco = 0
     RecuoLogo = 0
-    TributosSeparadamente = False
     FonteTributos = 'IBPT'
     ImprimeEmUmaLinha = False
     ImprimeDescAcrescItem = False
@@ -5519,11 +5709,13 @@ inherited DM: TDM
     Configuracoes.Geral.SSLXmlSignLib = xsMsXmlCapicom
     Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
     Configuracoes.Geral.AtualizarXMLCancelado = True
+    Configuracoes.Arquivos.OrdenacaoPath = <>
     Configuracoes.WebServices.UF = 'RS'
     Configuracoes.WebServices.AguardarConsultaRet = 15000
     Configuracoes.WebServices.AjustaAguardaConsultaRet = True
     Configuracoes.WebServices.TimeOut = 20000
     Configuracoes.WebServices.QuebradeLinha = '|'
+    Configuracoes.WebServices.TimeoutIntegrador = 0
     Left = 957
     Top = 49
   end

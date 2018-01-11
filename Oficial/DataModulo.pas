@@ -855,10 +855,10 @@ end;
 
 procedure TDM.DataModuleCreate(Sender: TObject);
 begin
-  inherited;
-  vSEM_INTERNET := False;
+  inherited;   
   FormSplash.lbDados.Caption := 'Abrindo Tabela de Filiais...'; FormSplash.lbDados.Update;
   SQLEmpresa.Open ;
+  SQLConfigGeral.Open;
 
   FormSplash.lbDados.Caption := 'Abrindo Tabela de Usuarios...'; FormSplash.lbDados.Update;
   SQLUsuario.Open;
@@ -926,6 +926,7 @@ begin
 
   DataSistema := ExecSql('select current_timestamp from rdb$relations').fieldbyname('current_timestamp').AsDateTime;
   DataSistema := StrToDate(FormatDateTime('dd/mm/yyyy', DataSistema));
+  vSEM_INTERNET := False;
   GetDataValidadeSistema;
 end;
 

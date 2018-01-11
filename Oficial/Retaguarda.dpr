@@ -439,7 +439,9 @@ uses
   udlgConfEmailBoleto in 'Vendas\udlgConfEmailBoleto.pas' {fdlgConfEmailBoleto},
   TelaAtualizaEstoquePDVs in 'Utilitarios\TelaAtualizaEstoquePDVs.pas' {FormTelaAtualizaEstoquePDVs},
   TelaMovimentoRetornoSicredi in 'Financeiro\TelaMovimentoRetornoSicredi.pas' {FormTelaMovimentoRetornoSicredi},
-  RelatorioConferenciaFechamentoCaixa in 'Relatorios\Financeiro\RelatorioConferenciaFechamentoCaixa.pas' {FormConferenciaFechamentoCaixa};
+  RelatorioConferenciaFechamentoCaixa in 'Relatorios\Financeiro\RelatorioConferenciaFechamentoCaixa.pas' {FormConferenciaFechamentoCaixa},
+  CadastroChequesRecebidos in 'Financeiro\CadastroChequesRecebidos.pas' {FormCadastroChequesRecebidos},
+  CadastroChequesHistorico in 'Financeiro\CadastroChequesHistorico.pas' {FormCadastroChequesHistorico};
 
 {$R *.res}
 

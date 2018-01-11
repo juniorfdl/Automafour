@@ -247,6 +247,7 @@ type
     Especiais1: TMenuItem;
     AtualizaodoEstoquedasVendasdosPDVs1: TMenuItem;
     ConfernciadoFechamentodeCaixa1: TMenuItem;
+    LanamentodeChequesRecebidos1: TMenuItem;
     procedure FATUMnCadastroClientesCadastroClick(Sender: TObject);
     procedure FATUMnCadastroClientesTipodeClienteClick(Sender: TObject);
     procedure FATUMnCadastroBancosClick(Sender: TObject);
@@ -487,6 +488,7 @@ type
     procedure MnADMUtilitariosConsultadeCuponsClick(Sender: TObject);
     procedure MnAtualizaodeEstoquedasVendasdosPDVsClick(Sender: TObject);
     procedure ConfernciadoFechamentodeCaixa1Click(Sender: TObject);
+    procedure MnFINChequesRecebidosLancamentosClick(Sender: TObject);
   private
     procedure ApagarOrcamentos;
     procedure ApagarPreVendas;
@@ -569,7 +571,8 @@ uses
   RelatorioItensPedidoVenda, RelatorioNotaFiscalEmitida,
   RelatorioNotaFiscalEmitidaPorICMS, RelatorioItensNotaFiscal,
   RelatorioNotaFiscalItensCobrancaFrete, uSobre, CadastroCupom,
-  TelaAtualizaEstoquePDVs, RelatorioConferenciaFechamentoCaixa;
+  TelaAtualizaEstoquePDVs, RelatorioConferenciaFechamentoCaixa,
+  CadastroChequesRecebidos;
 
 
 
@@ -2978,6 +2981,16 @@ begin
     CriaFormulario(TFormConferenciaFechamentoCaixa, 'FormConferenciaFechamentoCaixa', False, False, True, '')
   else
     SoundPlay('Acesso Negado.wav', Sender);
+end;
+
+procedure TFormPrincipal.MnFINChequesRecebidosLancamentosClick(
+  Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroChequesRecebidos, 'FormCadastroChequesRecebidos',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
 end;
 
 end.
