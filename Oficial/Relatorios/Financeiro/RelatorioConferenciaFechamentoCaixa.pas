@@ -145,16 +145,16 @@ begin
 
   if (HoraInicial.Text = '') and (HoraInicial.Text = '') then
   begin
-    SQLTotaNumerario.MacroByName('MData').Value := 'A.MVCXDMOV >= "' + FormatDateTime('mm/dd/yyyy', De.Date)  + '" and ' +
-                                                   'A.MVCXDMOV <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"';
+    SQLTotaNumerario.MacroByName('MData').Value := 'MVCXDMOV >= "' + FormatDateTime('mm/dd/yyyy', De.Date)  + '" and ' +
+                                                   'MVCXDMOV <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"';
 
     SQLTotaNumerario.MacroByName('FData').Value := 'C.DATA_MOVIMENTO >= "' + FormatDateTime('mm/dd/yyyy', De.Date)  + '" and ' +
                                                    'C.DATA_MOVIMENTO <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"';
   end
   else
   begin
-    SQLTotaNumerario.MacroByName('MData').Value := 'A.REGISTRO >= "' + FormatDateTime('mm/dd/yyyy ', De.Date) + HoraInicial.Text + '" and ' +
-                                                   'A.REGISTRO <= "' + FormatDateTime('mm/dd/yyyy ', Ate.Date)+ HoraFinal.Text   + '"';
+    SQLTotaNumerario.MacroByName('MData').Value := 'REGISTRO >= "' + FormatDateTime('mm/dd/yyyy ', De.Date) + HoraInicial.Text + '" and ' +
+                                                   'REGISTRO <= "' + FormatDateTime('mm/dd/yyyy ', Ate.Date)+ HoraFinal.Text   + '"';
 
     SQLTotaNumerario.MacroByName('FData').Value := 'C.DATA_MOVIMENTO >= "' + FormatDateTime('mm/dd/yyyy ', De.Date) + HoraInicial.Text + '" and ' +
                                                    'C.DATA_MOVIMENTO <= "' + FormatDateTime('mm/dd/yyyy ', Ate.Date)+ HoraFinal.Text   + '"';
@@ -163,10 +163,10 @@ begin
   SQLTotaNumerario.MacroByName('MTerminal').Value := '0=0';
 
   if ComboTerminal.Value <> '' then
-    SQLTotaNumerario.MacroByName('MTerminal').Value := 'A.TERMICOD = ' + ComboTerminal.Value;
+    SQLTotaNumerario.MacroByName('MTerminal').Value := 'TERMICOD = ' + ComboTerminal.Value;
 
   if ComboOperador.Value <> '' then
-    SQLTotaNumerario.MacroByName('MOperador').Value := 'A.USUAICOD = ' + ComboOperador.Value
+    SQLTotaNumerario.MacroByName('MOperador').Value := 'USUAICOD = ' + ComboOperador.Value
   else
     SQLTotaNumerario.MacroByName('MOperador').Value := '0=0';
 

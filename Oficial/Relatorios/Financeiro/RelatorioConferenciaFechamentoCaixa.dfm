@@ -481,38 +481,46 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
         'SELECT NUMEICOD, NUMEA30DESCR, VLRCREDITO, VLRDEBITO, (VLRCREDIT' +
         'O - VLRDEBITO) AS SALDO,'
       
-        '       VALOR_DIGITADO, (VALOR_DIGITADO - IIF((VLRCREDITO - VLRDE' +
-        'BITO) < 0, (VLRCREDITO - VLRDEBITO) * -1, (VLRCREDITO - VLRDEBIT' +
-        'O))) AS DIFERENCA'
+        '       VALOR_DIGITADO, (COALESCE(VALOR_DIGITADO, 0) - COALESCE(I' +
+        'IF((VLRCREDITO - VLRDEBITO) < 0,'
       
-        'FROM(SELECT A.NUMEICOD, B.NUMEA30DESCR, SUM(A.MVCXN2VLRCRED) AS ' +
-        'VLRCREDITO,'
-      '       SUM(A.MVCXN2VLRDEB) AS VLRDEBITO,'
-      '       SUM(A.MVCXN2VLRCRED - A.MVCXN2VLRDEB) AS SALDO,'
-      '       (SELECT SUM(D.VALOR) AS VALOR_DIGITADO'
-      '        FROM CUPOM_FECHAMENTO C'
+        '                                                                ' +
+        '   (VLRCREDITO - VLRDEBITO) * -1,'
       
-        '        INNER JOIN CUPOM_FECHAMENTO_ITEM D ON D.COD_CUPOM_FECHAM' +
-        'ENTO = C.COD_CUPOM_FECHAMENTO'
-      '        WHERE D.COD_CPRZ = A.NUMEICOD'
-      '        AND C.OPERACAO_CAIXA = 2'
-      '        AND C.STATUS = '#39'F'#39
-      '        AND (%FData)) AS VALOR_DIGITADO'
-      'FROM MOVIMENTOCAIXA A'
-      'INNER JOIN NUMERARIO B ON A.NUMEICOD = B.NUMEICOD'
-      'where (%MData) and'
-      '  (%MEmpresa)  and'
-      '  (%MTerminal) and'
-      '  (%MOperador)'
-      'group by'
-      '  A.NUMEICOD, B.NUMEA30DESCR)')
+        '                                                                ' +
+        '   (VLRCREDITO - VLRDEBITO)), 0)) AS DIFERENCA'
+      'FROM(SELECT B.NUMEICOD,'
+      '       B.NUMEA30DESCR,'
+      '       CAI.VLRCREDITO,'
+      '       CAI.VLRDEBITO,'
+      '       CAI.SALDO,'
+      '       FEC.VALOR_DIGITADO'
+      'FROM NUMERARIO B'
+      'LEFT JOIN (SELECT NUMEICOD,'
+      '                  SUM(MVCXN2VLRCRED) AS VLRCREDITO,'
+      '                  SUM(MVCXN2VLRDEB) AS VLRDEBITO,'
+      '                  SUM(MVCXN2VLRCRED - MVCXN2VLRDEB) AS SALDO'
+      '           FROM MOVIMENTOCAIXA'
+      '           WHERE (%MData)'
+      '           AND (%MEmpresa)'
+      '           AND (%MTerminal)'
+      '           AND (%MOperador)'
+      '           GROUP BY NUMEICOD) CAI ON CAI.NUMEICOD = B.NUMEICOD'
+      'LEFT JOIN (SELECT D.COD_CPRZ,'
+      '                  SUM(D.VALOR) AS VALOR_DIGITADO'
+      '           FROM CUPOM_FECHAMENTO C'
+      
+        '           LEFT JOIN CUPOM_FECHAMENTO_ITEM D ON D.COD_CUPOM_FECH' +
+        'AMENTO = C.COD_CUPOM_FECHAMENTO'
+      '           WHERE C.STATUS = '#39'F'#39
+      '           AND C.OPERACAO_CAIXA = 2'
+      '           AND (%FData)'
+      '           GROUP BY D.COD_CPRZ) FEC ON FEC.COD_CPRZ = B.NUMEICOD'
+      'WHERE ((CAI.VLRCREDITO <> 0) OR'
+      '       (CAI.VLRDEBITO <> 0) OR'
+      '       (CAI.SALDO <> 0) OR'
+      '       (FEC.VALOR_DIGITADO <> 0)))')
     Macros = <
-      item
-        DataType = ftString
-        Name = 'FData'
-        ParamType = ptInput
-        Value = '0=0'
-      end
       item
         DataType = ftString
         Name = 'MData'
@@ -534,6 +542,12 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
       item
         DataType = ftString
         Name = 'MOperador'
+        ParamType = ptInput
+        Value = '0=0'
+      end
+      item
+        DataType = ftString
+        Name = 'FData'
         ParamType = ptInput
         Value = '0=0'
       end>
