@@ -248,6 +248,9 @@ type
     AtualizaodoEstoquedasVendasdosPDVs1: TMenuItem;
     ConfernciadoFechamentodeCaixa1: TMenuItem;
     LanamentodeChequesRecebidos1: TMenuItem;
+    LanamentoChequesEmitidos1: TMenuItem;
+    BaixaChequesRecebidos1: TMenuItem;
+    BaixarChequesEmitidos1: TMenuItem;
     procedure FATUMnCadastroClientesCadastroClick(Sender: TObject);
     procedure FATUMnCadastroClientesTipodeClienteClick(Sender: TObject);
     procedure FATUMnCadastroBancosClick(Sender: TObject);
@@ -489,6 +492,10 @@ type
     procedure MnAtualizaodeEstoquedasVendasdosPDVsClick(Sender: TObject);
     procedure ConfernciadoFechamentodeCaixa1Click(Sender: TObject);
     procedure MnFINChequesRecebidosLancamentosClick(Sender: TObject);
+    procedure MnChqEmitidosLancamentosCheuqesEmitidosClick(
+      Sender: TObject);
+    procedure MnFINCheRecebidosBaixaChequesRecebidosClick(Sender: TObject);
+    procedure FormPrincipalB1Click(Sender: TObject);
   private
     procedure ApagarOrcamentos;
     procedure ApagarPreVendas;
@@ -572,7 +579,8 @@ uses
   RelatorioNotaFiscalEmitidaPorICMS, RelatorioItensNotaFiscal,
   RelatorioNotaFiscalItensCobrancaFrete, uSobre, CadastroCupom,
   TelaAtualizaEstoquePDVs, RelatorioConferenciaFechamentoCaixa,
-  CadastroChequesRecebidos;
+  CadastroChequesRecebidos, CadastroChequeEmitido,
+  TelaBaixarChequesRecebidos, TelaBaixarChequesEmitidos;
 
 
 
@@ -2989,6 +2997,35 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     CriaFormulario(TFormCadastroChequesRecebidos, 'FormCadastroChequesRecebidos',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnChqEmitidosLancamentosCheuqesEmitidosClick(
+  Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroChequeEmitido,'FormCadastroChequeEmitido',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnFINCheRecebidosBaixaChequesRecebidosClick(
+  Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormTelaBaixarChequesRecebidos, 'FormTelaBaixarChequesRecebidos',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.FormPrincipalB1Click(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormTelaBaixarChequeEmitido,'FormTelaBaixarChequeEmitido',False,False,True,'')
   else
     SoundPlay('Acesso Negado.wav',Sender);
 end;

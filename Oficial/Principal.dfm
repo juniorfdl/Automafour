@@ -2867,6 +2867,14 @@ inherited FormPrincipal: TFormPrincipal
           Caption = 'Baixa de Contas a Pagar'
           OnClick = MnFINPagarBaixarDocumentosClick
         end
+        object LanamentoChequesEmitidos1: TMenuItem
+          Caption = 'Lan'#231'amento Cheques Emitidos'
+          OnClick = MnChqEmitidosLancamentosCheuqesEmitidosClick
+        end
+        object BaixarChequesEmitidos1: TMenuItem
+          Caption = 'Baixar Cheques Emitidos'
+          OnClick = FormPrincipalB1Click
+        end
       end
       object Receber1: TMenuItem
         Caption = 'Receber'
@@ -2889,6 +2897,10 @@ inherited FormPrincipal: TFormPrincipal
         object LanamentodeChequesRecebidos1: TMenuItem
           Caption = 'Lan'#231'amento de Cheques Recebidos'
           OnClick = MnFINChequesRecebidosLancamentosClick
+        end
+        object BaixaChequesRecebidos1: TMenuItem
+          Caption = 'Baixa Cheques Recebidos'
+          OnClick = MnFINCheRecebidosBaixaChequesRecebidosClick
         end
       end
       object ContaCorrent1: TMenuItem

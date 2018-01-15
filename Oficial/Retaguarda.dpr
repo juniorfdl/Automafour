@@ -441,7 +441,10 @@ uses
   TelaMovimentoRetornoSicredi in 'Financeiro\TelaMovimentoRetornoSicredi.pas' {FormTelaMovimentoRetornoSicredi},
   RelatorioConferenciaFechamentoCaixa in 'Relatorios\Financeiro\RelatorioConferenciaFechamentoCaixa.pas' {FormConferenciaFechamentoCaixa},
   CadastroChequesRecebidos in 'Financeiro\CadastroChequesRecebidos.pas' {FormCadastroChequesRecebidos},
-  CadastroChequesHistorico in 'Financeiro\CadastroChequesHistorico.pas' {FormCadastroChequesHistorico};
+  CadastroChequesHistorico in 'Financeiro\CadastroChequesHistorico.pas' {FormCadastroChequesHistorico},
+  CadastroChequeEmitido in 'Financeiro\CadastroChequeEmitido.pas' {FormCadastroChequeEmitido},
+  TelaBaixarChequesRecebidos in 'Financeiro\TelaBaixarChequesRecebidos.pas' {FormTelaBaixarChequesRecebidos},
+  TelaBaixarChequesEmitidos in 'Financeiro\TelaBaixarChequesEmitidos.pas' {FormTelaBaixarChequeEmitido};
 
 {$R *.res}
 

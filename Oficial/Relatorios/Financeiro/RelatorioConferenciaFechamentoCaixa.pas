@@ -37,11 +37,6 @@ type
     LbTerminal: TppLabel;
     ppLabel9: TppLabel;
     ppSystemVariable1: TppSystemVariable;
-    ppHeaderBand1: TppHeaderBand;
-    ppLabel10: TppLabel;
-    ppLabel11: TppLabel;
-    ppLabel12: TppLabel;
-    ppLabel13: TppLabel;
     ppDetailBand1: TppDetailBand;
     ppDBText1: TppDBText;
     ppDBText2: TppDBText;
@@ -50,7 +45,6 @@ type
     ppSummaryBand2: TppSummaryBand;
     ppDBCalc3: TppDBCalc;
     ppDBCalc7: TppDBCalc;
-    ppLine11: TppLine;
     ppLabel45: TppLabel;
     ppLine12: TppLine;
     ppDBCalc8: TppDBCalc;
@@ -81,15 +75,46 @@ type
     ComboOperador: TRxDBLookupCombo;
     BtnFecharTela: TSpeedButton;
     SQLTotaNumerarioVALOR_DIGITADO: TFloatField;
-    ppDBCalc1: TppDBCalc;
-    ppDBText5: TppDBText;
-    ppLabel4: TppLabel;
     VALOR_DIGITADO: TppField;
     SQLTotaNumerarioDIFERENCA: TFloatField;
     DIFERENCA: TppField;
-    ppLabel5: TppLabel;
-    ppDBText6: TppDBText;
-    ppDBCalc2: TppDBCalc;
+    SQLTotalOperacao: TRxQuery;
+    DSSQLTotalOperacao: TDataSource;
+    PipeOperacao: TppBDEPipeline;
+    SQLTotalOperacaoOPCXICOD: TIntegerField;
+    SQLTotalOperacaoOPCXA60DESCR: TStringField;
+    SQLTotalOperacaoCREDITOS: TFloatField;
+    SQLTotalOperacaoDEBITOS: TFloatField;
+    SQLTotalOperacaoSALDO: TFloatField;
+    ppHeaderBand1: TppHeaderBand;
+    ppLabel10: TppLabel;
+    ppLabel11: TppLabel;
+    ppLabel12: TppLabel;
+    ppLabel13: TppLabel;
+    ppSubReport1: TppSubReport;
+    ppChildReport1: TppChildReport;
+    ppTitleBand2: TppTitleBand;
+    ppDetailBand2: TppDetailBand;
+    ppSummaryBand1: TppSummaryBand;
+    ppLabel6: TppLabel;
+    ppLabel7: TppLabel;
+    ppLabel8: TppLabel;
+    ppLabel14: TppLabel;
+    ppLabel15: TppLabel;
+    ppLabel16: TppLabel;
+    ppDBText7: TppDBText;
+    ppDBText8: TppDBText;
+    ppDBText9: TppDBText;
+    ppDBText10: TppDBText;
+    ppDBText11: TppDBText;
+    ppDBText12: TppDBText;
+    ppLabel17: TppLabel;
+    ppDBCalc4: TppDBCalc;
+    ppDBCalc5: TppDBCalc;
+    ppDBCalc6: TppDBCalc;
+    ppDBCalc9: TppDBCalc;
+    ppDBCalc10: TppDBCalc;
+    ppLine1: TppLine;
     procedure FormCreate(Sender: TObject);
     procedure BtnVisualizarClick(Sender: TObject);
     procedure ReportTotaisPreviewFormCreate(Sender: TObject);
@@ -99,6 +124,7 @@ type
     procedure ppTitleBand1BeforePrint(Sender: TObject);
     procedure ReportTotaisPreviewFormClose(Sender: TObject);
     procedure BtnFecharTelaClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -169,8 +195,24 @@ begin
     SQLTotaNumerario.MacroByName('MOperador').Value := 'USUAICOD = ' + ComboOperador.Value
   else
     SQLTotaNumerario.MacroByName('MOperador').Value := '0=0';
-
   SQLTotaNumerario.Open;
+
+  SQLTotalOperacao.Close;
+  SQLTotalOperacao.MacrobyName('MEmpresa').Value  := 'EMPRICOD  = ' + EmpresaPadrao;
+  SQLTotalOperacao.MacroByName('MTerminal').Value := '0=0';
+
+  if (HoraInicial.Text = '') and (HoraInicial.Text = '') then
+    SQLTotalOperacao.MacroByName('MData').Value := 'A.MVCXDMOV >= "' + FormatDateTime('mm/dd/yyyy', De.Date) + '" and ' +
+                                                   'A.MVCXDMOV <= "' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"'
+  else
+    SQLTotalOperacao.MacroByName('MData').Value := 'A.REGISTRO >= "' + FormatDateTime('mm/dd/yyyy ', De.Date) + HoraInicial.Text + '" and ' +
+                                                   'A.REGISTRO <= "' + FormatDateTime('mm/dd/yyyy ', Ate.Date)+ HoraFinal.Text   + '"';
+    SQLTotalOperacao.MacroByName('MTerminal').Value := '0=0';
+  if ComboOperador.Value <> '' then
+    SQLTotalOperacao.MacroByName('MOperador').Value := 'A.USUAICOD = ' + ComboOperador.Value
+  else
+    SQLTotalOperacao.MacroByName('MOperador').Value := '0=0';
+  SQLTotalOperacao.Open ;
 
   ReportTotais.Print;
 end;
@@ -214,6 +256,12 @@ procedure TFormConferenciaFechamentoCaixa.BtnFecharTelaClick(
   Sender: TObject);
 begin
   Close;
+end;
+
+procedure TFormConferenciaFechamentoCaixa.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  Action := CAFree ;
 end;
 
 end.

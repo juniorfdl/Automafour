@@ -291,6 +291,9 @@ function SaldoContaCorrente(Conta, Operacao, Data: string): double;
 procedure RefazTabelaTemp(Tabela: TTable; Abrir: Boolean);
 function DelphiAberto: Boolean;
 procedure CopyQueryTable(Query: TQuery; Table: TTable);
+procedure BaixaChequeRecebido(IDChequeRecebido:String;DataBaixa : TDateTime);
+procedure MudaAlineaCheque(IDCheque,NovaAlinea,NovoPortador : String);
+procedure BaixaChequeEmitido(NroCheque:String;DataBaixa : TDateTime);
 
 implementation
 
@@ -5382,6 +5385,109 @@ begin
     Tabela.CreateTable;
   end;
   Tabela.Active := Abrir;
+end;
+
+procedure BaixaChequeRecebido(IDChequeRecebido:String;DataBaixa : TDateTime);
+var
+  SQLCheque : TrxQuery;
+begin
+  if (IDChequeRecebido <> '') and (DataBaixa > 0) then
+    begin
+      try
+        Dm.DB.StartTransaction;
+        SQLCheque := TRxQuery.Create(DM);
+        SQLCheque.DatabaseName := 'DB';
+        SQLCheque.Close;
+        SQLCheque.SQL.Clear;
+        SQLCheque.SQL.Add('UPDATE CONTASRECEBER SET CTRCDDEPOSCHQ = ' + '"' + FormatDateTime('mm/dd/yyyy',DataBaixa) + '", Pendente="S"  WHERE CTRCA13ID = "' + IDChequeRecebido + '"');
+        SQLCheque.ExecSQL;
+        Dm.DB.Commit;
+      except
+        SQLCheque.Free;
+        Dm.DB.Rollback;
+      end;
+    end
+  else
+    begin
+      Informa('Dados incompletos, impossível continuar !');
+      Exit;
+    end;
+end;
+
+procedure MudaAlineaCheque(IDCheque,NovaAlinea,NovoPortador : String);
+var
+  Cheque : TRxQuery;
+begin
+  // troca situacao do cheques
+  if NovaAlinea <> '' then
+    begin
+      Dm.DB.StartTransaction;
+      Cheque := TRxQuery.Create(DM);
+      Cheque.DatabaseName := 'DB';
+      Cheque.Close;
+      Cheque.SQL.Clear;
+      Cheque.SQL.Add('UPDATE CONTASRECEBER SET ALINICOD = ' + NovaAlinea + ', Pendente="S" WHERE CTRCA13ID = "' + IDCheque + '"');
+      try
+        Cheque.ExecSQL;
+        Dm.DB.Commit;
+      except
+        on E:Exception do
+          begin
+            Informa('Problemas na alteração do status do cheque, anote o ERRO: ' + E.Message);
+            Dm.DB.Rollback;
+            Application.ProcessMessages;
+          end;
+      end;
+    end;
+
+  // troca portador do cheques
+  if NovoPortador <> '' then
+    begin
+      Dm.DB.StartTransaction;
+      Cheque := TRxQuery.Create(DM);
+      Cheque.DatabaseName := 'DB';
+      Cheque.Close;
+      Cheque.SQL.Clear;
+      Cheque.SQL.Add('UPDATE CONTASRECEBER SET PORTICOD = ' + NovoPortador + ', Pendente="S" WHERE CTRCA13ID = "' + IDCheque + '"');
+      try
+        Cheque.ExecSQL;
+        Dm.DB.Commit;
+      except
+        on E:Exception do
+          begin
+            Informa('Problemas na alteração do status do cheque, anote o ERRO: ' + E.Message);
+            Dm.DB.Rollback;
+            Application.ProcessMessages;
+          end;
+      end;
+    end;
+end;
+
+procedure BaixaChequeEmitido(NroCheque:String;DataBaixa : TDateTime);
+var
+  SQLCheque : TrxQuery;
+begin
+  if (NroCheque <> '') and (DataBaixa > 0) then
+    begin
+      try
+        Dm.DB.StartTransaction;
+        SQLCheque := TRxQuery.Create(DM);
+        SQLCheque.DatabaseName := 'DB';
+        SQLCheque.Close;
+        SQLCheque.SQL.Clear;
+        SQLCheque.SQL.Add('UPDATE CHEQUEEMITIDO SET CQEMDCOMP = ' + '"' + FormatDateTime('mm/dd/yyyy',DataBaixa) + '", Pendente="S"  WHERE CQEMINROCHEQUE = ' + NroCheque);
+        SQLCheque.ExecSQL;
+        Dm.DB.Commit;
+      except
+        SQLCheque.Free;
+        Dm.DB.Rollback;
+      end;
+    end
+  else
+    begin
+      Informa('Dados incompletos, impossível continuar !');
+      Exit;
+    end;
 end;
 
 

@@ -1,6 +1,6 @@
 object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
-  Left = 388
-  Top = 179
+  Left = 334
+  Top = 195
   Width = 685
   Height = 319
   Caption = 'Relat'#243'rio para Confer'#234'ncia do Fechamento de Caixa'
@@ -16,6 +16,7 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
   Position = poScreenCenter
   PrintScale = poNone
   Visible = True
+  OnClose = FormClose
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   PixelsPerInch = 96
@@ -471,8 +472,8 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
   end
   object DSSQLTotaNumrario: TDataSource
     DataSet = SQLTotaNumerario
-    Left = 221
-    Top = 257
+    Left = 205
+    Top = 241
   end
   object SQLTotaNumerario: TRxQuery
     DatabaseName = 'DB'
@@ -512,7 +513,7 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
       
         '           LEFT JOIN CUPOM_FECHAMENTO_ITEM D ON D.COD_CUPOM_FECH' +
         'AMENTO = C.COD_CUPOM_FECHAMENTO'
-      '           WHERE C.STATUS = '#39'F'#39
+      '           WHERE 0=0'
       '           AND C.OPERACAO_CAIXA = 2'
       '           AND (%FData)'
       '           GROUP BY D.COD_CPRZ) FEC ON FEC.COD_CPRZ = B.NUMEICOD'
@@ -551,8 +552,8 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
         ParamType = ptInput
         Value = '0=0'
       end>
-    Left = 193
-    Top = 257
+    Left = 177
+    Top = 241
     object SQLTotaNumerarioNUMEICOD: TIntegerField
       FieldName = 'NUMEICOD'
     end
@@ -584,7 +585,7 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
   end
   object ReportTotais: TppReport
     AutoStop = False
-    DataPipeline = PipeNumerario
+    DataPipeline = PipeOperacao
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
     PrinterSetup.PaperName = 'A4'
@@ -610,11 +611,12 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
     Top = 219
     Version = '10.06'
     mmColumnWidth = 0
-    DataPipelineName = 'PipeNumerario'
+    DataPipelineName = 'PipeOperacao'
     object ppTitleBand1: TppTitleBand
       BeforePrint = ppTitleBand1BeforePrint
+      PrintHeight = phDynamic
       mmBottomOffset = 0
-      mmHeight = 35454
+      mmHeight = 35190
       mmPrintPosition = 0
       object ppLabel1: TppLabel
         UserName = 'Label1'
@@ -631,7 +633,7 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
         Transparent = True
         mmHeight = 5122
         mmLeft = 265
-        mmTop = 7938
+        mmTop = 6085
         mmWidth = 78528
         BandType = 1
       end
@@ -651,7 +653,7 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
         Transparent = True
         mmHeight = 3810
         mmLeft = 0
-        mmTop = 15346
+        mmTop = 13494
         mmWidth = 13377
         BandType = 1
       end
@@ -670,7 +672,7 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
         Transparent = True
         mmHeight = 3754
         mmLeft = 265
-        mmTop = 19579
+        mmTop = 17727
         mmWidth = 15140
         BandType = 1
       end
@@ -689,7 +691,7 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
         Transparent = True
         mmHeight = 3629
         mmLeft = 15346
-        mmTop = 15610
+        mmTop = 13758
         mmWidth = 14389
         BandType = 1
       end
@@ -708,7 +710,7 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
         Transparent = True
         mmHeight = 3629
         mmLeft = 18521
-        mmTop = 19579
+        mmTop = 17727
         mmWidth = 15766
         BandType = 1
       end
@@ -727,7 +729,7 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
         Transparent = True
         mmHeight = 3754
         mmLeft = 265
-        mmTop = 23548
+        mmTop = 21696
         mmWidth = 14014
         BandType = 1
       end
@@ -746,7 +748,7 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
         Transparent = True
         mmHeight = 3754
         mmLeft = 16669
-        mmTop = 23548
+        mmTop = 21696
         mmWidth = 26776
         BandType = 1
       end
@@ -765,7 +767,7 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
         Transparent = True
         mmHeight = 3810
         mmLeft = 265
-        mmTop = 31485
+        mmTop = 29633
         mmWidth = 46567
         BandType = 1
       end
@@ -784,7 +786,7 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
         Transparent = True
         mmHeight = 3810
         mmLeft = 265
-        mmTop = 27517
+        mmTop = 25665
         mmWidth = 16129
         BandType = 1
       end
@@ -792,7 +794,7 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
     object ppHeaderBand1: TppHeaderBand
       BeforePrint = ppHeaderBand1BeforePrint
       mmBottomOffset = 0
-      mmHeight = 3969
+      mmHeight = 5292
       mmPrintPosition = 0
       object ppLabel10: TppLabel
         UserName = 'Label5'
@@ -801,7 +803,7 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
         Border.Color = clBlack
         Border.Style = psSolid
         Border.Visible = False
-        Caption = 'Total Por Numer'#225'rio'
+        Caption = 'Total Por Opera'#231#227'o'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
@@ -810,7 +812,7 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
         Transparent = True
         mmHeight = 3503
         mmLeft = 0
-        mmTop = 265
+        mmTop = 1588
         mmWidth = 80169
         BandType = 0
       end
@@ -830,7 +832,7 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
         Transparent = True
         mmHeight = 3503
         mmLeft = 90223
-        mmTop = 265
+        mmTop = 1588
         mmWidth = 10510
         BandType = 0
       end
@@ -850,7 +852,7 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
         Transparent = True
         mmHeight = 3503
         mmLeft = 115094
-        mmTop = 265
+        mmTop = 1588
         mmWidth = 9635
         BandType = 0
       end
@@ -870,48 +872,8 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
         Transparent = True
         mmHeight = 3503
         mmLeft = 139965
-        mmTop = 265
+        mmTop = 1588
         mmWidth = 8008
-        BandType = 0
-      end
-      object ppLabel4: TppLabel
-        UserName = 'Label6'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        Caption = 'Valor Contado'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Name = 'Tahoma'
-        Font.Size = 8
-        Font.Style = [fsBold, fsUnderline]
-        TextAlignment = taRightJustified
-        Transparent = True
-        mmHeight = 3429
-        mmLeft = 153723
-        mmTop = 265
-        mmWidth = 20108
-        BandType = 0
-      end
-      object ppLabel5: TppLabel
-        UserName = 'Label9'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        Caption = 'Diferen'#231'a'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Name = 'Tahoma'
-        Font.Size = 8
-        Font.Style = [fsBold, fsUnderline]
-        TextAlignment = taRightJustified
-        Transparent = True
-        mmHeight = 3429
-        mmLeft = 182827
-        mmTop = 265
-        mmWidth = 13716
         BandType = 0
       end
     end
@@ -926,8 +888,8 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
         Border.Color = clBlack
         Border.Style = psSolid
         Border.Visible = False
-        DataField = 'NUMEA30DESCR'
-        DataPipeline = PipeNumerario
+        DataField = 'OPCXA60DESCR'
+        DataPipeline = PipeOperacao
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
@@ -935,7 +897,7 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
         Font.Style = []
         ParentDataPipeline = False
         Transparent = True
-        DataPipelineName = 'PipeNumerario'
+        DataPipelineName = 'PipeOperacao'
         mmHeight = 3503
         mmLeft = 0
         mmTop = 0
@@ -948,8 +910,8 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
         Border.Color = clBlack
         Border.Style = psSolid
         Border.Visible = False
-        DataField = 'VLRCREDITO'
-        DataPipeline = PipeNumerario
+        DataField = 'CREDITOS'
+        DataPipeline = PipeOperacao
         DisplayFormat = '#,0.00;-#,0.00'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -959,7 +921,7 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
         ParentDataPipeline = False
         TextAlignment = taRightJustified
         Transparent = True
-        DataPipelineName = 'PipeNumerario'
+        DataPipelineName = 'PipeOperacao'
         mmHeight = 3503
         mmLeft = 76994
         mmTop = 0
@@ -972,8 +934,8 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
         Border.Color = clBlack
         Border.Style = psSolid
         Border.Visible = False
-        DataField = 'VLRDEBITO'
-        DataPipeline = PipeNumerario
+        DataField = 'DEBITOS'
+        DataPipeline = PipeOperacao
         DisplayFormat = '#,0.00;-#,0.00'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -983,7 +945,7 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
         ParentDataPipeline = False
         TextAlignment = taRightJustified
         Transparent = True
-        DataPipelineName = 'PipeNumerario'
+        DataPipelineName = 'PipeOperacao'
         mmHeight = 3503
         mmLeft = 107421
         mmTop = 0
@@ -997,65 +959,20 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
         Border.Style = psSolid
         Border.Visible = False
         DataField = 'SALDO'
-        DataPipeline = PipeNumerario
+        DataPipeline = PipeOperacao
         DisplayFormat = '#,0.00;-#,0.00'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
         Font.Size = 8
         Font.Style = []
+        ParentDataPipeline = False
         TextAlignment = taRightJustified
         Transparent = True
-        DataPipelineName = 'PipeNumerario'
+        DataPipelineName = 'PipeOperacao'
         mmHeight = 3503
         mmLeft = 127265
         mmTop = 201
-        mmWidth = 20638
-        BandType = 4
-      end
-      object ppDBText5: TppDBText
-        UserName = 'DBText5'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        DataField = 'VALOR_DIGITADO'
-        DataPipeline = PipeNumerario
-        DisplayFormat = '#,0.00;-#,0.00'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Name = 'Tahoma'
-        Font.Size = 8
-        Font.Style = []
-        TextAlignment = taRightJustified
-        Transparent = True
-        DataPipelineName = 'PipeNumerario'
-        mmHeight = 3503
-        mmLeft = 153194
-        mmTop = 265
-        mmWidth = 20638
-        BandType = 4
-      end
-      object ppDBText6: TppDBText
-        UserName = 'DBText6'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        DataField = 'DIFERENCA'
-        DataPipeline = PipeNumerario
-        DisplayFormat = '#,0.00;-#,0.00'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Name = 'Tahoma'
-        Font.Size = 8
-        Font.Style = []
-        TextAlignment = taRightJustified
-        Transparent = True
-        DataPipelineName = 'PipeNumerario'
-        mmHeight = 3503
-        mmLeft = 175948
-        mmTop = 265
         mmWidth = 20638
         BandType = 4
       end
@@ -1063,7 +980,7 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
     object ppSummaryBand2: TppSummaryBand
       PrintHeight = phDynamic
       mmBottomOffset = 0
-      mmHeight = 13229
+      mmHeight = 12171
       mmPrintPosition = 0
       object ppDBCalc3: TppDBCalc
         UserName = 'TotalCredito'
@@ -1071,17 +988,18 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
         Border.Color = clBlack
         Border.Style = psSolid
         Border.Visible = False
-        DataField = 'VLRCREDITO'
-        DataPipeline = PipeNumerario
+        DataField = 'CREDITOS'
+        DataPipeline = PipeOperacao
         DisplayFormat = '#,0.00;-#,0.00'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
         Font.Size = 8
         Font.Style = [fsBold]
+        ParentDataPipeline = False
         TextAlignment = taRightJustified
         Transparent = True
-        DataPipelineName = 'PipeNumerario'
+        DataPipelineName = 'PipeOperacao'
         mmHeight = 3503
         mmLeft = 76465
         mmTop = 1588
@@ -1094,35 +1012,22 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
         Border.Color = clBlack
         Border.Style = psSolid
         Border.Visible = False
-        DataField = 'VLRDEBITO'
-        DataPipeline = PipeNumerario
+        DataField = 'DEBITOS'
+        DataPipeline = PipeOperacao
         DisplayFormat = '#,0.00;-#,0.00'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
         Font.Size = 8
         Font.Style = [fsBold]
+        ParentDataPipeline = False
         TextAlignment = taRightJustified
         Transparent = True
-        DataPipelineName = 'PipeNumerario'
+        DataPipelineName = 'PipeOperacao'
         mmHeight = 3503
         mmLeft = 100277
         mmTop = 1588
         mmWidth = 24342
-        BandType = 7
-      end
-      object ppLine11: TppLine
-        UserName = 'Line2'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        Pen.Style = psDot
-        Weight = 0.750000000000000000
-        mmHeight = 1852
-        mmLeft = 265
-        mmTop = 11377
-        mmWidth = 197115
         BandType = 7
       end
       object ppLabel45: TppLabel
@@ -1166,69 +1071,481 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
         Border.Style = psSolid
         Border.Visible = False
         DataField = 'SALDO'
-        DataPipeline = PipeNumerario
+        DataPipeline = PipeOperacao
         DisplayFormat = '#,0.00;-#,0.00'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
         Font.Size = 8
         Font.Style = [fsBold]
+        ParentDataPipeline = False
         TextAlignment = taRightJustified
         Transparent = True
-        DataPipelineName = 'PipeNumerario'
+        DataPipelineName = 'PipeOperacao'
         mmHeight = 3429
-        mmLeft = 126471
+        mmLeft = 129307
         mmTop = 1588
-        mmWidth = 21378
+        mmWidth = 18542
         BandType = 7
       end
-      object ppDBCalc1: TppDBCalc
-        UserName = 'DBCalc2'
-        AutoSize = True
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        DataField = 'VALOR_DIGITADO'
-        DataPipeline = PipeNumerario
-        DisplayFormat = '#,0.00;-#,0.00'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Name = 'Tahoma'
-        Font.Size = 8
-        Font.Style = [fsBold]
-        TextAlignment = taRightJustified
-        Transparent = True
+      object ppSubReport1: TppSubReport
+        UserName = 'PipeNumerario1'
+        ExpandAll = False
+        NewPrintJob = False
+        OutlineSettings.CreateNode = True
+        TraverseAllData = False
         DataPipelineName = 'PipeNumerario'
-        mmHeight = 3429
-        mmLeft = 135467
-        mmTop = 1588
-        mmWidth = 38269
+        mmHeight = 4233
+        mmLeft = 0
+        mmTop = 7144
+        mmWidth = 197300
         BandType = 7
-      end
-      object ppDBCalc2: TppDBCalc
-        UserName = 'DBCalc3'
-        AutoSize = True
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        DataField = 'DIFERENCA'
-        DataPipeline = PipeNumerario
-        DisplayFormat = '#,0.00;-#,0.00'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Name = 'Tahoma'
-        Font.Size = 8
-        Font.Style = [fsBold]
-        TextAlignment = taRightJustified
-        Transparent = True
-        DataPipelineName = 'PipeNumerario'
-        mmHeight = 3429
-        mmLeft = 168011
-        mmTop = 1588
-        mmWidth = 28448
-        BandType = 7
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppChildReport1: TppChildReport
+          AutoStop = False
+          DataPipeline = PipeNumerario
+          PrinterSetup.BinName = 'Default'
+          PrinterSetup.DocumentName = 'Report'
+          PrinterSetup.PaperName = 'A4'
+          PrinterSetup.PrinterName = 'Default'
+          PrinterSetup.mmMarginBottom = 6350
+          PrinterSetup.mmMarginLeft = 6350
+          PrinterSetup.mmMarginRight = 6350
+          PrinterSetup.mmMarginTop = 6350
+          PrinterSetup.mmPaperHeight = 297000
+          PrinterSetup.mmPaperWidth = 210000
+          PrinterSetup.PaperSize = 9
+          Version = '10.06'
+          mmColumnWidth = 0
+          DataPipelineName = 'PipeNumerario'
+          object ppTitleBand2: TppTitleBand
+            mmBottomOffset = 0
+            mmHeight = 4233
+            mmPrintPosition = 0
+            object ppLabel6: TppLabel
+              UserName = 'Label1'
+              AutoSize = False
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
+              Caption = 'Total Por Numer'#225'rio'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = [fsBold, fsUnderline]
+              Transparent = True
+              mmHeight = 3503
+              mmLeft = 0
+              mmTop = 265
+              mmWidth = 80169
+              BandType = 1
+            end
+            object ppLabel7: TppLabel
+              UserName = 'Label2'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
+              Caption = 'Cr'#233'dito'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = [fsBold, fsUnderline]
+              TextAlignment = taRightJustified
+              Transparent = True
+              mmHeight = 3503
+              mmLeft = 90223
+              mmTop = 265
+              mmWidth = 10510
+              BandType = 1
+            end
+            object ppLabel8: TppLabel
+              UserName = 'Label3'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
+              Caption = 'D'#233'bito'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = [fsBold, fsUnderline]
+              TextAlignment = taRightJustified
+              Transparent = True
+              mmHeight = 3503
+              mmLeft = 115094
+              mmTop = 265
+              mmWidth = 9635
+              BandType = 1
+            end
+            object ppLabel14: TppLabel
+              UserName = 'Label14'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
+              Caption = 'Saldo'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = [fsBold, fsUnderline]
+              TextAlignment = taRightJustified
+              Transparent = True
+              mmHeight = 3503
+              mmLeft = 139965
+              mmTop = 265
+              mmWidth = 8008
+              BandType = 1
+            end
+            object ppLabel15: TppLabel
+              UserName = 'Label15'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
+              Caption = 'Valor Contado'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = [fsBold, fsUnderline]
+              TextAlignment = taRightJustified
+              Transparent = True
+              mmHeight = 3429
+              mmLeft = 153723
+              mmTop = 265
+              mmWidth = 20108
+              BandType = 1
+            end
+            object ppLabel16: TppLabel
+              UserName = 'Label16'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
+              Caption = 'Diferen'#231'a'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = [fsBold, fsUnderline]
+              TextAlignment = taRightJustified
+              Transparent = True
+              mmHeight = 3429
+              mmLeft = 182827
+              mmTop = 265
+              mmWidth = 13716
+              BandType = 1
+            end
+          end
+          object ppDetailBand2: TppDetailBand
+            mmBottomOffset = 0
+            mmHeight = 4233
+            mmPrintPosition = 0
+            object ppDBText7: TppDBText
+              UserName = 'DBText7'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
+              DataField = 'NUMEA30DESCR'
+              DataPipeline = PipeNumerario
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              ParentDataPipeline = False
+              Transparent = True
+              DataPipelineName = 'PipeNumerario'
+              mmHeight = 3503
+              mmLeft = 0
+              mmTop = 0
+              mmWidth = 74348
+              BandType = 4
+            end
+            object ppDBText8: TppDBText
+              UserName = 'DBText1'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
+              DataField = 'VLRCREDITO'
+              DataPipeline = PipeNumerario
+              DisplayFormat = '#,0.00;-#,0.00'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              ParentDataPipeline = False
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'PipeNumerario'
+              mmHeight = 3503
+              mmLeft = 76994
+              mmTop = 0
+              mmWidth = 23813
+              BandType = 4
+            end
+            object ppDBText9: TppDBText
+              UserName = 'DBText9'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
+              DataField = 'VLRDEBITO'
+              DataPipeline = PipeNumerario
+              DisplayFormat = '#,0.00;-#,0.00'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              ParentDataPipeline = False
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'PipeNumerario'
+              mmHeight = 3503
+              mmLeft = 107421
+              mmTop = 0
+              mmWidth = 17198
+              BandType = 4
+            end
+            object ppDBText10: TppDBText
+              UserName = 'DBText10'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
+              DataField = 'SALDO'
+              DataPipeline = PipeNumerario
+              DisplayFormat = '#,0.00;-#,0.00'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'PipeNumerario'
+              mmHeight = 3503
+              mmLeft = 127265
+              mmTop = 265
+              mmWidth = 20638
+              BandType = 4
+            end
+            object ppDBText11: TppDBText
+              UserName = 'DBText11'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
+              DataField = 'VALOR_DIGITADO'
+              DataPipeline = PipeNumerario
+              DisplayFormat = '#,0.00;-#,0.00'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'PipeNumerario'
+              mmHeight = 3503
+              mmLeft = 153194
+              mmTop = 265
+              mmWidth = 20638
+              BandType = 4
+            end
+            object ppDBText12: TppDBText
+              UserName = 'DBText12'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
+              DataField = 'DIFERENCA'
+              DataPipeline = PipeNumerario
+              DisplayFormat = '#,0.00;-#,0.00'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'PipeNumerario'
+              mmHeight = 3503
+              mmLeft = 175948
+              mmTop = 265
+              mmWidth = 20638
+              BandType = 4
+            end
+          end
+          object ppSummaryBand1: TppSummaryBand
+            mmBottomOffset = 0
+            mmHeight = 5027
+            mmPrintPosition = 0
+            object ppLabel17: TppLabel
+              UserName = 'Label17'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
+              Caption = 'Totais:'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = [fsBold]
+              TextAlignment = taCentered
+              Transparent = True
+              mmHeight = 3503
+              mmLeft = 1058
+              mmTop = 794
+              mmWidth = 9885
+              BandType = 7
+            end
+            object ppDBCalc4: TppDBCalc
+              UserName = 'TotalCredito1'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
+              DataField = 'VLRCREDITO'
+              DataPipeline = PipeNumerario
+              DisplayFormat = '#,0.00;-#,0.00'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = [fsBold]
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'PipeNumerario'
+              mmHeight = 3503
+              mmLeft = 76465
+              mmTop = 1588
+              mmWidth = 24342
+              BandType = 7
+            end
+            object ppDBCalc5: TppDBCalc
+              UserName = 'TotalDebito1'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
+              DataField = 'VLRDEBITO'
+              DataPipeline = PipeNumerario
+              DisplayFormat = '#,0.00;-#,0.00'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = [fsBold]
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'PipeNumerario'
+              mmHeight = 3503
+              mmLeft = 100277
+              mmTop = 1588
+              mmWidth = 24342
+              BandType = 7
+            end
+            object ppDBCalc6: TppDBCalc
+              UserName = 'DBCalc6'
+              AutoSize = True
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
+              DataField = 'SALDO'
+              DataPipeline = PipeNumerario
+              DisplayFormat = '#,0.00;-#,0.00'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = [fsBold]
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'PipeNumerario'
+              mmHeight = 3429
+              mmLeft = 129382
+              mmTop = 1588
+              mmWidth = 18542
+              BandType = 7
+            end
+            object ppDBCalc9: TppDBCalc
+              UserName = 'DBCalc9'
+              AutoSize = True
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
+              DataField = 'VALOR_DIGITADO'
+              DataPipeline = PipeNumerario
+              DisplayFormat = '#,0.00;-#,0.00'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = [fsBold]
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'PipeNumerario'
+              mmHeight = 3429
+              mmLeft = 138377
+              mmTop = 1588
+              mmWidth = 35433
+              BandType = 7
+            end
+            object ppDBCalc10: TppDBCalc
+              UserName = 'DBCalc10'
+              AutoSize = True
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
+              DataField = 'DIFERENCA'
+              DataPipeline = PipeNumerario
+              DisplayFormat = '#,0.00;-#,0.00'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = [fsBold]
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'PipeNumerario'
+              mmHeight = 3429
+              mmLeft = 170921
+              mmTop = 1588
+              mmWidth = 25612
+              BandType = 7
+            end
+            object ppLine1: TppLine
+              UserName = 'Line1'
+              Border.BorderPositions = []
+              Border.Color = clBlack
+              Border.Style = psSolid
+              Border.Visible = False
+              Weight = 0.750000000000000000
+              mmHeight = 1058
+              mmLeft = 76200
+              mmTop = 529
+              mmWidth = 120386
+              BandType = 7
+            end
+          end
+        end
       end
     end
   end
@@ -1343,5 +1660,121 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
     PanelAppearanceDark.TextStyle = []
     Left = 544
     Top = 8
+  end
+  object SQLTotalOperacao: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      
+        'select A.OPCXICOD, B.OPCXA60DESCR, sum(A.MVCXN2VLRCRED) as CREDI' +
+        'TOS, sum(A.MVCXN2VLRDEB) as DEBITOS,'
+      '       sum(A.MVCXN2VLRCRED - A.MVCXN2VLRDEB) as SALDO'
+      'from MOVIMENTOCAIXA A'
+      'inner join OPERACAOCAIXA B on B.OPCXICOD = A.OPCXICOD'
+      'where B.IMPRIMIR_RESUMO = '#39'S'#39' and'
+      '      (%MData) and'
+      '      (%MEmpresa) and'
+      '      (%MTerminal) and'
+      '      (%MOperador)'
+      'group by A.OPCXICOD, B.OPCXA60DESCR'
+      'order by B.OPCXA60DESCR  ')
+    Macros = <
+      item
+        DataType = ftString
+        Name = 'MData'
+        ParamType = ptInput
+        Value = '0=0'
+      end
+      item
+        DataType = ftString
+        Name = 'MEmpresa'
+        ParamType = ptInput
+        Value = '0=0'
+      end
+      item
+        DataType = ftString
+        Name = 'MTerminal'
+        ParamType = ptInput
+        Value = '0=0'
+      end
+      item
+        DataType = ftString
+        Name = 'MOperador'
+        ParamType = ptInput
+        Value = '0=0'
+      end>
+    Left = 37
+    Top = 232
+    object SQLTotalOperacaoOPCXICOD: TIntegerField
+      FieldName = 'OPCXICOD'
+    end
+    object SQLTotalOperacaoOPCXA60DESCR: TStringField
+      FieldName = 'OPCXA60DESCR'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLTotalOperacaoCREDITOS: TFloatField
+      FieldName = 'CREDITOS'
+    end
+    object SQLTotalOperacaoDEBITOS: TFloatField
+      FieldName = 'DEBITOS'
+    end
+    object SQLTotalOperacaoSALDO: TFloatField
+      FieldName = 'SALDO'
+    end
+  end
+  object DSSQLTotalOperacao: TDataSource
+    DataSet = SQLTotalOperacao
+    Left = 69
+    Top = 232
+  end
+  object PipeOperacao: TppBDEPipeline
+    DataSource = DSSQLTotalOperacao
+    OpenDataSource = False
+    UserName = 'PipeOperacao'
+    Left = 493
+    Top = 216
+    object PipeOperacaoppField1: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'OPCXICOD'
+      FieldName = 'OPCXICOD'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 0
+      Position = 0
+    end
+    object PipeOperacaoppField2: TppField
+      FieldAlias = 'OPCXA60DESCR'
+      FieldName = 'OPCXA60DESCR'
+      FieldLength = 60
+      DisplayWidth = 60
+      Position = 1
+    end
+    object PipeOperacaoppField3: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'CREDITOS'
+      FieldName = 'CREDITOS'
+      FieldLength = 0
+      DataType = dtDouble
+      DisplayWidth = 10
+      Position = 2
+    end
+    object PipeOperacaoppField4: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'DEBITOS'
+      FieldName = 'DEBITOS'
+      FieldLength = 0
+      DataType = dtDouble
+      DisplayWidth = 10
+      Position = 3
+    end
+    object PipeOperacaoppField5: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'SALDO'
+      FieldName = 'SALDO'
+      FieldLength = 0
+      DataType = dtDouble
+      DisplayWidth = 10
+      Position = 4
+    end
   end
 end
