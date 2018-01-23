@@ -1,6 +1,6 @@
 object FormPrincipal: TFormPrincipal
-  Left = 642
-  Top = 291
+  Left = 526
+  Top = 265
   Width = 509
   Height = 231
   Caption = 'IntegradorPDVs'
@@ -999,7 +999,7 @@ object FormPrincipal: TFormPrincipal
   end
   object lbStatus: TLabel
     Left = 0
-    Top = 172
+    Top = 173
     Width = 493
     Height = 20
     Align = alBottom
