@@ -25,9 +25,9 @@ type
     SQLProdutoPRODICOD: TIntegerField;
     SQLProdutoFORNICOD: TIntegerField;
     TblTemporariaPRODA60DESCR: TStringField;
-    TblTemporariaPRODN3VLRVENDA: TFloatField;
-    TblTemporariaPRODN3VLRCOMPRA: TFloatField;
-    TblTemporariaPRODN3VLRCUSTO: TFloatField;
+    TblTemporariaPRODN3VLRVENDA: TBCDField;
+    TblTemporariaPRODN3VLRCOMPRA: TBCDField;
+    TblTemporariaPRODN3VLRCUSTO: TBCDField;
     TblTemporariaPRODICOD: TIntegerField;
     TblTemporariaFORNICOD: TIntegerField;
     SQLProdutoFORNA60RAZAOSOC: TStringField;
@@ -49,7 +49,7 @@ var
 
 implementation
 
-uses DataModulo;
+uses DataModulo, UnitLibrary;
 
 {$R *.dfm}
 
@@ -102,7 +102,7 @@ begin
   end;
 
   SQLProduto.Open;
-  BatchExec(SQLProduto, TblTemporaria);
+  CopyQueryTable(SQLProduto, TblTemporaria);
 
   Report.ReportName        := DM.SQLConfigGeralCFGEA255PATHREPORT.Value + '\Produtos Por Fornecedor.rpt' ;
   Report.ReportTitle       := 'Relatório de Produtos Por Fornecedor' ;
@@ -110,14 +110,14 @@ begin
   Report.Formulas.Retrieve ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Empresa' ;
-  Report.Formulas.Formula.Text := '''' + ComboEmpresa.Text + '''' ;
+  Report.Formulas.Formula.Text := '"' + ComboEmpresa.Text + '"' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Emissao' ;
-  Report.Formulas.Formula.Text := '''' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '''' ;
+  Report.Formulas.Formula.Text := '"' + FormatDateTime('dd/mm/yyyy hh:mm:ss', Now) + '"' ;
   //--------------------------------------------------------------------------\\
   //--------------------------------------------------------------------------\\
   Report.Formulas.Name         := 'Fornecedor' ;
-  Report.Formulas.Formula.Text := '''' + ComboFornecedor.Text + '''' ;
+  Report.Formulas.Formula.Text := '"' + ComboFornecedor.Text + '"' ;
   //--------------------------------------------------------------------------\\
   Report.Formulas.Send ;
   Report.Execute;  

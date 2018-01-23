@@ -345,10 +345,20 @@ begin
     sql := sql + ' and PRODUTO.PRODICOD in (select PRODICOD from ProdutoFornecedor where FORNICOD = ' + ComboFornecedor.KeyValue + ')';
 
   if CKNegativo.Checked then
-    sql := sql + ' and PRODUTO.PRODICOD in (select PRODICOD from PRODUTOSALDO where EMPRICOD = ' + EmpresaPadraoPedidosCompra +
-                                    ' and PRODUTOSALDO.PRODICOD = PRODUTO.PRODICOD and PRODUTOSALDO.PSLDN3QTDE <= 0)'
+  begin
+    if EmpresaPadraoPedidosCompra = '0' then
+      sql := sql + ' and PRODUTO.PRODICOD in (select PRODICOD from PRODUTOSALDO where PRODUTOSALDO.PRODICOD = PRODUTO.PRODICOD and PRODUTOSALDO.PSLDN3QTDE <= 0)'
+    else
+      sql := sql + ' and PRODUTO.PRODICOD in (select PRODICOD from PRODUTOSALDO where EMPRICOD = ' + EmpresaPadraoPedidosCompra +
+                                      ' and PRODUTOSALDO.PRODICOD = PRODUTO.PRODICOD and PRODUTOSALDO.PSLDN3QTDE <= 0)';
+  end
   else
-    sql := sql + ' and PRODUTO.PRODICOD in (select PRODICOD from PRODUTOSALDO where EMPRICOD = ' + EmpresaPadraoPedidosCompra +')';
+  begin
+    if EmpresaPadraoPedidosCompra = '0' then
+      sql := sql + ' and PRODUTO.PRODICOD in (select PRODICOD from PRODUTOSALDO)'
+    else
+      sql := sql + ' and PRODUTO.PRODICOD in (select PRODICOD from PRODUTOSALDO where EMPRICOD = ' + EmpresaPadraoPedidosCompra +')';
+  end;
 
   if not CKOrdemMarcaDescr.Checked then
     sql := sql + ' Order By PRODUTO.PRODA60DESCR, PRODUTO.PRODA60REFER'
@@ -402,7 +412,10 @@ begin
         // Saldo de Estoque
         dm.zConsulta.Close;
         dm.zConsulta.Sql.Clear;
-        dm.zConsulta.Sql.Add('Select PSLDN3QTDE from PRODUTOSALDO Where PRODICOD = '+zProdutos.fieldbyname('PRODICOD').AsString+' and EMPRICOD = ' + EmpresaPadraoPedidosCompra);
+        if EmpresaPadraoPedidosCompra = '0' then
+          dm.zConsulta.Sql.Add('Select PSLDN3QTDE from PRODUTOSALDO Where PRODICOD = '+zProdutos.fieldbyname('PRODICOD').AsString)
+        else
+          dm.zConsulta.Sql.Add('Select PSLDN3QTDE from PRODUTOSALDO Where PRODICOD = '+zProdutos.fieldbyname('PRODICOD').AsString+' and EMPRICOD = ' + EmpresaPadraoPedidosCompra);
         dm.zConsulta.Open;
         try
           TblTemporariaSALDO.AsString := FormatFloat('##0.000',dm.zConsulta.fieldbyname('PSLDN3QTDE').AsVariant);
@@ -423,7 +436,11 @@ begin
               TblTemporariaQTDETOTVENDA.AsVariant := dm.zConsulta.fieldbyname('SUM').AsVariant;}
 
             // Alimenta quantidade vendida e data da ultima venda.
-            sql := 'select CPITN3QTD, REGISTRO from CUPOMITEM where (EMPRICOD='+EmpresaPadraoPedidosCompra+') and (CPITCSTATUS<>''C'') and (CPITN3QTD>0) and (PRODICOD='+TblTemporariaPRODICOD.AsString+')';
+            sql := 'select CPITN3QTD, REGISTRO from CUPOMITEM where and (CPITCSTATUS<>''C'') and (CPITN3QTD>0) and (PRODICOD='+TblTemporariaPRODICOD.AsString+')';
+            if EmpresaPadraoPedidosCompra = '0' then
+              sql := sql + ' and 0 = 0'
+            else
+              sql := sql + '(and EMPRICOD='+EmpresaPadraoPedidosCompra+')';
             sql := sql + ' and (REGISTRO>='''+FormatDateTime('mm/dd/yyyy',De.Date)+''' and REGISTRO<='''+FormatDateTime('mm/dd/yyyy',ATE.Date)+' 23:59:59'') order by REGISTRO DESC';
             dm.zConsulta.Close;
             dm.zConsulta.Sql.Clear;
@@ -986,7 +1003,10 @@ procedure TFormTelaPedidoCompraItemFiltro.RxDBLookupCombo1Change(
   Sender: TObject);
 begin
   inherited;
-  EmpresaPadraoPedidosCompra := sqlEmpresaEMPRICOD.AsString;
+  if RxDBLookupCombo1.Value = 'Todas' then
+    EmpresaPadraoPedidosCompra := '0'
+  else
+    EmpresaPadraoPedidosCompra := sqlEmpresaEMPRICOD.AsString;
 end;
 
 end.

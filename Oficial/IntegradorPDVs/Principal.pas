@@ -1439,7 +1439,7 @@ begin
     begin
       while not ZConsultaPDV.eof do
       begin
-        Application.Title := 'Exportando CUPOM_FECHAMENTO => ' + ZConsultaPDV.fieldbyname('COD_CUPOM_FECHAMENTO').Value;
+        Application.Title := 'Exportando CUPOM_FECHAMENTO => ' + ZConsultaPDV.fieldbyname('COD_CUPOM_FECHAMENTO').AsString;
         lbStatus.Caption := Application.Title;
         lbStatus.Update;
         Application.ProcessMessages;
@@ -1447,9 +1447,9 @@ begin
         erro := false;
         ZinsereServidor.Close;
         ZinsereServidor.sql.clear;
-        ZinsereServidor.sql.Text := 'Select * from CUPOM_FECHAMENTO where COD_CUPOM_FECHAMENTO = ' + ZConsultaPDV.fieldbyname('COD_CUPOM_FECHAMENTO').Value;
+        ZinsereServidor.sql.Add('Select * from CUPOM_FECHAMENTO where COD_CUPOM_FECHAMENTO = ' + ZConsultaPDV.fieldbyname('COD_CUPOM_FECHAMENTO').AsString);
         ZinsereServidor.open;
-        
+
         if ZinsereServidor.IsEmpty then
           ZinsereServidor.append
         else
@@ -1461,7 +1461,7 @@ begin
           begin
             try ZinsereServidor.FieldByName(ZConsultaPDV.Fields[i].FieldName).AsVariant := ZConsultaPDV.Fields[i].AsVariant; except Application.ProcessMessages; end;
           end;
-          
+
         try
           erro := false;
           ZinsereServidor.post;
@@ -1477,7 +1477,7 @@ begin
           ZupdatePDV.Close;
           ZupdatePDV.sql.clear;
           ZupdatePDV.sql.ADD('Update CUPOM_FECHAMENTO Set IMP_SERVIDOR=''S'' where COD_CUPOM_FECHAMENTO = '
-                    + ZConsultaPDV.fieldbyname('COD_CUPOM_FECHAMENTO').Value);
+                    + ZConsultaPDV.fieldbyname('COD_CUPOM_FECHAMENTO').AsString);
           ZupdatePDV.ExecSQL;
         end;
 
@@ -1501,7 +1501,75 @@ begin
     lbStatus.Update;
     Application.ProcessMessages;
   end;
-  {Fim CUPOM_FECHAMENTO}    
+  {Fim CUPOM_FECHAMENTO}
+
+  {CUPOM_FECHAMENTO_ITEM}
+  try
+    ZConsultaPDV.close;
+    ZConsultaPDV.SQL.clear;
+    ZConsultaPDV.SQL.Text := 'Select * from CUPOM_FECHAMENTO_ITEM where IMP_SERVIDOR is null ';
+    ZConsultaPDV.Open;
+    if not ZConsultaPDV.IsEmpty then
+    begin
+      while not ZConsultaPDV.eof do
+      begin
+        Application.Title := 'Exportando CUPOM_FECHAMENTO_ITEM => ' + ZConsultaPDV.fieldbyname('COD_CUPOM_FECHAMENTO').AsString;
+        lbStatus.Caption := Application.Title;
+        lbStatus.Update;
+        Application.ProcessMessages;
+            {Abre sql no servidor e tenta achar o registro se achou altera se nao insere!}
+        erro := false;
+        ZinsereServidor.Close;
+        ZinsereServidor.sql.clear;
+        ZinsereServidor.sql.Add('Select * from CUPOM_FECHAMENTO_ITEM where COD_CUPOM_FECHAMENTO = '
+                                + ZConsultaPDV.fieldbyname('COD_CUPOM_FECHAMENTO').AsString
+                                + ' and COD_CPRZ = ' + ZConsultaPDV.fieldbyname('COD_CPRZ').AsString);
+        ZinsereServidor.open;
+
+        if ZinsereServidor.IsEmpty then
+          ZinsereServidor.append
+        else
+          ZinsereServidor.edit;
+            {alimenta os campos no servidor}
+
+        for i := 0 to ZConsultaPDV.FieldCount - 1 do
+          if ZConsultaPDV.Fields[i].AsString <> '' then
+          begin
+            try ZinsereServidor.FieldByName(ZConsultaPDV.Fields[i].FieldName).AsVariant := ZConsultaPDV.Fields[i].AsVariant; except Application.ProcessMessages; end;
+          end;
+
+        try
+          erro := false;
+          ZinsereServidor.post;
+        except
+          erro := true;
+          ZinsereServidor.cancel;
+          Application.ProcessMessages;
+        end;       
+
+        {troca coluna PENDENTE PARA NAO, Para nao ser mais exportado ao servidor}
+        if not erro then
+        begin
+          ZupdatePDV.Close;
+          ZupdatePDV.sql.clear;
+          ZupdatePDV.sql.ADD('Update CUPOM_FECHAMENTO_ITEM Set IMP_SERVIDOR=''S'' where COD_CUPOM_FECHAMENTO = '
+                    + ZConsultaPDV.fieldbyname('COD_CUPOM_FECHAMENTO').AsString
+                    + ' and COD_CPRZ = ' + ZConsultaPDV.fieldbyname('COD_CPRZ').AsString);
+          ZupdatePDV.ExecSQL;
+        end;
+
+        ZConsultaPDV.next;
+      end;
+    end;
+
+  except
+    Application.Title := 'Falha ao Exportar CUPOM_FECHAMENTO_ITEM!';
+    lbStatus.Caption := Application.Title;
+    lbStatus.Update;
+    Application.ProcessMessages;
+  end;
+  {Fim CUPOM_FECHAMENTO_ITEM}    
+
 end;
 
 function TFormPrincipal.TrocaVirgulaPorPonto(Numero: string): string;
