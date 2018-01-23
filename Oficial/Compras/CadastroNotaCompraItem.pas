@@ -1008,7 +1008,7 @@ begin
             end;
           end;
       end;
-  SQLTemplate.MacroByName('MFiltro').asString := '0 = 0';
+  SQLTemplate.MacroByName('MFiltro').asString := '0 = 0'; 
 end;
 
 procedure TFormCadastroNotaCompraItem.SQLTemplateAfterPost(

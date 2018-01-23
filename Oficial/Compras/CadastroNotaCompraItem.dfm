@@ -4218,6 +4218,7 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
       'Where'
       '    NOCPA13ID=:NOCPA13ID and '
       '    (%MFiltro)')
+    UpdateMode = upWhereKeyOnly
     ParamData = <
       item
         DataType = ftString
@@ -4228,6 +4229,7 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
       Tag = 1
       FieldName = 'NOCPA13ID'
       Origin = 'DB.NOTACOMPRAITEM.NOCPA13ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       FixedChar = True
       Size = 13
     end
@@ -4236,23 +4238,27 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
       DisplayLabel = 'Item Seq'
       FieldName = 'NOCIIITEM'
       Origin = 'DB.NOTACOMPRAITEM.NOCIIITEM'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
     object SQLTemplatePRODICOD: TIntegerField
       ConstraintErrorMessage = '1'
       DisplayLabel = 'C'#243'digo'
       FieldName = 'PRODICOD'
       Origin = 'DB.NOTACOMPRAITEM.PRODICOD'
+      ProviderFlags = [pfInUpdate]
       OnChange = SQLTemplatePRODICODChange
     end
     object SQLTemplateNOCIN3QTDBONIF: TFloatField
       FieldName = 'NOCIN3QTDBONIF'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN3QTDBONIF'
+      ProviderFlags = [pfInUpdate]
       DisplayFormat = '#,##0.000'
     end
     object SQLTemplateNOCIN3CAPEMBAL: TFloatField
       ConstraintErrorMessage = '1'
       FieldName = 'NOCIN3CAPEMBAL'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN3CAPEMBAL'
+      ProviderFlags = [pfInUpdate]
       OnChange = SQLTemplateNOCIN3CAPEMBALChange
       DisplayFormat = '#,##0.000'
       EditFormat = '#,##0.000'
@@ -4260,6 +4266,7 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
     object SQLTemplateNOCIN3QTDEMBAL: TFloatField
       FieldName = 'NOCIN3QTDEMBAL'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN3QTDEMBAL'
+      ProviderFlags = [pfInUpdate]
       OnChange = SQLTemplateNOCIN3QTDEMBALChange
       DisplayFormat = '#,##0.000'
       EditFormat = '#,##0.000'
@@ -4267,92 +4274,108 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
     object SQLTemplateNOCIN3VLRDESC: TFloatField
       FieldName = 'NOCIN3VLRDESC'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN3VLRDESC'
+      ProviderFlags = [pfInUpdate]
       OnChange = SQLTemplateNOCIN3VLRDESCChange
       DisplayFormat = '#,##0.00'
     end
     object SQLTemplateNOCIN3PERCDESC: TFloatField
       FieldName = 'NOCIN3PERCDESC'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN3PERCDESC'
+      ProviderFlags = [pfInUpdate]
       OnChange = SQLTemplateNOCIN3PERCDESCChange
       DisplayFormat = '##0.00'
     end
     object SQLTemplateNOCIN3VLRICMS: TFloatField
       FieldName = 'NOCIN3VLRICMS'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN3VLRICMS'
+      ProviderFlags = [pfInUpdate]
       OnChange = SQLTemplateNOCIN3VLRICMSChange
       DisplayFormat = '#,##0.00'
     end
     object SQLTemplateNOCIN3PERCICMS: TFloatField
       FieldName = 'NOCIN3PERCICMS'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN3PERCICMS'
+      ProviderFlags = [pfInUpdate]
       OnChange = SQLTemplateNOCIN3PERCICMSChange
       DisplayFormat = '##0.00'
     end
     object SQLTemplateNOCIN3VLRSUBST: TFloatField
       FieldName = 'NOCIN3VLRSUBST'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN3VLRSUBST'
+      ProviderFlags = [pfInUpdate]
       OnChange = SQLTemplateNOCIN3VLRSUBSTChange
       DisplayFormat = '#,##0.00'
     end
     object SQLTemplateNOCIN3VLRIPI: TFloatField
       FieldName = 'NOCIN3VLRIPI'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN3VLRIPI'
+      ProviderFlags = [pfInUpdate]
       OnChange = SQLTemplateNOCIN3VLRIPIChange
       DisplayFormat = '#,##0.00'
     end
     object SQLTemplateNOCIN3PERCIPI: TFloatField
       FieldName = 'NOCIN3PERCIPI'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN3PERCIPI'
+      ProviderFlags = [pfInUpdate]
       DisplayFormat = '##0.00'
     end
     object SQLTemplateNOCIN3VLRCUSTOMED: TFloatField
       FieldName = 'NOCIN3VLRCUSTOMED'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN3VLRCUSTOMED'
+      ProviderFlags = [pfInUpdate]
       DisplayFormat = '#,##0.00000'
       EditFormat = '#,##0.00000'
     end
     object SQLTemplateNOCIN3VLRFRETE: TFloatField
       FieldName = 'NOCIN3VLRFRETE'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN3VLRFRETE'
+      ProviderFlags = [pfInUpdate]
       OnChange = SQLTemplateNOCIN3VLRFRETEChange
       DisplayFormat = '#,##0.00'
     end
     object SQLTemplatePENDENTE: TStringField
       FieldName = 'PENDENTE'
       Origin = 'DB.NOTACOMPRAITEM.PENDENTE'
+      ProviderFlags = [pfInUpdate]
       FixedChar = True
       Size = 1
     end
     object SQLTemplateREGISTRO: TDateTimeField
       FieldName = 'REGISTRO'
       Origin = 'DB.NOTACOMPRAITEM.REGISTRO'
+      ProviderFlags = [pfInUpdate]
     end
     object SQLTemplateAgrupGradeLookUp: TIntegerField
       FieldKind = fkCalculated
       FieldName = 'AgrupGradeLookUp'
+      ProviderFlags = [pfInUpdate]
       Visible = False
       Calculated = True
     end
     object SQLTemplateGradeCodLookUp: TIntegerField
       FieldKind = fkCalculated
       FieldName = 'GradeCodLookUp'
+      ProviderFlags = [pfInUpdate]
       Visible = False
       Calculated = True
     end
     object SQLTemplateProdutoLookUp: TStringField
       FieldKind = fkCalculated
       FieldName = 'ProdutoLookUp'
+      ProviderFlags = [pfInUpdate]
       Size = 60
       Calculated = True
     end
     object SQLTemplateTotalItemCalc: TFloatField
       FieldKind = fkCalculated
       FieldName = 'TotalItemCalc'
+      ProviderFlags = [pfInUpdate]
       Calculated = True
     end
     object SQLTemplateCodAntigoLookup: TStringField
       FieldKind = fkCalculated
       FieldName = 'CodAntigoLookup'
+      ProviderFlags = [pfInUpdate]
       Visible = False
       Size = 15
       Calculated = True
@@ -4361,12 +4384,14 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
       DisplayWidth = 60
       FieldKind = fkCalculated
       FieldName = 'ReferenciaLookUp'
+      ProviderFlags = [pfInUpdate]
       Size = 60
       Calculated = True
     end
     object SQLTemplateValorCustoAtual: TCurrencyField
       FieldKind = fkCalculated
       FieldName = 'ValorCustoAtual'
+      ProviderFlags = [pfInUpdate]
       DisplayFormat = '#,##0.00000'
       EditFormat = '#,##0.00000'
       Calculated = True
@@ -4374,6 +4399,7 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
     object SQLTemplateValorCustoMedAtual: TFloatField
       FieldKind = fkCalculated
       FieldName = 'ValorCustoMedAtual'
+      ProviderFlags = [pfInUpdate]
       DisplayFormat = '#,##0.00000'
       EditFormat = '#,##0.00000'
       Calculated = True
@@ -4381,105 +4407,125 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
     object SQLTemplateMargemLucro: TCurrencyField
       FieldKind = fkCalculated
       FieldName = 'MargemLucro'
+      ProviderFlags = [pfInUpdate]
       DisplayFormat = '##0.00'
       Calculated = True
     end
     object SQLTemplateValorVendaAtual: TCurrencyField
       FieldKind = fkCalculated
       FieldName = 'ValorVendaAtual'
+      ProviderFlags = [pfInUpdate]
       DisplayFormat = '##0.00'
       Calculated = True
     end
     object SQLTemplateMargemLucro2: TCurrencyField
       FieldKind = fkCalculated
       FieldName = 'MargemLucro2'
+      ProviderFlags = [pfInUpdate]
       DisplayFormat = '##0.00'
       Calculated = True
     end
     object SQLTemplateValorVendaAtual2: TCurrencyField
       FieldKind = fkCalculated
       FieldName = 'ValorVendaAtual2'
+      ProviderFlags = [pfInUpdate]
       DisplayFormat = '##0.00'
       Calculated = True
     end
     object SQLTemplatePDCPA13ID: TStringField
       FieldName = 'PDCPA13ID'
       Origin = 'DB.NOTACOMPRAITEM.PDCPA13ID'
+      ProviderFlags = [pfInUpdate]
       FixedChar = True
       Size = 13
     end
     object SQLTemplatePCITIPOS: TIntegerField
       FieldName = 'PCITIPOS'
       Origin = 'DB.NOTACOMPRAITEM.PCITIPOS'
+      ProviderFlags = [pfInUpdate]
     end
     object SQLTemplateNOCIN3QTDEPED: TFloatField
       FieldName = 'NOCIN3QTDEPED'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN3QTDEPED'
+      ProviderFlags = [pfInUpdate]
       DisplayFormat = '#,##0.000'
     end
     object SQLTemplateNOCIN3TOTPED: TFloatField
       FieldName = 'NOCIN3TOTPED'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN3TOTPED'
+      ProviderFlags = [pfInUpdate]
       DisplayFormat = '#,##0.000'
     end
     object SQLTemplateLOTEA30NRO: TStringField
       FieldName = 'LOTEA30NRO'
       Origin = 'DB.NOTACOMPRAITEM.LOTEA30NRO'
+      ProviderFlags = [pfInUpdate]
       FixedChar = True
       Size = 30
     end
     object SQLTemplateNOCIN2ITENSENVIADOS: TFloatField
       FieldName = 'NOCIN2ITENSENVIADOS'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN2ITENSENVIADOS'
+      ProviderFlags = [pfInUpdate]
     end
     object SQLTemplateNOCIN2VLRCOMISSAO: TFloatField
       FieldName = 'NOCIN2VLRCOMISSAO'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN2VLRCOMISSAO'
+      ProviderFlags = [pfInUpdate]
     end
     object SQLTemplateQdteFator: TFloatField
       FieldKind = fkCalculated
       FieldName = 'QdteFator'
+      ProviderFlags = [pfInUpdate]
       Calculated = True
     end
     object SQLTemplateNOCIN2QTDENF: TFloatField
       FieldName = 'NOCIN2QTDENF'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN2QTDENF'
+      ProviderFlags = [pfInUpdate]
       DisplayFormat = '#,##0.000'
     end
     object SQLTemplateNOCIN2MGVENDA: TFloatField
       FieldName = 'NOCIN2MGVENDA'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN2MGVENDA'
+      ProviderFlags = [pfInUpdate]
       DisplayFormat = '#,##0.00'
     end
     object SQLTemplateNOCIN2VLRVENDA: TFloatField
       FieldName = 'NOCIN2VLRVENDA'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN2VLRVENDA'
+      ProviderFlags = [pfInUpdate]
       OnChange = SQLTemplateNOCIN2VLRVENDAChange
       DisplayFormat = '#,##0.00'
     end
     object SQLTemplateNOCIN2MGVENDA2: TFloatField
       FieldName = 'NOCIN2MGVENDA2'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN2MGVENDA2'
+      ProviderFlags = [pfInUpdate]
     end
     object SQLTemplateNOCIN2VLRVENDA2: TFloatField
       FieldName = 'NOCIN2VLRVENDA2'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN2VLRVENDA2'
+      ProviderFlags = [pfInUpdate]
       OnChange = SQLTemplateNOCIN2VLRVENDA2Change
     end
     object SQLTemplateUnidadeLookup: TStringField
       FieldKind = fkCalculated
       FieldName = 'UnidadeLookup'
+      ProviderFlags = [pfInUpdate]
       Size = 5
       Calculated = True
     end
     object SQLTemplateEncargosCalc: TFloatField
       FieldKind = fkCalculated
       FieldName = 'EncargosCalc'
+      ProviderFlags = [pfInUpdate]
       Calculated = True
     end
     object SQLTemplateNOCIN2PERCDESP: TFloatField
       FieldName = 'NOCIN2PERCDESP'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN2PERCDESP'
+      ProviderFlags = [pfInUpdate]
       OnChange = SQLTemplateNOCIN2PERCDESPChange
       DisplayFormat = '##0.00'
       EditFormat = '##0.00'
@@ -4487,6 +4533,7 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
     object SQLTemplateNOCIN2PERCDIFICM: TFloatField
       FieldName = 'NOCIN2PERCDIFICM'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN2PERCDIFICM'
+      ProviderFlags = [pfInUpdate]
       OnChange = SQLTemplateNOCIN2PERCDIFICMChange
       DisplayFormat = '##0.00'
       EditFormat = '##0.00'
@@ -4494,6 +4541,7 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
     object SQLTemplateNOCIN2PERCSUBST: TFloatField
       FieldName = 'NOCIN2PERCSUBST'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN2PERCSUBST'
+      ProviderFlags = [pfInUpdate]
       OnChange = SQLTemplateNOCIN2PERCSUBSTChange
       DisplayFormat = '##0.00'
       EditFormat = '##0.00'
@@ -4501,191 +4549,231 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
     object SQLTemplateNOCICALTPRECO: TStringField
       FieldName = 'NOCICALTPRECO'
       Origin = 'DB.NOTACOMPRAITEM.NOCICALTPRECO'
+      ProviderFlags = [pfInUpdate]
       FixedChar = True
       Size = 1
     end
     object SQLTemplateICMVendaLookUp: TStringField
       FieldKind = fkCalculated
       FieldName = 'ICMVendaLookUp'
+      ProviderFlags = [pfInUpdate]
       Size = 15
       Calculated = True
     end
     object SQLTemplateMargemLucroReal: TFloatField
       FieldKind = fkCalculated
       FieldName = 'MargemLucroReal'
+      ProviderFlags = [pfInUpdate]
       Calculated = True
     end
     object SQLTemplateMargemLucroReal2: TFloatField
       FieldKind = fkCalculated
       FieldName = 'MargemLucroReal2'
+      ProviderFlags = [pfInUpdate]
       Calculated = True
     end
     object SQLTemplateNOCIN3PERCFRETE: TFloatField
       FieldName = 'NOCIN3PERCFRETE'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN3PERCFRETE'
+      ProviderFlags = [pfInUpdate]
       OnChange = SQLTemplateNOCIN3PERCFRETEChange
     end
     object SQLTemplateNCMLookUp: TStringField
       FieldKind = fkCalculated
       FieldName = 'NCMLookUp'
+      ProviderFlags = [pfInUpdate]
       Size = 100
       Calculated = True
     end
     object SQLTemplateCFOPA5CODAUX: TStringField
       FieldName = 'CFOPA5CODAUX'
       Origin = 'DB.NOTACOMPRAITEM.CFOPA5CODAUX'
+      ProviderFlags = [pfInUpdate]
       FixedChar = True
       Size = 5
     end
     object SQLTemplateNOCIN2FATOR199: TFloatField
       FieldName = 'NOCIN2FATOR199'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN2FATOR199'
+      ProviderFlags = [pfInUpdate]
     end
     object SQLTemplateNOCIN2PCREDSN: TFloatField
       FieldName = 'NOCIN2PCREDSN'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN2PCREDSN'
+      ProviderFlags = [pfInUpdate]
       Precision = 9
     end
     object SQLTemplateNOCIN2PMVAST: TFloatField
       FieldName = 'NOCIN2PMVAST'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN2PMVAST'
+      ProviderFlags = [pfInUpdate]
       Precision = 9
     end
     object SQLTemplateNOCIN2PREDBC: TFloatField
       FieldName = 'NOCIN2PREDBC'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN2PREDBC'
+      ProviderFlags = [pfInUpdate]
       OnChange = SQLTemplateNOCIN2PREDBCChange
       Precision = 9
     end
     object SQLTemplateNOCIN2PREDBCST: TFloatField
       FieldName = 'NOCIN2PREDBCST'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN2PREDBCST'
+      ProviderFlags = [pfInUpdate]
       Precision = 9
     end
     object SQLTemplateNOCIN2VBC: TFloatField
       FieldName = 'NOCIN2VBC'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN2VBC'
+      ProviderFlags = [pfInUpdate]
       OnChange = SQLTemplateNOCIN3PERCICMSChange
     end
     object SQLTemplateNOCIN2VBCIPI: TFloatField
       FieldName = 'NOCIN2VBCIPI'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN2VBCIPI'
+      ProviderFlags = [pfInUpdate]
     end
     object SQLTemplateNOCIN2VBCST: TFloatField
       FieldName = 'NOCIN2VBCST'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN2VBCST'
+      ProviderFlags = [pfInUpdate]
     end
     object SQLTemplateNOCIN2VBCSTRET: TFloatField
       FieldName = 'NOCIN2VBCSTRET'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN2VBCSTRET'
+      ProviderFlags = [pfInUpdate]
     end
     object SQLTemplateNOCIN2VCREDICMSSN: TFloatField
       FieldName = 'NOCIN2VCREDICMSSN'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN2VCREDICMSSN'
+      ProviderFlags = [pfInUpdate]
     end
     object SQLTemplateNOCIN2VICMSSTRET: TFloatField
       FieldName = 'NOCIN2VICMSSTRET'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN2VICMSSTRET'
+      ProviderFlags = [pfInUpdate]
     end
     object SQLTemplateNOCA3CSTCOFINS: TStringField
       FieldName = 'NOCA3CSTCOFINS'
       Origin = 'DB.NOTACOMPRAITEM.NOCA3CSTCOFINS'
+      ProviderFlags = [pfInUpdate]
       Size = 3
     end
     object SQLTemplateNOCIA3CSTICMS: TStringField
       FieldName = 'NOCIA3CSTICMS'
       Origin = 'DB.NOTACOMPRAITEM.NOCIA3CSTICMS'
+      ProviderFlags = [pfInUpdate]
       Size = 3
     end
     object SQLTemplateNOCA3CSTIPI: TStringField
       FieldName = 'NOCA3CSTIPI'
       Origin = 'DB.NOTACOMPRAITEM.NOCA3CSTIPI'
+      ProviderFlags = [pfInUpdate]
       Size = 3
     end
     object SQLTemplateNOCA3CSTPIS: TStringField
       FieldName = 'NOCA3CSTPIS'
       Origin = 'DB.NOTACOMPRAITEM.NOCA3CSTPIS'
+      ProviderFlags = [pfInUpdate]
       Size = 3
     end
     object SQLTemplateNOCIN2PERCCOFINS: TFloatField
       FieldName = 'NOCIN2PERCCOFINS'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN2PERCCOFINS'
+      ProviderFlags = [pfInUpdate]
       OnChange = SQLTemplateNOCIN2PERCCOFINSChange
       Precision = 9
     end
     object SQLTemplateNOCIN2PERCPIS: TFloatField
       FieldName = 'NOCIN2PERCPIS'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN2PERCPIS'
+      ProviderFlags = [pfInUpdate]
       OnChange = SQLTemplateNOCIN2PERCPISChange
       Precision = 9
     end
     object SQLTemplateNOCIN2VLRSEGURO: TFloatField
       FieldName = 'NOCIN2VLRSEGURO'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN2VLRSEGURO'
+      ProviderFlags = [pfInUpdate]
     end
     object SQLTemplateNOCIN2PERCISS: TFloatField
       FieldName = 'NOCIN2PERCISS'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN2PERCISS'
+      ProviderFlags = [pfInUpdate]
       Precision = 9
     end
     object SQLTemplateNOCIN2BASEISS: TFloatField
       FieldName = 'NOCIN2BASEISS'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN2BASEISS'
+      ProviderFlags = [pfInUpdate]
       Precision = 9
     end
     object SQLTemplateNOCIN2VLRISS: TFloatField
       FieldName = 'NOCIN2VLRISS'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN2VLRISS'
+      ProviderFlags = [pfInUpdate]
     end
     object SQLTemplateNOCIN2BASECOFINS: TFloatField
       FieldName = 'NOCIN2BASECOFINS'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN2BASECOFINS'
+      ProviderFlags = [pfInUpdate]
     end
     object SQLTemplateNOCIN2VLRDESPESAS: TFloatField
       FieldName = 'NOCIN2VLRDESPESAS'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN2VLRDESPESAS'
+      ProviderFlags = [pfInUpdate]
     end
     object SQLTemplateNOCN4QTDIPI: TFloatField
       FieldName = 'NOCN4QTDIPI'
       Origin = 'DB.NOTACOMPRAITEM.NOCN4QTDIPI'
+      ProviderFlags = [pfInUpdate]
     end
     object SQLTemplateNOCN4UNDIPI: TFloatField
       FieldName = 'NOCN4UNDIPI'
       Origin = 'DB.NOTACOMPRAITEM.NOCN4UNDIPI'
+      ProviderFlags = [pfInUpdate]
       OnChange = SQLTemplateNOCN4UNDIPIChange
     end
     object SQLTemplateNOCN4PISQTD: TFloatField
       FieldName = 'NOCN4PISQTD'
       Origin = 'DB.NOTACOMPRAITEM.NOCN4PISQTD'
+      ProviderFlags = [pfInUpdate]
     end
     object SQLTemplateNOCN4PISREAL: TFloatField
       FieldName = 'NOCN4PISREAL'
       Origin = 'DB.NOTACOMPRAITEM.NOCN4PISREAL'
+      ProviderFlags = [pfInUpdate]
     end
     object SQLTemplateNOCN4COFINSQTD: TFloatField
       FieldName = 'NOCN4COFINSQTD'
       Origin = 'DB.NOTACOMPRAITEM.NOCN4COFINSQTD'
+      ProviderFlags = [pfInUpdate]
     end
     object SQLTemplateNOCN4COFINSREAL: TFloatField
       FieldName = 'NOCN4COFINSREAL'
       Origin = 'DB.NOTACOMPRAITEM.NOCN4COFINSREAL'
+      ProviderFlags = [pfInUpdate]
       OnChange = SQLTemplateNOCN4COFINSREALChange
     end
     object SQLTemplateNOCIN2VLRCOFINS: TFloatField
       FieldName = 'NOCIN2VLRCOFINS'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN2VLRCOFINS'
+      ProviderFlags = [pfInUpdate]
     end
     object SQLTemplateNOCIN2VLRPIS: TFloatField
       FieldName = 'NOCIN2VLRPIS'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN2VLRPIS'
+      ProviderFlags = [pfInUpdate]
     end
     object SQLTemplateNOCIN2BASEPIS: TFloatField
       FieldName = 'NOCIN2BASEPIS'
       Origin = 'DB.NOTACOMPRAITEM.NOCIN2BASEPIS'
+      ProviderFlags = [pfInUpdate]
     end
     object SQLTemplateNOCIN3VLREMBAL: TFloatField
       DisplayWidth = 15
       FieldName = 'NOCIN3VLREMBAL'
+      ProviderFlags = [pfInUpdate]
       OnChange = SQLTemplateNOCIN3VLREMBALChange
       DisplayFormat = ',0.0000000'
       currency = True
@@ -4693,6 +4781,7 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
     object SQLTemplateNOCIN3VLRUNIT: TFloatField
       DisplayWidth = 15
       FieldName = 'NOCIN3VLRUNIT'
+      ProviderFlags = [pfInUpdate]
       OnChange = SQLTemplateNOCIN3VLRUNITChange
       DisplayFormat = ',0.0000000'
       EditFormat = ',0.0000000'
@@ -4700,10 +4789,12 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
     object SQLTemplateUNIDICOD: TIntegerField
       FieldName = 'UNIDICOD'
       Origin = 'DB.NOTACOMPRAITEM.UNIDICOD'
+      ProviderFlags = [pfInUpdate]
     end
     object SQLTemplateSaldoAtual: TFloatField
       FieldKind = fkCalculated
       FieldName = 'SaldoAtual'
+      ProviderFlags = [pfInUpdate]
       DisplayFormat = '##0.000'
       Calculated = True
     end

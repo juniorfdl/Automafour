@@ -18,7 +18,7 @@ EditWindowCount=1
 
 [C:\projetos\Automafour\Oficial\DataModulo.pas]
 ModuleType=SourceModule
-FormState=0
+FormState=1
 FormOnTop=0
 
 [C:\projetos\Automafour\Oficial\Retaguarda.dpr]
@@ -49,18 +49,18 @@ Top=147
 Width=1000
 Height=485
 MaxLeft=-8
-MaxTop=114
+MaxTop=107
 MaxWidth=1382
-MaxHeight=622
+MaxHeight=629
 ClientWidth=1366
-ClientHeight=583
+ClientHeight=590
 LeftPanelSize=0
 LeftPanelClients=CodeExplorer@EditWindow0
 LeftPanelData=00000400010000000C000000436F64654578706C6F726572000000000000000000000000000000000001000000000000000000000000FFFFFFFF
 RightPanelSize=0
 BottomPanelSize=0
 BottomPanelClients=MessageView@EditWindow0
-BottomPanelData=00000400010000000B0000004D65737361676556696577560500000000000002550000000000000001000000000000000000000000010000000056050000000000000100000000560500000000000001000000005605000000000000010000000056050000000000000100000000560500000B0000004D65737361676556696577FFFFFFFF
+BottomPanelData=00000400010000000B0000004D657373616765566965775605000000000000025500000000000000010000000000000000000000000100000000560500000000000001000000005605000000000000010000000056050000000000000100000000560500000000000001000000005605000000000000FFFFFFFF
 
 [View0]
 Module=C:\projetos\Automafour\Oficial\Retaguarda.dpr
@@ -71,9 +71,9 @@ LeftCol=1
 
 [View1]
 Module=C:\projetos\Automafour\Oficial\DataModulo.pas
-CursorX=1
-CursorY=938
-TopLine=932
+CursorX=31
+CursorY=986
+TopLine=969
 LeftCol=1
 
 [Watches]
@@ -121,12 +121,12 @@ Count=0
 Create=1
 Visible=1
 State=2
-Left=336
-Top=465
-Width=1030
+Left=0
+Top=0
+Width=1366
 Height=123
-MaxLeft=-1
-MaxTop=-1
+MaxLeft=-8
+MaxTop=-8
 MaxWidth=1382
 MaxHeight=123
 ClientWidth=1366
@@ -198,8 +198,8 @@ ClientHeight=60
 Create=1
 Visible=1
 State=0
-Left=14
-Top=106
+Left=4
+Top=113
 Width=288
 Height=567
 MaxLeft=-1
@@ -211,7 +211,7 @@ LRDockWidth=866
 Dockable=1
 SplitPos=119
 ArrangeBy=Name
-SelectedItem=Name
+SelectedItem=OnCreate
 ExpandedItems=Action.DataSource,Configuracoes,DataBinding,DataController,DataController.DataSource,DataSource,DataSource.DataSet.MasterSource,DataSource.DataSet.MasterSource.DataSet,Font.Style,ListSource.DataSet,LookupDataSet,Options,PreviewOptions,Style.Font,Title
 HiddenCategories=
 

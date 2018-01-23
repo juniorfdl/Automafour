@@ -1493,8 +1493,7 @@ begin
     ZinsereServidor.Close;
     ZinsereServidor.sql.clear;
     ZinsereServidor.sql.Text := ' set generator G_CUPOM_FECHAMENTO to ' + IntToStr(ZconsultaServidor.FieldByName('cod').AsInteger + 1);
-    ZinsereServidor.ExecSQL;
-
+    ZinsereServidor.ExecSQL;       
   except
     Application.Title := 'Falha ao Exportar CUPOM_FECHAMENTO!';
     lbStatus.Caption := Application.Title;

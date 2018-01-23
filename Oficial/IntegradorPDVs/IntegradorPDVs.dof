@@ -90,7 +90,7 @@ MaxStackSize=1048576
 ImageBase=4194304
 ExeDescription=
 [Directories]
-OutputDir=C:\Easy2Solutions\Gestao
+OutputDir=C:\Easy2Solutions\
 UnitOutputDir=
 PackageDLLOutputDir=
 PackageDCPOutputDir=
@@ -143,6 +143,7 @@ c:\program files (x86)\borland\delphi7\Bin\dclindy70.bpl=(Untitled)
 Count=1
 Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
 [HistoryLists\hlOutputDirectorry]
-Count=2
-Item0=C:\Easy2Solutions\Gestao
-Item1=C:\Unit\Gestao
+Count=3
+Item0=C:\Easy2Solutions\
+Item1=C:\Easy2Solutions\Gestao
+Item2=C:\Unit\Gestao

@@ -1,20 +1,17 @@
 inherited FormPrincipal: TFormPrincipal
   Tag = 4
-  Left = 13
-  Top = 101
-  Width = 1382
-  Height = 744
+  Left = 1
+  Width = 1364
   Caption = 'Advanced Control'
   OldCreateOrder = True
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   inherited RodapePrincipal: TStatusBar
-    Top = 667
-    Width = 1366
+    Width = 1348
   end
   inherited ptopo: TAdvOfficeStatusBar
-    Width = 1366
+    Width = 1348
     Height = 67
     inherited logo_parceiro: TImage
       Left = 1054
