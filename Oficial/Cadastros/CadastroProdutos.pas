@@ -977,6 +977,7 @@ type
     AcessaCEST: TSpeedButton;
     SQLSaldoEmpresaAtualEmpresaLookup: TStringField;
     Report: TCrpe;
+    ComboConsultaSubGrupo: TRxDBLookupCombo;
     procedure FormCreate(Sender: TObject);
     procedure RxComboComissaoChange(Sender: TObject);
     procedure AcessaMarcaClick(Sender: TObject);
@@ -3413,6 +3414,13 @@ begin
       Clausula := Clausula + ' and GRUPICOD = ' + ComboConsultaGrupo.keyValue
     else
       Clausula := 'GRUPICOD = ' + ComboConsultaGrupo.keyValue;
+
+  if ComboConsultaSubGrupo.Value <> '' then
+  begin
+    if Clausula <> '' then
+      Clausula := Clausula + ' AND SUBGICOD = ' + ComboConsultaSubGrupo.KeyValue
+    else Clausula := ' SUBGICOD = ' + ComboConsultaSubGrupo.KeyValue;
+  end;
 
   EditProcura.Text := '';
   EditEntre.Text := '';

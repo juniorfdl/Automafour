@@ -790,7 +790,6 @@ inherited FormCadastroProduto: TFormCadastroProduto
             Top = 52
             Width = 1027
             Height = 556
-            ActivePage = TabSheetDadosPrincipais
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Top = 83
@@ -934,7 +933,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   Color = 16249066
                   TabOrder = 1
                   object BTNLocalizar: TSpeedButton
-                    Left = 498
+                    Left = 666
                     Top = 7
                     Width = 95
                     Height = 22
@@ -990,7 +989,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     TabStop = False
                   end
                   object GroupConsultaSituacao: TGroupBox
-                    Left = 354
+                    Left = 522
                     Top = -3
                     Width = 135
                     Height = 35
@@ -1032,6 +1031,25 @@ inherited FormCadastroProduto: TFormCadastroProduto
                       ParentFont = False
                       TabOrder = 1
                     end
+                  end
+                  object ComboConsultaSubGrupo: TRxDBLookupCombo
+                    Left = 349
+                    Top = 11
+                    Width = 170
+                    Height = 21
+                    Hint = 
+                      'Esta '#233' uma pesquisa avan'#231'ada, os dados inclusos na pesquisa acim' +
+                      'a n'#227'o '#13#10'ser'#227'o considerados na pesquisa atual...'
+                    DropDownCount = 8
+                    DisplayEmpty = 'Procura por Sub-Grupo...'
+                    LookupField = 'SUBGICOD'
+                    LookupDisplay = 'SUBGA60DESCR'
+                    LookupDisplayIndex = 1
+                    LookupSource = DSSQLSubGrupo
+                    ParentShowHint = False
+                    ShowHint = True
+                    TabOrder = 3
+                    TabStop = False
                   end
                 end
               end
@@ -9973,6 +9991,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
       Lookup = True
     end
     object SQLTemplateSUBGA60DESCR: TStringField
+      DisplayLabel = 'Sub. Grupo'
       FieldKind = fkLookup
       FieldName = 'SUBGA60DESCR'
       LookupDataSet = SQLSubGrupo
