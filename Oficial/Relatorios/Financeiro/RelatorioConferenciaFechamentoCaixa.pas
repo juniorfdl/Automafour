@@ -195,6 +195,12 @@ begin
     SQLTotaNumerario.MacroByName('MOperador').Value := 'USUAICOD = ' + ComboOperador.Value
   else
     SQLTotaNumerario.MacroByName('MOperador').Value := '0=0';
+
+  if ComboTerminal.Value <> '' then
+    SQLTotaNumerario.MacroByName('OPERACAO_CAIXA').Value := 'C.OPERACAO_CAIXA = ' + ComboTerminal.Value
+  else
+    SQLTotaNumerario.MacroByName('OPERACAO_CAIXA').Value := '0=0';
+
   SQLTotaNumerario.Open;
 
   SQLTotalOperacao.Close;
@@ -211,7 +217,8 @@ begin
   if ComboOperador.Value <> '' then
     SQLTotalOperacao.MacroByName('MOperador').Value := 'A.USUAICOD = ' + ComboOperador.Value
   else
-    SQLTotalOperacao.MacroByName('MOperador').Value := '0=0';
+    SQLTotalOperacao.MacroByName('MOperador').Value := '0=0';  
+
   SQLTotalOperacao.Open ;
 
   ReportTotais.Print;

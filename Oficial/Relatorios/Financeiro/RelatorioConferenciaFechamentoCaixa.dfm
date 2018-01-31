@@ -514,7 +514,7 @@ object FormConferenciaFechamentoCaixa: TFormConferenciaFechamentoCaixa
         '           LEFT JOIN CUPOM_FECHAMENTO_ITEM D ON D.COD_CUPOM_FECH' +
         'AMENTO = C.COD_CUPOM_FECHAMENTO'
       '           WHERE 0=0'
-      '           AND C.OPERACAO_CAIXA = 2'
+      '           AND (%OPERACAO_CAIXA) '
       '           AND (%FData)'
       '           GROUP BY D.COD_CPRZ) FEC ON FEC.COD_CPRZ = B.NUMEICOD'
       'WHERE ((CAI.VLRCREDITO <> 0) OR'
