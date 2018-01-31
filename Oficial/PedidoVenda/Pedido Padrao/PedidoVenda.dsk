@@ -54,9 +54,9 @@ LeftPanelSize=0
 LeftPanelClients=CodeExplorer@EditWindow0
 LeftPanelData=00000400010000000C000000436F64654578706C6F726572000000000000000000000000000000000001000000000000000000000000FFFFFFFF
 RightPanelSize=0
-BottomPanelSize=85
+BottomPanelSize=0
 BottomPanelClients=MessageView@EditWindow0
-BottomPanelData=00000400000000005605000000000000025500000000000000010000000000000000000000000100000000560500000B0000004D65737361676556696577FFFFFFFF
+BottomPanelData=00000400010000000B0000004D657373616765566965775605000000000000025500000000000000010000000000000000000000000100000000560500000B0000004D65737361676556696577FFFFFFFF
 
 [View0]
 Module=C:\projetos\Automafour\Oficial\PedidoVenda\Pedido Padrao\PedidoVenda.dpr
@@ -67,9 +67,9 @@ LeftCol=1
 
 [View1]
 Module=C:\projetos\Automafour\Oficial\PedidoVenda\Pedido Padrao\Principal.pas
-CursorX=94
-CursorY=500
-TopLine=485
+CursorX=49
+CursorY=458
+TopLine=449
 LeftCol=1
 
 [Watches]
@@ -193,7 +193,7 @@ LRDockWidth=190
 Dockable=1
 SplitPos=164
 ArrangeBy=Name
-SelectedItem=OnActivate
+SelectedItem=Caption
 ExpandedItems=Options,Printer,PrintOptions,ProtectionInfo,ReportOptions,Title,WindowStyle
 HiddenCategories=
 
@@ -429,7 +429,7 @@ Dockable=1
 
 [MessageView@EditWindow0]
 Create=1
-Visible=1
+Visible=0
 State=0
 Left=12
 Top=0
