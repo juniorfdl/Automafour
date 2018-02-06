@@ -978,6 +978,8 @@ type
     SQLSaldoEmpresaAtualEmpresaLookup: TStringField;
     Report: TCrpe;
     ComboConsultaSubGrupo: TRxDBLookupCombo;
+    SQLTemplatePESAGEM_AUTOMATICA: TStringField;
+    DBCheckBox5: TDBCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure RxComboComissaoChange(Sender: TObject);
     procedure AcessaMarcaClick(Sender: TObject);

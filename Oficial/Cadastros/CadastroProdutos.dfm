@@ -790,6 +790,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
             Top = 52
             Width = 1027
             Height = 556
+            ActivePage = TabSheetDadosPrincipais
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Top = 83
@@ -2129,7 +2130,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
               end
               object PageControl1: TPageControl
                 Left = 3
-                Top = 292
+                Top = 296
                 Width = 652
                 Height = 177
                 ActivePage = TabSheet1
@@ -7063,6 +7064,18 @@ inherited FormCadastroProduto: TFormCadastroProduto
                 TabOrder = 14
                 OnKeyDown = ComboUnidade2KeyDown
               end
+              object DBCheckBox5: TDBCheckBox
+                Left = 4
+                Top = 279
+                Width = 139
+                Height = 17
+                Caption = 'Pesagem Autom'#225'tica'
+                DataField = 'PESAGEM_AUTOMATICA'
+                DataSource = DSTemplate
+                TabOrder = 17
+                ValueChecked = 'S'
+                ValueUnchecked = 'N'
+              end
             end
             object TabSheetDadosAdicionais: TTabSheet
               Caption = 'Adicionais/Series'
@@ -10500,6 +10513,12 @@ inherited FormCadastroProduto: TFormCadastroProduto
       FieldName = 'TABCEST'
       Origin = 'DB.PRODUTO.TABCEST'
       Size = 10
+    end
+    object SQLTemplatePESAGEM_AUTOMATICA: TStringField
+      FieldName = 'PESAGEM_AUTOMATICA'
+      Origin = 'EASY_GESTAO.PRODUTO.PESAGEM_AUTOMATICA'
+      FixedChar = True
+      Size = 1
     end
   end
   inherited UpdateSQLTemplate: TUpdateSQL
