@@ -229,6 +229,8 @@ type
     labelRetornoCob: TRxSpeedButton;
     TitulosNaoEncontrados: TMemo;
     OpenDialog: TOpenDialog;
+    SQLContasReceberCTRCN2TOTJUROREC: TFloatField;
+    SQLContasReceberCTRCN2TOTMULTAREC: TFloatField;
     procedure FormCreate(Sender: TObject);
     procedure BtnSelecionarDocClick(Sender: TObject);
     procedure DBGridListaCellClick(Column: TColumn);
@@ -1609,7 +1611,7 @@ end;
 
 procedure TFormTelaBaixarDocumentosReceber.ImportarRetornoBanco(NomeBanco, Arquivo : string);
 var Origem, Destino : string;
-var Info, Identificador, NossoNro, PathBanco, NomeArquivo, ValorTitulo, Ocorrencia, Valor : String;
+var Info, Identificador, NossoNro, PathBanco, NomeArquivo, ValorTitulo, Ocorrencia, Valor, ValorJuros, ValorMulta : String;
     Texto : TextFile;
     NroLinhas : integer;
     FormMovRetornoSicredi: TFormTelaMovimentoRetornoSicredi;
@@ -1711,7 +1713,7 @@ begin
   TblRecebimento.Open;
   while not EOF(Texto) do
   begin
-    Readln(Texto,Info);
+    Read(Texto,Info);
     Progress.Position := Progress.Position + 1 ;
 
     if Identificador = '041' then {Banrisul}
@@ -1777,8 +1779,11 @@ begin
         NossoNro   := Copy(Info, 48, 8);
         if NossoNro = '          ' then NossoNro := '';
         if NossoNro = '0000000000' then NossoNro := '';
+        ValorJuros := Copy(Info,267,13);
+        ValorMulta := Copy(Info,280,13);
+        Ocorrencia := Copy(Info, 109, 2);
 
-        if IsNumeric(NossoNro,'INTEGER') then
+        if IsNumeric(NossoNro,'INTEGER') and (Ocorrencia = '06') then
           begin
             SQLContasReceber.Close;
             SQLContasReceber.MacroByName('MDocumento').AsString := '(CR.CTRCA15NOSSONUMERO = ''' + NossoNro + ''')';
@@ -1797,6 +1802,8 @@ begin
                 TblRecebimento.FieldByName('ValorDesconto').AsFloat   := SQLContasReceber.FieldByName('CTRCN2DESCFIN').AsFloat;
                 TblRecebimento.FieldByName('ValorTotal').AsFloat      := SQLContasReceber.FieldByName('CTRCN2VLR').AsFloat;
                 TblRecebimento.FieldByName('Emissao').AsFloat         := SQLContasReceber.FieldByName('CTRCDEMIS').AsFloat;
+                TblRecebimento.FieldByName('ValorJuro').AsFloat       := StrToFloat(ValorJuros) / 100;
+                TblRecebimento.FieldByName('ValorMulta').AsFloat      := StrToFloat(ValorMulta) / 100;
 
                 if SQLContasReceber.FieldByName('NOFIA13ID').asVariant <> Null Then
                   begin

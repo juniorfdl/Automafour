@@ -322,6 +322,10 @@ type
     Label21: TLabel;
     DBEdit10: TDBEdit;
     SQLTemplateCODIGOBARRA: TStringField;
+    edtJuros: TDBEdit;
+    Label22: TLabel;
+    Label23: TLabel;
+    edtMulta: TDBEdit;
     procedure FormCreate(Sender: TObject);
     procedure SQLTemplateCalcFields(DataSet: TDataSet);
     procedure BtnClienteClick(Sender: TObject);

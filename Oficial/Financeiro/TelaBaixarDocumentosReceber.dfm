@@ -1159,7 +1159,9 @@ inherited FormTelaBaixarDocumentosReceber: TFormTelaBaixarDocumentosReceber
       '  CR.CTRCCTIPOREGISTRO,'
       '  CR.CTRCA254HIST,'
       '  CR.CTRCN2TXJURO,'
-      '  CR.CTRCA15NOSSONUMERO'
+      '  CR.CTRCA15NOSSONUMERO,'
+      '  CR.CTRCN2TOTJUROREC,'
+      '  CR.CTRCN2TOTMULTAREC'
       'from'
       '  CONTASRECEBER CR, CLIENTE CL'
       'where'
@@ -1333,6 +1335,12 @@ inherited FormTelaBaixarDocumentosReceber: TFormTelaBaixarDocumentosReceber
     object SQLContasReceberCTRCA15NOSSONUMERO: TStringField
       FieldName = 'CTRCA15NOSSONUMERO'
       Size = 15
+    end
+    object SQLContasReceberCTRCN2TOTJUROREC: TFloatField
+      FieldName = 'CTRCN2TOTJUROREC'
+    end
+    object SQLContasReceberCTRCN2TOTMULTAREC: TFloatField
+      FieldName = 'CTRCN2TOTMULTAREC'
     end
   end
   object SQLCliente: TRxQuery

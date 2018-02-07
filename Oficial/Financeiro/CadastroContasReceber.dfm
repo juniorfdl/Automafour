@@ -1,15 +1,15 @@
 inherited FormCadastroContasReceber: TFormCadastroContasReceber
-  Left = -44
-  Top = 110
+  Left = 12
+  Top = 20
   Caption = 'Cadastro de Documentos '#224' Receber'
-  ClientHeight = 706
+  ClientHeight = 652
   ClientWidth = 1366
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
   inherited ScrollBoxFundo: TScrollBox
     Width = 1366
-    Height = 706
+    Height = 652
     inherited PanelCabecalho: TPanel
       Width = 1364
       inherited ScrollBoxPanelCabecalho: TScrollBox
@@ -30,16 +30,16 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
     end
     inherited PanelCentral: TPanel
       Width = 1364
-      Height = 632
+      Height = 578
       inherited PanelBarra: TPanel
-        Height = 632
+        Height = 578
       end
       inherited PanelFundoDados: TPanel
         Width = 1234
-        Height = 632
+        Height = 578
         inherited Panel5: TPanel
           Width = 1234
-          Height = 632
+          Height = 578
           inherited PanelCodigoDescricao: TPanel [0]
             Width = 1234
             Height = 213
@@ -411,11 +411,11 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
               ParentFont = False
             end
             object Label18: TLabel
-              Left = 589
+              Left = 450
               Top = 146
-              Width = 80
+              Width = 52
               Height = 13
-              Caption = 'Remessa Lote'
+              Caption = 'Remessa'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clNavy
               Font.Height = -11
@@ -442,6 +442,32 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
               Width = 95
               Height = 13
               Caption = 'C'#243'digo de Barras'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clNavy
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
+            object Label22: TLabel
+              Left = 526
+              Top = 146
+              Width = 63
+              Height = 13
+              Caption = 'Valor Juros'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clNavy
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
+            object Label23: TLabel
+              Left = 602
+              Top = 146
+              Width = 64
+              Height = 13
+              Caption = 'Valor Multa'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clNavy
               Font.Height = -11
@@ -772,7 +798,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
             object DBEdit8: TDBEdit
               Left = 133
               Top = 158
-              Width = 445
+              Width = 308
               Height = 18
               TabStop = False
               AutoSize = False
@@ -790,9 +816,9 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
               TabOrder = 19
             end
             object DBEdit5: TDBEdit
-              Left = 586
+              Left = 450
               Top = 159
-              Width = 88
+              Width = 72
               Height = 18
               TabStop = False
               AutoSize = False
@@ -829,16 +855,34 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
               TabOrder = 22
               OnKeyDown = DBEdit7KeyDown
             end
+            object edtJuros: TDBEdit
+              Left = 526
+              Top = 158
+              Width = 71
+              Height = 21
+              DataField = 'CTRCN2TOTJUROREC'
+              DataSource = DSTemplate
+              TabOrder = 23
+            end
+            object edtMulta: TDBEdit
+              Left = 602
+              Top = 158
+              Width = 71
+              Height = 21
+              DataField = 'CTRCN2TOTMULTAREC'
+              DataSource = DSTemplate
+              TabOrder = 24
+            end
           end
           inherited PagePrincipal: TPageControl [1]
             Top = 213
             Width = 1234
-            Height = 419
+            Height = 365
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Top = 93
                 Width = 1226
-                Height = 214
+                Height = 160
                 Options = [dgTitles, dgColumnResize, dgColLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
                 Columns = <
                   item
@@ -1125,7 +1169,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
               end
               object Panel7: TPanel
                 Left = 0
-                Top = 307
+                Top = 253
                 Width = 1226
                 Height = 86
                 Align = alBottom
