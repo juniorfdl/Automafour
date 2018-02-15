@@ -1756,7 +1756,10 @@ begin
                 dm.SQLUpdate.ParamByName('NOCIN2VLRISS').AsFloat     := 0.00;
 
                 //dm.SQLUpdate.ParamByName('NOCIN3VLRCUSTOMED').AsFloat := (cdsItensquantidade.AsFloat * cdsItensvalor_unitario.AsFloat) / cdsItensquantidade.AsFloat;
-                dm.SQLUpdate.ParamByName('NOCIN3VLRCUSTOMED').AsFloat  := dm.SQLUpdate.ParamByName('NOCIN3VLRUNIT').AsFloat;
+                dm.SQLUpdate.ParamByName('NOCIN3VLRCUSTOMED').AsFloat  := ((dm.SQLUpdate.ParamByName('NOCIN3VLRUNIT').AsFloat * dm.SQLUpdate.ParamByName('NOCIN3QTDEMBAL').AsFloat) +
+                                                                            dm.SQLUpdate.ParamByName('NOCIN2VLRCOFINS').AsFloat + dm.SQLUpdate.ParamByName('NOCIN2VLRPIS').AsFloat +
+                                                                            dm.SQLUpdate.ParamByName('NOCIN3VLRIPI').AsFloat + dm.SQLUpdate.ParamByName('NOCIN3VLRICMS').AsFloat +
+                                                                            dm.SQLUpdate.ParamByName('NOCIN3VLRFRETE').AsFloat) / dm.SQLUpdate.ParamByName('NOCIN3QTDEMBAL').AsFloat;
 
                 dm.SQLUpdate.ParamByName('NOCIN3QTDEPED').AsFloat  := 0.00;
                 dm.SQLUpdate.ParamByName('NOCIN3TOTPED').AsFloat   := 0.00;
