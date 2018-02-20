@@ -980,6 +980,16 @@ type
     ComboConsultaSubGrupo: TRxDBLookupCombo;
     SQLTemplatePESAGEM_AUTOMATICA: TStringField;
     DBCheckBox5: TDBCheckBox;
+    sqlProduto_Descontos: TRxQuery;
+    dsProduto_Descontos: TDataSource;
+    sqlProduto_DescontosCOD_PRODUTODESCONTOS: TIntegerField;
+    sqlProduto_DescontosPRODICOD: TIntegerField;
+    sqlProduto_DescontosPRECO: TFloatField;
+    sqlProduto_DescontosDATA_VALIDADE: TDateTimeField;
+    sqlProduto_DescontosQUANTIDADE: TIntegerField;
+    TabSheetDescontos: TTabSheet;
+    DBGrid5: TDBGrid;
+    DBNavigator1: TDBNavigator;
     procedure FormCreate(Sender: TObject);
     procedure RxComboComissaoChange(Sender: TObject);
     procedure AcessaMarcaClick(Sender: TObject);
@@ -1119,6 +1129,11 @@ type
     procedure CorrigeDescrioPrincipaleReduzida1Click(Sender: TObject);
     procedure btCorrigeProdutossemoCodigoCESTClick(Sender: TObject);
     procedure AcessaCESTClick(Sender: TObject);
+    procedure sqlProduto_DescontosNewRecord(DataSet: TDataSet);
+    procedure sqlProduto_DescontosBeforePost(DataSet: TDataSet);
+    procedure sqlProduto_DescontosBeforeInsert(DataSet: TDataSet);
+    procedure sqlProduto_DescontosBeforeEdit(DataSet: TDataSet);
+    procedure sqlProduto_DescontosBeforeDelete(DataSet: TDataSet);
   private
     { Private declarations }
     ProdutoCodigo: Integer;
@@ -1133,6 +1148,7 @@ type
     procedure MontaGradeProduto;
     procedure MontaGradeCompras;
     procedure GeraHistoricoProduto;
+    procedure PrincipalEmEdicao;
   public
     { Public declarations }
   end;
@@ -1809,6 +1825,9 @@ begin
       SQLEmpresa.Next;
     end;
   end;
+
+  if sqlProduto_Descontos.State in [dsEdit, dsInsert] then
+    sqlProduto_Descontos.Post;
 
   if ValorVenda <> SQLTemplatePRODN3VLRVENDA.AsFloat then
   begin
@@ -3016,6 +3035,9 @@ begin
   end
   else
     ImageProduto.Picture := nil;
+
+  sqlProduto_Descontos.Close;
+  sqlProduto_Descontos.Open;
 end;
 
 procedure TFormCadastroProduto.PageControlValoresChange(Sender: TObject);
@@ -4795,5 +4817,52 @@ begin
   CriaFormulario(TFormCadastroTabCEST, 'FormCadastroTabCEST', False, True, True, '');
 end;
 
-end.
+procedure TFormCadastroProduto.sqlProduto_DescontosNewRecord(
+  DataSet: TDataSet);
+begin
+  inherited;
+  DM.SQLTemplate.Close;
+  DM.SQLTemplate.SQL.Clear;
+  DM.SQLTemplate.SQL.Add('SELECT MAX(COD_PRODUTODESCONTOS) AS COD_PRODUTODESCONTOS FROM PRODUTO_DESCONTOS');
+  DM.SQLTemplate.Open;
 
+  if DM.SQLTemplate.RecordCount > 0 then
+    sqlProduto_DescontosCOD_PRODUTODESCONTOS.AsInteger := DM.SQLTemplate.FieldByName('COD_PRODUTODESCONTOS').AsInteger + 1
+  else sqlProduto_DescontosCOD_PRODUTODESCONTOS.AsInteger := 1;
+end;
+
+procedure TFormCadastroProduto.sqlProduto_DescontosBeforePost(
+  DataSet: TDataSet);
+begin
+  inherited;
+  sqlProduto_DescontosPRODICOD.AsInteger := SQLTemplatePRODICOD.AsInteger;
+end;
+
+procedure TFormCadastroProduto.sqlProduto_DescontosBeforeInsert(
+  DataSet: TDataSet);
+begin
+  inherited;
+  PrincipalEmEdicao;
+end;
+
+procedure TFormCadastroProduto.sqlProduto_DescontosBeforeEdit(
+  DataSet: TDataSet);
+begin
+  inherited;
+  PrincipalEmEdicao;
+end;
+
+procedure TFormCadastroProduto.PrincipalEmEdicao;
+begin
+  if not(SQLTemplate.State in [dsEdit, dsInsert]) then
+    Abort;
+end;
+
+procedure TFormCadastroProduto.sqlProduto_DescontosBeforeDelete(
+  DataSet: TDataSet);
+begin
+  inherited;
+  PrincipalEmEdicao;
+end;
+
+end.

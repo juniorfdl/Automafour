@@ -2133,7 +2133,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                 Top = 296
                 Width = 652
                 Height = 177
-                ActivePage = TabSheet1
+                ActivePage = TabSheetDescontos
                 TabOrder = 15
                 object TabSheet1: TTabSheet
                   Caption = 'Tributa'#231#227'o ICMS'
@@ -5598,6 +5598,60 @@ inherited FormCadastroProduto: TFormCadastroProduto
                         '3901'
                         '4001')
                     end
+                  end
+                end
+                object TabSheetDescontos: TTabSheet
+                  Caption = 'Descontos'
+                  ImageIndex = 6
+                  object DBGrid5: TDBGrid
+                    Left = 0
+                    Top = 0
+                    Width = 644
+                    Height = 124
+                    Align = alClient
+                    BorderStyle = bsNone
+                    Color = clWhite
+                    DataSource = dsProduto_Descontos
+                    FixedColor = 10053171
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWindowText
+                    Font.Height = -11
+                    Font.Name = 'Tahoma'
+                    Font.Style = []
+                    Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+                    ParentFont = False
+                    TabOrder = 0
+                    TitleFont.Charset = DEFAULT_CHARSET
+                    TitleFont.Color = clWhite
+                    TitleFont.Height = -11
+                    TitleFont.Name = 'Tahoma'
+                    TitleFont.Style = [fsBold]
+                    Columns = <
+                      item
+                        Expanded = False
+                        FieldName = 'QUANTIDADE'
+                        Visible = True
+                      end
+                      item
+                        Expanded = False
+                        FieldName = 'PRECO'
+                        Visible = True
+                      end
+                      item
+                        Expanded = False
+                        FieldName = 'DATA_VALIDADE'
+                        Visible = True
+                      end>
+                  end
+                  object DBNavigator1: TDBNavigator
+                    Left = 0
+                    Top = 124
+                    Width = 644
+                    Height = 25
+                    DataSource = dsProduto_Descontos
+                    VisibleButtons = [nbInsert, nbDelete, nbEdit, nbPost, nbCancel]
+                    Align = alBottom
+                    TabOrder = 1
                   end
                 end
               end
@@ -13648,5 +13702,60 @@ inherited FormCadastroProduto: TFormCadastroProduto
     GraphAxis.DivisionsZ = 0
     Left = 389
     Top = 105
+  end
+  object sqlProduto_Descontos: TRxQuery
+    BeforeInsert = sqlProduto_DescontosBeforeInsert
+    BeforeEdit = sqlProduto_DescontosBeforeEdit
+    BeforePost = sqlProduto_DescontosBeforePost
+    BeforeDelete = sqlProduto_DescontosBeforeDelete
+    OnNewRecord = sqlProduto_DescontosNewRecord
+    DatabaseName = 'DB'
+    DataSource = DSTemplate
+    RequestLive = True
+    SQL.Strings = (
+      'SELECT *'
+      'FROM PRODUTO_DESCONTOS'
+      'WHERE PRODICOD = :PRODICOD')
+    Macros = <>
+    Left = 893
+    Top = 310
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'PRODICOD'
+        ParamType = ptUnknown
+        Size = 4
+      end>
+    object sqlProduto_DescontosCOD_PRODUTODESCONTOS: TIntegerField
+      FieldName = 'COD_PRODUTODESCONTOS'
+      Origin = 'DB.PRODUTO_DESCONTOS.COD_PRODUTODESCONTOS'
+    end
+    object sqlProduto_DescontosPRODICOD: TIntegerField
+      FieldName = 'PRODICOD'
+      Origin = 'DB.PRODUTO_DESCONTOS.PRODICOD'
+    end
+    object sqlProduto_DescontosQUANTIDADE: TIntegerField
+      DisplayLabel = 'Quantidade'
+      FieldName = 'QUANTIDADE'
+      Origin = 'DB.PRODUTO_DESCONTOS.QUANTIDADE'
+    end
+    object sqlProduto_DescontosPRECO: TFloatField
+      DisplayLabel = 'Pre'#231'o'
+      FieldName = 'PRECO'
+      Origin = 'DB.PRODUTO_DESCONTOS.PRECO'
+    end
+    object sqlProduto_DescontosDATA_VALIDADE: TDateTimeField
+      DisplayLabel = 'Data Validade'
+      FieldName = 'DATA_VALIDADE'
+      Origin = 'DB.PRODUTO_DESCONTOS.DATA_VALIDADE'
+      DisplayFormat = 'dd/mm/yyyy'
+      EditMask = '!99/99/0000;1;_'
+    end
+  end
+  object dsProduto_Descontos: TDataSource
+    DataSet = sqlProduto_Descontos
+    OnDataChange = DSSQLSubGrupoDataChange
+    Left = 921
+    Top = 310
   end
 end
