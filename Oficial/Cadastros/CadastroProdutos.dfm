@@ -13734,11 +13734,6 @@ inherited FormCadastroProduto: TFormCadastroProduto
       FieldName = 'PRODICOD'
       Origin = 'DB.PRODUTO_DESCONTOS.PRODICOD'
     end
-    object sqlProduto_DescontosQUANTIDADE: TIntegerField
-      DisplayLabel = 'Quantidade'
-      FieldName = 'QUANTIDADE'
-      Origin = 'DB.PRODUTO_DESCONTOS.QUANTIDADE'
-    end
     object sqlProduto_DescontosPRECO: TFloatField
       DisplayLabel = 'Pre'#231'o'
       FieldName = 'PRECO'
@@ -13750,6 +13745,10 @@ inherited FormCadastroProduto: TFormCadastroProduto
       Origin = 'DB.PRODUTO_DESCONTOS.DATA_VALIDADE'
       DisplayFormat = 'dd/mm/yyyy'
       EditMask = '!99/99/0000;1;_'
+    end
+    object sqlProduto_DescontosQUANTIDADE: TFloatField
+      FieldName = 'QUANTIDADE'
+      Origin = 'DB.PRODUTO_DESCONTOS.QUANTIDADE'
     end
   end
   object dsProduto_Descontos: TDataSource

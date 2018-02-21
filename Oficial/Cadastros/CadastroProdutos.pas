@@ -986,10 +986,10 @@ type
     sqlProduto_DescontosPRODICOD: TIntegerField;
     sqlProduto_DescontosPRECO: TFloatField;
     sqlProduto_DescontosDATA_VALIDADE: TDateTimeField;
-    sqlProduto_DescontosQUANTIDADE: TIntegerField;
     TabSheetDescontos: TTabSheet;
     DBGrid5: TDBGrid;
     DBNavigator1: TDBNavigator;
+    sqlProduto_DescontosQUANTIDADE: TFloatField;
     procedure FormCreate(Sender: TObject);
     procedure RxComboComissaoChange(Sender: TObject);
     procedure AcessaMarcaClick(Sender: TObject);
