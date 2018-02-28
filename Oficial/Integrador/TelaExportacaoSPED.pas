@@ -589,7 +589,9 @@ var Versao, ErroProdutos : string;
     IncluiItem: Boolean;
     ArqProdutos : TextFile;
     LinhaProdutos : string;
+    ArquivoAberto: Boolean;
 Begin
+  ArquivoAberto := False;
   Versao := edtVersao.Text;
   if length(Versao) <> 3 then
     begin
@@ -1136,6 +1138,7 @@ Begin
       if ckDominioProdutos.Checked then
         begin
           //GERA ARQUIVO TEXTO
+          ArquivoAberto := True;
           AssignFile(ArqProdutos,EditDiretorio.Text + '\PRODUTOS.TXT');
           Rewrite(ArqProdutos);
           Reset(ArqProdutos);
@@ -1208,6 +1211,7 @@ Begin
       if ckDominioProdutos.Checked then
         begin
           // Monta Produto linha 4-Produto
+          ArquivoAberto := True;
           Append(ArqProdutos);
           LinhaProdutos := '';
           LinhaProdutos := MontaLinhaProduto4;
@@ -1254,7 +1258,7 @@ Begin
   Progress.Update;
 
   //Fecha ARQUIVO TEXTO
-  if ckDominioProdutos.Checked then
+  if ckDominioProdutos.Checked and ArquivoAberto then
     CloseFile(ArqProdutos);
 
   SQLProduto.Open;
@@ -2820,7 +2824,7 @@ begin
           Try
             //Registro 0150 - ABERTURA DO REGISTRO 0150 - DADOS DOS PARTICIPANTES (EMPRESAS)
             z0150.Append;
-            z0150.FieldByName('COD_PART').AsString      := zPesquisa.FieldByName('EMPRICOD').AsString;
+            z0150.FieldByName('COD_PART').AsString      := 'E'+zPesquisa.FieldByName('EMPRICOD').AsString;
             z0150.FieldByName('NOME').AsString          := Trim(zPesquisa.FieldByName('EMPRA60RAZAOSOC').AsString) ;
             z0150.FieldByName('COD_PAIS').AsString      := '1058';
             z0150.FieldByName('CNPJ').AsString          := zPesquisa.FieldByName('EMPRA14CGC').AsString;
@@ -2881,7 +2885,7 @@ begin
           If Achou = 'N' then
           Begin
             z0150.Append;
-            z0150.FieldByName('COD_PART').AsString      := zPesquisa.FieldByName('FORNICOD').AsString;
+            z0150.FieldByName('COD_PART').AsString      := 'F' + zPesquisa.FieldByName('FORNICOD').AsString;
             z0150.FieldByName('COD_FORN').AsString      := zPesquisa.Fieldbyname('FORNICOD').AsString;
             z0150.FieldByName('NOME').AsString          := Trim(zPesquisa.FieldByName('FORNA60RAZAOSOC').AsString) ;
             z0150.FieldByName('COD_PAIS').AsString      := zPesquisa.FieldByName('FORNICODPAIS').AsString;
@@ -3006,7 +3010,7 @@ begin
           If Achou = 'N' then
           Begin
             z0150.Append;
-            z0150.FieldByName('COD_PART').AsString      := zPesquisa.FieldByName('FORNICOD').AsString;
+            z0150.FieldByName('COD_PART').AsString      := 'F' + zPesquisa.FieldByName('FORNICOD').AsString;
             z0150.FieldByName('COD_FORN').AsString      := zPesquisa.Fieldbyname('FORNICOD').AsString;
             z0150.FieldByName('NOME').AsString          := Trim(zPesquisa.FieldByName('FORNA60RAZAOSOC').AsString);
             z0150.FieldByName('COD_PAIS').AsString      := zPesquisa.FieldByName('FORNICODPAIS').AsString;
@@ -3945,12 +3949,12 @@ Begin
       // Pesquisa na tabela fornecedor o cnpj do participante
       vCodParticipante := DM.SQLLocate('SPED_0150','COD_FORN','COD_PART',zPesquisa.FieldByName('FORNICOD').AsString);
 
-      {if vCodParticipante = '' then
+      if vCodParticipante = '' then
       begin
         Showmessage('Codigo do Participante Não Encontrado!'+#13+#10+'Nota Compra: '+NroDocumento);
         Result := False;
         Exit;
-      end;}
+      end;
     begin
       if zPesquisa.FieldByName('NOFIA44CHAVEACESSO').AsString <> '' then
         Chave := zPesquisa.FieldByName('NOFIA44CHAVEACESSO').AsString

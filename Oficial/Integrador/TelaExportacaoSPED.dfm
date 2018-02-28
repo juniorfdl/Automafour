@@ -2185,7 +2185,6 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
   object zInventario: TRxQuery
     CachedUpdates = True
     DatabaseName = 'DB'
-    RequestLive = True
     Macros = <>
     Left = 544
     Top = 24
