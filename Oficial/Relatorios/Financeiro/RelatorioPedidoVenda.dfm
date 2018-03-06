@@ -1,6 +1,6 @@
 inherited FormRelatorioPedidoVenda: TFormRelatorioPedidoVenda
-  Left = 209
-  Top = 102
+  Left = 453
+  Top = 88
   Caption = 'Relat'#243'rio de Pedidos Vendas'
   ClientHeight = 562
   ClientWidth = 797
@@ -320,9 +320,11 @@ inherited FormRelatorioPedidoVenda: TFormRelatorioPedidoVenda
       FieldName = 'PDVDDEMISSAO'
       Origin = 'DB.PEDIDOVENDA.PDVDDEMISSAO'
     end
-    object TblTemporariaPDVDN2VLRFRETE: TFloatField
+    object TblTemporariaPDVDN2VLRFRETE: TBCDField
       FieldName = 'PDVDN2VLRFRETE'
       Origin = 'DB.PEDIDOVENDA.PDVDN2VLRFRETE'
+      Precision = 15
+      Size = 3
     end
     object TblTemporariaPDVDA30NROPEDCOMP: TStringField
       FieldName = 'PDVDA30NROPEDCOMP'
@@ -348,17 +350,23 @@ inherited FormRelatorioPedidoVenda: TFormRelatorioPedidoVenda
       FixedChar = True
       Size = 1
     end
-    object TblTemporariaPDVDN2VLRDESC: TFloatField
+    object TblTemporariaPDVDN2VLRDESC: TBCDField
       FieldName = 'PDVDN2VLRDESC'
       Origin = 'DB.PEDIDOVENDA.PDVDN2VLRDESC'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaPDVDN2TOTPROD: TFloatField
+    object TblTemporariaPDVDN2TOTPROD: TBCDField
       FieldName = 'PDVDN2TOTPROD'
       Origin = 'DB.PEDIDOVENDA.PDVDN2TOTPROD'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaPDVDN2TOTPED: TFloatField
+    object TblTemporariaPDVDN2TOTPED: TBCDField
       FieldName = 'PDVDN2TOTPED'
       Origin = 'DB.PEDIDOVENDA.PDVDN2TOTPED'
+      Precision = 15
+      Size = 3
     end
     object TblTemporariaPDVDTOBS: TStringField
       FieldName = 'PDVDTOBS'
@@ -366,9 +374,11 @@ inherited FormRelatorioPedidoVenda: TFormRelatorioPedidoVenda
       FixedChar = True
       Size = 254
     end
-    object TblTemporariaPDVDN2VLRDESCPROM: TFloatField
+    object TblTemporariaPDVDN2VLRDESCPROM: TBCDField
       FieldName = 'PDVDN2VLRDESCPROM'
       Origin = 'DB.PEDIDOVENDA.PDVDN2VLRDESCPROM'
+      Precision = 15
+      Size = 3
     end
     object TblTemporariaPDVDCTIPOFRETE: TStringField
       FieldName = 'PDVDCTIPOFRETE'
@@ -396,11 +406,15 @@ inherited FormRelatorioPedidoVenda: TFormRelatorioPedidoVenda
       FixedChar = True
       Size = 5
     end
-    object TblTemporariaPDVDN2VLRMONTAGEM: TFloatField
+    object TblTemporariaPDVDN2VLRMONTAGEM: TBCDField
       FieldName = 'PDVDN2VLRMONTAGEM'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaPDVDN2VLRIMPERMEAB: TFloatField
+    object TblTemporariaPDVDN2VLRIMPERMEAB: TBCDField
       FieldName = 'PDVDN2VLRIMPERMEAB'
+      Precision = 15
+      Size = 3
     end
     object TblTemporariaPESOTOTAL: TFloatField
       FieldName = 'PESOTOTAL'
