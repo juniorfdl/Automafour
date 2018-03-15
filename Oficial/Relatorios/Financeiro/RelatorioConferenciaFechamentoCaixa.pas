@@ -73,7 +73,6 @@ type
     ComboTerminal: TRxDBLookupCombo;
     GroupBox4: TGroupBox;
     ComboOperador: TRxDBLookupCombo;
-    BtnFecharTela: TSpeedButton;
     SQLTotaNumerarioVALOR_DIGITADO: TFloatField;
     VALOR_DIGITADO: TppField;
     SQLTotaNumerarioDIFERENCA: TFloatField;
@@ -115,6 +114,8 @@ type
     ppDBCalc9: TppDBCalc;
     ppDBCalc10: TppDBCalc;
     ppLine1: TppLine;
+    SpeedButton1: TSpeedButton;
+    BtnFecharTela: TSpeedButton;
     procedure FormCreate(Sender: TObject);
     procedure BtnVisualizarClick(Sender: TObject);
     procedure ReportTotaisPreviewFormCreate(Sender: TObject);
@@ -122,7 +123,6 @@ type
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure ppTitleBand1BeforePrint(Sender: TObject);
-    procedure ReportTotaisPreviewFormClose(Sender: TObject);
     procedure BtnFecharTelaClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
@@ -167,6 +167,7 @@ var
 begin
   SQLTotaNumerario.Close ;
   SQLTotaNumerario.MacrobyName('MEmpresa').Value  := 'EMPRICOD  = ' + EmpresaPadrao;
+
   SQLTotaNumerario.MacroByName('MTerminal').Value := '0=0';
 
   if (HoraInicial.Text = '') and (HoraInicial.Text = '') then
@@ -196,11 +197,6 @@ begin
   else
     SQLTotaNumerario.MacroByName('MOperador').Value := '0=0';
 
-  if ComboTerminal.Value <> '' then
-    SQLTotaNumerario.MacroByName('OPERACAO_CAIXA').Value := 'C.OPERACAO_CAIXA = ' + ComboTerminal.Value
-  else
-    SQLTotaNumerario.MacroByName('OPERACAO_CAIXA').Value := '0=0';
-
   SQLTotaNumerario.Open;
 
   SQLTotalOperacao.Close;
@@ -213,6 +209,9 @@ begin
   else
     SQLTotalOperacao.MacroByName('MData').Value := 'A.REGISTRO >= "' + FormatDateTime('mm/dd/yyyy ', De.Date) + HoraInicial.Text + '" and ' +
                                                    'A.REGISTRO <= "' + FormatDateTime('mm/dd/yyyy ', Ate.Date)+ HoraFinal.Text   + '"';
+  if ComboTerminal.Value <> '' then
+    SQLTotalOperacao.MacroByName('MTerminal').Value := 'TERMICOD = ' + ComboTerminal.Value
+  else
     SQLTotalOperacao.MacroByName('MTerminal').Value := '0=0';
   if ComboOperador.Value <> '' then
     SQLTotalOperacao.MacroByName('MOperador').Value := 'A.USUAICOD = ' + ComboOperador.Value
@@ -253,12 +252,6 @@ begin
   ppOperador.Caption := 'Operador: ' + ComboOperador.Text;
 end;
 
-procedure TFormConferenciaFechamentoCaixa.ReportTotaisPreviewFormClose(
-  Sender: TObject);
-begin
-  Close ;
-end;
-
 procedure TFormConferenciaFechamentoCaixa.BtnFecharTelaClick(                                                             
   Sender: TObject);
 begin
@@ -268,6 +261,12 @@ end;
 procedure TFormConferenciaFechamentoCaixa.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
+  try
+    TblTemporaria.Close ;
+  except
+    Application.ProcessMessages;
+  end ;
+
   Action := CAFree ;
 end;
 

@@ -14,7 +14,15 @@ uses
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
   cxImageComboBox, ImgList, Menus, DBClient, ACBrBase, ACBrDFe, Grids,
   DBGrids, Spin, DBCtrls, AdvOfficeStatusBar, AdvOfficeStatusBarStylers, IniFiles, pcnConversao,
-  VarSYS, ShellAPI, pcnConversaoNFe;
+  VarSYS, ShellAPI, pcnConversaoNFe, dxSkinBlack, dxSkinBlue,
+  dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky,
+  dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinPumpkin, dxSkinSeven,
+  dxSkinSharp, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinXmas2008Blue, dxSkinscxPCPainter;
 
 type
   TTipoInconsistencia = (tiCritica, tiInformacao, tiErro);
@@ -1755,11 +1763,11 @@ begin
                 dm.SQLUpdate.ParamByName('NOCIN2BASEISS').AsFloat    := 0.00;
                 dm.SQLUpdate.ParamByName('NOCIN2VLRISS').AsFloat     := 0.00;
 
-                //dm.SQLUpdate.ParamByName('NOCIN3VLRCUSTOMED').AsFloat := (cdsItensquantidade.AsFloat * cdsItensvalor_unitario.AsFloat) / cdsItensquantidade.AsFloat;
-                dm.SQLUpdate.ParamByName('NOCIN3VLRCUSTOMED').AsFloat  := ((dm.SQLUpdate.ParamByName('NOCIN3VLRUNIT').AsFloat * dm.SQLUpdate.ParamByName('NOCIN3QTDEMBAL').AsFloat) +
-                                                                            dm.SQLUpdate.ParamByName('NOCIN2VLRCOFINS').AsFloat + dm.SQLUpdate.ParamByName('NOCIN2VLRPIS').AsFloat +
-                                                                            dm.SQLUpdate.ParamByName('NOCIN3VLRIPI').AsFloat + dm.SQLUpdate.ParamByName('NOCIN3VLRICMS').AsFloat +
-                                                                            dm.SQLUpdate.ParamByName('NOCIN3VLRFRETE').AsFloat) / dm.SQLUpdate.ParamByName('NOCIN3QTDEMBAL').AsFloat;
+                dm.SQLUpdate.ParamByName('NOCIN3VLRCUSTOMED').AsFloat := (cdsItensquantidade.AsFloat * cdsItensvalor_unitario.AsFloat) / cdsItensquantidade.AsFloat;
+              //  dm.SQLUpdate.ParamByName('NOCIN3VLRCUSTOMED').AsFloat  := ((dm.SQLUpdate.ParamByName('NOCIN3VLRUNIT').AsFloat * dm.SQLUpdate.ParamByName('NOCIN3QTDEMBAL').AsFloat) +
+              //                                                              dm.SQLUpdate.ParamByName('NOCIN2VLRCOFINS').AsFloat + dm.SQLUpdate.ParamByName('NOCIN2VLRPIS').AsFloat +
+              //                                                              dm.SQLUpdate.ParamByName('NOCIN3VLRIPI').AsFloat + dm.SQLUpdate.ParamByName('NOCIN3VLRICMS').AsFloat +
+              //                                                              dm.SQLUpdate.ParamByName('NOCIN3VLRFRETE').AsFloat) / dm.SQLUpdate.ParamByName('NOCIN3QTDEMBAL').AsFloat;
 
                 dm.SQLUpdate.ParamByName('NOCIN3QTDEPED').AsFloat  := 0.00;
                 dm.SQLUpdate.ParamByName('NOCIN3TOTPED').AsFloat   := 0.00;

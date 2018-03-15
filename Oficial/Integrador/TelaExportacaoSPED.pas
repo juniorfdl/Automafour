@@ -1155,10 +1155,10 @@ Begin
          (z0200.FieldByName('PRODA2CSTPIS').AsString='') or
          (z0200.FieldByName('PRODA3CSTPISENTRADA').AsString='') then
         begin
-          {ShowMessage('Produto: '+z0200.Fieldbyname('COD_ITEM').AsString+' Revisar Cadastro!');
+          ShowMessage('Produto: '+z0200.Fieldbyname('COD_ITEM').AsString+' Revisar Cadastro!');
           z0200.last;
           Abort;
-          Exit;}
+          Exit;
         end;
 
       EditTabela.Text := 'Criando Registro 0200 - '+IntToStr(Progress.Position)+' de '+IntToStr(Progress.Max); EditTabela.Update;

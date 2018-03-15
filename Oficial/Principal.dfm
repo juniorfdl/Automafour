@@ -1,6 +1,7 @@
 inherited FormPrincipal: TFormPrincipal
   Tag = 4
-  Left = 1
+  Left = 6
+  Top = 11
   Width = 1364
   Caption = 'Advanced Control'
   OldCreateOrder = True
