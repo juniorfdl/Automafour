@@ -4183,4 +4183,16 @@ inherited FormCadastroNotaCompra: TFormCadastroNotaCompra
     Left = 60
     Top = 217
   end
+  object cdsProdutos: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 70
+    Top = 501
+    object cdsProdutosPRODICOD: TIntegerField
+      FieldName = 'PRODICOD'
+    end
+    object cdsProdutosQUANTIDADE: TFloatField
+      FieldName = 'QUANTIDADE'
+    end
+  end
 end

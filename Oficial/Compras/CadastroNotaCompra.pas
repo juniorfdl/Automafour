@@ -8,7 +8,7 @@ uses
   RxQuery, Menus, StdCtrls, Mask, Grids, DBGrids, ComCtrls, ExtCtrls,
   RXCtrls, Buttons, jpeg, RxDBComb, DBCtrls, ToolEdit, RXDBCtrl, VarSys, FormResources,
   EDBNum, RxLookup, RDprint, CurrEdit, Serial, AdvOfficeStatusBar,
-  AdvOfficeStatusBarStylers, AdvPanel;
+  AdvOfficeStatusBarStylers, AdvPanel, DBClient;
 
 type
   TFormCadastroNotaCompra = class(TFormCadastroTEMPLATE)
@@ -479,6 +479,9 @@ type
     MnRecalcularFretenosItens: TMenuItem;
     SQLNotaCompraItensNOCIN3PERCFRETE: TFloatField;
     ProgressBar: TProgressBar;
+    cdsProdutos: TClientDataSet;
+    cdsProdutosPRODICOD: TIntegerField;
+    cdsProdutosQUANTIDADE: TFloatField;
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure SQLTemplateNewRecord(DataSet: TDataSet);
@@ -534,7 +537,7 @@ type
   private
     { Private declarations }
     PedidoAnterior, PedidoNovo, StatusAnterior, StatusNovo:String;
-    CancelandoNota, CallDetail, EncerrandoemSequencia :Boolean;
+    CancelandoNota, CallDetail, EncerrandoemSequencia, fDandoPost :Boolean;
     BkpEmpresaCorrente :Integer;
     function CommaToPoint(Value : Double) : String;
     Function VerificaCFOPs:Boolean;
@@ -562,6 +565,8 @@ begin
 
   if not DM.SQLConfigCompra.Active then
     DM.SQLConfigCompra.Open;
+
+  cdsProdutos.CreateDataSet;
 end;
 
 procedure TFormCadastroNotaCompra.Button1Click(Sender: TObject);
@@ -973,6 +978,25 @@ begin
       ProgressBar.Min:=1;
       ProgressBar.Max:=SQLNotaCompraItens.RecordCount;
 
+      if cdsProdutos.Active then
+        cdsProdutos.Close;
+
+      cdsProdutos.Open;
+      SQLNotaCompraItens.First;
+      while not(SQLNotaCompraItens.Eof) do
+      begin
+        if not(cdsProdutos.Locate('PRODICOD', SQLNotaCompraItensPRODICOD.AsInteger, [])) then
+        begin
+          cdsProdutos.Insert;
+          cdsProdutosPRODICOD.AsInteger := SQLNotaCompraItensPRODICOD.AsInteger;
+        end
+        else cdsProdutos.Edit;
+
+        cdsProdutosQUANTIDADE.AsFloat := cdsProdutosQUANTIDADE.AsFloat + (SQLNotaCompraItens.FindField('NOCIN3CAPEMBAL').asFloat * (SQLNotaCompraItens.FindField('NOCIN3QTDEMBAL').asFloat + SQLNotaCompraItens.FindField('NOCIN3QTDBONIF').asFloat));
+
+        SQLNotaCompraItens.Next;
+      end;
+
       SQLNotaCompraItens.First;
       Item := 1;
       While Not SQLNotaCompraItens.Eof Do
@@ -1017,26 +1041,32 @@ begin
                 SQLEstoqueAtual.Open;
 
                 //GRAVA O MOVIMENTO DE ESTOQUE E ATUALIZA SALDO DE ESTOQUE
-               if SQLLocate('OPERACAOESTOQUE','OPESICOD','OPESCENTRADASAIDA',IntToStr(OperacaoEstoque)) = 'E' then
-                 begin
-                   quantidade := SQLNotaCompraItens.FindField('NOCIN3CAPEMBAL').asFloat * (SQLNotaCompraItens.FindField('NOCIN3QTDEMBAL').asFloat + SQLNotaCompraItens.FindField('NOCIN3QTDBONIF').asFloat);
-                   if not TestaNotaCompraMovimentoEstoque(DataSet.FindField('NOCPA13ID').AsString, '', '',
-                                                          SQLNotaCompraItens.FindField('PRODICOD').AsString, quantidade) then
-                   GravaMovimentoEstoque(DM.SQLProduto,
-                                         DM.SQLProdutoFilho,
-                                         DM.SQLProdutoSaldo,
-                                         SQLTemplateEMPRICODDESTCOMPRA.Value,//Empresa
-                                         SQLNotaCompraItens.FindField('PRODICOD').asInteger,//Produto
-                                         OperacaoEstoque,//Operacao
-                                         quantidade, //Quantidade
-                                         'E',//ENTRADA/SAIDA
-                                         FormatDateTime('mm/dd/yyyy', DataSet.FindField('NOCPDRECEBIMENTO').AsDateTime),
-                                         SQLNotaCompraItens.FindField('NOCIN3VLRUNIT').asString,
-                                         'NOTACOMPRA',
-                                         DataSet.FindField('NOCPA13ID').AsString,
-                                         SQLNotaCompraItens.FindField('LOTEA30NRO').AsString);
+                begin
+                  quantidade := 0;
+
+                  if SQLLocate('OPERACAOESTOQUE','OPESICOD','OPESCENTRADASAIDA',IntToStr(OperacaoEstoque)) = 'E' then
+                  begin
+                    if cdsProdutos.Locate('PRODICOD', SQLNotaCompraItensPRODICOD.AsInteger, []) then
+                      quantidade := cdsProdutosQUANTIDADE.AsFloat;
+
+                    if not TestaNotaCompraMovimentoEstoque(DataSet.FindField('NOCPA13ID').AsString, '', '',
+                                                           SQLNotaCompraItens.FindField('PRODICOD').AsString, quantidade) then
+                    GravaMovimentoEstoque(DM.SQLProduto,
+                                          DM.SQLProdutoFilho,
+                                          DM.SQLProdutoSaldo,
+                                          SQLTemplateEMPRICODDESTCOMPRA.Value,//Empresa
+                                          SQLNotaCompraItens.FindField('PRODICOD').asInteger,//Produto
+                                          OperacaoEstoque,//Operacao
+                                          quantidade, //Quantidade
+                                          'E',//ENTRADA/SAIDA
+                                          FormatDateTime('mm/dd/yyyy', DataSet.FindField('NOCPDRECEBIMENTO').AsDateTime),
+                                          SQLNotaCompraItens.FindField('NOCIN3VLRUNIT').asString,
+                                          'NOTACOMPRA',
+                                          DataSet.FindField('NOCPA13ID').AsString,
+                                          SQLNotaCompraItens.FindField('LOTEA30NRO').AsString);
 
                   end;
+                end; 
 
                 if DM.SQLConfigCompra.fieldbyname('CFCOCVERIFICAVLRMENOR').AsString <> 'S' then
                   begin
