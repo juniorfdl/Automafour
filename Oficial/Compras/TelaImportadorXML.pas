@@ -14,15 +14,7 @@ uses
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
   cxImageComboBox, ImgList, Menus, DBClient, ACBrBase, ACBrDFe, Grids,
   DBGrids, Spin, DBCtrls, AdvOfficeStatusBar, AdvOfficeStatusBarStylers, IniFiles, pcnConversao,
-  VarSYS, ShellAPI, pcnConversaoNFe, dxSkinBlack, dxSkinBlue,
-  dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinFoggy,
-  dxSkinGlassOceans, dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky,
-  dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMoneyTwins,
-  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
-  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinPumpkin, dxSkinSeven,
-  dxSkinSharp, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
-  dxSkinSummer2008, dxSkinsDefaultPainters, dxSkinValentine,
-  dxSkinXmas2008Blue, dxSkinscxPCPainter;
+  VarSYS, ShellAPI, pcnConversaoNFe;
 
 type
   TTipoInconsistencia = (tiCritica, tiInformacao, tiErro);
@@ -485,6 +477,8 @@ type
 
     procedure FinalizaProcessamentos;
     procedure SetProgresso(aMensagem: String);
+
+    procedure pCalculaCustoMedio;
 
   public
     { Public declarations }
@@ -1768,6 +1762,7 @@ begin
               //                                                              dm.SQLUpdate.ParamByName('NOCIN2VLRCOFINS').AsFloat + dm.SQLUpdate.ParamByName('NOCIN2VLRPIS').AsFloat +
               //                                                              dm.SQLUpdate.ParamByName('NOCIN3VLRIPI').AsFloat + dm.SQLUpdate.ParamByName('NOCIN3VLRICMS').AsFloat +
               //                                                              dm.SQLUpdate.ParamByName('NOCIN3VLRFRETE').AsFloat) / dm.SQLUpdate.ParamByName('NOCIN3QTDEMBAL').AsFloat;
+                pCalculaCustoMedio;
 
                 dm.SQLUpdate.ParamByName('NOCIN3QTDEPED').AsFloat  := 0.00;
                 dm.SQLUpdate.ParamByName('NOCIN3TOTPED').AsFloat   := 0.00;
@@ -2975,6 +2970,27 @@ begin
   ACBrNFe.DownloadNFe.Download.CNPJ := dm.SQLEmpresaEMPRA14CGC.Value;
   ACBrNFe.DownloadNFe.Download.Chaves.Add.chNFe := SQLNFSEFAZCHAVE.Value;
   ACBrNFe.Download;
+end;
+
+procedure TFormTelaImportadorXML.pCalculaCustoMedio;
+var valorIpi, valorSubst, valorFrete, valorDespesa, valordifIcms, valorPIS, valorCofins, ValorEncargos : Extended;
+begin
+  try
+    valorIpi     := (dm.SQLUpdate.ParamByName('NOCIN3VLRCUSTOMED').AsFloat * dm.SQLUpdate.ParamByName('NOCIN3PERCIPI').AsFloat)/100;
+    valorSubst   := (dm.SQLUpdate.ParamByName('NOCIN3VLRCUSTOMED').AsFloat * dm.SQLUpdate.ParamByName('NOCIN2PERCSUBST').AsFloat)/100;
+    valorFrete   := (dm.SQLUpdate.ParamByName('NOCIN3VLRCUSTOMED').AsFloat * dm.SQLUpdate.ParamByName('NOCIN3PERCFRETE').AsFloat)/100;
+    valorDespesa := 0; //valorDespesa := (dm.SQLUpdate.ParamByName('NOCIN3VLRCUSTOMED').AsFloat * dm.SQLUpdate.ParamByName('NOCIN2PERCDESP').AsFloat)/100;
+    valordifIcms := (dm.SQLUpdate.ParamByName('NOCIN3VLRCUSTOMED').AsFloat * dm.SQLUpdate.ParamByName('NOCIN2PERCDIFICM').AsFloat)/100;
+    valorPIS     := (dm.SQLUpdate.ParamByName('NOCIN3VLRCUSTOMED').AsFloat * dm.SQLUpdate.ParamByName('NOCIN2PERCPIS').AsFloat)/100;
+    valorCofins  := (dm.SQLUpdate.ParamByName('NOCIN3VLRCUSTOMED').AsFloat * dm.SQLUpdate.ParamByName('NOCIN2PERCCOFINS').AsFloat)/100;
+    ValorEncargos:= 0;//ValorEncargos:= (dm.SQLUpdate.ParamByName('NOCIN3VLRCUSTOMED').AsFloat * vEncargos)/100;
+
+    dm.SQLUpdate.ParamByName('NOCIN3VLRCUSTOMED').AsFloat := dm.SQLUpdate.ParamByName('NOCIN3VLRCUSTOMED').AsFloat +
+                                                             valorIpi + valorSubst  + valorFrete + valorDespesa + valordifIcms +
+                                                             valorPIS + valorCofins + ValorEncargos;
+  except
+    dm.SQLUpdate.ParamByName('NOCIN3VLRCUSTOMED').AsFloat := 0;
+  end;
 end;
 
 end.
