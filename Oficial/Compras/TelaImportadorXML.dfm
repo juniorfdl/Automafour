@@ -1,6 +1,6 @@
 inherited FormTelaImportadorXML: TFormTelaImportadorXML
-  Left = 205
-  Top = 37
+  Left = 284
+  Top = 29
   Width = 1102
   Height = 687
   Caption = 'Importador de XMLs'
@@ -33,7 +33,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
           Top = 1
           Width = 1079
           Height = 398
-          ActivePage = tsInfoNfe
+          ActivePage = tsItens
           Align = alClient
           TabOrder = 0
           object tsXMLs: TTabSheet
@@ -1094,7 +1094,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
               Left = 0
               Top = 0
               Width = 1071
-              Height = 369
+              Height = 370
               Align = alClient
               TabOrder = 0
               object cxGrid1DBTableViewItens: TcxGridDBTableView

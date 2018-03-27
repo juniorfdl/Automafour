@@ -1506,8 +1506,8 @@ begin
   edtChaveProcura.Text := '';
   fGravar := false;
 
-//   SetProgresso('Executando validações');
-//   ExecutaValidacoes;
+   SetProgresso('Executando validações');
+   ExecutaValidacoes;
 
   SetProgresso('Verificando e atualizando o NCM dos produtos');
   VerificaNCMProdutos;
