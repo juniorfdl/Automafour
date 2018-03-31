@@ -411,11 +411,15 @@ inherited FormRelatorioProdutosComprados: TFormRelatorioProdutosComprados
     object TblTemporariaVLRTOTALITEM: TFloatField
       FieldName = 'VLRTOTALITEM'
     end
-    object TblTemporariaPRODN3VLRCUSTO: TFloatField
+    object TblTemporariaPRODN3VLRCUSTO: TBCDField
       FieldName = 'PRODN3VLRCUSTO'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaPRODN3VLRVENDA: TFloatField
+    object TblTemporariaPRODN3VLRVENDA: TBCDField
       FieldName = 'PRODN3VLRVENDA'
+      Precision = 15
+      Size = 3
     end
     object TblTemporariaGRUPICOD: TIntegerField
       FieldName = 'GRUPICOD'
@@ -432,8 +436,10 @@ inherited FormRelatorioProdutosComprados: TFormRelatorioProdutosComprados
     object TblTemporariaCOLEICOD: TIntegerField
       FieldName = 'COLEICOD'
     end
-    object TblTemporariaCPITN3QTD: TFloatField
+    object TblTemporariaCPITN3QTD: TBCDField
       FieldName = 'CPITN3QTD'
+      Precision = 15
+      Size = 3
     end
     object TblTemporariaCUPOA13ID: TStringField
       FieldName = 'CUPOA13ID'
@@ -443,11 +449,15 @@ inherited FormRelatorioProdutosComprados: TFormRelatorioProdutosComprados
     object TblTemporariaFORNICOD: TIntegerField
       FieldName = 'FORNICOD'
     end
-    object TblTemporariaPRODN2ALIQPIS: TFloatField
+    object TblTemporariaPRODN2ALIQPIS: TBCDField
       FieldName = 'PRODN2ALIQPIS'
+      Precision = 15
+      Size = 2
     end
-    object TblTemporariaPRODN2ALIQCOFINS: TFloatField
+    object TblTemporariaPRODN2ALIQCOFINS: TBCDField
       FieldName = 'PRODN2ALIQCOFINS'
+      Precision = 15
+      Size = 2
     end
     object TblTemporariaCFOPA5CODAUX: TStringField
       FieldName = 'CFOPA5CODAUX'
@@ -457,8 +467,10 @@ inherited FormRelatorioProdutosComprados: TFormRelatorioProdutosComprados
     object TblTemporariaNOCIN3VLREMBAL: TFloatField
       FieldName = 'NOCIN3VLREMBAL'
     end
-    object TblTemporariaNOCIN3CAPEMBAL: TFloatField
+    object TblTemporariaNOCIN3CAPEMBAL: TBCDField
       FieldName = 'NOCIN3CAPEMBAL'
+      Precision = 15
+      Size = 3
     end
     object TblTemporariaVALORUNIT: TFloatField
       FieldName = 'VALORUNIT'
@@ -508,7 +520,7 @@ inherited FormRelatorioProdutosComprados: TFormRelatorioProdutosComprados
         ' left outer join PRODUTO on NOTACOMPRAITEM.PRODICOD = PRODUTO.PR' +
         'ODICOD)'
       'where'
-      '  NOTACOMPRA.NOCPCSTATUS = ''E'' and'
+      '  NOTACOMPRA.NOCPCSTATUS = '#39'E'#39' and'
       '  NOTACOMPRAITEM.NOCIN3QTDEMBAL > 0 and'
       '  (%MFiltro)  and'
       '  (%MEmpresa) and'

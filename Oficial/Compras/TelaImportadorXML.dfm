@@ -1,5 +1,5 @@
 inherited FormTelaImportadorXML: TFormTelaImportadorXML
-  Left = 284
+  Left = 138
   Top = 29
   Width = 1102
   Height = 687
@@ -2391,6 +2391,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
     Configuracoes.WebServices.AguardarConsultaRet = 15000
     Configuracoes.WebServices.AjustaAguardaConsultaRet = True
     Configuracoes.WebServices.QuebradeLinha = '|'
+    Configuracoes.WebServices.TimeoutIntegrador = 0
     Left = 538
     Top = 8
   end
