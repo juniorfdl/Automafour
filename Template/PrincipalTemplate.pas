@@ -139,8 +139,8 @@ procedure TFormPrincipalTemplate.FormCreate(Sender: TObject);
 var I : Integer;
     Modulos : String;
 begin
-  Caption := Application.Title ;
-
+  VersaoSistema := GetBuildInfo(Application.ExeName);
+  Caption := Application.Title + ' - v.' + VersaoSistema;
   // Inserir Logo Personalizado do Cliente
   if FileExists('Bmp\Logo Retaguarda.Bmp') then
     BackGround.Picture.LoadFromFile('Bmp\Logo Retaguarda.Bmp') ;

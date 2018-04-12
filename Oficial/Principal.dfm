@@ -1,7 +1,7 @@
 inherited FormPrincipal: TFormPrincipal
   Tag = 4
-  Left = 6
-  Top = 11
+  Left = 19
+  Top = 47
   Width = 1364
   Caption = 'Advanced Control'
   OldCreateOrder = True
@@ -2800,6 +2800,10 @@ inherited FormPrincipal: TFormPrincipal
       object ProdutosSemMovimento1: TMenuItem
         Caption = 'Produtos Sem Movimento'
         OnClick = ProdutosSemMovimento1Click
+      end
+      object GerarSaldoInicial1: TMenuItem
+        Caption = 'Gerar Saldo Inicial'
+        OnClick = MnSaldoInicialProdutosClick
       end
     end
     object Utilitrios1: TMenuItem [3]

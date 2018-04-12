@@ -247,6 +247,8 @@ begin
   if not dm.SQLConfigGeral.Active then
     dm.SQLConfigGeral.Open;
 
+  if not dm.SQLConfigCrediario.Active then
+    dm.SQLConfigCrediario.Open;
 
   SQLTemplateCUPOCSTATUS.Value          := 'A';
   SQLTemplateCUPOCTIPOPADRAO.Value      := 'CRT';

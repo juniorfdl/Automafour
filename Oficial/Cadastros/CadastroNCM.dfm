@@ -1,6 +1,6 @@
 inherited FormCadastroNCM: TFormCadastroNCM
-  Left = 418
-  Top = 104
+  Left = 311
+  Top = 58
   Caption = 'Cadastro NCM'
   OldCreateOrder = True
   PixelsPerInch = 96
@@ -9,7 +9,9 @@ inherited FormCadastroNCM: TFormCadastroNCM
     inherited PanelCentral: TPanel
       inherited PanelBarra: TPanel
         inherited Button3: TRxSpeedButton
-          Caption = '&3 TabelaIBPTaxRS16.2.A'
+          Caption = '&3 TabelaIBPT'
+          Font.Style = [fsBold]
+          Visible = True
           OnClick = ImportarArquivoIBPTAtual1Click
         end
       end
@@ -18,6 +20,7 @@ inherited FormCadastroNCM: TFormCadastroNCM
           inherited PagePrincipal: TPageControl
             Top = 94
             Height = 355
+            ActivePage = TabSheetDadosIBPT
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Height = 282
@@ -428,6 +431,46 @@ inherited FormCadastroNCM: TFormCadastroNCM
                   ParentFont = False
                   TabOrder = 6
                 end
+              end
+            end
+            object TabSheetDadosIBPT: TTabSheet
+              ImageIndex = 2
+              object Label8: TLabel
+                Left = 16
+                Top = 24
+                Width = 66
+                Height = 13
+                Caption = 'Arquivo IBPT:'
+              end
+              object SpeedButton1: TSpeedButton
+                Left = 416
+                Top = 15
+                Width = 86
+                Height = 22
+                Caption = 'Importar'
+                Glyph.Data = {
+                  76010000424D7601000000000000760000002800000020000000100000000100
+                  04000000000000010000130B0000130B00001000000000000000000000000000
+                  800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+                  FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+                  33333333333FFFFFFFFF333333000000000033333377777777773333330FFFFF
+                  FFF03333337F333333373333330FFFFFFFF03333337F3FF3FFF73333330F00F0
+                  00F03333F37F773777373330330FFFFFFFF03337FF7F3F3FF3F73339030F0800
+                  F0F033377F7F737737373339900FFFFFFFF03FF7777F3FF3FFF70999990F00F0
+                  00007777777F7737777709999990FFF0FF0377777777FF37F3730999999908F0
+                  F033777777777337F73309999990FFF0033377777777FFF77333099999000000
+                  3333777777777777333333399033333333333337773333333333333903333333
+                  3333333773333333333333303333333333333337333333333333}
+                NumGlyphs = 2
+                OnClick = SpeedButton1Click
+              end
+              object FilenameEdit1: TFilenameEdit
+                Left = 88
+                Top = 16
+                Width = 321
+                Height = 21
+                NumGlyphs = 1
+                TabOrder = 0
               end
             end
           end
@@ -903,7 +946,7 @@ inherited FormCadastroNCM: TFormCadastroNCM
   end
   inherited PopupMenuDiversos: TPopupMenu
     object ImportarArquivoIBPTAtual1: TMenuItem
-      Caption = 'Importar TabelaIBPTaxRS16.2.A'
+      Caption = 'Importar TabelaIBPT'
       OnClick = ImportarArquivoIBPTAtual1Click
     end
     object ImportarArquivoSuperTributario: TMenuItem

@@ -990,6 +990,7 @@ type
     DBGrid5: TDBGrid;
     DBNavigator1: TDBNavigator;
     sqlProduto_DescontosQUANTIDADE: TFloatField;
+    SQLTemplateVALOR_FRETE: TFloatField;
     procedure FormCreate(Sender: TObject);
     procedure RxComboComissaoChange(Sender: TObject);
     procedure AcessaMarcaClick(Sender: TObject);
@@ -1397,7 +1398,7 @@ begin
 
   if FileExists('Mecanica.txt') then
   begin
-    if DBGridLista.Columns[4].Title.caption <> 'Posiï¿½ï¿½o' then
+    if DBGridLista.Columns[4].Title.caption <> 'Posição' then
     begin
       DBGridLista.Columns[4].Title.caption := 'Posiï¿½ï¿½o';
       DBGridLista.Columns[4].FieldName := 'PRODA15APAVIM';
@@ -2041,6 +2042,7 @@ begin
       dm.SQLTemplate.sql.Add(', PRODN2PERCDIFICM = ' + ConvFloatToStr(SQLTemplate.FindField('PRODN2PERCDIFICM').Value));
       dm.SQLTemplate.sql.Add(', PRODN2ALIQPIS = ' + ConvFloatToStr(SQLTemplate.FindField('PRODN2ALIQPIS').Value));
       dm.SQLTemplate.sql.Add(', PRODN2ALIQCOFINS = ' + ConvFloatToStr(SQLTemplate.FindField('PRODN2ALIQCOFINS').Value));
+      dm.SQLTemplate.sql.Add(', VALOR_FRETE = ' + ConvFloatToStr(SQLTemplate.FindField('VALOR_FRETE').Value));
 
       dm.SQLTemplate.sql.Add('Where PRODICOD <> ' + SQLTemplatePRODICOD.AsString +
         ' and PRODIAGRUPGRADE = ' + SQLTemplatePRODIAGRUPGRADE.AsString);
@@ -2301,7 +2303,7 @@ begin
       Dm.SQLConfigVenda.FieldByName('CFVEN2PERCENCARG').AsFloat +
       Sender.DataSet.FindField('PRODN3PERCMARGLUCR').asFloat;
     if Denominador > 100 then
-      Informa('Base de cï¿½lculo incorreta, verifique: !' + #13 +
+      Informa('Base de cálculo incorreta, verifique: !' + #13 +
         'IPI          : ' + Sender.DataSet.FindField('PRODN2PERCIPIENTRADA').AsString + #13 +
         'Subst.Tribut : ' + Sender.DataSet.FindField('PRODN2PERCSUBST').AsString + #13 +
         'Frete        : ' + Sender.DataSet.FindField('PRODN2PERCFRETE').AsString + #13 +
@@ -3367,6 +3369,15 @@ begin
       try
         if SQLTemplate.FindField('PRODN2PERCFRETE').asFloat > 0 then
           CustoFrete := SQLTemplate.FindField('PRODN3VLRCOMPRA').AsFloat * (SQLTemplate.FindField('PRODN2PERCFRETE').asFloat / 100)
+        else
+          CustoFrete := 0;
+      except
+      end;
+
+      // Alteramos de percentual de frete para valor
+      try
+        if SQLTemplate.FindField('VALOR_FRETE').asFloat > 0 then
+          CustoFrete := SQLTemplate.FindField('VALOR_FRETE').asFloat
         else
           CustoFrete := 0;
       except
@@ -4866,3 +4877,4 @@ begin
 end;
 
 end.
+

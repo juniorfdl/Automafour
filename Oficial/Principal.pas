@@ -251,6 +251,7 @@ type
     LanamentoChequesEmitidos1: TMenuItem;
     BaixaChequesRecebidos1: TMenuItem;
     BaixarChequesEmitidos1: TMenuItem;
+    GerarSaldoInicial1: TMenuItem;
     procedure FATUMnCadastroClientesCadastroClick(Sender: TObject);
     procedure FATUMnCadastroClientesTipodeClienteClick(Sender: TObject);
     procedure FATUMnCadastroBancosClick(Sender: TObject);
@@ -496,6 +497,7 @@ type
       Sender: TObject);
     procedure MnFINCheRecebidosBaixaChequesRecebidosClick(Sender: TObject);
     procedure FormPrincipalB1Click(Sender: TObject);
+    procedure MnSaldoInicialProdutosClick(Sender: TObject);
   private
     procedure ApagarOrcamentos;
     procedure ApagarPreVendas;
@@ -580,7 +582,8 @@ uses
   RelatorioNotaFiscalItensCobrancaFrete, uSobre, CadastroCupom,
   TelaAtualizaEstoquePDVs, RelatorioConferenciaFechamentoCaixa,
   CadastroChequesRecebidos, CadastroChequeEmitido,
-  TelaBaixarChequesRecebidos, TelaBaixarChequesEmitidos;
+  TelaBaixarChequesRecebidos, TelaBaixarChequesEmitidos,
+  TelaGerarSaldoProduto;
 
 
 
@@ -3028,6 +3031,16 @@ begin
     CriaFormulario(TFormTelaBaixarChequeEmitido,'FormTelaBaixarChequeEmitido',False,False,True,'')
   else
     SoundPlay('Acesso Negado.wav',Sender);
+end;
+
+procedure TFormPrincipal.MnSaldoInicialProdutosClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormTelaGerarSaldoProduto,'FormTelaGerarSaldoProduto',False,False,False,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
+
 end;
 
 end.

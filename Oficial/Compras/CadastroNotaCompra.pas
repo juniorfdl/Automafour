@@ -815,7 +815,7 @@ begin
             begin
               dm.zConsulta.Close;
               dm.zConsulta.sql.Clear;
-              dm.zConsulta.sql.add('select icmsicod, unidicod, ncmicod, PRODN2PERCIPIENTRADA, PRODN3PERCIPI, PRODN2PERCSUBST, PRODN2PERCFRETE, PRODN2PERCDESP, PRODN2PERCDIFICM from produto where prodicod = '+SQLNotaCompraItens.FindField('PRODICOD').AsString);
+              dm.zConsulta.sql.add('select icmsicod, unidicod, ncmicod, PRODN2PERCIPIENTRADA, PRODN3PERCIPI, PRODN2PERCSUBST, PRODN2PERCDESP, PRODN2PERCDIFICM from produto where prodicod = '+SQLNotaCompraItens.FindField('PRODICOD').AsString);
               dm.zConsulta.Open ;
               if dm.zConsulta.IsEmpty then
                 xInconsistencias := 'Produto: '+SQLNotaCompraItens.FindField('PRODICOD').AsString+'. Não Encontrado no Cadastro de Produtos!';
@@ -842,9 +842,9 @@ begin
               if dm.zConsulta.fieldbyname('PRODN2PERCSUBST').IsNull then
                 xInconsistencias := xInconsistencias + #13#10 +
                                     'Produto: '+SQLNotaCompraItens.FindField('PRODICOD').AsString+'. Percentual ST está Nulo!';
-              if dm.zConsulta.fieldbyname('PRODN2PERCFRETE').IsNull then
-                xInconsistencias := xInconsistencias + #13#10 +
-                                    'Produto: '+SQLNotaCompraItens.FindField('PRODICOD').AsString+'. Percentual FRETE está Nulo!';
+//              if dm.zConsulta.fieldbyname('VALOR_FRETE').IsNull then
+//                xInconsistencias := xInconsistencias + #13#10 +
+//                                    'Produto: '+SQLNotaCompraItens.FindField('PRODICOD').AsString+'. Valor FRETE está Nulo!';
               if dm.zConsulta.fieldbyname('PRODN2PERCDESP').IsNull then
                 xInconsistencias := xInconsistencias + #13#10 +
                                     'Produto: '+SQLNotaCompraItens.FindField('PRODICOD').AsString+'. Percentual OUTRAS DESP está Nulo!';
@@ -1115,9 +1115,9 @@ begin
                         // IPI Percentual
                         if SQLNotaCompraItens.FindField('NOCIN3PERCIPI').asFloat > 0 then
                           SQLProduto.FindField('PRODN2PERCIPIENTRADA').value := SQLNotaCompraItens.FindField('NOCIN3PERCIPI').asFloat;
-                        // Frete Percentual
-                        if SQLNotaCompraItens.FindField('NOCIN3PERCFRETE').asFloat > 0 then
-                          SQLProduto.FindField('PRODN2PERCFRETE').value := SQLNotaCompraItens.FindField('NOCIN3PERCFRETE').asFloat;
+                        // Valor Percentual
+                        if SQLNotaCompraItens.FindField('NOCIN3VLRFRETE').asFloat > 0 then
+                          SQLProduto.FindField('VALOR_FRETE').value := SQLNotaCompraItens.FindField('NOCIN3VLRFRETE').asFloat / SQLNotaCompraItens.FindField('NOCIN3QTDEMBAL').asFloat;
                         // Outras Desp Percentual
                         if SQLNotaCompraItens.FindField('NOCIN2PERCDESP').asFloat > 0 then
                           SQLProduto.FindField('PRODN2PERCDESP').value := SQLNotaCompraItens.FindField('NOCIN2PERCDESP').asFloat;

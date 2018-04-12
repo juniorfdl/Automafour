@@ -1,6 +1,6 @@
 inherited FormCadastroProduto: TFormCadastroProduto
-  Left = 111
-  Top = 15
+  Left = 112
+  Top = 0
   Caption = 'Cadastro de Produtos'
   ClientHeight = 682
   ClientWidth = 1159
@@ -6104,12 +6104,12 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     TabOrder = 3
                   end
                   object DBFreteProduto: TEvDBNumEdit
-                    Left = 127
+                    Left = 241
                     Top = 58
-                    Width = 44
+                    Width = 49
                     Height = 21
                     AutoHideCalculator = False
-                    DataField = 'PRODN2PERCFRETE'
+                    DataField = 'VALOR_FRETE'
                     DataSource = DSTemplate
                     Font.Charset = DEFAULT_CHARSET
                     Font.Color = clWindowText
@@ -6145,7 +6145,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     TabOrder = 4
                   end
                   object DBDespDiv: TEvDBNumEdit
-                    Left = 185
+                    Left = 127
                     Top = 58
                     Width = 44
                     Height = 21
@@ -6186,12 +6186,12 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     TabOrder = 5
                   end
                   object Panel13: TPanel
-                    Left = 7
+                    Left = 11
                     Top = 40
                     Width = 285
                     Height = 17
                     Alignment = taLeftJustify
-                    Caption = '  IPI%          ST%         Frete%     Desp%    Dif.Icm%'
+                    Caption = '  IPI%          ST%        Desp%     Dif.Icm%  Vlr.Frete    '
                     Color = 14731440
                     Font.Charset = DEFAULT_CHARSET
                     Font.Color = clBlack
@@ -6516,7 +6516,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     TabOrder = 12
                   end
                   object DBDIFICM: TEvDBNumEdit
-                    Left = 241
+                    Left = 184
                     Top = 58
                     Width = 44
                     Height = 21
@@ -10501,7 +10501,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
       FieldName = 'PRODA255DESCRTEC'
       Origin = 'DB.PRODUTO.PRODA255DESCRTEC'
       BlobType = ftMemo
-      Size = 2000
+      Size = 1
     end
     object SQLTemplatePRODCRAPIDO: TStringField
       FieldName = 'PRODCRAPIDO'
@@ -10573,6 +10573,13 @@ inherited FormCadastroProduto: TFormCadastroProduto
       Origin = 'EASY_GESTAO.PRODUTO.PESAGEM_AUTOMATICA'
       FixedChar = True
       Size = 1
+    end
+    object SQLTemplateVALOR_FRETE: TFloatField
+      FieldName = 'VALOR_FRETE'
+      Origin = 'DB.PRODUTO.VALOR_FRETE'
+      OnChange = SQLTemplatePRODN3VLRCOMPRAChange
+      DisplayFormat = '#,##0.000'
+      EditFormat = '#,##0.000'
     end
   end
   inherited UpdateSQLTemplate: TUpdateSQL

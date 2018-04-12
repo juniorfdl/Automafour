@@ -1711,10 +1711,17 @@ begin
                   dm.SQLUpdate.ParamByName('NOCIN3PERCDESC').AsFloat    := 0;
 
                 dm.SQLUpdate.ParamByName('NOCIN3VLRFRETE').AsFloat    := cdsItensvalor_frete.AsFloat;
+
+{                if dm.SQLUpdate.ParamByName('NOCIN3VLRFRETE').AsFloat > 0 then
+                  dm.SQLUpdate.ParamByName('NOCIN3PERCFRETE').AsFloat    := (cdsItensvalor_frete.AsFloat/edtValorFrete.Value) * 100
+                else
+                  dm.SQLUpdate.ParamByName('NOCIN3PERCFRETE').AsFloat    := 0;  }
+
                 if dm.SQLUpdate.ParamByName('NOCIN3VLRFRETE').AsFloat > 0 then
                   dm.SQLUpdate.ParamByName('NOCIN3PERCFRETE').AsFloat    := (cdsItensvalor_frete.AsFloat/edtValorFrete.Value) * 100
                 else
                   dm.SQLUpdate.ParamByName('NOCIN3PERCFRETE').AsFloat    := 0;
+
 
                 dm.SQLUpdate.ParamByName('NOCIN2PERCDIFICM').AsFloat  := 0.00;
 
@@ -2983,10 +2990,20 @@ end;
 procedure TFormTelaImportadorXML.pCalculaCustoMedio;
 var valorIpi, valorSubst, valorFrete, valorDespesa, valordifIcms, valorPIS, valorCofins, ValorEncargos : Extended;
 begin
+  valorIpi   := 0;
+  valorSubst := 0;
+  valorFrete := 0;
+  valorDespesa := 0;
+  valordifIcms := 0;
+  valorPIS := 0;
+  valorCofins := 0;
+  ValorEncargos := 0;
   try
     valorIpi     := (dm.SQLUpdate.ParamByName('NOCIN3VLRCUSTOMED').AsFloat * dm.SQLUpdate.ParamByName('NOCIN3PERCIPI').AsFloat)/100;
-    valorSubst   := (dm.SQLUpdate.ParamByName('NOCIN3VLRCUSTOMED').AsFloat * ((dm.SQLUpdate.ParamByName('NOCIN3VLRSUBST').AsFloat / dm.SQLUpdate.ParamByName('NOCIN2VBCST').AsFloat) * 100)) /100;
-    valorFrete   := (dm.SQLUpdate.ParamByName('NOCIN3VLRCUSTOMED').AsFloat * dm.SQLUpdate.ParamByName('NOCIN3PERCFRETE').AsFloat)/100;
+    if (dm.SQLUpdate.ParamByName('NOCIN3VLRSUBST').AsFloat > 0) and (dm.SQLUpdate.ParamByName('NOCIN2VBCST').AsFloat > 0) then
+      valorSubst   := (dm.SQLUpdate.ParamByName('NOCIN3VLRCUSTOMED').AsFloat * ((dm.SQLUpdate.ParamByName('NOCIN3VLRSUBST').AsFloat / dm.SQLUpdate.ParamByName('NOCIN2VBCST').AsFloat) * 100)) /100;
+    valorFrete   := (dm.SQLUpdate.ParamByName('NOCIN3VLRFRETE').AsFloat / dm.SQLUpdate.ParamByName('NOCIN3QTDEMBAL').AsFloat);
+//    valorFrete   := (dm.SQLUpdate.ParamByName('NOCIN3VLRCUSTOMED').AsFloat * dm.SQLUpdate.ParamByName('NOCIN3PERCFRETE').AsFloat)/100;
     valorDespesa := 0; //valorDespesa := (dm.SQLUpdate.ParamByName('NOCIN3VLRCUSTOMED').AsFloat * dm.SQLUpdate.ParamByName('NOCIN2PERCDESP').AsFloat)/100;
     valordifIcms := (dm.SQLUpdate.ParamByName('NOCIN3VLRCUSTOMED').AsFloat * dm.SQLUpdate.ParamByName('NOCIN2PERCDIFICM').AsFloat)/100;
     valorPIS     := (dm.SQLUpdate.ParamByName('NOCIN3VLRCUSTOMED').AsFloat * dm.SQLUpdate.ParamByName('NOCIN2PERCPIS').AsFloat)/100;
@@ -2995,7 +3012,7 @@ begin
 
     dm.SQLUpdate.ParamByName('NOCIN3VLRCUSTOMED').AsFloat := dm.SQLUpdate.ParamByName('NOCIN3VLRCUSTOMED').AsFloat +
                                                              valorIpi + valorSubst  + valorFrete + valorDespesa + valordifIcms +
-                                                             valorPIS + valorCofins + ValorEncargos;
+                                                             ValorEncargos;
   except
     dm.SQLUpdate.ParamByName('NOCIN3VLRCUSTOMED').AsFloat := 0;
   end;

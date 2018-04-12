@@ -486,7 +486,7 @@ procedure TFormTelaImpressaoDuplicata.BtnSelecionarDocClick(
   Sender: TObject);
 begin
   inherited;
-    
+
   SQLContasReceber.Close;
   SQLTotais.Close;
 
@@ -982,7 +982,7 @@ begin
     if Pergunta('SIM','Deseja trocar o status destes Boletos para Emitidos?') then
       begin
         SQLContasReceber.First;
-        while not SQLContasReceber.Eof do
+        while not SQLContasReceber.Eof do  
           begin
             DM.SQLTemplate.Close;
             DM.SQLTemplate.Sql.Clear;
@@ -991,6 +991,8 @@ begin
             DM.SQLTemplate.Close;
             SQLContasReceber.Next;
           end;
+        ComboEmitidos.ItemIndex := 0;
+        BtnSelecionarDoc.Click;
       end;
 end;
 

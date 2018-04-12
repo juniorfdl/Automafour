@@ -4,10 +4,9 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, CadastroTEMPLATE, DB, DBTables, DBActns, ActnList, RxQuery,
-  Menus, StdCtrls, Mask, Grids, DBGrids, ComCtrls, RXCtrls, Buttons,
-  ExtCtrls, DBCtrls, EDBNum, AdvOfficeStatusBar, AdvOfficeStatusBarStylers,
-  AdvPanel;
+  Dialogs, CadastroTEMPLATE, DB, DBTables, DBActns, ActnList, RxQuery, Menus,
+  StdCtrls, Mask, Grids, DBGrids, ComCtrls, RXCtrls, Buttons, ExtCtrls, DBCtrls,
+  EDBNum, AdvOfficeStatusBar, AdvOfficeStatusBarStylers, AdvPanel, ToolEdit;
 
 type
   TFormCadastroNCM = class(TFormCadastroTEMPLATE)
@@ -104,13 +103,19 @@ type
     Label4: TLabel;
     Label3: TLabel;
     DBEdit3: TDBEdit;
+    TabSheetDadosIBPT: TTabSheet;
+    FilenameEdit1: TFilenameEdit;
+    Label8: TLabel;
+    SpeedButton1: TSpeedButton;
     procedure FormCreate(Sender: TObject);
     procedure CorrigeNCMmenorque8digitos1Click(Sender: TObject);
     procedure ImportarArquivoIBPTAtual1Click(Sender: TObject);
     procedure FiltrarNCMssemAliquotasMedia1Click(Sender: TObject);
     procedure SQLTemplateNewRecord(DataSet: TDataSet);
     procedure ImportarArquivoSuperTributarioClick(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
   private
+    vArquivo: string;
     { Private declarations }
   public
     { Public declarations }
@@ -121,7 +126,8 @@ var
 
 implementation
 
-uses UnitLibrary;
+uses
+  UnitLibrary;
 
 {$R *.dfm}
 
@@ -131,143 +137,154 @@ begin
   Tabela := 'NCM';
 end;
 
-procedure TFormCadastroNCM.CorrigeNCMmenorque8digitos1Click(
-  Sender: TObject);
+procedure TFormCadastroNCM.CorrigeNCMmenorque8digitos1Click(Sender: TObject);
 begin
   inherited;
   SQLTemplate.DisableControls;
   SQLTemplate.First;
   while not SQLTemplate.Eof do
+  begin
+    if (Length(SQLTemplateNCMA30CODIGO.Value) < 8) and (SQLTemplateNCMA30CODIGO.Value <> '') then
     begin
-      if (Length(SQLTemplateNCMA30CODIGO.Value) < 8) and (SQLTemplateNCMA30CODIGO.Value <> '') then
-        begin
-          SQLTemplate.Edit;
-          if Length(SQLTemplateNCMA30CODIGO.Value) = 7 then
-            SQLTemplateNCMA30CODIGO.Value := '0' + SQLTemplateNCMA30CODIGO.Value;
-          if Length(SQLTemplateNCMA30CODIGO.Value) = 6 then
-            SQLTemplateNCMA30CODIGO.Value := '00' + SQLTemplateNCMA30CODIGO.Value;
-          if Length(SQLTemplateNCMA30CODIGO.Value) = 5 then
-            SQLTemplateNCMA30CODIGO.Value := '000' + SQLTemplateNCMA30CODIGO.Value;
-          SQLTemplate.Post;
-        end;
-      SQLTemplate.Next;
+      SQLTemplate.Edit;
+      if Length(SQLTemplateNCMA30CODIGO.Value) = 7 then
+        SQLTemplateNCMA30CODIGO.Value := '0' + SQLTemplateNCMA30CODIGO.Value;
+      if Length(SQLTemplateNCMA30CODIGO.Value) = 6 then
+        SQLTemplateNCMA30CODIGO.Value := '00' + SQLTemplateNCMA30CODIGO.Value;
+      if Length(SQLTemplateNCMA30CODIGO.Value) = 5 then
+        SQLTemplateNCMA30CODIGO.Value := '000' + SQLTemplateNCMA30CODIGO.Value;
+      SQLTemplate.Post;
     end;
+    SQLTemplate.Next;
+  end;
   SQLTemplate.EnableControls;
 end;
 
 procedure TFormCadastroNCM.ImportarArquivoIBPTAtual1Click(Sender: TObject);
-var  Texto : TextFile;
-     Linha, xText, CdNCM, exTipi, tabelaNBS, AliqNacional, AliqImportados, AliqMunicipal, AliqEstadual, Descricao,
-     vigenciainicio,vigenciafim, chave : String;
-     LinhaNumero, i, nCampo : integer;
+var
+  Texto: TextFile;
+  Linha, xText, CdNCM, exTipi, tabelaNBS, AliqNacional, AliqImportados, AliqMunicipal, AliqEstadual, Descricao, vigenciainicio, vigenciafim, chave: string;
+  LinhaNumero, i, nCampo: integer;
 begin
   inherited;
-  if not FileExists('TabelaIbptaxRS16.2.A.csv') then
-    begin
-      ShowMessage('ERRO: Não foi localizado a arquivo TabelaIbptaxRS16.2.A.csv, na Gestao');
+  PagePrincipal.ActivePage :=  TabSheetDadosIBPT;
+{  if not FileExists('TabelaIbptaxRS16.2.A.csv') then
+  begin
+    ShowMessage('ERRO: Não foi localizado a arquivo TabelaIbptaxRS16.2.A.csv, na Gestao');
+    Abort;
+    Exit;
+  end
+  else
+  begin
+    try
+      AssignFile(Texto, 'TabelaIbptaxRS16.2.A.csv');
+    except
+      ShowMessage('ERRO: Não foi possível abrir o arquivo TabelaIbptaxRS16.2.A.csv, na Gestao');
       Abort;
       Exit;
-    end
-  else
-    begin
-      try
-        AssignFile(Texto,'TabelaIbptaxRS16.2.A.csv');
-      except
-        ShowMessage('ERRO: Não foi possível abrir o arquivo TabelaIbptaxRS16.2.A.csv, na Gestao');
-        Abort;
-        Exit;
-      end;
-      Reset(Texto);
-      SQLTemplate.DisableControls;
+    end;
+    Reset(Texto);
+    SQLTemplate.DisableControls;
       // Pular Titulo do arquivo
-      Readln(Texto,Linha);
-      LinhaNumero := 1;
-      while not EOF(Texto) do
+    Readln(Texto, Linha);
+    LinhaNumero := 1;
+    while not EOF(Texto) do
+    begin
+      inc(LinhaNumero);
+      LabelRegistros.Caption := 'Convertendo NCMs ' + inttostr(LinhaNumero);
+      LabelRegistros.update;
+      Application.ProcessMessages;
+
+      Readln(Texto, Linha);
+      nCampo := 0;
+      for i := 1 to Length(Linha) do
+      begin
+        if (Linha[i] = ';') then
         begin
-          inc(LinhaNumero);
-          LabelRegistros.Caption := 'Convertendo NCMs ' + inttostr(LinhaNumero);
-          LabelRegistros.update;
-          Application.ProcessMessages;
+          if i >= 6 then
+            inc(nCampo);
+        end
+        else
+          xText := xText + Linha[i];
 
-          Readln(Texto,Linha);
-          nCampo := 0;
-          For i := 1 to Length(Linha) do
-            begin
-              if (Linha[i] = ';') then
-                begin
-                  if i >= 6 then
-                    inc(nCampo);
-                end
-              else
-                xText := xText + Linha[i];
-
-              if Linha[i] = ';' then
-                begin
-                  Case nCampo of
-                    1: CdNCM           := xText;
-                    2: exTipi          := xText;
-                    3: tabelaNBS       := xtext;
-                    4: Descricao       := xtext;
-                    5: AliqNacional    := xText;
-                    6: AliqImportados  := xText;
-                    7: AliqEstadual    := xText;
-                    8: AliqMunicipal   := xText;
-                    9: vigenciainicio  := xText;
-                   10: vigenciafim     := xText;
-                   11: chave           := xText;
-                   12: versao          := xText;
-                  End;
-                  xText  := '';
-                end;
-            end;
-
-            xText  := '';
-            // Tenta achar o NCM
-            if IsNumeric(cdNCM,'INTEGER') then
-              begin
-                SQLTemplate.Close;
-                SQLTemplate.macrobyname('MFiltro').value := 'NCMA30CODIGO = ''' + CdNCM +'''';
-                SQLTemplate.Open;
-                if not SQLTemplate.IsEmpty then
-                  begin
-                    SQLTemplate.Edit;
-                    SQLTemplateNCMIEX_TIP.AsString    := exTipi;
-                    SQLTemplateNCMITABELA.AsString    := tabelaNBS;
-                    SQLTemplateNCMN2ALIQNAC.AsString  := TrocaPontoPorVirgula(AliqNacional);
-                    SQLTemplateNCMN2ALIQIMP.AsString  := TrocaPontoPorVirgula(AliqImportados);
-                    SQLTemplateALIQESTADUAL.AsString  := TrocaPontoPorVirgula(AliqEstadual);
-                    SQLTemplateALIQMUNICIPAL.AsString := TrocaPontoPorVirgula(AliqMunicipal);
-                    SQLTemplateVIGENCIA_INI.AsString  := vigenciainicio;
-                    SQLTemplateVIGENCIA_FIM.AsString  := vigenciafim;
-                    SQLTemplateVERSAO.AsString        := Versao;
-                    SQLTemplateCHAVE.AsString         := chave;
-                    SQLTemplate.Post;
-                  end
-                else
-                  begin
-                    SQLTemplate.Append;
-                    SQLTemplateNCMA30CODIGO.AsString   := CdNCM;
-                    SQLTemplateNCMA100DESCR.AsString   := UpperCase(Descricao);
-                    SQLTemplateNCMIEX_TIP.AsString     := exTipi;
-                    SQLTemplateNCMITABELA.AsString     := tabelaNBS;
-                    SQLTemplateNCMN2ALIQNAC.AsString   := TrocaPontoPorVirgula(AliqNacional);
-                    SQLTemplateNCMN2ALIQIMP.AsString   := TrocaPontoPorVirgula(AliqImportados);
-                    SQLTemplateALIQESTADUAL.AsString   := TrocaPontoPorVirgula(AliqEstadual);
-                    SQLTemplateALIQMUNICIPAL.AsString  := TrocaPontoPorVirgula(AliqMunicipal);
-                    SQLTemplateVIGENCIA_INI.AsString   := vigenciainicio;
-                    SQLTemplateVIGENCIA_FIM.AsString   := vigenciafim;
-                    SQLTemplateVERSAO.AsString         := Versao;
-                    SQLTemplateCHAVE.AsString          := chave;
-                    SQLTemplate.Post;
-                  end;
-              end;
+        if Linha[i] = ';' then
+        begin
+          case nCampo of
+            1:
+              CdNCM := xText;
+            2:
+              exTipi := xText;
+            3:
+              tabelaNBS := xtext;
+            4:
+              Descricao := xtext;
+            5:
+              AliqNacional := xText;
+            6:
+              AliqImportados := xText;
+            7:
+              AliqEstadual := xText;
+            8:
+              AliqMunicipal := xText;
+            9:
+              vigenciainicio := xText;
+            10:
+              vigenciafim := xText;
+            11:
+              chave := xText;
+            12:
+              versao := xText;
+          end;
+          xText := '';
         end;
-      SQLTemplate.EnableControls;
-   end;
+      end;
+
+      xText := '';
+            // Tenta achar o NCM
+      if IsNumeric(cdNCM, 'INTEGER') then
+      begin
+        SQLTemplate.Close;
+        SQLTemplate.macrobyname('MFiltro').value := 'NCMA30CODIGO = ''' + CdNCM + '''';
+        SQLTemplate.Open;
+        if not SQLTemplate.IsEmpty then
+        begin
+          SQLTemplate.Edit;
+          SQLTemplateNCMIEX_TIP.AsString := exTipi;
+          SQLTemplateNCMITABELA.AsString := tabelaNBS;
+          SQLTemplateNCMN2ALIQNAC.AsString := TrocaPontoPorVirgula(AliqNacional);
+          SQLTemplateNCMN2ALIQIMP.AsString := TrocaPontoPorVirgula(AliqImportados);
+          SQLTemplateALIQESTADUAL.AsString := TrocaPontoPorVirgula(AliqEstadual);
+          SQLTemplateALIQMUNICIPAL.AsString := TrocaPontoPorVirgula(AliqMunicipal);
+          SQLTemplateVIGENCIA_INI.AsString := vigenciainicio;
+          SQLTemplateVIGENCIA_FIM.AsString := vigenciafim;
+          SQLTemplateVERSAO.AsString := Versao;
+          SQLTemplateCHAVE.AsString := chave;
+          SQLTemplate.Post;
+        end
+        else
+        begin
+          SQLTemplate.Append;
+          SQLTemplateNCMA30CODIGO.AsString := CdNCM;
+          SQLTemplateNCMA100DESCR.AsString := UpperCase(Descricao);
+          SQLTemplateNCMIEX_TIP.AsString := exTipi;
+          SQLTemplateNCMITABELA.AsString := tabelaNBS;
+          SQLTemplateNCMN2ALIQNAC.AsString := TrocaPontoPorVirgula(AliqNacional);
+          SQLTemplateNCMN2ALIQIMP.AsString := TrocaPontoPorVirgula(AliqImportados);
+          SQLTemplateALIQESTADUAL.AsString := TrocaPontoPorVirgula(AliqEstadual);
+          SQLTemplateALIQMUNICIPAL.AsString := TrocaPontoPorVirgula(AliqMunicipal);
+          SQLTemplateVIGENCIA_INI.AsString := vigenciainicio;
+          SQLTemplateVIGENCIA_FIM.AsString := vigenciafim;
+          SQLTemplateVERSAO.AsString := Versao;
+          SQLTemplateCHAVE.AsString := chave;
+          SQLTemplate.Post;
+        end;
+      end;
+    end;
+    SQLTemplate.EnableControls;
+  end;      }
 end;
 
-procedure TFormCadastroNCM.FiltrarNCMssemAliquotasMedia1Click(
-  Sender: TObject);
+procedure TFormCadastroNCM.FiltrarNCMssemAliquotasMedia1Click(Sender: TObject);
 begin
   inherited;
   sqltemplate.close;
@@ -282,137 +299,288 @@ begin
   SQLTemplateNCMN2ALIQIMP.Value := 0;
 end;
 
-procedure TFormCadastroNCM.ImportarArquivoSuperTributarioClick(
-  Sender: TObject);
-var  Texto : TextFile;
-     Info, Linha, sCampo, Produto, vUnidade, vNcm, vCSTICMS, vBASEICMSST, vALIQICMSST, vMVAInterna, vMVAOutros, vBASEICMS, vALIQICMS, vCSTPISCOFINSENT,
-     vCSTPISCOFINS, vBASEPISCOFINS, vALIQPISREAL, vALIQPISPRESUMIDO, vALIQCOFINSREAL, vALIQCOFINSPRESUMIDO : string;
-     LinhaNumero, i, ContadorCampos : integer;
+procedure TFormCadastroNCM.ImportarArquivoSuperTributarioClick(Sender: TObject);
+var
+  Texto: TextFile;
+  Info, Linha, sCampo, Produto, vUnidade, vNcm, vCSTICMS, vBASEICMSST, vALIQICMSST, vMVAInterna, vMVAOutros, vBASEICMS, vALIQICMS, vCSTPISCOFINSENT, vCSTPISCOFINS, vBASEPISCOFINS, vALIQPISREAL, vALIQPISPRESUMIDO, vALIQCOFINSREAL, vALIQCOFINSPRESUMIDO: string;
+  LinhaNumero, i, ContadorCampos: integer;
 begin
   inherited;
   if not FileExists('..\Super Tributario.csv') then
-    begin
-      ShowMessage('ERRO: Não foi localizado a arquivo Super Tributario.csv, na Gestao');
-      Abort;
-      Exit;
-    end;
+  begin
+    ShowMessage('ERRO: Não foi localizado a arquivo Super Tributario.csv, na Gestao');
+    Abort;
+    Exit;
+  end;
 
-  AssignFile(Texto,'..\Super Tributario.csv');
+  AssignFile(Texto, '..\Super Tributario.csv');
   Reset(Texto);
 
   // Pular Titulo do arquivo
-  Readln(Texto,Linha);
+  Readln(Texto, Linha);
 
   LinhaNumero := 1;
   while not EOF(Texto) do
-    begin
-      inc(LinhaNumero);
-      LabelRegistros.Caption := 'Consultando NCMs ' + inttostr(LinhaNumero);
-      LabelRegistros.update;
-      Application.ProcessMessages;
+  begin
+    inc(LinhaNumero);
+    LabelRegistros.Caption := 'Consultando NCMs ' + inttostr(LinhaNumero);
+    LabelRegistros.update;
+    Application.ProcessMessages;
 
       {Alimenta Linha na Variavel}
-      Readln(Texto,Linha);
+    Readln(Texto, Linha);
 
-      if (copy(Linha,1,7) = 'Sistema') then
-        begin
+    if (copy(Linha, 1, 7) = 'Sistema') then
+    begin
           {Inicia alimentacao dos campos}
-          ContadorCampos := 1;
+      ContadorCampos := 1;
+      sCampo := '';
+      for i := 1 to Length(Linha) do
+      begin
+        if Linha[i] = ';' then
+        begin
+          case ContadorCampos of
+            5:
+              Produto := trim(sCampo);
+            6:
+              vUnidade := trim(sCampo);
+            7:
+              vNcm := trim(sCampo);
+            8:
+              vCSTICMS := trim(sCampo);
+            9:
+              vBASEICMS := trim(sCampo);
+            10:
+              vALIQICMS := trim(sCampo);
+            11:
+              vMVAInterna := trim(sCampo);
+            12:
+              vMVAOutros := trim(sCampo);
+            13:
+              vBASEICMSST := trim(sCampo);
+            14:
+              vALIQICMSST := trim(sCampo);
+            16:
+              vCSTPISCOFINSENT := trim(sCampo);
+            17:
+              vCSTPISCOFINS := trim(sCampo);
+            18:
+              vBASEPISCOFINS := trim(sCampo);
+            19:
+              vALIQPISREAL := trim(sCampo);
+            20:
+              vALIQPISPRESUMIDO := trim(sCampo);
+            21:
+              vALIQCOFINSREAL := trim(sCampo);
+            22:
+              vALIQCOFINSPRESUMIDO := trim(sCampo);
+          end;
           sCampo := '';
-          for i:= 1 to Length(Linha) do
-            begin
-              if Linha[i] = ';' then
-                begin
-                  Case ContadorCampos of
-                     5 : Produto                := trim(sCampo);
-                     6 : vUnidade               := trim(sCampo);
-                     7 : vNcm                   := trim(sCampo);
-                     8 : vCSTICMS               := trim(sCampo);
-                     9 : vBASEICMS              := trim(sCampo);
-                    10 : vALIQICMS              := trim(sCampo);
-                    11 : vMVAInterna            := trim(sCampo);
-                    12 : vMVAOutros             := trim(sCampo);
-                    13 : vBASEICMSST            := trim(sCampo);
-                    14 : vALIQICMSST            := trim(sCampo);
-                    16 : vCSTPISCOFINSENT       := trim(sCampo);
-                    17 : vCSTPISCOFINS          := trim(sCampo);
-                    18 : vBASEPISCOFINS         := trim(sCampo);
-                    19 : vALIQPISREAL           := trim(sCampo);
-                    20 : vALIQPISPRESUMIDO      := trim(sCampo);
-                    21 : vALIQCOFINSREAL        := trim(sCampo);
-                    22 : vALIQCOFINSPRESUMIDO   := trim(sCampo);
-                  End;
-                  sCampo:= '';
-                  ContadorCampos := ContadorCampos+1;
-                  Continue;
-                end
-              else
-                sCampo:= sCampo + Linha[i];
-            end;
-        end;
+          ContadorCampos := ContadorCampos + 1;
+          Continue;
+        end
+        else
+          sCampo := sCampo + Linha[i];
+      end;
+    end;
 
       // Tenta achar o NCM
-      if vNcm <> '' then
+    if vNcm <> '' then
+    begin
+      SQLTemplate.Close;
+      SQLTemplate.macrobyname('MFiltro').value := 'NCMA30CODIGO = ''' + vNcm + '''';
+      SQLTemplate.Open;
+      if not SQLTemplate.IsEmpty then
+      begin
+        SQLTemplate.Edit;
+        if SQLTEMPLATENCMN2ALIQNAC.IsNull then
+          SQLTEMPLATENCMN2ALIQNAC.Value := 0;
+        if SQLTemplateNCMN2ALIQIMP.IsNull then
+          SQLTemplateNCMN2ALIQIMP.Value := 0;
+        SQLTemplateNCMA5UNIDADE.Value := vUnidade;
+        SQLTemplateMVA.AsString := TrocaPontoPorVirgula(vMVAInterna);
+        if (vMVAInterna = '') and (vMVAOutros <> '') then
+          SQLTemplateMVA.AsString := TrocaPontoPorVirgula(vMVAOutros);
+
+        SQLTemplateCSTICMS.AsInteger := strtoint(vCSTICMS);
+        SQLTemplateCSTPIS_COFINS.AsString := vCSTPISCOFINS;
+        SQLTemplateCSTPIS_COFINS_ENT.AsString := vCSTPISCOFINSENT;
+        SQLTemplateBASE_ICMS.AsString := TrocaPontoPorVirgula(vBASEICMS);
+        SQLTemplateBASE_ICMSST.AsString := TrocaPontoPorVirgula(vBASEICMSST);
+        SQLTemplateBASE_PIS_COFINS.AsString := TrocaPontoPorVirgula(vBASEPISCOFINS);
+        SQLTemplateALIQ_ICMS.AsString := TrocaPontoPorVirgula(vALIQICMS);
+        SQLTemplateALIQ_ICMSST.AsString := TrocaPontoPorVirgula(vALIQICMSST);
+        SQLTemplateALIQ_PIS_REAL.AsString := TrocaPontoPorVirgula(vALIQPISREAL);
+        SQLTemplateALIQ_PIS_PRESUMIDO.AsString := TrocaPontoPorVirgula(vALIQPISPRESUMIDO);
+        SQLTemplateALIQ_COFINS_REAL.AsString := TrocaPontoPorVirgula(vALIQCOFINSREAL);
+        SQLTemplateALIQ_COFINS_PRESUMIDO.AsString := TrocaPontoPorVirgula(vALIQCOFINSPRESUMIDO);
+
+        SQLTemplate.Post;
+      end
+      else
+      begin  {Incluir o NCM do .CSV para o Banco de Dados}
+        if length(vNcm) = 8 then
         begin
-          SQLTemplate.Close;
-          SQLTemplate.macrobyname('MFiltro').value := 'NCMA30CODIGO = ''' + vNcm +'''';
-          SQLTemplate.Open;
-          if not SQLTemplate.IsEmpty then
-            begin
-              SQLTemplate.Edit;
-              if SQLTEMPLATENCMN2ALIQNAC.IsNull then SQLTEMPLATENCMN2ALIQNAC.Value := 0;
-              if SQLTemplateNCMN2ALIQIMP.IsNull then SQLTemplateNCMN2ALIQIMP.Value := 0;
-              SQLTemplateNCMA5UNIDADE.Value                    := vUnidade;
-              SQLTemplateMVA.AsString                          := TrocaPontoPorVirgula(vMVAInterna);
-              if (vMVAInterna = '') and (vMVAOutros <> '') then
-                SQLTemplateMVA.AsString                        := TrocaPontoPorVirgula(vMVAOutros);
+          SQLTemplate.Append;
+          SQLTemplateNCMA100DESCR.Value := Produto;
+          if SQLTEMPLATENCMN2ALIQNAC.IsNull then
+            SQLTEMPLATENCMN2ALIQNAC.Value := 0;
+          if SQLTemplateNCMN2ALIQIMP.IsNull then
+            SQLTemplateNCMN2ALIQIMP.Value := 0;
+          SQLTemplateNCMA5UNIDADE.Value := vUnidade;
+          SQLTemplateMVA.AsString := TrocaPontoPorVirgula(vMVAInterna);
+          if (vMVAInterna = '') and (vMVAOutros <> '') then
+            SQLTemplateMVA.AsString := TrocaPontoPorVirgula(vMVAOutros);
 
-              SQLTemplateCSTICMS.AsInteger                     := strtoint(vCSTICMS);
-              SQLTemplateCSTPIS_COFINS.AsString                := vCSTPISCOFINS;
-              SQLTemplateCSTPIS_COFINS_ENT.AsString            := vCSTPISCOFINSENT;
-              SQLTemplateBASE_ICMS.AsString                    := TrocaPontoPorVirgula(vBASEICMS);
-              SQLTemplateBASE_ICMSST.AsString                  := TrocaPontoPorVirgula(vBASEICMSST);
-              SQLTemplateBASE_PIS_COFINS.AsString              := TrocaPontoPorVirgula(vBASEPISCOFINS);
-              SQLTemplateALIQ_ICMS.AsString                    := TrocaPontoPorVirgula(vALIQICMS);
-              SQLTemplateALIQ_ICMSST.AsString                  := TrocaPontoPorVirgula(vALIQICMSST);
-              SQLTemplateALIQ_PIS_REAL.AsString                := TrocaPontoPorVirgula(vALIQPISREAL);
-              SQLTemplateALIQ_PIS_PRESUMIDO.AsString           := TrocaPontoPorVirgula(vALIQPISPRESUMIDO);
-              SQLTemplateALIQ_COFINS_REAL.AsString             := TrocaPontoPorVirgula(vALIQCOFINSREAL);
-              SQLTemplateALIQ_COFINS_PRESUMIDO.AsString        := TrocaPontoPorVirgula(vALIQCOFINSPRESUMIDO);
-
-              SQLTemplate.Post;
-            end
-          else
-            begin  {Incluir o NCM do .CSV para o Banco de Dados}
-              if length(vNcm) = 8 then
-                begin
-                  SQLTemplate.Append;
-                  SQLTemplateNCMA100DESCR.Value  := Produto ;
-                  if SQLTEMPLATENCMN2ALIQNAC.IsNull then SQLTEMPLATENCMN2ALIQNAC.Value := 0;
-                  if SQLTemplateNCMN2ALIQIMP.IsNull then SQLTemplateNCMN2ALIQIMP.Value := 0;
-                  SQLTemplateNCMA5UNIDADE.Value                    := vUnidade;
-                  SQLTemplateMVA.AsString                          := TrocaPontoPorVirgula(vMVAInterna);
-                  if (vMVAInterna = '') and (vMVAOutros <> '') then
-                    SQLTemplateMVA.AsString                        := TrocaPontoPorVirgula(vMVAOutros);
-
-                  SQLTemplateCSTICMS.AsInteger                     := strtoint(vCSTICMS);
-                  SQLTemplateCSTPIS_COFINS.AsString                := vCSTPISCOFINS;
-                  SQLTemplateCSTPIS_COFINS_ENT.AsString            := vCSTPISCOFINSENT;
-                  SQLTemplateBASE_ICMS.AsString                    := TrocaPontoPorVirgula(vBASEICMS);
-                  SQLTemplateBASE_ICMSST.AsString                  := TrocaPontoPorVirgula(vBASEICMSST);
-                  SQLTemplateBASE_PIS_COFINS.AsString              := TrocaPontoPorVirgula(vBASEPISCOFINS);
-                  SQLTemplateALIQ_ICMS.AsString                    := TrocaPontoPorVirgula(vALIQICMS);
-                  SQLTemplateALIQ_ICMSST.AsString                  := TrocaPontoPorVirgula(vALIQICMSST);
-                  SQLTemplateALIQ_PIS_REAL.AsString                := TrocaPontoPorVirgula(vALIQPISREAL);
-                  SQLTemplateALIQ_PIS_PRESUMIDO.AsString           := TrocaPontoPorVirgula(vALIQPISPRESUMIDO);
-                  SQLTemplateALIQ_COFINS_REAL.AsString             := TrocaPontoPorVirgula(vALIQCOFINSREAL);
-                  SQLTemplateALIQ_COFINS_PRESUMIDO.AsString        := TrocaPontoPorVirgula(vALIQCOFINSPRESUMIDO);
-                  SQLTemplate.Post;
-                end;
-            end;
+          SQLTemplateCSTICMS.AsInteger := strtoint(vCSTICMS);
+          SQLTemplateCSTPIS_COFINS.AsString := vCSTPISCOFINS;
+          SQLTemplateCSTPIS_COFINS_ENT.AsString := vCSTPISCOFINSENT;
+          SQLTemplateBASE_ICMS.AsString := TrocaPontoPorVirgula(vBASEICMS);
+          SQLTemplateBASE_ICMSST.AsString := TrocaPontoPorVirgula(vBASEICMSST);
+          SQLTemplateBASE_PIS_COFINS.AsString := TrocaPontoPorVirgula(vBASEPISCOFINS);
+          SQLTemplateALIQ_ICMS.AsString := TrocaPontoPorVirgula(vALIQICMS);
+          SQLTemplateALIQ_ICMSST.AsString := TrocaPontoPorVirgula(vALIQICMSST);
+          SQLTemplateALIQ_PIS_REAL.AsString := TrocaPontoPorVirgula(vALIQPISREAL);
+          SQLTemplateALIQ_PIS_PRESUMIDO.AsString := TrocaPontoPorVirgula(vALIQPISPRESUMIDO);
+          SQLTemplateALIQ_COFINS_REAL.AsString := TrocaPontoPorVirgula(vALIQCOFINSREAL);
+          SQLTemplateALIQ_COFINS_PRESUMIDO.AsString := TrocaPontoPorVirgula(vALIQCOFINSPRESUMIDO);
+          SQLTemplate.Post;
         end;
+      end;
     end;
+  end;
   ShowMessage('Rotina concluida!');
 end;
 
+procedure TFormCadastroNCM.SpeedButton1Click(Sender: TObject);
+var
+  Texto: TextFile;
+  Linha, xText, CdNCM, exTipi, tabelaNBS, AliqNacional, AliqImportados, AliqMunicipal, AliqEstadual, Descricao, vigenciainicio, vigenciafim, chave: string;
+  LinhaNumero, i, nCampo: integer;
+begin
+  inherited;
+  if FilenameEdit1.Text = '' then
+  begin
+    ShowMessage('Informe o caminho do arquivo de Importação');
+    exit;
+  end;
+  vArquivo := StringReplace(FilenameEdit1.Text, '"', '', [rfReplaceAll]);
+  if not FileExists(vArquivo) then
+  begin
+    ShowMessage('ERRO: Não foi localizado a arquivo ' + vArquivo + ', na Gestao');
+    Abort;
+    Exit;
+  end
+  else
+  begin
+    try
+      AssignFile(Texto, vArquivo);
+    except
+      ShowMessage('ERRO: Não foi possível abrir o arquivo ' + vArquivo + ', na Gestao');
+      Abort;
+      Exit;
+    end;
+    Reset(Texto);
+    SQLTemplate.DisableControls;
+      // Pular Titulo do arquivo
+    Readln(Texto, Linha);
+    LinhaNumero := 1;
+    while not EOF(Texto) do
+    begin
+      inc(LinhaNumero);
+      LabelRegistros.Caption := 'Convertendo NCMs ' + inttostr(LinhaNumero);
+      LabelRegistros.update;
+      Application.ProcessMessages;
+
+      Readln(Texto, Linha);
+      nCampo := 0;
+      for i := 1 to Length(Linha) do
+      begin
+        if (Linha[i] = ';') then
+        begin
+          if i >= 6 then
+            inc(nCampo);
+        end
+        else
+          xText := xText + Linha[i];
+
+        if Linha[i] = ';' then
+        begin
+          case nCampo of
+            1:
+              CdNCM := xText;
+            2:
+              exTipi := xText;
+            3:
+              tabelaNBS := xtext;
+            4:
+              Descricao := xtext;
+            5:
+              AliqNacional := xText;
+            6:
+              AliqImportados := xText;
+            7:
+              AliqEstadual := xText;
+            8:
+              AliqMunicipal := xText;
+            9:
+              vigenciainicio := xText;
+            10:
+              vigenciafim := xText;
+            11:
+              chave := xText;
+            12:
+              versao := xText;
+          end;
+          xText := '';
+        end;
+      end;
+
+      xText := '';
+            // Tenta achar o NCM
+      if IsNumeric(cdNCM, 'INTEGER') then
+      begin
+        SQLTemplate.Close;
+        SQLTemplate.macrobyname('MFiltro').value := 'NCMA30CODIGO = ''' + CdNCM + '''';
+        SQLTemplate.Open;
+        if not SQLTemplate.IsEmpty then
+        begin
+          SQLTemplate.Edit;
+          SQLTemplateNCMIEX_TIP.AsString := exTipi;
+          SQLTemplateNCMITABELA.AsString := tabelaNBS;
+          SQLTemplateNCMN2ALIQNAC.AsString := TrocaPontoPorVirgula(AliqNacional);
+          SQLTemplateNCMN2ALIQIMP.AsString := TrocaPontoPorVirgula(AliqImportados);
+          SQLTemplateALIQESTADUAL.AsString := TrocaPontoPorVirgula(AliqEstadual);
+          SQLTemplateALIQMUNICIPAL.AsString := TrocaPontoPorVirgula(AliqMunicipal);
+          SQLTemplateVIGENCIA_INI.AsString := vigenciainicio;
+          SQLTemplateVIGENCIA_FIM.AsString := vigenciafim;
+          SQLTemplateVERSAO.AsString := Versao;
+          SQLTemplateCHAVE.AsString := chave;
+          SQLTemplate.Post;
+        end
+        else
+        begin
+          SQLTemplate.Append;
+          SQLTemplateNCMA30CODIGO.AsString := CdNCM;
+          SQLTemplateNCMA100DESCR.AsString := UpperCase(Descricao);
+          SQLTemplateNCMIEX_TIP.AsString := exTipi;
+          SQLTemplateNCMITABELA.AsString := tabelaNBS;
+          SQLTemplateNCMN2ALIQNAC.AsString := TrocaPontoPorVirgula(AliqNacional);
+          SQLTemplateNCMN2ALIQIMP.AsString := TrocaPontoPorVirgula(AliqImportados);
+          SQLTemplateALIQESTADUAL.AsString := TrocaPontoPorVirgula(AliqEstadual);
+          SQLTemplateALIQMUNICIPAL.AsString := TrocaPontoPorVirgula(AliqMunicipal);
+          SQLTemplateVIGENCIA_INI.AsString := vigenciainicio;
+          SQLTemplateVIGENCIA_FIM.AsString := vigenciafim;
+          SQLTemplateVERSAO.AsString := Versao;
+          SQLTemplateCHAVE.AsString := chave;
+          SQLTemplate.Post;
+        end;
+      end;
+    end;
+    SQLTemplate.EnableControls;
+  end;
+
+end;
+
 end.
+

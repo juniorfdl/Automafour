@@ -5384,6 +5384,8 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
     Banco.OrientacoesBanco.Strings = (
       'SAC       BANRISUL - 0800 646 1515'
       'OUVIDORIA BANRISUL - 0800 644 2200')
+    Banco.LayoutVersaoArquivo = 0
+    Banco.LayoutVersaoLote = 0
     Cedente.TipoInscricao = pJuridica
     Cedente.UF = 'RS'
     DirArqRemessa = 'c:\'

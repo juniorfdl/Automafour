@@ -444,7 +444,8 @@ uses
   CadastroChequesHistorico in 'Financeiro\CadastroChequesHistorico.pas' {FormCadastroChequesHistorico},
   CadastroChequeEmitido in 'Financeiro\CadastroChequeEmitido.pas' {FormCadastroChequeEmitido},
   TelaBaixarChequesRecebidos in 'Financeiro\TelaBaixarChequesRecebidos.pas' {FormTelaBaixarChequesRecebidos},
-  TelaBaixarChequesEmitidos in 'Financeiro\TelaBaixarChequesEmitidos.pas' {FormTelaBaixarChequeEmitido};
+  TelaBaixarChequesEmitidos in 'Financeiro\TelaBaixarChequesEmitidos.pas' {FormTelaBaixarChequeEmitido},
+  TelaGerarSaldoProduto in 'Estoque\TelaGerarSaldoProduto.pas' {FormTelaGerarSaldoProduto};
 
 {$R *.res}
 
@@ -452,8 +453,10 @@ uses
 
 begin
   Application.Initialize;
-  VersaoSistema := '3.2';
+//  VersaoSistema := '3.2';
   bRetaguarda := true;
+  VersaoSistema := GetBuildInfo(Application.ExeName);
+
   Application.Title := 'Gestão Empresarial - Módulo Faturamento';
 
   Application.CreateForm(TDM, DM);
