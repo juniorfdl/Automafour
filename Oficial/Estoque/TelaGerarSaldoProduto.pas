@@ -32,9 +32,20 @@ uses DataModulo, UnitLibrary;
 {$R *.dfm}
 
 procedure TFormTelaGerarSaldoProduto.LabelDiversosClick(Sender: TObject);
+var
+  xsql:String;
 begin
   inherited;
-  SQLEmpresa.OPen ;
+
+  xSql := ' INSERT INTO PRODUTOSALDO(empricod, prodicod, psldn3qtde, psldn3qtdmin, psldn3qtdmax) '
+  +' SELECT '+SQLEmpresaEMPRICOD.AsString+', A.prodicod, 0, 0, 0 FROM PRODUTO A '
+  +' LEFT JOIN PRODUTOSALDO B ON B.prodicod = A.prodicod '
+  +' AND B.empricod = '+SQLEmpresaEMPRICOD.AsString+' WHERE B.prodicod IS NULL ';
+
+  ExecSql(xsql,1);
+  MessageDlg('Processo executado com sucesso!', mtInformation, [mbOK], 0);
+
+  {SQLEmpresa.OPen ;
   DM.SQLProduto.Open ;
   DM.SQLProdutoSaldo.Open ;
 
@@ -73,7 +84,7 @@ begin
     DM.SQLProduto.Next ;
     Progress.Position := Progress.Position + 1 ;
   end ;
-  Progress.Position := 0 ;
+  Progress.Position := 0 ;}
 end;
 
 end.

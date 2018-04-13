@@ -13,6 +13,7 @@ inherited FormTelaGerarSaldoProduto: TFormTelaGerarSaldoProduto
         Width = 60
         Height = 13
         Caption = 'Progresso...'
+        Visible = False
       end
       object Progress: TProgressBar
         Left = 137
@@ -21,6 +22,7 @@ inherited FormTelaGerarSaldoProduto: TFormTelaGerarSaldoProduto
         Height = 17
         Smooth = True
         TabOrder = 1
+        Visible = False
       end
     end
     inherited ScrollBoxTopo: TScrollBox
