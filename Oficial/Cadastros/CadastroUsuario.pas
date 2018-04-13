@@ -140,6 +140,8 @@ type
     RetornaEmpresa: TSpeedButton;
     SQLTemplateCANCMESA: TStringField;
     DBCheckBox42: TDBCheckBox;
+    DBCheckBox43: TDBCheckBox;
+    SQLTemplateUSUACCANCITEMVENDA: TStringField;
     procedure FormCreate(Sender: TObject);
     procedure SQLTemplateBeforePost(DataSet: TDataSet);
     procedure SQLTemplateNewRecord(DataSet: TDataSet);

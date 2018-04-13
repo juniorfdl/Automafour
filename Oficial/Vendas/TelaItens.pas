@@ -1317,9 +1317,9 @@ begin
 
           if TerminalModo <> 'P' then
             if DM.SQLUsuario.Locate('USUAICOD',UsuarioCorrente,[]) then
-              if DM.SQLUsuario.FieldByName('USUACCANCVENDA').AsString <> 'S' then
+              if DM.SQLUsuario.FieldByName('USUACCANCITEMVENDA').AsString <> 'S' then
                 begin
-                  RetornoCampoUsuario := AutenticaUsuario(UsuarioAtualNome,'USUACCANCVENDA',RetornoUser);
+                  RetornoCampoUsuario := AutenticaUsuario(UsuarioAtualNome,'USUACCANCITEMVENDA',RetornoUser);
                   if RetornoCampoUsuario <> 'S' then
                     Exit;
                 end;
@@ -3017,7 +3017,7 @@ begin
              end ;
 
              if DM.SQLUsuario.Locate('USUAICOD',UsuarioCorrente,[]) then
-               if DM.SQLUsuario.FieldByName('USUACCANCVENDA').AsString <> 'S' then
+               if DM.SQLUsuario.FieldByName('USUACCANCITEMVENDA').AsString <> 'S' then
                  begin
                    // MANDA DADOS DISPLAY TECLADO
                    IF TecladoReduzidoModelo = 'TEC44DIS' THEN
@@ -3025,7 +3025,7 @@ begin
                    IF TecladoReduzidoModelo = 'TEC65' THEN
                      EnviaTecladoTextoDisplay65('Sem permissao para cancelar item','');
 
-                   RetornoCampoUsuario := AutenticaUsuario(UsuarioAtualNome,'USUACCANCVENDA',RetornoUser);
+                   RetornoCampoUsuario := AutenticaUsuario(UsuarioAtualNome,'USUACCANCITEMVENDA',RetornoUser);
                    if RetornoCampoUsuario <> 'S' then
                      begin
                        EntradaDados.SelectAll ;

@@ -1,15 +1,15 @@
 inherited FormCadastroUsuario: TFormCadastroUsuario
-  Left = 259
-  Top = 118
+  Left = 263
+  Top = 70
   Caption = 'Cadastro de Usu'#225'rios'
-  ClientHeight = 569
+  ClientHeight = 600
   ClientWidth = 837
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
   inherited ScrollBoxFundo: TScrollBox
     Width = 837
-    Height = 569
+    Height = 600
     inherited PanelCabecalho: TPanel
       Width = 835
       inherited ScrollBoxPanelCabecalho: TScrollBox
@@ -30,24 +30,25 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
     end
     inherited PanelCentral: TPanel
       Width = 835
-      Height = 495
+      Height = 526
       inherited PanelBarra: TPanel
-        Height = 495
+        Height = 526
       end
       inherited PanelFundoDados: TPanel
         Width = 705
-        Height = 495
+        Height = 526
         inherited Panel5: TPanel
           Width = 705
-          Height = 495
+          Height = 526
           inherited PagePrincipal: TPageControl
-            Top = 160
+            Top = 149
             Width = 705
-            Height = 335
+            Height = 377
+            ActivePage = TabSheetDadosPrincipais
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Width = 697
-                Height = 262
+                Height = 304
                 Columns = <
                   item
                     Expanded = False
@@ -197,7 +198,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   Top = 91
                   Width = 147
                   Height = 17
-                  Caption = 'Cancelar Cupom/Item'
+                  Caption = 'Cancelar Cupom'
                   DataField = 'USUACCANCVENDA'
                   DataSource = DSTemplate
                   Font.Charset = DEFAULT_CHARSET
@@ -212,7 +213,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                 end
                 object DBCheckBox5: TDBCheckBox
                   Left = 6
-                  Top = 107
+                  Top = 123
                   Width = 202
                   Height = 17
                   Caption = 'Excluir Clientes'
@@ -224,13 +225,13 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
                   ParentFont = False
-                  TabOrder = 6
+                  TabOrder = 7
                   ValueChecked = 'S'
                   ValueUnchecked = 'N'
                 end
                 object DBCheckBox6: TDBCheckBox
                   Left = 6
-                  Top = 123
+                  Top = 139
                   Width = 221
                   Height = 17
                   Caption = 'Desativar Pr'#233'-Vendas/Or'#231'amentos'
@@ -242,34 +243,16 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
                   ParentFont = False
-                  TabOrder = 7
+                  TabOrder = 8
                   ValueChecked = 'S'
                   ValueUnchecked = 'N'
                 end
                 object DBCheckBox7: TDBCheckBox
                   Left = 6
-                  Top = 139
-                  Width = 202
-                  Height = 17
-                  Caption = 'Gera libera'#231#227'o de cr'#233'dito'
-                  DataField = 'USUACLIBERACREDITO'
-                  DataSource = DSTemplate
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
-                  Font.Height = -11
-                  Font.Name = 'Tahoma'
-                  Font.Style = [fsBold]
-                  ParentFont = False
-                  TabOrder = 8
-                  ValueChecked = 'S'
-                  ValueUnchecked = 'N'
-                end
-                object DBCheckBox8: TDBCheckBox
-                  Left = 6
                   Top = 155
                   Width = 202
                   Height = 17
-                  Caption = 'Altera Dados na Tesouraria'
+                  Caption = 'Gera libera'#231#227'o de cr'#233'dito'
                   DataField = 'USUACLIBERACREDITO'
                   DataSource = DSTemplate
                   Font.Charset = DEFAULT_CHARSET
@@ -282,13 +265,13 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   ValueChecked = 'S'
                   ValueUnchecked = 'N'
                 end
-                object DBCheckBox9: TDBCheckBox
+                object DBCheckBox8: TDBCheckBox
                   Left = 6
                   Top = 171
                   Width = 202
                   Height = 17
-                  Caption = 'Excluir Dados Da Tesouraria'
-                  DataField = 'USUACEXCLDADOSTESO'
+                  Caption = 'Altera Dados na Tesouraria'
+                  DataField = 'USUACLIBERACREDITO'
                   DataSource = DSTemplate
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = 8404992
@@ -300,31 +283,13 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   ValueChecked = 'S'
                   ValueUnchecked = 'N'
                 end
-                object DBCheckBox10: TDBCheckBox
-                  Left = 6
-                  Top = 202
-                  Width = 259
-                  Height = 17
-                  Caption = 'Atualiza Saldo de Estoque no Invent'#225'rio'
-                  DataField = 'USUCALTERASLDINVENTARIO'
-                  DataSource = DSTemplate
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
-                  Font.Height = -11
-                  Font.Name = 'Tahoma'
-                  Font.Style = [fsBold]
-                  ParentFont = False
-                  TabOrder = 12
-                  ValueChecked = 'S'
-                  ValueUnchecked = 'N'
-                end
-                object DBCheckBox11: TDBCheckBox
+                object DBCheckBox9: TDBCheckBox
                   Left = 6
                   Top = 187
                   Width = 202
                   Height = 17
-                  Caption = 'Excluir Movimenta'#231#227'o Banc'#225'ria'
-                  DataField = 'USUACEXCMOVBCO'
+                  Caption = 'Excluir Dados Da Tesouraria'
+                  DataField = 'USUACEXCLDADOSTESO'
                   DataSource = DSTemplate
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = 8404992
@@ -336,13 +301,13 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   ValueChecked = 'S'
                   ValueUnchecked = 'N'
                 end
-                object DBCheckBox12: TDBCheckBox
+                object DBCheckBox10: TDBCheckBox
                   Left = 6
                   Top = 218
-                  Width = 219
+                  Width = 259
                   Height = 17
-                  Caption = 'Altera valor de produto na venda'
-                  DataField = 'USUACALTVLRVENDA'
+                  Caption = 'Atualiza Saldo de Estoque no Invent'#225'rio'
+                  DataField = 'USUCALTERASLDINVENTARIO'
                   DataSource = DSTemplate
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = 8404992
@@ -354,9 +319,45 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   ValueChecked = 'S'
                   ValueUnchecked = 'N'
                 end
-                object DBCheckBox13: TDBCheckBox
+                object DBCheckBox11: TDBCheckBox
+                  Left = 6
+                  Top = 203
+                  Width = 202
+                  Height = 17
+                  Caption = 'Excluir Movimenta'#231#227'o Banc'#225'ria'
+                  DataField = 'USUACEXCMOVBCO'
+                  DataSource = DSTemplate
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = 8404992
+                  Font.Height = -11
+                  Font.Name = 'Tahoma'
+                  Font.Style = [fsBold]
+                  ParentFont = False
+                  TabOrder = 12
+                  ValueChecked = 'S'
+                  ValueUnchecked = 'N'
+                end
+                object DBCheckBox12: TDBCheckBox
                   Left = 6
                   Top = 234
+                  Width = 219
+                  Height = 17
+                  Caption = 'Altera valor de produto na venda'
+                  DataField = 'USUACALTVLRVENDA'
+                  DataSource = DSTemplate
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = 8404992
+                  Font.Height = -11
+                  Font.Name = 'Tahoma'
+                  Font.Style = [fsBold]
+                  ParentFont = False
+                  TabOrder = 14
+                  ValueChecked = 'S'
+                  ValueUnchecked = 'N'
+                end
+                object DBCheckBox13: TDBCheckBox
+                  Left = 6
+                  Top = 250
                   Width = 283
                   Height = 17
                   Caption = 'Bloquear a fun'#231#227'o CTRL+G para abrir gaveta'
@@ -368,7 +369,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
                   ParentFont = False
-                  TabOrder = 14
+                  TabOrder = 15
                   ValueChecked = 'S'
                   ValueUnchecked = 'N'
                 end
@@ -386,7 +387,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
                   ParentFont = False
-                  TabOrder = 15
+                  TabOrder = 16
                   ValueChecked = 'S'
                   ValueUnchecked = 'N'
                 end
@@ -404,7 +405,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
                   ParentFont = False
-                  TabOrder = 16
+                  TabOrder = 17
                   ValueChecked = 'S'
                   ValueUnchecked = 'N'
                 end
@@ -422,7 +423,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
                   ParentFont = False
-                  TabOrder = 17
+                  TabOrder = 18
                   ValueChecked = 'S'
                   ValueUnchecked = 'N'
                 end
@@ -440,7 +441,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
                   ParentFont = False
-                  TabOrder = 18
+                  TabOrder = 19
                   ValueChecked = 'S'
                   ValueUnchecked = 'N'
                 end
@@ -458,7 +459,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
                   ParentFont = False
-                  TabOrder = 19
+                  TabOrder = 20
                   ValueChecked = 'S'
                   ValueUnchecked = 'N'
                 end
@@ -476,7 +477,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
                   ParentFont = False
-                  TabOrder = 20
+                  TabOrder = 21
                   ValueChecked = 'S'
                   ValueUnchecked = 'N'
                 end
@@ -494,7 +495,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
                   ParentFont = False
-                  TabOrder = 21
+                  TabOrder = 22
                   ValueChecked = 'S'
                   ValueUnchecked = 'N'
                 end
@@ -512,7 +513,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
                   ParentFont = False
-                  TabOrder = 22
+                  TabOrder = 23
                   ValueChecked = 'S'
                   ValueUnchecked = 'N'
                 end
@@ -530,7 +531,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
                   ParentFont = False
-                  TabOrder = 23
+                  TabOrder = 24
                   ValueChecked = 'S'
                   ValueUnchecked = 'N'
                 end
@@ -548,7 +549,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
                   ParentFont = False
-                  TabOrder = 24
+                  TabOrder = 25
                   ValueChecked = 'S'
                   ValueUnchecked = 'N'
                 end
@@ -566,7 +567,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
                   ParentFont = False
-                  TabOrder = 25
+                  TabOrder = 26
                   ValueChecked = 'S'
                   ValueUnchecked = 'N'
                 end
@@ -584,7 +585,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
                   ParentFont = False
-                  TabOrder = 26
+                  TabOrder = 27
                   ValueChecked = 'S'
                   ValueUnchecked = 'N'
                 end
@@ -602,7 +603,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
                   ParentFont = False
-                  TabOrder = 27
+                  TabOrder = 28
                   ValueChecked = 'S'
                   ValueUnchecked = 'N'
                 end
@@ -620,7 +621,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
                   ParentFont = False
-                  TabOrder = 28
+                  TabOrder = 29
                   ValueChecked = 'S'
                   ValueUnchecked = 'N'
                 end
@@ -638,7 +639,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
                   ParentFont = False
-                  TabOrder = 29
+                  TabOrder = 30
                   ValueChecked = 'S'
                   ValueUnchecked = 'N'
                 end
@@ -692,7 +693,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
                   ParentFont = False
-                  TabOrder = 30
+                  TabOrder = 31
                   ValueChecked = 'S'
                   ValueUnchecked = 'N'
                 end
@@ -710,7 +711,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
                   ParentFont = False
-                  TabOrder = 31
+                  TabOrder = 32
                   ValueChecked = 'S'
                   ValueUnchecked = 'N'
                 end
@@ -728,13 +729,13 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
                   ParentFont = False
-                  TabOrder = 32
+                  TabOrder = 33
                   ValueChecked = 'S'
                   ValueUnchecked = 'N'
                 end
                 object DBCheckBox40: TDBCheckBox
                   Left = 6
-                  Top = 249
+                  Top = 265
                   Width = 300
                   Height = 17
                   Caption = 'Permite Trocar Mercadoria no Checkout'
@@ -746,13 +747,13 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
                   ParentFont = False
-                  TabOrder = 33
+                  TabOrder = 34
                   ValueChecked = 'S'
                   ValueUnchecked = 'N'
                 end
                 object DBCheckBox41: TDBCheckBox
                   Left = 6
-                  Top = 265
+                  Top = 281
                   Width = 300
                   Height = 17
                   Caption = 'Permite Alterar Qtde no Checkout'
@@ -764,7 +765,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
                   ParentFont = False
-                  TabOrder = 34
+                  TabOrder = 35
                   ValueChecked = 'S'
                   ValueUnchecked = 'N'
                 end
@@ -782,7 +783,25 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
                   ParentFont = False
-                  TabOrder = 35
+                  TabOrder = 36
+                  ValueChecked = 'S'
+                  ValueUnchecked = 'N'
+                end
+                object DBCheckBox43: TDBCheckBox
+                  Left = 6
+                  Top = 107
+                  Width = 163
+                  Height = 17
+                  Caption = 'Cancelar Item Do Cupom'
+                  DataField = 'USUACCANCITEMVENDA'
+                  DataSource = DSTemplate
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = 8404992
+                  Font.Height = -11
+                  Font.Name = 'Tahoma'
+                  Font.Style = [fsBold]
+                  ParentFont = False
+                  TabOrder = 6
                   ValueChecked = 'S'
                   ValueUnchecked = 'N'
                 end
@@ -801,12 +820,12 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
             end
           end
           inherited PanelMaster: TPanel
-            Top = 119
+            Top = 108
             Width = 705
           end
           inherited PanelCodigoDescricao: TPanel
             Width = 705
-            Height = 119
+            Height = 108
             object Label1: TLabel
               Left = 10
               Top = 3
@@ -1446,6 +1465,12 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
       FixedChar = True
       Size = 1
     end
+    object SQLTemplateUSUACCANCITEMVENDA: TStringField
+      FieldName = 'USUACCANCITEMVENDA'
+      Origin = 'EASY_GESTAO.USUARIO.USUACCANCITEMVENDA'
+      FixedChar = True
+      Size = 1
+    end
   end
   inherited UpdateSQLTemplate: TUpdateSQL
     ModifySQL.Strings = (
@@ -1502,10 +1527,11 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
     PrinterSetup.mmMarginTop = 14000
     PrinterSetup.mmPaperHeight = 0
     PrinterSetup.mmPaperWidth = 0
-    PrinterSetup.PaperSize = 139
+    PrinterSetup.PaperSize = 256
     Template.FileName = 'C:\TiagoAllfaro\Moreleh\EtiquetasMalaDireta\EtiquetaMoreleh.rtm'
     Units = utMillimeters
     DeviceType = 'Screen'
+    EmailSettings.ReportFormat = 'PDF'
     OutlineSettings.CreateNode = True
     OutlineSettings.CreatePageNodes = True
     OutlineSettings.Enabled = False
@@ -1514,7 +1540,7 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
     TextSearchSettings.Enabled = False
     Left = 700
     Top = 1
-    Version = '7.04'
+    Version = '10.06'
     mmColumnWidth = 0
     DataPipelineName = 'Pipe'
     object ppColumnHeaderBand3: TppColumnHeaderBand
@@ -1529,6 +1555,10 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
       mmPrintPosition = 0
       object ppDBText20: TppDBText
         UserName = 'ppDBText20'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = Pipe
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1547,6 +1577,10 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
       object ppLabel1: TppLabel
         UserName = 'ppLabel1'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Funcion'#225'rio:'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1564,6 +1598,10 @@ inherited FormCadastroUsuario: TFormCadastroUsuario
         UserName = 'ppDBBarCode1'
         BarCodeType = bcCode39
         BarColor = clWindowText
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = Pipe
         PrintHumanReadable = False
         Font.Charset = DEFAULT_CHARSET
