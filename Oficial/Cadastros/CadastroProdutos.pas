@@ -991,6 +991,7 @@ type
     DBNavigator1: TDBNavigator;
     sqlProduto_DescontosQUANTIDADE: TFloatField;
     SQLTemplateVALOR_FRETE: TFloatField;
+    SQLTemplateVALOR_ICMSST: TFloatField;
     procedure FormCreate(Sender: TObject);
     procedure RxComboComissaoChange(Sender: TObject);
     procedure AcessaMarcaClick(Sender: TObject);
@@ -1765,6 +1766,8 @@ begin
   SQLTemplatePRODN2PERCDESP.Value := 0;
   SQLTemplatePRODN2PERCDIFICM.Value := 0;
   SQLTemplatePRODN2PERCSUBST.Value := 0;
+  SQLTemplateVALOR_ICMSST.Value := 0;
+  SQLTemplateVALOR_FRETE.Value :=0;
   SQLTemplatePRODN2PERCFRETE.Value := 0;
   SQLTemplatePRODN3QTDVOLUME.Value := 1;
   SQLTemplatePRODDCAD.asDateTime := Date;
@@ -2043,6 +2046,7 @@ begin
       dm.SQLTemplate.sql.Add(', PRODN2ALIQPIS = ' + ConvFloatToStr(SQLTemplate.FindField('PRODN2ALIQPIS').Value));
       dm.SQLTemplate.sql.Add(', PRODN2ALIQCOFINS = ' + ConvFloatToStr(SQLTemplate.FindField('PRODN2ALIQCOFINS').Value));
       dm.SQLTemplate.sql.Add(', VALOR_FRETE = ' + ConvFloatToStr(SQLTemplate.FindField('VALOR_FRETE').Value));
+      dm.SQLTemplate.sql.Add(', VALOR_ICMSST = ' + ConvFloatToStr(SQLTemplate.FindField('VALOR_ICMSST').Value));
 
       dm.SQLTemplate.sql.Add('Where PRODICOD <> ' + SQLTemplatePRODICOD.AsString +
         ' and PRODIAGRUPGRADE = ' + SQLTemplatePRODIAGRUPGRADE.AsString);
@@ -3380,6 +3384,15 @@ begin
           CustoFrete := SQLTemplate.FindField('VALOR_FRETE').asFloat
         else
           CustoFrete := 0;
+      except
+      end;
+
+      // Alteramos de percentual de ICMS ST para Valor
+      try
+        if SQLTemplate.FindField('VALOR_ICMSST').asFloat > 0 then
+          CustoST := SQLTemplate.FindField('VALOR_ICMSST').asFloat
+        else
+          CustoST := 0;
       except
       end;
 

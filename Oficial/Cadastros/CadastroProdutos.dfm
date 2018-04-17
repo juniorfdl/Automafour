@@ -6063,12 +6063,12 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     TabOrder = 21
                   end
                   object DBSubsttrib: TEvDBNumEdit
-                    Left = 69
+                    Left = 184
                     Top = 58
                     Width = 44
                     Height = 21
                     AutoHideCalculator = False
-                    DataField = 'PRODN2PERCSUBST'
+                    DataField = 'VALOR_ICMSST'
                     DataSource = DSTemplate
                     Font.Charset = DEFAULT_CHARSET
                     Font.Color = clWindowText
@@ -6101,7 +6101,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                       FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
                       FF5EFF5EFF5EFF5EFF5E}
                     ParentFont = False
-                    TabOrder = 3
+                    TabOrder = 5
                   end
                   object DBFreteProduto: TEvDBNumEdit
                     Left = 241
@@ -6142,10 +6142,10 @@ inherited FormCadastroProduto: TFormCadastroProduto
                       FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
                       FF5EFF5EFF5EFF5EFF5E}
                     ParentFont = False
-                    TabOrder = 4
+                    TabOrder = 6
                   end
                   object DBDespDiv: TEvDBNumEdit
-                    Left = 127
+                    Left = 69
                     Top = 58
                     Width = 44
                     Height = 21
@@ -6183,7 +6183,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                       FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
                       FF5EFF5EFF5EFF5EFF5E}
                     ParentFont = False
-                    TabOrder = 5
+                    TabOrder = 3
                   end
                   object Panel13: TPanel
                     Left = 11
@@ -6191,7 +6191,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Width = 285
                     Height = 17
                     Alignment = taLeftJustify
-                    Caption = '  IPI%          ST%        Desp%     Dif.Icm%  Vlr.Frete    '
+                    Caption = '  IPI%       Desp%     Dif.Icm%   Vlr.ST       Vlr.Frete    '
                     Color = 14731440
                     Font.Charset = DEFAULT_CHARSET
                     Font.Color = clBlack
@@ -6516,7 +6516,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     TabOrder = 12
                   end
                   object DBDIFICM: TEvDBNumEdit
-                    Left = 184
+                    Left = 127
                     Top = 58
                     Width = 44
                     Height = 21
@@ -6554,7 +6554,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                       FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
                       FF5EFF5EFF5EFF5EFF5E}
                     ParentFont = False
-                    TabOrder = 6
+                    TabOrder = 4
                   end
                   object DBIPICompra: TEvDBNumEdit
                     Left = 11
@@ -10580,6 +10580,10 @@ inherited FormCadastroProduto: TFormCadastroProduto
       OnChange = SQLTemplatePRODN3VLRCOMPRAChange
       DisplayFormat = '#,##0.000'
       EditFormat = '#,##0.000'
+    end
+    object SQLTemplateVALOR_ICMSST: TFloatField
+      FieldName = 'VALOR_ICMSST'
+      Origin = 'DB.PRODUTO.VALOR_ICMSST'
     end
   end
   inherited UpdateSQLTemplate: TUpdateSQL

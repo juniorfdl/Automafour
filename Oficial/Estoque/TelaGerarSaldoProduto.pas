@@ -34,13 +34,16 @@ uses DataModulo, UnitLibrary;
 procedure TFormTelaGerarSaldoProduto.LabelDiversosClick(Sender: TObject);
 var
   xsql:String;
+  i : integer;
 begin
   inherited;
+  dm.SQLEmpresa.Open;
+  i := DM.SQLEmpresaEMPRICOD.AsInteger;
 
   xSql := ' INSERT INTO PRODUTOSALDO(empricod, prodicod, psldn3qtde, psldn3qtdmin, psldn3qtdmax) '
-  +' SELECT '+SQLEmpresaEMPRICOD.AsString+', A.prodicod, 0, 0, 0 FROM PRODUTO A '
+  +' SELECT '+dm.SQLEmpresaEMPRICOD.AsString+', A.prodicod, 0, 0, 0 FROM PRODUTO A '
   +' LEFT JOIN PRODUTOSALDO B ON B.prodicod = A.prodicod '
-  +' AND B.empricod = '+SQLEmpresaEMPRICOD.AsString+' WHERE B.prodicod IS NULL ';
+  +' AND B.empricod = '+dm.SQLEmpresaEMPRICOD.AsString+' WHERE B.prodicod IS NULL ';
 
   ExecSql(xsql,1);
   MessageDlg('Processo executado com sucesso!', mtInformation, [mbOK], 0);

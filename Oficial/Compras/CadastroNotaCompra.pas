@@ -1011,9 +1011,9 @@ begin
           LabelDataHoraAlteracao.Update;
 
           CustoUnit   := SQLNotaCompraItens.FindField('NOCIN3VLRCUSTOMED').asFloat;
-          ValorCompra := SQLNotaCompraItens.FindField('NOCIN3VLRUNIT').asFloat -
-                         ((SQLNotaCompraItens.FindField('NOCIN3VLRUNIT').asFloat *
-                         (SQLNotaCompraItens.FindField('NOCIN3PERCDESC').asFloat/100)));
+          ValorCompra := SQLNotaCompraItens.FindField('NOCIN3VLRUNIT').asFloat;
+                         {-((SQLNotaCompraItens.FindField('NOCIN3VLRUNIT').asFloat *
+                         (SQLNotaCompraItens.FindField('NOCIN3PERCDESC').asFloat/100)));}
 
           if SQLNotaCompraItens.FindField('NOCIN3VLRFRETE').asFloat > 0 then
             FreteUnit := SQLNotaCompraItens.FindField('NOCIN3VLRFRETE').asFloat
@@ -1127,7 +1127,7 @@ begin
 
                         // Subst Trib Percentual
                         if (SQLNotaCompraItens.FindField('NOCIN2VBCST').asFloat>0) and (SQLNotaCompraItens.FindField('NOCIN3VLRSUBST').asFloat>0) then
-                          SQLProduto.FindField('PRODN2PERCSUBST').asFloat := (SQLNotaCompraItens.FindField('NOCIN3VLRSUBST').asFloat/SQLNotaCompraItens.FindField('NOCIN2VBCST').asFloat) * 100 ;
+                          SQLProduto.FindField('VALOR_ICMSST').asFloat := SQLNotaCompraItens.FindField('NOCIN3VLRSUBST').asFloat / (SQLNotaCompraItens.FindField('NOCIN3CAPEMBAL').asFloat * SQLNotaCompraItens.FindField('NOCIN3QTDEMBAL').asFloat);
                       end;
 
                 if (SQLEstoqueAtualQTDEATUAL.asFloat <= 0) or (SQLEstoqueAtualQTDEATUAL.IsNull)  then
