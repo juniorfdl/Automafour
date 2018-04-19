@@ -256,14 +256,15 @@ begin
                       end;
                     end;
                   if HouveErro then
+                  begin
                     Informa('Houveram alguns problemas ao importar os produtos, verifique !');
-
                     // Grava em TXT os Erros Relatados para posterior analise
                     CaminhoNomeArquivo := 'c:\easy2solutions\coletor\Erros_Coletor_'+FormatDateTime('ddmmyyyy',now);
                     AssignFile(Texto,CaminhoNomeArquivo);
                     Rewrite(Texto);
                     Reset(Texto);
                     Write(Texto);
+                  end;
 
                     // Fechar Arquivo
                     CloseFile(Texto);
@@ -294,7 +295,7 @@ end;
 procedure TFormTelaImportaItens.SQLConsultaInventarioBeforePost(
   DataSet: TDataSet);
 begin
-  DataSet.FieldByName('INVIPRODPOS').AsInteger    := DM.ProximoCodigoUnico('INVENTARIOESTOQUE',SQLConsultaInventario,DSSQLConsultaInventario,3);
+  DataSet.FieldByName('INVIPRODPOS').AsInteger    := DM.ProximoCodigoUnico('INVENTARIOESTOQUE',SQLConsultaInventario,DSSQLConsultaInventario,SQLConsultaInventario.FieldByName('INVIPRODPOS').FieldNo);
   DataSet.FieldByName('REGISTRO').AsDateTime      := Now ;
   DataSet.FieldByName('PENDENTE').AsString        := 'S' ;
 end;
