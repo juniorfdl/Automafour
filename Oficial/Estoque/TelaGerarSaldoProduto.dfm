@@ -1,6 +1,6 @@
 inherited FormTelaGerarSaldoProduto: TFormTelaGerarSaldoProduto
-  Left = 404
-  Top = 152
+  Left = 274
+  Top = 144
   Caption = 'Gerar Saldo Produto'
   OldCreateOrder = True
   PixelsPerInch = 96
