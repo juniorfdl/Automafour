@@ -436,7 +436,7 @@ begin
               TblTemporariaQTDETOTVENDA.AsVariant := dm.zConsulta.fieldbyname('SUM').AsVariant;}
 
             // Alimenta quantidade vendida e data da ultima venda.
-            sql := 'select CPITN3QTD, REGISTRO from CUPOMITEM where and (CPITCSTATUS<>''C'') and (CPITN3QTD>0) and (PRODICOD='+TblTemporariaPRODICOD.AsString+')';
+            sql := 'select CPITN3QTD, REGISTRO from CUPOMITEM where (CPITCSTATUS<>''C'') and (CPITN3QTD>0) and (PRODICOD='+TblTemporariaPRODICOD.AsString+')';
             if EmpresaPadraoPedidosCompra = '0' then
               sql := sql + ' and 0 = 0'
             else
