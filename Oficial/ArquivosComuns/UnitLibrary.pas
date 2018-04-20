@@ -241,6 +241,10 @@ function PadL(Str: string; Tamanho: Integer): string;
 function CancelamentoCupom(Documento, Usuario: string): boolean;
 function Preenche(STRI, FloodStr: string; TAM: Integer; JUST: Integer): string;
 function AbreFechaDataset(ADataSet: TDataSet; AAbrir: Boolean = True; AAtualizar: Boolean = False): Boolean;
+procedure addLog(Erro: string; Arquivo: string = '');
+
+
+
 
 
 procedure GravaMovimentoEstoqueSimples(SqlProd,
@@ -816,85 +820,34 @@ function MontaDataSQL(ACampo: string; ADe, AAte: TDate): string;
 begin
   Result := ' ' + ACampo + ' >= ''' + FormatDateTime('mm/dd/yyyy', ADe) + ''' and ' +
     ' ' + ACampo + ' <= ''' + FormatDateTime('mm/dd/yyyy', AAte) + '''';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 end;
+
+procedure addLog(Erro: string; Arquivo: string = '');
+begin
+  try
+    if FileExists(ExtractFilePath(Application.ExeName) + 'log.txt') then
+      with TStringList.Create do
+      try
+
+        if Arquivo = '' then
+          Arquivo := ExtractFilePath(Application.ExeName)+'LogErro_' + FormatDateTime('yyyymmdd', now) + '.txt';
+
+        //Arquivo := CaminhoPrograma + Arquivo;
+
+        if FileExists(arquivo) then
+          LoadFromFile(arquivo);
+
+        Add(#13 + DateTimeToStr(now) + #13 + erro);
+
+        SaveToFile(arquivo);
+
+      finally
+        Free;
+      end;
+  except
+  end;
+end;
+
 
 function AbreFechaDataset(ADataSet: TDataSet; AAbrir: Boolean = True; AAtualizar: Boolean = False): Boolean;
 begin

@@ -445,6 +445,7 @@ begin
             dm.zConsulta.Close;
             dm.zConsulta.Sql.Clear;
             dm.zConsulta.Sql.Add(sql);
+            addLog(sql, ExtractFilePath(Application.ExeName) + 'LogSqlQTDTOTALVENDA.txt'); 
             dm.zConsulta.Open;
             sql := '';
             if not dm.zConsulta.IsEmpty then
