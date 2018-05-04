@@ -1105,7 +1105,7 @@ uses //CadastroVendedor, TelaClienteHistorico, RelatorioExtratoCliente
   CadastroClienteContato, UnitLibrary, TelaConsultaTabelaPreco, CadastroConsulta, CadastroCep, CadastroClienteExtintor,
   CadastroClienteHistorico, TelaConsultaPlanoRecebimento, TelaNegociacaoDivida, WaitWindow, TelaDadosTeleEntrega,
   CadastroTipoCliente, TelaGeracaoMalaDireta, CadastroClienteProduto, CadastroProfissional, CadastroClienteVeiculos,
-  TelaDetalheRecebimento, TelaClienteHistorico;
+  TelaDetalheRecebimento, TelaClienteHistorico, CadastroAnimais;
      //CadastroAnimais, TelaDetalheRecebimento;
 
 
@@ -1685,11 +1685,11 @@ begin
 
   if TRxSpeedButton(Sender).Name = 'Button13' then
   begin
-      {DSMasterSys := DSTemplate;     #ver
+      DSMasterSys := DSTemplate;     //#ver
       CriaFormulario(TFormCadastroAnimais,
                      'FormCadastroAnimais',
                      True,
-                     False,True, 'Cliente ' + SQLTemplateCLIEA60RAZAOSOC.asString); }
+                     False,True, 'Cliente ' + SQLTemplateCLIEA60RAZAOSOC.asString); 
   end;
 
   if TRxSpeedButton(Sender).Name = 'Button14' then

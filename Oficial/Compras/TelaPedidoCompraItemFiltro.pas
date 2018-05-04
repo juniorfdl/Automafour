@@ -776,6 +776,7 @@ begin
   SQLFornecedor.Open;
   sqlEmpresa.Open;
   RxDBLookupCombo1.Value := 'Todas';
+  RxDBLookupCombo1Change(sender);
 //  RxDBLookupCombo1.Value := sqlEmpresaEMPRICOD.AsString;
 end;
 

@@ -979,8 +979,10 @@ begin
       ProgressBar.Max:=SQLNotaCompraItens.RecordCount;
 
       if cdsProdutos.Active then
-        cdsProdutos.Close;
-
+         begin
+          cdsProdutos.EmptyDataSet;
+          cdsProdutos.Close;
+         end;
       cdsProdutos.Open;
       SQLNotaCompraItens.First;
       while not(SQLNotaCompraItens.Eof) do

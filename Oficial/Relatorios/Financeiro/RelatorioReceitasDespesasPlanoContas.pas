@@ -423,7 +423,8 @@ begin
           SQLContasReceber.MacroByName('MDataRecebido').AsString := 'CONTASRECEBER.CTRCDVENC >= "' + FormatDateTime('mm/dd/yyyy',De.Date)+
                                                                   '" AND CONTASRECEBER.CTRCDVENC <= "'+ FormatDateTime('mm/dd/yyyy',Ate.Date)+'"';
           SQLCupomNumerario.MacroByName('MDataVenda').AsString := 'CUPOM.CUPODEMIS >= "' + FormatDateTime('mm/dd/yyyy',De.Date)+
-                                                                  '" AND CUPOM.CUPODEMIS <= "'+ FormatDateTime('mm/dd/yyyy',Ate.Date)+'"';
+                                                                  '" AND CUPOM.CUPODEMIS <= "'+ FormatDateTime('mm/dd/yyyy',Ate.Date)+'"' +
+                                                                  ' AND CONTASRECEBER.CTRCN2VLR > CONTASRECEBER.CTRCN2TOTREC';
         end;
   end;
 

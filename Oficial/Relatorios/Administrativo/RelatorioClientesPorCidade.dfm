@@ -7,13 +7,13 @@ inherited FormRelatorioClienteporCidade: TFormRelatorioClienteporCidade
   TextHeight = 13
   inherited ScrollBoxFundo: TScrollBox
     Width = 688
-    Height = 445
+    Height = 446
     inherited PanelCentral: TPanel
       Width = 684
-      Height = 361
+      Height = 362
       inherited PanelBarra: TPanel
         Width = 0
-        Height = 361
+        Height = 362
       end
       object PanelCentro: TPanel
         Left = 138

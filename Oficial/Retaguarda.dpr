@@ -445,7 +445,9 @@ uses
   CadastroChequeEmitido in 'Financeiro\CadastroChequeEmitido.pas' {FormCadastroChequeEmitido},
   TelaBaixarChequesRecebidos in 'Financeiro\TelaBaixarChequesRecebidos.pas' {FormTelaBaixarChequesRecebidos},
   TelaBaixarChequesEmitidos in 'Financeiro\TelaBaixarChequesEmitidos.pas' {FormTelaBaixarChequeEmitido},
-  TelaGerarSaldoProduto in 'Estoque\TelaGerarSaldoProduto.pas' {FormTelaGerarSaldoProduto};
+  TelaGerarSaldoProduto in 'Estoque\TelaGerarSaldoProduto.pas' {FormTelaGerarSaldoProduto},
+  CadastroAnimais in 'Cadastros\CadastroAnimais.pas' {FormCadastroAnimais},
+  CadastroAnimaisVacinacao in 'Cadastros\CadastroAnimaisVacinacao.pas' {FormCadastroAnimaisVacinas};
 
 {$R *.res}
 
@@ -493,7 +495,7 @@ begin
     FormPrincipal.RodapePrincipal.Panels[4].Text := 'Validade da Licença: ' + Dm.SQLConfigGeralCFGEDBLOQ.AsString+' - Falta '+DM.OBSAutorizacao+' para o vencimento'
   else
     FormPrincipal.RodapePrincipal.Panels[4].Text := 'Validade da Licença: ' + Dm.SQLConfigGeralCFGEDBLOQ.AsString;
-    
+
   Application.Run;
 end.
 

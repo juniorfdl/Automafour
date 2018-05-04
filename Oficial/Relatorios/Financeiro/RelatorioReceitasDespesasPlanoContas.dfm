@@ -1,6 +1,6 @@
 inherited FormRelatorioReceitasDespesasPlanoContas: TFormRelatorioReceitasDespesasPlanoContas
-  Left = 496
-  Top = 108
+  Left = 198
+  Top = 80
   Caption = 'Relat'#243'rio de Receitas x Despesas por Plano de Contas'
   ClientHeight = 454
   ClientWidth = 776

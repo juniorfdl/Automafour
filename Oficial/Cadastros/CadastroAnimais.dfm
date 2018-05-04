@@ -1,6 +1,6 @@
 inherited FormCadastroAnimais: TFormCadastroAnimais
-  Left = 385
-  Top = 170
+  Left = 313
+  Top = 88
   Caption = 'Animais'
   ClientHeight = 535
   ClientWidth = 865
@@ -196,6 +196,7 @@ inherited FormCadastroAnimais: TFormCadastroAnimais
             Top = 53
             Width = 682
             Height = 408
+            ActivePage = TabSheetDadosPrincipais
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Width = 674
@@ -522,6 +523,7 @@ inherited FormCadastroAnimais: TFormCadastroAnimais
   inherited PopupMenuImpressao: TPopupMenu
     object CarteirinhadeVacinao1: TMenuItem
       Caption = 'Carteirinha de Vacina'#231#227'o'
+      Visible = False
     end
   end
   inherited SQLTemplate: TRxQuery

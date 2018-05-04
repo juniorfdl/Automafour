@@ -1,6 +1,6 @@
 inherited FormCadastroCliente: TFormCadastroCliente
-  Left = 138
-  Top = 20
+  Left = 39
+  Top = 27
   Caption = 'Cadastro de Clientes'
   ClientHeight = 672
   ClientWidth = 1092
@@ -754,7 +754,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
             Top = 42
             Width = 960
             Height = 556
-            ActivePage = TabSheetDadosPrincipais
+            ActivePage = TabSheetItens
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Width = 952
@@ -9477,7 +9477,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Custom'
+    PrinterSetup.PaperName = 'ARCH D'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350
@@ -9487,6 +9487,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
     PrinterSetup.mmPaperWidth = 0
     PrinterSetup.PaperSize = 139
     DeviceType = 'Screen'
+    EmailSettings.ReportFormat = 'PDF'
     OutlineSettings.CreateNode = True
     OutlineSettings.CreatePageNodes = True
     OutlineSettings.Enabled = False
@@ -9495,7 +9496,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
     TextSearchSettings.Enabled = False
     Left = 708
     Top = 2
-    Version = '7.04'
+    Version = '10.06'
     mmColumnWidth = 0
     DataPipelineName = 'PipeCliente'
     object ppHeaderBand1: TppHeaderBand
@@ -9513,6 +9514,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
       object ppLabel1: TppLabel
         UserName = 'ppLabel1'
         AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Planinlha de Vendas'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -9529,6 +9534,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
       end
       object ppLabel2: TppLabel
         UserName = 'ppLabel2'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Cliente:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -9545,6 +9554,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
       object ppDBText1: TppDBText
         UserName = 'ppDBText1'
         AutoSize = True
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipeCliente
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -9561,6 +9574,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
       end
       object ppLabel3: TppLabel
         UserName = 'ppLabel3'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'End.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -9577,6 +9594,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
       object ppDBText2: TppDBText
         UserName = 'ppDBText2'
         AutoSize = True
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipeCliente
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -9593,6 +9614,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
       end
       object ppLabel4: TppLabel
         UserName = 'ppLabel4'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Bairro:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -9609,6 +9634,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
       object ppDBText3: TppDBText
         UserName = 'ppDBText3'
         AutoSize = True
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipeCliente
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -9625,6 +9654,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
       end
       object ppLabel5: TppLabel
         UserName = 'ppLabel5'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Cidade:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -9641,6 +9674,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
       object ppDBText4: TppDBText
         UserName = 'ppDBText4'
         AutoSize = True
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipeCliente
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -9657,6 +9694,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
       end
       object ppLabel6: TppLabel
         UserName = 'ppLabel6'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'CGC:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -9673,6 +9714,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
       object ppDBText5: TppDBText
         UserName = 'ppDBText5'
         AutoSize = True
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipeCliente
         DisplayFormat = '##.###.###/####-##;0;_'
         Font.Charset = DEFAULT_CHARSET
@@ -9690,6 +9735,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
       end
       object ppLabel7: TppLabel
         UserName = 'ppLabel7'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Fones:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -9705,6 +9754,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
       end
       object ppDBText6: TppDBText
         UserName = 'ppDBText6'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipeCliente
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -9721,6 +9774,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
       end
       object ppDBText7: TppDBText
         UserName = 'ppDBText7'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipeCliente
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -12389,7 +12446,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Custom'
+    PrinterSetup.PaperName = 'ARCH D'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350
@@ -12399,6 +12456,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
     PrinterSetup.mmPaperWidth = 0
     PrinterSetup.PaperSize = 139
     DeviceType = 'Screen'
+    EmailSettings.ReportFormat = 'PDF'
     OutlineSettings.CreateNode = True
     OutlineSettings.CreatePageNodes = True
     OutlineSettings.Enabled = False
@@ -12407,7 +12465,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
     TextSearchSettings.Enabled = False
     Left = 764
     Top = 2
-    Version = '7.04'
+    Version = '10.06'
     mmColumnWidth = 0
     DataPipelineName = 'PipeCliente'
     object ppDetailBand8: TppDetailBand
@@ -12417,6 +12475,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
       mmPrintPosition = 0
       object ppTexto: TppRichText
         UserName = 'ppTexto'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'ppTexto'
         MailMerge = True
         Stretch = True
@@ -12717,6 +12779,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
     PrinterSetup.mmPaperWidth = 0
     PrinterSetup.PaperSize = 9
     DeviceType = 'Screen'
+    EmailSettings.ReportFormat = 'PDF'
     OnPreviewFormCreate = ppExtratoCreditoResumidoPreviewFormCreate
     OutlineSettings.CreateNode = True
     OutlineSettings.CreatePageNodes = True
@@ -12726,7 +12789,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
     TextSearchSettings.Enabled = False
     Left = 739
     Top = 612
-    Version = '7.04'
+    Version = '10.06'
     mmColumnWidth = 0
     DataPipelineName = 'PipeExtratoCreditoResumido'
     object ppHeaderBand2: TppHeaderBand
@@ -12735,6 +12798,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
       mmPrintPosition = 0
       object ppLabel8: TppLabel
         UserName = 'ppLabel8'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Extrato de Creditos e Debitos'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -12750,6 +12817,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
       end
       object ppLabel9: TppLabel
         UserName = 'ppLabel9'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Data'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -12765,6 +12836,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
       end
       object ppLabel10: TppLabel
         UserName = 'ppLabel10'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Historico'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -12780,6 +12855,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
       end
       object ppLabel11: TppLabel
         UserName = 'ppLabel11'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Creditos'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -12795,6 +12874,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
       end
       object ppLabel12: TppLabel
         UserName = 'ppLabel12'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Debitos'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -12810,6 +12893,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
       end
       object ppLine1: TppLine
         UserName = 'ppLine1'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Weight = 0.750000000000000000
         mmHeight = 18551297
         mmLeft = 796442663
@@ -12819,6 +12906,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
       end
       object ppLbClienteExtratoCredito: TppLabel
         UserName = 'ppLbClienteExtratoCredito'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Cliente'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -12839,6 +12930,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
       mmPrintPosition = 0
       object ppDBText8: TppDBText
         UserName = 'ppDBText8'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipeExtratoCreditoResumido
         DisplayFormat = 'dd/mm/yyyy'
         Font.Charset = DEFAULT_CHARSET
@@ -12856,6 +12951,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
       end
       object ppDBText9: TppDBText
         UserName = 'ppDBText9'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipeExtratoCreditoResumido
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -12872,6 +12971,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
       end
       object ppDBText10: TppDBText
         UserName = 'ppDBText10'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipeExtratoCreditoResumido
         DisplayFormat = '##0.00'
         Font.Charset = DEFAULT_CHARSET
@@ -12890,6 +12993,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
       end
       object ppDBText11: TppDBText
         UserName = 'ppDBText11'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipeExtratoCreditoResumido
         DisplayFormat = '##0.00'
         Font.Charset = DEFAULT_CHARSET
@@ -12918,6 +13025,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
       mmPrintPosition = 0
       object ppDBCalc1: TppDBCalc
         UserName = 'ppDBCalc1'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipeExtratoCreditoResumido
         DisplayFormat = '##0.00'
         Font.Charset = DEFAULT_CHARSET
@@ -12936,6 +13047,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
       end
       object ppDBCalc2: TppDBCalc
         UserName = 'ppDBCalc2'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         DataPipeline = PipeExtratoCreditoResumido
         DisplayFormat = '##0.00'
         Font.Charset = DEFAULT_CHARSET
@@ -12954,6 +13069,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
       end
       object ppLine2: TppLine
         UserName = 'ppLine2'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Weight = 0.750000000000000000
         mmHeight = 55583777
         mmLeft = 796442663
@@ -12963,6 +13082,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
       end
       object ppLBSaldo: TppLabel
         UserName = 'ppLBSaldo'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
         Caption = 'Saldo'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
