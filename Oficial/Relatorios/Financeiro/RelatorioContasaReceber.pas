@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   RelatorioTemplate, Placemnt, Db, DBTables, ComCtrls, RxLookup,
-  StdCtrls, Mask, ToolEdit, ExtCtrls, Buttons, jpeg, OleCtrls, 
+  StdCtrls, Mask, ToolEdit, ExtCtrls, Buttons, jpeg, OleCtrls,
   RxQuery, ImgList, UCrpe32, AdvOfficeStatusBar, AdvOfficeStatusBarStylers;
 
 type
@@ -85,6 +85,12 @@ type
     TblTemporariaCTRCA5TIPOPADRAO: TStringField;
     TblTemporariaCTRCA15NROCHQ: TStringField;
     TblTemporariaTPCLICOD: TIntegerField;
+    SQLPlanoContas: TRxQuery;
+    SQLPlanoContasPLCTA15COD: TStringField;
+    SQLPlanoContasPLCTA60DESCR: TStringField;
+    DSSQLPlanoContas: TDataSource;
+    GroupBox6: TGroupBox;
+    ComboConta: TRxDBLookupCombo;
     procedure ExecutarBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure ComboClienteKeyDown(Sender: TObject; var Key: Word;
@@ -136,6 +142,11 @@ begin
     SQLContasReceber.MacrobyName('MCheq').Value := 'CONTASRECEBER.CTRCA5TIPOPADRAO not in("CHQ","CHQV","CHQP")'
   else
     SQLContasReceber.MacrobyName('MCheq').Value := '0=0';
+
+  if ComboConta.Value <> '' then
+    SQLContasReceber.MacrobyName('MConta').Value := 'CONTASRECEBER.PLCTA15COD = "'+ ComboConta.Value + '"'
+  else
+    SQLContasReceber.MacrobyName('MConta').Value := '0=0';
 
   SQLContasReceber.Open ;
   if SQLContasReceber.IsEmpty then
@@ -205,13 +216,14 @@ begin
   if not SQLCliente.Active then SQLCliente.Open;
   if not SQLVendedor.Active then SQLVendedor.Open;
   if not SQLTipoCliente.Active then SQLTipoCliente.Open;
+  if not SQLPlanoContas.Active then SQLPlanoContas.Open;
 
   De.Date  := Date + 1 ;
   Ate.Date := Date + 1 ;
 end;
 
 procedure TFormRelatorioContasaReceber.ComboClienteKeyDown(Sender: TObject;
-  var Key: Word; Shift: TShiftState);
+  var Key: Word; Shift: TShiftState);                                                                                         
 begin
   inherited;
   if key = Vk_Return then
