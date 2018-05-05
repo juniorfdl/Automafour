@@ -963,6 +963,7 @@ type
     btCancelaCredito: TSpeedButton;
     ConsultaClienteSefaz1: TMenuItem;
     RxSpeedButton1: TRxSpeedButton;
+    btnReceituario: TRxSpeedButton;
     procedure FormCreate(Sender: TObject);
     procedure AcessaVendedorClick(Sender: TObject);
     procedure SQLTemplateNewRecord(DataSet: TDataSet);
@@ -1105,7 +1106,7 @@ uses //CadastroVendedor, TelaClienteHistorico, RelatorioExtratoCliente
   CadastroClienteContato, UnitLibrary, TelaConsultaTabelaPreco, CadastroConsulta, CadastroCep, CadastroClienteExtintor,
   CadastroClienteHistorico, TelaConsultaPlanoRecebimento, TelaNegociacaoDivida, WaitWindow, TelaDadosTeleEntrega,
   CadastroTipoCliente, TelaGeracaoMalaDireta, CadastroClienteProduto, CadastroProfissional, CadastroClienteVeiculos,
-  TelaDetalheRecebimento, TelaClienteHistorico, CadastroAnimais;
+  TelaDetalheRecebimento, TelaClienteHistorico, CadastroAnimais, TelaReceituario;
      //CadastroAnimais, TelaDetalheRecebimento;
 
 
@@ -1700,6 +1701,23 @@ begin
       True,
       False, True, 'Cliente ' + SQLTemplateCLIEA60RAZAOSOC.asString);
   end;
+
+  if TRxSpeedButton(Sender).Name = 'btnReceituario' then
+  begin
+    ClienteVenda := SQLTemplateCLIEA13ID.AsString;
+    if ClienteVenda <> '' then
+    begin
+      DSMasterSys := DSTemplate;
+      Application.CreateForm(TFormTelaReceituario, FormTelaReceituario);
+      FormTelaReceituario.ShowModal;
+    end;
+
+   { CriaFormulario(TFormTelaReceituario,
+      'FormTelaReceituario',
+      True,
+      False, True, 'Cliente ' + SQLTemplateCLIEA60RAZAOSOC.asString);}
+  end;
+
 
 end;
 

@@ -438,6 +438,11 @@ type
     DBEdit31: TDBEdit;
     SQLClienteReceituarioBairroCliCalcField: TStringField;
     BtnConsulta: TConerBtn;
+    SQLClienteReceituarioCLRCA7LONGODALT: TStringField;
+    SQLClienteReceituarioCLRCA7LONGOEALT: TStringField;
+    DBEdit32: TDBEdit;
+    DBEdit33: TDBEdit;
+    Label1: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);

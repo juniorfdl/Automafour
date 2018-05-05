@@ -1220,6 +1220,20 @@ object FormTelaReceituario: TFormTelaReceituario
       ParentFont = False
       Transparent = True
     end
+    object Label1: TLabel
+      Left = 356
+      Top = 9
+      Width = 16
+      Height = 13
+      Caption = 'Alt'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 8404992
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      Transparent = True
+    end
     object DBEdit3: TDBEdit
       Left = 79
       Top = 34
@@ -1571,6 +1585,38 @@ object FormTelaReceituario: TFormTelaReceituario
       Font.Style = []
       ParentFont = False
       TabOrder = 17
+    end
+    object DBEdit32: TDBEdit
+      Left = 340
+      Top = 34
+      Width = 50
+      Height = 21
+      CharCase = ecUpperCase
+      DataField = 'CLRCA7LONGODALT'
+      DataSource = DSSQLClienteReceituario
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 22
+    end
+    object DBEdit33: TDBEdit
+      Left = 340
+      Top = 57
+      Width = 50
+      Height = 21
+      CharCase = ecUpperCase
+      DataField = 'CLRCA7LONGOEALT'
+      DataSource = DSSQLClienteReceituario
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 23
     end
   end
   object PanelRelogio: TPanel
@@ -4634,6 +4680,18 @@ object FormTelaReceituario: TFormTelaReceituario
       Size = 60
       Calculated = True
     end
+    object SQLClienteReceituarioCLRCA7LONGODALT: TStringField
+      FieldName = 'CLRCA7LONGODALT'
+      Origin = 'EASY_GESTAO.CLIENTERECEITUARIO.CLRCA7LONGODALT'
+      FixedChar = True
+      Size = 7
+    end
+    object SQLClienteReceituarioCLRCA7LONGOEALT: TStringField
+      FieldName = 'CLRCA7LONGOEALT'
+      Origin = 'EASY_GESTAO.CLIENTERECEITUARIO.CLRCA7LONGOEALT'
+      FixedChar = True
+      Size = 7
+    end
   end
   object DSSQLClienteReceituario: TDataSource
     DataSet = SQLClienteReceituario
@@ -4655,7 +4713,7 @@ object FormTelaReceituario: TFormTelaReceituario
     PrinterSetup.mmMarginTop = 1270
     PrinterSetup.mmPaperHeight = 190000
     PrinterSetup.mmPaperWidth = 250000
-    PrinterSetup.PaperSize = 139
+    PrinterSetup.PaperSize = 119
     Units = utMillimeters
     DeviceType = 'Printer'
     EmailSettings.ReportFormat = 'PDF'
@@ -5608,7 +5666,7 @@ object FormTelaReceituario: TFormTelaReceituario
     PrinterSetup.mmMarginTop = 1270
     PrinterSetup.mmPaperHeight = 210000
     PrinterSetup.mmPaperWidth = 250000
-    PrinterSetup.PaperSize = 139
+    PrinterSetup.PaperSize = 119
     Units = utMillimeters
     DeviceType = 'Printer'
     EmailSettings.ReportFormat = 'PDF'
@@ -6394,7 +6452,7 @@ object FormTelaReceituario: TFormTelaReceituario
     PrinterSetup.mmMarginTop = 1270
     PrinterSetup.mmPaperHeight = 240000
     PrinterSetup.mmPaperWidth = 250000
-    PrinterSetup.PaperSize = 139
+    PrinterSetup.PaperSize = 119
     Units = utMillimeters
     DeviceType = 'Printer'
     EmailSettings.ReportFormat = 'PDF'
