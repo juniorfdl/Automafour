@@ -232,12 +232,19 @@ begin
               DM.DB.Rollback;
         FormTelaGerenciamentoAcesso.Close;
         FormTelaGerenciamentoAcesso.Free;
+
+        ExecSql(' UPDATE USUARIOPERMISSOES SET FANTASIA = ' + QuotedStr(DM.JanelaAtiva.Caption)
+          + ' WHERE uspea60nometela = ' + QuotedStr(DM.JanelaAtiva.Nome), 1);
+
         if Application.FindComponent(DM.JanelaAtiva.Nome) <> nil then
            begin
-              PosGrid := ((Application.FindComponent(DM.JanelaAtiva.Nome) as TForm).FindComponent('SQLTemplate') as TRxQuery).GetBookmark;
-              ((Application.FindComponent(DM.JanelaAtiva.Nome) as TForm).FindComponent('SQLTemplate') as TRxQuery).Close;
-              ((Application.FindComponent(DM.JanelaAtiva.Nome) as TForm).FindComponent('SQLTemplate') as TRxQuery).Open;
-              ((Application.FindComponent(DM.JanelaAtiva.Nome) as TForm).FindComponent('SQLTemplate') as TRxQuery).GotoBookmark(PosGrid);
+              try
+                PosGrid := ((Application.FindComponent(DM.JanelaAtiva.Nome) as TForm).FindComponent('SQLTemplate') as TRxQuery).GetBookmark;
+                ((Application.FindComponent(DM.JanelaAtiva.Nome) as TForm).FindComponent('SQLTemplate') as TRxQuery).Close;
+                ((Application.FindComponent(DM.JanelaAtiva.Nome) as TForm).FindComponent('SQLTemplate') as TRxQuery).Open;
+                ((Application.FindComponent(DM.JanelaAtiva.Nome) as TForm).FindComponent('SQLTemplate') as TRxQuery).GotoBookmark(PosGrid);
+              except
+              end;
            end;
         RodapePrincipal.Repaint;
       end
