@@ -1402,6 +1402,11 @@ begin
                       btAlterar := False;
                       btExcluir := False;
                    end;
+             end
+             else begin
+                btNovo    := True; // Bloqueado
+                btAlterar := True;
+                btExcluir := True;
              end;
        end;
 
