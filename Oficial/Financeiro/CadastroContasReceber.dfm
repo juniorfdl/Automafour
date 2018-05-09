@@ -312,7 +312,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
             end
             object Label19: TLabel
               Left = 449
-              Top = 108
+              Top = 109
               Width = 134
               Height = 13
               Caption = 'Compet'#234'ncia M'#234's    Ano'
@@ -326,7 +326,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
             end
             object Label6: TLabel
               Left = 594
-              Top = 108
+              Top = 109
               Width = 81
               Height = 13
               Caption = 'Boleto Emitido'
@@ -412,7 +412,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
             end
             object Label18: TLabel
               Left = 450
-              Top = 146
+              Top = 144
               Width = 52
               Height = 13
               Caption = 'Remessa'
@@ -451,7 +451,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
             end
             object Label22: TLabel
               Left = 526
-              Top = 146
+              Top = 144
               Width = 63
               Height = 13
               Caption = 'Valor Juros'
@@ -464,10 +464,62 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
             end
             object Label23: TLabel
               Left = 602
-              Top = 146
+              Top = 144
               Width = 64
               Height = 13
               Caption = 'Valor Multa'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clNavy
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
+            object Label24: TLabel
+              Left = 345
+              Top = 178
+              Width = 22
+              Height = 13
+              Caption = 'NSU'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clNavy
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
+            object Label25: TLabel
+              Left = 450
+              Top = 178
+              Width = 68
+              Height = 13
+              Caption = 'Autoriza'#231#227'o'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clNavy
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
+            object Label26: TLabel
+              Left = 526
+              Top = 178
+              Width = 61
+              Height = 13
+              Caption = 'Taxa Oper.'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clNavy
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
+            object Label27: TLabel
+              Left = 602
+              Top = 178
+              Width = 72
+              Height = 13
+              Caption = 'Valor L'#237'quido'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clNavy
               Font.Height = -11
@@ -606,7 +658,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
             end
             object ComboPortadorCad: TRxDBLookupCombo
               Left = 296
-              Top = 122
+              Top = 121
               Width = 121
               Height = 21
               Cursor = crHandPoint
@@ -622,7 +674,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
             end
             object ComboTipoDocCad: TRxDBLookupCombo
               Left = 36
-              Top = 122
+              Top = 121
               Width = 127
               Height = 21
               Cursor = crHandPoint
@@ -718,7 +770,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
             end
             object DBEdit9: TDBEdit
               Left = 6
-              Top = 122
+              Top = 121
               Width = 29
               Height = 21
               DataField = 'TPDCICOD'
@@ -727,7 +779,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
             end
             object DBEdit11: TDBEdit
               Left = 264
-              Top = 122
+              Top = 121
               Width = 29
               Height = 21
               DataField = 'PORTICOD'
@@ -797,7 +849,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
             end
             object DBEdit8: TDBEdit
               Left = 133
-              Top = 158
+              Top = 160
               Width = 308
               Height = 18
               TabStop = False
@@ -817,7 +869,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
             end
             object DBEdit5: TDBEdit
               Left = 450
-              Top = 159
+              Top = 160
               Width = 72
               Height = 18
               TabStop = False
@@ -838,7 +890,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
             end
             object DBEdit6: TDBEdit
               Left = 188
-              Top = 122
+              Top = 121
               Width = 71
               Height = 21
               DataField = 'CTRCN2VLRTAXA'
@@ -848,7 +900,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
             object DBEdit10: TDBEdit
               Left = 6
               Top = 191
-              Width = 409
+              Width = 335
               Height = 21
               DataField = 'CODIGOBARRA'
               DataSource = DSTemplate
@@ -857,7 +909,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
             end
             object edtJuros: TDBEdit
               Left = 526
-              Top = 158
+              Top = 157
               Width = 71
               Height = 21
               DataField = 'CTRCN2TOTJUROREC'
@@ -866,12 +918,52 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
             end
             object edtMulta: TDBEdit
               Left = 602
-              Top = 158
+              Top = 157
               Width = 71
               Height = 21
               DataField = 'CTRCN2TOTMULTAREC'
               DataSource = DSTemplate
               TabOrder = 24
+            end
+            object DBEdit12: TDBEdit
+              Left = 345
+              Top = 191
+              Width = 97
+              Height = 21
+              DataField = 'NSU'
+              DataSource = DSTemplate
+              TabOrder = 25
+              OnKeyDown = DBEdit7KeyDown
+            end
+            object DBEdit14: TDBEdit
+              Left = 450
+              Top = 191
+              Width = 73
+              Height = 21
+              DataField = 'AUTORIZACAO'
+              DataSource = DSTemplate
+              TabOrder = 26
+              OnKeyDown = DBEdit7KeyDown
+            end
+            object DBEdit16: TDBEdit
+              Left = 526
+              Top = 192
+              Width = 73
+              Height = 21
+              DataField = 'TAXA_OPERADORA'
+              DataSource = DSTemplate
+              TabOrder = 27
+              OnKeyDown = DBEdit7KeyDown
+            end
+            object DBEdit17: TDBEdit
+              Left = 602
+              Top = 192
+              Width = 73
+              Height = 21
+              DataField = 'VALOR_LIQUIDO'
+              DataSource = DSTemplate
+              TabOrder = 28
+              OnKeyDown = DBEdit7KeyDown
             end
           end
           inherited PagePrincipal: TPageControl [1]
@@ -2028,6 +2120,25 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
       FieldName = 'CODIGOBARRA'
       Origin = 'DB.CONTASRECEBER.CODIGOBARRA'
       Size = 46
+    end
+    object SQLTemplateNSU: TStringField
+      FieldName = 'NSU'
+      Origin = 'DB.CONTASRECEBER.NSU'
+      Size = 15
+    end
+    object SQLTemplateAUTORIZACAO: TIntegerField
+      FieldName = 'AUTORIZACAO'
+      Origin = 'DB.CONTASRECEBER.AUTORIZACAO'
+    end
+    object SQLTemplateTAXA_OPERADORA: TFloatField
+      FieldName = 'TAXA_OPERADORA'
+      Origin = 'DB.CONTASRECEBER.TAXA_OPERADORA'
+      DisplayFormat = '#,##0.00'
+    end
+    object SQLTemplateVALOR_LIQUIDO: TFloatField
+      FieldName = 'VALOR_LIQUIDO'
+      Origin = 'DB.CONTASRECEBER.VALOR_LIQUIDO'
+      DisplayFormat = '#,##0.00'
     end
   end
   inherited UpdateSQLTemplate: TUpdateSQL

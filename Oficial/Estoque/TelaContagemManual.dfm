@@ -2235,19 +2235,21 @@ object FormTelaContagemManual: TFormTelaContagemManual
     Top = 64
     object ImportarProdutosdoColetorOptimusPadrao1: TMenuItem
       Caption = 'Importar Produtos do Coletor Optimus Padrao'
+      Visible = False
       OnClick = ImportarProdutosdoColetorOptimusPadrao1Click
     end
     object MnInvImportarProdutosdoColetor: TMenuItem
       Caption = 'Importar Produtos do Coletor Optimus'
-      Visible = False
       OnClick = MnInvImportarProdutosdoColetorClick
     end
     object ImportardoPalmOne1: TMenuItem
       Caption = 'Importar Produtos do Coletor Palm One'
+      Visible = False
       OnClick = ImportardoPalmOne1Click
     end
     object ImportarBematechDC20001: TMenuItem
       Caption = 'Importar Produtos do Coletor Bematech DC2000'
+      Visible = False
       OnClick = ImportarBematechDC20001Click
     end
     object N3: TMenuItem

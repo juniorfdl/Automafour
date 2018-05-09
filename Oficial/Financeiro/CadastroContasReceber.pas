@@ -326,6 +326,18 @@ type
     Label22: TLabel;
     Label23: TLabel;
     edtMulta: TDBEdit;
+    Label24: TLabel;
+    DBEdit12: TDBEdit;
+    SQLTemplateNSU: TStringField;
+    SQLTemplateAUTORIZACAO: TIntegerField;
+    SQLTemplateTAXA_OPERADORA: TFloatField;
+    SQLTemplateVALOR_LIQUIDO: TFloatField;
+    Label25: TLabel;
+    DBEdit14: TDBEdit;
+    Label26: TLabel;
+    DBEdit16: TDBEdit;
+    Label27: TLabel;
+    DBEdit17: TDBEdit;
     procedure FormCreate(Sender: TObject);
     procedure SQLTemplateCalcFields(DataSet: TDataSet);
     procedure BtnClienteClick(Sender: TObject);

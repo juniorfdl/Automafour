@@ -1,6 +1,6 @@
 inherited FormTelaPedidoCompraItemFiltro: TFormTelaPedidoCompraItemFiltro
-  Left = 0
-  Top = 0
+  Left = 340
+  Top = 11
   Caption = 'Assistente para Filtrar Produtos para Compra'
   ClientHeight = 690
   ClientWidth = 1350

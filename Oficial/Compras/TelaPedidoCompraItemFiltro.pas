@@ -440,7 +440,7 @@ begin
             if EmpresaPadraoPedidosCompra = '0' then
               sql := sql + ' and 0 = 0'
             else
-              sql := sql + '(and EMPRICOD='+EmpresaPadraoPedidosCompra+')';
+              sql := sql + 'and (EMPRICOD='+EmpresaPadraoPedidosCompra+')';
             sql := sql + ' and (REGISTRO>='''+FormatDateTime('mm/dd/yyyy',De.Date)+''' and REGISTRO<='''+FormatDateTime('mm/dd/yyyy',ATE.Date)+' 23:59:59'') order by REGISTRO DESC';
             dm.zConsulta.Close;
             dm.zConsulta.Sql.Clear;
@@ -776,6 +776,7 @@ begin
   SQLFornecedor.Open;
   sqlEmpresa.Open;
   RxDBLookupCombo1.Value := 'Todas';
+  RxDBLookupCombo1Change(sender);
 //  RxDBLookupCombo1.Value := sqlEmpresaEMPRICOD.AsString;
 end;
 

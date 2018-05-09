@@ -2,24 +2,24 @@ inherited FormRelatorioContasaReceber: TFormRelatorioContasaReceber
   Left = 179
   Top = 101
   Caption = 'Relat'#243'rio de Contas '#224' Receber'
-  ClientHeight = 510
+  ClientHeight = 555
   ClientWidth = 791
   PixelsPerInch = 96
   TextHeight = 13
   inherited Progresso: TProgressBar
-    Top = 494
+    Top = 539
     Width = 791
   end
   inherited ScrollBox: TScrollBox
     Width = 791
-    Height = 494
+    Height = 539
     inherited PanelCentro: TPanel
       Left = 189
       Top = 88
-      Height = 383
+      Height = 429
       inherited BtnVisualizar: TSpeedButton
         Left = 288
-        Top = 349
+        Top = 393
       end
       inherited EmpresaGroup: TGroupBox
         Top = 1
@@ -107,7 +107,7 @@ inherited FormRelatorioContasaReceber: TFormRelatorioContasaReceber
       end
       object CKDadosCartoes: TCheckBox
         Left = 14
-        Top = 344
+        Top = 388
         Width = 243
         Height = 17
         Caption = 'Mostrar Dados dos Cart'#245'es de Cr'#233'dito'
@@ -179,11 +179,45 @@ inherited FormRelatorioContasaReceber: TFormRelatorioContasaReceber
       end
       object CkMostrarCheques: TCheckBox
         Left = 14
-        Top = 358
+        Top = 402
         Width = 243
         Height = 17
         Caption = 'Mostrar Cheques do per'#237'odo'
+        TabOrder = 8
+      end
+      object GroupBox6: TGroupBox
+        Left = 12
+        Top = 346
+        Width = 407
+        Height = 41
+        Caption = ' Plano de Contas '
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
         TabOrder = 7
+        object ComboConta: TRxDBLookupCombo
+          Left = 8
+          Top = 14
+          Width = 390
+          Height = 21
+          DropDownCount = 8
+          DisplayAllFields = True
+          DisplayEmpty = 'Todas'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          LookupField = 'PLCTA15COD'
+          LookupDisplay = 'PLCTA15COD;PLCTA60DESCR'
+          LookupDisplayIndex = 1
+          LookupSource = DSSQLPlanoContas
+          ParentFont = False
+          TabOrder = 0
+        end
       end
     end
     inherited ScrollBoxTopo: TScrollBox
@@ -356,6 +390,9 @@ inherited FormRelatorioContasaReceber: TFormRelatorioContasaReceber
       
         '  Left Outer JOIN NUMERARIO NUMERARIO ON CONTASRECEBER.NUMEICOD ' +
         '= NUMERARIO.NUMEICOD'
+      
+        ' left outer join PLANODECONTAS PLANODECONTAS on CONTASRECEBER.PL' +
+        'CTA15COD = PLANODECONTAS.PLCTA15COD'
       'where'
       '  (%MEmpresa) and'
       '  (CONTASRECEBER.CTRCN2VLR-CONTASRECEBER.CTRCN2TOTREC) > 0 and'
@@ -369,7 +406,8 @@ inherited FormRelatorioContasaReceber: TFormRelatorioContasaReceber
       '  (%MCliente) and'
       '  (%MNumerario) and'
       '  (%MVendedor) and'
-      '  (%MTipoCliente)'
+      '  (%MTipoCliente) and'
+      '  (%MConta)'
       'order by'
       '  CONTASRECEBER.CTRCDVENC ASC ,'
       '  CLIENTE.CLIEA60RAZAOSOC ASC ,'
@@ -414,6 +452,12 @@ inherited FormRelatorioContasaReceber: TFormRelatorioContasaReceber
       item
         DataType = ftString
         Name = 'MTipoCliente'
+        ParamType = ptInput
+        Value = '0=0'
+      end
+      item
+        DataType = ftString
+        Name = 'MConta'
         ParamType = ptInput
         Value = '0=0'
       end>
@@ -725,5 +769,32 @@ inherited FormRelatorioContasaReceber: TFormRelatorioContasaReceber
     DataSet = SQLTipoCliente
     Left = 598
     Top = 391
+  end
+  object SQLPlanoContas: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'Select * from PlanodeContas'
+      'Where PLCTCTIPOSALDO = '#39'D'#39' and PLCTCANALSINT = '#39'A'#39
+      'Order by PLCTA60DESCR')
+    Macros = <>
+    Left = 625
+    Top = 13
+    object SQLPlanoContasPLCTA15COD: TStringField
+      FieldName = 'PLCTA15COD'
+      Origin = 'DB.PLANODECONTAS.PLCTA15COD'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLPlanoContasPLCTA60DESCR: TStringField
+      FieldName = 'PLCTA60DESCR'
+      Origin = 'DB.PLANODECONTAS.PLCTA60DESCR'
+      FixedChar = True
+      Size = 60
+    end
+  end
+  object DSSQLPlanoContas: TDataSource
+    DataSet = SQLPlanoContas
+    Left = 653
+    Top = 13
   end
 end

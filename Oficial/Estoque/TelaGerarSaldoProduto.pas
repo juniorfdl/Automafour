@@ -38,14 +38,19 @@ var
 begin
   inherited;
   dm.SQLEmpresa.Open;
-  i := DM.SQLEmpresaEMPRICOD.AsInteger;
+  DM.SQLEmpresa.First;
+  while not DM.SQLEmpresa.Eof do
+  begin
+    xSql := ' INSERT INTO PRODUTOSALDO(empricod, prodicod, psldn3qtde, psldn3qtdmin, psldn3qtdmax, registro) '
+    +' SELECT '+dm.SQLEmpresaEMPRICOD.AsString+', A.prodicod, 0, 0, 0, current_timestamp FROM PRODUTO A '
+    +' LEFT JOIN PRODUTOSALDO B ON B.prodicod = A.prodicod '
+    +' AND B.empricod = '+dm.SQLEmpresaEMPRICOD.AsString+' WHERE B.prodicod IS NULL ';
+    ExecSql(xsql,1);
+    DM.SQLEmpresa.Next;
+  end;
 
-  xSql := ' INSERT INTO PRODUTOSALDO(empricod, prodicod, psldn3qtde, psldn3qtdmin, psldn3qtdmax) '
-  +' SELECT '+dm.SQLEmpresaEMPRICOD.AsString+', A.prodicod, 0, 0, 0 FROM PRODUTO A '
-  +' LEFT JOIN PRODUTOSALDO B ON B.prodicod = A.prodicod '
-  +' AND B.empricod = '+dm.SQLEmpresaEMPRICOD.AsString+' WHERE B.prodicod IS NULL ';
 
-  ExecSql(xsql,1);
+
   MessageDlg('Processo executado com sucesso!', mtInformation, [mbOK], 0);
 
   {SQLEmpresa.OPen ;
