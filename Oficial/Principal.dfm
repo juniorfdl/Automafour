@@ -2740,6 +2740,13 @@ inherited FormPrincipal: TFormPrincipal
           OnClick = FATUMnCadastroSerieClick
         end
       end
+      object Restaurante1: TMenuItem
+        Caption = 'Restaurante'
+        object Mesas1: TMenuItem
+          Caption = 'Mesas'
+          OnClick = MnCadastroMesasClick
+        end
+      end
     end
     object Compras1: TMenuItem [1]
       Caption = 'Compras'

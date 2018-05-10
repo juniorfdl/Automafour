@@ -252,6 +252,8 @@ type
     BaixaChequesRecebidos1: TMenuItem;
     BaixarChequesEmitidos1: TMenuItem;
     GerarSaldoInicial1: TMenuItem;
+    Restaurante1: TMenuItem;
+    Mesas1: TMenuItem;
     procedure FATUMnCadastroClientesCadastroClick(Sender: TObject);
     procedure FATUMnCadastroClientesTipodeClienteClick(Sender: TObject);
     procedure FATUMnCadastroBancosClick(Sender: TObject);
@@ -498,6 +500,7 @@ type
     procedure MnFINCheRecebidosBaixaChequesRecebidosClick(Sender: TObject);
     procedure FormPrincipalB1Click(Sender: TObject);
     procedure MnSaldoInicialProdutosClick(Sender: TObject);
+    procedure MnCadastroMesasClick(Sender: TObject);
   private
     procedure ApagarOrcamentos;
     procedure ApagarPreVendas;
@@ -583,7 +586,7 @@ uses
   TelaAtualizaEstoquePDVs, RelatorioConferenciaFechamentoCaixa,
   CadastroChequesRecebidos, CadastroChequeEmitido,
   TelaBaixarChequesRecebidos, TelaBaixarChequesEmitidos,
-  TelaGerarSaldoProduto;
+  TelaGerarSaldoProduto, CadastroMesa;
 
 
 
@@ -3041,6 +3044,15 @@ begin
   else
     SoundPlay('Acesso Negado.wav',Sender);
 
+end;
+
+procedure TFormPrincipal.MnCadastroMesasClick(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroMesa,'FormCadastroMesa',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
 end;
 
 end.

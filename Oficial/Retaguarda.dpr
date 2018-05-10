@@ -447,7 +447,8 @@ uses
   TelaBaixarChequesEmitidos in 'Financeiro\TelaBaixarChequesEmitidos.pas' {FormTelaBaixarChequeEmitido},
   TelaGerarSaldoProduto in 'Estoque\TelaGerarSaldoProduto.pas' {FormTelaGerarSaldoProduto},
   CadastroAnimais in 'Cadastros\CadastroAnimais.pas' {FormCadastroAnimais},
-  CadastroAnimaisVacinacao in 'Cadastros\CadastroAnimaisVacinacao.pas' {FormCadastroAnimaisVacinas};
+  CadastroAnimaisVacinacao in 'Cadastros\CadastroAnimaisVacinacao.pas' {FormCadastroAnimaisVacinas},
+  CadastroMesa in 'Cadastros\CadastroMesa.pas' {FormCadastroMesa};
 
 {$R *.res}
 
