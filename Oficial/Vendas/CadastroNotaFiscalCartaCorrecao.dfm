@@ -286,8 +286,11 @@ inherited FormCadastroNotaFiscalCartaCorrecao: TFormCadastroNotaFiscalCartaCorre
     MAIL = ACBrMail1
     OnStatusChange = ACBrNFe1StatusChange
     Configuracoes.Geral.SSLLib = libCapicom
+    Configuracoes.Geral.SSLCryptLib = cryCapicom
+    Configuracoes.Geral.SSLHttpLib = httpWinINet
+    Configuracoes.Geral.SSLXmlSignLib = xsMsXmlCapicom
     Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
-    Configuracoes.Geral.IncluirQRCodeXMLNFCe = False
+    Configuracoes.Arquivos.OrdenacaoPath = <>
     Configuracoes.Arquivos.SepararPorMes = True
     Configuracoes.WebServices.UF = 'RS'
     Configuracoes.WebServices.Ambiente = taProducao
@@ -331,12 +334,12 @@ inherited FormCadastroNotaFiscalCartaCorrecao: TFormCadastroNotaFiscalCartaCorre
     LogoemCima = False
     TamanhoFonteEndereco = 0
     RecuoLogo = 0
-    TributosSeparadamente = False
     LarguraCodProd = 54
     ExibirEAN = False
     QuebraLinhaEmDetalhamentoEspecifico = True
     ExibeCampoFatura = False
     ImprimirUnQtVlComercial = iuComercial
+    ImprimirDadosDocReferenciados = True
     Left = 496
     Top = 77
   end
@@ -632,6 +635,10 @@ inherited FormCadastroNotaFiscalCartaCorrecao: TFormCadastroNotaFiscalCartaCorre
       FieldName = 'EMPRA75EMAILUSUARIO'
       Origin = 'DB.EMPRESA.EMPRA75EMAILUSUARIO'
       Size = 75
+    end
+    object SQLEmpresaVERSAO: TStringField
+      FieldName = 'VERSAO'
+      Size = 1
     end
   end
 end

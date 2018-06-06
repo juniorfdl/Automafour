@@ -326,6 +326,7 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
             Top = 68
             Width = 697
             Height = 470
+            ActivePage = tsNFE
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Width = 689
@@ -2110,6 +2111,19 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
                   Font.Style = [fsBold]
                   ParentFont = False
                 end
+                object Label24: TLabel
+                  Left = 58
+                  Top = 17
+                  Width = 39
+                  Height = 13
+                  Caption = 'Vers'#227'o'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = 8404992
+                  Font.Height = -11
+                  Font.Name = 'Tahoma'
+                  Font.Style = [fsBold]
+                  ParentFont = False
+                end
                 object cxDBComboBox1: TcxDBComboBox
                   Left = 8
                   Top = 32
@@ -2145,11 +2159,11 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
                     'SE'
                     'TO')
                   TabOrder = 0
-                  Width = 49
+                  Width = 47
                 end
                 object cxDBCheckBox1: TcxDBCheckBox
-                  Left = 80
-                  Top = 31
+                  Left = 102
+                  Top = 13
                   Caption = 'Exibir Mensagens de Processamento'
                   DataBinding.DataField = 'EMPRA1VISUALIZAMSG'
                   DataBinding.DataSource = DSTemplate
@@ -2158,7 +2172,26 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
                   Properties.ValueChecked = 'S'
                   Properties.ValueUnchecked = 'N'
                   TabOrder = 1
-                  Width = 209
+                  Width = 198
+                end
+                object RxDBComboBox1: TRxDBComboBox
+                  Left = 58
+                  Top = 32
+                  Width = 71
+                  Height = 21
+                  Style = csDropDownList
+                  DataField = 'VERSAO'
+                  DataSource = DSTemplate
+                  EnableValues = True
+                  ItemHeight = 13
+                  Items.Strings = (
+                    '3.10'
+                    '4.00')
+                  TabOrder = 2
+                  Values.Strings = (
+                    '3'
+                    '4')
+                  OnChange = ComboCRTChange
                 end
               end
               object gbxToken: TcxGroupBox
@@ -2750,6 +2783,11 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
       Origin = 'DB.EMPRESA.TOKEN'
       Size = 60
     end
+    object SQLTemplateVERSAO: TStringField
+      FieldName = 'VERSAO'
+      ProviderFlags = [pfInUpdate]
+      Size = 1
+    end
   end
   inherited UpdateSQLTemplate: TUpdateSQL
     ModifySQL.Strings = (
@@ -2966,10 +3004,13 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
   end
   object ACBrNFe: TACBrNFe
     Configuracoes.Geral.SSLLib = libCapicomDelphiSoap
+    Configuracoes.Geral.SSLCryptLib = cryCapicom
+    Configuracoes.Geral.SSLHttpLib = httpIndy
+    Configuracoes.Geral.SSLXmlSignLib = xsMsXmlCapicom
     Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
     Configuracoes.Geral.ValidarDigest = False
     Configuracoes.Geral.ModeloDF = moNFCe
-    Configuracoes.Geral.IncluirQRCodeXMLNFCe = False
+    Configuracoes.Arquivos.OrdenacaoPath = <>
     Configuracoes.Arquivos.SepararPorMes = True
     Configuracoes.Arquivos.SalvarEvento = True
     Configuracoes.Arquivos.SalvarApenasNFeProcessadas = True

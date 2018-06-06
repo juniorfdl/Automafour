@@ -501,6 +501,8 @@ type
   private
     procedure ApagarOrcamentos;
     procedure ApagarPreVendas;
+    procedure VerificaMenu(vMenu:TMenuItem);
+    function VerificaPemissaoMenu(pNomeFormulario:String): boolean;
     { Private declarations }
   public
     { Public declarations }
@@ -1338,7 +1340,7 @@ begin
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     CriaFormulario(TFormCadastroProduto, 'FormCadastroProduto', False, False, False, '')
   else
-    SoundPlay('Acesso Negado.wav', Sender);
+    SoundPlay('Acesso Negado.wav', Sender);                                          
 end;
 
 procedure TFormPrincipal.MnADMCadastroClientesCadastroClick(Sender: TObject);
@@ -3040,8 +3042,31 @@ begin
     CriaFormulario(TFormTelaGerarSaldoProduto,'FormTelaGerarSaldoProduto',False,False,False,'')
   else
     SoundPlay('Acesso Negado.wav',Sender);
-
 end;
+
+procedure TFormPrincipal.VerificaMenu(vMenu:TMenuItem);
+begin
+  {for i:= 0 to vMenu.Items.Count -1 do
+  begin
+    if vMenu.Items[i].Count = 0 then
+      VerificaPemissaoMenu(vMenu.Items[i].)
+
+  end;}
+end;
+
+function TFormPrincipal.VerificaPemissaoMenu(pNomeFormulario:String):boolean;
+begin
+  {if DM.VerificaBloqueioJanela(pNomeFormulario) and (not UsuarioMaster) and (Application.Title <> 'Cupom Fiscal') then
+  begin
+    DM.SQLTemplate.Close;
+    DM.SQLTemplate.SQL.Text := ' select * from USUARIOPERMISSOES ' +
+                               ' where USUAICOD = ' + IntToStr(UsuarioCorrente) +
+                               ' and USPEA60NOMETELA = ''' + pNomeFormulario + '''';
+    DM.SQLTemplate.Open;
+    result := DM.SQLTemplate.IsEmpty;
+  end;}
+end;
+
 
 end.
 

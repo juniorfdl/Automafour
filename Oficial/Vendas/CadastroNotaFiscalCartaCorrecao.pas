@@ -84,6 +84,7 @@ type
     SQLEmpresaEMPRA60EMAILCOPIA: TStringField;
     SQLEmpresaEMPRA1TSL: TStringField;
     SQLEmpresaEMPRA75EMAILUSUARIO: TStringField;
+    SQLEmpresaVERSAO: TStringField;
     procedure FormCreate(Sender: TObject);
     procedure SQLTemplateNewRecord(DataSet: TDataSet);
     procedure EnviarCartaClick(Sender: TObject);
@@ -136,6 +137,11 @@ begin
   {$ENDIF}
 
   ACBrNFe1.Configuracoes.Geral.FormaEmissao := StrToTpEmis(OK,IntToStr(sqlEmpresa.FieldByName('EMPRIFORMAEMISNFE').AsInteger+1));
+
+  if SQLEmpresaVERSAO.AsString = '4' then
+    ACBrNFe1.Configuracoes.Geral.VersaoDF := ve400
+  else
+    ACBrNFe1.Configuracoes.Geral.VersaoDF := ve310;
 
   ACBrNFe1.Configuracoes.Arquivos.PathSalvar    := sqlEmpresa.FieldByName('EMPRA100CAMINHOXML').AsString;
   ACBrNFe1.Configuracoes.Arquivos.PathNFe       := sqlEmpresa.FieldByName('EMPRA100CAMINHOXML').AsString;

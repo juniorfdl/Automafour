@@ -247,6 +247,9 @@ type
     Label23: TLabel;
     cxDBTextEdit9: TcxDBTextEdit;
     cxDBTextEdit10: TcxDBTextEdit;
+    SQLTemplateVERSAO: TStringField;
+    RxDBComboBox1: TRxDBComboBox;
+    Label24: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure SQLTemplateBeforePost(DataSet: TDataSet);
     procedure SQLTemplateAfterPost(DataSet: TDataSet);

@@ -8,7 +8,7 @@ uses
   ppStrtch, ppMemo, ppBands, ppCtrls, ppPrnabl, ppClass, ppCache, ppProd,
   ppReport, ppComm, ppRelatv, ppDB, ppDBPipe, ppDBBDE, ACBrNFeDANFEClass,
   ACBrNFeDANFeESCPOS, ACBrDFe, ACBrNFe, ACBrBase, ACBrPosPrinter, MemTable,
-  RestClient, RestUtils, DBClient, UnitLibrary;
+  RestClient, RestUtils, DBClient, UnitLibrary, pcnConversaoNFe;
 
 type
   TDM = class(TDMTemplate)
@@ -799,6 +799,7 @@ type
     TblAPIAutorizacaoDIAS_AVISO: TStringField;
     ACBrNFeCad: TACBrNFe;
     SQLConfigGeralDATA_INI_SEM_NET: TDateTimeField;
+    SQLEmpresaVERSAO: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DBAfterConnect(Sender: TObject);
   private
@@ -888,10 +889,15 @@ begin
   ACBrNFe.DANFE.ViaConsumidor := True;
   ACBrNFe.DANFE.ImprimirItens := True;
 
+  if sqlEmpresa.FieldByName('VERSAO').AsString = '4' then
+    ACBrNFe.Configuracoes.Geral.VersaoDF := ve400
+  else
+    ACBrNFe.Configuracoes.Geral.VersaoDF := ve310;
+
   if (ECFAtual = 'NFCE A4')       then  ACBrPosPrinter.Modelo := ppTexto;
   if (ECFAtual = 'NFCE EPSON')    then  ACBrPosPrinter.Modelo := ppEscPosEpson;
   if (ECFAtual = 'NFCE BEMATECH') then  ACBrPosPrinter.Modelo := ppEscBematech;
-  if (ECFAtual = 'NFCE ELGIN')    then  ACBrPosPrinter.Modelo := ppEscElgin;
+  if (ECFAtual = 'NFCE ELGIN')    then  ACBrPosPrinter.Modelo := ppEscVox;
   if (ECFAtual = 'NFCE DR700')    then  ACBrPosPrinter.Modelo := ppEscDaruma;
   if (ECFAtual = 'NFCE DR800') then
     begin

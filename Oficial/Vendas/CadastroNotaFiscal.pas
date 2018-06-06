@@ -16,15 +16,7 @@ uses
   cxContainer, cxEdit, dxSkinsCore, cxTextEdit,
   cxDBEdit,
   AdvOfficeStatusBar, AdvOfficeStatusBarStylers, AdvPanel, ACBrBase,
-  ACBrMail, ACBrNFeDANFeRLClass, ACBrDFe, dxSkinBlack, dxSkinBlue,
-  dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinFoggy,
-  dxSkinGlassOceans, dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky,
-  dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMoneyTwins,
-  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
-  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinPumpkin, dxSkinSeven,
-  dxSkinSharp, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
-  dxSkinSummer2008, dxSkinsDefaultPainters, dxSkinValentine,
-  dxSkinXmas2008Blue;
+  ACBrMail, ACBrNFeDANFeRLClass, ACBrDFe, pcnConversaoNFe;
 
 type
   TFormCadastroNotaFiscal = class(TFormCadastroTEMPLATE)
@@ -1097,6 +1089,7 @@ type
     btnEncerrar: TAdvGlowButton;
     DBEdit44: TDBEdit;
     btnEncerrar2: TAdvGlowButton;
+    SQLEmpresaVERSAO: TStringField;
     function TabelaNFE_123(Produto, Situacao: string): string;
     procedure FormCreate(Sender: TObject);
     procedure SQLTemplateNewRecord(DataSet: TDataSet);
@@ -1269,7 +1262,7 @@ uses
   ExtensoLib, CadastroAvalista, TelaConsultaOperacaoTesouraria,
   TelaAssistenteLancamentoContasReceber, TelaImpressaoBloquetos, ProcessandoNFe,
   TelaConfigPedidos, CadastroGraficaOrdem, CadastroNotaFiscalReferenciada,
-  pcnConversaoNFe, CadastroNotaFiscalCartaCorrecao, TelaInutilizacaoNFe, pcnNFe,
+  CadastroNotaFiscalCartaCorrecao, TelaInutilizacaoNFe, pcnNFe,
   Math, ACBrNFeWebServices, StatusNFe, email, pcnRetConsReciNFe, pcnProcNFe,
   pcnEventoNFe, pcnRetEnvEventoNFe, TelaConsultaPrevendaTablets,
   TelaImpressaoDuplicatas;
@@ -1984,7 +1977,7 @@ end;
 procedure TFormCadastroNotaFiscal.SQLTemplateBeforeEdit(DataSet: TDataSet);
 begin
   inherited;
-  if (not CancelandoNota)and(not bEnviandoNFE) then
+  if (not CancelandoNota) and (not bEnviandoNFE) then
   begin
     if SQLTemplate.FindField('NOFICSTATUS').asString <> 'A' then
     begin
@@ -1992,7 +1985,7 @@ begin
       Abort;
     end;
   end;
-  
+
   StatusAnterior := SQLTemplate.FindField('NOFICSTATUS').Value;
   PlanoAnterior := SQLTemplate.FindField('PLRCICOD').asString;
   PedidoAnterior := SQLTemplate.FindField('PDVDA13ID').asString;
@@ -5962,6 +5955,11 @@ begin
   ACBrNFe1.Configuracoes.WebServices.Visualizar := SQLEmpresaEMPRA1VISUALIZAMSG.AsString = 'S';
   ACBrNFe1.Configuracoes.WebServices.ProxyHost := sqlEmpresaEMPRA100PROXYHOST.AsString;
 
+  if SQLEmpresaVERSAO.AsString = '4' then
+    ACBrNFe1.Configuracoes.Geral.VersaoDF := ve400
+  else
+    ACBrNFe1.Configuracoes.Geral.VersaoDF := ve310;
+
   if SQLEmpresaEMPRIPROXYPORTA.AsInteger > 0 then
     ACBrNFe1.Configuracoes.WebServices.ProxyPort := IntToStr(SQLEmpresaEMPRIPROXYPORTA.AsInteger);
 
@@ -6120,7 +6118,7 @@ var
   nEmail, nTipoProduto, modBC, modBCST: string;
   Cpf_Dest, Cnpj_Dest, IE_Dest, CFOP, CdBarras, TipoFrete, Descr_Prod, Unidade, NCM, CEST, ForPag, eServico, vCSTIPI, vOrigem: string;
   Erro, TemDifal: boolean;
-  Vlr_Tot_Bruto, ValordoPis, ValordoCofins, PercCofins, PercPis, FatorConversao, vTotTrib: double;
+  TotalDup, Vlr_Tot_Bruto, ValordoPis, ValordoCofins, PercCofins, PercPis, FatorConversao, vTotTrib: double;
   iCRT, IndiceReferenciamento: integer;
   xProdTotal: string;
 begin
@@ -6177,20 +6175,22 @@ begin
     // verifica a forma de pagamento
     SQLContasReceber.Open;
     SQLContasReceber.First;
-    if SQLContasReceberCTRCDVENC.isnull then
-      Ide.indPag := ipVista
-    else
-    begin
-      if (SQLTemplateNOFIDEMIS.AsString = SQLContasReceberCTRCDVENC.AsString) then
+
+    if ACBrNFe1.Configuracoes.Geral.VersaoDF = pcnConversaoNFe.ve310 then
+    begin // Tag excluída na versão 4.00
+      if SQLContasReceberCTRCDVENC.isnull then
         Ide.indPag := ipVista
       else
-        Ide.indpag := ipPrazo;
-      SQLContasReceber.Next;
-      if SQLContasReceber.RecordCount > 1 then
-        Ide.indpag := ipPrazo;
-    end;
-
-    Ide.verProc := '3.0';
+      begin
+        if (SQLTemplateNOFIDEMIS.AsString = SQLContasReceberCTRCDVENC.AsString) then
+          Ide.indPag := ipVista
+        else
+          Ide.indpag := ipPrazo;
+        SQLContasReceber.Next;
+        if SQLContasReceber.RecordCount > 1 then
+          Ide.indpag := ipPrazo;
+      end;
+    end;   
 
     // Carrega cod Estado e Municipio conforme padrao IBGE
     try
@@ -6592,6 +6592,9 @@ begin
                     {''Alíquota interestadual das UF envolvidas: - 4% alíquota interestadual para produtos importados; - 7% para os Estados de origem do Sul e Sudeste (exceto ES), destinado para os Estados do Norte, Nordeste, Centro- Oeste e Espírito Santo - 12% para os demais casos.'' }
             ICMSUFDest.pICMSInter := SQLNotaFiscalItemNFITN2PERCICMS.Value;
                     {''Percentual de ICMS Interestadual para a UF de destino: - 40% em 2016; - 60% em 2017; - 80% em 2018; - 100% a partir de 2019.'' }
+
+            ICMSUFDest.vBCFCPUFDest  := ICMSUFDest.vBCUFDest;
+
             {nao gerar para valores zerado}
             if (SQLNotaFiscalItemNFITN2PERCICMS.value <> 0) then
             begin
@@ -6928,6 +6931,8 @@ begin
       cobr.Fat.vOrig := RoundTo(SQLTemplateNOFIN2VLRPRODUTO.Value, -2);
       cobr.Fat.vDesc := RoundTo(sqltemplateNOFIN2VLRDESC.Value, -2);
       cobr.Fat.vLiq := RoundTo(sqltemplateNOFIN2VLRNOTA.Value, -2);
+      TotalDup := 0;
+
       while not SQLContasReceber.Eof do
       begin
         with Cobr.Dup.Add do
@@ -6935,10 +6940,25 @@ begin
           nDup := SQLTemplateNOFIINUMERO.AsString + '-' + SQLContasReceberCTRCINROPARC.AsString;
           dVenc := SQLContasReceberCTRCDVENC.AsDateTime;
           vDup := RoundTo(SQLContasReceberCTRCN2VLR.asfloat, -2);
+          TotalDup := TotalDup + vDup;
         end;
         SQLContasReceber.Next;
       end;
+
+      with pag.Add do
+      begin
+        tPag := fpOutro;
+        vPag := TotalDup;
+      end;
+    end
+    else begin
+      with pag.Add do
+      begin
+        tPag := fpOutro;
+        vPag := RoundTo(sqltemplateNOFIN2VLRNOTA.Value, -2);
+      end;
     end;
+    
     SQLContasReceber.Close;
 
     // Trasnportadora
