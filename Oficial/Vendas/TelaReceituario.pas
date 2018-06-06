@@ -8,7 +8,7 @@ uses
   Buttons, DB, DBTables, MemTable, RxQuery, RXCtrls, DBCtrls, ConerBtn,
   ImgList, DBActns, ActnList, ppPrnabl, ppClass, ppCtrls, ppBands, ppCache,
   ppDB, ppProd, ppReport, ppComm, ppRelatv, ppDBPipe, ppDBBDE, EDBNum,
-  RXDBCtrl, ppStrtch, ppMemo, BDE, UCrpe32;
+  RXDBCtrl, ppStrtch, ppMemo, BDE, UCrpe32, ppModule, raCodMod;
 
 type
   TFormTelaReceituario = class(TForm)
@@ -324,7 +324,6 @@ type
     ppLabel68: TppLabel;
     ppDBText57: TppDBText;
     ppLabel69: TppLabel;
-    ppDBText58: TppDBText;
     ppDBText59: TppDBText;
     ppLabel74: TppLabel;
     ppDBText60: TppDBText;
@@ -334,7 +333,6 @@ type
     ppDBText62: TppDBText;
     ppLabel77: TppLabel;
     ppDBText63: TppDBText;
-    ppLabel78: TppLabel;
     ppDBText64: TppDBText;
     LblFoneEmpresa3: TppLabel;
     LblNomeEmpresa3: TppLabel;
@@ -348,8 +346,6 @@ type
     ppLabel88: TppLabel;
     ppLabel89: TppLabel;
     ppLabel90: TppLabel;
-    ppLabel91: TppLabel;
-    ppLabel92: TppLabel;
     ppDBText65: TppDBText;
     ppDBText66: TppDBText;
     ppDBText67: TppDBText;
@@ -443,6 +439,58 @@ type
     DBEdit32: TDBEdit;
     DBEdit33: TDBEdit;
     Label1: TLabel;
+    ppLabel94: TppLabel;
+    ppLine6: TppLine;
+    raCodeModule1: TraCodeModule;
+    ppShape1: TppShape;
+    ppShape2: TppShape;
+    ppShape3: TppShape;
+    ppShape4: TppShape;
+    ppShape5: TppShape;
+    ppShape6: TppShape;
+    ppShape7: TppShape;
+    ppLabel78: TppLabel;
+    ppLabel91: TppLabel;
+    ppShape8: TppShape;
+    ppShape9: TppShape;
+    ppShape10: TppShape;
+    ppShape11: TppShape;
+    ppShape12: TppShape;
+    ppShape13: TppShape;
+    ppShape14: TppShape;
+    ppLabel92: TppLabel;
+    ppShape15: TppShape;
+    ppShape16: TppShape;
+    ppShape17: TppShape;
+    ppShape18: TppShape;
+    ppShape19: TppShape;
+    ppShape20: TppShape;
+    ppShape21: TppShape;
+    ppShape22: TppShape;
+    ppShape23: TppShape;
+    ppShape24: TppShape;
+    ppShape25: TppShape;
+    ppShape26: TppShape;
+    ppShape27: TppShape;
+    ppShape28: TppShape;
+    ppShape29: TppShape;
+    ppShape30: TppShape;
+    ppShape31: TppShape;
+    ppShape32: TppShape;
+    ppShape33: TppShape;
+    ppShape34: TppShape;
+    ppShape35: TppShape;
+    ppShape36: TppShape;
+    ppShape37: TppShape;
+    ppShape38: TppShape;
+    ppShape39: TppShape;
+    ppShape40: TppShape;
+    ppShape41: TppShape;
+    ppShape42: TppShape;
+    BDEPipeppField45: TppField;
+    BDEPipeppField46: TppField;
+    ppDBText58: TppDBText;
+    ppDBText94: TppDBText;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);

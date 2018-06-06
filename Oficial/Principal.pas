@@ -252,6 +252,8 @@ type
     BaixaChequesRecebidos1: TMenuItem;
     BaixarChequesEmitidos1: TMenuItem;
     GerarSaldoInicial1: TMenuItem;
+    Restaurante1: TMenuItem;
+    Mesas1: TMenuItem;
     procedure FATUMnCadastroClientesCadastroClick(Sender: TObject);
     procedure FATUMnCadastroClientesTipodeClienteClick(Sender: TObject);
     procedure FATUMnCadastroBancosClick(Sender: TObject);
@@ -498,11 +500,11 @@ type
     procedure MnFINCheRecebidosBaixaChequesRecebidosClick(Sender: TObject);
     procedure FormPrincipalB1Click(Sender: TObject);
     procedure MnSaldoInicialProdutosClick(Sender: TObject);
+    procedure MnCadastroMesasClick(Sender: TObject);
   private
     procedure ApagarOrcamentos;
     procedure ApagarPreVendas;
     procedure VerificaMenu(vMenu:TMenuItem);
-    function VerificaPemissaoMenu(pNomeFormulario:String): boolean;
     { Private declarations }
   public
     { Public declarations }
@@ -585,7 +587,7 @@ uses
   TelaAtualizaEstoquePDVs, RelatorioConferenciaFechamentoCaixa,
   CadastroChequesRecebidos, CadastroChequeEmitido,
   TelaBaixarChequesRecebidos, TelaBaixarChequesEmitidos,
-  TelaGerarSaldoProduto;
+  TelaGerarSaldoProduto, CadastroMesa;
 
 
 
@@ -3054,19 +3056,14 @@ begin
   end;}
 end;
 
-function TFormPrincipal.VerificaPemissaoMenu(pNomeFormulario:String):boolean;
+procedure TFormPrincipal.MnCadastroMesasClick(Sender: TObject);
 begin
-  {if DM.VerificaBloqueioJanela(pNomeFormulario) and (not UsuarioMaster) and (Application.Title <> 'Cupom Fiscal') then
-  begin
-    DM.SQLTemplate.Close;
-    DM.SQLTemplate.SQL.Text := ' select * from USUARIOPERMISSOES ' +
-                               ' where USUAICOD = ' + IntToStr(UsuarioCorrente) +
-                               ' and USPEA60NOMETELA = ''' + pNomeFormulario + '''';
-    DM.SQLTemplate.Open;
-    result := DM.SQLTemplate.IsEmpty;
-  end;}
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroMesa,'FormCadastroMesa',False,False,True,'')
+  else
+    SoundPlay('Acesso Negado.wav',Sender);
 end;
-
 
 end.
 
