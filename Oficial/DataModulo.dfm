@@ -2952,7 +2952,6 @@ inherited DM: TDM
     Configuracoes.WebServices.Tentativas = 1
     Configuracoes.WebServices.AjustaAguardaConsultaRet = True
     Configuracoes.WebServices.QuebradeLinha = '|'
-    Configuracoes.WebServices.TimeoutIntegrador = 0
     DANFE = ACBrNFeDANFeESCPOS
     Left = 545
     Top = 5
@@ -5716,7 +5715,6 @@ inherited DM: TDM
     Configuracoes.WebServices.AjustaAguardaConsultaRet = True
     Configuracoes.WebServices.TimeOut = 20000
     Configuracoes.WebServices.QuebradeLinha = '|'
-    Configuracoes.WebServices.TimeoutIntegrador = 0
     Left = 957
     Top = 49
   end

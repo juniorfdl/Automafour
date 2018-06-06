@@ -3873,11 +3873,9 @@ end;
 procedure TFormCadastroProduto.SQLTemplateSUBGICODChange(Sender: TField);
 begin
   inherited;
-  if ComboSubGrupo.Value <> '' then
-  begin
+  if SQLTemplateSUBGICOD.AsInteger > 0 then
     if SQLSubGrupoSUBGN3MARGEM.Value > 0 then
       SQLTemplatePRODN3PERCMGLVFIXA.Value := SQLSubGrupoSUBGN3MARGEM.Value;
-  end;
 end;
 
 procedure TFormCadastroProduto.BtnDetalhadoClick(Sender: TObject);

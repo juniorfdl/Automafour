@@ -19,6 +19,7 @@ inherited FormCadastroSubgrupo: TFormCadastroSubgrupo
           inherited PagePrincipal: TPageControl
             Top = 47
             Height = 402
+            ActivePage = TabSheetDadosPrincipais
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Height = 329

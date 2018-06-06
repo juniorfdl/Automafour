@@ -17758,7 +17758,6 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
     Configuracoes.WebServices.AjustaAguardaConsultaRet = True
     Configuracoes.WebServices.Salvar = True
     Configuracoes.WebServices.QuebradeLinha = '|'
-    Configuracoes.WebServices.TimeoutIntegrador = 0
     DANFE = ACBrNFeDANFeRL1
     Left = 1029
     Top = 528

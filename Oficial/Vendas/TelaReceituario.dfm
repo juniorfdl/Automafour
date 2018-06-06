@@ -1,6 +1,6 @@
 object FormTelaReceituario: TFormTelaReceituario
-  Left = 235
-  Top = 45
+  Left = -908
+  Top = 190
   BorderIcons = [biSystemMenu]
   BorderStyle = bsNone
   Caption = 'Cadastro de Ordem de Servi'#231'os'
@@ -4705,7 +4705,7 @@ object FormTelaReceituario: TFormTelaReceituario
     DataPipeline = BDEPipe
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Custom'
+    PrinterSetup.PaperName = 'Letter'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 1270
     PrinterSetup.mmMarginLeft = 0
@@ -5331,340 +5331,474 @@ object FormTelaReceituario: TFormTelaReceituario
     Left = 494
     Top = 3
     object BDEPipeppField1: TppField
-      Alignment = taRightJustify
       FieldAlias = 'CLRCICOD'
       FieldName = 'CLRCICOD'
       FieldLength = 0
-      DataType = dtInteger
-      DisplayWidth = 10
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 0
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField2: TppField
       FieldAlias = 'CLIEA13ID'
       FieldName = 'CLIEA13ID'
-      FieldLength = 13
-      DisplayWidth = 13
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 1
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField3: TppField
       FieldAlias = 'ClienteCalcField'
       FieldName = 'ClienteCalcField'
-      FieldLength = 60
-      DisplayWidth = 60
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 2
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField4: TppField
       FieldAlias = 'EndCliCalcField'
       FieldName = 'EndCliCalcField'
-      FieldLength = 60
-      DisplayWidth = 60
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 3
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField5: TppField
       FieldAlias = 'FoneCliCalcField'
       FieldName = 'FoneCliCalcField'
-      FieldLength = 60
-      DisplayWidth = 60
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 4
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField6: TppField
       FieldAlias = 'CLRCDCAD'
       FieldName = 'CLRCDCAD'
       FieldLength = 0
-      DataType = dtDateTime
-      DisplayWidth = 18
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 5
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField7: TppField
       FieldAlias = 'CLRCCTIPOOS'
       FieldName = 'CLRCCTIPOOS'
-      FieldLength = 1
-      DisplayWidth = 1
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 6
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField8: TppField
       FieldAlias = 'CLRCA7LONGODESF'
       FieldName = 'CLRCA7LONGODESF'
-      FieldLength = 7
-      DisplayWidth = 7
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 7
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField9: TppField
       FieldAlias = 'CLRCA7LONGOEESF'
       FieldName = 'CLRCA7LONGOEESF'
-      FieldLength = 7
-      DisplayWidth = 7
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 8
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField10: TppField
       FieldAlias = 'CLRCA7LONGODCIL'
       FieldName = 'CLRCA7LONGODCIL'
-      FieldLength = 7
-      DisplayWidth = 7
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 9
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField11: TppField
       FieldAlias = 'CLRCA7LONGOECIL'
       FieldName = 'CLRCA7LONGOECIL'
-      FieldLength = 7
-      DisplayWidth = 7
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 10
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField12: TppField
       FieldAlias = 'CLRCA7LONGODEIX'
       FieldName = 'CLRCA7LONGODEIX'
-      FieldLength = 7
-      DisplayWidth = 7
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 11
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField13: TppField
       FieldAlias = 'CLRCA7LONGOEEIX'
       FieldName = 'CLRCA7LONGOEEIX'
-      FieldLength = 7
-      DisplayWidth = 7
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 12
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField14: TppField
       FieldAlias = 'CLRCA7LONGODDNP'
       FieldName = 'CLRCA7LONGODDNP'
-      FieldLength = 7
-      DisplayWidth = 7
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 13
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField15: TppField
       FieldAlias = 'CLRCA7LONGOEDNP'
       FieldName = 'CLRCA7LONGOEDNP'
-      FieldLength = 7
-      DisplayWidth = 7
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 14
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField16: TppField
       FieldAlias = 'CLRCA7PERTODESF'
       FieldName = 'CLRCA7PERTODESF'
-      FieldLength = 7
-      DisplayWidth = 7
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 15
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField17: TppField
       FieldAlias = 'CLRCA7PERTOEESF'
       FieldName = 'CLRCA7PERTOEESF'
-      FieldLength = 7
-      DisplayWidth = 7
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 16
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField18: TppField
       FieldAlias = 'CLRCA7PERTODCIL'
       FieldName = 'CLRCA7PERTODCIL'
-      FieldLength = 7
-      DisplayWidth = 7
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 17
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField19: TppField
       FieldAlias = 'CLRCA7PERTOECIL'
       FieldName = 'CLRCA7PERTOECIL'
-      FieldLength = 7
-      DisplayWidth = 7
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 18
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField20: TppField
       FieldAlias = 'CLRCA7PERTODEIX'
       FieldName = 'CLRCA7PERTODEIX'
-      FieldLength = 7
-      DisplayWidth = 7
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 19
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField21: TppField
       FieldAlias = 'CLRCA7PERTOEEIX'
       FieldName = 'CLRCA7PERTOEEIX'
-      FieldLength = 7
-      DisplayWidth = 7
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 20
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField22: TppField
       FieldAlias = 'CLRCA7PERTODDNP'
       FieldName = 'CLRCA7PERTODDNP'
-      FieldLength = 7
-      DisplayWidth = 7
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 21
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField23: TppField
       FieldAlias = 'CLRCA7PERTOEDNP'
       FieldName = 'CLRCA7PERTOEDNP'
-      FieldLength = 7
-      DisplayWidth = 7
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 22
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField24: TppField
       FieldAlias = 'CLRCA7PERTODANP'
       FieldName = 'CLRCA7PERTODANP'
-      FieldLength = 7
-      DisplayWidth = 7
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 23
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField25: TppField
       FieldAlias = 'CLRCA7PERTOEANP'
       FieldName = 'CLRCA7PERTOEANP'
-      FieldLength = 7
-      DisplayWidth = 7
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 24
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField26: TppField
       FieldAlias = 'CLRCA7PERTOADI'
       FieldName = 'CLRCA7PERTOADI'
-      FieldLength = 7
-      DisplayWidth = 7
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 25
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField27: TppField
-      Alignment = taRightJustify
       FieldAlias = 'VENDICOD'
       FieldName = 'VENDICOD'
       FieldLength = 0
-      DataType = dtInteger
-      DisplayWidth = 10
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 26
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField28: TppField
       FieldAlias = 'VendedorCalcField'
       FieldName = 'VendedorCalcField'
-      FieldLength = 60
-      DisplayWidth = 60
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 27
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField29: TppField
       FieldAlias = 'CLRCDENTREGA'
       FieldName = 'CLRCDENTREGA'
       FieldLength = 0
-      DataType = dtDateTime
-      DisplayWidth = 18
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 28
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField30: TppField
       FieldAlias = 'CLRCDDATARECBTO'
       FieldName = 'CLRCDDATARECBTO'
       FieldLength = 0
-      DataType = dtDateTime
-      DisplayWidth = 18
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 29
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField31: TppField
       FieldAlias = 'CLRCA30LENTES'
       FieldName = 'CLRCA30LENTES'
-      FieldLength = 30
-      DisplayWidth = 30
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 30
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField32: TppField
       FieldAlias = 'CLRCA30ARMACAO'
       FieldName = 'CLRCA30ARMACAO'
-      FieldLength = 30
-      DisplayWidth = 30
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 31
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField33: TppField
       FieldAlias = 'CLRCA30COR'
       FieldName = 'CLRCA30COR'
-      FieldLength = 30
-      DisplayWidth = 30
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 32
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField34: TppField
       FieldAlias = 'CLRCA15MARCA'
       FieldName = 'CLRCA15MARCA'
-      FieldLength = 15
-      DisplayWidth = 15
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 33
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField35: TppField
       FieldAlias = 'CLRCA15CAIXA'
       FieldName = 'CLRCA15CAIXA'
-      FieldLength = 15
-      DisplayWidth = 15
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 34
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField36: TppField
       FieldAlias = 'CLRCA15PULSEIRA'
       FieldName = 'CLRCA15PULSEIRA'
-      FieldLength = 15
-      DisplayWidth = 15
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 35
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField37: TppField
       FieldAlias = 'CLRCA15MOSTRADOR'
       FieldName = 'CLRCA15MOSTRADOR'
-      FieldLength = 15
-      DisplayWidth = 15
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 36
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField38: TppField
       FieldAlias = 'CLRCA254SOLICIT'
       FieldName = 'CLRCA254SOLICIT'
-      FieldLength = 254
-      DisplayWidth = 254
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 37
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField39: TppField
       FieldAlias = 'CLRCA254REALIZA'
       FieldName = 'CLRCA254REALIZA'
-      FieldLength = 254
-      DisplayWidth = 254
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 38
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField40: TppField
-      Alignment = taRightJustify
       FieldAlias = 'CLRCN3VLRTOTAL'
       FieldName = 'CLRCN3VLRTOTAL'
-      FieldLength = 3
-      DataType = dtDouble
-      DisplayWidth = 16
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 39
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField41: TppField
-      Alignment = taRightJustify
       FieldAlias = 'CLRCN3VLRSINAL'
       FieldName = 'CLRCN3VLRSINAL'
-      FieldLength = 3
-      DataType = dtDouble
-      DisplayWidth = 16
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 40
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField42: TppField
-      Alignment = taRightJustify
       FieldAlias = 'CLRCN3VLRSALDO'
       FieldName = 'CLRCN3VLRSALDO'
-      FieldLength = 3
-      DataType = dtDouble
-      DisplayWidth = 16
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 41
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField43: TppField
       FieldAlias = 'PENDENTE'
       FieldName = 'PENDENTE'
-      FieldLength = 1
-      DisplayWidth = 1
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 42
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField44: TppField
       FieldAlias = 'REGISTRO'
       FieldName = 'REGISTRO'
       FieldLength = 0
-      DataType = dtDateTime
-      DisplayWidth = 18
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 43
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField45: TppField
-      FieldAlias = 'CLRCA7LONGODALT'
-      FieldName = 'CLRCA7LONGODALT'
-      FieldLength = 10
-      DisplayWidth = 10
+      FieldAlias = 'BairroCliCalcField'
+      FieldName = 'BairroCliCalcField'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
       Position = 44
+      Searchable = False
+      Sortable = False
     end
     object BDEPipeppField46: TppField
+      FieldAlias = 'CLRCA7LONGODALT'
+      FieldName = 'CLRCA7LONGODALT'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 45
+      Searchable = False
+      Sortable = False
+    end
+    object BDEPipeppField47: TppField
       FieldAlias = 'CLRCA7LONGOEALT'
       FieldName = 'CLRCA7LONGOEALT'
-      FieldLength = 10
-      DisplayWidth = 10
-      Position = 45
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 46
+      Searchable = False
+      Sortable = False
     end
   end
   object ppReportRelogios: TppReport
@@ -5672,7 +5806,7 @@ object FormTelaReceituario: TFormTelaReceituario
     DataPipeline = BDEPipe
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Custom'
+    PrinterSetup.PaperName = 'Letter'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 1270
     PrinterSetup.mmMarginLeft = 0
@@ -6458,7 +6592,7 @@ object FormTelaReceituario: TFormTelaReceituario
     DataPipeline = BDEPipe
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Custom'
+    PrinterSetup.PaperName = 'Letter'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 1270
     PrinterSetup.mmMarginLeft = 0
@@ -6488,337 +6622,337 @@ object FormTelaReceituario: TFormTelaReceituario
       object ppShape36: TppShape
         UserName = 'Shape36'
         mmHeight = 6879
-        mmLeft = 199496
+        mmLeft = 187855
         mmTop = 66940
-        mmWidth = 20373
+        mmWidth = 19050
         BandType = 4
       end
       object ppShape37: TppShape
         UserName = 'Shape37'
         mmHeight = 6879
-        mmLeft = 179388
+        mmLeft = 169069
         mmTop = 66940
-        mmWidth = 20373
+        mmWidth = 19050
         BandType = 4
       end
       object ppShape38: TppShape
         UserName = 'Shape38'
         mmHeight = 6879
-        mmLeft = 159279
+        mmLeft = 150548
         mmTop = 66940
-        mmWidth = 20373
+        mmWidth = 18785
         BandType = 4
       end
       object ppShape39: TppShape
         UserName = 'Shape103'
         mmHeight = 6879
-        mmLeft = 139171
+        mmLeft = 131763
         mmTop = 66940
-        mmWidth = 20373
+        mmWidth = 19050
         BandType = 4
       end
       object ppShape40: TppShape
         UserName = 'Shape40'
         mmHeight = 6879
-        mmLeft = 119063
+        mmLeft = 112977
         mmTop = 66940
-        mmWidth = 20373
+        mmWidth = 19050
         BandType = 4
       end
       object ppShape41: TppShape
         UserName = 'Shape41'
         mmHeight = 6879
-        mmLeft = 98954
+        mmLeft = 94721
         mmTop = 66940
-        mmWidth = 20373
+        mmWidth = 18521
         BandType = 4
       end
       object ppShape42: TppShape
         UserName = 'Shape42'
         mmHeight = 6879
-        mmLeft = 78846
+        mmLeft = 75671
         mmTop = 66940
-        mmWidth = 20373
+        mmWidth = 19315
         BandType = 4
       end
       object ppShape33: TppShape
         UserName = 'Shape33'
         mmHeight = 6879
-        mmLeft = 199496
+        mmLeft = 187855
         mmTop = 93398
-        mmWidth = 20373
+        mmWidth = 19050
         BandType = 4
       end
       object ppShape34: TppShape
         UserName = 'Shape34'
         mmHeight = 6879
-        mmLeft = 179388
+        mmLeft = 169069
         mmTop = 93398
-        mmWidth = 20373
+        mmWidth = 19050
         BandType = 4
       end
       object ppShape35: TppShape
         UserName = 'Shape35'
         mmHeight = 6879
-        mmLeft = 159279
+        mmLeft = 150548
         mmTop = 93398
-        mmWidth = 20373
+        mmWidth = 18785
         BandType = 4
       end
       object ppShape31: TppShape
         UserName = 'Shape31'
         mmHeight = 6879
-        mmLeft = 139171
+        mmLeft = 131763
         mmTop = 93398
-        mmWidth = 20373
+        mmWidth = 19050
         BandType = 4
       end
       object ppShape32: TppShape
         UserName = 'Shape32'
         mmHeight = 6879
-        mmLeft = 119063
+        mmLeft = 112977
         mmTop = 93398
-        mmWidth = 20373
+        mmWidth = 19050
         BandType = 4
       end
       object ppShape30: TppShape
         UserName = 'Shape30'
         mmHeight = 6879
-        mmLeft = 98954
+        mmLeft = 94721
         mmTop = 93398
-        mmWidth = 20373
+        mmWidth = 18521
         BandType = 4
       end
       object ppShape29: TppShape
         UserName = 'Shape29'
         mmHeight = 6879
-        mmLeft = 78846
+        mmLeft = 75671
         mmTop = 93398
-        mmWidth = 20373
+        mmWidth = 19315
         BandType = 4
       end
       object ppShape26: TppShape
         UserName = 'Shape26'
         mmHeight = 6879
-        mmLeft = 199496
+        mmLeft = 187855
         mmTop = 86784
-        mmWidth = 20373
+        mmWidth = 19050
         BandType = 4
       end
       object ppShape28: TppShape
         UserName = 'Shape28'
         mmHeight = 6879
-        mmLeft = 159279
+        mmLeft = 150548
         mmTop = 86784
-        mmWidth = 20373
+        mmWidth = 18785
         BandType = 4
       end
       object ppShape27: TppShape
         UserName = 'Shape201'
         mmHeight = 6879
-        mmLeft = 179388
+        mmLeft = 169069
         mmTop = 86784
-        mmWidth = 20373
+        mmWidth = 19050
         BandType = 4
       end
       object ppShape24: TppShape
         UserName = 'Shape24'
         mmHeight = 6879
-        mmLeft = 139171
+        mmLeft = 131763
         mmTop = 86784
-        mmWidth = 20373
+        mmWidth = 19050
         BandType = 4
       end
       object ppShape25: TppShape
         UserName = 'Shape25'
         mmHeight = 6879
-        mmLeft = 119063
+        mmLeft = 112977
         mmTop = 86784
-        mmWidth = 20373
+        mmWidth = 19050
         BandType = 4
       end
       object ppShape23: TppShape
         UserName = 'Shape23'
         mmHeight = 6879
-        mmLeft = 98954
+        mmLeft = 94721
         mmTop = 86784
-        mmWidth = 20373
+        mmWidth = 18521
         BandType = 4
       end
       object ppShape22: TppShape
         UserName = 'Shape22'
         mmHeight = 6879
-        mmLeft = 78846
+        mmLeft = 75671
         mmTop = 86784
-        mmWidth = 20373
+        mmWidth = 19315
         BandType = 4
       end
       object ppShape19: TppShape
         UserName = 'Shape19'
         mmHeight = 6879
-        mmLeft = 199496
+        mmLeft = 187855
         mmTop = 80169
-        mmWidth = 20373
+        mmWidth = 19050
         BandType = 4
       end
       object ppShape20: TppShape
         UserName = 'Shape20'
         mmHeight = 6879
-        mmLeft = 179388
+        mmLeft = 169069
         mmTop = 80169
-        mmWidth = 20373
+        mmWidth = 19050
         BandType = 4
       end
       object ppShape21: TppShape
         UserName = 'Shape21'
         mmHeight = 6879
-        mmLeft = 159279
+        mmLeft = 150548
         mmTop = 80169
-        mmWidth = 20373
+        mmWidth = 18785
         BandType = 4
       end
       object ppShape17: TppShape
         UserName = 'Shape102'
         mmHeight = 6879
-        mmLeft = 139171
+        mmLeft = 131763
         mmTop = 80169
-        mmWidth = 20373
+        mmWidth = 19050
         BandType = 4
       end
       object ppShape18: TppShape
         UserName = 'Shape18'
         mmHeight = 6879
-        mmLeft = 119063
+        mmLeft = 112977
         mmTop = 80169
-        mmWidth = 20373
+        mmWidth = 19050
         BandType = 4
       end
       object ppShape16: TppShape
         UserName = 'Shape16'
         mmHeight = 6879
-        mmLeft = 98954
+        mmLeft = 94721
         mmTop = 80169
-        mmWidth = 20373
+        mmWidth = 18521
         BandType = 4
       end
       object ppShape15: TppShape
         UserName = 'Shape15'
         mmHeight = 6879
-        mmLeft = 78846
+        mmLeft = 75671
         mmTop = 80169
-        mmWidth = 20373
+        mmWidth = 19315
         BandType = 4
       end
       object ppShape12: TppShape
         UserName = 'Shape101'
         mmHeight = 6879
-        mmLeft = 199496
+        mmLeft = 187855
         mmTop = 73554
-        mmWidth = 20373
+        mmWidth = 19050
         BandType = 4
       end
       object ppShape13: TppShape
         UserName = 'Shape13'
         mmHeight = 6879
-        mmLeft = 179388
+        mmLeft = 169069
         mmTop = 73554
-        mmWidth = 20373
+        mmWidth = 19050
         BandType = 4
       end
       object ppShape14: TppShape
         UserName = 'Shape14'
         mmHeight = 6879
-        mmLeft = 159279
+        mmLeft = 150548
         mmTop = 73554
-        mmWidth = 20373
+        mmWidth = 18785
         BandType = 4
       end
       object ppShape10: TppShape
         UserName = 'Shape10'
         mmHeight = 6879
-        mmLeft = 139171
+        mmLeft = 131763
         mmTop = 73554
-        mmWidth = 20373
+        mmWidth = 19050
         BandType = 4
       end
       object ppShape11: TppShape
         UserName = 'Shape11'
         mmHeight = 6879
-        mmLeft = 119063
+        mmLeft = 112977
         mmTop = 73554
-        mmWidth = 20373
+        mmWidth = 19050
         BandType = 4
       end
       object ppShape9: TppShape
         UserName = 'Shape9'
         mmHeight = 6879
-        mmLeft = 98954
+        mmLeft = 94721
         mmTop = 73554
-        mmWidth = 20373
+        mmWidth = 18521
         BandType = 4
       end
       object ppShape8: TppShape
         UserName = 'Shape8'
         mmHeight = 6879
-        mmLeft = 78846
+        mmLeft = 75671
         mmTop = 73554
-        mmWidth = 20373
+        mmWidth = 19315
         BandType = 4
       end
       object ppShape6: TppShape
         UserName = 'Shape6'
         mmHeight = 6879
-        mmLeft = 48419
+        mmLeft = 47625
         mmTop = 86784
-        mmWidth = 30692
+        mmWidth = 28310
         BandType = 4
       end
       object ppShape7: TppShape
         UserName = 'Shape7'
         mmHeight = 6879
-        mmLeft = 48419
+        mmLeft = 47625
         mmTop = 93398
-        mmWidth = 30692
+        mmWidth = 28310
         BandType = 4
       end
       object ppShape5: TppShape
         UserName = 'Shape5'
         mmHeight = 6879
-        mmLeft = 48419
+        mmLeft = 47625
         mmTop = 80169
-        mmWidth = 30692
+        mmWidth = 28310
         BandType = 4
       end
       object ppShape4: TppShape
         UserName = 'Shape4'
         mmHeight = 6879
-        mmLeft = 48419
+        mmLeft = 47625
         mmTop = 73554
-        mmWidth = 30692
+        mmWidth = 28310
         BandType = 4
       end
       object ppShape3: TppShape
         UserName = 'Shape3'
         mmHeight = 13494
-        mmLeft = 30427
+        mmLeft = 31221
         mmTop = 86784
-        mmWidth = 18256
+        mmWidth = 16669
         BandType = 4
       end
       object ppShape2: TppShape
         UserName = 'Shape2'
         mmHeight = 13494
-        mmLeft = 30427
+        mmLeft = 31221
         mmTop = 73554
-        mmWidth = 18256
+        mmWidth = 16669
         BandType = 4
       end
       object ppShape1: TppShape
         UserName = 'Shape1'
         mmHeight = 5027
-        mmLeft = 30427
+        mmLeft = 28575
         mmTop = 124354
-        mmWidth = 189442
+        mmWidth = 177536
         BandType = 4
       end
       object ppLabel52: TppLabel
@@ -6835,7 +6969,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Font.Style = [fsBold]
         Transparent = True
         mmHeight = 4233
-        mmLeft = 30427
+        mmLeft = 28575
         mmTop = 30692
         mmWidth = 11113
         BandType = 4
@@ -6858,7 +6992,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Transparent = True
         DataPipelineName = 'BDEPipe'
         mmHeight = 4233
-        mmLeft = 67204
+        mmLeft = 65352
         mmTop = 30692
         mmWidth = 11906
         BandType = 4
@@ -6878,7 +7012,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Font.Style = [fsBold]
         Transparent = True
         mmHeight = 4233
-        mmLeft = 30427
+        mmLeft = 28575
         mmTop = 48683
         mmWidth = 30427
         BandType = 4
@@ -6899,7 +7033,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Transparent = True
         DataPipelineName = 'BDEPipe'
         mmHeight = 4233
-        mmLeft = 67204
+        mmLeft = 65352
         mmTop = 48683
         mmWidth = 25400
         BandType = 4
@@ -6919,7 +7053,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Font.Style = [fsBold]
         Transparent = True
         mmHeight = 4233
-        mmLeft = 30427
+        mmLeft = 28575
         mmTop = 35190
         mmWidth = 25400
         BandType = 4
@@ -6940,7 +7074,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Transparent = True
         DataPipelineName = 'BDEPipe'
         mmHeight = 4233
-        mmLeft = 67204
+        mmLeft = 65352
         mmTop = 35190
         mmWidth = 43127
         BandType = 4
@@ -6960,7 +7094,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Font.Style = [fsBold]
         Transparent = True
         mmHeight = 4233
-        mmLeft = 30427
+        mmLeft = 28575
         mmTop = 39688
         mmWidth = 20373
         BandType = 4
@@ -6982,7 +7116,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Transparent = True
         DataPipelineName = 'BDEPipe'
         mmHeight = 4233
-        mmLeft = 67204
+        mmLeft = 65352
         mmTop = 39688
         mmWidth = 23813
         BandType = 4
@@ -7003,7 +7137,7 @@ object FormTelaReceituario: TFormTelaReceituario
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 4233
-        mmLeft = 30427
+        mmLeft = 28575
         mmTop = 149490
         mmWidth = 30427
         BandType = 4
@@ -7027,30 +7161,9 @@ object FormTelaReceituario: TFormTelaReceituario
         Transparent = True
         DataPipelineName = 'BDEPipe'
         mmHeight = 4233
-        mmLeft = 63500
+        mmLeft = 61648
         mmTop = 149490
         mmWidth = 20638
-        BandType = 4
-      end
-      object ppLabel69: TppLabel
-        UserName = 'Label501'
-        AutoSize = False
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        Caption = 'Servico Solicitado'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Name = 'Draft 17cpi'
-        Font.Size = 10
-        Font.Style = [fsBold]
-        TextAlignment = taCentered
-        Transparent = True
-        mmHeight = 4191
-        mmLeft = 102394
-        mmTop = 124884
-        mmWidth = 45773
         BandType = 4
       end
       object ppDBText59: TppDBText
@@ -7070,7 +7183,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Transparent = True
         DataPipelineName = 'BDEPipe'
         mmHeight = 4233
-        mmLeft = 67204
+        mmLeft = 65352
         mmTop = 44186
         mmWidth = 23813
         BandType = 4
@@ -7091,7 +7204,7 @@ object FormTelaReceituario: TFormTelaReceituario
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 4233
-        mmLeft = 30427
+        mmLeft = 28575
         mmTop = 153988
         mmWidth = 30427
         BandType = 4
@@ -7115,7 +7228,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Transparent = True
         DataPipelineName = 'BDEPipe'
         mmHeight = 4233
-        mmLeft = 63500
+        mmLeft = 61648
         mmTop = 153988
         mmWidth = 20638
         BandType = 4
@@ -7136,7 +7249,7 @@ object FormTelaReceituario: TFormTelaReceituario
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 4233
-        mmLeft = 30427
+        mmLeft = 28575
         mmTop = 158486
         mmWidth = 30427
         BandType = 4
@@ -7160,7 +7273,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Transparent = True
         DataPipelineName = 'BDEPipe'
         mmHeight = 4233
-        mmLeft = 63500
+        mmLeft = 61648
         mmTop = 158486
         mmWidth = 20638
         BandType = 4
@@ -7180,7 +7293,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Font.Style = [fsBold]
         Transparent = True
         mmHeight = 4233
-        mmLeft = 30427
+        mmLeft = 28575
         mmTop = 53181
         mmWidth = 30692
         BandType = 4
@@ -7201,7 +7314,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Transparent = True
         DataPipelineName = 'BDEPipe'
         mmHeight = 4233
-        mmLeft = 67204
+        mmLeft = 65352
         mmTop = 53181
         mmWidth = 25400
         BandType = 4
@@ -7226,28 +7339,6 @@ object FormTelaReceituario: TFormTelaReceituario
         mmWidth = 111654
         BandType = 4
       end
-      object ppDBText63: TppDBText
-        UserName = 'DBText80'
-        Border.BorderPositions = []
-        Border.Color = clBlack
-        Border.Style = psSolid
-        Border.Visible = False
-        DataField = 'ClienteCalcField'
-        DataPipeline = BDEPipe
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Name = 'Draft 17cpi'
-        Font.Size = 10
-        Font.Style = []
-        TextAlignment = taCentered
-        Transparent = True
-        DataPipelineName = 'BDEPipe'
-        mmHeight = 4233
-        mmLeft = 66146
-        mmTop = 178859
-        mmWidth = 117740
-        BandType = 4
-      end
       object ppDBText64: TppDBText
         UserName = 'DBText81'
         CharWrap = True
@@ -7266,9 +7357,9 @@ object FormTelaReceituario: TFormTelaReceituario
         WordWrap = True
         DataPipelineName = 'BDEPipe'
         mmHeight = 19579
-        mmLeft = 30163
+        mmLeft = 28575
         mmTop = 128852
-        mmWidth = 189707
+        mmWidth = 177536
         BandType = 4
       end
       object LblFoneEmpresa3: TppLabel
@@ -7325,7 +7416,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Font.Style = []
         Transparent = True
         mmHeight = 4233
-        mmLeft = 2117
+        mmLeft = 0
         mmTop = 225161
         mmWidth = 7673
         BandType = 4
@@ -7366,9 +7457,9 @@ object FormTelaReceituario: TFormTelaReceituario
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3440
-        mmLeft = 86254
+        mmLeft = 79111
         mmTop = 68792
-        mmWidth = 5556
+        mmWidth = 12965
         BandType = 4
       end
       object ppLabel84: TppLabel
@@ -7387,9 +7478,9 @@ object FormTelaReceituario: TFormTelaReceituario
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3440
-        mmLeft = 106363
+        mmLeft = 97631
         mmTop = 68792
-        mmWidth = 5556
+        mmWidth = 13229
         BandType = 4
       end
       object ppLabel85: TppLabel
@@ -7408,7 +7499,7 @@ object FormTelaReceituario: TFormTelaReceituario
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3440
-        mmLeft = 126471
+        mmLeft = 120386
         mmTop = 68792
         mmWidth = 5556
         BandType = 4
@@ -7429,7 +7520,7 @@ object FormTelaReceituario: TFormTelaReceituario
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3440
-        mmLeft = 146579
+        mmLeft = 139171
         mmTop = 68792
         mmWidth = 5556
         BandType = 4
@@ -7449,7 +7540,7 @@ object FormTelaReceituario: TFormTelaReceituario
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3440
-        mmLeft = 34131
+        mmLeft = 33602
         mmTop = 78581
         mmWidth = 10848
         BandType = 4
@@ -7469,7 +7560,7 @@ object FormTelaReceituario: TFormTelaReceituario
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3440
-        mmLeft = 54769
+        mmLeft = 51594
         mmTop = 82021
         mmWidth = 17992
         BandType = 4
@@ -7489,7 +7580,7 @@ object FormTelaReceituario: TFormTelaReceituario
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3440
-        mmLeft = 52652
+        mmLeft = 49477
         mmTop = 75406
         mmWidth = 22225
         BandType = 4
@@ -7509,7 +7600,7 @@ object FormTelaReceituario: TFormTelaReceituario
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3440
-        mmLeft = 34925
+        mmLeft = 34396
         mmTop = 91811
         mmWidth = 9525
         BandType = 4
@@ -7532,7 +7623,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Transparent = True
         DataPipelineName = 'BDEPipe'
         mmHeight = 4233
-        mmLeft = 82021
+        mmLeft = 78846
         mmTop = 81492
         mmWidth = 13758
         BandType = 4
@@ -7555,7 +7646,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Transparent = True
         DataPipelineName = 'BDEPipe'
         mmHeight = 4233
-        mmLeft = 102129
+        mmLeft = 97896
         mmTop = 81492
         mmWidth = 13758
         BandType = 4
@@ -7578,7 +7669,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Transparent = True
         DataPipelineName = 'BDEPipe'
         mmHeight = 4233
-        mmLeft = 122238
+        mmLeft = 116152
         mmTop = 81492
         mmWidth = 13758
         BandType = 4
@@ -7601,7 +7692,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Transparent = True
         DataPipelineName = 'BDEPipe'
         mmHeight = 4233
-        mmLeft = 142346
+        mmLeft = 134938
         mmTop = 81492
         mmWidth = 13758
         BandType = 4
@@ -7624,7 +7715,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Transparent = True
         DataPipelineName = 'BDEPipe'
         mmHeight = 4233
-        mmLeft = 82021
+        mmLeft = 78846
         mmTop = 74877
         mmWidth = 13758
         BandType = 4
@@ -7647,7 +7738,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Transparent = True
         DataPipelineName = 'BDEPipe'
         mmHeight = 4233
-        mmLeft = 102129
+        mmLeft = 97896
         mmTop = 74877
         mmWidth = 13758
         BandType = 4
@@ -7670,7 +7761,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Transparent = True
         DataPipelineName = 'BDEPipe'
         mmHeight = 4233
-        mmLeft = 122238
+        mmLeft = 116152
         mmTop = 74877
         mmWidth = 13758
         BandType = 4
@@ -7693,7 +7784,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Transparent = True
         DataPipelineName = 'BDEPipe'
         mmHeight = 4233
-        mmLeft = 82021
+        mmLeft = 78846
         mmTop = 88106
         mmWidth = 13758
         BandType = 4
@@ -7716,7 +7807,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Transparent = True
         DataPipelineName = 'BDEPipe'
         mmHeight = 4233
-        mmLeft = 102129
+        mmLeft = 97896
         mmTop = 88106
         mmWidth = 13758
         BandType = 4
@@ -7739,7 +7830,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Transparent = True
         DataPipelineName = 'BDEPipe'
         mmHeight = 4233
-        mmLeft = 122238
+        mmLeft = 116152
         mmTop = 88106
         mmWidth = 13758
         BandType = 4
@@ -7762,7 +7853,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Transparent = True
         DataPipelineName = 'BDEPipe'
         mmHeight = 4233
-        mmLeft = 142346
+        mmLeft = 134938
         mmTop = 88106
         mmWidth = 13758
         BandType = 4
@@ -7785,7 +7876,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Transparent = True
         DataPipelineName = 'BDEPipe'
         mmHeight = 4233
-        mmLeft = 122238
+        mmLeft = 116152
         mmTop = 94721
         mmWidth = 13758
         BandType = 4
@@ -7808,7 +7899,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Transparent = True
         DataPipelineName = 'BDEPipe'
         mmHeight = 4233
-        mmLeft = 102129
+        mmLeft = 97896
         mmTop = 94721
         mmWidth = 13758
         BandType = 4
@@ -7831,7 +7922,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Transparent = True
         DataPipelineName = 'BDEPipe'
         mmHeight = 4233
-        mmLeft = 82021
+        mmLeft = 78846
         mmTop = 94721
         mmWidth = 13758
         BandType = 4
@@ -7854,7 +7945,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Transparent = True
         DataPipelineName = 'BDEPipe'
         mmHeight = 4233
-        mmLeft = 142346
+        mmLeft = 134938
         mmTop = 74877
         mmWidth = 13758
         BandType = 4
@@ -7877,7 +7968,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Transparent = True
         DataPipelineName = 'BDEPipe'
         mmHeight = 4233
-        mmLeft = 142346
+        mmLeft = 134938
         mmTop = 94721
         mmWidth = 13758
         BandType = 4
@@ -7898,7 +7989,7 @@ object FormTelaReceituario: TFormTelaReceituario
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3440
-        mmLeft = 166688
+        mmLeft = 157957
         mmTop = 68792
         mmWidth = 5556
         BandType = 4
@@ -7921,7 +8012,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Transparent = True
         DataPipelineName = 'BDEPipe'
         mmHeight = 4233
-        mmLeft = 162454
+        mmLeft = 153723
         mmTop = 88106
         mmWidth = 13758
         BandType = 4
@@ -7944,7 +8035,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Transparent = True
         DataPipelineName = 'BDEPipe'
         mmHeight = 4233
-        mmLeft = 162454
+        mmLeft = 153723
         mmTop = 94721
         mmWidth = 13758
         BandType = 4
@@ -7965,7 +8056,7 @@ object FormTelaReceituario: TFormTelaReceituario
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3440
-        mmLeft = 186796
+        mmLeft = 176477
         mmTop = 68792
         mmWidth = 5556
         BandType = 4
@@ -7988,7 +8079,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Transparent = True
         DataPipelineName = 'BDEPipe'
         mmHeight = 4233
-        mmLeft = 183357
+        mmLeft = 173038
         mmTop = 94721
         mmWidth = 12171
         BandType = 4
@@ -8007,7 +8098,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Font.Style = [fsBold]
         Transparent = True
         mmHeight = 3440
-        mmLeft = 30427
+        mmLeft = 28575
         mmTop = 108215
         mmWidth = 10848
         BandType = 4
@@ -8029,7 +8120,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Transparent = True
         DataPipelineName = 'BDEPipe'
         mmHeight = 4233
-        mmLeft = 42598
+        mmLeft = 40746
         mmTop = 108215
         mmWidth = 19315
         BandType = 4
@@ -8048,7 +8139,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Font.Style = [fsBold]
         Transparent = True
         mmHeight = 3440
-        mmLeft = 30427
+        mmLeft = 28575
         mmTop = 117211
         mmWidth = 7144
         BandType = 4
@@ -8070,7 +8161,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Transparent = True
         DataPipelineName = 'BDEPipe'
         mmHeight = 4233
-        mmLeft = 39952
+        mmLeft = 38100
         mmTop = 117211
         mmWidth = 14817
         BandType = 4
@@ -8089,7 +8180,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Font.Style = [fsBold]
         Transparent = True
         mmHeight = 3440
-        mmLeft = 30427
+        mmLeft = 28575
         mmTop = 112713
         mmWidth = 15346
         BandType = 4
@@ -8111,7 +8202,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Transparent = True
         DataPipelineName = 'BDEPipe'
         mmHeight = 4233
-        mmLeft = 46567
+        mmLeft = 44715
         mmTop = 112713
         mmWidth = 20638
         BandType = 4
@@ -8152,7 +8243,7 @@ object FormTelaReceituario: TFormTelaReceituario
         Font.Style = [fsBold]
         Transparent = True
         mmHeight = 4233
-        mmLeft = 30427
+        mmLeft = 28575
         mmTop = 44186
         mmWidth = 12700
         BandType = 4
@@ -8167,10 +8258,10 @@ object FormTelaReceituario: TFormTelaReceituario
         Pen.Width = 0
         Style = lsDouble
         Weight = 0.100000001490116100
-        mmHeight = 1588
-        mmLeft = 39952
-        mmTop = 177536
-        mmWidth = 170127
+        mmHeight = 529
+        mmLeft = 37306
+        mmTop = 178330
+        mmWidth = 159544
         BandType = 4
       end
       object ppLabel78: TppLabel
@@ -8188,7 +8279,7 @@ object FormTelaReceituario: TFormTelaReceituario
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3440
-        mmLeft = 52652
+        mmLeft = 49477
         mmTop = 88636
         mmWidth = 22225
         BandType = 4
@@ -8208,7 +8299,7 @@ object FormTelaReceituario: TFormTelaReceituario
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3440
-        mmLeft = 54769
+        mmLeft = 51594
         mmTop = 95250
         mmWidth = 17992
         BandType = 4
@@ -8229,9 +8320,9 @@ object FormTelaReceituario: TFormTelaReceituario
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3440
-        mmLeft = 206905
+        mmLeft = 193411
         mmTop = 68792
-        mmWidth = 5556
+        mmWidth = 8202
         BandType = 4
       end
       object ppDBText58: TppDBText
@@ -8252,9 +8343,9 @@ object FormTelaReceituario: TFormTelaReceituario
         Transparent = True
         DataPipelineName = 'BDEPipe'
         mmHeight = 3175
-        mmLeft = 199761
+        mmLeft = 188119
         mmTop = 75406
-        mmWidth = 19844
+        mmWidth = 19050
         BandType = 4
       end
       object ppDBText94: TppDBText
@@ -8275,22 +8366,78 @@ object FormTelaReceituario: TFormTelaReceituario
         Transparent = True
         DataPipelineName = 'BDEPipe'
         mmHeight = 3175
-        mmLeft = 199761
+        mmLeft = 188119
         mmTop = 82021
-        mmWidth = 19844
+        mmWidth = 19050
+        BandType = 4
+      end
+      object ppLabel95: TppLabel
+        UserName = 'Label95'
+        AutoSize = False
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        Transparent = True
+        mmHeight = 0
+        mmLeft = 0
+        mmTop = 0
+        mmWidth = 1058
+        BandType = 4
+      end
+      object ppDBText95: TppDBText
+        UserName = 'DBText95'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
+        DataField = 'ClienteCalcField'
+        DataPipeline = BDEPipe
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'BDEPipe'
+        mmHeight = 3969
+        mmLeft = 50271
+        mmTop = 179388
+        mmWidth = 118534
+        BandType = 4
+      end
+      object ppLabel69: TppLabel
+        UserName = 'Label69'
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
+        Caption = 'Servi'#231'o Solicitado'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Draft 17cpi'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 99748
+        mmTop = 124619
+        mmWidth = 30427
         BandType = 4
       end
     end
     object raCodeModule1: TraCodeModule
-      ProgramStream = {
-        01060F5472614576656E7448616E646C65720B50726F6772616D4E616D650611
-        44425465787438304F6E476574546578740B50726F6772616D54797065070B74
-        7450726F63656475726506536F75726365065E70726F63656475726520444254
-        65787438304F6E476574546578742876617220546578743A20537472696E6729
-        3B0D0A626567696E0D0A0D0A202054657874203A3D20272827202B2054657874
-        202B202729273B0D0A0D0A656E643B0D0A0D436F6D706F6E656E744E616D6506
-        084442546578743830094576656E744E616D6506094F6E476574546578740745
-        76656E74494402350000}
+      ProgramStream = {00}
+    end
+    object ppParameterList1: TppParameterList
     end
   end
   object Report: TCrpe

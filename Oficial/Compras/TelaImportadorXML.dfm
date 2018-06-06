@@ -2391,7 +2391,6 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
     Configuracoes.WebServices.AguardarConsultaRet = 15000
     Configuracoes.WebServices.AjustaAguardaConsultaRet = True
     Configuracoes.WebServices.QuebradeLinha = '|'
-    Configuracoes.WebServices.TimeoutIntegrador = 0
     Left = 538
     Top = 8
   end

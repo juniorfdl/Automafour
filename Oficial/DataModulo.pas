@@ -891,7 +891,7 @@ begin
   if (ECFAtual = 'NFCE A4')       then  ACBrPosPrinter.Modelo := ppTexto;
   if (ECFAtual = 'NFCE EPSON')    then  ACBrPosPrinter.Modelo := ppEscPosEpson;
   if (ECFAtual = 'NFCE BEMATECH') then  ACBrPosPrinter.Modelo := ppEscBematech;
-  if (ECFAtual = 'NFCE ELGIN')    then  ACBrPosPrinter.Modelo := ppEscElgin;
+  if (ECFAtual = 'NFCE ELGIN')    then  ACBrPosPrinter.Modelo := ppEscVox;
   if (ECFAtual = 'NFCE DR700')    then  ACBrPosPrinter.Modelo := ppEscDaruma;
   if (ECFAtual = 'NFCE DR800') then
     begin
