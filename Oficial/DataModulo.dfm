@@ -6,7 +6,6 @@ inherited DM: TDM
   Width = 1200
   inherited DB: TDatabase
     AliasName = 'Easy_Gestao'
-    Connected = False
     AfterConnect = DBAfterConnect
   end
   object SQLConfigGeral: TRxQuery
@@ -502,6 +501,10 @@ inherited DM: TDM
     object SQLEmpresaEMPRIUFCODFED: TIntegerField
       FieldName = 'EMPRIUFCODFED'
       Origin = 'DB.EMPRESA.EMPRIUFCODFED'
+    end
+    object SQLEmpresaVERSAO: TStringField
+      FieldName = 'VERSAO'
+      Size = 1
     end
   end
   object SqlConsulta: TQuery
@@ -1893,7 +1896,7 @@ inherited DM: TDM
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'A4'
+    PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350
@@ -1901,7 +1904,7 @@ inherited DM: TDM
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 0
     PrinterSetup.mmPaperWidth = 0
-    PrinterSetup.PaperSize = 9
+    PrinterSetup.PaperSize = 256
     DeviceType = 'Screen'
     EmailSettings.ReportFormat = 'PDF'
     OutlineSettings.CreateNode = True

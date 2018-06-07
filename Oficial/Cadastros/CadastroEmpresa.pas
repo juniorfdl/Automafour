@@ -11,7 +11,15 @@ uses
   ACBrBase, ACBrMail, cxDropDownEdit, cxDBEdit, cxCheckBox, cxSpinEdit,
   cxMaskEdit, cxButtonEdit, cxTextEdit, cxGroupBox, cxControls,
   cxContainer, cxEdit, cxRadioGroup, AdvOfficeStatusBar,
-  AdvOfficeStatusBarStylers, AdvPanel;
+  AdvOfficeStatusBarStylers, AdvPanel, dxSkinsCore, dxSkinBlack,
+  dxSkinBlue, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinFoggy, dxSkinGlassOceans, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinPumpkin, dxSkinSeven,
+  dxSkinSharp, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinXmas2008Blue;
 
 type
   TFormCadastroEmpresa = class(TFormCadastroTEMPLATE)
@@ -247,6 +255,9 @@ type
     Label23: TLabel;
     cxDBTextEdit9: TcxDBTextEdit;
     cxDBTextEdit10: TcxDBTextEdit;
+    SQLTemplateVERSAO: TStringField;
+    RxDBComboBox1: TRxDBComboBox;
+    Label24: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure SQLTemplateBeforePost(DataSet: TDataSet);
     procedure SQLTemplateAfterPost(DataSet: TDataSet);

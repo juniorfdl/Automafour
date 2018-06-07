@@ -504,6 +504,7 @@ type
   private
     procedure ApagarOrcamentos;
     procedure ApagarPreVendas;
+    procedure VerificaMenu(vMenu:TMenuItem);
     { Private declarations }
   public
     { Public declarations }
@@ -1341,7 +1342,7 @@ begin
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     CriaFormulario(TFormCadastroProduto, 'FormCadastroProduto', False, False, False, '')
   else
-    SoundPlay('Acesso Negado.wav', Sender);
+    SoundPlay('Acesso Negado.wav', Sender);                                          
 end;
 
 procedure TFormPrincipal.MnADMCadastroClientesCadastroClick(Sender: TObject);
@@ -3043,7 +3044,16 @@ begin
     CriaFormulario(TFormTelaGerarSaldoProduto,'FormTelaGerarSaldoProduto',False,False,False,'')
   else
     SoundPlay('Acesso Negado.wav',Sender);
+end;
 
+procedure TFormPrincipal.VerificaMenu(vMenu:TMenuItem);
+begin
+  {for i:= 0 to vMenu.Items.Count -1 do
+  begin
+    if vMenu.Items[i].Count = 0 then
+      VerificaPemissaoMenu(vMenu.Items[i].)
+
+  end;}
 end;
 
 procedure TFormPrincipal.MnCadastroMesasClick(Sender: TObject);

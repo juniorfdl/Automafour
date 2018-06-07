@@ -17748,7 +17748,6 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
     Configuracoes.Geral.SSLXmlSignLib = xsMsXmlCapicom
     Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
     Configuracoes.Geral.AtualizarXMLCancelado = True
-    Configuracoes.Geral.IncluirQRCodeXMLNFCe = False
     Configuracoes.Arquivos.OrdenacaoPath = <>
     Configuracoes.Arquivos.SepararPorMes = True
     Configuracoes.Arquivos.SalvarApenasNFeProcessadas = True
@@ -18090,6 +18089,10 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
       FieldName = 'EMPRA75EMAILUSUARIO'
       Origin = 'DB.EMPRESA.EMPRA75EMAILUSUARIO'
       Size = 75
+    end
+    object SQLEmpresaVERSAO: TStringField
+      FieldName = 'VERSAO'
+      Size = 1
     end
   end
 end
