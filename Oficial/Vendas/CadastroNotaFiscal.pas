@@ -2141,7 +2141,7 @@ begin
   VarNOFIN2VLRDESCPROM := SQLTemplate.FieldByName('NOFIN2VLRDESCPROM').AsString;
   VarNOFIA255OBS := SQLTemplate.FieldByName('NOFIA255OBS').AsString;
 
-  if SQLTemplate.State = dsInsert then
+  if (SQLTemplate.State = dsInsert)or(sqltemplateNOFIINUMERO.Value = 0) then
   begin
     SQLSerie.Close;
     SQLSerie.MacroByName('mEmpresa').value := 'EMPRICOD = ' + SQLTemplateEMPRICOD.AsString;
