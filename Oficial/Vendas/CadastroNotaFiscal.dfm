@@ -17748,6 +17748,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
     Configuracoes.Geral.SSLXmlSignLib = xsMsXmlCapicom
     Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
     Configuracoes.Geral.AtualizarXMLCancelado = True
+    Configuracoes.Geral.VersaoQRCode = veqr000
     Configuracoes.Arquivos.OrdenacaoPath = <>
     Configuracoes.Arquivos.SepararPorMes = True
     Configuracoes.Arquivos.SalvarApenasNFeProcessadas = True
@@ -17772,48 +17773,6 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
     IDECharset = CP1252
     Left = 1046
     Top = 556
-  end
-  object ACBrNFeDANFeRL1: TACBrNFeDANFeRL
-    ACBrNFe = ACBrNFe1
-    MostrarPreview = True
-    MostrarStatus = True
-    TipoDANFE = tiRetrato
-    NumCopias = 1
-    ImprimeNomeFantasia = False
-    ImprimirDescPorc = False
-    ImprimirTotalLiquido = True
-    MargemInferior = 0.700000000000000000
-    MargemSuperior = 0.700000000000000000
-    MargemEsquerda = 0.700000000000000000
-    MargemDireita = 0.700000000000000000
-    CasasDecimais.Formato = tdetInteger
-    CasasDecimais._qCom = 4
-    CasasDecimais._vUnCom = 4
-    CasasDecimais._Mask_qCom = '###,###,###,##0.00'
-    CasasDecimais._Mask_vUnCom = '###,###,###,##0.00'
-    ExibirResumoCanhoto = False
-    FormularioContinuo = False
-    TamanhoFonte_DemaisCampos = 10
-    ProdutosPorPagina = 0
-    ImprimirDetalhamentoEspecifico = True
-    NFeCancelada = False
-    ImprimirItens = True
-    ViaConsumidor = True
-    TamanhoLogoHeight = 0
-    TamanhoLogoWidth = 0
-    RecuoEndereco = 0
-    RecuoEmpresa = 0
-    LogoemCima = False
-    TamanhoFonteEndereco = 0
-    RecuoLogo = 0
-    LarguraCodProd = 54
-    ExibirEAN = False
-    QuebraLinhaEmDetalhamentoEspecifico = True
-    ExibeCampoFatura = False
-    ImprimirUnQtVlComercial = iuComercial
-    ImprimirDadosDocReferenciados = True
-    Left = 1016
-    Top = 557
   end
   object SQLEmpresa: TRxQuery
     DatabaseName = 'DB'
@@ -18094,5 +18053,47 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
       FieldName = 'VERSAO'
       Size = 1
     end
+  end
+  object ACBrNFeDANFeRL1: TACBrNFeDANFeRL
+    ACBrNFe = ACBrNFe1
+    MostrarPreview = True
+    MostrarStatus = True
+    TipoDANFE = tiRetrato
+    NumCopias = 1
+    ImprimeNomeFantasia = False
+    ImprimirDescPorc = False
+    ImprimirTotalLiquido = True
+    MargemInferior = 0.700000000000000000
+    MargemSuperior = 0.700000000000000000
+    MargemEsquerda = 0.700000000000000000
+    MargemDireita = 0.700000000000000000
+    CasasDecimais.Formato = tdetInteger
+    CasasDecimais._qCom = 4
+    CasasDecimais._vUnCom = 4
+    CasasDecimais._Mask_qCom = ',0.00'
+    CasasDecimais._Mask_vUnCom = ',0.00'
+    ExibirResumoCanhoto = False
+    FormularioContinuo = False
+    TamanhoFonte_DemaisCampos = 8
+    ProdutosPorPagina = 0
+    ImprimirDetalhamentoEspecifico = True
+    NFeCancelada = False
+    ImprimirItens = True
+    ViaConsumidor = True
+    TamanhoLogoHeight = 0
+    TamanhoLogoWidth = 0
+    RecuoEndereco = 0
+    RecuoEmpresa = 0
+    LogoemCima = False
+    TamanhoFonteEndereco = 0
+    RecuoLogo = 0
+    LarguraCodProd = 54
+    ExibirEAN = False
+    QuebraLinhaEmDetalhamentoEspecifico = True
+    ExibeCampoFatura = False
+    ImprimirUnQtVlComercial = iuComercial
+    ImprimirDadosDocReferenciados = True
+    Left = 1094
+    Top = 544
   end
 end

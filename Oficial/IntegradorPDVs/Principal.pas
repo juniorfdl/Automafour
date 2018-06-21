@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, RXShell, ACBrBase, ACBrFala, dxGDIPlusClasses, ExtCtrls, Menus,
   DB, ZAbstractRODataset, ZAbstractDataset, ZDataset, ZConnection, IniFiles,
-  TFlatPanelUnit, StdCtrls, ZAbstractConnection;
+  TFlatPanelUnit, StdCtrls, ZAbstractConnection, jpeg;
 
 type
   TFormPrincipal = class(TForm)
@@ -23,7 +23,6 @@ type
     ZConsultaPDV: TZQuery;
     ZupdatePDV: TZQuery;
     MnImportarTabelasConfiguracao: TMenuItem;
-    Image2: TImage;
     lbStatus: TLabel;
     shpStatusServidor: TShape;
     lbTerminal: TLabel;
@@ -40,6 +39,8 @@ type
     ZInsereEstoqueServidor: TZQuery;
     ZConsultaTabelaServidor: TZQuery;
     ImportarNCMs1: TMenuItem;
+    Panel1: TPanel;
+    Image2: TImage;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure TimerTimer(Sender: TObject);
     procedure FormCreate(Sender: TObject);

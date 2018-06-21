@@ -14,7 +14,15 @@ uses
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
   cxImageComboBox, ImgList, Menus, DBClient, ACBrBase, ACBrDFe, Grids,
   DBGrids, Spin, DBCtrls, AdvOfficeStatusBar, AdvOfficeStatusBarStylers, IniFiles, pcnConversao,
-  VarSYS, ShellAPI, pcnConversaoNFe;
+  VarSYS, ShellAPI, pcnConversaoNFe, dxSkinBlack, dxSkinBlue,
+  dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky,
+  dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinPumpkin, dxSkinSeven,
+  dxSkinSharp, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinXmas2008Blue, dxSkinscxPCPainter;
 
 type
   TTipoInconsistencia = (tiCritica, tiInformacao, tiErro);

@@ -16,7 +16,15 @@ uses
   cxContainer, cxEdit, dxSkinsCore, cxTextEdit,
   cxDBEdit,
   AdvOfficeStatusBar, AdvOfficeStatusBarStylers, AdvPanel, ACBrBase,
-  ACBrMail, ACBrNFeDANFeRLClass, ACBrDFe, pcnConversaoNFe;
+  ACBrMail, ACBrNFeDANFeRLClass, ACBrDFe, pcnConversaoNFe, dxSkinBlack,
+  dxSkinBlue, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinFoggy, dxSkinGlassOceans, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinPumpkin, dxSkinSeven,
+  dxSkinSharp, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinXmas2008Blue;
 
 type
   TFormCadastroNotaFiscal = class(TFormCadastroTEMPLATE)
@@ -1032,7 +1040,6 @@ type
     ACBrNFe1: TACBrNFe;
     ACBrMail1: TACBrMail;
     MnGerarBoletos: TMenuItem;
-    ACBrNFeDANFeRL1: TACBrNFeDANFeRL;
     SQLEmpresa: TRxQuery;
     SQLEmpresaEMPRICOD: TIntegerField;
     SQLEmpresaEMPRA60RAZAOSOC: TStringField;
@@ -1090,6 +1097,7 @@ type
     DBEdit44: TDBEdit;
     btnEncerrar2: TAdvGlowButton;
     SQLEmpresaVERSAO: TStringField;
+    ACBrNFeDANFeRL1: TACBrNFeDANFeRL;
     function TabelaNFE_123(Produto, Situacao: string): string;
     procedure FormCreate(Sender: TObject);
     procedure SQLTemplateNewRecord(DataSet: TDataSet);
@@ -6337,11 +6345,18 @@ begin
     end;
 
     {indIEDest 1=Obrigatorio IE , 2=Isento de Inscrição, 9=Exterior Não Contribuinte}
-    if (trim(IE_Dest) = 'ISENTO') or (IE_Dest = '') then
+    if (trim(IE_Dest) = 'ISENTO') then
     begin
       ide.indFinal := cfConsumidorFinal;
      // Dest.indIEDest := inNaoContribuinte; {9}
       Dest.indIEDest := inIsento; {2}
+      Dest.IE := ''; {Preencher vazio}
+    end
+    else
+    if (trim(IE_Dest) = '') then
+    begin
+      ide.indFinal := cfConsumidorFinal;
+      Dest.indIEDest := inNaoContribuinte; {9}
       Dest.IE := ''; {Preencher vazio}
     end
     else
@@ -6954,7 +6969,7 @@ begin
     else begin
       with pag.Add do
       begin
-        tPag := fpOutro;
+        tPag := fpSemPagamento;
         vPag := RoundTo(sqltemplateNOFIN2VLRNOTA.Value, -2);
       end;
     end;

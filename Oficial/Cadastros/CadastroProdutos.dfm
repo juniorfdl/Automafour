@@ -2133,7 +2133,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                 Top = 296
                 Width = 652
                 Height = 177
-                ActivePage = TabSheetDescontos
+                ActivePage = TabSheet2
                 TabOrder = 15
                 object TabSheet1: TTabSheet
                   Caption = 'Tributa'#231#227'o ICMS'
