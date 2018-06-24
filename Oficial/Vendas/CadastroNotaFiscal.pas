@@ -5481,6 +5481,10 @@ begin
   if not Pergunta('Nao', 'Gerar Notas Fiscais Eletrônicas?') then
     Exit;
 
+  if sqltemplate.state = dsinsert then
+    sqltemplate.Post;
+
+  SQLEmpresa.Locate('EMPRICOD',SQLTemplateEMPRICOD.AsInteger,[]);
   try
     bEnviandoNFE := true;
   {Inicio Rotina usando ACBR NFE, por Adilson}
@@ -5583,6 +5587,8 @@ begin
     end;
 
   finally
+    SQLTemplate.BeforeEdit := SQLTemplateBeforeEdit;
+    SQLTemplate.BeforePost := SQLTemplateBeforePost;
     bEnviandoNFE := false;
   end;
 
@@ -5947,7 +5953,7 @@ var
 begin
 {$IFDEF ACBrNFeOpenSSL}
   ACBrNFe1.Configuracoes.Certificados.Certificado := sqlEmpresaEMPRA100CERTIFSERIE.AsString;
-  ACBrNFe1.Configuracoes.Certificados.Senha := sqlEmpresaEMPRA35CERTIFSENHA.AsString;
+  ACBrNFe1.Configuracoes.Certificados.Senha := sq0lEmpresaEMPRA35CERTIFSENHA.AsString;
 {$ELSE}
   ACBrNFe1.Configuracoes.Certificados.NumeroSerie := SQLEmpresaEMPRA100CERTIFSERIE.AsString;
 {$ENDIF}

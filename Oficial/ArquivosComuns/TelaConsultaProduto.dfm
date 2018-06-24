@@ -5,18 +5,22 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
   Height = 598
   ActiveControl = EditProcura
   Caption = 'Consulta Produtos'
+  Color = 13225421
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
   inherited ScrollBoxFundo: TScrollBox
     Width = 715
-    Height = 559
+    Height = 560
+    Color = 13225421
+    ParentColor = False
     inherited PanelCentral: TPanel
       Width = 711
       Height = 471
-      Color = 15199218
+      Color = 13225421
       inherited PanelProcura: TPanel
         Width = 711
+        Color = 13225421
         object LabelValorProcura: TLabel [0]
           Left = 326
           Top = 3
@@ -35,6 +39,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
           Width = 365
         end
         inherited PanelIndice: TPanel
+          Color = 13225421
           inherited LblProcurarPor: TLabel
             Left = 5
             Top = 4
@@ -52,17 +57,32 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
           item
             Expanded = False
             FieldName = 'PRODICOD'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clBlack
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'PRODA60DESCR'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clBlack
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 307
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'PRODA30ADESCRREDUZ'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clBlack
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 233
             Visible = True
           end
@@ -70,6 +90,11 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
             Expanded = False
             FieldName = 'PRODN3VLRVENDA'
             Title.Caption = 'Vlr.Venda'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clBlack
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Visible = True
           end>
       end
@@ -82,7 +107,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
         BorderStyle = bsNone
         Color = clWhite
         DataSource = DSSQLProdutoSaldo
-        FixedColor = 10053171
+        FixedColor = clGray
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -100,29 +125,54 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
           item
             Expanded = False
             FieldName = 'EMPRICOD'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clBlack
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'EmpresaLookup'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clBlack
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 338
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'PSLDN3QTDE'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clBlack
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 68
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'PSLDN3QTDMIN'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clBlack
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 69
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'PSLDN3QTDMAX'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clBlack
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
             Width = 71
             Visible = True
           end>
@@ -133,7 +183,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
         Width = 711
         Height = 155
         Align = alBottom
-        Color = 16249066
+        Color = 13225421
         TabOrder = 3
         object PageControl1: TPageControl
           Left = 1
@@ -155,7 +205,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
               Caption = 'Barras'
               FocusControl = DBEdit38
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = 8404992
+              Font.Color = clBlack
               Font.Height = -11
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
@@ -169,7 +219,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
               Caption = 'Estruturado'
               FocusControl = DBEdit39
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = 8404992
+              Font.Color = clBlack
               Font.Height = -11
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
@@ -183,7 +233,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
               Caption = 'Refer'#234'ncia'
               FocusControl = DBEdit40
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = 8404992
+              Font.Color = clBlack
               Font.Height = -11
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
@@ -197,7 +247,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
               Caption = 'Balan'#231'a'
               FocusControl = DBEdit41
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = 8404992
+              Font.Color = clBlack
               Font.Height = -11
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
@@ -211,7 +261,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
               Caption = 'Valor Venda'
               FocusControl = DBEdit42
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = 8404992
+              Font.Color = clBlack
               Font.Height = -11
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
@@ -225,7 +275,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
               Caption = 'Al'#237'quota Icms'
               FocusControl = DBEdit46
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = 8404992
+              Font.Color = clBlack
               Font.Height = -11
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
@@ -239,7 +289,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
               Caption = 'Marca'
               FocusControl = DBEdit47
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = 8404992
+              Font.Color = clBlack
               Font.Height = -11
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
@@ -253,7 +303,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
               Caption = 'Grupo'
               FocusControl = DBEdit48
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = 8404992
+              Font.Color = clBlack
               Font.Height = -11
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
@@ -267,7 +317,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
               Caption = 'SubGrupo'
               FocusControl = DBEdit49
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = 8404992
+              Font.Color = clBlack
               Font.Height = -11
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
@@ -281,7 +331,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
               Caption = 'Data Ini.Prom.'
               FocusControl = DBEdit50
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = 8404992
+              Font.Color = clBlack
               Font.Height = -11
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
@@ -295,7 +345,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
               Caption = 'Dt.T'#233'rm.Prom.'
               FocusControl = DBEdit51
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = 8404992
+              Font.Color = clBlack
               Font.Height = -11
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
@@ -309,7 +359,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
               Caption = 'Valor Prom.'
               FocusControl = DBEdit52
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = 8404992
+              Font.Color = clBlack
               Font.Height = -11
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
@@ -323,7 +373,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
               Caption = 'Dt.Cadastro'
               FocusControl = DBEdit53
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = 8404992
+              Font.Color = clBlack
               Font.Height = -11
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
@@ -337,7 +387,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
               Caption = 'Dt.Ult.Alter'
               FocusControl = DBEdit54
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = 8404992
+              Font.Color = clBlack
               Font.Height = -11
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
@@ -351,7 +401,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
               Caption = 'Cor'
               FocusControl = DBEdit55
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = 8404992
+              Font.Color = clBlack
               Font.Height = -11
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
@@ -364,7 +414,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
               Height = 13
               Caption = 'Tamanho'
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = 8404992
+              Font.Color = clBlack
               Font.Height = -11
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
@@ -378,7 +428,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
               Caption = 'C'#243'd.Antigo'
               FocusControl = DBEdit57
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = 8404992
+              Font.Color = clBlack
               Font.Height = -11
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
@@ -671,7 +721,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
                 Height = 13
                 Caption = 'Servi'#231'o'
                 Font.Charset = DEFAULT_CHARSET
-                Font.Color = 8404992
+                Font.Color = clBlack
                 Font.Height = -11
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
@@ -684,7 +734,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
                 Height = 13
                 Caption = 'Mov. Estoque'
                 Font.Charset = DEFAULT_CHARSET
-                Font.Color = 8404992
+                Font.Color = clBlack
                 Font.Height = -11
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
@@ -697,7 +747,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
                 Height = 13
                 Caption = 'Capac. Embal.'
                 Font.Charset = DEFAULT_CHARSET
-                Font.Color = 8404992
+                Font.Color = clBlack
                 Font.Height = -11
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
@@ -711,7 +761,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
                 Caption = 'C'#243'd. Composi'#231#227'o'
                 FocusControl = DBEdit9
                 Font.Charset = DEFAULT_CHARSET
-                Font.Color = 8404992
+                Font.Color = clBlack
                 Font.Height = -11
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
@@ -874,7 +924,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
                 BorderStyle = bsNone
                 Color = clWhite
                 DataSource = DSSQLProdutoSerie
-                FixedColor = 10053171
+                FixedColor = clGray
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
                 Font.Height = -11
@@ -892,6 +942,11 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
                   item
                     Expanded = False
                     FieldName = 'PRSEA60NROSERIE'
+                    Title.Font.Charset = DEFAULT_CHARSET
+                    Title.Font.Color = clBlack
+                    Title.Font.Height = -11
+                    Title.Font.Name = 'Tahoma'
+                    Title.Font.Style = [fsBold]
                     Width = 288
                     Visible = True
                   end>
@@ -971,11 +1026,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
       end
     end
   end
-  inherited DSTemplate: TDataSource
-    OnDataChange = DSTemplateDataChange
-    Left = 152
-  end
-  object SQLClassificacaoFiscal: TRxQuery [2]
+  object SQLClassificacaoFiscal: TRxQuery [1]
     DatabaseName = 'DB'
     SQL.Strings = (
       'select * from CLASSIFICACAOFISCAL')
@@ -983,7 +1034,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
     Left = 228
     Top = 39
   end
-  object SQLUnidade: TRxQuery [3]
+  object SQLUnidade: TRxQuery [2]
     DatabaseName = 'DB'
     SQL.Strings = (
       'select * from UNIDADE')
@@ -991,7 +1042,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
     Left = 396
     Top = 11
   end
-  object SQLCor: TRxQuery [4]
+  object SQLCor: TRxQuery [3]
     DatabaseName = 'DB'
     SQL.Strings = (
       'select * from COR')
@@ -999,7 +1050,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
     Left = 424
     Top = 11
   end
-  object SQLIcms: TRxQuery [5]
+  object SQLIcms: TRxQuery [4]
     DatabaseName = 'DB'
     SQL.Strings = (
       'select * from ICMS')
@@ -1007,7 +1058,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
     Left = 452
     Top = 11
   end
-  object SQLGradeTamanho: TRxQuery [6]
+  object SQLGradeTamanho: TRxQuery [5]
     DatabaseName = 'DB'
     SQL.Strings = (
       'select * from GRADETAMANHO')
@@ -1015,7 +1066,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
     Left = 368
     Top = 11
   end
-  object SQLGrade: TRxQuery [7]
+  object SQLGrade: TRxQuery [6]
     DatabaseName = 'DB'
     SQL.Strings = (
       'select * from GRADE')
@@ -1023,7 +1074,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
     Left = 340
     Top = 11
   end
-  object SQLMarca: TRxQuery [8]
+  object SQLMarca: TRxQuery [7]
     DatabaseName = 'DB'
     SQL.Strings = (
       'select * from MARCA')
@@ -1031,7 +1082,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
     Left = 228
     Top = 11
   end
-  object SQLVariacao: TRxQuery [9]
+  object SQLVariacao: TRxQuery [8]
     DatabaseName = 'DB'
     SQL.Strings = (
       'select * from VARIACAO')
@@ -1039,7 +1090,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
     Left = 312
     Top = 11
   end
-  object SQLGrupo: TRxQuery [10]
+  object SQLGrupo: TRxQuery [9]
     DatabaseName = 'DB'
     SQL.Strings = (
       'select * from GRUPO')
@@ -1047,7 +1098,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
     Left = 256
     Top = 11
   end
-  object SQLSubGrupo: TRxQuery [11]
+  object SQLSubGrupo: TRxQuery [10]
     DatabaseName = 'DB'
     SQL.Strings = (
       'select * from SUBGRUPO')
@@ -1055,7 +1106,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
     Left = 284
     Top = 11
   end
-  object SQLProdutoSaldo: TRxQuery [12]
+  object SQLProdutoSaldo: TRxQuery [11]
     DatabaseName = 'DB'
     DataSource = DSTemplate
     SQL.Strings = (
@@ -1110,12 +1161,12 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
       Lookup = True
     end
   end
-  object DSSQLProdutoSaldo: TDataSource [13]
+  object DSSQLProdutoSaldo: TDataSource [12]
     DataSet = SQLProdutoSaldo
     Left = 284
     Top = 39
   end
-  object SQLEmpresa: TRxQuery [14]
+  object SQLEmpresa: TRxQuery [13]
     DatabaseName = 'DB'
     SQL.Strings = (
       'Select * From EMPRESA')
@@ -1133,6 +1184,10 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
       Size = 60
     end
   end
+  inherited DSTemplate: TDataSource
+    OnDataChange = DSTemplateDataChange
+    Left = 152
+  end
   inherited SQLTemplate: TRxQuery
     SQL.Strings = (
       'Select'
@@ -1140,7 +1195,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
       'From'
       'Produto'
       'Where'
-      'PRODCATIVO = ''S'' and'
+      'PRODCATIVO = '#39'S'#39' and'
       'PRODICOD = PRODIAGRUPGRADE and '
       '(%MFiltro)')
     object SQLTemplatePRODICOD: TIntegerField
@@ -1537,7 +1592,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
       Size = 2000
     end
   end
-  object FormStorage1: TFormStorage [17]
+  object FormStorage1: TFormStorage [16]
     Options = []
     StoredProps.Strings = (
       'ComboOrder.Text'
@@ -1546,7 +1601,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
     Left = 480
     Top = 11
   end
-  object SQLProdutoSerie: TRxQuery [18]
+  object SQLProdutoSerie: TRxQuery [17]
     DatabaseName = 'DB'
     DataSource = DSTemplate
     SQL.Strings = (
@@ -1576,12 +1631,12 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
       Size = 60
     end
   end
-  object DSSQLProdutoSerie: TDataSource [19]
+  object DSSQLProdutoSerie: TDataSource [18]
     DataSet = SQLProdutoSerie
     Left = 372
     Top = 45
   end
-  object SQLProdutoComposicao: TRxQuery [20]
+  object SQLProdutoComposicao: TRxQuery [19]
     DatabaseName = 'DB'
     DataSource = DSTemplate
     SQL.Strings = (
@@ -1603,7 +1658,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
       Origin = 'DB.PRODUTOCOMPOSICAO.PRODICOD'
     end
   end
-  object DSSQLProdutoComposicao: TDataSource [21]
+  object DSSQLProdutoComposicao: TDataSource [20]
     DataSet = SQLProdutoComposicao
     Left = 438
     Top = 45

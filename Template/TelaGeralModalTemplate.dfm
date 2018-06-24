@@ -1,9 +1,9 @@
 object FormTelaGeralModalTemplate: TFormTelaGeralModalTemplate
-  Left = 863
-  Top = 228
+  Left = 432
+  Top = 162
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
-  ClientHeight = 401
+  ClientHeight = 408
   ClientWidth = 483
   Color = 16249066
   Font.Charset = DEFAULT_CHARSET
@@ -26,7 +26,7 @@ object FormTelaGeralModalTemplate: TFormTelaGeralModalTemplate
     Left = 0
     Top = 80
     Width = 483
-    Height = 321
+    Height = 328
     Align = alClient
     BevelOuter = bvNone
     Color = 16249066
@@ -194,18 +194,18 @@ object FormTelaGeralModalTemplate: TFormTelaGeralModalTemplate
     end
   end
   object AdvOfficeStatusBarOfficeStyler1: TAdvOfficeStatusBarOfficeStyler
-    BorderColor = 14986888
-    PanelAppearanceLight.BorderColor = 14922381
+    BorderColor = 16384
+    PanelAppearanceLight.BorderColor = 5278518
     PanelAppearanceLight.BorderColorHot = clGray
     PanelAppearanceLight.BorderColorDown = 10240783
-    PanelAppearanceLight.Color = 16440774
-    PanelAppearanceLight.ColorTo = 14854530
+    PanelAppearanceLight.Color = 8166488
+    PanelAppearanceLight.ColorTo = 5278518
     PanelAppearanceLight.ColorHot = 13958143
     PanelAppearanceLight.ColorHotTo = 6538487
     PanelAppearanceLight.ColorDown = 9232890
     PanelAppearanceLight.ColorDownTo = 1940207
-    PanelAppearanceLight.ColorMirror = 14854530
-    PanelAppearanceLight.ColorMirrorTo = 14854530
+    PanelAppearanceLight.ColorMirror = 5278518
+    PanelAppearanceLight.ColorMirrorTo = 8166488
     PanelAppearanceLight.ColorMirrorHot = 6538487
     PanelAppearanceLight.ColorMirrorHotTo = 6538487
     PanelAppearanceLight.ColorMirrorDown = 1940207

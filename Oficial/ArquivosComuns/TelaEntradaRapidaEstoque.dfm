@@ -1,10 +1,10 @@
 object FormTelaEntradaRapidaEstoque: TFormTelaEntradaRapidaEstoque
-  Left = 665
-  Top = 165
+  Left = 384
+  Top = 154
   Width = 633
   Height = 437
   Caption = 'Entrada R'#225'pida no Estoque'
-  Color = 16249066
+  Color = 15001572
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -38,7 +38,7 @@ object FormTelaEntradaRapidaEstoque: TFormTelaEntradaRapidaEstoque
       Height = 13
       Caption = 'Valor Ultima Compra'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 8404992
+      Font.Color = clBlack
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -51,7 +51,7 @@ object FormTelaEntradaRapidaEstoque: TFormTelaEntradaRapidaEstoque
       Height = 13
       Caption = 'Valor Custo M'#233'dio'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 8404992
+      Font.Color = clBlack
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -64,7 +64,7 @@ object FormTelaEntradaRapidaEstoque: TFormTelaEntradaRapidaEstoque
       Height = 13
       Caption = 'Frete %'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 8404992
+      Font.Color = clBlack
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -77,7 +77,7 @@ object FormTelaEntradaRapidaEstoque: TFormTelaEntradaRapidaEstoque
       Height = 13
       Caption = 'IPI %'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 8404992
+      Font.Color = clBlack
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -90,7 +90,7 @@ object FormTelaEntradaRapidaEstoque: TFormTelaEntradaRapidaEstoque
       Height = 13
       Caption = 'Margem Varejo %'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 8404992
+      Font.Color = clBlack
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -103,7 +103,7 @@ object FormTelaEntradaRapidaEstoque: TFormTelaEntradaRapidaEstoque
       Height = 13
       Caption = 'Valor Venda Varejo'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 8404992
+      Font.Color = clBlack
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -116,7 +116,7 @@ object FormTelaEntradaRapidaEstoque: TFormTelaEntradaRapidaEstoque
       Height = 13
       Caption = 'Valor Venda Atacado'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 8404992
+      Font.Color = clBlack
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -129,7 +129,7 @@ object FormTelaEntradaRapidaEstoque: TFormTelaEntradaRapidaEstoque
       Height = 13
       Caption = 'Margem Atacad %'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 8404992
+      Font.Color = clBlack
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -142,7 +142,7 @@ object FormTelaEntradaRapidaEstoque: TFormTelaEntradaRapidaEstoque
       Height = 13
       Caption = 'Saldo de Estoque =>'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 8404992
+      Font.Color = clBlack
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -155,7 +155,7 @@ object FormTelaEntradaRapidaEstoque: TFormTelaEntradaRapidaEstoque
       Height = 13
       Caption = 'Desp %'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 8404992
+      Font.Color = clBlack
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -168,7 +168,7 @@ object FormTelaEntradaRapidaEstoque: TFormTelaEntradaRapidaEstoque
       Height = 13
       Caption = 'Valor Custo'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 8404992
+      Font.Color = clBlack
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -181,7 +181,7 @@ object FormTelaEntradaRapidaEstoque: TFormTelaEntradaRapidaEstoque
       Height = 13
       Caption = 'ST %'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 8404992
+      Font.Color = clBlack
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -194,7 +194,7 @@ object FormTelaEntradaRapidaEstoque: TFormTelaEntradaRapidaEstoque
       Height = 13
       Caption = 'Dif.Icm'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 8404992
+      Font.Color = clBlack
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -458,7 +458,7 @@ object FormTelaEntradaRapidaEstoque: TFormTelaEntradaRapidaEstoque
       Height = 13
       Caption = 'Qtde Comprada'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 8404992
+      Font.Color = clBlack
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -471,7 +471,7 @@ object FormTelaEntradaRapidaEstoque: TFormTelaEntradaRapidaEstoque
       Height = 13
       Caption = 'Valor de Compra'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 8404992
+      Font.Color = clBlack
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -484,7 +484,7 @@ object FormTelaEntradaRapidaEstoque: TFormTelaEntradaRapidaEstoque
       Height = 13
       Caption = 'IPI %'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 8404992
+      Font.Color = clBlack
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -497,7 +497,7 @@ object FormTelaEntradaRapidaEstoque: TFormTelaEntradaRapidaEstoque
       Height = 13
       Caption = 'Frete %'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 8404992
+      Font.Color = clBlack
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -510,7 +510,7 @@ object FormTelaEntradaRapidaEstoque: TFormTelaEntradaRapidaEstoque
       Height = 13
       Caption = 'Valor Custo'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 8404992
+      Font.Color = clBlack
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -523,7 +523,7 @@ object FormTelaEntradaRapidaEstoque: TFormTelaEntradaRapidaEstoque
       Height = 13
       Caption = 'Margem Varejo %'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 8404992
+      Font.Color = clBlack
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -536,7 +536,7 @@ object FormTelaEntradaRapidaEstoque: TFormTelaEntradaRapidaEstoque
       Height = 13
       Caption = 'Margem Atacado %'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 8404992
+      Font.Color = clBlack
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -549,7 +549,7 @@ object FormTelaEntradaRapidaEstoque: TFormTelaEntradaRapidaEstoque
       Height = 13
       Caption = 'Valor Venda Varejo'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 8404992
+      Font.Color = clBlack
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -562,7 +562,7 @@ object FormTelaEntradaRapidaEstoque: TFormTelaEntradaRapidaEstoque
       Height = 13
       Caption = 'Valor Venda Atacado'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 8404992
+      Font.Color = clBlack
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -575,7 +575,7 @@ object FormTelaEntradaRapidaEstoque: TFormTelaEntradaRapidaEstoque
       Height = 13
       Caption = 'Desp %'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 8404992
+      Font.Color = clBlack
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -588,7 +588,7 @@ object FormTelaEntradaRapidaEstoque: TFormTelaEntradaRapidaEstoque
       Height = 13
       Caption = 'Custo M'#233'dio Atual'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 8404992
+      Font.Color = clBlack
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -601,7 +601,7 @@ object FormTelaEntradaRapidaEstoque: TFormTelaEntradaRapidaEstoque
       Height = 13
       Caption = 'ST %'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 8404992
+      Font.Color = clBlack
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -614,7 +614,7 @@ object FormTelaEntradaRapidaEstoque: TFormTelaEntradaRapidaEstoque
       Height = 13
       Caption = 'Dif.Icm'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 8404992
+      Font.Color = clBlack
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -905,6 +905,7 @@ object FormTelaEntradaRapidaEstoque: TFormTelaEntradaRapidaEstoque
           Height = 32
           AnchorHint = False
           Align = alClient
+          Color = clGray
           Panels = <
             item
               AppearanceStyle = psLight
@@ -1072,18 +1073,18 @@ object FormTelaEntradaRapidaEstoque: TFormTelaEntradaRapidaEstoque
     end
   end
   object AdvOfficeStatusBarOfficeStyler1: TAdvOfficeStatusBarOfficeStyler
-    BorderColor = 14986888
-    PanelAppearanceLight.BorderColor = 14922381
+    BorderColor = clGray
+    PanelAppearanceLight.BorderColor = clGray
     PanelAppearanceLight.BorderColorHot = clGray
     PanelAppearanceLight.BorderColorDown = 10240783
-    PanelAppearanceLight.Color = 16440774
-    PanelAppearanceLight.ColorTo = 14854530
+    PanelAppearanceLight.Color = clSilver
+    PanelAppearanceLight.ColorTo = 13225421
     PanelAppearanceLight.ColorHot = 13958143
     PanelAppearanceLight.ColorHotTo = 6538487
     PanelAppearanceLight.ColorDown = 9232890
     PanelAppearanceLight.ColorDownTo = 1940207
-    PanelAppearanceLight.ColorMirror = 14854530
-    PanelAppearanceLight.ColorMirrorTo = 14854530
+    PanelAppearanceLight.ColorMirror = 13225421
+    PanelAppearanceLight.ColorMirrorTo = 13225421
     PanelAppearanceLight.ColorMirrorHot = 6538487
     PanelAppearanceLight.ColorMirrorHotTo = 6538487
     PanelAppearanceLight.ColorMirrorDown = 1940207

@@ -460,7 +460,7 @@ begin
   bRetaguarda := true;
   VersaoSistema := GetBuildInfo(Application.ExeName);
 
-  Application.Title := 'Gestão Empresarial - Módulo Faturamento';
+  Application.Title := 'Gestão Empresarial - Módulo Retaguarda';
 
   Application.CreateForm(TDM, DM);
   if ((DM.OBSAutorizacao <> '')or(dm.SQLConfigGeralCFGECBLOQ.AsString = 'S')) and(not DelphiAberto) then
@@ -480,7 +480,7 @@ begin
   end;
 
   FormTelaLogin := TFormTelaLogin.Create(Application);
-  FormTelaLogin.Caption := 'Bem Vindo ao Gestão Empresarial - Módulo Faturamento';
+  FormTelaLogin.Caption := 'Bem Vindo ao Gestão Empresarial - Módulo Retaguarda';
 
   if (FormTelaLogin.ShowModal <> idOk)  then
   begin

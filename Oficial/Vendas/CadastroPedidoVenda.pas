@@ -698,7 +698,7 @@ begin
           '0' : begin
                   // Prepara Impressão de Pedido/Orçamento
                   // Padrao 80 Colunas bobina;
-                  Informa('A opção de impressão para bobina 80 colunas, não está disponível no módulo Faturamento!');
+                  Informa('A opção de impressão para bobina 80 colunas, não está disponível no módulo Retaguarda!');
                   Exit;
                 end;
           '1' : begin
@@ -791,7 +791,7 @@ begin
         '0' : begin
                 // Prepara Impressão de Pedido/Orçamento
                 // Padrao 80 Colunas bobina;
-                Informa('A opção de impressão para bobina 80 colunas, não está disponível no módulo Faturamento!');
+                Informa('A opção de impressão para bobina 80 colunas, não está disponível no módulo Retaguarda!');
                 Exit;
               end;
         '1' : begin
@@ -1666,7 +1666,7 @@ begin
           '0' : begin
                   // Prepara Impressão de Pedido/Orçamento
                   // Padrao 80 Colunas bobina;
-                  Informa('A opção de impressão para bobina 80 colunas, não está disponível no módulo Faturamento!');
+                  Informa('A opção de impressão para bobina 80 colunas, não está disponível no módulo Retaguarda!');
                   Exit;
                 end;
           '1' : begin

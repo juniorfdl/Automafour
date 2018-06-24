@@ -113,7 +113,7 @@ begin
   if dm.SQLUsuario.FieldByName('USUACPERMITEFAT').Value <> 'S' then
     begin
       //SoundPlay('Acesso Negado.wav',Sender);
-      ShowMessage('Atenção! Usuário não possui permissão para entrar no módulo Faturamento!');
+      ShowMessage('Atenção! Usuário não possui permissão para entrar no módulo Retaguarda!');
       Application.Terminate;
     end;
 

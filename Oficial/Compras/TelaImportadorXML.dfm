@@ -33,7 +33,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
           Top = 1
           Width = 1079
           Height = 398
-          ActivePage = tsItens
+          ActivePage = tsXMLs
           Align = alClient
           TabOrder = 0
           object tsXMLs: TTabSheet
@@ -2090,7 +2090,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
               BorderStyle = bsNone
               Color = clWhite
               DataSource = dsNFSEFAZ
-              FixedColor = 10053171
+              FixedColor = clGray
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
               Font.Height = -11

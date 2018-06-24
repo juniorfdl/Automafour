@@ -747,7 +747,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
           Color = clWhite
           DataSource = DSSQLProdutoSaldo
           Enabled = False
-          FixedColor = 10053171
+          FixedColor = 13225421
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
@@ -767,6 +767,11 @@ inherited FormCadastroProduto: TFormCadastroProduto
               Expanded = False
               FieldName = 'EMPRICOD'
               Title.Caption = 'Loja'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clBlack
+              Title.Font.Height = -11
+              Title.Font.Name = 'Tahoma'
+              Title.Font.Style = [fsBold]
               Width = 29
               Visible = True
             end
@@ -775,6 +780,11 @@ inherited FormCadastroProduto: TFormCadastroProduto
               FieldName = 'PSLDN3QTDE'
               ReadOnly = True
               Title.Caption = 'Qtd Estoque'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clBlack
+              Title.Font.Height = -11
+              Title.Font.Name = 'Tahoma'
+              Title.Font.Style = [fsBold]
               Width = 74
               Visible = True
             end>
@@ -790,7 +800,6 @@ inherited FormCadastroProduto: TFormCadastroProduto
             Top = 52
             Width = 1027
             Height = 556
-            ActivePage = TabSheetDadosPrincipais
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Top = 83
@@ -931,7 +940,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   Height = 36
                   Align = alBottom
                   BevelOuter = bvNone
-                  Color = 16249066
+                  Color = 13225421
                   TabOrder = 1
                   object BTNLocalizar: TSpeedButton
                     Left = 666
@@ -1010,7 +1019,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                       Caption = 'Ativos'
                       Checked = True
                       Font.Charset = ANSI_CHARSET
-                      Font.Color = 8404992
+                      Font.Color = clBlack
                       Font.Height = -11
                       Font.Name = 'Tahoma'
                       Font.Style = [fsBold]
@@ -1025,7 +1034,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                       Height = 17
                       Caption = 'Inativos'
                       Font.Charset = ANSI_CHARSET
-                      Font.Color = 8404992
+                      Font.Color = clBlack
                       Font.Height = -11
                       Font.Name = 'Tahoma'
                       Font.Style = [fsBold]
@@ -1374,7 +1383,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                 Caption = 'Barras Principal'
                 FocusControl = DBEdit4
                 Font.Charset = DEFAULT_CHARSET
-                Font.Color = 8404992
+                Font.Color = clBlack
                 Font.Height = -11
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
@@ -1388,7 +1397,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                 Caption = 'Referencia F'#225'brica'
                 FocusControl = DBEdit5
                 Font.Charset = DEFAULT_CHARSET
-                Font.Color = 8404992
+                Font.Color = clBlack
                 Font.Height = -11
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
@@ -1401,7 +1410,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                 Height = 13
                 Caption = 'Unidade Venda Varejo'
                 Font.Charset = DEFAULT_CHARSET
-                Font.Color = 8404992
+                Font.Color = clBlack
                 Font.Height = -11
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
@@ -1414,7 +1423,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                 Height = 13
                 Caption = 'Marca'
                 Font.Charset = DEFAULT_CHARSET
-                Font.Color = 8404992
+                Font.Color = clBlack
                 Font.Height = -11
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
@@ -1427,7 +1436,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                 Height = 13
                 Caption = 'Subgrupo / Se'#231#227'o'
                 Font.Charset = DEFAULT_CHARSET
-                Font.Color = 8404992
+                Font.Color = clBlack
                 Font.Height = -11
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
@@ -1440,7 +1449,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                 Height = 13
                 Caption = 'Varia'#231#227'o / Categoria'
                 Font.Charset = DEFAULT_CHARSET
-                Font.Color = 8404992
+                Font.Color = clBlack
                 Font.Height = -11
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
@@ -1453,7 +1462,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                 Height = 13
                 Caption = 'Grade'
                 Font.Charset = DEFAULT_CHARSET
-                Font.Color = 8404992
+                Font.Color = clBlack
                 Font.Height = -11
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
@@ -1466,7 +1475,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                 Height = 13
                 Caption = 'Tamanho'
                 Font.Charset = DEFAULT_CHARSET
-                Font.Color = 8404992
+                Font.Color = clBlack
                 Font.Height = -11
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
@@ -1479,7 +1488,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                 Height = 13
                 Caption = 'Cor'
                 Font.Charset = DEFAULT_CHARSET
-                Font.Color = 8404992
+                Font.Color = clBlack
                 Font.Height = -11
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
@@ -1764,7 +1773,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                 Height = 13
                 Caption = 'Grupo / Departamento'
                 Font.Charset = DEFAULT_CHARSET
-                Font.Color = 8404992
+                Font.Color = clBlack
                 Font.Height = -11
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
@@ -1777,7 +1786,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                 Height = 13
                 Caption = 'Cole'#231#227'o'
                 Font.Charset = DEFAULT_CHARSET
-                Font.Color = 8404992
+                Font.Color = clBlack
                 Font.Height = -11
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
@@ -1859,7 +1868,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                 Caption = 'Barras Unid.Trib.'
                 FocusControl = DBEdit52
                 Font.Charset = DEFAULT_CHARSET
-                Font.Color = 8404992
+                Font.Color = clBlack
                 Font.Height = -11
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
@@ -1872,7 +1881,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                 Height = 13
                 Caption = 'Vd.Est.Negat'
                 Font.Charset = DEFAULT_CHARSET
-                Font.Color = 8404992
+                Font.Color = clBlack
                 Font.Height = -11
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
@@ -1886,7 +1895,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                 Caption = 'C'#243'd Antigo'
                 FocusControl = DBEdit6
                 Font.Charset = DEFAULT_CHARSET
-                Font.Color = 8404992
+                Font.Color = clBlack
                 Font.Height = -11
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
@@ -1899,7 +1908,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                 Height = 13
                 Caption = 'Unidade Venda Atacado'
                 Font.Charset = DEFAULT_CHARSET
-                Font.Color = 8404992
+                Font.Color = clBlack
                 Font.Height = -11
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
@@ -2133,7 +2142,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                 Top = 296
                 Width = 652
                 Height = 177
-                ActivePage = TabSheet2
+                ActivePage = TabSheet1
                 TabOrder = 15
                 object TabSheet1: TTabSheet
                   Caption = 'Tributa'#231#227'o ICMS'
@@ -2144,7 +2153,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Height = 13
                     Caption = 'Al'#237'quota do ICMS de Venda'
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -2191,7 +2200,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Height = 13
                     Caption = 'Origem Mercadoria'
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -2204,7 +2213,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Height = 13
                     Caption = 'CST ICMS => Situa'#231#227'o Tribut'#225'ria para ICMS'
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -2217,7 +2226,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Height = 13
                     Caption = 'Determina'#231#227'o da Base de C'#225'lculo ICMS'
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -2230,7 +2239,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Height = 13
                     Caption = 'Determ. BC do ICMS ST'
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -2243,7 +2252,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Height = 13
                     Caption = 'Tabela Fiscal NCM'
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -2290,7 +2299,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Height = 13
                     Caption = 'Codigo CEST -> '
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -2627,7 +2636,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Height = 13
                     Caption = '% IPI - Sa'#237'da'
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -2640,7 +2649,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Height = 13
                     Caption = 'C'#243'digo da Situa'#231#227'o Tribut'#225'ria  do  IPI para Opera'#231#245'es de'
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -2653,7 +2662,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Height = 13
                     Caption = 'C'#243'digo da Situa'#231#227'o Tribut'#225'ria  do  IPI para Opera'#231#245'es de'
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -2666,7 +2675,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Height = 13
                     Caption = '% IPI - Entrada'
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -2975,7 +2984,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Height = 13
                     Caption = 'PIS CST para Opera'#231#245'es de Saida'
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -2988,7 +2997,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Height = 13
                     Caption = '% PIS'
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -3001,7 +3010,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Height = 13
                     Caption = 'PIS CST para Opera'#231#245'es de Entrada'
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -3027,7 +3036,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Height = 13
                     Caption = 'COFINS CST para Opera'#231#245'es de Saida'
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -3040,7 +3049,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Height = 13
                     Caption = '% COFINS'
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -3066,7 +3075,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Height = 13
                     Caption = 'COFINS CST para Opera'#231#245'es de Entrada'
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -3514,7 +3523,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Height = 13
                     Caption = 'Tipo de Produto(SPED)'
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -3527,7 +3536,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Height = 13
                     Caption = 'Identifica'#231#227'o do Produto (SPED PIS/COFINS)'
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -3540,7 +3549,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Height = 13
                     Caption = 'Dimens'#245'es'
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -3553,7 +3562,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Height = 13
                     Caption = 'Tempo Garantia'
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -3566,7 +3575,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Height = 13
                     Caption = 'Cd.Princ Aj.Pre'#231'os'
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -3579,7 +3588,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Height = 13
                     Caption = 'Ordem Seq Exibi'#231#227'o'
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -3592,7 +3601,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Height = 13
                     Caption = 'Recebe Desc Mix'
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -3969,7 +3978,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                       Caption = 'Pavimento'
                       FocusControl = DBEdit43
                       Font.Charset = DEFAULT_CHARSET
-                      Font.Color = 8404992
+                      Font.Color = clBlack
                       Font.Height = -11
                       Font.Name = 'Tahoma'
                       Font.Style = [fsBold]
@@ -3983,7 +3992,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                       Caption = 'Rua'
                       FocusControl = DBEdit44
                       Font.Charset = DEFAULT_CHARSET
-                      Font.Color = 8404992
+                      Font.Color = clBlack
                       Font.Height = -11
                       Font.Name = 'Tahoma'
                       Font.Style = [fsBold]
@@ -3997,7 +4006,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                       Caption = 'Prateleira'
                       FocusControl = DBEdit45
                       Font.Charset = DEFAULT_CHARSET
-                      Font.Color = 8404992
+                      Font.Color = clBlack
                       Font.Height = -11
                       Font.Name = 'Tahoma'
                       Font.Style = [fsBold]
@@ -4069,7 +4078,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                       Height = 13
                       Caption = 'Mov. Estoque'
                       Font.Charset = DEFAULT_CHARSET
-                      Font.Color = 8404992
+                      Font.Color = clBlack
                       Font.Height = -11
                       Font.Name = 'Tahoma'
                       Font.Style = [fsBold]
@@ -4083,7 +4092,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                       Caption = 'C'#243'd. Comp'
                       FocusControl = DBEdit9
                       Font.Charset = DEFAULT_CHARSET
-                      Font.Color = 8404992
+                      Font.Color = clBlack
                       Font.Height = -11
                       Font.Name = 'Tahoma'
                       Font.Style = [fsBold]
@@ -4096,7 +4105,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                       Height = 13
                       Caption = 'Imp.Etq'
                       Font.Charset = DEFAULT_CHARSET
-                      Font.Color = 8404992
+                      Font.Color = clBlack
                       Font.Height = -11
                       Font.Name = 'Tahoma'
                       Font.Style = [fsBold]
@@ -4109,7 +4118,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                       Height = 13
                       Caption = 'Perm.Troca'
                       Font.Charset = DEFAULT_CHARSET
-                      Font.Color = 8404992
+                      Font.Color = clBlack
                       Font.Height = -11
                       Font.Name = 'Tahoma'
                       Font.Style = [fsBold]
@@ -4123,7 +4132,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                       Caption = 'Qtd.Volume'
                       FocusControl = DBEdit9
                       Font.Charset = DEFAULT_CHARSET
-                      Font.Color = 8404992
+                      Font.Color = clBlack
                       Font.Height = -11
                       Font.Name = 'Tahoma'
                       Font.Style = [fsBold]
@@ -4278,7 +4287,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                       Caption = 'Validade'
                       FocusControl = DBEdit34
                       Font.Charset = DEFAULT_CHARSET
-                      Font.Color = 8404992
+                      Font.Color = clBlack
                       Font.Height = -11
                       Font.Name = 'Tahoma'
                       Font.Style = [fsBold]
@@ -4291,7 +4300,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                       Height = 13
                       Caption = 'Tipo do Produto'
                       Font.Charset = DEFAULT_CHARSET
-                      Font.Color = 8404992
+                      Font.Color = clBlack
                       Font.Height = -11
                       Font.Name = 'Tahoma'
                       Font.Style = [fsBold]
@@ -4352,7 +4361,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                       Caption = 'C'#243'd. Liga'#231#227'o p/Balan'#231'a'
                       FocusControl = DBEdit8
                       Font.Charset = DEFAULT_CHARSET
-                      Font.Color = 8404992
+                      Font.Color = clBlack
                       Font.Height = -11
                       Font.Name = 'Tahoma'
                       Font.Style = [fsBold]
@@ -4431,7 +4440,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                       Height = 13
                       Caption = 'Participa'
                       Font.Charset = DEFAULT_CHARSET
-                      Font.Color = 8404992
+                      Font.Color = clBlack
                       Font.Height = -11
                       Font.Name = 'Tahoma'
                       Font.Style = [fsBold]
@@ -4444,7 +4453,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                       Height = 13
                       Caption = '% '#192' Prazo'
                       Font.Charset = DEFAULT_CHARSET
-                      Font.Color = 8404992
+                      Font.Color = clBlack
                       Font.Height = -11
                       Font.Name = 'Tahoma'
                       Font.Style = [fsBold]
@@ -4457,7 +4466,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                       Height = 13
                       Caption = '% A Vista'
                       Font.Charset = DEFAULT_CHARSET
-                      Font.Color = 8404992
+                      Font.Color = clBlack
                       Font.Height = -11
                       Font.Name = 'Tahoma'
                       Font.Style = [fsBold]
@@ -4593,7 +4602,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                       Height = 13
                       Caption = 'Bruto'
                       Font.Charset = DEFAULT_CHARSET
-                      Font.Color = 8404992
+                      Font.Color = clBlack
                       Font.Height = -11
                       Font.Name = 'Tahoma'
                       Font.Style = [fsBold]
@@ -4606,7 +4615,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                       Height = 13
                       Caption = 'L'#237'quido'
                       Font.Charset = DEFAULT_CHARSET
-                      Font.Color = 8404992
+                      Font.Color = clBlack
                       Font.Height = -11
                       Font.Name = 'Tahoma'
                       Font.Style = [fsBold]
@@ -4750,7 +4759,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Height = 13
                     Caption = #201' Servi'#231'o'
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -4797,7 +4806,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                       Height = 13
                       Caption = 'Codigo Situa'#231#227'o Tribut'#225'ria de Presta'#231#227'o de Servi'#231'o'
                       Font.Charset = DEFAULT_CHARSET
-                      Font.Color = 8404992
+                      Font.Color = clBlack
                       Font.Height = -11
                       Font.Name = 'Tahoma'
                       Font.Style = [fsBold]
@@ -4810,7 +4819,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                       Height = 13
                       Caption = 'Codigo de Tipo de Servi'#231'o Cfe. Tabela '
                       Font.Charset = DEFAULT_CHARSET
-                      Font.Color = 8404992
+                      Font.Color = clBlack
                       Font.Height = -11
                       Font.Name = 'Tahoma'
                       Font.Style = [fsBold]
@@ -5612,7 +5621,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     BorderStyle = bsNone
                     Color = clWhite
                     DataSource = dsProduto_Descontos
-                    FixedColor = 10053171
+                    FixedColor = clGray
                     Font.Charset = DEFAULT_CHARSET
                     Font.Color = clWindowText
                     Font.Height = -11
@@ -5630,16 +5639,31 @@ inherited FormCadastroProduto: TFormCadastroProduto
                       item
                         Expanded = False
                         FieldName = 'QUANTIDADE'
+                        Title.Font.Charset = DEFAULT_CHARSET
+                        Title.Font.Color = clBlack
+                        Title.Font.Height = -11
+                        Title.Font.Name = 'Tahoma'
+                        Title.Font.Style = [fsBold]
                         Visible = True
                       end
                       item
                         Expanded = False
                         FieldName = 'PRECO'
+                        Title.Font.Charset = DEFAULT_CHARSET
+                        Title.Font.Color = clBlack
+                        Title.Font.Height = -11
+                        Title.Font.Name = 'Tahoma'
+                        Title.Font.Style = [fsBold]
                         Visible = True
                       end
                       item
                         Expanded = False
                         FieldName = 'DATA_VALIDADE'
+                        Title.Font.Charset = DEFAULT_CHARSET
+                        Title.Font.Color = clBlack
+                        Title.Font.Height = -11
+                        Title.Font.Name = 'Tahoma'
+                        Title.Font.Style = [fsBold]
                         Visible = True
                       end>
                   end
@@ -5968,7 +5992,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Height = 17
                     Alignment = taLeftJustify
                     Caption = ' Cap.Embalagem Compra            Valor de Compra          '
-                    Color = 14731440
+                    Color = clGray
                     Font.Charset = DEFAULT_CHARSET
                     Font.Color = clBlack
                     Font.Height = -11
@@ -6192,7 +6216,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Height = 17
                     Alignment = taLeftJustify
                     Caption = '  IPI%       Desp%     Dif.Icm%   Vlr.ST       Vlr.Frete    '
-                    Color = 14731440
+                    Color = clGray
                     Font.Charset = DEFAULT_CHARSET
                     Font.Color = clBlack
                     Font.Height = -11
@@ -6208,7 +6232,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Height = 17
                     Alignment = taLeftJustify
                     Caption = '  Valor Custo                         Valor Custo M'#233'dio'
-                    Color = 14731440
+                    Color = clGray
                     Font.Charset = DEFAULT_CHARSET
                     Font.Color = clBlack
                     Font.Height = -11
@@ -6424,7 +6448,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Height = 17
                     Alignment = taLeftJustify
                     Caption = '                  Fixa %   Real %  | Pre'#231'o Venda'
-                    Color = 14731440
+                    Color = clGray
                     Font.Charset = DEFAULT_CHARSET
                     Font.Color = clBlack
                     Font.Height = -11
@@ -6726,7 +6750,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Width = 285
                     Height = 17
                     Caption = '*** Promo'#231#227'o Vlr.Venda Varejo ***'
-                    Color = 14731440
+                    Color = clGray
                     Font.Charset = DEFAULT_CHARSET
                     Font.Color = clBlack
                     Font.Height = -11
@@ -7220,7 +7244,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   BorderStyle = bsNone
                   Color = clWhite
                   DataSource = DSSQLProdutoSerie
-                  FixedColor = 10053171
+                  FixedColor = clGray
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clWindowText
                   Font.Height = -11
@@ -7240,6 +7264,11 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     item
                       Expanded = False
                       FieldName = 'PRSEA60NROSERIE'
+                      Title.Font.Charset = DEFAULT_CHARSET
+                      Title.Font.Color = clBlack
+                      Title.Font.Height = -11
+                      Title.Font.Name = 'Tahoma'
+                      Title.Font.Style = [fsBold]
                       Width = 297
                       Visible = True
                     end>
@@ -7265,7 +7294,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   Height = 13
                   Caption = 'Dt.'#218'ltima Venda'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
@@ -7278,7 +7307,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   Height = 13
                   Caption = #218'ltima Compra'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
@@ -7291,7 +7320,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   Height = 13
                   Caption = 'Qtde Ult Compra'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
@@ -7304,7 +7333,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   Height = 13
                   Caption = 'Dt.Prev.Entrega'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
@@ -7607,7 +7636,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   BorderStyle = bsNone
                   Color = clWhite
                   DataSource = DSSQLProdutoSaldo
-                  FixedColor = 10053171
+                  FixedColor = clGray
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clWindowText
                   Font.Height = -11
@@ -7664,7 +7693,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   Width = 1015
                   Height = 78
                   Align = alBottom
-                  Color = 16249066
+                  Color = 13158600
                   TabOrder = 2
                   object Label73: TLabel
                     Left = 8
@@ -7674,7 +7703,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Caption = 'Cd.Barras Principal'
                     FocusControl = DBEdit10
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -7688,7 +7717,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Caption = 'Refer'#234'ncia Fabrica'
                     FocusControl = DBEdit14
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -7702,7 +7731,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Caption = 'C'#243'd.Balan'#231'a'
                     FocusControl = DBEdit16
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -7716,7 +7745,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Caption = 'Valor Venda'
                     FocusControl = DBEdit18
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -7730,7 +7759,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Caption = 'Marca'
                     FocusControl = DBEdit21
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -7744,7 +7773,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Caption = 'Grupo'
                     FocusControl = DBEdit24
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -7758,7 +7787,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Caption = 'Data Ini.Prom.'
                     FocusControl = DBEdit35
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -7772,7 +7801,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Caption = 'Dt.T'#233'rm.Prom.'
                     FocusControl = DBEdit58
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -7786,7 +7815,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Caption = 'Valor Prom.'
                     FocusControl = DBEdit59
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -7800,7 +7829,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Caption = 'Cor'
                     FocusControl = DBEdit62
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -7813,7 +7842,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Height = 13
                     Caption = 'Tamanho'
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -7827,7 +7856,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Caption = 'C'#243'd.Antigo'
                     FocusControl = DBEdit63
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -8091,7 +8120,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
               object Label92: TLabel
                 Left = 0
                 Top = 209
-                Width = 131
+                Width = 1019
                 Height = 19
                 Align = alTop
                 Alignment = taCenter
@@ -8111,7 +8140,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                 Align = alTop
                 BorderStyle = bsNone
                 DataSource = DSSQLProdutoReajuste
-                FixedColor = 10053171
+                FixedColor = clGray
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
                 Font.Height = -11
@@ -8185,7 +8214,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                 BorderStyle = bsNone
                 Color = clWhite
                 DataSource = DSSQLSaldoMes
-                FixedColor = 10053171
+                FixedColor = clGray
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
                 Font.Height = -11
@@ -8276,7 +8305,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                 BorderStyle = bsNone
                 Color = clWhite
                 DataSource = DSSQLNotasCompra
-                FixedColor = 10053171
+                FixedColor = clGray
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
                 Font.Height = -11
@@ -8409,7 +8438,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                 BorderStyle = bsNone
                 Color = clWhite
                 DataSource = DSMEMGradeCompras
-                FixedColor = 10053171
+                FixedColor = clGray
                 Font.Charset = ANSI_CHARSET
                 Font.Color = clWindowText
                 Font.Height = -11
@@ -8580,7 +8609,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                 BorderStyle = bsNone
                 Color = clWhite
                 DataSource = DSMEMGradeProduto
-                FixedColor = 10053171
+                FixedColor = clGray
                 Font.Charset = ANSI_CHARSET
                 Font.Color = clWindowText
                 Font.Height = -11
@@ -8744,7 +8773,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                 Align = alClient
                 BorderStyle = bsNone
                 DataSource = DSSQLGradeProduto
-                FixedColor = 10053171
+                FixedColor = clGray
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
                 Font.Height = -11
@@ -8903,7 +8932,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   Caption = 'Barras'
                   FocusControl = DBEdit57
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
@@ -8917,7 +8946,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   Caption = 'Refer'#234'ncia'
                   FocusControl = DBEdit66
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
@@ -8931,7 +8960,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   Caption = 'Marca'
                   FocusControl = DBEdit69
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
@@ -8945,7 +8974,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   Caption = 'Grupo'
                   FocusControl = DBEdit70
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
@@ -8959,7 +8988,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   Caption = 'SubGrupo'
                   FocusControl = DBEdit71
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
@@ -8973,7 +9002,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   Caption = 'Dt.Cadastro'
                   FocusControl = DBEdit75
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
@@ -8987,7 +9016,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   Caption = 'Dt.Ult.Alter'
                   FocusControl = DBEdit76
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
@@ -9001,7 +9030,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   Caption = 'Grade'
                   FocusControl = DBEdit79
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
@@ -9015,7 +9044,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   Caption = 'Varia'#231#227'o'
                   FocusControl = DBEdit65
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
@@ -9358,7 +9387,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   Caption = '&De'
                   FocusControl = De
                   Font.Charset = ANSI_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
@@ -9372,7 +9401,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   Caption = 'a&t'#233
                   FocusControl = Ate
                   Font.Charset = ANSI_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
@@ -9435,7 +9464,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
               Caption = 'C'#243'digo'
               FocusControl = DBEdit1
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = 8404992
+              Font.Color = clBlack
               Font.Height = -11
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
@@ -9449,7 +9478,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
               Caption = 'Descri'#231#227'o Principal com 60 Caracteres'
               FocusControl = DBEdit2
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = 8404992
+              Font.Color = clBlack
               Font.Height = -11
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
@@ -9463,7 +9492,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
               Caption = 'Descri'#231#227'o Red C/30 Caracteres '
               FocusControl = DBEdit3
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = 8404992
+              Font.Color = clBlack
               Font.Height = -11
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
@@ -9476,7 +9505,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
               Height = 13
               Caption = 'Ativo'
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = 8404992
+              Font.Color = clBlack
               Font.Height = -11
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
@@ -9489,7 +9518,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
               Height = 13
               Caption = '% Max.Desc'
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = 8404992
+              Font.Color = clBlack
               Font.Height = -11
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
