@@ -358,6 +358,75 @@ begin
   end;
   {Fim Cliente}
 
+
+  {Abre NCM do servidor}
+  try
+    ZconsultaServidor.Close;
+    ZconsultaServidor.sql.clear;
+    ZconsultaServidor.sql.Text := 'Select * from NCM where PENDENTE =' + QuotedStr('S') + ' order by NCMICOD asc ';
+    ZconsultaServidor.open;
+    if not ZconsultaServidor.IsEmpty then
+    begin
+      while not ZconsultaServidor.eof do
+      begin
+        Application.Title := 'Recebendo NCM => ' + ZconsultaServidor.fieldbyname('NCMA30CODIGO').AsString;
+        lbStatus.Caption := Application.Title;
+        lbStatus.Update;
+        ZConsultaPDV.close;
+        ZConsultaPDV.SQL.clear;
+        ZConsultaPDV.SQL.Text := 'Select * from NCM where NCMA30CODIGO=' + QuotedStr(ZconsultaServidor.fieldbyname('NCMA30CODIGO').AsString);
+        ZConsultaPDV.Open;
+        if ZConsultaPDV.IsEmpty then
+          ZConsultaPDV.append
+        else
+          ZConsultaPDV.edit;
+
+            {acha o NCM atual no servidor e pega os dados dele}
+        ZConsultaTabelaServidor.close;
+        ZConsultaTabelaServidor.sql.text := 'select * from NCM where NCMA30CODIGO=' + QuotedStr(ZconsultaServidor.fieldbyname('NCMA30CODIGO').AsString);
+        ZConsultaTabelaServidor.open;
+
+            {alimenta os campos no Pdv}
+        for i := 0 to ZConsultaTabelaServidor.FieldCount - 1 do
+        begin
+          try ZConsultaPDV.FindField(ZConsultaTabelaServidor.Fields[i].FieldName).AsVariant := ZConsultaTabelaServidor.Fields[i].AsVariant; except Application.ProcessMessages; end;
+        end;
+        try
+          ZConsultaPDV.post;
+          Erro := False;
+        except
+          ZConsultaPDV.cancel;
+          Erro := True;
+          Application.ProcessMessages;
+        end;
+        ZconsultaServidor.Next;
+      end;
+    end;
+
+    if not erro then
+    begin
+      ZconsultaServidor.First;
+      while not ZconsultaServidor.Eof do
+      begin
+        ZupdatePDV.Close;
+        ZupdatePDV.sql.clear;
+        ZupdatePDV.sql.Text := 'Update NCM Set PENDENTE=''N'' where NCMICOD=''' + ZconsultaServidor.fieldbyname('NCMICOD').Value + '''';
+        ZupdatePDV.ExecSQL;
+        ZconsultaServidor.Next;
+      end;
+    end;
+    Application.Title := '';
+    lbStatus.Caption := Application.Title;
+    lbStatus.Update;
+  except
+    Application.Title := 'Falha ao Importar Produtos!';
+    lbStatus.Caption := Application.Title;
+    lbStatus.Update;
+    Application.ProcessMessages;
+  end;
+  {Fim NCM}
+
+
   {Abre ProdutoPDVs no servidor para achar os registros que serao importados!}
   try
     ZconsultaServidor.Close;
