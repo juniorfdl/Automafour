@@ -1139,6 +1139,9 @@ begin
                         // Subst Trib Percentual
                         if (SQLNotaCompraItens.FindField('NOCIN2VBCST').asFloat>0) and (SQLNotaCompraItens.FindField('NOCIN3VLRSUBST').asFloat>0) then
                           SQLProduto.FindField('VALOR_ICMSST').asFloat := SQLNotaCompraItens.FindField('NOCIN3VLRSUBST').asFloat / (SQLNotaCompraItens.FindField('NOCIN3CAPEMBAL').asFloat * SQLNotaCompraItens.FindField('NOCIN3QTDEMBAL').asFloat);
+
+                        if (SQLNotaCompraItens.FindField('NOCIN3VLRDESC').asFloat>0) then
+                          SQLProduto.FindField('VALOR_DESC_ENTRADA').asFloat := SQLNotaCompraItens.FindField('NOCIN3VLRDESC').asFloat / SQLNotaCompraItens.FindField('NOCIN3QTDEMBAL').AsFloat;
                       end;
 
                 if (SQLEstoqueAtualQTDEATUAL.asFloat <= 0) or (SQLEstoqueAtualQTDEATUAL.IsNull)  then

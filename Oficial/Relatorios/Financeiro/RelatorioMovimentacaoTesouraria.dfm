@@ -1,6 +1,6 @@
 inherited FormRelatorioMovimentacaoTesouraria: TFormRelatorioMovimentacaoTesouraria
-  Left = 493
-  Top = 111
+  Left = 451
+  Top = 131
   Caption = 'Relat'#243'rio de Movimenta'#231#227'o da Tesouraria'
   ClientHeight = 471
   ClientWidth = 787
@@ -223,11 +223,15 @@ inherited FormRelatorioMovimentacaoTesouraria: TFormRelatorioMovimentacaoTesoura
     object TblTemporariaTESODMOV: TDateTimeField
       FieldName = 'TESODMOV'
     end
-    object TblTemporariaTESON2VLRDEBITO: TFloatField
+    object TblTemporariaTESON2VLRDEBITO: TBCDField
       FieldName = 'TESON2VLRDEBITO'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaTESON2VLRCREDITO: TFloatField
+    object TblTemporariaTESON2VLRCREDITO: TBCDField
       FieldName = 'TESON2VLRCREDITO'
+      Precision = 15
+      Size = 3
     end
     object TblTemporariaTESOA255HIST: TStringField
       FieldName = 'TESOA255HIST'
@@ -599,11 +603,15 @@ inherited FormRelatorioMovimentacaoTesouraria: TFormRelatorioMovimentacaoTesoura
       FixedChar = True
       Size = 30
     end
-    object TblSaldoTesourariaCREDITOS: TFloatField
+    object TblSaldoTesourariaCREDITOS: TBCDField
       FieldName = 'CREDITOS'
+      Precision = 15
+      Size = 3
     end
-    object TblSaldoTesourariaDEBITOS: TFloatField
+    object TblSaldoTesourariaDEBITOS: TBCDField
       FieldName = 'DEBITOS'
+      Precision = 15
+      Size = 3
     end
     object TblSaldoTesourariaSALDO: TFloatField
       FieldName = 'SALDO'

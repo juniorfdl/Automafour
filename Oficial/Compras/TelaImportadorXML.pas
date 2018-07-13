@@ -1789,7 +1789,8 @@ begin
                   else
                     dm.SQLUpdate.ParamByName('NOCIN2MGVENDA').AsFloat   := 0.00;
                   if dm.SQLUpdate.ParamByName('NOCIN2MGVENDA').AsFloat > 0 then
-                    dm.SQLUpdate.ParamByName('NOCIN2VLRVENDA').AsFloat   := dm.SQLUpdate.ParamByName('NOCIN3VLRUNIT').AsFloat + (dm.SQLUpdate.ParamByName('NOCIN3VLRUNIT').AsFloat * (dm.SQLUpdate.ParamByName('NOCIN2MGVENDA').AsFloat / 100))
+//                    dm.SQLUpdate.ParamByName('NOCIN2VLRVENDA').AsFloat   := dm.SQLUpdate.ParamByName('NOCIN3VLRUNIT').AsFloat + (dm.SQLUpdate.ParamByName('NOCIN3VLRUNIT').AsFloat * (dm.SQLUpdate.ParamByName('NOCIN2MGVENDA').AsFloat / 100))
+                    dm.SQLUpdate.ParamByName('NOCIN2VLRVENDA').AsFloat   := dm.SQLUpdate.ParamByName('NOCIN3VLRCUSTOMED').AsFloat + (dm.SQLUpdate.ParamByName('NOCIN3VLRCUSTOMED').AsFloat * (dm.SQLUpdate.ParamByName('NOCIN2MGVENDA').AsFloat / 100))
                   else
                     dm.SQLUpdate.ParamByName('NOCIN2VLRVENDA').AsFloat   := 0.00;
                 except

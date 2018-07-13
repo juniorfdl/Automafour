@@ -6,6 +6,7 @@ inherited DM: TDM
   Width = 1200
   inherited DB: TDatabase
     AliasName = 'Easy_Gestao'
+    Connected = False
     AfterConnect = DBAfterConnect
   end
   object SQLConfigGeral: TRxQuery
@@ -2943,6 +2944,7 @@ inherited DM: TDM
     Configuracoes.Geral.ValidarDigest = False
     Configuracoes.Geral.ModeloDF = moNFCe
     Configuracoes.Geral.AtualizarXMLCancelado = True
+    Configuracoes.Geral.VersaoQRCode = veqr000
     Configuracoes.Arquivos.PathSalvar = 'c:\easy2solutions\nfce\'
     Configuracoes.Arquivos.OrdenacaoPath = <>
     Configuracoes.Arquivos.SepararPorMes = True
@@ -5712,6 +5714,7 @@ inherited DM: TDM
     Configuracoes.Geral.SSLXmlSignLib = xsMsXmlCapicom
     Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
     Configuracoes.Geral.AtualizarXMLCancelado = True
+    Configuracoes.Geral.VersaoQRCode = veqr000
     Configuracoes.Arquivos.OrdenacaoPath = <>
     Configuracoes.WebServices.UF = 'RS'
     Configuracoes.WebServices.AguardarConsultaRet = 15000

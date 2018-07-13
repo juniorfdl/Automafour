@@ -14,11 +14,6 @@ type
     Report: TCrpe;
     SQLSaldos: TRxQuery;
     TblSaldoTesouraria: TTable;
-    TblSaldoTesourariaNUMEICOD: TIntegerField;
-    TblSaldoTesourariaNUMEA30DESCR: TStringField;
-    TblSaldoTesourariaCREDITOS: TFloatField;
-    TblSaldoTesourariaDEBITOS: TFloatField;
-    TblSaldoTesourariaSALDO: TFloatField;
     SQLMovtoTesourariaTESOA13ID: TStringField;
     SQLMovtoTesourariaEMPRICOD: TIntegerField;
     SQLMovtoTesourariaTESOICOD: TIntegerField;
@@ -53,19 +48,6 @@ type
     SQLMovtoTesourariaTESOA20DOCORIGEM: TStringField;
     SQLMovimentoCaixaTERMA60DESCR: TStringField;
     SQLMovtoTesourariaTERMA60DESCR: TStringField;
-    TblTemporariaTESOA13ID: TStringField;
-    TblTemporariaEMPRICOD: TIntegerField;
-    TblTemporariaTERMICOD: TIntegerField;
-    TblTemporariaTESOICOD: TIntegerField;
-    TblTemporariaTESODMOV: TDateTimeField;
-    TblTemporariaTESON2VLRDEBITO: TFloatField;
-    TblTemporariaTESON2VLRCREDITO: TFloatField;
-    TblTemporariaTESOA255HIST: TStringField;
-    TblTemporariaNUMEICOD: TIntegerField;
-    TblTemporariaTESOA20DOCORIGEM: TStringField;
-    TblTemporariaNUMEA30DESCR: TStringField;
-    TblTemporariaOPTEA60DESCR: TStringField;
-    TblTemporariaTERMA60DESCR: TStringField;
     CheckTerminal: TCheckBox;
     ChkMovTerminal: TCheckBox;
     SQLNumerario: TQuery;
@@ -80,6 +62,24 @@ type
     GroupPlanoContas: TGroupBox;
     ComboPlanoConta: TRxDBLookupCombo;
     SQLMovtoTesourariaPLCTA15COD: TStringField;
+    TblSaldoTesourariaNUMEICOD: TIntegerField;
+    TblSaldoTesourariaNUMEA30DESCR: TStringField;
+    TblSaldoTesourariaCREDITOS: TBCDField;
+    TblSaldoTesourariaDEBITOS: TBCDField;
+    TblSaldoTesourariaSALDO: TFloatField;
+    TblTemporariaTESOA13ID: TStringField;
+    TblTemporariaEMPRICOD: TIntegerField;
+    TblTemporariaTERMICOD: TIntegerField;
+    TblTemporariaTESOICOD: TIntegerField;
+    TblTemporariaTESODMOV: TDateTimeField;
+    TblTemporariaTESON2VLRDEBITO: TBCDField;
+    TblTemporariaTESON2VLRCREDITO: TBCDField;
+    TblTemporariaTESOA255HIST: TStringField;
+    TblTemporariaNUMEICOD: TIntegerField;
+    TblTemporariaTESOA20DOCORIGEM: TStringField;
+    TblTemporariaNUMEA30DESCR: TStringField;
+    TblTemporariaOPTEA60DESCR: TStringField;
+    TblTemporariaTERMA60DESCR: TStringField;
     TblTemporariaPLCTA15COD: TStringField;
     procedure ExecutarBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -131,7 +131,7 @@ begin
 
   SQLMovtoTesouraria.Open;
 
-  BatchExec(SQLMovtoTesouraria, TblTemporaria) ;
+  CopyQueryTable(SQLMovtoTesouraria, TblTemporaria) ;
 
   if ChkMovTerminal.Checked then
      begin

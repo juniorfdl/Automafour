@@ -15,15 +15,8 @@ type
     SQLTesourariaTERMICOD: TIntegerField;
     SQLTesourariaTESODMOV: TDateTimeField;
     SQLTesourariaOPTEICOD: TIntegerField;
-    TblTemporariaEMPRICOD: TIntegerField;
-    TblTemporariaTERMICOD: TIntegerField;
-    TblTemporariaTESODMOV: TDateTimeField;
-    TblTemporariaOPTEICOD: TIntegerField;
-    TblTemporariaOperacaoTesouraria: TStringField;
     SQLTesourariaDebito: TFloatField;
     SQLTesourariaCredito: TFloatField;
-    TblTemporariaDebito: TFloatField;
-    TblTemporariaCredito: TFloatField;
     Report: TCrpe;
     SQLMovimentacaoTesouraria: TRxQuery;
     SQLSaldoAnterior: TRxQuery;
@@ -44,6 +37,13 @@ type
     DSSQLNumerario: TDataSource;
     GroupBox3: TGroupBox;
     ComboNumerario: TRxDBLookupCombo;
+    TblTemporariaEMPRICOD: TIntegerField;
+    TblTemporariaTERMICOD: TIntegerField;
+    TblTemporariaTESODMOV: TDateTimeField;
+    TblTemporariaOPTEICOD: TIntegerField;
+    TblTemporariaDebito: TBCDField;
+    TblTemporariaCredito: TBCDField;
+    TblTemporariaOperacaoTesouraria: TStringField;
     procedure ExecutarBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private

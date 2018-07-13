@@ -1,6 +1,6 @@
 inherited FormCadastroProduto: TFormCadastroProduto
-  Left = 275
-  Top = 6
+  Left = 70
+  Top = 13
   Caption = 'Cadastro de Produtos'
   ClientHeight = 682
   ClientWidth = 1159
@@ -2141,7 +2141,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
               object PageControl1: TPageControl
                 Left = 3
                 Top = 296
-                Width = 652
+                Width = 688
                 Height = 177
                 ActivePage = TabSheet1
                 TabOrder = 15
@@ -5683,7 +5683,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
               object PageControlValores: TPageControl
                 Left = 344
                 Top = 6
-                Width = 329
+                Width = 367
                 Height = 285
                 ActivePage = TabReais
                 MultiLine = True
@@ -5749,7 +5749,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     OnClick = BtnCalculaClick
                   end
                   object Label72: TLabel
-                    Left = 116
+                    Left = 113
                     Top = 61
                     Width = 9
                     Height = 13
@@ -5762,7 +5762,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     ParentFont = False
                   end
                   object Label108: TLabel
-                    Left = 173
+                    Left = 170
                     Top = 61
                     Width = 9
                     Height = 13
@@ -5801,7 +5801,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     ParentFont = False
                   end
                   object Label39: TLabel
-                    Left = 230
+                    Left = 226
                     Top = 61
                     Width = 9
                     Height = 13
@@ -5842,7 +5842,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     ParentFont = False
                   end
                   object Label139: TLabel
-                    Left = 57
+                    Left = 56
                     Top = 61
                     Width = 9
                     Height = 13
@@ -5903,6 +5903,19 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Caption = '0,00'
                     Font.Charset = DEFAULT_CHARSET
                     Font.Color = clGreen
+                    Font.Height = -11
+                    Font.Name = 'Tahoma'
+                    Font.Style = [fsBold]
+                    ParentFont = False
+                  end
+                  object Label29: TLabel
+                    Left = 288
+                    Top = 61
+                    Width = 5
+                    Height = 13
+                    Caption = '-'
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = 8404992
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -5989,10 +6002,12 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   object Panel6: TPanel
                     Left = 7
                     Top = 0
-                    Width = 284
+                    Width = 333
                     Height = 17
                     Alignment = taLeftJustify
-                    Caption = ' Cap.Embalagem Compra            Valor de Compra          '
+                    Caption = 
+                      ' Cap.Embalagem Compra                       Valor de Compra     ' +
+                      '     '
                     Color = clGray
                     Font.Charset = DEFAULT_CHARSET
                     Font.Color = clBlack
@@ -6088,7 +6103,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     TabOrder = 21
                   end
                   object DBSubsttrib: TEvDBNumEdit
-                    Left = 184
+                    Left = 180
                     Top = 58
                     Width = 44
                     Height = 21
@@ -6129,7 +6144,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     TabOrder = 5
                   end
                   object DBFreteProduto: TEvDBNumEdit
-                    Left = 241
+                    Left = 236
                     Top = 58
                     Width = 49
                     Height = 21
@@ -6170,7 +6185,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     TabOrder = 6
                   end
                   object DBDespDiv: TEvDBNumEdit
-                    Left = 69
+                    Left = 67
                     Top = 58
                     Width = 44
                     Height = 21
@@ -6213,10 +6228,12 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   object Panel13: TPanel
                     Left = 11
                     Top = 40
-                    Width = 285
+                    Width = 330
                     Height = 17
                     Alignment = taLeftJustify
-                    Caption = '  IPI%       Desp%     Dif.Icm%   Vlr.ST       Vlr.Frete    '
+                    Caption = 
+                      '  IPI%       Desp%    Dif.Icm%  Vlr.ST       Vlr.Frete   Vlr Des' +
+                      'c   '
                     Color = clGray
                     Font.Charset = DEFAULT_CHARSET
                     Font.Color = clBlack
@@ -6229,7 +6246,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   object Panel14: TPanel
                     Left = 7
                     Top = 81
-                    Width = 285
+                    Width = 334
                     Height = 17
                     Alignment = taLeftJustify
                     Caption = '  Valor Custo                         Valor Custo M'#233'dio'
@@ -6243,7 +6260,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     TabOrder = 24
                   end
                   object DBEditVlrCompra: TEvDBNumEdit
-                    Left = 186
+                    Left = 217
                     Top = 17
                     Width = 100
                     Height = 21
@@ -6445,7 +6462,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   object Panel15: TPanel
                     Left = 7
                     Top = 120
-                    Width = 285
+                    Width = 333
                     Height = 17
                     Alignment = taLeftJustify
                     Caption = '                  Fixa %   Real %  | Pre'#231'o Venda'
@@ -6541,7 +6558,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     TabOrder = 12
                   end
                   object DBDIFICM: TEvDBNumEdit
-                    Left = 127
+                    Left = 123
                     Top = 58
                     Width = 44
                     Height = 21
@@ -6748,7 +6765,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   object Panel12: TPanel
                     Left = 7
                     Top = 230
-                    Width = 285
+                    Width = 333
                     Height = 17
                     Caption = '*** Promo'#231#227'o Vlr.Venda Varejo ***'
                     Color = clGray
@@ -6841,6 +6858,47 @@ inherited FormCadastroProduto: TFormCadastroProduto
                       FF5EFF5EFF5EFF5EFF5E}
                     ParentFont = False
                     TabOrder = 17
+                  end
+                  object EvDBNumEdit4: TEvDBNumEdit
+                    Left = 295
+                    Top = 58
+                    Width = 41
+                    Height = 21
+                    AutoHideCalculator = False
+                    DataField = 'VALOR_DESC_ENTRADA'
+                    DataSource = DSTemplate
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWindowText
+                    Font.Height = -11
+                    Font.Name = 'Tahoma'
+                    Font.Style = []
+                    Glyph.Data = {
+                      E6020000424DE60200000000000042000000280000001A0000000D0000000100
+                      100003000000A402000000000000000000000000000000000000007C0000E003
+                      00001F000000FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                      FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF1CEF1C
+                      EF1CEF1CEF1CEF1CEF1CEF1CEF1CEF1CFF5EFF5EFF5EFF7FEF3DEF3DEF3DEF3D
+                      EF3DEF3DEF3DEF3DEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                      FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                      FF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1CFF5EFF5EFF5EFF7F
+                      FF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2C
+                      FF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5E
+                      FF5EFF5EEF3DFF5EFF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1C
+                      FF5EFF5EFF5EFF7FFF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5E
+                      FF02FF2CFF2CFF2CFF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5E
+                      FF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5EFF5EFF5EFF02FF2C0700FF5EFF5EFF5E
+                      FF5EFF5EFF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DFF7FFF7FFF7FFF7FFF7FFF5E
+                      EF3DFF5EFF5EFF5EFF02FF2C0700FF7FFF7FFF7FFF7FFF5EFF2CEF1CFF5EFF5E
+                      FF5EFF7FFF5EEF3DFF5EFF5EFF5EFF5EFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2C
+                      070007000700070007000700FF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DEF3DEF3D
+                      EF3DEF3DEF3DFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                      FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                      FF5EFF5EFF02FF02FF02FF02FF02FF02FF02FF02FF02EF1CFF5EFF5EFF5EFF7F
+                      FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                      FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                      FF5EFF5EFF5EFF5EFF5E}
+                    ParentFont = False
+                    TabOrder = 27
                   end
                 end
                 object TabDolar: TTabSheet
@@ -10614,6 +10672,14 @@ inherited FormCadastroProduto: TFormCadastroProduto
     object SQLTemplateVALOR_ICMSST: TFloatField
       FieldName = 'VALOR_ICMSST'
       Origin = 'DB.PRODUTO.VALOR_ICMSST'
+      OnChange = SQLTemplatePRODN3VLRCOMPRAChange
+    end
+    object SQLTemplateVALOR_DESC_ENTRADA: TFloatField
+      FieldName = 'VALOR_DESC_ENTRADA'
+      Origin = 'DB.PRODUTO.VALOR_DESC_ENTRADA'
+      OnChange = SQLTemplatePRODN3VLRCOMPRAChange
+      DisplayFormat = '#,##0.000'
+      EditFormat = '#,##0.000'
     end
   end
   inherited UpdateSQLTemplate: TUpdateSQL
@@ -10887,7 +10953,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
       'Select * From PRODUTOSALDO '
       'Where PRODICOD is NULL and EMPRICOD is NULL')
     Macros = <>
-    Left = 840
+    Left = 1088
     Top = 590
     object SQLProdutoSaldoNovoEMPRICOD: TIntegerField
       FieldName = 'EMPRICOD'
@@ -10925,7 +10991,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
     SQL.Strings = (
       'Select * From EMPRESA')
     Macros = <>
-    Left = 812
+    Left = 1060
     Top = 590
     object SQLEmpresaEMPRICOD: TIntegerField
       FieldName = 'EMPRICOD'
@@ -11005,7 +11071,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
       'NotaCompra.NOCPDRECEBIMENTO desc,'
       'NotaCompra.NOCPA30NRO')
     Macros = <>
-    Left = 812
+    Left = 1060
     Top = 563
     ParamData = <
       item
@@ -11158,7 +11224,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
   end
   object DSSQLNotasCompra: TDataSource
     DataSet = SQLNotasCompra
-    Left = 840
+    Left = 1088
     Top = 563
   end
   object SQLGrupo: TRxQuery
@@ -11167,7 +11233,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
       'SELECT GRUPICOD, GRUPA60DESCR FROM GRUPO'
       'ORDER BY GRUPA60DESCR')
     Macros = <>
-    Left = 813
+    Left = 1061
     Top = 418
     object SQLGrupoGRUPICOD: TIntegerField
       FieldName = 'GRUPICOD'
@@ -11190,7 +11256,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
       'GRUPICOD = :GRUPICOD'
       'ORDER BY SUBGA60DESCR')
     Macros = <>
-    Left = 813
+    Left = 1061
     Top = 446
     ParamData = <
       item
@@ -11232,7 +11298,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
       'SUBGICOD = :SUBGICOD'
       'ORDER BY VARIA60DESCR')
     Macros = <>
-    Left = 813
+    Left = 1061
     Top = 474
     ParamData = <
       item
@@ -11262,20 +11328,20 @@ inherited FormCadastroProduto: TFormCadastroProduto
     AutoEdit = False
     DataSet = SQLGrupo
     OnDataChange = DSSQLGrupoDataChange
-    Left = 841
+    Left = 1089
     Top = 418
   end
   object DSSQLSubGrupo: TDataSource
     AutoEdit = False
     DataSet = SQLSubGrupo
     OnDataChange = DSSQLSubGrupoDataChange
-    Left = 841
+    Left = 1089
     Top = 446
   end
   object DSSQLVariacao: TDataSource
     AutoEdit = False
     DataSet = SQLVariacao
-    Left = 841
+    Left = 1089
     Top = 474
   end
   object SQLMarca: TRxQuery
@@ -11285,7 +11351,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
       'FROM MARCA'
       'ORDER BY MARCA60DESCR')
     Macros = <>
-    Left = 813
+    Left = 1061
     Top = 506
     object SQLMarcaMARCICOD: TIntegerField
       FieldName = 'MARCICOD'
@@ -11300,7 +11366,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
   end
   object DSSQLMarca: TDataSource
     DataSet = SQLMarca
-    Left = 841
+    Left = 1089
     Top = 506
   end
   object SQLGrade: TRxQuery
@@ -11310,8 +11376,8 @@ inherited FormCadastroProduto: TFormCadastroProduto
       'FROM GRADE'
       'ORDER BY GRADA30DESCR')
     Macros = <>
-    Left = 808
-    Top = 134
+    Left = 1064
+    Top = 166
     object SQLGradeGRADICOD: TIntegerField
       FieldName = 'GRADICOD'
       Origin = 'DB.GRADE.GRADICOD'
@@ -11325,8 +11391,8 @@ inherited FormCadastroProduto: TFormCadastroProduto
   end
   object DSSQLGrade: TDataSource
     DataSet = SQLGrade
-    Left = 840
-    Top = 134
+    Left = 1096
+    Top = 166
   end
   object SQLTamanho: TRxQuery
     DatabaseName = 'DB'
@@ -11337,8 +11403,8 @@ inherited FormCadastroProduto: TFormCadastroProduto
       'WHERE '
       'GRADICOD = :GRADICOD')
     Macros = <>
-    Left = 808
-    Top = 162
+    Left = 1064
+    Top = 194
     ParamData = <
       item
         DataType = ftInteger
@@ -11363,8 +11429,8 @@ inherited FormCadastroProduto: TFormCadastroProduto
   end
   object DSSQLTamanho: TDataSource
     DataSet = SQLTamanho
-    Left = 840
-    Top = 162
+    Left = 1096
+    Top = 194
   end
   object SQLCor: TRxQuery
     DatabaseName = 'DB'
@@ -11372,8 +11438,8 @@ inherited FormCadastroProduto: TFormCadastroProduto
       'SELECT CORICOD, CORA30DESCR FROM COR'
       'ORDER BY CORA30DESCR')
     Macros = <>
-    Left = 808
-    Top = 190
+    Left = 1064
+    Top = 222
     object SQLCorCORICOD: TIntegerField
       FieldName = 'CORICOD'
       Origin = 'DB.COR.CORICOD'
@@ -11387,8 +11453,8 @@ inherited FormCadastroProduto: TFormCadastroProduto
   end
   object DSSQLCor: TDataSource
     DataSet = SQLCor
-    Left = 840
-    Top = 190
+    Left = 1096
+    Top = 222
   end
   object SQLUnidade: TRxQuery
     DatabaseName = 'DB'
@@ -11396,8 +11462,8 @@ inherited FormCadastroProduto: TFormCadastroProduto
       'SELECT UNIDICOD, UNIDA5DESCR, UNIDA15DESCR FROM UNIDADE'
       'ORDER BY UNIDA5DESCR')
     Macros = <>
-    Left = 808
-    Top = 218
+    Left = 1064
+    Top = 250
     object SQLUnidadeUNIDICOD: TIntegerField
       FieldName = 'UNIDICOD'
       Origin = 'DB.UNIDADE.UNIDICOD'
@@ -11417,8 +11483,8 @@ inherited FormCadastroProduto: TFormCadastroProduto
   end
   object DSSQLUnidade: TDataSource
     DataSet = SQLUnidade
-    Left = 840
-    Top = 218
+    Left = 1096
+    Top = 250
   end
   object SQLIcms: TRxQuery
     DatabaseName = 'DB'
@@ -11426,7 +11492,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
       'SELECT ICMSICOD, ICMSA60DESCR, ICMSN2ALIQUOTA, '
       'ICMSICODSITTRIB  FROM ICMS')
     Macros = <>
-    Left = 813
+    Left = 1061
     Top = 536
     object SQLIcmsICMSICOD: TIntegerField
       FieldName = 'ICMSICOD'
@@ -11449,7 +11515,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
   end
   object DSSQLIcms: TDataSource
     DataSet = SQLIcms
-    Left = 841
+    Left = 1089
     Top = 536
   end
   object SQLClasFiscal: TRxQuery
@@ -11457,8 +11523,8 @@ inherited FormCadastroProduto: TFormCadastroProduto
     SQL.Strings = (
       'SELECT CLFSICOD, CLFSA30DESCR FROM CLASSIFICACAOFISCAL')
     Macros = <>
-    Left = 808
-    Top = 246
+    Left = 1064
+    Top = 278
     object SQLClasFiscalCLFSICOD: TIntegerField
       FieldName = 'CLFSICOD'
       Origin = 'DB.CLASSIFICACAOFISCAL.CLFSICOD'
@@ -11472,8 +11538,8 @@ inherited FormCadastroProduto: TFormCadastroProduto
   end
   object DSSQLClasFiscal: TDataSource
     DataSet = SQLClasFiscal
-    Left = 840
-    Top = 246
+    Left = 1096
+    Top = 278
   end
   object SQLGradeTamanho: TRxQuery
     DatabaseName = 'DB'
@@ -11595,8 +11661,8 @@ inherited FormCadastroProduto: TFormCadastroProduto
     SQL.Strings = (
       'Select * From PRODUTO')
     Macros = <>
-    Left = 808
-    Top = 306
+    Left = 1056
+    Top = 322
     object SQLProdutoGradePRODICOD: TIntegerField
       FieldName = 'PRODICOD'
       Origin = 'DB.PRODUTO.PRODICOD'
@@ -11632,8 +11698,8 @@ inherited FormCadastroProduto: TFormCadastroProduto
     BeforeOpen = TblSaldoEmpresaBeforeOpen
     DatabaseName = 'Easy_Temp'
     TableName = 'TblSaldoEmpresa'
-    Left = 840
-    Top = 332
+    Left = 1088
+    Top = 348
     object TblSaldoEmpresaEmpresa: TStringField
       FieldName = 'Empresa'
       Size = 60
@@ -11695,8 +11761,8 @@ inherited FormCadastroProduto: TFormCadastroProduto
   object DSTblSaldoEmpresa: TDataSource
     AutoEdit = False
     DataSet = TblSaldoEmpresa
-    Left = 840
-    Top = 360
+    Left = 1088
+    Top = 376
   end
   object MEMGradeProduto: TMemoryTable
     DatabaseName = 'Easy_Temp'
@@ -12916,8 +12982,8 @@ inherited FormCadastroProduto: TFormCadastroProduto
   end
   object DSSQLEmpresa: TDataSource
     DataSet = SQLEmpresa
-    Left = 808
-    Top = 335
+    Left = 1056
+    Top = 351
   end
   object SQLProdutoComposicao: TRxQuery
     DatabaseName = 'DB'
@@ -13177,8 +13243,8 @@ inherited FormCadastroProduto: TFormCadastroProduto
       'FROM Colecao'
       'ORDER BY COLEA60DESCR')
     Macros = <>
-    Left = 808
-    Top = 105
+    Left = 1064
+    Top = 137
     object SQLColecaoCOLEICOD: TIntegerField
       FieldName = 'COLEICOD'
       Origin = 'DB.COLECAO.COLEICOD'
@@ -13202,8 +13268,8 @@ inherited FormCadastroProduto: TFormCadastroProduto
   end
   object DSSQLColecao: TDataSource
     DataSet = SQLColecao
-    Left = 840
-    Top = 105
+    Left = 1096
+    Top = 137
   end
   object SQLMovimentoEstoque: TRxQuery
     DatabaseName = 'DB'
@@ -13441,8 +13507,8 @@ inherited FormCadastroProduto: TFormCadastroProduto
       'order by EMPRICOD,CORA30DESCR, GRADICOD, GRTMICOD'
       'ASC')
     Macros = <>
-    Left = 839
-    Top = 306
+    Left = 1087
+    Top = 322
     ParamData = <
       item
         DataType = ftInteger
@@ -13758,8 +13824,8 @@ inherited FormCadastroProduto: TFormCadastroProduto
       'FROM PRODUTO_DESCONTOS'
       'WHERE PRODICOD = :PRODICOD')
     Macros = <>
-    Left = 893
-    Top = 310
+    Left = 1141
+    Top = 326
     ParamData = <
       item
         DataType = ftInteger
@@ -13795,7 +13861,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
   object dsProduto_Descontos: TDataSource
     DataSet = sqlProduto_Descontos
     OnDataChange = DSSQLSubGrupoDataChange
-    Left = 921
-    Top = 310
+    Left = 1169
+    Top = 326
   end
 end

@@ -992,6 +992,9 @@ type
     sqlProduto_DescontosQUANTIDADE: TFloatField;
     SQLTemplateVALOR_FRETE: TFloatField;
     SQLTemplateVALOR_ICMSST: TFloatField;
+    EvDBNumEdit4: TEvDBNumEdit;
+    Label29: TLabel;
+    SQLTemplateVALOR_DESC_ENTRADA: TFloatField;
     procedure FormCreate(Sender: TObject);
     procedure RxComboComissaoChange(Sender: TObject);
     procedure AcessaMarcaClick(Sender: TObject);
@@ -3335,7 +3338,7 @@ end;
 
 procedure TFormCadastroProduto.SQLTemplatePRODN3VLRCOMPRAChange(
   Sender: TField);
-var somanocusto, CustoIPI, CustoST, CustoFrete, CustoDespesas, CustoDifIcms, CustoEncargos: Extended;
+var somanocusto, CustoIPI, CustoST, CustoFrete, CustoDespesas, CustoDifIcms, CustoEncargos, Desconto: Extended;
 begin
   inherited;
   if Dm.SQLConfigGeralCFGECALCPRECOAUTOM.AsString = 'N' then Exit;
@@ -3387,6 +3390,15 @@ begin
       except
       end;
 
+      //Inseri o valor do desconto a pedido da Barbara - dia 12/07/2018
+      try
+        if SQLTemplate.FindField('VALOR_DESC_ENTRADA').AsFloat > 0 then
+          Desconto := SQLTemplate.FindField('VALOR_DESC_ENTRADA').asFloat
+        else
+          Desconto := 0;
+      except
+      end;
+
       // Alteramos de percentual de ICMS ST para Valor
       try
         if SQLTemplate.FindField('VALOR_ICMSST').asFloat > 0 then
@@ -3413,7 +3425,7 @@ begin
       end;
 
       SQLTemplate.FindField('PRODN3VLRCUSTO').asFloat := SQLTemplate.FindField('PRODN3VLRCOMPRA').AsFloat +
-        CustoST + CustoIPI + CustoFrete + CustoDespesas + CustoDifIcms + CustoEncargos;
+        CustoST + CustoIPI + CustoFrete + CustoDespesas + CustoDifIcms + CustoEncargos - Desconto;
          {NAO Entra no calculo do Custo do Produto nem o PIS nem o Cofins}
 
       try
@@ -3421,6 +3433,7 @@ begin
           (1 + (SQLTemplate.FindField('PRODN3PERCMGLVFIXA').asFloat / 100));
       except
       end;
+
     end
     else
     begin
