@@ -6178,19 +6178,19 @@ begin
 
     if ACBrNFe1.Configuracoes.Geral.VersaoDF = pcnConversaoNFe.ve310 then
     begin // Tag excluída na versão 4.00
-      if SQLContasReceberCTRCDVENC.isnull then
-        Ide.indPag := ipVista
+      if SQLContasReceber.IsEmpty then
+        Ide.indPag := ipNenhum
       else
       begin
         if (SQLTemplateNOFIDEMIS.AsString = SQLContasReceberCTRCDVENC.AsString) then
           Ide.indPag := ipVista
         else
           Ide.indpag := ipPrazo;
-        SQLContasReceber.Next;
+
         if SQLContasReceber.RecordCount > 1 then
           Ide.indpag := ipPrazo;
       end;
-    end;   
+    end;
 
     // Carrega cod Estado e Municipio conforme padrao IBGE
     try
@@ -6954,8 +6954,8 @@ begin
     else begin
       with pag.Add do
       begin
-        tPag := fpOutro;
-        vPag := RoundTo(sqltemplateNOFIN2VLRNOTA.Value, -2);
+        tPag := fpSemPagamento;
+        vPag := 0;
       end;
     end;
     
