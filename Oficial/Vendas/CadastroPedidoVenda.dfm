@@ -933,9 +933,9 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
                     Styler = AdvOfficeStatusBarOfficeStyler1
                     Version = '1.3.0.2'
                     object SaldoAtual: TLabel
-                      Left = 627
+                      Left = 669
                       Top = 2
-                      Width = 52
+                      Width = 10
                       Height = 19
                       Alignment = taRightJustify
                       Caption = '0'
@@ -950,7 +950,7 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
                     object LSaldo: TLabel
                       Left = 501
                       Top = 5
-                      Width = 83
+                      Width = 78
                       Height = 13
                       Caption = 'Estoque Atual'
                       Font.Charset = DEFAULT_CHARSET
@@ -979,7 +979,7 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
                     object Label16: TLabel
                       Left = 421
                       Top = 5
-                      Width = 52
+                      Width = 13
                       Height = 13
                       Caption = '%'
                       Font.Charset = DEFAULT_CHARSET

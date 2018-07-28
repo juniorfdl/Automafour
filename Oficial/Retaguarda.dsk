@@ -1,22 +1,22 @@
 [Closed Files]
-File_0=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.dfm',0,1,17738,1,17751,0,0
-File_1=SourceModule,'C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrNFe\PCNNFe\pcnNFe.pas',0,1,1737,27,1749,0,0
-File_2=SourceModule,'C:\Acbr\trunk2\Fontes\PCNComum\pcnConversao.pas',0,1,125,88,139,0,0
-File_3=SourceModule,'C:\projetos\Automafour\Oficial\Compras\TelaImportadorXML.dfm',0,1,2370,1,2383,0,0
-File_4=SourceModule,'C:\projetos\Automafour\Oficial\Cadastros\CadastroEmpresa.dfm',0,1,3000,1,3013,0,0
-File_5=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscalCartaCorrecao.dfm',0,1,280,1,293,0,0
-File_6=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.pas',0,1,1,1,1,1,1
-File_7=SourceModule,'C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrNFe\PCNNFe\pcnConversaoNFe.pas',0,1,31,21,48,0,0
-File_8=SourceModule,'C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrNFe\ACBrNFeConfiguracoes.pas',0,1,64,31,74,0,0
-File_9=SourceModule,'C:\projetos\Automafour\Oficial\Cadastros\CadastroEmpresa.pas',0,1,156,28,166,1,0
+File_0=SourceModule,'C:\projetos\Automafour\Oficial\Compras\TelaImportadorXML.pas',0,1,6,37,17,0,0
+File_1=SourceModule,'C:\projetos\Automafour\Oficial\Cadastros\CadastroEmpresa.pas',0,1,1,53,14,0,0
+File_2=SourceModule,'C:\projetos\Automafour\Oficial\DataModulo.pas',0,1,1,116,8,0,0
+File_3=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.dfm',0,1,17738,1,17751,0,0
+File_4=SourceModule,'C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrNFe\PCNNFe\pcnNFe.pas',0,1,1737,27,1749,0,0
+File_5=SourceModule,'C:\Acbr\trunk2\Fontes\PCNComum\pcnConversao.pas',0,1,125,88,139,0,0
+File_6=SourceModule,'C:\projetos\Automafour\Oficial\Compras\TelaImportadorXML.dfm',0,1,2370,1,2383,0,0
+File_7=SourceModule,'C:\projetos\Automafour\Oficial\Cadastros\CadastroEmpresa.dfm',0,1,3000,1,3013,0,0
+File_8=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscalCartaCorrecao.dfm',0,1,280,1,293,0,0
+File_9=SourceModule,'C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrNFe\PCNNFe\pcnConversaoNFe.pas',0,1,31,21,48,0,0
 
 [Modules]
-Module0=C:\projetos\Automafour\Oficial\DataModulo.pas
+Module0=C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.pas
 Module1=C:\projetos\Automafour\Oficial\Retaguarda.dpr
 Count=2
 EditWindowCount=1
 
-[C:\projetos\Automafour\Oficial\DataModulo.pas]
+[C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.pas]
 ModuleType=SourceModule
 FormState=0
 FormOnTop=0
@@ -31,6 +31,14 @@ FormState=0
 FormOnTop=0
 
 [C:\projetos\Automafour\Template\DataModuloTemplate.pas]
+FormState=0
+FormOnTop=0
+
+[C:\projetos\Automafour\Template\CadastroTEMPLATE.pas]
+FormState=0
+FormOnTop=0
+
+[C:\projetos\Automafour\Template\TelaGeralTEMPLATE.pas]
 FormState=0
 FormOnTop=0
 
@@ -58,22 +66,22 @@ LeftPanelSize=0
 LeftPanelClients=CodeExplorer@EditWindow0
 LeftPanelData=00000400010000000C000000436F64654578706C6F726572000000000000000000000000000000000001000000000000000000000000FFFFFFFF
 RightPanelSize=0
-BottomPanelSize=0
+BottomPanelSize=85
 BottomPanelClients=MessageView@EditWindow0
-BottomPanelData=00000400010000000B0000004D657373616765566965775605000000000000025500000000000000010000000000000000000000000100000000560500000000000001000000005605000000000000010000000056050000000000000100000000560500000B0000004D65737361676556696577FFFFFFFF
+BottomPanelData=0000040000000000560500000000000002550000000000000001000000000000000000000000010000000056050000000000000100000000560500000000000001000000005605000000000000010000000056050000000000000100000000560500000B0000004D65737361676556696577FFFFFFFF
 
 [View0]
 Module=C:\projetos\Automafour\Oficial\Retaguarda.dpr
-CursorX=41
-CursorY=468
+CursorX=83
+CursorY=461
 TopLine=449
 LeftCol=1
 
 [View1]
-Module=C:\projetos\Automafour\Oficial\DataModulo.pas
-CursorX=116
-CursorY=8
-TopLine=1
+Module=C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.pas
+CursorX=1
+CursorY=6972
+TopLine=6959
 LeftCol=1
 
 [Watches]
@@ -106,9 +114,9 @@ Breakpoint3='c:\acbr\trunk2\Fontes\ACBrBoleto\ACBrBancoSicredi.pas',206,'',0,1,'
 Breakpoint4='C:\projetos\Automafour\Oficial\Vendas\TelaImpressaoDuplicatas.pas',1528,'',0,1,'',1,0,0,'',1,'','',''
 Breakpoint5='C:\projetos\Automafour\Oficial\Relatorios\Administrativo\RelatorioCurvaABC.pas',355,'',0,1,'',1,0,0,'',1,'','',''
 Breakpoint6='C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrNFe\ACBrNFeNotasFiscais.pas',1230,'',0,1,'',1,0,0,'',1,'','',''
-Breakpoint7='C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.pas',7319,'',0,1,'',1,0,0,'',1,'','',''
+Breakpoint7='C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.pas',7307,'',0,1,'',1,0,0,'',1,'','',''
 Breakpoint8='C:\projetos\Automafour\Oficial\ArquivosComuns\UnitLibrary.pas',2242,'',0,1,'',1,0,0,'',1,'','',''
-Breakpoint9='C:\projetos\Automafour\Oficial\Compras\TelaImportadorXML.pas',2544,'',0,1,'',1,0,0,'',1,'','',''
+Breakpoint9='C:\projetos\Automafour\Oficial\Compras\TelaImportadorXML.pas',2536,'',0,1,'',1,0,0,'',1,'','',''
 Breakpoint10='C:\projetos\Automafour\Oficial\Integrador\TelaExportacaoSPED.pas',2702,'',0,1,'',1,0,0,'',1,'','',''
 Breakpoint11='C:\projetos\Automafour\Template\CadastroTEMPLATE.pas',995,'',0,1,'',1,0,0,'',1,'','',''
 
@@ -207,7 +215,7 @@ LRDockWidth=866
 Dockable=1
 SplitPos=119
 ArrangeBy=Name
-SelectedItem=
+SelectedItem=Name
 ExpandedItems=Action,Action.DataSource,Configuracoes,Configuracoes.Geral,DataBinding,DataController,DataController.DataSource,DataSource,DataSource.DataSet.MasterSource,DataSource.DataSet.MasterSource.DataSet,Font.Style,ListSource.DataSet,LookupDataSet,Options,PreviewOptions,ProviderFlags,Style.Font,Title
 HiddenCategories=
 
@@ -443,7 +451,7 @@ Dockable=1
 
 [MessageView@EditWindow0]
 Create=1
-Visible=0
+Visible=1
 State=0
 Left=12
 Top=0

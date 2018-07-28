@@ -1,45 +1,20 @@
 [Closed Files]
-File_0=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.pas',0,1,1,1,1,1,1
-File_1=SourceModule,'C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrNFe\PCNNFe\pcnConversaoNFe.pas',0,1,31,21,48,0,0
-File_2=SourceModule,'C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrNFe\ACBrNFeConfiguracoes.pas',0,1,64,31,74,0,0
-File_3=SourceModule,'C:\projetos\Automafour\Oficial\Cadastros\CadastroEmpresa.pas',0,1,156,28,166,1,0
-File_4=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscalCartaCorrecao.pas',0,1,130,13,144,1,0
-File_5=SourceModule,'C:\projetos\Automafour\Oficial\Compras\TelaImportadorXML.pas',0,1,689,65,717,1,0
-File_6=SourceModule,'C:\projetos\Automafour\Template\PrincipalTemplate.pas',0,1,234,1,236,0,0
-File_7=SourceModule,'C:\projetos\Automafour\Template\FormResources.pas',0,1,28,24,43,0,0
-File_8=SourceModule,'C:\projetos\Automafour\Template\TelaGerenciamentoAcesso.pas',0,1,467,3,476,1,0
+File_0=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.dfm',0,1,17738,1,17751,0,0
+File_1=SourceModule,'C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrNFe\PCNNFe\pcnNFe.pas',0,1,1737,27,1749,0,0
+File_2=SourceModule,'C:\Acbr\trunk2\Fontes\PCNComum\pcnConversao.pas',0,1,125,88,139,0,0
+File_3=SourceModule,'C:\projetos\Automafour\Oficial\Compras\TelaImportadorXML.dfm',0,1,2370,1,2383,0,0
+File_4=SourceModule,'C:\projetos\Automafour\Oficial\Cadastros\CadastroEmpresa.dfm',0,1,3000,1,3013,0,0
+File_5=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscalCartaCorrecao.dfm',0,1,280,1,293,0,0
+File_6=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.pas',0,1,1,1,1,1,1
+File_7=SourceModule,'C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrNFe\PCNNFe\pcnConversaoNFe.pas',0,1,31,21,48,0,0
+File_8=SourceModule,'C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrNFe\ACBrNFeConfiguracoes.pas',0,1,64,31,74,0,0
+File_9=SourceModule,'C:\projetos\Automafour\Oficial\Cadastros\CadastroEmpresa.pas',0,1,156,28,166,1,0
 
 [Modules]
-Module0=C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscalCartaCorrecao.dfm
-Module1=C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.dfm
-Module2=C:\projetos\Automafour\Oficial\Compras\TelaImportadorXML.dfm
-Module3=C:\projetos\Automafour\Oficial\Cadastros\CadastroEmpresa.dfm
-Module4=C:\projetos\Automafour\Oficial\DataModulo.pas
-Module5=C:\projetos\Automafour\Oficial\Retaguarda.dpr
-Module6=C:\Acbr\trunk2\Fontes\PCNComum\pcnConversao.pas
-Module7=C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrNFe\PCNNFe\pcnNFe.pas
-Count=8
+Module0=C:\projetos\Automafour\Oficial\DataModulo.pas
+Module1=C:\projetos\Automafour\Oficial\Retaguarda.dpr
+Count=2
 EditWindowCount=1
-
-[C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscalCartaCorrecao.dfm]
-ModuleType=SourceModule
-FormState=0
-FormOnTop=0
-
-[C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.dfm]
-ModuleType=SourceModule
-FormState=0
-FormOnTop=0
-
-[C:\projetos\Automafour\Oficial\Compras\TelaImportadorXML.dfm]
-ModuleType=SourceModule
-FormState=0
-FormOnTop=0
-
-[C:\projetos\Automafour\Oficial\Cadastros\CadastroEmpresa.dfm]
-ModuleType=SourceModule
-FormState=0
-FormOnTop=0
 
 [C:\projetos\Automafour\Oficial\DataModulo.pas]
 ModuleType=SourceModule
@@ -47,16 +22,6 @@ FormState=0
 FormOnTop=0
 
 [C:\projetos\Automafour\Oficial\Retaguarda.dpr]
-ModuleType=SourceModule
-FormState=0
-FormOnTop=0
-
-[C:\Acbr\trunk2\Fontes\PCNComum\pcnConversao.pas]
-ModuleType=SourceModule
-FormState=0
-FormOnTop=0
-
-[C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrNFe\PCNNFe\pcnNFe.pas]
 ModuleType=SourceModule
 FormState=0
 FormOnTop=0
@@ -69,25 +34,11 @@ FormOnTop=0
 FormState=0
 FormOnTop=0
 
-[C:\projetos\Automafour\Template\CadastroTEMPLATE.pas]
-FormState=0
-FormOnTop=0
-
-[C:\projetos\Automafour\Template\TelaGeralTEMPLATE.pas]
-FormState=0
-FormOnTop=0
-
 [EditWindow0]
-ViewCount=8
-CurrentView=3
+ViewCount=2
+CurrentView=1
 View0=0
 View1=1
-View2=2
-View3=3
-View4=4
-View5=5
-View6=6
-View7=7
 CodeExplorer=CodeExplorer@EditWindow0
 MessageView=MessageView@EditWindow0
 Create=1
@@ -107,9 +58,9 @@ LeftPanelSize=0
 LeftPanelClients=CodeExplorer@EditWindow0
 LeftPanelData=00000400010000000C000000436F64654578706C6F726572000000000000000000000000000000000001000000000000000000000000FFFFFFFF
 RightPanelSize=0
-BottomPanelSize=85
+BottomPanelSize=0
 BottomPanelClients=MessageView@EditWindow0
-BottomPanelData=00000400000000005605000000000000025500000000000000010000000000000000000000000100000000560500000000000001000000005605000000000000010000000056050000000000000100000000560500000B0000004D65737361676556696577FFFFFFFF
+BottomPanelData=00000400010000000B0000004D657373616765566965775605000000000000025500000000000000010000000000000000000000000100000000560500000000000001000000005605000000000000010000000056050000000000000100000000560500000B0000004D65737361676556696577FFFFFFFF
 
 [View0]
 Module=C:\projetos\Automafour\Oficial\Retaguarda.dpr
@@ -120,51 +71,9 @@ LeftCol=1
 
 [View1]
 Module=C:\projetos\Automafour\Oficial\DataModulo.pas
-CursorX=64
-CursorY=11
+CursorX=116
+CursorY=8
 TopLine=1
-LeftCol=1
-
-[View2]
-Module=C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.dfm
-CursorX=84
-CursorY=18099
-TopLine=18099
-LeftCol=1
-
-[View3]
-Module=C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscalCartaCorrecao.dfm
-CursorX=1
-CursorY=293
-TopLine=280
-LeftCol=1
-
-[View4]
-Module=C:\projetos\Automafour\Oficial\Cadastros\CadastroEmpresa.dfm
-CursorX=1
-CursorY=3013
-TopLine=3000
-LeftCol=1
-
-[View5]
-Module=C:\projetos\Automafour\Oficial\Compras\TelaImportadorXML.dfm
-CursorX=1
-CursorY=2383
-TopLine=2370
-LeftCol=1
-
-[View6]
-Module=C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrNFe\PCNNFe\pcnNFe.pas
-CursorX=27
-CursorY=1749
-TopLine=1737
-LeftCol=1
-
-[View7]
-Module=C:\Acbr\trunk2\Fontes\PCNComum\pcnConversao.pas
-CursorX=88
-CursorY=139
-TopLine=125
 LeftCol=1
 
 [Watches]
@@ -298,7 +207,7 @@ LRDockWidth=866
 Dockable=1
 SplitPos=119
 ArrangeBy=Name
-SelectedItem=SQL
+SelectedItem=
 ExpandedItems=Action,Action.DataSource,Configuracoes,Configuracoes.Geral,DataBinding,DataController,DataController.DataSource,DataSource,DataSource.DataSet.MasterSource,DataSource.DataSet.MasterSource.DataSet,Font.Style,ListSource.DataSet,LookupDataSet,Options,PreviewOptions,ProviderFlags,Style.Font,Title
 HiddenCategories=
 
@@ -486,7 +395,7 @@ Dockable=1
 
 [fmGrepResults]
 Create=1
-Visible=1
+Visible=0
 State=0
 Left=396
 Top=2
@@ -534,7 +443,7 @@ Dockable=1
 
 [MessageView@EditWindow0]
 Create=1
-Visible=1
+Visible=0
 State=0
 Left=12
 Top=0

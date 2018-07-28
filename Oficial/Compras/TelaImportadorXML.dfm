@@ -2090,7 +2090,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
               BorderStyle = bsNone
               Color = clWhite
               DataSource = dsNFSEFAZ
-              FixedColor = 10053171
+              FixedColor = clGray
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
               Font.Height = -11
@@ -2381,6 +2381,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
     Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
     Configuracoes.Geral.ValidarDigest = False
     Configuracoes.Arquivos.AdicionarLiteral = True
+    Configuracoes.Arquivos.OrdenacaoPath = <>
     Configuracoes.Arquivos.EmissaoPathNFe = True
     Configuracoes.Arquivos.PathNFe = 'C:\Easy2Solutions\NFe\Recebidos'
     Configuracoes.Arquivos.PathInu = 'C:\Easy2Solutions\NFe\Recebidos'

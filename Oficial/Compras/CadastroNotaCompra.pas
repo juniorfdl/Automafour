@@ -1126,6 +1126,15 @@ begin
                         // Dif.ICMS Percentual
                         if SQLNotaCompraItens.FindField('NOCIN2PERCDIFICM').asFloat > 0 then
                           SQLProduto.FindField('PRODN2PERCDIFICM').value := SQLNotaCompraItens.FindField('NOCIN2PERCDIFICM').asFloat;
+                        // Perc.Pis
+                        if SQLNotaCompraItens.FindField('NOCIN2PERCPIS').asFloat > 0 then
+                          SQLProduto.FindField('PRODN2ALIQPIS').value := SQLNotaCompraItens.FindField('NOCIN2PERCPIS').asFloat;
+                        // Perc.Cofins
+                        if SQLNotaCompraItens.FindField('NOCIN2PERCCOFINS').asFloat > 0 then
+                          SQLProduto.FindField('PRODN2ALIQCOFINS').value := SQLNotaCompraItens.FindField('NOCIN2PERCCOFINS').asFloat;
+                        // Perc.IPI
+                        if SQLNotaCompraItens.FindField('NOCIN3PERCIPI').asFloat > 0 then
+                          SQLProduto.FindField('PRODN2PERCIPIENTRADA').value := SQLNotaCompraItens.FindField('NOCIN3PERCIPI').asFloat;
 
                         // Subst Trib Percentual
                         if (SQLNotaCompraItens.FindField('NOCIN2VBCST').asFloat>0) and (SQLNotaCompraItens.FindField('NOCIN3VLRSUBST').asFloat>0) then
@@ -2650,3 +2659,6 @@ begin
 end;
 
 end.
+
+
+

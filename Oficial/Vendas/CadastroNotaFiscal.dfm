@@ -264,7 +264,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
           Height = 13
           Caption = 'Data e Hora da Saida'
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clGreen
+          Font.Color = clBlack
           Font.Height = -11
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
@@ -278,7 +278,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
           AutoSize = False
           Caption = 'Vendedor'
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clNavy
+          Font.Color = clBlack
           Font.Height = -11
           Font.Name = 'Tahoma'
           Font.Style = []
@@ -293,7 +293,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
           AutoSize = False
           Caption = 'Rota'
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clNavy
+          Font.Color = clBlack
           Font.Height = -11
           Font.Name = 'Tahoma'
           Font.Style = []
@@ -308,7 +308,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
           AutoSize = False
           Caption = 'Transp'
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clNavy
+          Font.Color = clBlack
           Font.Height = -11
           Font.Name = 'Tahoma'
           Font.Style = []
@@ -323,7 +323,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
           AutoSize = False
           Caption = 'Ve'#237'culo'
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clNavy
+          Font.Color = clBlack
           Font.Height = -11
           Font.Name = 'Tahoma'
           Font.Style = []
@@ -338,7 +338,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
           AutoSize = False
           Caption = 'Emiss'#227'o'
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clNavy
+          Font.Color = clBlack
           Font.Height = -11
           Font.Name = 'Tahoma'
           Font.Style = []
@@ -353,7 +353,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
           AutoSize = False
           Caption = 'Entrega'
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clNavy
+          Font.Color = clBlack
           Font.Height = -11
           Font.Name = 'Tahoma'
           Font.Style = []
@@ -590,7 +590,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
           Caption = ' Legenda Status NFe '
           Color = 16249066
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clNavy
+          Font.Color = clBlack
           Font.Height = -11
           Font.Name = 'MS Sans Serif'
           Font.Style = []
@@ -605,6 +605,12 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
             Caption = 
               '0 - Pendente'#13#10'1 - Cancelado'#13#10'2 - Inutilizado'#13#10'3 - Efetivado'#13#10'4 -' +
               ' Conting'#234'ncia'#13#10'5 - Denegado'#13#10'6 - Rejeitada'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentFont = False
           end
         end
       end
@@ -618,7 +624,6 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
             Top = 44
             Width = 1216
             Height = 570
-            ActivePage = TabSheetDadosPrincipais
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Top = 126
@@ -768,7 +773,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                     Height = 13
                     Caption = 'NF Final'
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -781,7 +786,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                     Height = 13
                     Caption = 'NF Inicial'
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -794,7 +799,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                     Height = 13
                     Caption = 'Serie NF-e'
                     Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
+                    Font.Color = clBlack
                     Font.Height = -11
                     Font.Name = 'Tahoma'
                     Font.Style = [fsBold]
@@ -892,7 +897,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 Caption = ' Retorno da Nota Fiscal Eletronica  '
                 Color = 16249066
                 Font.Charset = DEFAULT_CHARSET
-                Font.Color = clNavy
+                Font.Color = clBlack
                 Font.Height = -11
                 Font.Name = 'MS Sans Serif'
                 Font.Style = [fsBold]
@@ -905,6 +910,12 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Width = 86
                   Height = 13
                   Caption = 'Chave Acesso:'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clBlack
+                  Font.Height = -11
+                  Font.Name = 'MS Sans Serif'
+                  Font.Style = [fsBold]
+                  ParentFont = False
                 end
                 object Label73: TLabel
                   Left = 36
@@ -912,6 +923,12 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Width = 59
                   Height = 13
                   Caption = 'Protocolo:'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clBlack
+                  Font.Height = -11
+                  Font.Name = 'MS Sans Serif'
+                  Font.Style = [fsBold]
+                  ParentFont = False
                 end
                 object Label78: TLabel
                   Left = 32
@@ -919,6 +936,12 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Width = 63
                   Height = 13
                   Caption = 'N'#186' Recibo:'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clBlack
+                  Font.Height = -11
+                  Font.Name = 'MS Sans Serif'
+                  Font.Style = [fsBold]
+                  ParentFont = False
                 end
                 object DBEdit28: TDBEdit
                   Left = 14
@@ -5448,7 +5471,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 Height = 13
                 Caption = 'Vendedor'
                 Font.Charset = DEFAULT_CHARSET
-                Font.Color = 8404992
+                Font.Color = clBlack
                 Font.Height = -11
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
@@ -5495,7 +5518,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 Height = 13
                 Caption = 'Dados Adicionais'
                 Font.Charset = DEFAULT_CHARSET
-                Font.Color = 8404992
+                Font.Color = clBlack
                 Font.Height = -11
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
@@ -5509,7 +5532,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 Caption = 'Pedido de Venda'
                 FocusControl = DBEditPV
                 Font.Charset = DEFAULT_CHARSET
-                Font.Color = 8404992
+                Font.Color = clBlack
                 Font.Height = -11
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
@@ -5542,7 +5565,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 Height = 13
                 Caption = 'Empresa Emitente'
                 Font.Charset = DEFAULT_CHARSET
-                Font.Color = 8404992
+                Font.Color = clBlack
                 Font.Height = -11
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
@@ -5556,7 +5579,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 Caption = 'Nro Pedido'
                 FocusControl = DBEdit27
                 Font.Charset = DEFAULT_CHARSET
-                Font.Color = 8404992
+                Font.Color = clBlack
                 Font.Height = -11
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
@@ -5570,7 +5593,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 Caption = 'Comprador'
                 FocusControl = DBEdit30
                 Font.Charset = DEFAULT_CHARSET
-                Font.Color = 8404992
+                Font.Color = clBlack
                 Font.Height = -11
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
@@ -5584,7 +5607,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 Caption = 'Nro Tal'#227'o'
                 FocusControl = DBEdit18
                 Font.Charset = DEFAULT_CHARSET
-                Font.Color = 8404992
+                Font.Color = clBlack
                 Font.Height = -11
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
@@ -5597,7 +5620,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 Height = 13
                 Caption = 'Obs Impressas ap'#243's o ultim item (exceto em NF-e)'
                 Font.Charset = DEFAULT_CHARSET
-                Font.Color = 8404992
+                Font.Color = clBlack
                 Font.Height = -11
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
@@ -5611,7 +5634,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 Caption = 'Data/hora Saida'
                 FocusControl = DBEdit25
                 Font.Charset = DEFAULT_CHARSET
-                Font.Color = 8404992
+                Font.Color = clBlack
                 Font.Height = -11
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
@@ -5624,7 +5647,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 Height = 13
                 Caption = 'Finalidade da Emiss'#227'o'
                 Font.Charset = DEFAULT_CHARSET
-                Font.Color = 8404992
+                Font.Color = clBlack
                 Font.Height = -11
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
@@ -5651,7 +5674,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 Height = 88
                 Caption = '[Dados do Destinatario]'
                 Font.Charset = DEFAULT_CHARSET
-                Font.Color = 8404992
+                Font.Color = clBlack
                 Font.Height = -11
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
@@ -6024,7 +6047,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 Height = 89
                 Caption = ' Dados do Transportador / Volumes / Pesos '
                 Font.Charset = DEFAULT_CHARSET
-                Font.Color = 8404992
+                Font.Color = clBlack
                 Font.Height = -11
                 Font.Name = 'MS Sans Serif'
                 Font.Style = [fsBold]
@@ -6038,7 +6061,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Caption = 'Transportadora'
                   FocusControl = EditCdTransp
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
@@ -6071,7 +6094,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Height = 13
                   Caption = 'Motorista'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
@@ -6084,7 +6107,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Height = 13
                   Caption = 'Placa'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
@@ -6097,7 +6120,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Height = 13
                   Caption = 'Frete p/Conta'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
@@ -6110,7 +6133,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Height = 13
                   Caption = 'Qtde Volumes'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
@@ -6123,7 +6146,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Height = 13
                   Caption = 'Esp'#233'cie'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
@@ -6136,7 +6159,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Height = 13
                   Caption = 'Marca'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
@@ -6149,7 +6172,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Height = 13
                   Caption = 'Peso Bruto'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
@@ -6162,7 +6185,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Height = 13
                   Caption = 'Peso L'#237'quido'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
@@ -6405,7 +6428,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 Caption = ' Retorno da Nota Fiscal Eletronica  '
                 Color = 16249066
                 Font.Charset = DEFAULT_CHARSET
-                Font.Color = clNavy
+                Font.Color = clBlack
                 Font.Height = -11
                 Font.Name = 'MS Sans Serif'
                 Font.Style = [fsBold]
@@ -6418,6 +6441,12 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Width = 86
                   Height = 13
                   Caption = 'Chave Acesso:'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clBlack
+                  Font.Height = -11
+                  Font.Name = 'MS Sans Serif'
+                  Font.Style = [fsBold]
+                  ParentFont = False
                 end
                 object Label75: TLabel
                   Left = 32
@@ -6425,6 +6454,12 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Width = 63
                   Height = 13
                   Caption = 'Protocolo :'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clBlack
+                  Font.Height = -11
+                  Font.Name = 'MS Sans Serif'
+                  Font.Style = [fsBold]
+                  ParentFont = False
                 end
                 object Label77: TLabel
                   Left = 32
@@ -6432,6 +6467,12 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Width = 63
                   Height = 13
                   Caption = 'N'#186' Recibo:'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clBlack
+                  Font.Height = -11
+                  Font.Name = 'MS Sans Serif'
+                  Font.Style = [fsBold]
+                  ParentFont = False
                 end
                 object DBEdit9: TDBEdit
                   Left = 37
@@ -11118,7 +11159,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               object GroupBox2: TGroupBox
                 Left = 0
                 Top = 0
-                Width = 1226
+                Width = 1208
                 Height = 136
                 Align = alTop
                 Caption = ' C'#225'lculo de Impostos / Volumes transportados / Pesos '
@@ -11136,7 +11177,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Height = 13
                   Caption = 'Base Calc ICMS'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'MS Sans Serif'
                   Font.Style = [fsBold]
@@ -11149,7 +11190,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Height = 13
                   Caption = 'Valor ICMS'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'MS Sans Serif'
                   Font.Style = [fsBold]
@@ -11162,7 +11203,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Height = 13
                   Caption = 'Base Calc ICM ST'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'MS Sans Serif'
                   Font.Style = [fsBold]
@@ -11175,7 +11216,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Height = 13
                   Caption = 'Valor ICM ST'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'MS Sans Serif'
                   Font.Style = [fsBold]
@@ -11188,7 +11229,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Height = 13
                   Caption = 'Valor ISSQN'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'MS Sans Serif'
                   Font.Style = [fsBold]
@@ -11201,7 +11242,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Height = 13
                   Caption = 'Valor IPI'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'MS Sans Serif'
                   Font.Style = [fsBold]
@@ -11214,7 +11255,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Height = 13
                   Caption = 'Valor Servi'#231'o(s)'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'MS Sans Serif'
                   Font.Style = [fsBold]
@@ -11227,7 +11268,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Height = 13
                   Caption = 'Valor ICMS Frete'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'MS Sans Serif'
                   Font.Style = [fsBold]
@@ -11240,7 +11281,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Height = 13
                   Caption = 'Valor Frete'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'MS Sans Serif'
                   Font.Style = [fsBold]
@@ -11253,7 +11294,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Height = 13
                   Caption = 'Valor Seguro'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'MS Sans Serif'
                   Font.Style = [fsBold]
@@ -11266,7 +11307,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Height = 13
                   Caption = 'Outras Desp'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'MS Sans Serif'
                   Font.Style = [fsBold]
@@ -11474,13 +11515,13 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               object GroupBox4: TGroupBox
                 Left = 0
                 Top = 136
-                Width = 1226
+                Width = 1208
                 Height = 173
                 Align = alTop
                 Caption = ' Outros Adicionais Sobre Nota Fiscal - F12 Valor Padr'#227'o '
                 Color = 16249066
                 Font.Charset = DEFAULT_CHARSET
-                Font.Color = clNavy
+                Font.Color = clBlack
                 Font.Height = -11
                 Font.Name = 'MS Sans Serif'
                 Font.Style = [fsBold]
@@ -11494,7 +11535,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Height = 13
                   Caption = '% M'#227'o Obra S/ Total NF'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'MS Sans Serif'
                   Font.Style = [fsBold]
@@ -11507,7 +11548,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Height = 13
                   Caption = 'R$ M'#227'o de Obra'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'MS Sans Serif'
                   Font.Style = [fsBold]
@@ -11520,7 +11561,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Height = 13
                   Caption = '% INSS'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'MS Sans Serif'
                   Font.Style = [fsBold]
@@ -11533,7 +11574,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Height = 13
                   Caption = '% IR'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'MS Sans Serif'
                   Font.Style = [fsBold]
@@ -11546,7 +11587,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Height = 13
                   Caption = '% Contribui'#231#227'o Social'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'MS Sans Serif'
                   Font.Style = [fsBold]
@@ -11559,7 +11600,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Height = 13
                   Caption = '% ISSQN'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'MS Sans Serif'
                   Font.Style = [fsBold]
@@ -11572,7 +11613,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Height = 13
                   Caption = 'Valor ISSQN'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'MS Sans Serif'
                   Font.Style = [fsBold]
@@ -11585,7 +11626,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Height = 13
                   Caption = 'Valor INSS'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'MS Sans Serif'
                   Font.Style = [fsBold]
@@ -11598,7 +11639,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Height = 13
                   Caption = 'Valor COFINS'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'MS Sans Serif'
                   Font.Style = [fsBold]
@@ -11611,7 +11652,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Height = 13
                   Caption = 'Valor pis'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'MS Sans Serif'
                   Font.Style = [fsBold]
@@ -11624,7 +11665,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Height = 13
                   Caption = 'Valor IR'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'MS Sans Serif'
                   Font.Style = [fsBold]
@@ -11637,7 +11678,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Height = 13
                   Caption = 'Valor Contr. Social'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'MS Sans Serif'
                   Font.Style = [fsBold]
@@ -11650,7 +11691,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Height = 13
                   Caption = '% Material S/ Total NF'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'MS Sans Serif'
                   Font.Style = [fsBold]
@@ -11663,7 +11704,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   Height = 13
                   Caption = 'R$ Materiais'
                   Font.Charset = DEFAULT_CHARSET
-                  Font.Color = 8404992
+                  Font.Color = clBlack
                   Font.Height = -11
                   Font.Name = 'MS Sans Serif'
                   Font.Style = [fsBold]
@@ -12175,7 +12216,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                       BorderStyle = bsNone
                       Color = clWhite
                       DataSource = DSSQLContasReceber
-                      FixedColor = 10053171
+                      FixedColor = 13225421
                       Font.Charset = DEFAULT_CHARSET
                       Font.Color = clWindowText
                       Font.Height = -11
@@ -12196,6 +12237,11 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                           FieldName = 'CTRCINROPARC'
                           ReadOnly = True
                           Title.Caption = 'Parc'
+                          Title.Font.Charset = DEFAULT_CHARSET
+                          Title.Font.Color = clBlack
+                          Title.Font.Height = -11
+                          Title.Font.Name = 'Tahoma'
+                          Title.Font.Style = [fsBold]
                           Width = 30
                           Visible = True
                         end
@@ -12203,6 +12249,11 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                           Expanded = False
                           FieldName = 'CTRCDVENC'
                           Title.Caption = 'Dt.Vencto'
+                          Title.Font.Charset = DEFAULT_CHARSET
+                          Title.Font.Color = clBlack
+                          Title.Font.Height = -11
+                          Title.Font.Name = 'Tahoma'
+                          Title.Font.Style = [fsBold]
                           Width = 66
                           Visible = True
                         end
@@ -12210,6 +12261,11 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                           Expanded = False
                           FieldName = 'CTRCN2VLR'
                           Title.Caption = 'Valor'
+                          Title.Font.Charset = DEFAULT_CHARSET
+                          Title.Font.Color = clBlack
+                          Title.Font.Height = -11
+                          Title.Font.Name = 'Tahoma'
+                          Title.Font.Style = [fsBold]
                           Width = 90
                           Visible = True
                         end>
@@ -12220,7 +12276,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                       Width = 774
                       Height = 38
                       Align = alTop
-                      Color = 16249066
+                      Color = 13158600
                       TabOrder = 1
                       object Label9: TLabel
                         Left = 7
@@ -12229,7 +12285,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                         Height = 13
                         Caption = 'Plano Recebimento Atual'
                         Font.Charset = DEFAULT_CHARSET
-                        Font.Color = 8404992
+                        Font.Color = clBlack
                         Font.Height = -11
                         Font.Name = 'Tahoma'
                         Font.Style = [fsBold]
@@ -12266,7 +12322,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                     Width = 424
                     Height = 498
                     Align = alLeft
-                    Color = 16249066
+                    Color = 13158600
                     TabOrder = 2
                     object Label10: TLabel
                       Left = 17
@@ -12275,7 +12331,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                       Height = 13
                       Caption = 'Novo Plano de Recebimento'
                       Font.Charset = DEFAULT_CHARSET
-                      Font.Color = 8404992
+                      Font.Color = clBlack
                       Font.Height = -11
                       Font.Name = 'Tahoma'
                       Font.Style = [fsBold]
@@ -12289,7 +12345,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                       Caption = #224' Vista'
                       Color = 12572888
                       Font.Charset = DEFAULT_CHARSET
-                      Font.Color = 8404992
+                      Font.Color = clBlack
                       Font.Height = -11
                       Font.Name = 'Tahoma'
                       Font.Style = [fsBold]
@@ -12304,7 +12360,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                       Caption = #224' Prazo'
                       Color = 12572888
                       Font.Charset = DEFAULT_CHARSET
-                      Font.Color = 8404992
+                      Font.Color = clBlack
                       Font.Height = -11
                       Font.Name = 'Tahoma'
                       Font.Style = [fsBold]
@@ -12319,7 +12375,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                       Caption = 'Tipo Documento'
                       Color = 12572888
                       Font.Charset = DEFAULT_CHARSET
-                      Font.Color = 8404992
+                      Font.Color = clBlack
                       Font.Height = -11
                       Font.Name = 'Tahoma'
                       Font.Style = [fsBold]
@@ -12334,7 +12390,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                       Caption = 'Portador'
                       Color = 12572888
                       Font.Charset = DEFAULT_CHARSET
-                      Font.Color = 8404992
+                      Font.Color = clBlack
                       Font.Height = -11
                       Font.Name = 'Tahoma'
                       Font.Style = [fsBold]
@@ -12348,7 +12404,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                       Height = 13
                       Caption = 'Hist'#243'rico Padr'#227'o'
                       Font.Charset = DEFAULT_CHARSET
-                      Font.Color = 8404992
+                      Font.Color = clBlack
                       Font.Height = -11
                       Font.Name = 'Tahoma'
                       Font.Style = [fsBold]
@@ -12417,7 +12473,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                       Height = 13
                       Caption = 'Plano de Contas'
                       Font.Charset = DEFAULT_CHARSET
-                      Font.Color = 8404992
+                      Font.Color = clBlack
                       Font.Height = -11
                       Font.Name = 'Tahoma'
                       Font.Style = [fsBold]
@@ -12765,7 +12821,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               Caption = 'ID Nota'
               FocusControl = DBEdit1
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = 8404992
+              Font.Color = clBlack
               Font.Height = -11
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
@@ -12778,7 +12834,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               Height = 13
               Caption = 'S'#233'rie'
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = 8404992
+              Font.Color = clBlack
               Font.Height = -11
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
@@ -12791,7 +12847,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               Height = 13
               Caption = 'Data Emiss'#227'o'
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = 8404992
+              Font.Color = clBlack
               Font.Height = -11
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
@@ -12804,7 +12860,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               Height = 13
               Caption = 'Tot.Produtos'
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = 8404992
+              Font.Color = clBlack
               Font.Height = -11
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
@@ -12817,7 +12873,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               Height = 13
               Caption = 'Tot.Desc'
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = 8404992
+              Font.Color = clBlack
               Font.Height = -11
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
@@ -12830,7 +12886,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               Height = 13
               Caption = 'Status'
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = 8404992
+              Font.Color = clBlack
               Font.Height = -11
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
@@ -12844,7 +12900,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               Caption = 'N'#250'mero'
               FocusControl = DBEdit3
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = 8404992
+              Font.Color = clBlack
               Font.Height = -11
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
@@ -12857,7 +12913,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               Height = 13
               Caption = 'Tot.Nota'
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = 8404992
+              Font.Color = clBlack
               Font.Height = -11
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
@@ -12870,7 +12926,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               Height = 13
               Caption = 'Opera'#231#227'o de estoque'
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = 8404992
+              Font.Color = clBlack
               Font.Height = -11
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
@@ -17773,48 +17829,6 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
     Left = 1046
     Top = 556
   end
-  object ACBrNFeDANFeRL1: TACBrNFeDANFeRL
-    ACBrNFe = ACBrNFe1
-    MostrarPreview = True
-    MostrarStatus = True
-    TipoDANFE = tiRetrato
-    NumCopias = 1
-    ImprimeNomeFantasia = False
-    ImprimirDescPorc = False
-    ImprimirTotalLiquido = True
-    MargemInferior = 0.700000000000000000
-    MargemSuperior = 0.700000000000000000
-    MargemEsquerda = 0.700000000000000000
-    MargemDireita = 0.700000000000000000
-    CasasDecimais.Formato = tdetInteger
-    CasasDecimais._qCom = 4
-    CasasDecimais._vUnCom = 4
-    CasasDecimais._Mask_qCom = '###,###,###,##0.00'
-    CasasDecimais._Mask_vUnCom = '###,###,###,##0.00'
-    ExibirResumoCanhoto = False
-    FormularioContinuo = False
-    TamanhoFonte_DemaisCampos = 10
-    ProdutosPorPagina = 0
-    ImprimirDetalhamentoEspecifico = True
-    NFeCancelada = False
-    ImprimirItens = True
-    ViaConsumidor = True
-    TamanhoLogoHeight = 0
-    TamanhoLogoWidth = 0
-    RecuoEndereco = 0
-    RecuoEmpresa = 0
-    LogoemCima = False
-    TamanhoFonteEndereco = 0
-    RecuoLogo = 0
-    LarguraCodProd = 54
-    ExibirEAN = False
-    QuebraLinhaEmDetalhamentoEspecifico = True
-    ExibeCampoFatura = False
-    ImprimirUnQtVlComercial = iuComercial
-    ImprimirDadosDocReferenciados = True
-    Left = 1016
-    Top = 557
-  end
   object SQLEmpresa: TRxQuery
     DatabaseName = 'DB'
     SQL.Strings = (
@@ -18094,5 +18108,47 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
       FieldName = 'VERSAO'
       Size = 1
     end
+  end
+  object ACBrNFeDANFeRL1: TACBrNFeDANFeRL
+    ACBrNFe = ACBrNFe1
+    MostrarPreview = True
+    MostrarStatus = True
+    TipoDANFE = tiRetrato
+    NumCopias = 1
+    ImprimeNomeFantasia = False
+    ImprimirDescPorc = False
+    ImprimirTotalLiquido = True
+    MargemInferior = 0.700000000000000000
+    MargemSuperior = 0.700000000000000000
+    MargemEsquerda = 0.700000000000000000
+    MargemDireita = 0.700000000000000000
+    CasasDecimais.Formato = tdetInteger
+    CasasDecimais._qCom = 4
+    CasasDecimais._vUnCom = 4
+    CasasDecimais._Mask_qCom = ',0.00'
+    CasasDecimais._Mask_vUnCom = ',0.00'
+    ExibirResumoCanhoto = False
+    FormularioContinuo = False
+    TamanhoFonte_DemaisCampos = 8
+    ProdutosPorPagina = 0
+    ImprimirDetalhamentoEspecifico = True
+    NFeCancelada = False
+    ImprimirItens = True
+    ViaConsumidor = True
+    TamanhoLogoHeight = 0
+    TamanhoLogoWidth = 0
+    RecuoEndereco = 0
+    RecuoEmpresa = 0
+    LogoemCima = False
+    TamanhoFonteEndereco = 0
+    RecuoLogo = 0
+    LarguraCodProd = 54
+    ExibirEAN = False
+    QuebraLinhaEmDetalhamentoEspecifico = True
+    ExibeCampoFatura = False
+    ImprimirUnQtVlComercial = iuComercial
+    ImprimirDadosDocReferenciados = True
+    Left = 1094
+    Top = 544
   end
 end

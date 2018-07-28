@@ -25,7 +25,6 @@ type
     MainMenu: TMainMenu;
     mnSair: TMenuItem;
     ptopo: TAdvOfficeStatusBar;
-    logo_parceiro: TImage;
     AdvOfficeStatusBarOfficeStyler1: TAdvOfficeStatusBarOfficeStyler;
     XPManifest1: TXPManifest;
     procedure MnSairClick(Sender: TObject);
@@ -148,8 +147,8 @@ begin
     BackGround.Picture.LoadFromFile('Bmp\Logo Retaguarda.Jpg') ;
 
     // Inserir Logo Personalizado do Parceiro
-  if FileExists('Bmp\Logo Parceiro.Jpg') then
-    logo_parceiro.Picture.LoadFromFile('Bmp\Logo Parceiro.Jpg') ;
+//  if FileExists('Bmp\Logo Parceiro.Jpg') then
+//    logo_parceiro.Picture.LoadFromFile('Bmp\Logo Parceiro.Jpg') ;
 
   //  if UsuarioMaster then
 //    RodapePrincipal.Panels[2].Bevel := pbRaised;

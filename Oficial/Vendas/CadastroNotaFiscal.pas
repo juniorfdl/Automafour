@@ -1032,7 +1032,6 @@ type
     ACBrNFe1: TACBrNFe;
     ACBrMail1: TACBrMail;
     MnGerarBoletos: TMenuItem;
-    ACBrNFeDANFeRL1: TACBrNFeDANFeRL;
     SQLEmpresa: TRxQuery;
     SQLEmpresaEMPRICOD: TIntegerField;
     SQLEmpresaEMPRA60RAZAOSOC: TStringField;
@@ -1090,6 +1089,7 @@ type
     DBEdit44: TDBEdit;
     btnEncerrar2: TAdvGlowButton;
     SQLEmpresaVERSAO: TStringField;
+    ACBrNFeDANFeRL1: TACBrNFeDANFeRL;
     function TabelaNFE_123(Produto, Situacao: string): string;
     procedure FormCreate(Sender: TObject);
     procedure SQLTemplateNewRecord(DataSet: TDataSet);
@@ -5473,6 +5473,10 @@ begin
   if not Pergunta('Nao', 'Gerar Notas Fiscais Eletrônicas?') then
     Exit;
 
+  if sqltemplate.state = dsinsert then
+    sqltemplate.Post;
+
+  SQLEmpresa.Locate('EMPRICOD',SQLTemplateEMPRICOD.AsInteger,[]);
   try
     bEnviandoNFE := true;
   {Inicio Rotina usando ACBR NFE, por Adilson}
@@ -5575,6 +5579,8 @@ begin
     end;
 
   finally
+    SQLTemplate.BeforeEdit := SQLTemplateBeforeEdit;
+    SQLTemplate.BeforePost := SQLTemplateBeforePost;
     bEnviandoNFE := false;
   end;
 
@@ -5939,7 +5945,7 @@ var
 begin
 {$IFDEF ACBrNFeOpenSSL}
   ACBrNFe1.Configuracoes.Certificados.Certificado := sqlEmpresaEMPRA100CERTIFSERIE.AsString;
-  ACBrNFe1.Configuracoes.Certificados.Senha := sqlEmpresaEMPRA35CERTIFSENHA.AsString;
+  ACBrNFe1.Configuracoes.Certificados.Senha := sq0lEmpresaEMPRA35CERTIFSENHA.AsString;
 {$ELSE}
   ACBrNFe1.Configuracoes.Certificados.NumeroSerie := SQLEmpresaEMPRA100CERTIFSERIE.AsString;
 {$ENDIF}
@@ -6337,11 +6343,18 @@ begin
     end;
 
     {indIEDest 1=Obrigatorio IE , 2=Isento de Inscrição, 9=Exterior Não Contribuinte}
-    if (trim(IE_Dest) = 'ISENTO') or (IE_Dest = '') then
+    if (trim(IE_Dest) = 'ISENTO') then
     begin
       ide.indFinal := cfConsumidorFinal;
      // Dest.indIEDest := inNaoContribuinte; {9}
       Dest.indIEDest := inIsento; {2}
+      Dest.IE := ''; {Preencher vazio}
+    end
+    else
+    if (trim(IE_Dest) = '') then
+    begin
+      ide.indFinal := cfConsumidorFinal;
+      Dest.indIEDest := inNaoContribuinte; {9}
       Dest.IE := ''; {Preencher vazio}
     end
     else

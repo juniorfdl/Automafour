@@ -1358,7 +1358,7 @@ begin
         try
           dm.SQLUpdate.Close;
           dm.SQLUpdate.sql.clear;
-          dm.SQLUpdate.sql.add('INSERT INTO PRODUTOFORNECEDOR (PRODICOD, FORNICOD, PRFOA30REFERENCIA)');
+          dm.SQLUpdate.sql.add('UPDATE OR INSERT INTO PRODUTOFORNECEDOR (PRODICOD, FORNICOD, PRFOA30REFERENCIA)');
           dm.SQLUpdate.sql.add('VALUES (:PRODICOD, :FORNICOD, :PRFOA30REFERENCIA)');
           dm.SQLUpdate.Params.ParamByName('PRODICOD').AsInteger := cdsTempPRODICOD.AsInteger;
           dm.SQLUpdate.Params.ParamByName('FORNICOD').AsInteger := aCodigoFornecedor;
