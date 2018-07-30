@@ -6940,10 +6940,10 @@ begin
     SQLContasReceber.Close;
     SQLContasReceber.Open;
     SQLContasReceber.First;
-    if not SqlContasReceber.IsEmpty then
+    if (not SqlContasReceber.IsEmpty)and(ACBrNFe1.Configuracoes.WebServices.Ambiente <> taHomologacao) then
     begin
       cobr.Fat.nFat := SQLTemplateNOFIINUMERO.AsString;
-      cobr.Fat.vOrig := RoundTo(SQLTemplateNOFIN2VLRPRODUTO.Value, -2);
+      cobr.Fat.vOrig := RoundTo(sqltemplateNOFIN2VLRNOTA.Value, -2) + RoundTo(sqltemplateNOFIN2VLRDESC.Value, -2);
       cobr.Fat.vDesc := RoundTo(sqltemplateNOFIN2VLRDESC.Value, -2);
       cobr.Fat.vLiq := RoundTo(sqltemplateNOFIN2VLRNOTA.Value, -2);
       TotalDup := 0;
