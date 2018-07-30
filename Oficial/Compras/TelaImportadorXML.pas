@@ -1166,7 +1166,7 @@ begin
             //Teste com ean do produtobarras
             dm.SQLConsulta.Close;
             dm.SQLConsulta.SQL.Clear;
-            dm.SQLConsulta.SQL.add('SELECT PRODICOD from PRODUTOBARRAS');
+            dm.SQLConsulta.SQL.add('SELECT PRODUTOBARRAS.PRODICOD from PRODUTOBARRAS');
             dm.SQLConsulta.SQL.add('left outer join PRODUTO on PRODUTOBARRAS.PRODICOD = PRODUTO.PRODICOD');
             dm.SQLConsulta.SQL.add('where PRODUTO.PRODCATIVO=''S'' and PRODUTOBARRAS.PRBAA15BARRAS = :PRBAA15BARRAS');
             dm.SQLConsulta.ParamByName('PRBAA15BARRAS').AsString := aEANTRIB;

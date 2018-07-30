@@ -6521,6 +6521,8 @@ begin
       begin
         Prod.nItem := SQLNotaFiscalItemNFITIITEM.asinteger;
         Prod.cProd := SQLNotaFiscalItemPRODICOD.AsString;
+        if CdBarras = '' then
+          CdBarras := 'SEM GTIN';
         Prod.cEAN := CdBarras;
         prod.NCM := sn(NCM);
         Prod.xProd := Copy(Descr_Prod, 0, 120);

@@ -11420,6 +11420,10 @@ inherited FormPrincipal: TFormPrincipal
         Caption = 'Gerar Saldo Inicial'
         OnClick = MnSaldoInicialProdutosClick
       end
+      object ConsultaSaldoporEmpresa1: TMenuItem
+        Caption = 'Consulta Saldo por Empresa'
+        OnClick = ConsultaSaldoporEmpresa1Click
+      end
     end
     object Utilitrios1: TMenuItem [3]
       Caption = 'Utilit'#225'rios'
