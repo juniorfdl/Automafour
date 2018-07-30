@@ -16,15 +16,7 @@ uses
   cxContainer, cxEdit, dxSkinsCore, cxTextEdit,
   cxDBEdit,
   AdvOfficeStatusBar, AdvOfficeStatusBarStylers, AdvPanel, ACBrBase,
-  ACBrMail, ACBrNFeDANFeRLClass, ACBrDFe, pcnConversaoNFe, dxSkinBlack,
-  dxSkinBlue, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
-  dxSkinFoggy, dxSkinGlassOceans, dxSkiniMaginary, dxSkinLilian,
-  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMoneyTwins,
-  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
-  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinPumpkin, dxSkinSeven,
-  dxSkinSharp, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
-  dxSkinSummer2008, dxSkinsDefaultPainters, dxSkinValentine,
-  dxSkinXmas2008Blue;
+  ACBrMail, ACBrNFeDANFeRLClass, ACBrDFe, pcnConversaoNFe;
 
 type
   TFormCadastroNotaFiscal = class(TFormCadastroTEMPLATE)
@@ -6192,19 +6184,19 @@ begin
 
     if ACBrNFe1.Configuracoes.Geral.VersaoDF = pcnConversaoNFe.ve310 then
     begin // Tag excluída na versão 4.00
-      if SQLContasReceberCTRCDVENC.isnull then
-        Ide.indPag := ipVista
+      if SQLContasReceber.IsEmpty then
+        Ide.indPag := ipNenhum
       else
       begin
         if (SQLTemplateNOFIDEMIS.AsString = SQLContasReceberCTRCDVENC.AsString) then
           Ide.indPag := ipVista
         else
           Ide.indpag := ipPrazo;
-        SQLContasReceber.Next;
+
         if SQLContasReceber.RecordCount > 1 then
           Ide.indpag := ipPrazo;
       end;
-    end;   
+    end;
 
     // Carrega cod Estado e Municipio conforme padrao IBGE
     try
@@ -6978,7 +6970,7 @@ begin
       with pag.Add do
       begin
         tPag := fpSemPagamento;
-        vPag := RoundTo(sqltemplateNOFIN2VLRNOTA.Value, -2);
+        vPag := 0;
       end;
     end;
     
