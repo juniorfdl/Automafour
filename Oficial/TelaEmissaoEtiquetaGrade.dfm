@@ -9,14 +9,14 @@ inherited FormTelaEmissaoEtiquetaGrade: TFormTelaEmissaoEtiquetaGrade
   TextHeight = 13
   inherited ScrollBoxFundo: TScrollBox
     Width = 780
-    Height = 507
+    Height = 508
     inherited PanelCentral: TPanel
       Width = 776
-      Height = 423
+      Height = 424
       inherited PanelBarra: TPanel
         Top = 92
         Width = 0
-        Height = 294
+        Height = 295
       end
       object Panel4: TPanel
         Left = 0
@@ -141,7 +141,7 @@ inherited FormTelaEmissaoEtiquetaGrade: TFormTelaEmissaoEtiquetaGrade
         Left = 0
         Top = 92
         Width = 776
-        Height = 294
+        Height = 295
         Align = alClient
         BevelOuter = bvNone
         BorderWidth = 20
@@ -151,7 +151,7 @@ inherited FormTelaEmissaoEtiquetaGrade: TFormTelaEmissaoEtiquetaGrade
           Left = 20
           Top = 20
           Width = 736
-          Height = 254
+          Height = 255
           Align = alClient
           BorderStyle = bsNone
           Color = clWhite
@@ -175,7 +175,7 @@ inherited FormTelaEmissaoEtiquetaGrade: TFormTelaEmissaoEtiquetaGrade
       end
       object Panel5: TPanel
         Left = 0
-        Top = 386
+        Top = 387
         Width = 776
         Height = 37
         Align = alBottom

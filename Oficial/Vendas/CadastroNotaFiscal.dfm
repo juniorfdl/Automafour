@@ -624,6 +624,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
             Top = 44
             Width = 1216
             Height = 570
+            ActivePage = TabSheetDadosPrincipais
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Top = 126
@@ -13446,6 +13447,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
       DisplayLabel = 'Placa Ve'#237'culo'
       FieldName = 'NOFIA8PLACAVEIC'
       Origin = 'DB.NOTAFISCAL.NOFIA8PLACAVEIC'
+      OnChange = SQLTemplateNOFIA8PLACAVEICChange
       FixedChar = True
       Size = 8
     end
@@ -17804,6 +17806,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
     Configuracoes.Geral.SSLXmlSignLib = xsMsXmlCapicom
     Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
     Configuracoes.Geral.AtualizarXMLCancelado = True
+    Configuracoes.Geral.VersaoQRCode = veqr000
     Configuracoes.Arquivos.OrdenacaoPath = <>
     Configuracoes.Arquivos.SepararPorMes = True
     Configuracoes.Arquivos.SalvarApenasNFeProcessadas = True

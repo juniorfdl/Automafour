@@ -16,7 +16,15 @@ uses
   cxContainer, cxEdit, dxSkinsCore, cxTextEdit,
   cxDBEdit,
   AdvOfficeStatusBar, AdvOfficeStatusBarStylers, AdvPanel, ACBrBase,
-  ACBrMail, ACBrNFeDANFeRLClass, ACBrDFe, pcnConversaoNFe;
+  ACBrMail, ACBrNFeDANFeRLClass, ACBrDFe, pcnConversaoNFe, dxSkinBlack,
+  dxSkinBlue, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinFoggy, dxSkinGlassOceans, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinPumpkin, dxSkinSeven,
+  dxSkinSharp, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinXmas2008Blue;
 
 type
   TFormCadastroNotaFiscal = class(TFormCadastroTEMPLATE)
@@ -1203,6 +1211,7 @@ type
     procedure AdvGlowButton9Click(Sender: TObject);
     procedure btnEncerrarClick(Sender: TObject);
     procedure DBEdit44Change(Sender: TObject);
+    procedure SQLTemplateNOFIA8PLACAVEICChange(Sender: TField);
   private
     Config: string;
 
@@ -3280,7 +3289,7 @@ begin
       nVLRDESC := 0;
       while (SQLCupomItem.FieldByName('Prodicod').asinteger = nProd) and (not SQLCupomItem.Eof) do
       begin
-        nQUANT := nQuant + SQLCupomItemCPITN3QTD.Value;
+        nQUANT := nQuant + SQLCupomItemCPITN3QTD.Value + SQLCupomItemCPITN3QTDTROCA.Value;
         nVLRTOTAL := nVLRTOTAL + (SQLCupomItemCPITN3VLRUNIT.Value * SQLCupomItemCPITN3QTD.Value);
         nVLRDESC := nVLRDESC + (SQLCupomItemCPITN2DESC.asFloat * SQLCupomItemCPITN3QTD.Value);
         SQLCupomItem.Next;
@@ -7018,13 +7027,14 @@ begin
     Transp.retTransp.CFOP := ''; // X16 - CFOP (Utilizar Tabela de CFOP)
     Transp.retTransp.cMunFG := 0; // X17 - Código do município de ocorrência do fato gerador do ICMS do transporte (Tabela do IBGE)
 
-     //Não criar o grupo ''veicTransp'' caso não tenha placa senão entra na validação do SEFAZ
-    if Trim(SQLTemplateNOFIA8PLACAVEIC.AsString) <> EmptyStr then
-    begin
-      Transp.veicTransp.placa := SQLTemplateNOFIA8PLACAVEIC.AsString;
-      Transp.veicTransp.UF := SQLTemplateTransportadoraEstadoLookUp.AsString;
-      Transp.veicTransp.RNTC := ''; // X21 - Registro Nacional de Transportador de Carga (ANTT)
-    end;
+     //Não criar o grupo ''veicTransp'' caso não tenha placa senão entra na validação do SEFAZ - nota da versão 3.10
+     //Não criar o grupo 'veicTransp' foi retirado da versão 4.0
+//    if Trim(SQLTemplateNOFIA8PLACAVEIC.AsString) <> EmptyStr then
+//    begin
+//      Transp.veicTransp.placa := SQLTemplateNOFIA8PLACAVEIC.AsString;
+//      Transp.veicTransp.UF := SQLTemplateTransportadoraEstadoLookUp.AsString;
+//      Transp.veicTransp.RNTC := ''; // X21 - Registro Nacional de Transportador de Carga (ANTT)
+//    end;
 
      //Dados sobre Volumes Transportados
 
@@ -7256,6 +7266,14 @@ begin
   btnEncerrar.Enabled := SQLTemplate.FindField('NOFICSTATUS').Value <> 'E';
   btnTransmitirNfe2.Enabled := SQLTemplate.FindField('NOFICSTATUS').Value = 'E';
   btnEncerrar2.Enabled := SQLTemplate.FindField('NOFICSTATUS').Value <> 'E';
+end;
+
+procedure TFormCadastroNotaFiscal.SQLTemplateNOFIA8PLACAVEICChange(
+  Sender: TField);
+begin
+  inherited;
+    if Trim(SQLTemplateNOFIA8PLACAVEIC.AsString) <> EmptyStr then
+     SQLTemplateNOFIA255OBS.Value := SQLTemplateNOFIA255OBS.value + ' Placa Veículo: ' + Trim(SQLTemplateNOFIA8PLACAVEIC.AsString);
 end;
 
 end.

@@ -274,6 +274,8 @@ begin
                       DataSet.FindField('CodigoBarras').asString        := SQLLocate('PRODUTO','PRODICOD','PRODA60CODBAR',TblQtde.FindField('Cod'+IntToStr(I)).AsString);
                       DataSet.FindField('REFERENCIA').asString          := SQLLocate('PRODUTO','PRODICOD','PRODA60REFER',TblQtde.FindField('Cod'+IntToStr(I)).AsString);
                       DataSet.FindField('Descricao').asString           := SQLLocate('PRODUTO','PRODICOD','PRODA60DESCR',TblQtde.FindField('Cod'+IntToStr(I)).AsString);
+                      DataSet.FindField('PRECOVAREJO').AsVariant       := SQLLocate('PRODUTO','PRODICOD','PRODN3VLRVENDA',TblQtde.FindField('Cod'+IntToStr(I)).AsString);
+                      DataSet.FindField('PRECOATACADO').AsVariant       := SQLLocate('PRODUTO','PRODICOD','PRODN3VLRVENDA2',TblQtde.FindField('Cod'+IntToStr(I)).AsString);
                       DataSet.FindField('Preco').AsVariant              := RetornaPreco(SQLProdutoGrade,DM.SQLConfigVenda.fieldbyname('TPRCICOD8').asString,'') ;
 
                       if DataSet.FindField('Preco').AsVariant <> SQLLocate('PRODUTO','PRODICOD','PRODN3VLRVENDA',TblQtde.FindField('Cod'+IntToStr(I)).AsString) then
