@@ -2542,7 +2542,7 @@ inherited FormTelaTransferencia: TFormTelaTransferencia
     Left = 562
     Top = 8
     object mnEnvio: TMenuItem
-      Caption = 'Tre]ansfer'#234'ncias Enviadas [Empresa Origem: ]'
+      Caption = 'Transfer'#234'ncias Enviadas [Empresa Origem: ]'
       OnClick = mnEnvioClick
     end
     object mnRecebimento: TMenuItem

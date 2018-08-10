@@ -1491,6 +1491,7 @@ begin
          end;
        crpRelatorio.ReportTitle       := 'Transferência [Envio]';
        crpRelatorio.WindowStyle.Title := 'Transferência [Envio]';
+       crpRelatorio.Execute;
      end;
 end;
 

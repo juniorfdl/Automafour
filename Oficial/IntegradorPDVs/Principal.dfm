@@ -1,8 +1,8 @@
 object FormPrincipal: TFormPrincipal
   Left = 526
   Top = 265
-  Width = 509
-  Height = 231
+  Width = 575
+  Height = 235
   Caption = 'IntegradorPDVs'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -17,8 +17,8 @@ object FormPrincipal: TFormPrincipal
   TextHeight = 13
   object lbStatus: TLabel
     Left = 0
-    Top = 173
-    Width = 493
+    Top = 177
+    Width = 559
     Height = 20
     Align = alBottom
     Alignment = taCenter
@@ -2700,7 +2700,7 @@ object FormPrincipal: TFormPrincipal
     end
   end
   object Timer: TTimer
-    Interval = 60000
+    Interval = 10000
     OnTimer = TimerTimer
     Left = 57
     Top = 1
@@ -37445,20 +37445,20 @@ object FormPrincipal: TFormPrincipal
   object ZconsultaServidor: TZQuery
     Connection = ZdbServidor
     Params = <>
-    Left = 119
-    Top = 26
+    Left = 447
+    Top = 131
   end
   object ZinsereServidor: TZQuery
     Connection = ZdbServidor
     Params = <>
-    Left = 143
-    Top = 27
+    Left = 421
+    Top = 80
   end
   object ZapagaServidor: TZQuery
     Connection = ZdbServidor
     Params = <>
-    Left = 167
-    Top = 27
+    Left = 422
+    Top = 107
   end
   object ZdbPDV: TZConnection
     ControlsCodePage = cGET_ACP
@@ -37469,30 +37469,48 @@ object FormPrincipal: TFormPrincipal
     Password = 'masterkey'
     Protocol = 'firebird-1.5'
     Left = 65535
-    Top = 25
+    Top = 33
   end
   object ZConsultaPDV: TZQuery
     Connection = ZdbPDV
     Params = <>
-    Left = 28
-    Top = 25
+    Left = 428
+    Top = 1
   end
   object ZupdatePDV: TZQuery
     Connection = ZdbPDV
     Params = <>
-    Left = 59
-    Top = 25
+    Left = 403
+    Top = 1
   end
   object ZInsereEstoqueServidor: TZQuery
     Connection = ZdbServidor
     Params = <>
-    Left = 142
-    Top = 3
+    Left = 447
+    Top = 81
   end
   object ZConsultaTabelaServidor: TZQuery
     Connection = ZdbServidor
     Params = <>
-    Left = 167
-    Top = 65531
+    Left = 447
+    Top = 107
+  end
+  object ZapagaPDV: TZQuery
+    Connection = ZdbPDV
+    Params = <>
+    Left = 402
+    Top = 26
+  end
+  object ZConsultaTabelaPDV: TZQuery
+    Connection = ZdbPDV
+    Params = <>
+    Left = 427
+    Top = 26
+  end
+  object ZupdateServidor: TZQuery
+    Connection = ZdbServidor
+    Params = <>
+    Left = 421
+    Top = 132
   end
 end

@@ -41,6 +41,9 @@ type
     ImportarNCMs1: TMenuItem;
     Panel1: TPanel;
     Image2: TImage;
+    ZapagaPDV: TZQuery;
+    ZConsultaTabelaPDV: TZQuery;
+    ZupdateServidor: TZQuery;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure TimerTimer(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -389,7 +392,11 @@ begin
             {alimenta os campos no Pdv}
         for i := 0 to ZConsultaTabelaServidor.FieldCount - 1 do
         begin
-          try ZConsultaPDV.FindField(ZConsultaTabelaServidor.Fields[i].FieldName).AsVariant := ZConsultaTabelaServidor.Fields[i].AsVariant; except Application.ProcessMessages; end;
+          try
+            ZConsultaPDV.FindField(ZConsultaTabelaServidor.Fields[i].FieldName).AsVariant := ZConsultaTabelaServidor.Fields[i].AsVariant;
+          except
+            Application.ProcessMessages;
+          end;
         end;
         try
           ZConsultaPDV.post;
@@ -408,10 +415,10 @@ begin
       ZconsultaServidor.First;
       while not ZconsultaServidor.Eof do
       begin
-        ZupdatePDV.Close;
-        ZupdatePDV.sql.clear;
-        ZupdatePDV.sql.Text := 'Update NCM Set PENDENTE=''N'' where NCMICOD=''' + ZconsultaServidor.fieldbyname('NCMICOD').Value + '''';
-        ZupdatePDV.ExecSQL;
+        ZupdateServidor.Close;
+        ZupdateServidor.SQL.clear;
+        ZupdateServidor.SQL.Text := 'Update NCM Set PENDENTE = ' + QuotedStr('N') + ' where NCMICOD = ' + QuotedStr(ZconsultaServidor.fieldbyname('NCMICOD').Value);
+        ZupdateServidor.ExecSQL;
         ZconsultaServidor.Next;
       end;
     end;
@@ -951,9 +958,7 @@ begin
   end;
 
   ZConsultaPDV.close;
-  //ZConsultaPDV.RequestLive := false;
   ZconsultaServidor.Close;
-  //ZconsultaServidor.RequestLive := false;
 end;
 
 function TFormPrincipal.ExportaMovimentosPDV: boolean;
@@ -961,6 +966,74 @@ var erro: boolean;
 var i: integer;
 var xEmpresa, xProduto, xProxCod, xData, xTotalDia: string;
 begin
+  {Abre ClientePDVs no PDV para achar os registros que serao importados!}
+  try
+    Application.Title := 'Verificando Alterações em Clientes.';
+    lbStatus.Caption := Application.Title;
+    lbStatus.Update;
+    ZConsultaPDV.Close;
+    ZConsultaPDV.sql.clear;
+    ZConsultaPDV.sql.Text := 'Select * from ClientePDVs where TERMICOD=' + TerminalCodigoSTR + ' Order by TERMICOD asc';
+    //ZconsultaServidor.RequestLive := False;
+    ZConsultaPDV.open;
+    if not ZConsultaPDV.IsEmpty then
+    begin
+      while not ZConsultaPDV.eof do
+      begin
+        Application.Title := 'Recebendo Cliente => ' + ZConsultaPDV.fieldbyname('CLIEA13ID').AsString;
+        lbStatus.Caption := Application.Title;
+        lbStatus.Update;
+        ZconsultaServidor.close;
+        ZconsultaServidor.SQL.clear;
+        ZconsultaServidor.SQL.Text := 'Select * from CLIENTE where CLIEA13ID=''' + ZConsultaPDV.fieldbyname('CLIEA13ID').AsString + '''';
+        ZconsultaServidor.Open;
+        if ZconsultaServidor.IsEmpty then
+          ZconsultaServidor.append
+        else
+          ZconsultaServidor.edit;
+
+            {acha o cliente atual no PDV e pega os dados dele}
+        ZConsultaTabelaPDV.close;
+        ZConsultaTabelaPDV.sql.text := 'select * from cliente where CLIEA13ID=''' + ZConsultaPDV.fieldbyname('CLIEA13ID').AsString + '''';
+        ZConsultaTabelaPDV.open;
+
+            {alimenta os campos no Pdv}
+        for i := 0 to ZConsultaTabelaPDV.FieldCount - 1 do
+        begin
+          try ZconsultaServidor.FindField(ZConsultaTabelaPDV.Fields[i].FieldName).AsVariant := ZConsultaTabelaPDV.Fields[i].AsVariant; except Application.ProcessMessages; end;
+        end;
+        try
+          ZconsultaServidor.post;
+          Erro := False;
+        except
+          ZconsultaServidor.cancel;
+          Erro := True;
+          Application.ProcessMessages;
+        end;
+
+        if not erro then
+        begin
+                {apaga no servidor se nao teve erro}
+          ZapagaPDV.close;
+          ZapagaPDV.sql.Clear;
+          ZapagaPDV.sql.Text := 'delete from clientepdvs where termicod=' + TerminalCodigoSTR +
+            ' and cliea13id=''' + ZConsultaPDV.fieldbyname('cliea13id').AsString + '''';
+          ZapagaPDV.ExecSQL;
+        end;
+        ZConsultaPDV.Next;
+      end;
+    end;
+    Application.Title := '';
+    lbStatus.Caption := Application.Title;
+    lbStatus.Update;
+  except
+    Application.Title := 'Falha ao Importar Clientes!';
+    lbStatus.Caption := Application.Title;
+    lbStatus.Update;
+    Application.ProcessMessages;
+  end;
+  {Fim Cliente}
+
   {Cupom}
   try
     ZConsultaPDV.close;
