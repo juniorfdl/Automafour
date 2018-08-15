@@ -254,27 +254,37 @@ inherited FormRelatorioChequeRecebidos: TFormRelatorioChequeRecebidos
       FieldName = 'CTRCDVENC'
       Origin = 'DB.CONTASRECEBER.CTRCDVENC'
     end
-    object TblTemporariaCTRCN2VLR: TFloatField
+    object TblTemporariaCTRCN2VLR: TBCDField
       FieldName = 'CTRCN2VLR'
       Origin = 'DB.CONTASRECEBER.CTRCN2VLR'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaCTRCN2DESCFIN: TFloatField
+    object TblTemporariaCTRCN2DESCFIN: TBCDField
       FieldName = 'CTRCN2DESCFIN'
       Origin = 'DB.CONTASRECEBER.CTRCN2DESCFIN'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaCTRCN2TOTREC: TFloatField
+    object TblTemporariaCTRCN2TOTREC: TBCDField
       FieldName = 'CTRCN2TOTREC'
       Origin = 'DB.CONTASRECEBER.CTRCN2TOTREC'
+      Precision = 15
+      Size = 3
     end
     object TblTemporariaCTRCDULTREC: TDateTimeField
       FieldName = 'CTRCDULTREC'
       Origin = 'DB.CONTASRECEBER.CTRCDULTREC'
     end
-    object TblTemporariaCUPON2TOTITENS: TFloatField
+    object TblTemporariaCUPON2TOTITENS: TBCDField
       FieldName = 'CUPON2TOTITENS'
+      Precision = 15
+      Size = 3
     end
-    object TblTemporariaCUPON2ACRESC: TFloatField
+    object TblTemporariaCUPON2ACRESC: TBCDField
       FieldName = 'CUPON2ACRESC'
+      Precision = 15
+      Size = 3
     end
     object TblTemporariaPORTICOD: TIntegerField
       FieldName = 'PORTICOD'
@@ -943,7 +953,7 @@ inherited FormRelatorioChequeRecebidos: TFormRelatorioChequeRecebidos
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 297000
     PrinterSetup.mmPaperWidth = 210000
-    PrinterSetup.PaperSize = 9
+    PrinterSetup.PaperSize = 256
     DeviceType = 'Screen'
     EmailSettings.ReportFormat = 'PDF'
     OnPreviewFormCreate = ppRptChequesPreviewFormCreate

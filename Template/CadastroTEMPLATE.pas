@@ -382,10 +382,10 @@ begin
     End
   Else
     Begin
-      If DSTemplate.DataSet.Tag in [1,2,3] Then
+      If DSTemplate.DataSet.Tag in [1,2,3,4] Then
         Begin
           CampoAutoIncremento := DM.EncontraCampo(DSTemplate.DataSet, 1);
-          If DSTemplate.DataSet.Tag in [2,3] Then
+          If DSTemplate.DataSet.Tag in [2,3,4] Then
             CampoID := DM.EncontraCampo(DSTemplate.DataSet, 2);
         End;
     End;
@@ -899,7 +899,7 @@ begin
                 NovoRegistro:=True;
                 if not FileExists('ProdutoFornecedorManual.txt') then
                   begin
-                    if (DataSet.Tag in [1,2,3]) then
+                    if (DataSet.Tag in [1,2,3,4]) then
                       DM.CodigoAutomatico(Tabela, DSTemplate, DataSet, CampoAutoIncremento, CampoID);
                   end
                 else
@@ -935,7 +935,7 @@ begin
                                   end;
                               end
                             else
-                              if (DataSet.Tag in [1,2,3]) then
+                              if (DataSet.Tag in [1,2,3,4]) then
                                 DM.CodigoAutomatico(Tabela, DSTemplate, DataSet, CampoAutoIncremento, CampoID);
                           end;
                         if (Tabela = 'PRODUTO') then
@@ -967,12 +967,12 @@ begin
                                   end;
                               end
                             else
-                              if (DataSet.Tag in [1,2,3]) then
+                              if (DataSet.Tag in [1,2,3,4]) then
                                 DM.CodigoAutomatico(Tabela, DSTemplate, DataSet, CampoAutoIncremento, CampoID);
                           end;
                       end
                     else
-                      if (DataSet.Tag in [1,2,3]) then
+                      if (DataSet.Tag in [1,2,3,4]) then
                         DM.CodigoAutomatico(Tabela, DSTemplate, DataSet, CampoAutoIncremento, CampoID);
                   end;
               end;
@@ -1040,6 +1040,8 @@ begin
           If DataSet.FindField('TERMICOD')<>Nil Then
             DataSet.FindField('TERMICOD').Value := TerminalCorrente ;
         End;
+      4:If DataSet.FindField('EMPRICOD')<>Nil Then
+          DataSet.FindField('EMPRICOD').Value   := EmpresaCorrente ;
     End;
 end;
 

@@ -648,6 +648,13 @@ begin
         ID := ID+DigitVerifEAN(ID);
         DataSet.Fields[CampoID].asString:= ID;
       End;
+    4:Begin
+        DataSet.Fields[CampoAutoIncremento].Value:=
+           ProximoCodigoPorEmpresa(Tabela,DataSet.Fields[CampoAutoIncremento].FieldName);
+        ID :=Format('%.3d',[EmpresaCorrente])+Format('%.3d',[TerminalCorrente])+Format('%.6d',[DataSet.Fields[CampoAutoIncremento].asInteger]);
+        ID := ID+DigitVerifEAN(ID);
+        DataSet.Fields[CampoID].asString:= ID;
+      End;
    End;
 end;
 

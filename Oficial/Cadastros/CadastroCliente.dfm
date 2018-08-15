@@ -7143,7 +7143,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
     end
   end
   inherited SQLTemplate: TRxQuery
-    Tag = 2
+    Tag = 4
     AfterInsert = SQLTemplateAfterInsert
     AfterEdit = SQLTemplateAfterEdit
     SQL.Strings = (
@@ -9538,7 +9538,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Custom'
+    PrinterSetup.PaperName = 'Letter'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350
@@ -12507,7 +12507,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Custom'
+    PrinterSetup.PaperName = 'Letter'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350

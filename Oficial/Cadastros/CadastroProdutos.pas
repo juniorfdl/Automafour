@@ -1783,6 +1783,7 @@ begin
   sqltemplatePRODN2ALIQPIS.value := 0;
   sqltemplatePRODN2ALIQCOFINS.value := 0;
   sqltemplatePRODIORIGEM.Value := 0;
+  SQLTemplateVALOR_DESC_ENTRADA.Value := 0;
 
   ComboOrigem.ItemIndex := 0;
   AlterandoValores := False;
@@ -2048,8 +2049,10 @@ begin
       dm.SQLTemplate.sql.Add(', PRODN2PERCDIFICM = ' + ConvFloatToStr(SQLTemplate.FindField('PRODN2PERCDIFICM').Value));
       dm.SQLTemplate.sql.Add(', PRODN2ALIQPIS = ' + ConvFloatToStr(SQLTemplate.FindField('PRODN2ALIQPIS').Value));
       dm.SQLTemplate.sql.Add(', PRODN2ALIQCOFINS = ' + ConvFloatToStr(SQLTemplate.FindField('PRODN2ALIQCOFINS').Value));
-      dm.SQLTemplate.sql.Add(', VALOR_FRETE = ' + ConvFloatToStr(SQLTemplate.FindField('VALOR_FRETE').Value));
-      dm.SQLTemplate.sql.Add(', VALOR_ICMSST = ' + ConvFloatToStr(SQLTemplate.FindField('VALOR_ICMSST').Value));
+      if SQLTemplate.FindField('VALOR_FRETE').Value > 0 then
+        dm.SQLTemplate.sql.Add(', VALOR_FRETE = ' + ConvFloatToStr(SQLTemplate.FindField('VALOR_FRETE').Value));
+      if SQLTemplate.FindField('VALOR_ICMSST').Value > 0 then
+        dm.SQLTemplate.sql.Add(', VALOR_ICMSST = ' + ConvFloatToStr(SQLTemplate.FindField('VALOR_ICMSST').Value));
 
       dm.SQLTemplate.sql.Add('Where PRODICOD <> ' + SQLTemplatePRODICOD.AsString +
         ' and PRODIAGRUPGRADE = ' + SQLTemplatePRODIAGRUPGRADE.AsString);

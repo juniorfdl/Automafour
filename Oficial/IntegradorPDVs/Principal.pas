@@ -394,17 +394,19 @@ begin
         begin
           try
             ZConsultaPDV.FindField(ZConsultaTabelaServidor.Fields[i].FieldName).AsVariant := ZConsultaTabelaServidor.Fields[i].AsVariant;
-          except
-            Application.ProcessMessages;
+          except on E : Exception do
+              ShowMessage('Erro NCM: ' + e.Message);
+//            Application.ProcessMessages;
           end;
         end;
         try
           ZConsultaPDV.post;
           Erro := False;
-        except
-          ZConsultaPDV.cancel;
-          Erro := True;
-          Application.ProcessMessages;
+        except  on E : Exception do
+           ShowMessage('Erro NCM1: ' + e.Message);
+//          ZConsultaPDV.cancel;
+//          Erro := True;
+//          Application.ProcessMessages;
         end;
         ZconsultaServidor.Next;
       end;

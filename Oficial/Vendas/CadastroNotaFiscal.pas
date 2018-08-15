@@ -7029,12 +7029,12 @@ begin
 
      //Não criar o grupo ''veicTransp'' caso não tenha placa senão entra na validação do SEFAZ - nota da versão 3.10
      //Não criar o grupo 'veicTransp' foi retirado da versão 4.0
-//    if Trim(SQLTemplateNOFIA8PLACAVEIC.AsString) <> EmptyStr then
-//    begin
-//      Transp.veicTransp.placa := SQLTemplateNOFIA8PLACAVEIC.AsString;
-//      Transp.veicTransp.UF := SQLTemplateTransportadoraEstadoLookUp.AsString;
-//      Transp.veicTransp.RNTC := ''; // X21 - Registro Nacional de Transportador de Carga (ANTT)
-//    end;
+    if Trim(SQLTemplateNOFIA8PLACAVEIC.AsString) <> EmptyStr then
+    begin
+      Transp.veicTransp.placa := SQLTemplateNOFIA8PLACAVEIC.AsString;
+      Transp.veicTransp.UF := SQLTemplateTransportadoraEstadoLookUp.AsString;
+      Transp.veicTransp.RNTC := ''; // X21 - Registro Nacional de Transportador de Carga (ANTT)
+    end;
 
      //Dados sobre Volumes Transportados
 

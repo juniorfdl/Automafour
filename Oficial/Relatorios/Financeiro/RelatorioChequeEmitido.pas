@@ -29,19 +29,6 @@ type
     SQLChequeEmitidoCQEMDCOMP: TDateTimeField;
     SQLChequeEmitidoALINA30DESCR: TStringField;
     SQLChequeEmitidoCTCRA60TITULAR: TStringField;
-    TblTemporariaCQEMA13ID: TStringField;
-    TblTemporariaEMPRICOD: TIntegerField;
-    TblTemporariaCQEMDEMIS: TDateTimeField;
-    TblTemporariaCQEMDVENC: TDateTimeField;
-    TblTemporariaCQEMN3VLR: TFloatField;
-    TblTemporariaCTCRICOD: TIntegerField;
-    TblTemporariaCQEMA60FAVORECIDO: TStringField;
-    TblTemporariaCQEMINROCHEQUE: TIntegerField;
-    TblTemporariaCQEMA60HIST: TStringField;
-    TblTemporariaALINICOD: TIntegerField;
-    TblTemporariaCQEMDCOMP: TDateTimeField;
-    TblTemporariaALINA30DESCR: TStringField;
-    TblTemporariaCTCRA60TITULAR: TStringField;
     SQLCC: TRxQuery;
     SQLCCCTCRICOD: TIntegerField;
     SQLCCBANCA5COD: TStringField;
@@ -61,6 +48,19 @@ type
     DBEdit2: TDBEdit;
     GroupBox3: TGroupBox;
     ComboAlinea: TDBLookupComboBox;
+    TblTemporariaCQEMA13ID: TStringField;
+    TblTemporariaEMPRICOD: TIntegerField;
+    TblTemporariaCQEMDEMIS: TDateTimeField;
+    TblTemporariaCQEMDVENC: TDateTimeField;
+    TblTemporariaCQEMN3VLR: TBCDField;
+    TblTemporariaCTCRICOD: TIntegerField;
+    TblTemporariaCQEMA60FAVORECIDO: TStringField;
+    TblTemporariaCQEMINROCHEQUE: TIntegerField;
+    TblTemporariaCQEMA60HIST: TStringField;
+    TblTemporariaALINICOD: TIntegerField;
+    TblTemporariaCQEMDCOMP: TDateTimeField;
+    TblTemporariaALINA30DESCR: TStringField;
+    TblTemporariaCTCRA60TITULAR: TStringField;
     procedure ExecutarBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
@@ -74,7 +74,7 @@ var
 
 implementation
 
-uses DataModulo;
+uses DataModulo, UnitLibrary;
 
 {$R *.dfm}
 
@@ -105,7 +105,7 @@ begin
     SQLChequeEmitido.MacroByName('MContaCorrente').AsString   := '0=0';
 
   SQLChequeEmitido.Open;
-  BatchExec(SQLChequeEmitido,TblTemporaria);
+  CopyQueryTable(SQLChequeEmitido,TblTemporaria);
 
   Report.ReportName        := DM.SQLConfigGeralCFGEA255PATHREPORT.Value + '\Cheques Emitidos.rpt' ;
 
