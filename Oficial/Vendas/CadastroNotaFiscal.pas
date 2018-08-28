@@ -2526,7 +2526,10 @@ begin
               if DM.SQLTemplate.FindField('CLIEA5FISJURID').asString = 'F' then
               begin
                 DataSet.FieldByName('CliFornEmpCGCCPFLookUp').AsVariant := DM.SQLTemplate.FindField('CLIEA11CPF').AsVariant;
-                DataSet.FieldByName('CliFornEmpIERGLookUp').AsVariant := DM.SQLTemplate.FindField('CLIEA10RG').AsVariant;
+                if DM.SQLTemplate.FindField('CLIEA20IE').AsVariant = 'ISENTO' then
+                  DataSet.FieldByName('CliFornEmpIERGLookUp').AsVariant := DM.SQLTemplate.FindField('CLIEA20IE').AsVariant
+                else
+                  DataSet.FieldByName('CliFornEmpIERGLookUp').AsVariant := DM.SQLTemplate.FindField('CLIEA10RG').AsVariant;
                 DataSet.FieldByName('CliFornEmpFisicaJuridica').AsVariant := 'F';
               end
               else
@@ -6347,14 +6350,16 @@ begin
     else
     begin
       Dest.CNPJCPF := sn(SQLTemplateCliFornEmpCGCCPFLookUp.AsString);
-        // IE_Dest   := SQLTemplateCliFornEmpIERGLookUp.AsString; {cpf nao vai ie}
-      IE_Dest := '';
+      if SQLTemplateCliFornEmpIERGLookUp.AsString = 'ISENTO' then
+        IE_Dest   := SQLTemplateCliFornEmpIERGLookUp.AsString {cpf nao vai ie}
+      else
+        IE_Dest := '';
     end;
 
     {indIEDest 1=Obrigatorio IE , 2=Isento de Inscrição, 9=Exterior Não Contribuinte}
     if (trim(IE_Dest) = 'ISENTO') then
     begin
-      ide.indFinal := cfConsumidorFinal;
+      ide.indFinal := cfNao;
      // Dest.indIEDest := inNaoContribuinte; {9}
       Dest.indIEDest := inIsento; {2}
       Dest.IE := ''; {Preencher vazio}

@@ -282,7 +282,7 @@ begin
         3 : SQLVendas.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = ''CHQV''';
         4 : SQLVendas.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = ''CNV''';
         5 : SQLVendas.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = ''CRD''';
-        6 : SQLVendas.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = ''DIN''';
+        6 : SQLVendas.MacrobyName('MTipoPadrao').Value := 'CUPOM.CUPOCTIPOPADRAO = ''VISTA''';
       end;
     end
   else

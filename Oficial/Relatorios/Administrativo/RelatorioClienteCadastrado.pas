@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, RelatorioTemplate, DBTables, Placemnt, DB, ComCtrls, StdCtrls,
   Mask, ToolEdit, RxLookup, ExtCtrls, Buttons, jpeg, RxQuery, UCrpe32,
-  Grids, DBGrids, AdvOfficeStatusBar, AdvOfficeStatusBarStylers;
+  Grids, DBGrids, AdvOfficeStatusBar, AdvOfficeStatusBarStylers, UnitLibrary;
 
 type
   TFormRelatorioClienteCadastrado = class(TFormRelatorioTEMPLATE)
@@ -169,6 +169,10 @@ begin
     2 : SQLCliente.MacrobyName('MOrdem').Value := ' ORDER BY ROTAICOD';
   end;
 
+  addLog(SQLCliente.SQL.Text,ExtractFilePath(Application.ExeName) + 'LogSqlCliente.txt');
+  addLog(SQLCliente.MacrobyName('MData').Value,ExtractFilePath(Application.ExeName) + 'LogSqlCliente.txt');
+  addLog(SQLCliente.MacrobyName('MEmpresa').Value,ExtractFilePath(Application.ExeName) + 'LogSqlCliente.txt');
+
   SQLCliente.Open;
   if SQLCliente.IsEmpty then
     begin
@@ -180,7 +184,7 @@ begin
 //  TblTemporaria.AddIndex('ID','CLIEA13ID',[ixPrimary]);
   TblTemporaria.Open;
 
-  while not SQLCliente.Eof do
+{  while not SQLCliente.Eof do
     begin
       TblTemporaria.Append;
       for i := 0 to SQLCliente.FieldCount-1 do
@@ -191,7 +195,7 @@ begin
       if SQLClienteCLIEA10RG.Value  <> '' then TblTemporariaCLIEA20IE.Value  := SQLClienteCLIEA10RG.Value;
       TblTemporaria.Post;
       SQLCliente.Next;
-    end;
+    end;}
 
   if CheckDependente.Checked then
     begin
@@ -202,14 +206,18 @@ begin
       except
         TblClienteDependente.CreateTable;
       end;
-      BatchExec(SQLClienteDependente,TblClienteDependente);
+      CopyQueryTable(SQLClienteDependente,TblClienteDependente);
     end;
 
-  //BatchExec(SQLCliente, TblTemporaria) ;
+  CopyQueryTable(SQLCliente, TblTemporaria) ;
   if CheckSimples.Checked then
-    Report.ReportName := DM.SQLConfigGeralCFGEA255PATHREPORT.Value + '\Clientes Cadastrados Simples.rpt'
+  begin
+    Report.ReportName := DM.SQLConfigGeralCFGEA255PATHREPORT.Value + '\Clientes Cadastrados Simples.rpt';
+  end
   else
+  begin
     Report.ReportName := DM.SQLConfigGeralCFGEA255PATHREPORT.Value + '\Clientes Cadastrados.rpt';
+  end;
 
   Report.ReportTitle        := 'Relatório de Clientes Cadastrados';
   Report.WindowStyle.Title  := 'Relatório de Clientes Cadastrados';
@@ -245,6 +253,7 @@ begin
   end;
 
   Report.Formulas.Send;
+
   Report.Execute;
 end;
 

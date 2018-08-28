@@ -9,14 +9,14 @@ inherited FormTelaPlanoContas: TFormTelaPlanoContas
   TextHeight = 13
   inherited ScrollBoxFundo: TScrollBox
     Width = 792
-    Height = 569
+    Height = 570
     inherited PanelCentral: TPanel
       Width = 788
-      Height = 485
+      Height = 486
       inherited PanelBarra: TPanel
         Top = 153
         Width = 0
-        Height = 332
+        Height = 333
       end
       object Panel4: TPanel
         Left = 0
@@ -684,10 +684,10 @@ inherited FormTelaPlanoContas: TFormTelaPlanoContas
         end
       end
       object ListaConta: TListBox
-        Left = 550
-        Top = 2
-        Width = 41
-        Height = 97
+        Left = 496
+        Top = 18
+        Width = 25
+        Height = 55
         ItemHeight = 13
         TabOrder = 3
         Visible = False
@@ -696,7 +696,7 @@ inherited FormTelaPlanoContas: TFormTelaPlanoContas
         Left = 0
         Top = 153
         Width = 788
-        Height = 332
+        Height = 333
         Align = alClient
         Caption = 'PanelArvore'
         TabOrder = 4
@@ -704,7 +704,7 @@ inherited FormTelaPlanoContas: TFormTelaPlanoContas
           Left = 1
           Top = 1
           Width = 786
-          Height = 314
+          Height = 315
           Hint = 'Bot'#227'o Direito do Mouse'
           Align = alClient
           Font.Charset = DEFAULT_CHARSET
@@ -726,7 +726,7 @@ inherited FormTelaPlanoContas: TFormTelaPlanoContas
         end
         object ProgressBar: TProgressBar
           Left = 1
-          Top = 315
+          Top = 316
           Width = 786
           Height = 16
           Align = alBottom
@@ -814,6 +814,53 @@ inherited FormTelaPlanoContas: TFormTelaPlanoContas
           end
           inherited AdvPanelNavigator: TAdvOfficeStatusBar
             Width = 788
+            object btnGravarPlano: TSpeedButton
+              Tag = 3
+              Left = 64
+              Top = 4
+              Width = 76
+              Height = 25
+              Cursor = crHandPoint
+              Hint = 'Fechar Tela'
+              Caption = '&Gravar'
+              Flat = True
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              Glyph.Data = {
+                66030000424D660300000000000036000000280000000F000000110000000100
+                18000000000030030000C30E0000C30E00000000000000000000BFBFBFBFBFBF
+                BFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBF
+                BFBFBFBFBFBFBF000000BFBFBF00000000000000000000000000000000000000
+                0000000000000000000000000000000000000000BFBFBF000000BFBFBF000000
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FF000000BFBFBF000000BFBFBF000000FFFFFF000000000000FFFFFF00007FFF
+                FFFF000000000000000000FFFFFFFFFFFF000000BFBFBF000000BFBFBF000000
+                FFFFFFFFFFFFFFFFFF00007F00007F7F7F7FFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FF000000BFBFBF000000BFBFBF000000FFFFFFFFFFFF00007F00007F00007F00
+                007FFFFFFF000000000000FFFFFFFFFFFF000000BFBFBF000000BFBFBF000000
+                FFFFFF00007F00007F00007F7F7F7F00007F00007FFFFFFFFFFFFFFFFFFFFFFF
+                FF000000BFBFBF000000BFBFBF000000FFFFFFFFFFFF00007F7F7F7FFFFFFFFF
+                FFFF00007F7F7F7FFFFFFFFFFFFFFFFFFF000000BFBFBF000000BFBFBF000000
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00007F7F7F7FFFFFFFFFFF
+                FF000000BFBFBF000000BFBFBF000000FFFFFF00000000000000000000000000
+                0000FFFFFFFFFFFF00007FFFFFFFFFFFFF000000BFBFBF000000BFBFBF000000
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00007FFFFF
+                FF000000BFBFBF000000BFBFBF000000FFFFFF00000000000000000000000000
+                0000000000000000FFFFFFFFFFFFFFFFFF000000BFBFBF000000BFBFBF000000
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000000000000000
+                00000000BFBFBF000000BFBFBF000000FFFFFF00000000000000000000000000
+                0000FFFFFFFFFFFF000000FFFFFF000000BFBFBFBFBFBF000000BFBFBF000000
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000000000BFBF
+                BFBFBFBFBFBFBF000000BFBFBF00000000000000000000000000000000000000
+                0000000000000000000000BFBFBFBFBFBFBFBFBFBFBFBF000000BFBFBFBFBFBF
+                BFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBF
+                BFBFBFBFBFBFBF000000}
+              ParentFont = False
+              OnClick = btnGravarPlanoClick
+            end
           end
         end
       end
@@ -869,7 +916,8 @@ inherited FormTelaPlanoContas: TFormTelaPlanoContas
     DatabaseName = 'DB'
     RequestLive = True
     SQL.Strings = (
-      'select * from PLANODECONTAS')
+      'select * from PLANODECONTAS'
+      'order by PLCTA30CODEDIT')
     UpdateObject = UpDateSQLPlanodeContas
     Macros = <>
     Left = 269

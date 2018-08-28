@@ -1,6 +1,6 @@
 inherited FormRelatorioClienteCadastrado: TFormRelatorioClienteCadastrado
   Left = 253
-  Top = 115
+  Top = 47
   Caption = 'Relat'#243'rio de Clientes Cadastrados'
   ClientHeight = 541
   ClientWidth = 804
@@ -628,6 +628,7 @@ inherited FormRelatorioClienteCadastrado: TFormRelatorioClienteCadastrado
     DesignControls = 'Design-Time Window Controls'
     Version.Major = 0
     Version.Minor = 0
+    ReportName = 'C:\Easy2Solutions\Relatorios\Clientes Cadastrados.rpt'
     Margins.Left = -1
     Margins.Right = -1
     Margins.Top = -1

@@ -72,7 +72,7 @@ end;
 
 procedure TFormPrincipal.FormShow(Sender: TObject);
 var Inifile: TInifile;
-var ImpMarca, ImpCaixaPorta, ImpCaixaVeloc, EmpresaNome : String;
+var ImpMarca, ImpCaixaPorta, ImpCaixaVeloc, EmpresaNome, Saltar : String;
 var Total : Double;
 begin
   try
@@ -82,10 +82,21 @@ begin
 
     IniFile             := TIniFile.Create('C:\Easy2Solutions\Gestao\Parceiro.ini');
     EmpresaNome         := IniFile.ReadString('IB_Software','EmpresaNome','');
-    ImpMarca            := IniFile.ReadString('Restaurante','ImpMarca','DARUMA');
+    ImpMarca            := IniFile.ReadString('Restaurante','ImpMarca','');
     ImpCaixaPorta       := IniFile.ReadString('Restaurante','ImpCaixaPorta','');
-    ImpCaixaVeloc       := IniFile.ReadString('Restaurante','ImpCaixaVeloc','115200');
+    ImpCaixaVeloc       := IniFile.ReadString('Restaurante','ImpCaixaVeloc','9600');
+    Saltar              := Inifile.ReadString('IB_SOFTWARE','Saltar','');
     IniFile.Free;
+
+    if ImpMarca = 'EPSON'    then ACBrPosPrinter.Modelo := ppEscPosEpson;
+    if ImpMarca = 'BEMATECH' then ACBrPosPrinter.Modelo := ppEscBematech;
+    if ImpMarca = 'ELGIN'    then ACBrPosPrinter.Modelo := ppEscVox;
+    if ImpMarca = 'DR700'    then ACBrPosPrinter.Modelo := ppEscDaruma;
+    if ImpMarca = 'DR800'    then ACBrPosPrinter.Modelo := ppEscDaruma;
+
+    ACBrPosPrinter.Device.Porta := ImpCaixaPorta;
+    ACBrPosPrinter.Device.Baud  := StrToint(ImpCaixaVeloc);
+    ACBrPosPrinter.Device.Desativar;
 
     memo.Lines.Add(' ');
     memo.Lines.Add(' ');
@@ -111,23 +122,13 @@ begin
     // Final Venda
     memo.Lines.Add('------------------------------------------------');
     memo.Lines.Add('</ad><n>TOTAL   R$ ' + FormatFloat('##0.00',Total)+'   </n>');
-    memo.Lines.Add('------------------------------------------------');
-    memo.Lines.Add(' ');
-    memo.Lines.Add(' ');
+    memo.Lines.Add('</ae>------------------------------------------------');
     memo.Lines.Add(' ');
     memo.Lines.Add(' ');
     memo.Lines.Add('</corte_parcial>');
 
-    if ImpMarca = 'EPSON'    then ACBrPosPrinter.Modelo := ppEscPosEpson;
-    if ImpMarca = 'BEMATECH' then ACBrPosPrinter.Modelo := ppEscBematech;
-    if ImpMarca = 'ELGIN'    then ACBrPosPrinter.Modelo := ppEscVox;
-    if ImpMarca = 'DR700'    then ACBrPosPrinter.Modelo := ppEscDaruma;
-    if ImpMarca = 'DR800'    then ACBrPosPrinter.Modelo := ppEscDaruma;
-
-    ACBrPosPrinter.Device.Porta := ImpCaixaPorta;
-    ACBrPosPrinter.Device.Baud  := StrToint(ImpCaixaVeloc);
-    ACBrPosPrinter.Device.Desativar;
     ACBrPosPrinter.Device.Ativar;
+    ACBrPosPrinter.LinhasEntreCupons := StrToInt(Saltar);
     ACBrPosPrinter.Imprimir(Memo.Lines.Text);
 
     TblPreVendaItem.Close;

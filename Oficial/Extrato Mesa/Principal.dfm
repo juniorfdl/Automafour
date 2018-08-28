@@ -188,7 +188,6 @@ object FormPrincipal: TFormPrincipal
     ConfigQRCode.LarguraModulo = 4
     ConfigQRCode.ErrorLevel = 0
     LinhasEntreCupons = 0
-    CortaPapel = False
     Left = 71
     Top = 10
   end

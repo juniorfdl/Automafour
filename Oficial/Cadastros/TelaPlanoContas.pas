@@ -74,6 +74,7 @@ type
     DSSQLPlanodeContas: TDataSource;
     Label1: TLabel;
     DBEdit1: TDBEdit;
+    btnGravarPlano: TSpeedButton;
     procedure ComboNiveisChange(Sender: TObject);
     procedure DSSQLConfigContaStateChange(Sender: TObject);
     procedure BtnGravarClick(Sender: TObject);
@@ -97,6 +98,7 @@ type
     procedure NomeEditExit(Sender: TObject);
     procedure SQLContaNewRecord(DataSet: TDataSet);
     procedure ComboNiveisExit(Sender: TObject);
+    procedure btnGravarPlanoClick(Sender: TObject);
   private
     { Private declarations }
     procedure AtualizaCombosContas;
@@ -666,6 +668,12 @@ procedure TFormTelaPlanoContas.ComboNiveisExit(Sender: TObject);
 begin
   inherited;
   AtualizaCombosContas;
+end;
+
+procedure TFormTelaPlanoContas.btnGravarPlanoClick(Sender: TObject);
+begin
+  inherited;
+  NomeEditExit(Sender);
 end;
 
 end.
