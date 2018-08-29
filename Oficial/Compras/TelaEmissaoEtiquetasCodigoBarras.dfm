@@ -17,10 +17,10 @@ inherited FormTelaEmissaoEtiquetasCodigoBarras: TFormTelaEmissaoEtiquetasCodigoB
   end
   inherited ScrollBoxFundo: TScrollBox
     Width = 910
-    Height = 498
+    Height = 499
     inherited PanelCentral: TPanel
       Width = 906
-      Height = 414
+      Height = 415
       object Bevel1: TBevel [0]
         Left = 0
         Top = 44
@@ -38,7 +38,7 @@ inherited FormTelaEmissaoEtiquetasCodigoBarras: TFormTelaEmissaoEtiquetasCodigoB
       inherited PanelBarra: TPanel
         Top = 179
         Width = 0
-        Height = 235
+        Height = 236
         TabOrder = 2
       end
       object PageControl: TPageControl
@@ -46,7 +46,7 @@ inherited FormTelaEmissaoEtiquetasCodigoBarras: TFormTelaEmissaoEtiquetasCodigoB
         Top = 47
         Width = 906
         Height = 129
-        ActivePage = TabSheetItem
+        ActivePage = TabSheetMovDiv
         Align = alTop
         Style = tsFlatButtons
         TabOrder = 1
@@ -697,7 +697,7 @@ inherited FormTelaEmissaoEtiquetasCodigoBarras: TFormTelaEmissaoEtiquetasCodigoB
         Left = 0
         Top = 179
         Width = 906
-        Height = 235
+        Height = 236
         Align = alClient
         BorderStyle = bsNone
         Color = clWhite

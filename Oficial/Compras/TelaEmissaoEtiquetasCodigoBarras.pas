@@ -944,6 +944,8 @@ begin
               TblEtiquetasDtUltEntr.AsString           := '' ;
               TblEtiquetasCustFant.AsString            := '' ;
               TblEtiquetasParcPlanos.AsString          := '' ;
+              TblEtiquetasPrecoVarejo.Value            := SQLProdutoPRODN3VLRVENDA.Value;
+              TblEtiquetasPrecoAtacado.Value           := SQLProdutoPRODN3VLRVENDA2.Value;
               TblEtiquetasCor.AsString                 := SQLProdutoCorLookup.AsString ;
               TblEtiquetasQuant.AsString               := Quant.Text ;
               TblEtiquetasProdutoCodigoAntigo.AsString := SQLProdutoPRODA15CODANT.AsString ;
