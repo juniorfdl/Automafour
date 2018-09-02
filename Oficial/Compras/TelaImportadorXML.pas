@@ -404,6 +404,13 @@ type
     procedure btConsultarXmlsSefazClick(Sender: TObject);
     procedure SQLNFSEFAZCalcFields(DataSet: TDataSet);
     procedure btnDownLoadXMLClick(Sender: TObject);
+    procedure btnInformaCienciaOperacaoClick(Sender: TObject);
+    procedure SQLNFSEFAZAfterScroll(DataSet: TDataSet);
+    procedure SQLNFSEFAZSIT_EVENTOGetText(Sender: TField; var Text: String;
+      DisplayText: Boolean);
+    procedure btnInformaConfirmaOperacaoClick(Sender: TObject);
+    procedure btnInformaDesconheceOperacaoClick(Sender: TObject);
+    procedure btnInformaOperacaoNaoRealizadaClick(Sender: TObject);
 
   private
     XMLOutraEmpresa: Boolean;
@@ -419,6 +426,7 @@ type
     FFornecedor: String;
     FCodigoNF: String;
     FCNPJDestinatarioNFe: String;
+    procedure EnviarEvento(pTipo: TpcnTpEvento);
     procedure Inicia_NFe;
     Function GravaNota : Boolean;
     procedure SetCodigoNF(const Value: String);
@@ -2882,7 +2890,7 @@ begin
       begin
         ExibeInconsistencia(tiInformacao, sMotivo, EmptyStr);
 
-        for i := 0 to ACBrNFe.WebServices.DistribuicaoDFe.retDistDFeInt.docZip.Count do
+        for i := 0 to ACBrNFe.WebServices.DistribuicaoDFe.retDistDFeInt.docZip.Count -1 do
           begin
             sSerie   := '';
             sNumero  := '';
@@ -2970,14 +2978,31 @@ begin
 end;
 
 procedure TFormTelaImportadorXML.btnDownLoadXMLClick(Sender: TObject);
+var
+  vDados:TStringList;
 begin
   inherited;
   Inicia_NFe;
 
-  ACBrNFe.Configuracoes.Arquivos.DownloadNFe.PathDownload := DirectoryEditNFERecebidas.Text;
+  {ACBrNFe.Configuracoes.Arquivos.DownloadNFe.PathDownload := DirectoryEditNFERecebidas.Text;
   ACBrNFe.DownloadNFe.Download.CNPJ := dm.SQLEmpresaEMPRA14CGC.Value;
   ACBrNFe.DownloadNFe.Download.Chaves.Add.chNFe := SQLNFSEFAZCHAVE.Value;
-  ACBrNFe.Download;
+  ACBrNFe.Download;}
+
+  ACBrNFe.DistribuicaoDFePorChaveNFe( dm.SQLEmpresaEMPRIUFCODFED.Value,
+                            dm.SQLEmpresaEMPRA14CGC.Value, SQLNFSEFAZCHAVE.Value);
+
+  if ACBrNFe.WebServices.DistribuicaoDFe.retDistDFeInt.docZip.Count > 0 then
+  begin
+    vDados:= TStringList.Create;
+    vDados.Text := ACBrNFe.WebServices.DistribuicaoDFe.retDistDFeInt.docZip.Items[0].XML;
+    vDados.SaveToFile(DirectoryEditNFERecebidas.Text+'\'+SQLNFSEFAZCHAVE.Value+'.xml');
+  end;
+
+  //sStat   := IntToStr(ACBrNFe.WebServices.DistribuicaoDFe.retDistDFeInt.cStat);
+  //sMotivo := ACBrNFe.WebServices.DistribuicaoDFe.retDistDFeInt.xMotivo;
+
+
 end;
 
 procedure TFormTelaImportadorXML.pCalculaCustoMedio;
@@ -3014,6 +3039,120 @@ begin
   except
     dm.SQLUpdate.ParamByName('NOCIN3VLRCUSTOMED').AsFloat := 0;
   end;
+end;
+
+procedure TFormTelaImportadorXML.btnInformaCienciaOperacaoClick(
+  Sender: TObject);
+begin
+  EnviarEvento(teManifDestCiencia);
+end;
+
+procedure TFormTelaImportadorXML.SQLNFSEFAZAfterScroll(DataSet: TDataSet);
+begin
+  inherited;
+  btnInformaCienciaOperacao.Enabled := not SQLNFSEFAZ.IsEmpty;
+  btnInformaConfirmaOperacao.Enabled := not SQLNFSEFAZ.IsEmpty;
+  btnInformaDesconheceOperacao.Enabled := not SQLNFSEFAZ.IsEmpty;
+  btnInformaOperacaoNaoRealizada.Enabled := not SQLNFSEFAZ.IsEmpty;
+end;
+
+procedure TFormTelaImportadorXML.EnviarEvento(pTipo: TpcnTpEvento);
+var
+  sCNPJ, vSIT_EVENTO, lMsg : String;
+begin
+  Inicia_NFe;
+
+  sCNPJ    := dm.SQLEmpresaEMPRA14CGC.Value;
+
+  ACBrNFe.EventoNFe.Evento.Clear;
+  with ACBrNFe.EventoNFe.Evento.Add do
+  begin
+      InfEvento.cOrgao       := 91;
+      InfEvento.chNFe        := Trim(SQLNFSEFAZCHAVE.Value);
+      InfEvento.CNPJ         := sCNPJ;
+      InfEvento.dhEvento     := Now;
+      InfEvento.tpEvento     := pTipo;
+      InfEvento.versaoEvento := '1.00';
+  end;
+
+  ACBrNFe.EnviarEvento(1);
+  
+  if (ACBrNFe.WebServices.EnvEvento.EventoRetorno.retEvento.Items[0].RetInfEvento.cStat = 128)or
+     (ACBrNFe.WebServices.EnvEvento.EventoRetorno.retEvento.Items[0].RetInfEvento.cStat = 135) then
+  begin
+    SQLNFSEFAZ.Edit;
+    SQLNFSEFAZSIT_EVENTO.Value := vSIT_EVENTO;
+    SQLNFSEFAZ.Post;
+  end
+  else
+  if ACBrNFe.WebServices.EnvEvento.EventoRetorno.retEvento.Items[0].RetInfEvento.cStat = 573 then
+  begin
+     ShowMessage('Duplicidade de Evento!');
+     SQLNFSEFAZ.Edit;
+     SQLNFSEFAZSIT_EVENTO.Value := vSIT_EVENTO;
+     SQLNFSEFAZ.Post;
+  end
+  else
+  if ACBrNFe.WebServices.EnvEvento.EventoRetorno.retEvento.Items[0].RetInfEvento.xMotivo <> '135' then
+  begin
+      with ACBrNFe.WebServices.EnvEvento.EventoRetorno.retEvento.Items[0].RetInfEvento do
+      begin
+          lMsg:=
+          'Id: '+Id+#13+
+          'tpAmb: '+TpAmbToStr(tpAmb)+#13+
+          'verAplic: '+verAplic+#13+
+          'cOrgao: '+IntToStr(cOrgao)+#13+
+          'cStat: '+IntToStr(cStat)+#13+
+          'xMotivo: '+xMotivo+#13+
+          'chNFe: '+chNFe+#13+
+          'tpEvento: '+TpEventoToStr(tpEvento)+#13+
+          'xEvento: '+xEvento+#13+
+          'nSeqEvento: '+IntToStr(nSeqEvento)+#13+
+          'CNPJDest: '+CNPJDest+#13+
+          'emailDest: '+emailDest+#13+
+          'dhRegEvento: '+DateTimeToStr(dhRegEvento)+#13+
+          'nProt: '+nProt;
+      end;
+      ShowMessage(lMsg);
+  end;
+end;
+
+procedure TFormTelaImportadorXML.SQLNFSEFAZSIT_EVENTOGetText(
+  Sender: TField; var Text: String; DisplayText: Boolean);
+begin
+  inherited;
+  if Sender.AsString = '1' then
+    Text := 'Ciencia da Operação registrada'
+  else
+  if Sender.AsString = '2' then
+    Text := 'Confirmação de Operação registrada'
+  else
+  if Sender.AsString = '3' then
+    Text := 'Desconhecimento da Operação registrada'
+  else
+  if Sender.AsString = '4' then
+    Text := 'Operação não Realizada registrada';
+end;
+
+procedure TFormTelaImportadorXML.btnInformaConfirmaOperacaoClick(
+  Sender: TObject);
+begin
+  inherited;
+  EnviarEvento(teManifDestConfirmacao);
+end;
+
+procedure TFormTelaImportadorXML.btnInformaDesconheceOperacaoClick(
+  Sender: TObject);
+begin
+  inherited;
+  EnviarEvento(teManifDestDesconhecimento);
+end;
+
+procedure TFormTelaImportadorXML.btnInformaOperacaoNaoRealizadaClick(
+  Sender: TObject);
+begin
+  inherited;
+  EnviarEvento(teManifDestOperNaoRealizada);
 end;
 
 end.
