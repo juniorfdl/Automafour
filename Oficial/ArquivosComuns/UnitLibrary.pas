@@ -4957,7 +4957,7 @@ begin
     begin
       SQLParcelasPrazo.Append;
       SQLParcelasPrazo.FieldByName('TERMICOD').Value := TerminalAtual;
-      SQLParcelasPrazo.FieldByName('NROPARCELA').Value := SQLPlnRecParc.FieldByName('PLRPINROPARC').Value - OffSet;
+      SQLParcelasPrazo.FieldByName('NROPARCELA').Value := SQLPlnRecParc.FieldByName('PLRPINROPARC').Value; //- OffSet;
       if (SQLPlnRecParc.FieldByName('PLRPINRODIAS').Value mod 30 = 0) and
         (SQLPlnRecParc.FieldByName('PLRPINRODIAS').Value > 0) and
         (ConvenioVenda > 0) then
