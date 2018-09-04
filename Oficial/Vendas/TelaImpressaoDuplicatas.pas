@@ -836,10 +836,13 @@ begin
     begin
       ACBrBoleto1.banco.TipoCobranca := cobBanrisul;
     end;
+  if SQLContaCorrenteBANCA5COD.Value = '341' then
+    begin
+      ACBrBoleto1.banco.TipoCobranca := cobItau;
+    end;
   if SQLContaCorrenteBANCA5COD.Value = '748' then
     begin
       ACBrBoleto1.banco.TipoCobranca := cobSicred;
-
     end;
 
   ACBrBoleto1.cedente.Agencia       := SQLContaCorrenteCTCRA15AGENCIA.Value;
@@ -911,6 +914,9 @@ begin
           DM.SQLTemplate.Close;
           DM.SQLTemplate.Sql.Clear;
           if SQLContaCorrenteBANCA5COD.Value = '041' then
+            DM.SQLTemplate.Sql.Add('UPDATE CONTASRECEBER SET CTRCA15NOSSONUMERO = '''+ IntToStr(vNossoNumero) +''' Where CTRCA13ID = ''' + SQLContasReceberCTRCA13ID.Value + '''') ;
+
+          if SQLContaCorrenteBANCA5COD.Value = '341' then
             DM.SQLTemplate.Sql.Add('UPDATE CONTASRECEBER SET CTRCA15NOSSONUMERO = '''+ IntToStr(vNossoNumero) +''' Where CTRCA13ID = ''' + SQLContasReceberCTRCA13ID.Value + '''') ;
 
           if SQLContaCorrenteBANCA5COD.Value = '748' then
@@ -1141,6 +1147,8 @@ begin
     begin
       if SQLContaCorrenteBANCA5COD.Value = '041' then
         ACBrBoletoFCFortes1.NomeArquivo := 'Cobranca\Banrisul\Boletos\Boleto_Banrisul_'+TblDuplicatasCLIEA60RAZAOSOC.Value+'_'+TblDuplicatasCTRCA13ID.Value+'.pdf';
+      if SQLContaCorrenteBANCA5COD.Value = '341' then
+        ACBrBoletoFCFortes1.NomeArquivo := 'Cobranca\Itau\Boletos\Boleto_Itau_'+TblDuplicatasCLIEA60RAZAOSOC.Value+'_'+TblDuplicatasCTRCA13ID.Value+'.pdf';
       if SQLContaCorrenteBANCA5COD.Value = '748' then
         ACBrBoletoFCFortes1.NomeArquivo := 'Cobranca\Sicredi\Boletos\Boleto_Sicredi_'+TblDuplicatasCLIEA60RAZAOSOC.Value+'_'+TblDuplicatasCTRCA13ID.Value+'.pdf';
       ACBrBoleto1.GerarPDF;
@@ -1174,6 +1182,8 @@ begin
        {Setar nome arquivo e caminho que sera gerado o pdf}
        if SQLContaCorrenteBANCA5COD.Value = '041' then
          ACBrBoletoFCFortes1.NomeArquivo := 'Cobranca\Banrisul\Boletos\Boleto_Banrisul_'+TblDuplicatasCLIEA60RAZAOSOC.Value+'_'+TblDuplicatasCTRCA13ID.Value+'.pdf';
+       if SQLContaCorrenteBANCA5COD.Value = '341' then
+         ACBrBoletoFCFortes1.NomeArquivo := 'Cobranca\Itau\Boletos\Boleto_Itau_'+TblDuplicatasCLIEA60RAZAOSOC.Value+'_'+TblDuplicatasCTRCA13ID.Value+'.pdf';
        if SQLContaCorrenteBANCA5COD.Value = '748' then
          ACBrBoletoFCFortes1.NomeArquivo := 'Cobranca\Sicredi\Boletos\Boleto_Sicredi_'+TblDuplicatasCLIEA60RAZAOSOC.Value+'_'+TblDuplicatasCTRCA13ID.Value+'.pdf';
 
@@ -1395,6 +1405,7 @@ begin
 
   {Carrega dados do Emitente}
   if SQLContaCorrenteBANCA5COD.Value = '041' then ACBrBoleto1.banco.TipoCobranca := cobBanrisul;
+  if SQLContaCorrenteBANCA5COD.Value = '341' then ACBrBoleto1.banco.TipoCobranca := cobItau;
   if SQLContaCorrenteBANCA5COD.Value = '748' then ACBrBoleto1.banco.TipoCobranca := cobSicred;
 
   ACBrBoleto1.cedente.Agencia       := SQLContaCorrenteCTCRA15AGENCIA.Value;
@@ -1466,6 +1477,11 @@ begin
             begin
               DataDocumento  := SQLContasReceberCTRCDEMIS.Value;
               LocalPagamento := 'PAGÁVEL PREFENCIALMENTE NAS AGENCIAS DO BANRISUL';
+            end;
+          if SQLContaCorrenteBANCA5COD.Value = '341' then
+            begin
+              DataDocumento  := now;
+              LocalPagamento := 'ATÉ O VENCIMENTO, PAGUE EM QUALQUER BANCO OU CORRESPONDENTE NÃO BANCÁRIO';
             end;
           if SQLContaCorrenteBANCA5COD.Value = '748' then
             begin
@@ -1550,6 +1566,8 @@ begin
     ACBrBoleto1.DirArqRemessa := 'c:\easy2solutions\gestao\cobranca\sicredi\remessa';
   if SQLContaCorrenteBANCA5COD.Value = '041' then
     ACBrBoleto1.DirArqRemessa := 'c:\easy2solutions\gestao\cobranca\banrisul\remessa';
+  if SQLContaCorrenteBANCA5COD.Value = '341' then
+    ACBrBoleto1.DirArqRemessa := 'c:\easy2solutions\gestao\cobranca\itau\remessa';
 
   try
     ACBrBoleto1.GerarRemessa(NroRemessa);

@@ -995,6 +995,7 @@ type
     EvDBNumEdit4: TEvDBNumEdit;
     Label29: TLabel;
     SQLTemplateVALOR_DESC_ENTRADA: TFloatField;
+    ButtonAcougue: TRxSpeedButton;
     procedure FormCreate(Sender: TObject);
     procedure RxComboComissaoChange(Sender: TObject);
     procedure AcessaMarcaClick(Sender: TObject);
@@ -1170,7 +1171,8 @@ uses CadastroVariacao, DataModulo, CadastroSubgrupo, CadastroMarca,
   CadastroProdutoComposicao, WaitWindow, WindowsLibrary, CadastroProdutoSerie, CadastroProdutoTabelaPreco,
   CadastroColecao, CadastroDecreto,
   TelaEntradaRapidaEstoque, TelaFotoExpandida, CadastroBarras,
-  TelaSaidaRapidaEstoque, CadastroNCM, CadastroTabCest;
+  TelaSaidaRapidaEstoque, CadastroNCM, CadastroTabCest,
+  CadastroProdutoAcougue;
 
 {$R *.DFM}
 
@@ -1612,7 +1614,7 @@ begin
   if (SQLTemplateGRTMICOD.AsVariant <> Null) and (SQLTemplateGRADICOD.AsVariant <> Null) then
   begin
     if SQLTemplate.State in [DsInsert] then
-      if Pergunta('SIM', 'Vocï¿½ selecionou GRADE e TAMANHO deseja gerar uma grade?') then
+      if Pergunta('SIM', 'Você selecionou GRADE e TAMANHO deseja gerar uma grade?') then
         CriaFormulario(TFormTelaCriacaoGrade, 'FormTelaCriacaoGrade', False, True, True, '');
   end;
 end;
@@ -1667,6 +1669,16 @@ begin
     DSMasterSys := DSTemplate;
     CriaFormulario(TFormCadastroProdutoComposicao,
       'FormCadastroProdutoComposicao',
+      True,
+      False,
+      True,
+      '');
+  end;
+  if (Sender as TRxSpeedButton).Name = 'ButtonAcougue' then
+  begin
+    DSMasterSys := DSTemplate;
+    CriaFormulario(TFormCadastroProdutoAcougue,
+      'FormCadastroProdutoAcougue',
       True,
       False,
       True,

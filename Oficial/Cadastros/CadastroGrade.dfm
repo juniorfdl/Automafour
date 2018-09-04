@@ -1,6 +1,6 @@
 inherited FormCadastroGrade: TFormCadastroGrade
-  Left = 1
-  Top = 2
+  Left = 285
+  Top = 106
   Caption = 'Cadastro de Grade'
   OldCreateOrder = True
   PixelsPerInch = 96

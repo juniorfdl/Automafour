@@ -448,7 +448,8 @@ uses
   TelaGerarSaldoProduto in 'Estoque\TelaGerarSaldoProduto.pas' {FormTelaGerarSaldoProduto},
   CadastroAnimais in 'Cadastros\CadastroAnimais.pas' {FormCadastroAnimais},
   CadastroAnimaisVacinacao in 'Cadastros\CadastroAnimaisVacinacao.pas' {FormCadastroAnimaisVacinas},
-  CadastroMesa in 'Cadastros\CadastroMesa.pas' {FormCadastroMesa};
+  CadastroMesa in 'Cadastros\CadastroMesa.pas' {FormCadastroMesa},
+  CadastroProdutoAcougue in 'Cadastros\CadastroProdutoAcougue.pas' {FormCadastroProdutoAcougue};
 
 {$R *.res}
 

@@ -176,8 +176,8 @@ begin
       SQLTemplate.Post;
       SQLTemplate.Next;
     end;
-    
-  if Pergunta('NAO','O valor da composiï¿½ï¿½o foi alterado, deseja reajustar o produto principal?') then
+
+  if Pergunta('NAO','O valor da composiçãoo foi alterado, deseja reajustar o produto principal?') then
     begin
       SQLTemplate.Close;
       SQLTemplate.Open;

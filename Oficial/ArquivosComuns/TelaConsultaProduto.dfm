@@ -1026,15 +1026,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
       end
     end
   end
-  object SQLClassificacaoFiscal: TRxQuery [1]
-    DatabaseName = 'DB'
-    SQL.Strings = (
-      'select * from CLASSIFICACAOFISCAL')
-    Macros = <>
-    Left = 228
-    Top = 39
-  end
-  object SQLUnidade: TRxQuery [2]
+  object SQLUnidade: TRxQuery [1]
     DatabaseName = 'DB'
     SQL.Strings = (
       'select * from UNIDADE')
@@ -1042,7 +1034,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
     Left = 396
     Top = 11
   end
-  object SQLCor: TRxQuery [3]
+  object SQLCor: TRxQuery [2]
     DatabaseName = 'DB'
     SQL.Strings = (
       'select * from COR')
@@ -1050,7 +1042,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
     Left = 424
     Top = 11
   end
-  object SQLIcms: TRxQuery [4]
+  object SQLIcms: TRxQuery [3]
     DatabaseName = 'DB'
     SQL.Strings = (
       'select * from ICMS')
@@ -1058,7 +1050,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
     Left = 452
     Top = 11
   end
-  object SQLGradeTamanho: TRxQuery [5]
+  object SQLGradeTamanho: TRxQuery [4]
     DatabaseName = 'DB'
     SQL.Strings = (
       'select * from GRADETAMANHO')
@@ -1066,7 +1058,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
     Left = 368
     Top = 11
   end
-  object SQLGrade: TRxQuery [6]
+  object SQLGrade: TRxQuery [5]
     DatabaseName = 'DB'
     SQL.Strings = (
       'select * from GRADE')
@@ -1074,7 +1066,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
     Left = 340
     Top = 11
   end
-  object SQLMarca: TRxQuery [7]
+  object SQLMarca: TRxQuery [6]
     DatabaseName = 'DB'
     SQL.Strings = (
       'select * from MARCA')
@@ -1082,7 +1074,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
     Left = 228
     Top = 11
   end
-  object SQLVariacao: TRxQuery [8]
+  object SQLVariacao: TRxQuery [7]
     DatabaseName = 'DB'
     SQL.Strings = (
       'select * from VARIACAO')
@@ -1090,7 +1082,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
     Left = 312
     Top = 11
   end
-  object SQLGrupo: TRxQuery [9]
+  object SQLGrupo: TRxQuery [8]
     DatabaseName = 'DB'
     SQL.Strings = (
       'select * from GRUPO')
@@ -1098,7 +1090,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
     Left = 256
     Top = 11
   end
-  object SQLSubGrupo: TRxQuery [10]
+  object SQLSubGrupo: TRxQuery [9]
     DatabaseName = 'DB'
     SQL.Strings = (
       'select * from SUBGRUPO')
@@ -1106,7 +1098,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
     Left = 284
     Top = 11
   end
-  object SQLProdutoSaldo: TRxQuery [11]
+  object SQLProdutoSaldo: TRxQuery [10]
     DatabaseName = 'DB'
     DataSource = DSTemplate
     SQL.Strings = (
@@ -1161,12 +1153,12 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
       Lookup = True
     end
   end
-  object DSSQLProdutoSaldo: TDataSource [12]
+  object DSSQLProdutoSaldo: TDataSource [11]
     DataSet = SQLProdutoSaldo
     Left = 284
     Top = 39
   end
-  object SQLEmpresa: TRxQuery [13]
+  object SQLEmpresa: TRxQuery [12]
     DatabaseName = 'DB'
     SQL.Strings = (
       'Select * From EMPRESA')
@@ -1592,7 +1584,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
       Size = 2000
     end
   end
-  object FormStorage1: TFormStorage [16]
+  object FormStorage1: TFormStorage [15]
     Options = []
     StoredProps.Strings = (
       'ComboOrder.Text'
@@ -1601,7 +1593,7 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
     Left = 480
     Top = 11
   end
-  object SQLProdutoSerie: TRxQuery [17]
+  object SQLProdutoSerie: TRxQuery [16]
     DatabaseName = 'DB'
     DataSource = DSTemplate
     SQL.Strings = (
@@ -1631,12 +1623,12 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
       Size = 60
     end
   end
-  object DSSQLProdutoSerie: TDataSource [18]
+  object DSSQLProdutoSerie: TDataSource [17]
     DataSet = SQLProdutoSerie
     Left = 372
     Top = 45
   end
-  object SQLProdutoComposicao: TRxQuery [19]
+  object SQLProdutoComposicao: TRxQuery [18]
     DatabaseName = 'DB'
     DataSource = DSTemplate
     SQL.Strings = (
@@ -1658,9 +1650,17 @@ inherited FormTelaConsultaProduto: TFormTelaConsultaProduto
       Origin = 'DB.PRODUTOCOMPOSICAO.PRODICOD'
     end
   end
-  object DSSQLProdutoComposicao: TDataSource [20]
+  object DSSQLProdutoComposicao: TDataSource [19]
     DataSet = SQLProdutoComposicao
     Left = 438
     Top = 45
+  end
+  object SQLClassificacaoFiscal: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'select * from CLASSIFICACAOFISCAL')
+    Macros = <>
+    Left = 228
+    Top = 39
   end
 end

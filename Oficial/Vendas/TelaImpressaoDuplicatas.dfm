@@ -1,6 +1,6 @@
 inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
-  Left = 277
-  Top = 105
+  Left = 352
+  Top = 93
   Width = 847
   Height = 507
   Caption = 'Emiss'#227'o de Boletos e Duplicatas'

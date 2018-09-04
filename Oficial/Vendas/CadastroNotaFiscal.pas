@@ -6966,7 +6966,7 @@ begin
       begin
         with Cobr.Dup.Add do
         begin
-          nDup := SQLTemplateNOFIINUMERO.AsString + '-' + SQLContasReceberCTRCINROPARC.AsString;
+          nDup := FormatFloat('000',SQLContasReceberCTRCINROPARC.AsInteger);
           dVenc := SQLContasReceberCTRCDVENC.AsDateTime;
           vDup := RoundTo(SQLContasReceberCTRCN2VLR.asfloat, -2);
           TotalDup := TotalDup + vDup;
