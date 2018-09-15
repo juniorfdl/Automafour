@@ -1,6 +1,6 @@
 inherited FormCadastroCliente: TFormCadastroCliente
-  Left = 39
-  Top = 27
+  Left = 324
+  Top = 8
   Caption = 'Cadastro de Clientes'
   ClientHeight = 672
   ClientWidth = 1092
@@ -815,7 +815,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
             Top = 42
             Width = 960
             Height = 556
-            ActivePage = TabSheetItens
+            ActivePage = TabSheetDadosPrincipais
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Width = 952
@@ -1022,15 +1022,15 @@ inherited FormCadastroCliente: TFormCadastroCliente
                 TabOrder = 0
                 object PanelDocFis: TPanel
                   Left = 144
-                  Top = 7
+                  Top = 0
                   Width = 512
-                  Height = 38
+                  Height = 45
                   BevelOuter = bvNone
                   ParentColor = True
                   TabOrder = 2
                   object Label4: TLabel
                     Left = 4
-                    Top = -1
+                    Top = 3
                     Width = 20
                     Height = 13
                     Caption = 'CPF'
@@ -1044,7 +1044,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                   end
                   object Label5: TLabel
                     Left = 118
-                    Top = -1
+                    Top = 3
                     Width = 16
                     Height = 13
                     Caption = 'RG'
@@ -1056,23 +1056,9 @@ inherited FormCadastroCliente: TFormCadastroCliente
                     Font.Style = [fsBold]
                     ParentFont = False
                   end
-                  object Label79: TLabel
-                    Left = 244
-                    Top = -1
-                    Width = 100
-                    Height = 13
-                    Caption = 'Outro Documento'
-                    FocusControl = DBEdit57
-                    Font.Charset = DEFAULT_CHARSET
-                    Font.Color = clNavy
-                    Font.Height = -11
-                    Font.Name = 'Tahoma'
-                    Font.Style = [fsBold]
-                    ParentFont = False
-                  end
                   object Label80: TLabel
-                    Left = 386
-                    Top = -1
+                    Left = 242
+                    Top = 3
                     Width = 113
                     Height = 13
                     Caption = 'Data de Nascimento'
@@ -1085,7 +1071,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                   end
                   object DBEdit55: TDBEdit
                     Left = 3
-                    Top = 14
+                    Top = 18
                     Width = 110
                     Height = 21
                     DataField = 'CLIEA11CPF'
@@ -1094,38 +1080,52 @@ inherited FormCadastroCliente: TFormCadastroCliente
                   end
                   object DBEdit56: TDBEdit
                     Left = 115
-                    Top = 14
+                    Top = 18
                     Width = 124
                     Height = 21
                     DataField = 'CLIEA10RG'
                     DataSource = DSTemplate
                     TabOrder = 1
                   end
-                  object DBEdit57: TDBEdit
-                    Left = 241
-                    Top = 14
-                    Width = 140
-                    Height = 21
-                    DataField = 'CLIEA30OUTROSDOC'
-                    DataSource = DSTemplate
-                    TabOrder = 2
-                  end
                   object DBDateEdit1: TDBDateEdit
-                    Left = 384
-                    Top = 14
+                    Left = 240
+                    Top = 18
                     Width = 121
                     Height = 21
                     DataField = 'CLIEDNASC'
                     DataSource = DSTemplate
                     NumGlyphs = 2
+                    TabOrder = 2
+                  end
+                  object RadioContribuinteF: TDBRadioGroup
+                    Tag = 1
+                    Left = 378
+                    Top = -3
+                    Width = 134
+                    Height = 47
+                    Caption = '&Tipo Contribuinte'
+                    DataField = 'TIPO_CONTRIBUINTE'
+                    DataSource = DSTemplate
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clBlack
+                    Font.Height = -11
+                    Font.Name = 'Tahoma'
+                    Font.Style = [fsBold]
+                    Items.Strings = (
+                      'N'#227'o Contribuinte'
+                      'Isento')
+                    ParentFont = False
                     TabOrder = 3
+                    Values.Strings = (
+                      'N'
+                      'I')
                   end
                 end
                 object PanelDocJur: TPanel
-                  Left = 147
-                  Top = 4
-                  Width = 537
-                  Height = 38
+                  Left = 145
+                  Top = 0
+                  Width = 570
+                  Height = 44
                   BevelOuter = bvNone
                   ParentColor = True
                   TabOrder = 1
@@ -1158,22 +1158,8 @@ inherited FormCadastroCliente: TFormCadastroCliente
                     Font.Style = [fsBold]
                     ParentFont = False
                   end
-                  object Label11: TLabel
-                    Left = 334
-                    Top = 3
-                    Width = 59
-                    Height = 13
-                    Caption = 'Outro Doc.'
-                    FocusControl = DBEdit7
-                    Font.Charset = DEFAULT_CHARSET
-                    Font.Color = 8404992
-                    Font.Height = -11
-                    Font.Name = 'Tahoma'
-                    Font.Style = [fsBold]
-                    ParentFont = False
-                  end
                   object Label77: TLabel
-                    Left = 433
+                    Left = 332
                     Top = 2
                     Width = 54
                     Height = 13
@@ -1296,24 +1282,15 @@ inherited FormCadastroCliente: TFormCadastroCliente
                     DataSource = DSTemplate
                     TabOrder = 2
                   end
-                  object DBEdit7: TDBEdit
-                    Left = 334
-                    Top = 16
-                    Width = 96
-                    Height = 21
-                    DataField = 'CLIEA30OUTROSDOC'
-                    DataSource = DSTemplate
-                    TabOrder = 3
-                  end
                   object DBDateEdit8: TDBDateEdit
-                    Left = 433
+                    Left = 332
                     Top = 15
                     Width = 91
                     Height = 21
                     DataField = 'CLIEDNASC'
                     DataSource = DSTemplate
                     NumGlyphs = 2
-                    TabOrder = 4
+                    TabOrder = 3
                   end
                   object RxDBComboBox3: TRxDBComboBox
                     Left = 0
@@ -1333,6 +1310,29 @@ inherited FormCadastroCliente: TFormCadastroCliente
                     TabOrder = 0
                     Values.Strings = (
                       'S'
+                      'N')
+                  end
+                  object RadioContribuinteJ: TDBRadioGroup
+                    Tag = 1
+                    Left = 427
+                    Top = -2
+                    Width = 134
+                    Height = 46
+                    Caption = '&Tipo Contribuinte'
+                    DataField = 'TIPO_CONTRIBUINTE'
+                    DataSource = DSTemplate
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clBlack
+                    Font.Height = -11
+                    Font.Name = 'Tahoma'
+                    Font.Style = [fsBold]
+                    Items.Strings = (
+                      'Contribuinte'
+                      'N'#227'o Contribuinte')
+                    ParentFont = False
+                    TabOrder = 4
+                    Values.Strings = (
+                      'C'
                       'N')
                   end
                 end
@@ -1438,6 +1438,20 @@ inherited FormCadastroCliente: TFormCadastroCliente
                   Font.Style = [fsBold]
                   ParentFont = False
                 end
+                object Label11: TLabel
+                  Left = 230
+                  Top = 35
+                  Width = 59
+                  Height = 13
+                  Caption = 'Outro Doc.'
+                  FocusControl = DBEdit7
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = 8404992
+                  Font.Height = -11
+                  Font.Name = 'Tahoma'
+                  Font.Style = [fsBold]
+                  ParentFont = False
+                end
                 object RxDBComboBox1: TRxDBComboBox
                   Left = 3
                   Top = 48
@@ -1506,6 +1520,15 @@ inherited FormCadastroCliente: TFormCadastroCliente
                   DataField = 'CLIEA30NATURALIDADE'
                   DataSource = DSTemplate
                   TabOrder = 2
+                end
+                object DBEdit7: TDBEdit
+                  Left = 226
+                  Top = 48
+                  Width = 220
+                  Height = 21
+                  DataField = 'CLIEA30OUTROSDOC'
+                  DataSource = DSTemplate
+                  TabOrder = 5
                 end
               end
               object PanelRodape: TPanel
@@ -7818,6 +7841,12 @@ inherited FormCadastroCliente: TFormCadastroCliente
     object SQLTemplateCLIEDREVISAO: TDateTimeField
       FieldName = 'CLIEDREVISAO'
       Origin = 'DB.CLIENTE.CLIEDREVISAO'
+    end
+    object SQLTemplateTIPO_CONTRIBUINTE: TStringField
+      FieldName = 'TIPO_CONTRIBUINTE'
+      Origin = 'DB.CLIENTE.TIPO_CONTRIBUINTE'
+      FixedChar = True
+      Size = 1
     end
   end
   inherited SQLExcluiDetalhes: TRxQuery

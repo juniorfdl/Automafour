@@ -3988,6 +3988,9 @@ begin
     SQLContasReceber.ParamByName('NOFIA13ID').AsString := SQLTemplateNOFIA13ID.AsString;
     SQLContasReceber.Open;
 
+    if not DM.SQLConfigCrediario.Active then
+      DM.SQLConfigCrediario.Open;
+
     if not SQLParcelasPrazoVendaTemp.Active then
       SQLParcelasPrazoVendaTemp.Open;
     SQLParcelasPrazoVendaTemp.First;

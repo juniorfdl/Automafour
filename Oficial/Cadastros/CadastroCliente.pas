@@ -256,18 +256,14 @@ type
     PanelDocJur: TPanel;
     LabelCgc_CPF: TLabel;
     LabelIE_RG: TLabel;
-    Label11: TLabel;
     DBEditCgc: TDBEdit;
     DBEditIE: TDBEdit;
-    DBEdit7: TDBEdit;
     PanelDocFis: TPanel;
     Label4: TLabel;
     Label5: TLabel;
-    Label79: TLabel;
     Label80: TLabel;
     DBEdit55: TDBEdit;
     DBEdit56: TDBEdit;
-    DBEdit57: TDBEdit;
     DBDateEdit1: TDBDateEdit;
     PanelFisica: TPanel;
     Label6: TLabel;
@@ -964,6 +960,11 @@ type
     ConsultaClienteSefaz1: TMenuItem;
     RxSpeedButton1: TRxSpeedButton;
     btnReceituario: TRxSpeedButton;
+    Label11: TLabel;
+    DBEdit7: TDBEdit;
+    RadioContribuinteJ: TDBRadioGroup;
+    RadioContribuinteF: TDBRadioGroup;
+    SQLTemplateTIPO_CONTRIBUINTE: TStringField;
     procedure FormCreate(Sender: TObject);
     procedure AcessaVendedorClick(Sender: TObject);
     procedure SQLTemplateNewRecord(DataSet: TDataSet);
@@ -1526,6 +1527,7 @@ procedure TFormCadastroCliente.SQLTemplateNewRecord(DataSet: TDataSet);
 begin
   inherited;
   Dataset.FieldByName('CLIEA5FISJURID').Value := 'F';
+  Dataset.FieldByName('TIPO_CONTRIBUINTE').Value := 'N';
   Dataset.FieldByName('CLIECRECEBECARTAO').Value := 'S';
   Dataset.FieldByName('CLIECRECAVISATRASO').Value := 'S';
   Dataset.FieldByName('CLIECATIVO').Value := 'S';
@@ -1741,14 +1743,14 @@ begin
       IdCliente := SQLLocate('CLIENTE', 'CLIEA60RAZAOSOC', 'CLIEA13ID', '''' + SQLTemplate.FieldByName('CLIEA60RAZAOSOC').AsString + '''');
       if IdCliente <> '' then
       begin
-        if not Pergunta('NAO', 'O Sistema verificou que jï¿½ existe no ID = ' + IdCliente + ' um Cliente com este Nome/Razï¿½o Social. Deseja Continuar Mesmo Assim ?') then
+        if not Pergunta('NAO', 'O Sistema verificou que já existe no ID = ' + IdCliente + ' um Cliente com este Nome/Razï¿½o Social. Deseja Continuar Mesmo Assim ?') then
           Abort;
       end;
       IdCliente := '';
       IdCliente := SQLLocate('CLIENTEDEPENDENTE', 'CLDPA60NOME', 'CLIEA13ID', '''' + SQLTemplate.FieldByName('CLIEA60RAZAOSOC').AsString + '''');
       if IdCliente <> '' then
       begin
-        if not Pergunta('NAO', 'O Sistema verificou que jï¿½ existe no ID = ' + IdCliente + ' um Dependente com este Nome/Razï¿½o Social. Deseja Continuar Mesmo Assim ?') then
+        if not Pergunta('NAO', 'O Sistema verificou que já existe no ID = ' + IdCliente + ' um Dependente com este Nome/Razï¿½o Social. Deseja Continuar Mesmo Assim ?') then
           Abort;
       end;
     end;
@@ -1796,7 +1798,7 @@ begin
   if CPFAlterado then
     if SQLLocate('CLIENTE', 'CLIEA11CPF', 'CLIEA11CPF', '''' + DataSet.FieldByName('CLIEA11CPF').AsString + '''') <> '' then
     begin
-      if not Pergunta('NAO', 'O Sistema verificou que jï¿½ existe um cliente com este CPF. Deseja Continuar Mesmo Assim ?') then
+      if not Pergunta('NAO', 'O Sistema verificou que já existe um cliente com este CPF. Deseja Continuar Mesmo Assim ?') then
       begin
         Abort;
         DataSet.FieldByName('CLIEA11CPF').FocusControl;
@@ -1806,7 +1808,7 @@ begin
   if RGAlterado then
     if SQLLocate('CLIENTE', 'CLIEA10RG', 'CLIEA10RG', '''' + DataSet.FieldByName('CLIEA10RG').AsString + '''') <> '' then
     begin
-      if not Pergunta('NAO', 'O Sistema verificou que jï¿½ existe um cliente com este RG. Deseja Continuar Mesmo Assim ?') then
+      if not Pergunta('NAO', 'O Sistema verificou que já existe um cliente com este RG. Deseja Continuar Mesmo Assim ?') then
       begin
         Abort;
         DataSet.FieldByName('CLIEA10RG').FocusControl;
@@ -1816,12 +1818,34 @@ begin
   if CGCAlterado then
     if SQLLocate('CLIENTE', 'CLIEA14CGC', 'CLIEA14CGC', '''' + DataSet.FieldByName('CLIEA14CGC').AsString + '''') <> '' then
     begin
-      if not Pergunta('NAO', 'O Sistema verificou que jï¿½ existe um cliente com este CNPJ. Deseja Continuar Mesmo Assim ?') then
+      if not Pergunta('NAO', 'O Sistema verificou que já existe um cliente com este CNPJ. Deseja Continuar Mesmo Assim ?') then
       begin
         Abort;
         DataSet.FieldByName('CLIEA14CGC').FocusControl;
       end;
     end;
+
+  if SqlTemplate.FieldByName('TIPO_CONTRIBUINTE').AsString = '' then
+  begin
+    Informa('Informe um tipo de contribuinte!');
+    Abort;
+    DataSet.FieldByName('TIPO_CONTRIBUINTE').FocusControl;
+  end;
+
+  if (SqlTemplate.FieldByName('TIPO_CONTRIBUINTE').AsString = 'I') and (SqlTemplate.FieldByName('CLIEA5FISJURID').AsString = 'J') then
+  begin
+    Informa('Informe um tipo de contribuinte!');
+    Abort;
+    DataSet.FieldByName('TIPO_CONTRIBUINTE').FocusControl;
+  end;
+
+  if (SqlTemplate.FieldByName('TIPO_CONTRIBUINTE').AsString = 'C') and (SqlTemplate.FieldByName('CLIEA5FISJURID').AsString = 'F') then
+  begin
+    Informa('Informe um tipo de contribuinte!');
+    Abort;
+    DataSet.FieldByName('TIPO_CONTRIBUINTE').FocusControl;
+  end;
+
 
   if SQLTemplate.FieldByName('CLIEA5FISJURID').asstring = 'J' then
   begin
@@ -1833,6 +1857,14 @@ begin
     end
   end;
 
+  if (SqlTemplate.FieldByName('CLIEA5FISJURID').AsString = 'J') and (UpperCase(SqlTemplate.FieldByName('CLIEA20IE').AsString) = 'ISENTO') then
+  begin
+    begin
+      Informa('Cliente pessoa jurídica não pode ser ISENTO !');
+      DataSet.FieldByName('CLIEA20IE').FocusControl;
+      Abort;
+    end
+  end;
 
   // Calcula limite Original
   if SQLTemplateCLIEN2RENDA.Value > 0 then
@@ -1850,6 +1882,24 @@ begin
     except
       Application.ProcessMessages;
     end;
+  end;
+
+  if (SQLTemplateTIPO_CONTRIBUINTE.AsString = 'I') then
+  begin
+    if SQLTemplateCLIEA5FISJURID.AsString = 'F' then
+      SQLTemplateCLIEA20IE.AsString := 'ISENTO'
+    else
+     SQLTemplateCLIEA20IE.AsString := '';
+  end;
+  if (SQLTemplateTIPO_CONTRIBUINTE.AsString = 'N') then
+  begin
+    if SQLTemplateCLIEA5FISJURID.AsString = 'F' then
+      SQLTemplateCLIEA20IE.AsString := '';
+  end;
+  if (SQLTemplateTIPO_CONTRIBUINTE.AsString = 'C') then
+  begin
+    if SQLTemplateCLIEA5FISJURID.AsString = 'F' then
+      SQLTemplateCLIEA20IE.AsString := '';
   end;
 
 end;
@@ -3788,4 +3838,7 @@ begin
 end;
 
 end.
+
+
+
 

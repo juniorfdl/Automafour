@@ -1,7 +1,7 @@
 inherited FormCadastroProdutoAcougue: TFormCadastroProdutoAcougue
   Left = 304
   Top = 73
-  Caption = 'FormCadastroProdutoAcougue'
+  Caption = 'A'#231'ougue'
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
@@ -178,6 +178,7 @@ inherited FormCadastroProdutoAcougue: TFormCadastroProdutoAcougue
               DataField = 'PRODICODFILHO'
               DataSource = DSTemplate
               TabOrder = 0
+              OnKeyDown = DBEditProdutoKeyDown
             end
             object DBEdit11: TDBEdit
               Left = 109
@@ -275,10 +276,12 @@ inherited FormCadastroProdutoAcougue: TFormCadastroProdutoAcougue
       Origin = 'DB.PRODUTO_ACOUGUE.PRODICOD'
     end
     object SQLTemplatePRODICODFILHO: TIntegerField
+      DisplayLabel = 'Produto'
       FieldName = 'PRODICODFILHO'
       Origin = 'DB.PRODUTO_ACOUGUE.PRODICODFILHO'
     end
     object SQLTemplatePERCENTUAL: TFloatField
+      DisplayLabel = '%'
       FieldName = 'PERCENTUAL'
       Origin = 'DB.PRODUTO_ACOUGUE.PERCENTUAL'
       DisplayFormat = '##0.00'
@@ -297,6 +300,11 @@ inherited FormCadastroProdutoAcougue: TFormCadastroProdutoAcougue
       FieldKind = fkCalculated
       FieldName = 'ProdutoLookUp'
       Size = 60
+      Calculated = True
+    end
+    object SQLTemplateTotalPercentual: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'TotalPercentual'
       Calculated = True
     end
   end

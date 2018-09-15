@@ -14,7 +14,15 @@ uses
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
   cxImageComboBox, ImgList, Menus, DBClient, ACBrBase, ACBrDFe, Grids,
   DBGrids, Spin, DBCtrls, AdvOfficeStatusBar, AdvOfficeStatusBarStylers, IniFiles, pcnConversao,
-  VarSYS, ShellAPI, pcnConversaoNFe;
+  VarSYS, ShellAPI, pcnConversaoNFe, dxSkinBlack, dxSkinBlue,
+  dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky,
+  dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinPumpkin, dxSkinSeven,
+  dxSkinSharp, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinXmas2008Blue, dxSkinscxPCPainter;
 
 type
   TTipoInconsistencia = (tiCritica, tiInformacao, tiErro);
@@ -411,6 +419,9 @@ type
     procedure btnInformaConfirmaOperacaoClick(Sender: TObject);
     procedure btnInformaDesconheceOperacaoClick(Sender: TObject);
     procedure btnInformaOperacaoNaoRealizadaClick(Sender: TObject);
+    procedure DBGridManifestosDrawColumnCell(Sender: TObject;
+      const Rect: TRect; DataCol: Integer; Column: TColumn;
+      State: TGridDrawState);
 
   private
     XMLOutraEmpresa: Boolean;
@@ -2581,7 +2592,7 @@ begin
       dm.zConsulta.Open;
       if not dm.zConsulta.IsEmpty then
         begin
-          Showmessage('Produto Já Cadastrado! Operação Cancelada!');
+          Showmessage('Produto Já Cadastrado! Operação Cancelada! Código Barras: ' + cdsItensean.AsString + ' Produto: '+ dm.zConsulta.FieldByName('PRODICOD').AsString);
           Abort;
           Exit;
         end;
@@ -2595,7 +2606,7 @@ begin
       dm.zConsulta.Open;
       if not dm.zConsulta.IsEmpty then
         begin
-          Showmessage('Produto Já Cadastrado! Operação Cancelada!');
+          Showmessage('Produto Já Cadastrado! Operação Cancelada! Código Barras Trib: ' + cdsItenseantrib.AsString);
           Abort;
           Exit;
         end;
@@ -2989,20 +3000,23 @@ begin
   ACBrNFe.DownloadNFe.Download.Chaves.Add.chNFe := SQLNFSEFAZCHAVE.Value;
   ACBrNFe.Download;}
 
-  ACBrNFe.DistribuicaoDFePorChaveNFe( dm.SQLEmpresaEMPRIUFCODFED.Value,
-                            dm.SQLEmpresaEMPRA14CGC.Value, SQLNFSEFAZCHAVE.Value);
+  ACBrNFe.DistribuicaoDFePorChaveNFe( dm.SQLEmpresaEMPRIUFCODFED.Value, dm.SQLEmpresaEMPRA14CGC.Value, SQLNFSEFAZCHAVE.Value);
 
   if ACBrNFe.WebServices.DistribuicaoDFe.retDistDFeInt.docZip.Count > 0 then
   begin
-    vDados:= TStringList.Create;
-    vDados.Text := ACBrNFe.WebServices.DistribuicaoDFe.retDistDFeInt.docZip.Items[0].XML;
-    vDados.SaveToFile(DirectoryEditNFERecebidas.Text+'\'+SQLNFSEFAZCHAVE.Value+'.xml');
-  end;
-
+    try
+      vDados:= TStringList.Create;
+      vDados.Text := ACBrNFe.WebServices.DistribuicaoDFe.retDistDFeInt.docZip.Items[0].XML;
+      vDados.SaveToFile(DirectoryEditNFERecebidas.Text+'\'+SQLNFSEFAZCHAVE.Value+'.xml');
+      ShowMessage('Download do xml efetuado!');
+    except
+      application.ProcessMessages;
+    end;
+  end
+  else
+    ShowMessage('Xml não encontrado, verifique mais tarde!');
   //sStat   := IntToStr(ACBrNFe.WebServices.DistribuicaoDFe.retDistDFeInt.cStat);
   //sMotivo := ACBrNFe.WebServices.DistribuicaoDFe.retDistDFeInt.xMotivo;
-
-
 end;
 
 procedure TFormTelaImportadorXML.pCalculaCustoMedio;
@@ -3058,7 +3072,7 @@ end;
 
 procedure TFormTelaImportadorXML.EnviarEvento(pTipo: TpcnTpEvento);
 var
-  sCNPJ, vSIT_EVENTO, lMsg : String;
+  sCNPJ, lMsg, vSIT_EVENTO  : String;
 begin
   Inicia_NFe;
 
@@ -3075,7 +3089,18 @@ begin
       InfEvento.versaoEvento := '1.00';
   end;
 
-  ACBrNFe.EnviarEvento(1);
+  if (pTipo = teManifDestCiencia) then
+    vSIT_EVENTO := '1'
+  else
+  if (pTipo = teManifDestConfirmacao) then
+    vSIT_EVENTO := '2'
+  else
+  if (pTipo = teManifDestDesconhecimento) then
+    vSIT_EVENTO := '3'
+  else
+  if (pTipo = teManifDestOperNaoRealizada) then
+    vSIT_EVENTO := '4';
+  ACBrNFe.EnviarEvento(StrToInt(vSIT_EVENTO));
   
   if (ACBrNFe.WebServices.EnvEvento.EventoRetorno.retEvento.Items[0].RetInfEvento.cStat = 128)or
      (ACBrNFe.WebServices.EnvEvento.EventoRetorno.retEvento.Items[0].RetInfEvento.cStat = 135) then
@@ -3153,6 +3178,15 @@ procedure TFormTelaImportadorXML.btnInformaOperacaoNaoRealizadaClick(
 begin
   inherited;
   EnviarEvento(teManifDestOperNaoRealizada);
+end;
+
+procedure TFormTelaImportadorXML.DBGridManifestosDrawColumnCell(
+  Sender: TObject; const Rect: TRect; DataCol: Integer; Column: TColumn;
+  State: TGridDrawState);
+begin
+  inherited;
+  if SQLNFSEFAZSIT_NFE.AsString = 'C' then
+    DBGridManifestos.Canvas.Font.Color := clRed;
 end;
 
 end.

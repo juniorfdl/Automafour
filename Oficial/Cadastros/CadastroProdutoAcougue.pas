@@ -7,7 +7,7 @@ uses
   Dialogs, CadastroTEMPLATE, DB, AdvOfficeStatusBar,VarSys, Grids, DBGrids,
   DBCtrls, AdvOfficeStatusBarStylers, DBTables, DBActns, ActnList, RxQuery,
   Menus, StdCtrls, Mask, AdvPanel, ComCtrls, RXCtrls, Buttons, ExtCtrls,
-  EDBNum, FormResources;
+  EDBNum, FormResources, UnitLibrary;
 
 type
   TFormCadastroProdutoAcougue = class(TFormCadastroTEMPLATE)
@@ -29,11 +29,20 @@ type
     Label1: TLabel;
     EditQuant: TEvDBNumEdit;
     BtnProduto: TSpeedButton;
+    SQLTemplateTotalPercentual: TFloatField;
     procedure SQLTemplateCalcFields(DataSet: TDataSet);
     procedure BtnProdutoClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure SQLTemplateNewRecord(DataSet: TDataSet);
+    procedure SQLTemplateBeforePost(DataSet: TDataSet);
+    procedure DBEditProdutoKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure SQLTemplateBeforeDelete(DataSet: TDataSet);
+    procedure SQLTemplateBeforeInsert(DataSet: TDataSet);
+    procedure DSTemplateStateChange(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
+    vPercentual : Real;
     { Private declarations }
   public
     { Public declarations }
@@ -79,7 +88,6 @@ procedure TFormCadastroProdutoAcougue.FormCreate(Sender: TObject);
 begin
   inherited;
   TABELA := 'PRODUTO_ACOUGUE';
-
 end;
 
 procedure TFormCadastroProdutoAcougue.SQLTemplateNewRecord(
@@ -89,6 +97,80 @@ begin
   DataSet.FindField('PRODICOD').Value   := DataSet.DataSource.DataSet.FindField('PRODICOD').Value;
   DataSet.FindField('PERCENTUAL').Value := 0;
 
+end;
+
+procedure TFormCadastroProdutoAcougue.SQLTemplateBeforePost(
+  DataSet: TDataSet);
+begin
+  inherited;
+  if MatrizFilial <> 'M' then
+  begin
+    Informa('Uma filial não pode alterar composição!');
+    Abort;
+  end;
+  if SQLTemplatePERCENTUAL.AsFloat <= 0 then
+  begin
+    Informa('O percentual deve ser maior que ZERO!');
+    Abort;
+  end;
+  vPercentual := vPercentual + SQLTemplatePERCENTUAL.AsFloat;
+  if vPercentual > 100 then
+  begin
+    Informa('Soma do percentual dos produtos ultrapassou 100%');
+    Abort;
+  end;
+end;
+
+procedure TFormCadastroProdutoAcougue.DBEditProdutoKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+  inherited;
+  If Key=VK_F2 Then
+    BtnProduto.Click;
+end;
+
+procedure TFormCadastroProdutoAcougue.SQLTemplateBeforeDelete(
+  DataSet: TDataSet);
+begin
+  inherited;
+  if MatrizFilial <> 'M' then
+    begin
+      Informa('Uma filial não pode alterar produtos do açougue!');
+      Abort;
+    end;
+end;
+
+procedure TFormCadastroProdutoAcougue.SQLTemplateBeforeInsert(
+  DataSet: TDataSet);
+begin
+  inherited;
+  if MatrizFilial <> 'M' then
+    begin
+      Informa('Uma filial não pode alterar os produtos do açougue!');
+      Abort;
+    end;
+end;
+
+procedure TFormCadastroProdutoAcougue.DSTemplateStateChange(
+  Sender: TObject);
+begin
+  inherited;
+  if not (DSTemplate.DataSet.State in [DsInsert]) then
+    begin
+      DBEditProduto.Enabled := False;
+      BtnProduto.Enabled    := False;
+    end
+  else
+    begin
+      DBEditProduto.Enabled := True;
+      BtnProduto.Enabled    := True;
+    end;
+end;
+
+procedure TFormCadastroProdutoAcougue.FormShow(Sender: TObject);
+begin
+  inherited;
+  vPercentual := 0;
 end;
 
 end.

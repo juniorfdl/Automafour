@@ -624,7 +624,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
             Top = 44
             Width = 1216
             Height = 570
-            ActivePage = TabSheetDadosPrincipais
+            ActivePage = PaginaFinanceiro
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Top = 126

@@ -966,7 +966,7 @@ end;
 function TFormPrincipal.ExportaMovimentosPDV: boolean;
 var erro: boolean;
 var i: integer;
-var xEmpresa, xProduto, xProxCod, xData, xTotalDia: string;
+var xEmpresa, xProduto, xProxCod, xData, xTotalDia, xCancelado: string;
 begin
   {Abre ClientePDVs no PDV para achar os registros que serao importados!}
   try
@@ -1153,6 +1153,7 @@ begin
           lbStatus.Update;
 
           xEmpresa := ZConsultaPDV.fieldbyname('EMPRICOD').AsString;
+          xCancelado := ZConsultaPDV.fieldbyname('CPITCSTATUS').AsString;
           xProduto := ZConsultaPDV.fieldbyname('PRODICOD').AsString;
           xData := FormatDateTime('mm/dd/yyyy', ZConsultaPDV.fieldbyname('registro').Value);
                 {tenta criar o registro zerado na tabela produtosaldo, caso nao tenha ainda para aquela empresa}
@@ -1183,7 +1184,10 @@ begin
           ZInsereEstoqueServidor.SQL.Add('MVESICOD, ');
           ZInsereEstoqueServidor.SQL.Add('PRODICOD, ');
           ZInsereEstoqueServidor.SQL.Add('OPESICOD, ');
-          ZInsereEstoqueServidor.SQL.Add('MVESN3QTDSAIDA, ');
+          if xCancelado <> 'C' then
+            ZInsereEstoqueServidor.SQL.Add('MVESN3QTDSAIDA, ')
+          else
+            ZInsereEstoqueServidor.SQL.Add('MVESN3QTDENTRADA, ');
           ZInsereEstoqueServidor.SQL.Add('CUPOA13ID, ');
           ZInsereEstoqueServidor.SQL.Add('MVESCESTOQUEOK, ');
           ZInsereEstoqueServidor.SQL.Add('PENDENTE, ');

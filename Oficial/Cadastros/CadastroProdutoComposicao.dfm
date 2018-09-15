@@ -1,6 +1,6 @@
 inherited FormCadastroProdutoComposicao: TFormCadastroProdutoComposicao
-  Left = 232
-  Top = 91
+  Left = 296
+  Top = 71
   Caption = 'Composi'#231#227'o do Produto'
   OldCreateOrder = True
   PixelsPerInch = 96
@@ -12,7 +12,6 @@ inherited FormCadastroProdutoComposicao: TFormCadastroProdutoComposicao
           inherited PagePrincipal: TPageControl
             Top = 167
             Height = 282
-            ActivePage = TabSheetDadosPrincipais
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Height = 209
