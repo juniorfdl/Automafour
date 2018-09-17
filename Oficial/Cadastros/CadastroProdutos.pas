@@ -8,7 +8,7 @@ uses
   Grids, DBGrids, ComCtrls, ExtCtrls, Buttons, jpeg, DBCtrls, RxDBComb,
   ToolEdit, RXDBCtrl, FormResources, VarSys, CurrEdit, DBActns, ActnList,
   ImgList, Variants, EDBNum, RxLookup, MemTable, ExtDlgs, Math, QDialogs,
-  Serial, AdvOfficeStatusBar, AdvOfficeStatusBarStylers, AdvPanel, UCrpe32;
+  Serial, AdvOfficeStatusBar, AdvOfficeStatusBarStylers, AdvPanel, UCrpe32, DBClient;
 
 type
   TFormCadastroProduto = class(TFormCadastroTEMPLATE)
@@ -996,6 +996,7 @@ type
     Label29: TLabel;
     SQLTemplateVALOR_DESC_ENTRADA: TFloatField;
     ButtonAcougue: TRxSpeedButton;
+    MnuBuscarProdutosBrasilTributrio: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure RxComboComissaoChange(Sender: TObject);
     procedure AcessaMarcaClick(Sender: TObject);
@@ -1140,6 +1141,7 @@ type
     procedure sqlProduto_DescontosBeforeInsert(DataSet: TDataSet);
     procedure sqlProduto_DescontosBeforeEdit(DataSet: TDataSet);
     procedure sqlProduto_DescontosBeforeDelete(DataSet: TDataSet);
+    procedure MnuBuscarProdutosBrasilTributrioClick(Sender: TObject);
   private
     { Private declarations }
     ProdutoCodigo: Integer;
@@ -1172,7 +1174,7 @@ uses CadastroVariacao, DataModulo, CadastroSubgrupo, CadastroMarca,
   CadastroColecao, CadastroDecreto,
   TelaEntradaRapidaEstoque, TelaFotoExpandida, CadastroBarras,
   TelaSaidaRapidaEstoque, CadastroNCM, CadastroTabCest,
-  CadastroProdutoAcougue;
+  CadastroProdutoAcougue, uDlgBuscarProdutosBRT;
 
 {$R *.DFM}
 
@@ -1274,6 +1276,9 @@ begin
   ComboSitTrib.Values.Add('203');
   ComboSitTrib.Values.Add('500');
   ComboSitTrib.Values.Add('900');
+
+  MnuBuscarProdutosBrasilTributrio.Visible :=
+    SQLLocate('EMPRESA', 'EMPRICOD', 'BUSCAR_PRODUTO_BRT', IntToStr(EmpresaCorrente)) = 'S';
 end;
 
 procedure TFormCadastroProduto.RxComboComissaoChange(Sender: TObject);
@@ -4913,6 +4918,26 @@ procedure TFormCadastroProduto.sqlProduto_DescontosBeforeDelete(
 begin
   inherited;
   PrincipalEmEdicao;
+end;
+
+procedure TFormCadastroProduto.MnuBuscarProdutosBrasilTributrioClick(
+  Sender: TObject);
+var
+  cds: TClientDataSet;
+begin
+  cds := TfDlgBuscarProdutosBRT.BuscarDadosBRT;
+
+  if cds <> nil then
+  begin
+    if not cds.IsEmpty then
+    begin
+      if not (SQLTemplate.State in [DsInsert, DsEdit]) then
+        SQLTemplate.Insert;
+
+      SQLTemplatePRODA60DESCR.AsString := cds.fieldbyname('Nome').AsString;
+
+    end;
+  end;  
 end;
 
 end.

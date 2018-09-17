@@ -1,5 +1,6 @@
 inherited FormCadastroEmpresa: TFormCadastroEmpresa
-  Top = 79
+  Left = 286
+  Top = 55
   Caption = 'Cadastro de Empresas'
   ClientHeight = 612
   ClientWidth = 829
@@ -326,7 +327,7 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
             Top = 68
             Width = 697
             Height = 470
-            ActivePage = tsNFE
+            ActivePage = TabSheetDadosPrincipais
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Width = 689
@@ -2246,6 +2247,74 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
                 end
               end
             end
+            object TabSheet1: TTabSheet
+              Caption = 'Brasil Tribut'#225'rio'
+              ImageIndex = 4
+              object Label25: TLabel
+                Left = 11
+                Top = 10
+                Width = 43
+                Height = 13
+                Caption = 'Usu'#225'rio'
+                FocusControl = cxDBTextEdit11
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = 8404992
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = [fsBold]
+                ParentFont = False
+              end
+              object Label26: TLabel
+                Left = 11
+                Top = 50
+                Width = 35
+                Height = 13
+                Caption = 'Senha'
+                FocusControl = cxDBTextEdit12
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = 8404992
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = [fsBold]
+                ParentFont = False
+              end
+              object cxDBTextEdit11: TcxDBTextEdit
+                Left = 11
+                Top = 24
+                DataBinding.DataField = 'USUARIO_BRT'
+                DataBinding.DataSource = DSTemplate
+                TabOrder = 0
+                Width = 269
+              end
+              object cxDBTextEdit12: TcxDBTextEdit
+                Left = 11
+                Top = 64
+                DataBinding.DataField = 'SENHA_BRT'
+                DataBinding.DataSource = DSTemplate
+                TabOrder = 1
+                Width = 269
+              end
+              object DBCheckBox1: TDBCheckBox
+                Left = 11
+                Top = 94
+                Width = 168
+                Height = 12
+                Caption = 'Buscar Produtos BRT'
+                Ctl3D = False
+                DataField = 'BUSCAR_PRODUTO_BRT'
+                DataSource = DSTemplate
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = 8404992
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = [fsBold]
+                ParentCtl3D = False
+                ParentFont = False
+                TabOrder = 2
+                ValueChecked = 'S'
+                ValueUnchecked = 'N'
+              end
+            end
           end
           inherited PanelMaster: TPanel
             Top = 57
@@ -2788,6 +2857,21 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
       ProviderFlags = [pfInUpdate]
       Size = 1
     end
+    object SQLTemplateUSUARIO_BRT: TStringField
+      DisplayLabel = 'Usu'#225'rio BRT'
+      FieldName = 'USUARIO_BRT'
+      ProviderFlags = [pfInUpdate]
+    end
+    object SQLTemplateSENHA_BRT: TStringField
+      DisplayLabel = 'Senha BRT'
+      FieldName = 'SENHA_BRT'
+      ProviderFlags = [pfInUpdate]
+    end
+    object SQLTemplateBUSCAR_PRODUTO_BRT: TStringField
+      FieldName = 'BUSCAR_PRODUTO_BRT'
+      ProviderFlags = [pfInUpdate]
+      Size = 1
+    end
   end
   inherited UpdateSQLTemplate: TUpdateSQL
     ModifySQL.Strings = (
@@ -3010,7 +3094,6 @@ inherited FormCadastroEmpresa: TFormCadastroEmpresa
     Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
     Configuracoes.Geral.ValidarDigest = False
     Configuracoes.Geral.ModeloDF = moNFCe
-    Configuracoes.Geral.VersaoQRCode = veqr000
     Configuracoes.Arquivos.OrdenacaoPath = <>
     Configuracoes.Arquivos.SepararPorMes = True
     Configuracoes.Arquivos.SalvarEvento = True

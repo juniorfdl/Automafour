@@ -11,15 +11,7 @@ uses
   ACBrBase, ACBrMail, cxDropDownEdit, cxDBEdit, cxCheckBox, cxSpinEdit,
   cxMaskEdit, cxButtonEdit, cxTextEdit, cxGroupBox, cxControls,
   cxContainer, cxEdit, cxRadioGroup, AdvOfficeStatusBar,
-  AdvOfficeStatusBarStylers, AdvPanel, dxSkinsCore, dxSkinBlack,
-  dxSkinBlue, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
-  dxSkinFoggy, dxSkinGlassOceans, dxSkiniMaginary, dxSkinLilian,
-  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMoneyTwins,
-  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
-  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinPumpkin, dxSkinSeven,
-  dxSkinSharp, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
-  dxSkinSummer2008, dxSkinsDefaultPainters, dxSkinValentine,
-  dxSkinXmas2008Blue;
+  AdvOfficeStatusBarStylers, AdvPanel, dxSkinsCore;
 
 type
   TFormCadastroEmpresa = class(TFormCadastroTEMPLATE)
@@ -258,6 +250,15 @@ type
     SQLTemplateVERSAO: TStringField;
     RxDBComboBox1: TRxDBComboBox;
     Label24: TLabel;
+    SQLTemplateUSUARIO_BRT: TStringField;
+    SQLTemplateSENHA_BRT: TStringField;
+    SQLTemplateBUSCAR_PRODUTO_BRT: TStringField;
+    TabSheet1: TTabSheet;
+    cxDBTextEdit11: TcxDBTextEdit;
+    Label25: TLabel;
+    cxDBTextEdit12: TcxDBTextEdit;
+    Label26: TLabel;
+    DBCheckBox1: TDBCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure SQLTemplateBeforePost(DataSet: TDataSet);
     procedure SQLTemplateAfterPost(DataSet: TDataSet);

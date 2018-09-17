@@ -449,7 +449,9 @@ uses
   CadastroAnimais in 'Cadastros\CadastroAnimais.pas' {FormCadastroAnimais},
   CadastroAnimaisVacinacao in 'Cadastros\CadastroAnimaisVacinacao.pas' {FormCadastroAnimaisVacinas},
   CadastroMesa in 'Cadastros\CadastroMesa.pas' {FormCadastroMesa},
-  CadastroProdutoAcougue in 'Cadastros\CadastroProdutoAcougue.pas' {FormCadastroProdutoAcougue};
+  CadastroProdutoAcougue in 'Cadastros\CadastroProdutoAcougue.pas' {FormCadastroProdutoAcougue},
+  wsProdutos in 'Cadastros\wsProdutos.pas',
+  uDlgBuscarProdutosBRT in 'Cadastros\uDlgBuscarProdutosBRT.pas' {fDlgBuscarProdutosBRT};
 
 {$R *.res}
 

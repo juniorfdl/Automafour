@@ -1,6 +1,6 @@
 inherited FormCadastroProduto: TFormCadastroProduto
-  Left = -34
-  Top = 12
+  Left = -1
+  Top = 3
   Caption = 'Cadastro de Produtos'
   ClientHeight = 682
   ClientWidth = 1159
@@ -861,7 +861,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
             Top = 52
             Width = 1027
             Height = 556
-            ActivePage = TabSheetMovimentoEstoque
+            ActivePage = TabSheetDadosPrincipais
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Top = 83
@@ -9843,6 +9843,10 @@ inherited FormCadastroProduto: TFormCadastroProduto
     object CorrigeDescrioPrincipaleReduzida1: TMenuItem
       Caption = 'Corrige Descri'#231#227'o Principal e Reduzida  para Maiusculo'
       OnClick = CorrigeDescrioPrincipaleReduzida1Click
+    end
+    object MnuBuscarProdutosBrasilTributrio: TMenuItem
+      Caption = 'Buscar Produtos Brasil Tribut'#225'rio'
+      OnClick = MnuBuscarProdutosBrasilTributrioClick
     end
   end
   inherited SQLTemplate: TRxQuery
