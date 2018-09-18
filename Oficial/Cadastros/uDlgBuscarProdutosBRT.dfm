@@ -1,8 +1,8 @@
 object fDlgBuscarProdutosBRT: TfDlgBuscarProdutosBRT
-  Left = 306
-  Top = 61
+  Left = 123
+  Top = 50
   Width = 1009
-  Height = 524
+  Height = 531
   Caption = 'Buscar Produtos Brasil Tribut'#225'rio'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -119,10 +119,11 @@ object fDlgBuscarProdutosBRT: TfDlgBuscarProdutosBRT
     Left = 0
     Top = 94
     Width = 993
-    Height = 391
+    Height = 399
     Align = alClient
     TabOrder = 1
     object cxGrid1DBTableView1: TcxGridDBTableView
+      OnDblClick = cxGrid1DBTableView1DblClick
       NavigatorButtons.ConfirmDelete = False
       DataController.DataSource = dsDados
       DataController.Summary.DefaultGroupSummaryItems = <>
