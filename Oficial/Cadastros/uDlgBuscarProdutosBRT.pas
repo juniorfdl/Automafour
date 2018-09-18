@@ -116,6 +116,7 @@ type
     procedure cxGrid1DBTableView1Column1PropertiesButtonClick(
       Sender: TObject; AButtonIndex: Integer);
     procedure FormShow(Sender: TObject);
+    procedure cxGrid1DBTableView1DblClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -189,33 +190,33 @@ begin
     cdsDadosCST_ICMS_DESCR.Value := vRet[i].cst_icms_descr;
     cdsDadosCSOSN_ICMS.Value := vRet[i].csosn_icms;
     cdsDadosCSOSN_ICMS_DESCR.Value := vRet[i].csosn_icms_descr;
-    cdsDadosBASE_ICMS_VAREJO.AsString := vRet[i].base_icms_varejo.DecimalString;
-    cdsDadosALIQUOTA_ICMS_VAREJO.AsString := vRet[i].aliquota_icms_varejo.DecimalString;
-    cdsDadosPERC_MVA_RS.AsString := vRet[i].perc_mva_rs.DecimalString;
-    cdsDadosPERC_MVA_4.AsString := vRet[i].perc_mva_4.DecimalString;
-    cdsDadosPERC_MVA_7.AsString := vRet[i].perc_mva_7.DecimalString;
-    cdsDadosPERC_MVA_OUTROS.AsString := vRet[i].perc_mva_outros.DecimalString;
-    cdsDadosBASE_ICMS.AsString := vRet[i].base_icms.DecimalString;
-    cdsDadosALIQUOTA_ICMS.AsString := vRet[i].aliquota_icms.DecimalString;
+    cdsDadosBASE_ICMS_VAREJO.AsString := StringReplace(vRet[i].base_icms_varejo.DecimalString,'.',',',[]);
+    cdsDadosALIQUOTA_ICMS_VAREJO.AsString := StringReplace(vRet[i].aliquota_icms_varejo.DecimalString,'.',',',[]);
+    cdsDadosPERC_MVA_RS.AsString := StringReplace(vRet[i].perc_mva_rs.DecimalString,'.',',',[]);
+    cdsDadosPERC_MVA_4.AsString := StringReplace(vRet[i].perc_mva_4.DecimalString,'.',',',[]);
+    cdsDadosPERC_MVA_7.AsString := StringReplace(vRet[i].perc_mva_7.DecimalString,'.',',',[]);
+    cdsDadosPERC_MVA_OUTROS.AsString := StringReplace(vRet[i].perc_mva_outros.DecimalString,'.',',',[]);
+    cdsDadosBASE_ICMS.AsString := StringReplace(vRet[i].base_icms.DecimalString,'.',',',[]);
+    cdsDadosALIQUOTA_ICMS.AsString := StringReplace(vRet[i].aliquota_icms.DecimalString,'.',',',[]);
     cdsDadosBASE_LEGAL_ICMS.Value := vRet[i].base_legal_icms;
     cdsDadosCST_PIS.Value := vRet[i].cst_pis;
     cdsDadosCST_PIS_DESCR.Value := vRet[i].cst_pis_descr;
     cdsDadosTIPO_CREDITO.Value := vRet[i].tipo_credito;
     cdsDadosCST_COFINS.Value := vRet[i].cst_cofins;
     cdsDadosCST_COFINS_DESCR.Value := vRet[i].cst_cofins_descr;
-    cdsDadosBASE_PIS_COFINS.AsString := vRet[i].base_pis_cofins.DecimalString;
-    cdsDadosALIQUOTA_PIS_REAL.AsString := vRet[i].aliquota_pis_real.DecimalString;
-    cdsDadosALIQUOTA_PIS_PRESUMIDO.AsString  := vRet[i].aliquota_pis_presumido.DecimalString;
-    cdsDadosALIQUOTA_COFINS_REAL.AsString := vRet[i].aliquota_cofins_real.DecimalString;
-    cdsDadosALIQUOTA_COFINS_PRESUMIDO.AsString := vRet[i].aliquota_cofins_presumido.DecimalString;
-    cdsDadosALIQUOTA_ICMS_ECF.AsString := vRet[i].aliquota_icms_ecf.DecimalString;
+    cdsDadosBASE_PIS_COFINS.AsString := StringReplace(vRet[i].base_pis_cofins.DecimalString,'.',',',[]);
+    cdsDadosALIQUOTA_PIS_REAL.AsString := StringReplace(vRet[i].aliquota_pis_real.DecimalString,'.',',',[]);
+    cdsDadosALIQUOTA_PIS_PRESUMIDO.AsString  := StringReplace(vRet[i].aliquota_pis_presumido.DecimalString,'.',',',[]);
+    cdsDadosALIQUOTA_COFINS_REAL.AsString := StringReplace(vRet[i].aliquota_cofins_real.DecimalString,'.',',',[]);
+    cdsDadosALIQUOTA_COFINS_PRESUMIDO.AsString := StringReplace(vRet[i].aliquota_cofins_presumido.DecimalString,'.',',',[]);
+    cdsDadosALIQUOTA_ICMS_ECF.AsString := StringReplace(vRet[i].aliquota_icms_ecf.DecimalString,'.',',',[]);
     cdsDadosBASE_LEGAL_PIS_COFINS.Value := vRet[i].base_legal_pis_cofins;
     cdsDadosFAR_REGISTRO.Value := vRet[i].far_registro;
     cdsDadosFAR_GGREM.Value := vRet[i].far_ggrem;
     cdsDadosFAR_FABRICANTE.Value := vRet[i].far_fabricante;
     cdsDadosFAR_COMPOSICAO.Value := vRet[i].far_composicao;
     cdsDadosFAR_PMF.Value := vRet[i].far_pmf;
-    cdsDadosFAR_PMC.AsString := vRet[i].far_pmc.DecimalString;
+    cdsDadosFAR_PMC.AsString := StringReplace(vRet[i].far_pmc.DecimalString,'.',',',[]);
     cdsDadosFAR_TIPO.Value := vRet[i].far_tipo;
     cdsDadosFAR_LISTA.Value := vRet[i].far_lista;
     cdsDados.Post;
@@ -233,6 +234,12 @@ end;
 procedure TfDlgBuscarProdutosBRT.FormShow(Sender: TObject);
 begin
   ModalResult := mrCancel;
+end;
+
+procedure TfDlgBuscarProdutosBRT.cxGrid1DBTableView1DblClick(
+  Sender: TObject);
+begin
+  fDlgBuscarProdutosBRT.ModalResult := mrOk;
 end;
 
 end.
