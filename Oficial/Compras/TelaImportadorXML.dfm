@@ -11,19 +11,19 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
   TextHeight = 13
   inherited ScrollBoxFundo: TScrollBox
     Width = 1086
-    Height = 649
+    Height = 648
     inherited PanelCentral: TPanel
       Width = 1082
-      Height = 565
+      Height = 564
       inherited PanelBarra: TPanel
         Width = 1
-        Height = 565
+        Height = 564
       end
       object pnlImportador: TPanel
         Left = 1
         Top = 0
         Width = 1081
-        Height = 565
+        Height = 564
         Align = alClient
         Caption = 'pnlImportador'
         Color = 16249066
@@ -32,7 +32,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
           Left = 1
           Top = 1
           Width = 1079
-          Height = 398
+          Height = 397
           ActivePage = TabConsultaSefaz
           Align = alClient
           TabOrder = 0
@@ -44,14 +44,14 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
               Left = 0
               Top = 0
               Width = 353
-              Height = 370
+              Height = 369
               Align = alLeft
               TabOrder = 0
               object cxGrid4: TcxGrid
                 Left = 1
                 Top = 177
                 Width = 351
-                Height = 192
+                Height = 191
                 Align = alClient
                 TabOrder = 0
                 object cxGrid4DBTableView1: TcxGridDBTableView
@@ -294,7 +294,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
               Left = 353
               Top = 0
               Width = 648
-              Height = 370
+              Height = 369
               Align = alLeft
               Caption = 'Dados da Nota Fiscal'
               TabOrder = 1
@@ -302,7 +302,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
                 Left = 2
                 Top = 100
                 Width = 644
-                Height = 268
+                Height = 267
                 Align = alClient
                 TabOrder = 0
                 object cxGridDBTableViewVis: TcxGridDBTableView
@@ -640,7 +640,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
             OnShow = tsInfoNfeShow
             DesignSize = (
               1071
-              370)
+              369)
             object Label27: TLabel
               Left = 13
               Top = 181
@@ -1668,7 +1668,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
             OnShow = tsFaturamentoShow
             DesignSize = (
               1071
-              370)
+              369)
             object Label25: TLabel
               Left = 8
               Top = 110
@@ -2089,7 +2089,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
               Left = 0
               Top = 34
               Width = 1071
-              Height = 336
+              Height = 335
               Align = alClient
               BorderStyle = bsNone
               Color = clWhite
@@ -2189,7 +2189,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
         end
         object pgcValidacoes: TPageControl
           Left = 1
-          Top = 399
+          Top = 398
           Width = 1079
           Height = 165
           ActivePage = tsValidacoes
@@ -2386,7 +2386,6 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
     Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
     Configuracoes.Geral.ValidarDigest = False
     Configuracoes.Geral.VersaoDF = ve400
-    Configuracoes.Geral.VersaoQRCode = veqr000
     Configuracoes.Arquivos.AdicionarLiteral = True
     Configuracoes.Arquivos.OrdenacaoPath = <>
     Configuracoes.Arquivos.EmissaoPathNFe = True
