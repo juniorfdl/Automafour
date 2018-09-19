@@ -7,22 +7,14 @@ uses
   Dialogs, TelaGeralTEMPLATE, Buttons, jpeg, ExtCtrls, StdCtrls, RXCtrls,
   FileCtrl, Mask, ToolEdit, Placemnt, ACBrNFe, DB, DBTables, RxLookup,
   RxQuery, ActnList, ComCtrls, CurrEdit, cxGraphics, cxControls,
-  cxLookAndFeels, cxLookAndFeelPainters, cxStyles, dxSkinsCore,
+  cxLookAndFeels, cxLookAndFeelPainters, cxStyles, dxSkinsCore,FormResources,
 
   cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
   cxDBData, cxGridLevel, cxClasses, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
   cxImageComboBox, ImgList, Menus, DBClient, ACBrBase, ACBrDFe, Grids,
   DBGrids, Spin, DBCtrls, AdvOfficeStatusBar, AdvOfficeStatusBarStylers, IniFiles, pcnConversao,
-  VarSYS, ShellAPI, pcnConversaoNFe, dxSkinBlack, dxSkinBlue,
-  dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinFoggy,
-  dxSkinGlassOceans, dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky,
-  dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMoneyTwins,
-  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
-  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinPumpkin, dxSkinSeven,
-  dxSkinSharp, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
-  dxSkinSummer2008, dxSkinsDefaultPainters, dxSkinValentine,
-  dxSkinXmas2008Blue, dxSkinscxPCPainter;
+  VarSYS, ShellAPI, pcnConversaoNFe;
 
 type
   TTipoInconsistencia = (tiCritica, tiInformacao, tiErro);
@@ -363,6 +355,12 @@ type
     cxgrdbclmnGrid1DBTableView1cest: TcxGridDBColumn;
     sqlCest: TRxQuery;
     sqlNCM: TRxQuery;
+    GroupBox1: TGroupBox;
+    DBEditPC: TDBEdit;
+    btnPedido: TSpeedButton;
+    cdsPedidoCompra: TClientDataSet;
+    dsPedidoCompra: TDataSource;
+    cdsPedidoCompraPDCPA13ID: TStringField;
     procedure FormCreate(Sender: TObject);
     procedure actSelecionarArquivoExecute(Sender: TObject);
     procedure seNParcelasChange(Sender: TObject);
@@ -422,6 +420,7 @@ type
     procedure DBGridManifestosDrawColumnCell(Sender: TObject;
       const Rect: TRect; DataCol: Integer; Column: TColumn;
       State: TGridDrawState);
+    procedure btnPedidoClick(Sender: TObject);
 
   private
     XMLOutraEmpresa: Boolean;
@@ -513,7 +512,7 @@ implementation
 uses pcnNFe, DataModulo, ACBrNFeNotasFiscais, DateUtils, Math, UnitLibrary,
   CadastroProdutos, VinculoCfopOperacaoEstoque,
   DataModuloTemplate, CadastroNCM, TelaLancamentoGradeXML,
-  CadastroProdutoRapido, ACBrDFeWebService;
+  CadastroProdutoRapido, ACBrDFeWebService, CadastroPedidoCompra;
 
 {$R *.dfm}
 
@@ -1299,6 +1298,8 @@ begin
   ForceDirectories(DirectoryEditNFERecebidas.InitialDir+'\Importados');
   FinalizaProcessamentos;
   edtChaveProcura.setfocus;
+  cdsPedidoCompra.Close;
+  cdsPedidoCompra.CreateDataSet;
 end;
 
 procedure TFormTelaImportadorXML.cxGrid4DBTableView1CellClick(
@@ -3187,6 +3188,16 @@ begin
   inherited;
   if SQLNFSEFAZSIT_NFE.AsString = 'C' then
     DBGridManifestos.Canvas.Font.Color := clRed;
+end;
+
+procedure TFormTelaImportadorXML.btnPedidoClick(Sender: TObject);
+begin
+  inherited;
+  cdsPedidoCompra.Edit;
+  FieldLookUp := cdsPedidoCompra.FindField('PDCPA13ID');
+  FieldOrigem := 'PDCPA13ID';
+  CriaFormulario(TFormCadastroPedidoCompra,'FormCadastroPedidoCompra',False,True,False,'');
+  cdsPedidoCompra.Post
 end;
 
 end.

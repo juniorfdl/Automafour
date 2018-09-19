@@ -1,6 +1,6 @@
 inherited FormTelaImportadorXML: TFormTelaImportadorXML
-  Left = 138
-  Top = 29
+  Left = 144
+  Top = 41
   Width = 1102
   Height = 687
   Caption = 'Importador de XMLs'
@@ -32,8 +32,8 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
           Left = 1
           Top = 1
           Width = 1079
-          Height = 398
-          ActivePage = TabConsultaSefaz
+          Height = 414
+          ActivePage = tsXMLs
           Align = alClient
           TabOrder = 0
           object tsXMLs: TTabSheet
@@ -44,14 +44,14 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
               Left = 0
               Top = 0
               Width = 353
-              Height = 370
+              Height = 386
               Align = alLeft
               TabOrder = 0
               object cxGrid4: TcxGrid
                 Left = 1
-                Top = 177
+                Top = 211
                 Width = 351
-                Height = 192
+                Height = 174
                 Align = alClient
                 TabOrder = 0
                 object cxGrid4DBTableView1: TcxGridDBTableView
@@ -86,7 +86,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
               end
               object pnl: TPanel
                 Left = 1
-                Top = 156
+                Top = 190
                 Width = 351
                 Height = 21
                 Align = alTop
@@ -119,7 +119,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
                 Left = 1
                 Top = 1
                 Width = 351
-                Height = 155
+                Height = 189
                 Align = alTop
                 Color = 16249066
                 TabOrder = 2
@@ -288,13 +288,58 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
                     OnKeyDown = edtChaveProcuraKeyDown
                   end
                 end
+                object GroupBox1: TGroupBox
+                  Left = 5
+                  Top = 148
+                  Width = 343
+                  Height = 41
+                  Caption = 'Pedido de Compra'
+                  Color = 16249066
+                  Font.Charset = ANSI_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -11
+                  Font.Name = 'Tahoma'
+                  Font.Style = [fsBold]
+                  ParentColor = False
+                  ParentFont = False
+                  TabOrder = 4
+                  object btnPedido: TSpeedButton
+                    Left = 314
+                    Top = 12
+                    Width = 24
+                    Height = 24
+                    Hint = 'Acessa Pedidos de Compra'
+                    Flat = True
+                    Glyph.Data = {
+                      E6000000424DE60000000000000076000000280000000E0000000E0000000100
+                      0400000000007000000000000000000000001000000000000000000000000000
+                      80000080000000808000800000008000800080800000C0C0C000808080000000
+                      FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00DDDDDDDDDDDD
+                      DD00DDDDDDDDDDD00D00DDDDDDDDDD000D00DDDDDDDDD000DD00DDDDDDDD000D
+                      DD00DD73000800DDDD00D70888800DDDDD00D38788888DDDDD00D07778880DDD
+                      DD00D07F77880DDDDD00D387F7783DDDDD00D70877807DDDDD00DD730037DDDD
+                      DD00DDDDDDDDDDDDDD00}
+                    ParentShowHint = False
+                    ShowHint = True
+                    OnClick = btnPedidoClick
+                  end
+                  object DBEditPC: TDBEdit
+                    Left = 5
+                    Top = 15
+                    Width = 306
+                    Height = 21
+                    DataField = 'PDCPA13ID'
+                    DataSource = dsPedidoCompra
+                    TabOrder = 0
+                  end
+                end
               end
             end
             object GroupBox3: TGroupBox
               Left = 353
               Top = 0
               Width = 648
-              Height = 370
+              Height = 386
               Align = alLeft
               Caption = 'Dados da Nota Fiscal'
               TabOrder = 1
@@ -302,7 +347,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
                 Left = 2
                 Top = 100
                 Width = 644
-                Height = 268
+                Height = 284
                 Align = alClient
                 TabOrder = 0
                 object cxGridDBTableViewVis: TcxGridDBTableView
@@ -640,7 +685,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
             OnShow = tsInfoNfeShow
             DesignSize = (
               1071
-              370)
+              386)
             object Label27: TLabel
               Left = 13
               Top = 181
@@ -1094,7 +1139,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
               Left = 0
               Top = 0
               Width = 1071
-              Height = 369
+              Height = 386
               Align = alClient
               TabOrder = 0
               object cxGrid1DBTableViewItens: TcxGridDBTableView
@@ -1668,7 +1713,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
             OnShow = tsFaturamentoShow
             DesignSize = (
               1071
-              370)
+              386)
             object Label25: TLabel
               Left = 8
               Top = 110
@@ -1687,7 +1732,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
               Left = 8
               Top = 128
               Width = 1055
-              Height = 234
+              Height = 250
               Anchors = [akLeft, akTop, akRight, akBottom]
               TabOrder = 0
               object cxGrid2DBTableView1: TcxGridDBTableView
@@ -2089,7 +2134,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
               Left = 0
               Top = 34
               Width = 1071
-              Height = 336
+              Height = 352
               Align = alClient
               BorderStyle = bsNone
               Color = clWhite
@@ -2189,9 +2234,9 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
         end
         object pgcValidacoes: TPageControl
           Left = 1
-          Top = 399
+          Top = 415
           Width = 1079
-          Height = 165
+          Height = 149
           ActivePage = tsValidacoes
           Align = alBottom
           Images = cxImageList
@@ -2203,7 +2248,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
               Left = 0
               Top = 0
               Width = 1071
-              Height = 136
+              Height = 120
               Align = alClient
               TabOrder = 0
               object cxGrid3DBTableView1: TcxGridDBTableView
@@ -2974,8 +3019,8 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
   object cdsXML: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 251
-    Top = 272
+    Left = 259
+    Top = 336
     object cdsXMLid: TIntegerField
       FieldName = 'id'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -2988,8 +3033,8 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
   end
   object dsXML: TDataSource
     DataSet = cdsXML
-    Left = 284
-    Top = 271
+    Left = 292
+    Top = 335
   end
   object cxStyleRepository1: TcxStyleRepository
     Left = 13
@@ -3262,5 +3307,20 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
     Macros = <>
     Left = 819
     Top = 169
+  end
+  object cdsPedidoCompra: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 495
+    Top = 249
+    object cdsPedidoCompraPDCPA13ID: TStringField
+      FieldName = 'PDCPA13ID'
+      Size = 13
+    end
+  end
+  object dsPedidoCompra: TDataSource
+    DataSet = cdsPedidoCompra
+    Left = 527
+    Top = 249
   end
 end

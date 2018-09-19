@@ -1,6 +1,6 @@
 inherited FormCadastroNotaCompra: TFormCadastroNotaCompra
-  Left = 248
-  Top = 61
+  Left = 267
+  Top = 56
   Caption = 'Nota de Entrada'
   ClientHeight = 579
   OldCreateOrder = True
@@ -234,6 +234,7 @@ inherited FormCadastroNotaCompra: TFormCadastroNotaCompra
           inherited PagePrincipal: TPageControl
             Top = 122
             Height = 384
+            ActivePage = TabSheetDadosPrincipais
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Top = 90
