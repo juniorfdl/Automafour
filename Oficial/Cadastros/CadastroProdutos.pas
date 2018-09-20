@@ -4924,6 +4924,13 @@ procedure TFormCadastroProduto.MnuBuscarProdutosBrasilTributrioClick(
   Sender: TObject);
 var
   cds: TClientDataSet;
+
+  procedure AtualizaCampo(Origem, Destino:String);
+  begin
+    if cds.fieldbyname(Origem).AsString <> '' then
+      SQLTemplate.FieldByName(Destino).AsString := cds.fieldbyname(Origem).AsString;
+  end;
+
 begin
   cds := TfDlgBuscarProdutosBRT.BuscarDadosBRT;
 
@@ -4931,11 +4938,30 @@ begin
   begin
     if not cds.IsEmpty then
     begin
-      if not (SQLTemplate.State in [DsInsert, DsEdit]) then
-        SQLTemplate.Insert;
+      if cds.fieldbyname('PRODICOD').AsInteger > 0 then
+      begin
+        if (SQLTemplate.State in [DsInsert, DsEdit]) then
+          SQLTemplate.Cancel;
+
+        SQLTemplate.Close;
+        SQLTemplate.MacroByName('MFiltro').Value := 'PRODICOD = '+ cds.fieldbyname('PRODICOD').AsString;
+        SQLTemplate.Open;
+        SQLTemplate.Edit;
+      end
+      else begin
+        if not (SQLTemplate.State in [DsInsert, DsEdit]) then
+          SQLTemplate.Insert;
+      end;  
 
       SQLTemplatePRODA60DESCR.AsString := cds.fieldbyname('Nome').AsString;
 
+      //  ORIGEM = WEBSERVICE //  DESTINO = SISTEMA         
+      AtualizaCampo('EAN', 'PRODA60CODBAR');
+      AtualizaCampo('NCM', 'NCMICOD');
+      AtualizaCampo('CEST', 'TABCEST');
+      AtualizaCampo('CST_ICMS', 'PRODISITTRIB');
+      AtualizaCampo('CST_PIS', 'PRODA2CSTPIS');
+      AtualizaCampo('CST_COFINS', 'PRODA2CSTCOFINS');
     end;
   end;  
 end;

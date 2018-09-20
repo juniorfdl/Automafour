@@ -451,7 +451,8 @@ uses
   CadastroMesa in 'Cadastros\CadastroMesa.pas' {FormCadastroMesa},
   CadastroProdutoAcougue in 'Cadastros\CadastroProdutoAcougue.pas' {FormCadastroProdutoAcougue},
   wsProdutos in 'Cadastros\wsProdutos.pas',
-  uDlgBuscarProdutosBRT in 'Cadastros\uDlgBuscarProdutosBRT.pas' {fDlgBuscarProdutosBRT};
+  uDlgBuscarProdutosBRT in 'Cadastros\uDlgBuscarProdutosBRT.pas' {fDlgBuscarProdutosBRT},
+  TelaComparaPedidoNota in 'Compras\TelaComparaPedidoNota.pas' {FormTelaComparaPedidoNota};
 
 {$R *.res}
 
@@ -466,6 +467,7 @@ begin
   Application.Title := 'Gestão Empresarial - Módulo Retaguarda';
 
   Application.CreateForm(TDM, DM);
+  Application.CreateForm(TFormTelaComparaPedidoNota, FormTelaComparaPedidoNota);
   if ((DM.OBSAutorizacao <> '')or(dm.SQLConfigGeralCFGECBLOQ.AsString = 'S')) and(not DelphiAberto) then
   begin
     FormTelaAtivacao := TFormTelaAtivacao.Create(Application);

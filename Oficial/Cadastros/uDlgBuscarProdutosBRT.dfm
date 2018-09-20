@@ -119,7 +119,7 @@ object fDlgBuscarProdutosBRT: TfDlgBuscarProdutosBRT
     Left = 0
     Top = 94
     Width = 993
-    Height = 399
+    Height = 398
     Align = alClient
     TabOrder = 1
     object cxGrid1DBTableView1: TcxGridDBTableView
@@ -137,17 +137,11 @@ object fDlgBuscarProdutosBRT: TfDlgBuscarProdutosBRT
       OptionsView.ShowEditButtons = gsebAlways
       OptionsView.GroupFooters = gfAlwaysVisible
       OptionsView.Indicator = True
-      object cxGrid1DBTableView1Column1: TcxGridDBColumn
-        PropertiesClassName = 'TcxButtonEditProperties'
-        Properties.Buttons = <
-          item
-            Caption = 'Utililizar'
-            Default = True
-            Kind = bkText
-          end>
-        Properties.ViewStyle = vsButtonsAutoWidth
-        Properties.OnButtonClick = cxGrid1DBTableView1Column1PropertiesButtonClick
-        IsCaptionAssigned = True
+      object cxGrid1DBTableView1ColumnPRODICOD: TcxGridDBColumn
+        DataBinding.FieldName = 'PRODICOD'
+        Options.Editing = False
+        Styles.Content = cxStyle1
+        Width = 53
       end
       object cxGrid1DBTableView1Nome: TcxGridDBColumn
         DataBinding.FieldName = 'Nome'
@@ -297,6 +291,10 @@ object fDlgBuscarProdutosBRT: TfDlgBuscarProdutosBRT
     Params = <>
     Left = 568
     Top = 24
+    object cdsDadosPRODICOD: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'PRODICOD'
+    end
     object cdsDadosNome: TStringField
       FieldName = 'Nome'
       Size = 500
@@ -450,5 +448,17 @@ object fDlgBuscarProdutosBRT: TfDlgBuscarProdutosBRT
     DataSet = cdsDados
     Left = 608
     Top = 32
+  end
+  object cxStyleRepository1: TcxStyleRepository
+    PixelsPerInch = 96
+    object cxStyle1: TcxStyle
+      AssignedValues = [svFont, svTextColor]
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      TextColor = clAqua
+    end
   end
 end

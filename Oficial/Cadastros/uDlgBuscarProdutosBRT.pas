@@ -111,19 +111,20 @@ type
     cxGrid1DBTableView1FAR_PMC: TcxGridDBColumn;
     cxGrid1DBTableView1FAR_TIPO: TcxGridDBColumn;
     cxGrid1DBTableView1FAR_LISTA: TcxGridDBColumn;
-    cxGrid1DBTableView1Column1: TcxGridDBColumn;
+    cdsDadosPRODICOD: TIntegerField;
+    cxGrid1DBTableView1ColumnPRODICOD: TcxGridDBColumn;
+    cxStyleRepository1: TcxStyleRepository;
+    cxStyle1: TcxStyle;
     procedure Button1Click(Sender: TObject);
-    procedure cxGrid1DBTableView1Column1PropertiesButtonClick(
-      Sender: TObject; AButtonIndex: Integer);
-    procedure FormShow(Sender: TObject);
     procedure cxGrid1DBTableView1DblClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
 
-    class function BuscarDadosBRT:TClientDataSet;
-
+    ItemSelecionado:Boolean;
+    class function BuscarDadosBRT:TClientDataSet;  
   end;
 
 var
@@ -141,7 +142,9 @@ begin
   if fDlgBuscarProdutosBRT = nil then
     fDlgBuscarProdutosBRT:= TfDlgBuscarProdutosBRT.Create(nil);
 
-  if fDlgBuscarProdutosBRT.ShowModal = mrOK then
+  fDlgBuscarProdutosBRT.ShowModal;
+
+  if fDlgBuscarProdutosBRT.ItemSelecionado then
     Result := fDlgBuscarProdutosBRT.cdsDados
   else
     Result := nil;
@@ -150,7 +153,7 @@ end;
 procedure TfDlgBuscarProdutosBRT.Button1Click(Sender: TObject);
 var
   vwsProdutosSoap: wsProdutosSoap;
-  vUF, vUSUARIO_BRT, vSENHA_BRT:String;
+  vUF, vUSUARIO_BRT, vSENHA_BRT, vprodicod:String;
   vRet: ArrayOfProduto;
   i:Integer;
 begin
@@ -178,6 +181,14 @@ begin
   for i:= Low(vRet) to High(vRet) do 
   begin
     cdsDados.Insert;
+
+    if vRet[i].ean <> '' then
+    begin
+      vprodicod:= SQLLocate('PRODUTO', 'proda60codbar', 'prodicod', QuotedStr(vRet[i].ean));
+      if vprodicod <> '' then
+        cdsDadosPRODICOD.AsString := vprodicod;
+    end;
+
     cdsDadosNATUREZA_OPERACAO.Value := vRet[i].natureza_operacao;
     cdsDadosNome.Value := vRet[i].nome;
     cdsDadosNome_tipi.Value := vRet[i].nome_tipi;
@@ -224,22 +235,24 @@ begin
 
 end;
 
-procedure TfDlgBuscarProdutosBRT.cxGrid1DBTableView1Column1PropertiesButtonClick(
-  Sender: TObject; AButtonIndex: Integer);
+procedure TfDlgBuscarProdutosBRT.cxGrid1DBTableView1DblClick(
+  Sender: TObject);
 begin
-  ModalResult := mrOk;
+  if cdsDados.IsEmpty then exit;
+  
+  if cdsDadosPRODICOD.Value > 0 then
+  begin
+    if not Pergunta('SIM', 'Existe um produto cadastrado para esse registro, deseja atualizar os dados?') then
+      Abort;
+  end;
+
+  ItemSelecionado:= True;
   Close;
 end;
 
 procedure TfDlgBuscarProdutosBRT.FormShow(Sender: TObject);
 begin
-  ModalResult := mrCancel;
-end;
-
-procedure TfDlgBuscarProdutosBRT.cxGrid1DBTableView1DblClick(
-  Sender: TObject);
-begin
-  fDlgBuscarProdutosBRT.ModalResult := mrOk;
+  ItemSelecionado := False;
 end;
 
 end.
