@@ -40,9 +40,7 @@ type
     procedure SQLTemplateBeforeDelete(DataSet: TDataSet);
     procedure SQLTemplateBeforeInsert(DataSet: TDataSet);
     procedure DSTemplateStateChange(Sender: TObject);
-    procedure FormShow(Sender: TObject);
   private
-    vPercentual : Real;
     { Private declarations }
   public
     { Public declarations }
@@ -113,12 +111,12 @@ begin
     Informa('O percentual deve ser maior que ZERO!');
     Abort;
   end;
-  vPercentual := vPercentual + SQLTemplatePERCENTUAL.AsFloat;
+  {vPercentual := vPercentual + SQLTemplatePERCENTUAL.AsFloat;
   if vPercentual > 100 then
   begin
     Informa('Soma do percentual dos produtos ultrapassou 100%');
     Abort;
-  end;
+  end;}
 end;
 
 procedure TFormCadastroProdutoAcougue.DBEditProdutoKeyDown(Sender: TObject;
@@ -165,12 +163,6 @@ begin
       DBEditProduto.Enabled := True;
       BtnProduto.Enabled    := True;
     end;
-end;
-
-procedure TFormCadastroProdutoAcougue.FormShow(Sender: TObject);
-begin
-  inherited;
-  vPercentual := 0;
 end;
 
 end.

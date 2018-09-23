@@ -2240,7 +2240,7 @@ procedure GravaMovimentoEstoque(SqlProd,
     end;
   end;
 var
-  Sair: boolean;
+  Sair, ExisteFilhoAcougue: boolean;
   ProdutoComp: TQuery;
 begin
   if ProdCod = 0 then
@@ -2257,6 +2257,22 @@ begin
   SQLProdFilho.SQL.Add('SELECT * FROM PRODUTOCOMPOSICAO WHERE PRODICOD = ' + IntToStr(ProdCod));
   SQLProdFilho.Open;
 
+  if SQLProdFilho.IsEmpty then
+  begin
+    SQLProdFilho.Close;
+    SQLProdFilho.SQL.Clear;
+    SQLProdFilho.SQL.add(' SELECT prodicod, prodicodfilho, ('+StringReplace(FormatFloat('0.00',Quant),',','.',[])
+    +' * percentual / 100) AS prodn3qtde, pendente, registro,  CAST(0 AS NUMERIC(15,3)) as PRODN3VLRTOTAL, '
+    +' CAST(0 AS NUMERIC(15,3)) as PRODN2PERDA, CAST(0 AS NUMERIC(15,3)) as PRODN3ALTURA, '
+    +' CAST(0 AS NUMERIC(15,3)) as PRODN3COMPRIMENTO, CAST(0 AS NUMERIC(15,3)) as PRODN3DIMENTOTAL, '
+    +' CAST(0 AS NUMERIC(15,3)) as PRODN3LARGURA FROM PRODUTO_ACOUGUE '
+    +' WHERE PRODICOD = ' + IntToStr(ProdCod));
+    SQLProdFilho.Open;
+
+    if not SQLProdFilho.IsEmpty then
+      ExisteFilhoAcougue := True;
+  end;
+
   SQLProdSald.Close;
   SQLProdSald.Open;
 
@@ -2272,6 +2288,10 @@ begin
         while not Sair do
         begin
           try
+            //
+            if ExisteFilhoAcougue then
+              Quant := SQLProdFilho.FindField('prodn3qtde').AsCurrency;
+
             GravaMovimento(SQLProdFilho.FindField('PRODICODFILHO').AsInteger, 0);
             Sair := true;
             Application.ProcessMessages;
@@ -2290,10 +2310,10 @@ begin
     if (SqlProd.FieldByName('PRODCTIPOBAIXA').Value = 'P') or
       (SqlProd.FieldByName('PRODCTIPOBAIXA').Value = 'A') then
     begin
-      SQLProdFilho.Close;
+      {SQLProdFilho.Close;
       SQLProdFilho.SQL.Clear;
       SQLProdFilho.SQL.Add('SELECT * FROM PRODUTOCOMPOSICAO WHERE PRODICODFILHO = ' + IntToStr(ProdCod));
-      SQLProdFilho.Open;
+      SQLProdFilho.Open;}
       SQLProdFilho.First;
       if (not SQLProdFilho.IsEmpty) then
       begin

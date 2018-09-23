@@ -467,7 +467,6 @@ begin
   Application.Title := 'Gestão Empresarial - Módulo Retaguarda';
 
   Application.CreateForm(TDM, DM);
-  Application.CreateForm(TFormTelaComparaPedidoNota, FormTelaComparaPedidoNota);
   if ((DM.OBSAutorizacao <> '')or(dm.SQLConfigGeralCFGECBLOQ.AsString = 'S')) and(not DelphiAberto) then
   begin
     FormTelaAtivacao := TFormTelaAtivacao.Create(Application);
