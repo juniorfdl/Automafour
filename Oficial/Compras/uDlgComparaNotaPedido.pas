@@ -67,10 +67,12 @@ procedure TfDlgComparaNotaPedido.MontaDados(NumeroNota,
 var
   SQLNota, SQLPedido: TQuery;
 begin
+
+  SQLNota := TQuery.Create(DM);
+  SQLPedido := TQuery.Create(DM);
   try
     if (NumeroNota <> '') and (NumeroPedido <> '') then
     begin
-      SQLNota := TQuery.Create(DM);
       if DM.DataBaseName = '' then
         SQLNota.DatabaseName := 'DB'
       else
@@ -80,7 +82,6 @@ begin
       SQLNota.SQL.Add('select * from notacompraitem');
       SQLNota.SQL.Add('where NOCPA13ID = ' + NumeroNota);
       SQLNota.Open;
-      SQLPedido := TQuery.Create(DM);
       if DM.DataBaseName = '' then
         SQLPedido.DatabaseName := 'DB'
       else

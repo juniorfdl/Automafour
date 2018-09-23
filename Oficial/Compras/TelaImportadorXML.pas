@@ -1894,6 +1894,8 @@ begin
           cdsContaPagar.EnableControls;
         end;
       end;
+      if not cdsPedidoCompra.IsEmpty then
+      begin
         fDlgComparaNotaPedido := TfDlgComparaNotaPedido.Create(Self);
         fDlgComparaNotaPedido.cdsDados.Close;
         fDlgComparaNotaPedido.cdsDados.CreateDataSet;
@@ -1902,6 +1904,8 @@ begin
         fDlgComparaNotaPedido.lblNomeFornecedor.Caption := edtNomeFornecedorVis.Text;
         fDlgComparaNotaPedido.MontaDados(RetornaCodigoCompra(iSequencialNf),cdsPedidoCompraPDCPA13ID.AsString);
         fDlgComparaNotaPedido.ShowModal;
+        cdsPedidoCompra.ClearFields;
+      end;
 
       SetProgresso('Atualizando lista de XMLs');
       MoveXMLPastaImportado;
@@ -1910,7 +1914,6 @@ begin
       SetProgresso('Importação OK.');
       FinalizaProcessamentos;
       edtChaveProcura.setfocus;
-      cdsPedidoCompra.ClearFields;
     end;
   end;
 end;
@@ -3085,6 +3088,7 @@ procedure TFormTelaImportadorXML.EnviarEvento(pTipo: TpcnTpEvento);
 var
   sCNPJ, lMsg, vSIT_EVENTO  : String;
 begin
+  ACBrNFe.NotasFiscais.Clear;
   Inicia_NFe;
 
   sCNPJ    := dm.SQLEmpresaEMPRA14CGC.Value;
