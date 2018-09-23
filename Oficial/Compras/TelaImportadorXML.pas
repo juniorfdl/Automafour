@@ -512,7 +512,8 @@ implementation
 uses pcnNFe, DataModulo, ACBrNFeNotasFiscais, DateUtils, Math, UnitLibrary,
   CadastroProdutos, VinculoCfopOperacaoEstoque,
   DataModuloTemplate, CadastroNCM, TelaLancamentoGradeXML,
-  CadastroProdutoRapido, ACBrDFeWebService, CadastroPedidoCompra;
+  CadastroProdutoRapido, ACBrDFeWebService, CadastroPedidoCompra,
+  uDlgComparaNotaPedido;
 
 {$R *.dfm}
 
@@ -1509,7 +1510,7 @@ begin
   FormVinculoCfopOperacaoEstoque.OperacaoEstoque := dblkcbbOpEstoque.KeyValue;
   FormVinculoCfopOperacaoEstoque.CfopOrigem := cdsItenscfop_nf_entrada.AsInteger;
   FormVinculoCfopOperacaoEstoque.ShowModal;
-  
+
   {Executa validações para consistência de dados}
   ExecutaValidacoes;
 end;
@@ -1522,7 +1523,7 @@ begin
   inherited;
   //dm.Zdb.Connected := False;
   //dm.Zdb.Connected := True;
-    
+
   edtChaveProcura.Text := '';
   fGravar := false;
 
@@ -1893,6 +1894,14 @@ begin
           cdsContaPagar.EnableControls;
         end;
       end;
+        fDlgComparaNotaPedido := TfDlgComparaNotaPedido.Create(Self);
+        fDlgComparaNotaPedido.cdsDados.Close;
+        fDlgComparaNotaPedido.cdsDados.CreateDataSet;
+        fDlgComparaNotaPedido.lblNumNota.Caption := RetornaCodigoCompra(iSequencialNf);
+        fDlgComparaNotaPedido.lblNumPedido.Caption := cdsPedidoCompraPDCPA13ID.AsString;
+        fDlgComparaNotaPedido.lblNomeFornecedor.Caption := edtNomeFornecedorVis.Text;
+        fDlgComparaNotaPedido.MontaDados(RetornaCodigoCompra(iSequencialNf),cdsPedidoCompraPDCPA13ID.AsString);
+        fDlgComparaNotaPedido.ShowModal;
 
       SetProgresso('Atualizando lista de XMLs');
       MoveXMLPastaImportado;
@@ -1901,6 +1910,7 @@ begin
       SetProgresso('Importação OK.');
       FinalizaProcessamentos;
       edtChaveProcura.setfocus;
+      cdsPedidoCompra.ClearFields;
     end;
   end;
 end;
@@ -1974,7 +1984,7 @@ begin
   dm.SQLConsulta.Open;
   if not(dm.SQLConsulta.IsEmpty) then
     result := TRUE;
-  dm.SQLConsulta.close;  
+  dm.SQLConsulta.close;
 end;
 
 procedure TFormTelaImportadorXML.actCadFornecedorExecute(Sender: TObject);
@@ -2141,7 +2151,7 @@ begin
   dm.SQLConsulta.Open;
   if (dm.SQLConsulta.FieldByName('NCMICOD').AsInteger = null) or (dm.SQLConsulta.FieldByName('NCMICOD').AsInteger = 0) or (dm.SQLConsulta.FieldByName('NCMICOD').AsInteger <> aIdNCM) then
     result := False;
-  dm.SQLConsulta.Close;    
+  dm.SQLConsulta.Close;
 end;
 
 procedure TFormTelaImportadorXML.VerificaNCMProdutos;
@@ -2179,7 +2189,7 @@ begin
       ExibeInconsistencia(tiErro, 'NCM não localizado no sistema.', 'NCM: '+aNCM);
       fErroNCM := true;
     end;
-  dm.SQLConsulta.Close;    
+  dm.SQLConsulta.Close;
 end;
 
 function TFormTelaImportadorXML.CriaNCM(aNCM: String): Integer;
@@ -3102,7 +3112,7 @@ begin
   if (pTipo = teManifDestOperNaoRealizada) then
     vSIT_EVENTO := '4';
   ACBrNFe.EnviarEvento(StrToInt(vSIT_EVENTO));
-  
+
   if (ACBrNFe.WebServices.EnvEvento.EventoRetorno.retEvento.Items[0].RetInfEvento.cStat = 128)or
      (ACBrNFe.WebServices.EnvEvento.EventoRetorno.retEvento.Items[0].RetInfEvento.cStat = 135) then
   begin
@@ -3199,6 +3209,7 @@ begin
   CriaFormulario(TFormCadastroPedidoCompra,'FormCadastroPedidoCompra',False,True,False,'');
   cdsPedidoCompra.Post
 end;
+
 
 end.
 

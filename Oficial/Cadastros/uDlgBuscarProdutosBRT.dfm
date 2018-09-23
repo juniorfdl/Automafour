@@ -1,6 +1,6 @@
 object fDlgBuscarProdutosBRT: TfDlgBuscarProdutosBRT
-  Left = 123
-  Top = 50
+  Left = 212
+  Top = 127
   Width = 1009
   Height = 531
   Caption = 'Buscar Produtos Brasil Tribut'#225'rio'
@@ -119,7 +119,7 @@ object fDlgBuscarProdutosBRT: TfDlgBuscarProdutosBRT
     Left = 0
     Top = 94
     Width = 993
-    Height = 398
+    Height = 399
     Align = alClient
     TabOrder = 1
     object cxGrid1DBTableView1: TcxGridDBTableView

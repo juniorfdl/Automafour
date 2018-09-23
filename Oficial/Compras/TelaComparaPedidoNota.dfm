@@ -1,6 +1,6 @@
 inherited FormTelaComparaPedidoNota: TFormTelaComparaPedidoNota
-  Left = 171
-  Top = 183
+  Left = 166
+  Top = 105
   Width = 1053
   Height = 450
   Caption = 'Compara Pedido - Nota'

@@ -452,7 +452,7 @@ uses
   CadastroProdutoAcougue in 'Cadastros\CadastroProdutoAcougue.pas' {FormCadastroProdutoAcougue},
   wsProdutos in 'Cadastros\wsProdutos.pas',
   uDlgBuscarProdutosBRT in 'Cadastros\uDlgBuscarProdutosBRT.pas' {fDlgBuscarProdutosBRT},
-  TelaComparaPedidoNota in 'Compras\TelaComparaPedidoNota.pas' {FormTelaComparaPedidoNota};
+  uDlgComparaNotaPedido in 'Compras\uDlgComparaNotaPedido.pas' {fDlgComparaNotaPedido};
 
 {$R *.res}
 
