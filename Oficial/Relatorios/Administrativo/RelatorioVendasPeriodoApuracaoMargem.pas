@@ -62,6 +62,8 @@ type
     SQLNotasFiscaisNOFIN2VLRDESC: TFloatField;
     SQLNotasFiscaisVLRLUCRO: TFloatField;
     SQLNotasFiscaisCOMISSAO: TFloatField;
+    TblTemporariaQTDE: TBCDField;
+    SQLNotasFiscaisQTDE: TFloatField;
     procedure ExecutarBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private

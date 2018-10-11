@@ -1,6 +1,6 @@
 inherited FormRelatorioVendasPeriodoApuracaoMargem: TFormRelatorioVendasPeriodoApuracaoMargem
-  Left = 194
-  Top = 122
+  Left = 289
+  Top = 121
   Caption = 'Relat'#243'rio de Vendas por Vendedor com Apura'#231#227'o de Margem'
   PixelsPerInch = 96
   TextHeight = 13
@@ -112,6 +112,11 @@ inherited FormRelatorioVendasPeriodoApuracaoMargem: TFormRelatorioVendasPeriodoA
       Precision = 15
       Size = 3
     end
+    object TblTemporariaQTDE: TBCDField
+      FieldName = 'QTDE'
+      Precision = 15
+      Size = 3
+    end
   end
   object SQLNotasFiscais: TRxQuery
     DatabaseName = 'DB'
@@ -123,6 +128,12 @@ inherited FormRelatorioVendasPeriodoApuracaoMargem: TFormRelatorioVendasPeriodoA
       'NOTAFISCAL.SERIA5COD as SERIE,'
       'NOTAFISCAL.NOFIDEMIS,'
       'NOTAFISCAL.NOFIN2VLRPRODUTO,'
+      ''
+      'case COALESCE(NOTAFISCAL.NOFIN3QUANT,0)'
+      '   when 0 then 1'
+      '   ELSE NOTAFISCAL.NOFIN3QUANT'
+      '  end AS QTDE,'
+      ''
       'NOTAFISCAL.NOFIN2VLRNOTA as TOTAL,'
       'NOTAFISCAL.NOFIN2VLRDESC,'
       'NOTAFISCAL.VENDICOD,'
@@ -254,6 +265,9 @@ inherited FormRelatorioVendasPeriodoApuracaoMargem: TFormRelatorioVendasPeriodoA
     end
     object SQLNotasFiscaisCOMISSAO: TFloatField
       FieldName = 'COMISSAO'
+    end
+    object SQLNotasFiscaisQTDE: TFloatField
+      FieldName = 'QTDE'
     end
   end
   object SQLVendedor: TRxQuery
