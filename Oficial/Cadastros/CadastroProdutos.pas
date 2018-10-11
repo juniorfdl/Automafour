@@ -997,6 +997,12 @@ type
     SQLTemplateVALOR_DESC_ENTRADA: TFloatField;
     ButtonAcougue: TRxSpeedButton;
     MnuBuscarProdutosBrasilTributrio: TMenuItem;
+    ppGrid: TPopupMenu;
+    AtualizaProdutoBRT1: TMenuItem;
+    ButtonSabores: TRxSpeedButton;
+    Label36: TLabel;
+    DBEdit7: TDBEdit;
+    SQLTemplatePERC_REDUCAO_BASE_CALCULO: TFloatField;
     procedure FormCreate(Sender: TObject);
     procedure RxComboComissaoChange(Sender: TObject);
     procedure AcessaMarcaClick(Sender: TObject);
@@ -1142,13 +1148,15 @@ type
     procedure sqlProduto_DescontosBeforeEdit(DataSet: TDataSet);
     procedure sqlProduto_DescontosBeforeDelete(DataSet: TDataSet);
     procedure MnuBuscarProdutosBrasilTributrioClick(Sender: TObject);
+    procedure AtualizaProdutoBRT1Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
     ProdutoCodigo: Integer;
-    AlterandoValores, IncluindoProduto: Boolean;
+    AlterandoValores, IncluindoProduto, AlterandoProduto: Boolean;
     ValorVenda, ValorVenda2, ValorCompra, MargemLucro, ICMS, Denominador, LucroBruto, ValorCusto,
       ValorCustoMedio: Double;
-    DoNumeroCasasDec: Integer;
+    DoNumeroCasasDec, vProduto: Integer;
     Referencia, CodBarras, CodAntigo: string;
     function EnviaProdutoPDVs(Tipo: string): boolean;
     procedure DesabilitarCampos;
@@ -1174,7 +1182,7 @@ uses CadastroVariacao, DataModulo, CadastroSubgrupo, CadastroMarca,
   CadastroColecao, CadastroDecreto,
   TelaEntradaRapidaEstoque, TelaFotoExpandida, CadastroBarras,
   TelaSaidaRapidaEstoque, CadastroNCM, CadastroTabCest,
-  CadastroProdutoAcougue, uDlgBuscarProdutosBRT;
+  CadastroProdutoAcougue, uDlgBuscarProdutosBRT, CadastroProdutoSabores;
 
 {$R *.DFM}
 
@@ -1684,6 +1692,16 @@ begin
     DSMasterSys := DSTemplate;
     CriaFormulario(TFormCadastroProdutoAcougue,
       'FormCadastroProdutoAcougue',
+      True,
+      False,
+      True,
+      '');
+  end;
+  if (Sender as TRxSpeedButton).Name = 'ButtonSabores' then
+  begin
+    DSMasterSys := DSTemplate;
+    CriaFormulario(TFormCadastroProdutoSabores,
+      'FormCadastroProdutoSabores',
       True,
       False,
       True,
@@ -4933,11 +4951,17 @@ var
 
 begin
   cds := TfDlgBuscarProdutosBRT.BuscarDadosBRT;
-
   if cds <> nil then
   begin
     if not cds.IsEmpty then
     begin
+      if AlterandoProduto then
+      begin
+        cds.Edit;
+        cds.fieldbyname('PRODICOD').AsInteger := SQLTemplatePRODICOD.Value;
+        cds.Post;
+      end;
+
       if cds.fieldbyname('PRODICOD').AsInteger > 0 then
       begin
         if (SQLTemplate.State in [DsInsert, DsEdit]) then
@@ -4950,20 +4974,47 @@ begin
       end
       else begin
         if not (SQLTemplate.State in [DsInsert, DsEdit]) then
+        begin
           SQLTemplate.Insert;
-      end;  
+          SQLTemplatePRODA60DESCR.AsString := cds.fieldbyname('Nome').AsString;
+        end;
+      end;
 
-      SQLTemplatePRODA60DESCR.AsString := cds.fieldbyname('Nome').AsString;
-
-      //  ORIGEM = WEBSERVICE //  DESTINO = SISTEMA         
+      SQLTemplate.FieldByName('NCMICOD').AsString  := SQLLocate('NCM','NCMA30CODIGO','NCMICOD',cds.fieldbyname('Ncm').AsString);
+      SQLTemplate.FieldByName('ICMSICOD').AsString := SQLLocate('ICMS','ICMSN2ALIQUOTA','ICMSICOD',cds.fieldbyname('ALIQUOTA_ICMS').AsString);
+      //  ORIGEM = WEBSERVICE //  DESTINO = SISTEMA
       AtualizaCampo('EAN', 'PRODA60CODBAR');
-      AtualizaCampo('NCM', 'NCMICOD');
+//      AtualizaCampo('NCM',  'NCMICOD');
       AtualizaCampo('CEST', 'TABCEST');
-      AtualizaCampo('CST_ICMS', 'PRODISITTRIB');
-      AtualizaCampo('CST_PIS', 'PRODA2CSTPIS');
+      AtualizaCampo('CST_ICMS','PRODISITTRIB');
+      AtualizaCampo('CST_PIS', 'PRODA3CSTPISENTRADA');
+      AtualizaCampo('CST_PIS', 'PRODA3CSTCOFINSENTRADA');
+      AtualizaCampo('CST_COFINS', 'PRODA2CSTPIS');
       AtualizaCampo('CST_COFINS', 'PRODA2CSTCOFINS');
+      AtualizaCampo('ALIQUOTA_PIS_PRESUMIDO','PRODN2ALIQPIS');
+      AtualizaCampo('ALIQUOTA_COFINS_PRESUMIDO','PRODN2ALIQCOFINS');
     end;
   end;  
+end;
+
+procedure TFormCadastroProduto.AtualizaProdutoBRT1Click(Sender: TObject);
+begin
+  inherited;
+  AlterandoProduto := False;
+  if SQLTemplatePRODICOD.Value > 0 then
+  begin
+    AlterandoProduto := True;
+    MnuBuscarProdutosBrasilTributrioClick(Sender);
+    AlterandoProduto := False;
+  end;
+end;
+
+procedure TFormCadastroProduto.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  inherited;
+  if fDlgBuscarProdutosBRT <> nil then
+    FreeAndNil(fDlgBuscarProdutosBRT);
 end;
 
 end.

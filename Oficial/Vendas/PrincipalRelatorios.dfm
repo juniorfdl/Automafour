@@ -2,7 +2,7 @@ object FormPrincipalRelatorios: TFormPrincipalRelatorios
   Left = 367
   Top = 192
   Width = 607
-  Height = 384
+  Height = 383
   AutoSize = True
   Caption = 'Relat'#243'rio para Resumo de Caixa'
   Color = clWhite
@@ -1441,7 +1441,7 @@ object FormPrincipalRelatorios: TFormPrincipalRelatorios
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 297000
     PrinterSetup.mmPaperWidth = 210000
-    PrinterSetup.PaperSize = 9
+    PrinterSetup.PaperSize = 256
     DeviceType = 'Screen'
     EmailSettings.ReportFormat = 'PDF'
     OnPreviewFormClose = ReportTotaisPreviewFormClose
@@ -1873,7 +1873,7 @@ object FormPrincipalRelatorios: TFormPrincipalRelatorios
           PrinterSetup.mmMarginTop = 6350
           PrinterSetup.mmPaperHeight = 297000
           PrinterSetup.mmPaperWidth = 210000
-          PrinterSetup.PaperSize = 9
+          PrinterSetup.PaperSize = 256
           Version = '10.06'
           mmColumnWidth = 0
           DataPipelineName = 'PipeNumerario'
@@ -2162,7 +2162,7 @@ object FormPrincipalRelatorios: TFormPrincipalRelatorios
                 PrinterSetup.mmMarginTop = 6350
                 PrinterSetup.mmPaperHeight = 297000
                 PrinterSetup.mmPaperWidth = 210000
-                PrinterSetup.PaperSize = 9
+                PrinterSetup.PaperSize = 256
                 Version = '10.06'
                 mmColumnWidth = 0
                 DataPipelineName = 'PipeItensVendidos'
@@ -2354,7 +2354,7 @@ object FormPrincipalRelatorios: TFormPrincipalRelatorios
                       PrinterSetup.mmMarginTop = 6350
                       PrinterSetup.mmPaperHeight = 297000
                       PrinterSetup.mmPaperWidth = 210000
-                      PrinterSetup.PaperSize = 9
+                      PrinterSetup.PaperSize = 256
                       Version = '10.06'
                       mmColumnWidth = 0
                       DataPipelineName = 'PipeVendasCartoesCheques'

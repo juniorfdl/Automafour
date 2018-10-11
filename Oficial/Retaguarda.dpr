@@ -452,7 +452,9 @@ uses
   CadastroProdutoAcougue in 'Cadastros\CadastroProdutoAcougue.pas' {FormCadastroProdutoAcougue},
   wsProdutos in 'Cadastros\wsProdutos.pas',
   uDlgBuscarProdutosBRT in 'Cadastros\uDlgBuscarProdutosBRT.pas' {fDlgBuscarProdutosBRT},
-  uDlgComparaNotaPedido in 'Compras\uDlgComparaNotaPedido.pas' {fDlgComparaNotaPedido};
+  uDlgComparaNotaPedido in 'Compras\uDlgComparaNotaPedido.pas' {fDlgComparaNotaPedido},
+  CadastroSabores in 'Cadastros\CadastroSabores.pas' {FormCadastroSabores},
+  CadastroProdutoSabores in 'Cadastros\CadastroProdutoSabores.pas' {FormCadastroProdutoSabores};
 
 {$R *.res}
 

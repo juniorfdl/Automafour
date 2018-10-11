@@ -448,6 +448,7 @@ type
     procedure VerificaNCMProdutos;
     function ProdutoContemNCM(aCodigoProduto, aIdNCM: Integer): Boolean;
     procedure AtualizaNCMCadastroProduto(aCodigoProduto: Integer; aNCM: String);
+    procedure AtualizaCST_ICMSCadastroProduto(aCodigoProduto: Integer; aCST_ICMS: String);
     function getIdNCMFromCodigo(aNCM: String): Integer;
     function CriaNCM(aNCM: String): Integer;
     function CriaCEST(aCEST, aNCM: String): String;
@@ -720,8 +721,9 @@ begin
           end;
 
         {ICMS/CSOSN}
-        // adilson superbom cdsItens.FieldByName('cst_icms').AsString := getCSTConversao(tiICMS, CSTICMSToStr(ACBrNFe.NotasFiscais.Items[0].Nfe.Det.Items[i].Imposto.ICMS.CST));
-        cdsItens.FieldByName('cst_icms').AsString := CSTICMSToStr(ACBrNFe.NotasFiscais.Items[0].Nfe.Det.Items[i].Imposto.ICMS.CST);
+        // adilson superbom
+        cdsItens.FieldByName('cst_icms').AsString := getCSTConversao(tiICMS, CSTICMSToStr(ACBrNFe.NotasFiscais.Items[0].Nfe.Det.Items[i].Imposto.ICMS.CST));
+//        cdsItens.FieldByName('cst_icms').AsString := CSTICMSToStr(ACBrNFe.NotasFiscais.Items[0].Nfe.Det.Items[i].Imposto.ICMS.CST);
 
         {Se CSON for Dif de zero é pq a nota é do Simples Nacional entao substitui o cst}
         if  CSOSNIcmsToStr(ACBrNFe.NotasFiscais.Items[0].Nfe.Det.Items[i].Imposto.ICMS.CSOSN) <> '0' then
@@ -1821,6 +1823,8 @@ begin
                     ShowMessage('Erro: Falta Informar a Unidade no Produto => '+cdsItens.FieldByName('codigo_gravar').AsString);
                     fGravar := False ;
                   end;
+                if cdsItenscst_icms.AsString <> '' then
+                  AtualizaCST_ICMSCadastroProduto(StrToInt(cdsItenscodigo_gravar.AsString), cdsItenscst_icms.AsString);
                 dm.SQLUpdate.ExecSQL;
               except
                 Application.ProcessMessages;
@@ -3214,6 +3218,28 @@ begin
   cdsPedidoCompra.Post
 end;
 
+
+procedure TFormTelaImportadorXML.AtualizaCST_ICMSCadastroProduto(
+  aCodigoProduto: Integer; aCST_ICMS: String);
+begin
+  SQLProdutoEditar.Close;
+  SQLProdutoEditar.sql.clear;
+  SQLProdutoEditar.sql.Text := 'Select PRODICOD, PRODISITTRIB from produto where prodicod='+inttostr(aCodigoProduto);
+  SQLProdutoEditar.open;
+  if not SQLProdutoEditar.IsEmpty then
+    begin
+      SQLProdutoEditar.edit;
+      SQLProdutoEditar.FieldByName('PRODISITTRIB').AsInteger := StrToInt(aCST_ICMS);
+      try
+        SQLProdutoEditar.post;
+      except
+        SQLProdutoEditar.cancel;
+        MessageDlg('Erro ao atualizar o cst_icms!', mtInformation, [mbOK], 0);
+        ExibeInconsistencia(tiErro, 'CST_ICMS NAO atualizado', 'Produto: '+cdsItensdescricao.AsString);
+      end
+    end;
+  SQLProdutoEditar.Close;
+end;
 
 end.
 

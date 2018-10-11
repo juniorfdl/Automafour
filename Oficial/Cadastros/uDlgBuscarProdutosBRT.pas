@@ -124,7 +124,7 @@ type
     { Public declarations }
 
     ItemSelecionado:Boolean;
-    class function BuscarDadosBRT:TClientDataSet;  
+    class function BuscarDadosBRT:TClientDataSet;
   end;
 
 var

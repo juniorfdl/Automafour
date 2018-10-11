@@ -1,6 +1,6 @@
 inherited FormCadastroMarca: TFormCadastroMarca
-  Left = 430
-  Top = 89
+  Left = 310
+  Top = 109
   Caption = 'Cadastro de Marcas'
   OldCreateOrder = True
   PixelsPerInch = 96

@@ -392,7 +392,6 @@ begin
       memo.Lines.Add(' ');
       memo.Lines.Add(' ');
       memo.Lines.Add('</corte_parcial>');
-
       try
         dm.ACBrPosPrinter.Device.Desativar;
         dm.ACBrPosPrinter.Device.Ativar;

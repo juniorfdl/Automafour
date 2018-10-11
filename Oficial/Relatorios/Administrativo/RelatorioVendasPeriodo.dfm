@@ -600,13 +600,23 @@ inherited FormRelatorioVendasPeriodo: TFormRelatorioVendasPeriodo
       '  CUPOM.CUPOCTIPOPADRAO,'
       '  CUPOM.CUPODCANC,'
       '  CUPOM.CUPODEMIS,'
+      '  (select sum(CUPOMITEM.TOTAL_ITEM)'
+      '        from CUPOMITEM'
+      '        where CUPOMITEM.CUPOA13ID = CUPOM.CUPOA13ID and'
+      '              (%MStatus) and'
+      '              CUPOMITEM.CPITN3QTD > 0'
       
-        '  CUPOM.CUPON2TOTITENS + CUPOM.CUPON2DESCITENS as CUPON2TOTITENS' +
-        ','
+        '        group by CUPOMITEM.CUPOA13ID) + CUPOM.CUPON2DESCITENS as' +
+        ' CUPON2TOTITENS,'
       '  CUPOM.CUPON2ACRESC,'
       '  CUPOM.CUPON2DESC + CUPOM.CUPON2DESCITENS as CUPON2DESC,'
       '  CUPOM.CUPOA8PLACAVEIC,'
-      '  CUPOM.CUPON2TOTITENS +'
+      '  (select sum(CUPOMITEM.TOTAL_ITEM)'
+      '        from CUPOMITEM'
+      '        where CUPOMITEM.CUPOA13ID = CUPOM.CUPOA13ID and'
+      '              (%MStatus) and'
+      '              CUPOMITEM.CPITN3QTD > 0'
+      '        group by CUPOMITEM.CUPOA13ID) +'
       '        CUPOM.CUPON2ACRESC'
       '        %MtaxaCred'
       '        CUPOM.CUPON2DESC-'
@@ -659,13 +669,13 @@ inherited FormRelatorioVendasPeriodo: TFormRelatorioVendasPeriodo
     Macros = <
       item
         DataType = ftString
-        Name = 'MtaxaCred'
+        Name = 'MStatus'
         ParamType = ptInput
         Value = '0=0'
       end
       item
         DataType = ftString
-        Name = 'MStatus'
+        Name = 'MtaxaCred'
         ParamType = ptInput
         Value = '0=0'
       end

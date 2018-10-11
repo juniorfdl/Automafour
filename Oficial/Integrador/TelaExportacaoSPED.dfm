@@ -1,6 +1,6 @@
 inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
-  Left = 248
-  Top = 78
+  Left = 243
+  Top = 65
   Width = 816
   Height = 632
   Caption = 'Gera'#231#227'o Arquivo SPED Fiscal'
@@ -629,7 +629,7 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
       end
       object chkItensNFe: TCheckBox
         Left = 397
-        Top = 349
+        Top = 351
         Width = 265
         Height = 17
         Caption = 'Incluir Itens das NF-e de Emiss'#227'o Pr'#243'pria'
@@ -642,8 +642,8 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
         TabOrder = 15
       end
       object ChkImporta: TCheckBox
-        Left = 412
-        Top = 408
+        Left = 397
+        Top = 409
         Width = 351
         Height = 17
         Caption = 'Criar Cupons Fiscais a partir de dados importados das ECFs'
@@ -657,7 +657,7 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
       end
       object ckC400: TCheckBox
         Left = 397
-        Top = 392
+        Top = 389
         Width = 246
         Height = 17
         Caption = 'Nao Criar Cupons Fiscais e NFCe'
@@ -671,7 +671,7 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
       end
       object ckQuestor: TCheckBox
         Left = 397
-        Top = 430
+        Top = 429
         Width = 247
         Height = 17
         Caption = 'Questor - Unidade compra=venda'

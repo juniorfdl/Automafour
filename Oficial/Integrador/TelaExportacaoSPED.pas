@@ -3584,7 +3584,7 @@ Begin
         ProgressGeral.Position := 60;
 
         // REGISTRO C170: ITENS DO DOCUMENTO (CÓDIGO 01, 1B, 04, 55 e 65).
-        {if StatusNF = 'A' then
+       { if StatusNF = 'A' then
           begin
             EditTabela.Text := 'Criando - BLOCO C170 - ITENS DO DOCUMENTO'; EditTabela.Update;
             if Not RegistroC170 Then Begin Result := False; Exit; End;
@@ -3885,11 +3885,11 @@ Begin
       end; }
 
     // REGISTRO C170: ITENS DO DOCUMENTO (CÓDIGO 01, 1B, 04 e 55).
-    {if StatusNF = 'E' then
+    if StatusNF = 'E' then
       begin
         EditTabela.Text := 'Criando - BLOCO C170 - ITENS DO DOCUMENTO'; EditTabela.Update;
         if Not RegistroC170 Then Begin Result := False; Exit; End;
-      end;}
+      end;
 
     // REGISTRO C172: OPERAÇÕES COM ISSQN (CÓDIGO 01)
     // Adilson Verificar com Judi se teremos que lancar as Notas de Servico na Entrada

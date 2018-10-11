@@ -1,6 +1,6 @@
 inherited FormRelatorioVendasPeriodoApuracaoMargem: TFormRelatorioVendasPeriodoApuracaoMargem
-  Left = 194
-  Top = 122
+  Left = 360
+  Top = 121
   Caption = 'Relat'#243'rio de Vendas por Vendedor com Apura'#231#227'o de Margem'
   PixelsPerInch = 96
   TextHeight = 13
@@ -275,8 +275,8 @@ inherited FormRelatorioVendasPeriodoApuracaoMargem: TFormRelatorioVendasPeriodoA
     Version.Major = 0
     Version.Minor = 0
     ReportName = 
-      'D:\DESENV\UnitGestao\Relatorios\Vendas Por Periodo + Consignadas' +
-      ' + Cheques.rpt'
+      'C:\Easy2Solutions\Gestao\Relatorios\Vendas Por Periodo Apuracao ' +
+      'de Margem.rpt'
     Margins.Left = -1
     Margins.Right = -1
     Margins.Top = -1

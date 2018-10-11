@@ -11267,6 +11267,10 @@ inherited FormPrincipal: TFormPrincipal
           Caption = 'Cidade'
           OnClick = Cidades1Click
         end
+        object Sabores1: TMenuItem
+          Caption = 'Sabores'
+          OnClick = Sabores1Click
+        end
       end
       object arefas1: TMenuItem
         Caption = 'Tarefas'

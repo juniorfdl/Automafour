@@ -1,7 +1,7 @@
 object fDlgBuscarProdutosBRT: TfDlgBuscarProdutosBRT
-  Left = 212
-  Top = 127
-  Width = 1009
+  Left = 125
+  Top = 109
+  Width = 1158
   Height = 531
   Caption = 'Buscar Produtos Brasil Tribut'#225'rio'
   Color = clBtnFace
@@ -18,7 +18,7 @@ object fDlgBuscarProdutosBRT: TfDlgBuscarProdutosBRT
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 993
+    Width = 1142
     Height = 94
     Align = alTop
     BevelInner = bvRaised
@@ -118,7 +118,7 @@ object fDlgBuscarProdutosBRT: TfDlgBuscarProdutosBRT
   object cxGrid1: TcxGrid
     Left = 0
     Top = 94
-    Width = 993
+    Width = 1142
     Height = 399
     Align = alClient
     TabOrder = 1
@@ -145,112 +145,152 @@ object fDlgBuscarProdutosBRT: TfDlgBuscarProdutosBRT
       end
       object cxGrid1DBTableView1Nome: TcxGridDBColumn
         DataBinding.FieldName = 'Nome'
-        Width = 100
+        Width = 177
       end
       object cxGrid1DBTableView1Nome_tipi: TcxGridDBColumn
         DataBinding.FieldName = 'Nome_tipi'
-        Width = 100
+        Width = 61
       end
       object cxGrid1DBTableView1EAN: TcxGridDBColumn
         DataBinding.FieldName = 'EAN'
-        Width = 100
+        Width = 37
       end
       object cxGrid1DBTableView1Unidade: TcxGridDBColumn
         DataBinding.FieldName = 'Unidade'
+        Width = 52
       end
       object cxGrid1DBTableView1NCM: TcxGridDBColumn
         DataBinding.FieldName = 'NCM'
-        Width = 100
+        Width = 70
       end
       object cxGrid1DBTableView1EX: TcxGridDBColumn
         DataBinding.FieldName = 'EX'
+        Width = 38
       end
       object cxGrid1DBTableView1CEST: TcxGridDBColumn
         DataBinding.FieldName = 'CEST'
       end
       object cxGrid1DBTableView1CST_ICMS: TcxGridDBColumn
+        Caption = 'CST ICMS'
         DataBinding.FieldName = 'CST_ICMS'
       end
       object cxGrid1DBTableView1CST_ICMS_DESCR: TcxGridDBColumn
+        Caption = 'Descri'#231#227'o CST ICMS'
         DataBinding.FieldName = 'CST_ICMS_DESCR'
-        Width = 100
+        Width = 131
       end
       object cxGrid1DBTableView1CSOSN_ICMS: TcxGridDBColumn
+        Caption = 'CSON ICMS'
         DataBinding.FieldName = 'CSOSN_ICMS'
+        Width = 66
       end
       object cxGrid1DBTableView1CSOSN_ICMS_DESCR: TcxGridDBColumn
+        Caption = 'Descri'#231#227'o CSON'
         DataBinding.FieldName = 'CSOSN_ICMS_DESCR'
         Width = 100
       end
       object cxGrid1DBTableView1BASE_ICMS_VAREJO: TcxGridDBColumn
+        Caption = 'Base ICMS Varejo'
         DataBinding.FieldName = 'BASE_ICMS_VAREJO'
+        Width = 98
       end
       object cxGrid1DBTableView1ALIQUOTA_ICMS_VAREJO: TcxGridDBColumn
+        Caption = '% ICMS Varejo'
         DataBinding.FieldName = 'ALIQUOTA_ICMS_VAREJO'
+        Width = 81
       end
       object cxGrid1DBTableView1PERC_MVA_RS: TcxGridDBColumn
+        Caption = '% MVA RS'
         DataBinding.FieldName = 'PERC_MVA_RS'
+        Width = 66
       end
       object cxGrid1DBTableView1PERC_MVA_4: TcxGridDBColumn
+        Caption = '% MVA 4'
         DataBinding.FieldName = 'PERC_MVA_4'
+        Width = 60
       end
       object cxGrid1DBTableView1PERC_MVA_7: TcxGridDBColumn
+        Caption = '% MVA 7'
         DataBinding.FieldName = 'PERC_MVA_7'
       end
       object cxGrid1DBTableView1PERC_MVA_OUTROS: TcxGridDBColumn
+        Caption = '% MVA Outros'
         DataBinding.FieldName = 'PERC_MVA_OUTROS'
+        Width = 75
       end
       object cxGrid1DBTableView1BASE_ICMS: TcxGridDBColumn
+        Caption = 'Base ICMS'
         DataBinding.FieldName = 'BASE_ICMS'
+        Width = 72
       end
       object cxGrid1DBTableView1ALIQUOTA_ICMS: TcxGridDBColumn
+        Caption = '% ICMS'
         DataBinding.FieldName = 'ALIQUOTA_ICMS'
       end
       object cxGrid1DBTableView1BASE_LEGAL_ICMS: TcxGridDBColumn
+        Caption = 'Base Legal ICMS'
         DataBinding.FieldName = 'BASE_LEGAL_ICMS'
         Width = 100
       end
       object cxGrid1DBTableView1CST_PIS: TcxGridDBColumn
+        Caption = 'CST Pis'
         DataBinding.FieldName = 'CST_PIS'
       end
       object cxGrid1DBTableView1CST_PIS_DESCR: TcxGridDBColumn
+        Caption = 'Descri'#231#227'o CST Pis'
         DataBinding.FieldName = 'CST_PIS_DESCR'
         Width = 100
       end
       object cxGrid1DBTableView1TIPO_CREDITO: TcxGridDBColumn
+        Caption = 'Tipo de Cr'#233'dito'
         DataBinding.FieldName = 'TIPO_CREDITO'
       end
       object cxGrid1DBTableView1CST_COFINS: TcxGridDBColumn
+        Caption = 'CST Cofins'
         DataBinding.FieldName = 'CST_COFINS'
       end
       object cxGrid1DBTableView1CST_COFINS_DESCR: TcxGridDBColumn
+        Caption = 'Descri'#231#227'o CST Cofins'
         DataBinding.FieldName = 'CST_COFINS_DESCR'
-        Width = 100
+        Width = 119
       end
       object cxGrid1DBTableView1BASE_PIS_COFINS: TcxGridDBColumn
+        Caption = 'Base Legal Pis Cofins'
         DataBinding.FieldName = 'BASE_PIS_COFINS'
+        Width = 116
       end
       object cxGrid1DBTableView1ALIQUOTA_PIS_REAL: TcxGridDBColumn
+        Caption = '% Pis (Real)'
         DataBinding.FieldName = 'ALIQUOTA_PIS_REAL'
       end
       object cxGrid1DBTableView1ALIQUOTA_PIS_PRESUMIDO: TcxGridDBColumn
+        Caption = '% Pis (Presumido)'
         DataBinding.FieldName = 'ALIQUOTA_PIS_PRESUMIDO'
       end
       object cxGrid1DBTableView1ALIQUOTA_COFINS_REAL: TcxGridDBColumn
+        Caption = '% Cofins (Real)'
         DataBinding.FieldName = 'ALIQUOTA_COFINS_REAL'
+        Width = 83
       end
       object cxGrid1DBTableView1ALIQUOTA_COFINS_PRESUMIDO: TcxGridDBColumn
+        Caption = '% Cofins (Presumido)'
         DataBinding.FieldName = 'ALIQUOTA_COFINS_PRESUMIDO'
+        Width = 107
       end
       object cxGrid1DBTableView1ALIQUOTA_ICMS_ECF: TcxGridDBColumn
+        Caption = '% ICMS ECF'
         DataBinding.FieldName = 'ALIQUOTA_ICMS_ECF'
+        Width = 73
       end
       object cxGrid1DBTableView1BASE_LEGAL_PIS_COFINS: TcxGridDBColumn
+        Caption = 'Base Legal Pis/Cofins'
         DataBinding.FieldName = 'BASE_LEGAL_PIS_COFINS'
-        Width = 100
+        Width = 116
       end
       object cxGrid1DBTableView1NATUREZA_OPERACAO: TcxGridDBColumn
+        Caption = 'Natureza Opera'#231#227'o'
         DataBinding.FieldName = 'NATUREZA_OPERACAO'
+        Width = 108
       end
       object cxGrid1DBTableView1FAR_REGISTRO: TcxGridDBColumn
         DataBinding.FieldName = 'FAR_REGISTRO'

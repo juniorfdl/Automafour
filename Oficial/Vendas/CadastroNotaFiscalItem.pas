@@ -277,6 +277,7 @@ type
     SQLProdutoProdutoLookup: TStringField;
     SQLProdutoCORICOD: TIntegerField;
     SQLProdutoPRODN3VLRVENDA: TFloatField;
+    SQLProdutoPERC_REDUCAO_BASE_CALCULO: TFloatField;
     procedure FormCreate(Sender: TObject);
     procedure BtnProdutoClick(Sender: TObject);
     procedure SQLTemplateCalcFields(DataSet: TDataSet);
@@ -358,7 +359,7 @@ type
     TotalISSQN:Double;
     CodigoPedido, SitTrib : String;
     PosicaoItem, IcmsCod  : Integer;
-    QtdePed, NovaQtdePed,Reducao : Double;
+    QtdePed, NovaQtdePed,Reducao,ReducaoBase : Double;
     TemProdutoSemSubsTrib, TemProdutoComSubsTrib : Boolean;
     procedure CalculaImpostos;
     Procedure AtualizaPedidoVenda(CodigoPedidoVenda:String;PosicaoItemPedido:Integer;QtdePed,NovaQtdePed:Double);
@@ -638,6 +639,7 @@ begin
       // Alimenta Variavel ICMSCod para nao dar erro quando tem GRADE
       IcmsCod := DM.SQLTemplate.FindField('ICMSICOD').AsInteger;
       SitTrib := DM.SQLTemplate.FindField('PRODISITTRIB').AsString;
+      ReducaoBase := DM.SQLTemplate.FindField('PERC_REDUCAO_BASE_CALCULO').AsFloat;
 
       // Verifica CFOP Auxiliar
       SQLTemplateCFOPA5CODAUX.AsString     := Busca_CFOP(SQLTemplate.DataSource.DataSet.FindField('OPESICOD').AsInteger, DM.SQLTemplate.FindField('PRODIORIGEM').AsInteger, DM.SQLTemplate.FindField('PRODISITTRIB').AsInteger);
@@ -757,7 +759,10 @@ begin
           If (SQLTemplate.DataSource.DataSet.FindField('CalcSUBSTLookUp').asString = 'S') Then
             SQLTemplateNFITN2PERCSUBS.asFloat       := nResultICMS.nMVA;
 
-          SQLTemplateNFITN2PERCREDUCAO.asFloat    := nResultICMS.nRED_ICMS;
+          if ReducaoBase > 0 then
+            SQLTemplateNFITN2PERCREDUCAO.asFloat    := ReducaoBase
+          else
+            SQLTemplateNFITN2PERCREDUCAO.asFloat    := nResultICMS.nRED_ICMS;
 
           // Efetua o Calculo dos Impostos
           if not ocupado then

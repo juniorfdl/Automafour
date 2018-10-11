@@ -33,7 +33,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
           Top = 1
           Width = 1079
           Height = 414
-          ActivePage = tsXMLs
+          ActivePage = tsItens
           Align = alClient
           TabOrder = 0
           object tsXMLs: TTabSheet

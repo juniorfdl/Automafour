@@ -1,6 +1,6 @@
 inherited FormCadastroProduto: TFormCadastroProduto
-  Left = -1
-  Top = 3
+  Left = 12
+  Top = 0
   Caption = 'Cadastro de Produtos'
   ClientHeight = 682
   ClientWidth = 1159
@@ -705,6 +705,67 @@ inherited FormCadastroProduto: TFormCadastroProduto
           Transparent = True
           OnClick = Button1Click
         end
+        object ButtonSabores: TRxSpeedButton
+          Tag = 4
+          Left = 1
+          Top = 243
+          Width = 127
+          Height = 20
+          Cursor = crHandPoint
+          BiDiMode = bdRightToLeftNoAlign
+          ParentBiDiMode = False
+          GroupIndex = 1
+          Caption = '13 Sabores'
+          Flat = True
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Glyph.Data = {
+            6E040000424D6E04000000000000360000002800000014000000120000000100
+            18000000000038040000CE0E0000C40E00000000000000000000FFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFF000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFF000000000000FFBFBF000000000000FFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            000000000000FFBFBFFFBFBFFFBFBF000000000000FFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFBFBF00
+            0000FFBFBFFFBFBFFFBFBFFFBFBFFFBFBF000000FFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFBFBF000000FFBF
+            BFFFBFBFFFBFBFFFBFBFFFBFBFFFBFBF000000000000FFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFBFBFFFBFBF000000FFBFBFFFBFBF
+            FFBFBFFFBFBFFFBFBFFFBFBFFFBFBFFFBFBF000000000000FFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFF000000FFBFBFF7FEFF000000FFBFBFFFBFBFFFBFBFFF
+            BFBFFFBFBFFFBFBFFFBFBFFFBFBFFFBFBFFFBFBF000000FFFFFFFFFFFFFFFFFF
+            FFFFFF000000FFBFBFFFBFBFF7FEFF000000FFBFBFFFBFBFFFBFBFFFBFBFFFBF
+            BFFFBFBFFFBFBFFFBFBFFFBFBFFFBFBF000000FFFFFFFFFFFFFFFFFFFFFFFF00
+            0000FFBFBFF7FEFFF7FEFF000000FFBFBFFFBFBFFFBFBFFFBFBFFFBFBFFFBFBF
+            FFBFBFFFBFBFFFBFBFFFBFBF000000FFFFFFFFFFFFFFFFFF000000FFBFBFFFBF
+            BFF7FEFFF7FEFFF7FEFF000000000000FFBFBFFFBFBFFFBFBFFFBFBFFFBFBFFF
+            BFBFFFBFBFFFBFBF000000FFFFFFFFFFFFFFFFFF000000FFBFBFFFBFBFF7FEFF
+            F7FEFFF7FEFFF7FEFFF7FEFF000000000000FFBFBFFFBFBFFFBFBFFFBFBFFFBF
+            BFFFBFBF000000FFFFFFFFFFFF000000FFBFBFFFBFBFFFBFBFFFBFBFFFBFBFF7
+            FEFFF7FEFFF7FEFFF7FEFFF7FEFF000000000000FFBFBFFFBFBFFFBFBFFFBFBF
+            000000FFFFFFFFFFFF000000FFBFBFFFBFBF000000000000FFBFBFFFBFBFFFBF
+            BFFFBFBFF7FEFFF7FEFFF7FEFFF7FEFF000000000000FFBFBFFFBFBF000000FF
+            FFFFFFFFFFFFFFFF000000000000FFFFFFFFFFFF000000000000000000FFBFBF
+            FFBFBFFFBFBFFFBFBFF7FEFFF7FEFFFFFFFF000000000000000000FFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000000000000
+            0000FFBFBFFFBFBF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000
+            00000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+          GrayedInactive = False
+          Layout = blGlyphLeft
+          Margin = 1
+          ParentFont = False
+          Transparent = True
+          OnClick = Button1Click
+        end
         object GroupBoxFOTO: TGroupBox
           Left = 0
           Top = 449
@@ -867,6 +928,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                 Top = 83
                 Width = 1019
                 Height = 368
+                PopupMenu = ppGrid
                 Columns = <
                   item
                     Expanded = False
@@ -2204,7 +2266,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                 Top = 296
                 Width = 688
                 Height = 177
-                ActivePage = TabSheet3
+                ActivePage = TabSheet1
                 TabOrder = 15
                 object TabSheet1: TTabSheet
                   Caption = 'Tributa'#231#227'o ICMS'
@@ -2401,6 +2463,19 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     ShowHint = True
                     OnClick = AcessaCESTClick
                   end
+                  object Label36: TLabel
+                    Left = 541
+                    Top = 0
+                    Width = 111
+                    Height = 13
+                    Caption = '% Red Base C'#225'lculo'
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clBlack
+                    Font.Height = -11
+                    Font.Name = 'Tahoma'
+                    Font.Style = [fsBold]
+                    ParentFont = False
+                  end
                   object ComboICMS: TRxDBLookupCombo
                     Left = 125
                     Top = 14
@@ -2451,7 +2526,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   object ComboSitTrib: TRxDBComboBox
                     Left = 285
                     Top = 14
-                    Width = 349
+                    Width = 254
                     Height = 21
                     Style = csDropDownList
                     DataField = 'PRODISITTRIB'
@@ -2686,6 +2761,23 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     TabOrder = 8
                     OnEnter = ComboNCM2Enter
                     OnKeyDown = ComboNCM2KeyDown
+                  end
+                  object DBEdit7: TDBEdit
+                    Left = 541
+                    Top = 14
+                    Width = 115
+                    Height = 21
+                    DataField = 'PERC_REDUCAO_BASE_CALCULO'
+                    DataSource = DSTemplate
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWindowText
+                    Font.Height = -11
+                    Font.Name = 'Tahoma'
+                    Font.Style = []
+                    ParentFont = False
+                    ParentShowHint = False
+                    ShowHint = False
+                    TabOrder = 9
                   end
                 end
                 object TabSheet2: TTabSheet
@@ -5677,7 +5769,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   object DBGrid5: TDBGrid
                     Left = 0
                     Top = 0
-                    Width = 644
+                    Width = 680
                     Height = 124
                     Align = alClient
                     BorderStyle = bsNone
@@ -5732,7 +5824,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   object DBNavigator1: TDBNavigator
                     Left = 0
                     Top = 124
-                    Width = 644
+                    Width = 680
                     Height = 25
                     DataSource = dsProduto_Descontos
                     VisibleButtons = [nbInsert, nbDelete, nbEdit, nbPost, nbCancel]
@@ -10746,6 +10838,11 @@ inherited FormCadastroProduto: TFormCadastroProduto
       DisplayFormat = '#,##0.000'
       EditFormat = '#,##0.000'
     end
+    object SQLTemplatePERC_REDUCAO_BASE_CALCULO: TFloatField
+      FieldName = 'PERC_REDUCAO_BASE_CALCULO'
+      Origin = 'DB.PRODUTO.PERC_REDUCAO_BASE_CALCULO'
+      DisplayFormat = '##0.00'
+    end
   end
   inherited UpdateSQLTemplate: TUpdateSQL
     ModifySQL.Strings = (
@@ -13928,5 +14025,13 @@ inherited FormCadastroProduto: TFormCadastroProduto
     OnDataChange = DSSQLSubGrupoDataChange
     Left = 1169
     Top = 326
+  end
+  object ppGrid: TPopupMenu
+    Left = 886
+    Top = 304
+    object AtualizaProdutoBRT1: TMenuItem
+      Caption = 'Atualiza Produto BRT'
+      OnClick = AtualizaProdutoBRT1Click
+    end
   end
 end

@@ -1,6 +1,6 @@
 inherited FormRelatorioVendasGrupo: TFormRelatorioVendasGrupo
-  Left = 381
-  Top = 190
+  Left = 416
+  Top = 104
   Caption = 'Relat'#243'rio de Vendas Por Grupo'
   PixelsPerInch = 96
   TextHeight = 13
@@ -28,7 +28,7 @@ inherited FormRelatorioVendasGrupo: TFormRelatorioVendasGrupo
       '  PRODUTO.GRUPICOD,'
       '  GRUPO.GRUPA60DESCR,'
       '  sum(CUPOMITEM.CPITN3QTD) AS QTDETOTAL,'
-      '  sum(CUPOMITEM.CPITN3VLRUNIT * CUPOMITEM.CPITN3QTD) AS TOTAL'
+      '  sum(CUPOMITEM.TOTAL_ITEM) AS TOTAL'
       'from'
       
         '  (CUPOMITEM inner join CUPOM CUPOM on CUPOM.CUPOA13ID = CUPOMIT' +
@@ -39,7 +39,7 @@ inherited FormRelatorioVendasGrupo: TFormRelatorioVendasGrupo
       '   inner join GRUPO GRUPO on GRUPO.GRUPICOD = PRODUTO.GRUPICOD'
       'where'
       
-        '  CUPOM.CUPOCSTATUS = ''A'' and (CUPOMITEM.CPITCSTATUS <> ''C'' ) an' +
+        '  CUPOM.CUPOCSTATUS = '#39'A'#39' and (CUPOMITEM.CPITCSTATUS <> '#39'C'#39' ) an' +
         'd'
       '  (%MEmpresa) and'
       '  (%MData)'
@@ -52,10 +52,10 @@ inherited FormRelatorioVendasGrupo: TFormRelatorioVendasGrupo
       'select'
       '  PRODUTO.GRUPICOD,'
       '  GRUPO.GRUPA60DESCR,'
-      '  sum(NOTAFISCALITEM.NFITN3QUANT) AS QTDETOTAL,'
+      'sum(NOTAFISCALITEM.NFITN3QUANT) AS QTDETOTAL,'
       
-        '  sum(NOTAFISCALITEM.NFITN2VLRUNIT * NOTAFISCALITEM.NFITN3QUANT)' +
-        ' AS TOTAL'
+        'sum(NOTAFISCALITEM.NFITN2VLRUNIT * NOTAFISCALITEM.NFITN3QUANT) A' +
+        'S TOTAL'
       'from'
       
         '  (NOTAFISCALITEM inner join NOTAFISCAL NOTAFISCAL on NOTAFISCAL' +
@@ -70,7 +70,7 @@ inherited FormRelatorioVendasGrupo: TFormRelatorioVendasGrupo
         '   left outer join OPERACAOESTOQUE on NOTAFISCAL.OPESICOD = OPER' +
         'ACAOESTOQUE.OPESICOD'
       'where'
-      '  NOTAFISCAL.NOFICSTATUS = ''E'' and'
+      '  NOTAFISCAL.NOFICSTATUS = '#39'E'#39' and'
       '  OPERACAOESTOQUE.OPESCGERAFINANCEIRO = '#39'S'#39'  and'
       '  OPERACAOESTOQUE.OPESCENTRADASAIDA   = '#39'S'#39'  and'
       '  OPERACAOESTOQUE.OPESCORIGEMDESTINO  = '#39'C'#39'  and'
@@ -126,6 +126,7 @@ inherited FormRelatorioVendasGrupo: TFormRelatorioVendasGrupo
     DesignControls = 'Design-Time Window Controls'
     Version.Major = 0
     Version.Minor = 0
+    ReportName = 'C:\Easy2Solutions\Relatorios\Vendas Por Grupo.rpt'
     Margins.Left = -1
     Margins.Right = -1
     Margins.Top = -1

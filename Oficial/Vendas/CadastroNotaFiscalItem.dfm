@@ -1,6 +1,6 @@
 inherited FormCadastroNotaFiscalItem: TFormCadastroNotaFiscalItem
-  Left = -1431
-  Top = 182
+  Left = 290
+  Top = 66
   Caption = 'Itens da Nota Fiscal'
   ClientHeight = 580
   ClientWidth = 999
@@ -3554,6 +3554,10 @@ inherited FormCadastroNotaFiscalItem: TFormCadastroNotaFiscalItem
     object SQLProdutoPRODN3VLRVENDA: TFloatField
       FieldName = 'PRODN3VLRVENDA'
       Origin = 'DB.PRODUTO.PRODN3VLRVENDA'
+    end
+    object SQLProdutoPERC_REDUCAO_BASE_CALCULO: TFloatField
+      FieldName = 'PERC_REDUCAO_BASE_CALCULO'
+      Origin = 'DB.PRODUTO.PERC_REDUCAO_BASE_CALCULO'
     end
   end
 end
