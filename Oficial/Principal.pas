@@ -256,6 +256,9 @@ type
     Mesas1: TMenuItem;
     ConsultaSaldoporEmpresa1: TMenuItem;
     Sabores1: TMenuItem;
+    ributaoNFSe1: TMenuItem;
+    NotaServio1: TMenuItem;
+    Servio2: TMenuItem;
     procedure FATUMnCadastroClientesCadastroClick(Sender: TObject);
     procedure FATUMnCadastroClientesTipodeClienteClick(Sender: TObject);
     procedure FATUMnCadastroBancosClick(Sender: TObject);
@@ -505,6 +508,9 @@ type
     procedure MnCadastroMesasClick(Sender: TObject);
     procedure ConsultaSaldoporEmpresa1Click(Sender: TObject);
     procedure Sabores1Click(Sender: TObject);
+    procedure ributaoNFSe1Click(Sender: TObject);
+    procedure NotaServio1Click(Sender: TObject);
+    procedure Servio2Click(Sender: TObject);
   private
     procedure ApagarOrcamentos;
     procedure ApagarPreVendas;
@@ -592,7 +598,8 @@ uses
   CadastroChequesRecebidos, CadastroChequeEmitido,
   TelaBaixarChequesRecebidos, TelaBaixarChequesEmitidos,
   TelaGerarSaldoProduto, CadastroMesa, TelaConsultaSaldoPorEmpresa,
-  CadastroSabores;
+  CadastroSabores, CadastroTributacaoNFSE, CadastroNotaServico,
+  CadastroServico;
 
 
 
@@ -3084,6 +3091,33 @@ begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     CriaFormulario(TFormCadastroSabores, 'FormCadastroSabores', False, False, False, '')
+  else
+    SoundPlay('Acesso Negado.wav', Sender);
+end;
+
+procedure TFormPrincipal.ributaoNFSe1Click(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroTributacaoNFSE, 'FormCadastroTributacaoNFSE', False, False, False, '')
+  else
+    SoundPlay('Acesso Negado.wav', Sender);
+end;
+
+procedure TFormPrincipal.NotaServio1Click(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroNotaServico, 'FormCadastroNotaServico', False, False, False, '')
+  else
+    SoundPlay('Acesso Negado.wav', Sender);
+end;
+
+procedure TFormPrincipal.Servio2Click(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormCadastroServico, 'FormCadastroServico', False, False, False, '')
   else
     SoundPlay('Acesso Negado.wav', Sender);
 end;

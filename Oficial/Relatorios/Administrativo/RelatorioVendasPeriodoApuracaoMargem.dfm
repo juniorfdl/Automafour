@@ -1,9 +1,5 @@
 inherited FormRelatorioVendasPeriodoApuracaoMargem: TFormRelatorioVendasPeriodoApuracaoMargem
-<<<<<<< HEAD
   Left = 360
-=======
-  Left = 289
->>>>>>> origin/master
   Top = 121
   Caption = 'Relat'#243'rio de Vendas por Vendedor com Apura'#231#227'o de Margem'
   PixelsPerInch = 96

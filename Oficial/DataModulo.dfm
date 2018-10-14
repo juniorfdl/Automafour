@@ -1,7 +1,7 @@
 inherited DM: TDM
   OldCreateOrder = True
-  Left = 89
-  Top = 44
+  Left = 275
+  Top = 48
   Height = 600
   Width = 1200
   inherited DB: TDatabase
@@ -1905,7 +1905,7 @@ inherited DM: TDM
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 0
     PrinterSetup.mmPaperWidth = 0
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.PaperSize = 177
     DeviceType = 'Screen'
     EmailSettings.ReportFormat = 'PDF'
     OutlineSettings.CreateNode = True
@@ -5723,5 +5723,35 @@ inherited DM: TDM
     Configuracoes.WebServices.QuebradeLinha = '|'
     Left = 957
     Top = 49
+  end
+  object SQLConfigServico: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'select * from CONFIG_SERVICO')
+    Macros = <>
+    Left = 141
+    Top = 112
+    object SQLConfigServicoID: TIntegerField
+      FieldName = 'ID'
+      Origin = 'DB.CONFIG_SERVICO.ID'
+    end
+    object SQLConfigServicoEMPRICOD: TIntegerField
+      FieldName = 'EMPRICOD'
+      Origin = 'DB.CONFIG_SERVICO.EMPRICOD'
+    end
+    object SQLConfigServicoSERIA5COD: TStringField
+      FieldName = 'SERIA5COD'
+      Origin = 'DB.CONFIG_SERVICO.SERIA5COD'
+      FixedChar = True
+      Size = 5
+    end
+    object SQLConfigServicoID_TRIBUTACAO: TIntegerField
+      FieldName = 'ID_TRIBUTACAO'
+      Origin = 'DB.CONFIG_SERVICO.ID_TRIBUTACAO'
+    end
+    object SQLConfigServicoLOCAL_TRIBUTACAO: TIntegerField
+      FieldName = 'LOCAL_TRIBUTACAO'
+      Origin = 'DB.CONFIG_SERVICO.LOCAL_TRIBUTACAO'
+    end
   end
 end

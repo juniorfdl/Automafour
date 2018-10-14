@@ -11271,6 +11271,14 @@ inherited FormPrincipal: TFormPrincipal
           Caption = 'Sabores'
           OnClick = Sabores1Click
         end
+        object ributaoNFSe1: TMenuItem
+          Caption = 'Tributa'#231#227'o NFSe'
+          OnClick = ributaoNFSe1Click
+        end
+        object Servio2: TMenuItem
+          Caption = 'Servi'#231'o'
+          OnClick = Servio2Click
+        end
       end
       object arefas1: TMenuItem
         Caption = 'Tarefas'
@@ -11575,6 +11583,10 @@ inherited FormPrincipal: TFormPrincipal
       object ipodeServio1: TMenuItem
         Caption = 'Tipo de Servi'#231'o'
         OnClick = ipodeServio1Click
+      end
+      object NotaServio1: TMenuItem
+        Caption = 'Nota Servi'#231'o'
+        OnClick = NotaServio1Click
       end
     end
     object Integrador1: TMenuItem [7]

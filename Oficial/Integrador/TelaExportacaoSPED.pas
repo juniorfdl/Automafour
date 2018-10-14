@@ -939,10 +939,10 @@ Begin
     end;
 
   // Se nao estiver checked é para lancar os produtos no 0200
-  //if not ckC400.Checked then
-  //  begin
+  if not ckC400.Checked then
+    begin
       {Verificar Itens das NFCes do Periodo}
-      {zPesquisa.Close;
+      zPesquisa.Close;
       zPesquisa.SQL.Text :=
       'Select DISTINCT I.PRODICOD from CUPOMITEM I ' +
       'WHERE I.CUPOA13ID IN (Select N.CUPOA13ID FROM CUPOM N ' +
@@ -959,7 +959,7 @@ Begin
               zPesquisa.next;
             end;
         end;
-    end;}
+    end;
 
   if not ckC100.Checked then
     begin
@@ -3584,11 +3584,11 @@ Begin
         ProgressGeral.Position := 60;
 
         // REGISTRO C170: ITENS DO DOCUMENTO (CÓDIGO 01, 1B, 04, 55 e 65).
-       { if StatusNF = 'A' then
+        if StatusNF = 'A' then
           begin
             EditTabela.Text := 'Criando - BLOCO C170 - ITENS DO DOCUMENTO'; EditTabela.Update;
             if Not RegistroC170 Then Begin Result := False; Exit; End;
-          end;}
+          end;
 
         // REGISTRO C190: REGISTRO ANALÍTICO DO DOCUMENTO (CÓDIGO 01, 1B, 04E 55 E 65).
         EditTabela.Text := 'Criando - BLOCO C190 - REGISTRO ANALITICO'; EditTabela.Update;

@@ -454,7 +454,10 @@ uses
   uDlgBuscarProdutosBRT in 'Cadastros\uDlgBuscarProdutosBRT.pas' {fDlgBuscarProdutosBRT},
   uDlgComparaNotaPedido in 'Compras\uDlgComparaNotaPedido.pas' {fDlgComparaNotaPedido},
   CadastroSabores in 'Cadastros\CadastroSabores.pas' {FormCadastroSabores},
-  CadastroProdutoSabores in 'Cadastros\CadastroProdutoSabores.pas' {FormCadastroProdutoSabores};
+  CadastroProdutoSabores in 'Cadastros\CadastroProdutoSabores.pas' {FormCadastroProdutoSabores},
+  CadastroTributacaoNFSE in 'Cadastros\CadastroTributacaoNFSE.pas' {FormCadastroTributacaoNFSE},
+  CadastroNotaServico in 'Vendas\CadastroNotaServico.pas' {FormCadastroNotaServico},
+  CadastroServico in 'Cadastros\CadastroServico.pas' {FormCadastroServico};
 
 {$R *.res}
 

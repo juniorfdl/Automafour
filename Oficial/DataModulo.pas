@@ -800,6 +800,12 @@ type
     ACBrNFeCad: TACBrNFe;
     SQLConfigGeralDATA_INI_SEM_NET: TDateTimeField;
     SQLEmpresaVERSAO: TStringField;
+    SQLConfigServico: TRxQuery;
+    SQLConfigServicoID: TIntegerField;
+    SQLConfigServicoEMPRICOD: TIntegerField;
+    SQLConfigServicoSERIA5COD: TStringField;
+    SQLConfigServicoID_TRIBUTACAO: TIntegerField;
+    SQLConfigServicoLOCAL_TRIBUTACAO: TIntegerField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DBAfterConnect(Sender: TObject);
   private
@@ -925,6 +931,8 @@ begin
   SQLConfigGeral.Open;
   SQLConfigVenda.Close;
   SQLConfigVenda.Open;
+  SQLConfigServico.Close;
+  SQLConfigServico.Open;
   SQLUsuario.Close;
   SQLUsuario.Open;
   SQLTerminalAtivo.Close;

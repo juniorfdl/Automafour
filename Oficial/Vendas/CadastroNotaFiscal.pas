@@ -5758,6 +5758,8 @@ begin
 
   Point := SQLTemplate.GetBookmark;
 
+  SQLEmpresa.Locate('EMPRICOD',SQLTemplateEMPRICOD.AsInteger,[]);
+
   Inicia_NFe;
 
   idLote := '1';
