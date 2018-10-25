@@ -1,6 +1,6 @@
 inherited FormCadastroProduto: TFormCadastroProduto
-  Left = 12
-  Top = 0
+  Left = 172
+  Top = 4
   Caption = 'Cadastro de Produtos'
   ClientHeight = 682
   ClientWidth = 1159
@@ -922,6 +922,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
             Top = 52
             Width = 1027
             Height = 556
+            ActivePage = TabSheetSaldos
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Top = 83
@@ -7887,6 +7888,12 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     end
                     item
                       Expanded = False
+                      FieldName = 'QTDE_CONSIGNADO'
+                      Title.Caption = 'Qtde Consignado'
+                      Visible = True
+                    end
+                    item
+                      Expanded = False
                       FieldName = 'PSLDN3QTDMIN'
                       Width = 69
                       Visible = True
@@ -10981,9 +10988,10 @@ inherited FormCadastroProduto: TFormCadastroProduto
     Top = 29
     ParamData = <
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'PRODICOD'
         ParamType = ptUnknown
+        Size = 4
       end>
     object SQLProdutoSaldoEMPRICOD: TIntegerField
       DisplayLabel = 'C'#243'd.Empresa'
@@ -11019,6 +11027,11 @@ inherited FormCadastroProduto: TFormCadastroProduto
       KeyFields = 'EMPRICOD'
       Size = 60
       Lookup = True
+    end
+    object SQLProdutoSaldoQTDE_CONSIGNADO: TFloatField
+      FieldName = 'QTDE_CONSIGNADO'
+      Origin = 'DB.PRODUTOSALDO.QTDE_CONSIGNADO'
+      DisplayFormat = '##0.00'
     end
   end
   object DSSQLProdutoSaldo: TDataSource

@@ -88,6 +88,7 @@ inherited FormCadastroServico: TFormCadastroServico
     end
   end
   inherited SQLTemplate: TRxQuery
+    Tag = 1
     SQL.Strings = (
       'Select * From SERVICO Where (%MFiltro)')
     object SQLTemplateID_SERVICO: TIntegerField

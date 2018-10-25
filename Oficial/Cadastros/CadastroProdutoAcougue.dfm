@@ -261,6 +261,7 @@ inherited FormCadastroProdutoAcougue: TFormCadastroProdutoAcougue
     end
   end
   inherited SQLTemplate: TRxQuery
+    Tag = 1
     OnCalcFields = SQLTemplateCalcFields
     SQL.Strings = (
       'Select * From PRODUTO_ACOUGUE'

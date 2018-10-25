@@ -2058,18 +2058,18 @@ begin
                 end;
 
           // Verifica Nro Serie
-          if ((SQLProdutoPRODCTEMNROSERIE.AsString = 'S') and (not ImportandoPreVenda)) or
-             ((SQLProdutoPRODCTEMNROSERIE.AsString = 'S') and (ImportandoPreVenda) and (NroSerieProduto = '')) then
-            begin
-              Application.CreateForm(TFormTelaInformaNumeroSerieProduto,FormTelaInformaNumeroSerieProduto);
-              CodigoProduto := SQLProdutoPRODICOD.AsString;
-              FormTelaInformaNumeroSerieProduto.ShowModal;
-              if FormTelaInformaNumeroSerieProduto.ModalResult = MrOK then
-                begin
-                  NroSerieProduto := FormTelaInformaNumeroSerieProduto.EditNroSerie.Text;
-                end;
-              FormTelaInformaNumeroSerieProduto.Destroy;
-            end;
+//          if ((SQLProdutoPRODCTEMNROSERIE.AsString = 'S') and (not ImportandoPreVenda)) or
+//             ((SQLProdutoPRODCTEMNROSERIE.AsString = 'S') and (ImportandoPreVenda) and (NroSerieProduto = '')) then
+//            begin
+//              Application.CreateForm(TFormTelaInformaNumeroSerieProduto,FormTelaInformaNumeroSerieProduto);
+//              CodigoProduto := SQLProdutoPRODICOD.AsString;
+//              FormTelaInformaNumeroSerieProduto.ShowModal;
+//              if FormTelaInformaNumeroSerieProduto.ModalResult = MrOK then
+//                begin
+//                  NroSerieProduto := FormTelaInformaNumeroSerieProduto.EditNroSerie.Text;
+//                end;
+//              FormTelaInformaNumeroSerieProduto.Destroy;
+//            end;
 
           // Testa se o produto pode ser vendido Fracionado
           if Frac(QuantItem)>0 then

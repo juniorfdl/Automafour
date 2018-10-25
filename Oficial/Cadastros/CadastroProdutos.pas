@@ -1003,6 +1003,7 @@ type
     Label36: TLabel;
     DBEdit7: TDBEdit;
     SQLTemplatePERC_REDUCAO_BASE_CALCULO: TFloatField;
+    SQLProdutoSaldoQTDE_CONSIGNADO: TFloatField;
     procedure FormCreate(Sender: TObject);
     procedure RxComboComissaoChange(Sender: TObject);
     procedure AcessaMarcaClick(Sender: TObject);

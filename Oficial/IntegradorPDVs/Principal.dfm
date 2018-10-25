@@ -2700,7 +2700,7 @@ object FormPrincipal: TFormPrincipal
     end
   end
   object Timer: TTimer
-    Interval = 10000
+    Interval = 60000
     OnTimer = TimerTimer
     Left = 57
     Top = 1

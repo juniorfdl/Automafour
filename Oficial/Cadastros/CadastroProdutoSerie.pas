@@ -50,7 +50,7 @@ var
 
 implementation
 
-uses DataModulo;
+uses DataModulo, UnitLibrary;
 
 {$R *.dfm}
 
@@ -66,6 +66,7 @@ begin
   inherited;
   SQLTemplatePRODICOD.AsInteger   := DSMasterTemplate.DataSet.FieldByName('PRODICOD').AsInteger;
   SQLTemplatePRSECSTATUS.AsString := 'D';
+  SQLTemplateEMPRICOD.AsInteger   := StrToInt(EmpresaPadrao);
 end;
 
 procedure TFormCadastroProdutoSerie.SQLTemplateBeforePost(
