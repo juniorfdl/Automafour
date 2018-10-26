@@ -198,6 +198,9 @@ procedure GravaMovimentoEstoque(SqlProd,
   NumDocOrig,
   Lote: string);
 
+function TiraCaracteres(SubString: string; Caracteres: string = '.,/\-'): string;
+function iif(Condicao: Boolean; Verdadeiro, Falso: Variant): Variant;
+
 function CalculaJuroMultaDesc(VlrVenc, TxJuroMultaDescCobr: double; DVenc, DPag, DVencOrig: TDateTime; Toler: integer; Tipo, Cupom, Parc: string): Double;
 function SQLRecCount(Tabela, ClausulaWhere: string): integer;
 function CalculaLimiteCredito(Cliente: string; ValorCompra: Double; SQLParcelas, SQLCliente: TQuery): Double;
@@ -2924,6 +2927,24 @@ begin
   else
     ValidaCGC := false;
 end;
+
+function TiraCaracteres(SubString: string; Caracteres: string = '.,/\-'): string;
+var
+  i: Integer;
+begin
+  for i := 1 to Length(Caracteres) do
+    SubString := StringReplace(SubString, Caracteres[i], '', [rfReplaceAll]);
+  Result := SubString;
+end;
+
+function iif(Condicao: Boolean; Verdadeiro, Falso: Variant): Variant;
+begin
+  if Condicao then
+    Result := Verdadeiro
+  else
+    Result := Falso;
+end;
+
 
 function ValidaCPF(CPF: string): boolean;
 var

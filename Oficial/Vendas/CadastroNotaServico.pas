@@ -7,7 +7,7 @@ uses
   Dialogs, CadastroTEMPLATE, AdvOfficeStatusBar, AdvOfficeStatusBarStylers,
   DBTables, DBActns, ActnList, DB, RxQuery, Menus, StdCtrls, Mask, AdvPanel,
   Grids, DBGrids, ComCtrls, RXCtrls, Buttons, ExtCtrls, RxDBComb, ToolEdit,
-  RXDBCtrl, RxLookup, DBCtrls, VarSys, FormResources;
+  RXDBCtrl, RxLookup, DBCtrls, VarSys, FormResources, AdvGlowButton;
 
 type
   TFormCadastroNotaServico = class(TFormCadastroTEMPLATE)
@@ -161,6 +161,10 @@ type
     Label31: TLabel;
     SQLTemplateEMPRICOD: TIntegerField;
     DBMemo2: TDBMemo;
+    AdvGlowButton1: TAdvGlowButton;
+    AdvGlowButton2: TAdvGlowButton;
+    AdvGlowButton3: TAdvGlowButton;
+    btnTransmitirNFSe: TAdvGlowButton;
     procedure FormCreate(Sender: TObject);
     procedure SQLTemplateCalcFields(DataSet: TDataSet);
     procedure btnConsultaClienteClick(Sender: TObject);
@@ -182,6 +186,10 @@ type
     procedure SQLTemplateISS_RETIDOChange(Sender: TField);
     procedure SQLTemplateUF_PRESTACAOChange(Sender: TField);
     procedure SQLTemplateAfterInsert(DataSet: TDataSet);
+    procedure btnTransmitirNFSeClick(Sender: TObject);
+    procedure AdvGlowButton1Click(Sender: TObject);
+    procedure AdvGlowButton2Click(Sender: TObject);
+    procedure AdvGlowButton3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -194,7 +202,7 @@ var
 implementation
 
 uses
-  DataModulo, CadastroCliente, CadastroServico, UnitLibrary;
+  DataModulo, CadastroCliente, CadastroServico, UnitLibrary, udmNFSe;
 
 {$R *.dfm}
 
@@ -343,7 +351,7 @@ procedure TFormCadastroNotaServico.SQLTemplateID_TRIBUTACAOChange(
   Sender: TField);
 begin
   inherited;
-  SQLTemplate.FieldByName('ALIQUOTA_ISS').AsFloat := StrToFloat(SQLLocate('TRIBUTACAO_NFSE','ID','ALIQUOTA', IntToStr(SQLTemplateID_TRIBUTACAO.AsInteger)));
+  SQLTemplate.FieldByName('ALIQUOTA_ISS').AsFloat := StrToFloatDef(SQLLocate('TRIBUTACAO_NFSE','ID','ALIQUOTA', IntToStr(SQLTemplateID_TRIBUTACAO.AsInteger)),0);
 end;
 
 procedure TFormCadastroNotaServico.prc_Calcular_Valor_Total;
@@ -473,10 +481,35 @@ var
  x : String;
 begin
   inherited;
-  DataSet.FindField('EMPRICOD').Value  := StrToInt(EmpresaPadrao);
-  DataSet.FindField('SERIE').Value := SQLLocate('CONFIG_SERVICO', 'EMPRICOD', 'SERIA5COD', EmpresaPadrao);
-  DataSet.FindField('ID_TRIBUTACAO').Value := SQLLocate('CONFIG_SERVICO', 'EMPRICOD', 'ID_TRIBUTACAO', EmpresaPadrao);
-  DataSet.FindField('LOCAL_TRIBUTACAO').Value := SQLLocate('CONFIG_SERVICO', 'EMPRICOD', 'LOCAL_TRIBUTACAO', EmpresaPadrao);
+
+  SQLTemplateEMPRICOD.AsInteger  := StrToInt(EmpresaPadrao);
+  SQLTemplateSERIE.Value := SQLLocate('CONFIG_SERVICO', 'EMPRICOD', 'SERIA5COD', EmpresaPadrao);
+  SQLTemplateID_TRIBUTACAO.Value := strtointdef(SQLLocate('CONFIG_SERVICO', 'EMPRICOD', 'ID_TRIBUTACAO', EmpresaPadrao),0);
+  SQLTemplateLOCAL_TRIBUTACAO.Value := strtointdef(SQLLocate('CONFIG_SERVICO', 'EMPRICOD', 'LOCAL_TRIBUTACAO', EmpresaPadrao),0);
+end;
+
+procedure TFormCadastroNotaServico.btnTransmitirNFSeClick(Sender: TObject);
+begin
+  inherited;
+  TdmNFSe.Gerar(DSTemplate.DataSet.fieldbyname('ID').AsInteger);
+end;
+
+procedure TFormCadastroNotaServico.AdvGlowButton1Click(Sender: TObject);
+begin
+  inherited;
+  TdmNFSe.GerarOffline(DSTemplate.DataSet.fieldbyname('ID').AsInteger);
+end;
+
+procedure TFormCadastroNotaServico.AdvGlowButton2Click(Sender: TObject);
+begin
+  inherited;
+  TdmNFSe.Consultar(DSTemplate.DataSet.fieldbyname('ID').AsInteger);
+end;
+
+procedure TFormCadastroNotaServico.AdvGlowButton3Click(Sender: TObject);
+begin
+  inherited;
+   TdmNFSe.Cancelar(DSTemplate.DataSet.fieldbyname('ID').AsInteger);
 end;
 
 end.

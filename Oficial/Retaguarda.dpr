@@ -457,7 +457,8 @@ uses
   CadastroProdutoSabores in 'Cadastros\CadastroProdutoSabores.pas' {FormCadastroProdutoSabores},
   CadastroTributacaoNFSE in 'Cadastros\CadastroTributacaoNFSE.pas' {FormCadastroTributacaoNFSE},
   CadastroNotaServico in 'Vendas\CadastroNotaServico.pas' {FormCadastroNotaServico},
-  CadastroServico in 'Cadastros\CadastroServico.pas' {FormCadastroServico};
+  CadastroServico in 'Cadastros\CadastroServico.pas' {FormCadastroServico},
+  udmNFSe in 'Faturamento\udmNFSe.pas' {dmNFSe: TDataModule};
 
 {$R *.res}
 

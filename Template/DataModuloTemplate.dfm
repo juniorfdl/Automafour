@@ -7,6 +7,7 @@ object DMTemplate: TDMTemplate
   Height = 324
   Width = 602
   object DB: TDatabase
+    Connected = True
     DatabaseName = 'DB'
     LoginPrompt = False
     Params.Strings = (
