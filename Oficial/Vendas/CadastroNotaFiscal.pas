@@ -2025,6 +2025,8 @@ end;
 procedure TFormCadastroNotaFiscal.SQLTemplateBeforePost(DataSet: TDataSet);
 var
   Erro, FaltaNumerario: Boolean;
+//  NumeroSerie : String;
+//  Tamanho : Integer;
 begin
   if (length(SQLTemplateCFOPA5COD.Value) <> 4) then
   begin
@@ -2143,6 +2145,28 @@ begin
     PedidoNovo := SQLTemplate.FindField('PDVDA13ID').asString;
   end;
   inherited;
+
+//  Tamanho := Pos('Nro Serie:',SQLTemplateNOFIA255OBS.AsString);
+//  if Tamanho > 0 then
+//    SQLTemplateNOFIA255OBS.AsString := Copy(SQLTemplateNOFIA255OBS.AsString,1,Tamanho-2);
+//  NumeroSerie := '';
+//  dm.SqlConsulta.SQL.Clear;
+//  dm.SqlConsulta.SQL.Add('Select PRSEA60NROSERIE from produtoserie where NOFIA13ID = ''' + SQLTemplateNOFIA13ID.Value + '''');
+//  dm.SqlConsulta.Prepare;
+//  dm.SqlConsulta.Open;
+//  while not DM.SqlConsulta.Eof do
+//  begin
+//     if NumeroSerie = '' then
+//       NumeroSerie := ' ' + dm.SqlConsulta.fieldbyname('PRSEA60NROSERIE').Value
+//     else
+//       NumeroSerie := NumeroSerie + ', ' + dm.SqlConsulta.fieldbyname('PRSEA60NROSERIE').Value;
+//     dm.SqlConsulta.Next;
+//  end;
+//  if NumeroSerie <> '' then
+//    SQLTemplateNOFIA255OBS.AsString := SQLTemplateNOFIA255OBS.AsString + ' Nro Serie: ' + NumeroSerie
+//  else
+//    SQLTemplateNOFIA255OBS.AsString := SQLTemplateNOFIA255OBS.AsString + NumeroSerie;
+
 
   VarPDVDA13ID := SQLTemplate.FieldByName('PDVDA13ID').AsString;
   VarSerie := SQLTemplate.FieldByName('SERIA5COD').AsString;
@@ -6532,7 +6556,9 @@ begin
       if FileExists('VFNota.txt') then // exibe o valor final (total custo + subst. Trib.) ao lado do nome do produto.
         Descr_Prod := ConverteAcentos(dm.sqlConsulta.fieldbyname('PRODA60DESCR').AsString) + CalculoSubstituicaoTributaria
       else
-        Descr_Prod := ConverteAcentos(Trim(dm.sqlConsulta.fieldbyname('PRODA60DESCR').AsString) + ' ' + Trim(SQLNotaFiscalItemNFITA254OBS.AsString));
+        Descr_Prod := ConverteAcentos(Trim(dm.sqlConsulta.fieldbyname('PRODA60DESCR').AsString));
+        //Alterei para não pegar o complemento pq busca as informações das séries
+//        Descr_Prod := ConverteAcentos(Trim(dm.sqlConsulta.fieldbyname('PRODA60DESCR').AsString) + ' ' + Trim(SQLNotaFiscalItemNFITA254OBS.AsString));
 
       if FileExists('NFEBarras.txt') then
       begin

@@ -10,7 +10,8 @@ uses
   EDBNum, OleCtrls, RxLookup, UCrpe32, Placemnt, ExtDlgs, ppDB, ppDBPipe,
   ppComm, ppRelatv, ppProd, ppClass, ppReport, ppCtrls, ppPrnabl, ppBands,
   ppCache, UnSoundPlay, ppStrtch, ppRichTx, Serial, AdvOfficeStatusBar, ppViewr,
-  AdvOfficeStatusBarStylers, AdvPanel, ppDBBDE, XMLDoc, XMLIntf;
+  AdvOfficeStatusBarStylers, AdvPanel, ppDBBDE, XMLDoc, XMLIntf, ACBrBase,
+  ACBrSocket, ACBrCEP;
 
 type
   TProtectDBGrid = class(TDBGrid);
@@ -968,6 +969,8 @@ type
     SQLTemplateIM: TStringField;
     Label79: TLabel;
     DBEdit11: TDBEdit;
+    ACBrCEP1: TACBrCEP;
+    btnBuscaCep: TBitBtn;
     procedure FormCreate(Sender: TObject);
     procedure AcessaVendedorClick(Sender: TObject);
     procedure SQLTemplateNewRecord(DataSet: TDataSet);
@@ -1077,6 +1080,8 @@ type
     procedure ListagemPersonalizada1Click(Sender: TObject);
     procedure ConsultaClienteSefaz1Click(Sender: TObject);
     procedure RxSpeedButton1Click(Sender: TObject);
+    procedure ACBrCEP1BuscaEfetuada(Sender: TObject);
+    procedure btnBuscaCepClick(Sender: TObject);
   private
     { Private declarations }
     VlrSaldo,
@@ -3464,7 +3469,8 @@ end;
 procedure TFormCadastroCliente.DBEdit20Exit(Sender: TObject);
 begin
   inherited;
-  BuscarCep;
+//  BuscarCep;
+  btnBuscaCep.Click;
 end;
 
 procedure TFormCadastroCliente.DBGridDadosCompraDblClick(Sender: TObject);
@@ -3849,6 +3855,29 @@ begin
     end;
     SQLCidades.Close;
   end;
+end;
+
+procedure TFormCadastroCliente.ACBrCEP1BuscaEfetuada(Sender: TObject);
+var
+  i : integer;
+begin
+  inherited;
+  for i := 0 to ACBrCEP1.Enderecos.Count - 1 do
+  begin
+    SQLTemplateCLIEA60ENDRES.AsString := ACBrCEP1.Enderecos[i].Logradouro;
+    SQLTemplateCLIEA60BAIRES.AsString := ACBrCEP1.Enderecos[i].Bairro;
+    SQLTemplateCLIEA60CIDRES.AsString := ACBrCEP1.Enderecos[i].Municipio;
+    SQLTemplateCLIEA2UFRES.AsString := ACBrCEP1.Enderecos[i].UF;
+    SQLTemplateCLIEIMUNICODFED.AsInteger := StrToInt(ACBrCEP1.Enderecos[i].IBGE_Municipio);
+    SQLTemplateCLIEA8CEPRES.AsString := StringReplace(ACBrCEP1.Enderecos[i].CEP,'-','',[rfReplaceAll]);
+  end;
+
+end;
+
+procedure TFormCadastroCliente.btnBuscaCepClick(Sender: TObject);
+begin
+  inherited;
+  ACBrCEP1.BuscarPorCEP(DBEdit20.Text);
 end;
 
 end.

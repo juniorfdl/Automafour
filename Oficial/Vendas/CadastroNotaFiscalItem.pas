@@ -880,6 +880,9 @@ begin
 end;
 
 procedure TFormCadastroNotaFiscalItem.SQLTemplateBeforePost(DataSet: TDataSet);
+var
+  NumeroSerie: string;
+  I : integer;
 begin
   if not DM.ImportandoPedidoVenda then
   begin
@@ -1005,6 +1008,53 @@ begin
     SQLTemplateNOFIN3VLRCOFINS.AsFloat := 0;
   end;
   dm.sqlconsulta.close;
+
+  SQLTemplateControlaSerieLookup.AsVariant := DM.SQLlocate('produto', 'prodicod', 'PRODCTEMNROSERIE', SQLTemplatePRODICOD.AsString);
+  if SQLTemplateControlaSerieLookup.AsVariant <> Null then
+    if SQLTemplateControlaSerieLookup.AsString = 'S' then
+    begin
+        // Informa Numero de Serie
+      if DSMasterTemplate.DataSet.FieldByName('OrigemDestinoLookUp').AsString = 'C' then
+      begin
+        DataSet.FieldByName('NFITA254OBS').AsString := '';
+        NumeroSerie := '';
+        CodigoProduto := SQLTemplatePRODICOD.AsString;
+        Application.CreateForm(TFormTelaInformaNumeroSerieProduto, FormTelaInformaNumeroSerieProduto);
+        FormTelaInformaNumeroSerieProduto.ShowModal;
+        for I := 1 to SQLTemplateNFITN3QUANT.AsInteger do
+        begin
+          if FormTelaInformaNumeroSerieProduto.ModalResult = MrOK then
+          begin
+            FormTelaInformaNumeroSerieProduto.RXSerie.First;
+            while not FormTelaInformaNumeroSerieProduto.RXSerie.Eof do
+            begin
+              if FormTelaInformaNumeroSerieProduto.RXSerieItem.AsInteger = I then
+              begin
+                NumeroSerie := FormTelaInformaNumeroSerieProduto.RXSerieNumeroSerie.Text;
+                if NumeroSerie <> '' then
+                  GravaSaidaNroSerieProduto(NumeroSerie,
+                                            SQLTemplatePRODICOD.AsString,
+                                            'I',
+                                            EmpresaPadrao,
+                                            DSMasterTemplate.DataSet.FieldByName('CLIEA13ID').AsString, '', '',
+                                            DSMasterTemplate.DataSet.FieldByName('NOFIA13ID').AsString, '');
+               if DataSet.FieldByName('NFITA254OBS').AsString = '' then
+                 DataSet.FieldByName('NFITA254OBS').AsString := ' Nro Serie: ' + NumeroSerie
+               else
+                 DataSet.FieldByName('NFITA254OBS').AsString := DataSet.FieldByName('NFITA254OBS').AsString + ', ' + NumeroSerie;
+              end;
+              FormTelaInformaNumeroSerieProduto.RXSerie.Next;
+            end;
+          end;
+        end;
+        FormTelaInformaNumeroSerieProduto.Destroy;
+      end;
+
+    end;
+
+
+
+
 end;
 
 procedure TFormCadastroNotaFiscalItem.SQLTemplateAfterPost(DataSet: TDataSet);
@@ -1054,42 +1104,42 @@ begin
   DM.InserindoItemNV := False;
   Inc(NumItem);
 
-  if SQLTemplateControlaSerieLookup.AsVariant <> Null then
-    if SQLTemplateControlaSerieLookup.AsString = 'S' then
-    begin
-        // Informa Numero de Serie
-      if DSMasterTemplate.DataSet.FieldByName('OrigemDestinoLookUp').AsString = 'C' then
-      begin
-        NumeroSerie := '';
-        CodigoProduto := SQLTemplatePRODICOD.AsString;
-        Application.CreateForm(TFormTelaInformaNumeroSerieProduto, FormTelaInformaNumeroSerieProduto);
-        FormTelaInformaNumeroSerieProduto.ShowModal;
-        for I := 1 to SQLTemplateNFITN3QUANT.AsInteger do
-        begin
-          if FormTelaInformaNumeroSerieProduto.ModalResult = MrOK then
-          begin
-            FormTelaInformaNumeroSerieProduto.RXSerie.First;
-            while not FormTelaInformaNumeroSerieProduto.RXSerie.Eof do
-            begin
-              if FormTelaInformaNumeroSerieProduto.RXSerieItem.AsInteger = I then
-              begin
-                NumeroSerie := FormTelaInformaNumeroSerieProduto.RXSerieNumeroSerie.Text;
-                if NumeroSerie <> '' then
-                  GravaSaidaNroSerieProduto(NumeroSerie,
-                                            SQLTemplatePRODICOD.AsString,
-                                            'I',
-                                            EmpresaPadrao,
-                                            DSMasterTemplate.DataSet.FieldByName('CLIEA13ID').AsString, '', '',
-                                            DSMasterTemplate.DataSet.FieldByName('NOFIA13ID').AsString, '');
-              end;
-              FormTelaInformaNumeroSerieProduto.RXSerie.Next;
-            end;
-          end;
-        end;
-        FormTelaInformaNumeroSerieProduto.Destroy;
-      end;
-
-    end;
+//  if SQLTemplateControlaSerieLookup.AsVariant <> Null then
+//    if SQLTemplateControlaSerieLookup.AsString = 'S' then
+//    begin
+//        // Informa Numero de Serie
+//      if DSMasterTemplate.DataSet.FieldByName('OrigemDestinoLookUp').AsString = 'C' then
+//      begin
+//        NumeroSerie := '';
+//        CodigoProduto := SQLTemplatePRODICOD.AsString;
+//        Application.CreateForm(TFormTelaInformaNumeroSerieProduto, FormTelaInformaNumeroSerieProduto);
+//        FormTelaInformaNumeroSerieProduto.ShowModal;
+//        for I := 1 to SQLTemplateNFITN3QUANT.AsInteger do
+//        begin
+//          if FormTelaInformaNumeroSerieProduto.ModalResult = MrOK then
+//          begin
+//            FormTelaInformaNumeroSerieProduto.RXSerie.First;
+//            while not FormTelaInformaNumeroSerieProduto.RXSerie.Eof do
+//            begin
+//              if FormTelaInformaNumeroSerieProduto.RXSerieItem.AsInteger = I then
+//              begin
+//                NumeroSerie := FormTelaInformaNumeroSerieProduto.RXSerieNumeroSerie.Text;
+//                if NumeroSerie <> '' then
+//                  GravaSaidaNroSerieProduto(NumeroSerie,
+//                                            SQLTemplatePRODICOD.AsString,
+//                                            'I',
+//                                            EmpresaPadrao,
+//                                            DSMasterTemplate.DataSet.FieldByName('CLIEA13ID').AsString, '', '',
+//                                            DSMasterTemplate.DataSet.FieldByName('NOFIA13ID').AsString, '');
+//              end;
+//              FormTelaInformaNumeroSerieProduto.RXSerie.Next;
+//            end;
+//          end;
+//        end;
+//        FormTelaInformaNumeroSerieProduto.Destroy;
+//      end;
+//
+//    end;
 end;
 
 procedure TFormCadastroNotaFiscalItem.SQLTemplateBeforeEdit(DataSet: TDataSet);

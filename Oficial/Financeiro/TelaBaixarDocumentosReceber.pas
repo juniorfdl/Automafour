@@ -1629,8 +1629,8 @@ begin
 
   if NomeBanco = 'Banrisul' then
     begin
-      PathBanco := 'Cobranca\Banrisul\Retorno\';
-      if FileExists(PathBanco+'Retorno.ret') then NomeArquivo := 'Retorno.ret';
+      PathBanco := 'C:\Easy2Solutions\Gestao\Cobranca\Banrisul\Retorno\';
+      if FileExists(NomeArquivo) then NomeArquivo := ExtractFileName(NomeArquivo);
     end;
   if NomeBanco = 'Sicredi' then
     begin
@@ -1680,10 +1680,35 @@ begin
         end;
       end;
 
+      if Identificador = '041' then
+      begin
+        NossoNro := Copy(Info, 63, 10);
+
+        if NossoNro = '          ' then NossoNro := '';
+        if NossoNro = '0000000000' then NossoNro := '';
+
+        if IsNumeric(NossoNro,'INTEGER') then
+        begin
+          Ocorrencia := Copy(Info, 109, 2);
+          ListaNossoNumero.Add(NossoNro);
+          ListaOcorrencias.Add(Ocorrencia);
+          //Valor Efetivamente Pago
+          valor :=  Copy(Info,254,13);
+          ListaValorDocumento.Add(Valor);
+          // ValorJuros
+          valor :=  Copy(Info,267,13);
+          ListaValorJuros.Add(Valor);
+          // Valor Multa
+          Valor := Copy(Info,280,13);
+          ListaValorMulta.Add(Valor);
+        end;
+      end;
+
+
       NroLinhas := NroLinhas + 1;
     end;
 
-    if Identificador = '748' then
+    if (Identificador = '748') or (Identificador = '041') then
       NroLinhas := NroLinhas - 1;
 
     FormMovRetornoSicredi                   := TFormTelaMovimentoRetornoSicredi.Create(Self);
@@ -1848,6 +1873,10 @@ procedure TFormTelaBaixarDocumentosReceber.mnBanrisulClick(
   Sender: TObject);
 begin
   inherited;
+  Anexo := '';
+  OpenDialog.InitialDir := 'C:\Easy2Solutions\Gestao\Cobranca\Banrisul\Retorno';
+  OpenDialog.Execute;
+  Anexo := OpenDialog.FileName;
   ImportarRetornoBanco('Banrisul', Anexo);
 end;
 
