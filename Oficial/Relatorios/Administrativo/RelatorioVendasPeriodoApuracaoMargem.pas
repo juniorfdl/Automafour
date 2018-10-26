@@ -64,6 +64,7 @@ type
     SQLNotasFiscaisCOMISSAO: TFloatField;
     TblTemporariaQTDE: TBCDField;
     SQLNotasFiscaisQTDE: TFloatField;
+    SQLVendasQTDE: TFloatField;
     procedure ExecutarBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private

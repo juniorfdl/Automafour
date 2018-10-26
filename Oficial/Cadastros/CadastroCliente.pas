@@ -965,6 +965,9 @@ type
     RadioContribuinteJ: TDBRadioGroup;
     RadioContribuinteF: TDBRadioGroup;
     SQLTemplateTIPO_CONTRIBUINTE: TStringField;
+    SQLTemplateIM: TStringField;
+    Label79: TLabel;
+    DBEdit11: TDBEdit;
     procedure FormCreate(Sender: TObject);
     procedure AcessaVendedorClick(Sender: TObject);
     procedure SQLTemplateNewRecord(DataSet: TDataSet);
@@ -3410,22 +3413,26 @@ end;
 procedure TFormCadastroCliente.DBComboBox1Enter(Sender: TObject);
 begin
   inherited;
-  SQLCidades.SQL.Text := 'Select Distinct  CLIEA60CIDRES from CLIENTE order by CLIEA60CIDRES';
-  SQLCidades.Prepare;
-  SQLCidades.Open;
-  DBComboBox1.Items.Clear;
-  while not SQLCidades.Eof do
+//  SQLCidades.SQL.Text := 'Select Distinct  CLIEA60CIDRES from CLIENTE order by CLIEA60CIDRES';
+  if SQLTemplateCLIEA2UFRES.AsString <> '' then
   begin
-    DBComboBox1.Items.Add(SQLCidades.Fieldbyname('CLIEA60CIDRES').AsString);
-    SQLCidades.Next;
+    SQLCidades.SQL.Text := 'select * from cidade where sigla = ''' + SQLTemplateCLIEA2UFRES.AsString + '''order by NOME';
+    SQLCidades.Prepare;
+    SQLCidades.Open;
+    DBComboBox1.Items.Clear;
+    while not SQLCidades.Eof do
+    begin
+      DBComboBox1.Items.Add(SQLCidades.Fieldbyname('NOME').AsString);
+      SQLCidades.Next;
+    end;
+    SQLCidades.Close;
   end;
-  SQLCidades.Close;
 end;
 
 procedure TFormCadastroCliente.DBEdit49Enter(Sender: TObject);
 begin
   inherited;
-  if (DBComboBox1.Text <> '') and (SQLTemplateCLIEIMUNICODFED.asstring = '') then
+{  if (DBComboBox1.Text <> '') and (SQLTemplateCLIEIMUNICODFED.asstring = '') then
   begin
     SQLCidades.SQL.Text := 'Select DISTINCT CLIEIMUNICODFED from CLIENTE where (CLIEA60CIDRES = :xCidade) AND (CLIEIMUNICODFED IS NOT NULL)';
     SQLCidades.Prepare;
@@ -3434,7 +3441,14 @@ begin
     if SQLCidades.FieldByName('CLIEIMUNICODFED').AsString <> '' then
       SQLTemplateCLIEIMUNICODFED.asstring := SQLCidades.FieldByName('CLIEIMUNICODFED').AsString;
     SQLCidades.Close;
-  end;
+  end;}
+  SQLCidades.Close;
+  SQLCidades.SQL.Clear;
+  SQLCidades.SQL.Text := 'select id from cidade where nome = ''' + SQLTemplateCLIEA60CIDRES.AsString + ''' and SIGLA = ''' + SQLTemplateCLIEA2UFRES.AsString + '''';
+  SQLCidades.Open;
+  if not (SQLCidades.IsEmpty) then
+    SQLTemplateCLIEIMUNICODFED.asstring := SQLCidades.FieldByName('ID').AsString;
+  SQLCidades.Close;
 end;
 
 procedure TFormCadastroCliente.rxComboPaisExit(Sender: TObject);

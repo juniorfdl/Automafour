@@ -1,6 +1,6 @@
 inherited FormCadastroCliente: TFormCadastroCliente
-  Left = 324
-  Top = 8
+  Left = 128
+  Top = 14
   Caption = 'Cadastro de Clientes'
   ClientHeight = 672
   ClientWidth = 1092
@@ -1555,7 +1555,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                   ParentFont = False
                 end
                 object Label8: TLabel
-                  Left = 134
+                  Left = 118
                   Top = 102
                   Width = 37
                   Height = 13
@@ -1569,7 +1569,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                   ParentFont = False
                 end
                 object Label10: TLabel
-                  Left = 258
+                  Left = 229
                   Top = 102
                   Width = 20
                   Height = 13
@@ -1609,7 +1609,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                   ParentFont = False
                 end
                 object Label49: TLabel
-                  Left = 380
+                  Left = 341
                   Top = 102
                   Width = 30
                   Height = 13
@@ -1789,28 +1789,42 @@ inherited FormCadastroCliente: TFormCadastroCliente
                   Font.Style = [fsBold]
                   ParentFont = False
                 end
+                object Label79: TLabel
+                  Left = 553
+                  Top = 102
+                  Width = 80
+                  Height = 13
+                  Caption = 'Insc.Municipal'
+                  FocusControl = DBEdit11
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = 8404992
+                  Font.Height = -11
+                  Font.Name = 'Tahoma'
+                  Font.Style = [fsBold]
+                  ParentFont = False
+                end
                 object DBEdit4: TDBEdit
                   Left = 7
                   Top = 115
-                  Width = 120
+                  Width = 108
                   Height = 21
                   DataField = 'CLIEA15FONE1'
                   DataSource = DSTemplate
                   TabOrder = 1
                 end
                 object DBEdit5: TDBEdit
-                  Left = 130
+                  Left = 118
                   Top = 115
-                  Width = 120
+                  Width = 108
                   Height = 21
                   DataField = 'CLIEA15FONE2'
                   DataSource = DSTemplate
                   TabOrder = 2
                 end
                 object DBEdit6: TDBEdit
-                  Left = 253
+                  Left = 229
                   Top = 115
-                  Width = 120
+                  Width = 108
                   Height = 21
                   DataField = 'CLIEA15FAX'
                   DataSource = DSTemplate
@@ -2386,9 +2400,9 @@ inherited FormCadastroCliente: TFormCadastroCliente
                 end
                 object DBEdit32: TDBEdit
                   Tag = 1
-                  Left = 375
+                  Left = 341
                   Top = 115
-                  Width = 269
+                  Width = 210
                   Height = 21
                   CharCase = ecLowerCase
                   DataField = 'CLIEA60EMAIL'
@@ -3097,6 +3111,15 @@ inherited FormCadastroCliente: TFormCadastroCliente
                     '8907')
                   Visible = False
                   OnExit = rxComboPaisExit
+                end
+                object DBEdit11: TDBEdit
+                  Left = 553
+                  Top = 115
+                  Width = 92
+                  Height = 21
+                  DataField = 'IM'
+                  DataSource = DSTemplate
+                  TabOrder = 15
                 end
               end
             end
@@ -7847,6 +7870,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
       Origin = 'DB.CLIENTE.TIPO_CONTRIBUINTE'
       FixedChar = True
       Size = 1
+    end
+    object SQLTemplateIM: TStringField
+      FieldName = 'IM'
+      Origin = 'DB.CLIENTE.IM'
     end
   end
   inherited SQLExcluiDetalhes: TRxQuery

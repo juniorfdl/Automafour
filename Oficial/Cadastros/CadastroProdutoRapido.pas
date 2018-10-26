@@ -213,6 +213,7 @@ type
     sqlProdutoFornecedor: TRxQuery;
     EvDBNumEdit1: TEvDBNumEdit;
     Label18: TLabel;
+    SQLProdutoSaldoNovoQTDE_CONSIGNADO: TFloatField;
     procedure FormCreate(Sender: TObject);
     procedure SQLTemplateNewRecord(DataSet: TDataSet);
     procedure SQLTemplateBeforePost(DataSet: TDataSet);
@@ -394,6 +395,7 @@ begin
         SQLProdutoSaldoNovoPSLDN3QTDE.asFloat := 0;
         SQLProdutoSaldoNovoPSLDN3QTDMAX.asFloat := 0;
         SQLProdutoSaldoNovoPSLDN3QTDMIN.asFloat := 0;
+        SQLProdutoSaldoNovoQTDE_CONSIGNADO.AsFloat := 0;
         SQLProdutoSaldoNovo.Post;
       end;
       SQLEmpresa.Next;

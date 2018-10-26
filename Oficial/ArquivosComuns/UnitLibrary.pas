@@ -245,10 +245,7 @@ function CancelamentoCupom(Documento, Usuario: string): boolean;
 function Preenche(STRI, FloodStr: string; TAM: Integer; JUST: Integer): string;
 function AbreFechaDataset(ADataSet: TDataSet; AAbrir: Boolean = True; AAtualizar: Boolean = False): Boolean;
 procedure addLog(Erro: string; Arquivo: string = '');
-
-
-
-
+procedure GravaSaldoConsignacao(Empresa, CodProdutoCons, SomaSubtrai : string; Qtde : Real);
 
 procedure GravaMovimentoEstoqueSimples(SqlProd,
   SQLProdFilho,
@@ -1171,13 +1168,17 @@ procedure GravaMovimentoEstoqueSimples(SqlProd,
       DM.SQLTemplate.SQL.Add('PRODICOD,');
       DM.SQLTemplate.SQL.Add('PSLDN3QTDE,');
       DM.SQLTemplate.SQL.Add('PSLDN3QTDMIN,');
-      DM.SQLTemplate.SQL.Add('PSLDN3QTDMAX)');
+      DM.SQLTemplate.SQL.Add('PSLDN3QTDMAX,');
+      DM.SQLTemplate.SQL.Add('QTDE_CONSIGNADO)');
+
       DM.SQLTemplate.SQL.Add('values(');
       DM.SQLTemplate.SQL.Add(IntToStr(EmprCod) + ', '); //EMPRICOD
       DM.SQLTemplate.SQL.Add(IntToStr(Produto) + ', '); //PRODICOD
       DM.SQLTemplate.SQL.Add('0, '); //PSLDN3QTDE
       DM.SQLTemplate.SQL.Add('0, '); //PSLDN3QTDMIN
-      DM.SQLTemplate.SQL.Add('0) '); //PSLDN3QTDMAX
+      DM.SQLTemplate.SQL.Add('0, '); //PSLDN3QTDMAX
+      DM.SQLTemplate.SQL.Add('0) '); //QTDE_CONSIGNADO
+
       try
         DM.SQLTemplate.ExecSQL;
         Application.ProcessMessages;
@@ -2122,13 +2123,15 @@ procedure GravaMovimentoEstoque(SqlProd,
         DM.SQLTemplate.SQL.Add('PRODICOD,');
         DM.SQLTemplate.SQL.Add('PSLDN3QTDE,');
         DM.SQLTemplate.SQL.Add('PSLDN3QTDMIN,');
-        DM.SQLTemplate.SQL.Add('PSLDN3QTDMAX)');
+        DM.SQLTemplate.SQL.Add('PSLDN3QTDMAX,');
+        DM.SQLTemplate.SQL.Add('QTDE_CONSIGNADO)');
         DM.SQLTemplate.SQL.Add('values(');
         DM.SQLTemplate.SQL.Add(IntToStr(EmprCod) + ', '); //EMPRICOD
         DM.SQLTemplate.SQL.Add(IntToStr(Produto) + ', '); //PRODICOD
         DM.SQLTemplate.SQL.Add('0, '); //PSLDN3QTDE
         DM.SQLTemplate.SQL.Add('0, '); //PSLDN3QTDMIN
-        DM.SQLTemplate.SQL.Add('0) '); //PSLDN3QTDMAX
+        DM.SQLTemplate.SQL.Add('0, '); //PSLDN3QTDMAX
+        DM.SQLTemplate.SQL.Add('0) '); //QTDE_CONSIGNADO
         try
           DM.SQLTemplate.ExecSQL;
           Application.ProcessMessages;
@@ -5512,6 +5515,28 @@ begin
   end;
 end;
 
+procedure GravaSaldoConsignacao(Empresa, CodProdutoCons, SomaSubtrai : string; Qtde : Real);
+var
+  Query : TrxQuery;
+begin
+  Query := TRxQuery.Create(DM);
+  Query.DatabaseName := 'DB';
+  DM.DB.StartTransaction;
+  Query.SQL.Clear;
+  Query.SQL.Add('UPDATE PRODUTOSALDO SET QTDE_CONSIGNADO = COALESCE(QTDE_CONSIGNADO,0) ' + SomaSubtrai + ConvFloatToStr(Qtde));
+  Query.SQL.Add('WHERE PRODICOD = ''' + CodProdutoCons + '''' + 'and EMPRICOD = ''' + Empresa + '''');
+  try
+    Query.ExecSQL;
+    DM.DB.Commit;
+  except
+    on E: Exception do
+    begin
+      DM.DB.Rollback;
+      Informa('Problemas qtde de consignado, ANOTE O ERRO: ' + E.Message);
+      Application.ProcessMessages;
+    end;
+  end;
+end;
 
 end.
 

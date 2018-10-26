@@ -1068,7 +1068,11 @@ begin
                                           SQLNotaCompraItens.FindField('LOTEA30NRO').AsString);
 
                   end;
-                end; 
+                end;
+                //Grava Saldo consignado
+                if SQLLocate('OPERACAOESTOQUE','OPESICOD','MOVIMENTA_CONSIGNADO',IntToStr(OperacaoEstoque)) = 'E' then
+                  GravaSaldoConsignacao(EmpresaPadrao, SQLNotaCompraItens.FindField('PRODICOD').AsString,' + ',
+                                        SQLNotaCompraItens.FindField('NOCIN3CAPEMBAL').asFloat * (SQLNotaCompraItens.FindField('NOCIN3QTDEMBAL').asFloat + SQLNotaCompraItens.FindField('NOCIN3QTDBONIF').asFloat));
 
                 if DM.SQLConfigCompra.fieldbyname('CFCOCVERIFICAVLRMENOR').AsString <> 'S' then
                   begin
@@ -1433,6 +1437,17 @@ begin
             End;
           SQLNotaCompraItens.Next;
         End;
+
+       // Cancela saldo consignado
+        SQLNotaCompraItens.First;
+        While Not SQLNotaCompraItens.Eof Do
+        begin
+          if SQLLocate('OPERACAOESTOQUE','OPESICOD','MOVIMENTA_CONSIGNADO',IntToStr(SQLTemplateOPESICOD.AsInteger)) = 'E' then
+            GravaSaldoConsignacao(EmpresaPadrao, SQLNotaCompraItens.FindField('PRODICOD').AsString,' - ',
+                                  SQLNotaCompraItens.FindField('NOCIN3CAPEMBAL').asFloat * (SQLNotaCompraItens.FindField('NOCIN3QTDEMBAL').asFloat + SQLNotaCompraItens.FindField('NOCIN3QTDBONIF').asFloat));
+          SQLNotaCompraItens.Next;
+        end;
+
       SQLNotaCompraItens.Close;
       DM.SQLTemplate.Close;
       DM.SQLTemplate.SQL.Clear;

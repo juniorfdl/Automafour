@@ -460,6 +460,13 @@ inherited FormRelatorioVendasPeriodoApuracaoMargem: TFormRelatorioVendasPeriodoA
       '  CUPOMITEM.CPITN3QTD > 0'
       '  Group By'
       '  CUPOMITEM.CUPOA13ID) as VlrLucro,'
+      '  (select sum(CPITN3QTD)'
+      '  from'
+      '  CUPOMITEM'
+      '  where'
+      '  CUPOM.CUPOA13ID = CUPOMITEM.CUPOA13ID'
+      '  Group By'
+      '  CUPOMITEM.CUPOA13ID) as QTDE,'
       '  CUPOM.CUPOINRO as DOC,'
       '  VENDEDOR.VENDN2COMISV as COMISSAO'
       'from'
@@ -566,6 +573,9 @@ inherited FormRelatorioVendasPeriodoApuracaoMargem: TFormRelatorioVendasPeriodoA
     end
     object SQLVendasCOMISSAO: TFloatField
       FieldName = 'COMISSAO'
+    end
+    object SQLVendasQTDE: TFloatField
+      FieldName = 'QTDE'
     end
   end
 end

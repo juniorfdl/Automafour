@@ -1093,6 +1093,18 @@ begin
                             FormatCurr('0.00',PercentualMulta) + '%'));
             end
             else
+            if ACBrBoleto1.banco.TipoCobranca = cobBanrisul then
+            begin
+               CodigoMora := '0';
+               ACBrBoleto1.ImprimirMensagemPadrao := false;
+               Mensagem.Add(ACBrStr('Cobrar juros de '+
+                            FormatCurr('R$ #,##0.00',ValorMoraJuros) +
+                             ' por dia de atraso p/ pgto a partir de ' +
+                             FormatDateTime('dd/mm/yyyy',DataMoraJuros)));
+               Mensagem.Add(ACBrStr('Após o vencimento cobrar multa de '+
+                            FormatCurr('0.00',PercentualMulta) + '%'));
+            end
+             else
               CodigoMora := '2';
           end;
       if TblDuplicatasVLRTAXA.AsFloat > 0 then
@@ -1506,6 +1518,18 @@ begin
             if ACBrBoleto1.banco.TipoCobranca = cobSicred then
             begin
                CodigoMora := 'A';
+               ACBrBoleto1.ImprimirMensagemPadrao := false;
+               Mensagem.Add(ACBrStr('Cobrar juros de '+
+                            FloatToStr(ValorMoraJuros) + '%' +
+                             ' por dia de atraso para pagamento a partir de ' +
+                             FormatDateTime('dd/mm/yyyy',DataMoraJuros)));
+               Mensagem.Add(ACBrStr('Após o vencimento cobrar multa de '+
+                            FormatCurr('0.00',PercentualMulta) + '%'));
+            end
+            else
+            if ACBrBoleto1.banco.TipoCobranca = cobBanrisul then
+            begin
+               CodigoMora := '0';
                ACBrBoleto1.ImprimirMensagemPadrao := false;
                Mensagem.Add(ACBrStr('Cobrar juros de '+
                             FloatToStr(ValorMoraJuros) + '%' +

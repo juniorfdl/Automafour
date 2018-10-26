@@ -1233,7 +1233,25 @@ type
   public
     Arquivo: TextFile;
     GerandoNota, InserindoNota, InserindoCupomFiscal, PermiteExcluirSemPerguntar: Boolean;
-    VarPDVDA13ID, VarSerie, VarTRANICOD, VarNOFIA30NROPEDCOMP, VarNOFIA30COMPRADOR, VarNOFIINROTALAO, VarPLRCICOD, VarCLIEA13ID, VarVENDICOD, VarNOFIN2VLRFRETE, VarNOFIN2VLRDESCPROM, VarNOFIA255OBS, VarOperacaoEstoque, VarOperacaoEntradaSaida, Titulo, Linha, SitTrib, EntradaSaida: string;
+    VarPDVDA13ID,
+    VarSerie,
+    VarTRANICOD,
+    VarNOFIA30NROPEDCOMP,
+    VarNOFIA30COMPRADOR,
+    VarNOFIINROTALAO,
+    VarPLRCICOD,
+    VarCLIEA13ID,
+    VarVENDICOD,
+    VarNOFIN2VLRFRETE,
+    VarNOFIN2VLRDESCPROM,
+    VarNOFIA255OBS,
+    VarOperacaoEstoque,
+    VarOperacaoEntradaSaida,
+    Titulo,
+    Linha,
+    SitTrib,
+    EntradaSaida,
+    EntradaSaidaConsignado: string;
     VarNumero, VarNroItem: Integer;
     PesoLiquido, PesoBruto: Double;
     IncrementaNroCheque: Boolean;
@@ -2229,6 +2247,7 @@ var
   Erro: Boolean;
   ValorBase: Double;
   I: Integer;
+  SomaSubtrai : String;
 begin
   inherited;
   if DM.InserindoItemNV then
@@ -2243,6 +2262,7 @@ begin
 
   // ENCERRANDO NOTA FISCAL
   EntradaSaida := SQLLocate('OPERACAOESTOQUE', 'OPESICOD', 'OPESCENTRADASAIDA', SQLTemplateOPESICOD.AsString);
+  EntradaSaidaConsignado  := SQLLocate('OPERACAOESTOQUE', 'OPESICOD', 'MOVIMENTA_CONSIGNADO', SQLTemplateOPESICOD.AsString);
   if (StatusNovo = 'E') and (EntradaSaida <> 'N') then
   begin
     SQLNotaFiscalItens.SQL.Text := 'Select * From NOTAFISCALITEM Where NOFIA13ID = ''' + DataSet.FindField('NOFIA13ID').AsString + '''';
@@ -2290,6 +2310,25 @@ begin
     end;
     DestroyWindow;
   end;
+
+  //Grava Saldo Consignado
+  if (StatusNovo = 'E') and (EntradaSaidaConsignado <> 'N') then
+  begin
+    SQLNotaFiscalItens.SQL.Text := 'Select * From NOTAFISCALITEM Where NOFIA13ID = ''' + DataSet.FindField('NOFIA13ID').AsString + '''';
+    SQLNotaFiscalItens.Open;
+    SQLNotaFiscalItens.First;
+    if EntradaSaidaConsignado = 'S' then
+      SomaSubtrai := ' - '
+    else
+      SomaSubtrai := ' + ';
+    while not SQLNotaFiscalItens.Eof do
+    begin
+      GravaSaldoConsignacao(EmpresaPadrao, SQLNotaFiscalItens.FindField('PRODICOD').AsString, SomaSubtrai, SQLNotaFiscalItens.FindField('NFITN3QUANT').asFloat);
+      SQLNotaFiscalItens.Next;
+    end;
+    SQLNotaFiscalItens.Close;
+  end;
+
   // CANCELANDO NOTA FISCAL
   if (StatusNovo = 'C') then
   begin
@@ -2318,6 +2357,26 @@ begin
       end;
       DestroyWindow;
     end;
+
+    // Cancela saldo consignado
+    if (EntradaSaidaConsignado <> 'N') then
+    begin
+      SQLNotaFiscalItens.SQL.Text := 'Select * From NOTAFISCALITEM Where NOFIA13ID=''' + DataSet.FindField('NOFIA13ID').AsString + '''';
+      SQLNotaFiscalItens.Open;
+      SQLNotaFiscalItens.First;
+      if EntradaSaidaConsignado = 'S' then
+        SomaSubtrai := ' + '
+      else
+        SomaSubtrai := ' - ';
+
+      while not SQLNotaFiscalItens.Eof do
+      begin
+        GravaSaldoConsignacao(EmpresaPadrao, SQLNotaFiscalItens.FindField('PRODICOD').AsString, SomaSubtrai, SQLNotaFiscalItens.FindField('NFITN3QUANT').asFloat);
+        SQLNotaFiscalItens.Next;
+      end;
+      SQLNotaFiscalItens.Close;
+    end;
+
       // Cancelar Contas Receber
     if SQLTemplateNOFIN2VLRPRODUTO.Value > 0 then
     begin
@@ -3216,7 +3275,7 @@ begin
   if DM.Cupom <> '' then
   begin
     DestroyWindow;
-    MakeWindowMessage('Gerando nota Fiscal a Partir de Cupons Selecionados.');
+//    MakeWindowMessage('Gerando nota Fiscal a Partir de Cupons Selecionados.');
     SQLCupom.Close;
     SQLCupom.SQL.Text := 'Select C.*, E.ECFICOD, E.ECFA20NROSERIE from CUPOM C ' + 'LEFT join terminal T ON T.TERMICOD = C.termicod ' + 'LEFT JOIN ecf E ON E.ecfa13id = T.ECFA13ID      ' + 'where CUPOA13ID in (' + Dm.Cupom + ')';
     SQLCupom.Prepare;

@@ -361,12 +361,86 @@ begin
   end;
   {Fim Cliente}
 
+  {Abre vendedor do servidor}
+  try
+    ZconsultaServidor.Close;
+    ZconsultaServidor.sql.clear;
+    ZconsultaServidor.sql.Text := 'Select * from VENDEDOR where DATA_IMPORTADO <> ''' + FormatDateTime('mm/dd/yyyy', now) + ''' or DATA_IMPORTADO IS NULL';
+    ZconsultaServidor.open;
+    if not ZconsultaServidor.IsEmpty then
+    begin
+      while not ZconsultaServidor.eof do
+      begin
+        Application.Title := 'Recebendo Vendedor => ' + ZconsultaServidor.fieldbyname('VENDA60NOME').AsString;
+        lbStatus.Caption := Application.Title;
+        lbStatus.Update;
+        ZConsultaPDV.close;
+        ZConsultaPDV.SQL.clear;
+        ZConsultaPDV.SQL.Text := 'Select * from VENDEDOR where VENDICOD=' + QuotedStr(ZconsultaServidor.fieldbyname('VENDICOD').AsString);
+        ZConsultaPDV.Open;
+        if ZConsultaPDV.IsEmpty then
+          ZConsultaPDV.append
+        else
+          ZConsultaPDV.edit;
+
+            {acha o Vendedor atual no servidor e pega os dados dele}
+        ZConsultaTabelaServidor.close;
+        ZConsultaTabelaServidor.sql.text := 'select * from VENDEDOR where VENDICOD=' + QuotedStr(ZconsultaServidor.fieldbyname('VENDICOD').AsString);
+        ZConsultaTabelaServidor.open;
+
+            {alimenta os campos no Pdv}
+        for i := 0 to ZConsultaTabelaServidor.FieldCount - 1 do
+        begin
+          try
+            ZConsultaPDV.FindField(ZConsultaTabelaServidor.Fields[i].FieldName).AsVariant := ZConsultaTabelaServidor.Fields[i].AsVariant;
+          except on E : Exception do
+              ShowMessage('Erro Vendedor: ' + e.Message);
+//            Application.ProcessMessages;
+          end;
+        end;
+        try
+          ZConsultaPDV.post;
+          Erro := False;
+        except  on E : Exception do
+           ShowMessage('Erro vendedor1: ' + e.Message);
+//          ZConsultaPDV.cancel;
+//          Erro := True;
+//          Application.ProcessMessages;
+        end;
+        ZconsultaServidor.Next;
+      end;
+    end;
+
+    if not erro then
+    begin
+      ZconsultaServidor.First;
+      while not ZconsultaServidor.Eof do
+      begin
+        ZupdateServidor.Close;
+        ZupdateServidor.SQL.clear;
+        ZupdateServidor.SQL.Text := 'Update VENDEDOR Set DATA_IMPORTADO = ''' + FormatDateTime('mm/dd/yyyy', now) + ''' where VENDICOD = ' + QuotedStr(ZconsultaServidor.fieldbyname('VENDICOD').Value);
+        ZupdateServidor.ExecSQL;
+        ZconsultaServidor.Next;
+      end;
+    end;
+    Application.Title := '';
+    lbStatus.Caption := Application.Title;
+    lbStatus.Update;
+  except
+    Application.Title := 'Falha ao Importar Vendedor!';
+    lbStatus.Caption := Application.Title;
+    lbStatus.Update;
+    Application.ProcessMessages;
+  end;
+  {Fim Vendedor}
+
+
 
   {Abre NCM do servidor}
   try
     ZconsultaServidor.Close;
     ZconsultaServidor.sql.clear;
-    ZconsultaServidor.sql.Text := 'Select * from NCM where PENDENTE =' + QuotedStr('S') + ' order by NCMICOD asc ';
+    ZconsultaServidor.sql.Text := 'Select * from NCM where COALESCE(PENDENTE,'+ QuotedStr('S') + ') = ' + QuotedStr('S') + ' order by NCMICOD asc ';
     ZconsultaServidor.open;
     if not ZconsultaServidor.IsEmpty then
     begin

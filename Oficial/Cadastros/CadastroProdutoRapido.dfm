@@ -1936,6 +1936,10 @@ object FormCadastroProdutoRapido: TFormCadastroProdutoRapido
       FieldName = 'REGISTRO'
       Origin = 'DB.PRODUTOSALDO.REGISTRO'
     end
+    object SQLProdutoSaldoNovoQTDE_CONSIGNADO: TFloatField
+      FieldName = 'QTDE_CONSIGNADO'
+      Origin = 'DB.PRODUTOSALDO.QTDE_CONSIGNADO'
+    end
   end
   object SQLEmpresa: TRxQuery
     DatabaseName = 'DB'
