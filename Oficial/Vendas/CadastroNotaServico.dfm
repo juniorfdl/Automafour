@@ -9074,6 +9074,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
     end
   end
   inherited SQLTemplate: TRxQuery
+    Tag = 1
     AfterInsert = SQLTemplateAfterInsert
     OnCalcFields = SQLTemplateCalcFields
     SQL.Strings = (

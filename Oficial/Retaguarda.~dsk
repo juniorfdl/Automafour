@@ -1,19 +1,19 @@
 [Closed Files]
-File_0=SourceModule,'C:\projetos\faturamento\fat_nfs_eletronica\uFat_Nfs_Eletronica.pas',0,1,122,14,122,0,0
-File_1=SourceModule,'C:\projetos\Automafour\Oficial\DataModulo.pas',0,1,1,45,13,0,0
-File_2=SourceModule,'C:\projetos\Automafour\Oficial\Cadastros\CadastroCliente.pas',0,1,1,45,3,3,1
-File_3=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.pas',0,1,5951,28,5954,0,0
-File_4=SourceModule,'C:\projetos\Automafour\Oficial\Vendas\CadastroNotaServico.pas',0,1,472,1,475,1,1
-File_5=SourceModule,'C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrNFSe\PCNNFSe\pnfsNFSe.pas',0,1,138,22,150,0,0
-File_6=SourceModule,'C:\projetos\Automafour\Oficial\ArquivosComuns\UnitLibrary.pas',0,1,3648,1,3660,0,0
-File_7=SourceModule,'C:\projetos\Automafour\Oficial\Compras\CadastroNotaCompra.pas',0,1,1332,68,1342,1,0
+File_0=SourceModule,'C:\projetos\Automafour\Oficial\DataModulo.pas',0,1,1,45,13,0,0
+File_1=SourceModule,'C:\projetos\Automafour\Oficial\Cadastros\CadastroCliente.pas',0,1,1,45,3,3,1
+File_2=SourceModule,'C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrNFSe\PCNNFSe\pnfsNFSe.pas',0,1,138,22,150,0,0
+File_3=SourceModule,'C:\projetos\Automafour\Oficial\ArquivosComuns\UnitLibrary.pas',0,1,3648,1,3660,0,0
+File_4=SourceModule,'C:\projetos\Automafour\Oficial\Compras\CadastroNotaCompra.pas',0,1,1332,68,1342,1,0
 
 [Modules]
 Module0=C:\projetos\Automafour\Oficial\Faturamento\udmNFSe.pas
-Module1=C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrNFSe\PCNNFSe\pnfsConversao.pas
-Module2=C:\projetos\Automafour\Oficial\Cadastros\CadastroEmpresa.pas
-Module3=C:\projetos\Automafour\Oficial\Retaguarda.dpr
-Count=4
+Module1=C:\projetos\Automafour\Oficial\Vendas\CadastroNotaServico.pas
+Module2=C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.pas
+Module3=C:\projetos\faturamento\fat_nfs_eletronica\uFat_Nfs_Eletronica.pas
+Module4=C:\projetos\Automafour\Oficial\Cadastros\CadastroEmpresa.pas
+Module5=C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrNFSe\PCNNFSe\pnfsConversao.pas
+Module6=C:\projetos\Automafour\Oficial\Retaguarda.dpr
+Count=7
 EditWindowCount=1
 
 [C:\projetos\Automafour\Oficial\Faturamento\udmNFSe.pas]
@@ -21,7 +21,17 @@ ModuleType=SourceModule
 FormState=1
 FormOnTop=0
 
-[C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrNFSe\PCNNFSe\pnfsConversao.pas]
+[C:\projetos\Automafour\Oficial\Vendas\CadastroNotaServico.pas]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
+
+[C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.pas]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=1
+
+[C:\projetos\faturamento\fat_nfs_eletronica\uFat_Nfs_Eletronica.pas]
 ModuleType=SourceModule
 FormState=0
 FormOnTop=0
@@ -29,6 +39,11 @@ FormOnTop=0
 [C:\projetos\Automafour\Oficial\Cadastros\CadastroEmpresa.pas]
 ModuleType=SourceModule
 FormState=1
+FormOnTop=0
+
+[C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrNFSe\PCNNFSe\pnfsConversao.pas]
+ModuleType=SourceModule
+FormState=0
 FormOnTop=0
 
 [C:\projetos\Automafour\Oficial\Retaguarda.dpr]
@@ -45,12 +60,15 @@ FormState=0
 FormOnTop=0
 
 [EditWindow0]
-ViewCount=4
+ViewCount=7
 CurrentView=1
 View0=0
 View1=1
 View2=2
 View3=3
+View4=4
+View5=5
+View6=6
 CodeExplorer=CodeExplorer@EditWindow0
 MessageView=MessageView@EditWindow0
 Create=1
@@ -58,7 +76,7 @@ Visible=1
 State=2
 Left=292
 Top=440
-Width=926
+Width=1074
 Height=485
 MaxLeft=-8
 MaxTop=107
@@ -68,11 +86,11 @@ ClientWidth=1366
 ClientHeight=590
 LeftPanelSize=0
 LeftPanelClients=CodeExplorer@EditWindow0
-LeftPanelData=00000400010000000C000000436F64654578706C6F72657200000000000000000000000000000000000100000000000000000C000000436F64654578706C6F726572FFFFFFFF
+LeftPanelData=00000400010000000C000000436F64654578706C6F726572000000000000000000000000000000000001000000000000000000000000FFFFFFFF
 RightPanelSize=0
 BottomPanelSize=0
 BottomPanelClients=MessageView@EditWindow0
-BottomPanelData=00000400010000000B0000004D6573736167655669657700000000000000000000000000000000000100000000000000000B0000004D65737361676556696577FFFFFFFF
+BottomPanelData=00000400010000000B0000004D657373616765566965775605000000000000025500000000000000010000000000000000000000000100000000560500000B0000004D65737361676556696577FFFFFFFF
 
 [View0]
 Module=C:\projetos\Automafour\Oficial\Retaguarda.dpr
@@ -83,22 +101,43 @@ LeftCol=1
 
 [View1]
 Module=C:\projetos\Automafour\Oficial\Faturamento\udmNFSe.pas
-CursorX=66
-CursorY=510
-TopLine=498
+CursorX=27
+CursorY=53
+TopLine=50
 LeftCol=1
 
 [View2]
+Module=C:\projetos\faturamento\fat_nfs_eletronica\uFat_Nfs_Eletronica.pas
+CursorX=10
+CursorY=882
+TopLine=879
+LeftCol=1
+
+[View3]
+Module=C:\projetos\Automafour\Oficial\Vendas\CadastroNotaServico.pas
+CursorX=25
+CursorY=496
+TopLine=491
+LeftCol=1
+
+[View4]
+Module=C:\projetos\Automafour\Oficial\Vendas\CadastroNotaFiscal.pas
+CursorX=28
+CursorY=5954
+TopLine=5951
+LeftCol=1
+
+[View5]
 Module=C:\Acbr\trunk2\Fontes\ACBrDFe\ACBrNFSe\PCNNFSe\pnfsConversao.pas
 CursorX=32
 CursorY=348
 TopLine=331
 LeftCol=1
 
-[View3]
+[View6]
 Module=C:\projetos\Automafour\Oficial\Cadastros\CadastroEmpresa.pas
-CursorX=156
-CursorY=13
+CursorX=51
+CursorY=20
 TopLine=1
 LeftCol=1
 
@@ -137,11 +176,11 @@ Breakpoint8='C:\projetos\Automafour\Oficial\ArquivosComuns\UnitLibrary.pas',2245
 Breakpoint9='C:\projetos\Automafour\Oficial\Compras\TelaImportadorXML.pas',2552,'',0,1,'',1,0,0,'',1,'','',''
 Breakpoint10='C:\projetos\Automafour\Oficial\Integrador\TelaExportacaoSPED.pas',2702,'',0,1,'',1,0,0,'',1,'','',''
 Breakpoint11='C:\projetos\Automafour\Template\CadastroTEMPLATE.pas',995,'',0,1,'',1,0,0,'',1,'','',''
-Breakpoint12='C:\projetos\Automafour\Oficial\Faturamento\udmNFSe.pas',685,'',0,1,'',1,0,0,'',1,'','',''
-Breakpoint13='C:\projetos\Automafour\Oficial\Faturamento\udmNFSe.pas',694,'',0,1,'',1,0,0,'',1,'','',''
-Breakpoint14='C:\projetos\Automafour\Oficial\Faturamento\udmNFSe.pas',386,'',0,1,'',1,0,0,'',1,'','',''
-Breakpoint15='C:\projetos\Automafour\Oficial\Faturamento\udmNFSe.pas',492,'',0,1,'',1,0,0,'',1,'','',''
-Breakpoint16='C:\projetos\Automafour\Oficial\Faturamento\udmNFSe.pas',517,'',0,1,'',1,0,0,'',1,'','',''
+Breakpoint12='C:\projetos\Automafour\Oficial\Faturamento\udmNFSe.pas',636,'',0,1,'',1,0,0,'',1,'','',''
+Breakpoint13='C:\projetos\Automafour\Oficial\Faturamento\udmNFSe.pas',334,'',0,1,'',1,0,0,'',1,'','',''
+Breakpoint14='C:\projetos\Automafour\Oficial\Faturamento\udmNFSe.pas',440,'',0,1,'',1,0,0,'',1,'','',''
+Breakpoint15='C:\projetos\Automafour\Oficial\Faturamento\udmNFSe.pas',465,'',0,1,'',1,0,0,'',1,'','',''
+Breakpoint16='C:\projetos\Automafour\Oficial\Faturamento\udmNFSe.pas',836,'',0,1,'',1,0,0,'',1,'','',''
 
 [AddressBreakpoints]
 Count=0
@@ -225,7 +264,7 @@ ClientHeight=60
 
 [PropertyInspector]
 Create=1
-Visible=1
+Visible=0
 State=0
 Left=0
 Top=108
