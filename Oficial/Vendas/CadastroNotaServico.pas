@@ -2,7 +2,7 @@ unit CadastroNotaServico;
 
 interface
 
-uses
+uses                                                           
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, CadastroTEMPLATE, AdvOfficeStatusBar, AdvOfficeStatusBarStylers,
   DBTables, DBActns, ActnList, DB, RxQuery, Menus, StdCtrls, Mask, AdvPanel,
@@ -253,12 +253,6 @@ type
     ComboHistoricoPadrao: TRxDBLookupCombo;
     MemoHistorico: TMemo;
     ComboPlanoContas: TRxDBLookupCombo;
-    RxQuery1: TRxQuery;
-    IntegerField1: TIntegerField;
-    StringField1: TStringField;
-    StringField2: TStringField;
-    StringField3: TStringField;
-    DataSource1: TDataSource;
     DBGrid1: TDBGrid;
     DSSQLNumerarioVista: TDataSource;
     SQLNumerarioVista: TRxQuery;
@@ -304,6 +298,7 @@ type
     SQLPlanoREGISTRO: TDateTimeField;
     SQLPlanoPLRCN2PERCACRESC: TFloatField;
     SQLPlanoParcela: TRxQuery;
+    SQLNumerario: TRxQuery;
     procedure FormCreate(Sender: TObject);
     procedure SQLTemplateCalcFields(DataSet: TDataSet);
     procedure btnConsultaClienteClick(Sender: TObject);
@@ -331,7 +326,13 @@ type
     procedure AdvGlowButton3Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure BTNRecalcularFinanceiroClick(Sender: TObject);
+    procedure SQLContasReceberBeforePost(DataSet: TDataSet);
+    procedure SQLContasReceberBeforeDelete(DataSet: TDataSet);
+    procedure SQLContasReceberNewRecord(DataSet: TDataSet);
+    procedure SQLContasReceberPostError(DataSet: TDataSet;
+      E: EDatabaseError; var Action: TDataAction);
   private
+    ContasReceberCliente, ContasReceberID: string;
     { Private declarations }
   public
   PermiteExcluirSemPerguntar: Boolean;
@@ -363,6 +364,14 @@ begin
   SQLCidade.Close;
   SQLCidade.ParamByName('SIGLA').AsString := SQLLocate('EMPRESA','EMPRICOD','EMPRA2UF', EmpresaPadrao);
   SQLCidade.Open;
+  SQLTipoDoc.Open;
+  SQLPortador.Open;
+  SQLHistoricoPadrao.Open;
+  if not SQLNumerarioVista.Active then
+    SQLNumerarioVista.Open;
+  if not SQLNumerarioPrazo.Active then
+    SQLNumerarioPrazo.Open;
+
 end;
 
 procedure TFormCadastroNotaServico.SQLTemplateCalcFields(DataSet: TDataSet);
@@ -724,7 +733,7 @@ begin
       SQLPlanoParcela.Open;
       SQLPlanoParcela.First;
       ValorJuro := SQLPlanoPLRCN2TXJURO.AsFloat;
-      CriaParcelas(SQLParcelasPrazoVendaTemp, SQLPlano, SQLPlanoParcela, Entrada, Desconto, SQLTemplate.FindField('VALOR_TOTAL').asFloat, ComboPlanoRecto.KeyValue, SQLTemplate.FindField('DATA_EMISSAO').asDateTime, ComboNumerarioVista.Value, ComboNumerarioPrazo.Value, ComboNumerarioVista.Value, ComboNumerarioPrazo.Value, SQLTemplate.FindField('NUMERO_NOTA').asString, DiminuiAcresc, ValorJuro, Acrescimo, EntradaCalc, TaxaCred);
+      CriaParcelas(SQLParcelasPrazoVendaTemp, SQLPlano, SQLPlanoParcela, Entrada, Desconto, SQLTemplate.FindField('VALOR_TOTAL').asFloat, ComboPlanoRecto.KeyValue, SQLTemplate.FindField('DATA_EMISSAO').asDateTime, ComboNumerarioVista.Value, ComboNumerarioPrazo.Value, ComboNumerarioVista.Value, ComboNumerarioPrazo.Value, SQLTemplate.FindField('ID').asString, DiminuiAcresc, ValorJuro, Acrescimo, EntradaCalc, TaxaCred);
       SQLPlanoParcela.Close;
     end;
     SQLPlano.Close;
@@ -734,14 +743,14 @@ begin
   if (ComboPlanoRecto.Value <> '') and (SQLTemplateVALOR_TOTAL.AsFloat > 0) and (SQLTemplate.State in dsEditModes) then
   begin
     SQLContasReceber.Close;
-    SQLContasReceber.ParamByName('NOFIA13ID').AsString := SQLTemplateNUMERO_NOTA.AsString;
+    SQLContasReceber.ParamByName('NOFIA13ID').AsString := SQLTemplateID.AsString;
     SQLContasReceber.Open;
     SQLContasReceber.First;
     while not SQLContasReceber.Eof do
       SQLContasReceber.Delete;
 
     SQLContasReceber.Close;
-    SQLContasReceber.ParamByName('NOFIA13ID').AsString := SQLTemplateNUMERO_NOTA.AsString;
+    SQLContasReceber.ParamByName('NOFIA13ID').AsString := SQLTemplateID.AsString;
     SQLContasReceber.Open;
 
     if not DM.SQLConfigCrediario.Active then
@@ -754,7 +763,7 @@ begin
     begin
       SQLContasReceber.Append;
       SQLContasReceberCTRCCSTATUS.Value := 'A';
-      SQLContasReceberNOFIA13ID.AsString := SQLTemplate.FindField('NUMERO_NOTA').AsString;
+      SQLContasReceberNOFIA13ID.AsString := SQLTemplate.FindField('ID').AsString;
       SQLContasReceberCTRCINROPARC.Value := SQLParcelasPrazoVendaTempNROPARCELA.Value;
       SQLContasReceberCTRCDEMIS.Value := SQLTemplate.FindField('DATA_EMISSAO').Value;
       SQLContasReceberCLIEA13ID.AsString := SQLTemplate.FindField('CLIEA13ID').AsString;
@@ -765,7 +774,7 @@ begin
         SQLContasReceberCTRCA5TIPOPADRAO.Value := 'CRD';
       SQLContasReceberTPDCICOD.AsVariant := ComboTipoDoc.KeyValue;
       SQLContasReceberPORTICOD.asVariant := ComboPortador.KeyValue;
-      SQLContasReceberCTRCA30NRODUPLICBANCO.AsString := FormatFloat('######000000', SQLTemplateNUMERO_NOTA.Value) + '-' + SQLParcelasPrazoVendaTempNROPARCELA.AsString;
+      SQLContasReceberCTRCA30NRODUPLICBANCO.AsString := FormatFloat('######000000', SQLTemplateID.Value) + '-' + SQLParcelasPrazoVendaTempNROPARCELA.AsString;
       SQLContasReceberCTRCCEMITIDOBOLETO.Value := 'N';
       SQLContasReceberNUMEICOD.Value := SQLParcelasPrazoVendaTempNUMEICOD.Value;
 
@@ -797,7 +806,7 @@ begin
   PermiteExcluirSemPerguntar := False;
 
   SQLContasReceber.Close;
-  SQLContasReceber.ParamByName('NOFIA13ID').AsString := SQLTemplateNUMERO_NOTA.AsString;
+  SQLContasReceber.ParamByName('NOFIA13ID').AsString := SQLTemplateID.AsString;
   SQLContasReceber.Open;
 
   if (SQLTemplate.State in dsEditModes) then
@@ -807,6 +816,92 @@ begin
   end;
 
   ComboPlanoRecto.Value := '';
+
+end;
+
+procedure TFormCadastroNotaServico.SQLContasReceberBeforePost(
+  DataSet: TDataSet);
+begin
+  inherited;
+  if DataSet.FindField('REGISTRO') <> nil then
+    DataSet.FindField('REGISTRO').AsDateTime := Now;
+  if DataSet.FindField('PENDENTE') <> nil then
+    DataSet.FindField('PENDENTE').AsString := 'S';
+  if DataSet.FindField('EMPRICOD') <> nil then
+    DataSet.FindField('EMPRICOD').Value := EmpresaCorrente;
+  if DataSet.FindField('TERMICOD') <> nil then
+    DataSet.FindField('TERMICOD').Value := TerminalCorrente;
+  case DataSet.State of
+    DsInsert:
+      DM.CodigoAutomatico('CONTASRECEBER', DSSQLContasReceber, DataSet, 3, 0);
+  end;
+  ContasReceberID := SQLContasReceberCTRCA13ID.asString;
+  ContasReceberCliente := SQLContasReceberCLIEA13ID.asString;
+end;
+
+procedure TFormCadastroNotaServico.SQLContasReceberBeforeDelete(
+  DataSet: TDataSet);
+begin
+  inherited;
+  DM.RegistraExclusao('CONTASRECEBER', SQLContasReceber);
+  SQLExcluiDetalhes.MacroByName('MTabela').AsString := 'RECEBIMENTO';
+  SQLExcluiDetalhes.MacroByName('MFiltro').asString := DM.ClausulaFiltro('CONTASRECEBER', SQLContasReceber);
+  SQLExcluiDetalhes.MacroByName('MClausula').asString := 'Select *';
+  SQLExcluiDetalhes.Open;
+  SQLExcluiDetalhes.First;
+  while not SQLExcluiDetalhes.Eof do
+  begin
+    DM.RegistraExclusao('RECEBIMENTO', SQLExcluiDetalhes);
+    SQLExcluiDetalhes.Next;
+  end;
+  SQLExcluiDetalhes.Close;
+  SQLExcluiDetalhes.MacroByName('MClausula').asString := 'Delete';
+  SQLExcluiDetalhes.ExecSQL;
+
+end;
+
+procedure TFormCadastroNotaServico.SQLContasReceberNewRecord(
+  DataSet: TDataSet);
+begin
+  inherited;
+  DataSet.FindField('NOFIA13ID').Value := SQLTemplate.FindField('ID').Value;
+  DataSet.FindField('CTRCINROPARC').Value := 0;
+  DataSet.FindField('CTRCN2DESCFIN').Value := 0;
+  if Dm.SQLConfigCrediario.FieldByName('CFCRN2PERCMULATRAS').AsFloat > 0 then
+    DataSet.FindField('CTRCN2TXMULTA').Value := Dm.SQLConfigCrediario.FieldByName('CFCRN2PERCMULATRAS').Value
+  else
+    DataSet.FindField('CTRCN2TXMULTA').Value := 0;
+
+  if Dm.SQLConfigCrediario.FieldByName('CFCRN2PERCJURATRAS').Value > 0 then
+    DataSet.FindField('CTRCN2TXJURO').Value := Dm.SQLConfigCrediario.FieldByName('CFCRN2PERCJURATRAS').Value
+  else
+    DataSet.FindField('CTRCN2TXJURO').Value := 0;
+  DataSet.FindField('CTRCN2TOTREC').Value := 0;
+  DataSet.FindField('CTRCN2TOTJUROREC').Value := 0;
+  DataSet.FindField('CTRCN2TOTMULTAREC').Value := 0;
+  DataSet.FindField('CTRCN2TOTDESCREC').Value := 0;
+  DataSet.FindField('CTRCCEMITIDOBOLETO').Value := 'N';
+  // Tipo de Registro no Contas a Receber -> N = Normal C = Credito D = Debito;
+  DataSet.FindField('CTRCCTIPOREGISTRO').Value := 'N';
+
+end;
+
+procedure TFormCadastroNotaServico.SQLContasReceberPostError(
+  DataSet: TDataSet; E: EDatabaseError; var Action: TDataAction);
+var
+  ID : String;
+begin
+  inherited;
+  case DataSet.State of
+    DsInsert:
+      begin
+        DataSet.FieldByName('CTRCICOD').AsInteger := DataSet.FieldByName('CTRCICOD').AsInteger + 1;
+        ID := Format('%.3d', [EmpresaCorrente]) + Format('%.3d', [TerminalCorrente]) + Format('%.6d', [DataSet.FieldByName('CTRCICOD').asInteger]);
+        DataSet.FieldByName('CTRCA13ID').asString := ID + DM.DigitVerifEAN(ID);
+      end;
+
+  end;
+  Action := DaRetry;
 
 end;
 
