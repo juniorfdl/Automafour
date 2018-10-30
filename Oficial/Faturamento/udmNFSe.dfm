@@ -45,8 +45,10 @@ object dmNFSe: TdmNFSe
     Top = 12
   end
   object sqlNOTASERVICO_COMUNICACAO: TRxQuery
+    AutoCalcFields = False
     BeforePost = sqlNOTASERVICO_COMUNICACAOBeforePost
     DatabaseName = 'DB'
+    RequestLive = True
     SQL.Strings = (
       'SELECT * FROM NOTASERVICO_COMUNICACAO'
       'WHERE ID_NOTASERVICO = :ID_NOTASERVICO')

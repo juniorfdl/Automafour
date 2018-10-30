@@ -193,7 +193,7 @@ var
   i: Integer;
 begin
   AbrirDadosNota;
-  
+
   fNumeroLote := fID_NOTA;
   isql_Emitente := ExecSql(' SELECT EMPRA14CGC AS NDOC, EMPRA20IMUNIC AS IMUN, EMPRA60RAZAOSOC AS NOM, EMPRA60NOMEFANT AS FANT, '
    +' EMPRA60END AS ENDE, '''' AS LGR, EMPRIENDNRO AS NR, EMPRA60BAI AS BAI , EMPRA60CID AS CID, CNAEFISCAL, EMPRIMUNICODFED, '
@@ -335,7 +335,7 @@ begin
         Servico.Valores.DescontoCondicionado;
 
       //cdsCad_Servico.Locate('COD_CADSERVICO', cdsComunicacaoCOD_CADSERVICO.AsInteger, []);
-      Servico.ItemListaServico := IsqlDadosNota.fieldbyname('NOME_SERVICO').AsString;
+      Servico.ItemListaServico := IsqlDadosNota.fieldbyname('COD_SERVICO').AsString;
       Servico.xItemListaServico := IsqlDadosNota.fieldbyname('NOME_SERVICO').AsString;
 
      // Para o provedor ISS.NET em ambiente de Homologação
@@ -605,9 +605,13 @@ begin
     ImprimirNfse;
   end
   else begin
-    TestarNotaPodeEnviar;   
+    TestarNotaPodeEnviar;
     try
       (ACBrNFSe1.Enviar(vNumLote, False));
+
+      {ShowMessage(ACBrNFSe1.NotasFiscais.Items[0].NFSe.IdentificacaoRps.Numero);
+      ShowMessage(ACBrNFSe1.NotasFiscais.Items[0].NFSe.Numero);
+      ShowMessage(ACBrNFSe1.NotasFiscais.Items[0].NFSe.CodigoVerificacao);}
 
       if not OffLine then
       begin
@@ -651,7 +655,6 @@ begin
       ACBrNFSe1.NotasFiscais.Items[0].NFSe.CodigoVerificacao := vCodigoVerificacao;
       ACBrNFSe1.NotasFiscais.Items[0].GravarXML(ExtractFileName(Caminho), ExtractFilePath(Caminho));
       GetNotaEnviada;
-
 
       sqlNOTASERVICO_COMUNICACAO.Edit;
       sqlNOTASERVICO_COMUNICACAOTIPO.AsString := '1';
