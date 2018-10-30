@@ -165,6 +165,145 @@ type
     AdvGlowButton2: TAdvGlowButton;
     AdvGlowButton3: TAdvGlowButton;
     btnTransmitirNFSe: TAdvGlowButton;
+    tsFinanceiro: TTabSheet;
+    SQLConta: TRxQuery;
+    SQLContaPLCTA15COD: TStringField;
+    SQLContaPLCTICODREDUZ: TIntegerField;
+    SQLContaPLCTINIVEL: TIntegerField;
+    SQLContaPLCTA15CODPAI: TStringField;
+    SQLContaPLCTA30CODEDIT: TStringField;
+    SQLContaPLCTA60DESCR: TStringField;
+    SQLContaPLCTCANALSINT: TStringField;
+    SQLContaPLCTCTIPOSALDO: TStringField;
+    DSSQLConta: TDataSource;
+    SQLContasReceber: TRxQuery;
+    SQLContasReceberCTRCA13ID: TStringField;
+    SQLContasReceberEMPRICOD: TIntegerField;
+    SQLContasReceberTERMICOD: TIntegerField;
+    SQLContasReceberCTRCICOD: TIntegerField;
+    SQLContasReceberCLIEA13ID: TStringField;
+    SQLContasReceberCTRCCSTATUS: TStringField;
+    SQLContasReceberCTRCINROPARC: TIntegerField;
+    SQLContasReceberCTRCDVENC: TDateTimeField;
+    SQLContasReceberCTRCN2VLR: TFloatField;
+    SQLContasReceberCTRCN2DESCFIN: TFloatField;
+    SQLContasReceberNUMEICOD: TIntegerField;
+    SQLContasReceberPORTICOD: TIntegerField;
+    SQLContasReceberCTRCN2TXJURO: TFloatField;
+    SQLContasReceberCTRCN2TXMULTA: TFloatField;
+    SQLContasReceberCTRCA5TIPOPADRAO: TStringField;
+    SQLContasReceberCTRCDULTREC: TDateTimeField;
+    SQLContasReceberCTRCN2TOTREC: TFloatField;
+    SQLContasReceberCTRCN2TOTJUROREC: TFloatField;
+    SQLContasReceberCTRCN2TOTMULTAREC: TFloatField;
+    SQLContasReceberCTRCN2TOTDESCREC: TFloatField;
+    SQLContasReceberEMPRICODULTREC: TIntegerField;
+    SQLContasReceberCUPOA13ID: TStringField;
+    SQLContasReceberTPDCICOD: TIntegerField;
+    SQLContasReceberPLCTA15COD: TStringField;
+    SQLContasReceberCTRCA30NRODUPLICBANCO: TStringField;
+    SQLContasReceberNOFIA13ID: TStringField;
+    SQLContasReceberCTRCDEMIS: TDateTimeField;
+    SQLContasReceberPENDENTE: TStringField;
+    SQLContasReceberREGISTRO: TDateTimeField;
+    SQLContasReceberCTRCDREABILSPC: TDateTimeField;
+    SQLContasReceberCTRCN2TOTMULTACOBR: TFloatField;
+    SQLContasReceberBANCA5CODCHQ: TStringField;
+    SQLContasReceberCTRCA10AGENCIACHQ: TStringField;
+    SQLContasReceberCTRCA15CONTACHQ: TStringField;
+    SQLContasReceberCTRCA15NROCHQ: TStringField;
+    SQLContasReceberCTRCA60TITULARCHQ: TStringField;
+    SQLContasReceberCTRCA20CGCCPFCHQ: TStringField;
+    SQLContasReceberCTRCDDEPOSCHQ: TDateTimeField;
+    SQLContasReceberALINICOD: TIntegerField;
+    SQLContasReceberPDVDA13ID: TStringField;
+    SQLContasReceberCTRCA254HIST: TStringField;
+    SQLContasReceberHTPDICOD: TIntegerField;
+    SQLContasReceberPLCTA15CODDEBITO: TStringField;
+    SQLContasReceberPortadorLookup: TStringField;
+    SQLContasReceberAVALA13ID: TStringField;
+    SQLContasReceberCTRCCEMITIDOBOLETO: TStringField;
+    SQLContasReceberCTRCCTIPOREGISTRO: TStringField;
+    DSSQLContasReceber: TDataSource;
+    PanelFinanceiro: TPanel;
+    Panel8: TPanel;
+    Panel9: TPanel;
+    AdvOfficeStatusBar2: TAdvOfficeStatusBar;
+    RxLabel1: TRxLabel;
+    Panel6: TPanel;
+    DBGrid2: TDBGrid;
+    Panel11: TPanel;
+    Label32: TLabel;
+    ComboPlanoRectoAtual: TRxDBLookupCombo;
+    Panel4: TPanel;
+    Label33: TLabel;
+    Label34: TLabel;
+    Label35: TLabel;
+    Label36: TLabel;
+    Label37: TLabel;
+    Label38: TLabel;
+    BTNRecalcularFinanceiro: TSpeedButton;
+    BtnExcluirParcAtuais: TSpeedButton;
+    Label97: TLabel;
+    ComboPlanoRecto: TRxDBLookupCombo;
+    ComboNumerarioVista: TRxDBLookupCombo;
+    ComboNumerarioPrazo: TRxDBLookupCombo;
+    ComboTipoDoc: TRxDBLookupCombo;
+    ComboPortador: TRxDBLookupCombo;
+    ComboHistoricoPadrao: TRxDBLookupCombo;
+    MemoHistorico: TMemo;
+    ComboPlanoContas: TRxDBLookupCombo;
+    RxQuery1: TRxQuery;
+    IntegerField1: TIntegerField;
+    StringField1: TStringField;
+    StringField2: TStringField;
+    StringField3: TStringField;
+    DataSource1: TDataSource;
+    DBGrid1: TDBGrid;
+    DSSQLNumerarioVista: TDataSource;
+    SQLNumerarioVista: TRxQuery;
+    DSSQLNumerarioPrazo: TDataSource;
+    SQLNumerarioPrazo: TRxQuery;
+    SQLTipoDoc: TRxQuery;
+    SQLTipoDocTPDCICOD: TIntegerField;
+    SQLTipoDocTPDCA60DESCR: TStringField;
+    DSSQLTipoDoc: TDataSource;
+    SQLPortador: TRxQuery;
+    DSSQLPortador: TDataSource;
+    SQLHistoricoPadrao: TRxQuery;
+    SQLHistoricoPadraoHTPDICOD: TIntegerField;
+    SQLHistoricoPadraoHTPDA100HISTORICO: TStringField;
+    SQLHistoricoPadraoHTPDCTIPO: TStringField;
+    SQLHistoricoPadraoPENDENTE: TStringField;
+    SQLHistoricoPadraoREGISTRO: TDateTimeField;
+    DSSQLHistoricoPadrao: TDataSource;
+    DSSQLParcelasPrazoVendaTemp: TDataSource;
+    SQLParcelasPrazoVendaTemp: TRxQuery;
+    SQLParcelasPrazoVendaTempTERMICOD: TIntegerField;
+    SQLParcelasPrazoVendaTempDATAVENCTO: TDateTimeField;
+    SQLParcelasPrazoVendaTempNROPARCELA: TIntegerField;
+    SQLParcelasPrazoVendaTempVALORVENCTO: TFloatField;
+    SQLParcelasPrazoVendaTempNUMEICOD: TIntegerField;
+    SQLParcelasPrazoVendaTempNumerarioLookup: TStringField;
+    SQLParcelasPrazoVendaTempTipoPadrao: TStringField;
+    SQLPlano: TRxQuery;
+    SQLPlanoPLRCICOD: TIntegerField;
+    SQLPlanoPLRCA60DESCR: TStringField;
+    SQLPlanoPLRCN2TXJURO: TFloatField;
+    SQLPlanoPLRCN2TXMULTA: TFloatField;
+    SQLPlanoPLRCN2TXCRED: TFloatField;
+    SQLPlanoPLRCN2PERCDESC: TFloatField;
+    SQLPlanoPLRCCDFIX: TStringField;
+    SQLPlanoPLRCIDFIXNROPARC: TIntegerField;
+    SQLPlanoPLRCDFIXDVENC: TIntegerField;
+    SQLPlanoPLRCCDFIXENTR: TStringField;
+    SQLPlanoPLRCN2PERCENTR: TFloatField;
+    SQLPlanoPLRCN2DESC: TFloatField;
+    SQLPlanoPLRCCATIVO: TStringField;
+    SQLPlanoPENDENTE: TStringField;
+    SQLPlanoREGISTRO: TDateTimeField;
+    SQLPlanoPLRCN2PERCACRESC: TFloatField;
+    SQLPlanoParcela: TRxQuery;
     procedure FormCreate(Sender: TObject);
     procedure SQLTemplateCalcFields(DataSet: TDataSet);
     procedure btnConsultaClienteClick(Sender: TObject);
@@ -190,9 +329,12 @@ type
     procedure AdvGlowButton1Click(Sender: TObject);
     procedure AdvGlowButton2Click(Sender: TObject);
     procedure AdvGlowButton3Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure BTNRecalcularFinanceiroClick(Sender: TObject);
   private
     { Private declarations }
   public
+  PermiteExcluirSemPerguntar: Boolean;
     { Public declarations }
   end;
 
@@ -510,6 +652,162 @@ procedure TFormCadastroNotaServico.AdvGlowButton3Click(Sender: TObject);
 begin
   inherited;
    TdmNFSe.Cancelar(DSTemplate.DataSet.fieldbyname('ID').AsInteger);
+end;
+
+procedure TFormCadastroNotaServico.Button3Click(Sender: TObject);
+begin
+  inherited;
+  SQLconta.Close;
+  SQLconta.Open;
+  SQLContasReceber.Close;
+  SQLContasReceber.ParamByName('NOFIA13ID').AsString := SQLTemplateNUMERO_NOTA.AsString;
+  SQLContasReceber.Open;
+
+  PagePrincipal.ActivePage := tsFinanceiro;
+
+  ComboTipoDoc.KeyValue := dm.SQLConfigVenda.FieldByName('TPDCICOD').AsInteger;
+  ComboPortador.KeyValue := dm.SQLConfigVenda.FieldByName('PORTICOD').AsInteger;
+  ComboNumerarioVista.KeyValue := dm.SQLConfigVenda.FieldByName('NUMEVISTA').AsInteger;
+  ComboNumerarioPrazo.KeyValue := dm.SQLConfigVenda.FieldByName('NUMEPRAZO').AsInteger;
+  ComboPlanoRecto.Value := '';
+  ComboPlanoRecto.SetFocus;
+
+end;
+
+procedure TFormCadastroNotaServico.BTNRecalcularFinanceiroClick(
+  Sender: TObject);
+var
+  Entrada, Desconto, Valor: Double;
+  DiminuiAcresc, ValorJuro, Acrescimo, EntradaCalc, TaxaCred: Double;
+  Erro: Boolean;
+  ValorBase: Double;
+  I: Integer;
+begin
+  inherited;
+  PermiteExcluirSemPerguntar := True;
+
+  if ComboNumerarioVista.Value = '' then
+  begin
+    ShowMessage('Nenhum numerário a vista foi escolhido! Verifique!');
+    Abort;
+  end;
+
+  if ComboNumerarioPrazo.Value = '' then
+  begin
+    ShowMessage('Nenhum numerário a prazo foi escolhido! Verifique!');
+    Abort;
+  end;
+
+  if (ComboPlanoRecto.Value <> '') and (SQLTemplateVALOR_TOTAL.AsFloat > 0) and (SQLTemplate.State in dsEditModes) then
+  begin
+    DM.SQLTemplate.Close;
+    DM.SQLTemplate.SQL.Clear;
+    DM.SQLTemplate.SQL.Add('delete from PARCELASPRAZOVENDATEMP');
+    DM.SQLTemplate.SQL.Add('where TERMICOD = ' + IntToStr(TerminalAtual));
+    DM.SQLTemplate.ExecSQL;
+
+    SQLParcelasPrazoVendaTemp.Close;
+    SQLParcelasPrazoVendaTemp.SQL.Clear;
+    SQLParcelasPrazoVendaTemp.SQL.Add('select * from PARCELASPRAZOVENDATEMP');
+    SQLParcelasPrazoVendaTemp.SQL.Add('where TERMICOD = ' + IntToStr(TerminalAtual));
+    SQLParcelasPrazoVendaTemp.SQL.Add('order by NROPARCELA');
+    SQLParcelasPrazoVendaTemp.Open;
+
+    SQLPlano.Close;
+    SQLPlano.ParamByName('PLRCICOD').AsInteger := ComboPlanoRecto.KeyValue;
+    SQLPlano.Open;
+    SQLPlano.First;
+    if not SQLPlano.Eof then
+    begin
+      SQLPlanoParcela.Close;
+      SQLPlanoParcela.ParamByName('PLRCICOD').AsInteger := ComboPlanoRecto.KeyValue;
+      SQLPlanoParcela.Open;
+      SQLPlanoParcela.First;
+      ValorJuro := SQLPlanoPLRCN2TXJURO.AsFloat;
+      CriaParcelas(SQLParcelasPrazoVendaTemp, SQLPlano, SQLPlanoParcela, Entrada, Desconto, SQLTemplate.FindField('VALOR_TOTAL').asFloat, ComboPlanoRecto.KeyValue, SQLTemplate.FindField('DATA_EMISSAO').asDateTime, ComboNumerarioVista.Value, ComboNumerarioPrazo.Value, ComboNumerarioVista.Value, ComboNumerarioPrazo.Value, SQLTemplate.FindField('NUMERO_NOTA').asString, DiminuiAcresc, ValorJuro, Acrescimo, EntradaCalc, TaxaCred);
+      SQLPlanoParcela.Close;
+    end;
+    SQLPlano.Close;
+  end;
+
+  // Lancar Contas a Receber
+  if (ComboPlanoRecto.Value <> '') and (SQLTemplateVALOR_TOTAL.AsFloat > 0) and (SQLTemplate.State in dsEditModes) then
+  begin
+    SQLContasReceber.Close;
+    SQLContasReceber.ParamByName('NOFIA13ID').AsString := SQLTemplateNUMERO_NOTA.AsString;
+    SQLContasReceber.Open;
+    SQLContasReceber.First;
+    while not SQLContasReceber.Eof do
+      SQLContasReceber.Delete;
+
+    SQLContasReceber.Close;
+    SQLContasReceber.ParamByName('NOFIA13ID').AsString := SQLTemplateNUMERO_NOTA.AsString;
+    SQLContasReceber.Open;
+
+    if not DM.SQLConfigCrediario.Active then
+      DM.SQLConfigCrediario.Open;
+
+    if not SQLParcelasPrazoVendaTemp.Active then
+      SQLParcelasPrazoVendaTemp.Open;
+    SQLParcelasPrazoVendaTemp.First;
+    while not SQLParcelasPrazoVendaTemp.Eof do
+    begin
+      SQLContasReceber.Append;
+      SQLContasReceberCTRCCSTATUS.Value := 'A';
+      SQLContasReceberNOFIA13ID.AsString := SQLTemplate.FindField('NUMERO_NOTA').AsString;
+      SQLContasReceberCTRCINROPARC.Value := SQLParcelasPrazoVendaTempNROPARCELA.Value;
+      SQLContasReceberCTRCDEMIS.Value := SQLTemplate.FindField('DATA_EMISSAO').Value;
+      SQLContasReceberCLIEA13ID.AsString := SQLTemplate.FindField('CLIEA13ID').AsString;
+      SQLContasReceberCTRCDVENC.Value := SQLParcelasPrazoVendaTempDATAVENCTO.Value;
+      SQLContasReceberCTRCN2VLR.Value := SQLParcelasPrazoVendaTempVALORVENCTO.Value;
+      SQLContasReceberCTRCA5TIPOPADRAO.Value := SQLParcelasPrazoVendaTempTipoPadrao.Value;
+      if SQLContasReceberCTRCA5TIPOPADRAO.Value = '' then
+        SQLContasReceberCTRCA5TIPOPADRAO.Value := 'CRD';
+      SQLContasReceberTPDCICOD.AsVariant := ComboTipoDoc.KeyValue;
+      SQLContasReceberPORTICOD.asVariant := ComboPortador.KeyValue;
+      SQLContasReceberCTRCA30NRODUPLICBANCO.AsString := FormatFloat('######000000', SQLTemplateNUMERO_NOTA.Value) + '-' + SQLParcelasPrazoVendaTempNROPARCELA.AsString;
+      SQLContasReceberCTRCCEMITIDOBOLETO.Value := 'N';
+      SQLContasReceberNUMEICOD.Value := SQLParcelasPrazoVendaTempNUMEICOD.Value;
+
+          // PLANO DE CONTAS Busca do Numerario
+      if SQLParcelasPrazoVendaTempNUMEICOD.AsVariant <> Null then
+      begin
+        SQLContasReceberPLCTA15COD.AsString := SQLLocate('NUMERARIO', 'NUMEICOD', 'PLCTA15CODCRED', SQLParcelasPrazoVendaTempNUMEICOD.AsString);
+        SQLContasReceberPLCTA15CODDEBITO.AsString := SQLLocate('NUMERARIO', 'NUMEICOD', 'PLCTA15CODDEB', SQLParcelasPrazoVendaTempNUMEICOD.AsString);
+      end;
+
+      if (SQLContasReceberPLCTA15COD.AsString = '') and (ComboPlanoContas.Value <> '') then
+        SQLContasReceberPLCTA15COD.AsVariant := ComboPlanoContas.KeyValue;
+
+      if ComboHistoricoPadrao.Value <> '' then
+        SQLContasReceberHTPDICOD.AsString := ComboHistoricoPadrao.Value;
+
+      if MemoHistorico.Lines.Count > 0 then
+        SQLContasReceberCTRCA254HIST.AsString := UpperCase(MemoHistorico.Lines.Text);
+
+      SQLContasReceberTERMICOD.AsInteger := TerminalCorrente;
+      SQLContasReceberPENDENTE.Value := 'S';
+      SQLContasReceberREGISTRO.Value := Now;
+
+      SQLContasReceber.Post;
+      SQLParcelasPrazoVendaTemp.Next;
+    end;
+    SQLParcelasPrazoVendaTemp.Close;
+  end;
+  PermiteExcluirSemPerguntar := False;
+
+  SQLContasReceber.Close;
+  SQLContasReceber.ParamByName('NOFIA13ID').AsString := SQLTemplateNUMERO_NOTA.AsString;
+  SQLContasReceber.Open;
+
+  if (SQLTemplate.State in dsEditModes) then
+  begin
+    SQLTemplatePLRCICOD.Value := SQLPlanoRecebimentoPLRCICOD.Value;
+    SQLTemplate.Post;
+  end;
+
+  ComboPlanoRecto.Value := '';
+
 end;
 
 end.

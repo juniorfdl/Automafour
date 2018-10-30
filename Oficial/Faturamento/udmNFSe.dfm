@@ -12,7 +12,7 @@ object dmNFSe: TdmNFSe
     Configuracoes.Geral.SSLXmlSignLib = xsMsXmlCapicom
     Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
     Configuracoes.Geral.CodigoMunicipio = 0
-    Configuracoes.Geral.ConsultaLoteAposEnvio = False
+    Configuracoes.Geral.ConsultaLoteAposEnvio = True
     Configuracoes.Arquivos.OrdenacaoPath = <>
     Configuracoes.Arquivos.EmissaoPathNFSe = True
     Configuracoes.WebServices.Visualizar = True

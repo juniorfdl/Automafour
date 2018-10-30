@@ -33,6 +33,11 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
       Height = 572
       inherited PanelBarra: TPanel
         Height = 572
+        inherited Button3: TRxSpeedButton
+          Caption = '&Financeiro'
+          Visible = True
+          OnClick = Button3Click
+        end
       end
       inherited PanelFundoDados: TPanel
         Width = 1121
@@ -44,7 +49,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
             Top = 44
             Width = 1121
             Height = 528
-            ActivePage = TabSheetDadosPrincipais
+            ActivePage = tsFinanceiro
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Width = 1113
@@ -9059,6 +9064,605 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                 end
               end
             end
+            object tsFinanceiro: TTabSheet
+              Caption = 'Financeiro'
+              ImageIndex = 2
+              object PanelFinanceiro: TPanel
+                Left = 0
+                Top = 0
+                Width = 1113
+                Height = 502
+                Align = alClient
+                BevelInner = bvLowered
+                BevelOuter = bvNone
+                ParentColor = True
+                TabOrder = 0
+                object Panel8: TPanel
+                  Left = 1
+                  Top = 1
+                  Width = 1111
+                  Height = 500
+                  Align = alClient
+                  BevelWidth = 3
+                  Color = 12572888
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -16
+                  Font.Name = 'Tahoma'
+                  Font.Style = [fsBold]
+                  ParentFont = False
+                  TabOrder = 0
+                  object Panel9: TPanel
+                    Left = 3
+                    Top = 3
+                    Width = 1105
+                    Height = 38
+                    Align = alTop
+                    BevelInner = bvLowered
+                    BevelOuter = bvNone
+                    BevelWidth = 2
+                    Color = 10053171
+                    Font.Charset = ANSI_CHARSET
+                    Font.Color = clWhite
+                    Font.Height = -21
+                    Font.Name = 'Times New Roman'
+                    Font.Style = [fsBold]
+                    ParentFont = False
+                    TabOrder = 0
+                    object AdvOfficeStatusBar2: TAdvOfficeStatusBar
+                      Left = 2
+                      Top = 2
+                      Width = 1101
+                      Height = 34
+                      AnchorHint = False
+                      Align = alClient
+                      Panels = <
+                        item
+                          AppearanceStyle = psLight
+                          DateFormat = 'mm/dd/yyyy'
+                          Progress.BackGround = clNone
+                          Progress.Indication = piPercentage
+                          Progress.Min = 0
+                          Progress.Max = 100
+                          Progress.Position = 0
+                          Progress.Level0Color = clLime
+                          Progress.Level0ColorTo = 14811105
+                          Progress.Level1Color = clYellow
+                          Progress.Level1ColorTo = 13303807
+                          Progress.Level2Color = 5483007
+                          Progress.Level2ColorTo = 11064319
+                          Progress.Level3Color = clRed
+                          Progress.Level3ColorTo = 13290239
+                          Progress.Level1Perc = 70
+                          Progress.Level2Perc = 90
+                          Progress.BorderColor = clBlack
+                          Progress.ShowBorder = False
+                          Progress.Stacked = False
+                          TimeFormat = 'hh:mm:ss'
+                          Width = 50
+                        end>
+                      SimplePanel = False
+                      SizeGrip = False
+                      URLColor = clBlue
+                      Styler = AdvOfficeStatusBarOfficeStyler1
+                      Version = '1.3.0.2'
+                      object RxLabel1: TRxLabel
+                        Left = 9
+                        Top = 6
+                        Width = 195
+                        Height = 23
+                        Caption = 'Lan'#231'amento de Parcelas'
+                        Font.Charset = ANSI_CHARSET
+                        Font.Color = clBlack
+                        Font.Height = -19
+                        Font.Name = 'Impact'
+                        Font.Style = []
+                        ParentFont = False
+                        ShadowColor = 15195349
+                        ShadowPos = spRightBottom
+                        Transparent = True
+                      end
+                    end
+                  end
+                  object Panel6: TPanel
+                    Left = 427
+                    Top = 41
+                    Width = 681
+                    Height = 456
+                    Align = alClient
+                    Caption = 'Panel6'
+                    Color = 12572888
+                    TabOrder = 1
+                    object DBGrid2: TDBGrid
+                      Left = 1
+                      Top = 39
+                      Width = 679
+                      Height = 416
+                      Align = alClient
+                      BorderStyle = bsNone
+                      Color = clWhite
+                      DataSource = DSSQLContasReceber
+                      FixedColor = 13225421
+                      Font.Charset = DEFAULT_CHARSET
+                      Font.Color = clWindowText
+                      Font.Height = -11
+                      Font.Name = 'Tahoma'
+                      Font.Style = []
+                      Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines]
+                      ParentFont = False
+                      TabOrder = 0
+                      TitleFont.Charset = DEFAULT_CHARSET
+                      TitleFont.Color = clWhite
+                      TitleFont.Height = -11
+                      TitleFont.Name = 'Tahoma'
+                      TitleFont.Style = [fsBold]
+                      OnDrawColumnCell = DBGridListaDrawColumnCell
+                      Columns = <
+                        item
+                          Expanded = False
+                          FieldName = 'CTRCINROPARC'
+                          ReadOnly = True
+                          Title.Caption = 'Parc'
+                          Title.Font.Charset = DEFAULT_CHARSET
+                          Title.Font.Color = clBlack
+                          Title.Font.Height = -11
+                          Title.Font.Name = 'Tahoma'
+                          Title.Font.Style = [fsBold]
+                          Width = 30
+                          Visible = True
+                        end
+                        item
+                          Expanded = False
+                          FieldName = 'CTRCDVENC'
+                          Title.Caption = 'Dt.Vencto'
+                          Title.Font.Charset = DEFAULT_CHARSET
+                          Title.Font.Color = clBlack
+                          Title.Font.Height = -11
+                          Title.Font.Name = 'Tahoma'
+                          Title.Font.Style = [fsBold]
+                          Width = 66
+                          Visible = True
+                        end
+                        item
+                          Expanded = False
+                          FieldName = 'CTRCN2VLR'
+                          Title.Caption = 'Valor'
+                          Title.Font.Charset = DEFAULT_CHARSET
+                          Title.Font.Color = clBlack
+                          Title.Font.Height = -11
+                          Title.Font.Name = 'Tahoma'
+                          Title.Font.Style = [fsBold]
+                          Width = 90
+                          Visible = True
+                        end>
+                    end
+                    object Panel11: TPanel
+                      Left = 1
+                      Top = 1
+                      Width = 679
+                      Height = 38
+                      Align = alTop
+                      Color = 13158600
+                      TabOrder = 1
+                      object Label32: TLabel
+                        Left = 7
+                        Top = 2
+                        Width = 142
+                        Height = 13
+                        Caption = 'Plano Recebimento Atual'
+                        Font.Charset = DEFAULT_CHARSET
+                        Font.Color = clBlack
+                        Font.Height = -11
+                        Font.Name = 'Tahoma'
+                        Font.Style = [fsBold]
+                        ParentFont = False
+                      end
+                      object ComboPlanoRectoAtual: TRxDBLookupCombo
+                        Left = 2
+                        Top = 15
+                        Width = 211
+                        Height = 20
+                        DropDownCount = 8
+                        Ctl3D = True
+                        DataField = 'PLRCICOD'
+                        DataSource = DSTemplate
+                        Font.Charset = DEFAULT_CHARSET
+                        Font.Color = clWindowText
+                        Font.Height = -11
+                        Font.Name = 'Tahoma'
+                        Font.Style = []
+                        LookupField = 'PLRCICOD'
+                        LookupDisplay = 'PLRCA60DESCR'
+                        LookupSource = DSSQLPlanoRecebimento
+                        ParentCtl3D = False
+                        ParentFont = False
+                        ReadOnly = True
+                        TabOrder = 0
+                        TabStop = False
+                      end
+                    end
+                    object DBGrid1: TDBGrid
+                      Left = 1
+                      Top = 39
+                      Width = 679
+                      Height = 416
+                      Align = alClient
+                      BorderStyle = bsNone
+                      Color = clWhite
+                      DataSource = DSSQLContasReceber
+                      FixedColor = 13225421
+                      Font.Charset = DEFAULT_CHARSET
+                      Font.Color = clWindowText
+                      Font.Height = -11
+                      Font.Name = 'Tahoma'
+                      Font.Style = []
+                      Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines]
+                      ParentFont = False
+                      TabOrder = 2
+                      TitleFont.Charset = DEFAULT_CHARSET
+                      TitleFont.Color = clWhite
+                      TitleFont.Height = -11
+                      TitleFont.Name = 'Tahoma'
+                      TitleFont.Style = [fsBold]
+                      OnDrawColumnCell = DBGridListaDrawColumnCell
+                      Columns = <
+                        item
+                          Expanded = False
+                          FieldName = 'CTRCINROPARC'
+                          ReadOnly = True
+                          Title.Caption = 'Parc'
+                          Title.Font.Charset = DEFAULT_CHARSET
+                          Title.Font.Color = clBlack
+                          Title.Font.Height = -11
+                          Title.Font.Name = 'Tahoma'
+                          Title.Font.Style = [fsBold]
+                          Width = 30
+                          Visible = True
+                        end
+                        item
+                          Expanded = False
+                          FieldName = 'CTRCDVENC'
+                          Title.Caption = 'Dt.Vencto'
+                          Title.Font.Charset = DEFAULT_CHARSET
+                          Title.Font.Color = clBlack
+                          Title.Font.Height = -11
+                          Title.Font.Name = 'Tahoma'
+                          Title.Font.Style = [fsBold]
+                          Width = 66
+                          Visible = True
+                        end
+                        item
+                          Expanded = False
+                          FieldName = 'CTRCN2VLR'
+                          Title.Caption = 'Valor'
+                          Title.Font.Charset = DEFAULT_CHARSET
+                          Title.Font.Color = clBlack
+                          Title.Font.Height = -11
+                          Title.Font.Name = 'Tahoma'
+                          Title.Font.Style = [fsBold]
+                          Width = 90
+                          Visible = True
+                        end>
+                    end
+                  end
+                  object Panel4: TPanel
+                    Left = 3
+                    Top = 41
+                    Width = 424
+                    Height = 456
+                    Align = alLeft
+                    Color = 13158600
+                    TabOrder = 2
+                    object Label33: TLabel
+                      Left = 17
+                      Top = 6
+                      Width = 157
+                      Height = 13
+                      Caption = 'Novo Plano de Recebimento'
+                      Font.Charset = DEFAULT_CHARSET
+                      Font.Color = clBlack
+                      Font.Height = -11
+                      Font.Name = 'Tahoma'
+                      Font.Style = [fsBold]
+                      ParentFont = False
+                    end
+                    object Label34: TLabel
+                      Left = 18
+                      Top = 39
+                      Width = 38
+                      Height = 13
+                      Caption = #224' Vista'
+                      Color = 12572888
+                      Font.Charset = DEFAULT_CHARSET
+                      Font.Color = clBlack
+                      Font.Height = -11
+                      Font.Name = 'Tahoma'
+                      Font.Style = [fsBold]
+                      ParentColor = False
+                      ParentFont = False
+                    end
+                    object Label35: TLabel
+                      Left = 226
+                      Top = 39
+                      Width = 42
+                      Height = 13
+                      Caption = #224' Prazo'
+                      Color = 12572888
+                      Font.Charset = DEFAULT_CHARSET
+                      Font.Color = clBlack
+                      Font.Height = -11
+                      Font.Name = 'Tahoma'
+                      Font.Style = [fsBold]
+                      ParentColor = False
+                      ParentFont = False
+                    end
+                    object Label36: TLabel
+                      Left = 18
+                      Top = 73
+                      Width = 92
+                      Height = 13
+                      Caption = 'Tipo Documento'
+                      Color = 12572888
+                      Font.Charset = DEFAULT_CHARSET
+                      Font.Color = clBlack
+                      Font.Height = -11
+                      Font.Name = 'Tahoma'
+                      Font.Style = [fsBold]
+                      ParentColor = False
+                      ParentFont = False
+                    end
+                    object Label37: TLabel
+                      Left = 226
+                      Top = 73
+                      Width = 50
+                      Height = 13
+                      Caption = 'Portador'
+                      Color = 12572888
+                      Font.Charset = DEFAULT_CHARSET
+                      Font.Color = clBlack
+                      Font.Height = -11
+                      Font.Name = 'Tahoma'
+                      Font.Style = [fsBold]
+                      ParentColor = False
+                      ParentFont = False
+                    end
+                    object Label38: TLabel
+                      Left = 18
+                      Top = 145
+                      Width = 93
+                      Height = 13
+                      Caption = 'Hist'#243'rico Padr'#227'o'
+                      Font.Charset = DEFAULT_CHARSET
+                      Font.Color = clBlack
+                      Font.Height = -11
+                      Font.Name = 'Tahoma'
+                      Font.Style = [fsBold]
+                      ParentFont = False
+                    end
+                    object BTNRecalcularFinanceiro: TSpeedButton
+                      Left = 21
+                      Top = 250
+                      Width = 186
+                      Height = 22
+                      Caption = '&Recalcular'
+                      Flat = True
+                      Font.Charset = DEFAULT_CHARSET
+                      Font.Color = clWindowText
+                      Font.Height = -13
+                      Font.Name = 'Tahoma'
+                      Font.Style = [fsBold]
+                      Glyph.Data = {
+                        5A010000424D5A01000000000000760000002800000012000000130000000100
+                        040000000000E4000000CE0E0000C40E00001000000000000000000000000000
+                        80000080000000808000800000008000800080800000C0C0C000808080000000
+                        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00777778877777
+                        7777770000007777844877777777770000007778444487777777770000007784
+                        4444487777777700000078444C4444877777770000007444C4C4448777777700
+                        00007C4C444C444877777700000078C44444C4448777770000008444C4444C44
+                        487777000000444C7C4448C4448777000000C4C777C4448C4448770000007C77
+                        777C4448C4448700000077777777C4448C4487000000777777777C4448C44700
+                        00007777777777C4448C7700000077777777777C444877000000777777777777
+                        C448770000007777777777777C447700000077777777777777C777000000}
+                      ParentFont = False
+                      OnClick = BTNRecalcularFinanceiroClick
+                    end
+                    object BtnExcluirParcAtuais: TSpeedButton
+                      Left = 215
+                      Top = 250
+                      Width = 186
+                      Height = 22
+                      Caption = '&Excluir Parcelas Atuais'
+                      Flat = True
+                      Font.Charset = DEFAULT_CHARSET
+                      Font.Color = clWindowText
+                      Font.Height = -13
+                      Font.Name = 'Tahoma'
+                      Font.Style = [fsBold]
+                      Glyph.Data = {
+                        96010000424D9601000000000000760000002800000018000000180000000100
+                        0400000000002001000000000000000000001000000000000000000000000000
+                        8000008000000080800080000000800080008080000080808000C0C0C0000000
+                        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FFFFFFFFFFFF
+                        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                        FFFFFFFFFFFFFFFFFFFFFFFFFFF000000000FFFFFFFFFFFFFF077777777000FF
+                        FFFFFFFFF078787727770000FFFFFFFFF0787837272700000FFFFFFFF0787837
+                        272700000FFFFFFFF0787837272700000FFFFFFFF078783727270000FFFFFFFF
+                        F078783727270FFFFFFFFFFFF070000000070FFFFFFFFFFFF007777777200FFF
+                        FFFFFFFF07777777777770FFFFFFFFFF07888877777770FFFFFFFFFF07888777
+                        777770FFFFFFFFFF08888700077770FFFFFFFFFFF0088F7737700FFFFFFFFFFF
+                        FFF00000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+                      ParentFont = False
+                    end
+                    object Label97: TLabel
+                      Left = 18
+                      Top = 108
+                      Width = 90
+                      Height = 13
+                      Caption = 'Plano de Contas'
+                      Font.Charset = DEFAULT_CHARSET
+                      Font.Color = clBlack
+                      Font.Height = -11
+                      Font.Name = 'Tahoma'
+                      Font.Style = [fsBold]
+                      ParentFont = False
+                    end
+                    object ComboPlanoRecto: TRxDBLookupCombo
+                      Left = 13
+                      Top = 19
+                      Width = 403
+                      Height = 20
+                      DropDownCount = 8
+                      Ctl3D = True
+                      Font.Charset = DEFAULT_CHARSET
+                      Font.Color = clWindowText
+                      Font.Height = -11
+                      Font.Name = 'Tahoma'
+                      Font.Style = []
+                      LookupField = 'PLRCICOD'
+                      LookupDisplay = 'PLRCA60DESCR'
+                      LookupSource = DSSQLPlanoRecebimento
+                      ParentCtl3D = False
+                      ParentFont = False
+                      TabOrder = 0
+                    end
+                    object ComboNumerarioVista: TRxDBLookupCombo
+                      Left = 13
+                      Top = 52
+                      Width = 201
+                      Height = 20
+                      DropDownCount = 8
+                      Ctl3D = True
+                      Font.Charset = DEFAULT_CHARSET
+                      Font.Color = clWindowText
+                      Font.Height = -11
+                      Font.Name = 'Tahoma'
+                      Font.Style = []
+                      LookupField = 'NUMEICOD'
+                      LookupDisplay = 'NUMEA30DESCR'
+                      LookupSource = DSSQLNumerarioVista
+                      ParentCtl3D = False
+                      ParentFont = False
+                      TabOrder = 1
+                    end
+                    object ComboNumerarioPrazo: TRxDBLookupCombo
+                      Left = 220
+                      Top = 52
+                      Width = 196
+                      Height = 20
+                      DropDownCount = 8
+                      Ctl3D = True
+                      Font.Charset = DEFAULT_CHARSET
+                      Font.Color = clWindowText
+                      Font.Height = -11
+                      Font.Name = 'Tahoma'
+                      Font.Style = []
+                      LookupField = 'NUMEICOD'
+                      LookupDisplay = 'NUMEA30DESCR'
+                      LookupSource = DSSQLNumerarioPrazo
+                      ParentCtl3D = False
+                      ParentFont = False
+                      TabOrder = 2
+                    end
+                    object ComboTipoDoc: TRxDBLookupCombo
+                      Left = 13
+                      Top = 86
+                      Width = 201
+                      Height = 20
+                      DropDownCount = 8
+                      Ctl3D = True
+                      Font.Charset = DEFAULT_CHARSET
+                      Font.Color = clWindowText
+                      Font.Height = -11
+                      Font.Name = 'Tahoma'
+                      Font.Style = []
+                      LookupField = 'TPDCICOD'
+                      LookupDisplay = 'TPDCA60DESCR'
+                      LookupSource = DSSQLTipoDoc
+                      ParentCtl3D = False
+                      ParentFont = False
+                      TabOrder = 3
+                    end
+                    object ComboPortador: TRxDBLookupCombo
+                      Left = 220
+                      Top = 86
+                      Width = 196
+                      Height = 20
+                      DropDownCount = 8
+                      Ctl3D = True
+                      Font.Charset = DEFAULT_CHARSET
+                      Font.Color = clWindowText
+                      Font.Height = -11
+                      Font.Name = 'Tahoma'
+                      Font.Style = []
+                      LookupField = 'PORTICOD'
+                      LookupDisplay = 'PORTA60DESCR'
+                      LookupSource = DSSQLPortador
+                      ParentCtl3D = False
+                      ParentFont = False
+                      TabOrder = 4
+                    end
+                    object ComboHistoricoPadrao: TRxDBLookupCombo
+                      Left = 13
+                      Top = 158
+                      Width = 403
+                      Height = 21
+                      DropDownCount = 8
+                      Ctl3D = True
+                      DisplayEmpty = 'Selecione um hist'#243'rico Padr'#227'o...'
+                      Font.Charset = DEFAULT_CHARSET
+                      Font.Color = clWindowText
+                      Font.Height = -11
+                      Font.Name = 'Tahoma'
+                      Font.Style = []
+                      LookupField = 'HTPDICOD'
+                      LookupDisplay = 'HTPDA100HISTORICO'
+                      LookupSource = DSSQLHistoricoPadrao
+                      ParentCtl3D = False
+                      ParentFont = False
+                      TabOrder = 5
+                    end
+                    object MemoHistorico: TMemo
+                      Left = 13
+                      Top = 196
+                      Width = 403
+                      Height = 46
+                      Ctl3D = True
+                      Font.Charset = DEFAULT_CHARSET
+                      Font.Color = clWindowText
+                      Font.Height = -11
+                      Font.Name = 'Tahoma'
+                      Font.Style = []
+                      MaxLength = 254
+                      ParentCtl3D = False
+                      ParentFont = False
+                      ScrollBars = ssVertical
+                      TabOrder = 6
+                    end
+                    object ComboPlanoContas: TRxDBLookupCombo
+                      Left = 13
+                      Top = 121
+                      Width = 403
+                      Height = 21
+                      DropDownCount = 8
+                      Ctl3D = True
+                      DisplayEmpty = 'Selecione um hist'#243'rico Padr'#227'o...'
+                      Font.Charset = DEFAULT_CHARSET
+                      Font.Color = clWindowText
+                      Font.Height = -11
+                      Font.Name = 'Tahoma'
+                      Font.Style = []
+                      LookupField = 'PLCTA15COD'
+                      LookupDisplay = 'PLCTA60DESCR'
+                      LookupSource = DSSQLConta
+                      ParentCtl3D = False
+                      ParentFont = False
+                      TabOrder = 7
+                    end
+                  end
+                end
+              end
+            end
           end
           inherited PanelMaster: TPanel
             Top = 22
@@ -9301,8 +9905,8 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
       'Where PLRCFATCASH <> '#39'C'#39
       'ORDER BY PLRCA60DESCR')
     Macros = <>
-    Left = 1015
-    Top = 350
+    Left = 1083
+    Top = 331
     object SQLPlanoRecebimentoPLRCICOD: TIntegerField
       FieldName = 'PLRCICOD'
       Origin = 'DB.PLANORECEBIMENTO.PLRCICOD'
@@ -9329,16 +9933,16 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
   object DSSQLPlanoRecebimento: TDataSource
     AutoEdit = False
     DataSet = SQLPlanoRecebimento
-    Left = 1152
-    Top = 350
+    Left = 1115
+    Top = 331
   end
   object SQLTributacao: TRxQuery
     DatabaseName = 'DB'
     SQL.Strings = (
       'Select * From TRIBUTACAO_NFSE')
     Macros = <>
-    Left = 1047
-    Top = 390
+    Left = 997
+    Top = 238
     object SQLTributacaoID: TIntegerField
       FieldName = 'ID'
       Origin = 'DB.TRIBUTACAO_NFSE.ID'
@@ -9366,13 +9970,13 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
   object DSSQLTributacao: TDataSource
     AutoEdit = False
     DataSet = SQLTributacao
-    Left = 1176
-    Top = 374
+    Left = 1030
+    Top = 238
   end
   object DSSQLSerie: TDataSource
     DataSet = SQLSerie
-    Left = 1184
-    Top = 350
+    Left = 1116
+    Top = 359
   end
   object SQLSerie: TRxQuery
     AutoCalcFields = False
@@ -9388,8 +9992,8 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
         ParamType = ptInput
         Value = '0=0'
       end>
-    Left = 1212
-    Top = 342
+    Left = 1084
+    Top = 359
     object SQLSerieSERIA5COD: TStringField
       FieldName = 'SERIA5COD'
       Origin = 'DB.SERIE.SERIA5COD'
@@ -9433,8 +10037,8 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
     SQL.Strings = (
       'SELECT distinct(SIGLA) FROM CIDADE')
     Macros = <>
-    Left = 1092
-    Top = 350
+    Left = 1004
+    Top = 506
     object SQLEstadoSIGLA: TStringField
       FieldName = 'SIGLA'
       Origin = 'DB.CIDADE.SIGLA'
@@ -9447,8 +10051,8 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
     SQL.Strings = (
       'SELECT * FROM CIDADE WHERE SIGLA = :SIGLA')
     Macros = <>
-    Left = 1092
-    Top = 382
+    Left = 1084
+    Top = 302
     ParamData = <
       item
         DataType = ftString
@@ -9459,7 +10063,644 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
   object DSSQLCidade: TDataSource
     AutoEdit = False
     DataSet = SQLCidade
-    Left = 1128
-    Top = 382
+    Left = 1114
+    Top = 302
+  end
+  object SQLConta: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'Select * From PLANODECONTAS Where '
+      'PLCTCANALSINT = '#39'A'#39
+      'and'
+      'PLCTCTIPOSALDO = '#39'C'#39)
+    Macros = <>
+    Left = 1083
+    Top = 240
+    object SQLContaPLCTA15COD: TStringField
+      FieldName = 'PLCTA15COD'
+      Origin = 'DB.PLANODECONTAS.PLCTA15COD'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLContaPLCTICODREDUZ: TIntegerField
+      FieldName = 'PLCTICODREDUZ'
+      Origin = 'DB.PLANODECONTAS.PLCTICODREDUZ'
+    end
+    object SQLContaPLCTINIVEL: TIntegerField
+      FieldName = 'PLCTINIVEL'
+      Origin = 'DB.PLANODECONTAS.PLCTINIVEL'
+    end
+    object SQLContaPLCTA15CODPAI: TStringField
+      FieldName = 'PLCTA15CODPAI'
+      Origin = 'DB.PLANODECONTAS.PLCTA15CODPAI'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLContaPLCTA30CODEDIT: TStringField
+      FieldName = 'PLCTA30CODEDIT'
+      Origin = 'DB.PLANODECONTAS.PLCTA30CODEDIT'
+      FixedChar = True
+      Size = 30
+    end
+    object SQLContaPLCTA60DESCR: TStringField
+      FieldName = 'PLCTA60DESCR'
+      Origin = 'DB.PLANODECONTAS.PLCTA60DESCR'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLContaPLCTCANALSINT: TStringField
+      FieldName = 'PLCTCANALSINT'
+      Origin = 'DB.PLANODECONTAS.PLCTCANALSINT'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLContaPLCTCTIPOSALDO: TStringField
+      FieldName = 'PLCTCTIPOSALDO'
+      Origin = 'DB.PLANODECONTAS.PLCTCTIPOSALDO'
+      FixedChar = True
+      Size = 1
+    end
+  end
+  object DSSQLConta: TDataSource
+    DataSet = SQLConta
+    Left = 1113
+    Top = 240
+  end
+  object SQLContasReceber: TRxQuery
+    Tag = 3
+    DatabaseName = 'DB'
+    DataSource = DSTemplate
+    RequestLive = True
+    SQL.Strings = (
+      'Select'
+      '*'
+      'From'
+      'CONTASRECEBER'
+      'Where'
+      'NOFIA13ID=:NOFIA13ID'
+      'order by'
+      'CTRCICOD ')
+    Macros = <>
+    Left = 241
+    Top = 29
+    ParamData = <
+      item
+        DataType = ftFixedChar
+        Name = 'NOFIA13ID'
+        ParamType = ptUnknown
+        Size = 14
+      end>
+    object SQLContasReceberCTRCA13ID: TStringField
+      FieldName = 'CTRCA13ID'
+      Origin = 'DB.CONTASRECEBER.CTRCA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLContasReceberEMPRICOD: TIntegerField
+      FieldName = 'EMPRICOD'
+      Origin = 'DB.CONTASRECEBER.EMPRICOD'
+    end
+    object SQLContasReceberTERMICOD: TIntegerField
+      FieldName = 'TERMICOD'
+      Origin = 'DB.CONTASRECEBER.TERMICOD'
+    end
+    object SQLContasReceberCTRCICOD: TIntegerField
+      FieldName = 'CTRCICOD'
+      Origin = 'DB.CONTASRECEBER.CTRCICOD'
+    end
+    object SQLContasReceberCLIEA13ID: TStringField
+      FieldName = 'CLIEA13ID'
+      Origin = 'DB.CONTASRECEBER.CLIEA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLContasReceberCTRCCSTATUS: TStringField
+      FieldName = 'CTRCCSTATUS'
+      Origin = 'DB.CONTASRECEBER.CTRCCSTATUS'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLContasReceberCTRCINROPARC: TIntegerField
+      FieldName = 'CTRCINROPARC'
+      Origin = 'DB.CONTASRECEBER.CTRCINROPARC'
+    end
+    object SQLContasReceberCTRCDVENC: TDateTimeField
+      FieldName = 'CTRCDVENC'
+      Origin = 'DB.CONTASRECEBER.CTRCDVENC'
+      DisplayFormat = 'dd/mm/yyyy'
+      EditMask = '!99/99/0000;1;_'
+    end
+    object SQLContasReceberCTRCN2VLR: TFloatField
+      FieldName = 'CTRCN2VLR'
+      Origin = 'DB.CONTASRECEBER.CTRCN2VLR'
+    end
+    object SQLContasReceberCTRCN2DESCFIN: TFloatField
+      FieldName = 'CTRCN2DESCFIN'
+      Origin = 'DB.CONTASRECEBER.CTRCN2DESCFIN'
+    end
+    object SQLContasReceberNUMEICOD: TIntegerField
+      FieldName = 'NUMEICOD'
+      Origin = 'DB.CONTASRECEBER.NUMEICOD'
+    end
+    object SQLContasReceberPORTICOD: TIntegerField
+      FieldName = 'PORTICOD'
+      Origin = 'DB.CONTASRECEBER.PORTICOD'
+    end
+    object SQLContasReceberCTRCN2TXJURO: TFloatField
+      FieldName = 'CTRCN2TXJURO'
+      Origin = 'DB.CONTASRECEBER.CTRCN2TXJURO'
+    end
+    object SQLContasReceberCTRCN2TXMULTA: TFloatField
+      FieldName = 'CTRCN2TXMULTA'
+      Origin = 'DB.CONTASRECEBER.CTRCN2TXMULTA'
+    end
+    object SQLContasReceberCTRCA5TIPOPADRAO: TStringField
+      FieldName = 'CTRCA5TIPOPADRAO'
+      Origin = 'DB.CONTASRECEBER.CTRCA5TIPOPADRAO'
+      FixedChar = True
+      Size = 5
+    end
+    object SQLContasReceberCTRCDULTREC: TDateTimeField
+      FieldName = 'CTRCDULTREC'
+      Origin = 'DB.CONTASRECEBER.CTRCDULTREC'
+    end
+    object SQLContasReceberCTRCN2TOTREC: TFloatField
+      FieldName = 'CTRCN2TOTREC'
+      Origin = 'DB.CONTASRECEBER.CTRCN2TOTREC'
+    end
+    object SQLContasReceberCTRCN2TOTJUROREC: TFloatField
+      FieldName = 'CTRCN2TOTJUROREC'
+      Origin = 'DB.CONTASRECEBER.CTRCN2TOTJUROREC'
+    end
+    object SQLContasReceberCTRCN2TOTMULTAREC: TFloatField
+      FieldName = 'CTRCN2TOTMULTAREC'
+      Origin = 'DB.CONTASRECEBER.CTRCN2TOTMULTAREC'
+    end
+    object SQLContasReceberCTRCN2TOTDESCREC: TFloatField
+      FieldName = 'CTRCN2TOTDESCREC'
+      Origin = 'DB.CONTASRECEBER.CTRCN2TOTDESCREC'
+    end
+    object SQLContasReceberEMPRICODULTREC: TIntegerField
+      FieldName = 'EMPRICODULTREC'
+      Origin = 'DB.CONTASRECEBER.EMPRICODULTREC'
+    end
+    object SQLContasReceberCUPOA13ID: TStringField
+      FieldName = 'CUPOA13ID'
+      Origin = 'DB.CONTASRECEBER.CUPOA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLContasReceberTPDCICOD: TIntegerField
+      FieldName = 'TPDCICOD'
+      Origin = 'DB.CONTASRECEBER.TPDCICOD'
+    end
+    object SQLContasReceberPLCTA15COD: TStringField
+      DisplayLabel = 'Conta Cr'#233'dito'
+      FieldName = 'PLCTA15COD'
+      Origin = 'DB.CONTASRECEBER.PLCTA15COD'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLContasReceberCTRCA30NRODUPLICBANCO: TStringField
+      FieldName = 'CTRCA30NRODUPLICBANCO'
+      Origin = 'DB.CONTASRECEBER.CTRCA30NRODUPLICBANCO'
+      FixedChar = True
+      Size = 30
+    end
+    object SQLContasReceberNOFIA13ID: TStringField
+      FieldName = 'NOFIA13ID'
+      Origin = 'DB.CONTASRECEBER.NOFIA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLContasReceberCTRCDEMIS: TDateTimeField
+      FieldName = 'CTRCDEMIS'
+      Origin = 'DB.CONTASRECEBER.CTRCDEMIS'
+      DisplayFormat = 'dd/mm/yyyy'
+      EditMask = '!99/99/0000;1;_'
+    end
+    object SQLContasReceberPENDENTE: TStringField
+      FieldName = 'PENDENTE'
+      Origin = 'DB.CONTASRECEBER.PENDENTE'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLContasReceberREGISTRO: TDateTimeField
+      FieldName = 'REGISTRO'
+      Origin = 'DB.CONTASRECEBER.REGISTRO'
+    end
+    object SQLContasReceberCTRCDREABILSPC: TDateTimeField
+      FieldName = 'CTRCDREABILSPC'
+      Origin = 'DB.CONTASRECEBER.CTRCDREABILSPC'
+    end
+    object SQLContasReceberCTRCN2TOTMULTACOBR: TFloatField
+      FieldName = 'CTRCN2TOTMULTACOBR'
+      Origin = 'DB.CONTASRECEBER.CTRCN2TOTMULTACOBR'
+    end
+    object SQLContasReceberBANCA5CODCHQ: TStringField
+      FieldName = 'BANCA5CODCHQ'
+      Origin = 'DB.CONTASRECEBER.BANCA5CODCHQ'
+      FixedChar = True
+      Size = 5
+    end
+    object SQLContasReceberCTRCA10AGENCIACHQ: TStringField
+      FieldName = 'CTRCA10AGENCIACHQ'
+      Origin = 'DB.CONTASRECEBER.CTRCA10AGENCIACHQ'
+      FixedChar = True
+      Size = 10
+    end
+    object SQLContasReceberCTRCA15CONTACHQ: TStringField
+      FieldName = 'CTRCA15CONTACHQ'
+      Origin = 'DB.CONTASRECEBER.CTRCA15CONTACHQ'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLContasReceberCTRCA15NROCHQ: TStringField
+      FieldName = 'CTRCA15NROCHQ'
+      Origin = 'DB.CONTASRECEBER.CTRCA15NROCHQ'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLContasReceberCTRCA60TITULARCHQ: TStringField
+      FieldName = 'CTRCA60TITULARCHQ'
+      Origin = 'DB.CONTASRECEBER.CTRCA60TITULARCHQ'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLContasReceberCTRCA20CGCCPFCHQ: TStringField
+      FieldName = 'CTRCA20CGCCPFCHQ'
+      Origin = 'DB.CONTASRECEBER.CTRCA20CGCCPFCHQ'
+      FixedChar = True
+    end
+    object SQLContasReceberCTRCDDEPOSCHQ: TDateTimeField
+      FieldName = 'CTRCDDEPOSCHQ'
+      Origin = 'DB.CONTASRECEBER.CTRCDDEPOSCHQ'
+    end
+    object SQLContasReceberALINICOD: TIntegerField
+      FieldName = 'ALINICOD'
+      Origin = 'DB.CONTASRECEBER.ALINICOD'
+    end
+    object SQLContasReceberPDVDA13ID: TStringField
+      FieldName = 'PDVDA13ID'
+      Size = 13
+    end
+    object SQLContasReceberCTRCA254HIST: TStringField
+      DisplayLabel = 'Hist'#243'rico'
+      FieldName = 'CTRCA254HIST'
+      Origin = 'DB.CONTASRECEBER.CTRCA254HIST'
+      FixedChar = True
+      Size = 254
+    end
+    object SQLContasReceberHTPDICOD: TIntegerField
+      DisplayLabel = 'C'#243'd. Hist. Padr'#227'o'
+      FieldName = 'HTPDICOD'
+      Origin = 'DB.CONTASRECEBER.HTPDICOD'
+    end
+    object SQLContasReceberPLCTA15CODDEBITO: TStringField
+      DisplayLabel = 'Conta Debito'
+      FieldName = 'PLCTA15CODDEBITO'
+      Origin = 'DB.CONTASRECEBER.PLCTA15CODDEBITO'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLContasReceberPortadorLookup: TStringField
+      FieldKind = fkLookup
+      FieldName = 'PortadorLookup'
+      LookupKeyFields = 'PORTICOD'
+      LookupResultField = 'PORTA60DESCR'
+      KeyFields = 'PORTICOD'
+      Size = 60
+      Lookup = True
+    end
+    object SQLContasReceberAVALA13ID: TStringField
+      FieldName = 'AVALA13ID'
+      Origin = 'DB.CONTASRECEBER.AVALA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLContasReceberCTRCCEMITIDOBOLETO: TStringField
+      FieldName = 'CTRCCEMITIDOBOLETO'
+      Origin = 'DB.CONTASRECEBER.CTRCCEMITIDOBOLETO'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLContasReceberCTRCCTIPOREGISTRO: TStringField
+      FieldName = 'CTRCCTIPOREGISTRO'
+      Origin = 'DB.CONTASRECEBER.CTRCCTIPOREGISTRO'
+      FixedChar = True
+      Size = 1
+    end
+  end
+  object DSSQLContasReceber: TDataSource
+    DataSet = SQLContasReceber
+    Left = 269
+    Top = 29
+  end
+  object RxQuery1: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'Select * From PLANORECEBIMENTO'
+      'Where PLRCFATCASH <> '#39'C'#39
+      'ORDER BY PLRCA60DESCR')
+    Macros = <>
+    Left = 1084
+    Top = 270
+    object IntegerField1: TIntegerField
+      FieldName = 'PLRCICOD'
+      Origin = 'DB.PLANORECEBIMENTO.PLRCICOD'
+    end
+    object StringField1: TStringField
+      FieldName = 'PLRCA60DESCR'
+      Origin = 'DB.PLANORECEBIMENTO.PLRCA60DESCR'
+      FixedChar = True
+      Size = 60
+    end
+    object StringField2: TStringField
+      FieldName = 'PLRCCDFIX'
+      Origin = 'DB.PLANORECEBIMENTO.PLRCCDFIX'
+      FixedChar = True
+      Size = 1
+    end
+    object StringField3: TStringField
+      FieldName = 'PLRCFATCASH'
+      Origin = 'DB.PLANORECEBIMENTO.PLRCFATCASH'
+      FixedChar = True
+      Size = 1
+    end
+  end
+  object DataSource1: TDataSource
+    AutoEdit = False
+    DataSet = RxQuery1
+    Left = 1114
+    Top = 270
+  end
+  object DSSQLNumerarioVista: TDataSource
+    DataSet = SQLNumerarioVista
+    Left = 1028
+    Top = 271
+  end
+  object SQLNumerarioVista: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'select * from NUMERARIO '
+      'where NUMECVISTAPRAZO='#39'V'#39
+      'order by NUMEA30DESCR'
+      '')
+    Macros = <>
+    Left = 998
+    Top = 270
+  end
+  object DSSQLNumerarioPrazo: TDataSource
+    DataSet = SQLNumerarioPrazo
+    Left = 1028
+    Top = 303
+  end
+  object SQLNumerarioPrazo: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'select * from NUMERARIO '
+      'where NUMECVISTAPRAZO='#39'P'#39
+      'order by NUMEA30DESCR')
+    Macros = <>
+    Left = 999
+    Top = 301
+  end
+  object SQLTipoDoc: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'Select * from TIPODOCUMENTO'
+      'Order by TPDCA60DESCR')
+    Macros = <>
+    Left = 1000
+    Top = 331
+    object SQLTipoDocTPDCICOD: TIntegerField
+      FieldName = 'TPDCICOD'
+      Origin = 'DB.TIPODOCUMENTO.TPDCICOD'
+    end
+    object SQLTipoDocTPDCA60DESCR: TStringField
+      FieldName = 'TPDCA60DESCR'
+      Origin = 'DB.TIPODOCUMENTO.TPDCA60DESCR'
+      FixedChar = True
+      Size = 30
+    end
+  end
+  object DSSQLTipoDoc: TDataSource
+    DataSet = SQLTipoDoc
+    Left = 1028
+    Top = 331
+  end
+  object SQLPortador: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'SELECT * FROM PORTADOR')
+    Macros = <>
+    Left = 1000
+    Top = 359
+  end
+  object DSSQLPortador: TDataSource
+    DataSet = SQLPortador
+    Left = 1028
+    Top = 359
+  end
+  object SQLHistoricoPadrao: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'SELECT * FROM HISTORICOPADRAO'
+      'WHERE HTPDCTIPO = '#39'C'#39
+      'ORDER BY HTPDA100HISTORICO')
+    Macros = <>
+    Left = 999
+    Top = 386
+    object SQLHistoricoPadraoHTPDICOD: TIntegerField
+      FieldName = 'HTPDICOD'
+      Origin = 'DB.HISTORICOPADRAO.HTPDICOD'
+    end
+    object SQLHistoricoPadraoHTPDA100HISTORICO: TStringField
+      FieldName = 'HTPDA100HISTORICO'
+      Origin = 'DB.HISTORICOPADRAO.HTPDA100HISTORICO'
+      FixedChar = True
+      Size = 100
+    end
+    object SQLHistoricoPadraoHTPDCTIPO: TStringField
+      FieldName = 'HTPDCTIPO'
+      Origin = 'DB.HISTORICOPADRAO.HTPDCTIPO'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLHistoricoPadraoPENDENTE: TStringField
+      FieldName = 'PENDENTE'
+      Origin = 'DB.HISTORICOPADRAO.PENDENTE'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLHistoricoPadraoREGISTRO: TDateTimeField
+      FieldName = 'REGISTRO'
+      Origin = 'DB.HISTORICOPADRAO.REGISTRO'
+    end
+  end
+  object DSSQLHistoricoPadrao: TDataSource
+    DataSet = SQLHistoricoPadrao
+    Left = 1028
+    Top = 387
+  end
+  object DSSQLParcelasPrazoVendaTemp: TDataSource
+    DataSet = SQLParcelasPrazoVendaTemp
+    Left = 1028
+    Top = 414
+  end
+  object SQLParcelasPrazoVendaTemp: TRxQuery
+    DatabaseName = 'DB'
+    RequestLive = True
+    SQL.Strings = (
+      'select * from PARCELASPRAZOVENDATEMP')
+    Macros = <>
+    Left = 1000
+    Top = 414
+    object SQLParcelasPrazoVendaTempTERMICOD: TIntegerField
+      FieldName = 'TERMICOD'
+      Origin = 'DB.PARCELASPRAZOVENDATEMP.TERMICOD'
+    end
+    object SQLParcelasPrazoVendaTempDATAVENCTO: TDateTimeField
+      FieldName = 'DATAVENCTO'
+      Origin = 'DB.PARCELASPRAZOVENDATEMP.DATAVENCTO'
+      DisplayFormat = 'dd/mm/yyyy'
+    end
+    object SQLParcelasPrazoVendaTempNROPARCELA: TIntegerField
+      FieldName = 'NROPARCELA'
+      Origin = 'DB.PARCELASPRAZOVENDATEMP.NROPARCELA'
+      DisplayFormat = '000'
+    end
+    object SQLParcelasPrazoVendaTempVALORVENCTO: TFloatField
+      FieldName = 'VALORVENCTO'
+      Origin = 'DB.PARCELASPRAZOVENDATEMP.VALORVENCTO'
+      DisplayFormat = '#,##0.00'
+    end
+    object SQLParcelasPrazoVendaTempNUMEICOD: TIntegerField
+      FieldName = 'NUMEICOD'
+      Origin = 'DB.PARCELASPRAZOVENDATEMP.NUMEICOD'
+    end
+    object SQLParcelasPrazoVendaTempNumerarioLookup: TStringField
+      DisplayLabel = 'Numer'#225'rio'
+      FieldKind = fkLookup
+      FieldName = 'NumerarioLookup'
+      LookupKeyFields = 'NUMEICOD'
+      LookupResultField = 'NUMEA30DESCR'
+      KeyFields = 'NUMEICOD'
+      Size = 30
+      Lookup = True
+    end
+    object SQLParcelasPrazoVendaTempTipoPadrao: TStringField
+      FieldKind = fkLookup
+      FieldName = 'TipoPadrao'
+      LookupKeyFields = 'NUMEICOD'
+      LookupResultField = 'NUMEA5TIPO'
+      KeyFields = 'NUMEICOD'
+      Size = 5
+      Lookup = True
+    end
+  end
+  object SQLPlano: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'Select * From PLANORECEBIMENTO'
+      'Where PLRCICOD=:PLRCICOD')
+    Macros = <>
+    Left = 1032
+    Top = 506
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'PLRCICOD'
+        ParamType = ptUnknown
+      end>
+    object SQLPlanoPLRCICOD: TIntegerField
+      FieldName = 'PLRCICOD'
+      Origin = 'DB.PLANORECEBIMENTO.PLRCICOD'
+    end
+    object SQLPlanoPLRCA60DESCR: TStringField
+      FieldName = 'PLRCA60DESCR'
+      Origin = 'DB.PLANORECEBIMENTO.PLRCA60DESCR'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLPlanoPLRCN2TXJURO: TFloatField
+      FieldName = 'PLRCN2TXJURO'
+      Origin = 'DB.PLANORECEBIMENTO.PLRCN2TXJURO'
+    end
+    object SQLPlanoPLRCN2TXMULTA: TFloatField
+      FieldName = 'PLRCN2TXMULTA'
+      Origin = 'DB.PLANORECEBIMENTO.PLRCN2TXMULTA'
+    end
+    object SQLPlanoPLRCN2TXCRED: TFloatField
+      FieldName = 'PLRCN2TXCRED'
+      Origin = 'DB.PLANORECEBIMENTO.PLRCN2TXCRED'
+    end
+    object SQLPlanoPLRCN2PERCDESC: TFloatField
+      FieldName = 'PLRCN2PERCDESC'
+      Origin = 'DB.PLANORECEBIMENTO.PLRCN2PERCDESC'
+    end
+    object SQLPlanoPLRCCDFIX: TStringField
+      FieldName = 'PLRCCDFIX'
+      Origin = 'DB.PLANORECEBIMENTO.PLRCCDFIX'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLPlanoPLRCIDFIXNROPARC: TIntegerField
+      FieldName = 'PLRCIDFIXNROPARC'
+      Origin = 'DB.PLANORECEBIMENTO.PLRCIDFIXNROPARC'
+    end
+    object SQLPlanoPLRCDFIXDVENC: TIntegerField
+      FieldName = 'PLRCDFIXDVENC'
+      Origin = 'DB.PLANORECEBIMENTO.PLRCDFIXDVENC'
+    end
+    object SQLPlanoPLRCCDFIXENTR: TStringField
+      FieldName = 'PLRCCDFIXENTR'
+      Origin = 'DB.PLANORECEBIMENTO.PLRCCDFIXENTR'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLPlanoPLRCN2PERCENTR: TFloatField
+      FieldName = 'PLRCN2PERCENTR'
+      Origin = 'DB.PLANORECEBIMENTO.PLRCN2PERCENTR'
+    end
+    object SQLPlanoPLRCN2DESC: TFloatField
+      FieldName = 'PLRCN2DESC'
+      Origin = 'DB.PLANORECEBIMENTO.PLRCN2DESC'
+    end
+    object SQLPlanoPLRCCATIVO: TStringField
+      FieldName = 'PLRCCATIVO'
+      Origin = 'DB.PLANORECEBIMENTO.PLRCCATIVO'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLPlanoPENDENTE: TStringField
+      FieldName = 'PENDENTE'
+      Origin = 'DB.PLANORECEBIMENTO.PENDENTE'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLPlanoREGISTRO: TDateTimeField
+      FieldName = 'REGISTRO'
+      Origin = 'DB.PLANORECEBIMENTO.REGISTRO'
+    end
+    object SQLPlanoPLRCN2PERCACRESC: TFloatField
+      FieldName = 'PLRCN2PERCACRESC'
+      Origin = 'DB.PLANORECEBIMENTO.PLRCN2PERCACRESC'
+    end
+  end
+  object SQLPlanoParcela: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'Select * From PLANORECEBIMENTOPARCELA'
+      'Where PLRCICOD=:PLRCICOD')
+    Macros = <>
+    Left = 1062
+    Top = 506
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'PLRCICOD'
+        ParamType = ptUnknown
+      end>
   end
 end

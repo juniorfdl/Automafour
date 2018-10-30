@@ -191,7 +191,6 @@ var
   OK: Boolean;
   EXIGIBILIDADEISS, CodigoMunicipio, NATUREZA_PADRAO, CIDADE_TOMADOR, UF_TOMADOR, xDiscriminacao: string;
   i: Integer;
-  vDate : TDateTime;
 begin
   AbrirDadosNota;
 
@@ -205,6 +204,8 @@ begin
   +' CLIEA60BAIRES AS BAI, CLIEA2UFRES AS EST, '''' AS CEND, '''' AS LGR, CLIEA5NROENDRES AS NR, CLIEA8CEPRES as CEP, '
   +' CLIEA15FONE1 AS NFON, '''' AS PFON, CLIEA60URL AS HPAG, CLIEA60EMAIL AS EMAIL '
   +' FROM CLIENTE where CLIEA13ID  = ' + QuotedStr(IsqlDadosNota.fieldbyname('COD_CADCLI').AsString));
+
+  NumNFSe := inttostr(fID_NOTA);
 
   ACBrNFSe1.NotasFiscais.Clear;
   with ACBrNFSe1 do
@@ -245,8 +246,7 @@ begin
               IdentificacaoRps.Tipo := trCupom;
       end;}
 
-      DataEmissao := IsqlDadosNota.fieldbyname('DEMI').AsDateTime;// + TimeOf(Now);
-      vDate := IsqlDadosNota.fieldbyname('DEMI').AsDateTime + TimeOf(Now);
+      DataEmissao := IsqlDadosNota.fieldbyname('DEMI').AsDateTime + TimeOf(Now);
       NATUREZA_PADRAO := IsqlDadosNota.fieldbyname('NATUREZA_OPERACAO').AsString;
 
       NaturezaOperacao := StrToNaturezaOperacao(OK, trim(NATUREZA_PADRAO));
@@ -353,7 +353,7 @@ begin
         if isqlParametro.fieldbyname('CODIGOTRIBUTACAOMUNICIPIO').AsString <> '' then
           Servico.CodigoTributacaoMunicipio := isqlParametro.fieldbyname('CODIGOTRIBUTACAOMUNICIPIO').AsString;}
 
-      Servico.CodigoTributacaoMunicipio := IsqlDadosNota.fieldbyname('CODIGOTRIBUTACAO').AsString;
+      Servico.CodigoTributacaoMunicipio := isql_Emitente.fieldbyname('EMPRIMUNICODFED').AsString;
           
       if NaturezaOperacao = no2 then /// FORA DO MUNICIPIO
       begin
@@ -468,7 +468,7 @@ begin
       Tomador.Endereco.CEP := Isql_Tomador.fieldbyname('CEP').AsString;
       Tomador.Endereco.xMunicipio := Isql_Tomador.fieldbyname('CID').AsString;
 
-{      if CIDADE_TOMADOR <> '' then
+      {if CIDADE_TOMADOR <> '' then
         Tomador.Endereco.xMunicipio_Incidencia := CIDADE_TOMADOR
       else
         Tomador.Endereco.xMunicipio_Incidencia := Isql_Tomador.fieldbyname('CID').AsString;}
@@ -551,7 +551,6 @@ end;
 procedure TdmNFSe.AbrirDadosNota;
 begin
   IsqlDadosNota := ExecSql(' SELECT * FROM V_NOTA_SERVICO WHERE COD = ' + IntToStr(fID_NOTA));
-  NumNFSe := inttostr(IsqlDadosNota.fieldbyname('NNOT').AsInteger);
 end;
 
 procedure TdmNFSe.Enviar_Nfse;
@@ -564,6 +563,7 @@ begin
   ConfigurarComponente;
   Caminho := ExtractFilePath(Application.ExeName) + 'Xml-Nfs\Nfs.xml';
 
+  NumNFSe := IntToStr(fID_NOTA);
   vNumLote := IntToStr(fID_NOTA);
   ACBrNFSe1.NotasFiscais.Clear;
   GerarNFSe;
@@ -609,7 +609,7 @@ begin
     try
       (ACBrNFSe1.Enviar(vNumLote, False));
 
-{      ShowMessage(ACBrNFSe1.NotasFiscais.Items[0].NFSe.IdentificacaoRps.Numero);
+      {ShowMessage(ACBrNFSe1.NotasFiscais.Items[0].NFSe.IdentificacaoRps.Numero);
       ShowMessage(ACBrNFSe1.NotasFiscais.Items[0].NFSe.Numero);
       ShowMessage(ACBrNFSe1.NotasFiscais.Items[0].NFSe.CodigoVerificacao);}
 
@@ -637,6 +637,7 @@ begin
   vProtocolo := '';
   vCodigoVerificacao := '';
 
+  NumNFSe := IntToStr(fID_NOTA);
   ACBrNFSe1.NotasFiscais.Clear;
   GerarNFSe;
 
@@ -744,11 +745,10 @@ begin
   ConfigurarComponente;
   GerarNFSe;
 
-{  if not (InputQuery('Cancelar NFSe', 'Código de Cancelamento: '
+  if not (InputQuery('Cancelar NFSe', 'Código de Cancelamento: '
     + #13 + '1 - Erro de Emissão'
     + #13 + '2 - Serviço não Concluido'
-    + #13 + '3 - RPS Cancelado na Emissão', Codigo)) then exit;}
-  Codigo := '2';
+    + #13 + '3 - RPS Cancelado na Emissão', Codigo)) then exit;
 
   try
 
