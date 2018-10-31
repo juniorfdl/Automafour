@@ -9906,7 +9906,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
       'ORDER BY PLRCA60DESCR')
     Macros = <>
     Left = 1083
-    Top = 331
+    Top = 299
     object SQLPlanoRecebimentoPLRCICOD: TIntegerField
       FieldName = 'PLRCICOD'
       Origin = 'DB.PLANORECEBIMENTO.PLRCICOD'
@@ -9934,7 +9934,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
     AutoEdit = False
     DataSet = SQLPlanoRecebimento
     Left = 1115
-    Top = 331
+    Top = 299
   end
   object SQLTributacao: TRxQuery
     DatabaseName = 'DB'
@@ -9976,7 +9976,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
   object DSSQLSerie: TDataSource
     DataSet = SQLSerie
     Left = 1116
-    Top = 359
+    Top = 327
   end
   object SQLSerie: TRxQuery
     AutoCalcFields = False
@@ -9993,7 +9993,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
         Value = '0=0'
       end>
     Left = 1084
-    Top = 359
+    Top = 327
     object SQLSerieSERIA5COD: TStringField
       FieldName = 'SERIA5COD'
       Origin = 'DB.SERIE.SERIA5COD'
@@ -10052,7 +10052,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
       'SELECT * FROM CIDADE WHERE SIGLA = :SIGLA')
     Macros = <>
     Left = 1084
-    Top = 302
+    Top = 270
     ParamData = <
       item
         DataType = ftString
@@ -10064,7 +10064,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
     AutoEdit = False
     DataSet = SQLCidade
     Left = 1114
-    Top = 302
+    Top = 270
   end
   object SQLConta: TRxQuery
     DatabaseName = 'DB'
@@ -10128,6 +10128,10 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
   end
   object SQLContasReceber: TRxQuery
     Tag = 3
+    BeforePost = SQLContasReceberBeforePost
+    BeforeDelete = SQLContasReceberBeforeDelete
+    OnNewRecord = SQLContasReceberNewRecord
+    OnPostError = SQLContasReceberPostError
     DatabaseName = 'DB'
     DataSource = DSTemplate
     RequestLive = True
@@ -10366,6 +10370,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
     object SQLContasReceberPortadorLookup: TStringField
       FieldKind = fkLookup
       FieldName = 'PortadorLookup'
+      LookupDataSet = SQLPortador
       LookupKeyFields = 'PORTICOD'
       LookupResultField = 'PORTA60DESCR'
       KeyFields = 'PORTICOD'
@@ -10395,44 +10400,6 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
     DataSet = SQLContasReceber
     Left = 269
     Top = 29
-  end
-  object RxQuery1: TRxQuery
-    DatabaseName = 'DB'
-    SQL.Strings = (
-      'Select * From PLANORECEBIMENTO'
-      'Where PLRCFATCASH <> '#39'C'#39
-      'ORDER BY PLRCA60DESCR')
-    Macros = <>
-    Left = 1084
-    Top = 270
-    object IntegerField1: TIntegerField
-      FieldName = 'PLRCICOD'
-      Origin = 'DB.PLANORECEBIMENTO.PLRCICOD'
-    end
-    object StringField1: TStringField
-      FieldName = 'PLRCA60DESCR'
-      Origin = 'DB.PLANORECEBIMENTO.PLRCA60DESCR'
-      FixedChar = True
-      Size = 60
-    end
-    object StringField2: TStringField
-      FieldName = 'PLRCCDFIX'
-      Origin = 'DB.PLANORECEBIMENTO.PLRCCDFIX'
-      FixedChar = True
-      Size = 1
-    end
-    object StringField3: TStringField
-      FieldName = 'PLRCFATCASH'
-      Origin = 'DB.PLANORECEBIMENTO.PLRCFATCASH'
-      FixedChar = True
-      Size = 1
-    end
-  end
-  object DataSource1: TDataSource
-    AutoEdit = False
-    DataSet = RxQuery1
-    Left = 1114
-    Top = 270
   end
   object DSSQLNumerarioVista: TDataSource
     DataSet = SQLNumerarioVista
@@ -10583,6 +10550,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
       DisplayLabel = 'Numer'#225'rio'
       FieldKind = fkLookup
       FieldName = 'NumerarioLookup'
+      LookupDataSet = SQLNumerario
       LookupKeyFields = 'NUMEICOD'
       LookupResultField = 'NUMEA30DESCR'
       KeyFields = 'NUMEICOD'
@@ -10592,6 +10560,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
     object SQLParcelasPrazoVendaTempTipoPadrao: TStringField
       FieldKind = fkLookup
       FieldName = 'TipoPadrao'
+      LookupDataSet = SQLNumerario
       LookupKeyFields = 'NUMEICOD'
       LookupResultField = 'NUMEA5TIPO'
       KeyFields = 'NUMEICOD'
@@ -10702,5 +10671,13 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
         Name = 'PLRCICOD'
         ParamType = ptUnknown
       end>
+  end
+  object SQLNumerario: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'select * from NUMERARIO ')
+    Macros = <>
+    Left = 1088
+    Top = 507
   end
 end
