@@ -9694,11 +9694,6 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
       FieldName = 'NUMERO_NOTA'
       Origin = 'DB.NOTASERVICO.NUMERO_NOTA'
     end
-    object SQLTemplateNUMERO_RPS: TIntegerField
-      DisplayLabel = 'N'#250'mero RPS'
-      FieldName = 'NUMERO_RPS'
-      Origin = 'DB.NOTASERVICO.NUMERO_RPS'
-    end
     object SQLTemplateSERIE: TStringField
       DisplayLabel = 'S'#233'rie'
       FieldName = 'SERIE'
@@ -9724,6 +9719,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
       DisplayLabel = 'Status'
       FieldName = 'STATUS'
       Origin = 'DB.NOTASERVICO.STATUS'
+      OnGetText = SQLTemplateSTATUSGetText
       Size = 5
     end
     object SQLTemplateID_SERVICO: TIntegerField
@@ -9896,6 +9892,10 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
     object SQLTemplateEMPRICOD: TIntegerField
       FieldName = 'EMPRICOD'
       Origin = 'DB.NOTASERVICO.EMPRICOD'
+    end
+    object SQLTemplateNUMERO_RPS: TStringField
+      FieldName = 'NUMERO_RPS'
+      ProviderFlags = [pfInUpdate]
     end
   end
   object SQLPlanoRecebimento: TRxQuery

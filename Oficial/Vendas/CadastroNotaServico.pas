@@ -13,7 +13,6 @@ type
   TFormCadastroNotaServico = class(TFormCadastroTEMPLATE)
     SQLTemplateID: TIntegerField;
     SQLTemplateNUMERO_NOTA: TIntegerField;
-    SQLTemplateNUMERO_RPS: TIntegerField;
     SQLTemplateSERIE: TStringField;
     SQLTemplateTIPO: TStringField;
     SQLTemplateDATA_EMISSAO: TDateTimeField;
@@ -304,6 +303,7 @@ type
     SQLPlanoREGISTRO: TDateTimeField;
     SQLPlanoPLRCN2PERCACRESC: TFloatField;
     SQLPlanoParcela: TRxQuery;
+    SQLTemplateNUMERO_RPS: TStringField;
     procedure FormCreate(Sender: TObject);
     procedure SQLTemplateCalcFields(DataSet: TDataSet);
     procedure btnConsultaClienteClick(Sender: TObject);
@@ -331,6 +331,9 @@ type
     procedure AdvGlowButton3Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure BTNRecalcularFinanceiroClick(Sender: TObject);
+    procedure SQLTemplateBeforeEdit(DataSet: TDataSet);
+    procedure SQLTemplateSTATUSGetText(Sender: TField; var Text: String;
+      DisplayText: Boolean);
   private
     { Private declarations }
   public
@@ -808,6 +811,28 @@ begin
 
   ComboPlanoRecto.Value := '';
 
+end;
+
+procedure TFormCadastroNotaServico.SQLTemplateBeforeEdit(
+  DataSet: TDataSet);
+begin
+  inherited;
+  if SQLTemplateSTATUS.AsString = 'E' then
+    raise Exception.Create('Nota de Serviço já esta enviada!');
+
+  if SQLTemplateSTATUS.AsString = 'C' then
+    raise Exception.Create('Nota de Serviço esta cancelada!');
+end;
+
+procedure TFormCadastroNotaServico.SQLTemplateSTATUSGetText(Sender: TField;
+  var Text: String; DisplayText: Boolean);
+begin
+  inherited;
+  if Sender.Asstring = 'E' then
+    Text := 'Enviada'
+  else
+  if Sender.Asstring = 'C' then
+    Text := 'Cancelada';
 end;
 
 end.

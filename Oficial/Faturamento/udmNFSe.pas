@@ -48,6 +48,8 @@ type
     procedure SetID_NOTA(Value: Integer);
     procedure GravarCancelamento;
     procedure EnviarEmailNfse;
+    function GetNFSE_NUMERO: String;
+    function GetNFSE_NUMERO_Enviada: String;
   public
     { Public declarations }
     procedure Enviar;
@@ -65,9 +67,36 @@ var
 
 implementation
 
-uses UnitLibrary, DataModulo;
+uses UnitLibrary, DataModulo, pnfsNFSe;
 
 {$R *.dfm}
+
+
+function TdmNFSe.GetNFSE_NUMERO_Enviada: String;
+begin
+
+  sqlNOTASERVICO_COMUNICACAO.Locate('TIPO', '1', []);
+  result := sqlNOTASERVICO_COMUNICACAONFSE_NUMERO.AsString;
+
+end;
+
+function TdmNFSe.GetNFSE_NUMERO: String;
+var
+  NFSE_NUMERO: string;
+begin
+  Result := GetNFSE_NUMERO_Enviada;
+
+  if Result = '' then
+  begin
+    NFSE_NUMERO := ExecSql(' SELECT FIRST(1) A.NFSE_NUMERO FROM NOTASERVICO B '
+        + ' INNER JOIN NOTASERVICO_COMUNICACAO A ON B.ID = A.ID_NOTASERVICO '
+        + ' WHERE A.TIPO = ''1'' AND TRIM(A.NFSE_NUMERO) <> '''' '
+        + ' ORDER BY CAST(A.NFSE_NUMERO AS DECIMAL(18)) DESC ').FieldByName('NFSE_NUMERO').AsString;
+
+    Result := FloatToStr(StrToFloatDef(NFSE_NUMERO, 0) + 1);
+  end;
+
+end;
 
 procedure TdmNFSe.TestarNotaPodeEnviar;
 var
@@ -97,7 +126,7 @@ procedure TdmNFSe.ImprimirNfse;
 begin
   ACBrNFSe1.NotasFiscais.Imprimir;
   ACBrNFSe1.NotasFiscais.ImprimirPDF;
-  //EnviarNfsEmail;
+  EnviarEmailNfse;
 end;
 
 function TdmNFSe.GetNotaCancelada: Boolean;
@@ -114,9 +143,9 @@ procedure TdmNFSe.ConfigurarComponente;
 var
   Ok: Boolean;
 begin
-    isqlParametro := ExecSql(' SELECT EMPRA100CERTIFSERIE, EMPRA35CERTIFSENHA, EMPRIMUNICODFED,SENHA, USER_WEB, '
+    isqlParametro := ExecSql(' SELECT EMPRIEMAILPORTA, EMPRA50EMAILSENHA, EMPRA60NOMEFANT, EMPRA100CERTIFSERIE, EMPRA35CERTIFSENHA, EMPRIMUNICODFED,SENHA, USER_WEB, '
     +' AGUARDARCONSULTARETORNO, CONSULTARLOTEAPOSENVIO, INTERVALOTENTATIVAS,EMPRA100PROXYHOST, TIPO_RPS, '
-    +' EMPRA100CAMINHOLOGO, PREFEITURA, EMPRA60EMAIL, EMPRIWSAMBIENTE FROM EMPRESA WHERE EMPRICOD = '
+    +' EMPRA100CAMINHOLOGO, EMPRA50EMAILHOST, EMPRA75EMAILUSUARIO, EMPRA1SSL, EMPRA1TSL, EMPRA50EMAILSENHA, EMPRA75EMAILUSUARIO, PREFEITURA, EMPRA60EMAIL, EMPRIWSAMBIENTE, EMPRA60EMAILCOPIA FROM EMPRESA WHERE EMPRICOD = '
     + EmpresaPadrao);
 
    {$IFDEF ACBrNFSeOpenSSL}
@@ -201,7 +230,7 @@ begin
    +' EMPRA2UF AS EST, '''' AS CEND, EMPRA8CEP AS CEP, EMPRA60EMAIL AS EMAIL, EMPRA20FONE AS NFON1, '''' AS PFON1  '
    +' FROM EMPRESA where EMPRICOD  = ' + QuotedStr(EmpresaPadrao));
 
-  Isql_Tomador := ExecSql(' SELECT CLIEA14CGC AS NDOC, CLIEA60RAZAOSOC AS NOM, CLIEA60ENDRES AS ENDE, CLIEA60CIDRES AS CID, '
+  Isql_Tomador := ExecSql(' SELECT CLIEA14CGC AS NDOC, CLIEA60EMAIL, CLIEA60RAZAOSOC AS NOM, CLIEA60ENDRES AS ENDE, CLIEA60CIDRES AS CID, '
   +' CLIEA60BAIRES AS BAI, CLIEA2UFRES AS EST, '''' AS CEND, '''' AS LGR, CLIEA5NROENDRES AS NR, CLIEA8CEPRES as CEP, '
   +' CLIEA15FONE1 AS NFON, '''' AS PFON, CLIEA60URL AS HPAG, CLIEA60EMAIL AS EMAIL '
   +' FROM CLIENTE where CLIEA13ID  = ' + QuotedStr(IsqlDadosNota.fieldbyname('COD_CADCLI').AsString));
@@ -551,7 +580,7 @@ end;
 procedure TdmNFSe.AbrirDadosNota;
 begin
   IsqlDadosNota := ExecSql(' SELECT * FROM V_NOTA_SERVICO WHERE COD = ' + IntToStr(fID_NOTA));
-  NumNFSe := inttostr(IsqlDadosNota.fieldbyname('NNOT').AsInteger);
+  NumNFSe := GetNFSE_NUMERO;
 end;
 
 procedure TdmNFSe.Enviar_Nfse;
@@ -609,10 +638,22 @@ begin
     try
       (ACBrNFSe1.Enviar(vNumLote, False));
 
-{      ShowMessage(ACBrNFSe1.NotasFiscais.Items[0].NFSe.IdentificacaoRps.Numero);
-      ShowMessage(ACBrNFSe1.NotasFiscais.Items[0].NFSe.Numero);
-      ShowMessage(ACBrNFSe1.NotasFiscais.Items[0].NFSe.CodigoVerificacao);}
+      if ACBrNFSe1.NotasFiscais.Items[0].NFSe.CodigoVerificacao <> '' then
+      begin
+        ACBrNFSe1.NotasFiscais.GravarXML(Caminho);
+        sqlNOTASERVICO_COMUNICACAO.Edit;
+        sqlNOTASERVICO_COMUNICACAOTIPO.AsString := '1';
+        sqlNOTASERVICO_COMUNICACAOID_NOTASERVICO.AsInteger := fID_NOTA;
+        sqlNOTASERVICO_COMUNICACAOPROTOCOLO.AsString := ACBrNFSe1.NotasFiscais.Items[0].NFSe.Protocolo;
+        sqlNOTASERVICO_COMUNICACAOCODIGOVERIFICACAO.AsString := ACBrNFSe1.NotasFiscais.Items[0].NFSe.CodigoVerificacao;
+        sqlNOTASERVICO_COMUNICACAONFSE_NUMERO.AsString := ACBrNFSe1.NotasFiscais.Items[0].NFSe.Numero;
+        sqlNOTASERVICO_COMUNICACAOXML.LoadFromFile(Caminho);
+        sqlNOTASERVICO_COMUNICACAO.Post;
 
+        ExecSql(' update NOTASERVICO SET NUMERO_RPS = '+ACBrNFSe1.NotasFiscais.Items[0].NFSe.Numero
+        +' WHERE ID = '+ inttostr(fID_NOTA),1);
+      end
+      else
       if not OffLine then
       begin
         Sleep(1000);
@@ -752,10 +793,12 @@ begin
 
   try
 
-    if ACBrNFSe1.Configuracoes.Geral.Provedor in [proDBSeller, proBHISS] then
+    {if ACBrNFSe1.Configuracoes.Geral.Provedor in [proDBSeller, proBHISS] then
       ACBrNFSe1.NotasFiscais.Items[0].NFSe.Numero :=
         FormatDateTime('yyyy', ACBrNFSe1.NotasFiscais.Items[0].NFSe.DataEmissao) +
-        FormatFloat('00000000000', StrToIntDef(ACBrNFSe1.NotasFiscais.Items[0].NFSe.Numero, 0));
+        FormatFloat('00000000000', StrToIntDef(ACBrNFSe1.NotasFiscais.Items[0].NFSe.Numero, 0));}
+
+    ACBrNFSe1.NotasFiscais.Items[0].NFSe.Numero := NumNFSe;   
 
     try
       if ACBrNFSe1.CancelarNFSe(Codigo) then
@@ -832,7 +875,7 @@ begin
     begin
       raise Exception.Create(E.message);
     end;
-  end;
+  end;    
 
 end;
 
@@ -864,8 +907,124 @@ begin
 end;
 
 procedure TdmNFSe.EnviarEmailNfse;
+var
+  PathPastaMensal, sXML, Danfe, Para, emailCopia, Titulo, Caminho: string;
+  stl: TStringList;
+  xSSL, xTSL: Boolean;
+  CC: Tstrings;
 begin
+  ConfigurarComponente;  
+  Para := Isql_Tomador.fieldbyname('CLIEA60EMAIL').asstring;
+
+  {Se nao tiver email para o Destinatario aborta}
+  if Para = '' then
+    exit;
+
+  emailCopia := isqlParametro.fieldbyname('EMPRA60EMAILCOPIA').Value;
+
+  Titulo := 'Nota Serviço Eletronica Emitida!';
+  Caminho := ExtractFilePath(Application.ExeName) + 'Xml-Nfs\Nfs.xml';
   
+  if GetNotaEnviada then
+  begin
+    sqlNOTASERVICO_COMUNICACAOXML.SaveToFile(Caminho);
+  end
+  else begin
+    raise Exception.Create('Nota de Serviço não enviada!');
+  end;
+
+  sXML := Caminho;
+
+  //PathPastaMensal := FormatDateTime('yyyymm', sqlTemplate.FieldByName('NOFIDEMIS').Value);
+
+  //sXML := SQLEmpresaEMPRA100CAMINHOXML.Value + '\' + PathPastaMensal + '\' + SQLTemplateNOFIA44CHAVEACESSO.asstring + '-NFe.xml';
+  //Danfe := SQLEmpresaEMPRA100CAMINHODANFES.Value + '\' + SQLTemplateNOFIA44CHAVEACESSO.asstring + '.pdf';
+
+  if FileExists(sXML) then
+  begin
+    if (Trim(isqlParametro.fieldbyname('EMPRA50EMAILHOST').Value) = EmptyStr)
+      or (Trim(isqlParametro.fieldbyname('EMPRA75EMAILUSUARIO').Value) = EmptyStr)
+        or (Trim(isqlParametro.fieldbyname('EMPRA50EMAILSENHA').Value) = EmptyStr) then
+    begin
+        {Abortar envio de email}
+      exit;
+    end;
+
+    if isqlParametro.fieldbyname('EMPRA1SSL').Value = 'S' then
+      xSSL := True
+    else
+      xSSL := False;
+    if isqlParametro.fieldbyname('EMPRA1TSL').Value = 'S' then
+      xTSL := True
+    else
+      xTSL := False;
+
+    try
+        //Montando o corpo do email com dados ref. a nota fiscal.
+      stl := TStringList.Create; //Instanciando objeto TStringList
+
+        //Adiciona texto padrão de email Nf-e.
+      stl.Add('Caro Cliente,');
+      stl.Add('');
+      stl.Add('Informamos que uma Nota Serviço Eletronica foi emitida para seu CPF/CNPJ. Numero da NF.: ' + sqlNOTASERVICO_COMUNICACAONFSE_NUMERO.AsString);
+      stl.Add('');
+      {stl.Add('Para consultar a nota diretamente no site da Receita Federal, escolha e clique nos enderecos eletronicos abaixo e informe a seguinte chave de acesso:');
+      stl.Add(SQLTemplateNOFIA44CHAVEACESSO.AsString);
+      stl.Add('');
+      stl.Add('- Consulta em Ambiente Nacional');
+      stl.Add('http://www.nfe.fazenda.gov.br/PORTAL/consulta.aspx?tipoConsulta=completa&tipoConteudo=XbSeqxE8pl8=');
+      stl.Add('');
+      stl.Add('- Consulta em Ambiente Regional (' + UpperCase(SQLEmpresaEMPRA2UF.Value) + ')');
+      stl.Add('https://www.sefaz.rs.gov.br/NFE/NFE-COM.aspx');
+      stl.Add('');
+      stl.Add('* A NF-e ficara disponivel para consulta por 180 dias, a partir da data de emissao. *'); }
+
+        // Carrega parametros para enviar email
+      ACBrMail1.Subject := Titulo; // assunto
+      ACBrMail1.IsHTML := True; // define que a mensagem é html
+      ACBrMail1.From := isqlParametro.fieldbyname('EMPRA75EMAILUSUARIO').AsString;
+      ACBrMail1.FromName := isqlParametro.fieldbyname('EMPRA60NOMEFANT').AsString;
+      ACBrMail1.Host := isqlParametro.fieldbyname('EMPRA50EMAILHOST').AsString;
+      ACBrMail1.Username := isqlParametro.fieldbyname('EMPRA75EMAILUSUARIO').AsString;
+      ACBrMail1.Password := isqlParametro.fieldbyname('EMPRA50EMAILSENHA').AsString;
+      ACBrMail1.Port := isqlParametro.fieldbyname('EMPRIEMAILPORTA').AsString;
+      ACBrMail1.UseThread := False; //Aguarda Envio do Email(nÃ£o usa thread)
+      ACBrMail1.AddAddress(Para, '');
+
+      //CC:=TstringList.Create;
+      if emailCopia <> '' then
+       //CC.Add(emailCopia);
+        ACBrMail1.AddCC(emailCopia);
+
+        // mensagem principal do e-mail. pode ser html ou texto puro
+      ACBrMail1.Body.Text := stl.Text;
+      ACBrMail1.SetSSL := xSSL; // SSL - Conexão Segura
+      ACBrMail1.SetTLS := xTSL; // TLS - Crypografia, para hotmail obrigatorio
+      if FileExists(sXML) then
+        ACBrMail1.AddAttachment(sXML, ''); // um_nome_opcional
+
+      if FileExists(Danfe) then
+        ACBrMail1.AddAttachment(Danfe, '') // um_nome_opcional
+      else begin
+        if ACBrNFSe1.NotasFiscais.Count > 0 then
+        begin         
+          Danfe := ExtractFilePath(Application.ExeName) + 'Xml-Nfs\PDF\'+
+          IsqlDadosNota.fieldbyname('NNOT').AsString + IsqlDadosNota.fieldbyname('SER').AsString+'-nfse.pdf';
+
+          if FileExists(Danfe) then
+            ACBrMail1.AddAttachment(Danfe, ''); // um_nome_opcional
+        end;
+      end;
+
+      ACBrMail1.Send;      
+    finally
+      stl.Free;
+    end;
+  end
+  else
+  begin
+    raise Exception.Create('Arquivo XML não encontrado!');
+  end;
 end;
 
 end.
