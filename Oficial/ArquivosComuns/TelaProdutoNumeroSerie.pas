@@ -29,6 +29,7 @@ type
     BtnOK: TSpeedButton;
     SQLProdutoSeriePRSECSTATUS: TStringField;
     SQLProdutoSerieEMPRICODDEST: TIntegerField;
+    SQLProdutoSerieCLIEA60RAZAOSOC: TStringField;
     procedure SQLProdutoSerieNewRecord(DataSet: TDataSet);
     procedure SQLProdutoSerieBeforeInsert(DataSet: TDataSet);
     procedure BtnFecharTelaClick(Sender: TObject);
@@ -40,7 +41,7 @@ type
     GerandoNS : Boolean;
   public
     CodProduto, QtdeSerie   : Integer;
-    Status, Destino, IDNotaCompra, IDCliente, IDPedidoVenda, IDNotaFiscal, IDOS, IDMovDiverso, CodFornecedor, CodEmpresa : String;
+    Status, Destino, IDNotaCompra, IDCliente, IDPedidoVenda, IDNotaFiscal, IDOS, IDMovDiverso, CodFornecedor, CodEmpresa, RazaoSocial : String;
     { Public declarations }
   end;
 
@@ -79,6 +80,8 @@ begin
     SQLProdutoSerieMOVDA13ID.AsString := IDMovDiverso;
   if CodEmpresa    <> '' then
     SQLProdutoSerieEMPRICODDEST.AsString := CodEmpresa;
+  if RazaoSocial   <> '' then
+    SQLProdutoSerieCLIEA60RAZAOSOC.AsString := RazaoSocial;
 end;
 
 procedure TFormTelaGeralModalCadastroProdutoNumeroSerie.SQLProdutoSerieBeforeInsert(

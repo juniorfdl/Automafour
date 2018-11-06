@@ -1,5 +1,5 @@
 inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
-  Left = 323
+  Left = 9
   Top = 0
   Caption = 'Notas Fiscais'
   ClientHeight = 688
@@ -624,7 +624,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
             Top = 44
             Width = 1216
             Height = 570
-            ActivePage = PaginaFinanceiro
+            ActivePage = TabSheetDadosPrincipais
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Top = 126
@@ -12933,6 +12933,19 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               Font.Style = [fsBold]
               ParentFont = False
             end
+            object Label47: TLabel
+              Left = 865
+              Top = 3
+              Width = 28
+              Height = 13
+              Caption = 'CFOP'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
             object DBEdit1: TDBEdit
               Left = 4
               Top = 17
@@ -13080,6 +13093,27 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               LookupSource = DSTblOperacaoEstoque
               ParentCtl3D = False
               TabOrder = 1
+            end
+            object DBEdit47: TDBEdit
+              Left = 865
+              Top = 17
+              Width = 72
+              Height = 21
+              TabStop = False
+              CharCase = ecUpperCase
+              Color = 16249066
+              Ctl3D = True
+              DataField = 'CFOPA5COD'
+              DataSource = DSTemplate
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'MS Sans Serif'
+              Font.Style = [fsBold]
+              ParentCtl3D = False
+              ParentFont = False
+              ReadOnly = True
+              TabOrder = 9
             end
           end
         end

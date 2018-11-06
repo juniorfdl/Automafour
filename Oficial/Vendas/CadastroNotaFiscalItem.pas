@@ -1014,7 +1014,7 @@ begin
     if SQLTemplateControlaSerieLookup.AsString = 'S' then
     begin
         // Informa Numero de Serie
-      if DSMasterTemplate.DataSet.FieldByName('OrigemDestinoLookUp').AsString = 'C' then
+      if DSMasterTemplate.DataSet.FieldByName('OrigemDestinoLookUp').AsString <> '' then
       begin
         DataSet.FieldByName('NFITA254OBS').AsString := '';
         NumeroSerie := '';
@@ -1506,6 +1506,7 @@ begin
       FormTelaGeralModalCadastroProdutoNumeroSerie.Destino := DSMasterTemplate.DataSet.FieldByName('OrigemDestinoLookUp').AsString;
       FormTelaGeralModalCadastroProdutoNumeroSerie.IDNotaFiscal := SQLTemplateNOFIA13ID.AsString;
       FormTelaGeralModalCadastroProdutoNumeroSerie.IDCliente := DSMasterTemplate.DataSet.FieldByName('CLIEA13ID').AsString;
+      FormTelaGeralModalCadastroProdutoNumeroSerie.RazaoSocial := DSMasterTemplate.DataSet.FieldByName('CliFornEmpLookUp').AsString;
       FormTelaGeralModalCadastroProdutoNumeroSerie.CodEmpresa := DSMasterTemplate.DataSet.FieldByName('EMPRICODDEST').AsString;
       FormTelaGeralModalCadastroProdutoNumeroSerie.CodFornecedor := DSMasterTemplate.DataSet.FieldByName('FORNICOD').AsString;
       FormTelaGeralModalCadastroProdutoNumeroSerie.LabelTitulo.Caption := FormTelaGeralModalCadastroProdutoNumeroSerie.LabelTitulo.Caption + ' - ' + SQLTemplateProdutoLookUp.AsString;

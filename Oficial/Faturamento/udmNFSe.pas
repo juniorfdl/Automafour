@@ -274,7 +274,7 @@ begin
               IdentificacaoRps.Tipo := trCupom;
       end;}
 
-      DataEmissao := IsqlDadosNota.fieldbyname('DEMI').AsDateTime;// + TimeOf(Now);
+      DataEmissao := IsqlDadosNota.fieldbyname('DEMI').AsDateTime + TimeOf(Now);
       vDate := IsqlDadosNota.fieldbyname('DEMI').AsDateTime + TimeOf(Now);
       NATUREZA_PADRAO := IsqlDadosNota.fieldbyname('NATUREZA_OPERACAO').AsString;
 
@@ -308,13 +308,14 @@ begin
 
      // TnfseStatusRPS = ( srNormal, srCancelado );
       Status := srNormal;
-      Servico.Valores.ValorServicos := IsqlDadosNota.fieldbyname('VNOT').AsCurrency;
+      Servico.Valores.ValorServicos := IsqlDadosNota.fieldbyname('VALOR_SERVICO').AsCurrency;
       Servico.Valores.DescontoIncondicionado := IsqlDadosNota.fieldbyname('VDES').AsCurrency;
       Servico.Valores.ValorPis := IsqlDadosNota.fieldbyname('VPIS').AsCurrency;
       Servico.Valores.ValorCofins := IsqlDadosNota.fieldbyname('VCOF').AsCurrency;
       Servico.Valores.ValorInss := IsqlDadosNota.fieldbyname('VINSS').AsCurrency;
       Servico.Valores.ValorIr := IsqlDadosNota.fieldbyname('VIRF').AsCurrency;
       Servico.Valores.ValorCsll := IsqlDadosNota.fieldbyname('CSSL').AsCurrency;
+      Servico.Valores.ValorDeducoes := IsqlDadosNota.fieldbyname('VALOR_FRETE').AsCurrency;
 
       if IsqlDadosNota.fieldbyname('ISS_RETIDO').AsString = 'S' then
         Servico.Valores.IssRetido := stRetencao
@@ -324,23 +325,23 @@ begin
       Servico.Valores.OutrasRetencoes := 0.00;
       Servico.Valores.DescontoCondicionado := 0.00;
 
-      BaseCalculo := Servico.Valores.ValorServicos -
-        Servico.Valores.ValorDeducoes -
-        Servico.Valores.DescontoIncondicionado;
+//      BaseCalculo := Servico.Valores.ValorServicos - Servico.Valores.ValorDeducoes - Servico.Valores.DescontoIncondicionado;
+      BaseCalculo := IsqlDadosNota.fieldbyname('BISS').AsCurrency;
 
       if IsqlDadosNota.fieldbyname('VISS').AsCurrency > 0 then
       begin
         Servico.Valores.BaseCalculo := IsqlDadosNota.fieldbyname('BISS').AsCurrency;
-        Servico.Valores.Aliquota := IsqlDadosNota.fieldbyname('AISS').AsCurrency / 100;
+//        Servico.Valores.Aliquota := IsqlDadosNota.fieldbyname('AISS').AsCurrency / 100;
+        Servico.Valores.Aliquota := IsqlDadosNota.fieldbyname('AISS').AsCurrency;
 
         if Servico.Valores.IssRetido = stNormal then
         begin
-          ValorISS := IsqlDadosNota.fieldbyname('VISS').AsCurrency;
+          ValorISS := IsqlDadosNota.fieldbyname('VALOR_ISS').AsCurrency;
           Servico.Valores.ValorIss := ValorISS;
           Servico.Valores.ValorIssRetido := 0.00;
         end
         else begin
-          ValorISS := IsqlDadosNota.fieldbyname('VISS').AsCurrency;
+          ValorISS := IsqlDadosNota.fieldbyname('VALOR_ISS').AsCurrency;
           Servico.Valores.ValorIss := ValorISS;
           Servico.Valores.ValorIssRetido := ValorISS;
         end;
@@ -352,7 +353,8 @@ begin
         Servico.Valores.ValorIssRetido := 0;
       end;
 
-      Servico.Valores.ValorLiquidoNfse := Servico.Valores.ValorServicos -
+      Servico.Valores.ValorLiquidoNfse := IsqlDadosNota.fieldbyname('VALOR_LIQUIDO').AsCurrency;
+{        Servico.Valores.ValorServicos -
         Servico.Valores.ValorPis -
         Servico.Valores.ValorCofins -
         Servico.Valores.ValorInss -
@@ -361,10 +363,10 @@ begin
         Servico.Valores.OutrasRetencoes -
         Servico.Valores.ValorIssRetido -
         Servico.Valores.DescontoIncondicionado -
-        Servico.Valores.DescontoCondicionado;
+        Servico.Valores.DescontoCondicionado;}
 
       //cdsCad_Servico.Locate('COD_CADSERVICO', cdsComunicacaoCOD_CADSERVICO.AsInteger, []);
-      Servico.ItemListaServico := IsqlDadosNota.fieldbyname('COD_SERVICO').AsString;
+      Servico.ItemListaServico := IsqlDadosNota.fieldbyname('SUBITEM').AsString;
       Servico.xItemListaServico := IsqlDadosNota.fieldbyname('NOME_SERVICO').AsString;
 
      // Para o provedor ISS.NET em ambiente de Homologação
@@ -651,7 +653,8 @@ begin
         sqlNOTASERVICO_COMUNICACAO.Post;
 
         ExecSql(' update NOTASERVICO SET NUMERO_RPS = '+ACBrNFSe1.NotasFiscais.Items[0].NFSe.Numero
-        +' WHERE ID = '+ inttostr(fID_NOTA),1);
+        + ', CODIGO_VERIFICACAO = ''' + ACBrNFSe1.NotasFiscais.Items[0].NFSe.CodigoVerificacao + ''''
+        + ' WHERE ID = '+ inttostr(fID_NOTA),1);
       end
       else
       if not OffLine then
@@ -718,6 +721,7 @@ begin
   if not Assigned(dmNFSe) then
     dmNFSe:= TdmNFSe.Create(nil);
 
+  dmNFSe.OffLine := False;
   dmNFSe.SetID_NOTA(pID_NOTA);
   dmNFSe.Enviar_Nfse;
 end;
@@ -892,7 +896,7 @@ begin
   if not Assigned(dmNFSe) then
     dmNFSe:= TdmNFSe.Create(nil);
 
-  dmNFSe.OffLine := True;  
+  dmNFSe.OffLine := True;
   dmNFSe.SetID_NOTA(pID_NOTA);
   dmNFSe.Enviar_Nfse;
 end;
@@ -913,7 +917,7 @@ var
   xSSL, xTSL: Boolean;
   CC: Tstrings;
 begin
-  ConfigurarComponente;  
+  ConfigurarComponente;
   Para := Isql_Tomador.fieldbyname('CLIEA60EMAIL').asstring;
 
   {Se nao tiver email para o Destinatario aborta}
@@ -1015,8 +1019,16 @@ begin
             ACBrMail1.AddAttachment(Danfe, ''); // um_nome_opcional
         end;
       end;
+      try
+        ACBrMail1.Send;
+        ShowMessage('E-mail enviado!');
+      except
+        on e : Exception do
+        begin
+          ShowMessage('Não foi possível enviar e-mail para o cliente!' + #13 + e.Message);
+        end;
+      end;
 
-      ACBrMail1.Send;      
     finally
       stl.Free;
     end;

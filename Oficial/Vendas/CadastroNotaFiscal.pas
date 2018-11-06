@@ -1090,6 +1090,8 @@ type
     btnEncerrar2: TAdvGlowButton;
     SQLEmpresaVERSAO: TStringField;
     ACBrNFeDANFeRL1: TACBrNFeDANFeRL;
+    DBEdit47: TDBEdit;
+    Label47: TLabel;
     function TabelaNFE_123(Produto, Situacao: string): string;
     procedure FormCreate(Sender: TObject);
     procedure SQLTemplateNewRecord(DataSet: TDataSet);

@@ -35,6 +35,7 @@ type
     DBEdit1: TDBEdit;
     Label2: TLabel;
     DBEdit2: TDBEdit;
+    SQLTemplateCLIEA60RAZAOSOC: TStringField;
     procedure FormCreate(Sender: TObject);
     procedure SQLTemplateNewRecord(DataSet: TDataSet);
     procedure SQLTemplateBeforePost(DataSet: TDataSet);

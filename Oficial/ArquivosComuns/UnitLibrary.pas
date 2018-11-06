@@ -1617,10 +1617,27 @@ end;
 procedure GravaSaidaNroSerieProduto(NroSERIE, Produto, Status, EMPRICOD, CLIEA13ID, CUPOA13ID, PDVDA13ID, NOFIA13ID, MOVDA13ID: string);
 var
   SQLProdutoSerie: TQuery;
+  SQLCliente : TQuery;
+  NomeCliente : string;
 begin
   if (Produto = '') or (Produto = '') then
     Exit;
-
+  if CLIEA13ID <> '' then
+  begin
+    SQLCliente := TQuery.Create(SQLCliente);
+    SQLCliente.DatabaseName := 'DB';
+    SQLCliente.Close;
+    SQLCliente.SQL.Clear;
+    SQLCliente.SQL.ADD('SELECT CLIEA60RAZAOSOC FROM CLIENTE WHERE CLIEA13ID = ''' + CLIEA13ID +'''' );
+    SQLCliente.Prepare;
+    try
+      SQLCliente.Open;
+      NomeCliente := SQLCliente.fieldbyname('CLIEA60RAZAOSOC').AsString
+    finally
+      SQLCliente.Close;
+      SQLCliente.Destroy;
+    end;
+  end;
   SQLProdutoSerie := TQuery.Create(SQLProdutoSerie);
   SQLProdutoSerie.DatabaseName := 'DB';
   SQLProdutoSerie.Close;
@@ -1648,6 +1665,9 @@ begin
   // Movimento Diverso
   if MOVDA13ID <> '' then
     SQLProdutoSerie.SQL.ADD('MOVDA13ID = ''' + MOVDA13ID + ''' , ');
+  // Nome cliente
+  if NomeCliente <> '' then
+    SQLProdutoSerie.SQL.ADD('CLIEA60RAZAOSOC = ''' + NomeCliente + ''' , ');
   // Pendente
   SQLProdutoSerie.SQL.ADD('PENDENTE = ''S'' , ');
   // Registro

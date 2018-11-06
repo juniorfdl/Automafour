@@ -1,6 +1,6 @@
 inherited FormCadastroNotaServico: TFormCadastroNotaServico
-  Left = 44
-  Top = 16
+  Left = 59
+  Top = 12
   Caption = 'Nota Fiscal de Servi'#231'os(RPS/NFS-e)'
   ClientHeight = 646
   ClientWidth = 1253
@@ -8489,7 +8489,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                   Top = 19
                   Width = 157
                   Height = 45
-                  Caption = 'Valor dos Servi'#231'os'
+                  Caption = 'Valor Total'
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clWindowText
                   Font.Height = -11
@@ -8504,7 +8504,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                     Height = 24
                     Color = cl3DDkShadow
                     Ctl3D = True
-                    DataField = 'VALOR_SERVICO'
+                    DataField = 'VALOR_TOTAL'
                     DataSource = DSTemplate
                     Font.Charset = DEFAULT_CHARSET
                     Font.Color = clWindow
@@ -8570,7 +8570,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                     Height = 24
                     Color = cl3DDkShadow
                     Ctl3D = True
-                    DataField = 'NUMERO_RPS'
+                    DataField = 'VALOR_DEDUCAO'
                     DataSource = DSTemplate
                     Font.Charset = DEFAULT_CHARSET
                     Font.Color = clWindow
@@ -8603,7 +8603,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                     Height = 24
                     Color = cl3DDkShadow
                     Ctl3D = True
-                    DataField = 'NUMERO_RPS'
+                    DataField = 'OUTRAS_RETENCOES'
                     DataSource = DSTemplate
                     Font.Charset = DEFAULT_CHARSET
                     Font.Color = clWindow
@@ -8636,7 +8636,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                     Height = 24
                     Color = cl3DDkShadow
                     Ctl3D = True
-                    DataField = 'NUMERO_RPS'
+                    DataField = 'VALOR_LIQUIDO'
                     DataSource = DSTemplate
                     Font.Charset = DEFAULT_CHARSET
                     Font.Color = clWindow
@@ -8833,12 +8833,25 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                   ParentFont = False
                 end
                 object Label27: TLabel
-                  Left = 582
+                  Left = 695
                   Top = 53
                   Width = 90
                   Height = 13
                   Caption = 'Valor Total Nota'
                   FocusControl = DBEdit23
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clBlack
+                  Font.Height = -11
+                  Font.Name = 'Tahoma'
+                  Font.Style = [fsBold]
+                  ParentFont = False
+                end
+                object Label39: TLabel
+                  Left = 580
+                  Top = 53
+                  Width = 62
+                  Height = 13
+                  Caption = 'Valor Frete'
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clBlack
                   Font.Height = -11
@@ -8874,6 +8887,8 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                   Width = 112
                   Height = 21
                   Ctl3D = True
+                  DataField = 'VALOR_DESCONTO'
+                  DataSource = DSTemplate
                   ParentCtl3D = False
                   TabOrder = 2
                 end
@@ -8977,9 +8992,9 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                   TabOrder = 11
                 end
                 object DBEdit23: TDBEdit
-                  Left = 582
+                  Left = 695
                   Top = 65
-                  Width = 112
+                  Width = 111
                   Height = 21
                   TabStop = False
                   Color = 16249066
@@ -8988,7 +9003,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                   DataSource = DSTemplate
                   ParentCtl3D = False
                   ReadOnly = True
-                  TabOrder = 12
+                  TabOrder = 13
                 end
                 object chkPIS_RETIDO: TDBCheckBox
                   Left = 7
@@ -8998,7 +9013,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                   Caption = 'PIS Retido'
                   DataField = 'PIS_RETIDO'
                   DataSource = DSTemplate
-                  TabOrder = 14
+                  TabOrder = 15
                   ValueChecked = 'S'
                   ValueUnchecked = 'N'
                 end
@@ -9010,7 +9025,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                   Caption = 'COFINS Retido'
                   DataField = 'COFINS_RETIDO'
                   DataSource = DSTemplate
-                  TabOrder = 15
+                  TabOrder = 16
                   ValueChecked = 'S'
                   ValueUnchecked = 'N'
                 end
@@ -9022,7 +9037,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                   Caption = 'INSS Retido'
                   DataField = 'INSS_RETIDO'
                   DataSource = DSTemplate
-                  TabOrder = 16
+                  TabOrder = 17
                   ValueChecked = 'S'
                   ValueUnchecked = 'N'
                 end
@@ -9034,7 +9049,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                   Caption = 'IRPJ Retido'
                   DataField = 'IRPJ_RETIDO'
                   DataSource = DSTemplate
-                  TabOrder = 17
+                  TabOrder = 18
                   ValueChecked = 'S'
                   ValueUnchecked = 'N'
                 end
@@ -9046,21 +9061,32 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                   Caption = 'CSSL Retido'
                   DataField = 'CSSL_RETIDO'
                   DataSource = DSTemplate
-                  TabOrder = 18
+                  TabOrder = 19
                   ValueChecked = 'S'
                   ValueUnchecked = 'N'
                 end
                 object chkISS_RETIDO: TDBCheckBox
-                  Left = 695
-                  Top = 52
+                  Left = 815
+                  Top = 28
                   Width = 97
                   Height = 17
                   Caption = 'ISS Retido'
                   DataField = 'ISS_RETIDO'
                   DataSource = DSTemplate
-                  TabOrder = 13
+                  TabOrder = 14
                   ValueChecked = 'S'
                   ValueUnchecked = 'N'
+                end
+                object DBEdit18: TDBEdit
+                  Left = 580
+                  Top = 65
+                  Width = 112
+                  Height = 21
+                  Ctl3D = True
+                  DataField = 'VALOR_FRETE'
+                  DataSource = DSTemplate
+                  ParentCtl3D = False
+                  TabOrder = 12
                 end
               end
             end
@@ -9725,6 +9751,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
     object SQLTemplateID_SERVICO: TIntegerField
       FieldName = 'ID_SERVICO'
       Origin = 'DB.NOTASERVICO.ID_SERVICO'
+      OnChange = SQLTemplateID_SERVICOChange
     end
     object SQLTemplateCLIEA13ID: TStringField
       FieldName = 'CLIEA13ID'
@@ -9855,6 +9882,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
     object SQLTemplateVALOR_TOTAL: TFloatField
       FieldName = 'VALOR_TOTAL'
       Origin = 'DB.NOTASERVICO.VALOR_TOTAL'
+      OnChange = SQLTemplateVALOR_TOTALChange
       DisplayFormat = '#.##0.00'
     end
     object SQLTemplateDESCRICAO_SERVICO: TBlobField
@@ -9886,7 +9914,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
     object SQLTemplateNomeServicoLookUP: TStringField
       FieldKind = fkCalculated
       FieldName = 'NomeServicoLookUP'
-      Size = 10
+      Size = 50
       Calculated = True
     end
     object SQLTemplateEMPRICOD: TIntegerField
@@ -9896,6 +9924,23 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
     object SQLTemplateNUMERO_RPS: TStringField
       FieldName = 'NUMERO_RPS'
       ProviderFlags = [pfInUpdate]
+    end
+    object SQLTemplateVALOR_FRETE: TFloatField
+      FieldName = 'VALOR_FRETE'
+      Origin = 'DB.NOTASERVICO.VALOR_FRETE'
+      OnChange = SQLTemplateVALOR_FRETEChange
+      DisplayFormat = '#.##0.00'
+    end
+    object SQLTemplateVALOR_DESCONTO: TFloatField
+      FieldName = 'VALOR_DESCONTO'
+      Origin = 'DB.NOTASERVICO.VALOR_DESCONTO'
+      OnChange = SQLTemplateVALOR_DESCONTOChange
+      DisplayFormat = '#.##0.00'
+    end
+    object SQLTemplateVALOR_LIQUIDO: TFloatField
+      FieldName = 'VALOR_LIQUIDO'
+      Origin = 'DB.NOTASERVICO.VALOR_LIQUIDO'
+      DisplayFormat = '#.##0.00'
     end
   end
   object SQLPlanoRecebimento: TRxQuery
@@ -10141,7 +10186,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
       'From'
       'CONTASRECEBER'
       'Where'
-      'NOFIA13ID=:NOFIA13ID'
+      'NOFIA13ID=:ID'
       'order by'
       'CTRCICOD ')
     Macros = <>
@@ -10149,10 +10194,9 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
     Top = 29
     ParamData = <
       item
-        DataType = ftFixedChar
-        Name = 'NOFIA13ID'
+        DataType = ftUnknown
+        Name = 'ID'
         ParamType = ptUnknown
-        Size = 14
       end>
     object SQLContasReceberCTRCA13ID: TStringField
       FieldName = 'CTRCA13ID'

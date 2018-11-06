@@ -2,7 +2,7 @@ unit CadastroNotaServico;
 
 interface
 
-uses                                                           
+uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, CadastroTEMPLATE, AdvOfficeStatusBar, AdvOfficeStatusBarStylers,
   DBTables, DBActns, ActnList, DB, RxQuery, Menus, StdCtrls, Mask, AdvPanel,
@@ -299,8 +299,13 @@ type
     SQLPlanoParcela: TRxQuery;
     SQLTemplateNUMERO_RPS: TStringField;
     SQLNumerario: TRxQuery;
-    procedure FormCreate(Sender: TObject);
+    Label39: TLabel;
+    DBEdit18: TDBEdit;
+    SQLTemplateVALOR_FRETE: TFloatField;
+    SQLTemplateVALOR_DESCONTO: TFloatField;
+    SQLTemplateVALOR_LIQUIDO: TFloatField;
     procedure SQLTemplateCalcFields(DataSet: TDataSet);
+    procedure FormCreate(Sender: TObject);
     procedure btnConsultaClienteClick(Sender: TObject);
     procedure DBEdit14KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure SQLTemplateNewRecord(DataSet: TDataSet);
@@ -334,6 +339,11 @@ type
     procedure SQLContasReceberNewRecord(DataSet: TDataSet);
     procedure SQLContasReceberPostError(DataSet: TDataSet;
       E: EDatabaseError; var Action: TDataAction);
+    procedure SQLTemplateVALOR_DESCONTOChange(Sender: TField);
+    procedure SQLTemplateVALOR_FRETEChange(Sender: TField);
+    procedure prc_Montar_Discriminacao;
+    procedure SQLTemplateID_SERVICOChange(Sender: TField);
+    procedure SQLTemplateVALOR_TOTALChange(Sender: TField);
   private
     ContasReceberCliente, ContasReceberID: string;
     { Private declarations }
@@ -400,7 +410,6 @@ begin
     if DM.ProcuraRegistro('SERVICO', ['ID_SERVICO'], [SQLTemplateID_SERVICO.asString], 1) then
       DataSet.FieldByName('NomeServicoLookUP').AsVariant := DM.SQLTemplate.FindField('NOME_SERVICO').AsVariant;
   end;
-
 end;
 
 procedure TFormCadastroNotaServico.btnConsultaClienteClick(Sender: TObject);
@@ -427,7 +436,11 @@ begin
   SQLTemplateIRPJ_RETIDO.AsString := 'N';
   SQLTemplateCSSL_RETIDO.AsString := 'N';
   SQLTemplateISS_RETIDO.AsString := 'N';
-  SQLTemplateDATA_EMISSAO.AsDateTime := Now;
+  SQLTemplateDATA_EMISSAO.AsDateTime := Date;//Now;
+  SQLTemplateVALOR_DEDUCAO.AsFloat := 0;
+  SQLTemplateOUTRAS_RETENCOES.AsFloat := 0;
+  SQLTemplateVALOR_FRETE.AsFloat := 0;
+  SQLTemplateVALOR_DESCONTO.AsFloat := 0;
   SQLTemplateUF_PRESTACAO.AsString   := SQLLocate('EMPRESA','EMPRICOD','EMPRA2UF', EmpresaPadrao);
   SQLTemplateMUNICIPIO_PRESTACAO.AsString   := SQLLocate('EMPRESA','EMPRICOD','EMPRA60CID', EmpresaPadrao);
 end;
@@ -510,31 +523,46 @@ end;
 
 procedure TFormCadastroNotaServico.prc_Calcular_Valor_Total;
 var
-  ValorPis,ValorTotal,ValorCofins,ValorINSS,ValorIRPJ,ValorISS,ValorServico,ValorDeducao,AliquotaISS,ValorCSSL : Real;
+  ValorPis,ValorTotal,ValorCofins,ValorINSS,
+  ValorIRPJ,ValorISS,ValorServico,ValorDeducao,
+  AliquotaISS,ValorCSSL,ValorDesconto,ValorFrete,
+  BaseCalculo,ValorLiquido,ValorOutrasRetencoes : Real;
 begin
-  ValorISS     := 0;
-  ValorServico := SQLTemplate.FieldByName('VALOR_SERVICO').AsFloat;
-  ValorPis     := SQLTemplate.FieldByName('VALOR_PIS').AsFloat;
-  ValorCofins  := SQLTemplate.FieldByName('VALOR_COFINS').AsFloat;
-  ValorIRPJ    := SQLTemplate.FieldByName('VALOR_IRPJ').AsFloat;
-  ValorINSS    := SQLTemplate.FieldByName('VALOR_INSS').AsFloat;
-  ValorDeducao := SQLTemplate.FieldByName('VALOR_DEDUCAO').AsFloat;
-  ValorCSSL    := SQLTemplate.FieldByName('VALOR_CSSL').AsFloat;
-  AliquotaISS  := SQLTemplate.FieldByName('ALIQUOTA_ISS').AsFloat;
+  ValorISS      := 0;
+  ValorServico  := SQLTemplate.FieldByName('VALOR_SERVICO').AsFloat;
+  ValorPis      := SQLTemplate.FieldByName('VALOR_PIS').AsFloat;
+  ValorCofins   := SQLTemplate.FieldByName('VALOR_COFINS').AsFloat;
+  ValorIRPJ     := SQLTemplate.FieldByName('VALOR_IRPJ').AsFloat;
+  ValorINSS     := SQLTemplate.FieldByName('VALOR_INSS').AsFloat;
+  ValorDeducao  := SQLTemplate.FieldByName('VALOR_DEDUCAO').AsFloat;
+  ValorCSSL     := SQLTemplate.FieldByName('VALOR_CSSL').AsFloat;
+  AliquotaISS   := SQLTemplate.FieldByName('ALIQUOTA_ISS').AsFloat;
+  ValorDesconto := SQLTemplate.FieldByName('VALOR_DESCONTO').AsFloat;
+  ValorFrete    := SQLTemplate.FieldByName('VALOR_FRETE').AsFloat;
+  ValorOutrasRetencoes := SQLTemplate.FieldByName('OUTRAS_RETENCOES').AsFloat;
 
   case SQLTemplateLOCAL_TRIBUTACAO.AsInteger of
    3 : SQLTemplate.FieldByName('VALOR_ISS').AsFloat := 0;
    4 : SQLTemplate.FieldByName('VALOR_ISS').AsFloat := 0;
   end;
 
-  if (ValorServico > 0) and (AliquotaISS > 0) then
-    ValorISS := ValorServico * (AliquotaISS / 100);
+  BaseCalculo := ValorServico - ValorDeducao - ValorFrete;
 
-  SQLTemplate.FieldByName('VALOR_TOTAL').AsFloat := ValorServico - ValorPis - ValorCofins - ValorIRPJ - ValorINSS - ValorDeducao;
+  ValorTotal := ValorServico;
+
+  if (BaseCalculo > 0) and (AliquotaISS > 0) then
+    ValorISS := BaseCalculo * (AliquotaISS / 100);
+
+  ValorLiquido := ValorServico - ValorPis - ValorCofins - ValorINSS - ValorIRPJ - ValorCSSL - ValorOutrasRetencoes - ValorDesconto;
 
   if chkISS_RETIDO.Checked then
-    SQLTemplate.FieldByName('VALOR_TOTAL').AsFloat := SQLTemplate.FieldByName('VALOR_TOTAL').AsFloat - ValorISS;
+    ValorLiquido := ValorLiquido - ValorISS;
+
   SQLTemplate.FieldByName('VALOR_ISS').AsFloat := ValorISS;
+
+  SQLTemplate.FieldByName('VALOR_TOTAL').AsFloat := ValorTotal;
+  SQLTemplate.FieldByName('BASE_CALCULO_ISS').AsFloat := BaseCalculo;
+  SQLTemplate.FieldByName('VALOR_LIQUIDO').AsFloat := ValorLiquido;
 
 end;
 
@@ -928,7 +956,42 @@ begin
   end;
   Action := DaRetry;
 
->>>>>>> origin/master
+//>>>>>>> origin/master
+end;
+
+procedure TFormCadastroNotaServico.SQLTemplateVALOR_DESCONTOChange(
+  Sender: TField);
+begin
+  inherited;
+  prc_Calcular_Valor_Total;
+end;
+
+procedure TFormCadastroNotaServico.SQLTemplateVALOR_FRETEChange(
+  Sender: TField);
+begin
+  inherited;
+  prc_Calcular_Valor_Total;
+end;
+
+procedure TFormCadastroNotaServico.prc_Montar_Discriminacao;
+begin
+  SQLTemplateDESCRICAO_SERVICO.Value := SQLTemplateNomeServicoLookUP.Value;
+  if SQLTemplateVALOR_FRETE.AsFloat > 0 then
+    SQLTemplateDESCRICAO_SERVICO.Value := SQLTemplateDESCRICAO_SERVICO.Value + ' + Frete: ' + FormatFloat('#,##0.00',SQLTemplateVALOR_FRETE.AsFloat);
+end;
+
+procedure TFormCadastroNotaServico.SQLTemplateID_SERVICOChange(
+  Sender: TField);
+begin
+  inherited;
+  prc_Montar_Discriminacao;
+end;
+
+procedure TFormCadastroNotaServico.SQLTemplateVALOR_TOTALChange(
+  Sender: TField);
+begin
+  inherited;
+  prc_Montar_Discriminacao;
 end;
 
 end.
