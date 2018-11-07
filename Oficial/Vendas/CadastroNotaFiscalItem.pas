@@ -1991,11 +1991,11 @@ begin
 end;
 
 procedure TFormCadastroNotaFiscalItem.CalculaFrete;
-var
+{var
   vTotalItemCalc, vTotalFreteItens: Currency;
-  vITEM: Integer;
-begin  
-  if DSMasterTemplate.DataSet.FieldByName('NOFIN2VLRFRETE').AsCurrency > 0 then
+  vITEM: Integer;}
+begin
+{  if DSMasterTemplate.DataSet.FieldByName('NOFIN2VLRFRETE').AsCurrency > 0 then
   begin
     SQLTemplate.DisableControls;
     SQLTemplate.AfterPost := nil;
@@ -2025,7 +2025,7 @@ begin
       SQLTemplate.BeforeEdit := SQLTemplateBeforeEdit;
       SQLTemplate.BeforePost := SQLTemplateBeforePost;
     end;
-  end;
+  end;}
 
 end;
 

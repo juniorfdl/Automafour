@@ -7192,6 +7192,9 @@ begin
   Dm.SQLTemplate.ParamByName('xStatus').Asstring := 'E';
   Dm.SQLTemplate.ParamByName('xID').Asstring := SQLTemplateNOFIA13ID.AsString;
   Dm.SQLTemplate.ExecSQL;
+
+  FazRateioFrete;
+
   SQLTemplate.Close;
   SQLTemplate.Open;
   Showmessage('Nota Fiscal Encerrada!');
@@ -7369,7 +7372,7 @@ end;
 
 procedure TFormCadastroNotaFiscal.FazRateioFrete;
 var
-  vTotalItemCalc, vTotalFreteItens: Currency;
+  vTotalItemCalc, vTotalFreteItens, vItemCalc: Currency;
 begin
   try
     SQLNotaFiscalItem.DisableControls;
@@ -7403,9 +7406,10 @@ begin
         while not SQLNotaFiscalItem.Eof do
         begin
           SQLNotaFiscalItem.edit;
+          vItemCalc := ((SQLNotaFiscalItemNFITN2VLRUNIT.AsFloat * SQLNotaFiscalItemNFITN3QUANT.asFloat) - SQLNotaFiscalItemNFITN2VLRDESC.AsFloat);
 
           SQLNotaFiscalItemNFITN2VLRFRETE.AsCurrency :=
-            (SQLNotaFiscalItemTotalItemCalc.AsCurrency / vTotalItemCalc) * SQLTemplateNOFIN2VLRFRETE.AsCurrency;
+            (vItemCalc / vTotalItemCalc) * SQLTemplateNOFIN2VLRFRETE.AsCurrency;
 
           SQLNotaFiscalItem.post;
           SQLNotaFiscalItem.Next;
