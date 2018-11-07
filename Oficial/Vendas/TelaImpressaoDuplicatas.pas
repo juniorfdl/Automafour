@@ -435,6 +435,12 @@ type
     ConfigurarEMail1: TMenuItem;
     SQLContasReceberVLRTAXA: TFloatField;
     TblDuplicatasVLRTAXA: TFloatField;
+    SQLContaCorrenteCTRCINOSSONUMERO: TIntegerField;
+    SQLContaCorrenteCTCRA15CARTEIRAVARIACAO: TStringField;
+    SQLContaCorrenteCTCRA15NUMEROCONVENIO: TStringField;
+    SQLContaCorrenteCODIGO: TStringField;
+    SQLContaCorrenteDIAS_PROTESTO: TIntegerField;
+    SQLContasReceberCTRCN2VLRTAXA: TFloatField;
     procedure BtnSelecionarDocClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure MnDuplicatasClick(Sender: TObject);
@@ -680,7 +686,7 @@ begin
       TblDuplicatasCLIEA2UFCOB.AsString           := SQLContasReceberCLIEA2UFCOB.AsString;
       TblDuplicatasCLIEA8CEPCOB.AsString          := SQLContasReceberCLIEA8CEPCOB.AsString;
       TblDuplicatasCLIEA60EMAIL.AsString          := SQLContasReceberCLIEA60EMAIL.AsString;
-      TblDuplicatasVLRTAXA.AsFloat                := SQLContasReceberVLRTAXA.AsFloat;
+      TblDuplicatasVLRTAXA.AsFloat                := SQLContasReceberCTRCN2VLRTAXA.AsFloat;
 
       if CheckEndCob.Checked then
         TblDuplicatasEndPagto.AsString            := SQLContasReceberCLIEA60ENDCOB.AsString + '-' + SQLContasReceberCLIEA60BAICOB.AsString + ' - ' + SQLContasReceberCLIEA8CEPCOB.AsString;
@@ -904,7 +910,7 @@ begin
       TblDuplicatasCLIEA60CIDCOB.AsString         := SQLContasReceberCLIEA60CIDCOB.AsString;
       TblDuplicatasCLIEA2UFCOB.AsString           := SQLContasReceberCLIEA2UFCOB.AsString;
       TblDuplicatasCLIEA8CEPCOB.AsString          := SQLContasReceberCLIEA8CEPCOB.AsString;
-      TblDuplicatasVLRTAXA.AsFloat                := SQLContasReceberVLRTAXA.AsFloat;
+      TblDuplicatasVLRTAXA.AsFloat                := SQLContasReceberCTRCN2VLRTAXA.AsFloat;
 
       if SQLContasReceberCTRCA15NOSSONUMERO.AsString = '' then
         begin
@@ -1110,6 +1116,10 @@ begin
       if TblDuplicatasVLRTAXA.AsFloat > 0 then
          Mensagem.Add(ACBrStr('Taxa Bancária de '+
                       FormatCurr('R$ #,##0.00',TblDuplicatasVLRTAXA.AsFloat) + '. Não obrigatória'));
+      if SQLContaCorrenteDIAS_PROTESTO.Value > 0 then
+         Mensagem.Add(ACBrStr('Título não pago até '+ FormatFloat('00', SQLContaCorrenteDIAS_PROTESTO.Value) +
+                    ' dias após o vencimento será enviado automaticamente para protesto'));
+
 
      { OcorrenciaOriginal.Tipo := toRemessaBaixar; }
 
@@ -1450,6 +1460,9 @@ begin
           Carteira          := SQLContaCorrenteCTCRA15CARTEIRACOD.Value;
           NumeroDocumento   := SQLContasReceberCTRCA30NRODUPLICBANCO.AsString;
           NossoNumero       := SQLContasReceberCTRCA15NOSSONUMERO.Value;
+          Instrucao1        := SQLContaCorrenteCODIGO.Value;
+          if SQLContaCorrenteDIAS_PROTESTO.AsInteger > 0 then
+            DiasDeProtesto  := SQLContaCorrenteDIAS_PROTESTO.AsInteger;
 
           Mensagem.Add(MemoInst.Text);
 
@@ -1500,7 +1513,7 @@ begin
               DataDocumento  := now;
               LocalPagamento := 'PAGÁVEL PREFENCIALMENTE NAS COOPERATIVAS DE CRÉDITO DO SICREDI';
             end;
-          ValorDocumento    := SQLContasReceberCTRCN2VLR.Value;
+          ValorDocumento    := SQLContasReceberCTRCN2VLR.Value + SQLContasReceberCTRCN2VLRTAXA.Value;
           ValorAbatimento   := 0.00;
 
           ValorMoraJuros    := 0;
@@ -1541,9 +1554,13 @@ begin
             else
               CodigoMora := '2';
           end;
-        if TblDuplicatasVLRTAXA.AsFloat > 0 then
-           Mensagem.Add(ACBrStr('Taxa Bancária de '+
-                        FormatCurr('R$ #,##0.00',TblDuplicatasVLRTAXA.AsFloat) + '. Não obrigatória'));
+{          if TblDuplicatasVLRTAXA.AsFloat > 0 then
+             Mensagem.Add(ACBrStr('Taxa Bancária de '+
+                          FormatCurr('R$ #,##0.00',TblDuplicatasVLRTAXA.AsFloat) + '. Não obrigatória'));
+          if SQLContaCorrenteDIAS_PROTESTO.Value > 0 then
+             Mensagem.Add(ACBrStr('Título não pago até '+ FormatFloat('00', SQLContaCorrenteDIAS_PROTESTO.Value) +
+                        ' dias após o vencimento será enviado automaticamente para protesto'));}
+
 
          { DataMoraJuros     := ;
           DataDesconto      := ;

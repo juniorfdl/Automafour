@@ -81,7 +81,6 @@ type
     LbTerminal: TppLabel;
     ppLabel9: TppLabel;
     ppSystemVariable1: TppSystemVariable;
-    ppLabel14: TppLabel;
     ppHeaderBand1: TppHeaderBand;
     ppLabel10: TppLabel;
     ppLabel11: TppLabel;

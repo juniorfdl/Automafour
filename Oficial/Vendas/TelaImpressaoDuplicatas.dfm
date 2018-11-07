@@ -1,6 +1,6 @@
 inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
-  Left = 222
-  Top = 118
+  Left = 358
+  Top = 108
   Width = 847
   Height = 507
   Caption = 'Emiss'#227'o de Boletos e Duplicatas'
@@ -769,6 +769,7 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
       '  CR.DUPLA13ID,'
       '  CR.CTRCA15NOSSONUMERO,'
       '  CR.CTRCA254HIST,'
+      '  CR.CTRCN2VLRTAXA,'
       '  CL.CLIEA14CGC,'
       '  CL.CLIEA20IE,'
       '  CL.CLIEA11CPF,'
@@ -1093,6 +1094,9 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
     end
     object SQLContasReceberVLRTAXA: TFloatField
       FieldName = 'VLRTAXA'
+    end
+    object SQLContasReceberCTRCN2VLRTAXA: TFloatField
+      FieldName = 'CTRCN2VLRTAXA'
     end
   end
   object SQLCliente: TRxQuery
@@ -5374,6 +5378,29 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
     object SQLContaCorrenteLOTEREMESSABANCO: TIntegerField
       FieldName = 'LOTEREMESSABANCO'
       Origin = 'DB.CONTACORRENTE.LOTEREMESSABANCO'
+    end
+    object SQLContaCorrenteCTRCINOSSONUMERO: TIntegerField
+      FieldName = 'CTRCINOSSONUMERO'
+      Origin = 'DB.CONTACORRENTE.CTRCINOSSONUMERO'
+    end
+    object SQLContaCorrenteCTCRA15CARTEIRAVARIACAO: TStringField
+      FieldName = 'CTCRA15CARTEIRAVARIACAO'
+      Origin = 'DB.CONTACORRENTE.CTCRA15CARTEIRAVARIACAO'
+      Size = 15
+    end
+    object SQLContaCorrenteCTCRA15NUMEROCONVENIO: TStringField
+      FieldName = 'CTCRA15NUMEROCONVENIO'
+      Origin = 'DB.CONTACORRENTE.CTCRA15NUMEROCONVENIO'
+      Size = 15
+    end
+    object SQLContaCorrenteCODIGO: TStringField
+      FieldName = 'CODIGO'
+      Origin = 'DB.CONTACORRENTE.CODIGO'
+      Size = 10
+    end
+    object SQLContaCorrenteDIAS_PROTESTO: TIntegerField
+      FieldName = 'DIAS_PROTESTO'
+      Origin = 'DB.CONTACORRENTE.DIAS_PROTESTO'
     end
   end
   object ACBrBoleto1: TACBrBoleto
