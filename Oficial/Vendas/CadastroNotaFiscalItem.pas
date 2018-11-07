@@ -328,6 +328,7 @@ type
     function BuscaIcms: TICMSUF;
     function Busca_CFOP(Operacao: Integer; Origem: Integer; CST: Integer): string;
     function CalculaSubstituicaoTributaria: string;
+    procedure CalculaFrete;
   public
     { Public declarations }
   end;
@@ -882,7 +883,7 @@ end;
 procedure TFormCadastroNotaFiscalItem.SQLTemplateBeforePost(DataSet: TDataSet);
 var
   NumeroSerie: string;
-  I : integer;
+  I: integer;
 begin
   if not DM.ImportandoPedidoVenda then
   begin
@@ -1033,15 +1034,15 @@ begin
                 NumeroSerie := FormTelaInformaNumeroSerieProduto.RXSerieNumeroSerie.Text;
                 if NumeroSerie <> '' then
                   GravaSaidaNroSerieProduto(NumeroSerie,
-                                            SQLTemplatePRODICOD.AsString,
-                                            'I',
-                                            EmpresaPadrao,
-                                            DSMasterTemplate.DataSet.FieldByName('CLIEA13ID').AsString, '', '',
-                                            DSMasterTemplate.DataSet.FieldByName('NOFIA13ID').AsString, '');
-               if DataSet.FieldByName('NFITA254OBS').AsString = '' then
-                 DataSet.FieldByName('NFITA254OBS').AsString := ' Nro Serie: ' + NumeroSerie
-               else
-                 DataSet.FieldByName('NFITA254OBS').AsString := DataSet.FieldByName('NFITA254OBS').AsString + ', ' + NumeroSerie;
+                    SQLTemplatePRODICOD.AsString,
+                    'I',
+                    EmpresaPadrao,
+                    DSMasterTemplate.DataSet.FieldByName('CLIEA13ID').AsString, '', '',
+                    DSMasterTemplate.DataSet.FieldByName('NOFIA13ID').AsString, '');
+                if DataSet.FieldByName('NFITA254OBS').AsString = '' then
+                  DataSet.FieldByName('NFITA254OBS').AsString := ' Nro Serie: ' + NumeroSerie
+                else
+                  DataSet.FieldByName('NFITA254OBS').AsString := DataSet.FieldByName('NFITA254OBS').AsString + ', ' + NumeroSerie;
               end;
               FormTelaInformaNumeroSerieProduto.RXSerie.Next;
             end;
@@ -1064,6 +1065,9 @@ var
   NumeroSerie: string;
 begin
   inherited;
+
+  CalculaFrete;
+
   DM.InserindoItemNV := True;
 
   SQLTemplate.DataSource.DataSet.DisableControls;
@@ -1168,7 +1172,7 @@ begin
     TotalQuant := SQLTemplateNFITN3QUANT.asFloat;
     TotalPesoBruto := SQLTemplatePesoBrutoLookUp.asFloat * SQLTemplateNFITN3QUANT.asFloat;
     TotalPesoLiquido := SQLTemplatePesoLiquidoLookUp.asFloat * SQLTemplateNFITN3QUANT.asFloat;
-    TotalItem := ((SQLTemplateNFITN2VLRUNIT.asFloat * SQLTemplateNFITN3QUANT.asFloat) - SQLTemplateNFITN2VLRDESC.AsFloat) + SQLTemplateNFITN2VLRDESC.AsFloat;  // judi alterou aqui
+    TotalItem := ((SQLTemplateNFITN2VLRUNIT.asFloat * SQLTemplateNFITN3QUANT.asFloat) - SQLTemplateNFITN2VLRDESC.AsFloat) + SQLTemplateNFITN2VLRDESC.AsFloat; // judi alterou aqui
     TotalBASCALCICMS := SQLTemplateNFITN2BASEICMS.asFloat;
     TotalVLRICMS := SQLTemplateNFITN2VLRICMS.asFloat;
     TotalBASCALCSUBS := SQLTemplateNFITN2BASESUBS.asFloat;
@@ -1984,6 +1988,45 @@ begin
   DeleteFile(PChar(origem));
 
   ShowMessage('Importação Executada com Sucesso');
+end;
+
+procedure TFormCadastroNotaFiscalItem.CalculaFrete;
+var
+  vTotalItemCalc, vTotalFreteItens: Currency;
+  vITEM: Integer;
+begin  
+  if DSMasterTemplate.DataSet.FieldByName('NOFIN2VLRFRETE').AsCurrency > 0 then
+  begin
+    SQLTemplate.DisableControls;
+    SQLTemplate.AfterPost := nil;
+    SQLTemplate.BeforePost := nil;
+    SQLTemplate.BeforeEdit := nil;
+    SQLTemplate.BeforePost := nil;
+    try
+      vITEM := SQLTemplateNFITIITEM.Value;
+      vTotalItemCalc := 0;
+      vTotalFreteItens := 0;
+      SQLTemplate.first;
+      while not SQLTemplate.Eof do
+      begin
+        vTotalItemCalc := vTotalItemCalc + SQLTemplateTotalItemCalc.Value;
+        SQLTemplate.Next;
+      end;
+
+      SQLTemplate.Locate('NFITIITEM', vITEM, []);
+      SQLTemplate.edit;
+      SQLTemplateNFITN2VLRFRETE.AsCurrency :=
+        (SQLTemplateTotalItemCalc.AsCurrency / vTotalItemCalc) * DSMasterTemplate.DataSet.FieldByName('NOFIN2VLRFRETE').AsCurrency;
+      SQLTemplate.post;
+    finally
+      SQLTemplate.EnableControls;
+      SQLTemplate.AfterPost := SQLTemplateAfterPost;
+      SQLTemplate.BeforePost := SQLTemplateBeforePost;
+      SQLTemplate.BeforeEdit := SQLTemplateBeforeEdit;
+      SQLTemplate.BeforePost := SQLTemplateBeforePost;
+    end;
+  end;
+
 end;
 
 end.

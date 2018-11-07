@@ -1232,28 +1232,29 @@ type
     function RetornaCofins(Produto: string): string;
     function RetornaPis(Produto: string): string;
     function SN(sNum: string): string;
+    procedure FazRateioFrete;
   public
     Arquivo: TextFile;
     GerandoNota, InserindoNota, InserindoCupomFiscal, PermiteExcluirSemPerguntar: Boolean;
     VarPDVDA13ID,
-    VarSerie,
-    VarTRANICOD,
-    VarNOFIA30NROPEDCOMP,
-    VarNOFIA30COMPRADOR,
-    VarNOFIINROTALAO,
-    VarPLRCICOD,
-    VarCLIEA13ID,
-    VarVENDICOD,
-    VarNOFIN2VLRFRETE,
-    VarNOFIN2VLRDESCPROM,
-    VarNOFIA255OBS,
-    VarOperacaoEstoque,
-    VarOperacaoEntradaSaida,
-    Titulo,
-    Linha,
-    SitTrib,
-    EntradaSaida,
-    EntradaSaidaConsignado: string;
+      VarSerie,
+      VarTRANICOD,
+      VarNOFIA30NROPEDCOMP,
+      VarNOFIA30COMPRADOR,
+      VarNOFIINROTALAO,
+      VarPLRCICOD,
+      VarCLIEA13ID,
+      VarVENDICOD,
+      VarNOFIN2VLRFRETE,
+      VarNOFIN2VLRDESCPROM,
+      VarNOFIA255OBS,
+      VarOperacaoEstoque,
+      VarOperacaoEntradaSaida,
+      Titulo,
+      Linha,
+      SitTrib,
+      EntradaSaida,
+      EntradaSaidaConsignado: string;
     VarNumero, VarNroItem: Integer;
     PesoLiquido, PesoBruto: Double;
     IncrementaNroCheque: Boolean;
@@ -2057,6 +2058,7 @@ begin
       Exit;
     end;
 
+  FazRateioFrete;  
   BkpEmpresaCorrente := EmpresaCorrente;
   EmpresaCorrente := SQLTemplateEMPRICOD.AsInteger;
   if not DM.InserindoItemNV then
@@ -2186,7 +2188,7 @@ begin
   VarNOFIN2VLRDESCPROM := SQLTemplate.FieldByName('NOFIN2VLRDESCPROM').AsString;
   VarNOFIA255OBS := SQLTemplate.FieldByName('NOFIA255OBS').AsString;
 
-  if (SQLTemplate.State = dsInsert)or(sqltemplateNOFIINUMERO.Value = 0) then
+  if (SQLTemplate.State = dsInsert) or (sqltemplateNOFIINUMERO.Value = 0) then
   begin
     SQLSerie.Close;
     SQLSerie.MacroByName('mEmpresa').value := 'EMPRICOD = ' + SQLTemplateEMPRICOD.AsString;
@@ -2273,7 +2275,7 @@ var
   Erro: Boolean;
   ValorBase: Double;
   I: Integer;
-  SomaSubtrai : String;
+  SomaSubtrai: string;
 begin
   inherited;
   if DM.InserindoItemNV then
@@ -2288,7 +2290,7 @@ begin
 
   // ENCERRANDO NOTA FISCAL
   EntradaSaida := SQLLocate('OPERACAOESTOQUE', 'OPESICOD', 'OPESCENTRADASAIDA', SQLTemplateOPESICOD.AsString);
-  EntradaSaidaConsignado  := SQLLocate('OPERACAOESTOQUE', 'OPESICOD', 'MOVIMENTA_CONSIGNADO', SQLTemplateOPESICOD.AsString);
+  EntradaSaidaConsignado := SQLLocate('OPERACAOESTOQUE', 'OPESICOD', 'MOVIMENTA_CONSIGNADO', SQLTemplateOPESICOD.AsString);
   if (StatusNovo = 'E') and (EntradaSaida <> 'N') then
   begin
     SQLNotaFiscalItens.SQL.Text := 'Select * From NOTAFISCALITEM Where NOFIA13ID = ''' + DataSet.FindField('NOFIA13ID').AsString + '''';
@@ -3623,7 +3625,7 @@ end;
 procedure TFormCadastroNotaFiscal.SQLNotaFiscalItemCalcFields(DataSet: TDataSet);
 begin
   inherited;
-  if not Dm.ImportandoPedidoVenda then
+  if (not Dm.ImportandoPedidoVenda)and(DMImpNotaFiscal <> nil) then
   begin
     SQLNotaFiscalItemTotalItemCalc.asFloat := (SQLNotaFiscalItemNFITN2VLRUNIT.AsFloat * SQLNotaFiscalItemNFITN3QUANT.asFloat) - SQLNotaFiscalItemNFITN2VLRDESC.AsFloat;
     if DataSet.FieldByName('PRODICOD').AsVariant <> null then
@@ -5568,7 +5570,7 @@ begin
   if sqltemplate.state = dsinsert then
     sqltemplate.Post;
 
-  SQLEmpresa.Locate('EMPRICOD',SQLTemplateEMPRICOD.AsInteger,[]);
+  SQLEmpresa.Locate('EMPRICOD', SQLTemplateEMPRICOD.AsInteger, []);
   try
     bEnviandoNFE := true;
   {Inicio Rotina usando ACBR NFE, por Adilson}
@@ -5843,7 +5845,7 @@ begin
 
   Point := SQLTemplate.GetBookmark;
 
-  SQLEmpresa.Locate('EMPRICOD',SQLTemplateEMPRICOD.AsInteger,[]);
+  SQLEmpresa.Locate('EMPRICOD', SQLTemplateEMPRICOD.AsInteger, []);
 
   Inicia_NFe;
 
@@ -6433,7 +6435,7 @@ begin
     begin
       Dest.CNPJCPF := sn(SQLTemplateCliFornEmpCGCCPFLookUp.AsString);
       if SQLTemplateCliFornEmpIERGLookUp.AsString = 'ISENTO' then
-        IE_Dest   := SQLTemplateCliFornEmpIERGLookUp.AsString {cpf nao vai ie}
+        IE_Dest := SQLTemplateCliFornEmpIERGLookUp.AsString {cpf nao vai ie}
       else
         IE_Dest := '';
     end;
@@ -6447,17 +6449,17 @@ begin
       Dest.IE := ''; {Preencher vazio}
     end
     else
-    if (trim(IE_Dest) = '') then
-    begin
-      ide.indFinal := cfConsumidorFinal;
-      Dest.indIEDest := inNaoContribuinte; {9}
-      Dest.IE := ''; {Preencher vazio}
-    end
-    else
-    begin
-      ide.indFinal := cfNao;
-      Dest.indIEDest := inContribuinte; //1
-      Dest.IE := IE_Dest;
+      if (trim(IE_Dest) = '') then
+      begin
+        ide.indFinal := cfConsumidorFinal;
+        Dest.indIEDest := inNaoContribuinte; {9}
+        Dest.IE := ''; {Preencher vazio}
+      end
+      else
+      begin
+        ide.indFinal := cfNao;
+        Dest.indIEDest := inContribuinte; //1
+        Dest.IE := IE_Dest;
       {  if (Dest.EnderDest.UF = 'AM') or (Dest.EnderDest.UF = 'BA') or (Dest.EnderDest.UF = 'CE') or (Dest.EnderDest.UF = 'GO') or
            (Dest.EnderDest.UF = 'MG') or (Dest.EnderDest.UF = 'MS') or (Dest.EnderDest.UF = 'MT') or (Dest.EnderDest.UF = 'PE') or
            (Dest.EnderDest.UF = 'RN') or (Dest.EnderDest.UF = 'SE') or (Dest.EnderDest.UF = 'SP') then
@@ -6466,7 +6468,7 @@ begin
             Dest.indIEDest := inNaoContribuinte; //9Conforme Regra de Validacao esses estados nao aceitam op.sem IE
             Dest.IE        := '';
           end; }
-    end;
+      end;
 
     {Testa Difal => Segundo forum existira apenas quando for VENDA ENTRE ESTADOS E DESTINATARIO NAO POSSUIR INSC ESTADUAL}
     if (Emit.EnderEmit.UF <> Dest.EnderDest.UF) and ((trim(IE_Dest) = 'ISENTO') or (IE_Dest = '')) then
@@ -6706,7 +6708,7 @@ begin
             ICMSUFDest.pICMSInter := SQLNotaFiscalItemNFITN2PERCICMS.Value;
                     {''Percentual de ICMS Interestadual para a UF de destino: - 40% em 2016; - 60% em 2017; - 80% em 2018; - 100% a partir de 2019.'' }
 
-            ICMSUFDest.vBCFCPUFDest  := ICMSUFDest.vBCUFDest;
+            ICMSUFDest.vBCFCPUFDest := ICMSUFDest.vBCUFDest;
 
             {nao gerar para valores zerado}
             if (SQLNotaFiscalItemNFITN2PERCICMS.value <> 0) then
@@ -7038,7 +7040,7 @@ begin
     SQLContasReceber.Close;
     SQLContasReceber.Open;
     SQLContasReceber.First;
-    if (not SqlContasReceber.IsEmpty)and(ACBrNFe1.Configuracoes.WebServices.Ambiente <> taHomologacao) then
+    if (not SqlContasReceber.IsEmpty) and (ACBrNFe1.Configuracoes.WebServices.Ambiente <> taHomologacao) then
     begin
       cobr.Fat.nFat := SQLTemplateNOFIINUMERO.AsString;
       cobr.Fat.vOrig := RoundTo(sqltemplateNOFIN2VLRNOTA.Value, -2) + RoundTo(sqltemplateNOFIN2VLRDESC.Value, -2);
@@ -7050,7 +7052,7 @@ begin
       begin
         with Cobr.Dup.Add do
         begin
-          nDup := FormatFloat('000',SQLContasReceberCTRCINROPARC.AsInteger);
+          nDup := FormatFloat('000', SQLContasReceberCTRCINROPARC.AsInteger);
           dVenc := SQLContasReceberCTRCDVENC.AsDateTime;
           vDup := RoundTo(SQLContasReceberCTRCN2VLR.asfloat, -2);
           TotalDup := TotalDup + vDup;
@@ -7071,7 +7073,7 @@ begin
         vPag := 0;
       end;
     end;
-    
+
     SQLContasReceber.Close;
 
     // Trasnportadora
@@ -7361,8 +7363,60 @@ procedure TFormCadastroNotaFiscal.SQLTemplateNOFIA8PLACAVEICChange(
   Sender: TField);
 begin
   inherited;
-    if Trim(SQLTemplateNOFIA8PLACAVEIC.AsString) <> EmptyStr then
-     SQLTemplateNOFIA255OBS.Value := SQLTemplateNOFIA255OBS.value + ' Placa Veículo: ' + Trim(SQLTemplateNOFIA8PLACAVEIC.AsString);
+  if Trim(SQLTemplateNOFIA8PLACAVEIC.AsString) <> EmptyStr then
+    SQLTemplateNOFIA255OBS.Value := SQLTemplateNOFIA255OBS.value + ' Placa Veículo: ' + Trim(SQLTemplateNOFIA8PLACAVEIC.AsString);
+end;
+
+procedure TFormCadastroNotaFiscal.FazRateioFrete;
+var
+  vTotalItemCalc, vTotalFreteItens: Currency;
+begin
+  try
+    SQLNotaFiscalItem.DisableControls;
+    SQLNotaFiscalItem.OnCalcFields := nil;
+    SQLNotaFiscalItem.AfterPost := nil;
+    SQLNotaFiscalItem.BeforePost := nil;
+    SQLNotaFiscalItem.BeforeEdit := nil;
+    SQLNotaFiscalItem.BeforePost := nil;
+
+    SQLNotaFiscalItem.Close;
+    //SQLNotaFiscalItem.RequestLive := True;
+    SQLNotaFiscalItem.SQL.Clear;
+    SQLNotaFiscalItem.SQL.Add('Select * From NotaFiscalItem Where NOFIA13ID =:NOFIA13ID');
+    SQLNotaFiscalItem.Open;
+
+    vTotalItemCalc := 0;
+    vTotalFreteItens := 0;
+    SQLNotaFiscalItem.first;
+    while not SQLNotaFiscalItem.Eof do
+    begin
+      vTotalItemCalc := vTotalItemCalc +
+        ((SQLNotaFiscalItemNFITN2VLRUNIT.AsFloat * SQLNotaFiscalItemNFITN3QUANT.asFloat) - SQLNotaFiscalItemNFITN2VLRDESC.AsFloat);
+      vTotalFreteItens := vTotalFreteItens + SQLNotaFiscalItemNFITN2VLRFRETE.Value;
+      SQLNotaFiscalItem.Next;
+    end;
+
+    if SQLTemplateNOFIN2VLRFRETE.AsCurrency > 0 then
+      if vTotalFreteItens <> SQLTemplateNOFIN2VLRFRETE.AsCurrency then
+      begin
+        SQLNotaFiscalItem.first;
+        while not SQLNotaFiscalItem.Eof do
+        begin
+          SQLNotaFiscalItem.edit;
+
+          SQLNotaFiscalItemNFITN2VLRFRETE.AsCurrency :=
+            (SQLNotaFiscalItemTotalItemCalc.AsCurrency / vTotalItemCalc) * SQLTemplateNOFIN2VLRFRETE.AsCurrency;
+
+          SQLNotaFiscalItem.post;
+          SQLNotaFiscalItem.Next;
+        end;
+      end;
+  finally
+    SQLNotaFiscalItem.OnCalcFields := SQLNotaFiscalItemCalcFields;
+    SQLNotaFiscalItem.BeforePost := SQLNotaFiscalItemBeforePost;
+    SQLNotaFiscalItem.EnableControls;
+  end;
+
 end;
 
 end.
