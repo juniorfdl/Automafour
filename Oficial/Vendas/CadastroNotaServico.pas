@@ -700,7 +700,7 @@ begin
   SQLconta.Close;
   SQLconta.Open;
   SQLContasReceber.Close;
-  SQLContasReceber.ParamByName('NOFIA13ID').AsString := SQLTemplateNUMERO_NOTA.AsString;
+  SQLContasReceber.ParamByName('NOFIA13ID').AsString := SQLTemplateID.AsString;
   SQLContasReceber.Open;
 
   PagePrincipal.ActivePage := tsFinanceiro;

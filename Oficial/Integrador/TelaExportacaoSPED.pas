@@ -7,7 +7,7 @@ uses
   Dialogs, TelaGeralTEMPLATE, RxLookup, StdCtrls, DB, DBTables, RxQuery,
   Buttons, jpeg, ExtCtrls, Mask, ToolEdit, Grids, DBGrids, ComCtrls,
   RxMemDS, IniFiles, Placemnt, ZAbstractRODataset, ZAbstractDataset,
-  ZAbstractTable, ZDataset, AdvOfficeStatusBar, AdvOfficeStatusBarStylers;
+  ZAbstractTable, ZDataset, AdvOfficeStatusBar, AdvOfficeStatusBarStylers, Math;
 
 type
   TFormTelaExportacaoSped = class(TFormTelaGeralTEMPLATE)
@@ -293,6 +293,8 @@ type
     procedure z0150AfterPost(DataSet: TDataSet);
   private
     { Private declarations }
+    PercDesconto : Real;
+    ValorDescontoTotal : Real;
     Function  Registro_Bloco_Zero:Boolean;
     Function  Registro0150: Boolean;
     Function  Registro0206(Produto:String): Boolean;
@@ -373,7 +375,7 @@ var
 
 implementation
 
-uses DataModulo, DataModuloTemplate, UnitLibrary, DateUtils;
+uses DataModulo, DataModuloTemplate, UnitLibrary, DateUtils, StrUtils;
 
 {$R *.dfm}
 
@@ -3464,7 +3466,8 @@ Begin
         Chave          := zPesquisa.FieldByName('CHAVEACESSO').AsString;
         vDataDocumento := FormatDateTime('ddmmyyyy',zPesquisa.FieldByName('CUPODEMIS').AsDateTime);
         vEntradaSaida  := '1';  // Indicador de Operacao = 0- Entrada;  1- Saída
-
+        PercDesconto   := 0;
+        ValorDescontoTotal  := 0;
         { Para documentos fiscais cancelados (codigo 02 ou 03) Denegado (04), inutilizado (05) informar somente
           os campos Código da Situação, Indicador de Operacao, Codigo do Modelo e Chave do Documento para os que possuem.}
         if StatusNF = 'C' Then
@@ -3523,14 +3526,20 @@ Begin
                 Linha := Linha + Chave                                                               + '|' ;  // 09 CHV_NFE Chave da Nota Fiscal Eletrônica N 044* - N
                 Linha := Linha + vDataDocumento                                                      + '|' ;  // 10 DT_DOC Data da emissão do documento fiscal N 008* - S
                 Linha := LInha + vDataDocumento                                                      + '|' ;  // 11 DT_ENTSAI
-                Linha := Linha + FormatFloat('0.00', zPesquisa.FieldByName('CUPON2TOTITENS').Value ) + '|' ;  // 12 VL_DOC Valor total do documento fiscal N - 02 S
+                Linha := Linha + FormatFloat('0.00', zPesquisa.FieldByName('CUPON2TOTITENS').Value -
+                                                     zPesquisa.FieldByName('CUPON2DESC').Value)      + '|' ;  // 12 VL_DOC Valor total do documento fiscal N - 02 S
 
                 // verifica a forma de pagamento
                 if zPesquisa.FieldByName('CUPOCTIPOPADRAO').AsString = 'VISTA' then
                   ForPag := '0'
                 else
                   ForPag := '1';
-
+                if zPesquisa.FieldByName('CUPON2DESC').Value > 0 then
+                begin
+                  PercDesconto  := RoundTo(zPesquisa.FieldByName('CUPON2TOTITENS').Value / zPesquisa.FieldByName('CUPON2DESC').Value,-2);
+                  ValorDescontoTotal := zPesquisa.FieldByName('CUPON2DESC').Value;
+                end;
+                                                                                                    
                 Linha := Linha + ForPag                                                             + '|'+ // 13 IND_PGTO Indicador do tipo de pagamento: C 001* - S
                 FormatFloat('0.00',zPesquisa.FieldByName('CUPON2DESC').Value)                       + '|'+ // 14 VL_DESC Valor total do desconto N - 02 N
                 ''                                                                                  + '|'+ // 15 VL_ABAT_NT Abatimento não tributado e não comercial Ex. desconto ICMS nas remessas para ZFM. N - 02 N
@@ -4433,7 +4442,8 @@ End;
 Function TFormTelaExportacaoSped.RegistroC170: boolean;
 var OpEntraSai, UnidadeSped, CFOP, CstIPI, CstPisCofins :String;
     Base, Quantidade : Extended;
-    nOrdem:Integer;
+    nOrdem, Contador:Integer;
+    ValorDesconto,vDesconto, SomaDescItem : Double;
 Begin
    {REGISTRO C170: ITENS DO DOCUMENTO (CÓDIGO 01, 1B, 04 e 55).
    Registro obrigatório para discriminar os itens da nota fiscal (mercadorias e/ou serviços constantes em notas
@@ -4489,7 +4499,7 @@ Begin
             FormatFloat('0.00000',zPesquisa1.FieldByName('NFITN3QUANT').Value)  + '|' + // 05 QTD Quantidade do item N - 05 O O
             zPesquisa1.FieldByName('UNIDA5DESCR').AsString                      + '|' + // 06 UNID Unidade do item (Campo 02 do registro 0190) C 006 - O O
             FormatFloat('0.00', Base)                                           + '|' + // 07 VL_ITEM Valor total do item (mercadorias ou serviços) N - 02 O O
-            FormatFloat('0.00',zPesquisa1.FieldByName('NFITN2VLRDESC').Value)   + '|' ; // 08 VL_DESC Valor do desconto comercial N - 02 OC OC
+            FormatFloat('0.00',zPesquisa1.FieldByName('NFITN2VLRDESC').AsFloat) + '|' ; // 08 VL_DESC Valor do desconto comercial N - 02 OC OC
             inc(nOrdem);
 
             // Verifica se a operacao de estoque é de entrada ou saida
@@ -4852,15 +4862,31 @@ Begin
       'LEFT JOIN UNIDADE U ON U.UNIDICOD = P.UNIDICOD '+
       'Where CUPOA13ID='''+zPesquisa.FieldByName('CUPOA13ID').AsString+'''';
       zPesquisa1.Open;
-
+      Contador := 0;
+      SomaDescItem := 0;
       EditTabela.Text := 'Criando Registro C170 - Itens da tabela CUPOMITEM'; EditTabela.Update;
       While Not zPesquisa1.Eof do
         begin
           try
+            Contador := Contador + 1;
             CodProd := zPesquisa1.FieldByName('PRODICOD').AsString;
 
             Base := (zPesquisa1.FieldByName('CPITN3VLRUNIT').Value * zPesquisa1.FieldByName('CPITN3QTD').Value) -
                      zPesquisa1.FieldByName('CPITN2DESC').Value;
+
+            ValorDesconto := 0;
+            if (PercDesconto > 0) and (zPesquisa1.FieldByName('CPITN2DESC').Value = 0) then
+            begin
+              ValorDesconto :=  RoundTo(((Base * PercDesconto) / 100),-2);
+              SomaDescItem  := SomaDescItem + ValorDesconto;
+              if (Contador = zPesquisa1.RecordCount) and (SomaDescItem <> ValorDescontoTotal) then
+              begin
+                if ValorDescontoTotal > SomaDescItem then
+                  ValorDesconto := ValorDesconto + (ValorDescontoTotal - SomaDescItem)
+                else
+                  ValorDesconto := ValorDesconto - (SomaDescItem - ValorDescontoTotal);
+              end;
+            end;
 
             Linha := '|C170|'                                                         + // 01 REG Texto fixo contendo ''C170'' C 004 - O O
             zPesquisa1.FieldByName('CPITIPOS').AsString                         + '|' + // NUM_ITEM Número sequencial do item no documento fiscal N 003 - O O
@@ -4869,7 +4895,9 @@ Begin
             FormatFloat('0.00000',zPesquisa1.FieldByName('CPITN3QTD').Value)    + '|' + // 05 QTD Quantidade do item N - 05 O O
             zPesquisa1.FieldByName('UNIDA5DESCR').AsString                      + '|' + // 06 UNID Unidade do item (Campo 02 do registro 0190) C 006 - O O
             FormatFloat('0.00', Base)                                           + '|' + // 07 VL_ITEM Valor total do item (mercadorias ou serviços) N - 02 O O
-            FormatFloat('0.00',zPesquisa1.FieldByName('CPITN2DESC').Value)      + '|' ; // 08 VL_DESC Valor do desconto comercial N - 02 OC OC
+//            FormatFloat('0.00',zPesquisa1.FieldByName('CPITN2DESC').Value)      + '|' ; // 08 VL_DESC Valor do desconto comercial N - 02 OC OC
+            ifThen(ValorDesconto > 0, FormatFloat('0.00',ValorDesconto),
+            FormatFloat('0.00',zPesquisa1.FieldByName('CPITN2DESC').Value))      + '|' ; // 08 VL_DESC Valor do desconto comercial N - 02 OC OC
             Linha := Linha +  '0|' ;                                                    // 09 IND_MOV Movimentação física do ITEM/PRODUTO: 0. SIM 1. NÃO
 
             // 10 CST_ICMS Código da Situação Tributária referente ao ICMS, conforme a Tabela indicada no item 4.3.1

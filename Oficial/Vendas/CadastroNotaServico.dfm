@@ -10186,7 +10186,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
       'From'
       'CONTASRECEBER'
       'Where'
-      'NOFIA13ID=:ID'
+      'NOFIA13ID=:NOFIA13ID'
       'order by'
       'CTRCICOD ')
     Macros = <>
@@ -10195,7 +10195,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
     ParamData = <
       item
         DataType = ftUnknown
-        Name = 'ID'
+        Name = 'NOFIA13ID'
         ParamType = ptUnknown
       end>
     object SQLContasReceberCTRCA13ID: TStringField

@@ -1,6 +1,6 @@
 inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
-  Left = 243
-  Top = 65
+  Left = 261
+  Top = 110
   Width = 816
   Height = 632
   Caption = 'Gera'#231#227'o Arquivo SPED Fiscal'

@@ -64,6 +64,8 @@ type
     SQLTemplateREPRBIMAGEM: TBlobField;
     PictureDialog: TOpenPictureDialog;
     MnGerarListaEmail: TMenuItem;
+    Label12: TLabel;
+    DBEdit10: TDBEdit;
     procedure SQLTemplateNewRecord(DataSet: TDataSet);
     procedure FormCreate(Sender: TObject);
     procedure BtnCapturaFotoClick(Sender: TObject);
@@ -71,6 +73,7 @@ type
     procedure BtSalvarImagemClick(Sender: TObject);
     procedure DSTemplateDataChange(Sender: TObject; Field: TField);
     procedure MnGerarListaEmailClick(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -83,7 +86,7 @@ var
 
 implementation
 
-uses UnitLibrary;
+uses UnitLibrary, CadastroRepresentanteProduto;
 
 {$R *.dfm}
 
@@ -203,6 +206,22 @@ begin
 
   // Fechar Arquivo
   CloseFile(Arquivo);
+end;
+
+procedure TFormCadastroRepresentante.Button3Click(Sender: TObject);
+begin
+  inherited;
+  if (Sender as TRxSpeedButton).Name = 'Button3' then
+  begin
+    DSMasterSys := DSTemplate;
+    CriaFormulario(TFormCadastroRepresentanteProduto,
+      'FormCadastroRepresentanteProduto',
+      True,
+      False,
+      True,
+      '');
+  end;
+
 end;
 
 end.

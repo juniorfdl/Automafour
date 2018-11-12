@@ -1,6 +1,6 @@
 inherited FormCadastroRepresentante: TFormCadastroRepresentante
-  Left = 278
-  Top = 167
+  Left = 198
+  Top = 66
   Caption = 'Cadastro de Representante'
   OldCreateOrder = True
   PixelsPerInch = 96
@@ -8,6 +8,11 @@ inherited FormCadastroRepresentante: TFormCadastroRepresentante
   inherited ScrollBoxFundo: TScrollBox
     inherited PanelCentral: TPanel
       inherited PanelBarra: TPanel
+        inherited Button3: TRxSpeedButton
+          Caption = '&Estoque'
+          Visible = True
+          OnClick = Button3Click
+        end
         object GroupBoxFOTO: TGroupBox
           Left = 0
           Top = 266
@@ -351,6 +356,20 @@ inherited FormCadastroRepresentante: TFormCadastroRepresentante
                 Font.Style = [fsBold]
                 ParentFont = False
               end
+              object Label12: TLabel
+                Left = 7
+                Top = 248
+                Width = 118
+                Height = 13
+                Caption = 'Percentual Comiss'#227'o'
+                FocusControl = DBEdit10
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = 8404992
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = [fsBold]
+                ParentFont = False
+              end
               object DBEdit2: TDBEdit
                 Left = 3
                 Top = 16
@@ -511,9 +530,9 @@ inherited FormCadastroRepresentante: TFormCadastroRepresentante
                 TabOrder = 10
               end
               object GroupBox1: TGroupBox
-                Left = 2
-                Top = 242
-                Width = 127
+                Left = 394
+                Top = 114
+                Width = 223
                 Height = 42
                 Caption = ' Data Cadastro '
                 Font.Charset = DEFAULT_CHARSET
@@ -526,7 +545,7 @@ inherited FormCadastroRepresentante: TFormCadastroRepresentante
                 object DataCadastro: TDBEdit
                   Left = 13
                   Top = 17
-                  Width = 101
+                  Width = 172
                   Height = 21
                   TabStop = False
                   Color = 12572888
@@ -541,6 +560,13 @@ inherited FormCadastroRepresentante: TFormCadastroRepresentante
                   ReadOnly = True
                   TabOrder = 0
                 end
+              end
+              object DBEdit10: TDBEdit
+                Left = 3
+                Top = 261
+                Width = 166
+                Height = 21
+                TabOrder = 12
               end
             end
           end

@@ -197,7 +197,7 @@ uses
   CadastroNotaFiscalItem in 'Vendas\CadastroNotaFiscalItem.pas' {FormCadastroNotaFiscalItem},
   TelaLancamentoGradeNotaFiscal in 'Vendas\TelaLancamentoGradeNotaFiscal.pas' {FormTelaLancamentoGradeNotaFiscal},
   TelaNotaFiscalItemFiltro in 'Vendas\TelaNotaFiscalItemFiltro.pas' {FormTelaNotaFiscalitemFiltro},
-  TelaInformaNumeroSerieProduto in 'Vendas\TelaInformaNumeroSerieProduto.pas' {FormTelaInformaNumeroSerieProduto},
+  TelaInformaNumeroSerieProdutoRepre in 'TelaInformaNumeroSerieProdutoRepre.pas' {FormTelaInformaNumeroSerieProdutoRepre},
   TelaImportacaoPedidoVenda in 'Vendas\TelaImportacaoPedidoVenda.pas' {FormTelaImportacaoPedidoVenda},
   TelaConsultaCupom in 'Vendas\TelaConsultaCupom.pas' {FormTelaConsultaCupom},
   TelaItensVendaConsignacao in 'Vendas\TelaItensVendaConsignacao.pas' {FormTelaItensVendaConsignacao},
@@ -458,7 +458,9 @@ uses
   CadastroTributacaoNFSE in 'Cadastros\CadastroTributacaoNFSE.pas' {FormCadastroTributacaoNFSE},
   CadastroNotaServico in 'Vendas\CadastroNotaServico.pas' {FormCadastroNotaServico},
   CadastroServico in 'Cadastros\CadastroServico.pas' {FormCadastroServico},
-  udmNFSe in 'Faturamento\udmNFSe.pas' {dmNFSe: TDataModule};
+  udmNFSe in 'Faturamento\udmNFSe.pas' {dmNFSe: TDataModule},
+  CadastroRepresentanteProduto in 'Cadastros\CadastroRepresentanteProduto.pas' {FormCadastroRepresentanteProduto},
+  TelaInformaNumeroSerieProduto in 'Vendas\TelaInformaNumeroSerieProduto.pas' {FormTelaInformaNumeroSerieProduto};
 
 {$R *.res}
 

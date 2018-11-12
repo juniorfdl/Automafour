@@ -2,32 +2,32 @@ inherited FormCadastroPedidoVendaItem: TFormCadastroPedidoVendaItem
   Left = 337
   Top = 118
   Caption = 'Lan'#231'amento de Itens'
-  ClientWidth = 790
+  ClientWidth = 807
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
   inherited ScrollBoxFundo: TScrollBox
-    Width = 790
+    Width = 807
     inherited PanelCabecalho: TPanel
-      Width = 788
+      Width = 805
       inherited ScrollBoxPanelCabecalho: TScrollBox
-        Width = 788
+        Width = 805
         inherited Panel1: TPanel
-          Width = 786
+          Width = 803
           inherited PanelNavigator: TPanel
-            Width = 786
+            Width = 803
             inherited AdvPanelNavigator: TAdvOfficeStatusBar
-              Width = 786
+              Width = 803
             end
           end
           inherited PanelLeft: TPanel
-            Left = 329
+            Left = 346
           end
         end
       end
     end
     inherited PanelCentral: TPanel
-      Width = 788
+      Width = 805
       inherited PanelBarra: TPanel
         object Label29: TLabel
           Left = 13
@@ -89,16 +89,16 @@ inherited FormCadastroPedidoVendaItem: TFormCadastroPedidoVendaItem
         end
       end
       inherited PanelFundoDados: TPanel
-        Width = 658
+        Width = 675
         inherited Panel5: TPanel
-          Width = 658
+          Width = 675
           inherited PagePrincipal: TPageControl
             Top = 189
-            Width = 658
+            Width = 675
             Height = 260
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
-                Width = 650
+                Width = 667
                 Height = 187
                 Columns = <
                   item
@@ -148,18 +148,18 @@ inherited FormCadastroPedidoVendaItem: TFormCadastroPedidoVendaItem
                   end>
               end
               inherited PanelProcura: TPanel
-                Width = 650
+                Width = 667
                 inherited PanelBetween: TPanel
-                  Width = 256
+                  Width = 273
                   inherited AdvPanel1: TAdvPanel
-                    Width = 256
+                    Width = 273
                     FullHeight = 0
                   end
                 end
                 inherited PanelEditProcura: TPanel
-                  Width = 256
+                  Width = 273
                   inherited AdvPanelEditProcura: TAdvPanel
-                    Width = 256
+                    Width = 273
                     FullHeight = 0
                   end
                 end
@@ -745,7 +745,7 @@ inherited FormCadastroPedidoVendaItem: TFormCadastroPedidoVendaItem
           end
           inherited PanelMaster: TPanel
             Top = 0
-            Width = 658
+            Width = 675
             Height = 81
             object Label8: TLabel
               Left = 9
@@ -1126,7 +1126,7 @@ inherited FormCadastroPedidoVendaItem: TFormCadastroPedidoVendaItem
           end
           inherited PanelCodigoDescricao: TPanel
             Top = 81
-            Width = 658
+            Width = 675
             Height = 108
             AutoSize = True
             Caption = '`'
