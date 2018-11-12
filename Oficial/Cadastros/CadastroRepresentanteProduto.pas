@@ -96,7 +96,9 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnAdicionaNumSerieClick(Sender: TObject);
+    procedure GravarNumeroSeries;
     procedure SQLTemplateBeforePost(DataSet: TDataSet);
+    procedure SQLTemplateAfterPost(DataSet: TDataSet);
   private
     Autenticado: Boolean;
     procedure prc_habilita_ES;
@@ -320,75 +322,77 @@ begin
     ShowMessage('Produto não possui número de série!');
 end;
 
-procedure TFormCadastroRepresentanteProduto.SQLTemplateBeforePost(
-  DataSet: TDataSet);
+procedure TFormCadastroRepresentanteProduto.GravarNumeroSeries;
+var
+  vREPRICOD:Integer;
 begin
   if not cdsSerie.IsEmpty then
   begin
-    try
-      SQLTemplate.DisableControls;
-      SQLTemplate.BeforePost := nil;
-      SQLTemplate.AfterPost  := nil;
-      SQLTemplate.OnPostError := nil;
-      while not cdsSerie.Eof do
-      begin
-        dm.SQLUpdate.SQL.Clear;
-        dm.SQLUpdate.SQL.Add('UPDATE OR INSERT INTO PRODUTOREPRESENTANTE (REPRICOD,PRODICOD,PRSEA60NROSERIE,NOFIA13ID,NOCPA13ID,FORNICOD,CLIEA13ID,CLIEA60RAZAOSOC,');
-        DM.SQLUpdate.SQL.Add('DATA_SAIDA,DATE_ENTRADA,EMPRICOD,STATUS,ENTRADA_SAIDA,DATA_REGISTRO) values (');
-        DM.SQLUpdate.SQL.Add(SQLTemplateREPRICOD.AsString + ',' + SQLTemplatePRODICOD.AsString + ',''' + cdsSerieNumeroSerie.AsString + ''',');
-        if SQLTemplateNOFIA13ID.AsString <> '' then
-          DM.SQLUpdate.SQL.Add('''' + SQLTemplateNOFIA13ID.AsString + ''',')
-        else
-          DM.SQLUpdate.SQL.Add('null,');
-        if SQLTemplateNOCPA13ID.AsString <> '' then
-          DM.SQLUpdate.SQL.Add('''' + SQLTemplateNOCPA13ID.AsString + ''',')
-        else
-          DM.SQLUpdate.SQL.Add('null,');
-        if SQLTemplateFORNICOD.AsInteger > 0 then
-          DM.SQLUpdate.SQL.Add('''' + SQLTemplateFORNICOD.AsString + ''',')
-        else
-          DM.SQLUpdate.SQL.Add('null,');
-        if SQLTemplateCLIEA13ID.AsString <> '' then
-          DM.SQLUpdate.SQL.Add('''' + SQLTemplateCLIEA13ID.AsString + ''',')
-        else
-          DM.SQLUpdate.SQL.Add('null,');
-        if SQLTemplateCLIEA60RAZAOSOC.AsString <> '' then
-          DM.SQLUpdate.SQL.Add('''' + SQLTemplateCLIEA60RAZAOSOC.AsString + ''',')
-        else
-          DM.SQLUpdate.SQL.Add('null,');
-        if SQLTemplateDATA_SAIDA.AsDateTime > 10 then
-          DM.SQLUpdate.SQL.Add('''' + FormatDateTime('mm/dd/yyyy', SQLTemplateDATA_SAIDA.AsDateTime) + ''',')
-        else
-          DM.SQLUpdate.SQL.Add('null,');
-        if SQLTemplateDATE_ENTRADA.AsDateTime > 10 then
-          DM.SQLUpdate.SQL.Add('''' + FormatDateTime('mm/dd/yyyy', SQLTemplateDATE_ENTRADA.AsDateTime) + ''',')
-        else
-          DM.SQLUpdate.SQL.Add('null,');
-        DM.SQLUpdate.SQL.Add('''' + SQLTemplateEMPRICOD.AsString + ''',');
-        DM.SQLUpdate.SQL.Add('''' + SQLTemplateSTATUS.AsString + ''',');
-        DM.SQLUpdate.SQL.Add('''' + SQLTemplateENTRADA_SAIDA.AsString + ''',');
-        DM.SQLUpdate.SQL.Add('''' + FormatDateTime('mm/dd/yyyy', SQLTemplateDATE_ENTRADA.AsDateTime) + ''')');
-        DM.SQLUpdate.ExecSQL;
-        cdsSerie.Next;
-      end;
-    finally
-      SQLTemplate.BeforePost := SQLTemplateBeforePost;
-      SQLTemplate.AfterPost  := SQLTemplateAfterPost;
-      SQLTemplate.OnPostError := SQLTemplatePostError;
-      SQLTemplate.EnableControls;
-    end;
-    SQLTemplate.Close;
-  end
-  else
-  begin
-    if SQLTemplatePRSEA60NROSERIE.AsString <> '' then
-     inherited
-    else
+    vREPRICOD := SQLTemplateREPRICOD.asinteger;// + 1;
+    cdsSerie.first;
+    while not cdsSerie.Eof do
     begin
-      ShowMessage('Nenhum número de série informado!');
-      Exit;
+      dm.SQLUpdate.SQL.Clear;
+      dm.SQLUpdate.SQL.Add('UPDATE OR INSERT INTO PRODUTOREPRESENTANTE (REPRICOD,PRODICOD,PRSEA60NROSERIE,NOFIA13ID,NOCPA13ID,FORNICOD,CLIEA13ID,CLIEA60RAZAOSOC,');
+      DM.SQLUpdate.SQL.Add('DATA_SAIDA,DATE_ENTRADA,EMPRICOD,STATUS,ENTRADA_SAIDA,DATA_REGISTRO) values (');
+      DM.SQLUpdate.SQL.Add(inttostr(vREPRICOD) + ',' + SQLTemplatePRODICOD.AsString + ',''' + cdsSerieNumeroSerie.AsString + ''',');
+      if SQLTemplateNOFIA13ID.AsString <> '' then
+        DM.SQLUpdate.SQL.Add('''' + SQLTemplateNOFIA13ID.AsString + ''',')
+      else
+        DM.SQLUpdate.SQL.Add('null,');
+      if SQLTemplateNOCPA13ID.AsString <> '' then
+        DM.SQLUpdate.SQL.Add('''' + SQLTemplateNOCPA13ID.AsString + ''',')
+      else
+        DM.SQLUpdate.SQL.Add('null,');
+      if SQLTemplateFORNICOD.AsInteger > 0 then
+        DM.SQLUpdate.SQL.Add('''' + SQLTemplateFORNICOD.AsString + ''',')
+      else
+        DM.SQLUpdate.SQL.Add('null,');
+      if SQLTemplateCLIEA13ID.AsString <> '' then
+        DM.SQLUpdate.SQL.Add('''' + SQLTemplateCLIEA13ID.AsString + ''',')
+      else
+        DM.SQLUpdate.SQL.Add('null,');
+      if SQLTemplateCLIEA60RAZAOSOC.AsString <> '' then
+        DM.SQLUpdate.SQL.Add('''' + SQLTemplateCLIEA60RAZAOSOC.AsString + ''',')
+      else
+        DM.SQLUpdate.SQL.Add('null,');
+      if SQLTemplateDATA_SAIDA.AsDateTime > 10 then
+        DM.SQLUpdate.SQL.Add('''' + FormatDateTime('mm/dd/yyyy', SQLTemplateDATA_SAIDA.AsDateTime) + ''',')
+      else
+        DM.SQLUpdate.SQL.Add('null,');
+      if SQLTemplateDATE_ENTRADA.AsDateTime > 10 then
+        DM.SQLUpdate.SQL.Add('''' + FormatDateTime('mm/dd/yyyy', SQLTemplateDATE_ENTRADA.AsDateTime) + ''',')
+      else
+        DM.SQLUpdate.SQL.Add('null,');
+      DM.SQLUpdate.SQL.Add('''' + SQLTemplateEMPRICOD.AsString + ''',');
+      DM.SQLUpdate.SQL.Add('''' + SQLTemplateSTATUS.AsString + ''',');
+      DM.SQLUpdate.SQL.Add('''' + SQLTemplateENTRADA_SAIDA.AsString + ''',');
+      DM.SQLUpdate.SQL.Add('''' + FormatDateTime('mm/dd/yyyy', SQLTemplateDATE_ENTRADA.AsDateTime) + ''')');
+      DM.SQLUpdate.ExecSQL;
+      cdsSerie.Next;
     end;
   end;
+end;
+
+procedure TFormCadastroRepresentanteProduto.SQLTemplateBeforePost(
+  DataSet: TDataSet);
+begin
+
+  if (SQLTemplatePRSEA60NROSERIE.AsString = '') then
+  begin
+    ShowMessage('Nenhum número de série informado!');
+    Abort;
+  end;
+
+  inherited;
+
+end;
+
+procedure TFormCadastroRepresentanteProduto.SQLTemplateAfterPost(
+  DataSet: TDataSet);
+begin
+  inherited;
+  GravarNumeroSeries;
 end;
 
 end.

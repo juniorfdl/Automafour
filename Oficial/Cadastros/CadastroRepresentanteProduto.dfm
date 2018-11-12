@@ -494,7 +494,6 @@ inherited FormCadastroRepresentanteProduto: TFormCadastroRepresentanteProduto
                 Left = 22
                 Top = 280
                 Caption = 'Sa'#237'da'
-                PanelStyle.BorderWidth = 2
                 Style.BorderStyle = ebsFlat
                 StyleDisabled.BorderColor = clRed
                 TabOrder = 10
