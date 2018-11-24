@@ -49,7 +49,6 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
             Top = 44
             Width = 1121
             Height = 528
-            ActivePage = tsFinanceiro
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Width = 1113
@@ -62,12 +61,13 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                   end
                   item
                     Expanded = False
-                    FieldName = 'NUMERO_NOTA'
+                    FieldName = 'NUMERO_RPS'
                     Visible = True
                   end
                   item
                     Expanded = False
-                    FieldName = 'NUMERO_RPS'
+                    FieldName = 'NomeClienteLookUp'
+                    Width = 336
                     Visible = True
                   end
                   item
@@ -89,7 +89,6 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                   item
                     Expanded = False
                     FieldName = 'CODIGO_VERIFICACAO'
-                    Title.Caption = 'C'#243'digo Verifica'#231#227'o'
                     Visible = True
                   end
                   item
@@ -107,6 +106,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                     Expanded = False
                     FieldName = 'MUNICIPIO_PRESTACAO'
                     Title.Caption = 'Munic'#237'pio Presta'#231#227'o'
+                    Width = 157
                     Visible = True
                   end
                   item
@@ -248,25 +248,11 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                   ParentFont = False
                 end
                 object Label15: TLabel
-                  Left = 419
+                  Left = 299
                   Top = 17
                   Width = 29
                   Height = 13
                   Caption = 'S'#233'rie'
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clBlack
-                  Font.Height = -11
-                  Font.Name = 'Tahoma'
-                  Font.Style = [fsBold]
-                  ParentFont = False
-                end
-                object Label16: TLabel
-                  Left = 195
-                  Top = 19
-                  Width = 74
-                  Height = 13
-                  Caption = 'N'#250'mero NFSe'
-                  FocusControl = DBEdit10
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clBlack
                   Font.Height = -11
@@ -288,7 +274,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                   ParentFont = False
                 end
                 object Label18: TLabel
-                  Left = 472
+                  Left = 400
                   Top = 17
                   Width = 37
                   Height = 13
@@ -301,7 +287,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                   ParentFont = False
                 end
                 object Label19: TLabel
-                  Left = 307
+                  Left = 190
                   Top = 19
                   Width = 69
                   Height = 13
@@ -315,7 +301,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                   ParentFont = False
                 end
                 object Label20: TLabel
-                  Left = 663
+                  Left = 591
                   Top = 17
                   Width = 138
                   Height = 13
@@ -553,9 +539,9 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                   TabOrder = 0
                 end
                 object RxDBLookupCombo3: TRxDBLookupCombo
-                  Left = 419
+                  Left = 299
                   Top = 32
-                  Width = 48
+                  Width = 97
                   Height = 20
                   DropDownCount = 8
                   Ctl3D = True
@@ -565,21 +551,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                   LookupDisplay = 'SERIA5COD'
                   LookupSource = DSSQLSerie
                   ParentCtl3D = False
-                  TabOrder = 4
-                end
-                object DBEdit10: TDBEdit
-                  Tag = 1
-                  Left = 195
-                  Top = 31
-                  Width = 107
-                  Height = 21
-                  Color = 16249066
-                  Ctl3D = True
-                  DataField = 'NUMERO_NOTA'
-                  DataSource = DSTemplate
-                  ParentCtl3D = False
-                  ReadOnly = True
-                  TabOrder = 2
+                  TabOrder = 3
                 end
                 object DBDateEdit1: TDBDateEdit
                   Left = 93
@@ -592,7 +564,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                   TabOrder = 1
                 end
                 object DBEdit11: TDBEdit
-                  Left = 307
+                  Left = 190
                   Top = 31
                   Width = 107
                   Height = 21
@@ -602,10 +574,10 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                   DataSource = DSTemplate
                   ParentCtl3D = False
                   ReadOnly = True
-                  TabOrder = 3
+                  TabOrder = 2
                 end
                 object DBEdit12: TDBEdit
-                  Left = 472
+                  Left = 400
                   Top = 31
                   Width = 186
                   Height = 21
@@ -622,12 +594,12 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                   ParentCtl3D = False
                   ParentFont = False
                   ReadOnly = True
-                  TabOrder = 5
+                  TabOrder = 4
                 end
                 object DBEdit13: TDBEdit
-                  Left = 663
+                  Left = 591
                   Top = 31
-                  Width = 153
+                  Width = 224
                   Height = 21
                   CharCase = ecUpperCase
                   Color = 16249066
@@ -642,7 +614,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                   ParentCtl3D = False
                   ParentFont = False
                   ReadOnly = True
-                  TabOrder = 6
+                  TabOrder = 5
                 end
                 object RxDBLookupCombo5: TRxDBLookupCombo
                   Left = 471
@@ -657,7 +629,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                   LookupDisplay = 'SUBITEM'
                   LookupSource = DSSQLTributacao
                   ParentCtl3D = False
-                  TabOrder = 9
+                  TabOrder = 8
                 end
                 object DBEdit14: TDBEdit
                   Left = 6
@@ -666,7 +638,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                   Height = 21
                   DataField = 'CLIEA13ID'
                   DataSource = DSTemplate
-                  TabOrder = 10
+                  TabOrder = 9
                   OnKeyDown = DBEdit14KeyDown
                 end
                 object DBEdit15: TDBEdit
@@ -687,7 +659,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                   ParentCtl3D = False
                   ParentFont = False
                   ReadOnly = True
-                  TabOrder = 11
+                  TabOrder = 10
                 end
                 object DBEdit16: TDBEdit
                   Left = 573
@@ -707,7 +679,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                   ParentCtl3D = False
                   ParentFont = False
                   ReadOnly = True
-                  TabOrder = 12
+                  TabOrder = 11
                 end
                 object RxDBLookupCombo1: TRxDBLookupCombo
                   Left = 7
@@ -722,7 +694,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                   LookupDisplay = 'PLRCA60DESCR'
                   LookupSource = DSSQLPlanoRecebimento
                   ParentCtl3D = False
-                  TabOrder = 13
+                  TabOrder = 12
                 end
                 object RxDBLookupCombo4: TRxDBLookupCombo
                   Left = 581
@@ -737,7 +709,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                   LookupDisplay = 'NOME'
                   LookupSource = DSSQLCidade
                   ParentCtl3D = False
-                  TabOrder = 16
+                  TabOrder = 15
                 end
                 object RxDBComboBox1: TRxDBComboBox
                   Left = 305
@@ -756,7 +728,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                     '4 - Imune'
                     '5 - Exigibilidade suspensa por decis'#227'o judicial'
                     '6 - Exigilibidade suspensa por procedimento adm')
-                  TabOrder = 14
+                  TabOrder = 13
                   Values.Strings = (
                     '1'
                     '2'
@@ -772,7 +744,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                   Height = 21
                   DataField = 'ID_SERVICO'
                   DataSource = DSTemplate
-                  TabOrder = 7
+                  TabOrder = 6
                   OnKeyDown = DBEdit14KeyDown
                 end
                 object DBEdit29: TDBEdit
@@ -793,7 +765,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                   ParentCtl3D = False
                   ParentFont = False
                   ReadOnly = True
-                  TabOrder = 8
+                  TabOrder = 7
                 end
                 object dbedtUF: TDBEdit
                   Left = 516
@@ -804,16 +776,16 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                   DataField = 'UF_PRESTACAO'
                   DataSource = DSTemplate
                   ParentCtl3D = False
-                  TabOrder = 15
+                  TabOrder = 14
                 end
                 object DBMemo2: TDBMemo
                   Left = 7
                   Top = 179
-                  Width = 1103
+                  Width = 810
                   Height = 23
                   DataField = 'OBS'
                   DataSource = DSTemplate
-                  TabOrder = 17
+                  TabOrder = 16
                 end
                 object AdvGlowButton1: TAdvGlowButton
                   Left = 941
@@ -2697,7 +2669,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                     4A29131F94AF0F2AF217A0EBBAC3B945C497724655142F1AB6541510F813E0FE
                     F612FB3EF17F0140D3CB7E166EE0D50000000049454E44AE426082}
                   Transparent = True
-                  TabOrder = 18
+                  TabOrder = 17
                   OnClick = AdvGlowButton1Click
                   Appearance.BorderColor = 14727579
                   Appearance.BorderColorHot = 10053171
@@ -4612,7 +4584,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                     4A29131F94AF0F2AF217A0EBBAC3B945C497724655142F1AB6541510F813E0FE
                     F612FB3EF17F0140D3CB7E166EE0D50000000049454E44AE426082}
                   Transparent = True
-                  TabOrder = 19
+                  TabOrder = 18
                   OnClick = AdvGlowButton2Click
                   Appearance.BorderColor = 14727579
                   Appearance.BorderColorHot = 10053171
@@ -6527,7 +6499,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                     4A29131F94AF0F2AF217A0EBBAC3B945C497724655142F1AB6541510F813E0FE
                     F612FB3EF17F0140D3CB7E166EE0D50000000049454E44AE426082}
                   Transparent = True
-                  TabOrder = 20
+                  TabOrder = 19
                   OnClick = AdvGlowButton3Click
                   Appearance.BorderColor = 14727579
                   Appearance.BorderColorHot = 10053171
@@ -8442,7 +8414,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                     4A29131F94AF0F2AF217A0EBBAC3B945C497724655142F1AB6541510F813E0FE
                     F612FB3EF17F0140D3CB7E166EE0D50000000049454E44AE426082}
                   Transparent = True
-                  TabOrder = 21
+                  TabOrder = 20
                   OnClick = btnTransmitirNFSeClick
                   Appearance.BorderColor = 14727579
                   Appearance.BorderColorHot = 10053171
@@ -9737,6 +9709,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
       Origin = 'DB.NOTASERVICO.DATA_EMISSAO'
     end
     object SQLTemplateCODIGO_VERIFICACAO: TStringField
+      DisplayLabel = 'C'#243'digo Verifica'#231#227'o'
       FieldName = 'CODIGO_VERIFICACAO'
       Origin = 'DB.NOTASERVICO.CODIGO_VERIFICACAO'
       Size = 25
@@ -9896,6 +9869,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
       Size = 1
     end
     object SQLTemplateNomeClienteLookUp: TStringField
+      DisplayLabel = 'Nome Cliente'
       FieldKind = fkCalculated
       FieldName = 'NomeClienteLookUp'
       Size = 100
@@ -9922,6 +9896,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
       Origin = 'DB.NOTASERVICO.EMPRICOD'
     end
     object SQLTemplateNUMERO_RPS: TStringField
+      DisplayLabel = 'N'#250'mero RPS'
       FieldName = 'NUMERO_RPS'
       ProviderFlags = [pfInUpdate]
     end

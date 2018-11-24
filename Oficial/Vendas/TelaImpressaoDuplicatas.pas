@@ -441,6 +441,14 @@ type
     SQLContaCorrenteCODIGO: TStringField;
     SQLContaCorrenteDIAS_PROTESTO: TIntegerField;
     SQLContasReceberCTRCN2VLRTAXA: TFloatField;
+    comboTipoDocumento: TRxDBLookupCombo;
+    Label5: TLabel;
+    SQLTipoDocumento: TRxQuery;
+    DSSQLTipoDocumento: TDataSource;
+    SQLTipoDocumentoTPDCICOD: TIntegerField;
+    SQLTipoDocumentoTPDCA60DESCR: TStringField;
+    SQLTipoDocumentoVLRTAXA: TFloatField;
+    SQLContasReceberTPDCICOD: TIntegerField;
     procedure BtnSelecionarDocClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure MnDuplicatasClick(Sender: TObject);
@@ -543,6 +551,18 @@ begin
       SQLTotais.MacroByName('MPortador').Value        := '0=0';
     end;
 
+  if (comboTipoDocumento.KeyValue <> null) and (comboTipoDocumento.KeyValue > 0) then
+    begin
+      SqlContasReceber.MacroByName('MTipoDocumento').Value := 'CR.TPDCICOD = ' + comboTipoDocumento.KeyValue;
+      SQLTotais.MacroByName('MTipoDocumento').Value        := 'CR.TPDCICOD = ' + comboTipoDocumento.KeyValue;
+    end
+  else
+    begin
+      SqlContasReceber.MacroByName('MTipoDocumento').Value := '0=0';
+      SQLTotais.MacroByName('MTipoDocumento').Value        := '0=0';
+    end;
+
+
    SQLTotais.MacroByName('MSemLote').Value           := '0=0' ;
    SqlContasReceber.MacroByName('MSemLote').Value    := '0=0' ;
   if ckSemLote.Checked then
@@ -581,6 +601,7 @@ procedure TFormTelaImpressaoDuplicata.FormCreate(Sender: TObject);
 begin
   inherited;
   if not sqlPortador.Active then sqlPortador.Open;
+  if not SQLTipoDocumento.Active then SQLTipoDocumento.Open;
 
   sqlEmpresa.close;
   sqlEmpresa.macrobyname('filtro').Value := 'EMPRICOD='+EmpresaPadrao;
@@ -885,9 +906,9 @@ begin
       TblDuplicatasCTRCN2DESCFIN.AsString         := SQLContasReceberCTRCN2DESCFIN.AsString;
       if (SQLContasReceberNOFIA13ID.AsString <> '') then
         TblDuplicatasNumeroDocParc.AsString       := dm.SQLLocate('NOTAFISCAL','NOFIA13ID','NOFIINUMERO',''''+SQLContasReceberNOFIA13ID.AsString+'''') + '-' + SQLContasReceberCTRCINROPARC.AsString;
-    {  if (SQLContasReceberCTRCA30NRODUPLICBANCO.AsString <> '') then
+      if (SQLContasReceberCTRCA30NRODUPLICBANCO.AsString <> '') then
         TblDuplicatasCTRCA30NRODUPLICBANCO.AsString := SQLContasReceberCTRCA30NRODUPLICBANCO.AsString
-      else }
+      else
         TblDuplicatasCTRCA30NRODUPLICBANCO.AsString := copy(SQLContasReceberCTRCA13ID.AsString,5,9);
       TblDuplicatasCLIEA14CGC.AsString            := SQLContasReceberCLIEA14CGC.AsString;
       TblDuplicatasCLIEA20IE.AsString             := SQLContasReceberCLIEA20IE.AsString;
@@ -941,7 +962,11 @@ begin
           DM.SQLTemplate.Close;
         end
       else
-        TblDuplicatasNOSSONUMERO.AsString := Copy(Trim(SQLContasReceberCTRCA15NOSSONUMERO.AsString),4,5) ;
+      if (SQLContaCorrenteBANCA5COD.Value = '041') or (SQLContaCorrenteBANCA5COD.Value = '341') then
+        TblDuplicatasNOSSONUMERO.AsString := SQLContasReceberCTRCA15NOSSONUMERO.AsString
+      else
+      if SQLContaCorrenteBANCA5COD.Value = '748' then
+        TblDuplicatasNOSSONUMERO.AsString := Copy(Trim(SQLContasReceberCTRCA15NOSSONUMERO.AsString),4,5);
 
       ValorExtenso(VExt,TblDuplicatasCTRCN2VLR.Value, '', '', 2, 85, '*', 3);
       TblDuplicatasExtensoLin1.AsString     := VExt[0];
@@ -1004,8 +1029,8 @@ begin
             SQLContasReceber.Next;
           end;
         ComboEmitidos.ItemIndex := 0;
-        BtnSelecionarDoc.Click;
       end;
+      BtnSelecionarDoc.Click;
 end;
 
 procedure TFormTelaImpressaoDuplicata.IncluiBoletoAcbr;
@@ -1064,6 +1089,11 @@ begin
           DataDocumento  := TblDuplicatasCTRCDEMIS.Value;
           LocalPagamento := 'PAGÁVEL PREFENCIALMENTE NAS AGENCIAS DO BANRISUL';
         end;
+      if SQLContaCorrenteBANCA5COD.Value = '341' then
+        begin
+          DataDocumento  := now;
+          LocalPagamento := 'PAGÁVEL PREFENCIALMENTE NAS AGENCIAS DO ITAU';
+        end;
       if SQLContaCorrenteBANCA5COD.Value = '748' then
         begin
           DataDocumento  := now;
@@ -1110,6 +1140,18 @@ begin
                Mensagem.Add(ACBrStr('Após o vencimento cobrar multa de '+
                             FormatCurr('0.00',PercentualMulta) + '%'));
             end
+            else
+            if ACBrBoleto1.banco.TipoCobranca = cobItau then
+            begin
+               CodigoMora := '2';
+               ACBrBoleto1.ImprimirMensagemPadrao := false;
+               Mensagem.Add(ACBrStr('Cobrar juros de '+
+                            FormatCurr('R$ #,##0.00',ValorMoraJuros) +
+                             ' por dia de atraso p/ pgto a partir de ' +
+                             FormatDateTime('dd/mm/yyyy',DataMoraJuros)));
+               Mensagem.Add(ACBrStr('Após o vencimento cobrar multa de '+
+                            FormatCurr('0.00',PercentualMulta) + '%'));
+            end
              else
               CodigoMora := '2';
           end;
@@ -1128,9 +1170,15 @@ begin
       Sacado.Email      := TblDuplicatasCLIEA60EMAIL.value;
 
       if TblDuplicatasCLIEA14CGC.AsString <> '' then
-        Sacado.CNPJCPF   := TblDuplicatasCLIEA14CGC.Value
+      begin
+        Sacado.CNPJCPF   := TblDuplicatasCLIEA14CGC.Value;
+        Sacado.Pessoa    := pJuridica;
+      end
       else
+      begin
         Sacado.CNPJCPF   := TblDuplicatasCLIEA11CPF.Value;
+        Sacado.Pessoa    := pFisica;
+      end;
 
       if not CheckEndCob.Checked then
         begin
@@ -1157,7 +1205,7 @@ procedure TFormTelaImpressaoDuplicata.ImprimeBoletoAcbr;
 begin
   {Imprimir Boleto}
 
-  if ACBrBoleto1.banco.TipoCobranca <> cobSicred then
+  if (ACBrBoleto1.banco.TipoCobranca <> cobSicred) or (ACBrBoleto1.banco.TipoCobranca <> cobItau) then
     ACBrBoleto1.ImprimirMensagemPadrao := cbImprimirMensagensPadroes.Checked;
 
   ACBrBoletoFCFortes1.MostrarPreview := cbVisualizarImpressao.Checked;
@@ -1496,7 +1544,7 @@ begin
             Mensagem.Add(MemoInst.Lines.Text);
 
           DataProcessamento := Now;
-          Vencimento        := SQLContasReceberCTRCDVENC.Value;
+          Vencimento        := SQLContasReceberCTRCDVENC.AsDateTime;
 
           if SQLContaCorrenteBANCA5COD.Value = '041' then
             begin
@@ -1523,7 +1571,7 @@ begin
 
           if (dm.SQLConfigCrediario.fieldbyname('CFCRN2PERCJURATRAS').AsCurrency > 0) then
           begin
-            DataMoraJuros    := TblDuplicatasCTRCDVENC.AsDateTime;
+            DataMoraJuros    := SQLContasReceberCTRCDVENC.AsDateTime;
             ValorMoraJuros   := DM.SQLConfigCrediario.FieldByName('CFCRN2PERCJURATRAS').AsCurrency / 100 * SQLContasReceberCTRCN2VLR.Value;
             CodigoMoraJuros  := cjTaxaMensal;
             PercentualMulta  := DM.SQLConfigCrediario.FieldByName('CFCRN2PERCMULATRAS').AsCurrency;
@@ -1543,6 +1591,18 @@ begin
             if ACBrBoleto1.banco.TipoCobranca = cobBanrisul then
             begin
                CodigoMora := '0';
+               ACBrBoleto1.ImprimirMensagemPadrao := false;
+               Mensagem.Add(ACBrStr('Cobrar juros de '+
+                            FloatToStr(ValorMoraJuros) + '%' +
+                             ' por dia de atraso para pagamento a partir de ' +
+                             FormatDateTime('dd/mm/yyyy',DataMoraJuros)));
+               Mensagem.Add(ACBrStr('Após o vencimento cobrar multa de '+
+                            FormatCurr('0.00',PercentualMulta) + '%'));
+            end
+            else
+            if ACBrBoleto1.banco.TipoCobranca = cobItau then
+            begin
+               CodigoMora := '2';
                ACBrBoleto1.ImprimirMensagemPadrao := false;
                Mensagem.Add(ACBrStr('Cobrar juros de '+
                             FloatToStr(ValorMoraJuros) + '%' +
@@ -1575,9 +1635,15 @@ begin
           Sacado.Email      := SQLContasReceberCLIEA60EMAIL.Value;
 
           if SQLContasReceberCLIEA14CGC.AsString <> '' then
-            Sacado.CNPJCPF   := SQLContasReceberCLIEA14CGC.Value
+          begin
+            Sacado.CNPJCPF   := SQLContasReceberCLIEA14CGC.Value;
+            sacado.Pessoa    := pJuridica;
+          end
           else
+          begin
             Sacado.CNPJCPF   := SQLContasReceberCLIEA11CPF.Value;
+            sacado.Pessoa    := pFisica;
+          end;
 
           if not CheckEndCob.Checked then
             begin

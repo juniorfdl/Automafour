@@ -566,6 +566,8 @@ inherited FormCadastroRepresentante: TFormCadastroRepresentante
                 Top = 261
                 Width = 166
                 Height = 21
+                DataField = 'PERC_COMISSAO'
+                DataSource = DSTemplate
                 TabOrder = 12
               end
             end
@@ -764,6 +766,11 @@ inherited FormCadastroRepresentante: TFormCadastroRepresentante
       FieldName = 'REPRBIMAGEM'
       Origin = 'DB.REPRESENTANTE.REPRBIMAGEM'
       Size = 1
+    end
+    object SQLTemplatePERC_COMISSAO: TFloatField
+      FieldName = 'PERC_COMISSAO'
+      Origin = 'DB.REPRESENTANTE.PERC_COMISSAO'
+      DisplayFormat = '##0.00'
     end
   end
   object PictureDialog: TOpenPictureDialog

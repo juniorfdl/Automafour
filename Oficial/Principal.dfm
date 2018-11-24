@@ -11210,7 +11210,7 @@ inherited FormPrincipal: TFormPrincipal
         OnClick = MnTransportadorasClick
       end
       object MNRepresentante: TMenuItem
-        Caption = 'Representantes'
+        Caption = 'Representantes/Parceiros'
         OnClick = MNRepresentanteClick
       end
       object MNADMConvenios: TMenuItem

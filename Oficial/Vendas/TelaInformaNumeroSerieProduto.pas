@@ -35,6 +35,7 @@ type
     CdProduto: string;
     procedure prc_Abrir_Tabela_Serie(Produto, Empresa: string);
   public
+    NumeroItens : Integer;
     { Public declarations }
   end;
 
@@ -50,6 +51,11 @@ uses
 
 procedure TFormTelaInformaNumeroSerieProduto.BitBtn1Click(Sender: TObject);
 begin
+  if RXSerie.RecordCount <> NumeroItens then
+  begin
+    MessageDlg('Número de itens selecionado não corresponde a quantidade informado na nota',mtInformation,[mbOK],0);
+    Exit;
+  end;
 //  SQLConsulta.Close;
 //  SQLConsulta.SQL.Clear;
 //  SQLConsulta.SQL.Add('SELECT * FROM PRODUTOSERIE WHERE PRSEA60NROSERIE = ''' + EditNroSerie.Text + '''');

@@ -96,6 +96,7 @@ inherited FormCadastroPedidoVendaItem: TFormCadastroPedidoVendaItem
             Top = 189
             Width = 675
             Height = 260
+            ActivePage = TabSheetDadosPrincipais
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Width = 667

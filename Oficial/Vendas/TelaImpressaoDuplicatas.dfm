@@ -1,20 +1,20 @@
 inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
-  Left = 358
-  Top = 108
-  Width = 847
+  Left = 135
+  Top = 89
+  Width = 1070
   Height = 507
   Caption = 'Emiss'#227'o de Boletos e Duplicatas'
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
   inherited ScrollBoxFundo: TScrollBox
-    Width = 831
+    Width = 1054
     Height = 469
     inherited PanelCentral: TPanel
-      Width = 827
+      Width = 1050
       Height = 385
       inherited PanelBarra: TPanel
-        Width = 827
+        Width = 1050
         Height = 255
         Align = alTop
         Color = 16249066
@@ -33,7 +33,7 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
           ParentFont = False
         end
         object Label4: TLabel
-          Left = 326
+          Left = 433
           Top = 133
           Width = 19
           Height = 13
@@ -123,10 +123,23 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
           Font.Style = [fsBold]
           ParentFont = False
         end
+        object Label5: TLabel
+          Left = 8
+          Top = 118
+          Width = 109
+          Height = 13
+          Caption = 'Tipo de Documento'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 8404992
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
         object De: TDateEdit
-          Left = 230
+          Left = 353
           Top = 129
-          Width = 90
+          Width = 78
           Height = 21
           DefaultToday = True
           Font.Charset = DEFAULT_CHARSET
@@ -139,9 +152,9 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
           TabOrder = 5
         end
         object Ate: TDateEdit
-          Left = 354
+          Left = 455
           Top = 129
-          Width = 90
+          Width = 78
           Height = 21
           DefaultToday = True
           Font.Charset = DEFAULT_CHARSET
@@ -184,7 +197,7 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
         object PanelIntrucoes: TPanel
           Left = 0
           Top = 170
-          Width = 827
+          Width = 1050
           Height = 85
           Align = alBottom
           Color = 16249066
@@ -288,9 +301,9 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
           TabOrder = 8
         end
         object RadioPeriodo: TRadioGroup
-          Left = 6
+          Left = 168
           Top = 116
-          Width = 214
+          Width = 183
           Height = 34
           Caption = 'Per'#237'odo'
           Columns = 2
@@ -391,7 +404,7 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
           TabOrder = 12
         end
         object ckSemLote: TCheckBox
-          Left = 17
+          Left = 4
           Top = 153
           Width = 173
           Height = 17
@@ -404,11 +417,22 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
           ParentFont = False
           TabOrder = 13
         end
+        object comboTipoDocumento: TRxDBLookupCombo
+          Left = 4
+          Top = 131
+          Width = 158
+          Height = 21
+          DropDownCount = 8
+          LookupField = 'TPDCICOD'
+          LookupDisplay = 'TPDCA60DESCR'
+          LookupSource = DSSQLTipoDocumento
+          TabOrder = 14
+        end
       end
       object DBGridLista: TDBGrid
         Left = 0
         Top = 255
-        Width = 827
+        Width = 1050
         Height = 130
         Hint = 
           'Clique com o bot'#227'o direito do mouse para visualizar outras fun'#231#245 +
@@ -585,9 +609,9 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
       end
     end
     inherited ScrollBoxTopo: TScrollBox
-      Width = 827
+      Width = 1050
       inherited PanelCabecalho: TPanel
-        Width = 827
+        Width = 1050
         object lbStatusEmail: TLabel [1]
           Left = 669
           Top = 30
@@ -606,9 +630,9 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
           Visible = False
         end
         inherited PanelNavigator: TPanel
-          Width = 827
+          Width = 1050
           inherited AdvPanelNavigator: TAdvOfficeStatusBar
-            Width = 827
+            Width = 1050
             inherited BtnFecharTela: TSpeedButton
               Left = 673
             end
@@ -770,6 +794,7 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
       '  CR.CTRCA15NOSSONUMERO,'
       '  CR.CTRCA254HIST,'
       '  CR.CTRCN2VLRTAXA,'
+      '  CR.TPDCICOD,'
       '  CL.CLIEA14CGC,'
       '  CL.CLIEA20IE,'
       '  CL.CLIEA11CPF,'
@@ -812,9 +837,11 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
       '  (%MCliente) and'
       '  (%MPortador) and'
       '  (%MSemLote) and'
-      '  (%MEmitidos)'
+      '  (%MEmitidos) and'
+      '  (%MTipoDocumento)'
       'order by'
-      '  %MOrdem   ')
+      '  %MOrdem   '
+      '')
     Macros = <
       item
         DataType = ftString
@@ -861,6 +888,12 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
       item
         DataType = ftString
         Name = 'MEmitidos'
+        ParamType = ptInput
+        Value = '0=0'
+      end
+      item
+        DataType = ftString
+        Name = 'MTipoDocumento'
         ParamType = ptInput
         Value = '0=0'
       end
@@ -1097,6 +1130,9 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
     end
     object SQLContasReceberCTRCN2VLRTAXA: TFloatField
       FieldName = 'CTRCN2VLRTAXA'
+    end
+    object SQLContasReceberTPDCICOD: TIntegerField
+      FieldName = 'TPDCICOD'
     end
   end
   object SQLCliente: TRxQuery
@@ -1479,7 +1515,7 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
     end
     object TblDuplicatasNOSSONUMERO: TStringField
       FieldName = 'NOSSONUMERO'
-      Size = 5
+      Size = 7
     end
     object TblDuplicatasVLRTAXA: TFloatField
       FieldName = 'VLRTAXA'
@@ -1525,7 +1561,8 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
       '  (%MEmpresa) and'
       '  (%MCliente) and'
       '  (%MSemLote) and'
-      '  (%MPortador)'
+      '  (%MPortador) and'
+      '  (%MTipoDocumento)'
       'Group By'
       '  CR.CTRCA30NRODUPLICBANCO')
     Macros = <
@@ -1568,6 +1605,12 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
       item
         DataType = ftString
         Name = 'MPortador'
+        ParamType = ptInput
+        Value = '0=0'
+      end
+      item
+        DataType = ftString
+        Name = 'MTipoDocumento'
         ParamType = ptInput
         Value = '0=0'
       end>
@@ -6182,5 +6225,33 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
         BandType = 4
       end
     end
+  end
+  object SQLTipoDocumento: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'SELECT TPDCICOD, TPDCA60DESCR,VLRTAXA FROM TIPODOCUMENTO'
+      'ORDER BY TPDCA60DESCR')
+    Macros = <>
+    Left = 792
+    Top = 15
+    object SQLTipoDocumentoTPDCICOD: TIntegerField
+      FieldName = 'TPDCICOD'
+      Origin = 'DB.TIPODOCUMENTO.TPDCICOD'
+    end
+    object SQLTipoDocumentoTPDCA60DESCR: TStringField
+      FieldName = 'TPDCA60DESCR'
+      Origin = 'DB.TIPODOCUMENTO.TPDCA60DESCR'
+      FixedChar = True
+      Size = 30
+    end
+    object SQLTipoDocumentoVLRTAXA: TFloatField
+      FieldName = 'VLRTAXA'
+      Origin = 'DB.TIPODOCUMENTO.VLRTAXA'
+    end
+  end
+  object DSSQLTipoDocumento: TDataSource
+    DataSet = SQLTipoDocumento
+    Left = 820
+    Top = 15
   end
 end

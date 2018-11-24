@@ -48,7 +48,6 @@ type
     GroupBox2: TGroupBox;
     Label14: TLabel;
     Label15: TLabel;
-    Label16: TLabel;
     Label17: TLabel;
     Label18: TLabel;
     Label19: TLabel;
@@ -62,7 +61,6 @@ type
     Label26: TLabel;
     DBEdit9: TDBEdit;
     RxDBLookupCombo3: TRxDBLookupCombo;
-    DBEdit10: TDBEdit;
     DBDateEdit1: TDBDateEdit;
     DBEdit11: TDBEdit;
     DBEdit12: TDBEdit;

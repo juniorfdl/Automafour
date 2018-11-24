@@ -476,11 +476,11 @@ begin
 
       Tomador.IdentificacaoTomador.CpfCnpj := TiraCaracteres(Isql_Tomador.fieldbyname('NDOC').AsString);
 
-      with ExecSql(' SELECT CLIEIMUNICODFED, CLIEA20IE FROM CLIENTE WHERE CLIEA13ID = '
+      with ExecSql(' SELECT IM, CLIEA20IE FROM CLIENTE WHERE CLIEA13ID = '
         + quotedstr(IsqlDadosNota.fieldbyname('COD_CADCLI').AsString)) do
       begin
-        if FieldByName('CLIEIMUNICODFED').AsString <> '' then
-          Tomador.IdentificacaoTomador.InscricaoMunicipal := FieldByName('CLIEIMUNICODFED').AsString;
+        if FieldByName('IM').AsString <> '' then
+          Tomador.IdentificacaoTomador.InscricaoMunicipal := FieldByName('IM').AsString;
 
         if FieldByName('CLIEA20IE').AsString <> '' then
           Tomador.IdentificacaoTomador.InscricaoEstadual := FieldByName('CLIEA20IE').AsString;
@@ -632,6 +632,12 @@ begin
       ACBrNFSe1.NotasFiscais.Items[0].NFSe.Cancelada := snSim;
       ACBrNFSe1.NotasFiscais.Items[0].NFSe.NfseCancelamento.DataHora := sqlNOTASERVICO_COMUNICACAODATA_HORA.AsDateTime;
     end;
+    if sqlNOTASERVICO_COMUNICACAOCODIGOVERIFICACAO.AsString <> '' then
+    begin
+      ExecSql(' update NOTASERVICO SET NUMERO_RPS = '+ACBrNFSe1.NotasFiscais.Items[0].NFSe.IdentificacaoRps.Numero
+      + ', CODIGO_VERIFICACAO = ''' + ACBrNFSe1.NotasFiscais.Items[0].NFSe.CodigoVerificacao + ''''
+      + ' WHERE ID = '+ inttostr(fID_NOTA),1);
+    end;
 
     ImprimirNfse;
   end
@@ -652,7 +658,7 @@ begin
         sqlNOTASERVICO_COMUNICACAOXML.LoadFromFile(Caminho);
         sqlNOTASERVICO_COMUNICACAO.Post;
 
-        ExecSql(' update NOTASERVICO SET NUMERO_RPS = '+ACBrNFSe1.NotasFiscais.Items[0].NFSe.Numero
+        ExecSql(' update NOTASERVICO SET NUMERO_RPS = '+ACBrNFSe1.NotasFiscais.Items[0].NFSe.IdentificacaoRps.Numero
         + ', CODIGO_VERIFICACAO = ''' + ACBrNFSe1.NotasFiscais.Items[0].NFSe.CodigoVerificacao + ''''
         + ' WHERE ID = '+ inttostr(fID_NOTA),1);
       end

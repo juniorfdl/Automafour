@@ -806,6 +806,7 @@ type
     SQLConfigServicoSERIA5COD: TStringField;
     SQLConfigServicoID_TRIBUTACAO: TIntegerField;
     SQLConfigServicoLOCAL_TRIBUTACAO: TIntegerField;
+    TblPedidoItensVlrDesc: TFloatField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DBAfterConnect(Sender: TObject);
   private

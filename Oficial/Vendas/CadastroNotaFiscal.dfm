@@ -1,25 +1,25 @@
 inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
-  Left = 9
-  Top = 0
+  Left = -8
+  Top = -8
   Caption = 'Notas Fiscais'
-  ClientHeight = 688
-  ClientWidth = 1348
+  ClientHeight = 706
+  ClientWidth = 1366
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
   inherited ScrollBoxFundo: TScrollBox
-    Width = 1348
-    Height = 688
+    Width = 1366
+    Height = 706
     inherited PanelCabecalho: TPanel
-      Width = 1346
+      Width = 1364
       inherited ScrollBoxPanelCabecalho: TScrollBox
-        Width = 1346
+        Width = 1364
         inherited Panel1: TPanel
-          Width = 1344
+          Width = 1362
           inherited PanelNavigator: TPanel
-            Width = 1344
+            Width = 1362
             inherited AdvPanelNavigator: TAdvOfficeStatusBar
-              Width = 1344
+              Width = 1362
               inherited BtnFecharTela: TSpeedButton
                 Left = 1142
               end
@@ -53,16 +53,16 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
             end
           end
           inherited PanelLeft: TPanel
-            Left = 887
+            Left = 905
           end
         end
       end
     end
     inherited PanelCentral: TPanel
-      Width = 1346
-      Height = 614
+      Width = 1364
+      Height = 632
       inherited PanelBarra: TPanel
-        Height = 614
+        Height = 632
         inherited Button3: TRxSpeedButton
           Tag = 3
           Left = 2
@@ -615,21 +615,21 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
         end
       end
       inherited PanelFundoDados: TPanel
-        Width = 1216
-        Height = 614
+        Width = 1234
+        Height = 632
         inherited Panel5: TPanel
-          Width = 1216
-          Height = 614
+          Width = 1234
+          Height = 632
           inherited PagePrincipal: TPageControl
             Top = 44
-            Width = 1216
-            Height = 570
+            Width = 1234
+            Height = 588
             ActivePage = TabSheetDadosPrincipais
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Top = 126
-                Width = 1208
-                Height = 310
+                Width = 1226
+                Height = 328
                 Columns = <
                   item
                     Expanded = False
@@ -712,22 +712,22 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   end>
               end
               inherited PanelProcura: TPanel
-                Width = 1208
+                Width = 1226
                 Height = 126
                 inherited PanelBetween: TPanel
-                  Width = 814
+                  Width = 832
                   Height = 42
                   inherited AdvPanel1: TAdvPanel
-                    Width = 814
+                    Width = 832
                     Height = 42
                     FullHeight = 0
                   end
                 end
                 inherited PanelEditProcura: TPanel
-                  Width = 814
+                  Width = 832
                   Height = 42
                   inherited AdvPanelEditProcura: TAdvPanel
-                    Width = 814
+                    Width = 832
                     Height = 42
                     FullHeight = 0
                   end
@@ -742,7 +742,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 object PanelPesquisa: TPanel
                   Left = 0
                   Top = 42
-                  Width = 1208
+                  Width = 1226
                   Height = 84
                   Align = alBottom
                   BevelOuter = bvNone
@@ -891,8 +891,8 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               end
               object GroupBox5: TGroupBox
                 Left = 0
-                Top = 436
-                Width = 1208
+                Top = 454
+                Width = 1226
                 Height = 108
                 Align = alBottom
                 Caption = ' Retorno da Nota Fiscal Eletronica  '
@@ -5467,7 +5467,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
             inherited TabSheetDadosPrincipais: TTabSheet
               object Label14: TLabel
                 Left = 2
-                Top = 134
+                Top = 117
                 Width = 54
                 Height = 13
                 Caption = 'Vendedor'
@@ -5479,8 +5479,8 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 ParentFont = False
               end
               object BtnVendedor: TSpeedButton
-                Left = 235
-                Top = 147
+                Left = 305
+                Top = 130
                 Width = 21
                 Height = 20
                 Hint = 'Acessa Vendedores'
@@ -5514,7 +5514,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               end
               object Label15: TLabel
                 Left = 6
-                Top = 272
+                Top = 278
                 Width = 95
                 Height = 13
                 Caption = 'Dados Adicionais'
@@ -5527,7 +5527,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               end
               object Label32: TLabel
                 Left = 566
-                Top = 3
+                Top = -2
                 Width = 93
                 Height = 13
                 Caption = 'Pedido de Venda'
@@ -5541,7 +5541,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               end
               object BtnPedido: TSpeedButton
                 Left = 667
-                Top = 17
+                Top = 12
                 Width = 22
                 Height = 20
                 Hint = 'Importa Pedido de Venda'
@@ -5561,7 +5561,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               end
               object Label51: TLabel
                 Left = 7
-                Top = 3
+                Top = -2
                 Width = 103
                 Height = 13
                 Caption = 'Empresa Emitente'
@@ -5573,8 +5573,8 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 ParentFont = False
               end
               object Label33: TLabel
-                Left = 448
-                Top = 135
+                Left = 579
+                Top = 118
                 Width = 60
                 Height = 13
                 Caption = 'Nro Pedido'
@@ -5587,8 +5587,8 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 ParentFont = False
               end
               object Label34: TLabel
-                Left = 549
-                Top = 135
+                Left = 381
+                Top = 152
                 Width = 63
                 Height = 13
                 Caption = 'Comprador'
@@ -5601,8 +5601,8 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 ParentFont = False
               end
               object Label48: TLabel
-                Left = 379
-                Top = 135
+                Left = 475
+                Top = 118
                 Width = 53
                 Height = 13
                 Caption = 'Nro Tal'#227'o'
@@ -5616,7 +5616,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               end
               object Label11: TLabel
                 Left = 356
-                Top = 272
+                Top = 278
                 Width = 286
                 Height = 13
                 Caption = 'Obs Impressas ap'#243's o ultim item (exceto em NF-e)'
@@ -5628,8 +5628,8 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 ParentFont = False
               end
               object Label56: TLabel
-                Left = 259
-                Top = 135
+                Left = 331
+                Top = 118
                 Width = 93
                 Height = 13
                 Caption = 'Data/hora Saida'
@@ -5643,7 +5643,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               end
               object Label76: TLabel
                 Left = 430
-                Top = 3
+                Top = -2
                 Width = 123
                 Height = 13
                 Caption = 'Finalidade da Emiss'#227'o'
@@ -5656,7 +5656,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               end
               object Label25: TLabel
                 Left = 357
-                Top = 272
+                Top = 278
                 Width = 186
                 Height = 13
                 Caption = 'Informa'#231#245'es Destinadas ao Fisco'
@@ -5668,11 +5668,24 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 ParentFont = False
                 Visible = False
               end
+              object Label55: TLabel
+                Left = 2
+                Top = 152
+                Width = 85
+                Height = 13
+                Caption = 'Representante'
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clBlack
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = [fsBold]
+                ParentFont = False
+              end
               object GroupBoxCliFornEmp: TGroupBox
                 Left = 0
-                Top = 44
+                Top = 33
                 Width = 692
-                Height = 88
+                Height = 86
                 Caption = '[Dados do Destinatario]'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clBlack
@@ -5683,7 +5696,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 TabOrder = 4
                 object BtnCliFornEmp: TSpeedButton
                   Left = 107
-                  Top = 14
+                  Top = 13
                   Width = 20
                   Height = 20
                   Hint = 'Acessa Clientes'
@@ -5717,7 +5730,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 end
                 object DBEditCod: TDBEdit
                   Left = 6
-                  Top = 14
+                  Top = 13
                   Width = 100
                   Height = 21
                   DataField = 'CLIEA13ID'
@@ -5727,7 +5740,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 end
                 object DBEdit17: TDBEdit
                   Left = 132
-                  Top = 14
+                  Top = 13
                   Width = 388
                   Height = 21
                   Color = 16249066
@@ -5745,7 +5758,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 end
                 object DBEditCGCCPF: TDBEdit
                   Left = 306
-                  Top = 62
+                  Top = 61
                   Width = 216
                   Height = 21
                   Color = 16249066
@@ -5763,7 +5776,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 end
                 object DBEdit19: TDBEdit
                   Left = 6
-                  Top = 38
+                  Top = 37
                   Width = 267
                   Height = 21
                   Color = 16249066
@@ -5781,7 +5794,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 end
                 object DBEdit20: TDBEdit
                   Left = 277
-                  Top = 38
+                  Top = 37
                   Width = 244
                   Height = 21
                   Color = 16249066
@@ -5799,7 +5812,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 end
                 object DBEdit21: TDBEdit
                   Left = 527
-                  Top = 38
+                  Top = 37
                   Width = 157
                   Height = 21
                   Color = 16249066
@@ -5817,7 +5830,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 end
                 object DBEdit11: TDBEdit
                   Left = 6
-                  Top = 62
+                  Top = 61
                   Width = 267
                   Height = 21
                   Color = 16249066
@@ -5835,7 +5848,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 end
                 object DBEdit13: TDBEdit
                   Left = 277
-                  Top = 62
+                  Top = 61
                   Width = 25
                   Height = 21
                   Color = 16249066
@@ -5853,7 +5866,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 end
                 object EditIERG: TDBEdit
                   Left = 526
-                  Top = 62
+                  Top = 61
                   Width = 158
                   Height = 21
                   Color = 16249066
@@ -5871,7 +5884,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 end
                 object DBEdit14: TDBEdit
                   Left = 526
-                  Top = 14
+                  Top = 13
                   Width = 157
                   Height = 21
                   Color = 16249066
@@ -5890,7 +5903,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               end
               object DBMemo1: TDBMemo
                 Left = 2
-                Top = 308
+                Top = 314
                 Width = 327
                 Height = 58
                 BevelWidth = 0
@@ -5904,7 +5917,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               end
               object DBEditPV: TDBEdit
                 Left = 561
-                Top = 17
+                Top = 12
                 Width = 106
                 Height = 21
                 DataField = 'PDVDA13ID'
@@ -5914,7 +5927,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               end
               object DBEdit41: TDBEdit
                 Left = 39
-                Top = 17
+                Top = 12
                 Width = 385
                 Height = 21
                 TabStop = False
@@ -5932,9 +5945,9 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 TabOrder = 1
               end
               object DBEdit27: TDBEdit
-                Left = 448
-                Top = 148
-                Width = 97
+                Left = 576
+                Top = 131
+                Width = 113
                 Height = 21
                 Ctl3D = True
                 DataField = 'NOFIA30NROPEDCOMP'
@@ -5943,9 +5956,9 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 TabOrder = 9
               end
               object DBEdit30: TDBEdit
-                Left = 549
-                Top = 148
-                Width = 141
+                Left = 381
+                Top = 165
+                Width = 308
                 Height = 21
                 Ctl3D = True
                 DataField = 'NOFIA30COMPRADOR'
@@ -5954,9 +5967,9 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 TabOrder = 10
               end
               object DBEdit18: TDBEdit
-                Left = 379
-                Top = 148
-                Width = 66
+                Left = 475
+                Top = 131
+                Width = 100
                 Height = 21
                 Ctl3D = True
                 DataField = 'NOFIINROTALAO'
@@ -5966,7 +5979,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               end
               object DBEdit2: TDBEdit
                 Left = 2
-                Top = 17
+                Top = 12
                 Width = 33
                 Height = 21
                 TabStop = False
@@ -5985,8 +5998,8 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               end
               object ComboVendedor: TRxDBLookupCombo
                 Left = 40
-                Top = 148
-                Width = 193
+                Top = 131
+                Width = 262
                 Height = 20
                 DropDownCount = 8
                 Ctl3D = True
@@ -6002,7 +6015,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               end
               object DBEdit8: TDBEdit
                 Left = 2
-                Top = 148
+                Top = 131
                 Width = 35
                 Height = 21
                 Ctl3D = True
@@ -6013,7 +6026,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               end
               object DBMemo2: TDBMemo
                 Left = 336
-                Top = 308
+                Top = 314
                 Width = 355
                 Height = 58
                 BevelWidth = 0
@@ -6027,7 +6040,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               end
               object ComboObsNota: TRxDBLookupCombo
                 Left = 2
-                Top = 286
+                Top = 292
                 Width = 327
                 Height = 21
                 DropDownCount = 8
@@ -6043,9 +6056,9 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               end
               object GroupBox3: TGroupBox
                 Left = 0
-                Top = 178
+                Top = 188
                 Width = 691
-                Height = 89
+                Height = 87
                 Caption = ' Dados do Transportador / Volumes / Pesos '
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clBlack
@@ -6116,7 +6129,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 end
                 object Label26: TLabel
                   Left = 10
-                  Top = 50
+                  Top = 48
                   Width = 79
                   Height = 13
                   Caption = 'Frete p/Conta'
@@ -6129,7 +6142,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 end
                 object Label35: TLabel
                   Left = 130
-                  Top = 50
+                  Top = 48
                   Width = 78
                   Height = 13
                   Caption = 'Qtde Volumes'
@@ -6142,7 +6155,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 end
                 object Label53: TLabel
                   Left = 234
-                  Top = 50
+                  Top = 48
                   Width = 42
                   Height = 13
                   Caption = 'Esp'#233'cie'
@@ -6155,7 +6168,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 end
                 object Label30: TLabel
                   Left = 338
-                  Top = 50
+                  Top = 48
                   Width = 35
                   Height = 13
                   Caption = 'Marca'
@@ -6168,7 +6181,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 end
                 object Label19: TLabel
                   Left = 460
-                  Top = 50
+                  Top = 48
                   Width = 61
                   Height = 13
                   Caption = 'Peso Bruto'
@@ -6181,7 +6194,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 end
                 object Label20: TLabel
                   Left = 577
-                  Top = 50
+                  Top = 48
                   Width = 70
                   Height = 13
                   Caption = 'Peso L'#237'quido'
@@ -6275,7 +6288,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 end
                 object ComboTipoFrete: TRxDBComboBox
                   Left = 6
-                  Top = 63
+                  Top = 61
                   Width = 115
                   Height = 21
                   Style = csDropDownList
@@ -6301,7 +6314,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 end
                 object EditQTdeVolumes: TDBEdit
                   Left = 127
-                  Top = 64
+                  Top = 62
                   Width = 100
                   Height = 21
                   Ctl3D = True
@@ -6318,7 +6331,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 end
                 object EditEspecie: TDBEdit
                   Left = 231
-                  Top = 64
+                  Top = 62
                   Width = 100
                   Height = 21
                   Ctl3D = True
@@ -6335,7 +6348,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 end
                 object EditMarca: TDBEdit
                   Left = 335
-                  Top = 64
+                  Top = 62
                   Width = 117
                   Height = 21
                   Ctl3D = True
@@ -6352,7 +6365,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 end
                 object EditPesoBruto: TDBEdit
                   Left = 456
-                  Top = 64
+                  Top = 62
                   Width = 114
                   Height = 21
                   Ctl3D = True
@@ -6369,7 +6382,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 end
                 object EditPesoLiquido: TDBEdit
                   Left = 577
-                  Top = 64
+                  Top = 62
                   Width = 107
                   Height = 21
                   Ctl3D = True
@@ -6387,14 +6400,14 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               end
               object CkImprimeNosServicos: TCheckBox
                 Left = 336
-                Top = 272
+                Top = 278
                 Width = 13
                 Height = 16
                 TabOrder = 16
               end
               object ComboObsCorpo: TRxDBLookupCombo
                 Left = 336
-                Top = 286
+                Top = 292
                 Width = 355
                 Height = 21
                 DropDownCount = 8
@@ -6409,9 +6422,9 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 OnExit = ComboObsCorpoExit
               end
               object DBEdit25: TDBEdit
-                Left = 259
-                Top = 148
-                Width = 115
+                Left = 331
+                Top = 131
+                Width = 142
                 Height = 21
                 Ctl3D = True
                 DataField = 'NOFIDSAIDAENTRADA'
@@ -6423,7 +6436,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               end
               object GroupBox6: TGroupBox
                 Left = 3
-                Top = 371
+                Top = 375
                 Width = 645
                 Height = 114
                 Caption = ' Retorno da Nota Fiscal Eletronica  '
@@ -6590,7 +6603,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               end
               object ComboFinalidade: TRxDBComboBox
                 Left = 428
-                Top = 17
+                Top = 12
                 Width = 129
                 Height = 21
                 Style = csDropDownList
@@ -11153,6 +11166,23 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 Appearance.GradientChecked = ggVertical
                 Layout = blGlyphTop
               end
+              object comboRepresentante: TRxDBLookupCombo
+                Left = 2
+                Top = 164
+                Width = 375
+                Height = 20
+                DropDownCount = 8
+                Ctl3D = True
+                DataField = 'REPRICOD'
+                DataSource = DSTemplate
+                DisplayEmpty = '...'
+                LookupField = 'REPRICOD'
+                LookupDisplay = 'REPRA60RAZAOSOC'
+                LookupSource = DSSQLRepresentante
+                ParentCtl3D = False
+                TabOrder = 25
+                OnKeyDown = ComboVendedorKeyDown
+              end
             end
             object PaginaImpostos: TTabSheet
               Caption = 'Impostos'
@@ -12105,8 +12135,8 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               object PanelFinanceiro: TPanel
                 Left = 0
                 Top = 0
-                Width = 1208
-                Height = 544
+                Width = 1226
+                Height = 562
                 Align = alClient
                 BevelInner = bvLowered
                 BevelOuter = bvNone
@@ -12115,8 +12145,8 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                 object Panel8: TPanel
                   Left = 1
                   Top = 1
-                  Width = 1206
-                  Height = 542
+                  Width = 1224
+                  Height = 560
                   Align = alClient
                   BevelWidth = 3
                   Color = 12572888
@@ -12130,7 +12160,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   object Panel9: TPanel
                     Left = 3
                     Top = 3
-                    Width = 1200
+                    Width = 1218
                     Height = 38
                     Align = alTop
                     BevelInner = bvLowered
@@ -12147,7 +12177,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                     object AdvOfficeStatusBar2: TAdvOfficeStatusBar
                       Left = 2
                       Top = 2
-                      Width = 1196
+                      Width = 1214
                       Height = 34
                       AnchorHint = False
                       Align = alClient
@@ -12202,8 +12232,8 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                   object Panel6: TPanel
                     Left = 427
                     Top = 41
-                    Width = 776
-                    Height = 498
+                    Width = 794
+                    Height = 516
                     Align = alClient
                     Caption = 'Panel6'
                     Color = 12572888
@@ -12211,8 +12241,8 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                     object DBGrid2: TDBGrid
                       Left = 1
                       Top = 39
-                      Width = 774
-                      Height = 458
+                      Width = 792
+                      Height = 476
                       Align = alClient
                       BorderStyle = bsNone
                       Color = clWhite
@@ -12274,7 +12304,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                     object Panel11: TPanel
                       Left = 1
                       Top = 1
-                      Width = 774
+                      Width = 792
                       Height = 38
                       Align = alTop
                       Color = 13158600
@@ -12321,7 +12351,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
                     Left = 3
                     Top = 41
                     Width = 424
-                    Height = 498
+                    Height = 516
                     Align = alLeft
                     Color = 13158600
                     TabOrder = 2
@@ -12755,7 +12785,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               object AdvOfficeStatusBar1: TAdvOfficeStatusBar
                 Left = 0
                 Top = 0
-                Width = 1208
+                Width = 1226
                 Height = 34
                 AnchorHint = False
                 Align = alTop
@@ -12809,11 +12839,11 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
             end
           end
           inherited PanelMaster: TPanel
-            Width = 1216
+            Width = 1234
             Height = 3
           end
           inherited PanelCodigoDescricao: TPanel
-            Width = 1216
+            Width = 1234
             object Label1: TLabel
               Left = 6
               Top = 3
@@ -14215,6 +14245,10 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
     object SQLTemplateNOFIA60LOCALEMBARQUE: TStringField
       FieldName = 'NOFIA60LOCALEMBARQUE'
       Size = 60
+    end
+    object SQLTemplateREPRICOD: TIntegerField
+      FieldName = 'REPRICOD'
+      Origin = 'DB.NOTAFISCAL.REPRICOD'
     end
   end
   inherited ActionList1: TActionList
@@ -18187,5 +18221,40 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
     ImprimirDadosDocReferenciados = True
     Left = 1094
     Top = 544
+  end
+  object SQLRepresentante: TRxQuery
+    DatabaseName = 'DB'
+    RequestLive = True
+    SQL.Strings = (
+      'Select * From REPRESENTANTE'
+      'Where 0=0')
+    Macros = <>
+    Left = 1000
+    Top = 157
+    object SQLRepresentanteREPRICOD: TIntegerField
+      FieldName = 'REPRICOD'
+      Origin = 'DB.REPRESENTANTE.REPRICOD'
+    end
+    object SQLRepresentanteREPRA60RAZAOSOC: TStringField
+      FieldName = 'REPRA60RAZAOSOC'
+      Origin = 'DB.REPRESENTANTE.REPRA60RAZAOSOC'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLRepresentanteREPRA60NOMEFANT: TStringField
+      FieldName = 'REPRA60NOMEFANT'
+      Origin = 'DB.REPRESENTANTE.REPRA60NOMEFANT'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLRepresentantePERC_COMISSAO: TFloatField
+      FieldName = 'PERC_COMISSAO'
+      Origin = 'DB.REPRESENTANTE.PERC_COMISSAO'
+    end
+  end
+  object DSSQLRepresentante: TDataSource
+    DataSet = SQLRepresentante
+    Left = 1028
+    Top = 157
   end
 end

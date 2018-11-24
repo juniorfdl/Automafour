@@ -1,7 +1,7 @@
 inherited FormCadastroRepresentanteProduto: TFormCadastroRepresentanteProduto
   Left = 189
   Top = 15
-  Caption = 'Cadastro Representante Estoque'
+  Caption = 'Cadastro Representante / Parceiro'
   ClientHeight = 661
   OldCreateOrder = True
   PixelsPerInch = 96

@@ -1021,6 +1021,7 @@ begin
         NumeroSerie := '';
         CodigoProduto := SQLTemplatePRODICOD.AsString;
         Application.CreateForm(TFormTelaInformaNumeroSerieProduto, FormTelaInformaNumeroSerieProduto);
+        FormTelaInformaNumeroSerieProduto.NumeroItens := SQLTemplateNFITN3QUANT.AsInteger;
         FormTelaInformaNumeroSerieProduto.ShowModal;
         for I := 1 to SQLTemplateNFITN3QUANT.AsInteger do
         begin

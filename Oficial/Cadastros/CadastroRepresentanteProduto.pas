@@ -307,6 +307,8 @@ begin
       if FormTelaInformaNumeroSerieProduto.ModalResult = MrOK then
       begin
         FormTelaInformaNumeroSerieProduto.RXSerie.First;
+        if SQLTemplatePRSEA60NROSERIE.AsString = '' then
+          SQLTemplatePRSEA60NROSERIE.AsString := FormTelaInformaNumeroSerieProduto.RXSerieNumeroSerie.Text;
         while not FormTelaInformaNumeroSerieProduto.RXSerie.Eof do
         begin
           cdsSerie.Insert;
@@ -377,12 +379,12 @@ end;
 procedure TFormCadastroRepresentanteProduto.SQLTemplateBeforePost(
   DataSet: TDataSet);
 begin
-
   if (SQLTemplatePRSEA60NROSERIE.AsString = '') then
   begin
     ShowMessage('Nenhum número de série informado!');
     Abort;
   end;
+
 
   inherited;
 

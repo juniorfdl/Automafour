@@ -971,6 +971,8 @@ type
     DBEdit11: TDBEdit;
     ACBrCEP1: TACBrCEP;
     btnBuscaCep: TBitBtn;
+    SQLTemplateASSOCIADO: TStringField;
+    dbchkAssociado: TDBCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure AcessaVendedorClick(Sender: TObject);
     procedure SQLTemplateNewRecord(DataSet: TDataSet);

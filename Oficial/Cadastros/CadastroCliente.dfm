@@ -815,7 +815,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
             Top = 42
             Width = 960
             Height = 556
-            ActivePage = TabSheetDadosPrincipais
+            ActivePage = TabSheetAdicional2
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Width = 952
@@ -3405,7 +3405,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                 OnClick = AcessaVendedorClick
               end
               object Label121: TLabel
-                Left = 296
+                Left = 324
                 Top = 279
                 Width = 183
                 Height = 13
@@ -4125,7 +4125,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                 OnKeyDown = ComboVendedorKeyDown
               end
               object comboProfissional: TRxDBLookupCombo
-                Left = 292
+                Left = 320
                 Top = 292
                 Width = 330
                 Height = 21
@@ -4944,6 +4944,24 @@ inherited FormCadastroCliente: TFormCadastroCliente
                   ParentFont = False
                   TabOrder = 0
                 end
+              end
+              object dbchkAssociado: TDBCheckBox
+                Left = 6
+                Top = 365
+                Width = 106
+                Height = 17
+                Caption = 'Associado'
+                DataField = 'ASSOCIADO'
+                DataSource = DSTemplate
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clRed
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = [fsBold]
+                ParentFont = False
+                TabOrder = 7
+                ValueChecked = 'S'
+                ValueUnchecked = 'N'
               end
             end
             object TabSheetDadosCompra: TTabSheet
@@ -7938,6 +7956,12 @@ inherited FormCadastroCliente: TFormCadastroCliente
       FieldName = 'IM'
       Origin = 'DB.CLIENTE.IM'
     end
+    object SQLTemplateASSOCIADO: TStringField
+      FieldName = 'ASSOCIADO'
+      Origin = 'DB.CLIENTE.ASSOCIADO'
+      FixedChar = True
+      Size = 1
+    end
   end
   inherited SQLExcluiDetalhes: TRxQuery
     Left = 409
@@ -9607,7 +9631,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
   object Picture: TOpenPictureDialog
     Options = [ofHideReadOnly, ofPathMustExist, ofFileMustExist, ofNoNetworkButton, ofEnableSizing]
     Title = 'Gest'#227'o Loja'
-    Left = 115
+    Left = 91
     Top = 491
   end
   object SQLCupomObs: TRxQuery
@@ -11351,7 +11375,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
         ParamType = ptInput
         Value = 'ORDER BY CTRCDEMIS,CUPOA13ID,NOFIA13ID,CTRCINROPARC ASC'
       end>
-    Left = 115
+    Left = 91
     Top = 463
     object SQLDadosCompraCUPOA13ID: TStringField
       DisplayLabel = 'ID Cupom'
@@ -12707,8 +12731,8 @@ inherited FormCadastroCliente: TFormCadastroCliente
   object dsSQLTipoDoc: TDataSource
     AutoEdit = False
     DataSet = SQLTipoDoc
-    Left = 716
-    Top = 409
+    Left = 828
+    Top = 497
   end
   object SQLTipoDoc: TRxQuery
     DatabaseName = 'DB'
@@ -12716,8 +12740,8 @@ inherited FormCadastroCliente: TFormCadastroCliente
       'Select * From TipoDocumento'
       'Order by TPDCA60DESCR')
     Macros = <>
-    Left = 744
-    Top = 409
+    Left = 856
+    Top = 497
     object SQLTipoDocTPDCICOD: TIntegerField
       FieldName = 'TPDCICOD'
       Origin = 'DB.TIPODOCUMENTO.TPDCICOD'
@@ -12735,8 +12759,8 @@ inherited FormCadastroCliente: TFormCadastroCliente
       'Select * From PORTADOR'
       'Order by PORTA60DESCR')
     Macros = <>
-    Left = 744
-    Top = 436
+    Left = 856
+    Top = 524
     object SQLPortadorPORTICOD: TIntegerField
       FieldName = 'PORTICOD'
       Origin = 'DB.PORTADOR.PORTICOD'
@@ -12751,14 +12775,14 @@ inherited FormCadastroCliente: TFormCadastroCliente
   object dsSQLPortador: TDataSource
     AutoEdit = False
     DataSet = SQLPortador
-    Left = 716
-    Top = 436
+    Left = 828
+    Top = 524
   end
   object dsSQLPlanoConta: TDataSource
     AutoEdit = False
     DataSet = SQLPlanoConta
-    Left = 717
-    Top = 461
+    Left = 829
+    Top = 549
   end
   object SQLPlanoConta: TRxQuery
     DatabaseName = 'DB'
@@ -12767,8 +12791,8 @@ inherited FormCadastroCliente: TFormCadastroCliente
       'where PLCTCTIPOSALDO = '#39'C'#39
       'order by PLCTA60DESCR')
     Macros = <>
-    Left = 745
-    Top = 461
+    Left = 857
+    Top = 549
     object SQLPlanoContaPLCTA15COD: TStringField
       FieldName = 'PLCTA15COD'
       Origin = 'DB.PLANODECONTAS.PLCTA15COD'

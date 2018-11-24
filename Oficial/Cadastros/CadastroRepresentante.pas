@@ -66,6 +66,7 @@ type
     MnGerarListaEmail: TMenuItem;
     Label12: TLabel;
     DBEdit10: TDBEdit;
+    SQLTemplatePERC_COMISSAO: TFloatField;
     procedure SQLTemplateNewRecord(DataSet: TDataSet);
     procedure FormCreate(Sender: TObject);
     procedure BtnCapturaFotoClick(Sender: TObject);

@@ -1092,6 +1092,15 @@ type
     ACBrNFeDANFeRL1: TACBrNFeDANFeRL;
     DBEdit47: TDBEdit;
     Label47: TLabel;
+    comboRepresentante: TRxDBLookupCombo;
+    Label55: TLabel;
+    SQLRepresentante: TRxQuery;
+    SQLTemplateREPRICOD: TIntegerField;
+    DSSQLRepresentante: TDataSource;
+    SQLRepresentanteREPRICOD: TIntegerField;
+    SQLRepresentanteREPRA60RAZAOSOC: TStringField;
+    SQLRepresentanteREPRA60NOMEFANT: TStringField;
+    SQLRepresentantePERC_COMISSAO: TFloatField;
     function TabelaNFE_123(Produto, Situacao: string): string;
     procedure FormCreate(Sender: TObject);
     procedure SQLTemplateNewRecord(DataSet: TDataSet);
@@ -1822,6 +1831,7 @@ begin
   SQLFornecedor.Open;
   SQLObsNota.Open;
   SQLSerie.Open;
+  SQLRepresentante.Open;
   SQLSerieNF.Open;
   SQLCFOP.Open;
   SQLTipoDoc.Open;

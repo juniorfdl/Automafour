@@ -1789,6 +1789,9 @@ inherited DM: TDM
     object TblPedidoItensCodItem: TIntegerField
       FieldName = 'CodItem'
     end
+    object TblPedidoItensVlrDesc: TFloatField
+      FieldName = 'VlrDesc'
+    end
   end
   object TblPedidoFinan: TTable
     DatabaseName = 'Easy_Temp'
