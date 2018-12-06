@@ -1,7 +1,7 @@
 inherited FormTelaMovimentoRetornoSicredi: TFormTelaMovimentoRetornoSicredi
-  Left = 36
-  Top = 141
-  Caption = 'Ocorr'#234'ncias do Retorno Sicredi'
+  Left = 74
+  Top = 88
+  Caption = 'Ocorr'#234'ncias do Retorno '
   ClientHeight = 497
   ClientWidth = 1291
   OldCreateOrder = True

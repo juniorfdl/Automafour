@@ -922,7 +922,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
             Top = 52
             Width = 1027
             Height = 556
-            ActivePage = TabSheetSaldos
+            ActivePage = TabSheetDadosAdicionais
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Top = 83
@@ -2266,7 +2266,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                 Top = 296
                 Width = 688
                 Height = 177
-                ActivePage = TabSheet1
+                ActivePage = TabSheet6
                 TabOrder = 15
                 object TabSheet1: TTabSheet
                   Caption = 'Tributa'#231#227'o ICMS'
@@ -4577,7 +4577,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   object GroupBoxComissoes: TGroupBox
                     Left = 434
                     Top = 2
-                    Width = 81
+                    Width = 117
                     Height = 130
                     Caption = ' Comiss'#245'es '
                     Font.Charset = DEFAULT_CHARSET
@@ -4601,11 +4601,11 @@ inherited FormCadastroProduto: TFormCadastroProduto
                       ParentFont = False
                     end
                     object Label16: TLabel
-                      Left = 7
-                      Top = 88
-                      Width = 59
+                      Left = 59
+                      Top = 87
+                      Width = 48
                       Height = 13
-                      Caption = '% '#192' Prazo'
+                      Caption = '% Prazo'
                       Font.Charset = DEFAULT_CHARSET
                       Font.Color = clBlack
                       Font.Height = -11
@@ -4614,11 +4614,24 @@ inherited FormCadastroProduto: TFormCadastroProduto
                       ParentFont = False
                     end
                     object Label14: TLabel
-                      Left = 8
-                      Top = 51
-                      Width = 55
+                      Left = 2
+                      Top = 87
+                      Width = 44
                       Height = 13
-                      Caption = '% A Vista'
+                      Caption = '% Vista'
+                      Font.Charset = DEFAULT_CHARSET
+                      Font.Color = clBlack
+                      Font.Height = -11
+                      Font.Name = 'Tahoma'
+                      Font.Style = [fsBold]
+                      ParentFont = False
+                    end
+                    object Label38: TLabel
+                      Left = 9
+                      Top = 50
+                      Width = 80
+                      Height = 13
+                      Caption = 'Participa Repr'
                       Font.Charset = DEFAULT_CHARSET
                       Font.Color = clBlack
                       Font.Height = -11
@@ -4627,9 +4640,9 @@ inherited FormCadastroProduto: TFormCadastroProduto
                       ParentFont = False
                     end
                     object RxComboComissao: TRxDBComboBox
-                      Left = 5
+                      Left = 4
                       Top = 27
-                      Width = 69
+                      Width = 107
                       Height = 21
                       Style = csDropDownList
                       DataField = 'PRODCGERACOMIS'
@@ -4652,9 +4665,9 @@ inherited FormCadastroProduto: TFormCadastroProduto
                       OnChange = RxComboComissaoChange
                     end
                     object DBEditVista: TEvDBNumEdit
-                      Left = 6
-                      Top = 64
-                      Width = 66
+                      Left = 3
+                      Top = 101
+                      Width = 53
                       Height = 21
                       AutoHideCalculator = False
                       AutoSize = False
@@ -4694,9 +4707,9 @@ inherited FormCadastroProduto: TFormCadastroProduto
                       TabOrder = 1
                     end
                     object DBEditPrazo: TEvDBNumEdit
-                      Left = 5
+                      Left = 58
                       Top = 101
-                      Width = 67
+                      Width = 55
                       Height = 21
                       AutoHideCalculator = False
                       AutoSize = False
@@ -4735,9 +4748,34 @@ inherited FormCadastroProduto: TFormCadastroProduto
                       ParentFont = False
                       TabOrder = 2
                     end
+                    object RxDBComboBox6: TRxDBComboBox
+                      Left = 4
+                      Top = 63
+                      Width = 106
+                      Height = 21
+                      Style = csDropDownList
+                      DataField = 'COMISSAO_REPRESENTANTE'
+                      DataSource = DSTemplate
+                      EnableValues = True
+                      Font.Charset = DEFAULT_CHARSET
+                      Font.Color = clBlack
+                      Font.Height = -11
+                      Font.Name = 'Tahoma'
+                      Font.Style = []
+                      ItemHeight = 13
+                      Items.Strings = (
+                        'Sim'
+                        'N'#227'o')
+                      ParentFont = False
+                      TabOrder = 3
+                      Values.Strings = (
+                        'S'
+                        'N')
+                      OnChange = RxComboComissaoChange
+                    end
                   end
                   object GroupBoxPesos: TGroupBox
-                    Left = 518
+                    Left = 553
                     Top = 2
                     Width = 126
                     Height = 54
@@ -4859,7 +4897,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     end
                   end
                   object GroupBox7: TGroupBox
-                    Left = 518
+                    Left = 553
                     Top = 56
                     Width = 125
                     Height = 76
@@ -7366,6 +7404,25 @@ inherited FormCadastroProduto: TFormCadastroProduto
                 ValueChecked = 'S'
                 ValueUnchecked = 'N'
               end
+              object DBCheckBox2: TDBCheckBox
+                Left = 139
+                Top = 279
+                Width = 207
+                Height = 17
+                AllowGrayed = True
+                Caption = 'Controlar produto pelo n'#186' s'#233'rie'
+                DataField = 'PRODCTEMNROSERIE'
+                DataSource = DSTemplate
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = [fsBold]
+                ParentFont = False
+                TabOrder = 18
+                ValueChecked = 'S'
+                ValueUnchecked = 'N'
+              end
             end
             object TabSheetDadosAdicionais: TTabSheet
               Caption = 'Adicionais/Series'
@@ -7416,25 +7473,6 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   TabOrder = 0
                 end
               end
-              object DBCheckBox2: TDBCheckBox
-                Left = 9
-                Top = 92
-                Width = 314
-                Height = 17
-                AllowGrayed = True
-                Caption = 'Controlar este produto pelo n'#250'mero de s'#233'rie'
-                DataField = 'PRODCTEMNROSERIE'
-                DataSource = DSTemplate
-                Font.Charset = DEFAULT_CHARSET
-                Font.Color = clWindowText
-                Font.Height = -11
-                Font.Name = 'Tahoma'
-                Font.Style = [fsBold]
-                ParentFont = False
-                TabOrder = 1
-                ValueChecked = 'S'
-                ValueUnchecked = 'N'
-              end
               object GroupBox1: TGroupBox
                 Left = 4
                 Top = 107
@@ -7446,7 +7484,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
                 ParentFont = False
-                TabOrder = 2
+                TabOrder = 1
                 object DBGridProdutoSerie: TDBGrid
                   Left = 2
                   Top = 15
@@ -7498,7 +7536,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
                 ParentFont = False
-                TabOrder = 3
+                TabOrder = 2
                 object Label30: TLabel
                   Left = 114
                   Top = 14
@@ -7652,6 +7690,25 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   ParentFont = False
                   TabOrder = 3
                 end
+              end
+              object DBCheckBox7: TDBCheckBox
+                Left = 3
+                Top = 95
+                Width = 207
+                Height = 17
+                AllowGrayed = True
+                Caption = 'Controlar produto pelo n'#186' s'#233'rie'
+                DataField = 'PRODCTEMNROSERIE'
+                DataSource = DSTemplate
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = [fsBold]
+                ParentFont = False
+                TabOrder = 3
+                ValueChecked = 'S'
+                ValueUnchecked = 'N'
               end
             end
             object TabSheetSaldos: TTabSheet
@@ -10849,6 +10906,12 @@ inherited FormCadastroProduto: TFormCadastroProduto
       Origin = 'DB.PRODUTO.PERC_REDUCAO_BASE_CALCULO'
       DisplayFormat = '##0.00'
     end
+    object SQLTemplateCOMISSAO_REPRESENTANTE: TStringField
+      FieldName = 'COMISSAO_REPRESENTANTE'
+      Origin = 'DB.PRODUTO.COMISSAO_REPRESENTANTE'
+      FixedChar = True
+      Size = 1
+    end
   end
   inherited UpdateSQLTemplate: TUpdateSQL
     ModifySQL.Strings = (
@@ -13717,8 +13780,8 @@ inherited FormCadastroProduto: TFormCadastroProduto
   end
   object dsNCM: TDataSource
     DataSet = SQLNcm
-    Left = 657
-    Top = 558
+    Left = 769
+    Top = 606
   end
   object SQLNcm: TRxQuery
     DatabaseName = 'DB'
@@ -13726,8 +13789,8 @@ inherited FormCadastroProduto: TFormCadastroProduto
       'SELECT NCMICOD, NCMA30CODIGO, NCMA100DESCR FROM NCM'
       'ORDER BY NCMA100DESCR ')
     Macros = <>
-    Left = 629
-    Top = 558
+    Left = 709
+    Top = 598
     object SQLNcmNCMICOD: TIntegerField
       FieldName = 'NCMICOD'
       Origin = 'DB.NCM.NCMICOD'
@@ -13745,8 +13808,8 @@ inherited FormCadastroProduto: TFormCadastroProduto
   end
   object dsSQLUnidade2: TDataSource
     DataSet = SQLUnidade2
-    Left = 509
-    Top = 410
+    Left = 933
+    Top = 434
   end
   object SQLUnidade2: TRxQuery
     DatabaseName = 'DB'
@@ -13754,8 +13817,8 @@ inherited FormCadastroProduto: TFormCadastroProduto
       'SELECT UNIDICOD, UNIDA5DESCR, UNIDA15DESCR FROM UNIDADE'
       'ORDER BY UNIDA5DESCR')
     Macros = <>
-    Left = 481
-    Top = 410
+    Left = 849
+    Top = 418
     object SQLUnidade2UNIDICOD: TIntegerField
       FieldName = 'UNIDICOD'
       Origin = 'DB.UNIDADE.UNIDICOD'

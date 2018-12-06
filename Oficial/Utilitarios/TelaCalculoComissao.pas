@@ -539,10 +539,18 @@ begin
           SQLProduto.Close;
           SQLProduto.ParamByName('Produto').AsInteger := SQLItensVendaPRODICOD.AsInteger;
           SQLProduto.Open;
-          if (SQLProduto.FieldByName('PRODCGERACOMIS').AsString = 'S') and (SQLProduto.FieldByName('PRODN2COMISVISTA').AsFloat > 0) then
+          if (SQLProduto.FieldByName('PRODCGERACOMIS').AsString = 'S') then
             begin
-              SQLVendedorComissaoVDCON2VLRCOMISS.Value     := Valor * (SQLProduto.FieldByName('PRODN2COMISVISTA').AsFloat/100);
-              SQLVendedorComissaoVDCON2PERCOMISSAO.AsFloat := SQLProduto.FieldByName('PRODN2COMISVISTA').AsFloat;
+              if SQLProduto.FieldByName('PRODN2COMISVISTA').AsFloat > 0 then
+              begin
+                SQLVendedorComissaoVDCON2VLRCOMISS.Value     := Valor * (SQLProduto.FieldByName('PRODN2COMISVISTA').AsFloat/100);
+                SQLVendedorComissaoVDCON2PERCOMISSAO.AsFloat := SQLProduto.FieldByName('PRODN2COMISVISTA').AsFloat;
+              end
+              else
+              begin
+                SQLVendedorComissaoVDCON2VLRCOMISS.Value     := Valor * (SQLItensVendaVENDN2COMISV.Value/100);
+                SQLVendedorComissaoVDCON2PERCOMISSAO.AsFloat := SQLItensVendaVENDN2COMISV.Value;
+              end;
             end
           else
             begin
@@ -561,10 +569,17 @@ begin
             SQLProduto.Close;
             SQLProduto.ParamByName('Produto').AsInteger := SQLItensVendaPRODICOD.AsInteger;
             SQLProduto.Open;
-            if (SQLProduto.FieldByName('PRODCGERACOMIS').AsString = 'S') and (SQLProduto.FieldByName('PRODN2COMISPRAZO').AsFloat > 0) then
+            if (SQLProduto.FieldByName('PRODCGERACOMIS').AsString = 'S') then
               begin
-                SQLVendedorComissaoVDCON2VLRCOMISS.Value     := Valor * (SQLProduto.FieldByName('PRODN2COMISPRAZO').AsFloat/100);
-                SQLVendedorComissaoVDCON2PERCOMISSAO.AsFloat := SQLProduto.FieldByName('PRODN2COMISPRAZO').AsFloat;
+                begin
+                  SQLVendedorComissaoVDCON2VLRCOMISS.Value     := Valor * (SQLProduto.FieldByName('PRODN2COMISPRAZO').AsFloat/100);
+                  SQLVendedorComissaoVDCON2PERCOMISSAO.AsFloat := SQLProduto.FieldByName('PRODN2COMISPRAZO').AsFloat;
+                end
+                else
+                begin
+                  SQLVendedorComissaoVDCON2VLRCOMISS.Value     := Valor * (SQLItensVendaVENDN2COMISP.Value/100);
+                  SQLVendedorComissaoVDCON2PERCOMISSAO.AsFloat := SQLItensVendaVENDN2COMISP.Value;
+                end;
               end
             else
               begin
@@ -591,11 +606,20 @@ begin
           SQLProduto.Close;
           SQLProduto.ParamByName('Produto').AsInteger := SQLItensVendaPRODICOD.AsInteger;
           SQLProduto.Open;
-          if (SQLProduto.FieldByName('PRODCGERACOMIS').AsString = 'S') and (SQLProduto.FieldByName('PRODN2COMISVISTA').AsFloat > 0) then
+          if (SQLProduto.FieldByName('PRODCGERACOMIS').AsString = 'S') then
             begin
-              SQLVendedorComissaoVDCON2VLRCOMISS.Value := SQLVendedorComissaoVDCON2VLRCOMISS.Value +
-                                                          (Valor * (SQLProduto.FieldByName('PRODN2COMISVISTA').AsFloat/100));
-              SQLVendedorComissaoVDCON2PERCOMISSAO.AsFloat := SQLProduto.FieldByName('PRODN2COMISVISTA').AsFloat;
+              if SQLProduto.FieldByName('PRODN2COMISVISTA').AsFloat > 0 then
+              begin
+                SQLVendedorComissaoVDCON2VLRCOMISS.Value := SQLVendedorComissaoVDCON2VLRCOMISS.Value +
+                                                            (Valor * (SQLProduto.FieldByName('PRODN2COMISVISTA').AsFloat/100));
+                SQLVendedorComissaoVDCON2PERCOMISSAO.AsFloat := SQLProduto.FieldByName('PRODN2COMISVISTA').AsFloat;
+              end
+              else
+              begin
+                SQLVendedorComissaoVDCON2VLRCOMISS.Value := SQLVendedorComissaoVDCON2VLRCOMISS.Value +
+                                                            (Valor * (SQLVendedorComissaoVDCON2VLRCOMISS.Value/100));
+                SQLVendedorComissaoVDCON2PERCOMISSAO.AsFloat := SQLVendedorComissaoVDCON2VLRCOMISS.Value;
+              end;
             end
           else
             begin
@@ -614,11 +638,19 @@ begin
           SQLProduto.Close;
           SQLProduto.ParamByName('Produto').AsInteger := SQLItensVendaPRODICOD.AsInteger;
           SQLProduto.Open;
-          if (SQLProduto.FieldByName('PRODCGERACOMIS').AsString = 'S') and (SQLProduto.FieldByName('PRODN2COMISPRAZO').AsFloat > 0) then
+          if (SQLProduto.FieldByName('PRODCGERACOMIS').AsString = 'S') then
             begin
-              SQLVendedorComissaoVDCON2VLRCOMISS.Value     := SQLVendedorComissaoVDCON2VLRCOMISS.Value +
-                                                              (Valor * (SQLProduto.FieldByName('PRODN2COMISPRAZO').AsFloat/100));
-              SQLVendedorComissaoVDCON2PERCOMISSAO.AsFloat := SQLProduto.FieldByName('PRODN2COMISPRAZO').AsFloat;
+              begin
+                SQLVendedorComissaoVDCON2VLRCOMISS.Value     := SQLVendedorComissaoVDCON2VLRCOMISS.Value +
+                                                                (Valor * (SQLProduto.FieldByName('PRODN2COMISPRAZO').AsFloat/100));
+                SQLVendedorComissaoVDCON2PERCOMISSAO.AsFloat := SQLProduto.FieldByName('PRODN2COMISPRAZO').AsFloat;
+              end
+              else
+              begin
+                SQLVendedorComissaoVDCON2VLRCOMISS.Value     := SQLVendedorComissaoVDCON2VLRCOMISS.Value +
+                                                                (Valor * (SQLItensVendaVENDN2COMISP.Value));
+                SQLVendedorComissaoVDCON2PERCOMISSAO.AsFloat := SQLItensVendaVENDN2COMISP.Value;
+              end;
             end
           else
             begin

@@ -973,6 +973,13 @@ type
     btnBuscaCep: TBitBtn;
     SQLTemplateASSOCIADO: TStringField;
     dbchkAssociado: TDBCheckBox;
+    Label95: TLabel;
+    RxDBLookupCombo1: TRxDBLookupCombo;
+    SQLTemplateREPRICOD: TIntegerField;
+    DSSQLRepresentante: TDataSource;
+    SQLRepresentante: TRxQuery;
+    SQLRepresentanteREPRICOD: TIntegerField;
+    SQLRepresentanteREPRA60RAZAOSOC: TStringField;
     procedure FormCreate(Sender: TObject);
     procedure AcessaVendedorClick(Sender: TObject);
     procedure SQLTemplateNewRecord(DataSet: TDataSet);
@@ -1132,6 +1139,7 @@ begin
   SQLProfissional.Open;
   SQLMotivoBloqueio.Open;
   SQLVendedor.Open;
+  SQLRepresentante.Open;
   SQLPlanoRecebimento.Open;
   SQLRota.Open;
   SQLRamo.Open;

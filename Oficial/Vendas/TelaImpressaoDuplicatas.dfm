@@ -1514,8 +1514,9 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
       Size = 60
     end
     object TblDuplicatasNOSSONUMERO: TStringField
+      DisplayWidth = 8
       FieldName = 'NOSSONUMERO'
-      Size = 7
+      Size = 8
     end
     object TblDuplicatasVLRTAXA: TFloatField
       FieldName = 'VLRTAXA'
@@ -1632,7 +1633,7 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
     Left = 192
     Top = 16
     object MnBloquetosLaser: TMenuItem
-      Caption = 'Boletos'
+      Caption = 'Boleto'
       OnClick = MnBloquetosLaserClick
     end
     object CarnePagamentoAvulso1: TMenuItem

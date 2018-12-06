@@ -531,7 +531,6 @@ type
     SQLSaldoMesPSMEN2COMPRAMEDTOT: TFloatField;
     SQLSaldoMesEMPRICOD: TIntegerField;
     SQLTemplatePRODCTEMNROSERIE: TStringField;
-    DBCheckBox2: TDBCheckBox;
     GroupBox1: TGroupBox;
     DBGridProdutoSerie: TDBGrid;
     SQLProdutoSerie: TRxQuery;
@@ -1004,6 +1003,11 @@ type
     DBEdit7: TDBEdit;
     SQLTemplatePERC_REDUCAO_BASE_CALCULO: TFloatField;
     SQLProdutoSaldoQTDE_CONSIGNADO: TFloatField;
+    Label38: TLabel;
+    RxDBComboBox6: TRxDBComboBox;
+    SQLTemplateCOMISSAO_REPRESENTANTE: TStringField;
+    DBCheckBox2: TDBCheckBox;
+    DBCheckBox7: TDBCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure RxComboComissaoChange(Sender: TObject);
     procedure AcessaMarcaClick(Sender: TObject);

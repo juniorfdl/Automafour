@@ -4,7 +4,7 @@ interface
 
 uses Variants, MemTable, Menus, Stdctrls, Classes, Windows, Forms, WinINet,
   RxQuery, DBTables, Controls, Dialogs, DB, JPeg, Sysutils, DBCtrls,
-  Registry, CommDlg, Messages, Graphics, IniFiles, FileCtrl, Math, DateUtils;
+  Registry, CommDlg, Messages, Graphics, IniFiles, FileCtrl, Math, DateUtils, StrUtils;
 type
   TInfoRetornoUser = record
     CampoRetorno: string;
@@ -50,6 +50,7 @@ var
     NroViasTEF, vCLIEINDIACHQSJURO, CodMesa, CodConta, ProdutoAgrupGrade_MovDiv, VelocECFAtual: Integer;
   CodiProduto,
     CodiCli,
+    Status,
     EstadoFechVendaAnt,
     CodigoProduto,
     CodigoBarrasProduto,
@@ -299,7 +300,8 @@ procedure CopyQueryTable(Query: TQuery; Table: TTable);
 procedure BaixaChequeRecebido(IDChequeRecebido:String;DataBaixa : TDateTime);
 procedure MudaAlineaCheque(IDCheque,NovaAlinea,NovoPortador : String);
 procedure BaixaChequeEmitido(NroCheque:String;DataBaixa : TDateTime);
-
+function MontaString(x: string; Tamanho: integer; tipo: Integer = 0; CompletarCom: string = ' '): string;
+function RemoverZeros(S: string): string;
 implementation
 
 uses DataModulo, TelaAutenticaUsuario, TelaAvisoDebito;
@@ -1152,11 +1154,6 @@ procedure GravaMovimentoEstoqueSimples(SqlProd,
     CodProduto: Integer;
     QuantOrigem: Double;
   begin
-
-
-
-
-
     SairMov := False;
     while not SairMov do
     begin
@@ -1185,13 +1182,6 @@ procedure GravaMovimentoEstoqueSimples(SqlProd,
       except
         Application.ProcessMessages;
       end;
-
-
-
-
-
-
-
     //PEGAR PROXIMO CODIGO MOVIMENTO DE ESTOQUE
       DM.SQLTemplate.Close;
       DM.SQLTemplate.SQL.Clear;
@@ -1320,12 +1310,6 @@ begin
   SqlProd.SQL.Add('Select * from PRODUTO');
   SqlProd.SQL.Add('Where PRODICOD = ' + IntToStr(ProdCod));
   SqlProd.Open;
-
-
-
-
-
-
   SQLProdSald.Close;
   SQLProdSald.Open;
 
@@ -1344,78 +1328,6 @@ begin
         Sleep(1);
       end;
     end;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   end;
 end;
 
@@ -1644,7 +1556,7 @@ begin
   SQLProdutoSerie.SQL.Clear;
   SQLProdutoSerie.SQL.ADD('UPDATE PRODUTOSERIE SET ');
   if Status <> '' then
-    SQLProdutoSerie.SQL.ADD('PRSECSTATUS = ''' + Status + ''' , ') // Status I = Indisponivel / D = Disponivel
+    SQLProdutoSerie.SQL.ADD('PRSECSTATUS = ''' + Status + ''' , ') // Status I = Indisponivel / D = Disponivel / E = Emprestado
   else
     SQLProdutoSerie.SQL.ADD('PRSECSTATUS = Null , ');
   // Empresa Destino
@@ -5557,6 +5469,47 @@ begin
     end;
   end;
 end;
+function MontaString(x: string; Tamanho: integer; tipo: Integer = 0; CompletarCom: string = ' '): string;
+var
+  t: integer;
+  s: string;
+begin
+  //Tipo = Lado que será completado.
+  //Tipo 0 = Left(Esquerda)
+  //Tipo 1 = Right(Direita)
+  s := CompletarCom;
+  t := tamanho - length(x);
+  s := DupeString(s, t);
+
+  if Tamanho < Length(x) then
+    if tipo = 0 then
+      x := Copy(x, Length(x) - (Tamanho - 1), Tamanho)
+    else
+      x := Copy(x, 1, Tamanho);
+
+  if tipo = 0 then
+    Result := s + x
+  else
+    Result := x + s;
+end;
+
+function RemoverZeros(S: string): string;
+var
+  I, J : Integer;
+begin
+  I := Length(S);
+  while (I > 0) and (S[I] <= ' ') do
+  begin
+    Dec(I);
+  end;
+  J := 1;
+  while (J < I) and ((S[J] <= ' ') or (S[J] = '0')) do
+  begin
+    Inc(J);
+  end;
+  Result := Copy(S, J, (I-J)+1);
+end;
+
 
 end.
 

@@ -185,6 +185,12 @@ type
     RxLabel1: TRxLabel;
     ckECF: TCheckBox;
     ckDescricaoExpandida: TCheckBox;
+    Label10: TLabel;
+    ComboOperacao: TRxDBLookupCombo;
+    SQLOperacao: TRxQuery;
+    DSSQLOperacao: TDataSource;
+    SQLOperacaoOPESICOD: TIntegerField;
+    SQLOperacaoOPESA60DESCR: TStringField;
     procedure ExecutarBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -322,6 +328,17 @@ begin
       SQLVendas.MacroByName('MGrupo').Value      := '0=0';
       SQLVendas.MacroByName('MGrupo1').Value     := '0=0';
       SQLTrocas.MacroByName('MGrupo').Value      := '0=0';
+    end;
+
+  if ComboOperacao.Value <> '' then
+    begin
+      SQLVendas.MacroByName('MOperacao').Value      := 'CUPOM.OPESICOD = ' + ComboOperacao.Value;
+      SQLVendas.MacroByName('MOperacao1').Value     := 'NOTAFISCAL.OPESICOD = ' + ComboOperacao.Value;
+    end
+  else
+    begin
+      SQLVendas.MacroByName('MOperacao').Value      := '0=0';
+      SQLVendas.MacroByName('MOperacao1').Value     := '0=0';
     end;
 
   if ComboSubGrupo.Value <> '' then
@@ -683,16 +700,17 @@ end;
 procedure TFormRelatorioProdutosVendidos.FormCreate(Sender: TObject);
 begin
   inherited;
-  SQLGrupo.Open ;
-  SQLSubGrupo.Open ;
-  SQLVariacao.Open ;
-  SQLMarca.Open ;
-  SQLVendedor.Open ;
+  SQLGrupo.Open;
+  SQLSubGrupo.Open;
+  SQLVariacao.Open;
+  SQLMarca.Open;
+  SQLVendedor.Open;
   SQLTerminal.Open;
-  SQLCliente.Open ;
-  SQLProduto.Open ;
-  SQLColecao.Open ;
-  SQLUsuario.Open ;
+  SQLCliente.Open;
+  SQLProduto.Open;
+  SQLColecao.Open;
+  SQLUsuario.Open;
+  SQLOperacao.Open;
   ListaSeries(ListSeries,EmpresaPadrao)
 end;
 

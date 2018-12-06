@@ -1019,9 +1019,11 @@ begin
       begin
         DataSet.FieldByName('NFITA254OBS').AsString := '';
         NumeroSerie := '';
+        Status := 'D';
         CodigoProduto := SQLTemplatePRODICOD.AsString;
         Application.CreateForm(TFormTelaInformaNumeroSerieProduto, FormTelaInformaNumeroSerieProduto);
         FormTelaInformaNumeroSerieProduto.NumeroItens := SQLTemplateNFITN3QUANT.AsInteger;
+        FormTelaInformaNumeroSerieProduto.Valida_Qtde := True;
         FormTelaInformaNumeroSerieProduto.ShowModal;
         for I := 1 to SQLTemplateNFITN3QUANT.AsInteger do
         begin

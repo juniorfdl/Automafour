@@ -836,7 +836,7 @@ inherited FormCadastroContasPagar: TFormCadastroContasPagar
               ParentFont = False
             end
             object Label5: TLabel
-              Left = 404
+              Left = 488
               Top = 73
               Width = 29
               Height = 13
@@ -849,7 +849,7 @@ inherited FormCadastroContasPagar: TFormCadastroContasPagar
               ParentFont = False
             end
             object Label11: TLabel
-              Left = 487
+              Left = 571
               Top = 73
               Width = 45
               Height = 13
@@ -889,8 +889,8 @@ inherited FormCadastroContasPagar: TFormCadastroContasPagar
               ParentFont = False
             end
             object Label16: TLabel
-              Left = 559
-              Top = 73
+              Left = 475
+              Top = 145
               Width = 62
               Height = 13
               Caption = 'Dt. Recbto.'
@@ -1080,6 +1080,20 @@ inherited FormCadastroContasPagar: TFormCadastroContasPagar
                 0000}
               OnClick = RetornaPlanoContasClick
             end
+            object Label20: TLabel
+              Left = 395
+              Top = 73
+              Width = 63
+              Height = 13
+              Caption = 'Dt.Prevista'
+              FocusControl = DBDateEdit3
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clNavy
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
             object DBEdit1: TDBEdit
               Left = 106
               Top = 15
@@ -1161,7 +1175,7 @@ inherited FormCadastroContasPagar: TFormCadastroContasPagar
               TabOrder = 8
             end
             object EvDBNumEdit2: TEvDBNumEdit
-              Left = 485
+              Left = 569
               Top = 86
               Width = 65
               Height = 21
@@ -1193,7 +1207,7 @@ inherited FormCadastroContasPagar: TFormCadastroContasPagar
                 FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5E
                 FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
                 FF5EFF5EFF5EFF5EFF5E}
-              TabOrder = 12
+              TabOrder = 13
             end
             object DBEdit13: TDBEdit
               Left = 8
@@ -1225,14 +1239,14 @@ inherited FormCadastroContasPagar: TFormCadastroContasPagar
                 'C')
             end
             object DBDateEdit2: TDBDateEdit
-              Left = 556
-              Top = 86
+              Left = 471
+              Top = 158
               Width = 90
               Height = 21
               DataField = 'CTPGDRECBTO'
               DataSource = DSTemplate
               NumGlyphs = 2
-              TabOrder = 13
+              TabOrder = 23
               YearDigits = dyFour
             end
             object DBEdit16: TDBEdit
@@ -1245,7 +1259,7 @@ inherited FormCadastroContasPagar: TFormCadastroContasPagar
               TabOrder = 0
             end
             object EvDBNumEdit1: TEvDBNumEdit
-              Left = 402
+              Left = 486
               Top = 86
               Width = 81
               Height = 21
@@ -1277,7 +1291,7 @@ inherited FormCadastroContasPagar: TFormCadastroContasPagar
                 FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5E
                 FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
                 FF5EFF5EFF5EFF5EFF5E}
-              TabOrder = 11
+              TabOrder = 12
             end
             object ComboFornec: TRxDBLookupCombo
               Left = 76
@@ -1465,7 +1479,7 @@ inherited FormCadastroContasPagar: TFormCadastroContasPagar
             object DBEdit15: TDBEdit
               Left = 120
               Top = 160
-              Width = 524
+              Width = 353
               Height = 18
               TabStop = False
               AutoSize = False
@@ -1490,6 +1504,30 @@ inherited FormCadastroContasPagar: TFormCadastroContasPagar
               DataSource = DSTemplate
               TabOrder = 22
               OnExit = DBEdit3Exit
+            end
+            object DBDateEdit3: TDBDateEdit
+              Left = 393
+              Top = 86
+              Width = 90
+              Height = 21
+              DataField = 'DATA_PREVISTA'
+              DataSource = DSTemplate
+              NumGlyphs = 2
+              TabOrder = 11
+              YearDigits = dyFour
+              OnExit = DBEdit4Exit
+            end
+            object DBCheckBox1: TDBCheckBox
+              Left = 568
+              Top = 160
+              Width = 77
+              Height = 17
+              Caption = 'Agendado'
+              DataField = 'PREVISTO'
+              DataSource = DSTemplate
+              TabOrder = 24
+              ValueChecked = 'S'
+              ValueUnchecked = 'N'
             end
           end
         end
@@ -1784,6 +1822,17 @@ inherited FormCadastroContasPagar: TFormCadastroContasPagar
       FieldName = 'BARRAS'
       Origin = 'DB.CONTASPAGAR.BARRAS'
       Size = 254
+    end
+    object SQLTemplateDATA_PREVISTA: TDateTimeField
+      FieldName = 'DATA_PREVISTA'
+      Origin = 'DB.CONTASPAGAR.DATA_PREVISTA'
+    end
+    object SQLTemplatePREVISTO: TStringField
+      DisplayLabel = 'Previsto'
+      FieldName = 'PREVISTO'
+      Origin = 'DB.CONTASPAGAR.PREVISTO'
+      FixedChar = True
+      Size = 1
     end
   end
   inherited UpdateSQLTemplate: TUpdateSQL

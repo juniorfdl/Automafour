@@ -162,6 +162,11 @@ type
     DBEdit15: TDBEdit;
     dbBarras: TDBEdit;
     SQLPagamentoPAGAN3VLRPAGTO: TFloatField;
+    Label20: TLabel;
+    DBDateEdit3: TDBDateEdit;
+    SQLTemplateDATA_PREVISTA: TDateTimeField;
+    SQLTemplatePREVISTO: TStringField;
+    DBCheckBox1: TDBCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure SQLTemplateNewRecord(DataSet: TDataSet);
     procedure SQLTemplateCalcFields(DataSet: TDataSet);

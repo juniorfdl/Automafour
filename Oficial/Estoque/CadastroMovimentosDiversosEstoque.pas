@@ -206,8 +206,8 @@ begin
                                 FormatDateTime('mm/dd/yyyy', Now),
                                 '0', //Valor
                                 'MOVIMENTOSDIVERSOS',
-                                SQLTemplateMOVDA13ID.AsString,
-                                SQLItensLOTEA30NRO.AsString);
+                                'EMP'+FormatDateTime('dd/mm/yy', Now),
+                                '');
 
           SQLItens.Next;
         end;

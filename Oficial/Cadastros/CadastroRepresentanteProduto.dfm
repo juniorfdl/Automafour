@@ -1,6 +1,6 @@
 inherited FormCadastroRepresentanteProduto: TFormCadastroRepresentanteProduto
-  Left = 189
-  Top = 15
+  Left = 215
+  Top = 3
   Caption = 'Cadastro Representante / Parceiro'
   ClientHeight = 661
   OldCreateOrder = True
@@ -23,7 +23,6 @@ inherited FormCadastroRepresentanteProduto: TFormCadastroRepresentanteProduto
           inherited PagePrincipal: TPageControl
             Top = 81
             Height = 506
-            ActivePage = TabSheetDadosPrincipais
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Height = 433
@@ -78,7 +77,8 @@ inherited FormCadastroRepresentanteProduto: TFormCadastroRepresentanteProduto
                   end
                   item
                     Expanded = False
-                    FieldName = 'STATUS'
+                    FieldName = 'ENTRADA_SAIDA'
+                    Title.Caption = 'Entrada/Sa'#237'da'
                     Visible = True
                   end>
               end
@@ -115,6 +115,7 @@ inherited FormCadastroRepresentanteProduto: TFormCadastroRepresentanteProduto
                 Width = 31
                 Height = 13
                 Caption = 'Status'
+                Visible = False
               end
               object Label13: TLabel
                 Left = 22
@@ -194,13 +195,6 @@ inherited FormCadastroRepresentanteProduto: TFormCadastroRepresentanteProduto
                 Height = 13
                 Caption = 'Data Registro'
               end
-              object Label14: TLabel
-                Left = 23
-                Top = 2
-                Width = 68
-                Height = 13
-                Caption = 'Entrada/Sa'#237'da'
-              end
               object btnAdicionaNumSerie: TSpeedButton
                 Left = 308
                 Top = 139
@@ -237,7 +231,7 @@ inherited FormCadastroRepresentanteProduto: TFormCadastroRepresentanteProduto
                 Height = 21
                 DataField = 'PRSEA60NROSERIE'
                 DataSource = DSTemplate
-                TabOrder = 7
+                TabOrder = 6
               end
               object EditProduto: TEdit
                 Left = 22
@@ -245,7 +239,7 @@ inherited FormCadastroRepresentanteProduto: TFormCadastroRepresentanteProduto
                 Width = 284
                 Height = 21
                 CharCase = ecUpperCase
-                TabOrder = 2
+                TabOrder = 1
                 OnEnter = EditProdutoEnter
                 OnKeyDown = EditProdutoKeyDown
               end
@@ -267,7 +261,7 @@ inherited FormCadastroRepresentanteProduto: TFormCadastroRepresentanteProduto
                   'C'#243'd. Antigo'
                   'Refer'#234'ncia')
                 ParentFont = False
-                TabOrder = 3
+                TabOrder = 2
               end
               object RxDBComboBox1: TRxDBComboBox
                 Left = 342
@@ -282,10 +276,11 @@ inherited FormCadastroRepresentanteProduto: TFormCadastroRepresentanteProduto
                 Items.Strings = (
                   'Dispon'#237'vel'
                   'Indispon'#237'vel')
-                TabOrder = 8
+                TabOrder = 7
                 Values.Strings = (
                   'D'
                   'I')
+                Visible = False
               end
               object DBEdit12: TDBEdit
                 Left = 22
@@ -305,7 +300,7 @@ inherited FormCadastroRepresentanteProduto: TFormCadastroRepresentanteProduto
                 ParentCtl3D = False
                 ParentFont = False
                 ReadOnly = True
-                TabOrder = 4
+                TabOrder = 3
               end
               object DBEdit13: TDBEdit
                 Left = 476
@@ -325,7 +320,7 @@ inherited FormCadastroRepresentanteProduto: TFormCadastroRepresentanteProduto
                 ParentCtl3D = False
                 ParentFont = False
                 ReadOnly = True
-                TabOrder = 5
+                TabOrder = 4
               end
               object DBEdit23: TDBEdit
                 Left = 580
@@ -345,7 +340,7 @@ inherited FormCadastroRepresentanteProduto: TFormCadastroRepresentanteProduto
                 ParentCtl3D = False
                 ParentFont = False
                 ReadOnly = True
-                TabOrder = 6
+                TabOrder = 5
               end
               object DBDateEdit3: TDBDateEdit
                 Left = 259
@@ -358,32 +353,14 @@ inherited FormCadastroRepresentanteProduto: TFormCadastroRepresentanteProduto
                 ReadOnly = True
                 Color = 16249066
                 NumGlyphs = 2
-                TabOrder = 1
-              end
-              object RxDBComboBox2: TRxDBComboBox
-                Left = 23
-                Top = 18
-                Width = 121
-                Height = 21
-                Style = csDropDownList
-                DataField = 'ENTRADA_SAIDA'
-                DataSource = DSTemplate
-                EnableValues = True
-                ItemHeight = 13
-                Items.Strings = (
-                  'Entrada'
-                  'Sa'#237'da')
                 TabOrder = 0
-                Values.Strings = (
-                  'E'
-                  'S')
               end
               object grbEntrada: TcxGroupBox
                 Left = 22
                 Top = 166
                 Caption = 'Entrada'
                 Style.BorderStyle = ebsFlat
-                TabOrder = 9
+                TabOrder = 8
                 Height = 108
                 Width = 669
                 object Label5: TLabel
@@ -496,7 +473,7 @@ inherited FormCadastroRepresentanteProduto: TFormCadastroRepresentanteProduto
                 Caption = 'Sa'#237'da'
                 Style.BorderStyle = ebsFlat
                 StyleDisabled.BorderColor = clRed
-                TabOrder = 10
+                TabOrder = 9
                 Height = 108
                 Width = 669
                 object Label4: TLabel
@@ -604,6 +581,23 @@ inherited FormCadastroRepresentanteProduto: TFormCadastroRepresentanteProduto
                   NumGlyphs = 2
                   TabOrder = 3
                 end
+              end
+              object DBRadioGroup1: TDBRadioGroup
+                Left = 22
+                Top = 2
+                Width = 203
+                Height = 35
+                Caption = 'Entrada/Sa'#237'da'
+                Columns = 2
+                DataField = 'ENTRADA_SAIDA'
+                DataSource = DSTemplate
+                Items.Strings = (
+                  'Entrada'
+                  'Sa'#237'da')
+                TabOrder = 10
+                Values.Strings = (
+                  'E'
+                  'S')
               end
             end
           end

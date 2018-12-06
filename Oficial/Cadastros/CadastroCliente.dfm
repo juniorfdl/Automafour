@@ -1,6 +1,6 @@
 inherited FormCadastroCliente: TFormCadastroCliente
   Left = 128
-  Top = 14
+  Top = 9
   Caption = 'Cadastro de Clientes'
   ClientHeight = 672
   ClientWidth = 1092
@@ -815,7 +815,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
             Top = 42
             Width = 960
             Height = 556
-            ActivePage = TabSheetAdicional2
+            ActivePage = TabSheetDadosPrincipais
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Width = 952
@@ -1371,7 +1371,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                 ParentColor = True
                 TabOrder = 1
                 object Label6: TLabel
-                  Left = 6
+                  Left = 7
                   Top = 35
                   Width = 28
                   Height = 13
@@ -1453,7 +1453,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                   ParentFont = False
                 end
                 object RxDBComboBox1: TRxDBComboBox
-                  Left = 3
+                  Left = 7
                   Top = 48
                   Width = 94
                   Height = 21
@@ -1471,7 +1471,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                     'M')
                 end
                 object DBEdit14: TDBEdit
-                  Left = 3
+                  Left = 7
                   Top = 13
                   Width = 220
                   Height = 21
@@ -1535,13 +1535,13 @@ inherited FormCadastroCliente: TFormCadastroCliente
                 Left = 0
                 Top = 118
                 Width = 952
-                Height = 346
+                Height = 369
                 Align = alTop
                 BevelOuter = bvNone
                 ParentColor = True
                 TabOrder = 2
                 object Label7: TLabel
-                  Left = 11
+                  Left = 3
                   Top = 102
                   Width = 37
                   Height = 13
@@ -1596,7 +1596,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                   ParentFont = False
                 end
                 object Label22: TLabel
-                  Left = 9
+                  Left = 3
                   Top = 137
                   Width = 79
                   Height = 13
@@ -1730,8 +1730,8 @@ inherited FormCadastroCliente: TFormCadastroCliente
                   OnClick = AcessaProfissionalClick
                 end
                 object Label96: TLabel
-                  Left = 452
-                  Top = 137
+                  Left = 3
+                  Top = 172
                   Width = 54
                   Height = 13
                   Caption = 'Vendedor'
@@ -1743,8 +1743,8 @@ inherited FormCadastroCliente: TFormCadastroCliente
                   ParentFont = False
                 end
                 object AcessaVendedor: TSpeedButton
-                  Left = 551
-                  Top = 149
+                  Left = 304
+                  Top = 184
                   Width = 21
                   Height = 21
                   Hint = 'Acessa Vendedor'
@@ -1778,7 +1778,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                 end
                 object Label21: TLabel
                   Left = 12
-                  Top = 301
+                  Top = 334
                   Width = 40
                   Height = 13
                   Caption = 'Cd.Pais'
@@ -1803,8 +1803,21 @@ inherited FormCadastroCliente: TFormCadastroCliente
                   Font.Style = [fsBold]
                   ParentFont = False
                 end
+                object Label95: TLabel
+                  Left = 327
+                  Top = 172
+                  Width = 85
+                  Height = 13
+                  Caption = 'Representante'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = 8404992
+                  Font.Height = -11
+                  Font.Name = 'Tahoma'
+                  Font.Style = [fsBold]
+                  ParentFont = False
+                end
                 object DBEdit4: TDBEdit
-                  Left = 7
+                  Left = 3
                   Top = 115
                   Width = 108
                   Height = 21
@@ -1841,7 +1854,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                   TabOrder = 7
                 end
                 object EvDBNumEdit2: TEvDBNumEdit
-                  Left = 7
+                  Left = 3
                   Top = 150
                   Width = 80
                   Height = 21
@@ -1893,9 +1906,9 @@ inherited FormCadastroCliente: TFormCadastroCliente
                   TabOrder = 5
                 end
                 object PageControlEndercos: TPageControl
-                  Left = 3
+                  Left = 2
                   Top = 1
-                  Width = 648
+                  Width = 641
                   Height = 103
                   ActivePage = TabEndereco
                   Images = ImageList2
@@ -1905,7 +1918,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                   object TabEndereco: TTabSheet
                     Caption = 'En&dere'#231'o'
                     object Label41: TLabel
-                      Left = 5
+                      Left = 0
                       Top = 2
                       Width = 21
                       Height = 13
@@ -2047,7 +2060,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                       ParentFont = False
                     end
                     object DBEdit20: TDBEdit
-                      Left = 0
+                      Left = -4
                       Top = 15
                       Width = 96
                       Height = 21
@@ -2067,7 +2080,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                       TabOrder = 1
                     end
                     object DBEdit21: TDBEdit
-                      Left = 0
+                      Left = -4
                       Top = 49
                       Width = 243
                       Height = 21
@@ -2547,7 +2560,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                 end
                 object PageControl1: TPageControl
                   Left = 5
-                  Top = 175
+                  Top = 211
                   Width = 638
                   Height = 126
                   ActivePage = TabSheet2
@@ -2600,9 +2613,9 @@ inherited FormCadastroCliente: TFormCadastroCliente
                   end
                 end
                 object ComboVendedor: TRxDBLookupCombo
-                  Left = 448
-                  Top = 150
-                  Width = 102
+                  Left = 3
+                  Top = 185
+                  Width = 299
                   Height = 21
                   DropDownCount = 8
                   DataField = 'VENDICOD'
@@ -2616,7 +2629,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                 end
                 object rxComboPais: TRxDBComboBox
                   Left = 9
-                  Top = 314
+                  Top = 347
                   Width = 93
                   Height = 21
                   Style = csDropDownList
@@ -3183,6 +3196,21 @@ inherited FormCadastroCliente: TFormCadastroCliente
                     007C3900905825000000A1714AA3754BA3754BA3754BA3754BA3754BA3754BA3
                     754BA3754BA3754BA172479F6E429F6E429F6E429F6F43A3754BA3754BA3754B
                     A3754BA3754BA3754BA17247B0896A000000}
+                end
+                object RxDBLookupCombo1: TRxDBLookupCombo
+                  Left = 327
+                  Top = 185
+                  Width = 313
+                  Height = 21
+                  DropDownCount = 8
+                  DataField = 'REPRICOD'
+                  DataSource = DSTemplate
+                  DisplayEmpty = '...'
+                  LookupField = 'REPRICOD'
+                  LookupDisplay = 'REPRA60RAZAOSOC'
+                  LookupSource = DSSQLRepresentante
+                  TabOrder = 17
+                  OnKeyDown = ComboVendedorKeyDown
                 end
               end
             end
@@ -7961,6 +7989,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
       Origin = 'DB.CLIENTE.ASSOCIADO'
       FixedChar = True
       Size = 1
+    end
+    object SQLTemplateREPRICOD: TIntegerField
+      FieldName = 'REPRICOD'
+      Origin = 'DB.CLIENTE.REPRICOD'
     end
   end
   inherited SQLExcluiDetalhes: TRxQuery
@@ -13314,5 +13346,30 @@ inherited FormCadastroCliente: TFormCadastroCliente
     OnBuscaEfetuada = ACBrCEP1BuscaEfetuada
     Left = 798
     Top = 204
+  end
+  object DSSQLRepresentante: TDataSource
+    DataSet = SQLRepresentante
+    Left = 919
+    Top = 495
+  end
+  object SQLRepresentante: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'select REPRICOD, REPRA60RAZAOSOC'
+      'from REPRESENTANTE'
+      'order by REPRA60RAZAOSOC  ')
+    Macros = <>
+    Left = 891
+    Top = 495
+    object SQLRepresentanteREPRICOD: TIntegerField
+      FieldName = 'REPRICOD'
+      Origin = 'DB.REPRESENTANTE.REPRICOD'
+    end
+    object SQLRepresentanteREPRA60RAZAOSOC: TStringField
+      FieldName = 'REPRA60RAZAOSOC'
+      Origin = 'DB.REPRESENTANTE.REPRA60RAZAOSOC'
+      FixedChar = True
+      Size = 60
+    end
   end
 end

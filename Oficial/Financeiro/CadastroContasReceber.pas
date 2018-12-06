@@ -338,6 +338,11 @@ type
     DBEdit16: TDBEdit;
     Label27: TLabel;
     DBEdit17: TDBEdit;
+    Label28: TLabel;
+    DBDateEdit2: TDBDateEdit;
+    SQLTemplateDATA_PREVISTA: TDateTimeField;
+    SQLTemplatePREVISTO: TStringField;
+    DBCheckBox1: TDBCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure SQLTemplateCalcFields(DataSet: TDataSet);
     procedure BtnClienteClick(Sender: TObject);

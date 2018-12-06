@@ -460,7 +460,8 @@ uses
   CadastroServico in 'Cadastros\CadastroServico.pas' {FormCadastroServico},
   udmNFSe in 'Faturamento\udmNFSe.pas' {dmNFSe: TDataModule},
   CadastroRepresentanteProduto in 'Cadastros\CadastroRepresentanteProduto.pas' {FormCadastroRepresentanteProduto},
-  TelaInformaNumeroSerieProduto in 'Vendas\TelaInformaNumeroSerieProduto.pas' {FormTelaInformaNumeroSerieProduto};
+  TelaInformaNumeroSerieProduto in 'Vendas\TelaInformaNumeroSerieProduto.pas' {FormTelaInformaNumeroSerieProduto},
+  RelatorioComissaoRepresentanteDetalhado in 'Relatorios\Financeiro\RelatorioComissaoRepresentanteDetalhado.pas' {FormRelatorioComissaoDetalhadoRepresentante};
 
 {$R *.res}
 

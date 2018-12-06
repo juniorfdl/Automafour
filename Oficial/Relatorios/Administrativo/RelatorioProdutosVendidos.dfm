@@ -1,32 +1,32 @@
 inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
-  Left = 366
-  Top = 66
+  Left = -8
+  Top = -8
   Caption = 'Relat'#243'rio de Produtos Vendidos'
-  ClientHeight = 614
-  ClientWidth = 809
+  ClientHeight = 706
+  ClientWidth = 1366
   PixelsPerInch = 96
   TextHeight = 13
   inherited Progresso: TProgressBar
-    Top = 598
-    Width = 809
+    Top = 690
+    Width = 1366
   end
   inherited ScrollBox: TScrollBox
-    Width = 809
-    Height = 598
+    Width = 1366
+    Height = 690
     inherited PanelCentro: TPanel
       Left = 44
       Top = 119
       Width = 680
-      Height = 473
+      Height = 491
       inherited BtnVisualizar: TSpeedButton
         Left = 540
-        Top = 425
+        Top = 454
         Width = 133
         Caption = '&Visualizar Impress'#227'o'
       end
       object Label7: TLabel [1]
         Left = 14
-        Top = 431
+        Top = 460
         Width = 50
         Height = 13
         Caption = 'Hora:Min'
@@ -40,7 +40,7 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       end
       object Label8: TLabel [2]
         Left = 123
-        Top = 431
+        Top = 460
         Width = 19
         Height = 13
         Caption = 'a&t'#233
@@ -52,7 +52,14 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
         Font.Style = [fsBold]
         ParentFont = False
       end
+      inherited EmpresaGroup: TGroupBox
+        Height = 186
+        inherited ListaEmpresas: TListBox
+          Height = 110
+        end
+      end
       inherited GroupBox1: TGroupBox
+        Top = 189
         object CheckPeriodo: TCheckBox
           Left = 244
           Top = 15
@@ -64,7 +71,7 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       end
       object GroupBox2: TGroupBox
         Left = 153
-        Top = 334
+        Top = 363
         Width = 264
         Height = 40
         Caption = ' Ordernar por '
@@ -124,7 +131,7 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
         Left = 425
         Top = 4
         Width = 248
-        Height = 199
+        Height = 226
         Caption = 'Filtros'
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
@@ -160,7 +167,7 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
           ParentFont = False
         end
         object Label11: TLabel
-          Left = 8
+          Left = 9
           Top = 13
           Width = 34
           Height = 13
@@ -173,7 +180,7 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
           ParentFont = False
         end
         object Label5: TLabel
-          Left = 11
+          Left = 9
           Top = 117
           Width = 35
           Height = 13
@@ -186,7 +193,7 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
           ParentFont = False
         end
         object Label6: TLabel
-          Left = 13
+          Left = 9
           Top = 152
           Width = 44
           Height = 13
@@ -211,8 +218,21 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
           Font.Style = [fsBold]
           ParentFont = False
         end
+        object Label10: TLabel
+          Left = 9
+          Top = 185
+          Width = 102
+          Height = 13
+          Caption = 'Opera'#231#227'o Estoque'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 8404992
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
         object ComboSubGrupo: TRxDBLookupCombo
-          Left = 6
+          Left = 9
           Top = 60
           Width = 236
           Height = 21
@@ -226,7 +246,7 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
           OnKeyDown = ComboGrupoKeyDown
         end
         object ComboVariacao: TRxDBLookupCombo
-          Left = 6
+          Left = 9
           Top = 95
           Width = 236
           Height = 21
@@ -240,7 +260,7 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
           OnKeyDown = ComboGrupoKeyDown
         end
         object ComboGrupo: TRxDBLookupCombo
-          Left = 6
+          Left = 9
           Top = 26
           Width = 236
           Height = 21
@@ -253,7 +273,7 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
           OnKeyDown = ComboGrupoKeyDown
         end
         object ComboMarca: TRxDBLookupCombo
-          Left = 6
+          Left = 9
           Top = 130
           Width = 236
           Height = 21
@@ -266,7 +286,7 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
           OnKeyDown = ComboGrupoKeyDown
         end
         object ComboColecao: TRxDBLookupCombo
-          Left = 6
+          Left = 9
           Top = 165
           Width = 115
           Height = 21
@@ -286,10 +306,22 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
           CharCase = ecUpperCase
           TabOrder = 5
         end
+        object ComboOperacao: TRxDBLookupCombo
+          Left = 9
+          Top = 198
+          Width = 236
+          Height = 21
+          DropDownCount = 8
+          LookupField = 'OPESICOD'
+          LookupDisplay = 'OPESA60DESCR'
+          LookupSource = DSSQLOperacao
+          TabOrder = 6
+          OnKeyDown = ComboGrupoKeyDown
+        end
       end
       object GroupBox5: TGroupBox
         Left = 12
-        Top = 205
+        Top = 234
         Width = 201
         Height = 40
         Caption = ' Vendedor '
@@ -321,7 +353,7 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       end
       object GroupBox4: TGroupBox
         Left = 12
-        Top = 248
+        Top = 277
         Width = 406
         Height = 40
         Caption = 'Cliente'
@@ -353,7 +385,7 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       end
       object GroupBox6: TGroupBox
         Left = 424
-        Top = 205
+        Top = 234
         Width = 250
         Height = 84
         Caption = 'Layout'
@@ -434,7 +466,7 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       end
       object GroupProduto: TGroupBox
         Left = 12
-        Top = 291
+        Top = 320
         Width = 405
         Height = 40
         Caption = 'Produto'
@@ -469,7 +501,7 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       end
       object RadioTotal: TRadioGroup
         Left = 11
-        Top = 382
+        Top = 411
         Width = 662
         Height = 40
         BiDiMode = bdLeftToRight
@@ -495,7 +527,7 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       end
       object GroupBox7: TGroupBox
         Left = 12
-        Top = 333
+        Top = 362
         Width = 135
         Height = 40
         Caption = ' Produto Cod.Interno '
@@ -522,7 +554,7 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       end
       object EditHoraIni: TEdit
         Left = 69
-        Top = 426
+        Top = 455
         Width = 50
         Height = 21
         Font.Charset = ANSI_CHARSET
@@ -535,7 +567,7 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       end
       object EditHoraFim: TEdit
         Left = 145
-        Top = 427
+        Top = 456
         Width = 50
         Height = 21
         Font.Charset = ANSI_CHARSET
@@ -548,7 +580,7 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       end
       object CKCofins: TCheckBox
         Left = 205
-        Top = 429
+        Top = 458
         Width = 143
         Height = 17
         Caption = 'Isento de Cofins e Pis'
@@ -562,7 +594,7 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       end
       object GroupBox8: TGroupBox
         Left = 216
-        Top = 205
+        Top = 234
         Width = 203
         Height = 40
         Caption = ' Terminal '
@@ -594,7 +626,7 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       end
       object GroupBox9: TGroupBox
         Left = 423
-        Top = 336
+        Top = 365
         Width = 250
         Height = 49
         Caption = '&S'#233'ries'
@@ -625,7 +657,7 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       end
       object GroupBox10: TGroupBox
         Left = 423
-        Top = 291
+        Top = 320
         Width = 251
         Height = 40
         Caption = ' Usuario'
@@ -656,7 +688,7 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       end
       object ckECF: TCheckBox
         Left = 351
-        Top = 429
+        Top = 458
         Width = 94
         Height = 17
         Caption = 'ECF Somente'
@@ -670,13 +702,13 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       end
     end
     inherited ScrollBoxTopo: TScrollBox
-      Width = 805
+      Width = 1362
       inherited PanelCabecalho: TPanel
-        Width = 805
+        Width = 1362
         inherited PanelNavigator: TPanel
-          Width = 805
+          Width = 1362
           inherited AdvPanelNavigator: TAdvOfficeStatusBar
-            Width = 805
+            Width = 1362
             inherited BtnFecharTela: TSpeedButton
               Left = 638
             end
@@ -832,7 +864,7 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       '  CUPOM.CLIEA13ID,'
       '  CUPOMITEM.CPITN2VLRQDEVERIAVENDER,'
       '  CUPOM.CUPOA8PLACAVEIC,'
-      '  ''CP''||''-''|| Cast(CUPOM.CUPOINRO as CHAR(13)) as IDVENDA'
+      '  '#39'CP'#39'||'#39'-'#39'|| Cast(CUPOM.CUPOINRO as CHAR(13)) as IDVENDA'
       'from'
       
         '  ((CUPOMITEM inner join CUPOM  on CUPOMITEM.CUPOA13ID = CUPOM.C' +
@@ -841,9 +873,9 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
         ' left outer join PRODUTO on CUPOMITEM.PRODICOD = PRODUTO.PRODICO' +
         'D)'
       'where'
-      '  CUPOM.CUPOCSTATUS = ''A'' and'
+      '  CUPOM.CUPOCSTATUS = '#39'A'#39' and'
       '  CUPOMITEM.CPITN3QTD > 0 and'
-      '  CUPOMITEM.CPITCSTATUS <> ''C'' and'
+      '  CUPOMITEM.CPITCSTATUS <> '#39'C'#39' and'
       '  (%MECF)  and'
       '  (%MFiltro)  and'
       '  (%MEmpresa) and'
@@ -858,7 +890,8 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       '  (%MMarca) and'
       '  (%MColecao) and'
       '  (%MCofins) and'
-      '  (%MUsuario)'
+      '  (%MUsuario) and'
+      '  (%MOperacao)'
       ''
       'union all'
       'select'
@@ -889,8 +922,8 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       '  NOTAFISCAL.NOFIA13ID AS CUPOA13ID,'
       '  NOTAFISCAL.CLIEA13ID,'
       '  0.0 AS CPITN2VLRQDEVERIAVENDER,'
-      '  Cast('' '' AS CHAR(8)) AS CUPOA8PLACAVEIC,'
-      '  ''NF''||''-''||Cast(NOTAFISCAL.NOFIINUMERO as CHAR(13)) AS IDVENDA'
+      '  Cast('#39' '#39' AS CHAR(8)) AS CUPOA8PLACAVEIC,'
+      '  '#39'NF'#39'||'#39'-'#39'||Cast(NOTAFISCAL.NOFIINUMERO as CHAR(13)) AS IDVENDA'
       'from'
       
         '  ((NOTAFISCALITEM inner join NOTAFISCAL on NOTAFISCALITEM.NOFIA' +
@@ -902,7 +935,7 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
         ' left outer join OPERACAOESTOQUE on NOTAFISCAL.OPESICOD = OPERAC' +
         'AOESTOQUE.OPESICOD'
       'where'
-      '  NOTAFISCAL.NOFICSTATUS = ''E''   and'
+      '  NOTAFISCAL.NOFICSTATUS = '#39'E'#39'   and'
       '  NOTAFISCALITEM.NFITN3QUANT > 0 and'
       '  (%MFiltro1)   and'
       '  (%MEmpresa1) and'
@@ -919,6 +952,7 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       '  (%MCultura) and'
       '  (%MSerie) and'
       '  (%MUsuario1) and'
+      '  (%MOperacao1) and'
       '  OPERACAOESTOQUE.OPESCGERAFINANCEIRO = '#39'S'#39
       '')
     Macros = <
@@ -1014,6 +1048,12 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       end
       item
         DataType = ftString
+        Name = 'MOperacao'
+        ParamType = ptInput
+        Value = '0=0'
+      end
+      item
+        DataType = ftString
         Name = 'MFiltro1'
         ParamType = ptInput
         Value = '0=0'
@@ -1099,6 +1139,12 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       item
         DataType = ftString
         Name = 'MUsuario1'
+        ParamType = ptInput
+        Value = '0=0'
+      end
+      item
+        DataType = ftString
+        Name = 'MOperacao1'
         ParamType = ptInput
         Value = '0=0'
       end>
@@ -1888,5 +1934,29 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       FixedChar = True
       Size = 60
     end
+  end
+  object SQLOperacao: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'select OPESICOD, OPESA60DESCR'
+      'from OPERACAOESTOQUE  ')
+    Macros = <>
+    Left = 823
+    Top = 5
+    object SQLOperacaoOPESICOD: TIntegerField
+      FieldName = 'OPESICOD'
+      Origin = 'DB.OPERACAOESTOQUE.OPESICOD'
+    end
+    object SQLOperacaoOPESA60DESCR: TStringField
+      FieldName = 'OPESA60DESCR'
+      Origin = 'DB.OPERACAOESTOQUE.OPESA60DESCR'
+      FixedChar = True
+      Size = 60
+    end
+  end
+  object DSSQLOperacao: TDataSource
+    DataSet = SQLOperacao
+    Left = 851
+    Top = 5
   end
 end
