@@ -322,6 +322,7 @@ type
     ppDBCalc15: TppDBCalc;
     ppBDEPipelineppField15: TppField;
     ppDBCalc16: TppDBCalc;
+    rdgComissaoProduto: TRadioGroup;
     procedure BtnVisualizarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Opcao3Click(Sender: TObject);
@@ -357,10 +358,12 @@ var
   TipoDeVenda,
   Clausula,Vendedor : string ;
   InfoUltCompraCliente : TinfoRetornoUltCompra;
+  ParticipaComissao : Boolean;
 begin
   inherited;
   Msg.Caption := 'Apagando cálculo anterior...' ;
   Msg.Refresh ;
+  ParticipaComissao := rdgComissaoProduto.ItemIndex = 0;
 
   EditHoraINI.Text := FormatDateTime('dd/mm/yy hh:mm',Now);
   EditHoraINI.Update;
@@ -496,6 +499,10 @@ begin
     SQLItensVenda.MacrobyName('MData1').Value := 'NOTAFISCAL.NOFIDEMIS >= ''' + FormatDateTime('mm/dd/yyyy', De.Date) + ''' and ' +
                                                  'NOTAFISCAL.NOFIDEMIS <= ''' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '''' ;
 
+    if ParticipaComissao then
+      SQLItensVenda.MacroByName('MParticipa').Value := 'PRODUTO.PRODCGERACOMIS = ' + QuotedStr('S')
+    else
+      SQLItensVenda.MacroByName('MParticipa').Value := '0=0';
     SQLItensVenda.Open ;
     SQLItensVenda.First ;
 
@@ -571,6 +578,7 @@ begin
             SQLProduto.Open;
             if (SQLProduto.FieldByName('PRODCGERACOMIS').AsString = 'S') then
               begin
+                if SQLProduto.FieldByName('PRODN2COMISPRAZO').AsFloat > 0 then
                 begin
                   SQLVendedorComissaoVDCON2VLRCOMISS.Value     := Valor * (SQLProduto.FieldByName('PRODN2COMISPRAZO').AsFloat/100);
                   SQLVendedorComissaoVDCON2PERCOMISSAO.AsFloat := SQLProduto.FieldByName('PRODN2COMISPRAZO').AsFloat;
@@ -640,6 +648,7 @@ begin
           SQLProduto.Open;
           if (SQLProduto.FieldByName('PRODCGERACOMIS').AsString = 'S') then
             begin
+              if SQLProduto.FieldByName('PRODN2COMISPRAZO').AsFloat > 0 then
               begin
                 SQLVendedorComissaoVDCON2VLRCOMISS.Value     := SQLVendedorComissaoVDCON2VLRCOMISS.Value +
                                                                 (Valor * (SQLProduto.FieldByName('PRODN2COMISPRAZO').AsFloat/100));

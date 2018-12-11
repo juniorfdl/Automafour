@@ -1,21 +1,21 @@
 inherited FormTelaCalculoComissao: TFormTelaCalculoComissao
-  Left = 269
-  Top = 120
-  Width = 815
-  Height = 457
+  Left = 239
+  Top = 54
+  Width = 960
+  Height = 567
   Caption = 'Calcular Comiss'#245'es'
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
   inherited ScrollBoxFundo: TScrollBox
-    Width = 799
-    Height = 419
+    Width = 944
+    Height = 529
     inherited PanelCentral: TPanel
-      Width = 795
-      Height = 335
+      Width = 940
+      Height = 445
       inherited PanelBarra: TPanel
         Width = 141
-        Height = 335
+        Height = 445
         TabOrder = 2
         object Label2: TLabel
           Left = 14
@@ -263,7 +263,7 @@ inherited FormTelaCalculoComissao: TFormTelaCalculoComissao
       end
       object GroupBox3: TGroupBox
         Left = 151
-        Top = 199
+        Top = 235
         Width = 449
         Height = 170
         Caption = ' Problemas '
@@ -333,15 +333,28 @@ inherited FormTelaCalculoComissao: TFormTelaCalculoComissao
         Smooth = True
         TabOrder = 5
       end
+      object rdgComissaoProduto: TRadioGroup
+        Left = 151
+        Top = 197
+        Width = 226
+        Height = 34
+        Caption = 'Consiste se o produto particpa da comiss'#227'o'
+        Columns = 2
+        ItemIndex = 0
+        Items.Strings = (
+          'Sim'
+          'N'#227'o')
+        TabOrder = 6
+      end
     end
     inherited ScrollBoxTopo: TScrollBox
-      Width = 795
+      Width = 940
       inherited PanelCabecalho: TPanel
-        Width = 795
+        Width = 940
         object Msg: TLabel [1]
           Left = 0
           Top = 35
-          Width = 795
+          Width = 940
           Height = 13
           Align = alBottom
           Caption = '   Msg'
@@ -354,9 +367,9 @@ inherited FormTelaCalculoComissao: TFormTelaCalculoComissao
           Transparent = True
         end
         inherited PanelNavigator: TPanel
-          Width = 795
+          Width = 940
           inherited AdvPanelNavigator: TAdvOfficeStatusBar
-            Width = 795
+            Width = 940
             object BtnVisualizar: TSpeedButton
               Left = 2
               Top = 3
@@ -780,11 +793,13 @@ inherited FormTelaCalculoComissao: TFormTelaCalculoComissao
       
         'left outer join VENDEDOR ON NOTAFISCAL.VENDICOD = VENDEDOR.VENDI' +
         'COD'
+      'left join PRODUTO on PRODUTO.PRODICOD = NOTAFISCALITEM.PRODICOD'
       'where'
       'NOTAFISCAL.NOFICSTATUS = '#39'E'#39' and'
       'NOTAFISCALITEM.NFITN3QUANT > 0 and'
       '(%MVendedor) and'
-      '(%MData1)'
+      '(%MData1) and'
+      '(%MParticipa)'
       '')
     Macros = <
       item
@@ -802,6 +817,12 @@ inherited FormTelaCalculoComissao: TFormTelaCalculoComissao
       item
         DataType = ftString
         Name = 'MData1'
+        ParamType = ptInput
+        Value = '0=0'
+      end
+      item
+        DataType = ftString
+        Name = 'MParticipa'
         ParamType = ptInput
         Value = '0=0'
       end>

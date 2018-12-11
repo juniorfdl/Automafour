@@ -846,9 +846,10 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
               Width = 114
               Height = 21
               TabStop = False
-              Color = clWhite
+              Color = clSilver
               DataField = 'CTRCA15NOSSONUMERO'
               DataSource = DSTemplate
+              ReadOnly = True
               TabOrder = 6
             end
             object DBEdit7: TDBEdit
