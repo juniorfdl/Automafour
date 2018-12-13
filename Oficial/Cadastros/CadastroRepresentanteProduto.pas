@@ -51,8 +51,6 @@ type
     DBDateEdit3: TDBDateEdit;
     SQLTemplateENTRADA_SAIDA: TStringField;
     SQLTemplateDATA_REGISTRO: TDateTimeField;
-    Label14: TLabel;
-    RxDBComboBox2: TRxDBComboBox;
     grbEntrada: TcxGroupBox;
     Label5: TLabel;
     Label6: TLabel;
@@ -84,6 +82,7 @@ type
     cdsSerieStatus: TStringField;
     cdsSerieData_Registro: TDateField;
     cdsSerieEntrada_Saida: TStringField;
+    DBRadioGroup1: TDBRadioGroup;
     procedure EditProdutoEnter(Sender: TObject);
     procedure EditProdutoKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure BtnProdutoClick(Sender: TObject);
@@ -233,7 +232,9 @@ begin
   DataSet.FindField('REPRICOD').Value := DataSet.DataSource.DataSet.FindField('REPRICOD').Value;
   SQLTemplateSTATUS.AsString := 'D';
   SQLTemplateDATA_REGISTRO.AsDateTime := Now;
+  SQLTemplateENTRADA_SAIDA.AsString := '';
   SQLTemplateEMPRICOD.AsInteger := StrToInt(EmpresaPadrao);
+  cdsSerie.EmptyDataSet;
 end;
 
 procedure TFormCadastroRepresentanteProduto.btnConsultaFornecedorClick(Sender: TObject);
@@ -292,18 +293,33 @@ procedure TFormCadastroRepresentanteProduto.btnAdicionaNumSerieClick(Sender: TOb
 var
   ProdutoComSerie, NumeroSerie: string;
   i: Integer;
-begin
+begin                      
   inherited;
-  ProdutoComSerie := DM.SQLlocate('produto', 'prodicod', 'PRODCTEMNROSERIE', SQLTemplatePRODICOD.AsString);
+  if DBRadioGroup1.ItemIndex = 0 then
+    SQLTemplateENTRADA_SAIDA.AsString := 'E';
+  if DBRadioGroup1.ItemIndex = 1 then
+    SQLTemplateENTRADA_SAIDA.AsString := 'S';
+    ProdutoComSerie := DM.SQLlocate('produto', 'prodicod', 'PRODCTEMNROSERIE', SQLTemplatePRODICOD.AsString);
   if ProdutoComSerie = 'S' then
   begin
+    if SQLTemplateENTRADA_SAIDA.AsString = '' then
+    begin
+      ShowMessage('Informe se o lançamento é entrada ou saída!');
+      DBRadioGroup1.SetFocus;
+      Abort;
+    end;
     NumeroSerie := '';
     cdsSerie.EmptyDataSet;
     CodigoProduto := SQLTemplatePRODICOD.AsString;
+    if SQLTemplateENTRADA_SAIDA.AsString = 'S' then
+      Status := 'D'
+    else
+      Status := 'U';
     Application.CreateForm(TFormTelaInformaNumeroSerieProduto, FormTelaInformaNumeroSerieProduto);
+    FormTelaInformaNumeroSerieProduto.Valida_Qtde := False;
     FormTelaInformaNumeroSerieProduto.ShowModal;
-    for i := 1 to FormTelaInformaNumeroSerieProduto.RXSerie.RecordCount do
-    begin
+//    for i := 1 to FormTelaInformaNumeroSerieProduto.RXSerie.RecordCount do
+//    begin
       if FormTelaInformaNumeroSerieProduto.ModalResult = MrOK then
       begin
         FormTelaInformaNumeroSerieProduto.RXSerie.First;
@@ -317,7 +333,7 @@ begin
           FormTelaInformaNumeroSerieProduto.RXSerie.Next;
         end;
       end;
-    end;
+//    end;
     FormTelaInformaNumeroSerieProduto.Destroy;
   end
   else
@@ -326,11 +342,33 @@ end;
 
 procedure TFormCadastroRepresentanteProduto.GravarNumeroSeries;
 var
-  vREPRICOD:Integer;
+  vREPRICOD, vOperacaoEstoque : Integer;
+  vStatus, Documento, NomeCliFor : string;
 begin
+  if SQLTemplateENTRADA_SAIDA.AsString = 'E' then
+  begin
+    vStatus := 'D';
+    vOperacaoEstoque := 24;
+  end
+  else
+  begin
+    vStatus := 'U';
+    vOperacaoEstoque := 25;
+  end;
+  if SQLTemplateNOFIA13ID.AsString <> '' then
+  begin
+    documento := SQLTemplateNOFIA13ID.AsString;
+    NomeCliFor := SQLTemplateNomeClienteLookUp.AsString;
+  end
+  else
+  begin
+    documento := SQLTemplateNOCPA13ID.AsString;
+    NomeCliFor := SQLTemplateNomeFornecedorLookUp.AsString;
+  end;
+
   if not cdsSerie.IsEmpty then
   begin
-    vREPRICOD := SQLTemplateREPRICOD.asinteger;// + 1;
+    vREPRICOD := SQLTemplateREPRICOD.asinteger; // + 1;
     cdsSerie.first;
     while not cdsSerie.Eof do
     begin
@@ -369,33 +407,57 @@ begin
       DM.SQLUpdate.SQL.Add('''' + SQLTemplateEMPRICOD.AsString + ''',');
       DM.SQLUpdate.SQL.Add('''' + SQLTemplateSTATUS.AsString + ''',');
       DM.SQLUpdate.SQL.Add('''' + SQLTemplateENTRADA_SAIDA.AsString + ''',');
-      DM.SQLUpdate.SQL.Add('''' + FormatDateTime('mm/dd/yyyy', SQLTemplateDATE_ENTRADA.AsDateTime) + ''')');
+      DM.SQLUpdate.SQL.Add('''' + FormatDateTime('mm/dd/yyyy', SQLTemplateDATA_REGISTRO.AsDateTime) + ''')');
       DM.SQLUpdate.ExecSQL;
+      if cdsSerieNumeroSerie.AsString <> '' then
+        GravaSaidaNroSerieProduto(cdsSerieNumeroSerie.AsString,
+                                  SQLTemplatePRODICOD.AsString,
+                                  vStatus,
+                                  EmpresaPadrao,
+                                  SQLTemplateCLIEA13ID.AsString,
+                                  '',
+                                  '',
+                                  SQLTemplateNOFIA13ID.AsString, '');
+          GravaMovimentoEstoque(DM.SQLProduto,
+                                DM.SQLProdutoFilho,
+                                DM.SQLProdutoSaldo,
+                                StrToInt(EmpresaPadrao),
+                                SQLTemplatePRODICOD.Value,
+                                vOperacaoEstoque,
+                                1.00,
+                                SQLTemplateENTRADA_SAIDA.AsString,
+                                FormatDateTime('mm/dd/yyyy', Now),
+                                '0', //Valor
+                                'MOVIMENTOSDIVERSOS',
+                                'REP'+FormatDateTime('dd/mm/yy', Now),
+                                '');
+          GravaMovimentoNumeroSerie(EmpresaPadrao,
+                                    cdsSerieNumeroSerie.AsString,
+                                    SQLTemplateENTRADA_SAIDA.AsString,
+                                    documento,
+                                    NomeCliFor,
+                                    SQLTemplatePRODICOD.AsInteger,
+                                    SQLTemplateDATA_REGISTRO.AsDateTime);
       cdsSerie.Next;
     end;
   end;
 end;
 
-procedure TFormCadastroRepresentanteProduto.SQLTemplateBeforePost(
-  DataSet: TDataSet);
+procedure TFormCadastroRepresentanteProduto.SQLTemplateBeforePost(DataSet: TDataSet);
 begin
   if (SQLTemplatePRSEA60NROSERIE.AsString = '') then
   begin
     ShowMessage('Nenhum número de série informado!');
     Abort;
   end;
-
-
   inherited;
 
 end;
 
-procedure TFormCadastroRepresentanteProduto.SQLTemplateAfterPost(
-  DataSet: TDataSet);
+procedure TFormCadastroRepresentanteProduto.SQLTemplateAfterPost(DataSet: TDataSet);
 begin
   inherited;
   GravarNumeroSeries;
 end;
-
 end.
 

@@ -1616,6 +1616,7 @@ var Info, Identificador, NossoNro, PathBanco, NomeArquivo, ValorTitulo, Ocorrenc
     NroLinhas : integer;
     FormMovRetornoSicredi: TFormTelaMovimentoRetornoSicredi;
     ListaNossoNumero, ListaOcorrencias, ListaValorJuros, ListaValorDocumento, ListaValorMulta: TStrings;
+    Gravar : Boolean;
 begin
   inherited;
   ValorTitulo := '0,00';
@@ -1682,12 +1683,14 @@ begin
 
       if Identificador = '041' then
       begin
-        NossoNro := Copy(Info, 63, 10);
-
+        NossoNro := Copy(Info, 63, 08);
+        Gravar := Copy(Info,01,01) = '1';
+        NossoNro := RemoverZeros(NossoNro);
         if NossoNro = '          ' then NossoNro := '';
         if NossoNro = '0000000000' then NossoNro := '';
+        if NossoNro = '0'          then NossoNro := '';
 
-        if IsNumeric(NossoNro,'INTEGER') then
+        if (IsNumeric(NossoNro,'INTEGER')) and (Gravar) then
         begin
           Ocorrencia := Copy(Info, 109, 2);
           ListaNossoNumero.Add(NossoNro);
@@ -1738,15 +1741,22 @@ begin
   TblRecebimento.Open;
   while not EOF(Texto) do
   begin
-    Read(Texto,Info);
-    Progress.Position := Progress.Position + 1 ;
+    Readln(Texto,Info);
+    Progress.Position := Progress.Position + 1;
 
     if Identificador = '041' then {Banrisul}
       begin
-        NossoNro := Copy(Info, 63, 10) ;
+        NossoNro := Copy(Info, 63, 08);
+        NossoNro := RemoverZeros(NossoNro);
+        Gravar := Copy(Info,01,01) = '1';
         if NossoNro = '          ' then NossoNro := '';
         if NossoNro = '0000000000' then NossoNro := '';
-        if NossoNro <> '' then
+        if NossoNro = '0'          then NossoNro := '';
+        ValorJuros := Copy(Info,267,13);
+        ValorMulta := Copy(Info,280,13);
+        Ocorrencia := Copy(Info,109,02);
+
+        if (NossoNro <> '') and (Gravar) and (Ocorrencia = '06') then
           begin
             try
               {tenta converter apenas numeros pois o banrisul retorna o nosso nro com zeros na frente e no banco estou gravando sem zeros}
@@ -1772,6 +1782,8 @@ begin
                 TblRecebimento.FieldByName('ValorDesconto').AsFloat   := SQLContasReceber.FieldByName('CTRCN2DESCFIN').AsFloat;
                 TblRecebimento.FieldByName('ValorTotal').AsFloat      := SQLContasReceber.FieldByName('CTRCN2VLR').AsFloat;
                 TblRecebimento.FieldByName('Emissao').AsFloat         := SQLContasReceber.FieldByName('CTRCDEMIS').AsFloat;
+                TblRecebimento.FieldByName('ValorJuro').AsFloat       := StrToFloat(ValorJuros) / 100;
+                TblRecebimento.FieldByName('ValorMulta').AsFloat      := StrToFloat(ValorMulta) / 100;
 
                 if SQLContasReceber.FieldByName('NOFIA13ID').asVariant <> Null Then
                   begin

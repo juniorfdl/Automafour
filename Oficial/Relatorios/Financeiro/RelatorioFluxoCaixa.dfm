@@ -1,8 +1,9 @@
 inherited FormRelatorioFluxoCaixa: TFormRelatorioFluxoCaixa
-  Left = 551
-  Top = 92
+  Left = 287
+  Top = 75
   Caption = 'Fluxo de Caixa'
   ClientWidth = 794
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   inherited Progresso: TProgressBar
@@ -13,14 +14,28 @@ inherited FormRelatorioFluxoCaixa: TFormRelatorioFluxoCaixa
   inherited ScrollBox: TScrollBox
     Width = 794
     inherited PanelCentro: TPanel
-      Height = 306
+      Top = 97
+      Height = 324
       inherited BtnVisualizar: TSpeedButton
         Left = 150
-        Top = 261
+        Top = 292
+      end
+      inherited GroupBox1: TGroupBox
+        Top = 198
+        object chkListaBoleto: TCheckBox
+          Left = 249
+          Top = 18
+          Width = 150
+          Height = 17
+          Caption = 'Listar Boletos Quitados'
+          Checked = True
+          State = cbChecked
+          TabOrder = 2
+        end
       end
       object GroupSaldo: TGroupBox
         Left = 12
-        Top = 203
+        Top = 239
         Width = 135
         Height = 45
         Caption = 'Saldo Inicial'
@@ -44,7 +59,7 @@ inherited FormRelatorioFluxoCaixa: TFormRelatorioFluxoCaixa
       end
       object RadioModoVisual: TRadioGroup
         Left = 148
-        Top = 203
+        Top = 239
         Width = 271
         Height = 45
         Caption = 'Modo de Visualiza'#231#227'o'
@@ -62,6 +77,39 @@ inherited FormRelatorioFluxoCaixa: TFormRelatorioFluxoCaixa
         ParentFont = False
         TabOrder = 3
       end
+      object GroupBox2: TGroupBox
+        Left = 12
+        Top = 158
+        Width = 407
+        Height = 41
+        Caption = 'Porta&dor'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 4
+        object ComboPortador: TRxDBLookupCombo
+          Left = 44
+          Top = 15
+          Width = 357
+          Height = 21
+          DropDownCount = 8
+          DisplayEmpty = 'Todas'
+          EmptyValue = 'Todas'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          LookupField = 'PORTICOD'
+          LookupDisplay = 'PORTA60DESCR'
+          LookupSource = DSSQLPortador
+          ParentFont = False
+          TabOrder = 0
+        end
+      end
     end
     inherited ScrollBoxTopo: TScrollBox
       Width = 790
@@ -78,50 +126,108 @@ inherited FormRelatorioFluxoCaixa: TFormRelatorioFluxoCaixa
   end
   inherited TblTemporaria: TTable
     TableName = 'FluxoCaixa.db'
-    object TblTemporariaData: TDateTimeField
-      FieldName = 'Data'
+    object TblTemporariaPortador: TStringField
+      FieldName = 'Portador'
+      Size = 25
     end
-    object TblTemporariaReceber: TFloatField
-      FieldName = 'Receber'
+    object TblTemporariaDataPrevista: TDateField
+      FieldName = 'DataPrevista'
     end
-    object TblTemporariaPagar: TFloatField
-      FieldName = 'Pagar'
+    object TblTemporariaPagarReceber: TStringField
+      FieldName = 'PagarReceber'
+      Size = 13
+    end
+    object TblTemporariaCliente: TStringField
+      FieldName = 'Cliente'
+      Size = 60
+    end
+    object TblTemporariaDataVencimento: TDateField
+      FieldName = 'DataVencimento'
+    end
+    object TblTemporariaDebito: TFloatField
+      FieldName = 'Debito'
+    end
+    object TblTemporariaCredito: TFloatField
+      FieldName = 'Credito'
     end
     object TblTemporariaSaldo: TFloatField
       FieldName = 'Saldo'
+    end
+    object TblTemporariaConta: TStringField
+      FieldName = 'Conta'
+      Size = 60
+    end
+    object TblTemporariaHistorico: TStringField
+      FieldName = 'Historico'
+      Size = 100
+    end
+    object TblTemporariaAgendado: TStringField
+      FieldName = 'Agendado'
+      Size = 1
     end
   end
   object SQLReceber: TRxQuery
     DatabaseName = 'DB'
     SQL.Strings = (
-      'Select'
       
-        'Sum(ContasReceber.CTRCN2VLR - ContasReceber.CTRCN2TOTREC) as Val' +
-        'orReceber,'
-      'ContasReceber.CTRCDVENC'
-      'from'
-      'ContasReceber'
-      'where'
-      ' ContasReceber.CTRCCSTATUS <> '#39'C'#39' and'
+        'select sum(CONTASRECEBER.CTRCN2VLR - CONTASRECEBER.CTRCN2TOTREC)' +
+        ' as VALORRECEBER, sum(CONTASRECEBER.CTRCN2TOTREC) VALORRECEBIDO,'
       
-        ' (ContasReceber.CTRCN2TOTREC < ContasReceber.CTRCN2VLR or Contas' +
-        'Receber.CTRCN2TOTREC is null )and'
-      '(%Empresa)and'
-      '(%Data)'
-      'Group by'
-      'ContasReceber.CTRCDVENC'
-      'order by'
-      'ContasReceber.CTRCDVENC')
+        '       CONTASRECEBER.PORTICOD, PORTADOR.PORTA60DESCR, CONTASRECE' +
+        'BER.CTRCDVENC, CONTASRECEBER.DATA_PREVISTA, CONTASRECEBER.PREVIS' +
+        'TO,'
+      
+        '       CONTASRECEBER.CLIEA13ID, CLIENTE.CLIEA60RAZAOSOC, CONTASR' +
+        'ECEBER.PLCTA15COD, PLANODECONTAS.PLCTA60DESCR,'
+      '       CONTASRECEBER.CTRCA254HIST, CONTASRECEBER.CTRCA13ID '
+      'from CONTASRECEBER'
+      
+        'inner join CLIENTE on CLIENTE.CLIEA13ID = CONTASRECEBER.CLIEA13I' +
+        'D'
+      
+        'inner join PORTADOR on PORTADOR.PORTICOD = CONTASRECEBER.PORTICO' +
+        'D'
+      
+        'left join PLANODECONTAS on PLANODECONTAS.PLCTA15COD = CONTASRECE' +
+        'BER.PLCTA15COD'
+      
+        'left join TIPODOCUMENTO on TIPODOCUMENTO.TPDCICOD = CONTASRECEBE' +
+        'R.TPDCICOD'
+      'where CONTASRECEBER.CTRCCSTATUS <> '#39'C'#39' and'
+      '      CONTASRECEBER.PORTICOD > 0 and'
+      '     (%FILTRO) and'
+      '      (%EMPRESA) and'
+      '      (%DATA) and'
+      '      (%Portador)'
+      
+        'group by CONTASRECEBER.PORTICOD, PORTADOR.PORTA60DESCR, CONTASRE' +
+        'CEBER.CTRCDVENC, CONTASRECEBER.DATA_PREVISTA, CONTASRECEBER.PREV' +
+        'ISTO, CONTASRECEBER.CLIEA13ID, CLIENTE.CLIEA60RAZAOSOC, CONTASRE' +
+        'CEBER.PLCTA15COD, PLANODECONTAS.PLCTA60DESCR, CONTASRECEBER.CTRC' +
+        'A254HIST, CONTASRECEBER.CTRCA13ID '
+      'order by PORTADOR.PORTA60DESCR, CONTASRECEBER.DATA_PREVISTA')
     Macros = <
       item
         DataType = ftString
-        Name = 'Empresa'
+        Name = 'FILTRO'
         ParamType = ptInput
         Value = '0=0'
       end
       item
         DataType = ftString
-        Name = 'Data'
+        Name = 'EMPRESA'
+        ParamType = ptInput
+        Value = '0=0'
+      end
+      item
+        DataType = ftString
+        Name = 'DATA'
+        ParamType = ptInput
+        Value = '0=0'
+      end
+      item
+        DataType = ftString
+        Name = 'Portador'
         ParamType = ptInput
         Value = '0=0'
       end>
@@ -130,40 +236,110 @@ inherited FormRelatorioFluxoCaixa: TFormRelatorioFluxoCaixa
     object SQLReceberVALORRECEBER: TFloatField
       FieldName = 'VALORRECEBER'
     end
+    object SQLReceberPORTICOD: TIntegerField
+      FieldName = 'PORTICOD'
+    end
+    object SQLReceberPORTA60DESCR: TStringField
+      FieldName = 'PORTA60DESCR'
+      FixedChar = True
+      Size = 60
+    end
     object SQLReceberCTRCDVENC: TDateTimeField
       FieldName = 'CTRCDVENC'
+    end
+    object SQLReceberDATA_PREVISTA: TDateTimeField
+      FieldName = 'DATA_PREVISTA'
+    end
+    object SQLReceberPREVISTO: TStringField
+      FieldName = 'PREVISTO'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLReceberCLIEA13ID: TStringField
+      FieldName = 'CLIEA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLReceberCLIEA60RAZAOSOC: TStringField
+      FieldName = 'CLIEA60RAZAOSOC'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLReceberPLCTA15COD: TStringField
+      FieldName = 'PLCTA15COD'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLReceberPLCTA60DESCR: TStringField
+      FieldName = 'PLCTA60DESCR'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLReceberCTRCA254HIST: TStringField
+      FieldName = 'CTRCA254HIST'
+      FixedChar = True
+      Size = 254
+    end
+    object SQLReceberCTRCA13ID: TStringField
+      FieldName = 'CTRCA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLReceberVALORRECEBIDO: TFloatField
+      FieldName = 'VALORRECEBIDO'
     end
   end
   object SQLPagar: TRxQuery
     DatabaseName = 'DB'
     SQL.Strings = (
-      'Select'
       
-        'Sum(ContasPagar.CTPGN3VLR - ContasPagar.CTPGN2TOTPAG) as ValorPa' +
-        'gar,'
-      'ContasPagar.CTPGDVENC'
-      'from'
-      'ContasPagar'
-      'where'
+        'select sum(CONTASPAGAR.CTPGN3VLR - CONTASPAGAR.CTPGN2TOTPAG) as ' +
+        'VALORPAGAR, CONTASPAGAR.PORTICOD, PORTADOR.PORTA60DESCR,'
       
-        '(ContasPagar.CTPGN3VLR > ContasPagar.CTPGN2TOTPAG or ContasPagar' +
-        '.CTPGN2TOTPAG is null)and'
-      '(%Empresa)and'
-      '(%Data)'
-      'Group by'
-      'ContasPagar.CTPGDVENC'
-      'order by'
-      'ContasPagar.CTPGDVENC')
+        '       CONTASPAGAR.CTPGDVENC, CONTASPAGAR.DATA_PREVISTA, CONTASP' +
+        'AGAR.PREVISTO, CONTASPAGAR.FORNICOD,'
+      
+        '       FORNECEDOR.FORNA60RAZAOSOC, CONTASPAGAR.PLCTA15COD, PLANO' +
+        'DECONTAS.PLCTA60DESCR, CONTASPAGAR.CTPGA254HIST,CONTASPAGAR.CTPG' +
+        'A13ID'
+      'from CONTASPAGAR'
+      
+        'inner join FORNECEDOR on FORNECEDOR.FORNICOD = CONTASPAGAR.FORNI' +
+        'COD'
+      
+        'left join PLANODECONTAS on PLANODECONTAS.PLCTA15COD = CONTASPAGA' +
+        'R.PLCTA15COD'
+      'inner join PORTADOR on PORTADOR.PORTICOD = CONTASPAGAR.PORTICOD'
+      
+        'where (CONTASPAGAR.CTPGN3VLR > CONTASPAGAR.CTPGN2TOTPAG or CONTA' +
+        'SPAGAR.CTPGN2TOTPAG is null) and'
+      '      CONTASPAGAR.PORTICOD > 0 and'
+      '      (%EMPRESA) and'
+      '      (%DATA) and'
+      '      (%Portador)'
+      
+        'group by CONTASPAGAR.PORTICOD, PORTADOR.PORTA60DESCR, CONTASPAGA' +
+        'R.CTPGDVENC, CONTASPAGAR.DATA_PREVISTA, CONTASPAGAR.PREVISTO, CO' +
+        'NTASPAGAR.FORNICOD, FORNECEDOR.FORNA60RAZAOSOC, CONTASPAGAR.PLCT' +
+        'A15COD, PLANODECONTAS.PLCTA60DESCR, CONTASPAGAR.CTPGA254HIST,CON' +
+        'TASPAGAR.CTPGA13ID'
+      'order by PORTADOR.PORTA60DESCR,CONTASPAGAR.CTPGDVENC  ')
     Macros = <
       item
         DataType = ftString
-        Name = 'Empresa'
+        Name = 'EMPRESA'
         ParamType = ptInput
         Value = '0=0'
       end
       item
         DataType = ftString
-        Name = 'Data'
+        Name = 'DATA'
+        ParamType = ptInput
+        Value = '0=0'
+      end
+      item
+        DataType = ftString
+        Name = 'Portador'
         ParamType = ptInput
         Value = '0=0'
       end>
@@ -172,8 +348,52 @@ inherited FormRelatorioFluxoCaixa: TFormRelatorioFluxoCaixa
     object SQLPagarVALORPAGAR: TFloatField
       FieldName = 'VALORPAGAR'
     end
+    object SQLPagarPORTICOD: TIntegerField
+      FieldName = 'PORTICOD'
+    end
+    object SQLPagarPORTA60DESCR: TStringField
+      FieldName = 'PORTA60DESCR'
+      FixedChar = True
+      Size = 60
+    end
     object SQLPagarCTPGDVENC: TDateTimeField
       FieldName = 'CTPGDVENC'
+    end
+    object SQLPagarDATA_PREVISTA: TDateTimeField
+      FieldName = 'DATA_PREVISTA'
+    end
+    object SQLPagarPREVISTO: TStringField
+      FieldName = 'PREVISTO'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLPagarFORNICOD: TIntegerField
+      FieldName = 'FORNICOD'
+    end
+    object SQLPagarFORNA60RAZAOSOC: TStringField
+      FieldName = 'FORNA60RAZAOSOC'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLPagarPLCTA15COD: TStringField
+      FieldName = 'PLCTA15COD'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLPagarPLCTA60DESCR: TStringField
+      FieldName = 'PLCTA60DESCR'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLPagarCTPGA254HIST: TStringField
+      FieldName = 'CTPGA254HIST'
+      FixedChar = True
+      Size = 254
+    end
+    object SQLPagarCTPGA13ID: TStringField
+      FieldName = 'CTPGA13ID'
+      FixedChar = True
+      Size = 13
     end
   end
   object Report: TCrpe
@@ -559,5 +779,30 @@ inherited FormRelatorioFluxoCaixa: TFormRelatorioFluxoCaixa
       FixedChar = True
       Size = 1
     end
+  end
+  object SQLPortador: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'select PORTICOD, PORTA60DESCR'
+      'from PORTADOR  ')
+    Macros = <>
+    Left = 517
+    Top = 5
+    object SQLPortadorPORTICOD: TIntegerField
+      FieldName = 'PORTICOD'
+      Origin = 'DB.PORTADOR.PORTICOD'
+      OnChange = SQLPortadorPORTICODChange
+    end
+    object SQLPortadorPORTA60DESCR: TStringField
+      FieldName = 'PORTA60DESCR'
+      Origin = 'DB.PORTADOR.PORTA60DESCR'
+      FixedChar = True
+      Size = 60
+    end
+  end
+  object DSSQLPortador: TDataSource
+    DataSet = SQLPortador
+    Left = 546
+    Top = 5
   end
 end

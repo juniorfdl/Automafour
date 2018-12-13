@@ -1,6 +1,6 @@
 inherited FormCadastroContasReceber: TFormCadastroContasReceber
-  Left = 12
-  Top = 20
+  Left = 127
+  Top = 25
   Caption = 'Cadastro de Documentos '#224' Receber'
   ClientHeight = 652
   ClientWidth = 1366
@@ -178,7 +178,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
               ParentFont = False
             end
             object Label5: TLabel
-              Left = 471
+              Left = 564
               Top = 74
               Width = 74
               Height = 13
@@ -338,8 +338,8 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
               ParentFont = False
             end
             object Label14: TLabel
-              Left = 572
-              Top = 74
+              Left = 660
+              Top = 10
               Width = 37
               Height = 13
               Caption = 'Status'
@@ -527,6 +527,20 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
               Font.Style = [fsBold]
               ParentFont = False
             end
+            object Label28: TLabel
+              Left = 467
+              Top = 74
+              Width = 47
+              Height = 13
+              Caption = 'Previsto'
+              FocusControl = DBDateEdit2
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clNavy
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
             object DBEdit3: TDBEdit
               Left = 6
               Top = 16
@@ -562,7 +576,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
               OnExit = DBEdit4Exit
             end
             object EditValor: TEvDBNumEdit
-              Left = 467
+              Left = 560
               Top = 87
               Width = 98
               Height = 21
@@ -594,7 +608,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
                 FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5E
                 FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
                 FF5EFF5EFF5EFF5EFF5E}
-              TabOrder = 9
+              TabOrder = 10
             end
             object DBEdit13: TDBEdit
               Left = 6
@@ -806,8 +820,8 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
                 'N')
             end
             object ComboStatus: TRxDBComboBox
-              Left = 569
-              Top = 87
+              Left = 657
+              Top = 23
               Width = 106
               Height = 21
               Style = csDropDownList
@@ -820,7 +834,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
                 'Ativo'
                 'Cancelado'
                 'Negociado')
-              TabOrder = 10
+              TabOrder = 29
               Values.Strings = (
                 'A'
                 'C'
@@ -831,6 +845,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
               Top = 87
               Width = 114
               Height = 21
+              TabStop = False
               Color = clSilver
               DataField = 'CTRCA15NOSSONUMERO'
               DataSource = DSTemplate
@@ -964,6 +979,31 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
               DataSource = DSTemplate
               TabOrder = 28
               OnKeyDown = DBEdit7KeyDown
+            end
+            object DBDateEdit2: TDBDateEdit
+              Left = 465
+              Top = 87
+              Width = 95
+              Height = 21
+              Cursor = crHandPoint
+              DataField = 'DATA_PREVISTA'
+              DataSource = DSTemplate
+              NumGlyphs = 2
+              TabOrder = 9
+              YearDigits = dyFour
+              OnExit = DBEdit4Exit
+            end
+            object DBCheckBox1: TDBCheckBox
+              Left = 656
+              Top = 55
+              Width = 97
+              Height = 17
+              Caption = 'Agendado'
+              DataField = 'PREVISTO'
+              DataSource = DSTemplate
+              TabOrder = 30
+              ValueChecked = 'S'
+              ValueUnchecked = 'N'
             end
           end
           inherited PagePrincipal: TPageControl [1]
@@ -2140,6 +2180,18 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
       Origin = 'DB.CONTASRECEBER.VALOR_LIQUIDO'
       DisplayFormat = '#,##0.00'
     end
+    object SQLTemplateDATA_PREVISTA: TDateTimeField
+      DisplayLabel = 'Data Previs'#227'o'
+      FieldName = 'DATA_PREVISTA'
+      Origin = 'DB.CONTASRECEBER.DATA_PREVISTA'
+    end
+    object SQLTemplatePREVISTO: TStringField
+      DisplayLabel = 'Previsto'
+      FieldName = 'PREVISTO'
+      Origin = 'DB.CONTASRECEBER.PREVISTO'
+      FixedChar = True
+      Size = 1
+    end
   end
   inherited UpdateSQLTemplate: TUpdateSQL
     ModifySQL.Strings = (
@@ -3014,7 +3066,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
   object ppPromissoria: TppReport
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Custom'
+    PrinterSetup.PaperName = 'A4'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350
@@ -3022,7 +3074,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 297000
     PrinterSetup.mmPaperWidth = 210000
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.PaperSize = 9
     DeviceType = 'Screen'
     EmailSettings.ReportFormat = 'PDF'
     OutlineSettings.CreateNode = True
@@ -3273,7 +3325,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
   object ppRecibo: TppReport
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Custom'
+    PrinterSetup.PaperName = 'A4'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350
@@ -3281,7 +3333,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 297000
     PrinterSetup.mmPaperWidth = 210000
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.PaperSize = 9
     DeviceType = 'Screen'
     EmailSettings.ReportFormat = 'PDF'
     OutlineSettings.CreateNode = True

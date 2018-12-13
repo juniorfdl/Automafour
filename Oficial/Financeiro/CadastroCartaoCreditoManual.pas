@@ -202,6 +202,7 @@ type
     procedure BtParcExcluirClick(Sender: TObject);
     procedure BtParcGravarClick(Sender: TObject);
     procedure SQLContasReceberBeforePost(DataSet: TDataSet);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -389,6 +390,13 @@ begin
       IDContasReceber := IDContasReceber + DigitVerifEAN(IDContasReceber);
       SQLContasReceberCTRCA13ID.Value := IDContasReceber;
     end;
+end;
+
+procedure TFormCadastroCartaoCreditoManual.FormShow(Sender: TObject);
+begin
+  inherited;
+  if not (dm.SQLConfigCrediario.Active) then
+    dm.SQLConfigCrediario.Open;
 end;
 
 end.

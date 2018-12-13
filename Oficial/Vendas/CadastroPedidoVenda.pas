@@ -2428,7 +2428,7 @@ begin
 
   DM.TblPedidoFinan.Open;
 
-  if SQLParcelasVista <> nil then
+{  if SQLParcelasVista <> nil then
   begin
     if not SQLParcelasVista.Active then
       SQLParcelasVista.Open;
@@ -2459,7 +2459,7 @@ begin
       SQLParcelasPrazo.Next;
     end;
   end;
-  DM.TblPedidoFinan.Close;
+  DM.TblPedidoFinan.Close;}
 
 //  Report.DiscardSavedData := True;
   Report.ReportName := DM.SQLConfigGeralCFGEA255PATHREPORT.Value + '\Pedido Personalizado.rpt';

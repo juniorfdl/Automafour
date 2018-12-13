@@ -424,8 +424,6 @@ begin
       Servico.CodigoPais := 1058; // Brasil
       Servico.Discriminacao := IsqlDadosNota.fieldbyname('DESCRICAO_SERVICO').AsString;
 
-      Servico. PercentualCargaTributaria ValorCargaTributaria
-
       with Servico.ItemServico.Add do
       begin
         Descricao := IsqlDadosNota.fieldbyname('DESCRICAO_SERVICO').AsString;

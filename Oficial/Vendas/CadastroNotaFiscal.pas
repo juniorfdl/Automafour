@@ -5915,6 +5915,21 @@ begin
       SQLTemplate.FindField('USUAICOD').AsInteger := InfoRetorno.CodUsuarioAutenticado;
       SQLTemplate.FindField('USUAA60LOGIN').AsString := InfoRetorno.NomeUsuarioAutenticado;
       SQLTemplate.FindField('NOFIDCANCEL').AsDateTime := Date;
+{      dm.SqlConsulta.SQL.Clear;
+      dm.SqlConsulta.SQL.Add('Select PRSEA60NROSERIE,PRODICOD from produtoserie where NOFIA13ID = ''' + SQLTemplate.FindField('NOFIA13ID').Value + '''');
+      dm.SqlConsulta.Prepare;
+      dm.SqlConsulta.Open;
+      while not DM.SqlConsulta.Eof do
+      begin
+        if dm.SqlConsulta.fieldbyname('PRSEA60NROSERIE').Value <> '' then
+           GravaSaidaNroSerieProduto(dm.SqlConsulta.fieldbyname('PRSEA60NROSERIE').Value,
+           dm.SqlConsulta.fieldbyname('PRODICOD').AsString,
+           'D',
+           EmpresaPadrao,
+           SQLTemplate.FindField('CLIEA13ID').AsString, '', '',
+           SQLTemplate.FindField('NOFIA13ID').AsString, '');
+        dm.SqlConsulta.Next;
+      end;}
       SQLTemplate.Post;
       CancelandoNota := False;
     end;

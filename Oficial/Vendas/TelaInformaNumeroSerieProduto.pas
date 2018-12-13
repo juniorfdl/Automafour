@@ -33,9 +33,10 @@ type
   private
     { Private declarations }
     CdProduto: string;
-    procedure prc_Abrir_Tabela_Serie(Produto, Empresa: string);
+    procedure prc_Abrir_Tabela_Serie(Produto, Empresa, Status: string);
   public
     NumeroItens : Integer;
+    Valida_Qtde : Boolean;
     { Public declarations }
   end;
 
@@ -51,7 +52,7 @@ uses
 
 procedure TFormTelaInformaNumeroSerieProduto.BitBtn1Click(Sender: TObject);
 begin
-  if RXSerie.RecordCount <> NumeroItens then
+  if (RXSerie.RecordCount <> NumeroItens) and (Valida_Qtde) then
   begin
     MessageDlg('Número de itens selecionado não corresponde a quantidade informado na nota',mtInformation,[mbOK],0);
     Exit;
@@ -76,19 +77,18 @@ begin
   FormTelaInformaNumeroSerieProduto.ModalResult := MrOK
 end;
 
-procedure TFormTelaInformaNumeroSerieProduto.prc_Abrir_Tabela_Serie(Produto, Empresa: string);
+procedure TFormTelaInformaNumeroSerieProduto.prc_Abrir_Tabela_Serie(Produto, Empresa, Status: string);
 begin
   SQLProdutoSerie.Close;
   SQLProdutoSerie.ParamByName('PRODUTO').AsString := Produto;
   SQLProdutoSerie.ParamByName('EMPRESA').AsString := Empresa;
+  SQLProdutoSerie.ParamByName('STATUS').AsString := Status;
   SQLProdutoSerie.Open;
 end;
 
 procedure TFormTelaInformaNumeroSerieProduto.FormCreate(Sender: TObject);
 begin
-  prc_Abrir_Tabela_Serie(CodigoProduto, EmpresaPadrao);
-  RXSerie.EmptyTable;
-  RXSerie.Open;
+  prc_Abrir_Tabela_Serie(CodigoProduto, EmpresaPadrao,Status);
 end;
 
 procedure TFormTelaInformaNumeroSerieProduto.DBGridListaKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -130,6 +130,8 @@ end;
 
 procedure TFormTelaInformaNumeroSerieProduto.FormShow(Sender: TObject);
 begin
+  RXSerie.EmptyTable;
+  RXSerie.Open;
   DBGridLista.SetFocus;
 end;
 

@@ -12,14 +12,7 @@ uses
 type
   TFormRelatorioFluxoCaixa = class(TFormRelatorioTEMPLATE)
     SQLReceber: TRxQuery;
-    SQLReceberVALORRECEBER: TFloatField;
-    SQLReceberCTRCDVENC: TDateTimeField;
     SQLPagar: TRxQuery;
-    TblTemporariaReceber: TFloatField;
-    TblTemporariaPagar: TFloatField;
-    TblTemporariaSaldo: TFloatField;
-    SQLPagarVALORPAGAR: TFloatField;
-    SQLPagarCTPGDVENC: TDateTimeField;
     GroupSaldo: TGroupBox;
     SaldoInicial: TCurrencyEdit;
     Report: TCrpe;
@@ -45,7 +38,6 @@ type
     SQLPagarRegistrosCLIENTEFORNECEDOR: TStringField;
     SQLPagarRegistrosPLANOCONTAS: TStringField;
     SQLPagarRegistrosTIPODOCUMENTO: TStringField;
-    TblTemporariaData: TDateTimeField;
     SQLReceberRegistrosTIPO: TStringField;
     SQLPagarRegistrosTIPO: TStringField;
     TblRegistrosID: TStringField;
@@ -58,7 +50,52 @@ type
     TblRegistrosTIPODOCUMENTO: TStringField;
     TblRegistrosTIPO: TStringField;
     TblRegistrosVALOR: TFloatField;
+    SQLReceberVALORRECEBER: TFloatField;
+    SQLReceberPORTICOD: TIntegerField;
+    SQLReceberPORTA60DESCR: TStringField;
+    SQLReceberCTRCDVENC: TDateTimeField;
+    SQLReceberDATA_PREVISTA: TDateTimeField;
+    SQLReceberPREVISTO: TStringField;
+    SQLReceberCLIEA13ID: TStringField;
+    SQLReceberCLIEA60RAZAOSOC: TStringField;
+    SQLReceberPLCTA15COD: TStringField;
+    SQLReceberPLCTA60DESCR: TStringField;
+    SQLPagarVALORPAGAR: TFloatField;
+    SQLPagarPORTICOD: TIntegerField;
+    SQLPagarPORTA60DESCR: TStringField;
+    SQLPagarCTPGDVENC: TDateTimeField;
+    SQLPagarDATA_PREVISTA: TDateTimeField;
+    SQLPagarPREVISTO: TStringField;
+    SQLPagarFORNICOD: TIntegerField;
+    SQLPagarFORNA60RAZAOSOC: TStringField;
+    SQLPagarPLCTA15COD: TStringField;
+    SQLPagarPLCTA60DESCR: TStringField;
+    SQLReceberCTRCA254HIST: TStringField;
+    SQLPagarCTPGA254HIST: TStringField;
+    SQLPortador: TRxQuery;
+    SQLPortadorPORTICOD: TIntegerField;
+    SQLPortadorPORTA60DESCR: TStringField;
+    GroupBox2: TGroupBox;
+    ComboPortador: TRxDBLookupCombo;
+    DSSQLPortador: TDataSource;
+    SQLPagarCTPGA13ID: TStringField;
+    SQLReceberCTRCA13ID: TStringField;
+    TblTemporariaPortador: TStringField;
+    TblTemporariaDataPrevista: TDateField;
+    TblTemporariaPagarReceber: TStringField;
+    TblTemporariaCliente: TStringField;
+    TblTemporariaDataVencimento: TDateField;
+    TblTemporariaDebito: TFloatField;
+    TblTemporariaCredito: TFloatField;
+    TblTemporariaSaldo: TFloatField;
+    TblTemporariaConta: TStringField;
+    TblTemporariaHistorico: TStringField;
+    TblTemporariaAgendado: TStringField;
+    chkListaBoleto: TCheckBox;
+    SQLReceberVALORRECEBIDO: TFloatField;
     procedure ExecutarBtnClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure SQLPortadorPORTICODChange(Sender: TField);
   private
     { Private declarations }
   public
@@ -83,9 +120,22 @@ begin
 
   SQLReceber.Close;
 
+  if chkListaBoleto.Checked then
+    SQLReceber.MacroByName('Filtro').Value := '(((CONTASRECEBER.CTRCN2TOTREC < CONTASRECEBER.CTRCN2VLR or CONTASRECEBER.CTRCN2TOTREC is null) and '
+                                             + 'TIPODOCUMENTO.SOMA_QUITADO <> ' + QuotedStr('S')+ ') or ((CONTASRECEBER.CTRCN2TOTREC = CONTASRECEBER.CTRCN2VLR) and '
+                                             + 'TIPODOCUMENTO.SOMA_QUITADO = ' + QuotedStr('S') + '))'
+  else
+    SQLReceber.MacroByName('Filtro').Value := '(CONTASRECEBER.CTRCN2TOTREC < CONTASRECEBER.CTRCN2VLR or CONTASRECEBER.CTRCN2TOTREC is null)';
+
   SQLReceber.MacroByName('Empresa').Value := SQLDeLista(ComboEmpresa,ListaEmpresas,'','ContasReceber','EMPRICOD');
   SQLReceber.MacroByName('Data').Value    := 'ContasReceber.CTRCDVENC >= ' + '"' + FormatDateTime('mm/dd/yyyy',De.Date) + '"' + ' AND ' +
                                              'ContasReceber.CTRCDVENC <= ' + '"' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '"';
+  if ComboPortador.KeyValue > 0 then
+    SQLReceber.MacroByName('Portador').Value   := 'CONTASRECEBER.PORTICOD = ' + ComboPortador.Value
+  else
+    SQLReceber.MacroByName('Portador').Value   := '0=0';
+
+
 
   SQLReceber.Open;
   SQLPagar.Close;
@@ -93,6 +143,10 @@ begin
   SQLPagar.MacroByName('Empresa').Value   := SQLDeLista(ComboEmpresa,ListaEmpresas,'','ContasPagar','EMPRICOD');
   SQLPagar.MacroByName('Data').Value      := 'ContasPagar.CTPGDVENC >= ' + '"' + FormatDateTime('mm/dd/yyyy',De.Date) + '"' + ' AND ' +
                                              'ContasPagar.CTPGDVENC <= ' + '"' + FormatDateTime('mm/dd/yyyy',Ate.Date) + '"';
+  if ComboPortador.KeyValue > 0 then
+    SQLPagar.MacroByName('Portador').Value   := 'CONTASPAGAR.PORTICOD = ' + ComboPortador.Value
+  else
+    SQLPagar.MacroByName('Portador').Value   := '0=0';
 
   SQLPagar.Open;
 
@@ -109,15 +163,25 @@ begin
   Progresso.Position := 0;
 
   TblTemporaria.Close;
-  TblTemporaria.AddIndex('DataKey','Data',[IxPrimary]);
+  TblTemporaria.AddIndex('DataKey','Portador;DataPrevista;PagarReceber',[IxPrimary]);
 
   if not TblTemporaria.Active then TblTemporaria.Open;
   While not SQLReceber.Eof do
     begin
       TblTemporaria.Append;
-      TblTemporariaData.AsDateTime := SQLReceberCTRCDVENC.AsDateTime;
-      TblTemporariaReceber.AsFloat := SQLReceberVALORRECEBER.AsFloat;
-      TblTemporariaPagar.AsFloat   := 0;
+      TblTemporariaDataPrevista.AsDateTime   := SQLReceberDATA_PREVISTA.AsDateTime;
+      TblTemporariaPagarReceber.AsString     := SQLReceberCTRCA13ID.AsString;
+      TblTemporariaPortador.AsString         := SQLReceberPORTA60DESCR.AsString;
+      TblTemporariaDataVencimento.AsDateTime := SQLReceberCTRCDVENC.AsDateTime;
+      TblTemporariaCliente.AsString          := SQLReceberCLIEA60RAZAOSOC.AsString;
+      if SQLReceberVALORRECEBER.AsFloat > 0 then
+        TblTemporariaCredito.AsFloat           := SQLReceberVALORRECEBER.AsFloat
+      else
+        TblTemporariaCredito.AsFloat           := SQLReceberVALORRECEBIDO.AsFloat;
+      TblTemporariaConta.AsString            := SQLReceberPLCTA60DESCR.AsString;
+      TblTemporariaHistorico.AsString        := SQLReceberCTRCA254HIST.AsString;
+      TblTemporariaAgendado.AsString         := SQLReceberPREVISTO.AsString;
+      TblTemporariaDebito.AsFloat            := 0;
       TblTemporaria.Post;
       SQLReceber.Next;
     end;
@@ -126,18 +190,25 @@ begin
     Saldo := SaldoInicial.Value;
   While not SQLPagar.Eof do
     begin
-      if TblTemporaria.Locate('Data',SQLPagarCTPGDVENC.AsString,[]) then
-        begin
-          TblTemporaria.Edit;
-          TblTemporariaPagar.AsFloat := SQLPagarVALORPAGAR.AsFloat;
-          TblTemporaria.Post;
-        end
-      else
+//      if TblTemporaria.Locate('Data_Prevista,Cliente',VarArrayOf[SQLPagarDATA_PREVISTA.AsDateTime,SQLPagarFORNA60RAZAOSOC.AsString],[]) then
+//        begin
+//          TblTemporaria.Edit;
+//          TblTemporariaDebito.AsFloat := SQLPagarVALORPAGAR.AsFloat;
+//          TblTemporaria.Post;
+//        end
+//      else
         begin
           TblTemporaria.Append;
-          TblTemporariaData.AsDateTime := SQLPagarCTPGDVENC.AsDateTime;
-          TblTemporariaPagar.AsFloat   := SQLPagarVALORPAGAR.AsFloat;
-          TblTemporariaReceber.AsFloat := 0;
+          TblTemporariaDataPrevista.AsDateTime   := SQLPagarDATA_PREVISTA.AsDateTime;
+          TblTemporariaPagarReceber.AsString     := SQLPagarCTPGA13ID.AsString;
+          TblTemporariaPortador.AsString         := SQLPagarPORTA60DESCR.AsString;
+          TblTemporariaDataVencimento.AsDateTime := SQLPagarCTPGDVENC.AsDateTime;
+          TblTemporariaCliente.AsString          := SQLPagarFORNA60RAZAOSOC.AsString;
+          TblTemporariaDebito.AsFloat            := SQLPagarVALORPAGAR.AsFloat;
+          TblTemporariaConta.AsString            := SQLPagarPLCTA15COD.AsString;
+          TblTemporariaHistorico.AsString        := SQLPagarCTPGA254HIST.AsString;
+          TblTemporariaAgendado.AsString         := SQLPagarPREVISTO.AsString;
+          TblTemporariaCredito.AsFloat           := 0;
           TblTemporaria.Post;
         end;
       SQLPagar.Next;
@@ -147,7 +218,7 @@ begin
   While not TblTemporaria.Eof do
     begin
       TblTemporaria.Edit;
-      TblTemporariaSaldo.AsFloat := (TblTemporariaReceber.AsFloat + Saldo) - TblTemporariaPagar.AsFloat;
+      TblTemporariaSaldo.AsFloat := (TblTemporariaCredito.AsFloat + Saldo) - TblTemporariaDebito.AsFloat;
       TblTemporaria.Post;
       Saldo := TblTemporariaSaldo.AsFloat;
       TblTemporaria.Next;
@@ -158,8 +229,8 @@ begin
   if Saldo <> 0 then
     begin
       TblTemporaria.Append;
-      TblTemporariaData.AsString       := FormatDateTime('dd/mm/yyyy',De.Date -1);
-      TblTemporariaSaldo.AsFloat       := Saldo;
+      TblTemporariaDataPrevista.AsString   := FormatDateTime('dd/mm/yyyy',De.Date -1);
+      TblTemporariaSaldo.AsFloat           := Saldo;
       TblTemporaria.Post;
     end;
     case RadioModoVisual.ItemIndex of
@@ -248,6 +319,19 @@ begin
           end;
     end;
     Report.Execute;
+end;
+
+procedure TFormRelatorioFluxoCaixa.FormShow(Sender: TObject);
+begin
+  inherited;
+  SQLPortador.Open;
+end;
+
+procedure TFormRelatorioFluxoCaixa.SQLPortadorPORTICODChange(
+  Sender: TField);
+begin
+  inherited;
+  ShowMessage('mudou status');
 end;
 
 end.

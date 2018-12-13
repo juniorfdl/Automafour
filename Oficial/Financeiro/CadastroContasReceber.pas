@@ -338,6 +338,11 @@ type
     DBEdit16: TDBEdit;
     Label27: TLabel;
     DBEdit17: TDBEdit;
+    Label28: TLabel;
+    DBDateEdit2: TDBDateEdit;
+    SQLTemplateDATA_PREVISTA: TDateTimeField;
+    SQLTemplatePREVISTO: TStringField;
+    DBCheckBox1: TDBCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure SQLTemplateCalcFields(DataSet: TDataSet);
     procedure BtnClienteClick(Sender: TObject);
@@ -383,6 +388,7 @@ type
     procedure ppHeaderBand2BeforePrint(Sender: TObject);
     procedure CorrigeTotalRecebidoSafe1Click(Sender: TObject);
     procedure ComboTipoDocCadExit(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     Replicando: Boolean;
     function Estorna: Boolean;
@@ -1490,6 +1496,12 @@ procedure TFormCadastroContasReceber.ComboTipoDocCadExit(Sender: TObject);
 begin
   inherited;
   SQLTemplateCTRCN2VLRTAXA.AsFloat := SQLTipoDocumento.FieldByname('VLRTAXA').AsFloat;
+end;
+
+procedure TFormCadastroContasReceber.FormShow(Sender: TObject);
+begin
+  inherited;
+  DBEdit2.ReadOnly := not (DM.SQLTerminalAtivo.FieldByName('ALTERA_NOSSO_NUMERO').AsString = 'S');
 end;
 
 end.

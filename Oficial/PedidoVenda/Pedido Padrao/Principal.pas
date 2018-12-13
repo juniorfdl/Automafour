@@ -232,6 +232,7 @@ type
     TblPedidoDestinatario_Fantasia: TStringField;
     SQLTemplateClienteFantasia: TStringField;
     SQLTemplateClienteEndereco_nro: TStringField;
+    TblPedidoItemValorDesconto: TFloatField;
     procedure SQLTemplateCalcFields(DataSet: TDataSet);
     procedure SQLPedidoItemCalcFields(DataSet: TDataSet);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -419,6 +420,7 @@ begin
       TblPedidoItemUn.Value := SQLPedidoItemUnidadeLookUp.Value;
       TblPedidoItemQtd1.Value := SQLPedidoItemPVITN3QUANT.Value;
       TblPedidoItemPedICod.Value := SQLPedidoItemPDVDA13ID.Value;
+      TblPedidoItemValorDesconto.Value := SQLPedidoItemPVITN2VLRDESC.Value;
       TblPedidoItem.Post;
       SQLPedidoItem.Next;
     end;

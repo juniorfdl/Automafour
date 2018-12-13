@@ -11668,6 +11668,10 @@ inherited FormPrincipal: TFormPrincipal
             Caption = 'Pr'#233'-Venda por Per'#237'odo'
             OnClick = MNADMRelPrevendasClick
           end
+          object Representante1: TMenuItem
+            Caption = 'Comiss'#227'o Representante'
+            OnClick = Representante1Click
+          end
         end
         object Compras2: TMenuItem
           Caption = 'Compras'
