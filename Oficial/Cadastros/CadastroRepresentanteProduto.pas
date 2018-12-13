@@ -343,7 +343,7 @@ end;
 procedure TFormCadastroRepresentanteProduto.GravarNumeroSeries;
 var
   vREPRICOD, vOperacaoEstoque : Integer;
-  vStatus : string;
+  vStatus, Documento, NomeCliFor : string;
 begin
   if SQLTemplateENTRADA_SAIDA.AsString = 'E' then
   begin
@@ -355,6 +355,17 @@ begin
     vStatus := 'U';
     vOperacaoEstoque := 25;
   end;
+  if SQLTemplateNOFIA13ID.AsString <> '' then
+  begin
+    documento := SQLTemplateNOFIA13ID.AsString;
+    NomeCliFor := SQLTemplateNomeClienteLookUp.AsString;
+  end
+  else
+  begin
+    documento := SQLTemplateNOCPA13ID.AsString;
+    NomeCliFor := SQLTemplateNomeFornecedorLookUp.AsString;
+  end;
+
   if not cdsSerie.IsEmpty then
   begin
     vREPRICOD := SQLTemplateREPRICOD.asinteger; // + 1;
@@ -420,7 +431,13 @@ begin
                                 'MOVIMENTOSDIVERSOS',
                                 'REP'+FormatDateTime('dd/mm/yy', Now),
                                 '');
-
+          GravaMovimentoNumeroSerie(EmpresaPadrao,
+                                    cdsSerieNumeroSerie.AsString,
+                                    SQLTemplateENTRADA_SAIDA.AsString,
+                                    documento,
+                                    NomeCliFor,
+                                    SQLTemplatePRODICOD.AsInteger,
+                                    SQLTemplateDATA_REGISTRO.AsDateTime);
       cdsSerie.Next;
     end;
   end;

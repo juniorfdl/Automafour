@@ -1,6 +1,6 @@
 inherited FormRelatorioFluxoCaixa: TFormRelatorioFluxoCaixa
-  Left = 288
-  Top = 106
+  Left = 287
+  Top = 75
   Caption = 'Fluxo de Caixa'
   ClientWidth = 794
   OnShow = FormShow
@@ -791,6 +791,7 @@ inherited FormRelatorioFluxoCaixa: TFormRelatorioFluxoCaixa
     object SQLPortadorPORTICOD: TIntegerField
       FieldName = 'PORTICOD'
       Origin = 'DB.PORTADOR.PORTICOD'
+      OnChange = SQLPortadorPORTICODChange
     end
     object SQLPortadorPORTA60DESCR: TStringField
       FieldName = 'PORTA60DESCR'

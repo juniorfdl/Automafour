@@ -1875,14 +1875,14 @@ begin
     end
   end;
 
-  if (SqlTemplate.FieldByName('CLIEA5FISJURID').AsString = 'J') and (UpperCase(SqlTemplate.FieldByName('CLIEA20IE').AsString) = 'ISENTO') then
-  begin
-    begin
-      Informa('Cliente pessoa jurídica não pode ser ISENTO !');
-      DataSet.FieldByName('CLIEA20IE').FocusControl;
-      Abort;
-    end
-  end;
+//  if (SqlTemplate.FieldByName('CLIEA5FISJURID').AsString = 'J') and (UpperCase(SqlTemplate.FieldByName('CLIEA20IE').AsString) = 'ISENTO') then
+//  begin
+//    begin
+//      Informa('Cliente pessoa jurídica não pode ser ISENTO !');
+//      DataSet.FieldByName('CLIEA20IE').FocusControl;
+//      Abort;
+//    end
+//  end;
 
   // Calcula limite Original
   if SQLTemplateCLIEN2RENDA.Value > 0 then

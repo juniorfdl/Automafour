@@ -95,6 +95,7 @@ type
     SQLReceberVALORRECEBIDO: TFloatField;
     procedure ExecutarBtnClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure SQLPortadorPORTICODChange(Sender: TField);
   private
     { Private declarations }
   public
@@ -324,6 +325,13 @@ procedure TFormRelatorioFluxoCaixa.FormShow(Sender: TObject);
 begin
   inherited;
   SQLPortador.Open;
+end;
+
+procedure TFormRelatorioFluxoCaixa.SQLPortadorPORTICODChange(
+  Sender: TField);
+begin
+  inherited;
+  ShowMessage('mudou status');
 end;
 
 end.

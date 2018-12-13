@@ -238,6 +238,9 @@ object FormPrincipal: TFormPrincipal
     object TblPedidoItemQtd15: TFloatField
       FieldName = 'Qtd15'
     end
+    object TblPedidoItemValorDesconto: TFloatField
+      FieldName = 'ValorDesconto'
+    end
   end
   object TblPedidoFinanceiro: TTable
     DatabaseName = 'Easy_Temp'

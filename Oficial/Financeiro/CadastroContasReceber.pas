@@ -388,6 +388,7 @@ type
     procedure ppHeaderBand2BeforePrint(Sender: TObject);
     procedure CorrigeTotalRecebidoSafe1Click(Sender: TObject);
     procedure ComboTipoDocCadExit(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     Replicando: Boolean;
     function Estorna: Boolean;
@@ -1495,6 +1496,12 @@ procedure TFormCadastroContasReceber.ComboTipoDocCadExit(Sender: TObject);
 begin
   inherited;
   SQLTemplateCTRCN2VLRTAXA.AsFloat := SQLTipoDocumento.FieldByname('VLRTAXA').AsFloat;
+end;
+
+procedure TFormCadastroContasReceber.FormShow(Sender: TObject);
+begin
+  inherited;
+  DBEdit2.ReadOnly := not (DM.SQLTerminalAtivo.FieldByName('ALTERA_NOSSO_NUMERO').AsString = 'S');
 end;
 
 end.

@@ -90,7 +90,7 @@ MaxStackSize=1048576
 ImageBase=4194304
 ExeDescription=
 [Directories]
-OutputDir=C:\Easy2Solutions
+OutputDir=C:\Easy2Solutions\Gestao\PedidoVenda
 UnitOutputDir=
 PackageDLLOutputDir=
 PackageDCPOutputDir=
@@ -135,14 +135,12 @@ ProductName=
 ProductVersion=1.0.0.0
 Comments=
 [Excluded Packages]
-C:\Program Files (x86)\Borland\Delphi7\Projects\Bpl\ZParseSql70.bpl=Zeos SQL Parsing Classes and Interfaces
-C:\Program Files (x86)\Borland\Delphi7\Projects\Bpl\ZDbc70.bpl=Zeos Low Level Database API
-C:\Program Files (x86)\Borland\Delphi7\Projects\Bpl\ZPlain70.bpl=Zeos Plain Database API
-c:\program files (x86)\borland\delphi7\Projects\Bpl\xtradev7.bpl=Extra ReportBuilder Devices
-c:\program files (x86)\borland\delphi7\Bin\dclindy70.bpl=(Untitled)
+c:\program files (x86)\borland\delphi7\Bin\dclindy70.bpl=Internet Direct (Indy) for D7 Property and Component Editors
+C:\Program Files (x86)\Developer Express Inc\Library\Delphi7\dcldxPScxScheduler3LnkD7.bpl=ExpressPrinting System ReportLink for ExpressScheduler 3 by Developer Express Inc.
 [HistoryLists\hlUnitAliases]
 Count=1
 Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
 [HistoryLists\hlOutputDirectorry]
-Count=1
-Item0=C:\Easy2Solutions
+Count=2
+Item0=C:\Easy2Solutions\Gestao\PedidoVenda
+Item1=C:\Easy2Solutions

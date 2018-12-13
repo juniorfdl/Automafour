@@ -1,6 +1,6 @@
 inherited FormCadastroCartaoCreditoManual: TFormCadastroCartaoCreditoManual
-  Left = 203
-  Top = 80
+  Left = 326
+  Top = 75
   Caption = 'Cart'#245'es de Cr'#233'dito - Digita'#231#227'o Manual'
   OldCreateOrder = True
   PixelsPerInch = 96

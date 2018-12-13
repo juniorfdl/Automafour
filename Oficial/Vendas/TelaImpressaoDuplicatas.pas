@@ -1116,6 +1116,7 @@ begin
             ValorMoraJuros   := dm.SQLConfigCrediario.fieldbyname('CFCRN2PERCJURATRAS').AsCurrency / 100 * TblDuplicatasCTRCN2VLR.Value;
             PercentualMulta  := DM.SQLConfigCrediario.FieldByName('CFCRN2PERCMULATRAS').AsCurrency;
             CodigoMoraJuros  := cjTaxaMensal;
+            DataMulta        := TblDuplicatasCTRCDVENC.AsDateTime + DM.SQLConfigCrediario.FieldByName('CFCRINRODIASTOLMUL').AsCurrency;
 
              if ACBrBoleto1.banco.TipoCobranca = cobSicred then
                CodigoMora := 'A'
@@ -1552,6 +1553,7 @@ begin
             ValorMoraJuros   := DM.SQLConfigCrediario.FieldByName('CFCRN2PERCJURATRAS').AsCurrency / 100 * SQLContasReceberCTRCN2VLR.Value;
             CodigoMoraJuros  := cjTaxaMensal;
             PercentualMulta  := DM.SQLConfigCrediario.FieldByName('CFCRN2PERCMULATRAS').AsCurrency;
+            DataMulta        := SQLContasReceberCTRCDVENC.AsDateTime + DM.SQLConfigCrediario.FieldByName('CFCRINRODIASTOLMUL').AsCurrency;
 
             if ACBrBoleto1.banco.TipoCobranca = cobSicred then
             begin

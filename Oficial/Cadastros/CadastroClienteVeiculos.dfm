@@ -1,6 +1,6 @@
 inherited FormCadastroClienteVeiculos: TFormCadastroClienteVeiculos
   Left = 221
-  Caption = 'Veículos do Cliente'
+  Caption = 'Ve'#237'culos do Cliente'
   ClientWidth = 795
   OldCreateOrder = True
   PixelsPerInch = 96
@@ -53,21 +53,21 @@ inherited FormCadastroClienteVeiculos: TFormCadastroClienteVeiculos
                   item
                     Expanded = False
                     FieldName = 'VICLA40MODELO'
-                    Title.Caption = 'Identificação Veículo'
+                    Title.Caption = 'Identifica'#231#227'o Ve'#237'culo'
                     Width = 245
                     Visible = True
                   end
                   item
                     Expanded = False
                     FieldName = 'COMBUSTIVEL'
-                    Title.Caption = 'Combustível'
+                    Title.Caption = 'Combust'#237'vel'
                     Width = 104
                     Visible = True
                   end
                   item
                     Expanded = False
                     FieldName = 'VOCLA20ESPECIE'
-                    Title.Caption = 'Espécie/Tipo'
+                    Title.Caption = 'Esp'#233'cie/Tipo'
                     Visible = True
                   end
                   item
@@ -101,7 +101,7 @@ inherited FormCadastroClienteVeiculos: TFormCadastroClienteVeiculos
                   item
                     Expanded = False
                     FieldName = 'VICLDDATAINC'
-                    Title.Caption = 'Dt Inclusão'
+                    Title.Caption = 'Dt Inclus'#227'o'
                     Visible = True
                   end>
               end
@@ -134,7 +134,7 @@ inherited FormCadastroClienteVeiculos: TFormCadastroClienteVeiculos
                 Top = 42
                 Width = 42
                 Height = 13
-                Caption = 'Espécie'
+                Caption = 'Esp'#233'cie'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clBlack
                 Font.Height = -11
@@ -160,7 +160,7 @@ inherited FormCadastroClienteVeiculos: TFormCadastroClienteVeiculos
                 Top = 42
                 Width = 78
                 Height = 13
-                Caption = 'Data Inclusão'
+                Caption = 'Data Inclus'#227'o'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clBlack
                 Font.Height = -11
@@ -229,7 +229,7 @@ inherited FormCadastroClienteVeiculos: TFormCadastroClienteVeiculos
                 Top = 161
                 Width = 70
                 Height = 13
-                Caption = 'Combustível'
+                Caption = 'Combust'#237'vel'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clBlack
                 Font.Height = -11
@@ -319,7 +319,7 @@ inherited FormCadastroClienteVeiculos: TFormCadastroClienteVeiculos
                 ItemHeight = 13
                 Items.Strings = (
                   'Sim'
-                  'Não')
+                  'N'#227'o')
                 TabOrder = 1
                 Values.Strings = (
                   'S'
@@ -371,7 +371,7 @@ inherited FormCadastroClienteVeiculos: TFormCadastroClienteVeiculos
               Top = 4
               Width = 38
               Height = 13
-              Caption = 'Código'
+              Caption = 'C'#243'digo'
               FocusControl = DBEdit2
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
@@ -399,7 +399,7 @@ inherited FormCadastroClienteVeiculos: TFormCadastroClienteVeiculos
               Top = 1
               Width = 117
               Height = 13
-              Caption = 'Identificação Veículo'
+              Caption = 'Identifica'#231#227'o Ve'#237'culo'
               FocusControl = DBEdit1
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
@@ -495,7 +495,7 @@ inherited FormCadastroClienteVeiculos: TFormCadastroClienteVeiculos
       Size = 1
     end
     object SQLTemplateVICLDDATAINC: TDateTimeField
-      DisplayLabel = 'Dt.Inclusão'
+      DisplayLabel = 'Dt.Inclus'#227'o'
       FieldName = 'VICLDDATAINC'
       Origin = 'DB.VEICULOSCLIENTE.VICLDDATAINC'
       DisplayFormat = 'dd/mm/yyyy'
@@ -539,8 +539,6 @@ inherited FormCadastroClienteVeiculos: TFormCadastroClienteVeiculos
     object SQLTemplateVICLN2KMATUAL: TFloatField
       FieldName = 'VICLN2KMATUAL'
       Origin = 'DB.VEICULOSCLIENTE.VICLN2KMATUAL'
-      Precision = 15
-      Size = 2
     end
     object SQLTemplateVICLA9ANOMODELO: TStringField
       FieldName = 'VICLA9ANOMODELO'
@@ -603,26 +601,18 @@ inherited FormCadastroClienteVeiculos: TFormCadastroClienteVeiculos
     object SQLPlanosRecebimentoPLRCN2TXJURO: TFloatField
       FieldName = 'PLRCN2TXJURO'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN2TXJURO'
-      Precision = 15
-      Size = 3
     end
     object SQLPlanosRecebimentoPLRCN2TXMULTA: TFloatField
       FieldName = 'PLRCN2TXMULTA'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN2TXMULTA'
-      Precision = 15
-      Size = 3
     end
     object SQLPlanosRecebimentoPLRCN2TXCRED: TFloatField
       FieldName = 'PLRCN2TXCRED'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN2TXCRED'
-      Precision = 15
-      Size = 3
     end
     object SQLPlanosRecebimentoPLRCN2PERCDESC: TFloatField
       FieldName = 'PLRCN2PERCDESC'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN2PERCDESC'
-      Precision = 15
-      Size = 3
     end
     object SQLPlanosRecebimentoPLRCCDFIX: TStringField
       FieldName = 'PLRCCDFIX'
@@ -647,14 +637,10 @@ inherited FormCadastroClienteVeiculos: TFormCadastroClienteVeiculos
     object SQLPlanosRecebimentoPLRCN2PERCENTR: TFloatField
       FieldName = 'PLRCN2PERCENTR'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN2PERCENTR'
-      Precision = 15
-      Size = 3
     end
     object SQLPlanosRecebimentoPLRCN2DESC: TFloatField
       FieldName = 'PLRCN2DESC'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN2DESC'
-      Precision = 15
-      Size = 3
     end
     object SQLPlanosRecebimentoPLRCCATIVO: TStringField
       FieldName = 'PLRCCATIVO'
@@ -675,8 +661,6 @@ inherited FormCadastroClienteVeiculos: TFormCadastroClienteVeiculos
     object SQLPlanosRecebimentoPLRCN2PERCACRESC: TFloatField
       FieldName = 'PLRCN2PERCACRESC'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN2PERCACRESC'
-      Precision = 15
-      Size = 3
     end
     object SQLPlanosRecebimentoPLRCCIMPDESCRNF: TStringField
       FieldName = 'PLRCCIMPDESCRNF'
@@ -687,14 +671,10 @@ inherited FormCadastroClienteVeiculos: TFormCadastroClienteVeiculos
     object SQLPlanosRecebimentoPLRCN5FATOR: TFloatField
       FieldName = 'PLRCN5FATOR'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN5FATOR'
-      Precision = 15
-      Size = 5
     end
     object SQLPlanosRecebimentoPLRCN5FATORPARC: TFloatField
       FieldName = 'PLRCN5FATORPARC'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN5FATORPARC'
-      Precision = 15
-      Size = 3
     end
     object SQLPlanosRecebimentoPLRCFATCASH: TStringField
       FieldName = 'PLRCFATCASH'
@@ -705,8 +685,6 @@ inherited FormCadastroClienteVeiculos: TFormCadastroClienteVeiculos
     object SQLPlanosRecebimentoPLRCN2PERCJURDIA: TFloatField
       FieldName = 'PLRCN2PERCJURDIA'
       Origin = 'DB.PLANORECEBIMENTO.PLRCN2PERCJURDIA'
-      Precision = 15
-      Size = 2
     end
   end
   object SQLVerificaPlaca: TRxQuery

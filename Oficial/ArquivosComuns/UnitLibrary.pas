@@ -302,6 +302,8 @@ procedure MudaAlineaCheque(IDCheque,NovaAlinea,NovoPortador : String);
 procedure BaixaChequeEmitido(NroCheque:String;DataBaixa : TDateTime);
 function MontaString(x: string; Tamanho: integer; tipo: Integer = 0; CompletarCom: string = ' '): string;
 function RemoverZeros(S: string): string;
+procedure GravaMovimentoNumeroSerie(Empresa, NumeroSerie, EntSai, DocOrigem, NomeCliFor : string; CodigoProdutoMovSer : Integer; DataMovimento : TDateTime);
+
 implementation
 
 uses DataModulo, TelaAutenticaUsuario, TelaAvisoDebito;
@@ -5510,6 +5512,35 @@ begin
   Result := Copy(S, J, (I-J)+1);
 end;
 
+procedure GravaMovimentoNumeroSerie(Empresa, NumeroSerie, EntSai, DocOrigem, NomeCliFor : string; CodigoProdutoMovSer : Integer; DataMovimento : TDateTime);
+var
+  Query : TrxQuery;
+begin
+  Query := TRxQuery.Create(DM);
+  Query.DatabaseName := 'DB';
+  DM.DB.StartTransaction;
+  Query.SQL.Clear;
+  Query.SQL.Add('INSERT INTO MOVIMENTO_NUMERO_SERIE (PRODICOD,PRSEA60NROSERIE,ENTRADA_SAIDA,DOCUMENTOORIGEM,CLIENTE_FORNECEDOR,DATA_MOVIMENTO,EMPRICOD) VALUES ( ' );
+  Query.SQL.Add(IntToStr(CodigoProdutoMovSer) +', ');
+  Query.SQL.Add(QuotedStr(NumeroSerie) +', ');
+  Query.SQL.Add(QuotedStr(EntSai) +', ');
+  Query.SQL.Add(QuotedStr(DocOrigem) +', ');
+  Query.SQL.Add(QuotedStr(NomeCliFor) +', ');
+  Query.SQL.Add('''' + FormatDateTime('mm/dd/yyyy', DataMovimento) + '''' +', ');
+  Query.SQL.Add(QuotedStr(Empresa) +')');
+
+  try
+    Query.ExecSQL;
+    DM.DB.Commit;
+  except
+    on E: Exception do
+    begin
+      DM.DB.Rollback;
+      Informa('Problemas ao gravar o movimento número de série, ANOTE O ERRO: ' + E.Message);
+      Application.ProcessMessages;
+    end;
+  end;
+end;
 
 end.
 
