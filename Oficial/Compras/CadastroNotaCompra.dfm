@@ -1,6 +1,6 @@
 inherited FormCadastroNotaCompra: TFormCadastroNotaCompra
-  Left = 267
-  Top = 56
+  Left = 309
+  Top = 54
   Caption = 'Nota de Entrada'
   ClientHeight = 579
   OldCreateOrder = True
@@ -3287,6 +3287,10 @@ inherited FormCadastroNotaCompra: TFormCadastroNotaCompra
     object SQLParcelasCTPGDRECBTO: TDateTimeField
       FieldName = 'CTPGDRECBTO'
       Origin = 'DB.CONTASPAGAR.CTPGDRECBTO'
+    end
+    object SQLParcelasDATA_PREVISTA: TDateTimeField
+      FieldName = 'DATA_PREVISTA'
+      Origin = 'DB.CONTASPAGAR.DATA_PREVISTA'
     end
   end
   object DSSQLParcelas: TDataSource

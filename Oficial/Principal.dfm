@@ -11484,6 +11484,10 @@ inherited FormPrincipal: TFormPrincipal
           OnClick = MnAtualizaodeEstoquedasVendasdosPDVsClick
         end
       end
+      object ConsultaNmeroSrie1: TMenuItem
+        Caption = 'Hist'#243'rico de N'#186' de S'#233'rie'
+        OnClick = ConsultaNmeroSrie1Click
+      end
     end
     object mmFinanceiro: TMenuItem [4]
       Caption = '&Financeiro'

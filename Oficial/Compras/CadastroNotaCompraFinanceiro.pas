@@ -165,6 +165,9 @@ type
     SQLTemplateBARRAS: TStringField;
     Label23: TLabel;
     dbBarras: TDBEdit;
+    SQLTemplateDATA_PREVISTA: TDateTimeField;
+    Label26: TLabel;
+    DBDateEdit2: TDBDateEdit;
     procedure FormCreate(Sender: TObject);
     procedure SQLTemplateNewRecord(DataSet: TDataSet);
     procedure RetornaTipoDocumentoClick(Sender: TObject);
@@ -381,6 +384,9 @@ begin
       DBEdit3.SetFocus;
       Abort;
     end;
+  if (SQLTemplate.State in [DsInsert]) and (SQLTemplateDATA_PREVISTA.AsDateTime < 10) then
+    SQLTemplateDATA_PREVISTA.AsDateTime := SQLTemplateCTPGDVENC.AsDateTime;
+
   inherited;
 end;
 

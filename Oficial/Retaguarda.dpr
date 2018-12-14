@@ -461,7 +461,8 @@ uses
   udmNFSe in 'Faturamento\udmNFSe.pas' {dmNFSe: TDataModule},
   CadastroRepresentanteProduto in 'Cadastros\CadastroRepresentanteProduto.pas' {FormCadastroRepresentanteProduto},
   TelaInformaNumeroSerieProduto in 'Vendas\TelaInformaNumeroSerieProduto.pas' {FormTelaInformaNumeroSerieProduto},
-  RelatorioComissaoRepresentanteDetalhado in 'Relatorios\Financeiro\RelatorioComissaoRepresentanteDetalhado.pas' {FormRelatorioComissaoDetalhadoRepresentante};
+  RelatorioComissaoRepresentanteDetalhado in 'Relatorios\Financeiro\RelatorioComissaoRepresentanteDetalhado.pas' {FormRelatorioComissaoDetalhadoRepresentante},
+  TelaConsultaMovNumeroSerie in 'Cadastros\TelaConsultaMovNumeroSerie.pas' {FormTelaConsultaMovNumeroSerie};
 
 {$R *.res}
 

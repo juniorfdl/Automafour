@@ -7,7 +7,7 @@ uses
   Dialogs, RelatorioTemplate, DbPrgrss, RxQuery, DBTables, Placemnt, DB,
   ComCtrls, StdCtrls, Mask, ToolEdit, RxLookup, ExtCtrls, Buttons, jpeg,
   Grids, DBGrids, IBSQLMonitor, IBEvents, CurrEdit, UCrpe32, DateUtils,
-  AdvOfficeStatusBar, AdvOfficeStatusBarStylers ;
+  AdvOfficeStatusBar, AdvOfficeStatusBarStylers, UnitLibrary;
 
 type
   TFormRelatorioFluxoCaixa = class(TFormRelatorioTEMPLATE)
@@ -93,9 +93,10 @@ type
     TblTemporariaAgendado: TStringField;
     chkListaBoleto: TCheckBox;
     SQLReceberVALORRECEBIDO: TFloatField;
+    SQLPortadorCTCRICOD: TIntegerField;
     procedure ExecutarBtnClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure SQLPortadorPORTICODChange(Sender: TField);
+    procedure ComboPortadorExit(Sender: TObject);
   private
     { Private declarations }
   public
@@ -327,11 +328,16 @@ begin
   SQLPortador.Open;
 end;
 
-procedure TFormRelatorioFluxoCaixa.SQLPortadorPORTICODChange(
-  Sender: TField);
+procedure TFormRelatorioFluxoCaixa.ComboPortadorExit(Sender: TObject);
+var
+  ValorInicial : Double;
 begin
   inherited;
-  ShowMessage('mudou status');
+  if SQLPortadorCTCRICOD.AsInteger > 0 then
+  begin
+    ValorInicial :=  StrToFloat(SQLLocate('CONTACORRENTE', 'CTCRICOD', 'CTCRN2SALDOATUAL', SQLPortadorCTCRICOD.AsString));
+    SaldoInicial.Value := ValorInicial;
+  end;
 end;
 
 end.

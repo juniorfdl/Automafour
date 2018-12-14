@@ -108,6 +108,7 @@ inherited FormRelatorioFluxoCaixa: TFormRelatorioFluxoCaixa
           LookupSource = DSSQLPortador
           ParentFont = False
           TabOrder = 0
+          OnExit = ComboPortadorExit
         end
       end
     end
@@ -783,7 +784,7 @@ inherited FormRelatorioFluxoCaixa: TFormRelatorioFluxoCaixa
   object SQLPortador: TRxQuery
     DatabaseName = 'DB'
     SQL.Strings = (
-      'select PORTICOD, PORTA60DESCR'
+      'select PORTICOD, PORTA60DESCR,CTCRICOD'
       'from PORTADOR  ')
     Macros = <>
     Left = 517
@@ -791,13 +792,16 @@ inherited FormRelatorioFluxoCaixa: TFormRelatorioFluxoCaixa
     object SQLPortadorPORTICOD: TIntegerField
       FieldName = 'PORTICOD'
       Origin = 'DB.PORTADOR.PORTICOD'
-      OnChange = SQLPortadorPORTICODChange
     end
     object SQLPortadorPORTA60DESCR: TStringField
       FieldName = 'PORTA60DESCR'
       Origin = 'DB.PORTADOR.PORTA60DESCR'
       FixedChar = True
       Size = 60
+    end
+    object SQLPortadorCTCRICOD: TIntegerField
+      FieldName = 'CTCRICOD'
+      Origin = 'DB.PORTADOR.CTCRICOD'
     end
   end
   object DSSQLPortador: TDataSource

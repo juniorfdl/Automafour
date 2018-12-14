@@ -1850,13 +1850,6 @@ begin
     DataSet.FieldByName('TIPO_CONTRIBUINTE').FocusControl;
   end;
 
-  if (SqlTemplate.FieldByName('TIPO_CONTRIBUINTE').AsString = 'I') and (SqlTemplate.FieldByName('CLIEA5FISJURID').AsString = 'J') then
-  begin
-    Informa('Informe um tipo de contribuinte!');
-    Abort;
-    DataSet.FieldByName('TIPO_CONTRIBUINTE').FocusControl;
-  end;
-
   if (SqlTemplate.FieldByName('TIPO_CONTRIBUINTE').AsString = 'C') and (SqlTemplate.FieldByName('CLIEA5FISJURID').AsString = 'F') then
   begin
     Informa('Informe um tipo de contribuinte!');
@@ -1904,10 +1897,7 @@ begin
 
   if (SQLTemplateTIPO_CONTRIBUINTE.AsString = 'I') then
   begin
-    if SQLTemplateCLIEA5FISJURID.AsString = 'F' then
-      SQLTemplateCLIEA20IE.AsString := 'ISENTO'
-    else
-     SQLTemplateCLIEA20IE.AsString := '';
+    SQLTemplateCLIEA20IE.AsString := 'ISENTO'
   end;
   if (SQLTemplateTIPO_CONTRIBUINTE.AsString = 'N') then
   begin

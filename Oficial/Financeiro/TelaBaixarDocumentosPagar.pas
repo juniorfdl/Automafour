@@ -834,6 +834,9 @@ procedure TFormTelaBaixarDocumentosPagar.BtnBaixarDocIntegradoClick(
   Sender: TObject);
 begin
   inherited;
+  if not (dm.SQLConfigFinanceiro.Active) then
+    dm.SQLConfigFinanceiro.Open;
+
   if DM.SQLConfigFinanceiro.FieldByName('CGFIUSATESOURARIA').AsString <> 'S' then
     begin
       Informa('Você deve configurar o sistema para usar a baixa integrada. Verifique suas configurações do módulo Financeiro!');

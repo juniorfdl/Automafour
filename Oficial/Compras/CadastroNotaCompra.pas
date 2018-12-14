@@ -482,6 +482,7 @@ type
     cdsProdutos: TClientDataSet;
     cdsProdutosPRODICOD: TIntegerField;
     cdsProdutosQUANTIDADE: TFloatField;
+    SQLParcelasDATA_PREVISTA: TDateTimeField;
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure SQLTemplateNewRecord(DataSet: TDataSet);

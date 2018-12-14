@@ -260,6 +260,7 @@ type
     NotaServio1: TMenuItem;
     Servio2: TMenuItem;
     Representante1: TMenuItem;
+    ConsultaNmeroSrie1: TMenuItem;
     procedure FATUMnCadastroClientesCadastroClick(Sender: TObject);
     procedure FATUMnCadastroClientesTipodeClienteClick(Sender: TObject);
     procedure FATUMnCadastroBancosClick(Sender: TObject);
@@ -513,6 +514,7 @@ type
     procedure NotaServio1Click(Sender: TObject);
     procedure Servio2Click(Sender: TObject);
     procedure Representante1Click(Sender: TObject);
+    procedure ConsultaNmeroSrie1Click(Sender: TObject);
   private
     procedure ApagarOrcamentos;
     procedure ApagarPreVendas;
@@ -601,7 +603,7 @@ uses
   TelaBaixarChequesRecebidos, TelaBaixarChequesEmitidos,
   TelaGerarSaldoProduto, CadastroMesa, TelaConsultaSaldoPorEmpresa,
   CadastroSabores, CadastroTributacaoNFSE, CadastroNotaServico,
-  CadastroServico, RelatorioComissaoRepresentanteDetalhado;
+  CadastroServico, RelatorioComissaoRepresentanteDetalhado, TelaConsultaMovNumeroSerie;
 
 
 
@@ -3131,6 +3133,16 @@ begin
     CriaFormulario(TFormRelatorioComissaoDetalhadoRepresentante, 'FormRelatorioComissaoDetalhadoRepresentante', False, False, False, '')
   else
     SoundPlay('Acesso Negado.wav', Sender);
+end;
+
+procedure TFormPrincipal.ConsultaNmeroSrie1Click(Sender: TObject);
+begin
+  inherited;
+  if DM.Acesso((Sender as TMenuItem).Name) > 0 then
+    CriaFormulario(TFormTelaConsultaMovNumeroSerie, 'FormTelaConsultaMovNumeroSerie', False, False, False, '')
+  else
+    SoundPlay('Acesso Negado.wav', Sender);
+
 end;
 
 end.

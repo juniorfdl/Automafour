@@ -1264,6 +1264,9 @@ begin
   else
     DataSet.FieldByName('CTRCN2TXJURO').Value := 0;
 
+  if (SQLTemplate.State in [DsInsert]) and (SQLTemplateDATA_PREVISTA.AsDateTime < 10) then
+    SQLTemplateDATA_PREVISTA.AsDateTime := SQLTemplateCTRCDVENC.AsDateTime;
+
   inherited;
 end;
 

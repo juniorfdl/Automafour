@@ -365,6 +365,8 @@ begin
     documento := SQLTemplateNOCPA13ID.AsString;
     NomeCliFor := SQLTemplateNomeFornecedorLookUp.AsString;
   end;
+  IF NomeCliFor = '' then
+    NomeCliFor := DSMasterTemplate.DataSet.FieldByName('REPRA60RAZAOSOC').AsString;
 
   if not cdsSerie.IsEmpty then
   begin

@@ -1141,6 +1141,9 @@ begin
       EvDBNumEdit1.SetFocus;
       Abort;
     end;
+  if (SQLTemplate.State in [DsInsert]) and (SQLTemplateDATA_PREVISTA.AsDateTime < 10) then
+    SQLTemplateDATA_PREVISTA.AsDateTime := SQLTemplateCTPGDVENC.AsDateTime;
+
   inherited;
 end;
 

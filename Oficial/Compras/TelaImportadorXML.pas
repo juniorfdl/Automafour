@@ -1853,13 +1853,13 @@ begin
             dm.SQLUpdate.SQL.Add('                         NOCPA13ID, PORTICOD, CTPGN2TOTPAG, CTPGN3JUROPAGTO,                  ');
             dm.SQLUpdate.SQL.Add('                         CTPGN3MULTAPAGTO, CTPGN3DESCPAGTO, CTPGN2DESCPROMO,                  ');
             dm.SQLUpdate.SQL.Add('                         CTPGCPREVREAL, CTPGN3TXJURO, CTPGN3TXMULTA, PENDENTE, REGISTRO,      ');
-            dm.SQLUpdate.SQL.Add('                         CTPGA254HIST, NOCPA30NRO, CTPGDRECBTO, CTPGA2MESCOMP, CTPGA4ANOCOMP) ');
+            dm.SQLUpdate.SQL.Add('                         CTPGA254HIST, NOCPA30NRO, CTPGDRECBTO, CTPGA2MESCOMP, CTPGA4ANOCOMP, DATA_PREVISTA) ');
             dm.SQLUpdate.SQL.Add('                 VALUES (:CTPGA13ID, :EMPRICOD, :CTPGICOD, :FORNICOD, :PLCTA15COD, :CTPGA20DOCORIG,');
             dm.SQLUpdate.SQL.Add('                         :CTPGINROPARC, :CTPGDTEMIS, :CTPGDVENC, :CTPGN3VLR, :TPDCICOD, ');
             dm.SQLUpdate.SQL.Add('                         :NOCPA13ID, :PORTICOD, :CTPGN2TOTPAG, :CTPGN3JUROPAGTO,        ');
             dm.SQLUpdate.SQL.Add('                         :CTPGN3MULTAPAGTO, :CTPGN3DESCPAGTO, :CTPGN2DESCPROMO,         ');
             dm.SQLUpdate.SQL.Add('                         :CTPGCPREVREAL, :CTPGN3TXJURO, :CTPGN3TXMULTA, :PENDENTE, :REGISTRO, ');
-            dm.SQLUpdate.SQL.Add('                         :CTPGA254HIST, :NOCPA30NRO, :CTPGDRECBTO, :CTPGA2MESCOMP, :CTPGA4ANOCOMP) ');
+            dm.SQLUpdate.SQL.Add('                         :CTPGA254HIST, :NOCPA30NRO, :CTPGDRECBTO, :CTPGA2MESCOMP, :CTPGA4ANOCOMP, :DATA_PREVISTA) ');
 
             dm.SQLUpdate.ParamByName('CTPGA13ID').AsString := RetornaCodigoCPagar(SQLMax('CONTASPAGAR', 'CTPGICOD', 'EMPRICOD='+EmpresaPadrao));
             dm.SQLUpdate.ParamByName('EMPRICOD').AsInteger := EmpresaCorrente;
@@ -1889,6 +1889,7 @@ begin
             dm.SQLUpdate.ParamByName('CTPGDRECBTO').AsDate := Date;
             dm.SQLUpdate.ParamByName('CTPGA2MESCOMP').AsString := FormatDateTime('MM', edtEmissaoVis.Date);
             dm.SQLUpdate.ParamByName('CTPGA4ANOCOMP').AsString := FormatDateTime('YYYY', edtEmissaoVis.Date);
+            dm.SQLUpdate.ParamByName('DATA_PREVISTA').AsDate := cdsContaPagardata_pagamento.AsDateTime;
             dm.SQLUpdate.ExecSQL;
 
             cdsContaPagar.Next;

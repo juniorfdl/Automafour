@@ -1124,7 +1124,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                 object PanelDocJur: TPanel
                   Left = 145
                   Top = 0
-                  Width = 570
+                  Width = 714
                   Height = 44
                   BevelOuter = bvNone
                   ParentColor = True
@@ -1316,9 +1316,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
                     Tag = 1
                     Left = 427
                     Top = -2
-                    Width = 134
-                    Height = 46
+                    Width = 252
+                    Height = 45
                     Caption = '&Tipo Contribuinte'
+                    Columns = 2
                     DataField = 'TIPO_CONTRIBUINTE'
                     DataSource = DSTemplate
                     Font.Charset = DEFAULT_CHARSET
@@ -1328,12 +1329,14 @@ inherited FormCadastroCliente: TFormCadastroCliente
                     Font.Style = [fsBold]
                     Items.Strings = (
                       'Contribuinte'
-                      'N'#227'o Contribuinte')
+                      'N'#227'o Contribuinte'
+                      'Isento')
                     ParentFont = False
                     TabOrder = 4
                     Values.Strings = (
                       'C'
-                      'N')
+                      'N'
+                      'I')
                   end
                 end
                 object RadioFisJur: TDBRadioGroup

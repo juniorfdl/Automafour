@@ -1,6 +1,6 @@
 inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
-  Left = 401
-  Top = 150
+  Left = 240
+  Top = 112
   Caption = 'Financeiro'
   OldCreateOrder = True
   PixelsPerInch = 96
@@ -20,6 +20,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
           inherited PagePrincipal: TPageControl
             Top = 93
             Height = 356
+            ActivePage = TabSheetDadosPrincipais
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Height = 283
@@ -144,7 +145,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
                 ParentFont = False
               end
               object Label3: TLabel
-                Left = 283
+                Left = 274
                 Top = 3
                 Width = 29
                 Height = 13
@@ -170,7 +171,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
                 ParentFont = False
               end
               object RetornaTipoDocumento: TSpeedButton
-                Left = 278
+                Left = 246
                 Top = 50
                 Width = 21
                 Height = 21
@@ -204,7 +205,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
                 OnClick = RetornaTipoDocumentoClick
               end
               object Label11: TLabel
-                Left = 353
+                Left = 273
                 Top = 38
                 Width = 50
                 Height = 13
@@ -217,7 +218,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
                 ParentFont = False
               end
               object RetornaPortador: TSpeedButton
-                Left = 624
+                Left = 533
                 Top = 49
                 Width = 21
                 Height = 21
@@ -251,7 +252,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
                 OnClick = RetornaPortadorClick
               end
               object Label14: TLabel
-                Left = 375
+                Left = 366
                 Top = 3
                 Width = 45
                 Height = 13
@@ -264,7 +265,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
                 ParentFont = False
               end
               object Label15: TLabel
-                Left = 548
+                Left = 539
                 Top = 3
                 Width = 24
                 Height = 13
@@ -277,7 +278,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
                 ParentFont = False
               end
               object Label16: TLabel
-                Left = 453
+                Left = 444
                 Top = 3
                 Width = 73
                 Height = 13
@@ -294,7 +295,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
                 Top = 76
                 Width = 93
                 Height = 13
-                Caption = 'Histórico Padrão'
+                Caption = 'Hist'#243'rico Padr'#227'o'
                 FocusControl = DBEditHistoricoPadrao
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = 8404992
@@ -308,7 +309,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
                 Top = 89
                 Width = 21
                 Height = 21
-                Hint = 'Acessa Históricos Padrões'
+                Hint = 'Acessa Hist'#243'ricos Padr'#245'es'
                 Flat = True
                 Glyph.Data = {
                   9E020000424D9E0200000000000036000000280000000E0000000E0000000100
@@ -340,7 +341,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
                 Top = 76
                 Width = 50
                 Height = 13
-                Caption = 'Histórico'
+                Caption = 'Hist'#243'rico'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = 8404992
                 Font.Height = -11
@@ -394,7 +395,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
                 Top = 111
                 Width = 134
                 Height = 13
-                Caption = 'Competência Mês    Ano'
+                Caption = 'Compet'#234'ncia M'#234's    Ano'
                 FocusControl = DBEdit13
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = 8404992
@@ -411,6 +412,19 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
                 Caption = 'Codigo de Barras do Boleto'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clNavy
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = [fsBold]
+                ParentFont = False
+              end
+              object Label26: TLabel
+                Left = 557
+                Top = 36
+                Width = 77
+                Height = 13
+                Caption = 'Data Prevista'
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = 8404992
                 Font.Height = -11
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
@@ -437,7 +451,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
               object DBEdit2: TDBDateEdit
                 Left = 172
                 Top = 16
-                Width = 104
+                Width = 95
                 Height = 21
                 DataField = 'CTPGDVENC'
                 DataSource = DSTemplate
@@ -447,7 +461,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
                 OnExit = DBEdit2Exit
               end
               object DBEdit3: TEvDBNumEdit
-                Left = 279
+                Left = 270
                 Top = 16
                 Width = 90
                 Height = 21
@@ -482,7 +496,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
                 TabOrder = 3
               end
               object EvDBNumEdit3: TEvDBNumEdit
-                Left = 372
+                Left = 363
                 Top = 16
                 Width = 74
                 Height = 21
@@ -517,9 +531,9 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
                 TabOrder = 4
               end
               object ComboTipoPrevistoReal: TRxDBComboBox
-                Left = 544
+                Left = 535
                 Top = 16
-                Width = 103
+                Width = 113
                 Height = 21
                 Style = csDropDownList
                 DataField = 'CTPGCPREVREAL'
@@ -537,7 +551,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
               object ComboTipoDoc: TRxDBLookupCombo
                 Left = 45
                 Top = 51
-                Width = 231
+                Width = 199
                 Height = 21
                 DropDownCount = 8
                 DataField = 'TPDCICOD'
@@ -556,9 +570,9 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
                 OnKeyDown = ComboTipoDocKeyDown
               end
               object ComboPortador: TRxDBLookupCombo
-                Left = 394
+                Left = 315
                 Top = 50
-                Width = 229
+                Width = 217
                 Height = 22
                 DropDownCount = 8
                 DataField = 'PORTICOD'
@@ -577,7 +591,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
                 OnKeyDown = ComboPortadorKeyDown
               end
               object DBDateEdit1: TDBDateEdit
-                Left = 449
+                Left = 440
                 Top = 16
                 Width = 92
                 Height = 21
@@ -617,7 +631,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
                 TabOrder = 7
               end
               object DBEdit10: TDBEdit
-                Left = 351
+                Left = 272
                 Top = 51
                 Width = 40
                 Height = 21
@@ -676,7 +690,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
                 Items.Strings = (
                   'Janeiro'
                   'Fevereio'
-                  'Março'
+                  'Mar'#231'o'
                   'Abril'
                   'Maio'
                   'Junho'
@@ -765,6 +779,18 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
                 DataSource = DSTemplate
                 TabOrder = 18
               end
+              object DBDateEdit2: TDBDateEdit
+                Left = 555
+                Top = 49
+                Width = 92
+                Height = 21
+                DataField = 'DATA_PREVISTA'
+                DataSource = DSTemplate
+                NumGlyphs = 2
+                TabOrder = 19
+                YearDigits = dyFour
+                OnExit = DBEdit2Exit
+              end
             end
           end
           inherited PanelMaster: TPanel
@@ -775,7 +801,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
               Top = 51
               Width = 88
               Height = 13
-              Caption = 'Operação Fiscal'
+              Caption = 'Opera'#231#227'o Fiscal'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 8404992
               Font.Height = -11
@@ -829,7 +855,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
               Top = 10
               Width = 29
               Height = 13
-              Caption = 'Série'
+              Caption = 'S'#233'rie'
               FocusControl = DBEdit6
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 8404992
@@ -843,7 +869,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
               Top = 10
               Width = 44
               Height = 13
-              Caption = 'Número'
+              Caption = 'N'#250'mero'
               FocusControl = DBEdit7
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 8404992
@@ -1147,7 +1173,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
   end
   inherited PopupMenuDiversos: TPopupMenu
     object MnGeraroutrolanc: TMenuItem
-      Caption = 'Gerar outro lançamento a partir do documento atual'
+      Caption = 'Gerar outro lan'#231'amento a partir do documento atual'
       OnClick = MnGeraroutrolancClick
     end
   end
@@ -1273,7 +1299,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
       Origin = 'DB.CONTASPAGAR.REGISTRO'
     end
     object SQLTemplateCTPGDTEMIS: TDateTimeField
-      DisplayLabel = 'Emissão'
+      DisplayLabel = 'Emiss'#227'o'
       FieldName = 'CTPGDTEMIS'
       Origin = 'DB.CONTASPAGAR.CTPGDTEMIS'
       DisplayFormat = 'dd/mm/yyyy'
@@ -1374,6 +1400,10 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
       FieldName = 'BARRAS'
       Origin = 'DB.CONTASPAGAR.BARRAS'
       Size = 254
+    end
+    object SQLTemplateDATA_PREVISTA: TDateTimeField
+      FieldName = 'DATA_PREVISTA'
+      Origin = 'DB.CONTASPAGAR.DATA_PREVISTA'
     end
   end
   inherited UpdateSQLTemplate: TUpdateSQL
@@ -1751,7 +1781,7 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
       Size = 15
     end
     object SQLPagamentoPAGAA254HISTORICO: TStringField
-      DisplayLabel = 'Histórico'
+      DisplayLabel = 'Hist'#243'rico'
       FieldName = 'PAGAA254HISTORICO'
       Origin = 'DB.PAGAMENTO.PAGAA254HISTORICO'
       Size = 254
@@ -1780,9 +1810,9 @@ inherited FormCadastroNotaCompraFinanceiro: TFormCadastroNotaCompraFinanceiro
       'From '
       'PLANODECONTAS'
       'where  '
-      'PLCTCANALSINT = ''A'' '
+      'PLCTCANALSINT = '#39'A'#39' '
       'and'
-      'PLCTCTIPOSALDO = ''D'' '
+      'PLCTCTIPOSALDO = '#39'D'#39' '
       ''
       'order by PLCTA60DESCR')
     Macros = <>
