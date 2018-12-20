@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Buttons, DB, DBTables, RXCtrls, Grids, DBGrids, ExtCtrls,
-  RxQuery, RxMemDS;
+  RxQuery, RxMemDS, DBClient;
 
 type
   TFormTelaInformaNumeroSerieProduto = class(TForm)
@@ -23,6 +23,14 @@ type
     RXSerie: TRxMemoryData;
     RXSerieNumeroSerie: TStringField;
     RXSerieItem: TIntegerField;
+    edtNumeroSerie: TEdit;
+    btnInserir: TBitBtn;
+    gridProdutoNovo: TDBGrid;
+    cdsProdutoNovo: TClientDataSet;
+    dsProdutoNovo: TDataSource;
+    cdsProdutoNovoPRODICOD: TIntegerField;
+    cdsProdutoNovoPRSEA60NROSERIE: TStringField;
+    cdsProdutoNovoEMPRICOD: TStringField;
     procedure BitBtn1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure DBGridListaKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -30,6 +38,7 @@ type
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure BitBtn2Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure btnInserirClick(Sender: TObject);
   private
     { Private declarations }
     CdProduto: string;
@@ -37,6 +46,7 @@ type
   public
     NumeroItens : Integer;
     Valida_Qtde : Boolean;
+    codGravaProduto : Integer;
     { Public declarations }
   end;
 
@@ -82,7 +92,7 @@ begin
   SQLProdutoSerie.Close;
   SQLProdutoSerie.ParamByName('PRODUTO').AsString := Produto;
   SQLProdutoSerie.ParamByName('EMPRESA').AsString := Empresa;
-  SQLProdutoSerie.ParamByName('STATUS').AsString := Status;
+  SQLProdutoSerie.MacroByName('STATUS').AsString := Status;
   SQLProdutoSerie.Open;
 end;
 
@@ -131,8 +141,32 @@ end;
 procedure TFormTelaInformaNumeroSerieProduto.FormShow(Sender: TObject);
 begin
   RXSerie.EmptyTable;
+  cdsProdutoNovo.EmptyDataSet;
   RXSerie.Open;
   DBGridLista.SetFocus;
+  edtNumeroSerie.Visible := (codGravaProduto > 0);
+  btnInserir.Visible := edtNumeroSerie.Visible;
+  gridProdutoNovo.Visible := edtNumeroSerie.Visible;
+end;
+
+procedure TFormTelaInformaNumeroSerieProduto.btnInserirClick(
+  Sender: TObject);
+begin
+  if edtNumeroSerie.Text = '' then
+  begin
+    ShowMessage('Informe um número de série!');
+    edtNumeroSerie.SetFocus;
+    Exit;
+  end;
+  try
+    cdsProdutoNovo.Insert;
+    cdsProdutoNovoPRSEA60NROSERIE.AsString := edtNumeroSerie.Text;
+    cdsProdutoNovoPRODICOD.AsInteger       := codGravaProduto;
+    cdsProdutoNovo.Post;
+  finally
+    edtNumeroSerie.Clear;
+  end;
+  edtNumeroSerie.SetFocus;
 end;
 
 end.

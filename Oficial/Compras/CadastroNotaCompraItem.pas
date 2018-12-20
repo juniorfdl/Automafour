@@ -451,7 +451,7 @@ implementation
 uses TelaLancamentoGradeNota, DataModulo, CadastroProdutos, UnitLibrary,
   CadastroLote, SearchLibrary, TelaConsultaProdutoGeral, TelaProdutoNumeroSerie,
   TelaPedidoCompraHistoricoComprasVendasProduto, DataModuloTemplate,
-  CadastroUnidade;
+  CadastroUnidade, TelaInformaNumeroSerieProduto;
 
 {$R *.dfm}
 Procedure TFormCadastroNotaCompraItem.AtualizaPedidoCompra(CodigoPedidoCompra:String;PosicaoItemPedido:Integer;QtdePed,NovaQtdePed:Double);
@@ -868,7 +868,7 @@ end;
 procedure TFormCadastroNotaCompraItem.SQLTemplateBeforePost(
   DataSet: TDataSet);
 var Next : Integer;
-var Cd_Fornec, Fornec_Opt_Simples, xErros : String;
+var Cd_Fornec, Fornec_Opt_Simples, xErros, NumeroSerie : String;
 begin
   Rec_Pos := SQLTemplate.GetBookmark;
   xErros := '';
@@ -1008,6 +1008,58 @@ begin
             end;
           end;
       end;
+      if (DM.SQLlocate('produto', 'prodicod', 'PRODCTEMNROSERIE', SQLTemplate.FieldByName('PRODICOD').AsString) = 'S') then
+      begin
+        Status := ' PRSECSTATUS <> ' + QuotedStr('D');
+        CodigoProduto := SQLTemplatePRODICOD.AsString;
+        Application.CreateForm(TFormTelaInformaNumeroSerieProduto, FormTelaInformaNumeroSerieProduto);
+        FormTelaInformaNumeroSerieProduto.NumeroItens := SQLTemplateNOCIN3QTDEMBAL.AsInteger;
+        FormTelaInformaNumeroSerieProduto.Valida_Qtde := False;
+        FormTelaInformaNumeroSerieProduto.codGravaProduto := SQLTemplatePRODICOD.AsInteger;
+        FormTelaInformaNumeroSerieProduto.ShowModal;
+        //números de série que já existem
+        if FormTelaInformaNumeroSerieProduto.ModalResult = MrOK then
+        begin
+          FormTelaInformaNumeroSerieProduto.RXSerie.First;
+          while not FormTelaInformaNumeroSerieProduto.RXSerie.Eof do
+          begin
+            NumeroSerie := FormTelaInformaNumeroSerieProduto.RXSerieNumeroSerie.Text;
+            if NumeroSerie <> '' then
+              GravaSaidaNroSerieProduto(NumeroSerie,
+                SQLTemplatePRODICOD.AsString,
+                'D',
+                EmpresaPadrao,
+                DSMasterTemplate.DataSet.FieldByName('FORNICOD').AsString, '', '',
+                DSMasterTemplate.DataSet.FieldByName('NOCPA30NRO').AsString, '');
+            GravaMovimentoNumeroSerie(EmpresaPadrao,
+                                      NumeroSerie,'E',
+                                      DSMasterTemplate.DataSet.FieldByName('NOCPA30NRO').AsString,
+                                      DM.SQLlocate('FORNECEDOR', 'FORNICOD', 'FORNA60RAZAOSOC', DSMasterTemplate.DataSet.FieldByName('FORNICOD').AsString),
+                                      SQLTemplatePRODICOD.AsInteger,
+                                      DSMasterTemplate.DataSet.FieldByName('NOCPDEMISSAO').AsDateTime);
+            FormTelaInformaNumeroSerieProduto.RXSerie.Next;
+          end;
+          //números de série novos
+          FormTelaInformaNumeroSerieProduto.cdsProdutoNovo.First;
+          while not FormTelaInformaNumeroSerieProduto.cdsProdutoNovo.Eof do
+          begin
+            NumeroSerie := FormTelaInformaNumeroSerieProduto.cdsProdutoNovoPRSEA60NROSERIE.AsString;
+            if NumeroSerie <> '' then
+              InsereNovoNumeroSerie(EmpresaPadrao,
+                SQLTemplatePRODICOD.AsString,
+                NumeroSerie,
+                'D');
+            GravaMovimentoNumeroSerie(EmpresaPadrao,
+                                      NumeroSerie,'E',
+                                      DSMasterTemplate.DataSet.FieldByName('NOCPA30NRO').AsString,
+                                      DM.SQLlocate('FORNECEDOR', 'FORNICOD', 'FORNA60RAZAOSOC', DSMasterTemplate.DataSet.FieldByName('FORNICOD').AsString),
+                                      SQLTemplatePRODICOD.AsInteger,
+                                      DSMasterTemplate.DataSet.FieldByName('NOCPDEMISSAO').AsDateTime);
+            FormTelaInformaNumeroSerieProduto.cdsProdutoNovo.Next;
+          end;
+        end;
+      end;
+
   SQLTemplate.MacroByName('MFiltro').asString := '0 = 0'; 
 end;
 

@@ -1,6 +1,6 @@
 inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
-  Left = 176
-  Top = 48
+  Left = 167
+  Top = 70
   Caption = 'Or'#231'amentos e Pedidos de Venda'
   ClientHeight = 519
   ClientWidth = 928
@@ -226,6 +226,24 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
           ParentFont = False
           TabOrder = 0
         end
+        object RadioImpressao: TRadioGroup
+          Left = 3
+          Top = 297
+          Width = 125
+          Height = 58
+          Caption = 'Impress'#227'o'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ItemIndex = 0
+          Items.Strings = (
+            'Com Valores'
+            'Sem Valores')
+          ParentFont = False
+          TabOrder = 1
+        end
       end
       inherited PanelFundoDados: TPanel
         Width = 796
@@ -237,7 +255,7 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
             Top = 222
             Width = 796
             Height = 223
-            ActivePage = TabFinanceiro
+            ActivePage = TabItens
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Top = 75
@@ -354,8 +372,8 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
                 TabOrder = 3
                 TabStop = True
                 object BTNLocalizar: TSpeedButton
-                  Left = 172
-                  Top = 6
+                  Left = 215
+                  Top = 10
                   Width = 68
                   Height = 22
                   Caption = '&Localizar'
@@ -374,7 +392,7 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
                 object GroupConsultaSituacao: TGroupBox
                   Left = 2
                   Top = -1
-                  Width = 156
+                  Width = 207
                   Height = 33
                   Caption = ' Situa'#231#227'o'
                   Font.Charset = ANSI_CHARSET
@@ -427,6 +445,20 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
                     Font.Style = [fsBold]
                     ParentFont = False
                     TabOrder = 2
+                  end
+                  object RdPend: TRadioButton
+                    Left = 155
+                    Top = 13
+                    Width = 48
+                    Height = 17
+                    Caption = 'Pend'
+                    Font.Charset = ANSI_CHARSET
+                    Font.Color = 8404992
+                    Font.Height = -11
+                    Font.Name = 'Tahoma'
+                    Font.Style = [fsBold]
+                    ParentFont = False
+                    TabOrder = 3
                   end
                 end
               end
@@ -1985,7 +2017,8 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
                 'Encerrado'
                 'Cancelado'
                 'Faturado'
-                'Orig.Parcial')
+                'Orig.Parcial'
+                'Pendente')
               ParentCtl3D = False
               TabOrder = 3
               Values.Strings = (
@@ -1993,7 +2026,8 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
                 'E'
                 'C'
                 'F'
-                'P')
+                'P'
+                'T')
             end
             object ComboSerie: TRxDBLookupCombo
               Left = 143

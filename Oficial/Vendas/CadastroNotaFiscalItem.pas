@@ -1019,7 +1019,7 @@ begin
       begin
         DataSet.FieldByName('NFITA254OBS').AsString := '';
         NumeroSerie := '';
-        Status := 'D';
+        Status := ' PRSECSTATUS = ' + QuotedStr('D');
         CodigoProduto := SQLTemplatePRODICOD.AsString;
         Application.CreateForm(TFormTelaInformaNumeroSerieProduto, FormTelaInformaNumeroSerieProduto);
         FormTelaInformaNumeroSerieProduto.NumeroItens := SQLTemplateNFITN3QUANT.AsInteger;

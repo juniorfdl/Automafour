@@ -166,6 +166,10 @@ inherited FormRelatorioFluxoCaixa: TFormRelatorioFluxoCaixa
       FieldName = 'Agendado'
       Size = 1
     end
+    object TblTemporariaSoma_Quitado: TStringField
+      FieldName = 'Soma_Quitado'
+      Size = 1
+    end
   end
   object SQLReceber: TRxQuery
     DatabaseName = 'DB'
@@ -180,7 +184,9 @@ inherited FormRelatorioFluxoCaixa: TFormRelatorioFluxoCaixa
       
         '       CONTASRECEBER.CLIEA13ID, CLIENTE.CLIEA60RAZAOSOC, CONTASR' +
         'ECEBER.PLCTA15COD, PLANODECONTAS.PLCTA60DESCR,'
-      '       CONTASRECEBER.CTRCA254HIST, CONTASRECEBER.CTRCA13ID '
+      
+        '       CONTASRECEBER.CTRCA254HIST, CONTASRECEBER.CTRCA13ID, TIPO' +
+        'DOCUMENTO.SOMA_QUITADO'
       'from CONTASRECEBER'
       
         'inner join CLIENTE on CLIENTE.CLIEA13ID = CONTASRECEBER.CLIEA13I' +
@@ -205,7 +211,7 @@ inherited FormRelatorioFluxoCaixa: TFormRelatorioFluxoCaixa
         'CEBER.CTRCDVENC, CONTASRECEBER.DATA_PREVISTA, CONTASRECEBER.PREV' +
         'ISTO, CONTASRECEBER.CLIEA13ID, CLIENTE.CLIEA60RAZAOSOC, CONTASRE' +
         'CEBER.PLCTA15COD, PLANODECONTAS.PLCTA60DESCR, CONTASRECEBER.CTRC' +
-        'A254HIST, CONTASRECEBER.CTRCA13ID '
+        'A254HIST, CONTASRECEBER.CTRCA13ID, TIPODOCUMENTO.SOMA_QUITADO'
       'order by PORTADOR.PORTA60DESCR, CONTASRECEBER.DATA_PREVISTA')
     Macros = <
       item
@@ -288,6 +294,11 @@ inherited FormRelatorioFluxoCaixa: TFormRelatorioFluxoCaixa
     end
     object SQLReceberVALORRECEBIDO: TFloatField
       FieldName = 'VALORRECEBIDO'
+    end
+    object SQLReceberSOMA_QUITADO: TStringField
+      FieldName = 'SOMA_QUITADO'
+      FixedChar = True
+      Size = 1
     end
   end
   object SQLPagar: TRxQuery
@@ -808,5 +819,173 @@ inherited FormRelatorioFluxoCaixa: TFormRelatorioFluxoCaixa
     DataSet = SQLPortador
     Left = 546
     Top = 5
+  end
+  object SQLQuitados: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      
+        'select sum(CONTASRECEBER.CTRCN2VLR - CONTASRECEBER.CTRCN2TOTREC)' +
+        ' as VALORRECEBER, sum(CONTASRECEBER.CTRCN2TOTREC) VALORRECEBIDO,'
+      
+        '       CONTASRECEBER.PORTICOD, PORTADOR.PORTA60DESCR, CONTASRECE' +
+        'BER.CTRCDVENC, CONTASRECEBER.CTRCDULTREC, CONTASRECEBER.PREVISTO' +
+        ','
+      
+        '       CONTASRECEBER.CLIEA13ID, CLIENTE.CLIEA60RAZAOSOC, CONTASR' +
+        'ECEBER.PLCTA15COD, PLANODECONTAS.PLCTA60DESCR,'
+      
+        '       CONTASRECEBER.CTRCA254HIST, CONTASRECEBER.CTRCA13ID, TIPO' +
+        'DOCUMENTO.SOMA_QUITADO'
+      'from CONTASRECEBER'
+      
+        'inner join CLIENTE on CLIENTE.CLIEA13ID = CONTASRECEBER.CLIEA13I' +
+        'D'
+      
+        'inner join PORTADOR on PORTADOR.PORTICOD = CONTASRECEBER.PORTICO' +
+        'D'
+      
+        'left join PLANODECONTAS on PLANODECONTAS.PLCTA15COD = CONTASRECE' +
+        'BER.PLCTA15COD'
+      
+        'left join TIPODOCUMENTO on TIPODOCUMENTO.TPDCICOD = CONTASRECEBE' +
+        'R.TPDCICOD'
+      'where CONTASRECEBER.CTRCCSTATUS <> '#39'C'#39' and'
+      '      CONTASRECEBER.PORTICOD > 0 and'
+      '     (%FILTRO) and'
+      '      (%EMPRESA) and'
+      '      (%DATA) and'
+      '      (%Portador)'
+      
+        'group by CONTASRECEBER.PORTICOD, PORTADOR.PORTA60DESCR, CONTASRE' +
+        'CEBER.CTRCDVENC, CONTASRECEBER.CTRCDULTREC, CONTASRECEBER.PREVIS' +
+        'TO, CONTASRECEBER.CLIEA13ID, CLIENTE.CLIEA60RAZAOSOC, CONTASRECE' +
+        'BER.PLCTA15COD, PLANODECONTAS.PLCTA60DESCR, CONTASRECEBER.CTRCA2' +
+        '54HIST, CONTASRECEBER.CTRCA13ID, TIPODOCUMENTO.SOMA_QUITADO'
+      'order by PORTADOR.PORTA60DESCR, CONTASRECEBER.CTRCDULTREC')
+    Macros = <
+      item
+        DataType = ftString
+        Name = 'FILTRO'
+        ParamType = ptInput
+        Value = '0=0'
+      end
+      item
+        DataType = ftString
+        Name = 'EMPRESA'
+        ParamType = ptInput
+        Value = '0=0'
+      end
+      item
+        DataType = ftString
+        Name = 'DATA'
+        ParamType = ptInput
+        Value = '0=0'
+      end
+      item
+        DataType = ftString
+        Name = 'Portador'
+        ParamType = ptInput
+        Value = '0=0'
+      end>
+    Left = 485
+    Top = 37
+    object SQLQuitadosVALORRECEBER: TFloatField
+      FieldName = 'VALORRECEBER'
+    end
+    object SQLQuitadosVALORRECEBIDO: TFloatField
+      FieldName = 'VALORRECEBIDO'
+    end
+    object SQLQuitadosPORTICOD: TIntegerField
+      FieldName = 'PORTICOD'
+    end
+    object SQLQuitadosPORTA60DESCR: TStringField
+      FieldName = 'PORTA60DESCR'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLQuitadosCTRCDVENC: TDateTimeField
+      FieldName = 'CTRCDVENC'
+    end
+    object SQLQuitadosCTRCDULTREC: TDateTimeField
+      FieldName = 'CTRCDULTREC'
+    end
+    object SQLQuitadosPREVISTO: TStringField
+      FieldName = 'PREVISTO'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLQuitadosCLIEA13ID: TStringField
+      FieldName = 'CLIEA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLQuitadosCLIEA60RAZAOSOC: TStringField
+      FieldName = 'CLIEA60RAZAOSOC'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLQuitadosPLCTA15COD: TStringField
+      FieldName = 'PLCTA15COD'
+      FixedChar = True
+      Size = 15
+    end
+    object SQLQuitadosPLCTA60DESCR: TStringField
+      FieldName = 'PLCTA60DESCR'
+      FixedChar = True
+      Size = 60
+    end
+    object SQLQuitadosCTRCA254HIST: TStringField
+      FieldName = 'CTRCA254HIST'
+      FixedChar = True
+      Size = 254
+    end
+    object SQLQuitadosCTRCA13ID: TStringField
+      FieldName = 'CTRCA13ID'
+      FixedChar = True
+      Size = 13
+    end
+    object SQLQuitadosSOMA_QUITADO: TStringField
+      FieldName = 'SOMA_QUITADO'
+      FixedChar = True
+      Size = 1
+    end
+  end
+  object tblQuitados: TTable
+    AfterPost = TblTemporariaAfterPost
+    DatabaseName = 'Easy_Temp'
+    TableName = 'Quitados.db'
+    Left = 362
+    Top = 61
+    object tblQuitadosPortador: TStringField
+      FieldName = 'Portador'
+    end
+    object tblQuitadosDataPagamento: TDateField
+      FieldName = 'DataPagamento'
+    end
+    object tblQuitadosPagarReceber: TStringField
+      FieldName = 'PagarReceber'
+      Size = 13
+    end
+    object tblQuitadosDataPrevista: TDateField
+      FieldName = 'DataPrevista'
+    end
+    object tblQuitadosCliente: TStringField
+      FieldName = 'Cliente'
+      Size = 60
+    end
+    object tblQuitadosValor: TFloatField
+      FieldName = 'Valor'
+    end
+    object tblQuitadosHistorico: TStringField
+      FieldName = 'Historico'
+      Size = 60
+    end
+    object tblQuitadosAgendado: TStringField
+      FieldName = 'Agendado'
+      Size = 1
+    end
+    object tblQuitadosDataVencimento: TDateField
+      FieldName = 'DataVencimento'
+    end
   end
 end

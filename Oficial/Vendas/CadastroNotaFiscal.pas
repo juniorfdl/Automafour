@@ -1388,9 +1388,9 @@ var
     TOTALSERVICO := CalculaServico('(NFITN2VLRUNIT * NFITN3QUANT)');
 {    if TOTALSERVICO > 0 then
       SQLTemplate.FieldByName('NOFIN2VLRPRODUTO').AsFloat := TOTAL - TOTALSERVICO
-    else
-      SQLTemplate.FieldByName('NOFIN2VLRPRODUTO').AsString := FormatFloat('##0.00',TOTAL); }
-//    SQLTemplate.FieldByName('NOFIN2VLRDESC').AsFloat := SUM('NFITN2VLRDESC');
+    else}
+      SQLTemplate.FieldByName('NOFIN2VLRPRODUTO').AsString := FormatFloat('##0.00',TOTAL);
+    SQLTemplate.FieldByName('NOFIN2VLRDESC').AsFloat := SUM('NFITN2VLRDESC');
     SQLTemplate.FieldByName('NOFIN2BASCALCICMS').asFloat := SUM('NFITN2BASEICMS');
     SQLTemplate.FieldByName('NOFIN2VLRICMS').asFloat := SUM('NFITN2VLRICMS');
     SQLTemplate.FieldByName('NOFIN2BASCALCSUBS').asFloat := SUM('NFITN2BASESUBS');
@@ -1786,6 +1786,7 @@ begin
         SQLTemplate.FieldByName('NOFIN2VLRDESCPROM').AsFloat := SQLPedidoVenda.FieldByName('PDVDN2VLRDESCPROM').AsFloat;
         SQLTemplate.FieldByName('NOFIA255OBS').AsString := SQLPedidoVenda.FieldByName('PDVDTOBS').AsString;
         SQLTemplate.FieldByName('PLRCICOD').asVariant := SQLPedidoVenda.FieldByName('PLRCICOD').asVariant;
+        SQLTemplate.FieldByName('NOFIN2VLRDESC').asVariant := SQLPedidoVenda.FieldByName('PDVDN2VLRDESC').asVariant;
         SQLTemplate.Post;
 
         ImportaItensPedido;

@@ -216,6 +216,7 @@ function VerificaNumeroSerie(NroSerie, CodProduto: string): string;
 procedure GravaSaidaNroSerieProduto(NroSERIE, Produto, Status, EMPRICOD, CLIEA13ID, CUPOA13ID, PDVDA13ID, NOFIA13ID, MOVDA13ID: string);
 procedure DeletaNumeroSerie(PRODICOD, NOFIA13ID, PDVDA13ID, MOVDA13ID: string);
 procedure GravaEntradaNroSerieProduto(NOCPA13ID, MOVDA13ID, NOFIA13ID, PDVDA13ID: string);
+procedure InsereNovoNumeroSerie(Empresa, CodigoProdutoNovo, NumeroSerie, Status : String);
 procedure GravaMovimentoCaixa(SQLTotalizadorCaixa,
   SQLTotalizar: TQuery;
   WEMPRICOD,
@@ -1352,6 +1353,7 @@ begin
   // Registro
   SQLProdutoSerie.SQL.ADD('REGISTRO = ''' + FormatDateTime('mm/dd/yyyy hh:nn:ss', Now) + '''');
   // FILTRO
+
   SQLProdutoSerie.SQL.ADD(' WHERE ');
   if NOCPA13ID <> '' then
     SQLProdutoSerie.SQL.ADD('NOCPA13ID = ''' + NOCPA13ID + '''')
@@ -4967,6 +4969,7 @@ begin
       SQLParcelasPrazo.Append;
       SQLParcelasPrazo.FieldByName('TERMICOD').Value := TerminalAtual;
       SQLParcelasPrazo.FieldByName('NROPARCELA').Value := I;
+      SQLParcelasPrazo.FieldByName('NUMEICOD').Value := TpRecPrazoTel;
 
       if (SQLPlnRec.FieldByName('PLRCCDFIXENTR').Value = 'S') and (I = 1 - OffSet) then
         SQLParcelasPrazo.FieldByName('DATAVENCTO').Value := Data
@@ -5541,6 +5544,33 @@ begin
     end;
   end;
 end;
+
+procedure InsereNovoNumeroSerie(Empresa, CodigoProdutoNovo, NumeroSerie, Status : String);
+var
+  Query : TrxQuery;
+begin
+  Query := TRxQuery.Create(DM);
+  Query.DatabaseName := 'DB';
+  DM.DB.StartTransaction;
+  Query.SQL.Clear;
+  Query.SQL.Add('INSERT INTO PRODUTOSERIE (PRODICOD,PRSEA60NROSERIE,EMPRICOD,PRSECSTATUS) VALUES ( ' );
+  Query.SQL.Add((CodigoProdutoNovo) +', ');
+  Query.SQL.Add(QuotedStr(NumeroSerie) +', ');
+  Query.SQL.Add(QuotedStr(Empresa) +', ');
+  Query.SQL.Add(QuotedStr(Status) +')');
+  try
+    Query.ExecSQL;
+    DM.DB.Commit;
+  except
+    on E: Exception do
+    begin
+      DM.DB.Rollback;
+      Informa('Problemas ao gravar o movimento número de série, ANOTE O ERRO: ' + E.Message);
+      Application.ProcessMessages;
+    end;
+  end;
+end;
+
 
 end.
 

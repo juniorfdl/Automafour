@@ -312,9 +312,9 @@ begin
     cdsSerie.EmptyDataSet;
     CodigoProduto := SQLTemplatePRODICOD.AsString;
     if SQLTemplateENTRADA_SAIDA.AsString = 'S' then
-      Status := 'D'
+      Status := ' PRSECSTATUS = ' + QuotedStr('D')
     else
-      Status := 'U';
+      Status := ' PRSECSTATUS = ' + QuotedStr('U');
     Application.CreateForm(TFormTelaInformaNumeroSerieProduto, FormTelaInformaNumeroSerieProduto);
     FormTelaInformaNumeroSerieProduto.Valida_Qtde := False;
     FormTelaInformaNumeroSerieProduto.ShowModal;

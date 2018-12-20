@@ -11190,7 +11190,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               object GroupBox2: TGroupBox
                 Left = 0
                 Top = 0
-                Width = 1208
+                Width = 1226
                 Height = 136
                 Align = alTop
                 Caption = ' C'#225'lculo de Impostos / Volumes transportados / Pesos '
@@ -11546,7 +11546,7 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
               object GroupBox4: TGroupBox
                 Left = 0
                 Top = 136
-                Width = 1208
+                Width = 1226
                 Height = 173
                 Align = alTop
                 Caption = ' Outros Adicionais Sobre Nota Fiscal - F12 Valor Padr'#227'o '

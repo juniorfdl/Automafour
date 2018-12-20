@@ -370,6 +370,8 @@ type
     Label30: TLabel;
     PedidoTotais1: TMenuItem;
     Report: TCrpe;
+    RadioImpressao: TRadioGroup;
+    RdPend: TRadioButton;
     procedure FormCreate(Sender: TObject);
     procedure BtnClienteClick(Sender: TObject);
     procedure BtnVendedorClick(Sender: TObject);
@@ -750,11 +752,30 @@ begin
           end;
         '3':
           begin
-                  // Arquivo Externo .exe
-            if FileExists('PedidoVenda.exe') then
-              WinExec(PChar('PedidoVenda.exe ' + SQLTemplatePDVDA13ID.asString), SW_SHOW)
+
+            if RadioImpressao.ItemIndex = 1 then
+            begin
+              DM.Report.DiscardSavedData := True;
+              DM.Report.ReportName := DM.SQLConfigGeralCFGEA255PATHREPORT.Value + '\Pedido Orcamento Sem Valor.rpt';
+              DM.Report.ReportTitle := 'Pedido';
+              DM.Report.WindowStyle.Title := 'Pedido';
+//              if Dm.SQLTerminalAtivo.FieldByName('TERMA60IMPPEDIDO').AsString <> '' then
+//              begin
+//                DM.Report.Output := toPrinter;
+//                DM.Report.Printer.Name := Dm.SQLTerminalAtivo.FieldByName('TERMA60IMPPEDIDO').AsString;
+//              end
+//              else
+                DM.Report.Output := toWindow;
+              DM.Report.Execute;
+            end
             else
-              Informa('Você configurou o sistema para imprimir pedido/orçamento com arquivo externo, mas o arquivo não foi encontrado favor verificar!');
+                  // Arquivo Externo .exe
+            begin
+              if FileExists('PedidoVenda.exe') then
+                WinExec(PChar('PedidoVenda.exe ' + SQLTemplatePDVDA13ID.asString), SW_SHOW)
+              else
+                Informa('Você configurou o sistema para imprimir pedido/orçamento com arquivo externo, mas o arquivo não foi encontrado favor verificar!');
+            end;
           end;
       end
     else
@@ -1092,6 +1113,8 @@ begin
     Clausula := Clausula + ' and PDVDCSTATUS = ''F''';
   if RdCanc.Checked then
     Clausula := Clausula + ' and PDVDCSTATUS = ''C''';
+  if RdPend.Checked then
+    Clausula := Clausula + ' and PDVDCSTATUS = ''T''';
 
   EditProcura.Text := '';
   EditEntre.Text := '';
@@ -1797,6 +1820,8 @@ begin
     SQLtemplate.MacroByName('MSituacao').Value := '(PDVDCSTATUS = ''F'')';
   if RdCanc.Checked then
     SQLtemplate.MacroByName('MSituacao').Value := '(PDVDCSTATUS = ''C'')';
+  if RdPend.Checked then
+    SQLtemplate.MacroByName('MSituacao').Value := '(PDVDCSTATUS = ''T'')';
 end;
 
 procedure TFormCadastroPedidoVenda.MnTrocarStatusdoPedidoparaAbertoClick(Sender: TObject);
@@ -1857,6 +1882,7 @@ begin
           SQLTemplate.FieldByName('CLIENTENOME').AsVariant := DM.SQLTemplate.FindField('CLIEA60RAZAOSOC').AsVariant;
           SQLTemplate.FieldByName('CLIENTEFONE').AsVariant := DM.SQLTemplate.FindField('CLIEA15FONE1').AsVariant;
           SQLTemplate.FieldByName('CLIENTEEMAIL').AsVariant := DM.SQLTemplate.FindField('CLIEA60EMAIL').AsVariant;
+          SQLTemplate.FieldByName('CLIECTPPRCVENDA').AsVariant := DM.SQLTemplate.FindField('CLIECTPPRCVENDA').AsVariant;
           SQLTemplate.FieldByName('ClienteTabelaPrecoLookUp').AsVariant := DM.SQLTemplate.FindField('TPRCICOD').AsVariant;
 
           if DM.SQLTemplate.FindField('CLIEA5FISJURID').asString = 'F' then
