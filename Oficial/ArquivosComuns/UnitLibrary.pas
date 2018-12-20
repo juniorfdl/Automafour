@@ -5266,7 +5266,8 @@ begin
       end;
 
       DataSet.FieldByName('NFITN2VLRLUCRO').AsFloat := (DataSet.FieldByName('NFITN2VLRUNIT').AsFloat - VALORCOMPRA) * (DataSet.FieldByName('NFITN3QUANT').AsFloat * FatorConversaoUnidade);
-      DataSet.FieldByName('NFITN2VLRDESC').AsFloat := (DataSet.FieldByName('NFITN2VLRUNIT').AsFloat * (DataSet.FieldByName('NFITN3QUANT').AsFloat * FatorConversaoUnidade)) * (DataSet.FieldByName('NFITN2PERCDESC').AsFloat / 100);
+      if DataSet.FieldByName('NFITN2PERCDESC').AsFloat > 0 then
+        DataSet.FieldByName('NFITN2VLRDESC').AsFloat := (DataSet.FieldByName('NFITN2VLRUNIT').AsFloat * (DataSet.FieldByName('NFITN3QUANT').AsFloat * FatorConversaoUnidade)) * (DataSet.FieldByName('NFITN2PERCDESC').AsFloat / 100);
       TOTALITEM := (DataSet.FieldByName('NFITN2VLRUNIT').AsFloat * DataSet.FieldByName('NFITN3QUANT').AsFloat) - DataSet.FieldByName('NFITN2VLRDESC').AsFloat;
       if (SQLLocate('OPERACAOESTOQUE', 'OPESICOD', 'OPESCCALCIPI', DataSource.DataSet.FieldByName('OPESICOD').AsString) = 'S') then
         DataSet.FieldByName('NFITN2VLRIPI').AsFloat := TOTALITEM * (DataSet.FieldByName('NFITN2PERCIPI').AsFloat / 100)
