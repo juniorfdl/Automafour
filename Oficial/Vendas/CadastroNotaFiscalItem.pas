@@ -313,6 +313,7 @@ type
     procedure EvDBNumEdit9Exit(Sender: TObject);
     procedure ImportarProdutosdoColetorBematechDC20001Click(Sender: TObject);
     procedure ImportarProdutosdoColetorPalmOne1Click(Sender: TObject);
+    procedure SQLTemplateAfterEdit(DataSet: TDataSet);
   private
     { Private declarations }
     Ocupado: Boolean;
@@ -322,6 +323,7 @@ type
     PosicaoItem, IcmsCod: Integer;
     QtdePed, NovaQtdePed, Reducao, ReducaoBase: Double;
     TemProdutoSemSubsTrib, TemProdutoComSubsTrib: Boolean;
+    DescontoMaximo : Real;
     procedure CalculaImpostos;
     procedure AtualizaPedidoVenda(CodigoPedidoVenda: string; PosicaoItemPedido: Integer; QtdePed, NovaQtdePed: Double);
     function BuscaIcmsUf: TICMSUF;
@@ -876,6 +878,7 @@ begin
   SQLTemplateNFITN2VALOR_II.AsFloat := 0;
   SQLTemplateNFITN2VALOR_IOF.AsFloat := 0;
   SQLTemplateREGISTRO.Value := Now;
+  DescontoMaximo := StrToFloat(SQLLocate('USUARIO', 'USUAA60LOGIN', 'USUAN2PERCDESC', QuotedStr(UsuarioAtualNome)));
   EditProduto.Clear;
   EditProduto.SetFocus;
 end;
@@ -912,6 +915,20 @@ begin
       TemProdutoComSubsTrib := True
     else
       TemProdutoSemSubsTrib := True;
+  end;
+
+  if (DescontoMaximo > 0) and (not VerificaDesconto((SQLTemplateNFITN2VLRUNIT.AsFloat * SQLTemplateNFITN3QUANT.AsFloat),SQLTemplateNFITN2VLRDESC.AsFloat,DescontoMaximo,0)) then
+  begin
+    ShowMessage('Valor do desconto acima do permitido! Verifique!');
+    DBEdit13.SetFocus;
+    Abort;
+  end;
+
+  if (DescontoMaximo > 0) and (not VerificaDesconto((SQLTemplateNFITN2VLRUNIT.AsFloat * SQLTemplateNFITN3QUANT.AsFloat),0,DescontoMaximo,SQLTemplateNFITN2PERCDESC.AsFloat)) then
+  begin
+    ShowMessage('Percentual do desconto acima do permitido! Verifique!');
+    DBEdit12.SetFocus;
+    exit;
   end;
 
   if ((SQLTemplateNFITICST.asFloat = 2) or (SQLTemplateNFITICST.asFloat = 4) or (SQLTemplateNFITICST.asFloat = 6)) then
@@ -2036,6 +2053,13 @@ begin
     end;
   end;}
 
+end;
+
+procedure TFormCadastroNotaFiscalItem.SQLTemplateAfterEdit(
+  DataSet: TDataSet);
+begin
+  inherited;
+  DescontoMaximo := StrToFloat(SQLLocate('USUARIO', 'USUAA60LOGIN', 'USUAN2PERCDESC', QuotedStr(UsuarioAtualNome)));
 end;
 
 end.

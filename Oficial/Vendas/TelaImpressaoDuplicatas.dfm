@@ -1,6 +1,6 @@
 inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
-  Left = 135
-  Top = 89
+  Left = 133
+  Top = 123
   Width = 1070
   Height = 507
   Caption = 'Emiss'#227'o de Boletos e Duplicatas'
@@ -838,7 +838,8 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
       '  (%MPortador) and'
       '  (%MSemLote) and'
       '  (%MEmitidos) and'
-      '  (%MTipoDocumento)'
+      '  (%MTipoDocumento) and'
+      '  (%MValor)'
       'order by'
       '  %MOrdem   '
       '')
@@ -896,6 +897,11 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
         Name = 'MTipoDocumento'
         ParamType = ptInput
         Value = '0=0'
+      end
+      item
+        DataType = ftFloat
+        Name = 'MValor'
+        ParamType = ptInput
       end
       item
         DataType = ftString
@@ -5445,6 +5451,10 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
     object SQLContaCorrenteDIAS_PROTESTO: TIntegerField
       FieldName = 'DIAS_PROTESTO'
       Origin = 'DB.CONTACORRENTE.DIAS_PROTESTO'
+    end
+    object SQLContaCorrenteVALOR_LIMITE_BOLETO: TFloatField
+      FieldName = 'VALOR_LIMITE_BOLETO'
+      Origin = 'DB.CONTACORRENTE.VALOR_LIMITE_BOLETO'
     end
   end
   object ACBrBoleto1: TACBrBoleto

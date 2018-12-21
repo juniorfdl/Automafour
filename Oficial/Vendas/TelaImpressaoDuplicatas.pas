@@ -449,6 +449,7 @@ type
     SQLTipoDocumentoTPDCA60DESCR: TStringField;
     SQLTipoDocumentoVLRTAXA: TFloatField;
     SQLContasReceberTPDCICOD: TIntegerField;
+    SQLContaCorrenteVALOR_LIMITE_BOLETO: TFloatField;
     procedure BtnSelecionarDocClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure MnDuplicatasClick(Sender: TObject);
@@ -501,6 +502,8 @@ procedure TFormTelaImpressaoDuplicata.BtnSelecionarDocClick(
 begin
   inherited;
 
+  SQLContaCorrente.Locate('CTCRICOD',ComboContaCorrente.KeyValue,[]);
+
   SQLContasReceber.Close;
   SQLTotais.Close;
 
@@ -539,6 +542,9 @@ begin
       SqlContasReceber.MacroByName('MCliente').Value := '0=0';
       SQLTotais.MacroByName('MCliente').Value := '0=0';
     end;
+
+  if SQLContaCorrenteVALOR_LIMITE_BOLETO.AsFloat > 0 then
+    SQLContasReceber.MacroByName('MValor').Value := ' CR.CTRCN2VLR > ' + TrocaVirgulaPorPonto(FormatFloat('0.00',SQLContaCorrenteVALOR_LIMITE_BOLETO.asFloat)) ;
 
   if (ComboPortador.KeyValue <> null) and (ComboPortador.KeyValue > 0) then
     begin

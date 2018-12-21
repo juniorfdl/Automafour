@@ -2801,6 +2801,7 @@ inherited FormCadastroNotaFiscalItem: TFormCadastroNotaFiscalItem
   end
   inherited SQLTemplate: TRxQuery
     Tag = 1
+    AfterEdit = SQLTemplateAfterEdit
     AfterDelete = SQLTemplateAfterDelete
     OnCalcFields = SQLTemplateCalcFields
     SQL.Strings = (
