@@ -2804,7 +2804,7 @@ inherited FormCadastroCupom: TFormCadastroCupom
       '  CONTASRECEBER'
       'where'
       '  CUPOA13ID = :CUPOA13ID and'
-      '  CTRCA5TIPOPADRAO <> ''CHQ'''
+      '  CTRCA5TIPOPADRAO <> '#39'CHQ'#39
       'order by '
       '   CTRCINROPARC')
     Macros = <>
@@ -3525,7 +3525,7 @@ inherited FormCadastroCupom: TFormCadastroCupom
     PrinterSetup.mmMarginTop = 0
     PrinterSetup.mmPaperHeight = 200000
     PrinterSetup.mmPaperWidth = 130000
-    PrinterSetup.PaperSize = 139
+    PrinterSetup.PaperSize = 256
     Units = utMillimeters
     DeviceType = 'Screen'
     EmailSettings.ReportFormat = 'PDF'
@@ -4153,7 +4153,7 @@ inherited FormCadastroCupom: TFormCadastroCupom
           PrinterSetup.mmMarginTop = 0
           PrinterSetup.mmPaperHeight = 200000
           PrinterSetup.mmPaperWidth = 130000
-          PrinterSetup.PaperSize = 139
+          PrinterSetup.PaperSize = 256
           Units = utMillimeters
           Version = '10.06'
           mmColumnWidth = 0
@@ -4241,7 +4241,7 @@ inherited FormCadastroCupom: TFormCadastroCupom
           PrinterSetup.mmMarginTop = 0
           PrinterSetup.mmPaperHeight = 200000
           PrinterSetup.mmPaperWidth = 130000
-          PrinterSetup.PaperSize = 139
+          PrinterSetup.PaperSize = 256
           Units = utMillimeters
           Version = '10.06'
           mmColumnWidth = 0
@@ -5389,8 +5389,8 @@ inherited FormCadastroCupom: TFormCadastroCupom
     DataPipeline = ppBDEPipeItem
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Etiquetas Adesiva'
-    PrinterSetup.PaperName = 'A4'
-    PrinterSetup.PrinterName = 'Microsoft XPS Document Writer'
+    PrinterSetup.PaperName = 'A4 210 x 297 mm'
+    PrinterSetup.PrinterName = 'Screen'
     PrinterSetup.mmMarginBottom = 0
     PrinterSetup.mmMarginLeft = 0
     PrinterSetup.mmMarginRight = 0

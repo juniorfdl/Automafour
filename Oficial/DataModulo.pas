@@ -8,7 +8,8 @@ uses
   ppStrtch, ppMemo, ppBands, ppCtrls, ppPrnabl, ppClass, ppCache, ppProd,
   ppReport, ppComm, ppRelatv, ppDB, ppDBPipe, ppDBBDE, ACBrNFeDANFEClass,
   ACBrNFeDANFeESCPOS, ACBrDFe, ACBrNFe, ACBrBase, ACBrPosPrinter, MemTable,
-  RestClient, RestUtils, DBClient, UnitLibrary, pcnConversaoNFe;
+  RestClient, RestUtils, DBClient, UnitLibrary, pcnConversaoNFe,
+  ACBrDFeReport, ACBrDFeDANFeReport;
 
 type
   TDM = class(TDMTemplate)
@@ -263,7 +264,6 @@ type
     SQLConfigGeralEmpresaPadraoCalcField: TStringField;
     ACBrPosPrinter: TACBrPosPrinter;
     ACBrNFe: TACBrNFe;
-    ACBrNFeDANFeESCPOS: TACBrNFeDANFeESCPOS;
     TblTicketPreVendaCab: TTable;
     TblTicketPreVendaCabTicketNumero: TStringField;
     TblTicketPreVendaCabVendedor: TStringField;
@@ -807,6 +807,7 @@ type
     SQLConfigServicoID_TRIBUTACAO: TIntegerField;
     SQLConfigServicoLOCAL_TRIBUTACAO: TIntegerField;
     TblPedidoItensVlrDesc: TFloatField;
+    ACBrNFeDANFeESCPOS: TACBrNFeDANFeESCPOS;
     procedure DataModuleCreate(Sender: TObject);
     procedure DBAfterConnect(Sender: TObject);
   private
@@ -893,8 +894,8 @@ begin
     ACBrNFe.Configuracoes.Geral.CSC    := sqlEmpresa.FieldByName('TOKEN').AsString;
   end;
 
-  ACBrNFe.DANFE.ViaConsumidor := True;
-  ACBrNFe.DANFE.ImprimirItens := True;
+  //ACBrNFe.DANFE.ViaConsumidor := True;
+  //ACBrNFe.DANFE.ImprimirItens := True;
 
   if sqlEmpresa.FieldByName('VERSAO').AsString = '4' then
     ACBrNFe.Configuracoes.Geral.VersaoDF := ve400

@@ -448,8 +448,8 @@ begin
   dm.ACBrNFe.Configuracoes.Geral.IdCSC  := dm.sqlEmpresa.FieldByName('idTOKEN').AsString;
   dm.ACBrNFe.Configuracoes.Geral.CSC    := dm.sqlEmpresa.FieldByName('TOKEN').AsString;
 
-  dm.ACBrNFe.DANFE.ViaConsumidor := True;
-  dm.ACBrNFe.DANFE.ImprimirItens := True;
+  //dm.ACBrNFe.DANFE.ViaConsumidor := True;
+  //dm.ACBrNFe.DANFE.ImprimirItens := True;
 
   if (ECFAtual = 'NFCE A4')       then  dm.ACBrPosPrinter.Modelo := ppTexto;
   if (ECFAtual = 'NFCE EPSON')    then  dm.ACBrPosPrinter.Modelo := ppEscPosEpson;
@@ -5987,7 +5987,7 @@ begin
   SQLImpressaoCupom.SQL.Add('Select CUPOINRO, TROCO, CHAVEACESSO, PROTOCOLO, STNFE From CUPOM Where CUPOA13ID ='''+idCupom+'''');
   SQLImpressaoCupom.Open;
   VarValorTroco := SQLImpressaoCupom.fieldbyname('TROCO').Value;
-  dm.ACBrNFe.DANFE.vTroco := VarValorTroco;
+  //dm.ACBrNFe.DANFE.vTroco := VarValorTroco;
 
   dm.TotalCartao  := 0;
   ProvedorCartao  := '';

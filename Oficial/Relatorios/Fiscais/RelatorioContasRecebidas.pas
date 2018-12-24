@@ -128,6 +128,8 @@ type
     SQLContasReceberCTRCN2VLR: TFloatField;
     SQLCupomNumerarioCTRCN2VLR: TFloatField;
     SQLCupomNumerarioRECEN2VLRRECTO: TFloatField;
+    SQLContasReceberVLR_LIQ_CARTAO: TFloatField;
+    TblTemporariaVLR_LIQ_CARTAO: TBCDField;
     procedure FormCreate(Sender: TObject);
     procedure ExecutarBtnClick(Sender: TObject);
     procedure ComboEmpresaChange(Sender: TObject);

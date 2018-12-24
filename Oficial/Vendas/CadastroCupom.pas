@@ -808,8 +808,8 @@ begin
   dm.ACBrNFe.Configuracoes.Geral.IdCSC := SQLLocate('EMPRESA','EMPRICOD','idTOKEN',SQLTemplateEMPRICOD.AsString);
   dm.ACBrNFe.Configuracoes.Geral.CSC   := SQLLocate('EMPRESA','EMPRICOD','TOKEN',SQLTemplateEMPRICOD.AsString);
 
-  dm.ACBrNFe.DANFE.ViaConsumidor := True;
-  dm.ACBrNFe.DANFE.ImprimirItens := True;
+  //dm.ACBrNFe.DANFE.ViaConsumidor := True;
+  //dm.ACBrNFe.DANFE.ImprimirItens := True;
 
 
   nfce_tentativa := 0 ;

@@ -1,7 +1,7 @@
 inherited DM: TDM
   OldCreateOrder = True
-  Left = 177
-  Top = 53
+  Left = 65494
+  Top = 38
   Height = 600
   Width = 1200
   inherited DB: TDatabase
@@ -1907,7 +1907,7 @@ inherited DM: TDM
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 0
     PrinterSetup.mmPaperWidth = 0
-    PrinterSetup.PaperSize = 177
+    PrinterSetup.PaperSize = 256
     DeviceType = 'Screen'
     EmailSettings.ReportFormat = 'PDF'
     OutlineSettings.CreateNode = True
@@ -2961,49 +2961,6 @@ inherited DM: TDM
     Configuracoes.WebServices.QuebradeLinha = '|'
     DANFE = ACBrNFeDANFeESCPOS
     Left = 545
-    Top = 5
-  end
-  object ACBrNFeDANFeESCPOS: TACBrNFeDANFeESCPOS
-    ACBrNFe = ACBrNFe
-    Sistema = 'Easy2Solutions'
-    PathPDF = '.\pdf\'
-    MostrarPreview = True
-    MostrarStatus = True
-    TipoDANFE = tiNFCe
-    NumCopias = 1
-    Site = 'http://www.projetoacbr.com.br'
-    ImprimeNomeFantasia = False
-    ImprimirDescPorc = False
-    ImprimirTotalLiquido = False
-    MargemInferior = 0.800000000000000000
-    MargemSuperior = 0.800000000000000000
-    MargemEsquerda = 0.600000000000000000
-    MargemDireita = 0.510000000000000000
-    CasasDecimais.Formato = tdetInteger
-    CasasDecimais._qCom = 3
-    CasasDecimais._vUnCom = 2
-    CasasDecimais._Mask_qCom = '###,###,###,##0.00'
-    CasasDecimais._Mask_vUnCom = '###,###,###,##0.00'
-    ExibirResumoCanhoto = False
-    FormularioContinuo = False
-    TamanhoFonte_DemaisCampos = 10
-    ProdutosPorPagina = 0
-    ImprimirDetalhamentoEspecifico = True
-    NFeCancelada = False
-    ImprimirItens = True
-    ViaConsumidor = True
-    TamanhoLogoHeight = 0
-    TamanhoLogoWidth = 0
-    RecuoEndereco = 0
-    RecuoEmpresa = 0
-    LogoemCima = False
-    TamanhoFonteEndereco = 0
-    RecuoLogo = 0
-    FonteTributos = 'IBPT'
-    ImprimeEmUmaLinha = False
-    ImprimeDescAcrescItem = False
-    PosPrinter = ACBrPosPrinter
-    Left = 576
     Top = 5
   end
   object TblTicketPreVendaCab: TTable
@@ -5756,5 +5713,20 @@ inherited DM: TDM
       FieldName = 'LOCAL_TRIBUTACAO'
       Origin = 'DB.CONFIG_SERVICO.LOCAL_TRIBUTACAO'
     end
+  end
+  object ACBrNFeDANFeESCPOS: TACBrNFeDANFeESCPOS
+    Sistema = 'Automafour'
+    MargemInferior = 0.800000000000000000
+    MargemSuperior = 0.800000000000000000
+    MargemEsquerda = 0.600000000000000000
+    MargemDireita = 0.510000000000000000
+    CasasDecimais.Formato = tdetInteger
+    CasasDecimais.qCom = 2
+    CasasDecimais.vUnCom = 2
+    CasasDecimais.MaskqCom = ',0.00'
+    CasasDecimais.MaskvUnCom = ',0.00'
+    ACBrNFe = ACBrNFe
+    Left = 640
+    Top = 72
   end
 end

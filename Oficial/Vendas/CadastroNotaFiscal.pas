@@ -16,7 +16,8 @@ uses
   cxContainer, cxEdit, dxSkinsCore, cxTextEdit,
   cxDBEdit,
   AdvOfficeStatusBar, AdvOfficeStatusBarStylers, AdvPanel, ACBrBase,
-  ACBrMail, ACBrNFeDANFeRLClass, ACBrDFe, pcnConversaoNFe;
+  ACBrMail, ACBrNFeDANFeRLClass, ACBrDFe, pcnConversaoNFe, ACBrDFeReport,
+  ACBrDFeDANFeReport;
 
 type
   TFormCadastroNotaFiscal = class(TFormCadastroTEMPLATE)

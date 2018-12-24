@@ -159,12 +159,21 @@ begin
     Exit;
   end;
   try
+   try
     cdsProdutoNovo.Insert;
     cdsProdutoNovoPRSEA60NROSERIE.AsString := edtNumeroSerie.Text;
     cdsProdutoNovoPRODICOD.AsInteger       := codGravaProduto;
     cdsProdutoNovo.Post;
+   except
+     on e: Exception do
+       raise Exception.Create(e.Message);
+   end;
   finally
     edtNumeroSerie.Clear;
+
+    if cdsProdutoNovo.state = dsinsert then
+      cdsProdutoNovo.cancel;
+
   end;
   edtNumeroSerie.SetFocus;
 end;

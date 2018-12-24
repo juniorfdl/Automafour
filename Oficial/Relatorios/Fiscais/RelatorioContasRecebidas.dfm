@@ -609,6 +609,11 @@ inherited FormRelatorioContasRecebidas: TFormRelatorioContasRecebidas
       FieldName = 'CTRCA15NOSSONUMERO'
       Size = 15
     end
+    object TblTemporariaVLR_LIQ_CARTAO: TBCDField
+      FieldName = 'VLR_LIQ_CARTAO'
+      Precision = 15
+      Size = 3
+    end
   end
   object SQLNumerario: TQuery
     DatabaseName = 'DB'
@@ -650,7 +655,10 @@ inherited FormRelatorioContasRecebidas: TFormRelatorioContasRecebidas
       '  CLIENTE.CLIEA60RAZAOSOC,'
       '  TIPODOCUMENTO.TPDCA60DESCR,'
       '  PORTADOR.PORTA60DESCR, '
-      '  CONTASRECEBER.CTRCA15NOSSONUMERO'
+      '  CONTASRECEBER.CTRCA15NOSSONUMERO,'
+      
+        '  CONTASRECEBER.CTRCN2VLR - ((CONTASRECEBER.CTRCN2VLR * NUM.NUME' +
+        'N2TAXAADM / 100)) as VLR_LIQ_CARTAO'
       'from'
       
         ' RECEBIMENTO inner join CONTASRECEBER on RECEBIMENTO.CTRCA13ID =' +
@@ -664,6 +672,9 @@ inherited FormRelatorioContasRecebidas: TFormRelatorioContasRecebidas
       
         ' left outer join PORTADOR        on CONTASRECEBER.PORTICOD  = PO' +
         'RTADOR.PORTICOD'
+      
+        ' left join NUMERARIO NUM on NUM.NUMEICOD = CONTASRECEBER.NUMEICO' +
+        'D'
       'where'
       '  (CONTASRECEBER.CTRCCSTATUS = "A") and'
       '  (%MEmpresa) and'
@@ -835,6 +846,9 @@ inherited FormRelatorioContasRecebidas: TFormRelatorioContasRecebidas
     end
     object SQLContasReceberCTRCN2VLR: TFloatField
       FieldName = 'CTRCN2VLR'
+    end
+    object SQLContasReceberVLR_LIQ_CARTAO: TFloatField
+      FieldName = 'VLR_LIQ_CARTAO'
     end
   end
   object SQLCliente: TQuery
