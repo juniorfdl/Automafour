@@ -1762,6 +1762,8 @@ begin
 end;
 
 procedure TFormCadastroNotaFiscalItem.SQLTemplateUNIDICODChange(Sender: TField);
+var
+  vCLIECTPPRCVENDA:String;
 begin
   inherited;
   if SQLTemplatePRODICOD.AsString <> '' then
@@ -1772,29 +1774,38 @@ begin
     if DSMasterTemplate.DataSet.FieldByName('CLIEA13ID').AsString <> '' then
     begin
       dm.zConsulta.Close;
-      dm.zConsulta.SQL.Text := 'select PRODDINIPROMO, PRODDFIMPROMO, PRODN3VLRVENDA, PRODN3VLRVENDA2, PRODN3VLRVENDAPROM from produto where prodicod = ' + SQLTemplatePRODICOD.AsString;
+      dm.zConsulta.SQL.Text := 'select PRODDINIPROMO, PRODDFIMPROMO, PRODN3VLRVENDA, PRODN3VLRVENDA2, '
+      +' PRODN3VLRVENDAPROM, PRODN3QTDVENDA2835D, PRODN2VLRVENDA2835D, PRODN3QTDVENDA283542D, PRODN2VLRVENDA283542D, '
+      +' PRODN3PESOBRUTO, PRODA60CODBAR from produto where prodicod = ' + SQLTemplatePRODICOD.AsString;
       dm.zConsulta.Open;
-      if SQLTemplateUNIDICOD.AsString = SQLLocate('PRODUTO', 'PRODICOD', 'UNIDICOD', SQLTemplatePRODICOD.AsString) then
+
+      vCLIECTPPRCVENDA := SQLLocate('CLIENTE','CLIEA13ID','CLIECTPPRCVENDA',Quotedstr(DSMasterTemplate.DataSet.FieldByName('CLIEA13ID').AsString));
+
+      if copy(vCLIECTPPRCVENDA, 1, 1) = 'A' then
       begin
+        if sqlunidade2.RecordCount > 1 then
+        begin
+          if SQLTemplateUNIDICOD.AsString = SQLLocate('PRODUTO', 'PRODICOD', 'UNIDICOD', SQLTemplatePRODICOD.AsString) then
+            SQLTemplateNFITN2VLRUNIT.AsVariant := SQLLocate('PRODUTO', 'PRODICOD', 'PRODN3VLRVENDA', SQLTemplatePRODICOD.AsString)
+          else
+            SQLTemplateNFITN2VLRUNIT.AsVariant := SQLLocate('PRODUTO', 'PRODICOD', 'PRODN3VLRVENDA2', SQLTemplatePRODICOD.AsString);
+        end
+        else
+        begin
+          if vCLIECTPPRCVENDA = 'A1' then     // Preco Atacado1
+            SQLTemplateNFITN2VLRUNIT.Value := dm.zConsulta.fieldbyname('PRODN3VLRVENDA2').AsFloat;
+          if vCLIECTPPRCVENDA = 'A2' then     // Preco Atacado2
+            SQLTemplateNFITN2VLRUNIT.Value := dm.zConsulta.fieldbyname('PRODN2VLRVENDA2835D').AsFloat;
+          if vCLIECTPPRCVENDA = 'A3' then     // Preco Atacado3
+            SQLTemplateNFITN2VLRUNIT.Value := dm.zConsulta.fieldbyname('PRODN2VLRVENDA283542D').AsFloat;
+        end;
+      end
+      else begin
         if ((dm.zConsulta.FieldByName('PRODDINIPROMO').AsDateTime <= Now) and (dm.zConsulta.FieldByName('PRODDFIMPROMO').AsDateTime >= Now) and (dm.zConsulta.FieldByName('PRODN3VLRVENDAPROM').AsFloat > 0)) or ((dm.zConsulta.FieldByName('PRODDINIPROMO').AsDateTime <= Now) and (dm.zConsulta.FieldByName('PRODDFIMPROMO').AsString = '') and (dm.zConsulta.FieldByName('PRODN3VLRVENDAPROM').AsFloat > 0)) then
           SQLTemplateNFITN2VLRUNIT.Value := dm.zConsulta.fieldbyname('PRODN3VLRVENDAPROM').AsFloat
         else
           SQLTemplateNFITN2VLRUNIT.Value := dm.zConsulta.fieldbyname('PRODN3VLRVENDA').AsFloat;
-      end
-      else
-        SQLTemplateNFITN2VLRUNIT.AsVariant := dm.zConsulta.fieldbyname('PRODN3VLRVENDA2').AsFloat;
-
-
-         { If SQLLocate('CLIENTE','CLIEA13ID','CLIECTPPRCVENDA',''''+DSMasterTemplate.DataSet.FieldByName('CLIEA13ID').AsString+'''') = 'A' Then
-            SQLTemplateNFITN2VLRUNIT.Value := dm.zConsulta.fieldbyname('PRODN3VLRVENDA2').AsFloat
-          else
-            begin
-              if ((dm.zConsulta.FieldByName('PRODDINIPROMO').AsDateTime <= Now) and (dm.zConsulta.FieldByName('PRODDFIMPROMO').AsDateTime >= Now) and (dm.zConsulta.FieldByName('PRODN3VLRVENDAPROM').AsFloat>0)) or
-                 ((dm.zConsulta.FieldByName('PRODDINIPROMO').AsDateTime <= Now) and (dm.zConsulta.FieldByName('PRODDFIMPROMO').AsString = '') and (dm.zConsulta.FieldByName('PRODN3VLRVENDAPROM').AsFloat>0)) then
-                SQLTemplateNFITN2VLRUNIT.Value := dm.zConsulta.fieldbyname('PRODN3VLRVENDAPROM').AsFloat
-              else
-                SQLTemplateNFITN2VLRUNIT.Value := dm.zConsulta.fieldbyname('PRODN3VLRVENDA').AsFloat;
-            end;}
+      end;
     end;
   end;
 

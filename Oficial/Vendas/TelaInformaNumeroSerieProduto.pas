@@ -9,8 +9,6 @@ uses
 
 type
   TFormTelaInformaNumeroSerieProduto = class(TForm)
-    BitBtn1: TBitBtn;
-    BitBtn2: TBitBtn;
     SQLConsulta: TQuery;
     LblNomeSistema: TRxLabel;
     SQLProdutoSerie: TRxQuery;
@@ -31,6 +29,9 @@ type
     cdsProdutoNovoPRODICOD: TIntegerField;
     cdsProdutoNovoPRSEA60NROSERIE: TStringField;
     cdsProdutoNovoEMPRICOD: TStringField;
+    Panel2: TPanel;
+    BitBtn1: TBitBtn;
+    BitBtn2: TBitBtn;
     procedure BitBtn1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure DBGridListaKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
