@@ -303,6 +303,7 @@ procedure MudaAlineaCheque(IDCheque,NovaAlinea,NovoPortador : String);
 procedure BaixaChequeEmitido(NroCheque:String;DataBaixa : TDateTime);
 function MontaString(x: string; Tamanho: integer; tipo: Integer = 0; CompletarCom: string = ' '): string;
 function RemoverZeros(S: string): string;
+function VerificaDesconto(ValorRecebido, ValorDesconto, PercentualPermitido, PercentualDesconto  : Real): Boolean;
 procedure GravaMovimentoNumeroSerie(Empresa, NumeroSerie, EntSai, DocOrigem, NomeCliFor : string; CodigoProdutoMovSer : Integer; DataMovimento : TDateTime);
 
 implementation
@@ -2769,18 +2770,6 @@ begin
       TrocaVirgulaPorPonto := Numero;
   end
   else TrocaVirgulaPorPonto := '0.00';
-
-
-
-
-
-
-
-
-
-
-
-
 end;
 
 
@@ -5572,6 +5561,22 @@ begin
   end;
 end;
 
+function VerificaDesconto(ValorRecebido, ValorDesconto, PercentualPermitido, PercentualDesconto  : Real): Boolean;
+var
+  vValor : Real;
+begin
+  Result := True;
+  if ValorDesconto > 0 then
+  begin
+    vValor := (ValorDesconto / ValorRecebido * 100);
+    Result := PercentualPermitido > vValor;
+  end
+  else
+  if PercentualDesconto > 0 then
+  begin
+    Result := PercentualPermitido > vValor;
+  end;
+end;
 
 end.
 

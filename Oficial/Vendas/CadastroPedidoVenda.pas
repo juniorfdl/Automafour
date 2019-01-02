@@ -441,6 +441,7 @@ type
     ValorEntrada: Double;
     ContasReceberID: string;
     BkpEmpresaCorrente: Integer;
+    DescontoMaximo : Real;
     procedure CalculaTotal;
     procedure HabilitaItens(sn: Boolean);
   public
@@ -585,6 +586,7 @@ begin
     SQLTemplateSERIA5COD.Value := dm.SerieAtualPedidos
   else
     SQLTemplateSERIA5COD.Value := SQLSerieSERIA5COD.Value;
+  DescontoMaximo := StrToFloat(SQLLocate('USUARIO', 'USUAA60LOGIN', 'USUAN2PERCDESC', QuotedStr(UsuarioAtualNome)));
   DBEdit6.SetFocus;
 end;
 
@@ -597,6 +599,7 @@ begin
       Exit;
     end;}
   StatusAnterior := SQLTemplate.FindField('PDVDCSTATUS').AsString;
+  DescontoMaximo := StrToFloat(SQLLocate('USUARIO', 'USUAA60LOGIN', 'USUAN2PERCDESC', QuotedStr(UsuarioAtualNome)));
   inherited;
 end;
 
@@ -1227,6 +1230,13 @@ begin
   begin
     ShowMessage('O campo valor unitário não foi informado! Verifique!');
     DBEditUnitario.SetFocus;
+    exit;
+  end;
+
+  if (DescontoMaximo > 0) and (not VerificaDesconto((SQLPedidoVendaItemPVITN2VLRUNIT.AsFloat * SQLPedidoVendaItemPVITN3QUANT.AsFloat),SQLPedidoVendaItemPVITN2VLRDESC.AsFloat,DescontoMaximo,0)) then
+  begin
+    ShowMessage('Valor do desconto acima do permitido! Verifique!');
+    DBEdit1.SetFocus;
     exit;
   end;
 
