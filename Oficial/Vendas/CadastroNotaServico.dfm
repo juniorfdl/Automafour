@@ -49,6 +49,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
             Top = 44
             Width = 1121
             Height = 528
+            ActivePage = TabSheetDadosPrincipais
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Width = 1113
@@ -709,33 +710,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                   LookupDisplay = 'NOME'
                   LookupSource = DSSQLCidade
                   ParentCtl3D = False
-                  TabOrder = 15
-                end
-                object RxDBComboBox1: TRxDBComboBox
-                  Left = 305
-                  Top = 146
-                  Width = 208
-                  Height = 21
-                  Style = csDropDownList
-                  DataField = 'LOCAL_TRIBUTACAO'
-                  DataSource = DSTemplate
-                  EnableValues = True
-                  ItemHeight = 13
-                  Items.Strings = (
-                    '1 - Tributa'#231#227'o no munic'#237'pio'
-                    '2 - Tributa'#231#227'o fora do munic'#237'pio'
-                    '3 - Isen'#231#227'o'
-                    '4 - Imune'
-                    '5 - Exigibilidade suspensa por decis'#227'o judicial'
-                    '6 - Exigilibidade suspensa por procedimento adm')
-                  TabOrder = 13
-                  Values.Strings = (
-                    '1'
-                    '2'
-                    '3'
-                    '4'
-                    '5'
-                    '6')
+                  TabOrder = 14
                 end
                 object DBEdit28: TDBEdit
                   Left = 6
@@ -776,7 +751,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                   DataField = 'UF_PRESTACAO'
                   DataSource = DSTemplate
                   ParentCtl3D = False
-                  TabOrder = 14
+                  TabOrder = 13
                 end
                 object DBMemo2: TDBMemo
                   Left = 7
@@ -785,7 +760,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                   Height = 23
                   DataField = 'OBS'
                   DataSource = DSTemplate
-                  TabOrder = 16
+                  TabOrder = 15
                 end
                 object AdvGlowButton1: TAdvGlowButton
                   Left = 941
@@ -2669,7 +2644,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                     4A29131F94AF0F2AF217A0EBBAC3B945C497724655142F1AB6541510F813E0FE
                     F612FB3EF17F0140D3CB7E166EE0D50000000049454E44AE426082}
                   Transparent = True
-                  TabOrder = 17
+                  TabOrder = 16
                   OnClick = AdvGlowButton1Click
                   Appearance.BorderColor = 14727579
                   Appearance.BorderColorHot = 10053171
@@ -4584,7 +4559,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                     4A29131F94AF0F2AF217A0EBBAC3B945C497724655142F1AB6541510F813E0FE
                     F612FB3EF17F0140D3CB7E166EE0D50000000049454E44AE426082}
                   Transparent = True
-                  TabOrder = 18
+                  TabOrder = 17
                   OnClick = AdvGlowButton2Click
                   Appearance.BorderColor = 14727579
                   Appearance.BorderColorHot = 10053171
@@ -6499,7 +6474,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                     4A29131F94AF0F2AF217A0EBBAC3B945C497724655142F1AB6541510F813E0FE
                     F612FB3EF17F0140D3CB7E166EE0D50000000049454E44AE426082}
                   Transparent = True
-                  TabOrder = 19
+                  TabOrder = 18
                   OnClick = AdvGlowButton3Click
                   Appearance.BorderColor = 14727579
                   Appearance.BorderColorHot = 10053171
@@ -8414,7 +8389,7 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                     4A29131F94AF0F2AF217A0EBBAC3B945C497724655142F1AB6541510F813E0FE
                     F612FB3EF17F0140D3CB7E166EE0D50000000049454E44AE426082}
                   Transparent = True
-                  TabOrder = 20
+                  TabOrder = 19
                   OnClick = btnTransmitirNFSeClick
                   Appearance.BorderColor = 14727579
                   Appearance.BorderColorHot = 10053171
@@ -8446,6 +8421,22 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
                   Appearance.GradientMirrorDown = ggVertical
                   Appearance.GradientChecked = ggVertical
                   Layout = blGlyphTop
+                end
+                object RxDBLookupCombo2: TRxDBLookupCombo
+                  Left = 308
+                  Top = 147
+                  Width = 204
+                  Height = 20
+                  DropDownCount = 8
+                  DropDownWidth = 500
+                  Ctl3D = True
+                  DataField = 'LOCAL_TRIBUTACAO'
+                  DataSource = DSTemplate
+                  LookupField = 'CODIGO'
+                  LookupDisplay = 'DESCRICAO'
+                  LookupSource = DSSQLLocal_Tributacao
+                  ParentCtl3D = False
+                  TabOrder = 20
                 end
               end
               object GroupBox3: TGroupBox
@@ -10698,5 +10689,33 @@ inherited FormCadastroNotaServico: TFormCadastroNotaServico
     Macros = <>
     Left = 1088
     Top = 507
+  end
+  object SQLLocal_Tributacao: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'Select * From LOCAL_TRIBUTACAO')
+    Macros = <>
+    Left = 997
+    Top = 206
+    object SQLLocal_TributacaoID_LOCALTRIBUTACAO: TIntegerField
+      FieldName = 'ID_LOCALTRIBUTACAO'
+      Origin = 'DB.LOCAL_TRIBUTACAO.ID_LOCALTRIBUTACAO'
+    end
+    object SQLLocal_TributacaoCODIGO: TStringField
+      FieldName = 'CODIGO'
+      Origin = 'DB.LOCAL_TRIBUTACAO.CODIGO'
+      Size = 10
+    end
+    object SQLLocal_TributacaoDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Origin = 'DB.LOCAL_TRIBUTACAO.DESCRICAO'
+      Size = 100
+    end
+  end
+  object DSSQLLocal_Tributacao: TDataSource
+    AutoEdit = False
+    DataSet = SQLLocal_Tributacao
+    Left = 1030
+    Top = 206
   end
 end

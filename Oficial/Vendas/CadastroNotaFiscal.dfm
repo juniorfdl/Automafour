@@ -15571,6 +15571,10 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
       FixedChar = True
       Size = 13
     end
+    object SQLPedidoVendaDATA_VALIDADE: TDateTimeField
+      FieldName = 'DATA_VALIDADE'
+      Origin = 'DB.PEDIDOVENDA.DATA_VALIDADE'
+    end
   end
   object SQLPedidoVendaFinanceiro: TRxQuery
     DatabaseName = 'DB'

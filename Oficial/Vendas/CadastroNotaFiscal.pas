@@ -1101,6 +1101,7 @@ type
     SQLRepresentanteREPRA60RAZAOSOC: TStringField;
     SQLRepresentanteREPRA60NOMEFANT: TStringField;
     SQLRepresentantePERC_COMISSAO: TFloatField;
+    SQLPedidoVendaDATA_VALIDADE: TDateTimeField;
     function TabelaNFE_123(Produto, Situacao: string): string;
     procedure FormCreate(Sender: TObject);
     procedure SQLTemplateNewRecord(DataSet: TDataSet);
@@ -1712,6 +1713,11 @@ begin
       else
         SQLPedidoVenda.ParamByName('PDVDA13ID').asString := VarPDVDA13ID;
       SQLPedidoVenda.Open;
+      if (SQLPedidoVenda.FieldByName('DATA_VALIDADE').AsDateTime > 10) and (SQLPedidoVenda.FieldByName('DATA_VALIDADE').AsDateTime < Now) then
+      begin
+        Informa('Validade do pedido expirou');
+        Abort;
+      end;
           // Troca Status do Pedido pra FATURADO e Alimenta a Coluna Importado(SN)
       SQLPedidoVenda.Edit;
       SQLPedidoVenda.FieldByName('PDVDCSTATUS').AsString := 'F';
@@ -1765,6 +1771,11 @@ begin
       else
         SQLPedidoVenda.ParamByName('PDVDA13ID').asString := VarPDVDA13ID;
       SQLPedidoVenda.Open;
+      if (SQLPedidoVenda.FieldByName('DATA_VALIDADE').AsDateTime > 10) and (SQLPedidoVenda.FieldByName('DATA_VALIDADE').AsDateTime < date) then
+      begin
+        Informa('Validade do pedido expirou');
+        Abort;
+      end;
       if (not SQLPedidoVenda.IsEmpty) and (SQLPedidoVendaPDVDCSTATUS.AsString <> 'C') then
       begin
               // Troca Status do Pedido pra FATURADO e Alimenta a Coluna Importado(SN)

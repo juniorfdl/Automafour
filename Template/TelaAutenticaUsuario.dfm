@@ -4,7 +4,7 @@ object FormTelaAutenticaUsuario: TFormTelaAutenticaUsuario
   Width = 584
   Height = 167
   Caption = 'Advanced Control'
-  Color = 14731440
+  Color = 9751928
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -22,7 +22,7 @@ object FormTelaAutenticaUsuario: TFormTelaAutenticaUsuario
     Align = alTop
     Alignment = taCenter
     Caption = 'Informe a Senha de Acesso!'
-    Color = 10053171
+    Color = 5278518
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWhite
     Font.Height = -37
@@ -40,7 +40,7 @@ object FormTelaAutenticaUsuario: TFormTelaAutenticaUsuario
     Align = alBottom
     Alignment = taCenter
     Caption = 'Pressione Enter ou Esc para finalizar'
-    Color = 10053171
+    Color = 5278518
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWhite
     Font.Height = -21

@@ -980,6 +980,9 @@ type
     SQLRepresentante: TRxQuery;
     SQLRepresentanteREPRICOD: TIntegerField;
     SQLRepresentanteREPRA60RAZAOSOC: TStringField;
+    PopupMenuBusca: TPopupMenu;
+    Sefaz1: TMenuItem;
+    Receita1: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure AcessaVendedorClick(Sender: TObject);
     procedure SQLTemplateNewRecord(DataSet: TDataSet);
@@ -1088,9 +1091,10 @@ type
     procedure btCancelaCreditoClick(Sender: TObject);
     procedure ListagemPersonalizada1Click(Sender: TObject);
     procedure ConsultaClienteSefaz1Click(Sender: TObject);
-    procedure RxSpeedButton1Click(Sender: TObject);
     procedure ACBrCEP1BuscaEfetuada(Sender: TObject);
     procedure btnBuscaCepClick(Sender: TObject);
+    procedure Sefaz1Click(Sender: TObject);
+    procedure Receita1Click(Sender: TObject);
   private
     { Private declarations }
     VlrSaldo,
@@ -1124,7 +1128,8 @@ uses //CadastroVendedor, TelaClienteHistorico, RelatorioExtratoCliente
   CadastroClienteContato, UnitLibrary, TelaConsultaTabelaPreco, CadastroConsulta, CadastroCep, CadastroClienteExtintor,
   CadastroClienteHistorico, TelaConsultaPlanoRecebimento, TelaNegociacaoDivida, WaitWindow, TelaDadosTeleEntrega,
   CadastroTipoCliente, TelaGeracaoMalaDireta, CadastroClienteProduto, CadastroProfissional, CadastroClienteVeiculos,
-  TelaDetalheRecebimento, TelaClienteHistorico, CadastroAnimais, TelaReceituario;
+  TelaDetalheRecebimento, TelaClienteHistorico, CadastroAnimais, TelaReceituario,
+  uConsulta_cnpj;
      //CadastroAnimais, TelaDetalheRecebimento;
 
 
@@ -3830,13 +3835,6 @@ begin
   consultarCadastro(UF, DOC);
 end;
 
-procedure TFormCadastroCliente.RxSpeedButton1Click(Sender: TObject);
-begin
-  inherited;
-  if SQLTemplateCLIEA14CGC.AsString <> '' then
-    consultarCadastro(dm.sqlEmpresa.FieldByName('empra2uf').AsString,SQLTemplateCLIEA14CGC.AsString);
-end;
-
 procedure TFormCadastroCliente.BuscarCep;
 begin
  if DBEdit20.Text <> '' then
@@ -3878,6 +3876,40 @@ procedure TFormCadastroCliente.btnBuscaCepClick(Sender: TObject);
 begin
   inherited;
   ACBrCEP1.BuscarPorCEP(DBEdit20.Text);
+end;
+
+procedure TFormCadastroCliente.Sefaz1Click(Sender: TObject);
+begin
+  inherited;
+  if SQLTemplateCLIEA14CGC.AsString <> '' then
+    consultarCadastro(ComboUFRes.Items[ComboUFRes.ItemIndex],SQLTemplateCLIEA14CGC.AsString);
+end;
+
+procedure TFormCadastroCliente.Receita1Click(Sender: TObject);
+var
+  vCNPJ : String;
+begin
+  inherited;
+   Application.CreateForm(TfrmConsulta_CNPJ,frmConsulta_CNPJ);
+   frmConsulta_CNPJ.ShowModal;
+   if frmConsulta_CNPJ.ModalResult = MrOK then
+   begin
+     SQLTemplateCLIEA5FISJURID.AsString  := 'J';
+     SQLTemplateCLIEA60ENDRES.AsString   := trim(frmConsulta_CNPJ.EditEndereco.Text);
+     SQLTemplateCLIEA60BAIRES.AsString   := trim(frmConsulta_CNPJ.EditBairro.Text);
+     SQLTemplateCLIEA60CIDRES.AsString   := trim(frmConsulta_CNPJ.EditCidade.Text);
+     SQLTemplateCLIEA2UFRES.AsString     := trim(frmConsulta_CNPJ.EditUF.Text);
+     SQLTemplateCLIEA8CEPRES.AsString    := StringReplace(frmConsulta_CNPJ.EditCEP.Text,'-','',[rfReplaceAll]);
+     SQLTemplateCLIEA5NROENDRES.AsString := trim(frmConsulta_CNPJ.EditNumero.Text);
+     SQLTemplateCLIEA60RAZAOSOC.AsString := trim(frmConsulta_CNPJ.EditRazaoSocial.Text);
+     SQLTemplateCLIEA60NOMEFANT.AsString := trim(frmConsulta_CNPJ.EditFantasia.Text);
+     vCNPJ := StringReplace(frmConsulta_CNPJ.EditCNPJ.Text,'.','',[rfReplaceAll]);
+     vCNPJ := StringReplace(vCNPJ,'/','',[rfReplaceAll]);
+     vCNPJ := StringReplace(vCNPJ,'-','',[rfReplaceAll]);
+     SQLTemplateCLIEA14CGC.AsString      := trim(vCNPJ);
+     DBEdit49Enter(Sender);
+   end;
+   FreeAndNil(frmConsulta_CNPJ);
 end;
 
 end.

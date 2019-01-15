@@ -2314,6 +2314,10 @@ inherited FormTelaBaixarDocumentosReceber: TFormTelaBaixarDocumentosReceber
       Caption = 'Sicredi'
       OnClick = mnSicrediClick
     end
+    object Ita1: TMenuItem
+      Caption = 'Ita'#250
+      OnClick = Ita1Click
+    end
   end
   object OpenDialog: TOpenDialog
     Filter = 'Todos Arquivos *.*|*.*'

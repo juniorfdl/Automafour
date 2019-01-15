@@ -237,7 +237,7 @@ end;
 procedure TFormTelaConsultaTemplate.FormKeyPress(Sender: TObject;
   var Key: Char);
 var
-  Clausula, ColunaOrdem:String;
+  Clausula, ColunaOrdem,ColunaOrdenar, Ordenar:String;
   Objeto:TComponent;
   I:Integer;
 begin
@@ -250,7 +250,16 @@ begin
           If Pos('ORDER BY',TRxQuery(DSTemplate.DataSet).SQL.Text)<>0 Then
             TRxQuery(DSTemplate.DataSet).SQL.Text:=Copy(TRxQuery(DSTemplate.DataSet).SQL.Text,1,Pos('ORDER BY',TRxQuery(DSTemplate.DataSet).SQL.Text)-1);
           if Trim(EditProcura.text) = '' then
-            TRxQuery(DSTemplate.DataSet).MacroByName('MFiltro').Value:= '0=0'
+          begin
+            Ordenar := ' ASC';
+            if ComboOrder.Text <> '' then
+              ColunaOrdenar := ComboOrder.Text
+            else
+              ColunaOrdenar := ComboOrdem.Text;
+            TRxQuery(DSTemplate.DataSet).MacroByName('MFiltro').Value:= '0=0';
+            TRxQuery(DSTemplate.DataSet).SQL.ADD('ORDER BY ' + DSTemplate.DataSet.FindField(DM.LocateByDisplayLabel(DSTemplate.DataSet,ColunaOrdenar)).FieldName + Ordenar);
+//            TRxQuery(DSTemplate.DataSet).SQL.Text:=Copy(TRxQuery(DSTemplate.DataSet).SQL.Text,1,Pos('ORDER BY',TRxQuery(DSTemplate.DataSet).SQL.Text)-1);
+          end
           else
             begin
               Clausula:='';

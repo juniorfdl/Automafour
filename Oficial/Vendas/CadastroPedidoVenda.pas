@@ -372,6 +372,9 @@ type
     Report: TCrpe;
     RadioImpressao: TRadioGroup;
     RdPend: TRadioButton;
+    Label33: TLabel;
+    DBDateEdit1: TDBDateEdit;
+    SQLTemplateDATA_VALIDADE: TDateTimeField;
     procedure FormCreate(Sender: TObject);
     procedure BtnClienteClick(Sender: TObject);
     procedure BtnVendedorClick(Sender: TObject);
@@ -442,6 +445,7 @@ type
     ContasReceberID: string;
     BkpEmpresaCorrente: Integer;
     DescontoMaximo : Real;
+    RetornoCampoUsuario : String;
     procedure CalculaTotal;
     procedure HabilitaItens(sn: Boolean);
   public
@@ -1211,6 +1215,8 @@ begin
 end;
 
 procedure TFormCadastroPedidoVenda.BtItemGravarClick(Sender: TObject);
+var
+  RetornoUser : TInfoRetornoUser;
 begin
   if SQLPedidoVendaItemPRODICOD.Value < 1 then
   begin
@@ -1235,9 +1241,24 @@ begin
 
   if (DescontoMaximo > 0) and (not VerificaDesconto((SQLPedidoVendaItemPVITN2VLRUNIT.AsFloat * SQLPedidoVendaItemPVITN3QUANT.AsFloat),SQLPedidoVendaItemPVITN2VLRDESC.AsFloat,DescontoMaximo,0)) then
   begin
-    ShowMessage('Valor do desconto acima do permitido! Verifique!');
-    DBEdit1.SetFocus;
-    exit;
+    ShowMessage('Valor do desconto acima do permitido!');
+    RetornoCampoUsuario := AutenticaUsuario(UsuarioAtualNome,'USUAN2PERCDESC',RetornoUser);
+    try
+      DescontoMaximo := StrToFloat(RetornoCampoUsuario);
+      if not VerificaDesconto((SQLPedidoVendaItemPVITN2VLRUNIT.AsFloat * SQLPedidoVendaItemPVITN3QUANT.AsFloat),SQLPedidoVendaItemPVITN2VLRDESC.AsFloat,DescontoMaximo,0) then
+      begin
+        ShowMessage('Valor do desconto acima do permitido!');
+        DBEdit1.SetFocus;
+        exit;
+      end;
+    except
+      begin
+        DBEdit1.SetFocus;
+        exit;
+      end;
+    end;
+//    DBEdit1.SetFocus;
+//    exit;
   end;
 
   if (SQLPedidoVendaItem.State in dsEditModes) then

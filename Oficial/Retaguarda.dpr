@@ -462,7 +462,9 @@ uses
   CadastroRepresentanteProduto in 'Cadastros\CadastroRepresentanteProduto.pas' {FormCadastroRepresentanteProduto},
   TelaInformaNumeroSerieProduto in 'Vendas\TelaInformaNumeroSerieProduto.pas' {FormTelaInformaNumeroSerieProduto},
   RelatorioComissaoRepresentanteDetalhado in 'Relatorios\Financeiro\RelatorioComissaoRepresentanteDetalhado.pas' {FormRelatorioComissaoDetalhadoRepresentante},
-  TelaConsultaMovNumeroSerie in 'Cadastros\TelaConsultaMovNumeroSerie.pas' {FormTelaConsultaMovNumeroSerie};
+  TelaConsultaMovNumeroSerie in 'Cadastros\TelaConsultaMovNumeroSerie.pas' {FormTelaConsultaMovNumeroSerie},
+  uConsulta_cnpj in 'ArquivosComuns\uConsulta_cnpj.pas' {frmConsulta_CNPJ},
+  TelaConsultaMovRepresentante in 'TelaConsultaMovRepresentante.pas' {FormTelaConsultaMovRepresentante};
 
 {$R *.res}
 

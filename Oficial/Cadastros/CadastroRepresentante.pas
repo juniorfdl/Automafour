@@ -67,6 +67,7 @@ type
     Label12: TLabel;
     DBEdit10: TDBEdit;
     SQLTemplatePERC_COMISSAO: TFloatField;
+    Button4: TRxSpeedButton;
     procedure SQLTemplateNewRecord(DataSet: TDataSet);
     procedure FormCreate(Sender: TObject);
     procedure BtnCapturaFotoClick(Sender: TObject);
@@ -87,7 +88,7 @@ var
 
 implementation
 
-uses UnitLibrary, CadastroRepresentanteProduto;
+uses UnitLibrary, CadastroRepresentanteProduto, TelaConsultaMovRepresentante;
 
 {$R *.dfm}
 
@@ -217,6 +218,16 @@ begin
     DSMasterSys := DSTemplate;
     CriaFormulario(TFormCadastroRepresentanteProduto,
       'FormCadastroRepresentanteProduto',
+      True,
+      False,
+      True,
+      '');
+  end;
+  if (Sender as TRxSpeedButton).Name = 'Button4' then
+  begin
+    DSMasterSys := DSTemplate;
+    CriaFormulario(TFormTelaConsultaMovRepresentante,
+      'FormTelaConsultaMovRepresentante',
       True,
       False,
       True,

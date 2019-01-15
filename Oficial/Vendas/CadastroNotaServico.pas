@@ -128,7 +128,6 @@ type
     RxDBLookupCombo4: TRxDBLookupCombo;
     Label29: TLabel;
     Label30: TLabel;
-    RxDBComboBox1: TRxDBComboBox;
     DBEdit28: TDBEdit;
     btnConsultaServico: TSpeedButton;
     DBEdit29: TDBEdit;
@@ -302,6 +301,12 @@ type
     SQLTemplateVALOR_FRETE: TFloatField;
     SQLTemplateVALOR_DESCONTO: TFloatField;
     SQLTemplateVALOR_LIQUIDO: TFloatField;
+    SQLLocal_Tributacao: TRxQuery;
+    DSSQLLocal_Tributacao: TDataSource;
+    RxDBLookupCombo2: TRxDBLookupCombo;
+    SQLLocal_TributacaoID_LOCALTRIBUTACAO: TIntegerField;
+    SQLLocal_TributacaoCODIGO: TStringField;
+    SQLLocal_TributacaoDESCRICAO: TStringField;
     procedure SQLTemplateCalcFields(DataSet: TDataSet);
     procedure FormCreate(Sender: TObject);
     procedure btnConsultaClienteClick(Sender: TObject);
@@ -378,6 +383,7 @@ begin
   SQLTipoDoc.Open;
   SQLPortador.Open;
   SQLHistoricoPadrao.Open;
+  SQLLocal_Tributacao.Open;
   if not SQLNumerarioVista.Active then
     SQLNumerarioVista.Open;
   if not SQLNumerarioPrazo.Active then

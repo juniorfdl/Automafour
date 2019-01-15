@@ -11279,6 +11279,10 @@ inherited FormPrincipal: TFormPrincipal
           Caption = 'Servi'#231'o'
           OnClick = Servio2Click
         end
+        object ipoFornecedor1: TMenuItem
+          Caption = 'Tipo Fornecedor'
+          OnClick = ipoFornecedor1Click
+        end
       end
       object arefas1: TMenuItem
         Caption = 'Tarefas'

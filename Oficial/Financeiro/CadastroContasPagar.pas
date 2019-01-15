@@ -167,6 +167,9 @@ type
     SQLTemplateDATA_PREVISTA: TDateTimeField;
     SQLTemplatePREVISTO: TStringField;
     DBCheckBox1: TDBCheckBox;
+    SQLConfigFinanceiro: TRxQuery;
+    SQLConfigFinanceiroCONTROLA_CONS_CONTAS_PAGAR: TStringField;
+    SQLTemplateCONTROLA_CONSULTA_CP: TStringField;
     procedure FormCreate(Sender: TObject);
     procedure SQLTemplateNewRecord(DataSet: TDataSet);
     procedure SQLTemplateCalcFields(DataSet: TDataSet);
@@ -220,6 +223,8 @@ type
     procedure SQLTemplateBeforePost(DataSet: TDataSet);
     procedure SQLTemplateAfterPost(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure SQLTemplateBeforeOpen(DataSet: TDataSet);
   private
     function Estorna: Boolean;
     { Private declarations }
@@ -1144,6 +1149,9 @@ begin
   if (SQLTemplate.State in [DsInsert]) and (SQLTemplateDATA_PREVISTA.AsDateTime < 10) then
     SQLTemplateDATA_PREVISTA.AsDateTime := SQLTemplateCTPGDVENC.AsDateTime;
 
+  if SQLConfigFinanceiroCONTROLA_CONS_CONTAS_PAGAR.AsString = 'S' then
+    SQLTemplateCONTROLA_CONSULTA_CP.AsString := SQLLocate('TIPOFORNECEDOR','TPFRICOD' ,'CONTROLA_CONSULTA_CP',
+        SQLLocate('FORNECEDOR','FORNICOD','TPFRICOD', SQLTemplateFORNICOD.AsString));
   inherited;
 end;
 
@@ -1188,6 +1196,21 @@ procedure TFormCadastroContasPagar.FormActivate(Sender: TObject);
 begin
   inherited;
   DataSetLookup := Nil;
+end;
+
+procedure TFormCadastroContasPagar.FormShow(Sender: TObject);
+begin
+  inherited;
+  SQLConfigFinanceiro.Open;
+end;
+
+procedure TFormCadastroContasPagar.SQLTemplateBeforeOpen(
+  DataSet: TDataSet);
+begin
+  inherited;
+  if  (SQLConfigFinanceiroCONTROLA_CONS_CONTAS_PAGAR.AsString = 'S') and (SQLLocate('TERMINAL','TERMICOD','CONTROLA_CONSULTA_CP',IntToStr(TerminalAtual)) = 'N') then
+//    SQLtemplate.MacroByName('Controla_Consulta_CP').Value := '(COALESCE(CONTROLA_CONSULTA_CP, ' + QuotedStr('S') + ') = ' + QuotedStr('N')+')';
+    SQLtemplate.MacroByName('Controla_Consulta_CP').Value := '(CONTROLA_CONSULTA_CP <> ''S'' or CONTROLA_CONSULTA_CP is null)';
 end;
 
 end.

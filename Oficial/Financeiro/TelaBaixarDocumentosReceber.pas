@@ -231,6 +231,7 @@ type
     OpenDialog: TOpenDialog;
     SQLContasReceberCTRCN2TOTJUROREC: TFloatField;
     SQLContasReceberCTRCN2TOTMULTAREC: TFloatField;
+    Ita1: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure BtnSelecionarDocClick(Sender: TObject);
     procedure DBGridListaCellClick(Column: TColumn);
@@ -261,6 +262,7 @@ type
     procedure ValorPagtoExit(Sender: TObject);
     procedure mnBanrisulClick(Sender: TObject);
     procedure mnSicrediClick(Sender: TObject);
+    procedure Ita1Click(Sender: TObject);
   private
     { Private declarations }
     OriginalOptions : TDBGridOptions;
@@ -275,6 +277,7 @@ type
     procedure GeraRecibo;
     procedure PreparaTabelaParadox;
     function TemDataBaixaMenorQueEmissao : Boolean;
+    procedure AbreDlg(Nome_Banco:String);
     procedure ImportarRetornoBanco(NomeBanco, Arquivo: string);
   public
     { Public declarations }
@@ -1628,16 +1631,8 @@ begin
 
   PreparaTabelaParadox;
 
-  if NomeBanco = 'Banrisul' then
-    begin
-      PathBanco := 'C:\Easy2Solutions\Gestao\Cobranca\Banrisul\Retorno\';
-      if FileExists(NomeArquivo) then NomeArquivo := ExtractFileName(NomeArquivo);
-    end;
-  if NomeBanco = 'Sicredi' then
-    begin
-      PathBanco := 'C:\Easy2Solutions\Gestao\Cobranca\Sicredi\Retorno\';
-      if FileExists(NomeArquivo) then NomeArquivo := ExtractFileName(NomeArquivo);
-    end;
+  PathBanco := 'C:\Easy2Solutions\Gestao\Cobranca\'+NomeBanco+'\Retorno\';
+  if FileExists(NomeArquivo) then NomeArquivo := ExtractFileName(NomeArquivo);
 
   AssignFile( Texto, PathBanco+NomeArquivo);
   Reset(Texto);
@@ -1652,7 +1647,7 @@ begin
     {Le linha 1 pra identificar o Banco na coluna 77}
     Readln(Texto,Info);
     Identificador := Copy(Info, 77, 3);
-    
+
     {Pega o Total de linhas}
     while not EOF(Texto) do
     begin
@@ -1669,13 +1664,10 @@ begin
           Ocorrencia := Copy(Info, 109, 2);
           ListaNossoNumero.Add(NossoNro);
           ListaOcorrencias.Add(Ocorrencia);
-          //Valor Efetivamente Pago
           valor :=  Copy(Info,254,13);
           ListaValorDocumento.Add(Valor);
-          // ValorJuros
           valor :=  Copy(Info,267,13);
           ListaValorJuros.Add(Valor);
-          // Valor Multa
           Valor := Copy(Info,280,13);
           ListaValorMulta.Add(Valor);
         end;
@@ -1695,23 +1687,42 @@ begin
           Ocorrencia := Copy(Info, 109, 2);
           ListaNossoNumero.Add(NossoNro);
           ListaOcorrencias.Add(Ocorrencia);
-          //Valor Efetivamente Pago
           valor :=  Copy(Info,254,13);
           ListaValorDocumento.Add(Valor);
-          // ValorJuros
           valor :=  Copy(Info,267,13);
           ListaValorJuros.Add(Valor);
-          // Valor Multa
           Valor := Copy(Info,280,13);
           ListaValorMulta.Add(Valor);
         end;
       end;
 
+      if Identificador = '341' then
+      begin
+        NossoNro := Copy(Info, 63, 08);
+        Gravar := Copy(Info,01,01) = '1';
+        NossoNro := RemoverZeros(NossoNro);
+        if NossoNro = '          ' then NossoNro := '';
+        if NossoNro = '0000000000' then NossoNro := '';
+        if NossoNro = '0'          then NossoNro := '';
+
+        if (IsNumeric(NossoNro,'INTEGER')) and (Gravar) then
+        begin
+          Ocorrencia := Copy(Info, 109, 2);
+          ListaNossoNumero.Add(NossoNro);
+          ListaOcorrencias.Add(Ocorrencia);
+          valor :=  Copy(Info,254,13);
+          ListaValorDocumento.Add(Valor);
+          valor :=  Copy(Info,267,13);
+          ListaValorJuros.Add(Valor);
+          Valor := Copy(Info,280,13);
+          ListaValorMulta.Add(Valor);
+        end;
+      end;
 
       NroLinhas := NroLinhas + 1;
     end;
 
-    if (Identificador = '748') or (Identificador = '041') then
+    if (Identificador = '748') or (Identificador = '041') or (Identificador = '341') then
       NroLinhas := NroLinhas - 1;
 
     FormMovRetornoSicredi                   := TFormTelaMovimentoRetornoSicredi.Create(Self);
@@ -1866,8 +1877,76 @@ begin
                 TitulosNaoEncontrados.lines.Add('-> Titulo Numero: '+NossoNro + ' Valor Pago R$ ' + ValorTitulo);
               end;
           end;
-        Readln(Texto,Info); {Coloquei aqui novamente Pq no txt do Sicredi repete na prox linha a mesma operacao, para outros bancos ver melhor}
+//        Readln(Texto,Info); {Coloquei aqui novamente Pq no txt do Sicredi repete na prox linha a mesma operacao, para outros bancos ver melhor}
       end;
+
+    if Identificador = '341' then {Banrisul}
+      begin
+        NossoNro := Copy(Info, 63, 08);
+        NossoNro := RemoverZeros(NossoNro);
+        Gravar := Copy(Info,01,01) = '1';
+        if NossoNro = '          ' then NossoNro := '';
+        if NossoNro = '0000000000' then NossoNro := '';
+        if NossoNro = '0'          then NossoNro := '';
+        ValorJuros := Copy(Info,267,13);
+        ValorMulta := Copy(Info,280,13);
+        Ocorrencia := Copy(Info,109,02);
+
+        if (NossoNro <> '') and (Gravar) and (Ocorrencia = '06') then
+          begin
+            try
+              {tenta converter apenas numeros pois o banrisul retorna o nosso nro com zeros na frente e no banco estou gravando sem zeros}
+              NossoNro := IntToStr(StrToInt(NossoNro));
+            except
+              Application.ProcessMessages;
+            end;
+            SQLContasReceber.Close;
+            {coloquei o copy no nosso nro porque o itaú trata diferente do sicredi esse campo}
+            SQLContasReceber.MacroByName('MDocumento').AsString := '(CR.CTRCA30NRODUPLICBANCO = ''' + NossoNro + ''') or (CR.CTRCA15NOSSONUMERO = ''' + NossoNro + ''')';
+            SQLContasReceber.Open;
+            if not SQLContasReceber.IsEmpty then
+              begin
+                {Alimenta Tabela Temp Recebimento}
+                TblRecebimento.Append;
+                TblRecebimento.FieldByName('CTRCA13ID').AsString      := SQLContasReceber.FieldByName('CTRCA13ID').AsString;
+                TblRecebimento.FieldByName('CLIEA13ID').AsString      := SQLContasReceber.FieldByName('CLIEA13ID').AsString;
+                TblRecebimento.FieldByName('DtVencimento').AsDateTime := SQLContasReceber.FieldByName('CTRCDVENC').AsDateTime;
+                TblRecebimento.FieldByName('ClienteNome').AsString    := SQLContasReceber.FieldByName('CLIEA60RAZAOSOC').AsString;
+                TblRecebimento.FieldByName('Parcela').Value           := SQLContasReceber.FieldByName('CTRCINROPARC').Value;
+                TblRecebimento.FieldByName('Valor').AsFloat           := SQLContasReceber.FieldByName('Saldo').AsFloat;
+                TblRecebimento.FieldByName('ValorOriginal').AsFloat   := SQLContasReceber.FieldByName('CTRCN2VLR').AsFloat;
+                TblRecebimento.FieldByName('ValorDesconto').AsFloat   := SQLContasReceber.FieldByName('CTRCN2DESCFIN').AsFloat;
+                TblRecebimento.FieldByName('ValorTotal').AsFloat      := SQLContasReceber.FieldByName('CTRCN2VLR').AsFloat;
+                TblRecebimento.FieldByName('Emissao').AsFloat         := SQLContasReceber.FieldByName('CTRCDEMIS').AsFloat;
+                TblRecebimento.FieldByName('ValorJuro').AsFloat       := StrToFloat(ValorJuros) / 100;
+                TblRecebimento.FieldByName('ValorMulta').AsFloat      := StrToFloat(ValorMulta) / 100;
+
+                if SQLContasReceber.FieldByName('NOFIA13ID').asVariant <> Null Then
+                  begin
+                    if DM.ProcuraRegistro('NOTAFISCAL',['NOFIA13ID'],[SQLContasReceber.FieldByName('NOFIA13ID').asString],1) Then
+                      TblRecebimento.FieldByName('Documento').asString := DM.SQLTemplate.FindField('NOFIINUMERO').asString;
+                  end
+                else
+                  begin
+                    if SQLContasReceber.FieldByName('CUPOA13ID').AsVariant <> Null then
+                      TblRecebimento.FieldByName('Documento').AsString := SQLContasReceber.FieldByName('CUPOA13ID').asString
+                    else
+                      TblRecebimento.FieldByName('Documento').AsString := SQLContasReceber.FieldByName('CTRCA13ID').asString;
+                  end;
+                TblRecebimento.FieldByName('NroDuplicBanco').AsString  := SQLContasReceber.FieldByName('CTRCA30NRODUPLICBANCO').AsString;
+                if SQLContasReceber.FieldByName('CTRCA15NOSSONUMERO').AsString <> '' then
+                  TblRecebimentoNroDuplicBanco.Value := SQLContasReceber.FieldByName('CTRCA15NOSSONUMERO').AsString;
+                TblRecebimento.FieldByName('Baixar').Value := True;
+
+                TblRecebimento.Post;
+              end
+            else
+              begin {Se nao achou, salvar no disco os titulos nao achados}
+                TitulosNaoEncontrados.lines.Add('-> Titulo Numero: '+NossoNro);
+              end;
+          end;
+      end;
+
   end;
   CloseFile(Texto);
 
@@ -1885,21 +1964,28 @@ procedure TFormTelaBaixarDocumentosReceber.mnBanrisulClick(
   Sender: TObject);
 begin
   inherited;
-  Anexo := '';
-  OpenDialog.InitialDir := 'C:\Easy2Solutions\Gestao\Cobranca\Banrisul\Retorno';
-  OpenDialog.Execute;
-  Anexo := OpenDialog.FileName;
-  ImportarRetornoBanco('Banrisul', Anexo);
+  AbreDlg('Banrisul');
 end;
 
 procedure TFormTelaBaixarDocumentosReceber.mnSicrediClick(Sender: TObject);
 begin
   inherited;
+  AbreDlg('Sicredi');
+end;
+
+procedure TFormTelaBaixarDocumentosReceber.AbreDlg(Nome_Banco: String);
+begin
   Anexo := '';
-  OpenDialog.InitialDir := 'C:\Easy2Solutions\Gestao\Cobranca\Sicredi\Retorno';
+  OpenDialog.InitialDir := 'C:\Easy2Solutions\Gestao\Cobranca\'+Nome_Banco+'\Retorno';
   OpenDialog.Execute;
   Anexo := OpenDialog.FileName;
-  ImportarRetornoBanco('Sicredi', Anexo);
+  ImportarRetornoBanco(Nome_Banco, Anexo);
+end;
+
+procedure TFormTelaBaixarDocumentosReceber.Ita1Click(Sender: TObject);
+begin
+  inherited;
+  AbreDlg('Itau');
 end;
 
 end.

@@ -1,6 +1,6 @@
 inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
-  Left = 167
-  Top = 70
+  Left = 183
+  Top = 69
   Caption = 'Or'#231'amentos e Pedidos de Venda'
   ClientHeight = 519
   ClientWidth = 928
@@ -1891,7 +1891,7 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
               ParentFont = False
             end
             object Label6: TLabel
-              Left = 345
+              Left = 339
               Top = 3
               Width = 74
               Height = 13
@@ -1904,7 +1904,7 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
               ParentFont = False
             end
             object Label7: TLabel
-              Left = 496
+              Left = 485
               Top = 3
               Width = 64
               Height = 13
@@ -1917,7 +1917,7 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
               ParentFont = False
             end
             object Label24: TLabel
-              Left = 429
+              Left = 423
               Top = 3
               Width = 45
               Height = 13
@@ -1943,7 +1943,7 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
               ParentFont = False
             end
             object Label32: TLabel
-              Left = 583
+              Left = 566
               Top = 3
               Width = 23
               Height = 13
@@ -1956,11 +1956,24 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
               ParentFont = False
             end
             object Label21: TLabel
-              Left = 662
+              Left = 628
               Top = 3
               Width = 59
               Height = 13
               Caption = 'Peso Total'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = 8404992
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
+            object Label33: TLabel
+              Left = 716
+              Top = 3
+              Width = 48
+              Height = 13
+              Caption = 'Validade'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = 8404992
               Font.Height = -11
@@ -2045,9 +2058,9 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
               TabOrder = 2
             end
             object DBEdit16: TDBEdit
-              Left = 426
+              Left = 420
               Top = 16
-              Width = 68
+              Width = 63
               Height = 21
               Ctl3D = True
               DataField = 'PDVDN2VLRDESCPROM'
@@ -2064,7 +2077,7 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
             object DBEdit3: TDBEdit
               Left = 260
               Top = 16
-              Width = 80
+              Width = 74
               Height = 21
               TabStop = False
               Color = 16249066
@@ -2082,7 +2095,7 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
               TabOrder = 5
             end
             object DBEdit4: TDBEdit
-              Left = 343
+              Left = 337
               Top = 16
               Width = 80
               Height = 21
@@ -2102,9 +2115,9 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
               TabOrder = 6
             end
             object DBEdit5: TDBEdit
-              Left = 496
+              Left = 485
               Top = 16
-              Width = 84
+              Width = 77
               Height = 21
               TabStop = False
               Color = 16249066
@@ -2324,7 +2337,7 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
               end
             end
             object RxDBComboBox1: TRxDBComboBox
-              Left = 582
+              Left = 565
               Top = 16
               Width = 62
               Height = 21
@@ -2570,9 +2583,9 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
               end
             end
             object DBEdit21: TDBEdit
-              Left = 662
+              Left = 628
               Top = 16
-              Width = 105
+              Width = 81
               Height = 21
               TabStop = False
               Color = 16249066
@@ -2588,6 +2601,19 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
               ParentFont = False
               ReadOnly = True
               TabOrder = 13
+            end
+            object DBDateEdit1: TDBDateEdit
+              Left = 712
+              Top = 16
+              Width = 84
+              Height = 21
+              DataField = 'DATA_VALIDADE'
+              DataSource = DSTemplate
+              Ctl3D = True
+              NumGlyphs = 2
+              ParentCtl3D = False
+              TabOrder = 14
+              YearDigits = dyFour
             end
           end
         end
@@ -2976,6 +3002,10 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
     object SQLTemplatePESOTOTAL: TFloatField
       FieldName = 'PESOTOTAL'
       Origin = 'DB.PEDIDOVENDA.PESOTOTAL'
+    end
+    object SQLTemplateDATA_VALIDADE: TDateTimeField
+      FieldName = 'DATA_VALIDADE'
+      Origin = 'DB.PEDIDOVENDA.DATA_VALIDADE'
     end
   end
   object SQLEmpresa: TTable

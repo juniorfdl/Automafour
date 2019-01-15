@@ -1,6 +1,6 @@
 inherited FormCadastroCliente: TFormCadastroCliente
-  Left = 128
-  Top = 9
+  Left = 46
+  Top = 22
   Caption = 'Cadastro de Clientes'
   ClientHeight = 672
   ClientWidth = 1092
@@ -1192,6 +1192,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                     Height = 25
                     Cursor = crHandPoint
                     Hint = 'Pesquisar Cliente Sefaz'
+                    DropDownMenu = PopupMenuBusca
                     Flat = True
                     Font.Charset = ANSI_CHARSET
                     Font.Color = clBlack
@@ -1262,7 +1263,6 @@ inherited FormCadastroCliente: TFormCadastroCliente
                     ParentFont = False
                     Transparent = True
                     WordWrap = True
-                    OnClick = RxSpeedButton1Click
                   end
                   object DBEditCgc: TDBEdit
                     Left = 98
@@ -1921,7 +1921,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                   object TabEndereco: TTabSheet
                     Caption = 'En&dere'#231'o'
                     object Label41: TLabel
-                      Left = 0
+                      Left = 4
                       Top = 2
                       Width = 21
                       Height = 13
@@ -1983,7 +1983,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                       ParentFont = False
                     end
                     object Label42: TLabel
-                      Left = 3
+                      Left = 7
                       Top = 36
                       Width = 34
                       Height = 13
@@ -2063,7 +2063,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                       ParentFont = False
                     end
                     object DBEdit20: TDBEdit
-                      Left = -4
+                      Left = 0
                       Top = 15
                       Width = 96
                       Height = 21
@@ -2083,7 +2083,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                       TabOrder = 1
                     end
                     object DBEdit21: TDBEdit
-                      Left = -4
+                      Left = 0
                       Top = 49
                       Width = 243
                       Height = 21
@@ -13373,6 +13373,18 @@ inherited FormCadastroCliente: TFormCadastroCliente
       Origin = 'DB.REPRESENTANTE.REPRA60RAZAOSOC'
       FixedChar = True
       Size = 60
+    end
+  end
+  object PopupMenuBusca: TPopupMenu
+    Left = 959
+    Top = 126
+    object Sefaz1: TMenuItem
+      Caption = 'Sefaz'
+      OnClick = Sefaz1Click
+    end
+    object Receita1: TMenuItem
+      Caption = 'Receita'
+      OnClick = Receita1Click
     end
   end
 end

@@ -1,6 +1,6 @@
 inherited FormCadastroContasPagar: TFormCadastroContasPagar
-  Left = 251
-  Top = 75
+  Left = 280
+  Top = 37
   Caption = 'Cadastro de Documentos '#224' Pagar'
   ClientHeight = 568
   ClientWidth = 977
@@ -44,7 +44,6 @@ inherited FormCadastroContasPagar: TFormCadastroContasPagar
             Top = 225
             Width = 845
             Height = 269
-            ActivePage = TabSheetDadosPrincipais
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Top = 94
@@ -1564,7 +1563,9 @@ inherited FormCadastroContasPagar: TFormCadastroContasPagar
       'Where'
       '(%MFiltro)'
       'and'
-      '(%MEmpresa)')
+      '(%MEmpresa)'
+      'and'
+      '(%Controla_Consulta_CP)')
     Macros = <
       item
         DataType = ftString
@@ -1575,6 +1576,12 @@ inherited FormCadastroContasPagar: TFormCadastroContasPagar
       item
         DataType = ftString
         Name = 'MEmpresa'
+        ParamType = ptInput
+        Value = '0=0'
+      end
+      item
+        DataType = ftString
+        Name = 'Controla_Consulta_CP'
         ParamType = ptInput
         Value = '0=0'
       end>
@@ -1831,6 +1838,12 @@ inherited FormCadastroContasPagar: TFormCadastroContasPagar
       DisplayLabel = 'Previsto'
       FieldName = 'PREVISTO'
       Origin = 'DB.CONTASPAGAR.PREVISTO'
+      FixedChar = True
+      Size = 1
+    end
+    object SQLTemplateCONTROLA_CONSULTA_CP: TStringField
+      FieldName = 'CONTROLA_CONSULTA_CP'
+      Origin = 'DB.CONTASPAGAR.CONTROLA_CONSULTA_CP'
       FixedChar = True
       Size = 1
     end
@@ -2215,5 +2228,19 @@ inherited FormCadastroContasPagar: TFormCadastroContasPagar
     Macros = <>
     Left = 72
     Top = 284
+  end
+  object SQLConfigFinanceiro: TRxQuery
+    DatabaseName = 'DB'
+    SQL.Strings = (
+      'SELECT CONTROLA_CONS_CONTAS_PAGAR FROM CONFIGFINANCEIRO')
+    Macros = <>
+    Left = 72
+    Top = 312
+    object SQLConfigFinanceiroCONTROLA_CONS_CONTAS_PAGAR: TStringField
+      FieldName = 'CONTROLA_CONS_CONTAS_PAGAR'
+      Origin = 'DB.CONFIGFINANCEIRO.CONTROLA_CONS_CONTAS_PAGAR'
+      FixedChar = True
+      Size = 1
+    end
   end
 end

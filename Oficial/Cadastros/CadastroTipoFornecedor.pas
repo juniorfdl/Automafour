@@ -26,6 +26,8 @@ type
     DBEdit33: TDBEdit;
     SQLTemplateTipoCustoLookUp: TStringField;
     SQLTipoCusto: TRxQuery;
+    DBCheckBox1: TDBCheckBox;
+    SQLTemplateCONTROLA_CONSULTA_CP: TStringField;
     procedure SpeedButton9Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private

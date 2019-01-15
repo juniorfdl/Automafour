@@ -324,6 +324,7 @@ type
     QtdePed, NovaQtdePed, Reducao, ReducaoBase: Double;
     TemProdutoSemSubsTrib, TemProdutoComSubsTrib: Boolean;
     DescontoMaximo : Real;
+    RetornoCampoUsuario : String;
     procedure CalculaImpostos;
     procedure AtualizaPedidoVenda(CodigoPedidoVenda: string; PosicaoItemPedido: Integer; QtdePed, NovaQtdePed: Double);
     function BuscaIcmsUf: TICMSUF;
@@ -592,7 +593,7 @@ var
   BaseCalculo: Double;
   BKPBookMark: TBookMark;
   vISSQN: Extended;
-  xUnidade1, xUnidade2: string;
+  xUnidade1, xUnidade2, vCLIECTPPRCVENDA: string;
 begin
   inherited;
   EditProduto.Text := SQLTemplate.FieldByName((Sender as TField).FieldName).AsString;
@@ -634,6 +635,8 @@ begin
     if (SQLTemplate.State in DsEditModes) then
     begin
           // Carrega apenas as unidades cadastrados no produto selecionado
+      vCLIECTPPRCVENDA := SQLLocate('CLIENTE','CLIEA13ID','CLIECTPPRCVENDA',Quotedstr(DSMasterTemplate.DataSet.FieldByName('CLIEA13ID').AsString));
+
       xUnidade1 := SQLLocate('PRODUTO', 'PRODICOD', 'UNIDICOD', SQLTemplatePRODICOD.AsString);
       xUnidade2 := SQLLocate('PRODUTO', 'PRODICOD', 'UNIDICOD2', SQLTemplatePRODICOD.AsString);
       sqlunidade2.close;
@@ -660,7 +663,8 @@ begin
       end
       else if DM.SQLTemplate.FindField(SQLTemplate.DataSource.DataSet.FindField('CampoImpostoLookUp').asString).asFloat <> 0 then
         if (AnsiUpperCase(SQLTemplate.DataSource.DataSet.FindField('CampoImpostoLookUp').asString) = 'PRODN3VLRVENDA') then
-          SQLTemplateNFITN2VLRUNIT.asFloat := RetornaPreco(DM.SQLTemplate, DM.SQLConfigVenda.FieldByName('TPRCICOD').asString, SQLTemplate.DataSource.DataSet.FieldByName('CliFornEmpTabelaPrecoLookUp').asString)
+//          SQLTemplateNFITN2VLRUNIT.asFloat := RetornaPreco(DM.SQLTemplate, DM.SQLConfigVenda.FieldByName('TPRCICOD').asString, SQLTemplate.DataSource.DataSet.FieldByName('CliFornEmpTabelaPrecoLookUp').asString)
+          SQLTemplateNFITN2VLRUNIT.asFloat := RetornaPreco(DM.SQLTemplate, DM.SQLConfigVenda.FieldByName('TPRCICOD').asString, vCLIECTPPRCVENDA)
         else
           SQLTemplateNFITN2VLRUNIT.asFloat := DM.SQLTemplate.FindField(SQLTemplate.DataSource.DataSet.FindField('CampoImpostoLookUp').asString).asFloat;
 
@@ -887,6 +891,7 @@ procedure TFormCadastroNotaFiscalItem.SQLTemplateBeforePost(DataSet: TDataSet);
 var
   NumeroSerie: string;
   I: integer;
+  RetornoUser : TInfoRetornoUser;
 begin
   if not DM.ImportandoPedidoVenda then
   begin
@@ -919,16 +924,42 @@ begin
 
   if (DescontoMaximo > 0) and (not VerificaDesconto((SQLTemplateNFITN2VLRUNIT.AsFloat * SQLTemplateNFITN3QUANT.AsFloat),SQLTemplateNFITN2VLRDESC.AsFloat,DescontoMaximo,0)) then
   begin
-    ShowMessage('Valor do desconto acima do permitido! Verifique!');
-    DBEdit13.SetFocus;
-    Abort;
+    ShowMessage('Valor do desconto acima do permitido!');
+    RetornoCampoUsuario := AutenticaUsuario(UsuarioAtualNome,'USUAN2PERCDESC',RetornoUser);
+    try
+      DescontoMaximo := StrToFloat(RetornoCampoUsuario);
+      if not VerificaDesconto((SQLTemplateNFITN2VLRUNIT.AsFloat * SQLTemplateNFITN3QUANT.AsFloat),SQLTemplateNFITN2VLRDESC.AsFloat,DescontoMaximo,0) then
+      begin
+        ShowMessage('Valor do desconto acima do permitido!');
+        DBEdit13.SetFocus;
+        exit;
+      end;
+    except
+      begin
+        DBEdit13.SetFocus;
+        exit;
+      end;
+    end;
   end;
 
   if (DescontoMaximo > 0) and (not VerificaDesconto((SQLTemplateNFITN2VLRUNIT.AsFloat * SQLTemplateNFITN3QUANT.AsFloat),0,DescontoMaximo,SQLTemplateNFITN2PERCDESC.AsFloat)) then
   begin
-    ShowMessage('Percentual do desconto acima do permitido! Verifique!');
-    DBEdit12.SetFocus;
-    exit;
+    ShowMessage('Percentual do desconto acima do permitido!');
+    RetornoCampoUsuario := AutenticaUsuario(UsuarioAtualNome,'USUAN2PERCDESC',RetornoUser);
+    try
+      DescontoMaximo := StrToFloat(RetornoCampoUsuario);
+      if not VerificaDesconto((SQLTemplateNFITN2VLRUNIT.AsFloat * SQLTemplateNFITN3QUANT.AsFloat),0,DescontoMaximo,SQLTemplateNFITN2PERCDESC.AsFloat) then
+      begin
+        ShowMessage('Percentual do desconto acima do permitido!');
+        DBEdit12.SetFocus;
+        exit;
+      end;
+    except
+      begin
+        DBEdit12.SetFocus;
+        exit;
+      end;
+    end;
   end;
 
   if ((SQLTemplateNFITICST.asFloat = 2) or (SQLTemplateNFITICST.asFloat = 4) or (SQLTemplateNFITICST.asFloat = 6)) then

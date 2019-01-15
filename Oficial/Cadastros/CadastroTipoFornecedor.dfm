@@ -1,6 +1,6 @@
 inherited FormCadastroTipoFornecedor: TFormCadastroTipoFornecedor
-  Left = 1
-  Top = 80
+  Left = 256
+  Top = 58
   Caption = 'Tipos de Fornecedor'
   OldCreateOrder = True
   PixelsPerInch = 96
@@ -55,8 +55,8 @@ inherited FormCadastroTipoFornecedor: TFormCadastroTipoFornecedor
             end
             inherited TabSheetDadosPrincipais: TTabSheet
               object Label3: TLabel
-                Left = 7
-                Top = 46
+                Left = 19
+                Top = 24
                 Width = 76
                 Height = 13
                 Caption = 'Tipo de Custo'
@@ -70,8 +70,8 @@ inherited FormCadastroTipoFornecedor: TFormCadastroTipoFornecedor
                 Visible = False
               end
               object SpeedButton9: TSpeedButton
-                Left = 82
-                Top = 58
+                Left = 94
+                Top = 36
                 Width = 21
                 Height = 21
                 Hint = 'Acessa Tipo de Custo'
@@ -103,8 +103,8 @@ inherited FormCadastroTipoFornecedor: TFormCadastroTipoFornecedor
                 OnClick = SpeedButton9Click
               end
               object DBEdit3: TDBEdit
-                Left = 3
-                Top = 60
+                Left = 15
+                Top = 38
                 Width = 78
                 Height = 21
                 DataField = 'TPCUICOD'
@@ -113,8 +113,8 @@ inherited FormCadastroTipoFornecedor: TFormCadastroTipoFornecedor
                 Visible = False
               end
               object DBEdit33: TDBEdit
-                Left = 105
-                Top = 58
+                Left = 117
+                Top = 36
                 Width = 504
                 Height = 21
                 TabStop = False
@@ -130,6 +130,18 @@ inherited FormCadastroTipoFornecedor: TFormCadastroTipoFornecedor
                 ParentFont = False
                 TabOrder = 0
                 Visible = False
+              end
+              object DBCheckBox1: TDBCheckBox
+                Left = 16
+                Top = 3
+                Width = 241
+                Height = 17
+                Caption = 'Controla Consulta Contas a Pagar'
+                DataField = 'CONTROLA_CONSULTA_CP'
+                DataSource = DSTemplate
+                TabOrder = 2
+                ValueChecked = 'S'
+                ValueUnchecked = 'N'
               end
             end
           end
@@ -229,6 +241,12 @@ inherited FormCadastroTipoFornecedor: TFormCadastroTipoFornecedor
     object SQLTemplateREGISTRO: TDateTimeField
       FieldName = 'REGISTRO'
       Origin = 'UNITGESTAO_ODBC.TipoFornecedor.REGISTRO'
+    end
+    object SQLTemplateCONTROLA_CONSULTA_CP: TStringField
+      FieldName = 'CONTROLA_CONSULTA_CP'
+      Origin = 'DB.TIPOFORNECEDOR.CONTROLA_CONSULTA_CP'
+      FixedChar = True
+      Size = 1
     end
   end
   inherited UpdateSQLTemplate: TUpdateSQL
