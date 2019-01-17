@@ -8,7 +8,8 @@ uses
   ppStrtch, ppMemo, ppBands, ppCtrls, ppPrnabl, ppClass, ppCache, ppProd,
   ppReport, ppComm, ppRelatv, ppDB, ppDBPipe, ppDBBDE, ACBrNFeDANFEClass,
   ACBrNFeDANFeESCPOS, ACBrDFe, ACBrNFe, ACBrBase, ACBrPosPrinter, MemTable,
-  RestClient, RestUtils, DBClient, UnitLibrary, pcnConversaoNFe;
+  RestClient, RestUtils, DBClient, UnitLibrary, pcnConversaoNFe,
+  ACBrDFeReport, ACBrDFeDANFeReport;
 
 type
   TDM = class(TDMTemplate)
@@ -949,10 +950,27 @@ procedure TDM.GetDataValidadeSistema;
 var
   Data: TDateTime;
   DiasVencimento: integer;
+
+  function DiasEmAviso:Boolean;
+  begin
+    Result := False;
+
+    if SQLConfigGeralDIAS_AVISO.Value > 0 then
+    begin
+      DiasVencimento := DaysBetween(SQLConfigGeralCFGEDBLOQ.AsDateTime, DataSistema);
+
+      if SQLConfigGeralDIAS_AVISO.Value >= DiasVencimento then
+      begin
+        Result := True;
+      end;
+    end;
+  end;  
+
 begin
 
   OBSAutorizacao := '';
-  if SQLConfigGeralCFGEDBLOQ.AsDateTime < DataSistema then
+  if (SQLConfigGeralCFGEDBLOQ.AsDateTime < DataSistema)or
+    (DiasEmAviso) then
   begin
     GetDataValidadeSistemaWebApi;
   end;
@@ -971,21 +989,17 @@ begin
   else begin
     SQLConfigGeralCFGECBLOQ.Value := '';
 
-    if SQLConfigGeralDIAS_AVISO.Value > 0 then
+    if DiasEmAviso then
     begin
-      DiasVencimento := DaysBetween(SQLConfigGeralCFGEDBLOQ.AsDateTime, DataSistema);
-
-      if SQLConfigGeralDIAS_AVISO.Value >= DiasVencimento then
-      begin
-        if DiasVencimento = 1 then
-          OBSAutorizacao := '01 dia'
-        else
-          OBSAutorizacao := FormatFloat('00', DiasVencimento) + ' dias '; // - Falta '+FormatFloat('00', DiasVencimento)+' dias;
-      end;
+      if DiasVencimento = 1 then
+        OBSAutorizacao := '01 dia'
+      else
+        OBSAutorizacao := FormatFloat('00', DiasVencimento) + ' dias '; // - Falta '+FormatFloat('00', DiasVencimento)+' dias;
     end;
-
   end;
-  SQLConfigGeral.Post;
+
+  if SQLConfigGeral.state in ([dsedit, dsinsert]) then
+    SQLConfigGeral.Post;
 end;
 
 procedure TDM.GetDataValidadeSistemaWebApi;
@@ -1009,7 +1023,7 @@ begin
       RestClient.Resource(xhttp).Accept(RestUtils.MediaType_Json).GetAsDataSet(cdsAPIAutorizacao);
     except
       on E: Exception do
-      begin         
+      begin
         // E.message
         vSEM_INTERNET := True;
         exit;
