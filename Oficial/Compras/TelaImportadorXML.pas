@@ -662,13 +662,17 @@ begin
         {VALORES, UNIDADE, ORIGEM E QUANTIDADE COMERCIALIZADA}
         cdsItens.FieldByName('unidade').AsString := ACBrNFe.NotasFiscais.Items[0].NFe.Det.Items[i].Prod.uCom;
 
-        if ACBrNFe.NotasFiscais.Items[0].NFe.Det.Items[i].Imposto.ICMS.orig = oeNacional then
-          cdsItens.FieldByName('origem_produto').AsString := '0'
-        else
-        if ACBrNFe.NotasFiscais.Items[0].NFe.Det.Items[i].Imposto.ICMS.orig = oeEstrangeiraImportacaoDiretaSemSimilar then
-          cdsItens.FieldByName('origem_produto').AsString := '6'
-        else
-          cdsItens.FieldByName('origem_produto').AsString := '1';
+        case  TpcnOrigemMercadoria(ACBrNFe.NotasFiscais.Items[0].NFe.Det.Items[i].Imposto.ICMS.orig)  of
+         oeNacional                                  : cdsItens.FieldByName('origem_produto').AsString := '0';
+         oeEstrangeiraImportacaoDireta               : cdsItens.FieldByName('origem_produto').AsString := '1';
+         oeEstrangeiraAdquiridaBrasil                : cdsItens.FieldByName('origem_produto').AsString := '2';
+         oeNacionalConteudoImportacaoSuperior40      : cdsItens.FieldByName('origem_produto').AsString := '3';
+         oeNacionalProcessosBasicos                  : cdsItens.FieldByName('origem_produto').AsString := '4';
+         oeNacionalConteudoImportacaoInferiorIgual40 : cdsItens.FieldByName('origem_produto').AsString := '5';
+         oeEstrangeiraImportacaoDiretaSemSimilar     : cdsItens.FieldByName('origem_produto').AsString := '6';
+         oeEstrangeiraAdquiridaBrasilSemSimilar      : cdsItens.FieldByName('origem_produto').AsString := '7';
+         oeNacionalConteudoImportacaoSuperior70      : cdsItens.FieldByName('origem_produto').AsString := '8';
+        end;
 
         cdsItens.FieldByName('valor_unitario').AsFloat := ACBrNFe.NotasFiscais.Items[0].NFe.Det.Items[i].Prod.vUnCom;
         cdsItens.FieldByName('quantidade').AsFloat := ACBrNFe.NotasFiscais.Items[0].NFe.Det.Items[i].Prod.qCom;

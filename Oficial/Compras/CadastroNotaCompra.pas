@@ -1078,7 +1078,7 @@ begin
                 if DM.SQLConfigCompra.fieldbyname('CFCOCVERIFICAVLRMENOR').AsString <> 'S' then
                   begin
                     if (MatrizFilial = 'M') then
-                      if SQLLocate('OPERACAOESTOQUE','OPESICOD','OPESCGERAFINANCEIRO',IntToStr(OperacaoEstoque)) = 'S' then
+                      if SQLLocate('OPERACAOESTOQUE','OPESICOD','ATUALIZA_PRECO_CUSTO',IntToStr(OperacaoEstoque)) = 'S' then
                         if (DM.SQLConfigCompra.fieldbyname('CFCOCALTVLRCOMPRA').Value = 'S') and
                            (SQLLocate('OPERACAOESTOQUE','OPESICOD','OPESCENTRADASAIDA',IntToStr(OperacaoEstoque)) = 'E') then
                           SQLProduto.FindField('PRODN3VLRCOMPRA').asFloat := ValorCompra;
@@ -1089,7 +1089,7 @@ begin
                       if (DM.SQLConfigCompra.fieldbyname('CFCOCVERIFICAVLRMENOR').AsString = 'S') and
                          (SQLLocate('OPERACAOESTOQUE','OPESICOD','OPESCENTRADASAIDA',IntToStr(OperacaoEstoque)) = 'E') then
                         begin
-                          if SQLLocate('OPERACAOESTOQUE','OPESICOD','OPESCGERAFINANCEIRO',IntToStr(OperacaoEstoque)) = 'S' then
+                          if SQLLocate('OPERACAOESTOQUE','OPESICOD','ATUALIZA_PRECO_CUSTO',IntToStr(OperacaoEstoque)) = 'S' then
                             if (ValorCompra >= SQLProduto.FindField('PRODN3VLRCOMPRA').asFloat) then
                               SQLProduto.FindField('PRODN3VLRCOMPRA').asFloat := ValorCompra;
                         end;
@@ -1097,7 +1097,7 @@ begin
                 if DM.SQLConfigCompra.fieldbyname('CFCOCVERIFICAVLRMENOR').AsString <> 'S' then
                   begin
                     if (MatrizFilial = 'M') then
-                      if SQLLocate('OPERACAOESTOQUE','OPESICOD','OPESCGERAFINANCEIRO',IntToStr(OperacaoEstoque)) = 'S' then
+                      if SQLLocate('OPERACAOESTOQUE','OPESICOD','ATUALIZA_PRECO_CUSTO',IntToStr(OperacaoEstoque)) = 'S' then
                         if (DM.SQLConfigCompra.fieldbyname('CFCOCALTVLRCUSTO').Value = 'S') and
                            (SQLLocate('OPERACAOESTOQUE','OPESICOD','OPESCENTRADASAIDA',IntToStr(OperacaoEstoque)) = 'E') then
                           SQLProduto.FindField('PRODN3VLRCUSTO').AsFloat := CustoUnit;
@@ -1105,7 +1105,7 @@ begin
                 else
                   begin
                     if (MatrizFilial = 'M') then
-                      if SQLLocate('OPERACAOESTOQUE','OPESICOD','OPESCGERAFINANCEIRO',IntToStr(OperacaoEstoque)) = 'S' then
+                      if SQLLocate('OPERACAOESTOQUE','OPESICOD','ATUALIZA_PRECO_CUSTO',IntToStr(OperacaoEstoque)) = 'S' then
                         if (DM.SQLConfigCompra.fieldbyname('CFCOCVERIFICAVLRMENOR').AsString = 'S') and
                            (SQLLocate('OPERACAOESTOQUE','OPESICOD','OPESCENTRADASAIDA',IntToStr(OperacaoEstoque)) = 'E') then
                           begin
@@ -1116,7 +1116,7 @@ begin
                           end;
                   end;
                 if (MatrizFilial = 'M') then
-                  if SQLLocate('OPERACAOESTOQUE','OPESICOD','OPESCGERAFINANCEIRO',IntToStr(OperacaoEstoque)) = 'S' then
+                  if SQLLocate('OPERACAOESTOQUE','OPESICOD','ATUALIZA_PRECO_CUSTO',IntToStr(OperacaoEstoque)) = 'S' then
                     if (DM.SQLConfigCompra.fieldbyname('CFCOCALTPERCIPI').Value = 'S') then
                       begin
                         // IPI Percentual
@@ -1166,7 +1166,7 @@ begin
 
                 // CALCULA PREÇO DE CUSTO MÉDIO
                 if (MatrizFilial = 'M') then
-                  if SQLLocate('OPERACAOESTOQUE','OPESICOD','OPESCGERAFINANCEIRO',IntToStr(OperacaoEstoque)) = 'S' then
+                  if SQLLocate('OPERACAOESTOQUE','OPESICOD','ATUALIZA_PRECO_CUSTO',IntToStr(OperacaoEstoque)) = 'S' then
                     if (SQLLocate('OPERACAOESTOQUE','OPESICOD','OPESCENTRADASAIDA',IntToStr(OperacaoEstoque))  = 'E') and
                        (SQLLocate('OPERACAOESTOQUE','OPESICOD','OPESCORIGEMDESTINO',IntToStr(OperacaoEstoque)) = 'F') then
                       begin
@@ -1203,7 +1203,7 @@ begin
                         SQLEstoqueAtual.Close;
                       end;
                 if (MatrizFilial = 'M') then
-                  if SQLLocate('OPERACAOESTOQUE','OPESICOD','OPESCGERAFINANCEIRO',IntToStr(OperacaoEstoque)) = 'S' then
+                  if SQLLocate('OPERACAOESTOQUE','OPESICOD','ATUALIZA_PRECO_CUSTO',IntToStr(OperacaoEstoque)) = 'S' then
                     if (DM.SQLConfigCompra.fieldbyname('CFCOCALTPRCPRODENT').Value = 'S') and
                        (SQLLocate('OPERACAOESTOQUE','OPESICOD','OPESCENTRADASAIDA',IntToStr(OperacaoEstoque)) = 'E') then
                       begin
@@ -1274,7 +1274,7 @@ begin
 
                 if (MatrizFilial = 'M') then
                   begin
-                    if SQLLocate('OPERACAOESTOQUE','OPESICOD','OPESCGERAFINANCEIRO',IntToStr(OperacaoEstoque)) = 'S' then
+                    if SQLLocate('OPERACAOESTOQUE','OPESICOD','ATUALIZA_PRECO_CUSTO',IntToStr(OperacaoEstoque)) = 'S' then
                       begin
                         SQLProduto.FindField('PRODN3CAPACEMBAL').value    := SQLNotaCompraItens.FindField('NOCIN3CAPEMBAL').asFloat;
                         SQLProduto.FindField('PRODDULTCOMPRA').AsDateTime := SQLTemplateNOCPDRECEBIMENTO.Value;
@@ -1299,7 +1299,7 @@ begin
             end;
 
           // Atualizar todos produtos que possuam o mesmo Cd.Principal para Reajuste de Preco.
-         if SQLLocate('OPERACAOESTOQUE','OPESICOD','OPESCGERAFINANCEIRO',IntToStr(OperacaoEstoque)) = 'S' then
+         if SQLLocate('OPERACAOESTOQUE','OPESICOD','ATUALIZA_PRECO_CUSTO',IntToStr(OperacaoEstoque)) = 'S' then
           if (MatrizFilial = 'M') and (SQLProduto.FindField('PRODIPRINCIPAL').AsString <> '') then
             begin
               try
