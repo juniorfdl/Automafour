@@ -922,7 +922,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
             Top = 52
             Width = 1027
             Height = 556
-            ActivePage = TabSheetDadosAdicionais
+            ActivePage = TabSheetDadosPrincipais
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Top = 83
@@ -2266,7 +2266,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                 Top = 296
                 Width = 688
                 Height = 177
-                ActivePage = TabSheet6
+                ActivePage = TabSheet1
                 TabOrder = 15
                 object TabSheet1: TTabSheet
                   Caption = 'Tributa'#231#227'o ICMS'
@@ -2515,13 +2515,15 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Items.Strings = (
                       '0-Nacional'
                       '1-Estrangeira(importa'#231#227'o direta)'
-                      '2-Estrangeira(adquirida mercado nacional)')
+                      '2-Estrangeira(adquirida mercado nacional)'
+                      '6-Estrangeira( importa'#231#227'o direta)')
                     ParentFont = False
                     TabOrder = 0
                     Values.Strings = (
                       '0'
                       '1'
-                      '2')
+                      '2'
+                      '6')
                   end
                   object ComboSitTrib: TRxDBComboBox
                     Left = 285
