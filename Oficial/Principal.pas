@@ -14,174 +14,174 @@ type
     mmFinanceiro: TMenuItem;
     TimeLembrete: TTimer;
     SQLAgendaVer: TQuery;
-    bClientes: TAdvGlowButton;
-    bProdutos: TAdvGlowButton;
-    bEmitirNFE: TAdvGlowButton;
+    btnFormCadastroCliente: TAdvGlowButton;
+    btnFormCadastroProduto: TAdvGlowButton;
+    btnFormCadastroNotaFiscal: TAdvGlowButton;
     RxLabel5: TRxLabel;
     TimerImpressaoTablets: TTimer;
     ResumoFinanceiro1: TMenuItem;
     Pagar1: TMenuItem;
-    MnFINPagarLancamentos: TMenuItem;
-    MnFINPagarBaixarDocumentos: TMenuItem;
+    MnFormCadastroContasPagar: TMenuItem;
+    MnFormTelaBaixarDocumentosPagar: TMenuItem;
     Receber1: TMenuItem;
-    MnFINReceberLancamentos: TMenuItem;
-    MnFINReceberBaixarDocumentos: TMenuItem;
-    MnCartoesCreditoManual: TMenuItem;
-    MnFINReceberEmissaoBoletosDuplicatas: TMenuItem;
+    MnFormCadastroContasReceber: TMenuItem;
+    MnFormTelaBaixarDocumentosReceber: TMenuItem;
+    MnFormCadastroCartaoCreditoManual: TMenuItem;
+    MnFormTelaImpressaoDuplicata: TMenuItem;
     ContaCorrent1: TMenuItem;
-    MnFINBancosLancarMovimentaco: TMenuItem;
-    MnFINBancosRemessaArquivo: TMenuItem;
+    MnFormCadastroMovimentoBanco: TMenuItem;
+    MnFormCadastroRemessaBancos: TMenuItem;
     esouraria1: TMenuItem;
-    MnFINTesLancamentos: TMenuItem;
-    MnFINTesEmisscaodeRecibos: TMenuItem;
+    MnFormCadastroTesouraria: TMenuItem;
+    MnFormCadastroRecibo: TMenuItem;
     Faturamento1: TMenuItem;
-    PedidodeVenda1: TMenuItem;
-    FATUMnVendasNotasFiscais: TMenuItem;
+    MnFormCadastroPedidoVenda: TMenuItem;
+    MnFormCadastroNotaFiscal: TMenuItem;
     Servio1: TMenuItem;
-    OrdemdeServioMecanica1: TMenuItem;
-    GrupodeServio1: TMenuItem;
-    ipodeServio1: TMenuItem;
+    MnFormCadastroMecOrdem: TMenuItem;
+    MnFormCadastroMecExecutaEm: TMenuItem;
+    MnFormCadastroMecTipoServico: TMenuItem;
     Integrador1: TMenuItem;
     Exportao1: TMenuItem;
-    Balanas1: TMenuItem;
+    MnFormTelaExportacaoBalanca: TMenuItem;
     erminaldeConsulta1: TMenuItem;
     Contabil1: TMenuItem;
-    SPEDFiscal1: TMenuItem;
-    Cadastros1: TMenuItem;
+    MnFormTelaExportacaoSped: TMenuItem;
+    MnFormCadastroProduto: TMenuItem;
     MnADMCadastroProduto: TMenuItem;
-    MnADMCadastroClientesCadastro: TMenuItem;
-    MnFornecedores: TMenuItem;
-    MnVendedores: TMenuItem;
-    MnTransportadoras: TMenuItem;
-    MNRepresentante: TMenuItem;
-    MNADMConvenios: TMenuItem;
+    MnFormCadastroCliente: TMenuItem;
+    MnFormCadastroFornecedor: TMenuItem;
+    MnFormCadastroVendedor: TMenuItem;
+    MnFormCadastroTransportadora: TMenuItem;
+    MnFormCadastroRepresentante: TMenuItem;
+    MnFormCadastroConvenio: TMenuItem;
     Controle1: TMenuItem;
-    Grupo1: TMenuItem;
-    MnADMCadastroProdutosGrades: TMenuItem;
-    Grade1: TMenuItem;
-    MnADMCadastroProdutosCores: TMenuItem;
-    MnColecao: TMenuItem;
-    MnADMCadastroProdutosUnidades: TMenuItem;
-    MnADMCadastroProdutosIcms: TMenuItem;
-    MnADMCadastroProdutosIcmsUF: TMenuItem;
-    MNADMCadastroNCM: TMenuItem;
-    abeladeConversodeCSTdoICMS1: TMenuItem;
-    abeladeConversodeCSTPISeCOFINS1: TMenuItem;
-    Cidades1: TMenuItem;
+    MnFormCadastroGrupo: TMenuItem;
+    MnFormCadastroMarca: TMenuItem;
+    MnFormCadastroGrade: TMenuItem;
+    MnFormCadastroCor: TMenuItem;
+    MnFormCadastroColecao: TMenuItem;
+    MnFormCadastroUnidade: TMenuItem;
+    MnFormCadastroICMS: TMenuItem;
+    MnFormCadastroIcmsUf: TMenuItem;
+    MnFormCadastroNCM: TMenuItem;
+    MnCadastroCSTConverter: TMenuItem;
+    MnCadastroCSTPisCofinsConverte: TMenuItem;
+    MnFormCadastroCidade: TMenuItem;
     arefas1: TMenuItem;
-    AcompanharTarefa1: TMenuItem;
+    MnFormTelaLembreteTarefa2: TMenuItem;
     GerenciarTarefa1: TMenuItem;
     CadastrarTarefas1: TMenuItem;
     ConfigurarTempodeTarefa1: TMenuItem;
     Financeiro1: TMenuItem;
-    MnFINCadastroTiposDocumentos: TMenuItem;
-    FINAMnCadastroPortadores: TMenuItem;
-    MnFINCadTipoLiquidacao: TMenuItem;
-    MnFINCadHistoricoPadrao: TMenuItem;
-    MnFINCadastroBancos: TMenuItem;
-    MnFINBancosContaCorrente: TMenuItem;
-    MnFINCadastroOperacoesBancarias: TMenuItem;
-    MnFINCadastroSituacoesCheques: TMenuItem;
-    MnFINCadastroProtocoloCheque: TMenuItem;
+    MnFormCadastroTipoDocumento: TMenuItem;
+    MnFormCadastroPortador: TMenuItem;
+    MnFormCadastroTipoLiquidacao: TMenuItem;
+    MnFormCadastroHistoricoPadrao: TMenuItem;
+    mnFormCadastroBanco: TMenuItem;
+    MnFormCadastroContaCorrente: TMenuItem;
+    MnFormCadastroOperacaoBanco: TMenuItem;
+    MnFormCadastroSituacaoCheque: TMenuItem;
+    MnFormCadastroProtocoloChequeRecebido: TMenuItem;
     MnOperacaoTesouraria: TMenuItem;
-    MnFINCadastroPlanoContas: TMenuItem;
+    MnFormTelaPlanoContas: TMenuItem;
     Faturamento2: TMenuItem;
-    mniMnOperacaoEstoque: TMenuItem;
-    MnObsNotaFiscal: TMenuItem;
-    FATUMnCadastroSerie: TMenuItem;
+    MnFormCadastroOperacoesEstoque: TMenuItem;
+    MnFormCadastroObsNotaFiscal: TMenuItem;
+    MnFormCadastroSerie: TMenuItem;
     Compras1: TMenuItem;
-    MNPedidoCompra: TMenuItem;
-    MnNotadeEntrada: TMenuItem;
-    ImportaXMLDelphi: TMenuItem;
-    MnADMListaPreco: TMenuItem;
+    MnFormCadastroPedidoCompra: TMenuItem;
+    MnFormCadastroNotaCompra: TMenuItem;
+    MnFormTelaImportadorXML: TMenuItem;
+    MnFormTelaListaPreco: TMenuItem;
     Estoque1: TMenuItem;
-    MnADMEstoqueMovimentosDiversos: TMenuItem;
-    MnADMEmissaoEtiquetas: TMenuItem;
-    MnADMReajustePreco: TMenuItem;
-    MnTrocasMercadoria: TMenuItem;
-    MnADMEstTransfernciadeMercadoria: TMenuItem;
+    MnFormCadastroMovimentosDiversosEstoque: TMenuItem;
+    MnFormTelaEmissaoEtiquetasCodigoBarras: TMenuItem;
+    MnFormTelaReajustePreco: TMenuItem;
+    MnFormCadastroTrocas: TMenuItem;
+    MnFormTelaTransferencia: TMenuItem;
     Inventrio1: TMenuItem;
-    MnADMInvGerarInventario: TMenuItem;
-    MnADMInvRelDivergenciasInventario: TMenuItem;
-    MnADMInvZerarSaldoEstoque: TMenuItem;
-    ProdutosSemMovimento1: TMenuItem;
+    MnFormTelaContagemManual: TMenuItem;
+    MnFormRelatorioDivergenciaInventario: TMenuItem;
+    MnFormTelaZeraSaldoEstoque: TMenuItem;
+    MnFormTelaProdutosSemMov: TMenuItem;
     Utilitrios1: TMenuItem;
-    MnADMManutencaoProdutos: TMenuItem;
-    MnADMUtilitariosManutenodeCupons: TMenuItem;
+    MnFormTelaManutencaoProdutos: TMenuItem;
+    MnFormCadastroManutencaoCupom: TMenuItem;
     Comisso1: TMenuItem;
-    MnADMUtilitariosCalcularComissoes: TMenuItem;
-    MnADMFINCadastroComissao: TMenuItem;
-    mnQuitaoComisses: TMenuItem;
+    MnFormTelaCalculoComissao: TMenuItem;
+    MnFormCadastroVendedorComissao: TMenuItem;
+    MnFormTelaQuitacaoComissoes: TMenuItem;
     PrVenda1: TMenuItem;
     MnADMUtilitariosApagarPreVendasImportadas: TMenuItem;
     ApagarOramento30Dias1: TMenuItem;
     Relatrios1: TMenuItem;
     Administrativo1: TMenuItem;
     Vendas1: TMenuItem;
-    PorPerodo1: TMenuItem;
-    PorPerodocomMargemdeVendedor1: TMenuItem;
-    PorPerodocomMargemdeProduto1: TMenuItem;
-    PorPeriododeEmpresa1: TMenuItem;
-    ProdutosVendidos1: TMenuItem;
-    PorPlano1: TMenuItem;
-    PorGrade1: TMenuItem;
-    PorGrupo1: TMenuItem;
-    PorMarca1: TMenuItem;
-    PorColeo1: TMenuItem;
-    ComissoSinttico1: TMenuItem;
-    ComissoDetalhado1: TMenuItem;
+    MnFormRelatorioVendasPeriodo: TMenuItem;
+    MnFormRelatorioVendasPeriodoApuracaoMargem: TMenuItem;
+    MnFormRelatorioApuracaoMargemPorProduto: TMenuItem;
+    MnFormRelatorioCupomEmitidoPorEmpresa: TMenuItem;
+    MnFormRelatorioProdutosVendidos: TMenuItem;
+    MnFormRelatorioVendasPorPlano: TMenuItem;
+    MnFormRelatorioVendasPorGrade: TMenuItem;
+    MnFormRelatorioVendasGrupo: TMenuItem;
+    MnFormRelatorioVendasMarca: TMenuItem;
+    MnFormRelatorioVendasColecao: TMenuItem;
+    MnFormRelatorioComissao: TMenuItem;
+    MnFormRelatorioComissaoDetalhado: TMenuItem;
     PrVendaporPerodo1: TMenuItem;
     Compras2: TMenuItem;
-    NotadeEntrada2: TMenuItem;
-    ProdutosComprados1: TMenuItem;
-    ComprasporGrupo1: TMenuItem;
-    ComprasporMarca1: TMenuItem;
-    ComprasporColeo1: TMenuItem;
-    CompraxVendaporGrupo1: TMenuItem;
-    ProdutossemPedidodeCompra1: TMenuItem;
-    ProdutosAbaixodoMnimo1: TMenuItem;
+    MnFormRelatorioNotasCompra: TMenuItem;
+    MnFormRelatorioProdutosComprados: TMenuItem;
+    MnFormRelatorioComprasGrupo: TMenuItem;
+    MnFormRelatorioComprasMarca: TMenuItem;
+    MnFormRelatorioComprasColecao: TMenuItem;
+    MnFormRelatorioVendasComprasPorGrupo: TMenuItem;
+    MnFormRelatorioProdutosPedidosCompra: TMenuItem;
+    MnFormRelatorioProdutosAbaixoMinimo: TMenuItem;
     Caixa1: TMenuItem;
-    ResumodeCaixa1: TMenuItem;
-    MovimentaodeCaixa1: TMenuItem;
-    otaisporNumerario1: TMenuItem;
-    otalizadoresdeCaixa1: TMenuItem;
-    BoletimdeCaixa1: TMenuItem;
+    MnFormRelatorioResumoCaixa: TMenuItem;
+    MnFormRelatorioMovimentacaoCaixa: TMenuItem;
+    MnFormRelatorioTotalNumerarioCaixa: TMenuItem;
+    MnFormTelaRecalcularTotalizador: TMenuItem;
+    MnFormRelatorioBoletimCaixa: TMenuItem;
     Produtos2: TMenuItem;
-    ListagemdeProdutos1: TMenuItem;
-    PorFornecedor1: TMenuItem;
-    Cadastrados1: TMenuItem;
-    EmPromoo1: TMenuItem;
-    LotesdeProdutos1: TMenuItem;
+    MnFormRelatorioListagemProduto: TMenuItem;
+    MnFormRelatorioProdutosPorFornecedor: TMenuItem;
+    MnFormRelatorioProdutoCadastrado: TMenuItem;
+    MnFormRelatorioProdutoEmPromocao: TMenuItem;
+    MnFormRelatorioLotePorProduto: TMenuItem;
     Estoque2: TMenuItem;
-    MovimentaodeEstoque1: TMenuItem;
-    PorGrade2: TMenuItem;
-    PorGradedeProdutos1: TMenuItem;
-    PorMarca2: TMenuItem;
-    PorMarcaeGrupo1: TMenuItem;
-    PorMarcaeReferncia1: TMenuItem;
-    PosioDiariadeEstoque1: TMenuItem;
-    ransferenciadeProdutos1: TMenuItem;
-    SaldoporLote1: TMenuItem;
-    PosioFsicaFinanceira1: TMenuItem;
-    MovimentaoDiversas2: TMenuItem;
+    MnFormRelatorioExtratoProdutos: TMenuItem;
+    MnFormRelatorioEstoquePorGrade: TMenuItem;
+    MnFormRelatorioEstoquePorGradePorProduto: TMenuItem;
+    MnFormRelatorioEstoquePorMarca: TMenuItem;
+    MnFormRelatorioEstoquePorMarcaPorGrupo: TMenuItem;
+    MnFormRelatorioEstoqueMarcaReferencia: TMenuItem;
+    MnFormRelatorioPosicaoDiariaEstoque: TMenuItem;
+    MnFormRelatorioTransferencia: TMenuItem;
+    MnFormRelatorioEstoquePorLote: TMenuItem;
+    MnFormRelatorioFisicoFinanceiroEstoque: TMenuItem;
+    MnFormRelatorioMotvoDiversos: TMenuItem;
     Invetrio1: TMenuItem;
-    RegistrodeInventario1: TMenuItem;
-    PorestoqueporGrupodeProduto1: TMenuItem;
-    ListagemPorGradedeProdutos1: TMenuItem;
+    MnFormRelatorioRegistroInventario: TMenuItem;
+    MnFormRelatorioInventarioEstoque: TMenuItem;
+    MnFormRelatorioListagemParaInventarioPorGradePorProduto: TMenuItem;
     Gerenciais1: TMenuItem;
-    CurvaABCdeVendaProdutos1: TMenuItem;
-    CurvaABCdeEstoque1: TMenuItem;
-    CurvaABCdeVendaClientes1: TMenuItem;
-    ndicedeInadimplenciaPeriodo1: TMenuItem;
-    ndicedeInadimplenciaUltimos6Anos1: TMenuItem;
-    ResumodeOperaes1: TMenuItem;
-    PontodeEquilbrio1: TMenuItem;
-    ProdutossemMovimentao1: TMenuItem;
+    MnFormRelatorioCurvaABC: TMenuItem;
+    MnFormRelatorioCurvaABCEstoque: TMenuItem;
+    MnFormRelatorioCurvaABCCliente: TMenuItem;
+    MnFormRelatorioIndiceInadimplenciaCrediario: TMenuItem;
+    MnFormRelatorioInadimplenciaAnual: TMenuItem;
+    MnFormRelatorioResumoOperacaoDiaria: TMenuItem;
+    MnFormRelatorioPontoDeEquilibrio: TMenuItem;
+    MnFormRelatorioProdutosSemMovto: TMenuItem;
     Clientes2: TMenuItem;
-    ListagemdeClientes1: TMenuItem;
-    Bloqueados1: TMenuItem;
-    PorCidades1: TMenuItem;
-    LimitedeCompra1: TMenuItem;
+    MnFormRelatorioClienteCadastrado: TMenuItem;
+    MnFormRelatorioClienteBloqueado: TMenuItem;
+    MnFormRelatorioClienteporCidade: TMenuItem;
+    MnFormRelatorioClienteLimiteCreditoExcedido: TMenuItem;
     Fiscais1: TMenuItem;
     CuponsEmitidos1: TMenuItem;
     CuponsQuitados1: TMenuItem;
@@ -233,35 +233,35 @@ type
     EmitidasporClienteeICMS1: TMenuItem;
     ListagemdeItens1: TMenuItem;
     CobranadeFrete1: TMenuItem;
-    AdvGlowButton1: TAdvGlowButton;
-    AdvGlowButton2: TAdvGlowButton;
-    AdvGlowButton3: TAdvGlowButton;
-    AdvGlowButton4: TAdvGlowButton;
-    AdvGlowButton5: TAdvGlowButton;
-    AdvGlowButton6: TAdvGlowButton;
+    btnFormCadastroContasPagar: TAdvGlowButton;
+    btnMnFormCadastroFornecedor: TAdvGlowButton;
+    btnFormCadastroPedidoCompra: TAdvGlowButton;
+    btnFormCadastroContasReceber: TAdvGlowButton;
+    btnFormCadastroMovimentosDiversosEstoque: TAdvGlowButton;
+    btnFormTelaEmissaoEtiquetasCodigoBarras: TAdvGlowButton;
     AdvGlowButton7: TAdvGlowButton;
-    AdvGlowButton8: TAdvGlowButton;
+    btnFormTelaImportadorXML: TAdvGlowButton;
     Sobre1: TMenuItem;
     AdvGlowButton9: TAdvGlowButton;
-    ConsultaCupom1: TMenuItem;
+    MnFormCadastroCupom: TMenuItem;
     Especiais1: TMenuItem;
-    AtualizaodoEstoquedasVendasdosPDVs1: TMenuItem;
+    MnFormTelaAtualizaEstoquePDVs: TMenuItem;
     ConfernciadoFechamentodeCaixa1: TMenuItem;
-    LanamentodeChequesRecebidos1: TMenuItem;
-    LanamentoChequesEmitidos1: TMenuItem;
-    BaixaChequesRecebidos1: TMenuItem;
-    BaixarChequesEmitidos1: TMenuItem;
-    GerarSaldoInicial1: TMenuItem;
+    MnFormCadastroChequesRecebidos: TMenuItem;
+    MnFormCadastroChequeEmitido: TMenuItem;
+    MnFormTelaBaixarChequesRecebidos: TMenuItem;
+    MnFormTelaBaixarChequeEmitido: TMenuItem;
+    MnFormTelaGerarSaldoProduto: TMenuItem;
     Restaurante1: TMenuItem;
-    Mesas1: TMenuItem;
-    ConsultaSaldoporEmpresa1: TMenuItem;
-    Sabores1: TMenuItem;
-    ributaoNFSe1: TMenuItem;
-    NotaServio1: TMenuItem;
-    Servio2: TMenuItem;
-    Representante1: TMenuItem;
-    ConsultaNmeroSrie1: TMenuItem;
-    ipoFornecedor1: TMenuItem;
+    MnFormCadastroMesa: TMenuItem;
+    MnFormTelaConsultaSaldoPorEmpresa: TMenuItem;
+    MnFormCadastroSabores: TMenuItem;
+    MnFormCadastroTributacaoNFSE: TMenuItem;
+    MnFormCadastroNotaServico: TMenuItem;
+    MnFormCadastroServico: TMenuItem;
+    MnFormRelatorioComissaoDetalhadoRepresentante: TMenuItem;
+    MnFormTelaConsultaMovNumeroSerie: TMenuItem;
+    MnFormCadastroTipoFornecedor: TMenuItem;
     procedure FATUMnCadastroClientesCadastroClick(Sender: TObject);
     procedure FATUMnCadastroClientesTipodeClienteClick(Sender: TObject);
     procedure FATUMnCadastroBancosClick(Sender: TObject);
@@ -269,8 +269,8 @@ type
     procedure FATUMnCadastroPortadoresClick(Sender: TObject);
     procedure FATUMnUtilitariosControledeAcessoClick(Sender: TObject);
     procedure FATUMnVendasPedidosVendaClick(Sender: TObject);
-    procedure FATUMnVendasNotasFiscaisClick(Sender: TObject);
-    procedure FATUMnCadastroSerieClick(Sender: TObject);
+    procedure MnFormCadastroNotaFiscalClick(Sender: TObject);
+    procedure MnFormCadastroSerieClick(Sender: TObject);
     procedure FATUMnSairdoSistemaClick(Sender: TObject);
     procedure FATUMnRelatoriosPedidosListagemClick(Sender: TObject);
     procedure FATUMnRelatoriosPedidosListagemdeItensClick(Sender: TObject);
@@ -296,7 +296,7 @@ type
     procedure MnRotasClick(Sender: TObject);
     procedure MnMixdeCargaClick(Sender: TObject);
     procedure MnListagemAcompanhamentoEntregadorClick(Sender: TObject);
-    procedure MnTransportadorasClick(Sender: TObject);
+    procedure MnFormCadastroTransportadoraClick(Sender: TObject);
     procedure MnVeiculosClick(Sender: TObject);
     procedure MnGeracaoNotasClick(Sender: TObject);
     procedure MnCadastroVisitaClick(Sender: TObject);
@@ -308,22 +308,22 @@ type
     procedure MnOperacaoEstoqueClick(Sender: TObject);
     procedure MnPedidoVendaComGradeClick(Sender: TObject);
     procedure MnAgendaTelefonicaClick(Sender: TObject);
-    procedure MnFornecedoresClick(Sender: TObject);
-    procedure MNRepresentanteClick(Sender: TObject);
+    procedure MnFormCadastroFornecedorClick(Sender: TObject);
+    procedure MnFormCadastroRepresentanteClick(Sender: TObject);
     procedure Mecanica1Click(Sender: TObject);
     procedure OrdensdeServiosMecnicas1Click(Sender: TObject);
     procedure GruposdeExecuodeServio1Click(Sender: TObject);
     procedure Mecnicos1Click(Sender: TObject);
-    procedure ipodeServio1Click(Sender: TObject);
+    procedure MnFormCadastroMecTipoServicoClick(Sender: TObject);
     procedure MnAcompanharTarefascriadaspeloUsuarioAtualClick(Sender: TObject);
     procedure MnGerenciarTarefasClick(Sender: TObject);
     procedure MnAdicionarTarefasClick(Sender: TObject);
     procedure MnConfigPopLembreteTarefaClick(Sender: TObject);
     procedure TimeLembreteTimer(Sender: TObject);
     procedure MnFATEmitidasporClienteeporIcmsClick(Sender: TObject);
-    procedure Cidades1Click(Sender: TObject);
+    procedure MnFormCadastroCidadeClick(Sender: TObject);
     procedure OrdensdeSer1Click(Sender: TObject);
-    procedure abeladeConversodeCSTdoICMS1Click(Sender: TObject);
+    procedure MnCadastroCSTConverterClick(Sender: TObject);
     procedure abeladeConversodeCSTPISeCOFINS1Click(Sender: TObject);
     procedure DigitaoConhecimentosdeFrete1Click(Sender: TObject);
     procedure abeladeConversodeCSTdeIPI1Click(Sender: TObject);
@@ -333,57 +333,57 @@ type
     procedure btnF11Click(Sender: TObject);
     procedure BTNnFEClick(Sender: TObject);
     procedure MnMixVendaClick(Sender: TObject);
-    procedure MnVendedoresClick(Sender: TObject);
+    procedure MnFormCadastroVendedorClick(Sender: TObject);
     procedure TimerImpressaoTabletsTimer(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure MnRelMovimentoCaixaFaturamentoClick(Sender: TObject);
-    procedure MnFINPagarLancamentosClick(Sender: TObject);
+    procedure MnFormCadastroContasPagarClick(Sender: TObject);
     procedure MnADMCadastroProdutoClick(Sender: TObject);
-    procedure MnADMCadastroClientesCadastroClick(Sender: TObject);
-    procedure Grupo1Click(Sender: TObject);
-    procedure MnADMCadastroProdutosGradesClick(Sender: TObject);
-    procedure Grade1Click(Sender: TObject);
-    procedure MnADMCadastroProdutosCoresClick(Sender: TObject);
-    procedure MnColecaoClick(Sender: TObject);
-    procedure MnADMCadastroProdutosUnidadesClick(Sender: TObject);
-    procedure MnADMCadastroProdutosIcmsClick(Sender: TObject);
-    procedure MnADMCadastroProdutosIcmsUFClick(Sender: TObject);
-    procedure MNADMCadastroNCMClick(Sender: TObject);
-    procedure MnFINCadastroTiposDocumentosClick(Sender: TObject);
-    procedure FINAMnCadastroPortadoresClick(Sender: TObject);
-    procedure MnFINCadTipoLiquidacaoClick(Sender: TObject);
-    procedure MnFINCadHistoricoPadraoClick(Sender: TObject);
-    procedure MnFINCadastroBancosClick(Sender: TObject);
-    procedure MnFINBancosContaCorrenteClick(Sender: TObject);
-    procedure MnFINCadastroOperacoesBancariasClick(Sender: TObject);
-    procedure MnFINCadastroSituacoesChequesClick(Sender: TObject);
-    procedure MnFINCadastroProtocoloChequeClick(Sender: TObject);
-    procedure mniMnOperacaoEstoqueClick(Sender: TObject);
-    procedure MnObsNotaFiscalClick(Sender: TObject);
+    procedure MnFormCadastroClienteClick(Sender: TObject);
+    procedure MnFormCadastroGrupoClick(Sender: TObject);
+    procedure MnFormCadastroMarcaClick(Sender: TObject);
+    procedure MnFormCadastroGradeClick(Sender: TObject);
+    procedure MnFormCadastroCorClick(Sender: TObject);
+    procedure MnFormCadastroColecaoClick(Sender: TObject);
+    procedure MnFormCadastroUnidadeClick(Sender: TObject);
+    procedure MnFormCadastroICMSClick(Sender: TObject);
+    procedure MnFormCadastroIcmsUfClick(Sender: TObject);
+    procedure MnFormCadastroNCMClick(Sender: TObject);
+    procedure MnFormCadastroTipoDocumentoClick(Sender: TObject);
+    procedure MnFormCadastroPortadorClick(Sender: TObject);
+    procedure MnFormCadastroTipoLiquidacaoClick(Sender: TObject);
+    procedure MnFormCadastroHistoricoPadraoClick(Sender: TObject);
+    procedure mnFormCadastroBancoClick(Sender: TObject);
+    procedure MnFormCadastroContaCorrenteClick(Sender: TObject);
+    procedure MnFormCadastroOperacaoBancoClick(Sender: TObject);
+    procedure MnFormCadastroSituacaoChequeClick(Sender: TObject);
+    procedure MnFormCadastroProtocoloChequeRecebidoClick(Sender: TObject);
+    procedure MnFormCadastroOperacoesEstoqueClick(Sender: TObject);
+    procedure MnFormCadastroObsNotaFiscalClick(Sender: TObject);
     procedure ConveroCSTporPISCofins1Click(Sender: TObject);
-    procedure MnFINCadastroPlanoContasClick(Sender: TObject);
-    procedure MNADMConveniosClick(Sender: TObject);
-    procedure MNPedidoCompraClick(Sender: TObject);
-    procedure MnNotadeEntradaClick(Sender: TObject);
-    procedure ImportaXMLDelphiClick(Sender: TObject);
-    procedure MnADMListaPrecoClick(Sender: TObject);
-    procedure MnADMEstoqueMovimentosDiversosClick(Sender: TObject);
-    procedure MnADMEmissaoEtiquetasClick(Sender: TObject);
-    procedure MnADMReajustePrecoClick(Sender: TObject);
-    procedure MnTrocasMercadoriaClick(Sender: TObject);
-    procedure MnADMEstTransfernciadeMercadoriaClick(Sender: TObject);
-    procedure MnADMInvGerarInventarioClick(Sender: TObject);
-    procedure MnADMInvRelDivergenciasInventarioClick(Sender: TObject);
-    procedure MnADMInvZerarSaldoEstoqueClick(Sender: TObject);
-    procedure ProdutosSemMovimento1Click(Sender: TObject);
-    procedure MnADMManutencaoProdutosClick(Sender: TObject);
-    procedure MnADMUtilitariosManutenodeCuponsClick(Sender: TObject);
-    procedure MnADMUtilitariosCalcularComissoesClick(Sender: TObject);
-    procedure MnADMFINCadastroComissaoClick(Sender: TObject);
-    procedure mnQuitaoComissesClick(Sender: TObject);
+    procedure MnFormTelaPlanoContasClick(Sender: TObject);
+    procedure MnFormCadastroConvenioClick(Sender: TObject);
+    procedure MnFormCadastroPedidoCompraClick(Sender: TObject);
+    procedure MnFormCadastroNotaCompraClick(Sender: TObject);
+    procedure MnFormTelaImportadorXMLClick(Sender: TObject);
+    procedure MnFormTelaListaPrecoClick(Sender: TObject);
+    procedure MnFormCadastroMovimentosDiversosEstoqueClick(Sender: TObject);
+    procedure MnFormTelaEmissaoEtiquetasCodigoBarrasClick(Sender: TObject);
+    procedure MnFormTelaReajustePrecoClick(Sender: TObject);
+    procedure MnFormCadastroTrocasClick(Sender: TObject);
+    procedure MnFormTelaTransferenciaClick(Sender: TObject);
+    procedure MnFormTelaContagemManualClick(Sender: TObject);
+    procedure MnFormRelatorioDivergenciaInventarioClick(Sender: TObject);
+    procedure MnFormTelaZeraSaldoEstoqueClick(Sender: TObject);
+    procedure MnFormTelaProdutosSemMovClick(Sender: TObject);
+    procedure MnFormTelaManutencaoProdutosClick(Sender: TObject);
+    procedure MnFormCadastroManutencaoCupomClick(Sender: TObject);
+    procedure MnFormTelaCalculoComissaoClick(Sender: TObject);
+    procedure MnFormCadastroVendedorComissaoClick(Sender: TObject);
+    procedure MnFormTelaQuitacaoComissoesClick(Sender: TObject);
     procedure MnADMUtilitariosApagarPreVendasImportadasClick(Sender: TObject);
     procedure ApagarOramento30Dias1Click(Sender: TObject);
-    procedure MnFINPagarBaixarDocumentosClick(Sender: TObject);
+    procedure MnFormTelaBaixarDocumentosPagarClick(Sender: TObject);
     procedure MnExportaparaBalancasClick(Sender: TObject);
     procedure MnADMRelVendasPorPeriodoClick(Sender: TObject);
     procedure MnADMRelVendasPorPerodocomApuraodeMargemClick(Sender: TObject);
@@ -391,7 +391,7 @@ type
     procedure MnPorPeriodoporEmpresaConferenciaClick(Sender: TObject);
     procedure MnADMRelProdutosVendidosClick(Sender: TObject);
     procedure MnADMRelVendasPorPlanoClick(Sender: TObject);
-    procedure PorGrade1Click(Sender: TObject);
+    procedure MnFormRelatorioVendasPorGradeClick(Sender: TObject);
     procedure MnADMRelVendasPorGrupoClick(Sender: TObject);
     procedure MnADMRelVendasPorMarcaClick(Sender: TObject);
     procedure MnVendasPorColecaoClick(Sender: TObject);
@@ -406,18 +406,18 @@ type
     procedure MNADMRelatoriosComprasVendasporGrupoClick(Sender: TObject);
     procedure MnProdutosPedidosCompraClick(Sender: TObject);
     procedure MnProdutosAbaixoMinimoClick(Sender: TObject);
-    procedure ResumodeCaixa1Click(Sender: TObject);
+    procedure MnFormRelatorioResumoCaixaClick(Sender: TObject);
     procedure MnADMRelCaixaMovimentacaoCaixaClick(Sender: TObject);
     procedure MnADMRelCaixaTotaisporNumerarioClick(Sender: TObject);
     procedure MnADMRelCaixaBoletimCaixaClick(Sender: TObject);
-    procedure AdvGlowButton5Click(Sender: TObject);
-    procedure bClientesClick(Sender: TObject);
-    procedure bProdutosClick(Sender: TObject);
-    procedure bEmitirNFEClick(Sender: TObject);
-    procedure AdvGlowButton1Click(Sender: TObject);
-    procedure AdvGlowButton2Click(Sender: TObject);
-    procedure AdvGlowButton3Click(Sender: TObject);
-    procedure AdvGlowButton4Click(Sender: TObject);
+    procedure btnFormCadastroMovimentosDiversosEstoqueClick(Sender: TObject);
+    procedure btnFormCadastroClienteClick(Sender: TObject);
+    procedure btnFormCadastroProdutoClick(Sender: TObject);
+    procedure btnFormCadastroNotaFiscalClick(Sender: TObject);
+    procedure btnFormCadastroContasPagarClick(Sender: TObject);
+    procedure btnMnFormCadastroFornecedorClick(Sender: TObject);
+    procedure btnFormCadastroPedidoCompraClick(Sender: TObject);
+    procedure btnFormCadastroContasReceberClick(Sender: TObject);
     procedure MnADMUtilitariosEspeciaisRecalcularTotalizadoresdeCaixaClick(Sender: TObject);
     procedure MnADMRelProdutosListagemProdutoClick(Sender: TObject);
     procedure MnADMRelProdutosPorFornecedorClick(Sender: TObject);
@@ -450,10 +450,10 @@ type
     procedure MnADMRelClientesBloqueadosClick(Sender: TObject);
     procedure MnADMRelClientesporcidadeClick(Sender: TObject);
     procedure MnRelatorioLimitesCompraClienteClick(Sender: TObject);
-    procedure MnFINReceberLancamentosClick(Sender: TObject);
-    procedure MnFINReceberBaixarDocumentosClick(Sender: TObject);
-    procedure MnCartoesCreditoManualClick(Sender: TObject);
-    procedure MnFINReceberEmissaoBoletosDuplicatasClick(Sender: TObject);
+    procedure MnFormCadastroContasReceberClick(Sender: TObject);
+    procedure MnFormTelaBaixarDocumentosReceberClick(Sender: TObject);
+    procedure MnFormCadastroCartaoCreditoManualClick(Sender: TObject);
+    procedure MnFormTelaImpressaoDuplicataClick(Sender: TObject);
     procedure MnADMRelCupomEmitidoClick(Sender: TObject);
     procedure MnADMRelCupomQuitadoClick(Sender: TObject);
     procedure MnADMRELApuracaodePisCofinsClick(Sender: TObject);
@@ -462,12 +462,12 @@ type
     procedure VendasporTipo1Click(Sender: TObject);
     procedure MnVendasporAliquotasparaContabilidadeClick(Sender: TObject);
     procedure MnContasRecebidasparaContabidadeClick(Sender: TObject);
-    procedure MnFINBancosLancarMovimentacoClick(Sender: TObject);
-    procedure MnFINBancosRemessaArquivoClick(Sender: TObject);
-    procedure MnFINTesLancamentosClick(Sender: TObject);
-    procedure MnFINTesEmisscaodeRecibosClick(Sender: TObject);
+    procedure MnFormCadastroMovimentoBancoClick(Sender: TObject);
+    procedure MnFormCadastroRemessaBancosClick(Sender: TObject);
+    procedure MnFormCadastroTesourariaClick(Sender: TObject);
+    procedure MnFormCadastroReciboClick(Sender: TObject);
     procedure erminaldeConsulta1Click(Sender: TObject);
-    procedure SPEDFiscal1Click(Sender: TObject);
+    procedure MnFormTelaExportacaoSpedClick(Sender: TObject);
     procedure MnFINRelPagarEmitidasClick(Sender: TObject);
     procedure MnFINRelContasPagarVencidasClick(Sender: TObject);
     procedure MnFINRelContasPagarPagasClick(Sender: TObject);
@@ -494,9 +494,9 @@ type
     procedure MnFINRelPlanodeContasClick(Sender: TObject);
     procedure MnFINRelFluxodeCaixaDiarioClick(Sender: TObject);
     procedure MnFINRelPosicaoFinanceiraConsolidadaClick(Sender: TObject);
-    procedure AdvGlowButton8Click(Sender: TObject);
+    procedure btnFormTelaImportadorXMLClick(Sender: TObject);
     procedure Sobre1Click(Sender: TObject);
-    procedure AdvGlowButton6Click(Sender: TObject);
+    procedure btnFormTelaEmissaoEtiquetasCodigoBarrasClick(Sender: TObject);
     procedure AdvGlowButton9Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure MnADMUtilitariosConsultadeCuponsClick(Sender: TObject);
@@ -509,18 +509,19 @@ type
     procedure FormPrincipalB1Click(Sender: TObject);
     procedure MnSaldoInicialProdutosClick(Sender: TObject);
     procedure MnCadastroMesasClick(Sender: TObject);
-    procedure ConsultaSaldoporEmpresa1Click(Sender: TObject);
-    procedure Sabores1Click(Sender: TObject);
-    procedure ributaoNFSe1Click(Sender: TObject);
-    procedure NotaServio1Click(Sender: TObject);
-    procedure Servio2Click(Sender: TObject);
-    procedure Representante1Click(Sender: TObject);
-    procedure ConsultaNmeroSrie1Click(Sender: TObject);
-    procedure ipoFornecedor1Click(Sender: TObject);
+    procedure MnFormTelaConsultaSaldoPorEmpresaClick(Sender: TObject);
+    procedure MnFormCadastroSaboresClick(Sender: TObject);
+    procedure MnFormCadastroTributacaoNFSEClick(Sender: TObject);
+    procedure MnFormCadastroNotaServicoClick(Sender: TObject);
+    procedure MnFormCadastroServicoClick(Sender: TObject);
+    procedure MnFormRelatorioComissaoDetalhadoRepresentanteClick(Sender: TObject);
+    procedure MnFormTelaConsultaMovNumeroSerieClick(Sender: TObject);
+    procedure MnFormCadastroTipoFornecedorClick(Sender: TObject);
   private
     procedure ApagarOrcamentos;
     procedure ApagarPreVendas;
-    procedure VerificaMenu(vMenu:TMenuItem);
+    procedure ConfigurarMenus;
+
     { Private declarations }
   public
     { Public declarations }
@@ -700,7 +701,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.FATUMnVendasNotasFiscaisClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroNotaFiscalClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -709,7 +710,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.FATUMnCadastroSerieClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroSerieClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -942,7 +943,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnTransportadorasClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroTransportadoraClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1060,7 +1061,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnFornecedoresClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroFornecedorClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1069,7 +1070,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MNRepresentanteClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroRepresentanteClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1101,8 +1102,7 @@ procedure TFormPrincipal.GruposdeExecuodeServio1Click(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
-    CriaFormulario(TFormCadastroMecExecutaEm, 'FormCadastroMecExecutaEm', False, False, False, '')
-
+    CriaFormulario(TFormCadastroMecExecutaEm, 'FormCadastroMecExecutaEm', False, False, False, '') 
   else
     SoundPlay('Acesso Negado.wav', Sender);
 end;
@@ -1117,12 +1117,11 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.ipodeServio1Click(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroMecTipoServicoClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
     CriaFormulario(TFormCadastroMecTipoServico, 'FormCadastroMecTipoServico', False, False, False, '')
-
   else
     SoundPlay('Acesso Negado.wav', Sender);
 end;
@@ -1206,7 +1205,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.Cidades1Click(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroCidadeClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1295,7 +1294,7 @@ begin
   //CriaFormulario(TFormCadastroMixVenda, 'FormCadastroMixVenda',False,False,True,'');
 end;
 
-procedure TFormPrincipal.MnVendedoresClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroVendedorClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1333,6 +1332,8 @@ begin
     TimerImpressaoTablets.Enabled := True
   else
     TimerImpressaoTablets.Enabled := False;
+
+  ConfigurarMenus;
 end;
 
 procedure TFormPrincipal.MnRelMovimentoCaixaFaturamentoClick(Sender: TObject);
@@ -1345,7 +1346,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnFINPagarLancamentosClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroContasPagarClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1363,7 +1364,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);                                          
 end;
 
-procedure TFormPrincipal.MnADMCadastroClientesCadastroClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroClienteClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1372,7 +1373,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.Grupo1Click(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroGrupoClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1381,7 +1382,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnADMCadastroProdutosGradesClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroMarcaClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1390,7 +1391,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.Grade1Click(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroGradeClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1399,7 +1400,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnADMCadastroProdutosCoresClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroCorClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1408,7 +1409,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnColecaoClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroColecaoClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1417,7 +1418,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnADMCadastroProdutosUnidadesClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroUnidadeClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1426,7 +1427,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnADMCadastroProdutosIcmsClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroICMSClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1435,7 +1436,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnADMCadastroProdutosIcmsUFClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroIcmsUfClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1444,7 +1445,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MNADMCadastroNCMClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroNCMClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1454,7 +1455,7 @@ begin
 
 end;
 
-procedure TFormPrincipal.MnFINCadastroTiposDocumentosClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroTipoDocumentoClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1463,7 +1464,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.FINAMnCadastroPortadoresClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroPortadorClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1472,7 +1473,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnFINCadTipoLiquidacaoClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroTipoLiquidacaoClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1481,7 +1482,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnFINCadHistoricoPadraoClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroHistoricoPadraoClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1490,7 +1491,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnFINCadastroBancosClick(Sender: TObject);
+procedure TFormPrincipal.mnFormCadastroBancoClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1499,7 +1500,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnFINBancosContaCorrenteClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroContaCorrenteClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1508,7 +1509,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnFINCadastroOperacoesBancariasClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroOperacaoBancoClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1517,7 +1518,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnFINCadastroSituacoesChequesClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroSituacaoChequeClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1526,7 +1527,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnFINCadastroProtocoloChequeClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroProtocoloChequeRecebidoClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1535,7 +1536,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.mniMnOperacaoEstoqueClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroOperacoesEstoqueClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1544,7 +1545,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnObsNotaFiscalClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroObsNotaFiscalClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1553,7 +1554,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.abeladeConversodeCSTdoICMS1Click(Sender: TObject);
+procedure TFormPrincipal.MnCadastroCSTConverterClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1571,7 +1572,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnFINCadastroPlanoContasClick(Sender: TObject);
+procedure TFormPrincipal.MnFormTelaPlanoContasClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1580,7 +1581,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MNADMConveniosClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroConvenioClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1589,7 +1590,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MNPedidoCompraClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroPedidoCompraClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1598,7 +1599,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnNotadeEntradaClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroNotaCompraClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1607,7 +1608,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.ImportaXMLDelphiClick(Sender: TObject);
+procedure TFormPrincipal.MnFormTelaImportadorXMLClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1616,7 +1617,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnADMListaPrecoClick(Sender: TObject);
+procedure TFormPrincipal.MnFormTelaListaPrecoClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1625,7 +1626,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnADMEstoqueMovimentosDiversosClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroMovimentosDiversosEstoqueClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1635,7 +1636,7 @@ begin
 
 end;
 
-procedure TFormPrincipal.MnADMEmissaoEtiquetasClick(Sender: TObject);
+procedure TFormPrincipal.MnFormTelaEmissaoEtiquetasCodigoBarrasClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1644,7 +1645,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnADMReajustePrecoClick(Sender: TObject);
+procedure TFormPrincipal.MnFormTelaReajustePrecoClick(Sender: TObject);
 begin
   inherited;
 
@@ -1659,7 +1660,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnTrocasMercadoriaClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroTrocasClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1668,7 +1669,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnADMEstTransfernciadeMercadoriaClick(Sender: TObject);
+procedure TFormPrincipal.MnFormTelaTransferenciaClick(Sender: TObject);
 begin
   inherited;
 
@@ -1678,7 +1679,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnADMInvGerarInventarioClick(Sender: TObject);
+procedure TFormPrincipal.MnFormTelaContagemManualClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1687,7 +1688,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnADMInvRelDivergenciasInventarioClick(Sender: TObject);
+procedure TFormPrincipal.MnFormRelatorioDivergenciaInventarioClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1696,7 +1697,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnADMInvZerarSaldoEstoqueClick(Sender: TObject);
+procedure TFormPrincipal.MnFormTelaZeraSaldoEstoqueClick(Sender: TObject);
 begin
   inherited;
 
@@ -1706,13 +1707,13 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.ProdutosSemMovimento1Click(Sender: TObject);
+procedure TFormPrincipal.MnFormTelaProdutosSemMovClick(Sender: TObject);
 begin
   inherited;
   CriaFormulario(TFormTelaProdutosSemMov, 'FormTelaProdutosSemMov', False, False, False, '');
 end;
 
-procedure TFormPrincipal.MnADMManutencaoProdutosClick(Sender: TObject);
+procedure TFormPrincipal.MnFormTelaManutencaoProdutosClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1721,7 +1722,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnADMUtilitariosManutenodeCuponsClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroManutencaoCupomClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1730,7 +1731,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnADMUtilitariosCalcularComissoesClick(Sender: TObject);
+procedure TFormPrincipal.MnFormTelaCalculoComissaoClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1739,7 +1740,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnADMFINCadastroComissaoClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroVendedorComissaoClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1748,7 +1749,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.mnQuitaoComissesClick(Sender: TObject);
+procedure TFormPrincipal.MnFormTelaQuitacaoComissoesClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -1897,7 +1898,7 @@ begin
     ApagarOrcamentos;
 end;
 
-procedure TFormPrincipal.MnFINPagarBaixarDocumentosClick(Sender: TObject);
+procedure TFormPrincipal.MnFormTelaBaixarDocumentosPagarClick(Sender: TObject);
 begin
   inherited;
   if dm.SQLLocate('USUARIO', 'USUAICOD', 'USUACBXCPAGFIN', INTTOSTR(UsuarioCorrente)) <> 'S' then
@@ -1971,7 +1972,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.PorGrade1Click(Sender: TObject);
+procedure TFormPrincipal.MnFormRelatorioVendasPorGradeClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -2106,7 +2107,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.ResumodeCaixa1Click(Sender: TObject);
+procedure TFormPrincipal.MnFormRelatorioResumoCaixaClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -2142,56 +2143,54 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.AdvGlowButton5Click(Sender: TObject);
+procedure TFormPrincipal.btnFormCadastroMovimentosDiversosEstoqueClick(Sender: TObject);
+begin
+  inherited;
+  MnFormCadastroMovimentosDiversosEstoque.Click;
+end;
+
+procedure TFormPrincipal.btnFormCadastroClienteClick(Sender: TObject);
+begin
+  inherited;
+  MnFormCadastroCliente.Click;   
+end;
+
+procedure TFormPrincipal.btnFormCadastroProdutoClick(Sender: TObject);
 begin
   inherited;
 
-  MnADMEstoqueMovimentosDiversos.Click;
+  MnFormCadastroProduto.Click;
 
 end;
 
-procedure TFormPrincipal.bClientesClick(Sender: TObject);
+procedure TFormPrincipal.btnFormCadastroNotaFiscalClick(Sender: TObject);
 begin
   inherited;
-  MnADMCadastroClientesCadastro.Click;
+  MnFormCadastroNotaFiscal.Click;
 end;
 
-procedure TFormPrincipal.bProdutosClick(Sender: TObject);
+procedure TFormPrincipal.btnFormCadastroContasPagarClick(Sender: TObject);
 begin
   inherited;
-
-  MnADMCadastroProduto.Click;
-
+  MnFormCadastroContasPagar.Click;
 end;
 
-procedure TFormPrincipal.bEmitirNFEClick(Sender: TObject);
+procedure TFormPrincipal.btnMnFormCadastroFornecedorClick(Sender: TObject);
 begin
   inherited;
-  FATUMnVendasNotasFiscais.Click;
+  MnFormCadastroFornecedor.Click;
 end;
 
-procedure TFormPrincipal.AdvGlowButton1Click(Sender: TObject);
+procedure TFormPrincipal.btnFormCadastroPedidoCompraClick(Sender: TObject);
 begin
   inherited;
-  MnFINPagarLancamentos.Click;
+  MnFormCadastroPedidoCompra.Click;
 end;
 
-procedure TFormPrincipal.AdvGlowButton2Click(Sender: TObject);
+procedure TFormPrincipal.btnFormCadastroContasReceberClick(Sender: TObject);
 begin
   inherited;
-  MnFornecedores.Click;
-end;
-
-procedure TFormPrincipal.AdvGlowButton3Click(Sender: TObject);
-begin
-  inherited;
-  MNPedidoCompra.Click;
-end;
-
-procedure TFormPrincipal.AdvGlowButton4Click(Sender: TObject);
-begin
-  inherited;
-  MNPedidoCompra.Click;
+  MnFormCadastroContasReceber.Click;
 end;
 
 procedure TFormPrincipal.MnADMUtilitariosEspeciaisRecalcularTotalizadoresdeCaixaClick(Sender: TObject);
@@ -2482,7 +2481,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnFINReceberLancamentosClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroContasReceberClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -2498,7 +2497,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnFINReceberBaixarDocumentosClick(Sender: TObject);
+procedure TFormPrincipal.MnFormTelaBaixarDocumentosReceberClick(Sender: TObject);
 begin
   inherited;
   if dm.SQLLocate('USUARIO', 'USUAICOD', 'USUACBXCRECFIN', INTTOSTR(UsuarioCorrente)) <> 'S' then
@@ -2509,7 +2508,7 @@ begin
     soundplay('acesso negado.wav', sender);
 end;
 
-procedure TFormPrincipal.MnCartoesCreditoManualClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroCartaoCreditoManualClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -2572,7 +2571,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnFINReceberEmissaoBoletosDuplicatasClick(Sender: TObject);
+procedure TFormPrincipal.MnFormTelaImpressaoDuplicataClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -2590,7 +2589,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnFINBancosLancarMovimentacoClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroMovimentoBancoClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -2599,7 +2598,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnFINBancosRemessaArquivoClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroRemessaBancosClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -2608,7 +2607,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnFINTesLancamentosClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroTesourariaClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -2617,7 +2616,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.MnFINTesEmisscaodeRecibosClick(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroReciboClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -2704,7 +2703,7 @@ begin
     end;
 end;
 
-procedure TFormPrincipal.SPEDFiscal1Click(Sender: TObject);
+procedure TFormPrincipal.MnFormTelaExportacaoSpedClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -2945,10 +2944,10 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.AdvGlowButton8Click(Sender: TObject);
+procedure TFormPrincipal.btnFormTelaImportadorXMLClick(Sender: TObject);
 begin
   inherited;
-  ImportaXMLDelphi.Click;
+  MnFormTelaImportadorXML.Click;
 end;
 
 procedure TFormPrincipal.Sobre1Click(Sender: TObject);
@@ -2958,10 +2957,10 @@ begin
 
 end;
 
-procedure TFormPrincipal.AdvGlowButton6Click(Sender: TObject);
+procedure TFormPrincipal.btnFormTelaEmissaoEtiquetasCodigoBarrasClick(Sender: TObject);
 begin
   inherited;
-  MnADMEmissaoEtiquetas.Click;
+  MnFormTelaEmissaoEtiquetasCodigoBarras.Click;
 end;
 
 procedure TFormPrincipal.AdvGlowButton9Click(Sender: TObject);
@@ -3064,16 +3063,6 @@ begin
     SoundPlay('Acesso Negado.wav',Sender);
 end;
 
-procedure TFormPrincipal.VerificaMenu(vMenu:TMenuItem);
-begin
-  {for i:= 0 to vMenu.Items.Count -1 do
-  begin
-    if vMenu.Items[i].Count = 0 then
-      VerificaPemissaoMenu(vMenu.Items[i].)
-
-  end;}
-end;
-
 procedure TFormPrincipal.MnCadastroMesasClick(Sender: TObject);
 begin
   inherited;
@@ -3083,7 +3072,7 @@ begin
     SoundPlay('Acesso Negado.wav',Sender);
 end;
 
-procedure TFormPrincipal.ConsultaSaldoporEmpresa1Click(Sender: TObject);
+procedure TFormPrincipal.MnFormTelaConsultaSaldoPorEmpresaClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -3092,7 +3081,7 @@ begin
     SoundPlay('Acesso Negado.wav',Sender);
 end;
 
-procedure TFormPrincipal.Sabores1Click(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroSaboresClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -3101,7 +3090,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.ributaoNFSe1Click(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroTributacaoNFSEClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -3110,7 +3099,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.NotaServio1Click(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroNotaServicoClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -3119,7 +3108,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.Servio2Click(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroServicoClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -3128,7 +3117,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.Representante1Click(Sender: TObject);
+procedure TFormPrincipal.MnFormRelatorioComissaoDetalhadoRepresentanteClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -3137,7 +3126,7 @@ begin
     SoundPlay('Acesso Negado.wav', Sender);
 end;
 
-procedure TFormPrincipal.ConsultaNmeroSrie1Click(Sender: TObject);
+procedure TFormPrincipal.MnFormTelaConsultaMovNumeroSerieClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -3147,7 +3136,7 @@ begin
 
 end;
 
-procedure TFormPrincipal.ipoFornecedor1Click(Sender: TObject);
+procedure TFormPrincipal.MnFormCadastroTipoFornecedorClick(Sender: TObject);
 begin
   inherited;
   if DM.Acesso((Sender as TMenuItem).Name) > 0 then
@@ -3155,6 +3144,33 @@ begin
   else
     SoundPlay('Acesso Negado.wav', Sender);
 
+end;
+
+procedure TFormPrincipal.ConfigurarMenus;
+var
+ vNomeMenu:String;
+begin
+  with ExecSql(' select USPEA60NOMETELA from USUARIOPERMISSOES A '
+      +' where USUAICOD = '+IntToStr(UsuarioCorrente)+' AND A.USPECACESSOTOTAL = ''N'' AND A.USPECINCLUSAO = ''N'' '
+      +' AND A.USPECALTERACAO = ''N'' AND A.USPECEXCLUSAO = ''N'' AND A.USPECLEITURA = ''N'' ') do
+  try
+    while not eof do
+    begin
+      vNomeMenu := 'Mn'+fieldbyname('USPEA60NOMETELA').AsString;
+
+      if Self.FindComponent(vNomeMenu) <> nil then
+        TMenuItem(Self.FindComponent(vNomeMenu)).Visible:= False;
+
+      vNomeMenu := 'btn'+fieldbyname('USPEA60NOMETELA').AsString;
+
+      if Self.FindComponent(vNomeMenu) <> nil then
+        TCustomControl(Self.FindComponent(vNomeMenu)).Visible := False;
+
+      next;
+    end;
+  finally
+    free;
+  end;
 end;
 
 end.

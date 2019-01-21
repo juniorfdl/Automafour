@@ -258,12 +258,11 @@ end;
 procedure TFormTelaGerenciamentoAcesso.VerificaGrupoBotao;
 var BotoesBarra: Integer;
 begin
-  btLeitura.Down := False;
   btTotal.Down := False;
 
   sqlGeral.Edit;
   sqlGeral.FieldByName('USPECACESSOTOTAL').AsString := 'N';
-  sqlGeral.FieldByName('USPECLEITURA').AsString := 'N';
+//  sqlGeral.FieldByName('USPECLEITURA').AsString := 'N';
   sqlGeral.Post;
 
   if btGravar.Down and btIncluir.Down and
@@ -275,14 +274,14 @@ begin
     btLeitura.Down := False;
   end;
 
-  if not btGravar.Down and not btIncluir.Down and
+  {if not btGravar.Down and not btIncluir.Down and
     not btExcluir.Down and not btLeitura.Down
     then
   begin
     btLeitura.Down := True;
     btLeitura.Click;
     btTotal.Down := False;
-  end;
+  end; }
 
   for BotoesBarra := 0 to pnBotoes.ControlCount - 1 do
     if pnBotoes.Controls[BotoesBarra].Tag <> 0 then
@@ -394,10 +393,16 @@ end;
 procedure TFormTelaGerenciamentoAcesso.btLeituraClick(Sender: TObject);
 begin
   if not SQLGeral.Active then exit;
-  
-  btTotal.Down := False;
-  btTotal.Click;
+
+  SQLGeral.Edit;
+  if btLeitura.Down then
+    SQLGeral.FieldByName('USPECLEITURA').AsString := 'S'
+  else
+    SQLGeral.FieldByName('USPECLEITURA').AsString := 'N';
+  SQLGeral.Post;
+
   MudaBotao(Sender, (Sender as TSpeedButton).Down);
+  VerificaGrupoBotao;
 end;
 
 procedure TFormTelaGerenciamentoAcesso.btRemoveUsuarioClick(

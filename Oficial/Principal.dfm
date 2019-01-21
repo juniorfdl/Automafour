@@ -31,7 +31,7 @@ inherited FormPrincipal: TFormPrincipal
       Transparent = True
       Visible = False
     end
-    object bClientes: TAdvGlowButton
+    object btnFormCadastroCliente: TAdvGlowButton
       Left = 1
       Top = 0
       Width = 64
@@ -232,7 +232,7 @@ inherited FormPrincipal: TFormPrincipal
       ParentShowHint = False
       ShowHint = True
       TabOrder = 0
-      OnClick = bClientesClick
+      OnClick = btnFormCadastroClienteClick
       Appearance.BorderColor = 14727579
       Appearance.BorderColorHot = 10053171
       Appearance.BorderColorDown = 10053171
@@ -266,7 +266,7 @@ inherited FormPrincipal: TFormPrincipal
       Appearance.GradientDisabled = ggVertical
       Layout = blGlyphTop
     end
-    object bProdutos: TAdvGlowButton
+    object btnFormCadastroProduto: TAdvGlowButton
       Left = 237
       Top = 0
       Width = 64
@@ -616,7 +616,7 @@ inherited FormPrincipal: TFormPrincipal
       ParentShowHint = False
       ShowHint = True
       TabOrder = 2
-      OnClick = bProdutosClick
+      OnClick = btnFormCadastroProdutoClick
       Appearance.ColorChecked = 16111818
       Appearance.ColorCheckedTo = 16367008
       Appearance.ColorDisabled = 15921906
@@ -635,7 +635,7 @@ inherited FormPrincipal: TFormPrincipal
       Appearance.ColorMirrorDisabledTo = 15921906
       Layout = blGlyphTop
     end
-    object bEmitirNFE: TAdvGlowButton
+    object btnFormCadastroNotaFiscal: TAdvGlowButton
       Left = 1065
       Top = 0
       Width = 64
@@ -774,7 +774,7 @@ inherited FormPrincipal: TFormPrincipal
       ParentShowHint = False
       ShowHint = True
       TabOrder = 1
-      OnClick = bEmitirNFEClick
+      OnClick = btnFormCadastroNotaFiscalClick
       Appearance.BorderColor = 14727579
       Appearance.BorderColorHot = 10053171
       Appearance.BorderColorDown = 10053171
@@ -808,7 +808,7 @@ inherited FormPrincipal: TFormPrincipal
       Appearance.GradientDisabled = ggVertical
       Layout = blGlyphTop
     end
-    object AdvGlowButton1: TAdvGlowButton
+    object btnFormCadastroContasPagar: TAdvGlowButton
       Left = 356
       Top = 0
       Width = 64
@@ -972,7 +972,7 @@ inherited FormPrincipal: TFormPrincipal
       ParentShowHint = False
       ShowHint = True
       TabOrder = 3
-      OnClick = AdvGlowButton1Click
+      OnClick = btnFormCadastroContasPagarClick
       Appearance.BorderColor = 14727579
       Appearance.BorderColorHot = 10053171
       Appearance.BorderColorDown = 10053171
@@ -1006,7 +1006,7 @@ inherited FormPrincipal: TFormPrincipal
       Appearance.GradientDisabled = ggVertical
       Layout = blGlyphTop
     end
-    object AdvGlowButton2: TAdvGlowButton
+    object btnMnFormCadastroFornecedor: TAdvGlowButton
       Left = 119
       Top = 0
       Width = 64
@@ -1069,7 +1069,7 @@ inherited FormPrincipal: TFormPrincipal
       ParentShowHint = False
       ShowHint = True
       TabOrder = 4
-      OnClick = AdvGlowButton2Click
+      OnClick = btnMnFormCadastroFornecedorClick
       Appearance.BorderColor = 14727579
       Appearance.BorderColorHot = 10053171
       Appearance.BorderColorDown = 10053171
@@ -1103,7 +1103,7 @@ inherited FormPrincipal: TFormPrincipal
       Appearance.GradientDisabled = ggVertical
       Layout = blGlyphTop
     end
-    object AdvGlowButton3: TAdvGlowButton
+    object btnFormCadastroPedidoCompra: TAdvGlowButton
       Left = 592
       Top = 0
       Width = 64
@@ -1229,7 +1229,7 @@ inherited FormPrincipal: TFormPrincipal
       ParentShowHint = False
       ShowHint = True
       TabOrder = 5
-      OnClick = AdvGlowButton3Click
+      OnClick = btnFormCadastroPedidoCompraClick
       Appearance.BorderColor = 14727579
       Appearance.BorderColorHot = 10053171
       Appearance.BorderColorDown = 10053171
@@ -1263,7 +1263,7 @@ inherited FormPrincipal: TFormPrincipal
       Appearance.GradientDisabled = ggVertical
       Layout = blGlyphTop
     end
-    object AdvGlowButton4: TAdvGlowButton
+    object btnFormCadastroContasReceber: TAdvGlowButton
       Left = 474
       Top = 0
       Width = 64
@@ -1431,7 +1431,7 @@ inherited FormPrincipal: TFormPrincipal
       ParentShowHint = False
       ShowHint = True
       TabOrder = 6
-      OnClick = AdvGlowButton4Click
+      OnClick = btnFormCadastroContasReceberClick
       Appearance.BorderColor = 14727579
       Appearance.BorderColorHot = 10053171
       Appearance.BorderColorDown = 10053171
@@ -1465,7 +1465,7 @@ inherited FormPrincipal: TFormPrincipal
       Appearance.GradientDisabled = ggVertical
       Layout = blGlyphTop
     end
-    object AdvGlowButton5: TAdvGlowButton
+    object btnFormCadastroMovimentosDiversosEstoque: TAdvGlowButton
       Left = 946
       Top = 0
       Width = 64
@@ -1568,7 +1568,7 @@ inherited FormPrincipal: TFormPrincipal
       ParentShowHint = False
       ShowHint = True
       TabOrder = 7
-      OnClick = AdvGlowButton5Click
+      OnClick = btnFormCadastroMovimentosDiversosEstoqueClick
       Appearance.BorderColor = 14727579
       Appearance.BorderColorHot = 10053171
       Appearance.BorderColorDown = 10053171
@@ -1602,7 +1602,7 @@ inherited FormPrincipal: TFormPrincipal
       Appearance.GradientDisabled = ggVertical
       Layout = blGlyphTop
     end
-    object AdvGlowButton6: TAdvGlowButton
+    object btnFormTelaEmissaoEtiquetasCodigoBarras: TAdvGlowButton
       Left = 828
       Top = 0
       Width = 64
@@ -1681,7 +1681,7 @@ inherited FormPrincipal: TFormPrincipal
       ParentShowHint = False
       ShowHint = True
       TabOrder = 8
-      OnClick = AdvGlowButton6Click
+      OnClick = btnFormTelaEmissaoEtiquetasCodigoBarrasClick
       Appearance.BorderColor = 14727579
       Appearance.BorderColorHot = 10053171
       Appearance.BorderColorDown = 10053171
@@ -1961,7 +1961,7 @@ inherited FormPrincipal: TFormPrincipal
       Appearance.GradientDisabled = ggVertical
       Layout = blGlyphTop
     end
-    object AdvGlowButton8: TAdvGlowButton
+    object btnFormTelaImportadorXML: TAdvGlowButton
       Left = 710
       Top = 0
       Width = 64
@@ -2183,7 +2183,7 @@ inherited FormPrincipal: TFormPrincipal
       ParentShowHint = False
       ShowHint = True
       TabOrder = 10
-      OnClick = AdvGlowButton8Click
+      OnClick = btnFormTelaImportadorXMLClick
       Appearance.BorderColor = 14727579
       Appearance.BorderColorHot = 10053171
       Appearance.BorderColorDown = 10053171
@@ -11187,106 +11187,106 @@ inherited FormPrincipal: TFormPrincipal
   inherited MainMenu: TMainMenu
     Left = 16
     Top = 56
-    object Cadastros1: TMenuItem [0]
+    object MnFormCadastroProduto: TMenuItem [0]
       Caption = 'Cadastros'#9
       object MnADMCadastroProduto: TMenuItem
         Caption = 'Produtos'
         OnClick = MnADMCadastroProdutoClick
       end
-      object MnADMCadastroClientesCadastro: TMenuItem
+      object MnFormCadastroCliente: TMenuItem
         Caption = 'Clientes'
-        OnClick = MnADMCadastroClientesCadastroClick
+        OnClick = MnFormCadastroClienteClick
       end
-      object MnFornecedores: TMenuItem
+      object MnFormCadastroFornecedor: TMenuItem
         Caption = 'Fornecedores'
-        OnClick = MnFornecedoresClick
+        OnClick = MnFormCadastroFornecedorClick
       end
-      object MnVendedores: TMenuItem
+      object MnFormCadastroVendedor: TMenuItem
         Caption = 'Vendedores'
-        OnClick = MnVendedoresClick
+        OnClick = MnFormCadastroVendedorClick
       end
-      object MnTransportadoras: TMenuItem
+      object MnFormCadastroTransportadora: TMenuItem
         Caption = 'Transportadoras'
-        OnClick = MnTransportadorasClick
+        OnClick = MnFormCadastroTransportadoraClick
       end
-      object MNRepresentante: TMenuItem
+      object MnFormCadastroRepresentante: TMenuItem
         Caption = 'Representantes/Parceiros'
-        OnClick = MNRepresentanteClick
+        OnClick = MnFormCadastroRepresentanteClick
       end
-      object MNADMConvenios: TMenuItem
+      object MnFormCadastroConvenio: TMenuItem
         Caption = 'Conv'#234'nio'
-        OnClick = MNADMConveniosClick
+        OnClick = MnFormCadastroConvenioClick
       end
       object Controle1: TMenuItem
         Caption = 'Controle'
-        object Grupo1: TMenuItem
+        object MnFormCadastroGrupo: TMenuItem
           Caption = 'Grupo'
-          OnClick = Grupo1Click
+          OnClick = MnFormCadastroGrupoClick
         end
-        object MnADMCadastroProdutosGrades: TMenuItem
+        object MnFormCadastroMarca: TMenuItem
           Caption = 'Marca'
-          OnClick = MnADMCadastroProdutosGradesClick
+          OnClick = MnFormCadastroMarcaClick
         end
-        object Grade1: TMenuItem
+        object MnFormCadastroGrade: TMenuItem
           Caption = 'Grade'
-          OnClick = Grade1Click
+          OnClick = MnFormCadastroGradeClick
         end
-        object MnADMCadastroProdutosCores: TMenuItem
+        object MnFormCadastroCor: TMenuItem
           Caption = 'Cor'
-          OnClick = MnADMCadastroProdutosCoresClick
+          OnClick = MnFormCadastroCorClick
         end
-        object MnColecao: TMenuItem
+        object MnFormCadastroColecao: TMenuItem
           Caption = 'Cole'#231#227'o'
-          OnClick = MnColecaoClick
+          OnClick = MnFormCadastroColecaoClick
         end
-        object MnADMCadastroProdutosUnidades: TMenuItem
+        object MnFormCadastroUnidade: TMenuItem
           Caption = 'Unidade'
-          OnClick = MnADMCadastroProdutosUnidadesClick
+          OnClick = MnFormCadastroUnidadeClick
         end
-        object MnADMCadastroProdutosIcms: TMenuItem
+        object MnFormCadastroICMS: TMenuItem
           Caption = 'ICMS'
-          OnClick = MnADMCadastroProdutosIcmsClick
+          OnClick = MnFormCadastroICMSClick
         end
-        object MnADMCadastroProdutosIcmsUF: TMenuItem
+        object MnFormCadastroIcmsUf: TMenuItem
           Caption = 'ICMS por UF'
-          OnClick = MnADMCadastroProdutosIcmsUFClick
+          OnClick = MnFormCadastroIcmsUfClick
         end
-        object MNADMCadastroNCM: TMenuItem
+        object MnFormCadastroNCM: TMenuItem
           Caption = 'Tabela NCM'
-          OnClick = MNADMCadastroNCMClick
+          OnClick = MnFormCadastroNCMClick
         end
-        object abeladeConversodeCSTdoICMS1: TMenuItem
+        object MnCadastroCSTConverter: TMenuItem
           Caption = 'Conver'#231#227'o CST por ICMS'
-          OnClick = abeladeConversodeCSTdoICMS1Click
+          OnClick = MnCadastroCSTConverterClick
         end
-        object abeladeConversodeCSTPISeCOFINS1: TMenuItem
+        object MnCadastroCSTPisCofinsConverte: TMenuItem
           Caption = 'Conver'#231#227'o CST por PIS/Cofins'
           OnClick = ConveroCSTporPISCofins1Click
         end
-        object Cidades1: TMenuItem
+        object MnFormCadastroCidade: TMenuItem
           Caption = 'Cidade'
-          OnClick = Cidades1Click
+          OnClick = MnFormCadastroCidadeClick
         end
-        object Sabores1: TMenuItem
+        object MnFormCadastroSabores: TMenuItem
           Caption = 'Sabores'
-          OnClick = Sabores1Click
+          OnClick = MnFormCadastroSaboresClick
         end
-        object ributaoNFSe1: TMenuItem
+        object MnFormCadastroTributacaoNFSE: TMenuItem
           Caption = 'Tributa'#231#227'o NFSe'
-          OnClick = ributaoNFSe1Click
+          OnClick = MnFormCadastroTributacaoNFSEClick
         end
-        object Servio2: TMenuItem
+        object MnFormCadastroServico: TMenuItem
           Caption = 'Servi'#231'o'
-          OnClick = Servio2Click
+          OnClick = MnFormCadastroServicoClick
         end
-        object ipoFornecedor1: TMenuItem
+        object MnFormCadastroTipoFornecedor: TMenuItem
           Caption = 'Tipo Fornecedor'
-          OnClick = ipoFornecedor1Click
+          OnClick = MnFormCadastroTipoFornecedorClick
         end
       end
       object arefas1: TMenuItem
         Caption = 'Tarefas'
-        object AcompanharTarefa1: TMenuItem
+        object MnFormTelaLembreteTarefa2: TMenuItem
           Caption = 'Acompanhar Tarefa'
           OnClick = MnAcompanharTarefascriadaspeloUsuarioAtualClick
         end
@@ -11305,68 +11305,68 @@ inherited FormPrincipal: TFormPrincipal
       end
       object Financeiro1: TMenuItem
         Caption = 'Financeiro'
-        object MnFINCadastroTiposDocumentos: TMenuItem
+        object MnFormCadastroTipoDocumento: TMenuItem
           Caption = 'Tipo de Documento'
-          OnClick = MnFINCadastroTiposDocumentosClick
+          OnClick = MnFormCadastroTipoDocumentoClick
         end
-        object FINAMnCadastroPortadores: TMenuItem
+        object MnFormCadastroPortador: TMenuItem
           Caption = 'Portador'
-          OnClick = FINAMnCadastroPortadoresClick
+          OnClick = MnFormCadastroPortadorClick
         end
-        object MnFINCadTipoLiquidacao: TMenuItem
+        object MnFormCadastroTipoLiquidacao: TMenuItem
           Caption = 'Tipo de Liquida'#231#227'o'
-          OnClick = MnFINCadTipoLiquidacaoClick
+          OnClick = MnFormCadastroTipoLiquidacaoClick
         end
-        object MnFINCadHistoricoPadrao: TMenuItem
+        object MnFormCadastroHistoricoPadrao: TMenuItem
           Caption = 'Hist'#243'rico Padr'#227'o'
-          OnClick = MnFINCadHistoricoPadraoClick
+          OnClick = MnFormCadastroHistoricoPadraoClick
         end
-        object MnFINCadastroBancos: TMenuItem
+        object mnFormCadastroBanco: TMenuItem
           Caption = 'Bancos'
-          OnClick = MnFINCadastroBancosClick
+          OnClick = mnFormCadastroBancoClick
         end
-        object MnFINBancosContaCorrente: TMenuItem
+        object MnFormCadastroContaCorrente: TMenuItem
           Caption = 'Conta Corrente'
-          OnClick = MnFINBancosContaCorrenteClick
+          OnClick = MnFormCadastroContaCorrenteClick
         end
-        object MnFINCadastroOperacoesBancarias: TMenuItem
+        object MnFormCadastroOperacaoBanco: TMenuItem
           Caption = 'Opera'#231#245'es de Conta'
-          OnClick = MnFINCadastroOperacoesBancariasClick
+          OnClick = MnFormCadastroOperacaoBancoClick
         end
-        object MnFINCadastroSituacoesCheques: TMenuItem
+        object MnFormCadastroSituacaoCheque: TMenuItem
           Caption = 'Situa'#231#227'o de Cheque'
-          OnClick = MnFINCadastroSituacoesChequesClick
+          OnClick = MnFormCadastroSituacaoChequeClick
         end
-        object MnFINCadastroProtocoloCheque: TMenuItem
+        object MnFormCadastroProtocoloChequeRecebido: TMenuItem
           Caption = 'Protocolo de Cheque'
-          OnClick = MnFINCadastroProtocoloChequeClick
+          OnClick = MnFormCadastroProtocoloChequeRecebidoClick
         end
         object MnOperacaoTesouraria: TMenuItem
           Caption = 'Opera'#231#245'es Tesouraria'
         end
-        object MnFINCadastroPlanoContas: TMenuItem
+        object MnFormTelaPlanoContas: TMenuItem
           Caption = 'Plano de Contas'
-          OnClick = MnFINCadastroPlanoContasClick
+          OnClick = MnFormTelaPlanoContasClick
         end
       end
       object Faturamento2: TMenuItem
         Caption = 'Faturamento'
-        object mniMnOperacaoEstoque: TMenuItem
+        object MnFormCadastroOperacoesEstoque: TMenuItem
           Caption = 'Opera'#231#245'es de Estoque'
-          OnClick = mniMnOperacaoEstoqueClick
+          OnClick = MnFormCadastroOperacoesEstoqueClick
         end
-        object MnObsNotaFiscal: TMenuItem
+        object MnFormCadastroObsNotaFiscal: TMenuItem
           Caption = 'OBS de Nota'
-          OnClick = MnObsNotaFiscalClick
+          OnClick = MnFormCadastroObsNotaFiscalClick
         end
-        object FATUMnCadastroSerie: TMenuItem
+        object MnFormCadastroSerie: TMenuItem
           Caption = 'S'#233'rie'
-          OnClick = FATUMnCadastroSerieClick
+          OnClick = MnFormCadastroSerieClick
         end
       end
       object Restaurante1: TMenuItem
         Caption = 'Restaurante'
-        object Mesas1: TMenuItem
+        object MnFormCadastroMesa: TMenuItem
           Caption = 'Mesas'
           OnClick = MnCadastroMesasClick
         end
@@ -11374,100 +11374,100 @@ inherited FormPrincipal: TFormPrincipal
     end
     object Compras1: TMenuItem [1]
       Caption = 'Compras'
-      object MNPedidoCompra: TMenuItem
+      object MnFormCadastroPedidoCompra: TMenuItem
         Caption = 'Pedido de Compra'
-        OnClick = MNPedidoCompraClick
+        OnClick = MnFormCadastroPedidoCompraClick
       end
-      object MnNotadeEntrada: TMenuItem
+      object MnFormCadastroNotaCompra: TMenuItem
         Caption = 'Nota de Entrada'
-        OnClick = MnNotadeEntradaClick
+        OnClick = MnFormCadastroNotaCompraClick
       end
-      object ImportaXMLDelphi: TMenuItem
+      object MnFormTelaImportadorXML: TMenuItem
         Caption = 'Importar XML'
-        OnClick = ImportaXMLDelphiClick
+        OnClick = MnFormTelaImportadorXMLClick
       end
-      object MnADMListaPreco: TMenuItem
+      object MnFormTelaListaPreco: TMenuItem
         Caption = 'Manuten'#231#227'o de Pre'#231'o'
-        OnClick = MnADMListaPrecoClick
+        OnClick = MnFormTelaListaPrecoClick
       end
     end
     object Estoque1: TMenuItem [2]
       Caption = 'Estoque'
-      object MnADMEstoqueMovimentosDiversos: TMenuItem
+      object MnFormCadastroMovimentosDiversosEstoque: TMenuItem
         Caption = 'Movimenta'#231#227'o Diversas'
-        OnClick = MnADMEstoqueMovimentosDiversosClick
+        OnClick = MnFormCadastroMovimentosDiversosEstoqueClick
       end
-      object MnADMEmissaoEtiquetas: TMenuItem
+      object MnFormTelaEmissaoEtiquetasCodigoBarras: TMenuItem
         Caption = 'Emiss'#227'o de Etiquetas'
-        OnClick = MnADMEmissaoEtiquetasClick
+        OnClick = MnFormTelaEmissaoEtiquetasCodigoBarrasClick
       end
-      object MnADMReajustePreco: TMenuItem
+      object MnFormTelaReajustePreco: TMenuItem
         Caption = 'Reajuste de Pre'#231'os'
-        OnClick = MnADMReajustePrecoClick
+        OnClick = MnFormTelaReajustePrecoClick
       end
-      object MnTrocasMercadoria: TMenuItem
+      object MnFormCadastroTrocas: TMenuItem
         Caption = 'Troca de Mercadoria'
-        OnClick = MnTrocasMercadoriaClick
+        OnClick = MnFormCadastroTrocasClick
       end
-      object MnADMEstTransfernciadeMercadoria: TMenuItem
+      object MnFormTelaTransferencia: TMenuItem
         Caption = 'Transfer'#234'ncia de Lojas'
-        OnClick = MnADMEstTransfernciadeMercadoriaClick
+        OnClick = MnFormTelaTransferenciaClick
       end
       object Inventrio1: TMenuItem
         Caption = 'Invent'#225'rio'
-        object MnADMInvGerarInventario: TMenuItem
+        object MnFormTelaContagemManual: TMenuItem
           Caption = 'Digitar Invent'#225'rio'
-          OnClick = MnADMInvGerarInventarioClick
+          OnClick = MnFormTelaContagemManualClick
         end
-        object MnADMInvRelDivergenciasInventario: TMenuItem
+        object MnFormRelatorioDivergenciaInventario: TMenuItem
           Caption = 'Relatorio de Diverg'#234'ncia'
-          OnClick = MnADMInvRelDivergenciasInventarioClick
+          OnClick = MnFormRelatorioDivergenciaInventarioClick
         end
-        object MnADMInvZerarSaldoEstoque: TMenuItem
+        object MnFormTelaZeraSaldoEstoque: TMenuItem
           Caption = 'Zerar Saldo de Estoque'
-          OnClick = MnADMInvZerarSaldoEstoqueClick
+          OnClick = MnFormTelaZeraSaldoEstoqueClick
         end
       end
-      object ProdutosSemMovimento1: TMenuItem
+      object MnFormTelaProdutosSemMov: TMenuItem
         Caption = 'Produtos Sem Movimento'
-        OnClick = ProdutosSemMovimento1Click
+        OnClick = MnFormTelaProdutosSemMovClick
       end
-      object GerarSaldoInicial1: TMenuItem
+      object MnFormTelaGerarSaldoProduto: TMenuItem
         Caption = 'Gerar Saldo Inicial'
         OnClick = MnSaldoInicialProdutosClick
       end
-      object ConsultaSaldoporEmpresa1: TMenuItem
+      object MnFormTelaConsultaSaldoPorEmpresa: TMenuItem
         Caption = 'Consulta Saldo por Empresa'
-        OnClick = ConsultaSaldoporEmpresa1Click
+        OnClick = MnFormTelaConsultaSaldoPorEmpresaClick
       end
     end
     object Utilitrios1: TMenuItem [3]
       Caption = 'Utilit'#225'rios'
-      object MnADMManutencaoProdutos: TMenuItem
+      object MnFormTelaManutencaoProdutos: TMenuItem
         Caption = 'Manuten'#231#227'o de Produtos'
-        OnClick = MnADMManutencaoProdutosClick
+        OnClick = MnFormTelaManutencaoProdutosClick
       end
-      object MnADMUtilitariosManutenodeCupons: TMenuItem
+      object MnFormCadastroManutencaoCupom: TMenuItem
         Caption = 'Manuten'#231#227'o de Cupom'
-        OnClick = MnADMUtilitariosManutenodeCuponsClick
+        OnClick = MnFormCadastroManutencaoCupomClick
       end
-      object ConsultaCupom1: TMenuItem
+      object MnFormCadastroCupom: TMenuItem
         Caption = 'Consulta Cupom'
         OnClick = MnADMUtilitariosConsultadeCuponsClick
       end
       object Comisso1: TMenuItem
         Caption = 'Comiss'#227'o'
-        object MnADMUtilitariosCalcularComissoes: TMenuItem
+        object MnFormTelaCalculoComissao: TMenuItem
           Caption = 'C'#225'lculo de Comiss'#227'o'
-          OnClick = MnADMUtilitariosCalcularComissoesClick
+          OnClick = MnFormTelaCalculoComissaoClick
         end
-        object MnADMFINCadastroComissao: TMenuItem
+        object MnFormCadastroVendedorComissao: TMenuItem
           Caption = 'Cadastro de Comiss'#227'o'
-          OnClick = MnADMFINCadastroComissaoClick
+          OnClick = MnFormCadastroVendedorComissaoClick
         end
-        object mnQuitaoComisses: TMenuItem
+        object MnFormTelaQuitacaoComissoes: TMenuItem
           Caption = 'Quita'#231#227'o de Comiss'#227'o'
-          OnClick = mnQuitaoComissesClick
+          OnClick = MnFormTelaQuitacaoComissoesClick
         end
       end
       object PrVenda1: TMenuItem
@@ -11483,14 +11483,14 @@ inherited FormPrincipal: TFormPrincipal
       end
       object Especiais1: TMenuItem
         Caption = 'Especiais'
-        object AtualizaodoEstoquedasVendasdosPDVs1: TMenuItem
+        object MnFormTelaAtualizaEstoquePDVs: TMenuItem
           Caption = 'Atualiza'#231#227'o do Estoque das Vendas dos PDVs'
           OnClick = MnAtualizaodeEstoquedasVendasdosPDVsClick
         end
       end
-      object ConsultaNmeroSrie1: TMenuItem
+      object MnFormTelaConsultaMovNumeroSerie: TMenuItem
         Caption = 'Hist'#243'rico de N'#186' de S'#233'rie'
-        OnClick = ConsultaNmeroSrie1Click
+        OnClick = MnFormTelaConsultaMovNumeroSerieClick
       end
     end
     object mmFinanceiro: TMenuItem [4]
@@ -11500,108 +11500,108 @@ inherited FormPrincipal: TFormPrincipal
       end
       object Pagar1: TMenuItem
         Caption = 'Pagar'
-        object MnFINPagarLancamentos: TMenuItem
+        object MnFormCadastroContasPagar: TMenuItem
           Caption = 'Lan'#231'amentos de Contas a Pagar'
-          OnClick = MnFINPagarLancamentosClick
+          OnClick = MnFormCadastroContasPagarClick
         end
-        object MnFINPagarBaixarDocumentos: TMenuItem
+        object MnFormTelaBaixarDocumentosPagar: TMenuItem
           Caption = 'Baixa de Contas a Pagar'
-          OnClick = MnFINPagarBaixarDocumentosClick
+          OnClick = MnFormTelaBaixarDocumentosPagarClick
         end
-        object LanamentoChequesEmitidos1: TMenuItem
+        object MnFormCadastroChequeEmitido: TMenuItem
           Caption = 'Lan'#231'amento Cheques Emitidos'
           OnClick = MnChqEmitidosLancamentosCheuqesEmitidosClick
         end
-        object BaixarChequesEmitidos1: TMenuItem
+        object MnFormTelaBaixarChequeEmitido: TMenuItem
           Caption = 'Baixar Cheques Emitidos'
           OnClick = FormPrincipalB1Click
         end
       end
       object Receber1: TMenuItem
         Caption = 'Receber'
-        object MnFINReceberLancamentos: TMenuItem
+        object MnFormCadastroContasReceber: TMenuItem
           Caption = 'Lan'#231'amentos de Contas a Receber'
-          OnClick = MnFINReceberLancamentosClick
+          OnClick = MnFormCadastroContasReceberClick
         end
-        object MnFINReceberBaixarDocumentos: TMenuItem
+        object MnFormTelaBaixarDocumentosReceber: TMenuItem
           Caption = 'Baixa de Contas a Receber'
-          OnClick = MnFINReceberBaixarDocumentosClick
+          OnClick = MnFormTelaBaixarDocumentosReceberClick
         end
-        object MnCartoesCreditoManual: TMenuItem
+        object MnFormCadastroCartaoCreditoManual: TMenuItem
           Caption = 'Lan'#231'amento de Cart'#245'es/Credi'#225'rio'
-          OnClick = MnCartoesCreditoManualClick
+          OnClick = MnFormCadastroCartaoCreditoManualClick
         end
-        object MnFINReceberEmissaoBoletosDuplicatas: TMenuItem
+        object MnFormTelaImpressaoDuplicata: TMenuItem
           Caption = 'Emiss'#227'o de Boletos'
-          OnClick = MnFINReceberEmissaoBoletosDuplicatasClick
+          OnClick = MnFormTelaImpressaoDuplicataClick
         end
-        object LanamentodeChequesRecebidos1: TMenuItem
+        object MnFormCadastroChequesRecebidos: TMenuItem
           Caption = 'Lan'#231'amento de Cheques Recebidos'
           OnClick = MnFINChequesRecebidosLancamentosClick
         end
-        object BaixaChequesRecebidos1: TMenuItem
+        object MnFormTelaBaixarChequesRecebidos: TMenuItem
           Caption = 'Baixa Cheques Recebidos'
           OnClick = MnFINCheRecebidosBaixaChequesRecebidosClick
         end
       end
       object ContaCorrent1: TMenuItem
         Caption = 'Conta Corrente'
-        object MnFINBancosLancarMovimentaco: TMenuItem
+        object MnFormCadastroMovimentoBanco: TMenuItem
           Caption = 'Lan'#231'amento de Movimenta'#231#227'o'
-          OnClick = MnFINBancosLancarMovimentacoClick
+          OnClick = MnFormCadastroMovimentoBancoClick
         end
-        object MnFINBancosRemessaArquivo: TMenuItem
+        object MnFormCadastroRemessaBancos: TMenuItem
           Caption = 'Remessa de Arquivo'
-          OnClick = MnFINBancosRemessaArquivoClick
+          OnClick = MnFormCadastroRemessaBancosClick
         end
       end
       object esouraria1: TMenuItem
         Caption = 'Tesouraria'#9
-        object MnFINTesLancamentos: TMenuItem
+        object MnFormCadastroTesouraria: TMenuItem
           Caption = 'Lan'#231'amento de Caixa'#13#10
-          OnClick = MnFINTesLancamentosClick
+          OnClick = MnFormCadastroTesourariaClick
         end
-        object MnFINTesEmisscaodeRecibos: TMenuItem
+        object MnFormCadastroRecibo: TMenuItem
           Caption = 'Emiss'#227'o de Recibo'
-          OnClick = MnFINTesEmisscaodeRecibosClick
+          OnClick = MnFormCadastroReciboClick
         end
       end
     end
     object Faturamento1: TMenuItem [5]
       Caption = 'Faturamento'
-      object PedidodeVenda1: TMenuItem
+      object MnFormCadastroPedidoVenda: TMenuItem
         Caption = 'Pedido de Venda'
         OnClick = FATUMnVendasPedidosVendaClick
       end
-      object FATUMnVendasNotasFiscais: TMenuItem
+      object MnFormCadastroNotaFiscal: TMenuItem
         Caption = 'Nota Fiscal'
-        OnClick = FATUMnVendasNotasFiscaisClick
+        OnClick = MnFormCadastroNotaFiscalClick
       end
     end
     object Servio1: TMenuItem [6]
       Caption = 'Servi'#231'o'
-      object OrdemdeServioMecanica1: TMenuItem
+      object MnFormCadastroMecOrdem: TMenuItem
         Caption = 'Ordem de Servi'#231'o - Mec'#226'nica'
         OnClick = OrdensdeServiosMecnicas1Click
       end
-      object GrupodeServio1: TMenuItem
+      object MnFormCadastroMecExecutaEm: TMenuItem
         Caption = 'Grupo de Servi'#231'o'
         OnClick = GruposdeExecuodeServio1Click
       end
-      object ipodeServio1: TMenuItem
+      object MnFormCadastroMecTipoServico: TMenuItem
         Caption = 'Tipo de Servi'#231'o'
-        OnClick = ipodeServio1Click
+        OnClick = MnFormCadastroMecTipoServicoClick
       end
-      object NotaServio1: TMenuItem
+      object MnFormCadastroNotaServico: TMenuItem
         Caption = 'Nota Servi'#231'o'
-        OnClick = NotaServio1Click
+        OnClick = MnFormCadastroNotaServicoClick
       end
     end
     object Integrador1: TMenuItem [7]
       Caption = 'Integrador'
       object Exportao1: TMenuItem
         Caption = 'Exporta'#231#227'o'
-        object Balanas1: TMenuItem
+        object MnFormTelaExportacaoBalanca: TMenuItem
           Caption = 'Balan'#231'as'
           OnClick = MnExportaparaBalancasClick
         end
@@ -11612,9 +11612,9 @@ inherited FormPrincipal: TFormPrincipal
       end
       object Contabil1: TMenuItem
         Caption = 'Cont'#225'bil'
-        object SPEDFiscal1: TMenuItem
+        object MnFormTelaExportacaoSped: TMenuItem
           Caption = 'SPED Fiscal'
-          OnClick = SPEDFiscal1Click
+          OnClick = MnFormTelaExportacaoSpedClick
         end
       end
     end
@@ -11624,51 +11624,51 @@ inherited FormPrincipal: TFormPrincipal
         Caption = 'Administrativo'
         object Vendas1: TMenuItem
           Caption = 'Vendas'
-          object PorPerodo1: TMenuItem
+          object MnFormRelatorioVendasPeriodo: TMenuItem
             Caption = 'Por Per'#237'odo'
             OnClick = MnADMRelVendasPorPeriodoClick
           end
-          object PorPerodocomMargemdeVendedor1: TMenuItem
+          object MnFormRelatorioVendasPeriodoApuracaoMargem: TMenuItem
             Caption = 'Por Per'#237'odo com Margem de Vendedor'
             OnClick = MnADMRelVendasPorPerodocomApuraodeMargemClick
           end
-          object PorPerodocomMargemdeProduto1: TMenuItem
+          object MnFormRelatorioApuracaoMargemPorProduto: TMenuItem
             Caption = 'Por Per'#237'odo com Margem de Produto'
             OnClick = MNADMRelApuraodeMargemporProdutoClick
           end
-          object PorPeriododeEmpresa1: TMenuItem
+          object MnFormRelatorioCupomEmitidoPorEmpresa: TMenuItem
             Caption = 'Por Per'#237'odo de Empresa'
             OnClick = MnPorPeriodoporEmpresaConferenciaClick
           end
-          object ProdutosVendidos1: TMenuItem
+          object MnFormRelatorioProdutosVendidos: TMenuItem
             Caption = 'Produtos Vendidos'
             OnClick = MnADMRelProdutosVendidosClick
           end
-          object PorPlano1: TMenuItem
+          object MnFormRelatorioVendasPorPlano: TMenuItem
             Caption = 'Por Plano'
             OnClick = MnADMRelVendasPorPlanoClick
           end
-          object PorGrade1: TMenuItem
+          object MnFormRelatorioVendasPorGrade: TMenuItem
             Caption = 'Por Grade'
-            OnClick = PorGrade1Click
+            OnClick = MnFormRelatorioVendasPorGradeClick
           end
-          object PorGrupo1: TMenuItem
+          object MnFormRelatorioVendasGrupo: TMenuItem
             Caption = 'Por Grupo'
             OnClick = MnADMRelVendasPorGrupoClick
           end
-          object PorMarca1: TMenuItem
+          object MnFormRelatorioVendasMarca: TMenuItem
             Caption = 'Por Marca'
             OnClick = MnADMRelVendasPorMarcaClick
           end
-          object PorColeo1: TMenuItem
+          object MnFormRelatorioVendasColecao: TMenuItem
             Caption = 'Por Cole'#231#227'o'
             OnClick = MnVendasPorColecaoClick
           end
-          object ComissoSinttico1: TMenuItem
+          object MnFormRelatorioComissao: TMenuItem
             Caption = 'Comiss'#227'o - Sint'#233'tico'
             OnClick = MnADMRelVenComSinteticoClick
           end
-          object ComissoDetalhado1: TMenuItem
+          object MnFormRelatorioComissaoDetalhado: TMenuItem
             Caption = 'Comiss'#227'o - Detalhado'
             OnClick = MnADMRelVenDetalhadoClick
           end
@@ -11676,204 +11676,204 @@ inherited FormPrincipal: TFormPrincipal
             Caption = 'Pr'#233'-Venda por Per'#237'odo'
             OnClick = MNADMRelPrevendasClick
           end
-          object Representante1: TMenuItem
+          object MnFormRelatorioComissaoDetalhadoRepresentante: TMenuItem
             Caption = 'Comiss'#227'o Representante'
-            OnClick = Representante1Click
+            OnClick = MnFormRelatorioComissaoDetalhadoRepresentanteClick
           end
         end
         object Compras2: TMenuItem
           Caption = 'Compras'
-          object NotadeEntrada2: TMenuItem
+          object MnFormRelatorioNotasCompra: TMenuItem
             Caption = 'Nota de Entrada'
             OnClick = MnADMNotasEntradasClick
           end
-          object ProdutosComprados1: TMenuItem
+          object MnFormRelatorioProdutosComprados: TMenuItem
             Caption = 'Produtos Comprados'
             OnClick = MnProdutosCompradosClick
           end
-          object ComprasporGrupo1: TMenuItem
+          object MnFormRelatorioComprasGrupo: TMenuItem
             Caption = 'Compras por Grupo'
             OnClick = MnComprasporGrupoClick
           end
-          object ComprasporMarca1: TMenuItem
+          object MnFormRelatorioComprasMarca: TMenuItem
             Caption = 'Compras por Marca'
             OnClick = MnComprasporMarcaClick
           end
-          object ComprasporColeo1: TMenuItem
+          object MnFormRelatorioComprasColecao: TMenuItem
             Caption = 'Compras por Cole'#231#227'o'
             OnClick = MnComprasporColecaoClick
           end
-          object CompraxVendaporGrupo1: TMenuItem
+          object MnFormRelatorioVendasComprasPorGrupo: TMenuItem
             Caption = 'Compra x Venda por Grupo'
             OnClick = MNADMRelatoriosComprasVendasporGrupoClick
           end
-          object ProdutossemPedidodeCompra1: TMenuItem
+          object MnFormRelatorioProdutosPedidosCompra: TMenuItem
             Caption = 'Produtos sem Pedido de Compra'
             OnClick = MnProdutosPedidosCompraClick
           end
-          object ProdutosAbaixodoMnimo1: TMenuItem
+          object MnFormRelatorioProdutosAbaixoMinimo: TMenuItem
             Caption = 'Produtos Abaixo do M'#237'nimo'
             OnClick = MnProdutosAbaixoMinimoClick
           end
         end
         object Caixa1: TMenuItem
           Caption = 'Caixa'
-          object ResumodeCaixa1: TMenuItem
+          object MnFormRelatorioResumoCaixa: TMenuItem
             Caption = 'Resumo de Caixa'
-            OnClick = ResumodeCaixa1Click
+            OnClick = MnFormRelatorioResumoCaixaClick
           end
-          object MovimentaodeCaixa1: TMenuItem
+          object MnFormRelatorioMovimentacaoCaixa: TMenuItem
             Caption = 'Movimenta'#231#227'o de Caixa'
             OnClick = MnADMRelCaixaMovimentacaoCaixaClick
           end
-          object otaisporNumerario1: TMenuItem
+          object MnFormRelatorioTotalNumerarioCaixa: TMenuItem
             Caption = 'Totais por Numer'#225'rio'
             OnClick = MnADMRelCaixaTotaisporNumerarioClick
           end
-          object otalizadoresdeCaixa1: TMenuItem
+          object MnFormTelaRecalcularTotalizador: TMenuItem
             Caption = 'Totalizadores de Caixa'
             OnClick = MnADMUtilitariosEspeciaisRecalcularTotalizadoresdeCaixaClick
           end
-          object BoletimdeCaixa1: TMenuItem
+          object MnFormRelatorioBoletimCaixa: TMenuItem
             Caption = 'Boletim de Caixa'
             OnClick = MnADMRelCaixaBoletimCaixaClick
           end
         end
         object Produtos2: TMenuItem
           Caption = 'Produtos'
-          object ListagemdeProdutos1: TMenuItem
+          object MnFormRelatorioListagemProduto: TMenuItem
             Caption = 'Listagem de Produtos'
             OnClick = MnADMRelProdutosListagemProdutoClick
           end
-          object PorFornecedor1: TMenuItem
+          object MnFormRelatorioProdutosPorFornecedor: TMenuItem
             Caption = 'Por Fornecedor'
             OnClick = MnADMRelProdutosPorFornecedorClick
           end
-          object Cadastrados1: TMenuItem
+          object MnFormRelatorioProdutoCadastrado: TMenuItem
             Caption = 'Cadastrados'
             OnClick = MnADMRelProdProdutosCadastradosClick
           end
-          object EmPromoo1: TMenuItem
+          object MnFormRelatorioProdutoEmPromocao: TMenuItem
             Caption = 'Em Promo'#231#227'o'
             OnClick = MnADMRelProdutosemPromocaoClick
           end
-          object LotesdeProdutos1: TMenuItem
+          object MnFormRelatorioLotePorProduto: TMenuItem
             Caption = 'Lotes de Produtos'
             OnClick = MnADMRelLotesPorProdutoClick
           end
         end
         object Estoque2: TMenuItem
           Caption = 'Estoque'
-          object MovimentaodeEstoque1: TMenuItem
+          object MnFormRelatorioExtratoProdutos: TMenuItem
             Caption = 'Movimenta'#231#227'o de Estoque'
             OnClick = MnADMRelMovimentacaodeEstoqueClick
           end
-          object PorGrade2: TMenuItem
+          object MnFormRelatorioEstoquePorGrade: TMenuItem
             Caption = 'Por Grade'
             OnClick = MnADMRelEstoqueporGradeClick
           end
-          object PorGradedeProdutos1: TMenuItem
+          object MnFormRelatorioEstoquePorGradePorProduto: TMenuItem
             Caption = 'Por Grade de Produtos'
             OnClick = MnADMRELEstoquePorGradePorProdutoClick
           end
-          object PorMarca2: TMenuItem
+          object MnFormRelatorioEstoquePorMarca: TMenuItem
             Caption = 'Por Marca'
             OnClick = MnADMRelEstoquePorMarcaClick
           end
-          object PorMarcaeGrupo1: TMenuItem
+          object MnFormRelatorioEstoquePorMarcaPorGrupo: TMenuItem
             Caption = 'Por Marca e Grupo'
             OnClick = MnADMRELEstoquePorMarcaPorGrupoClick
           end
-          object PorMarcaeReferncia1: TMenuItem
+          object MnFormRelatorioEstoqueMarcaReferencia: TMenuItem
             Caption = 'Por Marca e Refer'#234'ncia'
             OnClick = MnADMRelEstoqueMarcaReferenciaClick
           end
-          object PosioDiariadeEstoque1: TMenuItem
+          object MnFormRelatorioPosicaoDiariaEstoque: TMenuItem
             Caption = 'Posi'#231#227'o Di'#225'ria de Estoque'
             OnClick = MnADMRelPosicaodiariaClick
           end
-          object ransferenciadeProdutos1: TMenuItem
+          object MnFormRelatorioTransferencia: TMenuItem
             Caption = 'Transfer'#234'ncia de Produtos'
             OnClick = MnADMRelEstTransfernciadeProdutosClick
           end
-          object SaldoporLote1: TMenuItem
+          object MnFormRelatorioEstoquePorLote: TMenuItem
             Caption = 'Saldo por Lote'
             OnClick = MnADMRelSaldoporLoteClick
           end
-          object PosioFsicaFinanceira1: TMenuItem
+          object MnFormRelatorioFisicoFinanceiroEstoque: TMenuItem
             Caption = 'Posi'#231#227'o F'#237'sica Financeira'
             OnClick = MnADMRelPosicaoFisicoFinanceiroEstoqueClick
           end
-          object MovimentaoDiversas2: TMenuItem
+          object MnFormRelatorioMotvoDiversos: TMenuItem
             Caption = 'Movimenta'#231#227'o Diversas'
             OnClick = MnADMRelMovimentosDiversosporClienteClick
           end
         end
         object Invetrio1: TMenuItem
           Caption = 'Invet'#225'rio'
-          object RegistrodeInventario1: TMenuItem
+          object MnFormRelatorioRegistroInventario: TMenuItem
             Caption = 'Registro de Invent'#225'rio'
             OnClick = MnADMRelRegistrodeInventarioClick
           end
-          object PorestoqueporGrupodeProduto1: TMenuItem
+          object MnFormRelatorioInventarioEstoque: TMenuItem
             Caption = 'Por estoque por Grupo de Produto'
             OnClick = MnADMRelInventarioEstoqueClick
           end
-          object ListagemPorGradedeProdutos1: TMenuItem
+          object MnFormRelatorioListagemParaInventarioPorGradePorProduto: TMenuItem
             Caption = 'Listagem Por Grade de Produtos'
             OnClick = MnADMRelInvListagemParaInventrioPorGradePorProdutoClick
           end
         end
         object Gerenciais1: TMenuItem
           Caption = 'Gerenciais'
-          object CurvaABCdeVendaProdutos1: TMenuItem
+          object MnFormRelatorioCurvaABC: TMenuItem
             Caption = 'Curva ABC de Venda (Produtos)'
             OnClick = MnADMRelCurvaABCVendasClick
           end
-          object CurvaABCdeEstoque1: TMenuItem
+          object MnFormRelatorioCurvaABCEstoque: TMenuItem
             Caption = 'Curva ABC de Estoque'
             OnClick = MnADMRelCurvaABCEstoqueClick
           end
-          object CurvaABCdeVendaClientes1: TMenuItem
+          object MnFormRelatorioCurvaABCCliente: TMenuItem
             Caption = 'Curva ABC de Venda (Clientes)'
             OnClick = MnCurvaABCVendasClientesClick
           end
-          object ndicedeInadimplenciaPeriodo1: TMenuItem
+          object MnFormRelatorioIndiceInadimplenciaCrediario: TMenuItem
             Caption = #205'ndice de Inadimpl'#234'ncia Per'#237'odo'
             OnClick = MnIndiceInadimpleciaCredClick
           end
-          object ndicedeInadimplenciaUltimos6Anos1: TMenuItem
+          object MnFormRelatorioInadimplenciaAnual: TMenuItem
             Caption = #205'ndice de Inadimpl'#234'ncia '#218'ltimos 6 Anos'
             OnClick = MnIndiceInadimpleciaAnualClick
           end
-          object ResumodeOperaes1: TMenuItem
+          object MnFormRelatorioResumoOperacaoDiaria: TMenuItem
             Caption = 'Resumo de Opera'#231#245'es'
             OnClick = MnADMRelGeranciaisResumodeOperacaoClick
           end
-          object PontodeEquilbrio1: TMenuItem
+          object MnFormRelatorioPontoDeEquilibrio: TMenuItem
             Caption = 'Ponto de Equil'#237'brio'
             OnClick = MnADMRemPontodeEquilbrioClick
           end
-          object ProdutossemMovimentao1: TMenuItem
+          object MnFormRelatorioProdutosSemMovto: TMenuItem
             Caption = 'Produtos sem Movimenta'#231#227'o'
             OnClick = MnProdutosSemMovtoClick
           end
         end
         object Clientes2: TMenuItem
           Caption = 'Clientes'
-          object ListagemdeClientes1: TMenuItem
+          object MnFormRelatorioClienteCadastrado: TMenuItem
             Caption = 'Listagem de Clientes'
             OnClick = MnADMRelClientesCadastradosClick
           end
-          object Bloqueados1: TMenuItem
+          object MnFormRelatorioClienteBloqueado: TMenuItem
             Caption = 'Bloqueados'
             OnClick = MnADMRelClientesBloqueadosClick
           end
-          object PorCidades1: TMenuItem
+          object MnFormRelatorioClienteporCidade: TMenuItem
             Caption = 'Por Cidades'
             OnClick = MnADMRelClientesporcidadeClick
           end
-          object LimitedeCompra1: TMenuItem
+          object MnFormRelatorioClienteLimiteCreditoExcedido: TMenuItem
             Caption = 'Limite de Compra'
             OnClick = MnRelatorioLimitesCompraClienteClick
           end
