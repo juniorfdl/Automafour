@@ -8,8 +8,7 @@ uses
   ppStrtch, ppMemo, ppBands, ppCtrls, ppPrnabl, ppClass, ppCache, ppProd,
   ppReport, ppComm, ppRelatv, ppDB, ppDBPipe, ppDBBDE, ACBrNFeDANFEClass,
   ACBrNFeDANFeESCPOS, ACBrDFe, ACBrNFe, ACBrBase, ACBrPosPrinter, MemTable,
-  RestClient, RestUtils, DBClient, UnitLibrary, pcnConversaoNFe,
-  ACBrDFeReport, ACBrDFeDANFeReport;
+  RestClient, RestUtils, DBClient, UnitLibrary, pcnConversaoNFe;
 
 type
   TDM = class(TDMTemplate)

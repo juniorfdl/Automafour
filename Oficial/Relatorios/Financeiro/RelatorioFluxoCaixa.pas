@@ -143,7 +143,8 @@ uses
 procedure TFormRelatorioFluxoCaixa.ExecutarBtnClick(Sender: TObject);
 var
   i: integer;
-  Saldo: Double;
+  Saldo,
+  vTotalQuitados: Double;
 begin
   inherited;
 
@@ -172,6 +173,7 @@ begin
     except
       tblQuitados.CreateTable;
     end;
+    vTotalQuitados := 0;
     SQLQuitados.MacroByName('Empresa').Value := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'ContasReceber', 'EMPRICOD');
     SQLQuitados.MacroByName('Data').Value := 'ContasReceber.CTRCDULTREC >= ' + '"' + FormatDateTime('mm/dd/yyyy', De.Date) + '"' + ' AND ' + 'ContasReceber.CTRCDULTREC <= ' + '"' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"';
     if ComboPortador.KeyValue > 0 then
@@ -222,6 +224,7 @@ begin
       tblQuitadosValor.AsFloat := SQLQuitadosVALORRECEBIDO.AsFloat;
       tblQuitadosHistorico.AsString := SQLQuitadosCTRCA254HIST.AsString;
       tblQuitadosAgendado.AsString := SQLQuitadosPREVISTO.AsString;
+      vTotalQuitados := vTotalQuitados + SQLQuitadosVALORRECEBIDO.AsFloat;
       tblQuitados.Post;
       SQLQuitados.Next;
     end;
@@ -258,18 +261,32 @@ begin
     TblTemporaria.Post;
     SQLReceber.Next;
   end;
+
+  SQLQuitados.First;
+  while not SQLQuitados.Eof do
+  begin
+    begin
+      TblTemporaria.Append;
+      TblTemporariaDataPrevista.AsDateTime := SQLQuitadosCTRCDULTREC.AsDateTime;
+      TblTemporariaPagarReceber.AsString := SQLQuitadosCTRCA13ID.AsString;
+      TblTemporariaPortador.AsString := SQLQuitadosPORTA60DESCR.AsString;
+      TblTemporariaDataVencimento.AsDateTime := SQLQuitadosCTRCDVENC.AsDateTime;
+      TblTemporariaCliente.AsString := SQLQuitadosCLIEA60RAZAOSOC.AsString;
+      TblTemporariaCredito.AsFloat := SQLQuitadosVALORRECEBIDO.AsFloat;
+      TblTemporariaConta.AsString := SQLQuitadosPLCTA15COD.AsString;
+      TblTemporariaHistorico.AsString := SQLQuitadosCTRCA254HIST.AsString;
+      TblTemporariaAgendado.AsString := SQLQuitadosPREVISTO.AsString;
+      TblTemporariaDebito.AsFloat := 0;
+      TblTemporaria.Post;
+    end;
+    SQLQuitados.Next;
+  end;
+
   SQLPagar.First;
   if SaldoInicial.Value > 0 then
-    Saldo := SaldoInicial.Value;
+    Saldo := SaldoInicial.Value - vTotalQuitados;
   while not SQLPagar.Eof do
   begin
-//      if TblTemporaria.Locate('Data_Prevista,Cliente',VarArrayOf[SQLPagarDATA_PREVISTA.AsDateTime,SQLPagarFORNA60RAZAOSOC.AsString],[]) then
-//        begin
-//          TblTemporaria.Edit;
-//          TblTemporariaDebito.AsFloat := SQLPagarVALORPAGAR.AsFloat;
-//          TblTemporaria.Post;
-//        end
-//      else
     begin
       TblTemporaria.Append;
       TblTemporariaDataPrevista.AsDateTime := SQLPagarDATA_PREVISTA.AsDateTime;
@@ -292,17 +309,20 @@ begin
   while not TblTemporaria.Eof do
   begin
     TblTemporaria.Edit;
-    if TblTemporariaSoma_Quitado.AsString <> 'S' then
-      TblTemporariaSaldo.AsFloat := (TblTemporariaCredito.AsFloat + Saldo) - TblTemporariaDebito.AsFloat
-    else
-      TblTemporariaSaldo.AsFloat := Saldo;
+//    if TblTemporariaSoma_Quitado.AsString <> 'S' then
+//      TblTemporariaSaldo.AsFloat := (TblTemporariaCredito.AsFloat + Saldo) - TblTemporariaDebito.AsFloat
+//    else
+//      TblTemporariaSaldo.AsFloat := Saldo;
+
+    TblTemporariaSaldo.AsFloat := (TblTemporariaCredito.AsFloat + Saldo) - TblTemporariaDebito.AsFloat;
+
     TblTemporaria.Post;
     Saldo := TblTemporariaSaldo.AsFloat;
     TblTemporaria.Next;
   end;
   Saldo := 0;
   if SaldoInicial.Value > 0 then
-    Saldo := SaldoInicial.Value;
+    Saldo := SaldoInicial.Value - vTotalQuitados;;
   if Saldo <> 0 then
   begin
     TblTemporaria.Append;

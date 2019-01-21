@@ -448,7 +448,7 @@ type
     procedure VerificaNCMProdutos;
     function ProdutoContemNCM(aCodigoProduto, aIdNCM: Integer): Boolean;
     procedure AtualizaNCMCadastroProduto(aCodigoProduto: Integer; aNCM: String);
-    procedure AtualizaCST_ICMSCadastroProduto(aCodigoProduto: Integer; aCST_ICMS: String);
+    procedure AtualizaCST_ICMSCadastroProduto(aCodigoProduto: Integer; aCST_ICMS, aOrigem_Produto: String);
     function getIdNCMFromCodigo(aNCM: String): Integer;
     function CriaNCM(aNCM: String): Integer;
     function CriaCEST(aCEST, aNCM: String): String;
@@ -662,10 +662,17 @@ begin
         {VALORES, UNIDADE, ORIGEM E QUANTIDADE COMERCIALIZADA}
         cdsItens.FieldByName('unidade').AsString := ACBrNFe.NotasFiscais.Items[0].NFe.Det.Items[i].Prod.uCom;
 
-        if ACBrNFe.NotasFiscais.Items[0].NFe.Det.Items[i].Imposto.ICMS.orig <> oeNacional then
-          cdsItens.FieldByName('origem_produto').AsString := '1'
-        else
-          cdsItens.FieldByName('origem_produto').AsString := '0';
+        case  TpcnOrigemMercadoria(ACBrNFe.NotasFiscais.Items[0].NFe.Det.Items[i].Imposto.ICMS.orig)  of
+         oeNacional                                  : cdsItens.FieldByName('origem_produto').AsString := '0';
+         oeEstrangeiraImportacaoDireta               : cdsItens.FieldByName('origem_produto').AsString := '1';
+         oeEstrangeiraAdquiridaBrasil                : cdsItens.FieldByName('origem_produto').AsString := '2';
+         oeNacionalConteudoImportacaoSuperior40      : cdsItens.FieldByName('origem_produto').AsString := '3';
+         oeNacionalProcessosBasicos                  : cdsItens.FieldByName('origem_produto').AsString := '4';
+         oeNacionalConteudoImportacaoInferiorIgual40 : cdsItens.FieldByName('origem_produto').AsString := '5';
+         oeEstrangeiraImportacaoDiretaSemSimilar     : cdsItens.FieldByName('origem_produto').AsString := '6';
+         oeEstrangeiraAdquiridaBrasilSemSimilar      : cdsItens.FieldByName('origem_produto').AsString := '7';
+         oeNacionalConteudoImportacaoSuperior70      : cdsItens.FieldByName('origem_produto').AsString := '8';
+        end;
 
         cdsItens.FieldByName('valor_unitario').AsFloat := ACBrNFe.NotasFiscais.Items[0].NFe.Det.Items[i].Prod.vUnCom;
         cdsItens.FieldByName('quantidade').AsFloat := ACBrNFe.NotasFiscais.Items[0].NFe.Det.Items[i].Prod.qCom;
@@ -1824,7 +1831,7 @@ begin
                     fGravar := False ;
                   end;
                 if cdsItenscst_icms.AsString <> '' then
-                  AtualizaCST_ICMSCadastroProduto(StrToInt(cdsItenscodigo_gravar.AsString), cdsItenscst_icms.AsString);
+                  AtualizaCST_ICMSCadastroProduto(StrToInt(cdsItenscodigo_gravar.AsString), cdsItenscst_icms.AsString,cdsItensorigem_produto.AsString);
                 dm.SQLUpdate.ExecSQL;
               except
                 Application.ProcessMessages;
@@ -3221,16 +3228,17 @@ end;
 
 
 procedure TFormTelaImportadorXML.AtualizaCST_ICMSCadastroProduto(
-  aCodigoProduto: Integer; aCST_ICMS: String);
+  aCodigoProduto: Integer; aCST_ICMS,aOrigem_Produto: String);
 begin
   SQLProdutoEditar.Close;
   SQLProdutoEditar.sql.clear;
-  SQLProdutoEditar.sql.Text := 'Select PRODICOD, PRODISITTRIB from produto where prodicod='+inttostr(aCodigoProduto);
+  SQLProdutoEditar.sql.Text := 'Select PRODICOD, PRODISITTRIB,PRODIORIGEM  from produto where prodicod='+inttostr(aCodigoProduto);
   SQLProdutoEditar.open;
   if not SQLProdutoEditar.IsEmpty then
     begin
       SQLProdutoEditar.edit;
       SQLProdutoEditar.FieldByName('PRODISITTRIB').AsInteger := StrToInt(aCST_ICMS);
+      SQLProdutoEditar.FieldByName('PRODIORIGEM').AsInteger := StrToInt(aOrigem_Produto);
       try
         SQLProdutoEditar.post;
       except

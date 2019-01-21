@@ -1,0 +1,6 @@
+ALTER TABLE OPERACAOESTOQUE ADD ATUALIZA_PRECO_CUSTO CHAR(1);
+
+update OPERACAOESTOQUE OE1
+set OE1.ATUALIZA_PRECO_CUSTO = (select coalesce(OE1.OPESCGERAFINANCEIRO, 'S')
+                                from OPERACAOESTOQUE OE2
+                                where OE1.OPESICOD = OE2.OPESICOD);

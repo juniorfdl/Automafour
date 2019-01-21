@@ -1,6 +1,6 @@
 inherited FormCadastroProduto: TFormCadastroProduto
-  Left = 172
-  Top = 4
+  Left = 68
+  Top = 0
   Caption = 'Cadastro de Produtos'
   ClientHeight = 682
   ClientWidth = 1159
@@ -922,7 +922,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
             Top = 52
             Width = 1027
             Height = 556
-            ActivePage = TabSheetDadosAdicionais
+            ActivePage = TabSheetDadosPrincipais
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Top = 83
@@ -2266,7 +2266,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                 Top = 296
                 Width = 688
                 Height = 177
-                ActivePage = TabSheet6
+                ActivePage = TabSheet1
                 TabOrder = 15
                 object TabSheet1: TTabSheet
                   Caption = 'Tributa'#231#227'o ICMS'
@@ -2515,13 +2515,35 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Items.Strings = (
                       '0-Nacional'
                       '1-Estrangeira(importa'#231#227'o direta)'
-                      '2-Estrangeira(adquirida mercado nacional)')
+                      '2-Estrangeira(adquirida mercado nacional)'
+                      
+                        '3- Nacional, mercadoria ou bem com Conte'#250'do de Importa'#231#227'o superi' +
+                        'or a 40%'
+                      
+                        '4-Nacional, cuja produ'#231#227'o tenha sido feita em conformidade com o' +
+                        's processos produtivos b'#225'sicos de que tratam'
+                      
+                        '5-Nacional, mercadoria ou bem com Conte'#250'do de Importa'#231#227'o inferio' +
+                        'r ou igual a 40%'
+                      '6-Estrangeira( importa'#231#227'o direta)'
+                      
+                        '7-Estrangeira -Adquirida no mercado interno, sem similar naciona' +
+                        'l, constante em lista de Resolu'#231#227'o'
+                      
+                        '8-Nacional, mercadoria ou bem c/conte'#250'do de Importa'#231#227'o superior ' +
+                        '70% ')
                     ParentFont = False
                     TabOrder = 0
                     Values.Strings = (
                       '0'
                       '1'
-                      '2')
+                      '2'
+                      '3'
+                      '4'
+                      '5'
+                      '6'
+                      '7'
+                      '8')
                   end
                   object ComboSitTrib: TRxDBComboBox
                     Left = 285
