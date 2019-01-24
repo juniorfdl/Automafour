@@ -1,7 +1,7 @@
 inherited FormTelaImportadorXML: TFormTelaImportadorXML
-  Left = 144
-  Top = 41
-  Width = 1102
+  Left = 198
+  Top = 0
+  Width = 1265
   Height = 687
   Caption = 'Importador de XMLs'
   Color = 12572888
@@ -10,10 +10,10 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
   PixelsPerInch = 96
   TextHeight = 13
   inherited ScrollBoxFundo: TScrollBox
-    Width = 1086
+    Width = 1249
     Height = 649
     inherited PanelCentral: TPanel
-      Width = 1082
+      Width = 1245
       Height = 565
       inherited PanelBarra: TPanel
         Width = 1
@@ -22,7 +22,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
       object pnlImportador: TPanel
         Left = 1
         Top = 0
-        Width = 1081
+        Width = 1244
         Height = 565
         Align = alClient
         Caption = 'pnlImportador'
@@ -31,9 +31,9 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
         object pgcImportador: TPageControl
           Left = 1
           Top = 1
-          Width = 1079
+          Width = 1242
           Height = 414
-          ActivePage = tsItens
+          ActivePage = tsXMLs
           Align = alClient
           TabOrder = 0
           object tsXMLs: TTabSheet
@@ -684,7 +684,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
             Caption = 'Informa'#231#245'es da NF-e'
             OnShow = tsInfoNfeShow
             DesignSize = (
-              1071
+              1234
               386)
             object Label27: TLabel
               Left = 13
@@ -1116,7 +1116,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
             object mmoObs: TMemo
               Left = 6
               Top = 198
-              Width = 845
+              Width = 1008
               Height = 158
               Anchors = [akLeft, akTop, akRight]
               ScrollBars = ssVertical
@@ -1138,7 +1138,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
             object cxGrid1: TcxGrid
               Left = 0
               Top = 0
-              Width = 1071
+              Width = 1234
               Height = 386
               Align = alClient
               TabOrder = 0
@@ -1712,7 +1712,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
             ImageIndex = 3
             OnShow = tsFaturamentoShow
             DesignSize = (
-              1071
+              1234
               386)
             object Label25: TLabel
               Left = 8
@@ -1731,7 +1731,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
             object cxGrid2: TcxGrid
               Left = 8
               Top = 128
-              Width = 1055
+              Width = 1218
               Height = 250
               Anchors = [akLeft, akTop, akRight, akBottom]
               TabOrder = 0
@@ -2235,7 +2235,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
         object pgcValidacoes: TPageControl
           Left = 1
           Top = 415
-          Width = 1079
+          Width = 1242
           Height = 149
           ActivePage = tsValidacoes
           Align = alBottom
@@ -2247,7 +2247,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
             object cxGrid3: TcxGrid
               Left = 0
               Top = 0
-              Width = 1071
+              Width = 1234
               Height = 120
               Align = alClient
               TabOrder = 0
@@ -2314,9 +2314,9 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
       end
     end
     inherited ScrollBoxTopo: TScrollBox
-      Width = 1082
+      Width = 1245
       inherited PanelCabecalho: TPanel
-        Width = 1082
+        Width = 1245
         inherited LabelTitulo: TLabel
           Left = 690
           Top = 291
@@ -2328,9 +2328,9 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
           Height = 13
         end
         inherited PanelNavigator: TPanel
-          Width = 1082
+          Width = 1245
           inherited AdvPanelNavigator: TAdvOfficeStatusBar
-            Width = 1082
+            Width = 1245
             inherited BtnFecharTela: TSpeedButton
               Left = 999
             end
@@ -2397,6 +2397,24 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
               Font.Name = 'Tahoma'
               Font.Style = []
               ParentFont = False
+            end
+            object btnGravarCST: TSpeedButton
+              Tag = 3
+              Left = 1111
+              Top = 4
+              Width = 119
+              Height = 25
+              Cursor = crHandPoint
+              Hint = 'Fechar Tela'
+              Caption = '&Gravar CST'
+              Flat = True
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+              OnClick = btnGravarCSTClick
             end
             object ckTestaItem: TCheckBox
               Left = 644

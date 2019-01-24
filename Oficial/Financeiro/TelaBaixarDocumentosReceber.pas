@@ -1767,7 +1767,7 @@ begin
         ValorMulta := Copy(Info,280,13);
         Ocorrencia := Copy(Info,109,02);
 
-        if (NossoNro <> '') and (Gravar) and (Ocorrencia = '06') then
+        if (NossoNro <> '') and (Gravar) and ((Ocorrencia = '06') or (Ocorrencia = '15'))  then
           begin
             try
               {tenta converter apenas numeros pois o banrisul retorna o nosso nro com zeros na frente e no banco estou gravando sem zeros}
@@ -1880,7 +1880,7 @@ begin
 //        Readln(Texto,Info); {Coloquei aqui novamente Pq no txt do Sicredi repete na prox linha a mesma operacao, para outros bancos ver melhor}
       end;
 
-    if Identificador = '341' then {Banrisul}
+    if Identificador = '341' then {Itau}
       begin
         NossoNro := Copy(Info, 63, 08);
         NossoNro := RemoverZeros(NossoNro);

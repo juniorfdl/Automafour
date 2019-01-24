@@ -2158,9 +2158,8 @@ end;
 procedure TFormPrincipal.btnFormCadastroProdutoClick(Sender: TObject);
 begin
   inherited;
-
-  MnFormCadastroProduto.Click;
-
+  MnADMCadastroProduto.Click;
+//  MnFormCadastroProduto.Click;
 end;
 
 procedure TFormPrincipal.btnFormCadastroNotaFiscalClick(Sender: TObject);
@@ -3152,7 +3151,7 @@ var
 begin
   with ExecSql(' select USPEA60NOMETELA from USUARIOPERMISSOES A '
       +' where USUAICOD = '+IntToStr(UsuarioCorrente)+' AND A.USPECACESSOTOTAL = ''N'' AND A.USPECINCLUSAO = ''N'' '
-      +' AND A.USPECALTERACAO = ''N'' AND A.USPECEXCLUSAO = ''N'' AND A.USPECLEITURA = ''N'' ') do
+      +' AND A.USPECALTERACAO = ''N'' AND A.USPECEXCLUSAO = ''N'' AND A.USPECLEITURA = ''S'' ') do
   try
     while not eof do
     begin

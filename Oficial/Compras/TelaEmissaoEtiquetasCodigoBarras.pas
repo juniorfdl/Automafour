@@ -6,8 +6,8 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, TelaGeralTEMPLATE, Buttons, jpeg, ExtCtrls, DBCtrls, StdCtrls,
   ComCtrls, Grids, DBGrids, DB, DBTables, Mask, ToolEdit, CurrEdit, RxQuery,
-  RxLookup, RXCtrls, Menus, VarSys, FormResources, IniFiles,
-  AdvOfficeStatusBar, AdvOfficeStatusBarStylers;
+  RxLookup, RXCtrls, Menus, VarSys, FormResources, IniFiles, AdvOfficeStatusBar,
+  AdvOfficeStatusBarStylers, DBClient;
 
 type
   TFormTelaEmissaoEtiquetasCodigoBarras = class(TFormTelaGeralTEMPLATE)
@@ -173,24 +173,25 @@ type
     TblEtiquetasFornecedor: TStringField;
     SQLProdutoPRODDULTCOMPRA: TDateTimeField;
     TblEtiquetasCOD_FORN: TStringField;
+    TblEtiquetasNumero_Serie: TStringField;
+    cdsSerie: TClientDataSet;
+    cdsSerieNumeroSerie: TStringField;
+    cdsSerieEmpresa: TIntegerField;
+    cdsSerieProduto: TIntegerField;
+    cdsSerieItem: TIntegerField;
     procedure FormCreate(Sender: TObject);
-    procedure CodProdKeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
-    procedure QuantKeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
+    procedure CodProdKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure QuantKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure BtnImprimirClick(Sender: TObject);
-    procedure ComboEtiquetasKeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
+    procedure ComboEtiquetasKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure TblEtiquetasAfterPost(DataSet: TDataSet);
     procedure TblEtiquetasAfterDelete(DataSet: TDataSet);
     procedure PularnEtiquetas1Click(Sender: TObject);
     procedure TblEtiquetasBeforeDelete(DataSet: TDataSet);
     procedure BtnProdutoClick(Sender: TObject);
     procedure BtnPedidoClick(Sender: TObject);
-    procedure EditPedidoKeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
-    procedure EditNotaCompraKeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
+    procedure EditPedidoKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure EditNotaCompraKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure BtnNotaCompraClick(Sender: TObject);
     procedure EditNotaCompraChange(Sender: TObject);
     procedure EditPedidoChange(Sender: TObject);
@@ -198,12 +199,10 @@ type
     procedure BtnIncProdNotaClick(Sender: TObject);
     procedure BtnPedidoVendaClick(Sender: TObject);
     procedure EditPedidoVendaChange(Sender: TObject);
-    procedure EditPedidoVendaKeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
+    procedure EditPedidoVendaKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure BtnIncProdPedVendaClick(Sender: TObject);
     procedure EditNotaFiscalChange(Sender: TObject);
-    procedure EditNotaFiscalKeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
+    procedure EditNotaFiscalKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure BtnNotaVendaClick(Sender: TObject);
     procedure BtnIncProdNotaVendaClick(Sender: TObject);
     procedure BtnFecharTelaClick(Sender: TObject);
@@ -219,8 +218,8 @@ type
     procedure btnProdutosAlteradosClick(Sender: TObject);
   private
     { Private declarations }
-    NroEtiquetasPular:Integer;
-    FormStorage : TIniFile;
+    NroEtiquetasPular: Integer;
+    FormStorage: TIniFile;
   public
     { Public declarations }
   end;
@@ -230,763 +229,764 @@ var
 
 implementation
 
-uses UnitLibrary, TelaConsultaProduto, TelaConsultaPedidoCompra,
-     TelaConsultaNotaCompra, DataModulo, TelaConsultaPedidoVenda, TelaConsultaNotaFiscal,
-     TelaEmissaoEtiquetaGrade, TelaConsultaProdutoGeral,
-  DataModuloTemplate;
+uses
+  UnitLibrary, TelaConsultaProduto, TelaConsultaPedidoCompra,
+  TelaConsultaNotaCompra, DataModulo, TelaConsultaPedidoVenda,
+  TelaConsultaNotaFiscal, TelaEmissaoEtiquetaGrade, TelaConsultaProdutoGeral,
+  TelaInformaNumeroSerieProduto, DataModuloTemplate;
 
 {$R *.dfm}
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.FormCreate(
-  Sender: TObject);
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.FormCreate(Sender: TObject);
 begin
   inherited;
-  if not SQLLote.Active then SQLLote.Open;
-  NroEtiq.Caption := '' ;
+  if not SQLLote.Active then
+    SQLLote.Open;
+  NroEtiq.Caption := '';
   TblEtiquetas.Close;
   try
-    TblEtiquetas.DeleteTable ;
+    TblEtiquetas.DeleteTable;
   except
     Application.ProcessMessages;
-  end ;
-  TblEtiquetas.CreateTable ;
-  TblEtiquetas.Open ;
+  end;
+  TblEtiquetas.CreateTable;
+  TblEtiquetas.Open;
 
-  SQLProduto.Open ;
-  SQLConfigEtiquetaCodigoBarra.Open ;
-  FormStorage          := TIniFile.Create(Application.ExeName+ FormTelaEmissaoEtiquetasCodigoBarras.Caption + '.ini');
-  ComboLote.Value      := FormStorage.ReadString('COMBOLOTE','ComboLote_Value','0');
-  ComboEtiquetas.Value := FormStorage.ReadString('COMBOETIQ','ComboEtiquetas_Value','0');
+  SQLProduto.Open;
+  SQLConfigEtiquetaCodigoBarra.Open;
+  FormStorage := TIniFile.Create(Application.ExeName + FormTelaEmissaoEtiquetasCodigoBarras.Caption + '.ini');
+  ComboLote.Value := FormStorage.ReadString('COMBOLOTE', 'ComboLote_Value', '0');
+  ComboEtiquetas.Value := FormStorage.ReadString('COMBOETIQ', 'ComboEtiquetas_Value', '0');
 
-  If (Not SQLConfigEtiquetaCodigoBarra.Eof) and (ComboEtiquetas.Value = '') Then
+  if (not SQLConfigEtiquetaCodigoBarra.Eof) and (ComboEtiquetas.Value = '') then
     ComboEtiquetas.Value := SQLConfigEtiquetaCodigoBarraCFCBICOD.asString;
-  If EtiquetaProduto <> '' Then
-    Begin
-      PageControl.ActivePage := TabSheetItem;
-      CodProd.Text:=EtiquetaProduto;
-      EtiquetaProduto:='';
-    End;
-  If EtiquetaPedidoCompra <> '' Then
-    Begin
-      PageControl.ActivePage := TabSheetPedido;
-      EditPedido.Text:=EtiquetaPedidoCompra;
-      EtiquetaPedidoCompra:='';
-    End;
-  If EtiquetaNotaCompra <> '' Then
-    Begin
-      PageControl.ActivePage := TabSheetNota;
-      EditNotaCompra.Text:=EtiquetaNotaCompra;
-      EtiquetaNotaCompra:='';
-    End;
-  If EtiquetaPedidoVenda <> '' Then
-    Begin
-      PageControl.ActivePage := TabSheetPedidoVenda;
-      EditPedidoVenda.Text:=EtiquetaPedidoVenda;
-      EtiquetaPedidoVenda:='';
-    End;
-  If EtiquetaNotaVenda <> '' Then
-    Begin
-      PageControl.ActivePage := TabSheetNotaFiscal;
-      EditNotaFiscal.Text:=EtiquetaNotaVenda;
+  if EtiquetaProduto <> '' then
+  begin
+    PageControl.ActivePage := TabSheetItem;
+    CodProd.Text := EtiquetaProduto;
+    EtiquetaProduto := '';
+  end;
+  if EtiquetaPedidoCompra <> '' then
+  begin
+    PageControl.ActivePage := TabSheetPedido;
+    EditPedido.Text := EtiquetaPedidoCompra;
+    EtiquetaPedidoCompra := '';
+  end;
+  if EtiquetaNotaCompra <> '' then
+  begin
+    PageControl.ActivePage := TabSheetNota;
+    EditNotaCompra.Text := EtiquetaNotaCompra;
+    EtiquetaNotaCompra := '';
+  end;
+  if EtiquetaPedidoVenda <> '' then
+  begin
+    PageControl.ActivePage := TabSheetPedidoVenda;
+    EditPedidoVenda.Text := EtiquetaPedidoVenda;
+    EtiquetaPedidoVenda := '';
+  end;
+  if EtiquetaNotaVenda <> '' then
+  begin
+    PageControl.ActivePage := TabSheetNotaFiscal;
+    EditNotaFiscal.Text := EtiquetaNotaVenda;
 
-      EtiquetaNotaVenda:='';
-    End;
-  If EtiquetaMovDiversos <> '' Then
-    Begin
-      PageControl.ActivePage := TabSheetMovDiv;
-      EditMovDiv.Text:=EtiquetaMovDiversos;
+    EtiquetaNotaVenda := '';
+  end;
+  if EtiquetaMovDiversos <> '' then
+  begin
+    PageControl.ActivePage := TabSheetMovDiv;
+    EditMovDiv.Text := EtiquetaMovDiversos;
 
-      EtiquetaMovDiversos:='';
-    End;
+    EtiquetaMovDiversos := '';
+  end;
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.CodProdKeyDown(
-  Sender: TObject; var Key: Word; Shift: TShiftState);
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.CodProdKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+var
+  vItem : Integer;
 begin
   inherited;
-  If Key = VK_F2 Then
+  if Key = VK_F2 then
     BtnProduto.Click;
+  vItem := 0;
   if (Key = VK_Return) and (CodProd.Text <> '') then
   begin
     if EncontrouProduto(CodProd.Text, SQLProduto) then
     begin
-      if (sqllocate('PRODUTO','PRODICOD','PRODCIMPETIQCDBAR',SQLProdutoPRODICOD.AsString) = 'S') then
+      if (sqllocate('PRODUTO', 'PRODICOD', 'PRODCIMPETIQCDBAR', SQLProdutoPRODICOD.AsString) = 'S') then
+      begin
+        if SQLProdutoGRTMICOD.AsString <> '' then
         begin
-          if SQLProdutoGRTMICOD.AsString <> '' then
-            begin
-              DSMasterSys  := DSTblEtiquetas;
-              TipoEtiqueta := SQLConfigEtiquetaCodigoBarraCFCBA20MODELOIMPRESSORA.AsString;
-              DM.ConfigEtiqueta := ComboEtiquetas.KeyValue;
-              CodProd.SetFocus;
-              CriaFormulario(TFormTelaEmissaoEtiquetaGrade,'FormTelaEmissaoEtiquetaGrade',False,False,True,'');
-            end
-          else
-            begin
-              DescrProd.Caption  := SQLProduto.fieldbyname('PRODA60DESCR') .AsString ;
-              RefProd.Caption    := SQLProdutoPRODA60REFER.AsString ;
-              CodBarProd.Caption := SQLProdutoPRODA60CODBAR.AsString ;
-              MarcaProd.Caption  := SQLProdutoMarcaLookup.AsString ;
-              TamProd.Caption    := SQLProdutoTAMANHOLOOKUP.AsString ;
-              CorProd.Caption    := SQLProdutoCorLookup.AsString ;
-              Quant.SetFocus ;
-            end;
+          DSMasterSys := DSTblEtiquetas;
+          TipoEtiqueta := SQLConfigEtiquetaCodigoBarraCFCBA20MODELOIMPRESSORA.AsString;
+          DM.ConfigEtiqueta := ComboEtiquetas.KeyValue;
+          CodProd.SetFocus;
+          CriaFormulario(TFormTelaEmissaoEtiquetaGrade, 'FormTelaEmissaoEtiquetaGrade', False, False, True, '');
+        end
+        else
+        begin
+          DescrProd.Caption := SQLProduto.fieldbyname('PRODA60DESCR').AsString;
+          RefProd.Caption := SQLProdutoPRODA60REFER.AsString;
+          CodBarProd.Caption := SQLProdutoPRODA60CODBAR.AsString;
+          MarcaProd.Caption := SQLProdutoMarcaLookup.AsString;
+          TamProd.Caption := SQLProdutoTAMANHOLOOKUP.AsString;
+          CorProd.Caption := SQLProdutoCorLookup.AsString;
+          Quant.SetFocus;
         end;
+      end;
+      if (DM.SQLlocate('produto', 'prodicod', 'PRODCTEMNROSERIE', SQLProdutoPRODICOD.AsString) = 'S') then
+      begin
+        cdsSerie.EmptyDataSet;
+        CodigoProduto := SQLProdutoPRODICOD.AsString;
+        Status := ' PRSECSTATUS = ' + QuotedStr('D');
+        Application.CreateForm(TFormTelaInformaNumeroSerieProduto, FormTelaInformaNumeroSerieProduto);
+        try
+          FormTelaInformaNumeroSerieProduto.Valida_Qtde := False;
+          FormTelaInformaNumeroSerieProduto.ShowModal;
+          if FormTelaInformaNumeroSerieProduto.ModalResult = MrOK then
+          begin
+            FormTelaInformaNumeroSerieProduto.RXSerie.First;
+            while not FormTelaInformaNumeroSerieProduto.RXSerie.Eof do
+            begin
+              Inc(vItem);
+              cdsSerie.Insert;
+              cdsSerieNumeroSerie.AsString := FormTelaInformaNumeroSerieProduto.RXSerieNumeroSerie.Text;
+              cdsSerieItem.AsInteger := vItem;
+              cdsSerie.Post;
+              FormTelaInformaNumeroSerieProduto.RXSerie.Next;
+            end;
+          end;
+        finally
+          FormTelaInformaNumeroSerieProduto.Destroy;
+        end;
+        cdsSerie.First;
+        Quant.Value := cdsSerie.RecordCount;
+      end;
+
     end
-    else begin
-      Informa('Produto não encontrado !') ;
-      DescrProd.Caption := '' ;
-      CodProd.SetFocus ;
-    end ;
-  end ;
+    else
+    begin
+      Informa('Produto não encontrado !');
+      DescrProd.Caption := '';
+      CodProd.SetFocus;
+    end;
+  end;
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.QuantKeyDown(
-  Sender: TObject; var Key: Word; Shift: TShiftState);
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.QuantKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 var
-  i,Etiquetas : Integer ;
+  i, Etiquetas: Integer;
 begin
   inherited;
   if Key = VK_Return then
   begin
     if DescrProd.Caption = '' then
-      begin
-        Informa('Você deve escolher um produto primeiro !') ;
-        CodProd.SetFocus ;
-        Exit;
-      end ;
-    if (SQLConfigEtiquetaCodigoBarraCFCBA20MODELOIMPRESSORA.AsString = 'LASERJATO') or
-       (SQLConfigEtiquetaCodigoBarraCFCBINROCOL.AsInteger > 1) then
+    begin
+      Informa('Você deve escolher um produto primeiro !');
+      CodProd.SetFocus;
+      Exit;
+    end;
+    if (SQLConfigEtiquetaCodigoBarraCFCBA20MODELOIMPRESSORA.AsString = 'LASERJATO') or (SQLConfigEtiquetaCodigoBarraCFCBINROCOL.AsInteger > 1) then
       Etiquetas := StrToInt(Quant.Text)
     else
       Etiquetas := 1;
     if SQLConfigEtiquetaCodigoBarraCFCBINROCOL.AsInteger > 1 then
       if not (StrToInt(Quant.Text) mod SQLConfigEtiquetaCodigoBarraCFCBINROCOL.AsInteger = 0) then
-        begin
+      begin
 //          Informa('Sua etiqueta está configurada com ' + SQLConfigEtiquetaCodigoBarraCFCBINROCOL.AsString + ' colunas...' + #13 +
 //                  'A Quantidade digitada de ser um múltiplo de ' + SQLConfigEtiquetaCodigoBarraCFCBINROCOL.AsString);
 //          Quant.SetFocus;
 //          Exit;
-        end;
-      for i := 1 to Etiquetas do
-        begin
-          TblEtiquetas.Append ;
-          TblEtiquetasProdutoCodigo.AsString       := SQLProdutoPRODICOD.AsString ;
-          TblEtiquetasCodigoBarras.AsString        := SQLProdutoPRODA60CODBAR.AsString ;
-          TblEtiquetasREFERENCIA.AsString          := SQLProdutoPRODA60REFER.AsString ; ;
-          TblEtiquetasDescricao.AsString           := SQLProdutoPRODA60DESCR.AsString ;
+      end;
+    for i := 1 to Etiquetas do
+    begin
+      TblEtiquetas.Append;
+      TblEtiquetasProdutoCodigo.AsString := SQLProdutoPRODICOD.AsString;
+      TblEtiquetasCodigoBarras.AsString := SQLProdutoPRODA60CODBAR.AsString;
+      TblEtiquetasREFERENCIA.AsString := SQLProdutoPRODA60REFER.AsString;
+      ;
+      TblEtiquetasDescricao.AsString := SQLProdutoPRODA60DESCR.AsString;
+      if cdsSerie.Locate('Item',i,[]) then
+        TblEtiquetasNumero_Serie.AsString := cdsSerieNumeroSerie.AsString;
 
-          TblEtiquetasPreco.Value                  := RetornaPreco(SQLProduto,DM.SQLConfigVenda.fieldbyname('TPRCICOD').asString,'');
-          TblEtiquetasPrecoPromo.Value             := SQLProdutoPRODN3VLRVENDAPROM.Value;
-          TblEtiquetasPrecoVarejo.Value            := SQLProdutoPRODN3VLRVENDA.Value;
-          TblEtiquetasPrecoAtacado.Value           := SQLProdutoPRODN3VLRVENDA2.Value;
-          TblEtiquetasTamanho.AsString             := SQLProdutoTAMANHOLOOKUP.AsString ;
-          TblEtiquetasDescricaoReduzida.AsString   := SQLProdutoPRODA30ADESCRREDUZ.AsString ;
-          TblEtiquetasCodigoEstrut.AsString        := SQLProdutoPRODA30CODESTRUT.AsString ;
-          TblEtiquetasMarca.AsString               := SQLProdutoMarcaLookup.AsString ;
-          TblEtiquetasUnidade.AsString             := SQLProdutoUnidadeLookup.AsString ;
-          TblEtiquetasDtUltEntr.AsString           := SQLProdutoPRODDULTCOMPRA.AsString ;
-          TblEtiquetasCustFant.AsString            := '' ;
-          TblEtiquetasParcPlanos.AsString          := '' ;
-          TblEtiquetasCor.AsString                 := SQLProdutoCorLookup.AsString ;
-          if (SQLConfigEtiquetaCodigoBarraCFCBA20MODELOIMPRESSORA.AsString = 'LASERJATO') or
-             (SQLConfigEtiquetaCodigoBarraCFCBINROCOL.AsInteger > 1) then
-            TblEtiquetasQuant.Value                  := 1
-          else
-            TblEtiquetasQuant.Value                  := StrToInt(Quant.Text);
-          TblEtiquetasProdutoCodigoAntigo.AsString := SQLProdutoPRODA15CODANT.AsString ;
-          if ComboLote.Value <> '' then
-            TblEtiquetasLote.AsString              := ComboLote.Value;
+      TblEtiquetasPreco.Value := RetornaPreco(SQLProduto, DM.SQLConfigVenda.fieldbyname('TPRCICOD').asString, '');
+      TblEtiquetasPrecoPromo.Value := SQLProdutoPRODN3VLRVENDAPROM.Value;
+      TblEtiquetasPrecoVarejo.Value := SQLProdutoPRODN3VLRVENDA.Value;
+      TblEtiquetasPrecoAtacado.Value := SQLProdutoPRODN3VLRVENDA2.Value;
+      TblEtiquetasTamanho.AsString := SQLProdutoTAMANHOLOOKUP.AsString;
+      TblEtiquetasDescricaoReduzida.AsString := SQLProdutoPRODA30ADESCRREDUZ.AsString;
+      TblEtiquetasCodigoEstrut.AsString := SQLProdutoPRODA30CODESTRUT.AsString;
+      TblEtiquetasMarca.AsString := SQLProdutoMarcaLookup.AsString;
+      TblEtiquetasUnidade.AsString := SQLProdutoUnidadeLookup.AsString;
+      TblEtiquetasDtUltEntr.AsString := SQLProdutoPRODDULTCOMPRA.AsString;
+      TblEtiquetasCustFant.AsString := '';
+      TblEtiquetasParcPlanos.AsString := '';
+      TblEtiquetasCor.AsString := SQLProdutoCorLookup.AsString;
+      if (SQLConfigEtiquetaCodigoBarraCFCBA20MODELOIMPRESSORA.AsString = 'LASERJATO') or (SQLConfigEtiquetaCodigoBarraCFCBINROCOL.AsInteger > 1) then
+        TblEtiquetasQuant.Value := 1
+      else
+        TblEtiquetasQuant.Value := StrToInt(Quant.Text);
+      TblEtiquetasProdutoCodigoAntigo.AsString := SQLProdutoPRODA15CODANT.AsString;
+      if ComboLote.Value <> '' then
+        TblEtiquetasLote.AsString := ComboLote.Value;
 
-          TblEtiquetasPrateleira.AsString          := SQLProdutoPRODA15PRATEL.AsString;
-          TblEtiquetasPavimento.AsString           := SQLProdutoPRODA15APAVIM.AsString;
-          TblEtiquetasRua.AsString                 := SQLProdutoPRODA15RUA.AsString;
-          TblEtiquetasDimensao.AsString            := SQLProdutoPRODA60DIMENSAO.AsString;
-          TblEtiquetasInfo01EtqBarras.AsString     := SQLProdutoPRODA30INF01ETQBARRAS.AsString;
-          TblEtiquetasInfo02EtqBarras.AsString     := SQLProdutoPRODA30INF02ETQBARRAS.AsString;
-          TblEtiquetasDescricaoTecnica.AsString    := SQLProdutoPRODA255DESCRTEC.AsString;
-          TblEtiquetas.Post ;
+      TblEtiquetasPrateleira.AsString := SQLProdutoPRODA15PRATEL.AsString;
+      TblEtiquetasPavimento.AsString := SQLProdutoPRODA15APAVIM.AsString;
+      TblEtiquetasRua.AsString := SQLProdutoPRODA15RUA.AsString;
+      TblEtiquetasDimensao.AsString := SQLProdutoPRODA60DIMENSAO.AsString;
+      TblEtiquetasInfo01EtqBarras.AsString := SQLProdutoPRODA30INF01ETQBARRAS.AsString;
+      TblEtiquetasInfo02EtqBarras.AsString := SQLProdutoPRODA30INF02ETQBARRAS.AsString;
+      TblEtiquetasDescricaoTecnica.AsString := SQLProdutoPRODA255DESCRTEC.AsString;
+      TblEtiquetas.Post;
 
-          Quant.Value := 1 ;
-          CodProd.Clear ;
-          DescrProd.Caption := '' ;
-          RefProd.Caption := '' ;
-          CodBarProd.Caption := '' ;
-          MarcaProd.Caption := '' ;
-          TamProd.Caption := '' ;
-          CorProd.Caption := '' ;
-          CodProd.SelectAll ;
-          CodProd.SetFocus ;
-        end ;
+      Quant.Value := 1;
+      CodProd.Clear;
+      DescrProd.Caption := '';
+      RefProd.Caption := '';
+      CodBarProd.Caption := '';
+      MarcaProd.Caption := '';
+      TamProd.Caption := '';
+      CorProd.Caption := '';
+      CodProd.SelectAll;
+      CodProd.SetFocus;
+    end;
   end;
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.BtnImprimirClick(
-  Sender: TObject);
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.BtnImprimirClick(Sender: TObject);
 begin
   inherited;
   if ComboEtiquetas.Text = '' then
   begin
-    Informa('A Etiqueta deve ser selecionada !') ;
-    ComboEtiquetas.SetFocus ;
-    exit ;
-  end ;
+    Informa('A Etiqueta deve ser selecionada !');
+    ComboEtiquetas.SetFocus;
+    exit;
+  end;
   if TblEtiquetas.RecordCount = 0 then
   begin
-    Informa('Não há itens a serem impressos !') ;
-    CodProd.SetFocus ;
-    exit ;
-  end ;
+    Informa('Não há itens a serem impressos !');
+    CodProd.SetFocus;
+    exit;
+  end;
   if (SQLConfigEtiquetaCodigoBarraCFCBA20MODELOIMPRESSORA.Value = 'LASERJATO') then
+  begin
+    if not FileExists(SQLConfigEtiquetaCodigoBarraCFCBA100PATHEXEIMP.Value) then
     begin
-      if not FileExists(SQLConfigEtiquetaCodigoBarraCFCBA100PATHEXEIMP.Value) then
-      begin
-        Informa('O programa de impressão de etiquetas não foi encontrado!') ;
-        exit ;
-      end ;
-      WinExec(PChar(SQLConfigEtiquetaCodigoBarraCFCBA100PATHEXEIMP.Value), SW_SHOW) ;
-    end
+      Informa('O programa de impressão de etiquetas não foi encontrado!');
+      exit;
+    end;
+    WinExec(PChar(SQLConfigEtiquetaCodigoBarraCFCBA100PATHEXEIMP.Value), SW_SHOW);
+  end
   else
+  begin
+    if (SQLConfigEtiquetaCodigoBarraCFCBA20MODELOIMPRESSORA.Value = 'ZEBRA_ZPL') or (SQLConfigEtiquetaCodigoBarraCFCBA20MODELOIMPRESSORA.Value = 'ELTTPL2642') or (SQLConfigEtiquetaCodigoBarraCFCBA20MODELOIMPRESSORA.Value = 'URAUSECBC') or (SQLConfigEtiquetaCodigoBarraCFCBA20MODELOIMPRESSORA.Value = 'ALLEGRO2') or (SQLConfigEtiquetaCodigoBarraCFCBA20MODELOIMPRESSORA.Value = 'RABBIT214') or (SQLConfigEtiquetaCodigoBarraCFCBA20MODELOIMPRESSORA.Value = 'ARQTEXTO') then
     begin
-      if (SQLConfigEtiquetaCodigoBarraCFCBA20MODELOIMPRESSORA.Value = 'ZEBRA_ZPL') or
-         (SQLConfigEtiquetaCodigoBarraCFCBA20MODELOIMPRESSORA.Value = 'ELTTPL2642') or
-         (SQLConfigEtiquetaCodigoBarraCFCBA20MODELOIMPRESSORA.Value = 'URAUSECBC') or
-         (SQLConfigEtiquetaCodigoBarraCFCBA20MODELOIMPRESSORA.Value = 'ALLEGRO2') or
-         (SQLConfigEtiquetaCodigoBarraCFCBA20MODELOIMPRESSORA.Value = 'RABBIT214') or
-         (SQLConfigEtiquetaCodigoBarraCFCBA20MODELOIMPRESSORA.Value = 'ARQTEXTO') then
-        begin
          // EtiquetaImpTermica(SQLConfigEtiquetaCodigoBarraCFCBINROCOL.AsInteger,SQLConfigEtiquetaCodigoBarraCFCBA4PORTASERIAL.AsString,
          //                    SQLConfigEtiquetaCodigoBarraCFCBA254TEXTOTERM.AsString,SQLConfigEtiquetaCodigoBarraCFCBA20MODELOIMPRESSORA.AsString,
          //                    SQLConfigEtiquetaCodigoBarraCFCBA100PATHARQTXT.AsString); #ver
-        end;
     end;
+  end;
   if FileExists('ApagaEtiquetas.txt') then
+  begin
+    if Pergunta('SIM', 'Apagar lista atual de etiquetas?') then
     begin
-      if Pergunta('SIM','Apagar lista atual de etiquetas?') then
-        begin
-          TblEtiquetas.First;
-          While not TblEtiquetas.eof do
-            TblEtiquetas.delete;
-          CodProd.Text := '';
-          CodProd.SetFocus;
-        end;
+      TblEtiquetas.First;
+      while not TblEtiquetas.eof do
+        TblEtiquetas.delete;
+      CodProd.Text := '';
+      CodProd.SetFocus;
     end;
+  end;
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.ComboEtiquetasKeyDown(
-  Sender: TObject; var Key: Word; Shift: TShiftState);
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.ComboEtiquetasKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   inherited;
   if Key = VK_Return then
-    CodProd.SetFocus ;
+    CodProd.SetFocus;
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.TblEtiquetasAfterPost(
-  DataSet: TDataSet);
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.TblEtiquetasAfterPost(DataSet: TDataSet);
 begin
   inherited;
-  If TblEtiquetasProdutoCodigo.asString='' Then Inc(NroEtiquetasPular);
-  NroEtiq.Caption := 'Pular '+IntToStr(NroEtiquetasPular)+' e Imprimir ' + Inttostr(TblEtiquetas.RecordCount-NroEtiquetasPular)+' etiquetas.';
-  NroEtiq.Refresh ;
+  if TblEtiquetasProdutoCodigo.asString = '' then
+    Inc(NroEtiquetasPular);
+  NroEtiq.Caption := 'Pular ' + IntToStr(NroEtiquetasPular) + ' e Imprimir ' + Inttostr(TblEtiquetas.RecordCount - NroEtiquetasPular) + ' etiquetas.';
+  NroEtiq.Refresh;
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.TblEtiquetasAfterDelete(
-  DataSet: TDataSet);
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.TblEtiquetasAfterDelete(DataSet: TDataSet);
 begin
   inherited;
-  NroEtiq.Caption := 'Pular '+IntToStr(NroEtiquetasPular)+' e Imprimir ' + Inttostr(TblEtiquetas.RecordCount-NroEtiquetasPular)+' etiquetas.';
-  NroEtiq.Refresh ;
+  NroEtiq.Caption := 'Pular ' + IntToStr(NroEtiquetasPular) + ' e Imprimir ' + Inttostr(TblEtiquetas.RecordCount - NroEtiquetasPular) + ' etiquetas.';
+  NroEtiq.Refresh;
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.PularnEtiquetas1Click(
-  Sender: TObject);
-Var
-  I,NroEtiquetas:Integer;
-  Erro:Boolean;
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.PularnEtiquetas1Click(Sender: TObject);
+var
+  I, NroEtiquetas: Integer;
+  Erro: Boolean;
 begin
   inherited;
-  Erro:=True;
-  While Erro Do
-    Begin
-      Try
-        NroEtiquetas := StrToInt(InputBox('Pular ''n'' etiquetas','Digite o Nro de Etiquetas a pular:','0'));
-        If NroEtiquetas>=0 Then
-          Erro := False;
-      Except
-          Erro := True;
-      End;
-    End;
-  For I:=1 To NroEtiquetas Do
-    Begin
-      TblEtiquetas.Append;
-      TblEtiquetas.Post;
-    End;
+  Erro := True;
+  while Erro do
+  begin
+    try
+      NroEtiquetas := StrToInt(InputBox('Pular ''n'' etiquetas', 'Digite o Nro de Etiquetas a pular:', '0'));
+      if NroEtiquetas >= 0 then
+        Erro := False;
+    except
+      Erro := True;
+    end;
+  end;
+  for I := 1 to NroEtiquetas do
+  begin
+    TblEtiquetas.Append;
+    TblEtiquetas.Post;
+  end;
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.TblEtiquetasBeforeDelete(
-  DataSet: TDataSet);
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.TblEtiquetasBeforeDelete(DataSet: TDataSet);
 begin
   inherited;
-  If TblEtiquetasProdutoCodigo.asString='' Then Dec(NroEtiquetasPular);
+  if TblEtiquetasProdutoCodigo.asString = '' then
+    Dec(NroEtiquetasPular);
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.BtnProdutoClick(
-  Sender: TObject);
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.BtnProdutoClick(Sender: TObject);
 begin
   inherited;
   CodProd.SetFocus;
   ProdutoReferencia := '';
-  ProdutoDescricao  := CodProd.Text;
-  Application.CreateForm(TFormTelaConsultaProdutoGeral,FormTelaConsultaProdutoGeral);
+  ProdutoDescricao := CodProd.Text;
+  Application.CreateForm(TFormTelaConsultaProdutoGeral, FormTelaConsultaProdutoGeral);
   FormTelaConsultaProdutoGeral.ShowModal;
   if FormTelaConsultaProdutoGeral.ModalResult = 2 then
-    begin
+  begin
       // ProdutoReferencia = Pega o Cod Interno da tela de consulta de produtos acima
-      CodProd.Text := ProdutoReferencia;
-      ProdutoReferencia := '';
-      ProdutoDescricao  := '';
-    end;
+    CodProd.Text := ProdutoReferencia;
+    ProdutoReferencia := '';
+    ProdutoDescricao := '';
+  end;
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.BtnPedidoClick(
-  Sender: TObject);
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.BtnPedidoClick(Sender: TObject);
 begin
   inherited;
-  EditLookup  := EditPedido;
+  EditLookup := EditPedido;
   FieldOrigem := 'PDCPA13ID';
-  CriaFormulario(TFormTelaConsultaPedidoCompra,'FormTelaConsultaPedidoCompra',False,True,True,'');
+  CriaFormulario(TFormTelaConsultaPedidoCompra, 'FormTelaConsultaPedidoCompra', False, True, True, '');
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.EditPedidoKeyDown(
-  Sender: TObject; var Key: Word; Shift: TShiftState);
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.EditPedidoKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   inherited;
-  If Key = VK_F2 Then
+  if Key = VK_F2 then
     BtnPedido.Click;
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.EditNotaCompraKeyDown(
-  Sender: TObject; var Key: Word; Shift: TShiftState);
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.EditNotaCompraKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   inherited;
-  If Key = VK_F2 Then
+  if Key = VK_F2 then
     BtnNotaCompra.Click;
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.BtnNotaCompraClick(
-  Sender: TObject);
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.BtnNotaCompraClick(Sender: TObject);
 begin
   inherited;
-  EditLookup  := EditNotaCompra;
+  EditLookup := EditNotaCompra;
   FieldOrigem := 'NOCPA13ID';
-  CriaFormulario(TFormTelaConsultaNotaCompra,'FormTelaConsultaNotaCompra',False,True,True,'');
+  CriaFormulario(TFormTelaConsultaNotaCompra, 'FormTelaConsultaNotaCompra', False, True, True, '');
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.EditNotaCompraChange(
-  Sender: TObject);
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.EditNotaCompraChange(Sender: TObject);
 begin
   inherited;
   BtnIncProdNota.Enabled := (Sender as TEdit).Text <> '';
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.EditPedidoChange(
-  Sender: TObject);
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.EditPedidoChange(Sender: TObject);
 begin
   inherited;
   BtnIncProdPed.Enabled := (Sender as TEdit).Text <> '';
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.BtnIncProdPedClick(
-  Sender: TObject);
-Var
-  I:Integer;
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.BtnIncProdPedClick(Sender: TObject);
+var
+  I: Integer;
 begin
   inherited;
   SQLPedidoCompraItem.ParamByName('PDCPA13ID').asString := EditPedido.Text;
   SQLPedidoCompraItem.Open;
   SQLPedidoCompraItem.First;
-  While Not SQLPedidoCompraItem.Eof Do
-    Begin
-      if EncontrouProduto(SQLPedidoCompraItem.FindField('PRODICOD').asString, SQLProduto) then
-        Begin
-          for I := 1 to (SQLPedidoCompraItem.FindField('PCITN3QTDEMBAL').asInteger * SQLPedidoCompraItem.FindField('PCITN3CAPEMBAL').asInteger) do
-            begin
-              TblEtiquetas.Append ;
-              TblEtiquetasProdutoCodigo.AsString       := SQLProdutoPRODICOD.AsString ;
-              TblEtiquetasCodigoBarras.AsString        := SQLProdutoPRODA60CODBAR.AsString ;
-              TblEtiquetasREFERENCIA.AsString          := SQLProdutoPRODA60REFER.AsString ; ;
-              TblEtiquetasDescricao.AsString           := SQLProdutoPRODA60DESCR.AsString ;
-              TblEtiquetasPreco.Value                  := RetornaPreco(SQLProduto,DM.SQLConfigVenda.fieldbyname('TPRCICOD').asString,'') ;
-              TblEtiquetasPrecoPromo.Value             := SQLProdutoPRODN3VLRVENDAPROM.Value;
-              TblEtiquetasTamanho.AsString             := SQLProdutoTAMANHOLOOKUP.AsString ;
-              TblEtiquetasDescricaoReduzida.AsString   := SQLProdutoPRODA30ADESCRREDUZ.AsString ;
-              TblEtiquetasCodigoEstrut.AsString        := SQLProdutoPRODA30CODESTRUT.AsString ;
-              TblEtiquetasMarca.AsString               := SQLProdutoMarcaLookup.AsString ;
-              TblEtiquetasUnidade.AsString             := SQLProdutoUnidadeLookup.AsString ; 
-              TblEtiquetasDtUltEntr.AsString           := '' ;
-              TblEtiquetasCustFant.AsString            := '' ;
-              TblEtiquetasParcPlanos.AsString          := '' ;
-              TblEtiquetasCor.AsString                 := SQLProdutoCorLookup.AsString ;
-              TblEtiquetasQuant.AsString               := Quant.Text ;
-              TblEtiquetasProdutoCodigoAntigo.AsString := SQLProdutoPRODA15CODANT.AsString ;
-              TblEtiquetasInfo01EtqBarras.AsString     := SQLProdutoPRODA30INF01ETQBARRAS.AsString;
-              TblEtiquetasInfo02EtqBarras.AsString     := SQLProdutoPRODA30INF02ETQBARRAS.AsString;
-              TblEtiquetasDescricaoTecnica.AsString    := SQLProdutoPRODA255DESCRTEC.AsString;
-              if ComboLote.Value <> '' then
-                TblEtiquetasLote.AsString              := ComboLote.Value;
-              TblEtiquetas.Post ;
-            end ;
-        End;
-      SQLPedidoCompraItem.Next;
-    End;
+  while not SQLPedidoCompraItem.Eof do
+  begin
+    if EncontrouProduto(SQLPedidoCompraItem.FindField('PRODICOD').asString, SQLProduto) then
+    begin
+      for I := 1 to (SQLPedidoCompraItem.FindField('PCITN3QTDEMBAL').asInteger * SQLPedidoCompraItem.FindField('PCITN3CAPEMBAL').asInteger) do
+      begin
+        TblEtiquetas.Append;
+        TblEtiquetasProdutoCodigo.AsString := SQLProdutoPRODICOD.AsString;
+        TblEtiquetasCodigoBarras.AsString := SQLProdutoPRODA60CODBAR.AsString;
+        TblEtiquetasREFERENCIA.AsString := SQLProdutoPRODA60REFER.AsString;
+        ;
+        TblEtiquetasDescricao.AsString := SQLProdutoPRODA60DESCR.AsString;
+        TblEtiquetasPreco.Value := RetornaPreco(SQLProduto, DM.SQLConfigVenda.fieldbyname('TPRCICOD').asString, '');
+        TblEtiquetasPrecoPromo.Value := SQLProdutoPRODN3VLRVENDAPROM.Value;
+        TblEtiquetasTamanho.AsString := SQLProdutoTAMANHOLOOKUP.AsString;
+        TblEtiquetasDescricaoReduzida.AsString := SQLProdutoPRODA30ADESCRREDUZ.AsString;
+        TblEtiquetasCodigoEstrut.AsString := SQLProdutoPRODA30CODESTRUT.AsString;
+        TblEtiquetasMarca.AsString := SQLProdutoMarcaLookup.AsString;
+        TblEtiquetasUnidade.AsString := SQLProdutoUnidadeLookup.AsString;
+        TblEtiquetasDtUltEntr.AsString := '';
+        TblEtiquetasCustFant.AsString := '';
+        TblEtiquetasParcPlanos.AsString := '';
+        TblEtiquetasCor.AsString := SQLProdutoCorLookup.AsString;
+        TblEtiquetasQuant.AsString := Quant.Text;
+        TblEtiquetasProdutoCodigoAntigo.AsString := SQLProdutoPRODA15CODANT.AsString;
+        TblEtiquetasInfo01EtqBarras.AsString := SQLProdutoPRODA30INF01ETQBARRAS.AsString;
+        TblEtiquetasInfo02EtqBarras.AsString := SQLProdutoPRODA30INF02ETQBARRAS.AsString;
+        TblEtiquetasDescricaoTecnica.AsString := SQLProdutoPRODA255DESCRTEC.AsString;
+        if ComboLote.Value <> '' then
+          TblEtiquetasLote.AsString := ComboLote.Value;
+        TblEtiquetas.Post;
+      end;
+    end;
+    SQLPedidoCompraItem.Next;
+  end;
   SQLPedidoCompraItem.Close;
-  EditPedido.Text:='';
+  EditPedido.Text := '';
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.BtnIncProdNotaClick(
-  Sender: TObject);
-Var
-  I:Integer;
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.BtnIncProdNotaClick(Sender: TObject);
+var
+  I: Integer;
 begin
   inherited;
   SQLNotaCompraItem.ParamByName('NOCPA13ID').asString := EditNotaCompra.Text;
   SQLNotaCompraItem.Open;
   SQLNotaCompraItem.First;
-  While Not SQLNotaCompraItem.Eof Do
-    Begin
-      if (EncontrouProduto(SQLNotaCompraItem.FindField('PRODICOD').asString, SQLProduto)) and
-         (sqllocate('PRODUTO','PRODICOD','PRODCIMPETIQCDBAR',SQLProdutoPRODICOD.AsString) = 'S') then
-        Begin
-          for I := 1 to (SQLNotaCompraItem.FindField('NOCIN3QTDEMBAL').asInteger * SQLNotaCompraItem.FindField('NOCIN3CAPEMBAL').asInteger) do
-            begin
-              TblEtiquetas.Append ;
-              TblEtiquetasProdutoCodigo.AsString       := SQLProdutoPRODICOD.AsString ;
-              TblEtiquetasCodigoBarras.AsString        := SQLProdutoPRODA60CODBAR.AsString ;
-              TblEtiquetasREFERENCIA.AsString          := SQLProdutoPRODA60REFER.AsString ; ;
-              TblEtiquetasDescricao.AsString           := SQLProdutoPRODA60DESCR.AsString ;
-              TblEtiquetasPreco.Value                  := RetornaPreco(SQLProduto,DM.SQLConfigVenda.fieldbyname('TPRCICOD').asString,'') ;
-              TblEtiquetasPrecoPromo.Value             := SQLProdutoPRODN3VLRVENDAPROM.Value;
-              TblEtiquetasTamanho.AsString             := SQLProdutoTAMANHOLOOKUP.AsString ;
-              TblEtiquetasDescricaoReduzida.AsString   := SQLProdutoPRODA30ADESCRREDUZ.AsString ;
-              TblEtiquetasCodigoEstrut.AsString        := SQLProdutoPRODA30CODESTRUT.AsString ;
-              TblEtiquetasMarca.AsString               := SQLProdutoMarcaLookup.AsString ;
-              TblEtiquetasUnidade.AsString             := SQLProdutoUnidadeLookup.AsString ;
-              TblEtiquetasDtUltEntr.AsString           := dm.SQLLocate('NOTACOMPRA','NOCPA13ID','NOCPDRECEBIMENTO',''''+SQLNotaCompraItem.FindField('NOCPA13ID').AsString+'''') ;
-              TblEtiquetasNFnumero.AsString            := dm.SQLLocate('NOTACOMPRA','NOCPA13ID','NOCPA30NRO',''''+SQLNotaCompraItem.FindField('NOCPA13ID').AsString+'''') ;
-              TblEtiquetasCOD_FORN.AsString            := dm.SQLLocate('NOTACOMPRA','NOCPA13ID','FORNICOD',''''+SQLNotaCompraItem.FindField('NOCPA13ID').AsString+'''') ;
-              TblEtiquetasFornecedor.AsString          := dm.SQLLocate('FORNECEDOR','FORNICOD','FORNA60RAZAOSOC',TblEtiquetasCOD_FORN.AsString) ;
-              TblEtiquetasCustFant.AsString            := '' ;
-              TblEtiquetasParcPlanos.AsString          := '' ;
-              TblEtiquetasCor.AsString                 := SQLProdutoCorLookup.AsString ;
-              TblEtiquetasQuant.AsString               := Quant.Text ;
-              TblEtiquetasProdutoCodigoAntigo.AsString := SQLProdutoPRODA15CODANT.AsString ;
-              TblEtiquetasInfo01EtqBarras.AsString     := SQLProdutoPRODA30INF01ETQBARRAS.AsString;
-              TblEtiquetasInfo02EtqBarras.AsString     := SQLProdutoPRODA30INF02ETQBARRAS.AsString;
-              TblEtiquetasDescricaoTecnica.AsString    := SQLProdutoPRODA255DESCRTEC.AsString;
-              if ComboLote.Value <> '' then
-                TblEtiquetasLote.AsString              := ComboLote.Value;
-              TblEtiquetas.Post ;
-            end ;
-        End;
-      SQLNotaCompraItem.Next;
-    End;
+  while not SQLNotaCompraItem.Eof do
+  begin
+    if (EncontrouProduto(SQLNotaCompraItem.FindField('PRODICOD').asString, SQLProduto)) and (sqllocate('PRODUTO', 'PRODICOD', 'PRODCIMPETIQCDBAR', SQLProdutoPRODICOD.AsString) = 'S') then
+    begin
+      for I := 1 to (SQLNotaCompraItem.FindField('NOCIN3QTDEMBAL').asInteger * SQLNotaCompraItem.FindField('NOCIN3CAPEMBAL').asInteger) do
+      begin
+        TblEtiquetas.Append;
+        TblEtiquetasProdutoCodigo.AsString := SQLProdutoPRODICOD.AsString;
+        TblEtiquetasCodigoBarras.AsString := SQLProdutoPRODA60CODBAR.AsString;
+        TblEtiquetasREFERENCIA.AsString := SQLProdutoPRODA60REFER.AsString;
+        ;
+        TblEtiquetasDescricao.AsString := SQLProdutoPRODA60DESCR.AsString;
+        TblEtiquetasPreco.Value := RetornaPreco(SQLProduto, DM.SQLConfigVenda.fieldbyname('TPRCICOD').asString, '');
+        TblEtiquetasPrecoPromo.Value := SQLProdutoPRODN3VLRVENDAPROM.Value;
+        TblEtiquetasTamanho.AsString := SQLProdutoTAMANHOLOOKUP.AsString;
+        TblEtiquetasDescricaoReduzida.AsString := SQLProdutoPRODA30ADESCRREDUZ.AsString;
+        TblEtiquetasCodigoEstrut.AsString := SQLProdutoPRODA30CODESTRUT.AsString;
+        TblEtiquetasMarca.AsString := SQLProdutoMarcaLookup.AsString;
+        TblEtiquetasUnidade.AsString := SQLProdutoUnidadeLookup.AsString;
+        TblEtiquetasDtUltEntr.AsString := dm.SQLLocate('NOTACOMPRA', 'NOCPA13ID', 'NOCPDRECEBIMENTO', '''' + SQLNotaCompraItem.FindField('NOCPA13ID').AsString + '''');
+        TblEtiquetasNFnumero.AsString := dm.SQLLocate('NOTACOMPRA', 'NOCPA13ID', 'NOCPA30NRO', '''' + SQLNotaCompraItem.FindField('NOCPA13ID').AsString + '''');
+        TblEtiquetasCOD_FORN.AsString := dm.SQLLocate('NOTACOMPRA', 'NOCPA13ID', 'FORNICOD', '''' + SQLNotaCompraItem.FindField('NOCPA13ID').AsString + '''');
+        TblEtiquetasFornecedor.AsString := dm.SQLLocate('FORNECEDOR', 'FORNICOD', 'FORNA60RAZAOSOC', TblEtiquetasCOD_FORN.AsString);
+        TblEtiquetasCustFant.AsString := '';
+        TblEtiquetasParcPlanos.AsString := '';
+        TblEtiquetasCor.AsString := SQLProdutoCorLookup.AsString;
+        TblEtiquetasQuant.AsString := Quant.Text;
+        TblEtiquetasProdutoCodigoAntigo.AsString := SQLProdutoPRODA15CODANT.AsString;
+        TblEtiquetasInfo01EtqBarras.AsString := SQLProdutoPRODA30INF01ETQBARRAS.AsString;
+        TblEtiquetasInfo02EtqBarras.AsString := SQLProdutoPRODA30INF02ETQBARRAS.AsString;
+        TblEtiquetasDescricaoTecnica.AsString := SQLProdutoPRODA255DESCRTEC.AsString;
+        if ComboLote.Value <> '' then
+          TblEtiquetasLote.AsString := ComboLote.Value;
+        TblEtiquetas.Post;
+      end;
+    end;
+    SQLNotaCompraItem.Next;
+  end;
   SQLNotaCompraItem.Close;
-  EditNotaCompra.Text:='';
+  EditNotaCompra.Text := '';
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.BtnPedidoVendaClick(
-  Sender: TObject);
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.BtnPedidoVendaClick(Sender: TObject);
 begin
   inherited;
-  EditLookup  := EditPedidoVenda;
+  EditLookup := EditPedidoVenda;
   FieldOrigem := 'PDVDA13ID';
-  CriaFormulario(TFormTelaConsultaPedidoVenda,'FormTelaConsultaPedidoVenda',False,True,True,'');
+  CriaFormulario(TFormTelaConsultaPedidoVenda, 'FormTelaConsultaPedidoVenda', False, True, True, '');
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.EditPedidoVendaChange(
-  Sender: TObject);
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.EditPedidoVendaChange(Sender: TObject);
 begin
   inherited;
   BtnIncProdPedVenda.Enabled := (Sender as TEdit).Text <> '';
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.EditPedidoVendaKeyDown(
-  Sender: TObject; var Key: Word; Shift: TShiftState);
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.EditPedidoVendaKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   inherited;
-  If Key = VK_F2 Then
+  if Key = VK_F2 then
     BtnPedidoVenda.Click;
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.BtnIncProdPedVendaClick(
-  Sender: TObject);
-Var
-  I:Integer;
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.BtnIncProdPedVendaClick(Sender: TObject);
+var
+  I: Integer;
 begin
   inherited;
   SQLPedidoVendaItem.ParamByName('PDVDA13ID').asString := EditPedidoVenda.Text;
   SQLPedidoVendaItem.Open;
   SQLPedidoVendaItem.First;
-  While Not SQLPedidoVendaItem.Eof Do
-    Begin
-      if EncontrouProduto(SQLPedidoVendaItem.FindField('PRODICOD').asString, SQLProduto) then
-        Begin
-          for I := 1 to SQLPedidoVendaItem.FindField('PVITN3QUANT').asInteger do
-            begin
-              TblEtiquetas.Append ;
-              TblEtiquetasProdutoCodigo.AsString       := SQLProdutoPRODICOD.AsString ;
-              TblEtiquetasCodigoBarras.AsString        := SQLProdutoPRODA60CODBAR.AsString ;
-              TblEtiquetasREFERENCIA.AsString          := SQLProdutoPRODA60REFER.AsString ; ;
-              TblEtiquetasDescricao.AsString           := SQLProdutoPRODA60DESCR.AsString ;
-              TblEtiquetasPreco.Value                  := RetornaPreco(SQLProduto,DM.SQLConfigVenda.fieldbyname('TPRCICOD').asString,'') ;
-              TblEtiquetasPrecoPromo.Value             := SQLProdutoPRODN3VLRVENDAPROM.Value;
-              TblEtiquetasTamanho.AsString             := SQLProdutoTAMANHOLOOKUP.AsString ;
-              TblEtiquetasDescricaoReduzida.AsString   := SQLProdutoPRODA30ADESCRREDUZ.AsString ;
-              TblEtiquetasCodigoEstrut.AsString        := SQLProdutoPRODA30CODESTRUT.AsString ;
-              TblEtiquetasMarca.AsString               := SQLProdutoMarcaLookup.AsString ;
-              TblEtiquetasUnidade.AsString             := SQLProdutoUnidadeLookup.AsString ;              
-              TblEtiquetasDtUltEntr.AsString           := '' ;
-              TblEtiquetasCustFant.AsString            := '' ;
-              TblEtiquetasParcPlanos.AsString          := '' ;
-              TblEtiquetasCor.AsString                 := SQLProdutoCorLookup.AsString ;
-              TblEtiquetasQuant.AsString               := Quant.Text ;
-              TblEtiquetasProdutoCodigoAntigo.AsString := SQLProdutoPRODA15CODANT.AsString ;
-              TblEtiquetasInfo01EtqBarras.AsString     := SQLProdutoPRODA30INF01ETQBARRAS.AsString;
-              TblEtiquetasInfo02EtqBarras.AsString     := SQLProdutoPRODA30INF02ETQBARRAS.AsString;
-              TblEtiquetasDescricaoTecnica.AsString    := SQLProdutoPRODA255DESCRTEC.AsString;
-              if ComboLote.Value <> '' then
-                TblEtiquetasLote.AsString              := ComboLote.Value;
-              TblEtiquetas.Post ;
-            end ;
-        End;
-      SQLPedidoVendaItem.Next;
-    End;
+  while not SQLPedidoVendaItem.Eof do
+  begin
+    if EncontrouProduto(SQLPedidoVendaItem.FindField('PRODICOD').asString, SQLProduto) then
+    begin
+      for I := 1 to SQLPedidoVendaItem.FindField('PVITN3QUANT').asInteger do
+      begin
+        TblEtiquetas.Append;
+        TblEtiquetasProdutoCodigo.AsString := SQLProdutoPRODICOD.AsString;
+        TblEtiquetasCodigoBarras.AsString := SQLProdutoPRODA60CODBAR.AsString;
+        TblEtiquetasREFERENCIA.AsString := SQLProdutoPRODA60REFER.AsString;
+        ;
+        TblEtiquetasDescricao.AsString := SQLProdutoPRODA60DESCR.AsString;
+        TblEtiquetasPreco.Value := RetornaPreco(SQLProduto, DM.SQLConfigVenda.fieldbyname('TPRCICOD').asString, '');
+        TblEtiquetasPrecoPromo.Value := SQLProdutoPRODN3VLRVENDAPROM.Value;
+        TblEtiquetasTamanho.AsString := SQLProdutoTAMANHOLOOKUP.AsString;
+        TblEtiquetasDescricaoReduzida.AsString := SQLProdutoPRODA30ADESCRREDUZ.AsString;
+        TblEtiquetasCodigoEstrut.AsString := SQLProdutoPRODA30CODESTRUT.AsString;
+        TblEtiquetasMarca.AsString := SQLProdutoMarcaLookup.AsString;
+        TblEtiquetasUnidade.AsString := SQLProdutoUnidadeLookup.AsString;
+        TblEtiquetasDtUltEntr.AsString := '';
+        TblEtiquetasCustFant.AsString := '';
+        TblEtiquetasParcPlanos.AsString := '';
+        TblEtiquetasCor.AsString := SQLProdutoCorLookup.AsString;
+        TblEtiquetasQuant.AsString := Quant.Text;
+        TblEtiquetasProdutoCodigoAntigo.AsString := SQLProdutoPRODA15CODANT.AsString;
+        TblEtiquetasInfo01EtqBarras.AsString := SQLProdutoPRODA30INF01ETQBARRAS.AsString;
+        TblEtiquetasInfo02EtqBarras.AsString := SQLProdutoPRODA30INF02ETQBARRAS.AsString;
+        TblEtiquetasDescricaoTecnica.AsString := SQLProdutoPRODA255DESCRTEC.AsString;
+        if ComboLote.Value <> '' then
+          TblEtiquetasLote.AsString := ComboLote.Value;
+        TblEtiquetas.Post;
+      end;
+    end;
+    SQLPedidoVendaItem.Next;
+  end;
   SQLPedidoVendaItem.Close;
-  EditPedidoVenda.Text:='';
+  EditPedidoVenda.Text := '';
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.EditNotaFiscalChange(
-  Sender: TObject);
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.EditNotaFiscalChange(Sender: TObject);
 begin
   inherited;
   BtnIncProdNotaVenda.Enabled := (Sender as TEdit).Text <> '';
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.EditNotaFiscalKeyDown(
-  Sender: TObject; var Key: Word; Shift: TShiftState);
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.EditNotaFiscalKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   inherited;
-  If Key = VK_F2 Then
+  if Key = VK_F2 then
     BtnNotaVenda.Click;
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.BtnNotaVendaClick(
-  Sender: TObject);
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.BtnNotaVendaClick(Sender: TObject);
 begin
   inherited;
-  EditLookup  := EditNotaFiscal;
+  EditLookup := EditNotaFiscal;
   FieldOrigem := 'NOFIA13ID';
-  CriaFormulario(TFormTelaConsultaNotaFiscal,'FormTelaConsultaNotaFiscal',False,True,True,'');
+  CriaFormulario(TFormTelaConsultaNotaFiscal, 'FormTelaConsultaNotaFiscal', False, True, True, '');
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.BtnIncProdNotaVendaClick(
-  Sender: TObject);
-Var
-  I:Integer;
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.BtnIncProdNotaVendaClick(Sender: TObject);
+var
+  I: Integer;
 begin
   inherited;
   SQLNotaVendaItem.ParamByName('NOFIA13ID').asString := EditNotaFiscal.Text;
   SQLNotaVendaItem.Open;
   SQLNotaVendaItem.First;
-  While Not SQLNotaVendaItem.Eof Do
-    Begin
-      if EncontrouProduto(SQLNotaVendaItem.FindField('PRODICOD').asString, SQLProduto) then
-        Begin
-          for I := 1 to SQLNotaVendaItem.FindField('NFITN3QUANT').asInteger do
-            begin
-              TblEtiquetas.Append ;
-              TblEtiquetasProdutoCodigo.AsString       := SQLProdutoPRODICOD.AsString ;
-              TblEtiquetasCodigoBarras.AsString        := SQLProdutoPRODA60CODBAR.AsString ;
-              TblEtiquetasREFERENCIA.AsString          := SQLProdutoPRODA60REFER.AsString ; ;
-              TblEtiquetasDescricao.AsString           := SQLProdutoPRODA60DESCR.AsString ;
-              TblEtiquetasPreco.Value                  := RetornaPreco(SQLProduto,DM.SQLConfigVenda.fieldbyname('TPRCICOD').asString,'') ;
-              TblEtiquetasPrecoPromo.Value             := SQLProdutoPRODN3VLRVENDAPROM.Value;
-              TblEtiquetasTamanho.AsString             := SQLProdutoTAMANHOLOOKUP.AsString ;
-              TblEtiquetasDescricaoReduzida.AsString   := SQLProdutoPRODA30ADESCRREDUZ.AsString ;
-              TblEtiquetasCodigoEstrut.AsString        := SQLProdutoPRODA30CODESTRUT.AsString ;
-              TblEtiquetasMarca.AsString               := SQLProdutoMarcaLookup.AsString ;
-              TblEtiquetasUnidade.AsString             := SQLProdutoUnidadeLookup.AsString ;              
-              TblEtiquetasDtUltEntr.AsString           := '' ;
-              TblEtiquetasCustFant.AsString            := '' ;
-              TblEtiquetasParcPlanos.AsString          := '' ;
-              TblEtiquetasCor.AsString                 := SQLProdutoCorLookup.AsString ;
-              TblEtiquetasQuant.AsString               := Quant.Text ;
-              TblEtiquetasProdutoCodigoAntigo.AsString := SQLProdutoPRODA15CODANT.AsString ;
-              TblEtiquetasInfo01EtqBarras.AsString     := SQLProdutoPRODA30INF01ETQBARRAS.AsString;
-              TblEtiquetasInfo02EtqBarras.AsString     := SQLProdutoPRODA30INF02ETQBARRAS.AsString;
-              TblEtiquetasDescricaoTecnica.AsString    := SQLProdutoPRODA255DESCRTEC.AsString;
-              if ComboLote.Value <> '' then
-                TblEtiquetasLote.AsString              := ComboLote.Value;
-              TblEtiquetas.Post ;
-            end ;
-        End;
-      SQLNotaVendaItem.Next;
-    End;
+  while not SQLNotaVendaItem.Eof do
+  begin
+    if EncontrouProduto(SQLNotaVendaItem.FindField('PRODICOD').asString, SQLProduto) then
+    begin
+      for I := 1 to SQLNotaVendaItem.FindField('NFITN3QUANT').asInteger do
+      begin
+        TblEtiquetas.Append;
+        TblEtiquetasProdutoCodigo.AsString := SQLProdutoPRODICOD.AsString;
+        TblEtiquetasCodigoBarras.AsString := SQLProdutoPRODA60CODBAR.AsString;
+        TblEtiquetasREFERENCIA.AsString := SQLProdutoPRODA60REFER.AsString;
+        ;
+        TblEtiquetasDescricao.AsString := SQLProdutoPRODA60DESCR.AsString;
+        TblEtiquetasPreco.Value := RetornaPreco(SQLProduto, DM.SQLConfigVenda.fieldbyname('TPRCICOD').asString, '');
+        TblEtiquetasPrecoPromo.Value := SQLProdutoPRODN3VLRVENDAPROM.Value;
+        TblEtiquetasTamanho.AsString := SQLProdutoTAMANHOLOOKUP.AsString;
+        TblEtiquetasDescricaoReduzida.AsString := SQLProdutoPRODA30ADESCRREDUZ.AsString;
+        TblEtiquetasCodigoEstrut.AsString := SQLProdutoPRODA30CODESTRUT.AsString;
+        TblEtiquetasMarca.AsString := SQLProdutoMarcaLookup.AsString;
+        TblEtiquetasUnidade.AsString := SQLProdutoUnidadeLookup.AsString;
+        TblEtiquetasDtUltEntr.AsString := '';
+        TblEtiquetasCustFant.AsString := '';
+        TblEtiquetasParcPlanos.AsString := '';
+        TblEtiquetasCor.AsString := SQLProdutoCorLookup.AsString;
+        TblEtiquetasQuant.AsString := Quant.Text;
+        TblEtiquetasProdutoCodigoAntigo.AsString := SQLProdutoPRODA15CODANT.AsString;
+        TblEtiquetasInfo01EtqBarras.AsString := SQLProdutoPRODA30INF01ETQBARRAS.AsString;
+        TblEtiquetasInfo02EtqBarras.AsString := SQLProdutoPRODA30INF02ETQBARRAS.AsString;
+        TblEtiquetasDescricaoTecnica.AsString := SQLProdutoPRODA255DESCRTEC.AsString;
+        if ComboLote.Value <> '' then
+          TblEtiquetasLote.AsString := ComboLote.Value;
+        TblEtiquetas.Post;
+      end;
+    end;
+    SQLNotaVendaItem.Next;
+  end;
   SQLNotaVendaItem.Close;
-  EditNotaFiscal.Text:='';
+  EditNotaFiscal.Text := '';
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.BtnFecharTelaClick(
-  Sender: TObject);
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.BtnFecharTelaClick(Sender: TObject);
 begin
   inherited;
-  if TblEtiquetas.Active then TblEtiquetas.Close;
+  if TblEtiquetas.Active then
+    TblEtiquetas.Close;
 
   DSMasterSys := nil;
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.MnLimparArquivoTemporarioClick(
-  Sender: TObject);
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.MnLimparArquivoTemporarioClick(Sender: TObject);
 begin
   inherited;
   TblEtiquetas.First;
-  While not TblEtiquetas.eof do
+  while not TblEtiquetas.eof do
     TblEtiquetas.delete;
   CodProd.Text := '';
   CodProd.SetFocus;
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.FormActivate(
-  Sender: TObject);
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.FormActivate(Sender: TObject);
 begin
   inherited;
   SQLConfigEtiquetaCodigoBarra.Close;
   SQLConfigEtiquetaCodigoBarra.Open;
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.TblEtiquetasBeforePost(
-  DataSet: TDataSet);
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.TblEtiquetasBeforePost(DataSet: TDataSet);
 begin
   inherited;
   if ComboLote.Value <> '' then
-    TblEtiquetasLote.AsString  := ComboLote.Value;
+    TblEtiquetasLote.AsString := ComboLote.Value;
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.FormClose(Sender: TObject;
-  var Action: TCloseAction);
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   inherited;
-  FormStorage := TIniFile.Create(ExtractFilePath(Application.ExeName)+ FormTelaEmissaoEtiquetasCodigoBarras.Caption + '.ini');
+  FormStorage := TIniFile.Create(ExtractFilePath(Application.ExeName) + FormTelaEmissaoEtiquetasCodigoBarras.Caption + '.ini');
   if ComboLote.Value <> '' then
-    begin
-      FormStorage.WriteString('COMBOLOTE','ComboLOTE_Value',ComboLote.Value);
-    end;
+  begin
+    FormStorage.WriteString('COMBOLOTE', 'ComboLOTE_Value', ComboLote.Value);
+  end;
   if ComboEtiquetas.Value <> '' then
-    begin
-      FormStorage.WriteString('COMBOETIQ','ComboEtiquetas_Value',ComboEtiquetas.Value);
-    end;
+  begin
+    FormStorage.WriteString('COMBOETIQ', 'ComboEtiquetas_Value', ComboEtiquetas.Value);
+  end;
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.MnInserir01LinhaBrancoClick(
-  Sender: TObject);
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.MnInserir01LinhaBrancoClick(Sender: TObject);
 begin
   inherited;
   // Inserir Linha em Branco no fim da tabela
-  TblEtiquetas.Append ;
-  TblEtiquetas.Post ;
+  TblEtiquetas.Append;
+  TblEtiquetas.Post;
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.MnInserir02LinhasBrancoClick(
-  Sender: TObject);
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.MnInserir02LinhasBrancoClick(Sender: TObject);
 begin
   inherited;
   // Inserir Linha em Branco no fim da tabela
-  TblEtiquetas.Append ;
-  TblEtiquetas.Post ;
+  TblEtiquetas.Append;
+  TblEtiquetas.Post;
   // Inserir Linha em Branco no fim da tabela
-  TblEtiquetas.Append ;
-  TblEtiquetas.Post ;
+  TblEtiquetas.Append;
+  TblEtiquetas.Post;
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.EditMovDivChange(
-  Sender: TObject);
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.EditMovDivChange(Sender: TObject);
 begin
   inherited;
   BtnIncProdMovDiv.Enabled := (Sender as TEdit).Text <> '';
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.BtnIncProdMovDivClick(
-  Sender: TObject);
-Var
-  I:Integer;
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.BtnIncProdMovDivClick(Sender: TObject);
+var
+  I: Integer;
 begin
   inherited;
   SQLMovimentoDiversoItem.ParamByName('MOVDA13ID').asString := EditMovDiv.Text;
   SQLMovimentoDiversoItem.Open;
   SQLMovimentoDiversoItem.First;
-  While Not SQLMovimentoDiversoItem.Eof Do
-    Begin
-      if EncontrouProduto(SQLMovimentoDiversoItem.FindField('PRODICOD').asString, SQLProduto) then
-        Begin
-          for I := 1 to (SQLMovimentoDiversoItem.FindField('MVDIN3QTD').asInteger) do
-            begin
-              TblEtiquetas.Append ;
-              TblEtiquetasProdutoCodigo.AsString       := SQLProdutoPRODICOD.AsString ;
-              TblEtiquetasCodigoBarras.AsString        := SQLProdutoPRODA60CODBAR.AsString ;
-              TblEtiquetasREFERENCIA.AsString          := SQLProdutoPRODA60REFER.AsString ; ;
-              TblEtiquetasDescricao.AsString           := SQLProdutoPRODA60DESCR.AsString ;
-              TblEtiquetasPreco.Value                  := RetornaPreco(SQLProduto,DM.SQLConfigVenda.fieldbyname('TPRCICOD').asString,'') ;
-              TblEtiquetasPrecoPromo.Value             := SQLProdutoPRODN3VLRVENDAPROM.Value;
-              TblEtiquetasTamanho.AsString             := SQLProdutoTAMANHOLOOKUP.AsString ;
-              TblEtiquetasDescricaoReduzida.AsString   := SQLProdutoPRODA30ADESCRREDUZ.AsString ;
-              TblEtiquetasCodigoEstrut.AsString        := SQLProdutoPRODA30CODESTRUT.AsString ;
-              TblEtiquetasMarca.AsString               := SQLProdutoMarcaLookup.AsString ;
-              TblEtiquetasUnidade.AsString             := SQLProdutoUnidadeLookup.AsString ;
-              TblEtiquetasDtUltEntr.AsString           := '' ;
-              TblEtiquetasCustFant.AsString            := '' ;
-              TblEtiquetasParcPlanos.AsString          := '' ;
-              TblEtiquetasPrecoVarejo.Value            := SQLProdutoPRODN3VLRVENDA.Value;
-              TblEtiquetasPrecoAtacado.Value           := SQLProdutoPRODN3VLRVENDA2.Value;
-              TblEtiquetasCor.AsString                 := SQLProdutoCorLookup.AsString ;
-              TblEtiquetasQuant.AsString               := Quant.Text ;
-              TblEtiquetasProdutoCodigoAntigo.AsString := SQLProdutoPRODA15CODANT.AsString ;
-              TblEtiquetasInfo01EtqBarras.AsString     := SQLProdutoPRODA30INF01ETQBARRAS.AsString;
-              TblEtiquetasInfo02EtqBarras.AsString     := SQLProdutoPRODA30INF02ETQBARRAS.AsString;
-              TblEtiquetasDescricaoTecnica.AsString    := SQLProdutoPRODA255DESCRTEC.AsString;
-              if ComboLote.Value <> '' then
-                TblEtiquetasLote.AsString              := ComboLote.Value;
-              TblEtiquetas.Post ;
-            end ;
-        End;
-      SQLMovimentoDiversoItem.Next;
-    End;
+  while not SQLMovimentoDiversoItem.Eof do
+  begin
+    if EncontrouProduto(SQLMovimentoDiversoItem.FindField('PRODICOD').asString, SQLProduto) then
+    begin
+      for I := 1 to (SQLMovimentoDiversoItem.FindField('MVDIN3QTD').asInteger) do
+      begin
+        TblEtiquetas.Append;
+        TblEtiquetasProdutoCodigo.AsString := SQLProdutoPRODICOD.AsString;
+        TblEtiquetasCodigoBarras.AsString := SQLProdutoPRODA60CODBAR.AsString;
+        TblEtiquetasREFERENCIA.AsString := SQLProdutoPRODA60REFER.AsString;
+        ;
+        TblEtiquetasDescricao.AsString := SQLProdutoPRODA60DESCR.AsString;
+        TblEtiquetasPreco.Value := RetornaPreco(SQLProduto, DM.SQLConfigVenda.fieldbyname('TPRCICOD').asString, '');
+        TblEtiquetasPrecoPromo.Value := SQLProdutoPRODN3VLRVENDAPROM.Value;
+        TblEtiquetasTamanho.AsString := SQLProdutoTAMANHOLOOKUP.AsString;
+        TblEtiquetasDescricaoReduzida.AsString := SQLProdutoPRODA30ADESCRREDUZ.AsString;
+        TblEtiquetasCodigoEstrut.AsString := SQLProdutoPRODA30CODESTRUT.AsString;
+        TblEtiquetasMarca.AsString := SQLProdutoMarcaLookup.AsString;
+        TblEtiquetasUnidade.AsString := SQLProdutoUnidadeLookup.AsString;
+        TblEtiquetasDtUltEntr.AsString := '';
+        TblEtiquetasCustFant.AsString := '';
+        TblEtiquetasParcPlanos.AsString := '';
+        TblEtiquetasPrecoVarejo.Value := SQLProdutoPRODN3VLRVENDA.Value;
+        TblEtiquetasPrecoAtacado.Value := SQLProdutoPRODN3VLRVENDA2.Value;
+        TblEtiquetasCor.AsString := SQLProdutoCorLookup.AsString;
+        TblEtiquetasQuant.AsString := Quant.Text;
+        TblEtiquetasProdutoCodigoAntigo.AsString := SQLProdutoPRODA15CODANT.AsString;
+        TblEtiquetasInfo01EtqBarras.AsString := SQLProdutoPRODA30INF01ETQBARRAS.AsString;
+        TblEtiquetasInfo02EtqBarras.AsString := SQLProdutoPRODA30INF02ETQBARRAS.AsString;
+        TblEtiquetasDescricaoTecnica.AsString := SQLProdutoPRODA255DESCRTEC.AsString;
+        if ComboLote.Value <> '' then
+          TblEtiquetasLote.AsString := ComboLote.Value;
+        TblEtiquetas.Post;
+      end;
+    end;
+    SQLMovimentoDiversoItem.Next;
+  end;
   SQLMovimentoDiversoItem.Close;
-  EditMovDiv.Text:='';
+  EditMovDiv.Text := '';
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.BtEtqAvulsaClick(
-  Sender: TObject);
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.BtEtqAvulsaClick(Sender: TObject);
 var
-  i,Etiquetas : Integer ;
+  i, Etiquetas: Integer;
 begin
   inherited;
   Etiquetas := QtdeAvulsa.AsInteger;
   for i := 1 to Etiquetas do
-    begin
-      TblEtiquetas.Append ;
-      TblEtiquetasProdutoCodigo.Value          := i ;
-      TblEtiquetasDescricao.AsString           := Linha01.Text ;
-      TblEtiquetasCor.AsString                 := Linha02.Text ;
-      TblEtiquetasInfo01EtqBarras.AsString     := Linha03.Text ;
-      TblEtiquetasInfo02EtqBarras.AsString     := Linha04.Text ;
-      TblEtiquetas.Post ;
-      Quant.Value := 1 ;
-    end ;
+  begin
+    TblEtiquetas.Append;
+    TblEtiquetasProdutoCodigo.Value := i;
+    TblEtiquetasDescricao.AsString := Linha01.Text;
+    TblEtiquetasCor.AsString := Linha02.Text;
+    TblEtiquetasInfo01EtqBarras.AsString := Linha03.Text;
+    TblEtiquetasInfo02EtqBarras.AsString := Linha04.Text;
+    TblEtiquetas.Post;
+    Quant.Value := 1;
+  end;
 end;
 
-procedure TFormTelaEmissaoEtiquetasCodigoBarras.btnProdutosAlteradosClick(
-  Sender: TObject);
-Var
-  I:Integer;
+procedure TFormTelaEmissaoEtiquetasCodigoBarras.btnProdutosAlteradosClick(Sender: TObject);
+var
+  I: Integer;
 begin
   inherited;
   if (DateEdit1.Text = '  /  /    ') or (MaskEdit1.Text = '  :  ') then
@@ -996,35 +996,36 @@ begin
   end;
   SQLProduto.Close;
   SQLProduto.SQL.Text := 'Select * from Produto where registro >= :xRegistro';
-  SQLProduto.ParamByName('xRegistro').AsDateTime := StrToDateTime(DateEdit1.Text + ' '+MaskEdit1.Text);
+  SQLProduto.ParamByName('xRegistro').AsDateTime := StrToDateTime(DateEdit1.Text + ' ' + MaskEdit1.Text);
   SQLProduto.Open;
   SQLProduto.First;
-  While Not SQLProduto.Eof Do
-    Begin
-      TblEtiquetas.Append ;
-      TblEtiquetasProdutoCodigo.AsString       := SQLProdutoPRODICOD.AsString ;
-      TblEtiquetasCodigoBarras.AsString        := SQLProdutoPRODA60CODBAR.AsString ;
-      TblEtiquetasREFERENCIA.AsString          := SQLProdutoPRODA60REFER.AsString ; ;
-      TblEtiquetasDescricao.AsString           := SQLProdutoPRODA60DESCR.AsString ;
-      TblEtiquetasPreco.Value                  := SQLProdutoPRODN3VLRVENDA.AsFloat;
-      TblEtiquetasPrecoPromo.Value             := SQLProdutoPRODN3VLRVENDAPROM.Value;
-      TblEtiquetasTamanho.AsString             := SQLProdutoTAMANHOLOOKUP.AsString ;
-      TblEtiquetasDescricaoReduzida.AsString   := SQLProdutoPRODA30ADESCRREDUZ.AsString ;
-      TblEtiquetasCodigoEstrut.AsString        := SQLProdutoPRODA30CODESTRUT.AsString ;
-      TblEtiquetasMarca.AsString               := SQLProdutoMarcaLookup.AsString ;
-      TblEtiquetasUnidade.AsString             := SQLProdutoUnidadeLookup.AsString ;
-      TblEtiquetasDtUltEntr.AsString           := '' ;
-      TblEtiquetasCustFant.AsString            := '' ;
-      TblEtiquetasParcPlanos.AsString          := '' ;
-      TblEtiquetasCor.AsString                 := SQLProdutoCorLookup.AsString ;
-      TblEtiquetasQuant.AsString               := Quant.Text ;
-      TblEtiquetasProdutoCodigoAntigo.AsString := SQLProdutoPRODA15CODANT.AsString ;
-      TblEtiquetasInfo01EtqBarras.AsString     := SQLProdutoPRODA30INF01ETQBARRAS.AsString;
-      TblEtiquetasInfo02EtqBarras.AsString     := SQLProdutoPRODA30INF02ETQBARRAS.AsString;
-      TblEtiquetasDescricaoTecnica.AsString    := SQLProdutoPRODA255DESCRTEC.AsString;
-      TblEtiquetas.Post ;
-      SQLProduto.Next;
-    End;
+  while not SQLProduto.Eof do
+  begin
+    TblEtiquetas.Append;
+    TblEtiquetasProdutoCodigo.AsString := SQLProdutoPRODICOD.AsString;
+    TblEtiquetasCodigoBarras.AsString := SQLProdutoPRODA60CODBAR.AsString;
+    TblEtiquetasREFERENCIA.AsString := SQLProdutoPRODA60REFER.AsString;
+    ;
+    TblEtiquetasDescricao.AsString := SQLProdutoPRODA60DESCR.AsString;
+    TblEtiquetasPreco.Value := SQLProdutoPRODN3VLRVENDA.AsFloat;
+    TblEtiquetasPrecoPromo.Value := SQLProdutoPRODN3VLRVENDAPROM.Value;
+    TblEtiquetasTamanho.AsString := SQLProdutoTAMANHOLOOKUP.AsString;
+    TblEtiquetasDescricaoReduzida.AsString := SQLProdutoPRODA30ADESCRREDUZ.AsString;
+    TblEtiquetasCodigoEstrut.AsString := SQLProdutoPRODA30CODESTRUT.AsString;
+    TblEtiquetasMarca.AsString := SQLProdutoMarcaLookup.AsString;
+    TblEtiquetasUnidade.AsString := SQLProdutoUnidadeLookup.AsString;
+    TblEtiquetasDtUltEntr.AsString := '';
+    TblEtiquetasCustFant.AsString := '';
+    TblEtiquetasParcPlanos.AsString := '';
+    TblEtiquetasCor.AsString := SQLProdutoCorLookup.AsString;
+    TblEtiquetasQuant.AsString := Quant.Text;
+    TblEtiquetasProdutoCodigoAntigo.AsString := SQLProdutoPRODA15CODANT.AsString;
+    TblEtiquetasInfo01EtqBarras.AsString := SQLProdutoPRODA30INF01ETQBARRAS.AsString;
+    TblEtiquetasInfo02EtqBarras.AsString := SQLProdutoPRODA30INF02ETQBARRAS.AsString;
+    TblEtiquetasDescricaoTecnica.AsString := SQLProdutoPRODA255DESCRTEC.AsString;
+    TblEtiquetas.Post;
+    SQLProduto.Next;
+  end;
   SQLProduto.Close;
   DateEdit1.Clear;
   MaskEdit1.Clear;

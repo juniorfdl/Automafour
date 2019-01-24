@@ -361,6 +361,7 @@ type
     cdsPedidoCompra: TClientDataSet;
     dsPedidoCompra: TDataSource;
     cdsPedidoCompraPDCPA13ID: TStringField;
+    btnGravarCST: TSpeedButton;
     procedure FormCreate(Sender: TObject);
     procedure actSelecionarArquivoExecute(Sender: TObject);
     procedure seNParcelasChange(Sender: TObject);
@@ -421,6 +422,7 @@ type
       const Rect: TRect; DataCol: Integer; Column: TColumn;
       State: TGridDrawState);
     procedure btnPedidoClick(Sender: TObject);
+    procedure btnGravarCSTClick(Sender: TObject);
 
   private
     XMLOutraEmpresa: Boolean;
@@ -623,9 +625,11 @@ begin
 
   cdsItens.Close;
   cdsItens.CreateDataSet;
+  cdsItens.EmptyDataSet;
 
   cdsVisualizacao.Close;
   cdsVisualizacao.CreateDataSet;
+  cdsVisualizacao.EmptyDataSet;
 
   {Dados de Produtos da NF}
   for i := 0 to ACBrNFe.NotasFiscais.Items[0].NFe.Det.Count -1 do
@@ -3248,6 +3252,27 @@ begin
       end
     end;
   SQLProdutoEditar.Close;
+end;
+
+procedure TFormTelaImportadorXML.btnGravarCSTClick(Sender: TObject);
+begin
+  inherited;
+  if cdsItens.IsEmpty then
+  begin
+    MessageDlg('Nenhum XML processado!', mtError, [mbOK],0);
+    Exit;
+  end;
+  cdsItens.First;
+  cdsItens.DisableControls;
+  while not(cdsItens.eof) do
+  begin
+    if cdsItenscst_icms.AsString <> '' then
+      AtualizaCST_ICMSCadastroProduto(StrToInt(cdsItenscodigo_gravar.AsString), cdsItenscst_icms.AsString,cdsItensorigem_produto.AsString);
+    cdsItens.Next;
+  end;
+  MessageDlg('CST gravado com Sucesso!', mtInformation, [mbOK],0);
+  MoveXMLPastaImportado;
+  tsXMLs.Show;
 end;
 
 end.

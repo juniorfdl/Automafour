@@ -1,6 +1,7 @@
 inherited FormTelaEmissaoEtiquetasCodigoBarras: TFormTelaEmissaoEtiquetasCodigoBarras
-  Left = 186
-  Width = 926
+  Left = 117
+  Top = 98
+  Width = 1180
   Height = 537
   Caption = 'Emiss'#227'o de Etiquetas de Produtos'
   KeyPreview = False
@@ -16,22 +17,22 @@ inherited FormTelaEmissaoEtiquetasCodigoBarras: TFormTelaEmissaoEtiquetasCodigoB
     Caption = 'CFCBA100PATHARQTXT'
   end
   inherited ScrollBoxFundo: TScrollBox
-    Width = 910
+    Width = 1164
     Height = 499
     inherited PanelCentral: TPanel
-      Width = 906
+      Width = 1160
       Height = 415
       object Bevel1: TBevel [0]
         Left = 0
         Top = 44
-        Width = 906
+        Width = 1160
         Height = 3
         Align = alTop
       end
       object Bevel2: TBevel [1]
         Left = 0
         Top = 176
-        Width = 906
+        Width = 1160
         Height = 3
         Align = alTop
       end
@@ -44,9 +45,9 @@ inherited FormTelaEmissaoEtiquetasCodigoBarras: TFormTelaEmissaoEtiquetasCodigoB
       object PageControl: TPageControl
         Left = 0
         Top = 47
-        Width = 906
+        Width = 1160
         Height = 129
-        ActivePage = TabSheetMovDiv
+        ActivePage = TabSheetItem
         Align = alTop
         Style = tsFlatButtons
         TabOrder = 1
@@ -696,7 +697,7 @@ inherited FormTelaEmissaoEtiquetasCodigoBarras: TFormTelaEmissaoEtiquetasCodigoB
       object DBGridLista: TDBGrid
         Left = 0
         Top = 179
-        Width = 906
+        Width = 1160
         Height = 236
         Align = alClient
         BorderStyle = bsNone
@@ -817,12 +818,18 @@ inherited FormTelaEmissaoEtiquetasCodigoBarras: TFormTelaEmissaoEtiquetasCodigoB
             Expanded = False
             FieldName = 'Fornecedor'
             Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'Numero_Serie'
+            Width = 315
+            Visible = True
           end>
       end
       object Panel4: TPanel
         Left = 0
         Top = 0
-        Width = 906
+        Width = 1160
         Height = 44
         Align = alTop
         BevelOuter = bvNone
@@ -883,13 +890,13 @@ inherited FormTelaEmissaoEtiquetasCodigoBarras: TFormTelaEmissaoEtiquetasCodigoB
       end
     end
     inherited ScrollBoxTopo: TScrollBox
-      Width = 906
+      Width = 1160
       inherited PanelCabecalho: TPanel
-        Width = 906
+        Width = 1160
         inherited PanelNavigator: TPanel
-          Width = 906
+          Width = 1160
           inherited AdvPanelNavigator: TAdvOfficeStatusBar
-            Width = 906
+            Width = 1160
             object BtnImprimir: TSpeedButton
               Left = 2
               Top = 3
@@ -1183,6 +1190,10 @@ inherited FormTelaEmissaoEtiquetasCodigoBarras: TFormTelaEmissaoEtiquetasCodigoB
     end
     object TblEtiquetasCOD_FORN: TStringField
       FieldName = 'COD_FORN'
+    end
+    object TblEtiquetasNumero_Serie: TStringField
+      FieldName = 'Numero_Serie'
+      Size = 60
     end
   end
   object DSTblEtiquetas: TDataSource
@@ -1619,5 +1630,57 @@ inherited FormTelaEmissaoEtiquetasCodigoBarras: TFormTelaEmissaoEtiquetasCodigoB
         Name = 'MOVDA13ID'
         ParamType = ptUnknown
       end>
+  end
+  object cdsSerie: TClientDataSet
+    Active = True
+    Aggregates = <>
+    FieldDefs = <
+      item
+        Name = 'NumeroSerie'
+        DataType = ftString
+        Size = 60
+      end
+      item
+        Name = 'Empresa'
+        DataType = ftInteger
+      end
+      item
+        Name = 'Produto'
+        DataType = ftInteger
+      end
+      item
+        Name = 'Item'
+        DataType = ftInteger
+      end>
+    IndexDefs = <
+      item
+        Name = 'DEFAULT_ORDER'
+      end
+      item
+        Name = 'CHANGEINDEX'
+      end>
+    IndexFieldNames = 'NumeroSerie'
+    Params = <>
+    StoreDefs = True
+    Left = 692
+    Top = 186
+    Data = {
+      670000009619E0BD01000000180000000400000000000300000067000B4E756D
+      65726F53657269650100490000000100055749445448020002003C0007456D70
+      7265736104000100000000000750726F6475746F040001000000000004497465
+      6D04000100000000000000}
+    object cdsSerieNumeroSerie: TStringField
+      FieldName = 'NumeroSerie'
+      Size = 60
+    end
+    object cdsSerieEmpresa: TIntegerField
+      FieldName = 'Empresa'
+    end
+    object cdsSerieProduto: TIntegerField
+      FieldName = 'Produto'
+    end
+    object cdsSerieItem: TIntegerField
+      FieldName = 'Item'
+    end
   end
 end
