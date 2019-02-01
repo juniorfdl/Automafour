@@ -47,7 +47,7 @@ inherited FormTelaEmissaoEtiquetasCodigoBarras: TFormTelaEmissaoEtiquetasCodigoB
         Top = 47
         Width = 1160
         Height = 129
-        ActivePage = TabSheetItem
+        ActivePage = TabSheetNota
         Align = alTop
         Style = tsFlatButtons
         TabOrder = 1

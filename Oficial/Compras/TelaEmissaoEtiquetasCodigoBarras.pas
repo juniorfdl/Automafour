@@ -660,23 +660,54 @@ end;
 
 procedure TFormTelaEmissaoEtiquetasCodigoBarras.BtnIncProdNotaClick(Sender: TObject);
 var
-  I: Integer;
+  I, vQtde, vItem: Integer;
 begin
   inherited;
   SQLNotaCompraItem.ParamByName('NOCPA13ID').asString := EditNotaCompra.Text;
   SQLNotaCompraItem.Open;
   SQLNotaCompraItem.First;
+  vItem := 0;
   while not SQLNotaCompraItem.Eof do
   begin
     if (EncontrouProduto(SQLNotaCompraItem.FindField('PRODICOD').asString, SQLProduto)) and (sqllocate('PRODUTO', 'PRODICOD', 'PRODCIMPETIQCDBAR', SQLProdutoPRODICOD.AsString) = 'S') then
     begin
-      for I := 1 to (SQLNotaCompraItem.FindField('NOCIN3QTDEMBAL').asInteger * SQLNotaCompraItem.FindField('NOCIN3CAPEMBAL').asInteger) do
+      vQtde := (SQLNotaCompraItem.FindField('NOCIN3QTDEMBAL').asInteger * SQLNotaCompraItem.FindField('NOCIN3CAPEMBAL').asInteger);
+            if (DM.SQLlocate('produto', 'prodicod', 'PRODCTEMNROSERIE', SQLProdutoPRODICOD.AsString) = 'S') then
+      if (DM.SQLlocate('produto', 'prodicod', 'PRODCTEMNROSERIE', SQLProdutoPRODICOD.AsString) = 'S') then
+      begin
+        cdsSerie.EmptyDataSet;
+        CodigoProduto := SQLProdutoPRODICOD.AsString;
+        Status := ' PRSECSTATUS = ' + QuotedStr('D');
+        Application.CreateForm(TFormTelaInformaNumeroSerieProduto, FormTelaInformaNumeroSerieProduto);
+        try
+          FormTelaInformaNumeroSerieProduto.NumeroItens := vQtde;
+          FormTelaInformaNumeroSerieProduto.Valida_Qtde := True;
+          FormTelaInformaNumeroSerieProduto.ShowModal;
+          if FormTelaInformaNumeroSerieProduto.ModalResult = MrOK then
+          begin
+            FormTelaInformaNumeroSerieProduto.RXSerie.First;
+            while not FormTelaInformaNumeroSerieProduto.RXSerie.Eof do
+            begin
+              Inc(vItem);
+              cdsSerie.Insert;
+              cdsSerieNumeroSerie.AsString := FormTelaInformaNumeroSerieProduto.RXSerieNumeroSerie.Text;
+              cdsSerieItem.AsInteger := vItem;
+              cdsSerie.Post;
+              FormTelaInformaNumeroSerieProduto.RXSerie.Next;
+            end;
+          end;
+        finally
+          FormTelaInformaNumeroSerieProduto.Destroy;
+        end;
+        cdsSerie.First;
+      end;
+
+      for I := 1 to vQtde  do
       begin
         TblEtiquetas.Append;
         TblEtiquetasProdutoCodigo.AsString := SQLProdutoPRODICOD.AsString;
         TblEtiquetasCodigoBarras.AsString := SQLProdutoPRODA60CODBAR.AsString;
         TblEtiquetasREFERENCIA.AsString := SQLProdutoPRODA60REFER.AsString;
-        ;
         TblEtiquetasDescricao.AsString := SQLProdutoPRODA60DESCR.AsString;
         TblEtiquetasPreco.Value := RetornaPreco(SQLProduto, DM.SQLConfigVenda.fieldbyname('TPRCICOD').asString, '');
         TblEtiquetasPrecoPromo.Value := SQLProdutoPRODN3VLRVENDAPROM.Value;
@@ -691,6 +722,9 @@ begin
         TblEtiquetasFornecedor.AsString := dm.SQLLocate('FORNECEDOR', 'FORNICOD', 'FORNA60RAZAOSOC', TblEtiquetasCOD_FORN.AsString);
         TblEtiquetasCustFant.AsString := '';
         TblEtiquetasParcPlanos.AsString := '';
+        if cdsSerie.Locate('Item',i,[]) then
+          TblEtiquetasNumero_Serie.AsString := cdsSerieNumeroSerie.AsString;
+
         TblEtiquetasCor.AsString := SQLProdutoCorLookup.AsString;
         TblEtiquetasQuant.AsString := Quant.Text;
         TblEtiquetasProdutoCodigoAntigo.AsString := SQLProdutoPRODA15CODANT.AsString;

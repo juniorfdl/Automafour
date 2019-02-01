@@ -215,7 +215,7 @@ function SQLMax(Tabela, CampoMax, ClausulaSQL: string): Integer;
 function VerificaNumeroSerie(NroSerie, CodProduto: string): string;
 procedure GravaSaidaNroSerieProduto(NroSERIE, Produto, Status, EMPRICOD, CLIEA13ID, CUPOA13ID, PDVDA13ID, NOFIA13ID, MOVDA13ID: string);
 procedure DeletaNumeroSerie(PRODICOD, NOFIA13ID, PDVDA13ID, MOVDA13ID: string);
-procedure GravaEntradaNroSerieProduto(NOCPA13ID, MOVDA13ID, NOFIA13ID, PDVDA13ID: string);
+procedure GravaEntradaNroSerieProduto(NroSERIE, Produto,FORNICOD, EMPRICOD, NOCPA13ID, MOVDA13ID, NOFIA13ID, PDVDA13ID: string);
 procedure InsereNovoNumeroSerie(Empresa, CodigoProdutoNovo, NumeroSerie, Status : String);
 procedure GravaMovimentoCaixa(SQLTotalizadorCaixa,
   SQLTotalizar: TQuery;
@@ -248,6 +248,7 @@ function Preenche(STRI, FloodStr: string; TAM: Integer; JUST: Integer): string;
 function AbreFechaDataset(ADataSet: TDataSet; AAbrir: Boolean = True; AAtualizar: Boolean = False): Boolean;
 procedure addLog(Erro: string; Arquivo: string = '');
 procedure GravaSaldoConsignacao(Empresa, CodProdutoCons, SomaSubtrai : string; Qtde : Real);
+function RetornaMesExtenso(Mes:Integer):String;
 
 procedure GravaMovimentoEstoqueSimples(SqlProd,
   SQLProdFilho,
@@ -1336,12 +1337,30 @@ begin
 end;
 
 
-procedure GravaEntradaNroSerieProduto(NOCPA13ID, MOVDA13ID, NOFIA13ID, PDVDA13ID: string);
+procedure GravaEntradaNroSerieProduto(NroSERIE, Produto,FORNICOD, EMPRICOD, NOCPA13ID, MOVDA13ID, NOFIA13ID, PDVDA13ID: string);
 var
   SQLProdutoSerie: TQuery;
+  SQLFornecedor : TQuery;
+  NomeFornecedor : string;
 begin
-  if (NOCPA13ID = '') and (MOVDA13ID = '') and (NOFIA13ID = '') and (PDVDA13ID = '') then
+  if (Produto = '') or (NroSERIE = '') then
     Exit;
+  if FORNICOD <> '' then
+  begin
+    SQLFornecedor := TQuery.Create(SQLFornecedor);
+    SQLFornecedor.DatabaseName := 'DB';
+    SQLFornecedor.Close;
+    SQLFornecedor.SQL.Clear;
+    SQLFornecedor.SQL.ADD('SELECT FORNA60RAZAOSOC FROM FORNECEDOR WHERE FORNICOD = ''' + FORNICOD +'''' );
+    SQLFornecedor.Prepare;
+    try
+      SQLFornecedor.Open;
+      NomeFornecedor := SQLFornecedor.fieldbyname('FORNA60RAZAOSOC').AsString
+    finally
+      SQLFornecedor.Close;
+      SQLFornecedor.Destroy;
+    end;
+  end;
 
   SQLProdutoSerie := TQuery.Create(SQLProdutoSerie);
   SQLProdutoSerie.DatabaseName := 'DB';
@@ -1352,21 +1371,35 @@ begin
   // Pendente
   SQLProdutoSerie.SQL.ADD('PENDENTE = ''S'' , ');
   // Registro
-  SQLProdutoSerie.SQL.ADD('REGISTRO = ''' + FormatDateTime('mm/dd/yyyy hh:nn:ss', Now) + '''');
-  // FILTRO
-
-  SQLProdutoSerie.SQL.ADD(' WHERE ');
+  SQLProdutoSerie.SQL.ADD('REGISTRO = ''' + FormatDateTime('mm/dd/yyyy hh:nn:ss', Now) + ''' ,');
+  // Empresa Destino
+  if EMPRICOD <> '' then
+    SQLProdutoSerie.SQL.ADD('EMPRICOD = ' + EMPRICOD + ' , ');
+  // fornecedor
+  if FORNICOD <> '' then
+    SQLProdutoSerie.SQL.ADD('FORNICOD = ''' + FORNICOD + ''' , ');
+  //Nro da nota de entrada
   if NOCPA13ID <> '' then
-    SQLProdutoSerie.SQL.ADD('NOCPA13ID = ''' + NOCPA13ID + '''')
-  else
-    if MOVDA13ID <> '' then
-      SQLProdutoSerie.SQL.ADD('MOVDA13ID = ''' + MOVDA13ID + '''')
-    else
-      if NOFIA13ID <> '' then
-        SQLProdutoSerie.SQL.ADD('NOFIA13ID = ''' + NOFIA13ID + '''')
-      else
-        if PDVDA13ID <> '' then
-          SQLProdutoSerie.SQL.ADD('PDVDA13ID = ''' + PDVDA13ID + '''');
+    SQLProdutoSerie.SQL.ADD('NOCPA13ID = ''' + NOCPA13ID + ''' , ');
+  // Nome cliente
+  if NomeFornecedor <> '' then
+    SQLProdutoSerie.SQL.ADD('CLIEA60RAZAOSOC = ''' + NomeFornecedor + '''');
+  // FILTRO
+  SQLProdutoSerie.SQL.ADD(' WHERE ');
+  SQLProdutoSerie.SQL.ADD('PRODICOD = ' + Produto + ' AND ');
+  SQLProdutoSerie.SQL.ADD('PRSEA60NROSERIE = ''' + NroSERIE + '''');
+
+//  if NOCPA13ID <> '' then
+//    SQLProdutoSerie.SQL.ADD('NOCPA13ID = ''' + NOCPA13ID + '''')
+//  else
+//    if MOVDA13ID <> '' then
+//      SQLProdutoSerie.SQL.ADD('MOVDA13ID = ''' + MOVDA13ID + '''')
+//    else
+//      if NOFIA13ID <> '' then
+//        SQLProdutoSerie.SQL.ADD('NOFIA13ID = ''' + NOFIA13ID + '''')
+//      else
+//        if PDVDA13ID <> '' then
+//          SQLProdutoSerie.SQL.ADD('PDVDA13ID = ''' + PDVDA13ID + '''');
   try
     SQLProdutoSerie.Prepare;
     SQLProdutoSerie.ExecSQL;
@@ -5578,5 +5611,22 @@ begin
   end;
 end;
 
+function RetornaMesExtenso(Mes:Integer):String;
+begin
+  case Mes of
+    1  : Result := 'JANEIRO';
+    2  : Result := 'FEVEREIRO';
+    3  : Result := 'MARCO';
+    4  : Result := 'ABRIL';
+    5  : Result := 'MAIO';
+    6  : Result := 'JUNHO';
+    7  : Result := 'JULHO';
+    8  : Result := 'AGOSTO';
+    9  : Result := 'SETEMBRO';
+    10 : Result := 'OUTUBRO';
+    11 : Result := 'NOVEMBRO';
+    12 : Result := 'DEZEMBRO';
+  end;
+end;
 end.
 

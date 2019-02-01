@@ -8,8 +8,8 @@ uses
   Menus, StdCtrls, Mask, Grids, DBGrids, ComCtrls, RXCtrls, Buttons,
   ExtCtrls, DBCtrls, UnitLibrary, FMTBcd, DBClient, Provider, SqlExpr, VarSys,
   AdvOfficeStatusBar, AdvOfficeStatusBarStylers, AdvPanel, pcnConversao, ACBrBase,
-  pcnRetConsReciNFe, ACBrDFe, ACBrNFe, ACBrNFeDANFEClass, ACBrNFeDANFeRLClass,
-  ACBrMail, ToolEdit, RXDBCtrl;
+  pcnRetConsReciDFe, ACBrDFe, ACBrNFe, ACBrNFeDANFEClass, ACBrNFeDANFeRLClass,
+  ACBrMail, ToolEdit, RXDBCtrl, ACBrDFeReport, ACBrDFeDANFeReport;
 
 type
   TFormCadastroNotaFiscalCartaCorrecao = class(TFormCadastroTEMPLATE)

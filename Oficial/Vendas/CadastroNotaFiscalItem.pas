@@ -1058,11 +1058,14 @@ begin
   end;
   dm.sqlconsulta.close;
 
+  // Informa Numero de Serie
   SQLTemplateControlaSerieLookup.AsVariant := DM.SQLlocate('produto', 'prodicod', 'PRODCTEMNROSERIE', SQLTemplatePRODICOD.AsString);
   if SQLTemplateControlaSerieLookup.AsVariant <> Null then
     if SQLTemplateControlaSerieLookup.AsString = 'S' then
     begin
-        // Informa Numero de Serie
+      if SQLTemplate.State = dsEdit then
+        if MessageDlg('Deseja informar número de série?',mtConfirmation,[mbYes,mbNo],0) = mrNo then
+          Exit;
       if DSMasterTemplate.DataSet.FieldByName('OrigemDestinoLookUp').AsString <> '' then
       begin
         DataSet.FieldByName('NFITA254OBS').AsString := '';
@@ -1107,12 +1110,7 @@ begin
         end;
         FormTelaInformaNumeroSerieProduto.Destroy;
       end;
-
     end;
-
-
-
-
 end;
 
 procedure TFormCadastroNotaFiscalItem.SQLTemplateAfterPost(DataSet: TDataSet);

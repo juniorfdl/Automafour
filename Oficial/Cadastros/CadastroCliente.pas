@@ -983,6 +983,8 @@ type
     PopupMenuBusca: TPopupMenu;
     Sefaz1: TMenuItem;
     Receita1: TMenuItem;
+    DBCheckBox2: TDBCheckBox;
+    SQLTemplateTAXA_BANCARIA: TStringField;
     procedure FormCreate(Sender: TObject);
     procedure AcessaVendedorClick(Sender: TObject);
     procedure SQLTemplateNewRecord(DataSet: TDataSet);

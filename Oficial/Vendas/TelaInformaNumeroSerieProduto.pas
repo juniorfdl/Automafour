@@ -65,7 +65,7 @@ procedure TFormTelaInformaNumeroSerieProduto.BitBtn1Click(Sender: TObject);
 begin
   if (RXSerie.RecordCount <> NumeroItens) and (Valida_Qtde) then
   begin
-    MessageDlg('Número de itens selecionado não corresponde a quantidade informado na nota',mtInformation,[mbOK],0);
+    MessageDlg('Número de itens selecionado não corresponde a quantidade informado na nota, quantidade solicitada: ' + IntToStr(NumeroItens) ,mtInformation,[mbOK],0);
     Exit;
   end;
 //  SQLConsulta.Close;

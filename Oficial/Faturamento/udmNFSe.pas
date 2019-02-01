@@ -5,7 +5,7 @@ interface
 uses
   SysUtils, Classes, ACBrNFSeDANFSeClass, ACBrNFSeDANFSeRLClass, ACBrBase,
   ACBrDFe, ACBrNFSe, DBTables, pcnConversao, Forms, DB, RxQuery, pnfsConversao, DateUtils, dialogs,
-  ACBrIntegrador, ACBrMail;
+  ACBrIntegrador, ACBrMail, ACBrDFeReport;
 
 type
   TdmNFSe = class(TDataModule)

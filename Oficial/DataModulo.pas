@@ -8,7 +8,8 @@ uses
   ppStrtch, ppMemo, ppBands, ppCtrls, ppPrnabl, ppClass, ppCache, ppProd,
   ppReport, ppComm, ppRelatv, ppDB, ppDBPipe, ppDBBDE, ACBrNFeDANFEClass,
   ACBrNFeDANFeESCPOS, ACBrDFe, ACBrNFe, ACBrBase, ACBrPosPrinter, MemTable,
-  RestClient, RestUtils, DBClient, UnitLibrary, pcnConversaoNFe;
+  RestClient, RestUtils, DBClient, UnitLibrary, pcnConversaoNFe,
+  ACBrDFeReport, ACBrDFeDANFeReport;
 
 type
   TDM = class(TDMTemplate)
@@ -806,7 +807,7 @@ type
     SQLConfigServicoID_TRIBUTACAO: TIntegerField;
     SQLConfigServicoLOCAL_TRIBUTACAO: TIntegerField;
     TblPedidoItensVlrDesc: TFloatField;
-    ACBrNFeDANFeESCPOS: TACBrNFeDANFeESCPOS;
+    ACBrNFeDANFeESCPOS1: TACBrNFeDANFeESCPOS;
     procedure DataModuleCreate(Sender: TObject);
     procedure DBAfterConnect(Sender: TObject);
   private
@@ -920,8 +921,8 @@ begin
   if not SQLTerminalAtivo.FieldByName('ECF_VELOC').IsNull then
     ACBrPosPrinter.Device.Baud  := SQLTerminalAtivo.FieldByName('ECF_VELOC').Value;
 
-  ACBrNFeDANFeESCPOS.ImprimeEmUmaLinha     := False;
-  ACBrNFeDANFeESCPOS.ImprimeDescAcrescItem := True;
+//  ACBrNFeDANFeESCPOS.ImprimemUmaLinha     := False;
+//  ACBrNFeDANFeESCPOS.ImprimirDescAcrescItem := True;
 end;
 
 procedure TDM.DBAfterConnect(Sender: TObject);

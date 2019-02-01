@@ -59,6 +59,9 @@ inherited FormCadastroNotaCompraItem: TFormCadastroNotaCompraItem
       Height = 590
       inherited PanelBarra: TPanel
         Height = 590
+        DesignSize = (
+          130
+          590)
         object Label29: TLabel
           Left = 15
           Top = 145

@@ -16,7 +16,8 @@ uses
   cxContainer, cxEdit, dxSkinsCore, cxTextEdit,
   cxDBEdit,
   AdvOfficeStatusBar, AdvOfficeStatusBarStylers, AdvPanel, ACBrBase,
-  ACBrMail, ACBrNFeDANFeRLClass, ACBrDFe, pcnConversaoNFe;
+  ACBrMail, ACBrNFeDANFeRLClass, ACBrDFe, pcnConversaoNFe, ACBrDFeReport,
+  ACBrDFeDANFeReport;
 
 type
   TFormCadastroNotaFiscal = class(TFormCadastroTEMPLATE)
@@ -1216,6 +1217,7 @@ type
     procedure btnEncerrarClick(Sender: TObject);
     procedure DBEdit44Change(Sender: TObject);
     procedure SQLTemplateNOFIA8PLACAVEICChange(Sender: TField);
+    procedure DBEdit54Change(Sender: TObject);
   private
     Config: string;
 
@@ -1295,7 +1297,7 @@ uses
   TelaAssistenteLancamentoContasReceber, TelaImpressaoBloquetos, ProcessandoNFe,
   TelaConfigPedidos, CadastroGraficaOrdem, CadastroNotaFiscalReferenciada,
   CadastroNotaFiscalCartaCorrecao, TelaInutilizacaoNFe, pcnNFe,
-  Math, ACBrNFeWebServices, StatusNFe, email, pcnRetConsReciNFe, pcnProcNFe,
+  Math, ACBrNFeWebServices, StatusNFe, email, pcnRetConsReciDFe, pcnProcNFe,
   pcnEventoNFe, pcnRetEnvEventoNFe, TelaConsultaPrevendaTablets,
   TelaImpressaoDuplicatas;
 
@@ -1586,7 +1588,7 @@ var
         else
         begin
           DM.ProcuraRegistro('PRODUTO', ['PRODICOD'], [SQLNotaFiscalItem.FieldByName('PRODICOD').AsString], 1);
-          SQLNotaFiscalItemNFITICST.Value := DM.SQLTemplate.FindField('PRODIORIGEM').AsInteger + DM.SQLTemplate.FindField('PRODISITTRIB').AsInteger;
+          SQLNotaFiscalItemNFITICST.Value := DM.SQLTemplate.FindField('PRODISITTRIB').AsInteger;
 
           if (SQLTemplate.FieldByName('CalcIPILookUp').AsString = 'S') then
           begin
@@ -5927,7 +5929,7 @@ begin
       SQLTemplate.FindField('USUAICOD').AsInteger := InfoRetorno.CodUsuarioAutenticado;
       SQLTemplate.FindField('USUAA60LOGIN').AsString := InfoRetorno.NomeUsuarioAutenticado;
       SQLTemplate.FindField('NOFIDCANCEL').AsDateTime := Date;
-{      dm.SqlConsulta.SQL.Clear;
+      dm.SqlConsulta.SQL.Clear;
       dm.SqlConsulta.SQL.Add('Select PRSEA60NROSERIE,PRODICOD from produtoserie where NOFIA13ID = ''' + SQLTemplate.FindField('NOFIA13ID').Value + '''');
       dm.SqlConsulta.Prepare;
       dm.SqlConsulta.Open;
@@ -5941,7 +5943,7 @@ begin
            SQLTemplate.FindField('CLIEA13ID').AsString, '', '',
            SQLTemplate.FindField('NOFIA13ID').AsString, '');
         dm.SqlConsulta.Next;
-      end;}
+      end;
       SQLTemplate.Post;
       CancelandoNota := False;
     end;
@@ -6255,10 +6257,10 @@ end;
 function TFormCadastroNotaFiscal.Gerar_XMLACBr(): string;
 var
   nEmail, nTipoProduto, modBC, modBCST: string;
-  Cpf_Dest, Cnpj_Dest, IE_Dest, CFOP, CdBarras, TipoFrete, Descr_Prod, Unidade, NCM, CEST, ForPag, eServico, vCSTIPI, vOrigem: string;
+  Cpf_Dest, Cnpj_Dest, IE_Dest, CFOP, CdBarras, TipoFrete, Descr_Prod, Unidade, NCM, CEST, ForPag, eServico, vCSTIPI: string;
   Erro, TemDifal: boolean;
   TotalDup, Vlr_Tot_Bruto, ValordoPis, ValordoCofins, PercCofins, PercPis, FatorConversao, vTotTrib: double;
-  iCRT, IndiceReferenciamento: integer;
+  iCRT, IndiceReferenciamento, vOrigem: integer;
   xProdTotal: string;
 begin
   if not VerificaDadosCliente then
@@ -6630,7 +6632,7 @@ begin
         Exit;
       end;
 
-      vOrigem := dm.sqlConsulta.fieldbyname('PRODIORIGEM').AsString;
+      vOrigem := StrToInt(dm.sqlConsulta.fieldbyname('PRODIORIGEM').AsString);
       NCM := SQLLocate('NCM', 'NCMICOD', 'NCMA30CODIGO', SQLLocate('PRODUTO', 'PRODICOD', 'NCMICOD', SQLNotaFiscalItemPRODICOD.AsString));
       nTipoProduto := dm.sqlConsulta.fieldbyname('PRODA1TIPO').AsString;
       eServico := dm.sqlConsulta.fieldbyname('PRODCSERVICO').AsString;
@@ -6725,12 +6727,18 @@ begin
           end;
           Total.ICMSTot.vIPI := Total.ICMSTot.vIPI + ipi.vIPI;
 
-          if vOrigem = '0' then
-            ICMS.orig := oeNacional
-          else if vOrigem = '1' then
-            ICMS.orig := oeEstrangeiraImportacaoDireta
-          else if vOrigem = '2' then
-            ICMS.orig := oeEstrangeiraAdquiridaBrasil;
+          // origem do produto
+          case vOrigem of
+           0 : ICMS.orig := oeNacional;
+           1 : ICMS.orig := oeEstrangeiraImportacaoDireta;
+           2 : ICMS.orig := oeEstrangeiraAdquiridaBrasil;
+           3 : ICMS.orig := oeNacionalConteudoImportacaoSuperior40;
+           4 : ICMS.orig := oeNacionalProcessosBasicos;
+           5 : ICMS.orig := oeNacionalConteudoImportacaoInferiorIgual40;
+           6 : ICMS.orig := oeEstrangeiraImportacaoDiretaSemSimilar;
+           7 : ICMS.orig := oeEstrangeiraAdquiridaBrasilSemSimilar;
+           8 : ICMS.orig := oeNacionalConteudoImportacaoSuperior70;
+          end;
 
                 {Difal}
           if TemDifal then
@@ -6892,7 +6900,7 @@ begin
                   ICMS.CST := cst90;
 
                       // Origem Mercadoria
-                ICMS.orig := oeNacional;
+//                ICMS.orig := oeNacional;
 
                       // Base Calculo
                 if modBC = '0' then
@@ -7326,11 +7334,11 @@ var
   sXML: string;
 begin
   inherited;
-  // Pega Configs Iniciais
+//   Pega Configs Iniciais
   Inicia_NFe;
   Application.ProcessMessages;
 
-  // Cria o arquivo XML
+//  Cria o arquivo XML
   sXML := Gerar_XMLACBr;
   Application.ProcessMessages;
 
@@ -7393,9 +7401,9 @@ begin
 
   if not SQLTemplate.Active then exit;
 
-  btnTransmitirNfe.Enabled := SQLTemplate.FindField('NOFICSTATUS').Value = 'E';
+  btnTransmitirNfe.Enabled := (SQLTemplate.FindField('NOFICSTATUS').Value = 'E') and (SQLTemplate.FindField('NOFIA5CODRETORNO').Value <> '100');
   btnEncerrar.Enabled := SQLTemplate.FindField('NOFICSTATUS').Value <> 'E';
-  btnTransmitirNfe2.Enabled := SQLTemplate.FindField('NOFICSTATUS').Value = 'E';
+  btnTransmitirNfe2.Enabled := (SQLTemplate.FindField('NOFICSTATUS').Value = 'E')  and (SQLTemplate.FindField('NOFIA5CODRETORNO').Value <> '100');
   btnEncerrar2.Enabled := SQLTemplate.FindField('NOFICSTATUS').Value <> 'E';
 end;
 
@@ -7457,6 +7465,18 @@ begin
     SQLNotaFiscalItem.BeforePost := SQLNotaFiscalItemBeforePost;
     SQLNotaFiscalItem.EnableControls;
   end;
+
+end;
+
+procedure TFormCadastroNotaFiscal.DBEdit54Change(Sender: TObject);
+begin
+  inherited;
+  if not SQLTemplate.Active then exit;
+
+  btnTransmitirNfe.Enabled := (SQLTemplate.FindField('NOFICSTATUS').Value = 'E') and (SQLTemplate.FindField('NOFIA5CODRETORNO').Value <> '100');
+  btnEncerrar.Enabled := SQLTemplate.FindField('NOFICSTATUS').Value <> 'E';
+  btnTransmitirNfe2.Enabled := (SQLTemplate.FindField('NOFICSTATUS').Value = 'E')  and (SQLTemplate.FindField('NOFIA5CODRETORNO').Value <> '100');
+  btnEncerrar2.Enabled := SQLTemplate.FindField('NOFICSTATUS').Value <> 'E';
 
 end;
 

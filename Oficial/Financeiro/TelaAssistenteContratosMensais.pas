@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, TelaGeralModalTemplate, CurrEdit, StdCtrls, Mask, ToolEdit,
   Buttons, DB, RxMemDS, jpeg, ExtCtrls, RxLookup, DBTables, RxQuery, Grids,
-  DBGrids, AdvOfficeStatusBar, AdvOfficeStatusBarStylers;
+  DBGrids, AdvOfficeStatusBar, AdvOfficeStatusBarStylers, UnitLibrary;
 
 type
   TFormTelaAssistenteContratosMensais = class(TFormTelaGeralModalTemplate)
@@ -48,11 +48,15 @@ type
     edtEmissao: TDateEdit;
     BtnSelecionarDoc: TSpeedButton;
     btGerar: TSpeedButton;
+    Label1: TLabel;
+    edtNroDocumento: TEdit;
+    RxTableCTRCA30NRODUPLICBANCO: TStringField;
     procedure FormCreate(Sender: TObject);
     procedure BtnSelecionarDocClick(Sender: TObject);
     procedure BtnBaixarDocSimplesClick(Sender: TObject);
     procedure RxTableBeforeDelete(DataSet: TDataSet);
     procedure btGerarClick(Sender: TObject);
+    procedure edtVencimentoExit(Sender: TObject);
   private
     { Private declarations }
   public
@@ -123,6 +127,7 @@ begin
       RxTableTPDCICOD.Value        := SQLClienteTPDCICOD.Value;
       RxTablePORTICOD.Value        := SQLClientePORTICOD.Value;
       RxTablePLCTA15COD.Value      := SQLClientePLCTA15COD.Value;
+      RxTableCTRCA30NRODUPLICBANCO.Value := edtNroDocumento.Text;
       RxTable.Post;
       vTotal := vTotal + SQLClienteCTRCN2VLR.Value;
       SQLCliente.Next;
@@ -151,6 +156,19 @@ procedure TFormTelaAssistenteContratosMensais.btGerarClick(
 begin
   ModalResult := MrOk;
   inherited;
+end;
+
+procedure TFormTelaAssistenteContratosMensais.edtVencimentoExit(
+  Sender: TObject);
+var
+  vMes : Integer;
+begin
+  inherited;
+  vMes := StrToInt(FormatDateTime('MM', edtVencimento.Date));
+  if vMes > 0 then
+    edtNroDocumento.Text := RetornaMesExtenso(vMes)
+  else
+    edtNroDocumento.Text := '';
 end;
 
 end.

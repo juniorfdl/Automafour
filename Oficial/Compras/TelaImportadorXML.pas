@@ -668,12 +668,12 @@ begin
 
         case  TpcnOrigemMercadoria(ACBrNFe.NotasFiscais.Items[0].NFe.Det.Items[i].Imposto.ICMS.orig)  of
          oeNacional                                  : cdsItens.FieldByName('origem_produto').AsString := '0';
-         oeEstrangeiraImportacaoDireta               : cdsItens.FieldByName('origem_produto').AsString := '1';
+         oeEstrangeiraImportacaoDireta               : cdsItens.FieldByName('origem_produto').AsString := '2';
          oeEstrangeiraAdquiridaBrasil                : cdsItens.FieldByName('origem_produto').AsString := '2';
          oeNacionalConteudoImportacaoSuperior40      : cdsItens.FieldByName('origem_produto').AsString := '3';
          oeNacionalProcessosBasicos                  : cdsItens.FieldByName('origem_produto').AsString := '4';
          oeNacionalConteudoImportacaoInferiorIgual40 : cdsItens.FieldByName('origem_produto').AsString := '5';
-         oeEstrangeiraImportacaoDiretaSemSimilar     : cdsItens.FieldByName('origem_produto').AsString := '6';
+         oeEstrangeiraImportacaoDiretaSemSimilar     : cdsItens.FieldByName('origem_produto').AsString := '7';
          oeEstrangeiraAdquiridaBrasilSemSimilar      : cdsItens.FieldByName('origem_produto').AsString := '7';
          oeNacionalConteudoImportacaoSuperior70      : cdsItens.FieldByName('origem_produto').AsString := '8';
         end;
@@ -2944,25 +2944,25 @@ begin
             Valor    := 0.0;
             Impresso := ' ';
 
-            if ACBrNFe.WebServices.DistribuicaoDFe.retDistDFeInt.docZip.Items[i].resNFe.chNFe <> '' then
+            if ACBrNFe.WebServices.DistribuicaoDFe.retDistDFeInt.docZip.Items[i].resDFe.chDFe <> '' then
               begin
                 // Conjunto de informações resumo da NF-e localizadas.
                 // Este conjunto de informação será gerado quando a NF-e for autorizada ou denegada.
-                sChave := ACBrNFe.WebServices.DistribuicaoDFe.retDistDFeInt.docZip.Items[i].resNFe.chNFe;
+                sChave := ACBrNFe.WebServices.DistribuicaoDFe.retDistDFeInt.docZip.Items[i].resDFe.chDFe;
                 sSerie  := Copy(sChave, 23, 3);
                 sNumero := Copy(sChave, 26, 9);
-                sCNPJ := ACBrNFe.WebServices.DistribuicaoDFe.retDistDFeInt.docZip.Items[i].resNFe.CNPJCPF;
-                sNome := ACBrNFe.WebServices.DistribuicaoDFe.retDistDFeInt.docZip.Items[i].resNFe.xNome;
-                sIEst := ACBrNFe.WebServices.DistribuicaoDFe.retDistDFeInt.docZip.Items[i].resNFe.IE;
-                case ACBrNFe.WebServices.DistribuicaoDFe.retDistDFeInt.docZip.Items[i].resNFe.tpNF of
+                sCNPJ := ACBrNFe.WebServices.DistribuicaoDFe.retDistDFeInt.docZip.Items[i].resDFe.CNPJCPF;
+                sNome := ACBrNFe.WebServices.DistribuicaoDFe.retDistDFeInt.docZip.Items[i].resDFe.xNome;
+                sIEst := ACBrNFe.WebServices.DistribuicaoDFe.retDistDFeInt.docZip.Items[i].resDFe.IE;
+                case ACBrNFe.WebServices.DistribuicaoDFe.retDistDFeInt.docZip.Items[i].resDFe.tpNF of
                   tnEntrada: sTipoNFe := 'E';
                   tnSaida:   sTipoNFe := 'S';
                 end;
                 sNSU       := ACBrNFe.WebServices.DistribuicaoDFe.retDistDFeInt.docZip.Items[i].NSU;
-                sEmissao   := DateToStr(ACBrNFe.WebServices.DistribuicaoDFe.retDistDFeInt.docZip.Items[i].resNFe.dhEmi);
-                Valor      := ACBrNFe.WebServices.DistribuicaoDFe.retDistDFeInt.docZip.Items[i].resNFe.vNF;
+                sEmissao   := DateToStr(ACBrNFe.WebServices.DistribuicaoDFe.retDistDFeInt.docZip.Items[i].resDFe.dhEmi);
+                Valor      := ACBrNFe.WebServices.DistribuicaoDFe.retDistDFeInt.docZip.Items[i].resDFe.vNF;
 
-                case ACBrNFe.WebServices.DistribuicaoDFe.retDistDFeInt.docZip.Items[i].resNFe.cSitNFe of
+                case ACBrNFe.WebServices.DistribuicaoDFe.retDistDFeInt.docZip.Items[i].resDFe.cSitDFe of
                   snAutorizado: Impresso := 'A';
                   snDenegado:   Impresso := 'D';
                   snCancelado:  Impresso := 'C';

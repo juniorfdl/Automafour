@@ -1,6 +1,6 @@
 inherited FormTelaImportadorXML: TFormTelaImportadorXML
-  Left = 198
-  Top = 0
+  Left = 84
+  Top = 7
   Width = 1265
   Height = 687
   Caption = 'Importador de XMLs'
@@ -2448,7 +2448,6 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
     Configuracoes.Geral.SSLXmlSignLib = xsMsXmlCapicom
     Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
     Configuracoes.Geral.ValidarDigest = False
-    Configuracoes.Geral.VersaoDF = ve400
     Configuracoes.Geral.VersaoQRCode = veqr000
     Configuracoes.Arquivos.AdicionarLiteral = True
     Configuracoes.Arquivos.OrdenacaoPath = <>
@@ -2461,6 +2460,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
     Configuracoes.WebServices.AjustaAguardaConsultaRet = True
     Configuracoes.WebServices.TimeOut = 15000
     Configuracoes.WebServices.QuebradeLinha = '|'
+    Configuracoes.RespTec.IdCSRT = 0
     Left = 538
     Top = 8
   end
@@ -3153,6 +3153,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
     Top = 9
   end
   object sqlOpEstoque: TRxQuery
+    AfterCancel = SQLNFSEFAZAfterScroll
     DatabaseName = 'DB'
     SQL.Strings = (
       'SELECT'
@@ -3183,7 +3184,10 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
       ' OPESA60DESFORA,'
       ' OPESCCOMISSAO'
       'FROM'
-      ' OPERACAOESTOQUE')
+      ' OPERACAOESTOQUE'
+      'WHERE OPESCENTRADASAIDA <> '#39'S'#39' and'
+      '      OPESCORIGEMDESTINO = '#39'F'#39
+      'ORDER BY OPESA60DESCR  ')
     Macros = <>
     Left = 368
     Top = 9

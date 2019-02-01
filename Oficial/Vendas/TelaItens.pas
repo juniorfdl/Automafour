@@ -469,8 +469,8 @@ begin
 
   dm.ACBrPosPrinter.Device.Baud  := dm.SQLTerminalAtivo.FieldByName('ECF_VELOC').Value;
 
-  dm.ACBrNFeDANFeESCPOS.ImprimeEmUmaLinha     := False;
-  dm.ACBrNFeDANFeESCPOS.ImprimeDescAcrescItem := True;
+//  dm.ACBrNFeDANFeESCPOS.ImprimeEmUmaLinha     := False;
+//  dm.ACBrNFeDANFeESCPOS.ImprimeDescAcrescItem := True;
 end;
 
 procedure TFormTelaItens.LoadXML(MyMemo: TMemo; MyWebBrowser: TWebBrowser);

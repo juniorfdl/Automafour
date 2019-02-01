@@ -1,6 +1,6 @@
 inherited FormCadastroContasReceber: TFormCadastroContasReceber
-  Left = 127
-  Top = 25
+  Left = 67
+  Top = 22
   Caption = 'Cadastro de Documentos '#224' Receber'
   ClientHeight = 652
   ClientWidth = 1366
@@ -700,7 +700,6 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
               LookupDisplay = 'TPDCA60DESCR'
               LookupSource = DSSQLTipoDocumento
               TabOrder = 12
-              OnExit = ComboTipoDocCadExit
               OnKeyDown = ComboTipoDocCadKeyDown
             end
             object ComboCompetenciaMes: TRxDBComboBox
@@ -1915,6 +1914,7 @@ inherited FormCadastroContasReceber: TFormCadastroContasReceber
       DisplayLabel = 'Cod. Tipo Doc'
       FieldName = 'TPDCICOD'
       Origin = 'DB.CONTASRECEBER.TPDCICOD'
+      OnChange = SQLTemplateTPDCICODChange
     end
     object SQLTemplateTipoDocumentoCalcField: TStringField
       FieldKind = fkCalculated

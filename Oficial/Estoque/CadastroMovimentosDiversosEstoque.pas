@@ -241,10 +241,10 @@ begin
               SQLItens.Next;
             end;
         end;
-      if Tipo = 'E' then
-        begin
-          GravaEntradaNroSerieProduto('',SQLTemplateMOVDA13ID.AsString,'','');
-        end;
+//      if Tipo = 'E' then
+//        begin
+//          GravaEntradaNroSerieProduto('',SQLTemplateMOVDA13ID.AsString,'','');
+//        end;
     end;
   if AbrirItens then
     begin

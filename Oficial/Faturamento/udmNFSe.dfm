@@ -13,6 +13,7 @@ object dmNFSe: TdmNFSe
     Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
     Configuracoes.Geral.CodigoMunicipio = 0
     Configuracoes.Geral.ConsultaLoteAposEnvio = True
+    Configuracoes.Geral.Emitente.DadosSenhaParams = <>
     Configuracoes.Arquivos.OrdenacaoPath = <>
     Configuracoes.Arquivos.EmissaoPathNFSe = True
     Configuracoes.WebServices.Visualizar = True
@@ -27,16 +28,19 @@ object dmNFSe: TdmNFSe
     Top = 12
   end
   object ACBrNFSeDANFSeRL1: TACBrNFSeDANFSeRL
-    ACBrNFSe = ACBrNFSe1
     PathPDF = '.\'
-    MostrarPreview = True
-    MostrarStatus = True
-    NumCopias = 1
+    Sistema = 'Projeto ACBr - www.projetoacbr.com.br'
     MargemInferior = 0.800000000000000000
     MargemSuperior = 0.800000000000000000
     MargemEsquerda = 0.600000000000000000
     MargemDireita = 0.510000000000000000
-    NFSeCancelada = True
+    CasasDecimais.Formato = tdetInteger
+    CasasDecimais.qCom = 2
+    CasasDecimais.vUnCom = 2
+    CasasDecimais.MaskqCom = ',0.00'
+    CasasDecimais.MaskvUnCom = ',0.00'
+    ACBrNFSe = ACBrNFSe1
+    Cancelada = False
     Provedor = proNenhum
     TamanhoFonte = 6
     FormatarNumeroDocumentoNFSe = True

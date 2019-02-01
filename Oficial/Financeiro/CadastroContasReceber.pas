@@ -387,8 +387,8 @@ type
     procedure MnReciboClick(Sender: TObject);
     procedure ppHeaderBand2BeforePrint(Sender: TObject);
     procedure CorrigeTotalRecebidoSafe1Click(Sender: TObject);
-    procedure ComboTipoDocCadExit(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure SQLTemplateTPDCICODChange(Sender: TField);
   private
     Replicando: Boolean;
     function Estorna: Boolean;
@@ -1383,10 +1383,12 @@ begin
         SQLTemplateCTRCINROPARC.Value := 1;
         SQLTemplateCTRCA2MESCOMP.Value := FormatDateTime('MM', FormTelaAssistenteContratosMensais.RxTableEMI.AsDateTime);
         SQLTemplateCTRCA4ANOCOMP.Value := FormatDateTime('YYYY', FormTelaAssistenteContratosMensais.RxTableEMI.AsDateTime);
+        sqltemplateCTRCA30NRODUPLICBANCO.Value := FormTelaAssistenteContratosMensais.RxTableCTRCA30NRODUPLICBANCO.AsString;
+        if sqltemplate.State in [DsInsert] then
+          DM.CodigoAutomatico('CONTASRECEBER', DSTemplate, sqltemplate, 3, 0);
         SQLTemplate.Post;
         FormTelaAssistenteContratosMensais.RxTable.Next;
       end;
-
       SQLTemplate.BeforePost := SQLTemplateBeforePost;
       SQLTemplate.OnCalcFields := SQLTemplateCalcFields;
       SQLTemplate.EnableControls;
@@ -1495,16 +1497,20 @@ begin
   end;
 end;
 
-procedure TFormCadastroContasReceber.ComboTipoDocCadExit(Sender: TObject);
-begin
-  inherited;
-  SQLTemplateCTRCN2VLRTAXA.AsFloat := SQLTipoDocumento.FieldByname('VLRTAXA').AsFloat;
-end;
-
 procedure TFormCadastroContasReceber.FormShow(Sender: TObject);
 begin
   inherited;
   DBEdit2.ReadOnly := not (DM.SQLTerminalAtivo.FieldByName('ALTERA_NOSSO_NUMERO').AsString = 'S');
+end;
+
+procedure TFormCadastroContasReceber.SQLTemplateTPDCICODChange(
+  Sender: TField);
+begin
+  inherited;
+  if SQLLocate('CLIENTE', 'CLIEA13ID', 'TAXA_BANCARIA', '''' + SQLTemplateCLIEA13ID.AsString + '''') = 'S' then
+    SQLTemplateCTRCN2VLRTAXA.AsFloat := SQLTipoDocumento.FieldByname('VLRTAXA').AsFloat
+  else
+    SQLTemplateCTRCN2VLRTAXA.AsFloat := 0;
 end;
 
 end.

@@ -815,7 +815,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
             Top = 42
             Width = 960
             Height = 556
-            ActivePage = TabSheetDadosPrincipais
+            ActivePage = TabSheetAdicional2
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Width = 952
@@ -4727,7 +4727,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                 Left = 6
                 Top = 202
                 Width = 350
-                Height = 156
+                Height = 161
                 Caption = ' Dados Cobran'#231'a Mensal '
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
@@ -4790,7 +4790,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                   ParentFont = False
                 end
                 object Label100: TLabel
-                  Left = 214
+                  Left = 134
                   Top = 14
                   Width = 89
                   Height = 13
@@ -4803,9 +4803,9 @@ inherited FormCadastroCliente: TFormCadastroCliente
                   ParentFont = False
                 end
                 object DBEdit10: TDBEdit
-                  Left = 6
+                  Left = 8
                   Top = 26
-                  Width = 118
+                  Width = 115
                   Height = 21
                   DataField = 'DIAVENCTO'
                   DataSource = DSTemplate
@@ -4836,7 +4836,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                   ParentFont = False
                   ParentShowHint = False
                   ShowHint = True
-                  TabOrder = 2
+                  TabOrder = 3
                 end
                 object ComboPortador: TRxDBLookupCombo
                   Left = 5
@@ -4857,7 +4857,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                   ParentFont = False
                   ParentShowHint = False
                   ShowHint = True
-                  TabOrder = 3
+                  TabOrder = 4
                 end
                 object ComboPlanoContas: TRxDBLookupCombo
                   Left = 5
@@ -4878,12 +4878,12 @@ inherited FormCadastroCliente: TFormCadastroCliente
                   ParentFont = False
                   ParentShowHint = False
                   ShowHint = True
-                  TabOrder = 4
+                  TabOrder = 5
                 end
                 object EvDBNumEdit5: TEvDBNumEdit
-                  Left = 208
+                  Left = 134
                   Top = 26
-                  Width = 126
+                  Width = 89
                   Height = 21
                   AutoHideCalculator = False
                   DataField = 'CTRCN2VLR'
@@ -4932,6 +4932,24 @@ inherited FormCadastroCliente: TFormCadastroCliente
                   ParentFont = False
                   TabOrder = 1
                 end
+                object DBCheckBox2: TDBCheckBox
+                  Left = 238
+                  Top = 30
+                  Width = 106
+                  Height = 17
+                  Caption = 'Taxa Banc'#225'ria'
+                  DataField = 'TAXA_BANCARIA'
+                  DataSource = DSTemplate
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clRed
+                  Font.Height = -11
+                  Font.Name = 'Tahoma'
+                  Font.Style = [fsBold]
+                  ParentFont = False
+                  TabOrder = 2
+                  ValueChecked = 'S'
+                  ValueUnchecked = 'N'
+                end
               end
               object GroupBox11: TGroupBox
                 Left = 357
@@ -4978,7 +4996,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
               end
               object dbchkAssociado: TDBCheckBox
                 Left = 6
-                Top = 365
+                Top = 373
                 Width = 106
                 Height = 17
                 Caption = 'Associado'
@@ -7996,6 +8014,12 @@ inherited FormCadastroCliente: TFormCadastroCliente
     object SQLTemplateREPRICOD: TIntegerField
       FieldName = 'REPRICOD'
       Origin = 'DB.CLIENTE.REPRICOD'
+    end
+    object SQLTemplateTAXA_BANCARIA: TStringField
+      FieldName = 'TAXA_BANCARIA'
+      Origin = 'DB.CLIENTE.TAXA_BANCARIA'
+      FixedChar = True
+      Size = 1
     end
   end
   inherited SQLExcluiDetalhes: TRxQuery
@@ -12849,8 +12873,8 @@ inherited FormCadastroCliente: TFormCadastroCliente
       'order by'
       'CLIEA60CIDRES')
     Macros = <>
-    Left = 321
-    Top = 445
+    Left = 545
+    Top = 453
   end
   object SQLClientePdvs: TRxQuery
     DatabaseName = 'DB'
