@@ -68,6 +68,8 @@ var
 
 implementation
 
+uses StrUtils;
+
 {$R *.dfm}
 
 procedure TFormTelaAssistenteContratosMensais.FormCreate(Sender: TObject);
@@ -101,10 +103,14 @@ begin
       ShowMessage('É necessário escolher algum Portador para Filtro!');
       exit;
     end;  }
-
   vdia := FormatDateTime('dd',edtVencimento.Date);
-  SQLCliente.MacroByName('MDia').Value := 'DIAVENCTO = ''' + vdia + '''';
 
+  if (FormatDateTime('mm',edtVencimento.Date) = '02') and (FormatDateTime('dd',edtVencimento.Date) = '28') then
+  begin
+    if MessageDlg('Deseja buscar os contratos com vencimento no dia 30?',mtConfirmation,[mbYes,mbNo],0) = mrYes then
+      vdia := '30';
+  end;
+  SQLCliente.MacroByName('MDia').Value := 'DIAVENCTO = ''' + vdia + '''';
   SQLCliente.Open;
   if SQLCliente.IsEmpty then
     begin
@@ -112,6 +118,7 @@ begin
       exit;
     end;
 
+  vdia := FormatDateTime('dd',edtVencimento.Date);
   SQLCliente.First;
   RxTable.Open;
   while not SQLCliente.Eof do

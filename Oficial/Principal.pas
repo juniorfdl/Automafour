@@ -517,6 +517,7 @@ type
     procedure MnFormRelatorioComissaoDetalhadoRepresentanteClick(Sender: TObject);
     procedure MnFormTelaConsultaMovNumeroSerieClick(Sender: TObject);
     procedure MnFormCadastroTipoFornecedorClick(Sender: TObject);
+    procedure ResumoFinanceiro1Click(Sender: TObject);
   private
     procedure ApagarOrcamentos;
     procedure ApagarPreVendas;
@@ -606,7 +607,8 @@ uses
   TelaBaixarChequesRecebidos, TelaBaixarChequesEmitidos,
   TelaGerarSaldoProduto, CadastroMesa, TelaConsultaSaldoPorEmpresa,
   CadastroSabores, CadastroTributacaoNFSE, CadastroNotaServico,
-  CadastroServico, RelatorioComissaoRepresentanteDetalhado, TelaConsultaMovNumeroSerie, CadastroTipoFornecedor;
+  CadastroServico, RelatorioComissaoRepresentanteDetalhado, TelaConsultaMovNumeroSerie, CadastroTipoFornecedor,
+  TelaResumoFinanceiro;
 
 
 
@@ -2982,6 +2984,12 @@ begin
   caminhoArq := ExtractFilePath(Application.ExeName)+'parceiro.ini';
   arqFile := TIniFile.Create(caminhoArq);
   ParceiroPath := arqFile.ReadString('IB_SOFTWARE', 'LinhaD', '');
+
+  if dm.SQLLocate('USUARIO','USUAICOD','USUACRESUMOFIN',INTTOSTR(UsuarioCorrente)) = 'S' then
+    begin
+      Application.CreateForm(TFormTelaResumoFinanceiro,FormTelaResumoFinanceiro);
+      FormTelaResumoFinanceiro.ShowModal;
+    end;
 end;
 
 procedure TFormPrincipal.MnADMUtilitariosConsultadeCuponsClick(
@@ -3170,6 +3178,21 @@ begin
   finally
     free;
   end;
+end;
+
+procedure TFormPrincipal.ResumoFinanceiro1Click(Sender: TObject);
+begin
+  inherited;
+    if dm.SQLLocate('USUARIO','USUAICOD','USUACRESUMOFIN',INTTOSTR(UsuarioCorrente)) = 'S' then
+    begin
+      Application.CreateForm(TFormTelaResumoFinanceiro,FormTelaResumoFinanceiro);
+      FormTelaResumoFinanceiro.ShowModal;
+    end
+    else
+    begin
+      try SoundPlay('Acesso Negado.wav',Sender); except Application.ProcessMessages; end;
+      ShowMessage('Acesso Negado! Usuario sem permissão para ver o Resumo Financeiro!');
+    end;
 end;
 
 end.

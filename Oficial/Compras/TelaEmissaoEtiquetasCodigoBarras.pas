@@ -673,33 +673,25 @@ begin
     begin
       vQtde := (SQLNotaCompraItem.FindField('NOCIN3QTDEMBAL').asInteger * SQLNotaCompraItem.FindField('NOCIN3CAPEMBAL').asInteger);
             if (DM.SQLlocate('produto', 'prodicod', 'PRODCTEMNROSERIE', SQLProdutoPRODICOD.AsString) = 'S') then
-      if (DM.SQLlocate('produto', 'prodicod', 'PRODCTEMNROSERIE', SQLProdutoPRODICOD.AsString) = 'S') then
+      dm.SqlConsulta.SQL.Clear;
+      dm.SqlConsulta.SQL.Add('select * from PRODUTOSERIE where NOCPA13ID = ');
+      dm.SqlConsulta.SQL.Add(QuotedStr(SQLNotaCompraItem.FindField('NOCPA13ID').AsString));
+      dm.SqlConsulta.SQL.Add(' and PRODICOD = ' + SQLNotaCompraItem.FindField('PRODICOD').asString);
+      dm.SqlConsulta.Open;
+      if not (dm.SqlConsulta.IsEmpty) then
       begin
+        dm.SqlConsulta.First;
         cdsSerie.EmptyDataSet;
-        CodigoProduto := SQLProdutoPRODICOD.AsString;
-        Status := ' PRSECSTATUS = ' + QuotedStr('D');
-        Application.CreateForm(TFormTelaInformaNumeroSerieProduto, FormTelaInformaNumeroSerieProduto);
-        try
-          FormTelaInformaNumeroSerieProduto.NumeroItens := vQtde;
-          FormTelaInformaNumeroSerieProduto.Valida_Qtde := True;
-          FormTelaInformaNumeroSerieProduto.ShowModal;
-          if FormTelaInformaNumeroSerieProduto.ModalResult = MrOK then
-          begin
-            FormTelaInformaNumeroSerieProduto.RXSerie.First;
-            while not FormTelaInformaNumeroSerieProduto.RXSerie.Eof do
-            begin
-              Inc(vItem);
-              cdsSerie.Insert;
-              cdsSerieNumeroSerie.AsString := FormTelaInformaNumeroSerieProduto.RXSerieNumeroSerie.Text;
-              cdsSerieItem.AsInteger := vItem;
-              cdsSerie.Post;
-              FormTelaInformaNumeroSerieProduto.RXSerie.Next;
-            end;
-          end;
-        finally
-          FormTelaInformaNumeroSerieProduto.Destroy;
+        vItem := 0;
+        while not dm.SqlConsulta.Eof do
+        begin
+          Inc(vItem);
+          cdsSerie.Insert;
+          cdsSerieNumeroSerie.AsString := dm.SqlConsulta.FieldByName('PRSEA60NROSERIE').AsString;
+          cdsSerieItem.AsInteger := vItem;
+          cdsSerie.Post;
+          dm.SqlConsulta.Next;
         end;
-        cdsSerie.First;
       end;
 
       for I := 1 to vQtde  do

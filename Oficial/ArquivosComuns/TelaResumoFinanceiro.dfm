@@ -1,6 +1,6 @@
 object FormTelaResumoFinanceiro: TFormTelaResumoFinanceiro
-  Left = 234
-  Top = 75
+  Left = 279
+  Top = 74
   Width = 774
   Height = 589
   Color = clWhite
@@ -13,152 +13,23 @@ object FormTelaResumoFinanceiro: TFormTelaResumoFinanceiro
   Position = poDesktopCenter
   OnActivate = FormActivate
   OnClose = FormClose
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object PanelResumoFin: TPanel
     Left = 0
     Top = 0
     Width = 758
-    Height = 550
+    Height = 551
     Align = alClient
     Color = clWhite
     TabOrder = 0
-    object Label1: TLabel
-      Left = 13
-      Top = 43
-      Width = 142
-      Height = 24
-      Caption = 'Contas a Pagar'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clNavy
-      Font.Height = -19
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object Label2: TLabel
-      Left = 242
-      Top = 43
-      Width = 168
-      Height = 24
-      Caption = 'Contas a Receber'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clNavy
-      Font.Height = -19
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
     object Label3: TLabel
       Left = 15
       Top = 231
       Width = 162
       Height = 24
       Caption = 'Contas Correntes'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clNavy
-      Font.Height = -19
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object Label4: TLabel
-      Left = 16
-      Top = 71
-      Width = 90
-      Height = 20
-      Caption = 'Vencidas...'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clRed
-      Font.Height = -16
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object Label5: TLabel
-      Left = 16
-      Top = 92
-      Width = 99
-      Height = 20
-      Caption = 'Venc.Hoje...'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBlack
-      Font.Height = -16
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object Label6: TLabel
-      Left = 16
-      Top = 115
-      Width = 109
-      Height = 20
-      Caption = 'Prox. 7 dias...'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGreen
-      Font.Height = -16
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object Label7: TLabel
-      Left = 244
-      Top = 71
-      Width = 123
-      Height = 20
-      Caption = 'Venc at'#233' 60 dd'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clRed
-      Font.Height = -16
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object Label8: TLabel
-      Left = 244
-      Top = 92
-      Width = 99
-      Height = 20
-      Caption = 'Venc.Hoje...'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBlack
-      Font.Height = -16
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object Label9: TLabel
-      Left = 244
-      Top = 115
-      Width = 109
-      Height = 20
-      Caption = 'Prox. 7 dias...'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGreen
-      Font.Height = -16
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object Label10: TLabel
-      Left = 509
-      Top = 118
-      Width = 150
-      Height = 24
-      Caption = 'Compras do Dia'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clNavy
-      Font.Height = -19
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object Label11: TLabel
-      Left = 511
-      Top = 183
-      Width = 138
-      Height = 24
-      Caption = 'Vendas do Dia'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clNavy
       Font.Height = -19
@@ -174,32 +45,6 @@ object FormTelaResumoFinanceiro: TFormTelaResumoFinanceiro
       Caption = 'Total Contas Correntes'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
-      Font.Height = -16
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object Label13: TLabel
-      Left = 16
-      Top = 137
-      Width = 114
-      Height = 20
-      Caption = 'Prox.15 dias...'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGreen
-      Font.Height = -16
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object Label14: TLabel
-      Left = 244
-      Top = 137
-      Width = 114
-      Height = 20
-      Caption = 'Prox.15 dias...'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGreen
       Font.Height = -16
       Font.Name = 'MS Sans Serif'
       Font.Style = [fsBold]
@@ -231,136 +76,6 @@ object FormTelaResumoFinanceiro: TFormTelaResumoFinanceiro
       Font.Style = [fsBold]
       ParentFont = False
     end
-    object Label17: TLabel
-      Left = 16
-      Top = 159
-      Width = 114
-      Height = 20
-      Caption = 'Prox.30 dias...'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGreen
-      Font.Height = -16
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object Label18: TLabel
-      Left = 16
-      Top = 181
-      Width = 114
-      Height = 20
-      Caption = 'Prox.45 dias...'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGreen
-      Font.Height = -16
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object Label19: TLabel
-      Left = 244
-      Top = 159
-      Width = 114
-      Height = 20
-      Caption = 'Prox.30 dias...'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGreen
-      Font.Height = -16
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object Label20: TLabel
-      Left = 244
-      Top = 181
-      Width = 114
-      Height = 20
-      Caption = 'Prox.45 dias...'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGreen
-      Font.Height = -16
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object EditPagarVencidas: TEdit
-      Left = 132
-      Top = 72
-      Width = 103
-      Height = 21
-      TabStop = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clRed
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-      ReadOnly = True
-      TabOrder = 0
-    end
-    object EditPagarHoje: TEdit
-      Left = 132
-      Top = 93
-      Width = 103
-      Height = 21
-      TabStop = False
-      ReadOnly = True
-      TabOrder = 1
-    end
-    object EditPagarAVencer: TEdit
-      Left = 132
-      Top = 115
-      Width = 103
-      Height = 21
-      TabStop = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGreen
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-      ReadOnly = True
-      TabOrder = 2
-    end
-    object EditRecAVencer: TEdit
-      Left = 379
-      Top = 115
-      Width = 103
-      Height = 21
-      TabStop = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGreen
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-      ReadOnly = True
-      TabOrder = 3
-    end
-    object EditRecHoje: TEdit
-      Left = 379
-      Top = 93
-      Width = 103
-      Height = 21
-      TabStop = False
-      ReadOnly = True
-      TabOrder = 4
-    end
-    object EditRecVencidas: TEdit
-      Left = 379
-      Top = 72
-      Width = 103
-      Height = 21
-      TabStop = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clRed
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-      ReadOnly = True
-      TabOrder = 5
-    end
     object RxDBGrid1: TRxDBGrid
       Left = 13
       Top = 255
@@ -371,7 +86,7 @@ object FormTelaResumoFinanceiro: TFormTelaResumoFinanceiro
       DataSource = DSSQLCC
       Options = [dgTitles, dgColumnResize]
       ReadOnly = True
-      TabOrder = 6
+      TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
       TitleFont.Height = -11
@@ -428,24 +143,6 @@ object FormTelaResumoFinanceiro: TFormTelaResumoFinanceiro
           Visible = True
         end>
     end
-    object EditComprasDia: TEdit
-      Left = 519
-      Top = 146
-      Width = 133
-      Height = 21
-      TabStop = False
-      ReadOnly = True
-      TabOrder = 7
-    end
-    object EditVendaDia: TEdit
-      Left = 517
-      Top = 210
-      Width = 133
-      Height = 21
-      TabStop = False
-      ReadOnly = True
-      TabOrder = 8
-    end
     object EditSaldoCC: TEdit
       Left = 379
       Top = 511
@@ -459,37 +156,7 @@ object FormTelaResumoFinanceiro: TFormTelaResumoFinanceiro
       Font.Style = [fsBold]
       ParentFont = False
       ReadOnly = True
-      TabOrder = 9
-    end
-    object EditPagarAVencer15: TEdit
-      Left = 132
-      Top = 137
-      Width = 103
-      Height = 21
-      TabStop = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGreen
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-      ReadOnly = True
-      TabOrder = 10
-    end
-    object EditRecAVencer15: TEdit
-      Left = 379
-      Top = 137
-      Width = 103
-      Height = 21
-      TabStop = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGreen
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-      ReadOnly = True
-      TabOrder = 11
+      TabOrder = 1
     end
     object EditTotalPagar: TEdit
       Left = 132
@@ -504,7 +171,7 @@ object FormTelaResumoFinanceiro: TFormTelaResumoFinanceiro
       Font.Style = [fsBold]
       ParentFont = False
       ReadOnly = True
-      TabOrder = 12
+      TabOrder = 2
     end
     object EditTotalReceber: TEdit
       Left = 379
@@ -519,67 +186,7 @@ object FormTelaResumoFinanceiro: TFormTelaResumoFinanceiro
       Font.Style = [fsBold]
       ParentFont = False
       ReadOnly = True
-      TabOrder = 13
-    end
-    object EditPagarAVencer30: TEdit
-      Left = 132
-      Top = 159
-      Width = 103
-      Height = 21
-      TabStop = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGreen
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-      ReadOnly = True
-      TabOrder = 14
-    end
-    object EditPagarAVencer45: TEdit
-      Left = 132
-      Top = 181
-      Width = 103
-      Height = 21
-      TabStop = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGreen
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-      ReadOnly = True
-      TabOrder = 15
-    end
-    object EditRecAVencer30: TEdit
-      Left = 379
-      Top = 159
-      Width = 103
-      Height = 21
-      TabStop = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGreen
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-      ReadOnly = True
-      TabOrder = 16
-    end
-    object EditRecAVencer45: TEdit
-      Left = 379
-      Top = 181
-      Width = 103
-      Height = 21
-      TabStop = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGreen
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-      ReadOnly = True
-      TabOrder = 17
+      TabOrder = 3
     end
     object AdvOfficeStatusBar2: TAdvOfficeStatusBar
       Left = 1
@@ -635,6 +242,408 @@ object FormTelaResumoFinanceiro: TFormTelaResumoFinanceiro
         Transparent = True
       end
     end
+    object Panel1: TPanel
+      Left = 1
+      Top = 44
+      Width = 756
+      Height = 161
+      Align = alTop
+      TabOrder = 5
+      object Label1: TLabel
+        Left = 13
+        Top = -2
+        Width = 142
+        Height = 24
+        Caption = 'Contas a Pagar'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clNavy
+        Font.Height = -19
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label2: TLabel
+        Left = 242
+        Top = -2
+        Width = 168
+        Height = 24
+        Caption = 'Contas a Receber'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clNavy
+        Font.Height = -19
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label4: TLabel
+        Left = 16
+        Top = 26
+        Width = 90
+        Height = 20
+        Caption = 'Vencidas...'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clRed
+        Font.Height = -16
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label5: TLabel
+        Left = 16
+        Top = 47
+        Width = 99
+        Height = 20
+        Caption = 'Venc.Hoje...'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label6: TLabel
+        Left = 16
+        Top = 70
+        Width = 109
+        Height = 20
+        Caption = 'Prox. 7 dias...'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clGreen
+        Font.Height = -16
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label7: TLabel
+        Left = 244
+        Top = 26
+        Width = 123
+        Height = 20
+        Caption = 'Venc at'#233' 60 dd'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clRed
+        Font.Height = -16
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label8: TLabel
+        Left = 244
+        Top = 47
+        Width = 99
+        Height = 20
+        Caption = 'Venc.Hoje...'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label9: TLabel
+        Left = 244
+        Top = 70
+        Width = 109
+        Height = 20
+        Caption = 'Prox. 7 dias...'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clGreen
+        Font.Height = -16
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label10: TLabel
+        Left = 509
+        Top = 41
+        Width = 150
+        Height = 24
+        Caption = 'Compras do Dia'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clNavy
+        Font.Height = -19
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label11: TLabel
+        Left = 511
+        Top = 106
+        Width = 138
+        Height = 24
+        Caption = 'Vendas do Dia'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clNavy
+        Font.Height = -19
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label13: TLabel
+        Left = 16
+        Top = 92
+        Width = 114
+        Height = 20
+        Caption = 'Prox.15 dias...'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clGreen
+        Font.Height = -16
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label14: TLabel
+        Left = 244
+        Top = 92
+        Width = 114
+        Height = 20
+        Caption = 'Prox.15 dias...'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clGreen
+        Font.Height = -16
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label17: TLabel
+        Left = 16
+        Top = 114
+        Width = 114
+        Height = 20
+        Caption = 'Prox.30 dias...'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clGreen
+        Font.Height = -16
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label18: TLabel
+        Left = 16
+        Top = 136
+        Width = 114
+        Height = 20
+        Caption = 'Prox.45 dias...'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clGreen
+        Font.Height = -16
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label19: TLabel
+        Left = 244
+        Top = 114
+        Width = 114
+        Height = 20
+        Caption = 'Prox.30 dias...'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clGreen
+        Font.Height = -16
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label20: TLabel
+        Left = 244
+        Top = 136
+        Width = 114
+        Height = 20
+        Caption = 'Prox.45 dias...'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clGreen
+        Font.Height = -16
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object EditPagarVencidas: TEdit
+        Left = 132
+        Top = 27
+        Width = 103
+        Height = 21
+        TabStop = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clRed
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        ReadOnly = True
+        TabOrder = 0
+      end
+      object EditPagarHoje: TEdit
+        Left = 132
+        Top = 48
+        Width = 103
+        Height = 21
+        TabStop = False
+        ReadOnly = True
+        TabOrder = 1
+      end
+      object EditPagarAVencer: TEdit
+        Left = 132
+        Top = 70
+        Width = 103
+        Height = 21
+        TabStop = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clGreen
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        ReadOnly = True
+        TabOrder = 2
+      end
+      object EditRecAVencer: TEdit
+        Left = 379
+        Top = 70
+        Width = 103
+        Height = 21
+        TabStop = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clGreen
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        ReadOnly = True
+        TabOrder = 3
+      end
+      object EditRecHoje: TEdit
+        Left = 379
+        Top = 48
+        Width = 103
+        Height = 21
+        TabStop = False
+        ReadOnly = True
+        TabOrder = 4
+      end
+      object EditRecVencidas: TEdit
+        Left = 379
+        Top = 27
+        Width = 103
+        Height = 21
+        TabStop = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clRed
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        ReadOnly = True
+        TabOrder = 5
+      end
+      object EditComprasDia: TEdit
+        Left = 519
+        Top = 69
+        Width = 133
+        Height = 21
+        TabStop = False
+        ReadOnly = True
+        TabOrder = 6
+      end
+      object EditVendaDia: TEdit
+        Left = 517
+        Top = 133
+        Width = 133
+        Height = 21
+        TabStop = False
+        ReadOnly = True
+        TabOrder = 7
+      end
+      object EditPagarAVencer15: TEdit
+        Left = 132
+        Top = 92
+        Width = 103
+        Height = 21
+        TabStop = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clGreen
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        ReadOnly = True
+        TabOrder = 8
+      end
+      object EditRecAVencer15: TEdit
+        Left = 379
+        Top = 92
+        Width = 103
+        Height = 21
+        TabStop = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clGreen
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        ReadOnly = True
+        TabOrder = 9
+      end
+      object EditPagarAVencer30: TEdit
+        Left = 132
+        Top = 114
+        Width = 103
+        Height = 21
+        TabStop = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clGreen
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        ReadOnly = True
+        TabOrder = 10
+      end
+      object EditPagarAVencer45: TEdit
+        Left = 132
+        Top = 136
+        Width = 103
+        Height = 21
+        TabStop = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clGreen
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        ReadOnly = True
+        TabOrder = 11
+      end
+      object EditRecAVencer30: TEdit
+        Left = 379
+        Top = 114
+        Width = 103
+        Height = 21
+        TabStop = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clGreen
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        ReadOnly = True
+        TabOrder = 12
+      end
+      object EditRecAVencer45: TEdit
+        Left = 379
+        Top = 136
+        Width = 103
+        Height = 21
+        TabStop = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clGreen
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        ReadOnly = True
+        TabOrder = 13
+      end
+    end
   end
   object SQLCC: TRxQuery
     DatabaseName = 'DB'
@@ -678,12 +687,12 @@ object FormTelaResumoFinanceiro: TFormTelaResumoFinanceiro
     object SQLCCCTCRN2LIMITE: TFloatField
       FieldName = 'CTCRN2LIMITE'
       Origin = 'DB.CONTACORRENTE.CTCRN2LIMITE'
-      DisplayFormat = '##0.00'
+      DisplayFormat = '#,##0.00'
     end
     object SQLCCCTCRN2SALDOATUAL: TFloatField
       FieldName = 'CTCRN2SALDOATUAL'
       Origin = 'DB.CONTACORRENTE.CTCRN2SALDOATUAL'
-      DisplayFormat = '##0.00'
+      DisplayFormat = '#,##0.00'
     end
   end
   object DSSQLCC: TDataSource
@@ -698,18 +707,18 @@ object FormTelaResumoFinanceiro: TFormTelaResumoFinanceiro
     Top = 357
   end
   object AdvOfficeStatusBarOfficeStyler1: TAdvOfficeStatusBarOfficeStyler
-    BorderColor = 14986888
-    PanelAppearanceLight.BorderColor = 14922381
+    BorderColor = clGreen
+    PanelAppearanceLight.BorderColor = clGreen
     PanelAppearanceLight.BorderColorHot = clGray
     PanelAppearanceLight.BorderColorDown = 10240783
-    PanelAppearanceLight.Color = 16440774
-    PanelAppearanceLight.ColorTo = 14854530
+    PanelAppearanceLight.Color = clGreen
+    PanelAppearanceLight.ColorTo = clGreen
     PanelAppearanceLight.ColorHot = 13958143
     PanelAppearanceLight.ColorHotTo = 6538487
     PanelAppearanceLight.ColorDown = 9232890
     PanelAppearanceLight.ColorDownTo = 1940207
-    PanelAppearanceLight.ColorMirror = 14854530
-    PanelAppearanceLight.ColorMirrorTo = 14854530
+    PanelAppearanceLight.ColorMirror = clGreen
+    PanelAppearanceLight.ColorMirrorTo = clGreen
     PanelAppearanceLight.ColorMirrorHot = 6538487
     PanelAppearanceLight.ColorMirrorHotTo = 6538487
     PanelAppearanceLight.ColorMirrorDown = 1940207
@@ -721,14 +730,14 @@ object FormTelaResumoFinanceiro: TFormTelaResumoFinanceiro
     PanelAppearanceDark.BorderColor = clNone
     PanelAppearanceDark.BorderColorHot = clGray
     PanelAppearanceDark.BorderColorDown = 10240783
-    PanelAppearanceDark.Color = 14986888
-    PanelAppearanceDark.ColorTo = 14986888
+    PanelAppearanceDark.Color = clGreen
+    PanelAppearanceDark.ColorTo = clGreen
     PanelAppearanceDark.ColorHot = 13958143
     PanelAppearanceDark.ColorHotTo = 6538487
     PanelAppearanceDark.ColorDown = 9232890
     PanelAppearanceDark.ColorDownTo = 1940207
-    PanelAppearanceDark.ColorMirror = 14986888
-    PanelAppearanceDark.ColorMirrorTo = 14986888
+    PanelAppearanceDark.ColorMirror = clGreen
+    PanelAppearanceDark.ColorMirrorTo = clGreen
     PanelAppearanceDark.ColorMirrorHot = 6538487
     PanelAppearanceDark.ColorMirrorHotTo = 6538487
     PanelAppearanceDark.ColorMirrorDown = 1940207

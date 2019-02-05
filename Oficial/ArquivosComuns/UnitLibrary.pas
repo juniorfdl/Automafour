@@ -4990,7 +4990,7 @@ begin
     begin
       SQLParcelasPrazo.Append;
       SQLParcelasPrazo.FieldByName('TERMICOD').Value := TerminalAtual;
-      SQLParcelasPrazo.FieldByName('NROPARCELA').Value := I;
+      SQLParcelasPrazo.FieldByName('NROPARCELA').Value := I + 1;
       SQLParcelasPrazo.FieldByName('NUMEICOD').Value := TpRecPrazoTel;
 
       if (SQLPlnRec.FieldByName('PLRCCDFIXENTR').Value = 'S') and (I = 1 - OffSet) then

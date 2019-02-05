@@ -10,34 +10,12 @@ uses
 type
   TFormTelaResumoFinanceiro = class(TForm)
     PanelResumoFin: TPanel;
-    Label1: TLabel;
-    Label2: TLabel;
     Label3: TLabel;
-    Label4: TLabel;
-    Label5: TLabel;
-    Label6: TLabel;
-    Label7: TLabel;
-    Label8: TLabel;
-    Label9: TLabel;
-    Label10: TLabel;
-    Label11: TLabel;
     Label12: TLabel;
-    Label13: TLabel;
-    Label14: TLabel;
     Label15: TLabel;
     Label16: TLabel;
-    EditPagarVencidas: TEdit;
-    EditPagarHoje: TEdit;
-    EditPagarAVencer: TEdit;
-    EditRecAVencer: TEdit;
-    EditRecHoje: TEdit;
-    EditRecVencidas: TEdit;
     RxDBGrid1: TRxDBGrid;
-    EditComprasDia: TEdit;
-    EditVendaDia: TEdit;
     EditSaldoCC: TEdit;
-    EditPagarAVencer15: TEdit;
-    EditRecAVencer15: TEdit;
     EditTotalPagar: TEdit;
     EditTotalReceber: TEdit;
     SQLCC: TRxQuery;
@@ -51,19 +29,43 @@ type
     SQLCCCTCRN2SALDOATUAL: TFloatField;
     DSSQLCC: TDataSource;
     SQLSoma: TRxQuery;
-    Label17: TLabel;
-    Label18: TLabel;
-    EditPagarAVencer30: TEdit;
-    EditPagarAVencer45: TEdit;
-    Label19: TLabel;
-    Label20: TLabel;
-    EditRecAVencer30: TEdit;
-    EditRecAVencer45: TEdit;
     AdvOfficeStatusBarOfficeStyler1: TAdvOfficeStatusBarOfficeStyler;
     AdvOfficeStatusBar2: TAdvOfficeStatusBar;
     RxLabel1: TRxLabel;
+    Panel1: TPanel;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label10: TLabel;
+    Label11: TLabel;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label17: TLabel;
+    Label18: TLabel;
+    Label19: TLabel;
+    Label20: TLabel;
+    EditPagarVencidas: TEdit;
+    EditPagarHoje: TEdit;
+    EditPagarAVencer: TEdit;
+    EditRecAVencer: TEdit;
+    EditRecHoje: TEdit;
+    EditRecVencidas: TEdit;
+    EditComprasDia: TEdit;
+    EditVendaDia: TEdit;
+    EditPagarAVencer15: TEdit;
+    EditRecAVencer15: TEdit;
+    EditPagarAVencer30: TEdit;
+    EditPagarAVencer45: TEdit;
+    EditRecAVencer30: TEdit;
+    EditRecAVencer45: TEdit;
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -246,26 +248,26 @@ begin
           end;
     end;
 
-  EditVendaDia.Text    := FormatFloat('##0.00',TotVendasDia);
-  EditComprasDia.Text  := FormatFloat('##0.00',TotComprasDia);
+  EditVendaDia.Text    := FormatFloat('#,##0.00',TotVendasDia);
+  EditComprasDia.Text  := FormatFloat('#,##0.00',TotComprasDia);
   EditVendaDia.Update; EditComprasDia.Update;
 
-  EditPagarVencidas.Text  := FormatFloat('##0.00',TotPagarVencidas);
-  EditPagarHoje.Text      := FormatFloat('##0.00',TotPagarHoje);
-  EditPagarAVencer.Text   := FormatFloat('##0.00',TotPagarAPagar);
-  EditPagarAVencer15.Text := FormatFloat('##0.00',TotPagarAPagar15);
-  EditPagarAVencer30.Text := FormatFloat('##0.00',TotPagarAPagar30);
-  EditPagarAVencer45.Text := FormatFloat('##0.00',TotPagarAPagar45);
-  EditTotalPagar.Text     := FormatFloat('##0.00',(TotPagarVencidas+TotPagarHoje+TotPagarAPagar+TotPagarAPagar15+TotPagarAPagar30+TotPagarAPagar45));
+  EditPagarVencidas.Text  := FormatFloat('#,##0.00',TotPagarVencidas);
+  EditPagarHoje.Text      := FormatFloat('#,##0.00',TotPagarHoje);
+  EditPagarAVencer.Text   := FormatFloat('#,##0.00',TotPagarAPagar);
+  EditPagarAVencer15.Text := FormatFloat('#,##0.00',TotPagarAPagar15);
+  EditPagarAVencer30.Text := FormatFloat('#,##0.00',TotPagarAPagar30);
+  EditPagarAVencer45.Text := FormatFloat('#,##0.00',TotPagarAPagar45);
+  EditTotalPagar.Text     := FormatFloat('#,##0.00',(TotPagarVencidas+TotPagarHoje+TotPagarAPagar+TotPagarAPagar15+TotPagarAPagar30+TotPagarAPagar45));
   EditPagarVencidas.Update; EditPagarHoje.Update; EditPagarAVencer.Update; EditPagarAVencer15.Update; EditPagarAVencer30.Update; EditPagarAVencer45.Update; EditTotalPagar.Update;
 
-  EditRecVencidas.Text  := FormatFloat('##0.00',TotReceberVencidas);
-  EditRecHoje.Text      := FormatFloat('##0.00',TotReceberHoje);
-  EditRecAVencer.Text   := FormatFloat('##0.00',TotReceberAReceber);
-  EditRecAVencer15.Text := FormatFloat('##0.00',TotReceberAReceber15);
-  EditRecAVencer30.Text := FormatFloat('##0.00',TotReceberAReceber30);
-  EditRecAVencer45.Text := FormatFloat('##0.00',TotReceberAReceber45);
-  EditTotalReceber.Text := FormatFloat('##0.00',(TotReceberVencidas+TotReceberHoje+TotReceberAReceber+TotReceberAReceber15+TotReceberAReceber30+TotReceberAReceber45));
+  EditRecVencidas.Text  := FormatFloat('#,##0.00',TotReceberVencidas);
+  EditRecHoje.Text      := FormatFloat('#,##0.00',TotReceberHoje);
+  EditRecAVencer.Text   := FormatFloat('#,##0.00',TotReceberAReceber);
+  EditRecAVencer15.Text := FormatFloat('#,##0.00',TotReceberAReceber15);
+  EditRecAVencer30.Text := FormatFloat('#,##0.00',TotReceberAReceber30);
+  EditRecAVencer45.Text := FormatFloat('#,##0.00',TotReceberAReceber45);
+  EditTotalReceber.Text := FormatFloat('#,##0.00',(TotReceberVencidas+TotReceberHoje+TotReceberAReceber+TotReceberAReceber15+TotReceberAReceber30+TotReceberAReceber45));
   EditRecVencidas.Update; EditRecHoje.Update; EditRecAVencer.Update; EditRecAVencer15.Update; EditRecAVencer30.Update; EditRecAVencer45.Update; EditTotalReceber.Update;
 end;
 
@@ -274,6 +276,28 @@ procedure TFormTelaResumoFinanceiro.FormClose(Sender: TObject;
 begin
   SQLCC.Close;
   SQLSoma.Close;
+end;
+
+procedure TFormTelaResumoFinanceiro.FormCreate(Sender: TObject);
+begin
+  SysLocale.MiddleEast := True;
+  EditPagarVencidas.BiDiMode := bdRightToLeft;
+  EditPagarHoje.BiDiMode := bdRightToLeft;
+  EditPagarAVencer.BiDiMode := bdRightToLeft;
+  EditRecAVencer.BiDiMode := bdRightToLeft;
+  EditRecHoje.BiDiMode := bdRightToLeft;
+  EditRecVencidas.BiDiMode := bdRightToLeft;
+  EditComprasDia.BiDiMode := bdRightToLeft;
+  EditVendaDia.BiDiMode := bdRightToLeft;
+  EditSaldoCC.BiDiMode := bdRightToLeft;
+  EditPagarAVencer15.BiDiMode := bdRightToLeft;
+  EditRecAVencer15.BiDiMode := bdRightToLeft;
+  EditTotalPagar.BiDiMode := bdRightToLeft;
+  EditTotalReceber.BiDiMode := bdRightToLeft;
+  EditPagarAVencer30.BiDiMode := bdRightToLeft;
+  EditPagarAVencer45.BiDiMode := bdRightToLeft;
+  EditRecAVencer30.BiDiMode := bdRightToLeft;
+  EditRecAVencer45.BiDiMode := bdRightToLeft;
 end;
 
 end.

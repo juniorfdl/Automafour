@@ -11497,6 +11497,7 @@ inherited FormPrincipal: TFormPrincipal
       Caption = '&Financeiro'
       object ResumoFinanceiro1: TMenuItem
         Caption = 'Resumo Financeiro'
+        OnClick = ResumoFinanceiro1Click
       end
       object Pagar1: TMenuItem
         Caption = 'Pagar'

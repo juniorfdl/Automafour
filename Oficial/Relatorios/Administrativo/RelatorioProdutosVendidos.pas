@@ -10,6 +10,9 @@ uses
   AdvOfficeStatusBar, AdvOfficeStatusBarStylers;
 
 type
+  tEmunTipoCliente=(tpTodos, tpAtacado, tpVarejo);
+
+type
   TFormRelatorioProdutosVendidos = class(TFormRelatorioTEMPLATE)
     SQLVendas: TRxQuery;
     GroupBox2: TGroupBox;
@@ -191,6 +194,7 @@ type
     DSSQLOperacao: TDataSource;
     SQLOperacaoOPESICOD: TIntegerField;
     SQLOperacaoOPESA60DESCR: TStringField;
+    rdgTipoCliente: TRadioGroup;
     procedure ExecutarBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -224,7 +228,7 @@ begin
   SQLVendas.MacrobyName('MEmpresa').Value := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'CUPOM', '') ;
   SQLVendas.MacrobyName('MEmpresa1').Value := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'NOTAFISCAL', '') ;
   SQLTrocas.Close ;
-  SQLTrocas.MacrobyName('MEmpresa').Value := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'CUPOM', '') ;
+  SQLTrocas.MacrobyName('MEmpresa').Value := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'CUPOM', '');
 
   if not CheckPeriodo.Checked then
     begin
@@ -253,6 +257,24 @@ begin
       SQLVendas.MacrobyName('MData1').Value   := '0=0';
       SQLTrocas.MacrobyName('MData').Value    := '0=0';
     end;
+
+  case tEmunTipoCliente(rdgTipoCliente.ItemIndex) of
+    tpTodos :
+     begin
+       SQLVendas.MacrobyName('MTpCliente').Value := '0=0';
+       SQLVendas.MacrobyName('MTpCliente1').Value := '0=0';
+     end;
+    tpAtacado :
+     begin
+       SQLVendas.MacrobyName('MTpCliente').Value :=  ' CLIECTPPRCVENDA IN (' + QuotedStr('A1')+','+ QuotedStr('A2')+',' + QuotedStr('A3') +')';
+       SQLVendas.MacrobyName('MTpCliente1').Value := ' CLIECTPPRCVENDA IN (' + QuotedStr('A1')+','+ QuotedStr('A2')+',' + QuotedStr('A3') +')';
+     end;
+    tpVarejo :
+     begin
+       SQLVendas.MacrobyName('MTpCliente').Value :=  ' CLIECTPPRCVENDA = ' + QuotedStr('V');
+       SQLVendas.MacrobyName('MTpCliente1').Value := ' CLIECTPPRCVENDA = ' + QuotedStr('V');
+     end;
+  end;
 
   if ComboUsuario.Text <> '' then
     begin

@@ -53,13 +53,13 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
         ParentFont = False
       end
       inherited EmpresaGroup: TGroupBox
-        Height = 186
+        Height = 152
         inherited ListaEmpresas: TListBox
-          Height = 110
+          Height = 78
         end
       end
       inherited GroupBox1: TGroupBox
-        Top = 189
+        Top = 155
         object CheckPeriodo: TCheckBox
           Left = 244
           Top = 15
@@ -321,7 +321,7 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       end
       object GroupBox5: TGroupBox
         Left = 12
-        Top = 234
+        Top = 198
         Width = 201
         Height = 40
         Caption = ' Vendedor '
@@ -367,7 +367,7 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
         object ComboCliente: TRxDBLookupCombo
           Left = 6
           Top = 14
-          Width = 391
+          Width = 395
           Height = 21
           DropDownCount = 8
           Font.Charset = ANSI_CHARSET
@@ -594,7 +594,7 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       end
       object GroupBox8: TGroupBox
         Left = 216
-        Top = 234
+        Top = 198
         Width = 203
         Height = 40
         Caption = ' Terminal '
@@ -699,6 +699,28 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
         Font.Style = [fsBold]
         ParentFont = False
         TabOrder = 16
+      end
+      object rdgTipoCliente: TRadioGroup
+        Left = 12
+        Top = 239
+        Width = 406
+        Height = 35
+        BiDiMode = bdLeftToRight
+        Caption = 'Tipo de Cliente'
+        Columns = 3
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ItemIndex = 0
+        Items.Strings = (
+          'Todos'
+          'Atacado'
+          'Varejo')
+        ParentBiDiMode = False
+        ParentFont = False
+        TabOrder = 17
       end
     end
     inherited ScrollBoxTopo: TScrollBox
@@ -872,6 +894,7 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       
         ' left outer join PRODUTO on CUPOMITEM.PRODICOD = PRODUTO.PRODICO' +
         'D)'
+      ' left outer join CLIENTE ON CUPOM.CLIEA13ID = CLIENTE.CLIEA13ID'
       'where'
       '  CUPOM.CUPOCSTATUS = '#39'A'#39' and'
       '  CUPOMITEM.CPITN3QTD > 0 and'
@@ -891,8 +914,8 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       '  (%MColecao) and'
       '  (%MCofins) and'
       '  (%MUsuario) and'
-      '  (%MOperacao)'
-      ''
+      '  (%MOperacao) and'
+      '  (%MTpCliente)'
       'union all'
       'select'
       '  NOTAFISCAL.EMPRICOD,'
@@ -934,6 +957,9 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       
         ' left outer join OPERACAOESTOQUE on NOTAFISCAL.OPESICOD = OPERAC' +
         'AOESTOQUE.OPESICOD'
+      
+        ' left outer join CLIENTE ON NOTAFISCAL.CLIEA13ID = CLIENTE.CLIEA' +
+        '13ID'
       'where'
       '  NOTAFISCAL.NOFICSTATUS = '#39'E'#39'   and'
       '  NOTAFISCALITEM.NFITN3QUANT > 0 and'
@@ -953,6 +979,7 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       '  (%MSerie) and'
       '  (%MUsuario1) and'
       '  (%MOperacao1) and'
+      ' (%MTpCliente1) and'
       '  OPERACAOESTOQUE.OPESCGERAFINANCEIRO = '#39'S'#39
       '')
     Macros = <
@@ -1054,6 +1081,12 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       end
       item
         DataType = ftString
+        Name = 'MTpCliente'
+        ParamType = ptInput
+        Value = '0=0'
+      end
+      item
+        DataType = ftString
         Name = 'MFiltro1'
         ParamType = ptInput
         Value = '0=0'
@@ -1145,6 +1178,12 @@ inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
       item
         DataType = ftString
         Name = 'MOperacao1'
+        ParamType = ptInput
+        Value = '0=0'
+      end
+      item
+        DataType = ftString
+        Name = 'MTpCliente1'
         ParamType = ptInput
         Value = '0=0'
       end>

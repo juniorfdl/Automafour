@@ -1025,12 +1025,6 @@ begin
           begin
             NumeroSerie := FormTelaInformaNumeroSerieProduto.RXSerieNumeroSerie.Text;
             if NumeroSerie <> '' then
-//              GravaSaidaNroSerieProduto(NumeroSerie,
-//                SQLTemplatePRODICOD.AsString,
-//                'D',
-//                EmpresaPadrao,
-//                DSMasterTemplate.DataSet.FieldByName('FORNICOD').AsString, '', '',
-//                DSMasterTemplate.DataSet.FieldByName('NOCPA30NRO').AsString, '');
               GravaEntradaNroSerieProduto(NumeroSerie,
                 SQLTemplatePRODICOD.AsString,
                 DSMasterTemplate.DataSet.FieldByName('FORNICOD').AsString,

@@ -1227,6 +1227,7 @@ type
     ValorEntrada, ValorFrete, ValorIcmsFrete, ValorVista: Double;
     ContasReceberCliente, ContasReceberID: string;
     BkpEmpresaCorrente: Integer;
+    preDanfe : Boolean;
     procedure EncerrarNota;
     function RetornaPais(nPais: Integer): string;
     function FaltamDadosNasParcelas: Boolean;
@@ -5573,7 +5574,7 @@ var
 begin
   inherited;
   VerificaDadosCliente;
-
+  preDanfe := False;
   if (SQLTemplateCLIEA13ID.Value <> '') and (SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIEN2RENDA', '''' + SQLTemplateCLIEA13ID.asstring + '''') <> '0') then
     if VerificaLimiteCredito(SQLTemplateCLIEA13ID.asstring, SQLTemplateNOFIN2VLRNOTA.value, DM.SQLParcelas, DM.SQLCliente) = False then
     begin
@@ -6295,7 +6296,10 @@ begin
     Ide.nNF := sqltemplate.fieldbyname('NOFIINUMERO').AsInteger;
     Ide.cNF := -1;
     Ide.modelo := 55;
-    Ide.serie := StrToInt(sqltemplate.fieldbyname('SERIA5COD').AsString);
+    if (preDanfe) and (sqltemplate.fieldbyname('SERIA5COD').AsString = 'PV') then
+      Ide.serie := 99
+    else
+      Ide.serie := StrToInt(sqltemplate.fieldbyname('SERIA5COD').AsString);
     Ide.dEmi := sqltemplate.fieldbyname('NOFIDEMIS').AsDateTime;
     Ide.dSaiEnt := sqltemplate.fieldbyname('NOFIDSAIDAENTRADA').AsDateTime;
     Ide.hSaiEnt := sqltemplate.fieldbyname('NOFIDSAIDAENTRADA').AsDateTime;
@@ -7337,7 +7341,7 @@ begin
 //   Pega Configs Iniciais
   Inicia_NFe;
   Application.ProcessMessages;
-
+  preDanfe := True;
 //  Cria o arquivo XML
   sXML := Gerar_XMLACBr;
   Application.ProcessMessages;
