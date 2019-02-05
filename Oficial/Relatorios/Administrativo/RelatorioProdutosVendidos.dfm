@@ -1,6 +1,6 @@
 inherited FormRelatorioProdutosVendidos: TFormRelatorioProdutosVendidos
-  Left = -8
-  Top = -8
+  Left = -9
+  Top = 2
   Caption = 'Relat'#243'rio de Produtos Vendidos'
   ClientHeight = 706
   ClientWidth = 1366
