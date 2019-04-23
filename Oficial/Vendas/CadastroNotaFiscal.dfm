@@ -1,6 +1,6 @@
 inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
-  Left = 7
-  Top = 19
+  Left = 4
+  Top = 1
   Caption = 'Notas Fiscais'
   ClientHeight = 690
   ClientWidth = 1350
@@ -624,7 +624,6 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
             Top = 44
             Width = 1218
             Height = 572
-            ActivePage = PaginaFinanceiro
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Top = 126
@@ -14886,6 +14885,10 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
       Origin = 'DB.CONTASRECEBER.CTRCCTIPOREGISTRO'
       FixedChar = True
       Size = 1
+    end
+    object SQLContasReceberDATA_PREVISTA: TDateTimeField
+      FieldName = 'DATA_PREVISTA'
+      Origin = 'DB.CONTASRECEBER.DATA_PREVISTA'
     end
   end
   object DSSQLContasReceber: TDataSource

@@ -305,7 +305,7 @@ procedure BaixaChequeEmitido(NroCheque:String;DataBaixa : TDateTime);
 function MontaString(x: string; Tamanho: integer; tipo: Integer = 0; CompletarCom: string = ' '): string;
 function RemoverZeros(S: string): string;
 function VerificaDesconto(ValorRecebido, ValorDesconto, PercentualPermitido, PercentualDesconto  : Real): Boolean;
-procedure GravaMovimentoNumeroSerie(Empresa, NumeroSerie, EntSai, DocOrigem, NomeCliFor : string; CodigoProdutoMovSer : Integer; DataMovimento : TDateTime);
+procedure GravaMovimentoNumeroSerie(Empresa, NumeroSerie, EntSai, DocOrigem, NomeCliFor, Origem : string; CodigoProdutoMovSer : Integer; DataMovimento : TDateTime);
 
 implementation
 
@@ -5538,7 +5538,7 @@ begin
   Result := Copy(S, J, (I-J)+1);
 end;
 
-procedure GravaMovimentoNumeroSerie(Empresa, NumeroSerie, EntSai, DocOrigem, NomeCliFor : string; CodigoProdutoMovSer : Integer; DataMovimento : TDateTime);
+procedure GravaMovimentoNumeroSerie(Empresa, NumeroSerie, EntSai, DocOrigem, NomeCliFor, Origem : string; CodigoProdutoMovSer : Integer; DataMovimento : TDateTime);
 var
   Query : TrxQuery;
 begin
@@ -5546,13 +5546,14 @@ begin
   Query.DatabaseName := 'DB';
   DM.DB.StartTransaction;
   Query.SQL.Clear;
-  Query.SQL.Add('INSERT INTO MOVIMENTO_NUMERO_SERIE (PRODICOD,PRSEA60NROSERIE,ENTRADA_SAIDA,DOCUMENTOORIGEM,CLIENTE_FORNECEDOR,DATA_MOVIMENTO,EMPRICOD) VALUES ( ' );
+  Query.SQL.Add('INSERT INTO MOVIMENTO_NUMERO_SERIE (PRODICOD,PRSEA60NROSERIE,ENTRADA_SAIDA,DOCUMENTOORIGEM,CLIENTE_FORNECEDOR,DATA_MOVIMENTO,ORIGEM,EMPRICOD) VALUES ( ' );
   Query.SQL.Add(IntToStr(CodigoProdutoMovSer) +', ');
   Query.SQL.Add(QuotedStr(NumeroSerie) +', ');
   Query.SQL.Add(QuotedStr(EntSai) +', ');
   Query.SQL.Add(QuotedStr(DocOrigem) +', ');
   Query.SQL.Add(QuotedStr(NomeCliFor) +', ');
   Query.SQL.Add('''' + FormatDateTime('mm/dd/yyyy', DataMovimento) + '''' +', ');
+  Query.SQL.Add(QuotedStr(Origem) +', ');
   Query.SQL.Add(QuotedStr(Empresa) +')');
 
   try

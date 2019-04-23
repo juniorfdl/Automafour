@@ -1,20 +1,20 @@
 inherited FormTelaConsultaMovNumeroSerie: TFormTelaConsultaMovNumeroSerie
-  Left = 241
+  Left = 93
   Top = 121
-  Width = 896
+  Width = 1174
   Caption = 'Movimento N'#250'mero S'#233'rie'
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
   inherited ScrollBoxFundo: TScrollBox
-    Width = 880
+    Width = 1158
     inherited PanelCentral: TPanel
-      Width = 937
+      Width = 1086
       inherited PanelProcura: TPanel
-        Width = 937
+        Width = 1086
       end
       inherited DBGridLista: TDBGrid
-        Width = 937
+        Width = 1086
         FixedColor = 5278518
         Columns = <
           item
@@ -56,17 +56,23 @@ inherited FormTelaConsultaMovNumeroSerie: TFormTelaConsultaMovNumeroSerie
             Expanded = False
             FieldName = 'DATA_MOVIMENTO'
             Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'ORIGEM'
+            Title.Caption = 'Origem Lacto'
+            Visible = True
           end>
       end
     end
     inherited ScrollBoxTopo: TScrollBox
-      Width = 937
+      Width = 1154
       inherited PanelCabecalho: TPanel
-        Width = 937
+        Width = 1154
         inherited PanelNavigator: TPanel
-          Width = 937
+          Width = 1154
           inherited AdvPanelNavigator: TAdvOfficeStatusBar
-            Width = 937
+            Width = 1154
           end
         end
       end
@@ -115,6 +121,10 @@ inherited FormTelaConsultaMovNumeroSerie: TFormTelaConsultaMovNumeroSerie
       DisplayLabel = 'Data Movimento'
       FieldName = 'DATA_MOVIMENTO'
       Origin = 'DB.MOVIMENTO_NUMERO_SERIE.DATA_MOVIMENTO'
+    end
+    object SQLTemplateORIGEM: TStringField
+      FieldName = 'ORIGEM'
+      Origin = 'DB.MOVIMENTO_NUMERO_SERIE.ORIGEM'
     end
   end
 end

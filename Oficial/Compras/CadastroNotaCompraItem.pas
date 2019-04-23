@@ -1036,6 +1036,7 @@ begin
                                       NumeroSerie,'E',
                                       DSMasterTemplate.DataSet.FieldByName('NOCPA30NRO').AsString,
                                       DM.SQLlocate('FORNECEDOR', 'FORNICOD', 'FORNA60RAZAOSOC', DSMasterTemplate.DataSet.FieldByName('FORNICOD').AsString),
+                                      'Nota de Entrada',
                                       SQLTemplatePRODICOD.AsInteger,
                                       DSMasterTemplate.DataSet.FieldByName('NOCPDEMISSAO').AsDateTime);
             FormTelaInformaNumeroSerieProduto.RXSerie.Next;
@@ -1054,6 +1055,7 @@ begin
                                       NumeroSerie,'E',
                                       DSMasterTemplate.DataSet.FieldByName('NOCPA30NRO').AsString,
                                       DM.SQLlocate('FORNECEDOR', 'FORNICOD', 'FORNA60RAZAOSOC', DSMasterTemplate.DataSet.FieldByName('FORNICOD').AsString),
+                                      'Nota de Entrada',
                                       SQLTemplatePRODICOD.AsInteger,
                                       DSMasterTemplate.DataSet.FieldByName('NOCPDEMISSAO').AsDateTime);
             FormTelaInformaNumeroSerieProduto.cdsProdutoNovo.Next;

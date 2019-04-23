@@ -1,6 +1,6 @@
 inherited FormCadastroMovimentosDiversosEstoqueItem: TFormCadastroMovimentosDiversosEstoqueItem
-  Left = 261
-  Top = 164
+  Left = 186
+  Top = 56
   Caption = 'Itens Movimentos Diversos Estoque'
   OldCreateOrder = True
   PixelsPerInch = 96
@@ -12,6 +12,7 @@ inherited FormCadastroMovimentosDiversosEstoqueItem: TFormCadastroMovimentosDive
           inherited PagePrincipal: TPageControl
             Top = 203
             Height = 246
+            ActivePage = TabSheetDadosPrincipais
             inherited TabSheetConsulta: TTabSheet
               inherited DBGridLista: TDBGrid
                 Height = 173
@@ -73,7 +74,7 @@ inherited FormCadastroMovimentosDiversosEstoqueItem: TFormCadastroMovimentosDive
               object Label5: TLabel
                 Left = 0
                 Top = 0
-                Width = 259
+                Width = 749
                 Height = 23
                 Align = alTop
                 Alignment = taCenter

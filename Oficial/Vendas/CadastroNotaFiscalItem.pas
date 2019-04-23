@@ -1099,7 +1099,13 @@ begin
                   DataSet.FieldByName('NFITA254OBS').AsString := ' Nro Serie: ' + NumeroSerie
                 else
                   DataSet.FieldByName('NFITA254OBS').AsString := DataSet.FieldByName('NFITA254OBS').AsString + ', ' + NumeroSerie;
-                GravaMovimentoNumeroSerie(EmpresaPadrao, NumeroSerie, 'S', DSMasterTemplate.DataSet.FieldByName('NOFIA13ID').AsString, DM.SQLlocate('CLIENTE', 'CLIEA13ID', 'CLIEA60RAZAOSOC', DSMasterTemplate.DataSet.FieldByName('CLIEA13ID').AsString), SQLTemplatePRODICOD.AsInteger, DSMasterTemplate.DataSet.FieldByName('NOFIDEMIS').AsDateTime);
+                GravaMovimentoNumeroSerie(EmpresaPadrao,
+                                          NumeroSerie, 'S',
+                                          DSMasterTemplate.DataSet.FieldByName('NOFIINUMERO').AsString,
+                                          DM.SQLlocate('CLIENTE', 'CLIEA13ID', 'CLIEA60RAZAOSOC', DSMasterTemplate.DataSet.FieldByName('CLIEA13ID').AsString),
+                                          'Nota de Saída',
+                                          SQLTemplatePRODICOD.AsInteger,
+                                          DSMasterTemplate.DataSet.FieldByName('NOFIDEMIS').AsDateTime);
               end;
               FormTelaInformaNumeroSerieProduto.RXSerie.Next;
             end;

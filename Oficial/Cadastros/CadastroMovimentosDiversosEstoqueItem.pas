@@ -141,7 +141,8 @@ var
 implementation
 
 uses DataModulo, CadastroProdutos, UnitLibrary, TelaImportaItens, TelaConsultaProdutoGeral,
-  TelaLancamentoGradeMovto, TelaProdutoNumeroSerieTEMP, SearchLibrary;
+  TelaLancamentoGradeMovto, TelaInformaNumeroSerieProduto, SearchLibrary,
+  TelaProdutoNumeroSerieTEMP;
 {$R *.dfm}
 
 procedure TFormCadastroMovimentosDiversosEstoqueItem.FormCreate(
@@ -224,6 +225,9 @@ end;
 
 procedure TFormCadastroMovimentosDiversosEstoqueItem.SQLTemplateBeforePost(
   DataSet: TDataSet);
+var
+  NumeroSerie, vTipo: string;
+  I: integer;
 begin
   if SQLTemplatePRODICOD.AsString = '' then
     begin
@@ -256,23 +260,53 @@ begin
   if SQLTemplateControlaSerieLookup.AsVariant <> Null then
     if SQLTemplateControlaSerieLookup.AsString = 'S' then
       begin
-        Application.CreateForm(TFormTelaGeralModalCadastroProdutoNumeroSerieTEMP,FormTelaGeralModalCadastroProdutoNumeroSerieTEMP);
-        FormTelaGeralModalCadastroProdutoNumeroSerieTEMP.SQLProdutoSerie.Close;
-        FormTelaGeralModalCadastroProdutoNumeroSerieTEMP.SQLProdutoSerie.MacroByName('MFiltro').AsString := 'MOVDA13ID = ''' + SQLTemplateMOVDA13ID.AsString + ''' AND PRODICOD = ' + SQLTemplatePRODICOD.AsString;
-        FormTelaGeralModalCadastroProdutoNumeroSerieTEMP.SQLProdutoSerie.Open;
-        FormTelaGeralModalCadastroProdutoNumeroSerieTEMP.CodProduto    := SQLTemplatePRODICOD.AsInteger;
-        FormTelaGeralModalCadastroProdutoNumeroSerieTEMP.Destino       := 'E';
-        FormTelaGeralModalCadastroProdutoNumeroSerieTEMP.IDMovDiverso  := SQLTemplateMOVDA13ID.AsString;
-        FormTelaGeralModalCadastroProdutoNumeroSerieTEMP.CodEmpresa    := DSMasterTemplate.DataSet.FieldByName('EMPRICOD').AsString;
-        FormTelaGeralModalCadastroProdutoNumeroSerieTEMP.LabelTitulo.Caption := FormTelaGeralModalCadastroProdutoNumeroSerieTEMP.LabelTitulo.Caption + ' - ' + SQLTemplateProdutoLookUp.AsString;
-        FormTelaGeralModalCadastroProdutoNumeroSerieTEMP.LabelTitulo.Update;
-        FormTelaGeralModalCadastroProdutoNumeroSerieTEMP.QtdeSerie     := SQLTemplateMVDIN3QTD.AsInteger;
-        FormTelaGeralModalCadastroProdutoNumeroSerieTEMP.ShowModal;
-        if FormTelaGeralModalCadastroProdutoNumeroSerieTEMP.ModalResult = MrCancel then
-          Abort;
-        FormTelaGeralModalCadastroProdutoNumeroSerieTEMP.Destroy;
-      end;
+        if SQLTemplate.State = dsEdit then
+          if MessageDlg('Deseja informar número de série?', mtConfirmation, [mbYes, mbNo], 0) = mrNo then
+            Exit;
 
+        NumeroSerie := '';
+        if SQLLocate('OPERACAOESTOQUE','OPESICOD','OPESCENTRADASAIDA',SQLTemplate.DataSource.DataSet.FieldByName('OPESICOD').AsString) = 'S' then
+          begin
+            Status := ' PRSECSTATUS = ' + QuotedStr('D');
+            vTipo := 'I';
+          end
+        else
+          begin
+            Status := ' PRSECSTATUS IN (' + QuotedStr('U') + ', ' + QuotedStr('I') + ')';
+            vTipo := 'D';
+          end;
+        CodigoProduto := SQLTemplatePRODICOD.AsString;
+        Application.CreateForm(TFormTelaInformaNumeroSerieProduto, FormTelaInformaNumeroSerieProduto);
+        FormTelaInformaNumeroSerieProduto.NumeroItens := SQLTemplateMVDIN3QTD.AsInteger;
+        FormTelaInformaNumeroSerieProduto.Valida_Qtde := True;
+        FormTelaInformaNumeroSerieProduto.ShowModal;
+        for I := 1 to SQLTemplateMVDIN3QTD.AsInteger do
+        begin
+          if FormTelaInformaNumeroSerieProduto.ModalResult = MrOK then
+          begin
+            FormTelaInformaNumeroSerieProduto.RXSerie.First;
+            while not FormTelaInformaNumeroSerieProduto.RXSerie.Eof do
+            begin
+              if FormTelaInformaNumeroSerieProduto.RXSerieItem.AsInteger = I then
+              begin
+                NumeroSerie := FormTelaInformaNumeroSerieProduto.RXSerieNumeroSerie.Text;
+                if NumeroSerie <> '' then
+                  GravaSaidaNroSerieProduto(NumeroSerie, SQLTemplatePRODICOD.AsString, vTipo, EmpresaPadrao, DSMasterTemplate.DataSet.FieldByName('CLIEA13ID').AsString, '', '', DSMasterTemplate.DataSet.FieldByName('MOVDICOD').AsString, '');
+                GravaMovimentoNumeroSerie(EmpresaPadrao,
+                                          NumeroSerie,
+                                          SQLLocate('OPERACAOESTOQUE','OPESICOD','OPESCENTRADASAIDA',SQLTemplate.DataSource.DataSet.FieldByName('OPESICOD').AsString),
+                                          SQLTemplate.DataSource.DataSet.FieldByName('MOVDICOD').AsString,
+                                          SQLlocate('CLIENTE', 'CLIEA13ID', 'CLIEA60RAZAOSOC',DSMasterTemplate.DataSet.FieldByName('CLIEA13ID').AsString),
+                                          'Mov Estoque Diversos',
+                                          SQLTemplatePRODICOD.AsInteger,
+                                          DSMasterTemplate.DataSet.FieldByName('MOVDDMOVIMENTO').AsDateTime);
+              end;
+              FormTelaInformaNumeroSerieProduto.RXSerie.Next;
+            end;
+          end;
+        end;
+        FormTelaInformaNumeroSerieProduto.Destroy;
+      end;
   inherited;
 end;
 

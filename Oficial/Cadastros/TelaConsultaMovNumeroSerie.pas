@@ -17,6 +17,7 @@ type
     SQLTemplateDOCUMENTOORIGEM: TStringField;
     SQLTemplateCLIENTE_FORNECEDOR: TStringField;
     SQLTemplateDATA_MOVIMENTO: TDateTimeField;
+    SQLTemplateORIGEM: TStringField;
   private
     { Private declarations }
   public

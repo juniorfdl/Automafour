@@ -438,6 +438,7 @@ begin
                                     SQLTemplateENTRADA_SAIDA.AsString,
                                     documento,
                                     NomeCliFor,
+                                    'Representante',
                                     SQLTemplatePRODICOD.AsInteger,
                                     SQLTemplateDATA_REGISTRO.AsDateTime);
       cdsSerie.Next;

@@ -1105,6 +1105,7 @@ type
     SQLPedidoVendaDATA_VALIDADE: TDateTimeField;
     SQLNotaFiscalItemBASE_ST_RETIDO: TFloatField;
     SQLNotaFiscalItemVALOR_ST_RETIDO: TFloatField;
+    SQLContasReceberDATA_PREVISTA: TDateTimeField;
     function TabelaNFE_123(Produto, Situacao: string): string;
     procedure FormCreate(Sender: TObject);
     procedure SQLTemplateNewRecord(DataSet: TDataSet);
@@ -4109,6 +4110,7 @@ begin
       SQLContasReceberCTRCDEMIS.Value := SQLTemplate.FindField('NOFIDEMIS').Value;
       SQLContasReceberCLIEA13ID.AsString := SQLTemplate.FindField('CLIEA13ID').AsString;
       SQLContasReceberCTRCDVENC.Value := SQLParcelasPrazoVendaTempDATAVENCTO.Value;
+      SQLContasReceberDATA_PREVISTA.Value := SQLParcelasPrazoVendaTempDATAVENCTO.Value;
       SQLContasReceberCTRCN2VLR.Value := SQLParcelasPrazoVendaTempVALORVENCTO.Value;
       SQLContasReceberCTRCA5TIPOPADRAO.Value := SQLParcelasPrazoVendaTempTipoPadrao.Value;
       if SQLContasReceberCTRCA5TIPOPADRAO.Value = '' then
@@ -4378,6 +4380,7 @@ begin
           SQLContasReceberNOFIA13ID.Value := SQLTemplateNOFIA13ID.Value;
           SQLContasReceberCTRCDEMIS.AsString := FormatDateTime('dd/mm/yyyy', FormTelaAssistenteLancamentoContasReceber.RxTableEMI.AsDateTime);
           SQLContasReceberCTRCDVENC.AsString := FormatDateTime('dd/mm/yyyy', FormTelaAssistenteLancamentoContasReceber.RxTableVENCI.AsDateTime);
+          SQLContasReceberDATA_PREVISTA.AsString := FormatDateTime('dd/mm/yyyy', FormTelaAssistenteLancamentoContasReceber.RxTableVENCI.AsDateTime);
           SQLContasReceberCTRCN2VLR.AsFloat := FormTelaAssistenteLancamentoContasReceber.RxTableVALOR.AsFloat;
           SQLContasReceberCLIEA13ID.AsVariant := FormTelaAssistenteLancamentoContasReceber.ComboCliente.Value;
           SQLContasReceberPLCTA15COD.AsString := FormTelaAssistenteLancamentoContasReceber.ComboContaCredito.Value;
