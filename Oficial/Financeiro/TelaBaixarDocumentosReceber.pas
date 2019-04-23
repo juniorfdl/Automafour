@@ -1731,6 +1731,7 @@ begin
     FormMovRetornoSicredi.fListaValorJuros  := ListaValorJuros;
     FormMovRetornoSicredi.FListaValorDocumento := ListaValorDocumento;
     FormMovRetornoSicredi.fListaValorMulta  := ListaValorMulta;
+    FormMovRetornoSicredi.vNomeBanco        := NomeBanco;     
     FormMovRetornoSicredi.ShowModal;
   finally
     FreeAndNil(FormMovRetornoSicredi);

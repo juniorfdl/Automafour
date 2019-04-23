@@ -3197,6 +3197,14 @@ inherited FormCadastroNotaFiscalItem: TFormCadastroNotaFiscalItem
       FieldName = 'NOFIN3VLRPIS'
       Origin = 'DB.NOTAFISCALITEM.NOFIN3VLRPIS'
     end
+    object SQLTemplateBASE_ST_RETIDO: TFloatField
+      FieldName = 'BASE_ST_RETIDO'
+      Origin = 'DB.NOTAFISCALITEM.BASE_ST_RETIDO'
+    end
+    object SQLTemplateVALOR_ST_RETIDO: TFloatField
+      FieldName = 'VALOR_ST_RETIDO'
+      Origin = 'DB.NOTAFISCALITEM.VALOR_ST_RETIDO'
+    end
   end
   inherited AdvOfficeStatusBarOfficeStyler1: TAdvOfficeStatusBarOfficeStyler
     Left = 469

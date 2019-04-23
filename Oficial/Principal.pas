@@ -2985,7 +2985,7 @@ begin
   arqFile := TIniFile.Create(caminhoArq);
   ParceiroPath := arqFile.ReadString('IB_SOFTWARE', 'LinhaD', '');
 
-  if dm.SQLLocate('USUARIO','USUAICOD','USUACRESUMOFIN',INTTOSTR(UsuarioCorrente)) = 'S' then
+  if (dm.SQLLocate('USUARIO','USUAICOD','USUACRESUMOFIN',INTTOSTR(UsuarioCorrente)) = 'S') and (not(DelphiAberto)) then
     begin
       Application.CreateForm(TFormTelaResumoFinanceiro,FormTelaResumoFinanceiro);
       FormTelaResumoFinanceiro.ShowModal;

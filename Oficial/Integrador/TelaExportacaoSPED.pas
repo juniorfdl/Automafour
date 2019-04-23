@@ -280,6 +280,7 @@ type
     z0190UND_SIGLA: TStringField;
     z0190UND_DESCR: TStringField;
     z0200: TRxQuery;
+    ck170NFCe: TCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure BtExecutarClick(Sender: TObject);
     function  MontaLinhaProduto4 : String;
@@ -299,6 +300,7 @@ type
     Function  Registro0150: Boolean;
     Function  Registro0206(Produto:String): Boolean;
     Function  Registro0220(Produto:String): Boolean;
+    Function  Registro_Bloco_B: boolean;
     Function  Registro_Bloco_C: boolean;
     Function  RegistroC100: boolean;
     Function  RegistroC113: boolean;
@@ -344,7 +346,7 @@ type
 
     Erro, CriaC400, CriaC405, CriaC481, CriaC485 : Boolean;
 
-    I, TotalRegistros, TotalBlocoZero, Total_Bloco_A, Total_Bloco_C, Total_Bloco_D,
+    I, TotalRegistros, TotalBlocoZero, Total_Bloco_A, Total_Bloco_B, Total_Bloco_C, Total_Bloco_D,
     Total_Bloco_E, Total_Bloco_G, Total_Bloco_H, Total_Bloco_K, Total_Bloco_1, Total_Bloco_9 : Integer;
     TotalRegistrosPisCofins, TotalBlocoZeroPisCofins, 
 
@@ -353,6 +355,7 @@ type
     n0000, n0001, n0005, n0100, n0110, n0111, n0140, n0150, n0190, n0200, n0206, n0220, n0990 : Integer;
     n9001, n9900, n9990, n9999 : Integer;
     nA001, nA010, nA100, nA110, nA111, nA120, nA170, nA990 :Integer;
+    nB001, nB010, nB100, nB110, nB990 :Integer;
     nC001, nC010, nC100, nC105, nC110, nC111, nC113, nC114, nC115, nC120, nC130 :Integer;
     nC140, nC141, nC160, nC170, nC172, nC190, nC400, nC405, nC410, nC420, nC425, nC460, nC470, nC490, nC481, nC485, nC990 :Integer;
     nD001, nD100, nD190, nD990 : Integer;
@@ -500,6 +503,14 @@ begin
   if Not Registro_Bloco_Zero Then
   begin
     Showmessage('Falha ao Gerar Registro Bloco Zero');
+    CloseFile(Arquivo);
+    CloseFile(Arquivo2);
+    Exit;
+  End;
+
+  if not Registro_Bloco_B Then
+  Begin
+    Showmessage('Falha ao Gerar Bloco B');
     CloseFile(Arquivo);
     CloseFile(Arquivo2);
     Exit;
@@ -895,7 +906,7 @@ Begin
                       SQLCupom.First;
                       while not SQLCupom.eof do
                         begin
-                          Inclui_0200(SQLCupom.fieldbyname('PRODICOD').AsString,'S');
+                          Inclui_0200(SQLCupom.fieldbyname('PRODICOD').AsString,'S');     
                           SQLCupom.Next;
                         end;
                     end;
@@ -957,7 +968,7 @@ Begin
           while not zPesquisa.eof do
             Begin
               If not zPesquisa.FieldByName('PRODICOD').IsNull Then
-                Inclui_0200(zPesquisa.fieldbyname('PRODICOD').AsString,'S');
+//                Inclui_0200(zPesquisa.fieldbyname('PRODICOD').AsString,'S');
               zPesquisa.next;
             end;
         end;
@@ -2680,6 +2691,7 @@ begin
   z0200.close;
   z0200.sql.Clear;
   //z0200.RequestLive := True;
+
   z0200.sql.add('Select * from SPED_0200 where COD_ITEM='+Produto);
   z0200.open;
   if z0200.IsEmpty then
@@ -2687,7 +2699,7 @@ begin
       dm.ZConsulta.Close;
       dm.ZConsulta.sql.Text := 'Select PRODIORIGEM,PRODISITTRIB,PRODA2CSTPIS,PRODA3CSTPISENTRADA,NCMICOD,UNIDICOD,ICMSICOD from produto where prodicod='+Produto;
       dm.ZConsulta.open;
-      if not dm.ZConsulta.IsEmpty then
+       if not dm.ZConsulta.IsEmpty then
         begin
          if (dm.ZConsulta.FieldByName('NCMICOD').AsString='') or (dm.ZConsulta.FieldByName('UNIDICOD').AsString='') or
             (dm.ZConsulta.FieldByName('PRODIORIGEM').AsString='') or (dm.ZConsulta.FieldByName('PRODISITTRIB').AsString='') or
@@ -3592,11 +3604,14 @@ Begin
 
         ProgressGeral.Position := 60;
 
-        // REGISTRO C170: ITENS DO DOCUMENTO (CÓDIGO 01, 1B, 04, 55 e 65).
-        if StatusNF = 'A' then
+        // REGISTRO C170: ITENS DO DOCUMENTO (CÓDIGO 01, 1B, 04, 55 e 65). Inclui o ck100NFCe para gerar ou não o registro c170 para NFCe
+          if not ck170NFCe.Checked then
           begin
-            EditTabela.Text := 'Criando - BLOCO C170 - ITENS DO DOCUMENTO'; EditTabela.Update;
-            if Not RegistroC170 Then Begin Result := False; Exit; End;
+            if StatusNF = 'A' then
+            begin
+              EditTabela.Text := 'Criando - BLOCO C170 - ITENS DO DOCUMENTO'; EditTabela.Update;
+              if Not RegistroC170 Then Begin Result := False; Exit; End;
+            end;
           end;
 
         // REGISTRO C190: REGISTRO ANALÍTICO DO DOCUMENTO (CÓDIGO 01, 1B, 04E 55 E 65).
@@ -3664,6 +3679,8 @@ Begin
     else
       Chave := '';
 
+//    if chave = '43190290262627000103550010000013231034086926' then
+//      showmessage('parou');
     { Para documentos fiscais cancelados (codigo 02 ou 03) Denegado (04), inutilizado (05) informar somente
       os campos Código da Situação, Indicador de Operacao, Codigo do Modelo e Chave do Documento para os que possuem.}
     if zPesquisa.FieldByName('NOFICSTATUS').AsString = 'C' Then
@@ -3893,19 +3910,19 @@ Begin
         if Not RegistroC160 Then Begin Result := False; Exit; End;
       end; }
 
-    // REGISTRO C170: ITENS DO DOCUMENTO (CÓDIGO 01, 1B, 04 e 55).
-    if StatusNF = 'E' then
-      begin
-        EditTabela.Text := 'Criando - BLOCO C170 - ITENS DO DOCUMENTO'; EditTabela.Update;
-        if Not RegistroC170 Then Begin Result := False; Exit; End;
-      end;
+    // REGISTRO C170: ITENS DO DOCUMENTO (CÓDIGO 01, 1B, 04 e 55). tirei
+//    if StatusNF = 'E' then
+//      begin
+//        EditTabela.Text := 'Criando - BLOCO C170 - ITENS DO DOCUMENTO'; EditTabela.Update;
+//        if Not RegistroC170 Then Begin Result := False; Exit; End;
+//      end;
 
     // REGISTRO C172: OPERAÇÕES COM ISSQN (CÓDIGO 01)
     // Adilson Verificar com Judi se teremos que lancar as Notas de Servico na Entrada
     {EditTabela.Text := 'Criando - BLOCO C172 - OPERAÇÕES COM ISSQN (CÓDIGO 01)'; EditTabela.Update;
     if Not RegistroC172 Then Begin Result := False; Exit; End;}
 
-    // REGISTRO C190: REGISTRO ANALÍTICO DO DOCUMENTO (CÓDIGO 01, 1B, 04E 55 e 65).
+    // REGISTRO C190: REGISTRO ANALÍTICO DO DOCUMENTO (CÓDIGO 01, 1B, 04E 55 e 65). tirei aqui para não ir c190 na nota fiscal
     if StatusNF = 'E' then
       begin
         EditTabela.Text := 'Criando - BLOCO C190 - REGISTRO ANALITICO'; EditTabela.Update;
@@ -3969,6 +3986,8 @@ Begin
         Chave := zPesquisa.FieldByName('NOFIA44CHAVEACESSO').AsString
       else
         Chave := '';
+//      if zPesquisa.FieldByName('NOFIA44CHAVEACESSO').AsString = '43190209255673000167550010000100781904446604' then
+//        showmessage('Parou');
 
       if chave <> '' then
         ModeloNF := '55'
@@ -4030,15 +4049,22 @@ Begin
               xVL_Outras := 0
             else
               xVL_Outras := zPesquisa.FieldByName('VL_OUTRAS').Value ;
+            try
+              Linha := Linha +
+              FormatFloat('0.00',zPesquisa.FieldByName('TOTAL_MERC').Value -
+                                 zPesquisa.FieldByName('VL_DESC').Value +
+                                 zPesquisa.FieldByName('VL_FRETE').Value +
+                                 zPesquisa.FieldByName('VL_ICMS_ST').Value +
+                                 zPesquisa.FieldByName('VL_IPI').Value +
+                                 zPesquisa.FieldByName('NOCPN3VLRSEGURO').Value +
+                                 xVL_Outras) + '|'; // 12 VL_DOC Valor total do documento fiscal N - 02 S
+            except
+              on E:Exception Do
+              begin
+               Showmessage('Erro: '+E.message + ' Nota: ' + zPesquisa.FieldByName('NOCPA30NRO').AsString);
+              end;
+            end;
 
-            Linha := Linha +
-            FormatFloat('0.00',zPesquisa.FieldByName('TOTAL_MERC').Value -
-                               zPesquisa.FieldByName('VL_DESC').Value +
-                               zPesquisa.FieldByName('VL_FRETE').Value +
-                               zPesquisa.FieldByName('VL_ICMS_ST').Value +
-                               zPesquisa.FieldByName('VL_IPI').Value +
-                               zPesquisa.FieldByName('NOCPN3VLRSEGURO').Value +
-                               xVL_Outras) + '|'; // 12 VL_DOC Valor total do documento fiscal N - 02 S
 
             // verifica a forma de pagamento
             zPesquisa1.Close;
@@ -4142,8 +4168,15 @@ Begin
 
       // REGISTRO C190: REGISTRO ANALÍTICO DO DOCUMENTO (CÓDIGO 01, 1B, 04E 55).
       EditTabela.Text := 'Criando - BLOCO C190 - REGISTRO ANALITICO'; EditTabela.Update;
-      if Not RegistroC190 Then Begin Result := False; Exit; End;
-    end;
+      try
+        if Not RegistroC190 Then Begin Result := False; Exit; End;
+      except
+        on E:Exception Do
+        begin
+         Showmessage('Erro: '+E.message);
+        end;
+      end;
+   end;
 
     zPesquisa.Next;
     Progress.Position := Progress.Position + 1;
@@ -4613,7 +4646,9 @@ Begin
             ''                                                                          + '|' + // 35 ALIQ_COFINS Alíquota da COFINS (em reais) N 04 OC OC
             FormatFloat('0.00',Base *
             (zPesquisa1.FieldByName('PRODN2ALIQCOFINS').Value / 100) )                  + '|' + // 36 VL_COFINS Valor da COFINS N - 02 OC OC
-            ''                                                                          + '|' ; // 37 COD_CTA Código da conta analítica contábil
+            ''                                                                          + '|' + // 37 COD_CTA Código da conta analítica contábil
+            ''                                                                          + '|' ; // 38 vALOR DO ABATIMENTO NÃO TRIBUTADO E NÃO COMERCIAL
+
 
             If Not GravaRegistros('C170') Then Begin Result := False; Exit; End;
             Inc(nC170);
@@ -4835,6 +4870,7 @@ Begin
             End;
 
             Linha := Linha + '|' ;    // 37 COD_CTA Código da conta analítica contábil
+            Linha := Linha + '|' ;    // 38 Valor do Abatimento
 
             If Not GravaRegistros('C170') Then Begin Result := False; Exit; End;
             Inc(nC170);
@@ -4965,7 +5001,8 @@ Begin
             ''                                                                          + '|' + // 35 ALIQ_COFINS Alíquota da COFINS (em reais) N 04 OC OC
             FormatFloat('0.00',Base *
             (zPesquisa1.FieldByName('PRODN2ALIQCOFINS').Value / 100) )                  + '|' + // 36 VL_COFINS Valor da COFINS N - 02 OC OC
-            ''                                                                          + '|' ; // 37 COD_CTA Código da conta analítica contábil
+            ''                                                                          + '|' + // 37 COD_CTA Código da conta analítica contábil
+            ''                                                                          + '|' ; // 38 VALOR ABATIMENTO NÃO TRIBUTADA E NÃO COMERCIAL
 
             If Not GravaRegistros('C170') Then Begin Result := False; Exit; End;
             Inc(nC170);
@@ -6163,7 +6200,7 @@ Begin
   n1001 := 1;
   Total_Bloco_1 := 1;
 
-  Linha := '|1010|N|N|N|N|N|N|N|N|N|';
+  Linha := '|1010|N|N|N|N|N|N|N|N|N|N|N|N|';
   If Not GravaRegistros('1010') Then Begin Result := False; Exit; End;
   inc(Total_Bloco_1);
   n1010 := 1;
@@ -6544,6 +6581,20 @@ Begin
   Linha :=  '|9900|'        + // Incio do registro |9900| e Indicador de Nota de Entrada |0|
             '0990|'         + // Registro a ser totalizado
             IntToStr(n0990) + '|'; // Total de linhas do registro
+  If Not GravaRegistros('9900') Then Begin Result := False; Exit; End;
+  Inc(n9900);
+  Inc(Total_Bloco_9);
+  {-------------------------------------------------}
+  Linha :=  '|9900|'        + // Incio do registro |9900| e Indicador de Nota de Entrada |0|
+            'B001|'         + // Registro a ser totalizado
+            IntToStr(nB001) + '|'; // Total de linhas do registro
+  If Not GravaRegistros('9900') Then Begin Result := False; Exit; End;
+  Inc(n9900);
+  Inc(Total_Bloco_9);
+  {-------------------------------------------------}
+  Linha :=  '|9900|'        + // Incio do registro |9900| e Indicador de Nota de Entrada |0|
+            'B990|'         + // Registro a ser totalizado
+            IntToStr(nB990) + '|'; // Total de linhas do registro
   If Not GravaRegistros('9900') Then Begin Result := False; Exit; End;
   Inc(n9900);
   Inc(Total_Bloco_9);
@@ -6930,7 +6981,7 @@ Begin
   Inc(Total_Bloco_9); // Para para incluir na soma a linha que será gravada a seguir
   {-------------------------------------------------}
   Linha :=  '|9999|'+ // Fechamento do Bloco |9900| e Indicador de Nota de Entrada |0|
-            IntToStr(TotalBlocoZero + Total_Bloco_A + Total_Bloco_C + Total_Bloco_D +
+            IntToStr(TotalBlocoZero + Total_Bloco_A + Total_Bloco_B + Total_Bloco_C + Total_Bloco_D +
             Total_Bloco_E + Total_Bloco_G + Total_Bloco_H + Total_Bloco_K + Total_Bloco_1 + Total_Bloco_9) + '|'; // Total de linhas do registro
   If Not GravaRegistros('9999') Then Begin Result := False; Exit; End;
   {-------------------------------------------------}
@@ -7543,6 +7594,46 @@ procedure TFormTelaExportacaoSped.z0150AfterPost(DataSet: TDataSet);
 begin
   inherited;
   z0150.ApplyUpdates;
+end;
+
+function TFormTelaExportacaoSped.Registro_Bloco_B: boolean;
+var Modelo_ECF, Serie_ECF, TerminalAtual : string;
+    DataAtual : TDate;
+    Base : Double;
+    Inifile: TInifile;
+    TemMov : boolean;
+begin
+  Result := True;
+  EditTabela.Text := 'Criando - BLOCO B'; EditTabela.Update;
+  EditTabela.Update;
+
+  //Registro B001 - ABERTURA DO BLOCO B - ESCRITURAÇÃO E APURAÇÃO DO ISS
+    EditTabela.Text := 'Criando Bloco B'; EditTabela.Update;
+    Linha :=   '|B001|'                                                            + // 01-Registro B001
+               '1'                                      + '|'                      ; // IND_MOV =  1 - Bloco sem dados informados
+
+  If Not GravaRegistros('C001') Then
+    Begin
+      Result := False;
+      Exit;
+    End;
+
+  nB001 := 1;
+  Total_Bloco_B := 1;
+
+  EditTabela.Text := 'Criando Registro B990 - Finalizando Bloco B'; EditTabela.Update;
+  EditTabela.Update;
+
+  Linha :=   '|B990|'                                            + // 01-Registro B990
+             IntToStr(Total_Bloco_B + 1)  + '|'                  ; // Total de Registros
+
+  if Not GravaRegistros('B990') Then
+  Begin
+    Result := False;
+    Exit;
+  End;
+  Inc(nB990);
+  Inc(Total_Bloco_B);
 end;
 
 end.

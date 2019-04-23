@@ -1141,13 +1141,31 @@ begin
                         if SQLNotaCompraItens.FindField('NOCIN3PERCIPI').asFloat > 0 then
                           SQLProduto.FindField('PRODN2PERCIPIENTRADA').value := SQLNotaCompraItens.FindField('NOCIN3PERCIPI').asFloat;
 
-                        // Subst Trib Percentual
-                        if (SQLNotaCompraItens.FindField('NOCIN2VBCST').asFloat>0) and (SQLNotaCompraItens.FindField('NOCIN3VLRSUBST').asFloat>0) then
+                        // Subst Trib Valor
+                        if (SQLNotaCompraItens.FindField('NOCIN2VBCST').asFloat > 0) and (SQLNotaCompraItens.FindField('NOCIN3VLRSUBST').asFloat > 0) then
                           SQLProduto.FindField('VALOR_ICMSST').asFloat := SQLNotaCompraItens.FindField('NOCIN3VLRSUBST').asFloat / (SQLNotaCompraItens.FindField('NOCIN3CAPEMBAL').asFloat * SQLNotaCompraItens.FindField('NOCIN3QTDEMBAL').asFloat);
 
-                        if (SQLNotaCompraItens.FindField('NOCIN3VLRDESC').asFloat>0) then
+                        if (SQLNotaCompraItens.FindField('NOCIN3VLRDESC').asFloat > 0) then
                           SQLProduto.FindField('VALOR_DESC_ENTRADA').asFloat := SQLNotaCompraItens.FindField('NOCIN3VLRDESC').asFloat / SQLNotaCompraItens.FindField('NOCIN3QTDEMBAL').AsFloat;
                       end;
+
+                if (MatrizFilial = 'M') then
+                  if SQLLocate('OPERACAOESTOQUE','OPESICOD','CALCULAR_ST_RETIDO',IntToStr(OperacaoEstoque)) = 'S' then
+                  begin
+                    if (SQLNotaCompraItensNOCIA3CSTICMS.AsString = '00') or (SQLNotaCompraItensNOCIA3CSTICMS.AsString = '70') or (SQLNotaCompraItensNOCIA3CSTICMS.AsString = '60') then
+                    begin
+                      SQLProduto.FindField('VALOR_ICM_ST_RET').asFloat := SQLNotaCompraItens.FindField('NOCIN3VLRSUBST').asFloat / (SQLNotaCompraItens.FindField('NOCIN3CAPEMBAL').asFloat * SQLNotaCompraItens.FindField('NOCIN3QTDEMBAL').asFloat);
+                      SQLProduto.FindField('BASE_ICM_ST_RET').asFloat := SQLNotaCompraItens.FindField('NOCIN2VBCST').asFloat / (SQLNotaCompraItens.FindField('NOCIN3CAPEMBAL').asFloat * SQLNotaCompraItens.FindField('NOCIN3QTDEMBAL').asFloat);
+                    end;
+                    // Subst Trib Base valor Retido
+                    if (SQLNotaCompraItens.FindField('NOCIN2VBCSTRET').asFloat > 0) then
+                      SQLProduto.FindField('BASE_ICM_ST_RET').asFloat := SQLNotaCompraItens.FindField('NOCIN2VBCSTRET').asFloat / (SQLNotaCompraItens.FindField('NOCIN3CAPEMBAL').asFloat * SQLNotaCompraItens.FindField('NOCIN3QTDEMBAL').asFloat);
+
+                    // Subst Trib valor Retido
+                    if (SQLNotaCompraItens.FindField('NOCIN2VICMSSTRET').asFloat > 0) then
+                      SQLProduto.FindField('VALOR_ICM_ST_RET').asFloat := SQLNotaCompraItens.FindField('NOCIN2VICMSSTRET').asFloat / (SQLNotaCompraItens.FindField('NOCIN3CAPEMBAL').asFloat * SQLNotaCompraItens.FindField('NOCIN3QTDEMBAL').asFloat);
+                  end;
+
 
                 if (SQLEstoqueAtualQTDEATUAL.asFloat <= 0) or (SQLEstoqueAtualQTDEATUAL.IsNull)  then
                   SaldoAtual := 1

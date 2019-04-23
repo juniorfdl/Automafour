@@ -174,6 +174,7 @@ begin
       tblQuitados.CreateTable;
     end;
     vTotalQuitados := 0;
+    SQLQuitados.Close;
     SQLQuitados.MacroByName('Empresa').Value := SQLDeLista(ComboEmpresa, ListaEmpresas, '', 'ContasReceber', 'EMPRICOD');
     SQLQuitados.MacroByName('Data').Value := 'ContasReceber.CTRCDULTREC >= ' + '"' + FormatDateTime('mm/dd/yyyy', De.Date) + '"' + ' AND ' + 'ContasReceber.CTRCDULTREC <= ' + '"' + FormatDateTime('mm/dd/yyyy', Ate.Date) + '"';
     if ComboPortador.KeyValue > 0 then
@@ -237,6 +238,9 @@ begin
   Progresso.Position := 0;
 
   TblTemporaria.Close;
+  TblTemporaria.DeleteTable;
+  TblTemporaria.CreateTable;
+
   TblTemporaria.AddIndex('DataKey', 'Portador;DataPrevista;PagarReceber', [IxPrimary]);
 
   if not TblTemporaria.Active then

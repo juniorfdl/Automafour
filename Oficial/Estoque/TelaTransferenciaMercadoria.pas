@@ -342,6 +342,7 @@ type
     ImportardoPalmOne1: TMenuItem;
     ImportarBematechDC20001: TMenuItem;
     RxSpeedButton1: TRxSpeedButton;
+    chkUsaCodBarra: TCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure SQLEmpresaRemetenteCalcFields(DataSet: TDataSet);
     procedure IncluiProduto;
@@ -398,7 +399,7 @@ type
 
   private
     { Private declarations }
-    EditQtdeIsNum, EditDescrIsNum : Boolean;
+    EditQtdeIsNum, EditDescrIsNum, vOcupado : Boolean;
     EmpresaAnterior : Integer;
     Origem, Destino : string;
   public
@@ -496,44 +497,46 @@ begin
        end;
 
    if not tblTempTranferencia.Active then tblTempTranferencia.Active := True;
+   try
+     if tblTempTranferencia.Locate('ProdutoCod', SQLProdutoPRODICOD.AsString, [loCaseInsensitive]) then
+        begin
+            Resultado := Application.MessageBox('Este Produto ja esta na lista de Transferência.' + #13 +
+                                                'Deseja adicionar a Quantidade à Quantidade da lista?' + #13 +
+                                                'Clique ''NÃO'' para Substituir a Quantidade ou Cancelar.',
+                                                'Item Duplicado', MB_YESNOCANCEL + MB_SETFOREGROUND + MB_ICONQUESTION + MB_DEFBUTTON1);
+            if Resultado = IDCancel then
+               Abort;
 
-   if tblTempTranferencia.Locate('ProdutoCod', SQLProdutoPRODICOD.AsString, [loCaseInsensitive]) then
-      begin
-          Resultado := Application.MessageBox('Este Produto ja esta na lista de Transferência.' + #13 +
-                                              'Deseja adicionar a Quantidade à Quantidade da lista?' + #13 +
-                                              'Clique ''NÃO'' para Substituir a Quantidade ou Cancelar.',
-                                              'Item Duplicado', MB_YESNOCANCEL + MB_SETFOREGROUND + MB_ICONQUESTION + MB_DEFBUTTON1);
-          if Resultado = IDCancel then
-             Abort;
+            tblTempTranferencia.Edit;
+            if Resultado = idYes then
+               tblTempTranferenciaProdutoQtde.AsFloat := tblTempTranferenciaProdutoQtde.AsFloat + StrToFloat(edQtdeProduto.Text);
+            if Resultado = idNo then
+               tblTempTranferenciaProdutoQtde.AsFloat := StrToFloat(edQtdeProduto.Text);
+        end
+     else
+        begin
+           tblTempTranferencia.Append;
+           tblTempTranferenciaProdutoQtde.AsFloat         := StrToFloat(edQtdeProduto.Text);
+        end;
 
-          tblTempTranferencia.Edit;
-          if Resultado = idYes then
-             tblTempTranferenciaProdutoQtde.AsFloat := tblTempTranferenciaProdutoQtde.AsFloat + StrToFloat(edQtdeProduto.Text);
-          if Resultado = idNo then
-             tblTempTranferenciaProdutoQtde.AsFloat := StrToFloat(edQtdeProduto.Text);
-      end
-   else
-      begin
-         tblTempTranferencia.Append;
-         tblTempTranferenciaProdutoQtde.AsFloat         := StrToFloat(edQtdeProduto.Text);
-      end;
+     tblTempTranferenciaProdutoCod.AsInteger        := SQLProdutoPRODICOD.AsInteger;
+     tblTempTranferenciaProdutoBarras.AsString      := SQLProdutoPRODA60CODBAR.AsString;
+     tblTempTranferenciaProdutoNome.AsString        := SQLProdutoProdutoLookup.AsString;
+     tblTempTranferenciaProdutoEstoque.AsFloat      := StrToFloat(SQLLocate('PRODUTOSALDO', 'PRODICOD', 'PSLDN3QTDE', tblTempTranferenciaProdutoCod.AsString));
+     tblTempTranferenciaProdutoReferencia.AsString  := SQLProdutoPRODA60REFER.AsString;
+     tblTempTranferenciaProdutoValorCusto.AsFloat   := edtCusto.Value;
+     tblTempTranferencia.Post;
+     // Totais da Transf Atual
+     EdtCustoTotal.Value     := EdtCustoTotal.Value + edtCusto.Value;
+     EdtQtdeTotalItens.Value := EdtQtdeTotalItens.Value + tblTempTranferenciaProdutoQtde.Value;
 
-   tblTempTranferenciaProdutoCod.AsInteger        := SQLProdutoPRODICOD.AsInteger;
-   tblTempTranferenciaProdutoBarras.AsString      := SQLProdutoPRODA60CODBAR.AsString;
-   tblTempTranferenciaProdutoNome.AsString        := SQLProdutoProdutoLookup.AsString;
-   tblTempTranferenciaProdutoEstoque.AsFloat      := StrToFloat(SQLLocate('PRODUTOSALDO', 'PRODICOD', 'PSLDN3QTDE', tblTempTranferenciaProdutoCod.AsString));
-   tblTempTranferenciaProdutoReferencia.AsString  := SQLProdutoPRODA60REFER.AsString;
-   tblTempTranferenciaProdutoValorCusto.AsFloat   := edtCusto.Value;
-   tblTempTranferencia.Post;
+   finally
+     edQtdeProduto.Text   := '1';
+     edCodigoProduto.Text := '';
+     edtCusto.Value       := 0;
+     edCodigoProduto.SetFocus;
+   end;
 
-   // Totais da Transf Atual
-   EdtCustoTotal.Value     := EdtCustoTotal.Value + edtCusto.Value;
-   EdtQtdeTotalItens.Value := EdtQtdeTotalItens.Value + tblTempTranferenciaProdutoQtde.Value;
-
-   edQtdeProduto.Text   := '1';
-   edCodigoProduto.Text := '';
-   edtCusto.Value       := 0;
-   edCodigoProduto.SetFocus;
 end;
 
 procedure TFormTelaTransferencia.SQLProdutoCalcFields(DataSet: TDataSet);
@@ -1138,6 +1141,7 @@ begin
               end;
          end
        else
+         if not (chkUsaCodBarra.Checked) then
          begin
            ProdutoDescricao  := '';
            ProdutoReferencia := '';
@@ -1234,7 +1238,13 @@ end;
 procedure TFormTelaTransferencia.FormKeyPress(Sender: TObject;
   var Key: Char);
 begin
-    Application.ProcessMessages;
+  Application.ProcessMessages;
+//  if (Key = #13) and (Length(trim(edCodigoProduto.Text)) = 13) then
+//  begin
+//    if ActiveControl = edCodigoProduto then
+//      vOcupado := True;
+//  end;
+
 end;
 
 procedure TFormTelaTransferencia.tblTempTranferenciaCalcFields(

@@ -287,8 +287,10 @@ begin
     
   SQLTemplateCTPGDTEMIS.Value       := DM.DataBaseSistema ;
   SQLTemplateCTPGDRECBTO.Value      := DM.DataBaseSistema ;
-  SQLTemplateCTPGA2MESCOMP.Value    := FormatDateTime('MM',DM.DataBaseSistema);
-  SQLTemplateCTPGA4ANOCOMP.Value    := FormatDateTime('YYYY',DM.DataBaseSistema);
+  SQLTemplateCTPGA2MESCOMP.Value    := FormatDateTime('MM',Date);
+  SQLTemplateCTPGA4ANOCOMP.Value    := FormatDateTime('YYYY',Date);
+  SQLTemplateCTPGDTEMIS.Value       := Date;
+
 end;
 
 procedure TFormCadastroContasPagar.SQLTemplateCalcFields(

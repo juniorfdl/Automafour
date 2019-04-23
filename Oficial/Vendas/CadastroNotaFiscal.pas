@@ -1103,6 +1103,8 @@ type
     SQLRepresentanteREPRA60NOMEFANT: TStringField;
     SQLRepresentantePERC_COMISSAO: TFloatField;
     SQLPedidoVendaDATA_VALIDADE: TDateTimeField;
+    SQLNotaFiscalItemBASE_ST_RETIDO: TFloatField;
+    SQLNotaFiscalItemVALOR_ST_RETIDO: TFloatField;
     function TabelaNFE_123(Produto, Situacao: string): string;
     procedure FormCreate(Sender: TObject);
     procedure SQLTemplateNewRecord(DataSet: TDataSet);
@@ -6260,7 +6262,7 @@ var
   nEmail, nTipoProduto, modBC, modBCST: string;
   Cpf_Dest, Cnpj_Dest, IE_Dest, CFOP, CdBarras, TipoFrete, Descr_Prod, Unidade, NCM, CEST, ForPag, eServico, vCSTIPI: string;
   Erro, TemDifal: boolean;
-  TotalDup, Vlr_Tot_Bruto, ValordoPis, ValordoCofins, PercCofins, PercPis, FatorConversao, vTotTrib: double;
+  TotalDup, Vlr_Tot_Bruto, ValordoPis, ValordoCofins, PercCofins, PercPis, FatorConversao, vTotTrib, vPercSTEfe: double;
   iCRT, IndiceReferenciamento, vOrigem: integer;
   xProdTotal: string;
 begin
@@ -6597,7 +6599,7 @@ begin
       dm.sqlconsulta.close;
       dm.sqlconsulta.sql.Clear;
       dm.sqlconsulta.sql.add('select PRODA60DESCR,PRODA60CODBAR,PRODA60REFER,PRODIORIGEM,');
-      dm.sqlconsulta.sql.add('PRODA1TIPO,PRODCSERVICO,PRODA1MODBC,PRODA1MODBCST,PRODA1MODBCST,PRODA2CSTCOFINS,PRODA2CSTPIS,PRODN2ALIQPIS,PRODA2CSTIPI,PRODN3PERCIPI,PRODN2ALIQCOFINS,TABCEST from produto where prodicod=' + SQLNotaFiscalItemPRODICOD.AsString);
+      dm.sqlconsulta.sql.add('PRODA1TIPO,PRODCSERVICO,PRODA1MODBC,PRODA1MODBCST,PRODA1MODBCST,PRODA2CSTCOFINS,PRODA2CSTPIS,PRODN2ALIQPIS,PRODA2CSTIPI,PRODN3PERCIPI,PRODN2ALIQCOFINS,TABCEST,BASE_ICM_ST_RET,VALOR_ICM_ST_RET from produto where prodicod=' + SQLNotaFiscalItemPRODICOD.AsString);
       dm.sqlconsulta.open;
 
       if FileExists('VFNota.txt') then // exibe o valor final (total custo + subst. Trib.) ao lado do nome do produto.
@@ -6638,6 +6640,8 @@ begin
 
       vOrigem := StrToInt(dm.sqlConsulta.fieldbyname('PRODIORIGEM').AsString);
       NCM := SQLLocate('NCM', 'NCMICOD', 'NCMA30CODIGO', SQLLocate('PRODUTO', 'PRODICOD', 'NCMICOD', SQLNotaFiscalItemPRODICOD.AsString));
+      if SQLLocate('NCM', 'NCMICOD', 'ALIQ_ICMS', SQLLocate('PRODUTO', 'PRODICOD', 'NCMICOD', SQLNotaFiscalItemPRODICOD.AsString)) <> '' then
+        vPercSTEfe := StrToFloat(SQLLocate('NCM', 'NCMICOD', 'ALIQ_ICMS', SQLLocate('PRODUTO', 'PRODICOD', 'NCMICOD', SQLNotaFiscalItemPRODICOD.AsString)));
       nTipoProduto := dm.sqlConsulta.fieldbyname('PRODA1TIPO').AsString;
       eServico := dm.sqlConsulta.fieldbyname('PRODCSERVICO').AsString;
       modBC := dm.sqlConsulta.fieldbyname('PRODA1MODBC').AsString;
@@ -6777,7 +6781,6 @@ begin
             ICMSUFDest.vICMSUFDest := ((((ICMSUFDest.vBCUFDest * ICMSUFDest.pICMSInterPart) / 100) * SQLNotaFiscalItemNFITN2PERCICMS.Value) / 100) / 2;
                     {Valor do ICMS Interestadual para a UF do remetente. Nota: A partir de 2019, este valor será zero.}
             ICMSUFDest.vICMSUFRemet := (((ICMSUFDest.vBCUFDest - (ICMSUFDest.vBCUFDest * ICMSUFDest.pICMSInterPart) / 100) * SQLNotaFiscalItemNFITN2PERCICMS.Value) / 100) / 2;
-            ;
 
                     {Difal Totais}
             Total.ICMSTot.vICMSUFDest := Total.ICMSTot.vICMSUFDest + ICMSUFDest.vICMSUFDest;
@@ -6846,8 +6849,22 @@ begin
                     end;
                   csosn500:
                     begin
-                      ICMS.vBCSTRet := SQLNotaFiscalItemNFITN2BASESUBS.Value;
-                      ICMS.vICMSSTRet := SQLNotaFiscalItemNFITN2VLRSUBS.Value;
+                      if dm.sqlConsulta.fieldbyname('VALOR_ICM_ST_RET').AsFloat > 0 then
+                      begin
+                        ICMS.vBCSTRet := dm.sqlConsulta.fieldbyname('BASE_ICM_ST_RET').AsFloat * SQLNotaFiscalItemNFITN3QUANT.AsFloat;
+                        ICMS.vICMSSTRet := dm.sqlConsulta.fieldbyname('VALOR_ICM_ST_RET').AsFloat * SQLNotaFiscalItemNFITN3QUANT.AsFloat;
+                      end
+                      else
+                      begin
+                        ICMS.vBCSTRet :=  SQLNotaFiscalItemBASE_ST_RETIDO.Value;
+                        ICMS.vICMSSTRet := SQLNotaFiscalItemVALOR_ST_RETIDO.Value;
+                      end;
+                      if vPercSTEfe > 0 then
+                      begin
+                        ICMS.vICMSEfet := (SQLNotaFiscalItemNFITN3QUANT.AsFloat * (Prod.vProd - Prod.vDesc));
+                        ICMS.pICMSEfet := vPercSTEfe;
+                        ICMS.vBCEfet := (SQLNotaFiscalItemNFITN3QUANT.AsFloat * (Prod.vProd - Prod.vDesc)) * vPercSTEfe;
+                      end;
                     end;
                   csosn900:
                     begin
@@ -6893,7 +6910,25 @@ begin
                 if SQLNotaFiscalItemNFITICST.asstring = '51' then
                   ICMS.CST := cst51;
                 if SQLNotaFiscalItemNFITICST.asstring = '60' then
-                  ICMS.CST := cst60;
+                  begin
+                    ICMS.CST := cst60;
+                    if dm.sqlConsulta.fieldbyname('VALOR_ICM_ST_RET').AsFloat > 0 then
+                    begin
+                      ICMS.vBCSTRet := dm.sqlConsulta.fieldbyname('BASE_ICM_ST_RET').AsFloat * SQLNotaFiscalItemNFITN3QUANT.AsFloat;
+                      ICMS.vICMSSTRet := dm.sqlConsulta.fieldbyname('VALOR_ICM_ST_RET').AsFloat * SQLNotaFiscalItemNFITN3QUANT.AsFloat;
+                    end
+                    else
+                    begin
+                      ICMS.vBCSTRet :=  SQLNotaFiscalItemBASE_ST_RETIDO.Value;
+                      ICMS.vICMSSTRet := SQLNotaFiscalItemVALOR_ST_RETIDO.Value;
+                    end;
+                    if vPercSTEfe > 0 then
+                    begin
+                      ICMS.vICMSEfet := (SQLNotaFiscalItemNFITN3QUANT.AsFloat * (Prod.vProd - Prod.vDesc));
+                      ICMS.pICMSEfet := vPercSTEfe;
+                      ICMS.vBCEfet := (SQLNotaFiscalItemNFITN3QUANT.AsFloat * (Prod.vProd - Prod.vDesc)) * vPercSTEfe;
+                    end;
+                  end;
                 if SQLNotaFiscalItemNFITICST.asstring = '70' then
                   ICMS.CST := cst70;
                 if SQLNotaFiscalItemNFITICST.asstring = '80' then

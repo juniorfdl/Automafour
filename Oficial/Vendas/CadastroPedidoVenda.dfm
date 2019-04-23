@@ -2698,7 +2698,7 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
     end
   end
   inherited SQLTemplate: TRxQuery
-    Tag = 2
+    Tag = 3
     SQL.Strings = (
       'Select * From PEDIDOVENDA Where (%MFiltro) and (%MSituacao)')
     Macros = <
@@ -3006,6 +3006,10 @@ inherited FormCadastroPedidoVenda: TFormCadastroPedidoVenda
     object SQLTemplateDATA_VALIDADE: TDateTimeField
       FieldName = 'DATA_VALIDADE'
       Origin = 'DB.PEDIDOVENDA.DATA_VALIDADE'
+    end
+    object SQLTemplateTERMICOD: TIntegerField
+      FieldName = 'TERMICOD'
+      Origin = 'DB.PEDIDOVENDA.TERMICOD'
     end
   end
   object SQLEmpresa: TTable

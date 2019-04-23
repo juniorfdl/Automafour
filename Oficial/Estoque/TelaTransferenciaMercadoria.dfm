@@ -1,6 +1,6 @@
 inherited FormTelaTransferencia: TFormTelaTransferencia
-  Left = 264
-  Top = 66
+  Left = 313
+  Top = 63
   Width = 880
   Height = 587
   Caption = 'Transfer'#234'ncia Produtos'
@@ -615,6 +615,14 @@ inherited FormTelaTransferencia: TFormTelaTransferencia
               ParentFont = False
               TabOrder = 0
               OnChange = dblEmpresaDestinoChange
+            end
+            object chkUsaCodBarra: TCheckBox
+              Left = 528
+              Top = 16
+              Width = 148
+              Height = 17
+              Caption = 'Usar C'#243'digo de Barra'
+              TabOrder = 1
             end
           end
         end

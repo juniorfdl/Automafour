@@ -605,9 +605,7 @@ inherited FormRelatorioVendasPeriodo: TFormRelatorioVendasPeriodo
       '        where CUPOMITEM.CUPOA13ID = CUPOM.CUPOA13ID and'
       '              (%MStatus) and'
       '              CUPOMITEM.CPITN3QTD > 0'
-      
-        '        group by CUPOMITEM.CUPOA13ID) + CUPOM.CUPON2DESCITENS as' +
-        ' CUPON2TOTITENS,'
+      '        group by CUPOMITEM.CUPOA13ID)  as CUPON2TOTITENS,'
       '  CUPOM.CUPON2ACRESC,'
       '  CUPOM.CUPON2DESC + CUPOM.CUPON2DESCITENS as CUPON2DESC,'
       '  CUPOM.CUPOA8PLACAVEIC,'
@@ -619,7 +617,7 @@ inherited FormRelatorioVendasPeriodo: TFormRelatorioVendasPeriodo
       '        group by CUPOMITEM.CUPOA13ID) +'
       '        CUPOM.CUPON2ACRESC'
       '        %MtaxaCred'
-      '        CUPOM.CUPON2DESC-'
+      '        CUPOM.CUPON2DESCITENS-'
       '        CUPOM.CUPON3BONUSTROCA-'
       '        CUPOM.CUPON2TOTITENSRET as TOTAL,'
       '  CUPOM.CUPON3BONUSTROCA,'

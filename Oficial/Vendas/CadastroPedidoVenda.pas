@@ -375,6 +375,7 @@ type
     Label33: TLabel;
     DBDateEdit1: TDBDateEdit;
     SQLTemplateDATA_VALIDADE: TDateTimeField;
+    SQLTemplateTERMICOD: TIntegerField;
     procedure FormCreate(Sender: TObject);
     procedure BtnClienteClick(Sender: TObject);
     procedure BtnVendedorClick(Sender: TObject);
@@ -546,6 +547,8 @@ begin
   SQLTemplatePDVDCSTATUS.Value := 'A';
   SQLTemplatePDVDCIMPORTADO.Value := 'N';
   SQLTemplatePDVDN2PERCMIX.Value := 0;
+  SQLTemplateTERMICOD.Value := TerminalAtual;
+
   if DM.SQLConfigVenda.Fieldbyname('OPESICODNF').AsString <> Null then //#ver estava asvariant
   begin
     DataSet.FindField('OPESICOD').Value := DM.SQLConfigVenda.Fieldbyname('OPESICODNF').Value;

@@ -465,7 +465,8 @@ uses
   TelaConsultaMovNumeroSerie in 'Cadastros\TelaConsultaMovNumeroSerie.pas' {FormTelaConsultaMovNumeroSerie},
   uConsulta_cnpj in 'ArquivosComuns\uConsulta_cnpj.pas' {frmConsulta_CNPJ},
   TelaConsultaMovRepresentante in 'TelaConsultaMovRepresentante.pas' {FormTelaConsultaMovRepresentante},
-  TelaResumoFinanceiro in 'ArquivosComuns\TelaResumoFinanceiro.pas' {FormTelaResumoFinanceiro};
+  TelaResumoFinanceiro in 'ArquivosComuns\TelaResumoFinanceiro.pas' {FormTelaResumoFinanceiro},
+  RelatorioRetornoBanco in 'Relatorios\Administrativo\RelatorioRetornoBanco.pas' {FormRelatorioRetornoBanco};
 
 {$R *.res}
 

@@ -1,6 +1,6 @@
 inherited FormCadastroProduto: TFormCadastroProduto
-  Left = 68
-  Top = 0
+  Left = 206
+  Top = 11
   Caption = 'Cadastro de Produtos'
   ClientHeight = 682
   ClientWidth = 1159
@@ -2265,7 +2265,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                 Left = 3
                 Top = 296
                 Width = 688
-                Height = 177
+                Height = 168
                 ActivePage = TabSheet1
                 TabOrder = 15
                 object TabSheet1: TTabSheet
@@ -5830,7 +5830,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                     Left = 0
                     Top = 0
                     Width = 680
-                    Height = 124
+                    Height = 154
                     Align = alClient
                     BorderStyle = bsNone
                     Color = clWhite
@@ -5883,7 +5883,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
                   end
                   object DBNavigator1: TDBNavigator
                     Left = 0
-                    Top = 124
+                    Top = 154
                     Width = 680
                     Height = 25
                     DataSource = dsProduto_Descontos
@@ -7386,6 +7386,120 @@ inherited FormCadastroProduto: TFormCadastroProduto
                       FF5EFF5EFF5EFF5EFF5E}
                     ParentFont = False
                     TabOrder = 4
+                  end
+                end
+                object TabSheet4: TTabSheet
+                  Caption = 'ICMS Retido'
+                  ImageIndex = 2
+                  object Label48: TLabel
+                    Left = -1
+                    Top = 3
+                    Width = 116
+                    Height = 13
+                    Caption = 'Base ICMS ST Retido'
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clBlack
+                    Font.Height = -11
+                    Font.Name = 'Tahoma'
+                    Font.Style = [fsBold]
+                    ParentFont = False
+                  end
+                  object Label49: TLabel
+                    Left = 127
+                    Top = 3
+                    Width = 104
+                    Height = 13
+                    Caption = 'Vlr ICMS ST Retido'
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clBlack
+                    Font.Height = -11
+                    Font.Name = 'Tahoma'
+                    Font.Style = [fsBold]
+                    ParentFont = False
+                  end
+                  object EvDBNumEdit5: TEvDBNumEdit
+                    Left = -1
+                    Top = 18
+                    Width = 104
+                    Height = 21
+                    AutoHideCalculator = False
+                    DataField = 'BASE_ICM_ST_RET'
+                    DataSource = DSTemplate
+                    Decimals = 5
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWindowText
+                    Font.Height = -11
+                    Font.Name = 'Tahoma'
+                    Font.Style = []
+                    Glyph.Data = {
+                      E6020000424DE60200000000000042000000280000001A0000000D0000000100
+                      100003000000A402000000000000000000000000000000000000007C0000E003
+                      00001F000000FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                      FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF1CEF1C
+                      EF1CEF1CEF1CEF1CEF1CEF1CEF1CEF1CFF5EFF5EFF5EFF7FEF3DEF3DEF3DEF3D
+                      EF3DEF3DEF3DEF3DEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                      FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                      FF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1CFF5EFF5EFF5EFF7F
+                      FF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2C
+                      FF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5E
+                      FF5EFF5EEF3DFF5EFF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1C
+                      FF5EFF5EFF5EFF7FFF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5E
+                      FF02FF2CFF2CFF2CFF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5E
+                      FF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5EFF5EFF5EFF02FF2C0700FF5EFF5EFF5E
+                      FF5EFF5EFF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DFF7FFF7FFF7FFF7FFF7FFF5E
+                      EF3DFF5EFF5EFF5EFF02FF2C0700FF7FFF7FFF7FFF7FFF5EFF2CEF1CFF5EFF5E
+                      FF5EFF7FFF5EEF3DFF5EFF5EFF5EFF5EFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2C
+                      070007000700070007000700FF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DEF3DEF3D
+                      EF3DEF3DEF3DFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                      FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                      FF5EFF5EFF02FF02FF02FF02FF02FF02FF02FF02FF02EF1CFF5EFF5EFF5EFF7F
+                      FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                      FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                      FF5EFF5EFF5EFF5EFF5E}
+                    ParentFont = False
+                    TabOrder = 0
+                  end
+                  object EvDBNumEdit12: TEvDBNumEdit
+                    Left = 127
+                    Top = 18
+                    Width = 104
+                    Height = 21
+                    AutoHideCalculator = False
+                    DataField = 'VALOR_ICM_ST_RET'
+                    DataSource = DSTemplate
+                    Decimals = 5
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWindowText
+                    Font.Height = -11
+                    Font.Name = 'Tahoma'
+                    Font.Style = []
+                    Glyph.Data = {
+                      E6020000424DE60200000000000042000000280000001A0000000D0000000100
+                      100003000000A402000000000000000000000000000000000000007C0000E003
+                      00001F000000FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                      FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF1CEF1C
+                      EF1CEF1CEF1CEF1CEF1CEF1CEF1CEF1CFF5EFF5EFF5EFF7FEF3DEF3DEF3DEF3D
+                      EF3DEF3DEF3DEF3DEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                      FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                      FF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1CFF5EFF5EFF5EFF7F
+                      FF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2C
+                      FF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5E
+                      FF5EFF5EEF3DFF5EFF5EFF5EFF02FF2CFF02FF7FFF02FF7FFF02FF7FFF2CEF1C
+                      FF5EFF5EFF5EFF7FFF5EEF3DFF7FEF3DFF7FEF3DFF7FFF5EEF3DFF5EFF5EFF5E
+                      FF02FF2CFF2CFF2CFF2CFF2CFF2CFF2CFF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5E
+                      FF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5EFF5EFF5EFF02FF2C0700FF5EFF5EFF5E
+                      FF5EFF5EFF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DFF7FFF7FFF7FFF7FFF7FFF5E
+                      EF3DFF5EFF5EFF5EFF02FF2C0700FF7FFF7FFF7FFF7FFF5EFF2CEF1CFF5EFF5E
+                      FF5EFF7FFF5EEF3DFF5EFF5EFF5EFF5EFF7FFF5EEF3DFF5EFF5EFF5EFF02FF2C
+                      070007000700070007000700FF2CEF1CFF5EFF5EFF5EFF7FFF5EEF3DEF3DEF3D
+                      EF3DEF3DEF3DFF5EEF3DFF5EFF5EFF5EFF02FF2CFF2CFF2CFF2CFF2CFF2CFF2C
+                      FF2CEF1CFF5EFF5EFF5EFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EEF3DFF5E
+                      FF5EFF5EFF02FF02FF02FF02FF02FF02FF02FF02FF02EF1CFF5EFF5EFF5EFF7F
+                      FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                      FF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5EFF5E
+                      FF5EFF5EFF5EFF5EFF5E}
+                    ParentFont = False
+                    TabOrder = 1
                   end
                 end
               end
@@ -10934,6 +11048,14 @@ inherited FormCadastroProduto: TFormCadastroProduto
       FixedChar = True
       Size = 1
     end
+    object SQLTemplateVALOR_ICM_ST_RET: TFloatField
+      FieldName = 'VALOR_ICM_ST_RET'
+      Origin = 'DB.PRODUTO.VALOR_ICM_ST_RET'
+    end
+    object SQLTemplateBASE_ICM_ST_RET: TFloatField
+      FieldName = 'BASE_ICM_ST_RET'
+      Origin = 'DB.PRODUTO.BASE_ICM_ST_RET'
+    end
   end
   inherited UpdateSQLTemplate: TUpdateSQL
     ModifySQL.Strings = (
@@ -11068,6 +11190,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
       'where'
       '  PRODICOD = :PRODICOD '
       'order by EMPRICOD')
+    UpdateMode = upWhereKeyOnly
     Macros = <>
     Left = 409
     Top = 29
@@ -13802,7 +13925,7 @@ inherited FormCadastroProduto: TFormCadastroProduto
   end
   object dsNCM: TDataSource
     DataSet = SQLNcm
-    Left = 769
+    Left = 969
     Top = 606
   end
   object SQLNcm: TRxQuery
@@ -13811,8 +13934,8 @@ inherited FormCadastroProduto: TFormCadastroProduto
       'SELECT NCMICOD, NCMA30CODIGO, NCMA100DESCR FROM NCM'
       'ORDER BY NCMA100DESCR ')
     Macros = <>
-    Left = 709
-    Top = 598
+    Left = 941
+    Top = 606
     object SQLNcmNCMICOD: TIntegerField
       FieldName = 'NCMICOD'
       Origin = 'DB.NCM.NCMICOD'
@@ -13895,8 +14018,8 @@ inherited FormCadastroProduto: TFormCadastroProduto
       'SELECT CEST, NCM, DESCRICAO FROM CESTNCM'
       'ORDER BY DESCRICAO ASC ')
     Macros = <>
-    Left = 629
-    Top = 598
+    Left = 861
+    Top = 606
     object sqlCESTCEST: TStringField
       FieldName = 'CEST'
       Origin = 'DB.CESTNCM.CEST'
@@ -13915,8 +14038,8 @@ inherited FormCadastroProduto: TFormCadastroProduto
   end
   object dsCEST: TDataSource
     DataSet = sqlCEST
-    Left = 657
-    Top = 598
+    Left = 889
+    Top = 606
   end
   object Report: TCrpe
     About = 'Version and Credits...'

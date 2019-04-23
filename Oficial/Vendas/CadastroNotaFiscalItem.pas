@@ -275,6 +275,8 @@ type
     SQLProdutoCORICOD: TIntegerField;
     SQLProdutoPRODN3VLRVENDA: TFloatField;
     SQLProdutoPERC_REDUCAO_BASE_CALCULO: TFloatField;
+    SQLTemplateBASE_ST_RETIDO: TFloatField;
+    SQLTemplateVALOR_ST_RETIDO: TFloatField;
     procedure FormCreate(Sender: TObject);
     procedure BtnProdutoClick(Sender: TObject);
     procedure SQLTemplateCalcFields(DataSet: TDataSet);
@@ -323,8 +325,8 @@ type
     PosicaoItem, IcmsCod: Integer;
     QtdePed, NovaQtdePed, Reducao, ReducaoBase: Double;
     TemProdutoSemSubsTrib, TemProdutoComSubsTrib: Boolean;
-    DescontoMaximo : Real;
-    RetornoCampoUsuario : String;
+    DescontoMaximo: Real;
+    RetornoCampoUsuario: string;
     procedure CalculaImpostos;
     procedure AtualizaPedidoVenda(CodigoPedidoVenda: string; PosicaoItemPedido: Integer; QtdePed, NovaQtdePed: Double);
     function BuscaIcmsUf: TICMSUF;
@@ -353,7 +355,7 @@ uses
 procedure TFormCadastroNotaFiscalItem.CalculaImpostos;
 var
   Substituicao, xMVA: Double;
-  UFEmit, UFDest, Origem, FisJur, Situacao, AliquotaInterna, FinalidadeNFE: string;
+  UFEmit, UFDest, Origem, FisJur, Situacao, AliquotaInterna, FinalidadeNFE : string;
 begin
 
   if (SQLTemplatePRODICOD.AsString = '') then
@@ -440,6 +442,11 @@ begin
         xMVA := strtofloat(SQLLocate('NCM', 'NCMICOD', 'MVA', SQLLocate('PRODUTO', 'PRODICOD', 'NCMICOD', SQLTemplatePRODICOD.AsString)));
       except
         Showmessage('Erro: Tabela de NCM sem MVA ou Nulo!');
+      end;
+      if (SQLLocate('PRODUTO', 'PRODICOD', 'BASE_ICM_ST_RET', SQLTemplatePRODICOD.AsString) <> '') and (SQLLocate('PRODUTO', 'PRODICOD', 'VALOR_ICM_ST_RET', SQLTemplatePRODICOD.AsString) <> '') then
+      begin
+        SQLTemplateBASE_ST_RETIDO.AsFloat := (StrToFloat(SQLLocate('PRODUTO', 'PRODICOD', 'BASE_ICM_ST_RET', SQLTemplatePRODICOD.AsString)) * SQLTemplateNFITN3QUANT.asFloat);
+        SQLTemplateVALOR_ST_RETIDO.AsFloat := (StrToFloat(SQLLocate('PRODUTO', 'PRODICOD', 'VALOR_ICM_ST_RET', SQLTemplatePRODICOD.AsString)) * SQLTemplateNFITN3QUANT.asFloat);
       end;
 
       if SQLTemplateNFITN2PERCSUBS.asFloat > 0 then
@@ -635,13 +642,13 @@ begin
     if (SQLTemplate.State in DsEditModes) then
     begin
           // Carrega apenas as unidades cadastrados no produto selecionado
-      vCLIECTPPRCVENDA := SQLLocate('CLIENTE','CLIEA13ID','CLIECTPPRCVENDA',Quotedstr(DSMasterTemplate.DataSet.FieldByName('CLIEA13ID').AsString));
+      vCLIECTPPRCVENDA := SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIECTPPRCVENDA', Quotedstr(DSMasterTemplate.DataSet.FieldByName('CLIEA13ID').AsString));
 
       xUnidade1 := SQLLocate('PRODUTO', 'PRODICOD', 'UNIDICOD', SQLTemplatePRODICOD.AsString);
       xUnidade2 := SQLLocate('PRODUTO', 'PRODICOD', 'UNIDICOD2', SQLTemplatePRODICOD.AsString);
       sqlunidade2.close;
       sqlunidade2.MacroByName('Filtro').Value := 'UNIDICOD = ' + xUnidade1;
-      if xunidade2 <> '' then
+      if xUnidade2 <> '' then
         sqlunidade2.MacroByName('Filtro').Value := sqlunidade2.MacroByName('Filtro').Value + ' or UNIDICOD = ' + xUnidade2;
 
       if (xUnidade1 = '') then
@@ -891,7 +898,7 @@ procedure TFormCadastroNotaFiscalItem.SQLTemplateBeforePost(DataSet: TDataSet);
 var
   NumeroSerie: string;
   I: integer;
-  RetornoUser : TInfoRetornoUser;
+  RetornoUser: TInfoRetornoUser;
 begin
   if not DM.ImportandoPedidoVenda then
   begin
@@ -922,13 +929,13 @@ begin
       TemProdutoSemSubsTrib := True;
   end;
 
-  if (DescontoMaximo > 0) and (not VerificaDesconto((SQLTemplateNFITN2VLRUNIT.AsFloat * SQLTemplateNFITN3QUANT.AsFloat),SQLTemplateNFITN2VLRDESC.AsFloat,DescontoMaximo,0)) then
+  if (DescontoMaximo > 0) and (not VerificaDesconto((SQLTemplateNFITN2VLRUNIT.AsFloat * SQLTemplateNFITN3QUANT.AsFloat), SQLTemplateNFITN2VLRDESC.AsFloat, DescontoMaximo, 0)) then
   begin
     ShowMessage('Valor do desconto acima do permitido!');
-    RetornoCampoUsuario := AutenticaUsuario(UsuarioAtualNome,'USUAN2PERCDESC',RetornoUser);
+    RetornoCampoUsuario := AutenticaUsuario(UsuarioAtualNome, 'USUAN2PERCDESC', RetornoUser);
     try
       DescontoMaximo := StrToFloat(RetornoCampoUsuario);
-      if not VerificaDesconto((SQLTemplateNFITN2VLRUNIT.AsFloat * SQLTemplateNFITN3QUANT.AsFloat),SQLTemplateNFITN2VLRDESC.AsFloat,DescontoMaximo,0) then
+      if not VerificaDesconto((SQLTemplateNFITN2VLRUNIT.AsFloat * SQLTemplateNFITN3QUANT.AsFloat), SQLTemplateNFITN2VLRDESC.AsFloat, DescontoMaximo, 0) then
       begin
         ShowMessage('Valor do desconto acima do permitido!');
         DBEdit13.SetFocus;
@@ -942,13 +949,13 @@ begin
     end;
   end;
 
-  if (DescontoMaximo > 0) and (not VerificaDesconto((SQLTemplateNFITN2VLRUNIT.AsFloat * SQLTemplateNFITN3QUANT.AsFloat),0,DescontoMaximo,SQLTemplateNFITN2PERCDESC.AsFloat)) then
+  if (DescontoMaximo > 0) and (not VerificaDesconto((SQLTemplateNFITN2VLRUNIT.AsFloat * SQLTemplateNFITN3QUANT.AsFloat), 0, DescontoMaximo, SQLTemplateNFITN2PERCDESC.AsFloat)) then
   begin
     ShowMessage('Percentual do desconto acima do permitido!');
-    RetornoCampoUsuario := AutenticaUsuario(UsuarioAtualNome,'USUAN2PERCDESC',RetornoUser);
+    RetornoCampoUsuario := AutenticaUsuario(UsuarioAtualNome, 'USUAN2PERCDESC', RetornoUser);
     try
       DescontoMaximo := StrToFloat(RetornoCampoUsuario);
-      if not VerificaDesconto((SQLTemplateNFITN2VLRUNIT.AsFloat * SQLTemplateNFITN3QUANT.AsFloat),0,DescontoMaximo,SQLTemplateNFITN2PERCDESC.AsFloat) then
+      if not VerificaDesconto((SQLTemplateNFITN2VLRUNIT.AsFloat * SQLTemplateNFITN3QUANT.AsFloat), 0, DescontoMaximo, SQLTemplateNFITN2PERCDESC.AsFloat) then
       begin
         ShowMessage('Percentual do desconto acima do permitido!');
         DBEdit12.SetFocus;
@@ -1064,7 +1071,7 @@ begin
     if SQLTemplateControlaSerieLookup.AsString = 'S' then
     begin
       if SQLTemplate.State = dsEdit then
-        if MessageDlg('Deseja informar número de série?',mtConfirmation,[mbYes,mbNo],0) = mrNo then
+        if MessageDlg('Deseja informar número de série?', mtConfirmation, [mbYes, mbNo], 0) = mrNo then
           Exit;
       if DSMasterTemplate.DataSet.FieldByName('OrigemDestinoLookUp').AsString <> '' then
       begin
@@ -1087,22 +1094,12 @@ begin
               begin
                 NumeroSerie := FormTelaInformaNumeroSerieProduto.RXSerieNumeroSerie.Text;
                 if NumeroSerie <> '' then
-                  GravaSaidaNroSerieProduto(NumeroSerie,
-                    SQLTemplatePRODICOD.AsString,
-                    'I',
-                    EmpresaPadrao,
-                    DSMasterTemplate.DataSet.FieldByName('CLIEA13ID').AsString, '', '',
-                    DSMasterTemplate.DataSet.FieldByName('NOFIA13ID').AsString, '');
+                  GravaSaidaNroSerieProduto(NumeroSerie, SQLTemplatePRODICOD.AsString, 'I', EmpresaPadrao, DSMasterTemplate.DataSet.FieldByName('CLIEA13ID').AsString, '', '', DSMasterTemplate.DataSet.FieldByName('NOFIA13ID').AsString, '');
                 if DataSet.FieldByName('NFITA254OBS').AsString = '' then
                   DataSet.FieldByName('NFITA254OBS').AsString := ' Nro Serie: ' + NumeroSerie
                 else
                   DataSet.FieldByName('NFITA254OBS').AsString := DataSet.FieldByName('NFITA254OBS').AsString + ', ' + NumeroSerie;
-                GravaMovimentoNumeroSerie(EmpresaPadrao,
-                                          NumeroSerie,'S',
-                                          DSMasterTemplate.DataSet.FieldByName('NOFIA13ID').AsString,
-                                          DM.SQLlocate('CLIENTE', 'CLIEA13ID', 'CLIEA60RAZAOSOC', DSMasterTemplate.DataSet.FieldByName('CLIEA13ID').AsString),
-                                          SQLTemplatePRODICOD.AsInteger,
-                                          DSMasterTemplate.DataSet.FieldByName('NOFIDEMIS').AsDateTime);
+                GravaMovimentoNumeroSerie(EmpresaPadrao, NumeroSerie, 'S', DSMasterTemplate.DataSet.FieldByName('NOFIA13ID').AsString, DM.SQLlocate('CLIENTE', 'CLIEA13ID', 'CLIEA60RAZAOSOC', DSMasterTemplate.DataSet.FieldByName('CLIEA13ID').AsString), SQLTemplatePRODICOD.AsInteger, DSMasterTemplate.DataSet.FieldByName('NOFIDEMIS').AsDateTime);
               end;
               FormTelaInformaNumeroSerieProduto.RXSerie.Next;
             end;
@@ -1809,7 +1806,7 @@ end;
 
 procedure TFormCadastroNotaFiscalItem.SQLTemplateUNIDICODChange(Sender: TField);
 var
-  vCLIECTPPRCVENDA:String;
+  vCLIECTPPRCVENDA: string;
 begin
   inherited;
   if SQLTemplatePRODICOD.AsString <> '' then
@@ -1820,12 +1817,10 @@ begin
     if DSMasterTemplate.DataSet.FieldByName('CLIEA13ID').AsString <> '' then
     begin
       dm.zConsulta.Close;
-      dm.zConsulta.SQL.Text := 'select PRODDINIPROMO, PRODDFIMPROMO, PRODN3VLRVENDA, PRODN3VLRVENDA2, '
-      +' PRODN3VLRVENDAPROM, PRODN3QTDVENDA2835D, PRODN2VLRVENDA2835D, PRODN3QTDVENDA283542D, PRODN2VLRVENDA283542D, '
-      +' PRODN3PESOBRUTO, PRODA60CODBAR from produto where prodicod = ' + SQLTemplatePRODICOD.AsString;
+      dm.zConsulta.SQL.Text := 'select PRODDINIPROMO, PRODDFIMPROMO, PRODN3VLRVENDA, PRODN3VLRVENDA2, ' + ' PRODN3VLRVENDAPROM, PRODN3QTDVENDA2835D, PRODN2VLRVENDA2835D, PRODN3QTDVENDA283542D, PRODN2VLRVENDA283542D, ' + ' PRODN3PESOBRUTO, PRODA60CODBAR from produto where prodicod = ' + SQLTemplatePRODICOD.AsString;
       dm.zConsulta.Open;
 
-      vCLIECTPPRCVENDA := SQLLocate('CLIENTE','CLIEA13ID','CLIECTPPRCVENDA',Quotedstr(DSMasterTemplate.DataSet.FieldByName('CLIEA13ID').AsString));
+      vCLIECTPPRCVENDA := SQLLocate('CLIENTE', 'CLIEA13ID', 'CLIECTPPRCVENDA', Quotedstr(DSMasterTemplate.DataSet.FieldByName('CLIEA13ID').AsString));
 
       if copy(vCLIECTPPRCVENDA, 1, 1) = 'A' then
       begin
@@ -1846,7 +1841,8 @@ begin
             SQLTemplateNFITN2VLRUNIT.Value := dm.zConsulta.fieldbyname('PRODN2VLRVENDA283542D').AsFloat;
         end;
       end
-      else begin
+      else
+      begin
         if ((dm.zConsulta.FieldByName('PRODDINIPROMO').AsDateTime <= Now) and (dm.zConsulta.FieldByName('PRODDFIMPROMO').AsDateTime >= Now) and (dm.zConsulta.FieldByName('PRODN3VLRVENDAPROM').AsFloat > 0)) or ((dm.zConsulta.FieldByName('PRODDINIPROMO').AsDateTime <= Now) and (dm.zConsulta.FieldByName('PRODDFIMPROMO').AsString = '') and (dm.zConsulta.FieldByName('PRODN3VLRVENDAPROM').AsFloat > 0)) then
           SQLTemplateNFITN2VLRUNIT.Value := dm.zConsulta.fieldbyname('PRODN3VLRVENDAPROM').AsFloat
         else
@@ -1939,9 +1935,9 @@ begin
 
         ContadorCampos := 1;
         sCampo := '';
-        for i := 1 to Length(Info) do
+        for I := 1 to Length(Info) do
         begin
-          if Info[i] = ';' then
+          if Info[I] = ';' then
           begin
             case ContadorCampos of
               1:
@@ -1952,7 +1948,7 @@ begin
             Continue;
           end
           else
-            sCampo := sCampo + Info[i];
+            sCampo := sCampo + Info[I];
         end;
         vQtde := trim(sCampo);
 
@@ -1980,8 +1976,8 @@ begin
 
   Origem := 'c:\easy2solutions\coletor\Contagem.txt';
   Destino := 'c:\easy2solutions\coletor\Contagem_importada_' + FormatDateTime('ddmmyy_hhnn', now) + '.txt';
-  CopyFile(PChar(origem), PChar(destino), false);
-  DeleteFile(PChar(origem));
+  CopyFile(PChar(Origem), PChar(Destino), false);
+  DeleteFile(PChar(Origem));
 
   ShowMessage('Importação Executada com Sucesso');
 end;
@@ -2050,8 +2046,8 @@ begin
 
   Origem := '..\Invent.Txt';
   Destino := 'c:\easy2solutions\coletor\Invent_Contagem_Importada_' + FormatDateTime('ddmmyy_hhnn', now);
-  CopyFile(PChar(origem), PChar(destino), false);
-  DeleteFile(PChar(origem));
+  CopyFile(PChar(Origem), PChar(Destino), false);
+  DeleteFile(PChar(Origem));
 
   ShowMessage('Importação Executada com Sucesso');
 end;
@@ -2095,8 +2091,7 @@ begin
 
 end;
 
-procedure TFormCadastroNotaFiscalItem.SQLTemplateAfterEdit(
-  DataSet: TDataSet);
+procedure TFormCadastroNotaFiscalItem.SQLTemplateAfterEdit(DataSet: TDataSet);
 begin
   inherited;
   DescontoMaximo := StrToFloat(SQLLocate('USUARIO', 'USUAA60LOGIN', 'USUAN2PERCDESC', QuotedStr(UsuarioAtualNome)));

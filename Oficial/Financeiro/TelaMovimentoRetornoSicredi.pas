@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, TelaGeralModalTemplate, AdvOfficeStatusBar,
   AdvOfficeStatusBarStylers, Buttons, StdCtrls, ExtCtrls, Grids, DBGrids,
-  DB, DBTables, RxQuery, RxMemDS;
+  DB, DBTables, RxQuery, RxMemDS, UCrpe32, RelatorioRetornoBanco;
 
 type
   TFormTelaMovimentoRetornoSicredi = class(TFormTelaGeralModalTemplate)
@@ -48,14 +48,36 @@ type
     TempOcorrenciasValorJuros: TFloatField;
     TempOcorrenciasValorMulta: TFloatField;
     TempOcorrenciasValorRecebido: TFloatField;
+    TblTemporaria: TTable;
+    TblTemporariaDtEmissao: TDateField;
+    TblTemporariaDtVencto: TDateField;
+    TblTemporariaNomeCliente: TStringField;
+    TblTemporariaDescricao: TStringField;
+    TblTemporariaOcorrencia: TStringField;
+    TblTemporariaValorDocumento: TFloatField;
+    TblTemporariaValorJuros: TFloatField;
+    TblTemporariaValorMulta: TFloatField;
+    TblTemporariaValorRecebido: TFloatField;
+    SpeedButton1: TSpeedButton;
+    Label1: TLabel;
+    DataSource1: TDataSource;
+    Label2: TLabel;
+    TblTemporariaTitulo: TStringField;
+    Report: TCrpe;
+    TblTemporariaCodigoCliente: TStringField;
     procedure FormShow(Sender: TObject);
     procedure TempOcorrenciasCODIGOOCORRENCIAChange(Sender: TField);
     procedure TempOcorrenciasTITULOChange(Sender: TField);
+    procedure BtnFecharTelaClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
+    fRelatorioRetornoBanco : TFormRelatorioRetornoBanco;
   public
     { Public declarations }
     fListaNossoNumero, fListaOcorrencias, fListaValorJuros, FListaValorDocumento, fListaValorMulta : TStrings;
+    vTotalValor, vTotalValorMulta, vTotalValotJuros : Real;
+    vNomeBanco : string;
   end;
 
 var
@@ -113,6 +135,67 @@ begin
     TempOcorrenciasEmissao.AsFloat         := SQLContasReceber.FieldByName('CTRCDEMIS').AsFloat;
     TempOcorrenciasValor.AsFloat           := SQLContasReceber.FieldByName('CTRCN2VLR').AsFloat;
   end;
+end;
+
+procedure TFormTelaMovimentoRetornoSicredi.BtnFecharTelaClick(
+  Sender: TObject);
+begin
+  inherited;
+  if TempOcorrencias.IsEmpty then
+  begin
+    ShowMessage('Nenhum registro encontrado para impressão!');
+    exit;
+  end;
+  TempOcorrencias.First;
+  TblTemporaria.Close;
+  try
+    TblTemporaria.DeleteTable;
+    TblTemporaria.CreateTable;
+  except
+    TblTemporaria.CreateTable;
+  end;
+  TblTemporaria.Open;
+  while not TempOcorrencias.Eof  do
+  begin
+    TblTemporaria.Append ;
+    TblTemporariaTitulo.Value            := TempOcorrenciasTITULO.Value;
+    TblTemporariaDtEmissao.Value         := TempOcorrenciasEmissao.Value;
+    TblTemporariaDtVencto.Value          := TempOcorrenciasDtVencimento.Value;
+    TblTemporariaNomeCliente.Value       := TempOcorrenciasClienteNome.Value;
+    TblTemporariaDescricao.Value         := TempOcorrenciasDESCRICAO.Value;
+    TblTemporariaCodigoCliente.AsString := TempOcorrenciasCLIEA13ID.AsString;
+    TblTemporariaOcorrencia.Value        := TempOcorrenciasCODIGOOCORRENCIA.Value;
+    TblTemporariaValorDocumento.Value    := TempOcorrenciasValor.Value;
+    TblTemporariaValorJuros.Value        := TempOcorrenciasValorJuros.Value;
+    TblTemporariaValorMulta.Value        := TempOcorrenciasValorMulta.Value;
+    TblTemporariaValorRecebido.Value     := TempOcorrenciasValorRecebido.Value;
+    vTotalValor := vTotalValor + TempOcorrenciasValorRecebido.value;
+    vTotalValorMulta := vTotalValorMulta + TempOcorrenciasValorMulta.value;
+    vTotalValotJuros := vTotalValotJuros + TempOcorrenciasValorJuros.value;
+    TblTemporaria.Post;
+    TempOcorrencias.Next;
+  end;
+  TempOcorrencias.First;
+  fRelatorioRetornoBanco := TFormRelatorioRetornoBanco.Create(Self);
+  fRelatorioRetornoBanco.vValor := vTotalValor;
+  fRelatorioRetornoBanco.vValorMulta := vTotalValorMulta;
+  fRelatorioRetornoBanco.vValotJuros := vTotalValotJuros;
+  fRelatorioRetornoBanco.vSubTitulo  := vNomeBanco;
+  try
+    fRelatorioRetornoBanco.RLReport1.PreviewModal;
+    fRelatorioRetornoBanco.RLReport1.Free;
+  finally
+    FreeAndNil(fRelatorioRetornoBanco);
+  end;
+end;
+
+procedure TFormTelaMovimentoRetornoSicredi.FormCreate(Sender: TObject);
+begin
+  inherited;
+//  if not TblTemporaria.Active then TblTemporaria.Open;
+  vTotalValor := 0;
+  vTotalValorMulta := 0;
+  vTotalValotJuros := 0;
 end;
 
 end.

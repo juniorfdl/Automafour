@@ -33,7 +33,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
           Top = 1
           Width = 1242
           Height = 414
-          ActivePage = tsXMLs
+          ActivePage = tsInfoNfe
           Align = alClient
           TabOrder = 0
           object tsXMLs: TTabSheet
@@ -771,8 +771,8 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
                 Caption = 'Vlr. Produtos:'
               end
               object Label18: TLabel
-                Left = 594
-                Top = 45
+                Left = 592
+                Top = 73
                 Width = 44
                 Height = 13
                 Caption = 'Total NF:'
@@ -806,15 +806,15 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
                 Caption = 'Valor PIS:'
               end
               object Label23: TLabel
-                Left = 562
-                Top = 18
+                Left = 559
+                Top = 46
                 Width = 77
                 Height = 13
                 Caption = 'Total Item Esp.:'
               end
               object Label24: TLabel
-                Left = 37
-                Top = 126
+                Left = 573
+                Top = 20
                 Width = 63
                 Height = 13
                 Caption = 'ICMS Retido:'
@@ -825,6 +825,13 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
                 Width = 65
                 Height = 13
                 Caption = 'Valor Seguro:'
+              end
+              object Label5: TLabel
+                Left = 24
+                Top = 126
+                Width = 76
+                Height = 13
+                Caption = 'Base ST Retido:'
               end
               object edtBIcms: TCurrencyEdit
                 Left = 105
@@ -929,7 +936,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
               end
               object edtValorIpi: TCurrencyEdit
                 Left = 281
-                Top = 44
+                Top = 42
                 Width = 87
                 Height = 21
                 TabStop = False
@@ -980,7 +987,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
               end
               object edtTotalNF: TCurrencyEdit
                 Left = 642
-                Top = 42
+                Top = 68
                 Width = 87
                 Height = 21
                 TabStop = False
@@ -1064,12 +1071,13 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
                 TabOrder = 13
               end
               object edtICMSRetido: TCurrencyEdit
-                Left = 105
-                Top = 124
+                Left = 641
+                Top = 15
                 Width = 87
                 Height = 21
                 TabStop = False
                 AutoSize = False
+                DisplayFormat = '###,###,##0.00'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clBlack
                 Font.Height = -11
@@ -1081,7 +1089,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
               end
               object edtItemEspecial: TCurrencyEdit
                 Left = 642
-                Top = 15
+                Top = 42
                 Width = 87
                 Height = 21
                 TabStop = False
@@ -1111,6 +1119,23 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
                 ParentFont = False
                 ReadOnly = True
                 TabOrder = 16
+              end
+              object edtBaseSTRetido: TCurrencyEdit
+                Left = 106
+                Top = 122
+                Width = 87
+                Height = 21
+                TabStop = False
+                AutoSize = False
+                DisplayFormat = '###,###,##0.00'
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clBlack
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+                ReadOnly = True
+                TabOrder = 17
               end
             end
             object mmoObs: TMemo
@@ -2022,7 +2047,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
             object Panel2: TPanel
               Left = 0
               Top = 0
-              Width = 1071
+              Width = 1234
               Height = 34
               Align = alTop
               TabOrder = 0
@@ -2133,7 +2158,7 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
             object DBGridManifestos: TDBGrid
               Left = 0
               Top = 34
-              Width = 1071
+              Width = 1234
               Height = 352
               Align = alClient
               BorderStyle = bsNone
@@ -2442,10 +2467,10 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
     Top = 10
   end
   object ACBrNFe: TACBrNFe
-    Configuracoes.Geral.SSLLib = libCapicomDelphiSoap
-    Configuracoes.Geral.SSLCryptLib = cryCapicom
-    Configuracoes.Geral.SSLHttpLib = httpIndy
-    Configuracoes.Geral.SSLXmlSignLib = xsMsXmlCapicom
+    Configuracoes.Geral.SSLLib = libWinCrypt
+    Configuracoes.Geral.SSLCryptLib = cryWinCrypt
+    Configuracoes.Geral.SSLHttpLib = httpWinHttp
+    Configuracoes.Geral.SSLXmlSignLib = xsLibXml2
     Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
     Configuracoes.Geral.ValidarDigest = False
     Configuracoes.Geral.VersaoQRCode = veqr000
@@ -2711,6 +2736,18 @@ inherited FormTelaImportadorXML: TFormTelaImportadorXML
     object cdsItenscest: TStringField
       FieldName = 'cest'
       Size = 10
+    end
+    object cdsItensvalor_icms_st_retido: TFloatField
+      FieldName = 'valor_icms_st_retido'
+    end
+    object cdsItensbase_icms_st_retido: TFloatField
+      FieldName = 'base_icms_st_retido'
+    end
+    object cdsItensali_icms_st_retido: TFloatField
+      FieldName = 'ali_icms_st_retido'
+    end
+    object cdsItenspst: TFloatField
+      FieldName = 'pst'
     end
   end
   object dsItens: TDataSource

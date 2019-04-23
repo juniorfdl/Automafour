@@ -1008,6 +1008,13 @@ type
     SQLTemplateCOMISSAO_REPRESENTANTE: TStringField;
     DBCheckBox2: TDBCheckBox;
     DBCheckBox7: TDBCheckBox;
+    SQLTemplateVALOR_ICM_ST_RET: TFloatField;
+    SQLTemplateBASE_ICM_ST_RET: TFloatField;
+    TabSheet4: TTabSheet;
+    Label48: TLabel;
+    EvDBNumEdit5: TEvDBNumEdit;
+    EvDBNumEdit12: TEvDBNumEdit;
+    Label49: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure RxComboComissaoChange(Sender: TObject);
     procedure AcessaMarcaClick(Sender: TObject);
@@ -1155,6 +1162,7 @@ type
     procedure MnuBuscarProdutosBrasilTributrioClick(Sender: TObject);
     procedure AtualizaProdutoBRT1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
     ProdutoCodigo: Integer;
@@ -5020,6 +5028,13 @@ begin
   inherited;
   if fDlgBuscarProdutosBRT <> nil then
     FreeAndNil(fDlgBuscarProdutosBRT);
+end;
+
+procedure TFormCadastroProduto.FormShow(Sender: TObject);
+begin
+  inherited;
+  PopupMenuDiversos.Items.Find('Entrada Rápida de Estoque e Ajuste de Preços').Enabled := SQLLocate('TERMINAL','TERMICOD','CONTROLA_ES_RAPIDA',IntToStr(TerminalAtual)) <> 'S';
+  PopupMenuDiversos.Items.Find('Saida Rápida de Estoque').Enabled := SQLLocate('TERMINAL','TERMICOD','CONTROLA_ES_RAPIDA',IntToStr(TerminalAtual)) <> 'S';
 end;
 
 end.

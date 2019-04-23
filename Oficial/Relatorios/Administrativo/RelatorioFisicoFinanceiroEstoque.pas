@@ -238,6 +238,11 @@ begin
 
       SQLEstoqueRetroativo.MacroByName('Ano').AsString   := 'PSMEA4ANO = ''' + FormatDateTime('yyyy', ComboAno.Date) + '''';
 
+      case RadioOrdem.ItemIndex of
+        0 : SQLEstoqueRetroativo.MacroByName('CampoOrdem').Value := 'Produto.PRODICOD';
+        1 : SQLEstoqueRetroativo.MacroByName('CampoOrdem').Value := 'Produto.PRODA60DESCR';
+      end;
+
       SQLEstoqueRetroativo.Open;
       if (SQLEstoqueRetroativo.IsEmpty) then
         begin

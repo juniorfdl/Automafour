@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Buttons, DB, DBTables, RXCtrls, Grids, DBGrids, ExtCtrls,
-  RxQuery, RxMemDS, DBClient;
+  RxQuery, RxMemDS, DBClient, SMDBGrid;
 
 type
   TFormTelaInformaNumeroSerieProduto = class(TForm)
@@ -17,7 +17,6 @@ type
     SQLProdutoSeriePRSEA60NROSERIE: TStringField;
     SQLProdutoSerieEMPRICOD: TIntegerField;
     Panel1: TPanel;
-    DBGridLista: TDBGrid;
     RXSerie: TRxMemoryData;
     RXSerieNumeroSerie: TStringField;
     RXSerieItem: TIntegerField;
@@ -32,14 +31,17 @@ type
     Panel2: TPanel;
     BitBtn1: TBitBtn;
     BitBtn2: TBitBtn;
+    SMDBGrid1: TSMDBGrid;
     procedure BitBtn1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure DBGridListaKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
-    procedure DBGridListaDrawColumnCell(Sender: TObject; const Rect: TRect;
-      DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure BitBtn2Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnInserirClick(Sender: TObject);
+    procedure SMDBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure SMDBGrid1KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     { Private declarations }
     CdProduto: string;
@@ -121,18 +123,6 @@ begin
 
 end;
 
-procedure TFormTelaInformaNumeroSerieProduto.DBGridListaDrawColumnCell(
-  Sender: TObject; const Rect: TRect; DataCol: Integer; Column: TColumn;
-  State: TGridDrawState);
-begin
- if RXSerie.Locate('NumeroSerie',SQLProdutoSeriePRSEA60NROSERIE.Text,[]) Then
-    DbgridLista.Canvas.Font.Color:= clRed // coloque aqui a cor desejada
- Else
-    DbgridLista.Canvas.Font.Color:= clBlack; // coloque aqui a cor desejada
- DbgridLista.DefaultDrawDataCell(Rect, dbgridLista.columns[datacol].field, State);
-
-end;
-
 procedure TFormTelaInformaNumeroSerieProduto.BitBtn2Click(Sender: TObject);
 begin
    RXSerie.EmptyTable;
@@ -144,7 +134,7 @@ begin
   RXSerie.EmptyTable;
   cdsProdutoNovo.EmptyDataSet;
   RXSerie.Open;
-  DBGridLista.SetFocus;
+  SMDBGrid1.SetFocus;
   edtNumeroSerie.Visible := (codGravaProduto > 0);
   btnInserir.Visible := edtNumeroSerie.Visible;
   gridProdutoNovo.Visible := edtNumeroSerie.Visible;
@@ -177,6 +167,41 @@ begin
 
   end;
   edtNumeroSerie.SetFocus;
+end;
+
+procedure TFormTelaInformaNumeroSerieProduto.SMDBGrid1DrawColumnCell(
+  Sender: TObject; const Rect: TRect; DataCol: Integer; Column: TColumn;
+  State: TGridDrawState);
+begin
+ if RXSerie.Locate('NumeroSerie',SQLProdutoSeriePRSEA60NROSERIE.Text,[]) Then
+    SMDBGrid1.Canvas.Font.Color:= clRed // coloque aqui a cor desejada
+ Else
+    SMDBGrid1.Canvas.Font.Color:= clBlack; // coloque aqui a cor desejada
+ SMDBGrid1.DefaultDrawDataCell(Rect, SMDBGrid1.columns[datacol].field, State);
+
+end;
+
+procedure TFormTelaInformaNumeroSerieProduto.SMDBGrid1KeyDown(
+  Sender: TObject; var Key: Word; Shift: TShiftState);
+var
+ Item : Integer;
+begin
+  Item := 0;
+  if Key = vk_space then
+  begin
+    Item := Item + 1;
+
+    if RXSerie.Locate('NumeroSerie', SQLProdutoSeriePRSEA60NROSERIE.Text, []) then
+      RXSerie.Delete
+    else
+    begin
+      RXSerie.Append;
+      RXSerieNumeroSerie.AsString := SQLProdutoSeriePRSEA60NROSERIE.Text;
+      RXSerieItem.AsInteger       := Item;
+      RXSerie.Post;
+    end;
+    SQLProdutoSerie.Next;
+  end;
 end;
 
 end.

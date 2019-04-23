@@ -1,6 +1,6 @@
 inherited FormCadastroNotaCompra: TFormCadastroNotaCompra
-  Left = 215
-  Top = 48
+  Left = 322
+  Top = 50
   Caption = 'Nota de Entrada'
   ClientHeight = 579
   OldCreateOrder = True

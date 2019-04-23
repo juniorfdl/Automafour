@@ -1,6 +1,6 @@
 inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
-  Left = 261
-  Top = 110
+  Left = 214
+  Top = 29
   Width = 816
   Height = 632
   Caption = 'Gera'#231#227'o Arquivo SPED Fiscal'
@@ -120,7 +120,7 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 1
+        TabOrder = 2
         object ComboEmpresa: TRxDBLookupCombo
           Left = 9
           Top = 17
@@ -155,7 +155,7 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
         Font.Name = 'MS Sans Serif'
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 2
+        TabOrder = 3
         object EditDiretorio: TDirectoryEdit
           Left = 6
           Top = 19
@@ -185,7 +185,7 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
         Font.Name = 'MS Sans Serif'
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 3
+        TabOrder = 4
         object Label1: TLabel
           Left = 10
           Top = 23
@@ -255,7 +255,7 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 4
+        TabOrder = 14
         object MemoErro: TMemo
           Left = 2
           Top = 15
@@ -283,7 +283,7 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 5
+        TabOrder = 15
       end
       object GroupBox4: TGroupBox
         Left = 5
@@ -296,7 +296,7 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
         Font.Name = 'MS Sans Serif'
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 6
+        TabOrder = 1
         TabStop = True
         object Label3: TLabel
           Left = 14
@@ -350,7 +350,7 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
           Font.Style = []
           NumGlyphs = 2
           ParentFont = False
-          TabOrder = 0
+          TabOrder = 2
         end
         object cmbMotivoInventario: TComboBox
           Left = 110
@@ -365,7 +365,7 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
           Font.Style = [fsBold]
           ItemHeight = 13
           ParentFont = False
-          TabOrder = 1
+          TabOrder = 4
           Items.Strings = (
             '01 - No final no per'#237'odo'
             '02 - Na mudan'#231'a de forma de tributa'#231#227'o da mercadoria (ICMS)'
@@ -382,7 +382,7 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
           Top = 114
           Width = 365
           Height = 21
-          TabOrder = 2
+          TabOrder = 3
         end
         object chkGeraInventario: TCheckBox
           Left = 9
@@ -396,7 +396,7 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
           ParentFont = False
-          TabOrder = 3
+          TabOrder = 1
         end
         object RadioInventario: TRadioGroup
           Left = 4
@@ -409,7 +409,7 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
             'Tab.Inventario'
             'Saldo Atual'
             'Saldo Retroativo')
-          TabOrder = 4
+          TabOrder = 0
         end
       end
       object CmbModelo: TComboBox
@@ -428,7 +428,7 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
         ItemHeight = 13
         ItemIndex = 1
         ParentFont = False
-        TabOrder = 7
+        TabOrder = 5
         Text = 'EFD Fiscal'
         Items.Strings = (
           'EFD de PIS e COFINS'
@@ -448,7 +448,7 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
         ItemHeight = 13
         ItemIndex = 0
         ParentFont = False
-        TabOrder = 8
+        TabOrder = 10
         Text = '0 - Original'
         Items.Strings = (
           '0 - Original'
@@ -468,7 +468,7 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
         ItemHeight = 13
         ItemIndex = 0
         ParentFont = False
-        TabOrder = 9
+        TabOrder = 6
         Text = '1 '#8211' Regime n'#227'o-cumulativo'
         Items.Strings = (
           '1 '#8211' Regime n'#227'o-cumulativo'
@@ -489,7 +489,7 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
         ItemHeight = 13
         ItemIndex = 0
         ParentFont = False
-        TabOrder = 11
+        TabOrder = 7
         Text = '1 - Por Al'#237'quota B'#225'sica'
         Items.Strings = (
           '1 - Por Al'#237'quota B'#225'sica'
@@ -511,7 +511,7 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
         ItemHeight = 13
         ItemIndex = 0
         ParentFont = False
-        TabOrder = 10
+        TabOrder = 11
         Text = '1 - Apropria'#231#227'o Direta'
         Items.Strings = (
           '1 - Apropria'#231#227'o Direta'
@@ -531,7 +531,7 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
         ItemHeight = 13
         ItemIndex = 0
         ParentFont = False
-        TabOrder = 12
+        TabOrder = 8
         Text = '1 '#8211' Regime de Caixa '#8211' Escritura'#231#227'o consolidada'
         Items.Strings = (
           '1 '#8211' Regime de Caixa '#8211' Escritura'#231#227'o consolidada'
@@ -625,7 +625,7 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 14
+        TabOrder = 17
       end
       object chkItensNFe: TCheckBox
         Left = 397
@@ -639,7 +639,7 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 15
+        TabOrder = 18
       end
       object ChkImporta: TCheckBox
         Left = 397
@@ -653,7 +653,7 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 16
+        TabOrder = 21
       end
       object ckC400: TCheckBox
         Left = 397
@@ -667,7 +667,7 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 17
+        TabOrder = 20
       end
       object ckQuestor: TCheckBox
         Left = 397
@@ -681,14 +681,14 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 18
+        TabOrder = 22
       end
       object edtVersao: TEdit
         Left = 273
         Top = 136
         Width = 106
         Height = 21
-        TabOrder = 19
+        TabOrder = 12
         Text = '007'
       end
       object ckDominioProdutos: TCheckBox
@@ -703,7 +703,7 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 20
+        TabOrder = 23
       end
       object GroupBox6: TGroupBox
         Left = 397
@@ -711,7 +711,7 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
         Width = 180
         Height = 39
         Caption = ' Cod Empresa na Contabilidade '
-        TabOrder = 21
+        TabOrder = 24
         object EditCodEmpresa: TEdit
           Left = 26
           Top = 14
@@ -732,7 +732,7 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 22
+        TabOrder = 19
       end
       object ckdtEmissao: TCheckBox
         Left = 161
@@ -746,7 +746,21 @@ inherited FormTelaExportacaoSped: TFormTelaExportacaoSped
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 23
+        TabOrder = 9
+      end
+      object ck170NFCe: TCheckBox
+        Left = 397
+        Top = 313
+        Width = 322
+        Height = 17
+        Caption = 'N'#227'o Criar C170 para NFCe'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 16
       end
     end
     inherited ScrollBoxTopo: TScrollBox

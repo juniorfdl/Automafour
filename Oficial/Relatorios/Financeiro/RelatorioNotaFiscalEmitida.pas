@@ -19,7 +19,6 @@ type
     DSSQLCliente: TDataSource;
     TblTemporariaEMPRICOD: TIntegerField;
     TblTemporariaCLIEA13ID: TStringField;
-    TblTemporariaCLIEA60RAZAOSOC: TStringField;
     TblTemporariaSERIA5COD: TStringField;
     TblTemporariaOPESICOD: TIntegerField;
     TblTemporariaNOFIINUMERO: TIntegerField;
@@ -46,7 +45,6 @@ type
     SQLVendedorVENDA60NOME: TStringField;
     DSSQLVendedor: TDataSource;
     ComboVendedor: TRxDBLookupCombo;
-    TblTemporariaFORNA60RAZAOSOC: TStringField;
     GroupBox5: TGroupBox;
     Label10: TLabel;
     Label11: TLabel;
@@ -58,7 +56,7 @@ type
     TblTemporariaNOFIN3VLRCOFINS: TBCDField;
     SQLNotaFiscalEMPRICOD: TIntegerField;
     SQLNotaFiscalCLIEA13ID: TStringField;
-    SQLNotaFiscalCLIEA60RAZAOSOC: TStringField;
+    SQLNotaFiscalDESTINATARIO: TStringField;
     SQLNotaFiscalSERIA5COD: TStringField;
     SQLNotaFiscalOPESICOD: TIntegerField;
     SQLNotaFiscalNOFIINUMERO: TIntegerField;
@@ -69,7 +67,7 @@ type
     SQLNotaFiscalNOFIN2VLRSUBS: TFloatField;
     SQLNotaFiscalNOFIN3VLRPIS: TFloatField;
     SQLNotaFiscalNOFIN3VLRCOFINS: TFloatField;
-    SQLNotaFiscalFORNA60RAZAOSOC: TStringField;
+    TblTemporariaDESTINATARIO: TStringField;
     procedure ExecutarBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure ComboOperEstoqueKeyDown(Sender: TObject; var Key: Word;

@@ -1,6 +1,6 @@
 inherited FormRelatorioNotaFiscalEmitida: TFormRelatorioNotaFiscalEmitida
-  Left = 323
-  Top = 123
+  Left = 290
+  Top = 81
   Caption = 'Relat'#243'rio de Notas Fiscais Emitidas'
   ClientHeight = 513
   ClientWidth = 824
@@ -274,14 +274,8 @@ inherited FormRelatorioNotaFiscalEmitida: TFormRelatorioNotaFiscalEmitida
       FixedChar = True
       Size = 13
     end
-    object TblTemporariaCLIEA60RAZAOSOC: TStringField
-      FieldName = 'CLIEA60RAZAOSOC'
-      Origin = 'DB.CLIENTE.CLIEA60RAZAOSOC'
-      FixedChar = True
-      Size = 60
-    end
-    object TblTemporariaFORNA60RAZAOSOC: TStringField
-      FieldName = 'FORNA60RAZAOSOC'
+    object TblTemporariaDESTINATARIO: TStringField
+      FieldName = 'DESTINATARIO'
       Size = 60
     end
     object TblTemporariaSERIA5COD: TStringField
@@ -330,13 +324,13 @@ inherited FormRelatorioNotaFiscalEmitida: TFormRelatorioNotaFiscalEmitida
       Precision = 15
       Size = 3
     end
-    object TblTemporariaNOFIN3VLRCOFINS: TBCDField
-      FieldName = 'NOFIN3VLRCOFINS'
+    object TblTemporariaNOFIN3VLRPIS: TBCDField
+      FieldName = 'NOFIN3VLRPIS'
       Precision = 15
       Size = 3
     end
-    object TblTemporariaNOFIN3VLRPIS: TBCDField
-      FieldName = 'NOFIN3VLRPIS'
+    object TblTemporariaNOFIN3VLRCOFINS: TBCDField
+      FieldName = 'NOFIN3VLRCOFINS'
       Precision = 15
       Size = 3
     end
@@ -347,7 +341,12 @@ inherited FormRelatorioNotaFiscalEmitida: TFormRelatorioNotaFiscalEmitida
       'Select'
       'NotaFiscal.EMPRICOD,'
       'NotaFiscal.CLIEA13ID,'
-      'Cliente.CLIEA60RAZAOSOC,'
+      'case'
+      'when coalesce(CLIEA60RAZAOSOC,'#39#39') <> '#39#39' then CLIEA60RAZAOSOC'
+      'when coalesce(FORNA60RAZAOSOC,'#39#39') <> '#39#39' then FORNA60RAZAOSOC'
+      
+        'when coalesce(EMPRA60NOMEFANT,'#39#39') <> '#39#39' then EMPRA60NOMEFANT end' +
+        ' as DESTINATARIO,'
       'NotaFiscal.SERIA5COD,'
       'NotaFiscal.OPESICOD,'
       'NotaFiscal.NOFIINUMERO,'
@@ -357,8 +356,7 @@ inherited FormRelatorioNotaFiscalEmitida: TFormRelatorioNotaFiscalEmitida
       'NotaFiscal.NOFIN2VLRNOTA,'
       'NotaFiscal.NOFIN2VLRSUBS,'
       'NotaFiscal.NOFIN3VLRPIS,'
-      'NotaFiscal.NOFIN3VLRCOFINS,'
-      'Fornecedor.FORNA60RAZAOSOC'
+      'NotaFiscal.NOFIN3VLRCOFINS'
       'From'
       'NotaFiscal'
       
@@ -367,7 +365,9 @@ inherited FormRelatorioNotaFiscalEmitida: TFormRelatorioNotaFiscalEmitida
       
         'left outer join Fornecedor on NotaFiscal.FORNICOD = Fornecedor.F' +
         'ORNICOD'
-      ''
+      
+        'left outer join empresa on notafiscal.empricoddest = empresa.emp' +
+        'ricod'
       'Where'
       '%Empresa'
       'and'
@@ -386,9 +386,7 @@ inherited FormRelatorioNotaFiscalEmitida: TFormRelatorioNotaFiscalEmitida
       '(%NROInicial)'
       'and'
       '(%NROFinal)'
-      ''
       'ORDER BY'
-      ''
       '%MOrdem')
     Macros = <
       item
@@ -473,8 +471,8 @@ inherited FormRelatorioNotaFiscalEmitida: TFormRelatorioNotaFiscalEmitida
       FixedChar = True
       Size = 13
     end
-    object SQLNotaFiscalCLIEA60RAZAOSOC: TStringField
-      FieldName = 'CLIEA60RAZAOSOC'
+    object SQLNotaFiscalDESTINATARIO: TStringField
+      FieldName = 'DESTINATARIO'
       FixedChar = True
       Size = 60
     end
@@ -511,11 +509,6 @@ inherited FormRelatorioNotaFiscalEmitida: TFormRelatorioNotaFiscalEmitida
     end
     object SQLNotaFiscalNOFIN3VLRCOFINS: TFloatField
       FieldName = 'NOFIN3VLRCOFINS'
-    end
-    object SQLNotaFiscalFORNA60RAZAOSOC: TStringField
-      FieldName = 'FORNA60RAZAOSOC'
-      FixedChar = True
-      Size = 60
     end
   end
   object SQLOperEstoque: TRxQuery

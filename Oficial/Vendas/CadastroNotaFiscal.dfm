@@ -1,6 +1,6 @@
 inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
-  Left = 26
-  Top = 0
+  Left = 7
+  Top = 19
   Caption = 'Notas Fiscais'
   ClientHeight = 690
   ClientWidth = 1350
@@ -16899,6 +16899,14 @@ inherited FormCadastroNotaFiscal: TFormCadastroNotaFiscal
     object SQLNotaFiscalItemNOFIN3VLRPIS: TFloatField
       FieldName = 'NOFIN3VLRPIS'
       Origin = 'DB.NOTAFISCALITEM.NOFIN3VLRPIS'
+    end
+    object SQLNotaFiscalItemBASE_ST_RETIDO: TFloatField
+      FieldName = 'BASE_ST_RETIDO'
+      Origin = 'DB.NOTAFISCALITEM.BASE_ST_RETIDO'
+    end
+    object SQLNotaFiscalItemVALOR_ST_RETIDO: TFloatField
+      FieldName = 'VALOR_ST_RETIDO'
+      Origin = 'DB.NOTAFISCALITEM.VALOR_ST_RETIDO'
     end
   end
   object SQLProduto: TRxQuery

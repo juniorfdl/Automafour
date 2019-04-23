@@ -704,6 +704,13 @@ begin
     else
       Report.Formulas.Formula.Text := '{RelProdutosVendidos.CUPOA8PLACAVEIC}';
   end;
+  //--------------------------------------------------------------------------\\
+  Report.Formulas.Name := 'Operacao' ;
+  if ComboOperacao.Text <> '' then
+    Report.Formulas.Formula.Text := '''' + ComboOperacao.Text + ''''
+  else
+    Report.Formulas.Formula.Text := '''Todas''' ;
+  //--------------------------------------------------------------------------\\
 
   Report.Formulas.Send;
   Report.SortFields.Clear ;

@@ -672,25 +672,27 @@ begin
     if (EncontrouProduto(SQLNotaCompraItem.FindField('PRODICOD').asString, SQLProduto)) and (sqllocate('PRODUTO', 'PRODICOD', 'PRODCIMPETIQCDBAR', SQLProdutoPRODICOD.AsString) = 'S') then
     begin
       vQtde := (SQLNotaCompraItem.FindField('NOCIN3QTDEMBAL').asInteger * SQLNotaCompraItem.FindField('NOCIN3CAPEMBAL').asInteger);
-            if (DM.SQLlocate('produto', 'prodicod', 'PRODCTEMNROSERIE', SQLProdutoPRODICOD.AsString) = 'S') then
-      dm.SqlConsulta.SQL.Clear;
-      dm.SqlConsulta.SQL.Add('select * from PRODUTOSERIE where NOCPA13ID = ');
-      dm.SqlConsulta.SQL.Add(QuotedStr(SQLNotaCompraItem.FindField('NOCPA13ID').AsString));
-      dm.SqlConsulta.SQL.Add(' and PRODICOD = ' + SQLNotaCompraItem.FindField('PRODICOD').asString);
-      dm.SqlConsulta.Open;
-      if not (dm.SqlConsulta.IsEmpty) then
+      if (DM.SQLlocate('produto', 'prodicod', 'PRODCTEMNROSERIE', SQLProdutoPRODICOD.AsString) = 'S') then
       begin
-        dm.SqlConsulta.First;
-        cdsSerie.EmptyDataSet;
-        vItem := 0;
-        while not dm.SqlConsulta.Eof do
+        dm.SqlConsulta.SQL.Clear;
+        dm.SqlConsulta.SQL.Add('select * from PRODUTOSERIE where NOCPA13ID = ');
+        dm.SqlConsulta.SQL.Add(QuotedStr(SQLNotaCompraItem.FindField('NOCPA13ID').AsString));
+        dm.SqlConsulta.SQL.Add(' and PRODICOD = ' + SQLNotaCompraItem.FindField('PRODICOD').asString);
+        dm.SqlConsulta.Open;
+        if not (dm.SqlConsulta.IsEmpty) then
         begin
-          Inc(vItem);
-          cdsSerie.Insert;
-          cdsSerieNumeroSerie.AsString := dm.SqlConsulta.FieldByName('PRSEA60NROSERIE').AsString;
-          cdsSerieItem.AsInteger := vItem;
-          cdsSerie.Post;
-          dm.SqlConsulta.Next;
+          dm.SqlConsulta.First;
+          cdsSerie.EmptyDataSet;
+          vItem := 0;
+          while not dm.SqlConsulta.Eof do
+          begin
+            Inc(vItem);
+            cdsSerie.Insert;
+            cdsSerieNumeroSerie.AsString := dm.SqlConsulta.FieldByName('PRSEA60NROSERIE').AsString;
+            cdsSerieItem.AsInteger := vItem;
+            cdsSerie.Post;
+            dm.SqlConsulta.Next;
+          end;
         end;
       end;
 

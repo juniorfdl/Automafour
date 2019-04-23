@@ -1,5 +1,5 @@
 inherited FormCadastroCliente: TFormCadastroCliente
-  Left = 46
+  Left = 147
   Top = 22
   Caption = 'Cadastro de Clientes'
   ClientHeight = 672
@@ -4727,7 +4727,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                 Left = 6
                 Top = 202
                 Width = 350
-                Height = 161
+                Height = 200
                 Caption = ' Dados Cobran'#231'a Mensal '
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
@@ -4752,7 +4752,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                 end
                 object Label24: TLabel
                   Left = 9
-                  Top = 48
+                  Top = 87
                   Width = 109
                   Height = 13
                   Caption = 'Tipo de Documento'
@@ -4765,7 +4765,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                 end
                 object Label98: TLabel
                   Left = 9
-                  Top = 83
+                  Top = 122
                   Width = 50
                   Height = 13
                   Caption = 'Portador'
@@ -4778,7 +4778,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                 end
                 object Label99: TLabel
                   Left = 9
-                  Top = 118
+                  Top = 157
                   Width = 90
                   Height = 13
                   Caption = 'Plano de Contas'
@@ -4795,6 +4795,20 @@ inherited FormCadastroCliente: TFormCadastroCliente
                   Width = 89
                   Height = 13
                   Caption = 'Vlr.Mensalidade'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = 8404992
+                  Font.Height = -11
+                  Font.Name = 'Tahoma'
+                  Font.Style = [fsBold]
+                  ParentFont = False
+                end
+                object Label103: TLabel
+                  Left = 8
+                  Top = 50
+                  Width = 76
+                  Height = 13
+                  Caption = 'Cliente desde'
+                  FocusControl = DBEdit10
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = 8404992
                   Font.Height = -11
@@ -4819,7 +4833,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                 end
                 object ComboTipoDoc: TRxDBLookupCombo
                   Left = 5
-                  Top = 61
+                  Top = 100
                   Width = 332
                   Height = 21
                   DropDownCount = 8
@@ -4840,7 +4854,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                 end
                 object ComboPortador: TRxDBLookupCombo
                   Left = 5
-                  Top = 96
+                  Top = 135
                   Width = 332
                   Height = 21
                   DropDownCount = 8
@@ -4861,7 +4875,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
                 end
                 object ComboPlanoContas: TRxDBLookupCombo
                   Left = 5
-                  Top = 131
+                  Top = 170
                   Width = 332
                   Height = 21
                   DropDownCount = 8
@@ -4933,8 +4947,8 @@ inherited FormCadastroCliente: TFormCadastroCliente
                   TabOrder = 1
                 end
                 object DBCheckBox2: TDBCheckBox
-                  Left = 238
-                  Top = 30
+                  Left = 134
+                  Top = 66
                   Width = 106
                   Height = 17
                   Caption = 'Taxa Banc'#225'ria'
@@ -4949,6 +4963,19 @@ inherited FormCadastroCliente: TFormCadastroCliente
                   TabOrder = 2
                   ValueChecked = 'S'
                   ValueUnchecked = 'N'
+                end
+                object JvDBDateTimePicker1: TJvDBDateTimePicker
+                  Left = 8
+                  Top = 64
+                  Width = 115
+                  Height = 21
+                  Date = 43503.738586608790000000
+                  Format = 'MM/yyyy'
+                  Time = 43503.738586608790000000
+                  TabOrder = 6
+                  DropDownDate = 43503.000000000000000000
+                  DataField = 'CLIENTE_DESDE'
+                  DataSource = DSTemplate
                 end
               end
               object GroupBox11: TGroupBox
@@ -4996,7 +5023,7 @@ inherited FormCadastroCliente: TFormCadastroCliente
               end
               object dbchkAssociado: TDBCheckBox
                 Left = 6
-                Top = 373
+                Top = 410
                 Width = 106
                 Height = 17
                 Caption = 'Associado'
@@ -8020,6 +8047,10 @@ inherited FormCadastroCliente: TFormCadastroCliente
       Origin = 'DB.CLIENTE.TAXA_BANCARIA'
       FixedChar = True
       Size = 1
+    end
+    object SQLTemplateCLIENTE_DESDE: TDateTimeField
+      FieldName = 'CLIENTE_DESDE'
+      Origin = 'DB.CLIENTE.CLIENTE_DESDE'
     end
   end
   inherited SQLExcluiDetalhes: TRxQuery

@@ -1,20 +1,20 @@
 inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
-  Left = 133
-  Top = 123
-  Width = 1070
-  Height = 507
+  Left = -8
+  Top = -8
+  Width = 1382
+  Height = 744
   Caption = 'Emiss'#227'o de Boletos e Duplicatas'
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
   inherited ScrollBoxFundo: TScrollBox
-    Width = 1054
-    Height = 469
+    Width = 1366
+    Height = 706
     inherited PanelCentral: TPanel
-      Width = 1050
-      Height = 385
+      Width = 1362
+      Height = 622
       inherited PanelBarra: TPanel
-        Width = 1050
+        Width = 1362
         Height = 255
         Align = alTop
         Color = 16249066
@@ -197,7 +197,7 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
         object PanelIntrucoes: TPanel
           Left = 0
           Top = 170
-          Width = 1050
+          Width = 1362
           Height = 85
           Align = alBottom
           Color = 16249066
@@ -432,8 +432,8 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
       object DBGridLista: TDBGrid
         Left = 0
         Top = 255
-        Width = 1050
-        Height = 130
+        Width = 1362
+        Height = 367
         Hint = 
           'Clique com o bot'#227'o direito do mouse para visualizar outras fun'#231#245 +
           'es...'
@@ -494,6 +494,11 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
             FieldName = 'CTRCA15NOSSONUMERO'
             Title.Caption = 'Nosso Numero'
             Width = 100
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'CTRCA30NRODUPLICBANCO'
             Visible = True
           end
           item
@@ -609,9 +614,9 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
       end
     end
     inherited ScrollBoxTopo: TScrollBox
-      Width = 1050
+      Width = 1362
       inherited PanelCabecalho: TPanel
-        Width = 1050
+        Width = 1362
         object lbStatusEmail: TLabel [1]
           Left = 669
           Top = 30
@@ -630,9 +635,9 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
           Visible = False
         end
         inherited PanelNavigator: TPanel
-          Width = 1050
+          Width = 1362
           inherited AdvPanelNavigator: TAdvOfficeStatusBar
-            Width = 1050
+            Width = 1362
             inherited BtnFecharTela: TSpeedButton
               Left = 673
             end
@@ -5477,13 +5482,12 @@ inherited FormTelaImpressaoDuplicata: TFormTelaImpressaoDuplicata
     Top = 95
   end
   object ACBrBoletoFCFortes1: TACBrBoletoFCFortes
-    ACBrBoleto = ACBrBoleto1
-    DirLogo = 'Bmp\Bancos\Colorido'
     MostrarPreview = False
     MostrarSetup = False
     SoftwareHouse = 
       'Gerado por AutomaFour Solu'#231#245'es em Inform'#225'tica - (51) 3438-5051 /' +
       ' (51) 9 8205-9990'
+    DirLogo = 'Bmp\Bancos\Colorido'
     Left = 354
     Top = 95
   end

@@ -362,6 +362,12 @@ type
     dsPedidoCompra: TDataSource;
     cdsPedidoCompraPDCPA13ID: TStringField;
     btnGravarCST: TSpeedButton;
+    cdsItensvalor_icms_st_retido: TFloatField;
+    cdsItensbase_icms_st_retido: TFloatField;
+    cdsItensali_icms_st_retido: TFloatField;
+    cdsItenspst: TFloatField;
+    Label5: TLabel;
+    edtBaseSTRetido: TCurrencyEdit;
     procedure FormCreate(Sender: TObject);
     procedure actSelecionarArquivoExecute(Sender: TObject);
     procedure seNParcelasChange(Sender: TObject);
@@ -431,7 +437,7 @@ type
 
     //Flag Validação de XML
     AcaoValidar : Boolean;
-
+    ValorSTRetido, BaseSTRetido : Real;
     seqValidacao, pItems : Integer;
     {Acumuladores de Erros para ativar a ação gravar_nota_fiscal}
     acErro, acInconsistencia, acCritica: Integer;
@@ -555,7 +561,8 @@ begin
       ShowMessage('É preciso informar um Plano de Contas!');
       exit;
     end;
-
+  ValorSTRetido := 0;
+  BaseSTRetido  := 0;
   VisualizaArquivoXML(tvProcessar);
 end;
 
@@ -602,8 +609,6 @@ begin
   edtValorIcms.Value := ACBrNFe.NotasFiscais.Items[0].NFe.Total.ICMSTot.vICMS;
   edtBSt.Value := ACBrNFe.NotasFiscais.Items[0].NFe.Total.ICMSTot.vBCST;
   edtValorST.Value := ACBrNFe.NotasFiscais.Items[0].NFe.Total.ICMSTot.vST;
-  edtICMSRetido.Value := 0.00;
-  edtCreditoIcms.Value := 0.00;
   edtValorIpi.Value := ACBrNFe.NotasFiscais.Items[0].NFe.Total.ICMSTot.vIPI;
   edtValorProd.Value := ACBrNFe.NotasFiscais.Items[0].NFe.Total.ICMSTot.vProd;
   edtValorFrete.Value := ACBrNFe.NotasFiscais.Items[0].NFe.Total.ICMSTot.vFrete;
@@ -738,7 +743,7 @@ begin
 
         {Se CSON for Dif de zero é pq a nota é do Simples Nacional entao substitui o cst}
         if  CSOSNIcmsToStr(ACBrNFe.NotasFiscais.Items[0].Nfe.Det.Items[i].Imposto.ICMS.CSOSN) <> '0' then
-          cdsItens.FieldByName('cst_icms').AsString := CSOSNIcmsToStr(ACBrNFe.NotasFiscais.Items[0].Nfe.Det.Items[i].Imposto.ICMS.CSOSN);
+          cdsItens.FieldByName('cst_icms').AsString := getCSTConversao(tiICMS,CSOSNIcmsToStr(ACBrNFe.NotasFiscais.Items[0].Nfe.Det.Items[i].Imposto.ICMS.CSOSN));
 
         {ICMS NORMAL}
         cdsItens.FieldByName('base_icms').AsFloat := ACBrNFe.NotasFiscais.Items[0].NFe.Det.Items[i].Imposto.ICMS.vBC;
@@ -749,6 +754,11 @@ begin
         cdsItens.FieldByName('base_icms_st').AsFloat  := ACBrNFe.NotasFiscais.Items[0].NFe.Det.Items[i].Imposto.ICMS.vBCST;
         cdsItens.FieldByName('aliquota_icms_st').AsFloat := ACBrNFe.NotasFiscais.Items[0].NFe.Det.Items[i].Imposto.ICMS.pICMSST;
         cdsItens.FieldByName('valor_icms_st').AsFloat := ACBrNFe.NotasFiscais.Items[0].NFe.Det.Items[i].Imposto.ICMS.vICMSST;
+        cdsItens.FieldByName('valor_icms_st_retido').AsFloat := ACBrNFe.NotasFiscais.Items[0].NFe.Det.Items[i].Imposto.ICMS.vICMSSTRet;
+        cdsItens.FieldByName('base_icms_st_retido').AsFloat := ACBrNFe.NotasFiscais.Items[0].NFe.Det.Items[i].Imposto.ICMS.vBCSTRet;
+        cdsItens.FieldByName('pst').AsFloat := ACBrNFe.NotasFiscais.Items[0].NFe.Det.Items[i].Imposto.ICMS.pST;
+        ValorSTRetido := ValorSTRetido + ACBrNFe.NotasFiscais.Items[0].NFe.Det.Items[i].Imposto.ICMS.vICMSSTRet;
+        BaseSTRetido  := BaseSTRetido + ACBrNFe.NotasFiscais.Items[0].NFe.Det.Items[i].Imposto.ICMS.vBCSTRet;
 
         {IPI}
         cdsItens.FieldByName('cst_ipi').AsString := getCSTConversao(tiIpi, CSTIPIToStr(ACBrNFe.NotasFiscais.Items[0].Nfe.Det.Items[i].Imposto.IPI.CST));
@@ -1343,6 +1353,8 @@ begin
   SetProgresso('Carregando XM na Tela... Aguarde...');
   PopulaComponentesTela(aTipoVisualizao);
   fErroNCM := False;
+  edtICMSRetido.Value := ValorSTRetido;
+  edtBaseSTRetido.Value := BaseSTRetido;
 
   lblAcao.caption := '';
   lblAcao.update;
@@ -1764,10 +1776,10 @@ begin
                 dm.SQLUpdate.ParamByName('NOCIN2VBCST').AsFloat       := cdsItensbase_icms_st.AsFloat;
                 dm.SQLUpdate.ParamByName('NOCIN2PERCSUBST').AsFloat   := cdsItensaliquota_icms_st.AsFloat;
                 dm.SQLUpdate.ParamByName('NOCIN3VLRSUBST').AsFloat    := cdsItensvalor_icms_st.AsFloat;
-                dm.SQLUpdate.ParamByName('NOCIN2VBCSTRET').AsFloat    := 0.00;
+                dm.SQLUpdate.ParamByName('NOCIN2VBCSTRET').AsFloat    := cdsItensbase_icms_st_retido.AsFloat;
                 dm.SQLUpdate.ParamByName('NOCIN2PREDBC').AsFloat      := 0.00;
                 dm.SQLUpdate.ParamByName('NOCIN2PREDBCST').AsFloat    := 0.00;
-                dm.SQLUpdate.ParamByName('NOCIN2VICMSSTRET').AsFloat  := 0.00;
+                dm.SQLUpdate.ParamByName('NOCIN2VICMSSTRET').AsFloat  := cdsItensvalor_icms_st_retido.AsFloat;
                 dm.SQLUpdate.ParamByName('NOCIN2VCREDICMSSN').AsFloat := 0.00;
 
                 if cdsItenscst_ipi.AsString = '' then
@@ -2431,6 +2443,7 @@ begin
   edtBSt.Clear;
   edtValorST.Clear;
   edtICMSRetido.Clear;
+  edtBaseSTRetido.Clear;
   edtCreditoIcms.Clear;
   edtValorIpi.Clear;
   edtValorProd.Clear;
@@ -2896,6 +2909,10 @@ var
 begin
   inherited;
   Inicia_NFe;
+  //ACBrNFe.SSL.SSLType := LT_TLSv1;
+//  ACBrNFe.Configuracoes.Geral.SSLXmlSignLib := xsLibXml2;
+//  ACBrNFe.Configuracoes.Geral.SSLHttpLib := httpWinHttp;
+//  ACBrNFe.Configuracoes.Geral.SSLCryptLib := cryWinCrypt;
 
   sNSU := IntToStr(SQLMax('EMPRESA','NSUCONSULTA','EMPRICOD='+EmpresaPadrao));
 
